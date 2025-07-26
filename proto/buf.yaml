@@ -1,9 +1,8 @@
-# buf.yaml
+# proto/buf.yaml
 version: v1
 name: buf.build/sentiric/contracts
 deps:
   - buf.build/googleapis/googleapis
-# build bloğunu sildik.
 lint:
   use:
     - DEFAULT
