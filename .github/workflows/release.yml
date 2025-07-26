@@ -1,4 +1,5 @@
 # .github/workflows/release.yml
+
 name: Release Contracts
 
 on:
@@ -8,11 +9,11 @@ on:
 
 jobs:
   release:
-    name: Generate, Commit & Release
+    name: Generate, Commit, Retag & Release
     runs-on: ubuntu-latest
     permissions:
-      contents: write  # Repoya commit atabilmek için bu izin şart!
-      packages: write
+      contents: write  # Repoya commit ve tag push'layabilmek için bu izin şart!
+      packages: write  # GitHub Packages'a yayınlama için
 
     steps:
       - name: Checkout
@@ -31,21 +32,34 @@ jobs:
       - name: Generate Code
         run: buf generate
 
-      - name: Commit and Push Generated Files
+      - name: Commit, Push, and Retag
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "github-actions-bot@users.noreply.github.com"
+          
           # Sadece 'gen' klasöründeki değişiklikleri ekle
           git add gen/
+          
           # Değişiklik var mı kontrol et
           if ! git diff --staged --quiet; then
+            echo "Generated code has changed. Committing and retagging..."
+            # Yeni commit'i oluştur
             git commit -m "feat(gen): Generate code for v${{ env.VERSION }}"
+            
+            # Bu yeni commit'i main branch'ine push'la
             git push
+            
+            # NİHAİ ÇÖZÜM: Mevcut tag'i silip, yeni commit'in üzerine tekrar oluştur
+            # ve zorla push'la. Bu, tag'in doğru kodu işaret etmesini sağlar.
+            TAG_NAME="v${{ env.VERSION }}"
+            git tag -f $TAG_NAME
+            git push -f origin refs/tags/$TAG_NAME
+            
           else
             echo "No changes in generated code to commit."
           fi
 
-      # --- GO: Artık kodlar repoda olduğu için her şey çalışacak ---
+      # --- GO: Artık kodlar repoda ve doğru tag'de olduğu için her şey çalışacak ---
       - name: Announce Go Module
         run: echo "✅ Go module is available via git tag v${{ env.VERSION }}"
 
