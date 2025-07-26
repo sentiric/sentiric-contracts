@@ -1,18 +1,16 @@
 [package]
-name = "sentiric-contracts-proto"
-version = "0.3.1" # Versiyonu güncelleyelim
+name = "sentiric-contracts" # <-- BURAYI DÜZELTTİK
+version = "0.3.2" # Versiyonu güncelleyelim
 edition = "2021"
 description = "A data-only crate holding the Protobuf definitions for the Sentiric platform."
 license = "MIT"
 repository = "https://github.com/sentiric/sentiric-contracts"
 
-# Bu paket Rust kodu içermediği için, 'src' dizini dışında hiçbir şeyi
-# dahil etme diyoruz. Bu, paketi minimal tutar.
 [lib]
 path = "src/lib.rs"
 
 [dependencies]
-# Bu paketin kendi başına hiçbir bağımlılığı yok.
+# Bağımlılık yok
 
 [build-dependencies]
-# Bu paketin build script'i olmadığı için bu bölüm boş.
+# Build script yok
