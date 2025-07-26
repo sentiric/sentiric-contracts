@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1bsentiric/user/v1/user.proto\x12\x10sentiric.user.v1\"@\n\x04User\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n\x05\x65mail\x18\x03 \x01(\tR\x05\x65mail\" \n\x0eGetUserRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\"=\n\x0fGetUserResponse\x12*\n\x04user\x18\x01 \x01(\x0b\x32\x16.sentiric.user.v1.UserR\x04user2]\n\x0bUserService\x12N\n\x07GetUser\x12 .sentiric.user.v1.GetUserRequest\x1a!.sentiric.user.v1.GetUserResponseBGZEgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/user/v1;userv1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1bsentiric/user/v1/user.proto\x12\x10sentiric.user.v1\"]\n\x04User\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n\x05\x65mail\x18\x03 \x01(\tR\x05\x65mail\x12\x1b\n\ttenant_id\x18\x04 \x01(\tR\x08tenantId\" \n\x0eGetUserRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\"=\n\x0fGetUserResponse\x12*\n\x04user\x18\x01 \x01(\x0b\x32\x16.sentiric.user.v1.UserR\x04user2]\n\x0bUserService\x12N\n\x07GetUser\x12 .sentiric.user.v1.GetUserRequest\x1a!.sentiric.user.v1.GetUserResponseBGZEgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/user/v1;userv1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -33,11 +33,11 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
   _globals['DESCRIPTOR']._serialized_options = b'ZEgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/user/v1;userv1'
   _globals['_USER']._serialized_start=49
-  _globals['_USER']._serialized_end=113
-  _globals['_GETUSERREQUEST']._serialized_start=115
-  _globals['_GETUSERREQUEST']._serialized_end=147
-  _globals['_GETUSERRESPONSE']._serialized_start=149
-  _globals['_GETUSERRESPONSE']._serialized_end=210
-  _globals['_USERSERVICE']._serialized_start=212
-  _globals['_USERSERVICE']._serialized_end=305
+  _globals['_USER']._serialized_end=142
+  _globals['_GETUSERREQUEST']._serialized_start=144
+  _globals['_GETUSERREQUEST']._serialized_end=176
+  _globals['_GETUSERRESPONSE']._serialized_start=178
+  _globals['_GETUSERRESPONSE']._serialized_end=239
+  _globals['_USERSERVICE']._serialized_start=241
+  _globals['_USERSERVICE']._serialized_end=334
 # @@protoc_insertion_point(module_scope)

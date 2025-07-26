@@ -9,6 +9,9 @@ pub struct User {
     pub name: ::prost::alloc::string::String,
     #[prost(string, tag="3")]
     pub email: ::prost::alloc::string::String,
+    /// YENİ EKLENEN ALAN:
+    #[prost(string, tag="4")]
+    pub tenant_id: ::prost::alloc::string::String,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]

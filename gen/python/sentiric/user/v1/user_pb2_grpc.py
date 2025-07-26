@@ -6,8 +6,7 @@ from sentiric.user.v1 import user_pb2 as sentiric_dot_user_dot_v1_dot_user__pb2
 
 
 class UserServiceStub(object):
-    """Kullanıcı servisi, kullanıcı bilgilerini yönetir.
-    """
+    """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):
         """Constructor.
@@ -23,12 +22,10 @@ class UserServiceStub(object):
 
 
 class UserServiceServicer(object):
-    """Kullanıcı servisi, kullanıcı bilgilerini yönetir.
-    """
+    """Missing associated documentation comment in .proto file."""
 
     def GetUser(self, request, context):
-        """Belirli bir ID'ye sahip kullanıcıyı getirir.
-        """
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -50,8 +47,7 @@ def add_UserServiceServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class UserService(object):
-    """Kullanıcı servisi, kullanıcı bilgilerini yönetir.
-    """
+    """Missing associated documentation comment in .proto file."""
 
     @staticmethod
     def GetUser(request,
