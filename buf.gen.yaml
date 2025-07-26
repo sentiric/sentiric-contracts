@@ -1,12 +1,11 @@
 version: v1
 plugins:
-  # Go (Düzeltilmiş)
+  # Go
   - plugin: buf.build/protocolbuffers/go
     out: gen/go
     opt: paths=source_relative
   - plugin: buf.build/grpc/go
     out: gen/go
-    # Hatalı olan iki 'opt' satırı burada tek satırda birleştirildi.
     opt: paths=source_relative,require_unimplemented_servers=false
 
   # Python
@@ -15,13 +14,12 @@ plugins:
   - plugin: buf.build/protocolbuffers/python
     out: gen/python
 
-  # Rust
-  # Not: Rust pluginleri bazen farklı isimlerle anılabilir.
-  # Eğer bu çalışmazsa, 'buf.build/community/neoeinstein-prost' gibi alternatifleri deneriz.
-  - plugin: buf.build/community/neoeinstein-prost-crate
+  # Rust (Düzeltilmiş)
+  # 'prost-crate' plugin'i kaldırıldı, çünkü 'prost' ve 'tonic' zaten
+  # temel kod üretimini yapıyor. Paketleme (crate) işini CI'da manuel
+  # olarak veya ayrı bir build.rs ile yönetmek daha esnek olacak.
+  # Bu değişiklik, en temel ve hatasız kod üretimini garanti eder.
+  - plugin: buf.build/community/neoeinstein-prost
     out: gen/rust
-    # Rust için crate (paket) yapısı oluşturmasını söylüyoruz.
-    opt:
-      - crate_name=sentiric-contracts-rust
   - plugin: buf.build/community/neoeinstein-tonic
     out: gen/rust
