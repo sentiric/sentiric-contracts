@@ -1,0 +1,16 @@
+# .gitignore
+
+# Üretilen kodları ve build artefaktlarını ignore et
+# Not: gen/ altındaki paket tanım dosyaları (go.mod, package.json vb.) ignore edilmemeli!
+/gen/*/sentiric/
+/gen/rust/src/lib/
+/gen/python/dist/
+/gen/python/build/
+/gen/python/*.egg-info
+/gen/nodejs/sentiric/
+
+# Diğer genel ignore'lar
+.DS_Store
+*.env
+/node_modules/
+/target/

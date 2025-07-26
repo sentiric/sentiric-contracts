@@ -1,0 +1,16 @@
+# buf.yaml
+version: v1
+name: buf.build/sentiric/contracts # Buf Schema Registry için benzersiz isim
+deps:
+  - buf.build/googleapis/googleapis
+build:
+  roots:
+    - proto
+lint:
+  use:
+    - DEFAULT
+  except:
+    - RPC_REQUEST_STANDARD_NAME
+breaking:
+  use:
+    - FILE

@@ -1,0 +1,26 @@
+// proto/sentiric/dialplan/v1/dialplan.proto
+syntax = "proto3";
+
+package sentiric.dialplan.v1;
+
+// Başka bir proto dosyasını import etme örneği
+import "sentiric/user/v1/user.proto";
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/dialplan/v1;dialplanv1";
+
+// Dialplan servisi, arama planlarını yönetir.
+service DialplanService {
+  // Bir kullanıcıya ait arama planını getirir.
+  rpc GetDialplanForUser(GetDialplanForUserRequest) returns (GetDialplanForUserResponse);
+}
+
+message GetDialplanForUserRequest {
+  string user_id = 1;
+}
+
+message GetDialplanForUserResponse {
+  string dialplan_id = 1;
+  string content = 2;
+  // Import edilen User mesajını burada kullanıyoruz.
+  sentiric.user.v1.User owner = 3;
+}

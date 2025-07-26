@@ -1,0 +1,65 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  generate-and-publish:
+    name: Generate & Publish Packages
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # package.json versiyonunu güncellemek için
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Get Tag Version
+        id: get_version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
+
+      - name: Setup Buf
+        uses: bufbuild/buf-setup-action@v1.35.1
+
+      - name: Generate Code
+        run: buf generate
+
+      - name: Publish Go Module
+        run: |
+          echo "Go module for tag v${{ env.VERSION }} is automatically available via git tag."
+
+      - name: Publish to NPM (Node.js)
+        run: |
+          cd gen/nodejs
+          npm version ${{ env.VERSION }} --no-git-tag-version --allow-same-version
+          npm install
+          npm config set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
+          npm publish --access public
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish to Crates.io (Rust)
+        run: |
+          cd gen/rust
+          # Cargo.toml'daki versiyonu güncelle
+          sed -i 's/^version = ".*"/version = "${{ env.VERSION }}"/' Cargo.toml
+          # build.rs dosyasını çalıştırmak için boş bir src/lib.rs oluşturun
+          mkdir -p src/lib
+          touch src/lib/mod.rs
+          # build.rs yi çalıştırıp kodları üret
+          cargo build
+          cargo publish --token ${{ secrets.CARGO_TOKEN }}
+        env:
+          CARGO_TOKEN: ${{ secrets.CARGO_TOKEN }}
+
+      - name: Publish to PyPI (Python)
+        run: |
+          cd gen/python
+          # pyproject.toml'daki versiyonu güncelle
+          sed -i 's/^version = ".*"/version = "${{ env.VERSION }}"/' pyproject.toml
+          pip install build twine
+          python -m build
+          python -m twine upload dist/* --username __token__ --password ${{ secrets.PYPI_API_TOKEN }}
+        env:
+          PYPI_API_TOKEN: ${{ secrets.PYPI_API_TOKEN }}

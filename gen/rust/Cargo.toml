@@ -1,0 +1,14 @@
+[package]
+name = "sentiric-contracts"
+version = "0.0.0"
+edition = "2021"
+description = "API contracts for Sentiric microservices"
+license = "MIT"
+repository = "https://github.com/sentiric/sentiric-contracts"
+
+[dependencies]
+prost = "0.12"
+tonic = "0.11"
+
+[build-dependencies]
+tonic-build = "0.11"

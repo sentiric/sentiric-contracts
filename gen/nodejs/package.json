@@ -1,0 +1,20 @@
+{
+  "name": "@sentiric/contracts",
+  "version": "0.0.0",
+  "description": "API contracts for Sentiric microservices",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sentiric/sentiric-contracts.git"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "files": [
+    "**/*.js",
+    "**/*.d.ts"
+  ]
+}
