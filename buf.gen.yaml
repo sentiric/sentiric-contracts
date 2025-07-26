@@ -1,22 +1,27 @@
 version: v1
 plugins:
-  # Go (Mevcut)
+  # Go (Düzeltilmiş)
   - plugin: buf.build/protocolbuffers/go
     out: gen/go
     opt: paths=source_relative
   - plugin: buf.build/grpc/go
     out: gen/go
-    opt: paths=source_relative
-    opt: require_unimplemented_servers=false
+    # Hatalı olan iki 'opt' satırı burada tek satırda birleştirildi.
+    opt: paths=source_relative,require_unimplemented_servers=false
 
-  # Python (Yeni Eklendi)
+  # Python
   - plugin: buf.build/grpc/python
     out: gen/python
   - plugin: buf.build/protocolbuffers/python
     out: gen/python
 
-  # Rust (Yeni Eklendi)
-  - plugin: buf.build/community/neoeinstein-prost
-    out: gen/rust/src
+  # Rust
+  # Not: Rust pluginleri bazen farklı isimlerle anılabilir.
+  # Eğer bu çalışmazsa, 'buf.build/community/neoeinstein-prost' gibi alternatifleri deneriz.
+  - plugin: buf.build/community/neoeinstein-prost-crate
+    out: gen/rust
+    # Rust için crate (paket) yapısı oluşturmasını söylüyoruz.
+    opt:
+      - crate_name=sentiric-contracts-rust
   - plugin: buf.build/community/neoeinstein-tonic
-    out: gen/rust/src
+    out: gen/rust
