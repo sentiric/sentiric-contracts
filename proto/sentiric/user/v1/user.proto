@@ -3,7 +3,7 @@ syntax = "proto3";
 
 package sentiric.user.v1;
 
-// Go paket yolunu belirtir. Bu, Go import'larını güzelleştirir.
+// Go paket yolunu, yeni ve standart repomuza göre güncelliyoruz.
 option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/user/v1;userv1";
 
 // Kullanıcı servisi, kullanıcı bilgilerini yönetir.

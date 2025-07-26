@@ -6,6 +6,7 @@ package sentiric.dialplan.v1;
 // Başka bir proto dosyasını import etme örneği
 import "sentiric/user/v1/user.proto";
 
+// Go paket yolunu, yeni ve standart repomuza göre güncelliyoruz.
 option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/dialplan/v1;dialplanv1";
 
 // Dialplan servisi, arama planlarını yönetir.
