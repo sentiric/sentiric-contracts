@@ -1,11 +1,9 @@
 # buf.yaml
 version: v1
-name: buf.build/sentiric/contracts # Buf Schema Registry için benzersiz isim
+name: buf.build/sentiric/contracts
 deps:
   - buf.build/googleapis/googleapis
-build:
-  roots:
-    - proto
+# build bloğunu sildik.
 lint:
   use:
     - DEFAULT
