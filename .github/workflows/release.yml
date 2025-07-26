@@ -8,16 +8,18 @@ on:
 
 jobs:
   release:
-    name: Generate Code & Release
+    name: Generate, Commit & Release
     runs-on: ubuntu-latest
-    # GITHUB_TOKEN'a paket yazma izni veriyoruz
     permissions:
-      contents: read
+      contents: write  # Repoya commit atabilmek için bu izin şart!
       packages: write
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        # Token ile checkout yapıyoruz ki, push yapabilelim
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Get Tag Version
         id: get_version
@@ -29,17 +31,27 @@ jobs:
       - name: Generate Code
         run: buf generate
 
-      # --- GO: Hiçbir yayınlama adımı gerekmez, tag yeterlidir ---
+      - name: Commit and Push Generated Files
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "github-actions-bot@users.noreply.github.com"
+          # Sadece 'gen' klasöründeki değişiklikleri ekle
+          git add gen/
+          # Değişiklik var mı kontrol et
+          if ! git diff --staged --quiet; then
+            git commit -m "feat(gen): Generate code for v${{ env.VERSION }}"
+            git push
+          else
+            echo "No changes in generated code to commit."
+          fi
+
+      # --- GO: Artık kodlar repoda olduğu için her şey çalışacak ---
       - name: Announce Go Module
         run: echo "✅ Go module is available via git tag v${{ env.VERSION }}"
 
-      # --- RUST: Hiçbir yayınlama adımı gerekmez, tag yeterlidir ---
-      - name: Announce Rust Crate
-        run: echo "✅ Rust crate is available via git tag v${{ env.VERSION }}"
-
-      # --- PYTHON: Hiçbir yayınlama adımı gerekmez, tag yeterlidir ---
-      - name: Announce Python Package
-        run: echo "✅ Python package is available via git tag v${{ env.VERSION }}"
+      # --- RUST & PYTHON ---
+      - name: Announce Rust and Python Packages
+        run: echo "✅ Rust and Python packages are available via git tag v${{ env.VERSION }}"
 
       # --- NODE.JS: GitHub Packages'a yayınla ---
       - name: Setup Node.js for GitHub Packages
@@ -47,15 +59,12 @@ jobs:
         with:
           node-version: '20'
           registry-url: 'https://npm.pkg.github.com'
-          scope: '@sentiric' # Organizasyonunuzun adı
+          scope: '@sentiric'
 
       - name: Publish to GitHub Packages (Node.js)
         run: |
           cd gen/nodejs
-          # package.json versiyonunu tag ile güncelle
           npm version ${{ env.VERSION }} --no-git-tag-version --allow-same-version
-          # Yayınla!
           npm publish
         env:
-          # GITHUB_TOKEN otomatik olarak setup-node tarafından .npmrc'ye yazılır
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
