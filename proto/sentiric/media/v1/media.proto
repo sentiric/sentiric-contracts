@@ -8,8 +8,7 @@ service MediaService {
   rpc AllocatePort(AllocatePortRequest) returns (AllocatePortResponse);
   rpc ReleasePort(ReleasePortRequest) returns (ReleasePortResponse);
   
-  // YENİ EKLENEN RPC:
-  // Belirtilen RTP portuna bir ses dosyası çalmak için komut gönderir.
+  // Belirtilen hedef adrese bir ses dosyası çalar.
   rpc PlayAudio(PlayAudioRequest) returns (PlayAudioResponse);
 }
 
@@ -18,6 +17,7 @@ message AllocatePortRequest {
 }
 
 message AllocatePortResponse {
+  // media-service'in dinleyeceği ve RTP alacağı port.
   uint32 rtp_port = 1;
 }
 
@@ -29,18 +29,18 @@ message ReleasePortResponse {
   bool success = 1;
 }
 
-// YENİ EKLENEN MESAJLAR:
 message PlayAudioRequest {
-  // Hangi çağrıya ait olduğunu bilmek için.
-  string call_id = 1;
-  // Hangi RTP portuna ses gönderileceği.
-  uint32 rtp_port = 2;
+  // Sesin gönderileceği hedef adres (IP:Port).
+  // Bu bilgi, SIP INVITE mesajındaki SDP'den alınır.
+  // Örn: "188.3.192.29:44224"
+  string rtp_target_addr = 1;
+  
   // Çalınacak ses dosyasının kimliği (ID) veya yolu.
-  // Örn: "sounds/welcome_tr.wav"
-  string audio_id = 3;
+  // Örn: "assets/welcome_tr.wav"
+  string audio_id = 2;
 }
 
 message PlayAudioResponse {
-  // İşlemin başarıyla başlayıp başlamadığını belirtir.
   bool success = 1;
+  string message = 2; // Opsiyonel: "Playback started for target..."
 }
