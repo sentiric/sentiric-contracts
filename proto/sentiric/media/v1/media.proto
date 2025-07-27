@@ -32,7 +32,7 @@ message ReleasePortResponse {
 }
 
 message PlayAudioRequest {
-  // Sesin gönderileceği hedef adres (IP:Port).
+  // Sesin  gönderileceği hedef adres (IP:Port).
   // Bu bilgi, SIP INVITE mesajındaki SDP'den alınır.
   // Örn: "188.3.192.29:44224"
   string rtp_target_addr = 1;
@@ -40,6 +40,8 @@ message PlayAudioRequest {
   // Çalınacak ses dosyasının kimliği (ID) veya yolu.
   // Örn: "assets/welcome_tr.wav"
   string audio_id = 2;
+
+  uint32 server_rtp_port = 3; // <-- BU ALANIN EKLENDİĞİNDEN EMİN OLUN
 }
 
 message PlayAudioResponse {
