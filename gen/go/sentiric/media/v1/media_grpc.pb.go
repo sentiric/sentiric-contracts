@@ -21,18 +21,18 @@ const _ = grpc.SupportPackageIsVersion9
 const (
 	MediaService_AllocatePort_FullMethodName = "/sentiric.media.v1.MediaService/AllocatePort"
 	MediaService_ReleasePort_FullMethodName  = "/sentiric.media.v1.MediaService/ReleasePort"
+	MediaService_PlayAudio_FullMethodName    = "/sentiric.media.v1.MediaService/PlayAudio"
 )
 
 // MediaServiceClient is the client API for MediaService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-//
-// MediaService, gerçek zamanlı medya (RTP) oturumlarını yönetir.
 type MediaServiceClient interface {
-	// Yeni bir medya oturumu için boş bir RTP portu ayırır.
 	AllocatePort(ctx context.Context, in *AllocatePortRequest, opts ...grpc.CallOption) (*AllocatePortResponse, error)
-	// Kullanılan bir RTP portunu serbest bırakır.
 	ReleasePort(ctx context.Context, in *ReleasePortRequest, opts ...grpc.CallOption) (*ReleasePortResponse, error)
+	// YENİ EKLENEN RPC:
+	// Belirtilen RTP portuna bir ses dosyası çalmak için komut gönderir.
+	PlayAudio(ctx context.Context, in *PlayAudioRequest, opts ...grpc.CallOption) (*PlayAudioResponse, error)
 }
 
 type mediaServiceClient struct {
@@ -63,16 +63,25 @@ func (c *mediaServiceClient) ReleasePort(ctx context.Context, in *ReleasePortReq
 	return out, nil
 }
 
+func (c *mediaServiceClient) PlayAudio(ctx context.Context, in *PlayAudioRequest, opts ...grpc.CallOption) (*PlayAudioResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(PlayAudioResponse)
+	err := c.cc.Invoke(ctx, MediaService_PlayAudio_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MediaServiceServer is the server API for MediaService service.
 // All implementations should embed UnimplementedMediaServiceServer
 // for forward compatibility.
-//
-// MediaService, gerçek zamanlı medya (RTP) oturumlarını yönetir.
 type MediaServiceServer interface {
-	// Yeni bir medya oturumu için boş bir RTP portu ayırır.
 	AllocatePort(context.Context, *AllocatePortRequest) (*AllocatePortResponse, error)
-	// Kullanılan bir RTP portunu serbest bırakır.
 	ReleasePort(context.Context, *ReleasePortRequest) (*ReleasePortResponse, error)
+	// YENİ EKLENEN RPC:
+	// Belirtilen RTP portuna bir ses dosyası çalmak için komut gönderir.
+	PlayAudio(context.Context, *PlayAudioRequest) (*PlayAudioResponse, error)
 }
 
 // UnimplementedMediaServiceServer should be embedded to have
@@ -87,6 +96,9 @@ func (UnimplementedMediaServiceServer) AllocatePort(context.Context, *AllocatePo
 }
 func (UnimplementedMediaServiceServer) ReleasePort(context.Context, *ReleasePortRequest) (*ReleasePortResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ReleasePort not implemented")
+}
+func (UnimplementedMediaServiceServer) PlayAudio(context.Context, *PlayAudioRequest) (*PlayAudioResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PlayAudio not implemented")
 }
 func (UnimplementedMediaServiceServer) testEmbeddedByValue() {}
 
@@ -144,6 +156,24 @@ func _MediaService_ReleasePort_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _MediaService_PlayAudio_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PlayAudioRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MediaServiceServer).PlayAudio(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: MediaService_PlayAudio_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MediaServiceServer).PlayAudio(ctx, req.(*PlayAudioRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // MediaService_ServiceDesc is the grpc.ServiceDesc for MediaService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -158,6 +188,10 @@ var MediaService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ReleasePort",
 			Handler:    _MediaService_ReleasePort_Handler,
+		},
+		{
+			MethodName: "PlayAudio",
+			Handler:    _MediaService_PlayAudio_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

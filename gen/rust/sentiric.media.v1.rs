@@ -3,14 +3,12 @@
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AllocatePortRequest {
-    /// Hangi çağrı için port istendiği (izlenebilirlik için)
     #[prost(string, tag="1")]
     pub call_id: ::prost::alloc::string::String,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct AllocatePortResponse {
-    /// Ayrılan çift sayılı RTP portu
     #[prost(uint32, tag="1")]
     pub rtp_port: u32,
 }
@@ -23,6 +21,28 @@ pub struct ReleasePortRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct ReleasePortResponse {
+    #[prost(bool, tag="1")]
+    pub success: bool,
+}
+/// YENİ EKLENEN MESAJLAR:
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct PlayAudioRequest {
+    /// Hangi çağrıya ait olduğunu bilmek için.
+    #[prost(string, tag="1")]
+    pub call_id: ::prost::alloc::string::String,
+    /// Hangi RTP portuna ses gönderileceği.
+    #[prost(uint32, tag="2")]
+    pub rtp_port: u32,
+    /// Çalınacak ses dosyasının kimliği (ID) veya yolu.
+    /// Örn: "sounds/welcome_tr.wav"
+    #[prost(string, tag="3")]
+    pub audio_id: ::prost::alloc::string::String,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct PlayAudioResponse {
+    /// İşlemin başarıyla başlayıp başlamadığını belirtir.
     #[prost(bool, tag="1")]
     pub success: bool,
 }
