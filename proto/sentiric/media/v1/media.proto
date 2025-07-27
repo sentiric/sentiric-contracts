@@ -1,3 +1,5 @@
+// DOSYA: sentiric-contracts/proto/sentiric/media/v1/media.proto
+
 syntax = "proto3";
 
 package sentiric.media.v1;
