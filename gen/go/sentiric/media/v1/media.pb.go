@@ -202,13 +202,14 @@ func (x *ReleasePortResponse) GetSuccess() bool {
 
 type PlayAudioRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Sesin gönderileceği hedef adres (IP:Port).
+	// Sesin  gönderileceği hedef adres (IP:Port).
 	// Bu bilgi, SIP INVITE mesajındaki SDP'den alınır.
 	// Örn: "188.3.192.29:44224"
 	RtpTargetAddr string `protobuf:"bytes,1,opt,name=rtp_target_addr,json=rtpTargetAddr,proto3" json:"rtp_target_addr,omitempty"`
 	// Çalınacak ses dosyasının kimliği (ID) veya yolu.
 	// Örn: "assets/welcome_tr.wav"
 	AudioId       string `protobuf:"bytes,2,opt,name=audio_id,json=audioId,proto3" json:"audio_id,omitempty"`
+	ServerRtpPort uint32 `protobuf:"varint,3,opt,name=server_rtp_port,json=serverRtpPort,proto3" json:"server_rtp_port,omitempty"` // <-- BU ALANIN EKLENDİĞİNDEN EMİN OLUN
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -255,6 +256,13 @@ func (x *PlayAudioRequest) GetAudioId() string {
 		return x.AudioId
 	}
 	return ""
+}
+
+func (x *PlayAudioRequest) GetServerRtpPort() uint32 {
+	if x != nil {
+		return x.ServerRtpPort
+	}
+	return 0
 }
 
 type PlayAudioResponse struct {
@@ -321,10 +329,11 @@ const file_sentiric_media_v1_media_proto_rawDesc = "" +
 	"\x12ReleasePortRequest\x12\x19\n" +
 	"\brtp_port\x18\x01 \x01(\rR\artpPort\"/\n" +
 	"\x13ReleasePortResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\"U\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"}\n" +
 	"\x10PlayAudioRequest\x12&\n" +
 	"\x0frtp_target_addr\x18\x01 \x01(\tR\rrtpTargetAddr\x12\x19\n" +
-	"\baudio_id\x18\x02 \x01(\tR\aaudioId\"G\n" +
+	"\baudio_id\x18\x02 \x01(\tR\aaudioId\x12&\n" +
+	"\x0fserver_rtp_port\x18\x03 \x01(\rR\rserverRtpPort\"G\n" +
 	"\x11PlayAudioResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x18\n" +
 	"\amessage\x18\x02 \x01(\tR\amessage2\xa5\x02\n" +

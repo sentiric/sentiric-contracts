@@ -28,7 +28,7 @@ pub struct ReleasePortResponse {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PlayAudioRequest {
-    /// Sesin gönderileceği hedef adres (IP:Port).
+    /// Sesin  gönderileceği hedef adres (IP:Port).
     /// Bu bilgi, SIP INVITE mesajındaki SDP'den alınır.
     /// Örn: "188.3.192.29:44224"
     #[prost(string, tag="1")]
@@ -37,6 +37,9 @@ pub struct PlayAudioRequest {
     /// Örn: "assets/welcome_tr.wav"
     #[prost(string, tag="2")]
     pub audio_id: ::prost::alloc::string::String,
+    /// <-- BU ALANIN EKLENDİĞİNDEN EMİN OLUN
+    #[prost(uint32, tag="3")]
+    pub server_rtp_port: u32,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
