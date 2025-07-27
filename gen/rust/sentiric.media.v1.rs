@@ -9,6 +9,7 @@ pub struct AllocatePortRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct AllocatePortResponse {
+    /// media-service'in dinleyeceği ve RTP alacağı port.
     #[prost(uint32, tag="1")]
     pub rtp_port: u32,
 }
@@ -24,27 +25,27 @@ pub struct ReleasePortResponse {
     #[prost(bool, tag="1")]
     pub success: bool,
 }
-/// YENİ EKLENEN MESAJLAR:
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PlayAudioRequest {
-    /// Hangi çağrıya ait olduğunu bilmek için.
+    /// Sesin gönderileceği hedef adres (IP:Port).
+    /// Bu bilgi, SIP INVITE mesajındaki SDP'den alınır.
+    /// Örn: "188.3.192.29:44224"
     #[prost(string, tag="1")]
-    pub call_id: ::prost::alloc::string::String,
-    /// Hangi RTP portuna ses gönderileceği.
-    #[prost(uint32, tag="2")]
-    pub rtp_port: u32,
+    pub rtp_target_addr: ::prost::alloc::string::String,
     /// Çalınacak ses dosyasının kimliği (ID) veya yolu.
-    /// Örn: "sounds/welcome_tr.wav"
-    #[prost(string, tag="3")]
+    /// Örn: "assets/welcome_tr.wav"
+    #[prost(string, tag="2")]
     pub audio_id: ::prost::alloc::string::String,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PlayAudioResponse {
-    /// İşlemin başarıyla başlayıp başlamadığını belirtir.
     #[prost(bool, tag="1")]
     pub success: bool,
+    /// Opsiyonel: "Playback started for target..."
+    #[prost(string, tag="2")]
+    pub message: ::prost::alloc::string::String,
 }
 include!("sentiric.media.v1.tonic.rs");
 // @@protoc_insertion_point(module)

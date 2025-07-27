@@ -30,8 +30,7 @@ const (
 type MediaServiceClient interface {
 	AllocatePort(ctx context.Context, in *AllocatePortRequest, opts ...grpc.CallOption) (*AllocatePortResponse, error)
 	ReleasePort(ctx context.Context, in *ReleasePortRequest, opts ...grpc.CallOption) (*ReleasePortResponse, error)
-	// YENİ EKLENEN RPC:
-	// Belirtilen RTP portuna bir ses dosyası çalmak için komut gönderir.
+	// Belirtilen hedef adrese bir ses dosyası çalar.
 	PlayAudio(ctx context.Context, in *PlayAudioRequest, opts ...grpc.CallOption) (*PlayAudioResponse, error)
 }
 
@@ -79,8 +78,7 @@ func (c *mediaServiceClient) PlayAudio(ctx context.Context, in *PlayAudioRequest
 type MediaServiceServer interface {
 	AllocatePort(context.Context, *AllocatePortRequest) (*AllocatePortResponse, error)
 	ReleasePort(context.Context, *ReleasePortRequest) (*ReleasePortResponse, error)
-	// YENİ EKLENEN RPC:
-	// Belirtilen RTP portuna bir ses dosyası çalmak için komut gönderir.
+	// Belirtilen hedef adrese bir ses dosyası çalar.
 	PlayAudio(context.Context, *PlayAudioRequest) (*PlayAudioResponse, error)
 }
 

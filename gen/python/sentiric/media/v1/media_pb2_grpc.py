@@ -47,8 +47,7 @@ class MediaServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def PlayAudio(self, request, context):
-        """YENİ EKLENEN RPC:
-        Belirtilen RTP portuna bir ses dosyası çalmak için komut gönderir.
+        """Belirtilen hedef adrese bir ses dosyası çalar.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')

@@ -66,8 +66,9 @@ func (x *AllocatePortRequest) GetCallId() string {
 }
 
 type AllocatePortResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	RtpPort       uint32                 `protobuf:"varint,1,opt,name=rtp_port,json=rtpPort,proto3" json:"rtp_port,omitempty"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// media-service'in dinleyeceği ve RTP alacağı port.
+	RtpPort       uint32 `protobuf:"varint,1,opt,name=rtp_port,json=rtpPort,proto3" json:"rtp_port,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -197,16 +198,15 @@ func (x *ReleasePortResponse) GetSuccess() bool {
 	return false
 }
 
-// YENİ EKLENEN MESAJLAR:
 type PlayAudioRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Hangi çağrıya ait olduğunu bilmek için.
-	CallId string `protobuf:"bytes,1,opt,name=call_id,json=callId,proto3" json:"call_id,omitempty"`
-	// Hangi RTP portuna ses gönderileceği.
-	RtpPort uint32 `protobuf:"varint,2,opt,name=rtp_port,json=rtpPort,proto3" json:"rtp_port,omitempty"`
+	// Sesin gönderileceği hedef adres (IP:Port).
+	// Bu bilgi, SIP INVITE mesajındaki SDP'den alınır.
+	// Örn: "188.3.192.29:44224"
+	RtpTargetAddr string `protobuf:"bytes,1,opt,name=rtp_target_addr,json=rtpTargetAddr,proto3" json:"rtp_target_addr,omitempty"`
 	// Çalınacak ses dosyasının kimliği (ID) veya yolu.
-	// Örn: "sounds/welcome_tr.wav"
-	AudioId       string `protobuf:"bytes,3,opt,name=audio_id,json=audioId,proto3" json:"audio_id,omitempty"`
+	// Örn: "assets/welcome_tr.wav"
+	AudioId       string `protobuf:"bytes,2,opt,name=audio_id,json=audioId,proto3" json:"audio_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -241,18 +241,11 @@ func (*PlayAudioRequest) Descriptor() ([]byte, []int) {
 	return file_sentiric_media_v1_media_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *PlayAudioRequest) GetCallId() string {
+func (x *PlayAudioRequest) GetRtpTargetAddr() string {
 	if x != nil {
-		return x.CallId
+		return x.RtpTargetAddr
 	}
 	return ""
-}
-
-func (x *PlayAudioRequest) GetRtpPort() uint32 {
-	if x != nil {
-		return x.RtpPort
-	}
-	return 0
 }
 
 func (x *PlayAudioRequest) GetAudioId() string {
@@ -263,9 +256,9 @@ func (x *PlayAudioRequest) GetAudioId() string {
 }
 
 type PlayAudioResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// İşlemin başarıyla başlayıp başlamadığını belirtir.
-	Success       bool `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	Message       string                 `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"` // Opsiyonel: "Playback started for target..."
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -307,6 +300,13 @@ func (x *PlayAudioResponse) GetSuccess() bool {
 	return false
 }
 
+func (x *PlayAudioResponse) GetMessage() string {
+	if x != nil {
+		return x.Message
+	}
+	return ""
+}
+
 var File_sentiric_media_v1_media_proto protoreflect.FileDescriptor
 
 const file_sentiric_media_v1_media_proto_rawDesc = "" +
@@ -319,13 +319,13 @@ const file_sentiric_media_v1_media_proto_rawDesc = "" +
 	"\x12ReleasePortRequest\x12\x19\n" +
 	"\brtp_port\x18\x01 \x01(\rR\artpPort\"/\n" +
 	"\x13ReleasePortResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\"a\n" +
-	"\x10PlayAudioRequest\x12\x17\n" +
-	"\acall_id\x18\x01 \x01(\tR\x06callId\x12\x19\n" +
-	"\brtp_port\x18\x02 \x01(\rR\artpPort\x12\x19\n" +
-	"\baudio_id\x18\x03 \x01(\tR\aaudioId\"-\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"U\n" +
+	"\x10PlayAudioRequest\x12&\n" +
+	"\x0frtp_target_addr\x18\x01 \x01(\tR\rrtpTargetAddr\x12\x19\n" +
+	"\baudio_id\x18\x02 \x01(\tR\aaudioId\"G\n" +
 	"\x11PlayAudioResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess2\xa5\x02\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x18\n" +
+	"\amessage\x18\x02 \x01(\tR\amessage2\xa5\x02\n" +
 	"\fMediaService\x12_\n" +
 	"\fAllocatePort\x12&.sentiric.media.v1.AllocatePortRequest\x1a'.sentiric.media.v1.AllocatePortResponse\x12\\\n" +
 	"\vReleasePort\x12%.sentiric.media.v1.ReleasePortRequest\x1a&.sentiric.media.v1.ReleasePortResponse\x12V\n" +
