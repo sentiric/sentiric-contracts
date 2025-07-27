@@ -6,8 +6,7 @@ from sentiric.media.v1 import media_pb2 as sentiric_dot_media_dot_v1_dot_media__
 
 
 class MediaServiceStub(object):
-    """MediaService, gerçek zamanlı medya (RTP) oturumlarını yönetir.
-    """
+    """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):
         """Constructor.
@@ -25,21 +24,31 @@ class MediaServiceStub(object):
                 request_serializer=sentiric_dot_media_dot_v1_dot_media__pb2.ReleasePortRequest.SerializeToString,
                 response_deserializer=sentiric_dot_media_dot_v1_dot_media__pb2.ReleasePortResponse.FromString,
                 _registered_method=True)
+        self.PlayAudio = channel.unary_unary(
+                '/sentiric.media.v1.MediaService/PlayAudio',
+                request_serializer=sentiric_dot_media_dot_v1_dot_media__pb2.PlayAudioRequest.SerializeToString,
+                response_deserializer=sentiric_dot_media_dot_v1_dot_media__pb2.PlayAudioResponse.FromString,
+                _registered_method=True)
 
 
 class MediaServiceServicer(object):
-    """MediaService, gerçek zamanlı medya (RTP) oturumlarını yönetir.
-    """
+    """Missing associated documentation comment in .proto file."""
 
     def AllocatePort(self, request, context):
-        """Yeni bir medya oturumu için boş bir RTP portu ayırır.
-        """
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def ReleasePort(self, request, context):
-        """Kullanılan bir RTP portunu serbest bırakır.
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def PlayAudio(self, request, context):
+        """YENİ EKLENEN RPC:
+        Belirtilen RTP portuna bir ses dosyası çalmak için komut gönderir.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -58,6 +67,11 @@ def add_MediaServiceServicer_to_server(servicer, server):
                     request_deserializer=sentiric_dot_media_dot_v1_dot_media__pb2.ReleasePortRequest.FromString,
                     response_serializer=sentiric_dot_media_dot_v1_dot_media__pb2.ReleasePortResponse.SerializeToString,
             ),
+            'PlayAudio': grpc.unary_unary_rpc_method_handler(
+                    servicer.PlayAudio,
+                    request_deserializer=sentiric_dot_media_dot_v1_dot_media__pb2.PlayAudioRequest.FromString,
+                    response_serializer=sentiric_dot_media_dot_v1_dot_media__pb2.PlayAudioResponse.SerializeToString,
+            ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
             'sentiric.media.v1.MediaService', rpc_method_handlers)
@@ -67,8 +81,7 @@ def add_MediaServiceServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class MediaService(object):
-    """MediaService, gerçek zamanlı medya (RTP) oturumlarını yönetir.
-    """
+    """Missing associated documentation comment in .proto file."""
 
     @staticmethod
     def AllocatePort(request,
@@ -114,6 +127,33 @@ class MediaService(object):
             '/sentiric.media.v1.MediaService/ReleasePort',
             sentiric_dot_media_dot_v1_dot_media__pb2.ReleasePortRequest.SerializeToString,
             sentiric_dot_media_dot_v1_dot_media__pb2.ReleasePortResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def PlayAudio(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/sentiric.media.v1.MediaService/PlayAudio',
+            sentiric_dot_media_dot_v1_dot_media__pb2.PlayAudioRequest.SerializeToString,
+            sentiric_dot_media_dot_v1_dot_media__pb2.PlayAudioResponse.FromString,
             options,
             channel_credentials,
             insecure,

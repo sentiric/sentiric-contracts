@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1dsentiric/media/v1/media.proto\x12\x11sentiric.media.v1\".\n\x13\x41llocatePortRequest\x12\x17\n\x07\x63\x61ll_id\x18\x01 \x01(\tR\x06\x63\x61llId\"1\n\x14\x41llocatePortResponse\x12\x19\n\x08rtp_port\x18\x01 \x01(\rR\x07rtpPort\"/\n\x12ReleasePortRequest\x12\x19\n\x08rtp_port\x18\x01 \x01(\rR\x07rtpPort\"/\n\x13ReleasePortResponse\x12\x18\n\x07success\x18\x01 \x01(\x08R\x07success2\xcd\x01\n\x0cMediaService\x12_\n\x0c\x41llocatePort\x12&.sentiric.media.v1.AllocatePortRequest\x1a\'.sentiric.media.v1.AllocatePortResponse\x12\\\n\x0bReleasePort\x12%.sentiric.media.v1.ReleasePortRequest\x1a&.sentiric.media.v1.ReleasePortResponseBIZGgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/media/v1;mediav1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1dsentiric/media/v1/media.proto\x12\x11sentiric.media.v1\".\n\x13\x41llocatePortRequest\x12\x17\n\x07\x63\x61ll_id\x18\x01 \x01(\tR\x06\x63\x61llId\"1\n\x14\x41llocatePortResponse\x12\x19\n\x08rtp_port\x18\x01 \x01(\rR\x07rtpPort\"/\n\x12ReleasePortRequest\x12\x19\n\x08rtp_port\x18\x01 \x01(\rR\x07rtpPort\"/\n\x13ReleasePortResponse\x12\x18\n\x07success\x18\x01 \x01(\x08R\x07success\"a\n\x10PlayAudioRequest\x12\x17\n\x07\x63\x61ll_id\x18\x01 \x01(\tR\x06\x63\x61llId\x12\x19\n\x08rtp_port\x18\x02 \x01(\rR\x07rtpPort\x12\x19\n\x08\x61udio_id\x18\x03 \x01(\tR\x07\x61udioId\"-\n\x11PlayAudioResponse\x12\x18\n\x07success\x18\x01 \x01(\x08R\x07success2\xa5\x02\n\x0cMediaService\x12_\n\x0c\x41llocatePort\x12&.sentiric.media.v1.AllocatePortRequest\x1a\'.sentiric.media.v1.AllocatePortResponse\x12\\\n\x0bReleasePort\x12%.sentiric.media.v1.ReleasePortRequest\x1a&.sentiric.media.v1.ReleasePortResponse\x12V\n\tPlayAudio\x12#.sentiric.media.v1.PlayAudioRequest\x1a$.sentiric.media.v1.PlayAudioResponseBIZGgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/media/v1;mediav1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -40,6 +40,10 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_RELEASEPORTREQUEST']._serialized_end=198
   _globals['_RELEASEPORTRESPONSE']._serialized_start=200
   _globals['_RELEASEPORTRESPONSE']._serialized_end=247
-  _globals['_MEDIASERVICE']._serialized_start=250
-  _globals['_MEDIASERVICE']._serialized_end=455
+  _globals['_PLAYAUDIOREQUEST']._serialized_start=249
+  _globals['_PLAYAUDIOREQUEST']._serialized_end=346
+  _globals['_PLAYAUDIORESPONSE']._serialized_start=348
+  _globals['_PLAYAUDIORESPONSE']._serialized_end=393
+  _globals['_MEDIASERVICE']._serialized_start=396
+  _globals['_MEDIASERVICE']._serialized_end=689
 # @@protoc_insertion_point(module_scope)

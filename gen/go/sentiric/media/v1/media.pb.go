@@ -23,7 +23,7 @@ const (
 
 type AllocatePortRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	CallId        string                 `protobuf:"bytes,1,opt,name=call_id,json=callId,proto3" json:"call_id,omitempty"` // Hangi çağrı için port istendiği (izlenebilirlik için)
+	CallId        string                 `protobuf:"bytes,1,opt,name=call_id,json=callId,proto3" json:"call_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -67,7 +67,7 @@ func (x *AllocatePortRequest) GetCallId() string {
 
 type AllocatePortResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	RtpPort       uint32                 `protobuf:"varint,1,opt,name=rtp_port,json=rtpPort,proto3" json:"rtp_port,omitempty"` // Ayrılan çift sayılı RTP portu
+	RtpPort       uint32                 `protobuf:"varint,1,opt,name=rtp_port,json=rtpPort,proto3" json:"rtp_port,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -197,6 +197,116 @@ func (x *ReleasePortResponse) GetSuccess() bool {
 	return false
 }
 
+// YENİ EKLENEN MESAJLAR:
+type PlayAudioRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Hangi çağrıya ait olduğunu bilmek için.
+	CallId string `protobuf:"bytes,1,opt,name=call_id,json=callId,proto3" json:"call_id,omitempty"`
+	// Hangi RTP portuna ses gönderileceği.
+	RtpPort uint32 `protobuf:"varint,2,opt,name=rtp_port,json=rtpPort,proto3" json:"rtp_port,omitempty"`
+	// Çalınacak ses dosyasının kimliği (ID) veya yolu.
+	// Örn: "sounds/welcome_tr.wav"
+	AudioId       string `protobuf:"bytes,3,opt,name=audio_id,json=audioId,proto3" json:"audio_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PlayAudioRequest) Reset() {
+	*x = PlayAudioRequest{}
+	mi := &file_sentiric_media_v1_media_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PlayAudioRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PlayAudioRequest) ProtoMessage() {}
+
+func (x *PlayAudioRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_media_v1_media_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PlayAudioRequest.ProtoReflect.Descriptor instead.
+func (*PlayAudioRequest) Descriptor() ([]byte, []int) {
+	return file_sentiric_media_v1_media_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *PlayAudioRequest) GetCallId() string {
+	if x != nil {
+		return x.CallId
+	}
+	return ""
+}
+
+func (x *PlayAudioRequest) GetRtpPort() uint32 {
+	if x != nil {
+		return x.RtpPort
+	}
+	return 0
+}
+
+func (x *PlayAudioRequest) GetAudioId() string {
+	if x != nil {
+		return x.AudioId
+	}
+	return ""
+}
+
+type PlayAudioResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// İşlemin başarıyla başlayıp başlamadığını belirtir.
+	Success       bool `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PlayAudioResponse) Reset() {
+	*x = PlayAudioResponse{}
+	mi := &file_sentiric_media_v1_media_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PlayAudioResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PlayAudioResponse) ProtoMessage() {}
+
+func (x *PlayAudioResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_media_v1_media_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PlayAudioResponse.ProtoReflect.Descriptor instead.
+func (*PlayAudioResponse) Descriptor() ([]byte, []int) {
+	return file_sentiric_media_v1_media_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *PlayAudioResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
 var File_sentiric_media_v1_media_proto protoreflect.FileDescriptor
 
 const file_sentiric_media_v1_media_proto_rawDesc = "" +
@@ -209,10 +319,17 @@ const file_sentiric_media_v1_media_proto_rawDesc = "" +
 	"\x12ReleasePortRequest\x12\x19\n" +
 	"\brtp_port\x18\x01 \x01(\rR\artpPort\"/\n" +
 	"\x13ReleasePortResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess2\xcd\x01\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"a\n" +
+	"\x10PlayAudioRequest\x12\x17\n" +
+	"\acall_id\x18\x01 \x01(\tR\x06callId\x12\x19\n" +
+	"\brtp_port\x18\x02 \x01(\rR\artpPort\x12\x19\n" +
+	"\baudio_id\x18\x03 \x01(\tR\aaudioId\"-\n" +
+	"\x11PlayAudioResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess2\xa5\x02\n" +
 	"\fMediaService\x12_\n" +
 	"\fAllocatePort\x12&.sentiric.media.v1.AllocatePortRequest\x1a'.sentiric.media.v1.AllocatePortResponse\x12\\\n" +
-	"\vReleasePort\x12%.sentiric.media.v1.ReleasePortRequest\x1a&.sentiric.media.v1.ReleasePortResponseBIZGgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/media/v1;mediav1b\x06proto3"
+	"\vReleasePort\x12%.sentiric.media.v1.ReleasePortRequest\x1a&.sentiric.media.v1.ReleasePortResponse\x12V\n" +
+	"\tPlayAudio\x12#.sentiric.media.v1.PlayAudioRequest\x1a$.sentiric.media.v1.PlayAudioResponseBIZGgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/media/v1;mediav1b\x06proto3"
 
 var (
 	file_sentiric_media_v1_media_proto_rawDescOnce sync.Once
@@ -226,20 +343,24 @@ func file_sentiric_media_v1_media_proto_rawDescGZIP() []byte {
 	return file_sentiric_media_v1_media_proto_rawDescData
 }
 
-var file_sentiric_media_v1_media_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_sentiric_media_v1_media_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_sentiric_media_v1_media_proto_goTypes = []any{
 	(*AllocatePortRequest)(nil),  // 0: sentiric.media.v1.AllocatePortRequest
 	(*AllocatePortResponse)(nil), // 1: sentiric.media.v1.AllocatePortResponse
 	(*ReleasePortRequest)(nil),   // 2: sentiric.media.v1.ReleasePortRequest
 	(*ReleasePortResponse)(nil),  // 3: sentiric.media.v1.ReleasePortResponse
+	(*PlayAudioRequest)(nil),     // 4: sentiric.media.v1.PlayAudioRequest
+	(*PlayAudioResponse)(nil),    // 5: sentiric.media.v1.PlayAudioResponse
 }
 var file_sentiric_media_v1_media_proto_depIdxs = []int32{
 	0, // 0: sentiric.media.v1.MediaService.AllocatePort:input_type -> sentiric.media.v1.AllocatePortRequest
 	2, // 1: sentiric.media.v1.MediaService.ReleasePort:input_type -> sentiric.media.v1.ReleasePortRequest
-	1, // 2: sentiric.media.v1.MediaService.AllocatePort:output_type -> sentiric.media.v1.AllocatePortResponse
-	3, // 3: sentiric.media.v1.MediaService.ReleasePort:output_type -> sentiric.media.v1.ReleasePortResponse
-	2, // [2:4] is the sub-list for method output_type
-	0, // [0:2] is the sub-list for method input_type
+	4, // 2: sentiric.media.v1.MediaService.PlayAudio:input_type -> sentiric.media.v1.PlayAudioRequest
+	1, // 3: sentiric.media.v1.MediaService.AllocatePort:output_type -> sentiric.media.v1.AllocatePortResponse
+	3, // 4: sentiric.media.v1.MediaService.ReleasePort:output_type -> sentiric.media.v1.ReleasePortResponse
+	5, // 5: sentiric.media.v1.MediaService.PlayAudio:output_type -> sentiric.media.v1.PlayAudioResponse
+	3, // [3:6] is the sub-list for method output_type
+	0, // [0:3] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -256,7 +377,7 @@ func file_sentiric_media_v1_media_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sentiric_media_v1_media_proto_rawDesc), len(file_sentiric_media_v1_media_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
