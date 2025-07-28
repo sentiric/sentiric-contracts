@@ -8,7 +8,7 @@ setup(
     # --- KRİTİK DÜZELTME ---
     # Paketin tam adını scope ile birlikte belirtiyoruz.
     name="sentiric-contracts",
-    version="1.0.1",
+    version="1.0.2",
     author="Sentiric Team",
     author_email="dev@sentiric.ai",
     description="Auto-generated gRPC contracts for the Sentiric platform.",
