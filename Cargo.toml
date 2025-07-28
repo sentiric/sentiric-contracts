@@ -1,19 +1,21 @@
 [package]
 name = "sentiric-contracts"
-# Yeni ve bu sefer doğru versiyon
-version = "0.6.6"
+# Bu son ve kesin düzeltme için yeni versiyon
+version = "0.7.0" # Önemli bir değişiklik olduğu için minor versiyonu artıralım
 edition = "2021"
 description = "Provides pre-compiled Rust gRPC stubs for the Sentiric platform."
 license = "Apache-2.0"
 repository = "https://github.com/sentiric/sentiric-contracts"
 
 [dependencies]
-tonic = "0.11" # Serde özelliği YOK
+tonic = "0.11"
 prost = "0.12"
-prost-types = "0.12" # Serde özelliği YOK
+prost-types = "0.12" 
 serde = { version = "1.0", features = ["derive"] }
-# YENİ EKLENEN KRİTİK KÜTÜPHANE
-prost-wkt-serde = "0.4.0"
+# DOKÜMANDAN GELEN YENİ BAĞIMLILIKLAR
+prost-wkt-types = "0.5.0" # Bu, `prost-wkt`'nin `types` modülü
 
 [build-dependencies]
 tonic-build = "0.11"
+# DOKÜMANDAN GELEN YENİ BUILD BAĞIMLILIĞI
+prost-wkt-build = "0.5.0"
