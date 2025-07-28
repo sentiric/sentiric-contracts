@@ -3,8 +3,8 @@
 # Build ve environment dosyaları
 *.env
 /node_modules/
-/target/ # build.rs'nin derleme çıktıları için
-/gen/    # Buf tarafından üretilen tüm kodlar
+/target/
+/gen/
 
 # Python build artefaktları
 /dist/
