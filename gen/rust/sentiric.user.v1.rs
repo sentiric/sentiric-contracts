@@ -9,9 +9,11 @@ pub struct User {
     pub name: ::prost::alloc::string::String,
     #[prost(string, tag="3")]
     pub email: ::prost::alloc::string::String,
-    /// YENİ EKLENEN ALAN:
     #[prost(string, tag="4")]
     pub tenant_id: ::prost::alloc::string::String,
+    /// YENİ ALAN: Kullanıcının rolünü belirtmek için (caller, agent, admin vb.)
+    #[prost(string, tag="5")]
+    pub user_type: ::prost::alloc::string::String,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -22,6 +24,26 @@ pub struct GetUserRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetUserResponse {
+    #[prost(message, optional, tag="1")]
+    pub user: ::core::option::Option<User>,
+}
+/// CreateUser için yeni mesajlar
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct CreateUserRequest {
+    /// Genellikle telefon numarası
+    #[prost(string, tag="1")]
+    pub id: ::prost::alloc::string::String,
+    #[prost(string, optional, tag="2")]
+    pub name: ::core::option::Option<::prost::alloc::string::String>,
+    #[prost(string, tag="3")]
+    pub tenant_id: ::prost::alloc::string::String,
+    #[prost(string, tag="4")]
+    pub user_type: ::prost::alloc::string::String,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct CreateUserResponse {
     #[prost(message, optional, tag="1")]
     pub user: ::core::option::Option<User>,
 }

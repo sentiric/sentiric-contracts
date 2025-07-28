@@ -6,7 +6,8 @@ from sentiric.dialplan.v1 import dialplan_pb2 as sentiric_dot_dialplan_dot_v1_do
 
 
 class DialplanServiceStub(object):
-    """Dialplan servisi, arama planlarını yönetir.
+    """ESKİ METODU SİLİYORUZ.
+    rpc GetDialplanForUser(GetDialplanForUserRequest) returns (GetDialplanForUserResponse);
     """
 
     def __init__(self, channel):
@@ -15,19 +16,20 @@ class DialplanServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.GetDialplanForUser = channel.unary_unary(
-                '/sentiric.dialplan.v1.DialplanService/GetDialplanForUser',
-                request_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.GetDialplanForUserRequest.SerializeToString,
-                response_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.GetDialplanForUserResponse.FromString,
+        self.ResolveDialplan = channel.unary_unary(
+                '/sentiric.dialplan.v1.DialplanService/ResolveDialplan',
+                request_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.ResolveDialplanRequest.SerializeToString,
+                response_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.ResolveDialplanResponse.FromString,
                 _registered_method=True)
 
 
 class DialplanServiceServicer(object):
-    """Dialplan servisi, arama planlarını yönetir.
+    """ESKİ METODU SİLİYORUZ.
+    rpc GetDialplanForUser(GetDialplanForUserRequest) returns (GetDialplanForUserResponse);
     """
 
-    def GetDialplanForUser(self, request, context):
-        """Bir kullanıcıya ait arama planını getirir.
+    def ResolveDialplan(self, request, context):
+        """YENİ VE DAHA AKILLI METOD
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -36,10 +38,10 @@ class DialplanServiceServicer(object):
 
 def add_DialplanServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'GetDialplanForUser': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetDialplanForUser,
-                    request_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.GetDialplanForUserRequest.FromString,
-                    response_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.GetDialplanForUserResponse.SerializeToString,
+            'ResolveDialplan': grpc.unary_unary_rpc_method_handler(
+                    servicer.ResolveDialplan,
+                    request_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.ResolveDialplanRequest.FromString,
+                    response_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.ResolveDialplanResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -50,11 +52,12 @@ def add_DialplanServiceServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class DialplanService(object):
-    """Dialplan servisi, arama planlarını yönetir.
+    """ESKİ METODU SİLİYORUZ.
+    rpc GetDialplanForUser(GetDialplanForUserRequest) returns (GetDialplanForUserResponse);
     """
 
     @staticmethod
-    def GetDialplanForUser(request,
+    def ResolveDialplan(request,
             target,
             options=(),
             channel_credentials=None,
@@ -67,9 +70,9 @@ class DialplanService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/sentiric.dialplan.v1.DialplanService/GetDialplanForUser',
-            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.GetDialplanForUserRequest.SerializeToString,
-            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.GetDialplanForUserResponse.FromString,
+            '/sentiric.dialplan.v1.DialplanService/ResolveDialplan',
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.ResolveDialplanRequest.SerializeToString,
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.ResolveDialplanResponse.FromString,
             options,
             channel_credentials,
             insecure,

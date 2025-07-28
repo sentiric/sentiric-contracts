@@ -19,6 +19,11 @@ class UserServiceStub(object):
                 request_serializer=sentiric_dot_user_dot_v1_dot_user__pb2.GetUserRequest.SerializeToString,
                 response_deserializer=sentiric_dot_user_dot_v1_dot_user__pb2.GetUserResponse.FromString,
                 _registered_method=True)
+        self.CreateUser = channel.unary_unary(
+                '/sentiric.user.v1.UserService/CreateUser',
+                request_serializer=sentiric_dot_user_dot_v1_dot_user__pb2.CreateUserRequest.SerializeToString,
+                response_deserializer=sentiric_dot_user_dot_v1_dot_user__pb2.CreateUserResponse.FromString,
+                _registered_method=True)
 
 
 class UserServiceServicer(object):
@@ -30,6 +35,13 @@ class UserServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def CreateUser(self, request, context):
+        """YENİ METOD: Sisteme yeni bir kullanıcı eklemek için.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_UserServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -37,6 +49,11 @@ def add_UserServiceServicer_to_server(servicer, server):
                     servicer.GetUser,
                     request_deserializer=sentiric_dot_user_dot_v1_dot_user__pb2.GetUserRequest.FromString,
                     response_serializer=sentiric_dot_user_dot_v1_dot_user__pb2.GetUserResponse.SerializeToString,
+            ),
+            'CreateUser': grpc.unary_unary_rpc_method_handler(
+                    servicer.CreateUser,
+                    request_deserializer=sentiric_dot_user_dot_v1_dot_user__pb2.CreateUserRequest.FromString,
+                    response_serializer=sentiric_dot_user_dot_v1_dot_user__pb2.CreateUserResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -66,6 +83,33 @@ class UserService(object):
             '/sentiric.user.v1.UserService/GetUser',
             sentiric_dot_user_dot_v1_dot_user__pb2.GetUserRequest.SerializeToString,
             sentiric_dot_user_dot_v1_dot_user__pb2.GetUserResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def CreateUser(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/sentiric.user.v1.UserService/CreateUser',
+            sentiric_dot_user_dot_v1_dot_user__pb2.CreateUserRequest.SerializeToString,
+            sentiric_dot_user_dot_v1_dot_user__pb2.CreateUserResponse.FromString,
             options,
             channel_credentials,
             insecure,

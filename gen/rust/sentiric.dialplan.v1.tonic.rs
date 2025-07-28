@@ -84,11 +84,11 @@ pub mod dialplan_service_client {
             self.inner = self.inner.max_encoding_message_size(limit);
             self
         }
-        pub async fn get_dialplan_for_user(
+        pub async fn resolve_dialplan(
             &mut self,
-            request: impl tonic::IntoRequest<super::GetDialplanForUserRequest>,
+            request: impl tonic::IntoRequest<super::ResolveDialplanRequest>,
         ) -> std::result::Result<
-            tonic::Response<super::GetDialplanForUserResponse>,
+            tonic::Response<super::ResolveDialplanResponse>,
             tonic::Status,
         > {
             self.inner
@@ -102,14 +102,14 @@ pub mod dialplan_service_client {
                 })?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/sentiric.dialplan.v1.DialplanService/GetDialplanForUser",
+                "/sentiric.dialplan.v1.DialplanService/ResolveDialplan",
             );
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(
                     GrpcMethod::new(
                         "sentiric.dialplan.v1.DialplanService",
-                        "GetDialplanForUser",
+                        "ResolveDialplan",
                     ),
                 );
             self.inner.unary(req, path, codec).await
@@ -123,11 +123,11 @@ pub mod dialplan_service_server {
     /// Generated trait containing gRPC methods that should be implemented for use with DialplanServiceServer.
     #[async_trait]
     pub trait DialplanService: Send + Sync + 'static {
-        async fn get_dialplan_for_user(
+        async fn resolve_dialplan(
             &self,
-            request: tonic::Request<super::GetDialplanForUserRequest>,
+            request: tonic::Request<super::ResolveDialplanRequest>,
         ) -> std::result::Result<
-            tonic::Response<super::GetDialplanForUserResponse>,
+            tonic::Response<super::ResolveDialplanResponse>,
             tonic::Status,
         >;
     }
@@ -207,28 +207,25 @@ pub mod dialplan_service_server {
         }
         fn call(&mut self, req: http::Request<B>) -> Self::Future {
             match req.uri().path() {
-                "/sentiric.dialplan.v1.DialplanService/GetDialplanForUser" => {
+                "/sentiric.dialplan.v1.DialplanService/ResolveDialplan" => {
                     #[allow(non_camel_case_types)]
-                    struct GetDialplanForUserSvc<T: DialplanService>(pub Arc<T>);
+                    struct ResolveDialplanSvc<T: DialplanService>(pub Arc<T>);
                     impl<
                         T: DialplanService,
-                    > tonic::server::UnaryService<super::GetDialplanForUserRequest>
-                    for GetDialplanForUserSvc<T> {
-                        type Response = super::GetDialplanForUserResponse;
+                    > tonic::server::UnaryService<super::ResolveDialplanRequest>
+                    for ResolveDialplanSvc<T> {
+                        type Response = super::ResolveDialplanResponse;
                         type Future = BoxFuture<
                             tonic::Response<Self::Response>,
                             tonic::Status,
                         >;
                         fn call(
                             &mut self,
-                            request: tonic::Request<super::GetDialplanForUserRequest>,
+                            request: tonic::Request<super::ResolveDialplanRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
-                                <T as DialplanService>::get_dialplan_for_user(
-                                        &inner,
-                                        request,
-                                    )
+                                <T as DialplanService>::resolve_dialplan(&inner, request)
                                     .await
                             };
                             Box::pin(fut)
@@ -240,7 +237,7 @@ pub mod dialplan_service_server {
                     let max_encoding_message_size = self.max_encoding_message_size;
                     let inner = self.inner.clone();
                     let fut = async move {
-                        let method = GetDialplanForUserSvc(inner);
+                        let method = ResolveDialplanSvc(inner);
                         let codec = tonic::codec::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
