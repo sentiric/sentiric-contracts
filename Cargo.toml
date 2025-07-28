@@ -1,19 +1,18 @@
 [package]
 name = "sentiric-contracts"
-# Yeni ve bu sefer doğru versiyon
-version = "0.6.4"
+# Bu son düzeltme için yeni bir patch versiyonu
+version = "0.6.5"
 edition = "2021"
 description = "Provides pre-compiled Rust gRPC stubs for the Sentiric platform."
 license = "Apache-2.0"
 repository = "https://github.com/sentiric/sentiric-contracts"
 
 [dependencies]
-# DÜZELTME: tonic'ten "serde" özelliğini kaldırıyoruz.
-tonic = "0.11"
+tonic = { version = "0.11", features = ["serde"] }
 prost = "0.12"
-prost-types = "0.12"
+# GÜNCELLENEN SATIR: prost-types'ın "serde" özelliğini aktive ediyoruz.
+prost-types = { version = "0.12", features = ["serde"] }
 serde = { version = "1.0", features = ["derive"] }
 
 [build-dependencies]
-# DÜZELTME: tonic-build'e de dokunmuyoruz.
 tonic-build = "0.11"
