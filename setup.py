@@ -1,28 +1,25 @@
 # setup.py
 from setuptools import setup, find_namespace_packages
 
-# README dosyasını uzun açıklama olarak oku
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setup(
+    # --- KRİTİK DÜZELTME ---
+    # Paketin tam adını scope ile birlikte belirtiyoruz.
     name="sentiric-contracts",
-    version="1.0.1", # Bu versiyon CI tarafından güncellenecek
+    version="1.0.1",
     author="Sentiric Team",
     author_email="dev@sentiric.ai",
     description="Auto-generated gRPC contracts for the Sentiric platform.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/sentiric/sentiric-contracts",
-    
-    # GitHub Packages'da projenin nerede bulunacağını belirtir
     project_urls={
         "Repository": "https://github.com/sentiric/sentiric-contracts",
     },
-
     packages=find_namespace_packages(where="gen/python"),
     package_dir={"": "gen/python"},
-    
     install_requires=[
         "grpcio>=1.64.1",
         "protobuf>=4.25.3",
