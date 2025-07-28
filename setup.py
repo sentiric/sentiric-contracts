@@ -6,12 +6,12 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     # --- KRİTİK DÜZELTME ---
-    # Paketin tam adını scope ile birlikte belirtiyoruz.
-    name="sentiric-contracts",
-    version="1.0.2",
+    # Paket adını npm paketinden ayrıştırmak için sonuna '-py' ekliyoruz.
+    name="sentiric-contracts-py",
+    version="1.0.2", # Bu versiyon CI tarafından güncellenecek
     author="Sentiric Team",
     author_email="dev@sentiric.ai",
-    description="Auto-generated gRPC contracts for the Sentiric platform.",
+    description="Auto-generated Python gRPC stubs for the Sentiric platform.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/sentiric/sentiric-contracts",
