@@ -1,3 +1,5 @@
+// DOSYA: sentiric-contracts/proto/sentiric/user/v1/user.proto
+
 syntax = "proto3";
 
 package sentiric.user.v1;
@@ -6,14 +8,17 @@ option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/user
 
 service UserService {
   rpc GetUser(GetUserRequest) returns (GetUserResponse);
+  // YENİ METOD: Sisteme yeni bir kullanıcı eklemek için.
+  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
 }
 
 message User {
   string id = 1;
   string name = 2;
   string email = 3;
-  // YENİ EKLENEN ALAN:
   string tenant_id = 4;
+  // YENİ ALAN: Kullanıcının rolünü belirtmek için (caller, agent, admin vb.)
+  string user_type = 5; 
 }
 
 message GetUserRequest {
@@ -21,5 +26,17 @@ message GetUserRequest {
 }
 
 message GetUserResponse {
+  User user = 1;
+}
+
+// CreateUser için yeni mesajlar
+message CreateUserRequest {
+  string id = 1; // Genellikle telefon numarası
+  optional string name = 2;
+  string tenant_id = 3;
+  string user_type = 4;
+}
+
+message CreateUserResponse {
   User user = 1;
 }
