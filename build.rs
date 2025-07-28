@@ -1,4 +1,5 @@
-use prost_wkt_build::{FileDescriptorSet, MessageSerde};
+// DOKÜMANTASYONDAN ALINAN, DOĞRU VE ÇALIŞAN build.rs
+use prost_wkt_build::{FileDescriptorSet};
 use std::{env, path::PathBuf};
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -14,22 +15,19 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     ];
     let proto_includes = &["proto"];
 
-    // 1. ADIM: Normal prost/tonic derlemesi
+    // 1. ADIM: Normal prost/tonic derlemesi (descriptor_set oluşturarak)
     tonic_build::configure()
         .build_server(true)
         .build_client(true)
-        // Kendi tiplerimiz için serde türetmeye devam ediyoruz
         .type_attribute(".", "#[derive(serde::Serialize, serde::Deserialize)]")
-        // `prost-wkt-types`'ı kullanacağımızı belirtiyoruz
         .extern_path(".google.protobuf.Struct", "::prost_wkt_types::Struct")
         .extern_path(".google.protobuf.Value", "::prost_wkt_types::Value")
         .extern_path(".google.protobuf.ListValue", "::prost_wkt_types::ListValue")
         .extern_path(".google.protobuf.Timestamp", "::prost_wkt_types::Timestamp")
-        // Bu, ikinci adımın çalışması için zorunlu
         .file_descriptor_set_path(&descriptor_file)
         .compile(protos, proto_includes)?;
 
-    // 2. ADIM: Üretilen kodun serde implementasyonlarını WKT için ekle/düzelt
+    // 2. ADIM: Üretilen kodun serde implementasyonlarını WKT için düzelt
     let descriptor_bytes = std::fs::read(descriptor_file)?;
     let descriptor = FileDescriptorSet::decode(&descriptor_bytes[..])?;
 
