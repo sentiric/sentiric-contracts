@@ -86,16 +86,17 @@ jobs:
         run: python -m build
 
       - name: Create .pypirc file for GitHub Packages
-        # Bu adım, twine'a tam olarak nereye ve nasıl yayın yapacağını söyleyen
-        # bir konfigürasyon dosyası oluşturur.
         run: |
           echo "[distutils]" > ~/.pypirc
           echo "index-servers = github" >> ~/.pypirc
           echo "[github]" >> ~/.pypirc
           echo "repository = https://pypi.pkg.github.com/${{ github.repository_owner }}" >> ~/.pypirc
-          echo "username = __token__" >> ~/.pypirc
-          echo "password = ${{ secrets.GITHUB_TOKEN }}" >> ~/.pypirc
+          # --- KRİTİK DEĞİŞİKLİK ---
+          # Artık kullanıcı adı olarak token'ı oluşturan kullanıcıyı kullanıyoruz
+          echo "username = ${{ github.actor }}" >> ~/.pypirc
+          # Şifre olarak da yeni PAT'ı kullanıyoruz
+          echo "password = ${{ secrets.GH_PAT }}" >> ~/.pypirc
 
       - name: Publish Python package to GitHub Packages
-        # Artık twine komutu çok daha basit. Hangi repoyu kullanacağını .pypirc'den biliyor.
+        # Bu komut artık değişmiyor, çünkü konfigürasyonu .pypirc'den alıyor.
         run: twine upload --repository github dist/*
