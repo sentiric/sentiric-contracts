@@ -8,7 +8,7 @@ setup(
     # --- KRİTİK DÜZELTME ---
     # Paket adını npm paketinden ayrıştırmak için sonuna '-py' ekliyoruz.
     name="sentiric-contracts-py",
-    version="1.0.2", # Bu versiyon CI tarafından güncellenecek
+    version="1.1.0", # Bu versiyon CI tarafından güncellenecek
     author="Sentiric Team",
     author_email="dev@sentiric.ai",
     description="Auto-generated Python gRPC stubs for the Sentiric platform.",
