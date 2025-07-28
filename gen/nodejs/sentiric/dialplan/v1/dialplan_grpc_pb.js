@@ -1,13 +1,9 @@
 // GENERATED CODE -- DO NOT EDIT!
 
-// Original file comments:
-// DOSYA: sentiric-contracts/proto/sentiric/dialplan/v1/dialplan.proto
-//
 'use strict';
 var grpc = require('@grpc/grpc-js');
 var sentiric_dialplan_v1_dialplan_pb = require('../../../sentiric/dialplan/v1/dialplan_pb.js');
 var sentiric_user_v1_user_pb = require('../../../sentiric/user/v1/user_pb.js');
-var google_protobuf_struct_pb = require('google-protobuf/google/protobuf/struct_pb.js');
 
 function serialize_sentiric_dialplan_v1_ResolveDialplanRequest(arg) {
   if (!(arg instanceof sentiric_dialplan_v1_dialplan_pb.ResolveDialplanRequest)) {
@@ -33,8 +29,7 @@ function deserialize_sentiric_dialplan_v1_ResolveDialplanResponse(buffer_arg) {
 
 
 var DialplanServiceService = exports.DialplanServiceService = {
-  // YENİ VE DAHA AKILLI METOD
-resolveDialplan: {
+  resolveDialplan: {
     path: '/sentiric.dialplan.v1.DialplanService/ResolveDialplan',
     requestStream: false,
     responseStream: false,
@@ -48,5 +43,3 @@ resolveDialplan: {
 };
 
 exports.DialplanServiceClient = grpc.makeGenericClientConstructor(DialplanServiceService, 'DialplanService');
-// ESKİ METODU SİLİYORUZ.
-// rpc GetDialplanForUser(GetDialplanForUserRequest) returns (GetDialplanForUserResponse);

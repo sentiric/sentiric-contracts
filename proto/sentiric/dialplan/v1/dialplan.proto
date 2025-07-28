@@ -1,20 +1,12 @@
-// DOSYA: sentiric-contracts/proto/sentiric/dialplan/v1/dialplan.proto
-
 syntax = "proto3";
 
 package sentiric.dialplan.v1;
 
 import "sentiric/user/v1/user.proto";
-// YENİ IMPORT: Daha esnek JSON verileri için
-import "google/protobuf/struct.proto";
 
 option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/dialplan/v1;dialplanv1";
 
 service DialplanService {
-  // ESKİ METODU SİLİYORUZ.
-  // rpc GetDialplanForUser(GetDialplanForUserRequest) returns (GetDialplanForUserResponse);
-
-  // YENİ VE DAHA AKILLI METOD
   rpc ResolveDialplan(ResolveDialplanRequest) returns (ResolveDialplanResponse);
 }
 
@@ -23,16 +15,20 @@ message ResolveDialplanRequest {
   string destination_number = 2;
 }
 
+// Bu, key-value çiftlerini tutan basit bir haritadır.
+message ActionData {
+  map<string, string> data = 1;
+}
+
 message DialplanAction {
-  string action = 1; // Örn: "PLAY_ANNOUNCEMENT", "START_AI_CONVERSATION"
-  // Action parametrelerini esnek bir şekilde tutmak için Struct kullanıyoruz.
-  google.protobuf.Struct action_data = 2;
+  string action = 1;
+  // google.protobuf.Struct yerine kendi ActionData'mızı kullanıyoruz.
+  ActionData action_data = 2;
 }
 
 message ResolveDialplanResponse {
   string dialplan_id = 1;
   string tenant_id = 2;
   DialplanAction action = 3;
-  // Çağrı bir kullanıcıyla eşleştiyse, o kullanıcı bilgisini de dönelim.
-  optional sentiric.user.v1.User matched_user = 4; 
+  optional sentiric.user.v1.User matched_user = 4;
 }

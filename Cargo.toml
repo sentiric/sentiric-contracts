@@ -1,21 +1,20 @@
 [package]
 name = "sentiric-contracts"
-version = "1.1.3" # Yeni, temiz bir versiyonla ilerliyoruz
+version = "1.2.0"
 edition = "2021"
 description = "Provides pre-compiled Rust gRPC stubs for the Sentiric platform."
 license = "Apache-2.0"
 repository = "https://github.com/sentiric/sentiric-contracts"
 
-# Cargo'ya kütüphanenin giriş noktasını gösteriyoruz
+build = "build.rs"
+
 [lib]
 path = "src/lib.rs"
 
 [dependencies]
 tonic = "0.11"
 prost = "0.12"
-prost-types = { version = "0.12", features = ["serde"] }
 serde = { version = "1.0", features = ["derive"] }
 
 [build-dependencies]
-# build.rs'nin çalışması için bu bağımlılıklar gereklidir
 tonic-build = { version = "0.11", features = ["prost"] }

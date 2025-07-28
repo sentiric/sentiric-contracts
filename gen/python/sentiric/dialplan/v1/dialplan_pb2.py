@@ -23,10 +23,9 @@ _sym_db = _symbol_database.Default()
 
 
 from sentiric.user.v1 import user_pb2 as sentiric_dot_user_dot_v1_dot_user__pb2
-from google.protobuf import struct_pb2 as google_dot_protobuf_dot_struct__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n#sentiric/dialplan/v1/dialplan.proto\x12\x14sentiric.dialplan.v1\x1a\x1bsentiric/user/v1/user.proto\x1a\x1cgoogle/protobuf/struct.proto\"d\n\x16ResolveDialplanRequest\x12\x1b\n\tcaller_id\x18\x01 \x01(\tR\x08\x63\x61llerId\x12-\n\x12\x64\x65stination_number\x18\x02 \x01(\tR\x11\x64\x65stinationNumber\"b\n\x0e\x44ialplanAction\x12\x16\n\x06\x61\x63tion\x18\x01 \x01(\tR\x06\x61\x63tion\x12\x38\n\x0b\x61\x63tion_data\x18\x02 \x01(\x0b\x32\x17.google.protobuf.StructR\nactionData\"\xe6\x01\n\x17ResolveDialplanResponse\x12\x1f\n\x0b\x64ialplan_id\x18\x01 \x01(\tR\ndialplanId\x12\x1b\n\ttenant_id\x18\x02 \x01(\tR\x08tenantId\x12<\n\x06\x61\x63tion\x18\x03 \x01(\x0b\x32$.sentiric.dialplan.v1.DialplanActionR\x06\x61\x63tion\x12>\n\x0cmatched_user\x18\x04 \x01(\x0b\x32\x16.sentiric.user.v1.UserH\x00R\x0bmatchedUser\x88\x01\x01\x42\x0f\n\r_matched_user2\x81\x01\n\x0f\x44ialplanService\x12n\n\x0fResolveDialplan\x12,.sentiric.dialplan.v1.ResolveDialplanRequest\x1a-.sentiric.dialplan.v1.ResolveDialplanResponseBOZMgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/dialplan/v1;dialplanv1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n#sentiric/dialplan/v1/dialplan.proto\x12\x14sentiric.dialplan.v1\x1a\x1bsentiric/user/v1/user.proto\"d\n\x16ResolveDialplanRequest\x12\x1b\n\tcaller_id\x18\x01 \x01(\tR\x08\x63\x61llerId\x12-\n\x12\x64\x65stination_number\x18\x02 \x01(\tR\x11\x64\x65stinationNumber\"\x85\x01\n\nActionData\x12>\n\x04\x64\x61ta\x18\x01 \x03(\x0b\x32*.sentiric.dialplan.v1.ActionData.DataEntryR\x04\x64\x61ta\x1a\x37\n\tDataEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n\x05value\x18\x02 \x01(\tR\x05value:\x02\x38\x01\"k\n\x0e\x44ialplanAction\x12\x16\n\x06\x61\x63tion\x18\x01 \x01(\tR\x06\x61\x63tion\x12\x41\n\x0b\x61\x63tion_data\x18\x02 \x01(\x0b\x32 .sentiric.dialplan.v1.ActionDataR\nactionData\"\xe6\x01\n\x17ResolveDialplanResponse\x12\x1f\n\x0b\x64ialplan_id\x18\x01 \x01(\tR\ndialplanId\x12\x1b\n\ttenant_id\x18\x02 \x01(\tR\x08tenantId\x12<\n\x06\x61\x63tion\x18\x03 \x01(\x0b\x32$.sentiric.dialplan.v1.DialplanActionR\x06\x61\x63tion\x12>\n\x0cmatched_user\x18\x04 \x01(\x0b\x32\x16.sentiric.user.v1.UserH\x00R\x0bmatchedUser\x88\x01\x01\x42\x0f\n\r_matched_user2\x81\x01\n\x0f\x44ialplanService\x12n\n\x0fResolveDialplan\x12,.sentiric.dialplan.v1.ResolveDialplanRequest\x1a-.sentiric.dialplan.v1.ResolveDialplanResponseBOZMgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/dialplan/v1;dialplanv1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -34,12 +33,18 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'sentiric.dialplan.v1.dialpl
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
   _globals['DESCRIPTOR']._serialized_options = b'ZMgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/dialplan/v1;dialplanv1'
-  _globals['_RESOLVEDIALPLANREQUEST']._serialized_start=120
-  _globals['_RESOLVEDIALPLANREQUEST']._serialized_end=220
-  _globals['_DIALPLANACTION']._serialized_start=222
-  _globals['_DIALPLANACTION']._serialized_end=320
-  _globals['_RESOLVEDIALPLANRESPONSE']._serialized_start=323
-  _globals['_RESOLVEDIALPLANRESPONSE']._serialized_end=553
-  _globals['_DIALPLANSERVICE']._serialized_start=556
-  _globals['_DIALPLANSERVICE']._serialized_end=685
+  _globals['_ACTIONDATA_DATAENTRY']._loaded_options = None
+  _globals['_ACTIONDATA_DATAENTRY']._serialized_options = b'8\001'
+  _globals['_RESOLVEDIALPLANREQUEST']._serialized_start=90
+  _globals['_RESOLVEDIALPLANREQUEST']._serialized_end=190
+  _globals['_ACTIONDATA']._serialized_start=193
+  _globals['_ACTIONDATA']._serialized_end=326
+  _globals['_ACTIONDATA_DATAENTRY']._serialized_start=271
+  _globals['_ACTIONDATA_DATAENTRY']._serialized_end=326
+  _globals['_DIALPLANACTION']._serialized_start=328
+  _globals['_DIALPLANACTION']._serialized_end=435
+  _globals['_RESOLVEDIALPLANRESPONSE']._serialized_start=438
+  _globals['_RESOLVEDIALPLANRESPONSE']._serialized_end=668
+  _globals['_DIALPLANSERVICE']._serialized_start=671
+  _globals['_DIALPLANSERVICE']._serialized_end=800
 # @@protoc_insertion_point(module_scope)
