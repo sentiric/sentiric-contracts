@@ -8,7 +8,7 @@ package_dir = os.path.join("gen", "python")
 setup(
     name="sentiric-contracts",
     # YENİ VERSİYON: Diğerleriyle senkronize hale getiriyoruz.
-    version="0.6.3",
+    version="0.6.4",
     author="Sentiric Team",
     author_email="dev@sentiric.ai",
     description="Auto-generated gRPC contracts for the Sentiric platform.",

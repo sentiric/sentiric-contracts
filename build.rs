@@ -4,8 +4,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     tonic_build::configure()
         .build_server(true)
         .build_client(true)
-        // YENİ EKLENEN SATIRLAR:
-        // Tüm mesaj (message) tipleri için serde::Serialize ve serde::Deserialize özelliklerini türet.
+        // BU SATIR DOĞRU VE KALMALI. Hata Cargo.toml'daydı.
         .type_attribute(".", "#[derive(serde::Serialize, serde::Deserialize)]")
         .compile(
             &[
