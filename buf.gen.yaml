@@ -14,12 +14,18 @@ plugins:
   - plugin: buf.build/protocolbuffers/python
     out: gen/python
 
-  # Rust (Düzeltilmiş)
-  # 'prost-crate' plugin'i kaldırıldı, çünkü 'prost' ve 'tonic' zaten
-  # temel kod üretimini yapıyor. Paketleme (crate) işini CI'da manuel
-  # olarak veya ayrı bir build.rs ile yönetmek daha esnek olacak.
-  # Bu değişiklik, en temel ve hatasız kod üretimini garanti eder.
+  # Rust (Sadece temel kod üretimi)
   - plugin: buf.build/community/neoeinstein-prost
     out: gen/rust
   - plugin: buf.build/community/neoeinstein-tonic
     out: gen/rust
+    
+  # Node.js
+  - plugin: buf.build/protocolbuffers/js
+    out: gen/nodejs
+    opt:
+      - import_style=commonjs
+  - plugin: buf.build/grpc/node
+    out: gen/nodejs
+    opt:
+      - grpc_js

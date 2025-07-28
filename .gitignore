@@ -3,12 +3,13 @@
 # Build ve environment dosyaları
 *.env
 /node_modules/
-/target/
+/target/ # build.rs'nin derleme çıktıları için
+/gen/    # Buf tarafından üretilen tüm kodlar
 
 # Python build artefaktları
-/gen/python/dist/
-/gen/python/build/
-/gen/python/*.egg-info
+/dist/
+/build/
+/*.egg-info
 
 # Diğer sistem dosyaları
 .DS_Store
