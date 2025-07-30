@@ -9,9 +9,11 @@ plugins:
     opt: paths=source_relative,require_unimplemented_servers=false
 
   # Python
-  - plugin: buf.build/grpc/python
-    out: gen/python
   - plugin: buf.build/protocolbuffers/python
+    out: gen/python
+    opt:
+      - "pyi_out=." # Tip ipuçları için .pyi dosyaları oluşturur
+  - plugin: buf.build/grpc/python
     out: gen/python
 
   # Rust (Sadece temel kod üretimi)
