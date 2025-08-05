@@ -11,7 +11,6 @@ pub struct User {
     pub email: ::prost::alloc::string::String,
     #[prost(string, tag="4")]
     pub tenant_id: ::prost::alloc::string::String,
-    /// YENİ ALAN: Kullanıcının rolünü belirtmek için (caller, agent, admin vb.)
     #[prost(string, tag="5")]
     pub user_type: ::prost::alloc::string::String,
 }
@@ -27,11 +26,9 @@ pub struct GetUserResponse {
     #[prost(message, optional, tag="1")]
     pub user: ::core::option::Option<User>,
 }
-/// CreateUser için yeni mesajlar
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CreateUserRequest {
-    /// Genellikle telefon numarası
     #[prost(string, tag="1")]
     pub id: ::prost::alloc::string::String,
     #[prost(string, optional, tag="2")]
@@ -41,6 +38,7 @@ pub struct CreateUserRequest {
     #[prost(string, tag="4")]
     pub user_type: ::prost::alloc::string::String,
 }
+/// DÜZELTME BURADA: "message" anahtar kelimesi ve doğru büyük/küçük harf kullanımı
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CreateUserResponse {

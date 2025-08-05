@@ -30,7 +30,6 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type UserServiceClient interface {
 	GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*GetUserResponse, error)
-	// YENİ METOD: Sisteme yeni bir kullanıcı eklemek için.
 	CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*CreateUserResponse, error)
 }
 
@@ -67,7 +66,6 @@ func (c *userServiceClient) CreateUser(ctx context.Context, in *CreateUserReques
 // for forward compatibility.
 type UserServiceServer interface {
 	GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error)
-	// YENİ METOD: Sisteme yeni bir kullanıcı eklemek için.
 	CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error)
 }
 

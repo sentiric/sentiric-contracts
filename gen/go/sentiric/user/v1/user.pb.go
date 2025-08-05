@@ -9,6 +9,7 @@
 package userv1
 
 import (
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -24,13 +25,12 @@ const (
 )
 
 type User struct {
-	state    protoimpl.MessageState `protogen:"open.v1"`
-	Id       string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name     string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Email    string                 `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
-	TenantId string                 `protobuf:"bytes,4,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
-	// YENİ ALAN: Kullanıcının rolünü belirtmek için (caller, agent, admin vb.)
-	UserType      string `protobuf:"bytes,5,opt,name=user_type,json=userType,proto3" json:"user_type,omitempty"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Email         string                 `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
+	TenantId      string                 `protobuf:"bytes,4,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	UserType      string                 `protobuf:"bytes,5,opt,name=user_type,json=userType,proto3" json:"user_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -188,10 +188,9 @@ func (x *GetUserResponse) GetUser() *User {
 	return nil
 }
 
-// CreateUser için yeni mesajlar
 type CreateUserRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"` // Genellikle telefon numarası
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          *string                `protobuf:"bytes,2,opt,name=name,proto3,oneof" json:"name,omitempty"`
 	TenantId      string                 `protobuf:"bytes,3,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	UserType      string                 `protobuf:"bytes,4,opt,name=user_type,json=userType,proto3" json:"user_type,omitempty"`
@@ -257,6 +256,7 @@ func (x *CreateUserRequest) GetUserType() string {
 	return ""
 }
 
+// DÜZELTME BURADA: "message" anahtar kelimesi ve doğru büyük/küçük harf kullanımı
 type CreateUserResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	User          *User                  `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
@@ -305,7 +305,7 @@ var File_sentiric_user_v1_user_proto protoreflect.FileDescriptor
 
 const file_sentiric_user_v1_user_proto_rawDesc = "" +
 	"\n" +
-	"\x1bsentiric/user/v1/user.proto\x12\x10sentiric.user.v1\"z\n" +
+	"\x1bsentiric/user/v1/user.proto\x12\x10sentiric.user.v1\x1a\x1cgoogle/api/annotations.proto\"z\n" +
 	"\x04User\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
@@ -323,11 +323,11 @@ const file_sentiric_user_v1_user_proto_rawDesc = "" +
 	"\tuser_type\x18\x04 \x01(\tR\buserTypeB\a\n" +
 	"\x05_name\"@\n" +
 	"\x12CreateUserResponse\x12*\n" +
-	"\x04user\x18\x01 \x01(\v2\x16.sentiric.user.v1.UserR\x04user2\xb6\x01\n" +
-	"\vUserService\x12N\n" +
-	"\aGetUser\x12 .sentiric.user.v1.GetUserRequest\x1a!.sentiric.user.v1.GetUserResponse\x12W\n" +
+	"\x04user\x18\x01 \x01(\v2\x16.sentiric.user.v1.UserR\x04user2\xe4\x01\n" +
+	"\vUserService\x12f\n" +
+	"\aGetUser\x12 .sentiric.user.v1.GetUserRequest\x1a!.sentiric.user.v1.GetUserResponse\"\x16\x82\xd3\xe4\x93\x02\x10\x12\x0e/v1/users/{id}\x12m\n" +
 	"\n" +
-	"CreateUser\x12#.sentiric.user.v1.CreateUserRequest\x1a$.sentiric.user.v1.CreateUserResponseBGZEgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/user/v1;userv1b\x06proto3"
+	"CreateUser\x12#.sentiric.user.v1.CreateUserRequest\x1a$.sentiric.user.v1.CreateUserResponse\"\x14\x82\xd3\xe4\x93\x02\x0e:\x01*\"\t/v1/usersBGZEgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/user/v1;userv1b\x06proto3"
 
 var (
 	file_sentiric_user_v1_user_proto_rawDescOnce sync.Once

@@ -4,12 +4,27 @@ syntax = "proto3";
 
 package sentiric.user.v1;
 
+// YENİ IMPORTLAR
+import "google/api/annotations.proto";
+
 option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/user/v1;userv1";
 
 service UserService {
-  rpc GetUser(GetUserRequest) returns (GetUserResponse);
-  // YENİ METOD: Sisteme yeni bir kullanıcı eklemek için.
-  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
+  rpc GetUser(GetUserRequest) returns (GetUserResponse) {
+    // YENİ: Bu RPC'nin bir HTTP GET isteğine karşılık geldiğini belirtiyoruz.
+    // URL'deki {id}, GetUserRequest içindeki 'id' alanına map edilecek.
+    option (google.api.http) = {
+      get: "/v1/users/{id}"
+    };
+  }
+  
+  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {
+    // YENİ: Bu RPC'nin bir HTTP POST isteğine karşılık geldiğini belirtiyoruz.
+    option (google.api.http) = {
+      post: "/v1/users"
+      body: "*"
+    };
+  }
 }
 
 message User {
@@ -17,7 +32,6 @@ message User {
   string name = 2;
   string email = 3;
   string tenant_id = 4;
-  // YENİ ALAN: Kullanıcının rolünü belirtmek için (caller, agent, admin vb.)
   string user_type = 5; 
 }
 
@@ -29,14 +43,14 @@ message GetUserResponse {
   User user = 1;
 }
 
-// CreateUser için yeni mesajlar
 message CreateUserRequest {
-  string id = 1; // Genellikle telefon numarası
+  string id = 1;
   optional string name = 2;
   string tenant_id = 3;
   string user_type = 4;
 }
 
+// DÜZELTME BURADA: "message" anahtar kelimesi ve doğru büyük/küçük harf kullanımı
 message CreateUserResponse {
   User user = 1;
 }

@@ -21,6 +21,8 @@ var global =
     (function () { return this; }).call(null) ||
     Function('return this')();
 
+var google_api_annotations_pb = require('../../../google/api/annotations_pb.js');
+goog.object.extend(proto, google_api_annotations_pb);
 goog.exportSymbol('proto.sentiric.user.v1.CreateUserRequest', null, global);
 goog.exportSymbol('proto.sentiric.user.v1.CreateUserResponse', null, global);
 goog.exportSymbol('proto.sentiric.user.v1.GetUserRequest', null, global);

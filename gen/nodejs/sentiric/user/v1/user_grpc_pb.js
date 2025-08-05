@@ -6,6 +6,7 @@
 'use strict';
 var grpc = require('@grpc/grpc-js');
 var sentiric_user_v1_user_pb = require('../../../sentiric/user/v1/user_pb.js');
+var google_api_annotations_pb = require('../../../google/api/annotations_pb.js');
 
 function serialize_sentiric_user_v1_CreateUserRequest(arg) {
   if (!(arg instanceof sentiric_user_v1_user_pb.CreateUserRequest)) {
@@ -64,8 +65,7 @@ var UserServiceService = exports.UserServiceService = {
     responseSerialize: serialize_sentiric_user_v1_GetUserResponse,
     responseDeserialize: deserialize_sentiric_user_v1_GetUserResponse,
   },
-  // YENİ METOD: Sisteme yeni bir kullanıcı eklemek için.
-createUser: {
+  createUser: {
     path: '/sentiric.user.v1.UserService/CreateUser',
     requestStream: false,
     responseStream: false,

@@ -36,8 +36,7 @@ class UserServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def CreateUser(self, request, context):
-        """YENİ METOD: Sisteme yeni bir kullanıcı eklemek için.
-        """
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')

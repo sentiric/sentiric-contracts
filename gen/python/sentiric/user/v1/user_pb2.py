@@ -22,9 +22,10 @@ _runtime_version.ValidateProtobufRuntimeVersion(
 _sym_db = _symbol_database.Default()
 
 
+from google.api import annotations_pb2 as google_dot_api_dot_annotations__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1bsentiric/user/v1/user.proto\x12\x10sentiric.user.v1\"z\n\x04User\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n\x05\x65mail\x18\x03 \x01(\tR\x05\x65mail\x12\x1b\n\ttenant_id\x18\x04 \x01(\tR\x08tenantId\x12\x1b\n\tuser_type\x18\x05 \x01(\tR\x08userType\" \n\x0eGetUserRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\"=\n\x0fGetUserResponse\x12*\n\x04user\x18\x01 \x01(\x0b\x32\x16.sentiric.user.v1.UserR\x04user\"\x7f\n\x11\x43reateUserRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12\x17\n\x04name\x18\x02 \x01(\tH\x00R\x04name\x88\x01\x01\x12\x1b\n\ttenant_id\x18\x03 \x01(\tR\x08tenantId\x12\x1b\n\tuser_type\x18\x04 \x01(\tR\x08userTypeB\x07\n\x05_name\"@\n\x12\x43reateUserResponse\x12*\n\x04user\x18\x01 \x01(\x0b\x32\x16.sentiric.user.v1.UserR\x04user2\xb6\x01\n\x0bUserService\x12N\n\x07GetUser\x12 .sentiric.user.v1.GetUserRequest\x1a!.sentiric.user.v1.GetUserResponse\x12W\n\nCreateUser\x12#.sentiric.user.v1.CreateUserRequest\x1a$.sentiric.user.v1.CreateUserResponseBGZEgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/user/v1;userv1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1bsentiric/user/v1/user.proto\x12\x10sentiric.user.v1\x1a\x1cgoogle/api/annotations.proto\"z\n\x04User\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n\x05\x65mail\x18\x03 \x01(\tR\x05\x65mail\x12\x1b\n\ttenant_id\x18\x04 \x01(\tR\x08tenantId\x12\x1b\n\tuser_type\x18\x05 \x01(\tR\x08userType\" \n\x0eGetUserRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\"=\n\x0fGetUserResponse\x12*\n\x04user\x18\x01 \x01(\x0b\x32\x16.sentiric.user.v1.UserR\x04user\"\x7f\n\x11\x43reateUserRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12\x17\n\x04name\x18\x02 \x01(\tH\x00R\x04name\x88\x01\x01\x12\x1b\n\ttenant_id\x18\x03 \x01(\tR\x08tenantId\x12\x1b\n\tuser_type\x18\x04 \x01(\tR\x08userTypeB\x07\n\x05_name\"@\n\x12\x43reateUserResponse\x12*\n\x04user\x18\x01 \x01(\x0b\x32\x16.sentiric.user.v1.UserR\x04user2\xe4\x01\n\x0bUserService\x12\x66\n\x07GetUser\x12 .sentiric.user.v1.GetUserRequest\x1a!.sentiric.user.v1.GetUserResponse\"\x16\x82\xd3\xe4\x93\x02\x10\x12\x0e/v1/users/{id}\x12m\n\nCreateUser\x12#.sentiric.user.v1.CreateUserRequest\x1a$.sentiric.user.v1.CreateUserResponse\"\x14\x82\xd3\xe4\x93\x02\x0e\"\t/v1/users:\x01*BGZEgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/user/v1;userv1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -32,16 +33,20 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'sentiric.user.v1.user_pb2',
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
   _globals['DESCRIPTOR']._serialized_options = b'ZEgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/user/v1;userv1'
-  _globals['_USER']._serialized_start=49
-  _globals['_USER']._serialized_end=171
-  _globals['_GETUSERREQUEST']._serialized_start=173
-  _globals['_GETUSERREQUEST']._serialized_end=205
-  _globals['_GETUSERRESPONSE']._serialized_start=207
-  _globals['_GETUSERRESPONSE']._serialized_end=268
-  _globals['_CREATEUSERREQUEST']._serialized_start=270
-  _globals['_CREATEUSERREQUEST']._serialized_end=397
-  _globals['_CREATEUSERRESPONSE']._serialized_start=399
-  _globals['_CREATEUSERRESPONSE']._serialized_end=463
-  _globals['_USERSERVICE']._serialized_start=466
-  _globals['_USERSERVICE']._serialized_end=648
+  _globals['_USERSERVICE'].methods_by_name['GetUser']._loaded_options = None
+  _globals['_USERSERVICE'].methods_by_name['GetUser']._serialized_options = b'\202\323\344\223\002\020\022\016/v1/users/{id}'
+  _globals['_USERSERVICE'].methods_by_name['CreateUser']._loaded_options = None
+  _globals['_USERSERVICE'].methods_by_name['CreateUser']._serialized_options = b'\202\323\344\223\002\016\"\t/v1/users:\001*'
+  _globals['_USER']._serialized_start=79
+  _globals['_USER']._serialized_end=201
+  _globals['_GETUSERREQUEST']._serialized_start=203
+  _globals['_GETUSERREQUEST']._serialized_end=235
+  _globals['_GETUSERRESPONSE']._serialized_start=237
+  _globals['_GETUSERRESPONSE']._serialized_end=298
+  _globals['_CREATEUSERREQUEST']._serialized_start=300
+  _globals['_CREATEUSERREQUEST']._serialized_end=427
+  _globals['_CREATEUSERRESPONSE']._serialized_start=429
+  _globals['_CREATEUSERRESPONSE']._serialized_end=493
+  _globals['_USERSERVICE']._serialized_start=496
+  _globals['_USERSERVICE']._serialized_end=724
 # @@protoc_insertion_point(module_scope)
