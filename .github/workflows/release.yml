@@ -28,8 +28,15 @@ jobs:
 
       - name: Setup Buf
         uses: bufbuild/buf-setup-action@v1.35.1
+      
+      # YENİ: buf dep update adımını ekliyoruz
+      - name: Update dependencies
+        working-directory: proto # DÜZELTME
+        run: buf dep update
 
+      # DÜZELTME: Bu adımın çalışma dizinini de belirtiyoruz
       - name: Generate all language stubs
+        working-directory: proto # DÜZELTME
         run: buf generate
 
       - name: Configure Git user for bot
@@ -39,15 +46,22 @@ jobs:
 
       - name: Commit generated code
         run: |
-          git add -f gen/
+          # DÜZELTME: Ekleyeceğimiz dosyaların yolu artık bir üst dizinde
+          git add -f ../gen/
+          # DÜZELTME: Konfigürasyon dosyalarını da commite ekliyoruz
+          git add -f buf.yaml buf.gen.yaml buf.lock
           if ! git diff --staged --quiet; then
             git commit -m "feat(gen): Generate code for v${{ env.VERSION }}"
           else
             echo "No changes in generated code to commit."
           fi
+        working-directory: proto # DÜZELTME: Bu komutları da proto dizininden çalıştır
 
+      # ... (geri kalan adımlar aynı kalabilir, ancak commit'i ana dizine dönerek yapmak daha güvenli olabilir. Şimdilik bu haliyle devam edelim.)
+      # ...
       - name: Push changes and update tag
         run: |
+          # ... (Bu adım şimdilik aynı kalabilir, bir sonraki seferde sorun çıkarsa iyileştiririz)
           if git log -1 --pretty=%B | grep -q "Generate code for v${{ env.VERSION }}"; then
             echo "Rebasing onto main and pushing generated code..."
             git pull origin main --rebase
@@ -58,7 +72,7 @@ jobs:
           else
             echo "No new commit to push. Tag is up to date."
           fi
-
+      
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:

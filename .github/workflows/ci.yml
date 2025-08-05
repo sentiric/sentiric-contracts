@@ -13,7 +13,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: bufbuild/buf-setup-action@v1.35.1
-      - uses: bufbuild/buf-lint-action@v1
-      - uses: bufbuild/buf-breaking-action@v1
+      
+      # DÜZELTME: Komutların çalışma dizinini belirtiyoruz
+      - name: Lint proto files
+        uses: bufbuild/buf-lint-action@v1
         with:
-          against: 'https://github.com/sentiric/sentiric-contracts.git#branch=main'
+          input: 'proto' # Kontrol edilecek dizini belirtiyoruz
+
+      # DÜZELTME: Komutların çalışma dizinini belirtiyoruz
+      - name: Check for breaking changes
+        uses: bufbuild/buf-breaking-action@v1
+        with:
+          against: 'https://github.com/sentiric/sentiric-contracts.git#branch=main,subdir=proto' # Karşılaştırılacak alt dizini belirtiyoruz
