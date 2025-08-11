@@ -19,6 +19,11 @@ class UserServiceStub(object):
                 request_serializer=sentiric_dot_user_dot_v1_dot_user__pb2.GetUserRequest.SerializeToString,
                 response_deserializer=sentiric_dot_user_dot_v1_dot_user__pb2.GetUserResponse.FromString,
                 _registered_method=True)
+        self.FindUserByContact = channel.unary_unary(
+                '/sentiric.user.v1.UserService/FindUserByContact',
+                request_serializer=sentiric_dot_user_dot_v1_dot_user__pb2.FindUserByContactRequest.SerializeToString,
+                response_deserializer=sentiric_dot_user_dot_v1_dot_user__pb2.GetUserResponse.FromString,
+                _registered_method=True)
         self.CreateUser = channel.unary_unary(
                 '/sentiric.user.v1.UserService/CreateUser',
                 request_serializer=sentiric_dot_user_dot_v1_dot_user__pb2.CreateUserRequest.SerializeToString,
@@ -35,6 +40,13 @@ class UserServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def FindUserByContact(self, request, context):
+        """YENİ RPC: Bir iletişim bilgisiyle kullanıcıyı bulmak için.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def CreateUser(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -47,6 +59,11 @@ def add_UserServiceServicer_to_server(servicer, server):
             'GetUser': grpc.unary_unary_rpc_method_handler(
                     servicer.GetUser,
                     request_deserializer=sentiric_dot_user_dot_v1_dot_user__pb2.GetUserRequest.FromString,
+                    response_serializer=sentiric_dot_user_dot_v1_dot_user__pb2.GetUserResponse.SerializeToString,
+            ),
+            'FindUserByContact': grpc.unary_unary_rpc_method_handler(
+                    servicer.FindUserByContact,
+                    request_deserializer=sentiric_dot_user_dot_v1_dot_user__pb2.FindUserByContactRequest.FromString,
                     response_serializer=sentiric_dot_user_dot_v1_dot_user__pb2.GetUserResponse.SerializeToString,
             ),
             'CreateUser': grpc.unary_unary_rpc_method_handler(
@@ -81,6 +98,33 @@ class UserService(object):
             target,
             '/sentiric.user.v1.UserService/GetUser',
             sentiric_dot_user_dot_v1_dot_user__pb2.GetUserRequest.SerializeToString,
+            sentiric_dot_user_dot_v1_dot_user__pb2.GetUserResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def FindUserByContact(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/sentiric.user.v1.UserService/FindUserByContact',
+            sentiric_dot_user_dot_v1_dot_user__pb2.FindUserByContactRequest.SerializeToString,
             sentiric_dot_user_dot_v1_dot_user__pb2.GetUserResponse.FromString,
             options,
             channel_credentials,

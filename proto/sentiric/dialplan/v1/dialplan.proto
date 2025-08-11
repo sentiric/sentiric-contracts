@@ -1,3 +1,4 @@
+// ========== FILE: sentiric-contracts/proto/sentiric/dialplan/v1/dialplan.proto ==========
 syntax = "proto3";
 
 package sentiric.dialplan.v1;
@@ -11,18 +12,16 @@ service DialplanService {
 }
 
 message ResolveDialplanRequest {
-  string caller_id = 1;
+  string caller_contact_value = 1; // Artık bu bir telefon numarası (veya whatsapp id)
   string destination_number = 2;
 }
 
-// Bu, key-value çiftlerini tutan basit bir haritadır.
 message ActionData {
   map<string, string> data = 1;
 }
 
 message DialplanAction {
   string action = 1;
-  // google.protobuf.Struct yerine kendi ActionData'mızı kullanıyoruz.
   ActionData action_data = 2;
 }
 
@@ -31,4 +30,6 @@ message ResolveDialplanResponse {
   string tenant_id = 2;
   DialplanAction action = 3;
   optional sentiric.user.v1.User matched_user = 4;
+  // YENİ: Hangi contact üzerinden eşleştiğini de belirtiyoruz.
+  optional sentiric.user.v1.Contact matched_contact = 5; 
 }

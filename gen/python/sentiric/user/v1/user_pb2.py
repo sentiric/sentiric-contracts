@@ -25,7 +25,7 @@ _sym_db = _symbol_database.Default()
 from google.api import annotations_pb2 as google_dot_api_dot_annotations__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1bsentiric/user/v1/user.proto\x12\x10sentiric.user.v1\x1a\x1cgoogle/api/annotations.proto\"z\n\x04User\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n\x05\x65mail\x18\x03 \x01(\tR\x05\x65mail\x12\x1b\n\ttenant_id\x18\x04 \x01(\tR\x08tenantId\x12\x1b\n\tuser_type\x18\x05 \x01(\tR\x08userType\" \n\x0eGetUserRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\"=\n\x0fGetUserResponse\x12*\n\x04user\x18\x01 \x01(\x0b\x32\x16.sentiric.user.v1.UserR\x04user\"\x7f\n\x11\x43reateUserRequest\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12\x17\n\x04name\x18\x02 \x01(\tH\x00R\x04name\x88\x01\x01\x12\x1b\n\ttenant_id\x18\x03 \x01(\tR\x08tenantId\x12\x1b\n\tuser_type\x18\x04 \x01(\tR\x08userTypeB\x07\n\x05_name\"@\n\x12\x43reateUserResponse\x12*\n\x04user\x18\x01 \x01(\x0b\x32\x16.sentiric.user.v1.UserR\x04user2\xe4\x01\n\x0bUserService\x12\x66\n\x07GetUser\x12 .sentiric.user.v1.GetUserRequest\x1a!.sentiric.user.v1.GetUserResponse\"\x16\x82\xd3\xe4\x93\x02\x10\x12\x0e/v1/users/{id}\x12m\n\nCreateUser\x12#.sentiric.user.v1.CreateUserRequest\x1a$.sentiric.user.v1.CreateUserResponse\"\x14\x82\xd3\xe4\x93\x02\x0e\"\t/v1/users:\x01*BGZEgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/user/v1;userv1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1bsentiric/user/v1/user.proto\x12\x10sentiric.user.v1\x1a\x1cgoogle/api/annotations.proto\"\x99\x01\n\x07\x43ontact\x12\x0e\n\x02id\x18\x01 \x01(\x05R\x02id\x12\x17\n\x07user_id\x18\x02 \x01(\tR\x06userId\x12!\n\x0c\x63ontact_type\x18\x03 \x01(\tR\x0b\x63ontactType\x12#\n\rcontact_value\x18\x04 \x01(\tR\x0c\x63ontactValue\x12\x1d\n\nis_primary\x18\x05 \x01(\x08R\tisPrimary\"\xa9\x01\n\x04User\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12\x17\n\x04name\x18\x02 \x01(\tH\x00R\x04name\x88\x01\x01\x12\x1b\n\ttenant_id\x18\x03 \x01(\tR\x08tenantId\x12\x1b\n\tuser_type\x18\x04 \x01(\tR\x08userType\x12\x35\n\x08\x63ontacts\x18\x05 \x03(\x0b\x32\x19.sentiric.user.v1.ContactR\x08\x63ontactsB\x07\n\x05_name\")\n\x0eGetUserRequest\x12\x17\n\x07user_id\x18\x01 \x01(\tR\x06userId\"b\n\x18\x46indUserByContactRequest\x12!\n\x0c\x63ontact_type\x18\x01 \x01(\tR\x0b\x63ontactType\x12#\n\rcontact_value\x18\x02 \x01(\tR\x0c\x63ontactValue\"=\n\x0fGetUserResponse\x12*\n\x04user\x18\x01 \x01(\x0b\x32\x16.sentiric.user.v1.UserR\x04user\"\xa6\x02\n\x11\x43reateUserRequest\x12\x1b\n\ttenant_id\x18\x01 \x01(\tR\x08tenantId\x12\x1b\n\tuser_type\x18\x02 \x01(\tR\x08userType\x12\x17\n\x04name\x18\x03 \x01(\tH\x00R\x04name\x88\x01\x01\x12[\n\x0finitial_contact\x18\x04 \x01(\x0b\x32\x32.sentiric.user.v1.CreateUserRequest.InitialContactR\x0einitialContact\x1aX\n\x0eInitialContact\x12!\n\x0c\x63ontact_type\x18\x01 \x01(\tR\x0b\x63ontactType\x12#\n\rcontact_value\x18\x02 \x01(\tR\x0c\x63ontactValueB\x07\n\x05_name\"@\n\x12\x43reateUserResponse\x12*\n\x04user\x18\x01 \x01(\x0b\x32\x16.sentiric.user.v1.UserR\x04user2\x91\x03\n\x0bUserService\x12q\n\x07GetUser\x12 .sentiric.user.v1.GetUserRequest\x1a!.sentiric.user.v1.GetUserResponse\"!\x82\xd3\xe4\x93\x02\x1b\x12\x19/v1/users/by-id/{user_id}\x12\x9f\x01\n\x11\x46indUserByContact\x12*.sentiric.user.v1.FindUserByContactRequest\x1a!.sentiric.user.v1.GetUserResponse\";\x82\xd3\xe4\x93\x02\x35\x12\x33/v1/users/by-contact/{contact_type}/{contact_value}\x12m\n\nCreateUser\x12#.sentiric.user.v1.CreateUserRequest\x1a$.sentiric.user.v1.CreateUserResponse\"\x14\x82\xd3\xe4\x93\x02\x0e\"\t/v1/users:\x01*BGZEgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/user/v1;userv1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -34,19 +34,27 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
   _globals['DESCRIPTOR']._serialized_options = b'ZEgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/user/v1;userv1'
   _globals['_USERSERVICE'].methods_by_name['GetUser']._loaded_options = None
-  _globals['_USERSERVICE'].methods_by_name['GetUser']._serialized_options = b'\202\323\344\223\002\020\022\016/v1/users/{id}'
+  _globals['_USERSERVICE'].methods_by_name['GetUser']._serialized_options = b'\202\323\344\223\002\033\022\031/v1/users/by-id/{user_id}'
+  _globals['_USERSERVICE'].methods_by_name['FindUserByContact']._loaded_options = None
+  _globals['_USERSERVICE'].methods_by_name['FindUserByContact']._serialized_options = b'\202\323\344\223\0025\0223/v1/users/by-contact/{contact_type}/{contact_value}'
   _globals['_USERSERVICE'].methods_by_name['CreateUser']._loaded_options = None
   _globals['_USERSERVICE'].methods_by_name['CreateUser']._serialized_options = b'\202\323\344\223\002\016\"\t/v1/users:\001*'
-  _globals['_USER']._serialized_start=79
-  _globals['_USER']._serialized_end=201
-  _globals['_GETUSERREQUEST']._serialized_start=203
-  _globals['_GETUSERREQUEST']._serialized_end=235
-  _globals['_GETUSERRESPONSE']._serialized_start=237
-  _globals['_GETUSERRESPONSE']._serialized_end=298
-  _globals['_CREATEUSERREQUEST']._serialized_start=300
-  _globals['_CREATEUSERREQUEST']._serialized_end=427
-  _globals['_CREATEUSERRESPONSE']._serialized_start=429
-  _globals['_CREATEUSERRESPONSE']._serialized_end=493
-  _globals['_USERSERVICE']._serialized_start=496
-  _globals['_USERSERVICE']._serialized_end=724
+  _globals['_CONTACT']._serialized_start=80
+  _globals['_CONTACT']._serialized_end=233
+  _globals['_USER']._serialized_start=236
+  _globals['_USER']._serialized_end=405
+  _globals['_GETUSERREQUEST']._serialized_start=407
+  _globals['_GETUSERREQUEST']._serialized_end=448
+  _globals['_FINDUSERBYCONTACTREQUEST']._serialized_start=450
+  _globals['_FINDUSERBYCONTACTREQUEST']._serialized_end=548
+  _globals['_GETUSERRESPONSE']._serialized_start=550
+  _globals['_GETUSERRESPONSE']._serialized_end=611
+  _globals['_CREATEUSERREQUEST']._serialized_start=614
+  _globals['_CREATEUSERREQUEST']._serialized_end=908
+  _globals['_CREATEUSERREQUEST_INITIALCONTACT']._serialized_start=811
+  _globals['_CREATEUSERREQUEST_INITIALCONTACT']._serialized_end=899
+  _globals['_CREATEUSERRESPONSE']._serialized_start=910
+  _globals['_CREATEUSERRESPONSE']._serialized_end=974
+  _globals['_USERSERVICE']._serialized_start=977
+  _globals['_USERSERVICE']._serialized_end=1378
 # @@protoc_insertion_point(module_scope)

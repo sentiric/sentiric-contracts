@@ -68,3 +68,17 @@ request = user_pb2.GetUserRequest(id="user-123")
 4.  **Tag a new release:** To publish new package versions, create a new Git tag (e.g., `git tag v0.2.0` and `git push origin v0.2.0`). The `Release` workflow will handle the rest.
 
 ---
+```bash
+# 1. sentiric-contracts ana dizininde olduğundan emin ol
+C:\sentiric\sentiric-contracts>
+
+# 2. proto dizinine gir
+C:\sentiric\sentiric-contracts> cd proto
+
+# 3. Şimdi, sadece generate komutunu çalıştır.
+# Buf, konfigürasyon dosyalarını (buf.yaml, buf.gen.yaml)
+# mevcut dizinde bulacak ve yine mevcut dizindeki .proto dosyalarını işleyecektir.
+C:\sentiric\sentiric-contracts\proto> buf generate
+
+go mod tidy
+```

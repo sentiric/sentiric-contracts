@@ -3,12 +3,12 @@
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ResolveDialplanRequest {
+    /// Artık bu bir telefon numarası (veya whatsapp id)
     #[prost(string, tag="1")]
-    pub caller_id: ::prost::alloc::string::String,
+    pub caller_contact_value: ::prost::alloc::string::String,
     #[prost(string, tag="2")]
     pub destination_number: ::prost::alloc::string::String,
 }
-/// Bu, key-value çiftlerini tutan basit bir haritadır.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ActionData {
@@ -20,7 +20,6 @@ pub struct ActionData {
 pub struct DialplanAction {
     #[prost(string, tag="1")]
     pub action: ::prost::alloc::string::String,
-    /// google.protobuf.Struct yerine kendi ActionData'mızı kullanıyoruz.
     #[prost(message, optional, tag="2")]
     pub action_data: ::core::option::Option<ActionData>,
 }
@@ -35,6 +34,9 @@ pub struct ResolveDialplanResponse {
     pub action: ::core::option::Option<DialplanAction>,
     #[prost(message, optional, tag="4")]
     pub matched_user: ::core::option::Option<super::super::user::v1::User>,
+    /// YENİ: Hangi contact üzerinden eşleştiğini de belirtiyoruz.
+    #[prost(message, optional, tag="5")]
+    pub matched_contact: ::core::option::Option<super::super::user::v1::Contact>,
 }
 include!("sentiric.dialplan.v1.tonic.rs");
 // @@protoc_insertion_point(module)

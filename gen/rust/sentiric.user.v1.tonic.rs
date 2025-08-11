@@ -4,6 +4,7 @@ pub mod user_service_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
     use tonic::codegen::*;
     use tonic::codegen::http::Uri;
+    ///
     #[derive(Debug, Clone)]
     pub struct UserServiceClient<T> {
         inner: tonic::client::Grpc<T>,
@@ -84,6 +85,7 @@ pub mod user_service_client {
             self.inner = self.inner.max_encoding_message_size(limit);
             self
         }
+        ///
         pub async fn get_user(
             &mut self,
             request: impl tonic::IntoRequest<super::GetUserRequest>,
@@ -107,6 +109,35 @@ pub mod user_service_client {
             let mut req = request.into_request();
             req.extensions_mut()
                 .insert(GrpcMethod::new("sentiric.user.v1.UserService", "GetUser"));
+            self.inner.unary(req, path, codec).await
+        }
+        /** YENİ RPC: Bir iletişim bilgisiyle kullanıcıyı bulmak için.
+*/
+        pub async fn find_user_by_contact(
+            &mut self,
+            request: impl tonic::IntoRequest<super::FindUserByContactRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::GetUserResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/sentiric.user.v1.UserService/FindUserByContact",
+            );
+            let mut req = request.into_request();
+            req.extensions_mut()
+                .insert(
+                    GrpcMethod::new("sentiric.user.v1.UserService", "FindUserByContact"),
+                );
             self.inner.unary(req, path, codec).await
         }
         pub async fn create_user(
@@ -143,9 +174,16 @@ pub mod user_service_server {
     /// Generated trait containing gRPC methods that should be implemented for use with UserServiceServer.
     #[async_trait]
     pub trait UserService: Send + Sync + 'static {
+        ///
         async fn get_user(
             &self,
             request: tonic::Request<super::GetUserRequest>,
+        ) -> std::result::Result<tonic::Response<super::GetUserResponse>, tonic::Status>;
+        /** YENİ RPC: Bir iletişim bilgisiyle kullanıcıyı bulmak için.
+*/
+        async fn find_user_by_contact(
+            &self,
+            request: tonic::Request<super::FindUserByContactRequest>,
         ) -> std::result::Result<tonic::Response<super::GetUserResponse>, tonic::Status>;
         async fn create_user(
             &self,
@@ -155,6 +193,7 @@ pub mod user_service_server {
             tonic::Status,
         >;
     }
+    ///
     #[derive(Debug)]
     pub struct UserServiceServer<T: UserService> {
         inner: Arc<T>,
@@ -261,6 +300,52 @@ pub mod user_service_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = GetUserSvc(inner);
+                        let codec = tonic::codec::ProstCodec::default();
+                        let mut grpc = tonic::server::Grpc::new(codec)
+                            .apply_compression_config(
+                                accept_compression_encodings,
+                                send_compression_encodings,
+                            )
+                            .apply_max_message_size_config(
+                                max_decoding_message_size,
+                                max_encoding_message_size,
+                            );
+                        let res = grpc.unary(method, req).await;
+                        Ok(res)
+                    };
+                    Box::pin(fut)
+                }
+                "/sentiric.user.v1.UserService/FindUserByContact" => {
+                    #[allow(non_camel_case_types)]
+                    struct FindUserByContactSvc<T: UserService>(pub Arc<T>);
+                    impl<
+                        T: UserService,
+                    > tonic::server::UnaryService<super::FindUserByContactRequest>
+                    for FindUserByContactSvc<T> {
+                        type Response = super::GetUserResponse;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
+                        fn call(
+                            &mut self,
+                            request: tonic::Request<super::FindUserByContactRequest>,
+                        ) -> Self::Future {
+                            let inner = Arc::clone(&self.0);
+                            let fut = async move {
+                                <T as UserService>::find_user_by_contact(&inner, request)
+                                    .await
+                            };
+                            Box::pin(fut)
+                        }
+                    }
+                    let accept_compression_encodings = self.accept_compression_encodings;
+                    let send_compression_encodings = self.send_compression_encodings;
+                    let max_decoding_message_size = self.max_decoding_message_size;
+                    let max_encoding_message_size = self.max_encoding_message_size;
+                    let inner = self.inner.clone();
+                    let fut = async move {
+                        let method = FindUserByContactSvc(inner);
                         let codec = tonic::codec::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(

@@ -1,30 +1,53 @@
 from google.api import annotations_pb2 as _annotations_pb2
+from google.protobuf.internal import containers as _containers
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
-from collections.abc import Mapping as _Mapping
+from collections.abc import Iterable as _Iterable, Mapping as _Mapping
 from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 
 DESCRIPTOR: _descriptor.FileDescriptor
 
+class Contact(_message.Message):
+    __slots__ = ("id", "user_id", "contact_type", "contact_value", "is_primary")
+    ID_FIELD_NUMBER: _ClassVar[int]
+    USER_ID_FIELD_NUMBER: _ClassVar[int]
+    CONTACT_TYPE_FIELD_NUMBER: _ClassVar[int]
+    CONTACT_VALUE_FIELD_NUMBER: _ClassVar[int]
+    IS_PRIMARY_FIELD_NUMBER: _ClassVar[int]
+    id: int
+    user_id: str
+    contact_type: str
+    contact_value: str
+    is_primary: bool
+    def __init__(self, id: _Optional[int] = ..., user_id: _Optional[str] = ..., contact_type: _Optional[str] = ..., contact_value: _Optional[str] = ..., is_primary: bool = ...) -> None: ...
+
 class User(_message.Message):
-    __slots__ = ("id", "name", "email", "tenant_id", "user_type")
+    __slots__ = ("id", "name", "tenant_id", "user_type", "contacts")
     ID_FIELD_NUMBER: _ClassVar[int]
     NAME_FIELD_NUMBER: _ClassVar[int]
-    EMAIL_FIELD_NUMBER: _ClassVar[int]
     TENANT_ID_FIELD_NUMBER: _ClassVar[int]
     USER_TYPE_FIELD_NUMBER: _ClassVar[int]
+    CONTACTS_FIELD_NUMBER: _ClassVar[int]
     id: str
     name: str
-    email: str
     tenant_id: str
     user_type: str
-    def __init__(self, id: _Optional[str] = ..., name: _Optional[str] = ..., email: _Optional[str] = ..., tenant_id: _Optional[str] = ..., user_type: _Optional[str] = ...) -> None: ...
+    contacts: _containers.RepeatedCompositeFieldContainer[Contact]
+    def __init__(self, id: _Optional[str] = ..., name: _Optional[str] = ..., tenant_id: _Optional[str] = ..., user_type: _Optional[str] = ..., contacts: _Optional[_Iterable[_Union[Contact, _Mapping]]] = ...) -> None: ...
 
 class GetUserRequest(_message.Message):
-    __slots__ = ("id",)
-    ID_FIELD_NUMBER: _ClassVar[int]
-    id: str
-    def __init__(self, id: _Optional[str] = ...) -> None: ...
+    __slots__ = ("user_id",)
+    USER_ID_FIELD_NUMBER: _ClassVar[int]
+    user_id: str
+    def __init__(self, user_id: _Optional[str] = ...) -> None: ...
+
+class FindUserByContactRequest(_message.Message):
+    __slots__ = ("contact_type", "contact_value")
+    CONTACT_TYPE_FIELD_NUMBER: _ClassVar[int]
+    CONTACT_VALUE_FIELD_NUMBER: _ClassVar[int]
+    contact_type: str
+    contact_value: str
+    def __init__(self, contact_type: _Optional[str] = ..., contact_value: _Optional[str] = ...) -> None: ...
 
 class GetUserResponse(_message.Message):
     __slots__ = ("user",)
@@ -33,16 +56,23 @@ class GetUserResponse(_message.Message):
     def __init__(self, user: _Optional[_Union[User, _Mapping]] = ...) -> None: ...
 
 class CreateUserRequest(_message.Message):
-    __slots__ = ("id", "name", "tenant_id", "user_type")
-    ID_FIELD_NUMBER: _ClassVar[int]
-    NAME_FIELD_NUMBER: _ClassVar[int]
+    __slots__ = ("tenant_id", "user_type", "name", "initial_contact")
+    class InitialContact(_message.Message):
+        __slots__ = ("contact_type", "contact_value")
+        CONTACT_TYPE_FIELD_NUMBER: _ClassVar[int]
+        CONTACT_VALUE_FIELD_NUMBER: _ClassVar[int]
+        contact_type: str
+        contact_value: str
+        def __init__(self, contact_type: _Optional[str] = ..., contact_value: _Optional[str] = ...) -> None: ...
     TENANT_ID_FIELD_NUMBER: _ClassVar[int]
     USER_TYPE_FIELD_NUMBER: _ClassVar[int]
-    id: str
-    name: str
+    NAME_FIELD_NUMBER: _ClassVar[int]
+    INITIAL_CONTACT_FIELD_NUMBER: _ClassVar[int]
     tenant_id: str
     user_type: str
-    def __init__(self, id: _Optional[str] = ..., name: _Optional[str] = ..., tenant_id: _Optional[str] = ..., user_type: _Optional[str] = ...) -> None: ...
+    name: str
+    initial_contact: CreateUserRequest.InitialContact
+    def __init__(self, tenant_id: _Optional[str] = ..., user_type: _Optional[str] = ..., name: _Optional[str] = ..., initial_contact: _Optional[_Union[CreateUserRequest.InitialContact, _Mapping]] = ...) -> None: ...
 
 class CreateUserResponse(_message.Message):
     __slots__ = ("user",)

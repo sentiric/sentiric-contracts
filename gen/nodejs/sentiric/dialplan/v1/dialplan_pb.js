@@ -143,7 +143,7 @@ proto.sentiric.dialplan.v1.ResolveDialplanRequest.prototype.toObject = function(
  */
 proto.sentiric.dialplan.v1.ResolveDialplanRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-callerId: jspb.Message.getFieldWithDefault(msg, 1, ""),
+callerContactValue: jspb.Message.getFieldWithDefault(msg, 1, ""),
 destinationNumber: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
@@ -183,7 +183,7 @@ proto.sentiric.dialplan.v1.ResolveDialplanRequest.deserializeBinaryFromReader = 
     switch (field) {
     case 1:
       var value = /** @type {string} */ (reader.readString());
-      msg.setCallerId(value);
+      msg.setCallerContactValue(value);
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
@@ -218,7 +218,7 @@ proto.sentiric.dialplan.v1.ResolveDialplanRequest.prototype.serializeBinary = fu
  */
 proto.sentiric.dialplan.v1.ResolveDialplanRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getCallerId();
+  f = message.getCallerContactValue();
   if (f.length > 0) {
     writer.writeString(
       1,
@@ -236,10 +236,10 @@ proto.sentiric.dialplan.v1.ResolveDialplanRequest.serializeBinaryToWriter = func
 
 
 /**
- * optional string caller_id = 1;
+ * optional string caller_contact_value = 1;
  * @return {string}
  */
-proto.sentiric.dialplan.v1.ResolveDialplanRequest.prototype.getCallerId = function() {
+proto.sentiric.dialplan.v1.ResolveDialplanRequest.prototype.getCallerContactValue = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
@@ -248,7 +248,7 @@ proto.sentiric.dialplan.v1.ResolveDialplanRequest.prototype.getCallerId = functi
  * @param {string} value
  * @return {!proto.sentiric.dialplan.v1.ResolveDialplanRequest} returns this
  */
-proto.sentiric.dialplan.v1.ResolveDialplanRequest.prototype.setCallerId = function(value) {
+proto.sentiric.dialplan.v1.ResolveDialplanRequest.prototype.setCallerContactValue = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 
@@ -621,7 +621,8 @@ proto.sentiric.dialplan.v1.ResolveDialplanResponse.toObject = function(includeIn
 dialplanId: jspb.Message.getFieldWithDefault(msg, 1, ""),
 tenantId: jspb.Message.getFieldWithDefault(msg, 2, ""),
 action: (f = msg.getAction()) && proto.sentiric.dialplan.v1.DialplanAction.toObject(includeInstance, f),
-matchedUser: (f = msg.getMatchedUser()) && sentiric_user_v1_user_pb.User.toObject(includeInstance, f)
+matchedUser: (f = msg.getMatchedUser()) && sentiric_user_v1_user_pb.User.toObject(includeInstance, f),
+matchedContact: (f = msg.getMatchedContact()) && sentiric_user_v1_user_pb.Contact.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -675,6 +676,11 @@ proto.sentiric.dialplan.v1.ResolveDialplanResponse.deserializeBinaryFromReader =
       var value = new sentiric_user_v1_user_pb.User;
       reader.readMessage(value,sentiric_user_v1_user_pb.User.deserializeBinaryFromReader);
       msg.setMatchedUser(value);
+      break;
+    case 5:
+      var value = new sentiric_user_v1_user_pb.Contact;
+      reader.readMessage(value,sentiric_user_v1_user_pb.Contact.deserializeBinaryFromReader);
+      msg.setMatchedContact(value);
       break;
     default:
       reader.skipField();
@@ -733,6 +739,14 @@ proto.sentiric.dialplan.v1.ResolveDialplanResponse.serializeBinaryToWriter = fun
       4,
       f,
       sentiric_user_v1_user_pb.User.serializeBinaryToWriter
+    );
+  }
+  f = message.getMatchedContact();
+  if (f != null) {
+    writer.writeMessage(
+      5,
+      f,
+      sentiric_user_v1_user_pb.Contact.serializeBinaryToWriter
     );
   }
 };
@@ -845,6 +859,43 @@ proto.sentiric.dialplan.v1.ResolveDialplanResponse.prototype.clearMatchedUser = 
  */
 proto.sentiric.dialplan.v1.ResolveDialplanResponse.prototype.hasMatchedUser = function() {
   return jspb.Message.getField(this, 4) != null;
+};
+
+
+/**
+ * optional sentiric.user.v1.Contact matched_contact = 5;
+ * @return {?proto.sentiric.user.v1.Contact}
+ */
+proto.sentiric.dialplan.v1.ResolveDialplanResponse.prototype.getMatchedContact = function() {
+  return /** @type{?proto.sentiric.user.v1.Contact} */ (
+    jspb.Message.getWrapperField(this, sentiric_user_v1_user_pb.Contact, 5));
+};
+
+
+/**
+ * @param {?proto.sentiric.user.v1.Contact|undefined} value
+ * @return {!proto.sentiric.dialplan.v1.ResolveDialplanResponse} returns this
+*/
+proto.sentiric.dialplan.v1.ResolveDialplanResponse.prototype.setMatchedContact = function(value) {
+  return jspb.Message.setWrapperField(this, 5, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sentiric.dialplan.v1.ResolveDialplanResponse} returns this
+ */
+proto.sentiric.dialplan.v1.ResolveDialplanResponse.prototype.clearMatchedContact = function() {
+  return this.setMatchedContact(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sentiric.dialplan.v1.ResolveDialplanResponse.prototype.hasMatchedContact = function() {
+  return jspb.Message.getField(this, 5) != null;
 };
 
 

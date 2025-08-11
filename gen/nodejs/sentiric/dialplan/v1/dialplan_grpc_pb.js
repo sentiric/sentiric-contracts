@@ -1,5 +1,7 @@
 // GENERATED CODE -- DO NOT EDIT!
 
+// Original file comments:
+// ========== FILE: sentiric-contracts/proto/sentiric/dialplan/v1/dialplan.proto ==========
 'use strict';
 var grpc = require('@grpc/grpc-js');
 var sentiric_dialplan_v1_dialplan_pb = require('../../../sentiric/dialplan/v1/dialplan_pb.js');

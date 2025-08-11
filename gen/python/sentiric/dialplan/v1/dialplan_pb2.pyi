@@ -8,12 +8,12 @@ from typing import ClassVar as _ClassVar, Optional as _Optional, Union as _Union
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class ResolveDialplanRequest(_message.Message):
-    __slots__ = ("caller_id", "destination_number")
-    CALLER_ID_FIELD_NUMBER: _ClassVar[int]
+    __slots__ = ("caller_contact_value", "destination_number")
+    CALLER_CONTACT_VALUE_FIELD_NUMBER: _ClassVar[int]
     DESTINATION_NUMBER_FIELD_NUMBER: _ClassVar[int]
-    caller_id: str
+    caller_contact_value: str
     destination_number: str
-    def __init__(self, caller_id: _Optional[str] = ..., destination_number: _Optional[str] = ...) -> None: ...
+    def __init__(self, caller_contact_value: _Optional[str] = ..., destination_number: _Optional[str] = ...) -> None: ...
 
 class ActionData(_message.Message):
     __slots__ = ("data",)
@@ -37,13 +37,15 @@ class DialplanAction(_message.Message):
     def __init__(self, action: _Optional[str] = ..., action_data: _Optional[_Union[ActionData, _Mapping]] = ...) -> None: ...
 
 class ResolveDialplanResponse(_message.Message):
-    __slots__ = ("dialplan_id", "tenant_id", "action", "matched_user")
+    __slots__ = ("dialplan_id", "tenant_id", "action", "matched_user", "matched_contact")
     DIALPLAN_ID_FIELD_NUMBER: _ClassVar[int]
     TENANT_ID_FIELD_NUMBER: _ClassVar[int]
     ACTION_FIELD_NUMBER: _ClassVar[int]
     MATCHED_USER_FIELD_NUMBER: _ClassVar[int]
+    MATCHED_CONTACT_FIELD_NUMBER: _ClassVar[int]
     dialplan_id: str
     tenant_id: str
     action: DialplanAction
     matched_user: _user_pb2.User
-    def __init__(self, dialplan_id: _Optional[str] = ..., tenant_id: _Optional[str] = ..., action: _Optional[_Union[DialplanAction, _Mapping]] = ..., matched_user: _Optional[_Union[_user_pb2.User, _Mapping]] = ...) -> None: ...
+    matched_contact: _user_pb2.Contact
+    def __init__(self, dialplan_id: _Optional[str] = ..., tenant_id: _Optional[str] = ..., action: _Optional[_Union[DialplanAction, _Mapping]] = ..., matched_user: _Optional[_Union[_user_pb2.User, _Mapping]] = ..., matched_contact: _Optional[_Union[_user_pb2.Contact, _Mapping]] = ...) -> None: ...
