@@ -111,13 +111,12 @@ pub mod user_service_client {
                 .insert(GrpcMethod::new("sentiric.user.v1.UserService", "GetUser"));
             self.inner.unary(req, path, codec).await
         }
-        /** YENİ RPC: Bir iletişim bilgisiyle kullanıcıyı bulmak için.
-*/
+        ///
         pub async fn find_user_by_contact(
             &mut self,
             request: impl tonic::IntoRequest<super::FindUserByContactRequest>,
         ) -> std::result::Result<
-            tonic::Response<super::GetUserResponse>,
+            tonic::Response<super::FindUserByContactResponse>,
             tonic::Status,
         > {
             self.inner
@@ -140,6 +139,7 @@ pub mod user_service_client {
                 );
             self.inner.unary(req, path, codec).await
         }
+        ///
         pub async fn create_user(
             &mut self,
             request: impl tonic::IntoRequest<super::CreateUserRequest>,
@@ -179,12 +179,15 @@ pub mod user_service_server {
             &self,
             request: tonic::Request<super::GetUserRequest>,
         ) -> std::result::Result<tonic::Response<super::GetUserResponse>, tonic::Status>;
-        /** YENİ RPC: Bir iletişim bilgisiyle kullanıcıyı bulmak için.
-*/
+        ///
         async fn find_user_by_contact(
             &self,
             request: tonic::Request<super::FindUserByContactRequest>,
-        ) -> std::result::Result<tonic::Response<super::GetUserResponse>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::FindUserByContactResponse>,
+            tonic::Status,
+        >;
+        ///
         async fn create_user(
             &self,
             request: tonic::Request<super::CreateUserRequest>,
@@ -322,7 +325,7 @@ pub mod user_service_server {
                         T: UserService,
                     > tonic::server::UnaryService<super::FindUserByContactRequest>
                     for FindUserByContactSvc<T> {
-                        type Response = super::GetUserResponse;
+                        type Response = super::FindUserByContactResponse;
                         type Future = BoxFuture<
                             tonic::Response<Self::Response>,
                             tonic::Status,

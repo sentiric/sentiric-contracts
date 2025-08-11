@@ -41,6 +41,12 @@ class GetUserRequest(_message.Message):
     user_id: str
     def __init__(self, user_id: _Optional[str] = ...) -> None: ...
 
+class GetUserResponse(_message.Message):
+    __slots__ = ("user",)
+    USER_FIELD_NUMBER: _ClassVar[int]
+    user: User
+    def __init__(self, user: _Optional[_Union[User, _Mapping]] = ...) -> None: ...
+
 class FindUserByContactRequest(_message.Message):
     __slots__ = ("contact_type", "contact_value")
     CONTACT_TYPE_FIELD_NUMBER: _ClassVar[int]
@@ -49,7 +55,7 @@ class FindUserByContactRequest(_message.Message):
     contact_value: str
     def __init__(self, contact_type: _Optional[str] = ..., contact_value: _Optional[str] = ...) -> None: ...
 
-class GetUserResponse(_message.Message):
+class FindUserByContactResponse(_message.Message):
     __slots__ = ("user",)
     USER_FIELD_NUMBER: _ClassVar[int]
     user: User

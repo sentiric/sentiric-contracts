@@ -31,8 +31,7 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type UserServiceClient interface {
 	GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*GetUserResponse, error)
-	// YENİ RPC: Bir iletişim bilgisiyle kullanıcıyı bulmak için.
-	FindUserByContact(ctx context.Context, in *FindUserByContactRequest, opts ...grpc.CallOption) (*GetUserResponse, error)
+	FindUserByContact(ctx context.Context, in *FindUserByContactRequest, opts ...grpc.CallOption) (*FindUserByContactResponse, error)
 	CreateUser(ctx context.Context, in *CreateUserRequest, opts ...grpc.CallOption) (*CreateUserResponse, error)
 }
 
@@ -54,9 +53,9 @@ func (c *userServiceClient) GetUser(ctx context.Context, in *GetUserRequest, opt
 	return out, nil
 }
 
-func (c *userServiceClient) FindUserByContact(ctx context.Context, in *FindUserByContactRequest, opts ...grpc.CallOption) (*GetUserResponse, error) {
+func (c *userServiceClient) FindUserByContact(ctx context.Context, in *FindUserByContactRequest, opts ...grpc.CallOption) (*FindUserByContactResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetUserResponse)
+	out := new(FindUserByContactResponse)
 	err := c.cc.Invoke(ctx, UserService_FindUserByContact_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -79,8 +78,7 @@ func (c *userServiceClient) CreateUser(ctx context.Context, in *CreateUserReques
 // for forward compatibility.
 type UserServiceServer interface {
 	GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error)
-	// YENİ RPC: Bir iletişim bilgisiyle kullanıcıyı bulmak için.
-	FindUserByContact(context.Context, *FindUserByContactRequest) (*GetUserResponse, error)
+	FindUserByContact(context.Context, *FindUserByContactRequest) (*FindUserByContactResponse, error)
 	CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error)
 }
 
@@ -94,7 +92,7 @@ type UnimplementedUserServiceServer struct{}
 func (UnimplementedUserServiceServer) GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUser not implemented")
 }
-func (UnimplementedUserServiceServer) FindUserByContact(context.Context, *FindUserByContactRequest) (*GetUserResponse, error) {
+func (UnimplementedUserServiceServer) FindUserByContact(context.Context, *FindUserByContactRequest) (*FindUserByContactResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FindUserByContact not implemented")
 }
 func (UnimplementedUserServiceServer) CreateUser(context.Context, *CreateUserRequest) (*CreateUserResponse, error) {

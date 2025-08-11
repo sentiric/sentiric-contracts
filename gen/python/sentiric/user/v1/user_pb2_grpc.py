@@ -22,7 +22,7 @@ class UserServiceStub(object):
         self.FindUserByContact = channel.unary_unary(
                 '/sentiric.user.v1.UserService/FindUserByContact',
                 request_serializer=sentiric_dot_user_dot_v1_dot_user__pb2.FindUserByContactRequest.SerializeToString,
-                response_deserializer=sentiric_dot_user_dot_v1_dot_user__pb2.GetUserResponse.FromString,
+                response_deserializer=sentiric_dot_user_dot_v1_dot_user__pb2.FindUserByContactResponse.FromString,
                 _registered_method=True)
         self.CreateUser = channel.unary_unary(
                 '/sentiric.user.v1.UserService/CreateUser',
@@ -41,8 +41,7 @@ class UserServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def FindUserByContact(self, request, context):
-        """YENİ RPC: Bir iletişim bilgisiyle kullanıcıyı bulmak için.
-        """
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -64,7 +63,7 @@ def add_UserServiceServicer_to_server(servicer, server):
             'FindUserByContact': grpc.unary_unary_rpc_method_handler(
                     servicer.FindUserByContact,
                     request_deserializer=sentiric_dot_user_dot_v1_dot_user__pb2.FindUserByContactRequest.FromString,
-                    response_serializer=sentiric_dot_user_dot_v1_dot_user__pb2.GetUserResponse.SerializeToString,
+                    response_serializer=sentiric_dot_user_dot_v1_dot_user__pb2.FindUserByContactResponse.SerializeToString,
             ),
             'CreateUser': grpc.unary_unary_rpc_method_handler(
                     servicer.CreateUser,
@@ -125,7 +124,7 @@ class UserService(object):
             target,
             '/sentiric.user.v1.UserService/FindUserByContact',
             sentiric_dot_user_dot_v1_dot_user__pb2.FindUserByContactRequest.SerializeToString,
-            sentiric_dot_user_dot_v1_dot_user__pb2.GetUserResponse.FromString,
+            sentiric_dot_user_dot_v1_dot_user__pb2.FindUserByContactResponse.FromString,
             options,
             channel_credentials,
             insecure,

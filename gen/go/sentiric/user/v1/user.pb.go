@@ -24,13 +24,12 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// Contact mesajı, bir kullanıcının iletişim kanallarını temsil eder.
 type Contact struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                                        // Veritabanındaki 'contacts' tablosunun primary key'i
-	UserId        string                 `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`                   // UUID formatında
-	ContactType   string                 `protobuf:"bytes,3,opt,name=contact_type,json=contactType,proto3" json:"contact_type,omitempty"`    // 'phone', 'whatsapp', 'email'
-	ContactValue  string                 `protobuf:"bytes,4,opt,name=contact_value,json=contactValue,proto3" json:"contact_value,omitempty"` // örn: '905551234567'
+	Id            int32                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	UserId        string                 `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	ContactType   string                 `protobuf:"bytes,3,opt,name=contact_type,json=contactType,proto3" json:"contact_type,omitempty"`
+	ContactValue  string                 `protobuf:"bytes,4,opt,name=contact_value,json=contactValue,proto3" json:"contact_value,omitempty"`
 	IsPrimary     bool                   `protobuf:"varint,5,opt,name=is_primary,json=isPrimary,proto3" json:"is_primary,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -101,15 +100,13 @@ func (x *Contact) GetIsPrimary() bool {
 	return false
 }
 
-// User mesajı artık iletişim bilgisi içermiyor, bir profil görevi görüyor.
 type User struct {
-	state    protoimpl.MessageState `protogen:"open.v1"`
-	Id       string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"` // UUID formatında
-	Name     *string                `protobuf:"bytes,2,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	TenantId string                 `protobuf:"bytes,3,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
-	UserType string                 `protobuf:"bytes,4,opt,name=user_type,json=userType,proto3" json:"user_type,omitempty"`
-	// Kullanıcının tüm iletişim kanallarını içeren liste
-	Contacts      []*Contact `protobuf:"bytes,5,rep,name=contacts,proto3" json:"contacts,omitempty"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name          *string                `protobuf:"bytes,2,opt,name=name,proto3,oneof" json:"name,omitempty"`
+	TenantId      string                 `protobuf:"bytes,3,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	UserType      string                 `protobuf:"bytes,4,opt,name=user_type,json=userType,proto3" json:"user_type,omitempty"`
+	Contacts      []*Contact             `protobuf:"bytes,5,rep,name=contacts,proto3" json:"contacts,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -179,10 +176,9 @@ func (x *User) GetContacts() []*Contact {
 	return nil
 }
 
-// Artık kullanıcıyı bulmak için birden fazla yöntem var.
 type GetUserRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"` // UUID ile doğrudan arama
+	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -224,6 +220,50 @@ func (x *GetUserRequest) GetUserId() string {
 	return ""
 }
 
+type GetUserResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	User          *User                  `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetUserResponse) Reset() {
+	*x = GetUserResponse{}
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetUserResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetUserResponse) ProtoMessage() {}
+
+func (x *GetUserResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetUserResponse.ProtoReflect.Descriptor instead.
+func (*GetUserResponse) Descriptor() ([]byte, []int) {
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *GetUserResponse) GetUser() *User {
+	if x != nil {
+		return x.User
+	}
+	return nil
+}
+
 type FindUserByContactRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ContactType   string                 `protobuf:"bytes,1,opt,name=contact_type,json=contactType,proto3" json:"contact_type,omitempty"`
@@ -234,7 +274,7 @@ type FindUserByContactRequest struct {
 
 func (x *FindUserByContactRequest) Reset() {
 	*x = FindUserByContactRequest{}
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[3]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -246,7 +286,7 @@ func (x *FindUserByContactRequest) String() string {
 func (*FindUserByContactRequest) ProtoMessage() {}
 
 func (x *FindUserByContactRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[3]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -259,7 +299,7 @@ func (x *FindUserByContactRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FindUserByContactRequest.ProtoReflect.Descriptor instead.
 func (*FindUserByContactRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{3}
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *FindUserByContactRequest) GetContactType() string {
@@ -276,28 +316,30 @@ func (x *FindUserByContactRequest) GetContactValue() string {
 	return ""
 }
 
-type GetUserResponse struct {
+// YENİ RESPONSE MESAJI: FindUserByContact için özel yanıt.
+// GetUserResponse ile aynı içeriğe sahip olsa bile, ayrı bir tip olması önemlidir.
+type FindUserByContactResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	User          *User                  `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetUserResponse) Reset() {
-	*x = GetUserResponse{}
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[4]
+func (x *FindUserByContactResponse) Reset() {
+	*x = FindUserByContactResponse{}
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetUserResponse) String() string {
+func (x *FindUserByContactResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetUserResponse) ProtoMessage() {}
+func (*FindUserByContactResponse) ProtoMessage() {}
 
-func (x *GetUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[4]
+func (x *FindUserByContactResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -308,19 +350,18 @@ func (x *GetUserResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetUserResponse.ProtoReflect.Descriptor instead.
-func (*GetUserResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{4}
+// Deprecated: Use FindUserByContactResponse.ProtoReflect.Descriptor instead.
+func (*FindUserByContactResponse) Descriptor() ([]byte, []int) {
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *GetUserResponse) GetUser() *User {
+func (x *FindUserByContactResponse) GetUser() *User {
 	if x != nil {
 		return x.User
 	}
 	return nil
 }
 
-// CreateUser artık temel profil ve ilk iletişim bilgisini alır.
 type CreateUserRequest struct {
 	state          protoimpl.MessageState            `protogen:"open.v1"`
 	TenantId       string                            `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
@@ -333,7 +374,7 @@ type CreateUserRequest struct {
 
 func (x *CreateUserRequest) Reset() {
 	*x = CreateUserRequest{}
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[5]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -345,7 +386,7 @@ func (x *CreateUserRequest) String() string {
 func (*CreateUserRequest) ProtoMessage() {}
 
 func (x *CreateUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[5]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -358,7 +399,7 @@ func (x *CreateUserRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateUserRequest.ProtoReflect.Descriptor instead.
 func (*CreateUserRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{5}
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *CreateUserRequest) GetTenantId() string {
@@ -398,7 +439,7 @@ type CreateUserResponse struct {
 
 func (x *CreateUserResponse) Reset() {
 	*x = CreateUserResponse{}
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[6]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -410,7 +451,7 @@ func (x *CreateUserResponse) String() string {
 func (*CreateUserResponse) ProtoMessage() {}
 
 func (x *CreateUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[6]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -423,7 +464,7 @@ func (x *CreateUserResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateUserResponse.ProtoReflect.Descriptor instead.
 func (*CreateUserResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{6}
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *CreateUserResponse) GetUser() *User {
@@ -433,7 +474,6 @@ func (x *CreateUserResponse) GetUser() *User {
 	return nil
 }
 
-// Kullanıcı oluşturulurken en az bir iletişim kanalı verilmeli.
 type CreateUserRequest_InitialContact struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ContactType   string                 `protobuf:"bytes,1,opt,name=contact_type,json=contactType,proto3" json:"contact_type,omitempty"`
@@ -444,7 +484,7 @@ type CreateUserRequest_InitialContact struct {
 
 func (x *CreateUserRequest_InitialContact) Reset() {
 	*x = CreateUserRequest_InitialContact{}
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[7]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -456,7 +496,7 @@ func (x *CreateUserRequest_InitialContact) String() string {
 func (*CreateUserRequest_InitialContact) ProtoMessage() {}
 
 func (x *CreateUserRequest_InitialContact) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[7]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -469,7 +509,7 @@ func (x *CreateUserRequest_InitialContact) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateUserRequest_InitialContact.ProtoReflect.Descriptor instead.
 func (*CreateUserRequest_InitialContact) Descriptor() ([]byte, []int) {
-	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{5, 0}
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{6, 0}
 }
 
 func (x *CreateUserRequest_InitialContact) GetContactType() string {
@@ -506,11 +546,13 @@ const file_sentiric_user_v1_user_proto_rawDesc = "" +
 	"\bcontacts\x18\x05 \x03(\v2\x19.sentiric.user.v1.ContactR\bcontactsB\a\n" +
 	"\x05_name\")\n" +
 	"\x0eGetUserRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\tR\x06userId\"b\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId\"=\n" +
+	"\x0fGetUserResponse\x12*\n" +
+	"\x04user\x18\x01 \x01(\v2\x16.sentiric.user.v1.UserR\x04user\"b\n" +
 	"\x18FindUserByContactRequest\x12!\n" +
 	"\fcontact_type\x18\x01 \x01(\tR\vcontactType\x12#\n" +
-	"\rcontact_value\x18\x02 \x01(\tR\fcontactValue\"=\n" +
-	"\x0fGetUserResponse\x12*\n" +
+	"\rcontact_value\x18\x02 \x01(\tR\fcontactValue\"G\n" +
+	"\x19FindUserByContactResponse\x12*\n" +
 	"\x04user\x18\x01 \x01(\v2\x16.sentiric.user.v1.UserR\x04user\"\xa6\x02\n" +
 	"\x11CreateUserRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x1b\n" +
@@ -522,10 +564,10 @@ const file_sentiric_user_v1_user_proto_rawDesc = "" +
 	"\rcontact_value\x18\x02 \x01(\tR\fcontactValueB\a\n" +
 	"\x05_name\"@\n" +
 	"\x12CreateUserResponse\x12*\n" +
-	"\x04user\x18\x01 \x01(\v2\x16.sentiric.user.v1.UserR\x04user2\x91\x03\n" +
+	"\x04user\x18\x01 \x01(\v2\x16.sentiric.user.v1.UserR\x04user2\x9b\x03\n" +
 	"\vUserService\x12q\n" +
-	"\aGetUser\x12 .sentiric.user.v1.GetUserRequest\x1a!.sentiric.user.v1.GetUserResponse\"!\x82\xd3\xe4\x93\x02\x1b\x12\x19/v1/users/by-id/{user_id}\x12\x9f\x01\n" +
-	"\x11FindUserByContact\x12*.sentiric.user.v1.FindUserByContactRequest\x1a!.sentiric.user.v1.GetUserResponse\";\x82\xd3\xe4\x93\x025\x123/v1/users/by-contact/{contact_type}/{contact_value}\x12m\n" +
+	"\aGetUser\x12 .sentiric.user.v1.GetUserRequest\x1a!.sentiric.user.v1.GetUserResponse\"!\x82\xd3\xe4\x93\x02\x1b\x12\x19/v1/users/by-id/{user_id}\x12\xa9\x01\n" +
+	"\x11FindUserByContact\x12*.sentiric.user.v1.FindUserByContactRequest\x1a+.sentiric.user.v1.FindUserByContactResponse\";\x82\xd3\xe4\x93\x025\x123/v1/users/by-contact/{contact_type}/{contact_value}\x12m\n" +
 	"\n" +
 	"CreateUser\x12#.sentiric.user.v1.CreateUserRequest\x1a$.sentiric.user.v1.CreateUserResponse\"\x14\x82\xd3\xe4\x93\x02\x0e:\x01*\"\t/v1/usersBGZEgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/user/v1;userv1b\x06proto3"
 
@@ -541,33 +583,35 @@ func file_sentiric_user_v1_user_proto_rawDescGZIP() []byte {
 	return file_sentiric_user_v1_user_proto_rawDescData
 }
 
-var file_sentiric_user_v1_user_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_sentiric_user_v1_user_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_sentiric_user_v1_user_proto_goTypes = []any{
 	(*Contact)(nil),                          // 0: sentiric.user.v1.Contact
 	(*User)(nil),                             // 1: sentiric.user.v1.User
 	(*GetUserRequest)(nil),                   // 2: sentiric.user.v1.GetUserRequest
-	(*FindUserByContactRequest)(nil),         // 3: sentiric.user.v1.FindUserByContactRequest
-	(*GetUserResponse)(nil),                  // 4: sentiric.user.v1.GetUserResponse
-	(*CreateUserRequest)(nil),                // 5: sentiric.user.v1.CreateUserRequest
-	(*CreateUserResponse)(nil),               // 6: sentiric.user.v1.CreateUserResponse
-	(*CreateUserRequest_InitialContact)(nil), // 7: sentiric.user.v1.CreateUserRequest.InitialContact
+	(*GetUserResponse)(nil),                  // 3: sentiric.user.v1.GetUserResponse
+	(*FindUserByContactRequest)(nil),         // 4: sentiric.user.v1.FindUserByContactRequest
+	(*FindUserByContactResponse)(nil),        // 5: sentiric.user.v1.FindUserByContactResponse
+	(*CreateUserRequest)(nil),                // 6: sentiric.user.v1.CreateUserRequest
+	(*CreateUserResponse)(nil),               // 7: sentiric.user.v1.CreateUserResponse
+	(*CreateUserRequest_InitialContact)(nil), // 8: sentiric.user.v1.CreateUserRequest.InitialContact
 }
 var file_sentiric_user_v1_user_proto_depIdxs = []int32{
 	0, // 0: sentiric.user.v1.User.contacts:type_name -> sentiric.user.v1.Contact
 	1, // 1: sentiric.user.v1.GetUserResponse.user:type_name -> sentiric.user.v1.User
-	7, // 2: sentiric.user.v1.CreateUserRequest.initial_contact:type_name -> sentiric.user.v1.CreateUserRequest.InitialContact
-	1, // 3: sentiric.user.v1.CreateUserResponse.user:type_name -> sentiric.user.v1.User
-	2, // 4: sentiric.user.v1.UserService.GetUser:input_type -> sentiric.user.v1.GetUserRequest
-	3, // 5: sentiric.user.v1.UserService.FindUserByContact:input_type -> sentiric.user.v1.FindUserByContactRequest
-	5, // 6: sentiric.user.v1.UserService.CreateUser:input_type -> sentiric.user.v1.CreateUserRequest
-	4, // 7: sentiric.user.v1.UserService.GetUser:output_type -> sentiric.user.v1.GetUserResponse
-	4, // 8: sentiric.user.v1.UserService.FindUserByContact:output_type -> sentiric.user.v1.GetUserResponse
-	6, // 9: sentiric.user.v1.UserService.CreateUser:output_type -> sentiric.user.v1.CreateUserResponse
-	7, // [7:10] is the sub-list for method output_type
-	4, // [4:7] is the sub-list for method input_type
-	4, // [4:4] is the sub-list for extension type_name
-	4, // [4:4] is the sub-list for extension extendee
-	0, // [0:4] is the sub-list for field type_name
+	1, // 2: sentiric.user.v1.FindUserByContactResponse.user:type_name -> sentiric.user.v1.User
+	8, // 3: sentiric.user.v1.CreateUserRequest.initial_contact:type_name -> sentiric.user.v1.CreateUserRequest.InitialContact
+	1, // 4: sentiric.user.v1.CreateUserResponse.user:type_name -> sentiric.user.v1.User
+	2, // 5: sentiric.user.v1.UserService.GetUser:input_type -> sentiric.user.v1.GetUserRequest
+	4, // 6: sentiric.user.v1.UserService.FindUserByContact:input_type -> sentiric.user.v1.FindUserByContactRequest
+	6, // 7: sentiric.user.v1.UserService.CreateUser:input_type -> sentiric.user.v1.CreateUserRequest
+	3, // 8: sentiric.user.v1.UserService.GetUser:output_type -> sentiric.user.v1.GetUserResponse
+	5, // 9: sentiric.user.v1.UserService.FindUserByContact:output_type -> sentiric.user.v1.FindUserByContactResponse
+	7, // 10: sentiric.user.v1.UserService.CreateUser:output_type -> sentiric.user.v1.CreateUserResponse
+	8, // [8:11] is the sub-list for method output_type
+	5, // [5:8] is the sub-list for method input_type
+	5, // [5:5] is the sub-list for extension type_name
+	5, // [5:5] is the sub-list for extension extendee
+	0, // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_sentiric_user_v1_user_proto_init() }
@@ -576,14 +620,14 @@ func file_sentiric_user_v1_user_proto_init() {
 		return
 	}
 	file_sentiric_user_v1_user_proto_msgTypes[1].OneofWrappers = []any{}
-	file_sentiric_user_v1_user_proto_msgTypes[5].OneofWrappers = []any{}
+	file_sentiric_user_v1_user_proto_msgTypes[6].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sentiric_user_v1_user_proto_rawDesc), len(file_sentiric_user_v1_user_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   8,
+			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

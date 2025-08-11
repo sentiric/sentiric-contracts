@@ -40,6 +40,17 @@ function deserialize_sentiric_user_v1_FindUserByContactRequest(buffer_arg) {
   return sentiric_user_v1_user_pb.FindUserByContactRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sentiric_user_v1_FindUserByContactResponse(arg) {
+  if (!(arg instanceof sentiric_user_v1_user_pb.FindUserByContactResponse)) {
+    throw new Error('Expected argument of type sentiric.user.v1.FindUserByContactResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sentiric_user_v1_FindUserByContactResponse(buffer_arg) {
+  return sentiric_user_v1_user_pb.FindUserByContactResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sentiric_user_v1_GetUserRequest(arg) {
   if (!(arg instanceof sentiric_user_v1_user_pb.GetUserRequest)) {
     throw new Error('Expected argument of type sentiric.user.v1.GetUserRequest');
@@ -75,17 +86,16 @@ var UserServiceService = exports.UserServiceService = {
     responseSerialize: serialize_sentiric_user_v1_GetUserResponse,
     responseDeserialize: deserialize_sentiric_user_v1_GetUserResponse,
   },
-  // YENİ RPC: Bir iletişim bilgisiyle kullanıcıyı bulmak için.
-findUserByContact: {
+  findUserByContact: {
     path: '/sentiric.user.v1.UserService/FindUserByContact',
     requestStream: false,
     responseStream: false,
     requestType: sentiric_user_v1_user_pb.FindUserByContactRequest,
-    responseType: sentiric_user_v1_user_pb.GetUserResponse,
+    responseType: sentiric_user_v1_user_pb.FindUserByContactResponse,
     requestSerialize: serialize_sentiric_user_v1_FindUserByContactRequest,
     requestDeserialize: deserialize_sentiric_user_v1_FindUserByContactRequest,
-    responseSerialize: serialize_sentiric_user_v1_GetUserResponse,
-    responseDeserialize: deserialize_sentiric_user_v1_GetUserResponse,
+    responseSerialize: serialize_sentiric_user_v1_FindUserByContactResponse,
+    responseDeserialize: deserialize_sentiric_user_v1_FindUserByContactResponse,
   },
   createUser: {
     path: '/sentiric.user.v1.UserService/CreateUser',
