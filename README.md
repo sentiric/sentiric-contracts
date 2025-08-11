@@ -81,4 +81,32 @@ C:\sentiric\sentiric-contracts> cd proto
 C:\sentiric\sentiric-contracts\proto> buf generate
 
 go mod tidy
+
+```
+
+feature
+```bash
+git commit -m "feat(data-model): "
+git push origin main
+git tag v1.5.0
+git push origin v1.5.0
+```
+
+fix
+```bash
+git add .
+git commit -m "fix(contracts): xxx"
+git tag -d v1.5.0
+git push --delete origin v1.5.0
+git tag v1.5.0
+git push origin v1.5.0
+```
+
+release
+```bash
+git add .
+git commit -m "chore(release): Increment version to 1.5.1 for republishing after CI fix"
+git push origin main
+git tag v1.5.1
+git push origin v1.5.1
 ```
