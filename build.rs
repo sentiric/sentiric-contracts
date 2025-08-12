@@ -8,7 +8,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     
     println!("cargo:rerun-if-changed=proto/buf.yaml");
 
-    // `buf` komutunun varlığını kontrol et ve daha iyi bir hata mesajı ver
     let buf_cmd = "buf";
     let status = Command::new(buf_cmd)
         .arg("export")
@@ -19,7 +18,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         .arg("proto/buf.yaml")
         .status()
         .map_err(|e| {
-            // Eğer komut hiç bulunamazsa, bu hata tetiklenir.
             format!(
                 "Failed to execute `{}`. Is `buf` installed and in your PATH? Error: {}",
                 buf_cmd, e
@@ -34,8 +32,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         .into());
     }
 
-    // 2. Adım: tonic_build'a hem kendi proto dosyalarımızın olduğu yeri,
-    // hem de bağımlılıkları indirdiğimiz yeri söyle.
+    // 2. Adım: tonic_build'a arama yollarını söyle.
     tonic_build::configure()
         .build_server(true)
         .build_client(true)

@@ -92,16 +92,6 @@ git tag v1.5.0
 git push origin v1.5.0
 ```
 
-fix
-```bash
-git add .
-git commit -m "fix(contracts): xxx"
-git tag -d v1.5.0
-git push --delete origin v1.5.0
-git tag v1.5.0
-git push origin v1.5.0
-```
-
 release
 ```bash
 git add .
@@ -109,4 +99,15 @@ git commit -m "chore(release): Increment version to 1.6.1 for republishing after
 git push origin main
 git tag v1.6.1
 git push origin v1.6.1
+```
+
+
+fix
+```bash
+git add .
+git commit -m "ffix(build): Improve build script to be self-contained via 'buf export'"
+git tag -d v1.6.2
+git push --delete origin v1.6.2
+git tag v1.6.2
+git push origin v1.6.2
 ```
