@@ -42,6 +42,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 "proto/sentiric/user/v1/user.proto",
                 "proto/sentiric/dialplan/v1/dialplan.proto",
                 "proto/sentiric/media/v1/media.proto",
+                "proto/sentiric/tts/v1/tts.proto", // <-- BU SATIRI EKLE
             ],
             &[
                 "proto", // Kendi .proto dosyalarımız

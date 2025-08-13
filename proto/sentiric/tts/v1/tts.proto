@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package sentiric.tts.v1;
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/tts/v1;ttsv1";
+
+// Sentiric Text-to-Speech Gateway Service
+service TextToSpeechService {
+  // Verilen metni sese dönüştürür.
+  rpc Synthesize(SynthesizeRequest) returns (SynthesizeResponse);
+}
+
+message SynthesizeRequest {
+  // Sentezlenecek metin. SSML de destekleyebilir.
+  string text = 1;
+
+  // Metnin dili (örn: "tr", "en")
+  string language_code = 2;
+
+  // Ses klonlama için opsiyonel referans ses dosyası URL'i
+  optional string speaker_wav_url = 3;
+
+  // İstenen ses kalitesi veya sağlayıcı (örn: "fast", "premium", "elevenlabs")
+  optional string voice_selector = 4;
+}
+
+message SynthesizeResponse {
+  // Sentezlenmiş ses verisi, WAV formatında.
+  bytes audio_content = 1;
+
+  // Sentezlemenin yapıldığı motorun adı (örn: "coqui-tts", "edge-tts")
+  string engine_used = 2;
+}
