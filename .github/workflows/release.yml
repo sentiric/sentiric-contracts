@@ -28,6 +28,8 @@ jobs:
 
       - name: Setup Buf
         uses: bufbuild/buf-setup-action@v1.35.1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
       
       # YENİ: buf dep update adımını ekliyoruz
       - name: Update dependencies
