@@ -48,8 +48,6 @@ pub struct FindUserByContactRequest {
     #[prost(string, tag="2")]
     pub contact_value: ::prost::alloc::string::String,
 }
-/// YENİ RESPONSE MESAJI: FindUserByContact için özel yanıt.
-/// GetUserResponse ile aynı içeriğe sahip olsa bile, ayrı bir tip olması önemlidir.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct FindUserByContactResponse {

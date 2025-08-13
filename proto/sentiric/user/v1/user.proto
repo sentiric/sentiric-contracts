@@ -1,9 +1,7 @@
-// ========== FILE: sentiric-contracts/proto/sentiric/user/v1/user.proto ==========
+// ========== sentiric-contracts/proto/sentiric/user/v1/user.proto ==========
 syntax = "proto3";
 
 package sentiric.user.v1;
-
-import "google/api/annotations.proto";
 
 option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/user/v1;userv1";
 
@@ -24,24 +22,9 @@ message User {
 }
 
 service UserService {
-  rpc GetUser(GetUserRequest) returns (GetUserResponse) {
-    option (google.api.http) = {
-      get: "/v1/users/by-id/{user_id}"
-    };
-  }
-
-  rpc FindUserByContact(FindUserByContactRequest) returns (FindUserByContactResponse) {
-     option (google.api.http) = {
-      get: "/v1/users/by-contact/{contact_type}/{contact_value}"
-    };
-  }
-  
-  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {
-    option (google.api.http) = {
-      post: "/v1/users"
-      body: "*"
-    };
-  }
+  rpc GetUser(GetUserRequest) returns (GetUserResponse);
+  rpc FindUserByContact(FindUserByContactRequest) returns (FindUserByContactResponse);
+  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse); // DÜZELTİLDİ
 }
 
 message GetUserRequest {
@@ -57,8 +40,6 @@ message FindUserByContactRequest {
   string contact_value = 2;
 }
 
-// YENİ RESPONSE MESAJI: FindUserByContact için özel yanıt.
-// GetUserResponse ile aynı içeriğe sahip olsa bile, ayrı bir tip olması önemlidir.
 message FindUserByContactResponse {
   User user = 1;
 }

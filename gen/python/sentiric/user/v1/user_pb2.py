@@ -22,10 +22,9 @@ _runtime_version.ValidateProtobufRuntimeVersion(
 _sym_db = _symbol_database.Default()
 
 
-from google.api import annotations_pb2 as google_dot_api_dot_annotations__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1bsentiric/user/v1/user.proto\x12\x10sentiric.user.v1\x1a\x1cgoogle/api/annotations.proto\"\x99\x01\n\x07\x43ontact\x12\x0e\n\x02id\x18\x01 \x01(\x05R\x02id\x12\x17\n\x07user_id\x18\x02 \x01(\tR\x06userId\x12!\n\x0c\x63ontact_type\x18\x03 \x01(\tR\x0b\x63ontactType\x12#\n\rcontact_value\x18\x04 \x01(\tR\x0c\x63ontactValue\x12\x1d\n\nis_primary\x18\x05 \x01(\x08R\tisPrimary\"\xa9\x01\n\x04User\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12\x17\n\x04name\x18\x02 \x01(\tH\x00R\x04name\x88\x01\x01\x12\x1b\n\ttenant_id\x18\x03 \x01(\tR\x08tenantId\x12\x1b\n\tuser_type\x18\x04 \x01(\tR\x08userType\x12\x35\n\x08\x63ontacts\x18\x05 \x03(\x0b\x32\x19.sentiric.user.v1.ContactR\x08\x63ontactsB\x07\n\x05_name\")\n\x0eGetUserRequest\x12\x17\n\x07user_id\x18\x01 \x01(\tR\x06userId\"=\n\x0fGetUserResponse\x12*\n\x04user\x18\x01 \x01(\x0b\x32\x16.sentiric.user.v1.UserR\x04user\"b\n\x18\x46indUserByContactRequest\x12!\n\x0c\x63ontact_type\x18\x01 \x01(\tR\x0b\x63ontactType\x12#\n\rcontact_value\x18\x02 \x01(\tR\x0c\x63ontactValue\"G\n\x19\x46indUserByContactResponse\x12*\n\x04user\x18\x01 \x01(\x0b\x32\x16.sentiric.user.v1.UserR\x04user\"\xa6\x02\n\x11\x43reateUserRequest\x12\x1b\n\ttenant_id\x18\x01 \x01(\tR\x08tenantId\x12\x1b\n\tuser_type\x18\x02 \x01(\tR\x08userType\x12\x17\n\x04name\x18\x03 \x01(\tH\x00R\x04name\x88\x01\x01\x12[\n\x0finitial_contact\x18\x04 \x01(\x0b\x32\x32.sentiric.user.v1.CreateUserRequest.InitialContactR\x0einitialContact\x1aX\n\x0eInitialContact\x12!\n\x0c\x63ontact_type\x18\x01 \x01(\tR\x0b\x63ontactType\x12#\n\rcontact_value\x18\x02 \x01(\tR\x0c\x63ontactValueB\x07\n\x05_name\"@\n\x12\x43reateUserResponse\x12*\n\x04user\x18\x01 \x01(\x0b\x32\x16.sentiric.user.v1.UserR\x04user2\x9b\x03\n\x0bUserService\x12q\n\x07GetUser\x12 .sentiric.user.v1.GetUserRequest\x1a!.sentiric.user.v1.GetUserResponse\"!\x82\xd3\xe4\x93\x02\x1b\x12\x19/v1/users/by-id/{user_id}\x12\xa9\x01\n\x11\x46indUserByContact\x12*.sentiric.user.v1.FindUserByContactRequest\x1a+.sentiric.user.v1.FindUserByContactResponse\";\x82\xd3\xe4\x93\x02\x35\x12\x33/v1/users/by-contact/{contact_type}/{contact_value}\x12m\n\nCreateUser\x12#.sentiric.user.v1.CreateUserRequest\x1a$.sentiric.user.v1.CreateUserResponse\"\x14\x82\xd3\xe4\x93\x02\x0e\"\t/v1/users:\x01*BGZEgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/user/v1;userv1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1bsentiric/user/v1/user.proto\x12\x10sentiric.user.v1\"\x99\x01\n\x07\x43ontact\x12\x0e\n\x02id\x18\x01 \x01(\x05R\x02id\x12\x17\n\x07user_id\x18\x02 \x01(\tR\x06userId\x12!\n\x0c\x63ontact_type\x18\x03 \x01(\tR\x0b\x63ontactType\x12#\n\rcontact_value\x18\x04 \x01(\tR\x0c\x63ontactValue\x12\x1d\n\nis_primary\x18\x05 \x01(\x08R\tisPrimary\"\xa9\x01\n\x04User\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12\x17\n\x04name\x18\x02 \x01(\tH\x00R\x04name\x88\x01\x01\x12\x1b\n\ttenant_id\x18\x03 \x01(\tR\x08tenantId\x12\x1b\n\tuser_type\x18\x04 \x01(\tR\x08userType\x12\x35\n\x08\x63ontacts\x18\x05 \x03(\x0b\x32\x19.sentiric.user.v1.ContactR\x08\x63ontactsB\x07\n\x05_name\")\n\x0eGetUserRequest\x12\x17\n\x07user_id\x18\x01 \x01(\tR\x06userId\"=\n\x0fGetUserResponse\x12*\n\x04user\x18\x01 \x01(\x0b\x32\x16.sentiric.user.v1.UserR\x04user\"b\n\x18\x46indUserByContactRequest\x12!\n\x0c\x63ontact_type\x18\x01 \x01(\tR\x0b\x63ontactType\x12#\n\rcontact_value\x18\x02 \x01(\tR\x0c\x63ontactValue\"G\n\x19\x46indUserByContactResponse\x12*\n\x04user\x18\x01 \x01(\x0b\x32\x16.sentiric.user.v1.UserR\x04user\"\xa6\x02\n\x11\x43reateUserRequest\x12\x1b\n\ttenant_id\x18\x01 \x01(\tR\x08tenantId\x12\x1b\n\tuser_type\x18\x02 \x01(\tR\x08userType\x12\x17\n\x04name\x18\x03 \x01(\tH\x00R\x04name\x88\x01\x01\x12[\n\x0finitial_contact\x18\x04 \x01(\x0b\x32\x32.sentiric.user.v1.CreateUserRequest.InitialContactR\x0einitialContact\x1aX\n\x0eInitialContact\x12!\n\x0c\x63ontact_type\x18\x01 \x01(\tR\x0b\x63ontactType\x12#\n\rcontact_value\x18\x02 \x01(\tR\x0c\x63ontactValueB\x07\n\x05_name\"@\n\x12\x43reateUserResponse\x12*\n\x04user\x18\x01 \x01(\x0b\x32\x16.sentiric.user.v1.UserR\x04user2\xa4\x02\n\x0bUserService\x12N\n\x07GetUser\x12 .sentiric.user.v1.GetUserRequest\x1a!.sentiric.user.v1.GetUserResponse\x12l\n\x11\x46indUserByContact\x12*.sentiric.user.v1.FindUserByContactRequest\x1a+.sentiric.user.v1.FindUserByContactResponse\x12W\n\nCreateUser\x12#.sentiric.user.v1.CreateUserRequest\x1a$.sentiric.user.v1.CreateUserResponseBGZEgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/user/v1;userv1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -33,30 +32,24 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'sentiric.user.v1.user_pb2',
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
   _globals['DESCRIPTOR']._serialized_options = b'ZEgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/user/v1;userv1'
-  _globals['_USERSERVICE'].methods_by_name['GetUser']._loaded_options = None
-  _globals['_USERSERVICE'].methods_by_name['GetUser']._serialized_options = b'\202\323\344\223\002\033\022\031/v1/users/by-id/{user_id}'
-  _globals['_USERSERVICE'].methods_by_name['FindUserByContact']._loaded_options = None
-  _globals['_USERSERVICE'].methods_by_name['FindUserByContact']._serialized_options = b'\202\323\344\223\0025\0223/v1/users/by-contact/{contact_type}/{contact_value}'
-  _globals['_USERSERVICE'].methods_by_name['CreateUser']._loaded_options = None
-  _globals['_USERSERVICE'].methods_by_name['CreateUser']._serialized_options = b'\202\323\344\223\002\016\"\t/v1/users:\001*'
-  _globals['_CONTACT']._serialized_start=80
-  _globals['_CONTACT']._serialized_end=233
-  _globals['_USER']._serialized_start=236
-  _globals['_USER']._serialized_end=405
-  _globals['_GETUSERREQUEST']._serialized_start=407
-  _globals['_GETUSERREQUEST']._serialized_end=448
-  _globals['_GETUSERRESPONSE']._serialized_start=450
-  _globals['_GETUSERRESPONSE']._serialized_end=511
-  _globals['_FINDUSERBYCONTACTREQUEST']._serialized_start=513
-  _globals['_FINDUSERBYCONTACTREQUEST']._serialized_end=611
-  _globals['_FINDUSERBYCONTACTRESPONSE']._serialized_start=613
-  _globals['_FINDUSERBYCONTACTRESPONSE']._serialized_end=684
-  _globals['_CREATEUSERREQUEST']._serialized_start=687
-  _globals['_CREATEUSERREQUEST']._serialized_end=981
-  _globals['_CREATEUSERREQUEST_INITIALCONTACT']._serialized_start=884
-  _globals['_CREATEUSERREQUEST_INITIALCONTACT']._serialized_end=972
-  _globals['_CREATEUSERRESPONSE']._serialized_start=983
-  _globals['_CREATEUSERRESPONSE']._serialized_end=1047
-  _globals['_USERSERVICE']._serialized_start=1050
-  _globals['_USERSERVICE']._serialized_end=1461
+  _globals['_CONTACT']._serialized_start=50
+  _globals['_CONTACT']._serialized_end=203
+  _globals['_USER']._serialized_start=206
+  _globals['_USER']._serialized_end=375
+  _globals['_GETUSERREQUEST']._serialized_start=377
+  _globals['_GETUSERREQUEST']._serialized_end=418
+  _globals['_GETUSERRESPONSE']._serialized_start=420
+  _globals['_GETUSERRESPONSE']._serialized_end=481
+  _globals['_FINDUSERBYCONTACTREQUEST']._serialized_start=483
+  _globals['_FINDUSERBYCONTACTREQUEST']._serialized_end=581
+  _globals['_FINDUSERBYCONTACTRESPONSE']._serialized_start=583
+  _globals['_FINDUSERBYCONTACTRESPONSE']._serialized_end=654
+  _globals['_CREATEUSERREQUEST']._serialized_start=657
+  _globals['_CREATEUSERREQUEST']._serialized_end=951
+  _globals['_CREATEUSERREQUEST_INITIALCONTACT']._serialized_start=854
+  _globals['_CREATEUSERREQUEST_INITIALCONTACT']._serialized_end=942
+  _globals['_CREATEUSERRESPONSE']._serialized_start=953
+  _globals['_CREATEUSERRESPONSE']._serialized_end=1017
+  _globals['_USERSERVICE']._serialized_start=1020
+  _globals['_USERSERVICE']._serialized_end=1312
 # @@protoc_insertion_point(module_scope)
