@@ -1,65 +1,55 @@
-// ========== FILE: sentiric-contracts/build.rs (v3 - KURŞUN GEÇİRMEZ VERSİYON) ==========
 use std::env;
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 use std::process::Command;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    // Projenin kök dizinini, bu build.rs dosyasının konumuna göre buluyoruz.
-    // Bu, Cargo'nun script'i nereye kopyaladığından bağımsız çalışmasını sağlar.
-    let manifest_dir = PathBuf::from(env::var("CARGO_MANIFEST_DIR")?);
-    println!("CARGO_MANIFEST_DIR: {}", manifest_dir.display());
-
+    // build.rs'in çalıştığı geçici dizini alıyoruz
     let out_dir = PathBuf::from(env::var("OUT_DIR")?);
+    
+    // Bağımlılıkların indirileceği hedef dizini belirliyoruz
     let proto_deps_dir = out_dir.join("proto_deps");
 
-    // İhtiyaç duyacağımız ana yolları belirliyoruz
-    let project_proto_dir = manifest_dir.join("proto");
-    let buf_yaml_path = project_proto_dir.join("buf.yaml");
+    // buf'ın çalışacağı dizini (projenin kök dizini) belirliyoruz
+    let manifest_dir = PathBuf::from(env::var("CARGO_MANIFEST_DIR")?);
 
-    println!("`proto` dizini yolu: {}", project_proto_dir.display());
-    println!("`buf.yaml` yolu: {}", buf_yaml_path.display());
-
-    // buf.yaml dosyasının var olup olmadığını kontrol et
-    if !buf_yaml_path.exists() {
-        return Err(format!("buf.yaml dosyası beklenen konumda bulunamadı: {}", buf_yaml_path.display()).into());
-    }
-
-    // `buf export` komutunu çalıştır
-    println!("cargo:rerun-if-changed={}", buf_yaml_path.display());
+    // buf export komutunu çalıştırarak googleapis'i indiriyoruz
+    println!("cargo:rerun-if-changed=proto/buf.yaml");
     let buf_cmd = "buf";
     let status = Command::new(buf_cmd)
-        .current_dir(&project_proto_dir) // <-- EN KRİTİK DEĞİŞİKLİK: Komutu doğru klasörde çalıştır
+        // Komutu projenin kök dizininden çalıştırıyoruz
+        .current_dir(&manifest_dir) 
         .arg("export")
         .arg("buf.build/googleapis/googleapis")
         .arg("--output")
-        .arg(&proto_deps_dir)
-        // Artık --config demeye gerek yok çünkü doğru klasördeyiz
+        .arg(&proto_deps_dir) // Hedef olarak out_dir'in altını gösteriyoruz
         .status()
         .map_err(|e| format!("`{}` komutu çalıştırılamadı. PATH'te kurulu mu? Hata: {}", buf_cmd, e))?;
 
     if !status.success() {
         return Err(format!("`{} export` komutu başarısız oldu: {}. Detaylar için logları kontrol edin.", buf_cmd, status).into());
     }
-    
-    // Derlenecek proto dosyalarının yollarını kök dizine göre tam olarak belirt
+
+    // Derlenecek dosyalarımızı projenin kök dizinine göre tanımlıyoruz
     let proto_files = &[
-        project_proto_dir.join("sentiric/user/v1/user.proto"),
-        project_proto_dir.join("sentiric/dialplan/v1/dialplan.proto"),
-        project_proto_dir.join("sentiric/media/v1/media.proto"),
-        project_proto_dir.join("sentiric/tts/v1/tts.proto"),
+        "proto/sentiric/user/v1/user.proto",
+        "proto/sentiric/dialplan/v1/dialplan.proto",
+        "proto/sentiric/media/v1/media.proto",
+        "proto/sentiric/tts/v1/tts.proto",
     ];
 
-    // Derleyiciye hangi dizinlere bakacağını söylüyoruz
-    let proto_include_paths: &[&Path] = &[
-        &project_proto_dir,
-        &proto_deps_dir,
+    // Derleyiciye hangi dizinlere bakacağını söylüyoruz:
+    // 1. Kendi proto dosyalarımızın olduğu klasör
+    // 2. buf'ın bağımlılıkları indirdiği klasör
+    let proto_include_paths = &[
+        "proto",
+        proto_deps_dir.to_str().unwrap(),
     ];
 
     println!("Derleyici arama yolları: {:?}", proto_include_paths);
 
-    // Değişiklik olduğunda yeniden derlemeyi tetikle
+    // Değişiklikleri takip et
     for file in proto_files {
-        println!("cargo:rerun-if-changed={}", file.display());
+        println!("cargo:rerun-if-changed={}", file);
     }
 
     tonic_build::configure()
