@@ -1,5 +1,4 @@
 // DOSYA: sentiric-contracts/proto/sentiric/media/v1/media.proto
-
 syntax = "proto3";
 
 package sentiric.media.v1;
@@ -7,10 +6,13 @@ package sentiric.media.v1;
 option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/media/v1;mediav1";
 
 service MediaService {
+  // Bir çağrı oturumu için yeni bir RTP portu ayırır.
   rpc AllocatePort(AllocatePortRequest) returns (AllocatePortResponse);
+  
+  // Bir çağrı oturumu bittiğinde kullanılan RTP portunu serbest bırakır.
   rpc ReleasePort(ReleasePortRequest) returns (ReleasePortResponse);
   
-  // Belirtilen hedef adrese bir ses dosyası çalar.
+  // Devam eden bir çağrıya bir ses URI'si çalar.
   rpc PlayAudio(PlayAudioRequest) returns (PlayAudioResponse);
 }
 
@@ -19,7 +21,6 @@ message AllocatePortRequest {
 }
 
 message AllocatePortResponse {
-  // media-service'in dinleyeceği ve RTP alacağı port.
   uint32 rtp_port = 1;
 }
 
@@ -31,20 +32,25 @@ message ReleasePortResponse {
   bool success = 1;
 }
 
+// PlayAudioRequest, bir çağrıya ses çalmak için gereken tüm bilgileri içerir.
 message PlayAudioRequest {
-  // Sesin  gönderileceği hedef adres (IP:Port).
-  // Bu bilgi, SIP INVITE mesajındaki SDP'den alınır.
-  // Örn: "188.3.192.29:44224"
+  // Sesin gönderileceği nihai hedef (IP:Port).
+  // Bu bilgi orijinal INVITE'tan gelir ve agent tarafından sağlanır.
   string rtp_target_addr = 1;
-  
-  // Çalınacak ses dosyasının kimliği (ID) veya yolu.
-  // Örn: "assets/welcome_tr.wav"
-  string audio_id = 2;
 
-  uint32 server_rtp_port = 3; // <-- BU ALANIN EKLENDİĞİNDEN EMİN OLUN
+  // Bu isteğin hangi çağrıya ait olduğunu belirtir.
+  // media-service bu port üzerinden doğru RTP oturumunu (soketini) bulur.
+  uint32 server_rtp_port = 2;
+
+  // Çalınacak sesin evrensel konumu (URI).
+  // Örn: "file:///audio/tr/welcome.wav" (lokal asset)
+  // Örn: "http://tts-gateway:5002/stream/xyz" (dinamik ses)
+  // Örn: "data:audio/wav;base64,..." (base64 kodlanmış ses verisi)
+  // 'media-service' bu URI'yi yorumlayarak sesi alır.
+  string audio_uri = 3;
 }
 
 message PlayAudioResponse {
   bool success = 1;
-  string message = 2; // Opsiyonel: "Playback started for target..."
+  string message = 2;
 }

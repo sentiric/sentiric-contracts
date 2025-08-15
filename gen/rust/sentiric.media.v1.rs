@@ -9,7 +9,6 @@ pub struct AllocatePortRequest {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct AllocatePortResponse {
-    /// media-service'in dinleyeceği ve RTP alacağı port.
     #[prost(uint32, tag="1")]
     pub rtp_port: u32,
 }
@@ -25,28 +24,31 @@ pub struct ReleasePortResponse {
     #[prost(bool, tag="1")]
     pub success: bool,
 }
+/// PlayAudioRequest, bir çağrıya ses çalmak için gereken tüm bilgileri içerir.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PlayAudioRequest {
-    /// Sesin  gönderileceği hedef adres (IP:Port).
-    /// Bu bilgi, SIP INVITE mesajındaki SDP'den alınır.
-    /// Örn: "188.3.192.29:44224"
+    /// Sesin gönderileceği nihai hedef (IP:Port).
+    /// Bu bilgi orijinal INVITE'tan gelir ve agent tarafından sağlanır.
     #[prost(string, tag="1")]
     pub rtp_target_addr: ::prost::alloc::string::String,
-    /// Çalınacak ses dosyasının kimliği (ID) veya yolu.
-    /// Örn: "assets/welcome_tr.wav"
-    #[prost(string, tag="2")]
-    pub audio_id: ::prost::alloc::string::String,
-    /// <-- BU ALANIN EKLENDİĞİNDEN EMİN OLUN
-    #[prost(uint32, tag="3")]
+    /// Bu isteğin hangi çağrıya ait olduğunu belirtir.
+    /// media-service bu port üzerinden doğru RTP oturumunu (soketini) bulur.
+    #[prost(uint32, tag="2")]
     pub server_rtp_port: u32,
+    /// Çalınacak sesin evrensel konumu (URI).
+    /// Örn: "file:///audio/tr/welcome.wav" (lokal asset)
+    /// Örn: "<http://tts-gateway:5002/stream/xyz"> (dinamik ses)
+    /// Örn: "data:audio/wav;base64,..." (base64 kodlanmış ses verisi)
+    /// 'media-service' bu URI'yi yorumlayarak sesi alır.
+    #[prost(string, tag="3")]
+    pub audio_uri: ::prost::alloc::string::String,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PlayAudioResponse {
     #[prost(bool, tag="1")]
     pub success: bool,
-    /// Opsiyonel: "Playback started for target..."
     #[prost(string, tag="2")]
     pub message: ::prost::alloc::string::String,
 }

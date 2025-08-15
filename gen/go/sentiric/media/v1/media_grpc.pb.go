@@ -30,9 +30,11 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type MediaServiceClient interface {
+	// Bir çağrı oturumu için yeni bir RTP portu ayırır.
 	AllocatePort(ctx context.Context, in *AllocatePortRequest, opts ...grpc.CallOption) (*AllocatePortResponse, error)
+	// Bir çağrı oturumu bittiğinde kullanılan RTP portunu serbest bırakır.
 	ReleasePort(ctx context.Context, in *ReleasePortRequest, opts ...grpc.CallOption) (*ReleasePortResponse, error)
-	// Belirtilen hedef adrese bir ses dosyası çalar.
+	// Devam eden bir çağrıya bir ses URI'si çalar.
 	PlayAudio(ctx context.Context, in *PlayAudioRequest, opts ...grpc.CallOption) (*PlayAudioResponse, error)
 }
 
@@ -78,9 +80,11 @@ func (c *mediaServiceClient) PlayAudio(ctx context.Context, in *PlayAudioRequest
 // All implementations should embed UnimplementedMediaServiceServer
 // for forward compatibility.
 type MediaServiceServer interface {
+	// Bir çağrı oturumu için yeni bir RTP portu ayırır.
 	AllocatePort(context.Context, *AllocatePortRequest) (*AllocatePortResponse, error)
+	// Bir çağrı oturumu bittiğinde kullanılan RTP portunu serbest bırakır.
 	ReleasePort(context.Context, *ReleasePortRequest) (*ReleasePortResponse, error)
-	// Belirtilen hedef adrese bir ses dosyası çalar.
+	// Devam eden bir çağrıya bir ses URI'si çalar.
 	PlayAudio(context.Context, *PlayAudioRequest) (*PlayAudioResponse, error)
 }
 

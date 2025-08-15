@@ -2,7 +2,6 @@
 
 // Original file comments:
 // DOSYA: sentiric-contracts/proto/sentiric/media/v1/media.proto
-//
 'use strict';
 var grpc = require('@grpc/grpc-js');
 var sentiric_media_v1_media_pb = require('../../../sentiric/media/v1/media_pb.js');
@@ -75,7 +74,8 @@ function deserialize_sentiric_media_v1_ReleasePortResponse(buffer_arg) {
 
 
 var MediaServiceService = exports.MediaServiceService = {
-  allocatePort: {
+  // Bir çağrı oturumu için yeni bir RTP portu ayırır.
+allocatePort: {
     path: '/sentiric.media.v1.MediaService/AllocatePort',
     requestStream: false,
     responseStream: false,
@@ -86,7 +86,8 @@ var MediaServiceService = exports.MediaServiceService = {
     responseSerialize: serialize_sentiric_media_v1_AllocatePortResponse,
     responseDeserialize: deserialize_sentiric_media_v1_AllocatePortResponse,
   },
-  releasePort: {
+  // Bir çağrı oturumu bittiğinde kullanılan RTP portunu serbest bırakır.
+releasePort: {
     path: '/sentiric.media.v1.MediaService/ReleasePort',
     requestStream: false,
     responseStream: false,
@@ -97,7 +98,7 @@ var MediaServiceService = exports.MediaServiceService = {
     responseSerialize: serialize_sentiric_media_v1_ReleasePortResponse,
     responseDeserialize: deserialize_sentiric_media_v1_ReleasePortResponse,
   },
-  // Belirtilen hedef adrese bir ses dosyası çalar.
+  // Devam eden bir çağrıya bir ses URI'si çalar.
 playAudio: {
     path: '/sentiric.media.v1.MediaService/PlayAudio',
     requestStream: false,

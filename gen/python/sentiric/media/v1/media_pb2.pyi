@@ -29,14 +29,14 @@ class ReleasePortResponse(_message.Message):
     def __init__(self, success: bool = ...) -> None: ...
 
 class PlayAudioRequest(_message.Message):
-    __slots__ = ("rtp_target_addr", "audio_id", "server_rtp_port")
+    __slots__ = ("rtp_target_addr", "server_rtp_port", "audio_uri")
     RTP_TARGET_ADDR_FIELD_NUMBER: _ClassVar[int]
-    AUDIO_ID_FIELD_NUMBER: _ClassVar[int]
     SERVER_RTP_PORT_FIELD_NUMBER: _ClassVar[int]
+    AUDIO_URI_FIELD_NUMBER: _ClassVar[int]
     rtp_target_addr: str
-    audio_id: str
     server_rtp_port: int
-    def __init__(self, rtp_target_addr: _Optional[str] = ..., audio_id: _Optional[str] = ..., server_rtp_port: _Optional[int] = ...) -> None: ...
+    audio_uri: str
+    def __init__(self, rtp_target_addr: _Optional[str] = ..., server_rtp_port: _Optional[int] = ..., audio_uri: _Optional[str] = ...) -> None: ...
 
 class PlayAudioResponse(_message.Message):
     __slots__ = ("success", "message")

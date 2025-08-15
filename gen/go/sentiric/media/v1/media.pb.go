@@ -68,9 +68,8 @@ func (x *AllocatePortRequest) GetCallId() string {
 }
 
 type AllocatePortResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// media-service'in dinleyeceği ve RTP alacağı port.
-	RtpPort       uint32 `protobuf:"varint,1,opt,name=rtp_port,json=rtpPort,proto3" json:"rtp_port,omitempty"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	RtpPort       uint32                 `protobuf:"varint,1,opt,name=rtp_port,json=rtpPort,proto3" json:"rtp_port,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -200,16 +199,21 @@ func (x *ReleasePortResponse) GetSuccess() bool {
 	return false
 }
 
+// PlayAudioRequest, bir çağrıya ses çalmak için gereken tüm bilgileri içerir.
 type PlayAudioRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Sesin  gönderileceği hedef adres (IP:Port).
-	// Bu bilgi, SIP INVITE mesajındaki SDP'den alınır.
-	// Örn: "188.3.192.29:44224"
+	// Sesin gönderileceği nihai hedef (IP:Port).
+	// Bu bilgi orijinal INVITE'tan gelir ve agent tarafından sağlanır.
 	RtpTargetAddr string `protobuf:"bytes,1,opt,name=rtp_target_addr,json=rtpTargetAddr,proto3" json:"rtp_target_addr,omitempty"`
-	// Çalınacak ses dosyasının kimliği (ID) veya yolu.
-	// Örn: "assets/welcome_tr.wav"
-	AudioId       string `protobuf:"bytes,2,opt,name=audio_id,json=audioId,proto3" json:"audio_id,omitempty"`
-	ServerRtpPort uint32 `protobuf:"varint,3,opt,name=server_rtp_port,json=serverRtpPort,proto3" json:"server_rtp_port,omitempty"` // <-- BU ALANIN EKLENDİĞİNDEN EMİN OLUN
+	// Bu isteğin hangi çağrıya ait olduğunu belirtir.
+	// media-service bu port üzerinden doğru RTP oturumunu (soketini) bulur.
+	ServerRtpPort uint32 `protobuf:"varint,2,opt,name=server_rtp_port,json=serverRtpPort,proto3" json:"server_rtp_port,omitempty"`
+	// Çalınacak sesin evrensel konumu (URI).
+	// Örn: "file:///audio/tr/welcome.wav" (lokal asset)
+	// Örn: "http://tts-gateway:5002/stream/xyz" (dinamik ses)
+	// Örn: "data:audio/wav;base64,..." (base64 kodlanmış ses verisi)
+	// 'media-service' bu URI'yi yorumlayarak sesi alır.
+	AudioUri      string `protobuf:"bytes,3,opt,name=audio_uri,json=audioUri,proto3" json:"audio_uri,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -251,13 +255,6 @@ func (x *PlayAudioRequest) GetRtpTargetAddr() string {
 	return ""
 }
 
-func (x *PlayAudioRequest) GetAudioId() string {
-	if x != nil {
-		return x.AudioId
-	}
-	return ""
-}
-
 func (x *PlayAudioRequest) GetServerRtpPort() uint32 {
 	if x != nil {
 		return x.ServerRtpPort
@@ -265,10 +262,17 @@ func (x *PlayAudioRequest) GetServerRtpPort() uint32 {
 	return 0
 }
 
+func (x *PlayAudioRequest) GetAudioUri() string {
+	if x != nil {
+		return x.AudioUri
+	}
+	return ""
+}
+
 type PlayAudioResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
-	Message       string                 `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"` // Opsiyonel: "Playback started for target..."
+	Message       string                 `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -329,11 +333,11 @@ const file_sentiric_media_v1_media_proto_rawDesc = "" +
 	"\x12ReleasePortRequest\x12\x19\n" +
 	"\brtp_port\x18\x01 \x01(\rR\artpPort\"/\n" +
 	"\x13ReleasePortResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\"}\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"\x7f\n" +
 	"\x10PlayAudioRequest\x12&\n" +
-	"\x0frtp_target_addr\x18\x01 \x01(\tR\rrtpTargetAddr\x12\x19\n" +
-	"\baudio_id\x18\x02 \x01(\tR\aaudioId\x12&\n" +
-	"\x0fserver_rtp_port\x18\x03 \x01(\rR\rserverRtpPort\"G\n" +
+	"\x0frtp_target_addr\x18\x01 \x01(\tR\rrtpTargetAddr\x12&\n" +
+	"\x0fserver_rtp_port\x18\x02 \x01(\rR\rserverRtpPort\x12\x1b\n" +
+	"\taudio_uri\x18\x03 \x01(\tR\baudioUri\"G\n" +
 	"\x11PlayAudioResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x18\n" +
 	"\amessage\x18\x02 \x01(\tR\amessage2\xa5\x02\n" +

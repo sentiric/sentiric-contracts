@@ -706,8 +706,8 @@ proto.sentiric.media.v1.PlayAudioRequest.prototype.toObject = function(opt_inclu
 proto.sentiric.media.v1.PlayAudioRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
 rtpTargetAddr: jspb.Message.getFieldWithDefault(msg, 1, ""),
-audioId: jspb.Message.getFieldWithDefault(msg, 2, ""),
-serverRtpPort: jspb.Message.getFieldWithDefault(msg, 3, 0)
+serverRtpPort: jspb.Message.getFieldWithDefault(msg, 2, 0),
+audioUri: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
   if (includeInstance) {
@@ -749,12 +749,12 @@ proto.sentiric.media.v1.PlayAudioRequest.deserializeBinaryFromReader = function(
       msg.setRtpTargetAddr(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setAudioId(value);
-      break;
-    case 3:
       var value = /** @type {number} */ (reader.readUint32());
       msg.setServerRtpPort(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setAudioUri(value);
       break;
     default:
       reader.skipField();
@@ -792,16 +792,16 @@ proto.sentiric.media.v1.PlayAudioRequest.serializeBinaryToWriter = function(mess
       f
     );
   }
-  f = message.getAudioId();
-  if (f.length > 0) {
-    writer.writeString(
+  f = message.getServerRtpPort();
+  if (f !== 0) {
+    writer.writeUint32(
       2,
       f
     );
   }
-  f = message.getServerRtpPort();
-  if (f !== 0) {
-    writer.writeUint32(
+  f = message.getAudioUri();
+  if (f.length > 0) {
+    writer.writeString(
       3,
       f
     );
@@ -828,29 +828,11 @@ proto.sentiric.media.v1.PlayAudioRequest.prototype.setRtpTargetAddr = function(v
 
 
 /**
- * optional string audio_id = 2;
- * @return {string}
- */
-proto.sentiric.media.v1.PlayAudioRequest.prototype.getAudioId = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.sentiric.media.v1.PlayAudioRequest} returns this
- */
-proto.sentiric.media.v1.PlayAudioRequest.prototype.setAudioId = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
-};
-
-
-/**
- * optional uint32 server_rtp_port = 3;
+ * optional uint32 server_rtp_port = 2;
  * @return {number}
  */
 proto.sentiric.media.v1.PlayAudioRequest.prototype.getServerRtpPort = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
@@ -859,7 +841,25 @@ proto.sentiric.media.v1.PlayAudioRequest.prototype.getServerRtpPort = function()
  * @return {!proto.sentiric.media.v1.PlayAudioRequest} returns this
  */
 proto.sentiric.media.v1.PlayAudioRequest.prototype.setServerRtpPort = function(value) {
-  return jspb.Message.setProto3IntField(this, 3, value);
+  return jspb.Message.setProto3IntField(this, 2, value);
+};
+
+
+/**
+ * optional string audio_uri = 3;
+ * @return {string}
+ */
+proto.sentiric.media.v1.PlayAudioRequest.prototype.getAudioUri = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sentiric.media.v1.PlayAudioRequest} returns this
+ */
+proto.sentiric.media.v1.PlayAudioRequest.prototype.setAudioUri = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
