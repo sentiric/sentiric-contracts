@@ -513,7 +513,8 @@ name: (f = jspb.Message.getField(msg, 2)) == null ? undefined : f,
 tenantId: jspb.Message.getFieldWithDefault(msg, 3, ""),
 userType: jspb.Message.getFieldWithDefault(msg, 4, ""),
 contactsList: jspb.Message.toObjectList(msg.getContactsList(),
-    proto.sentiric.user.v1.Contact.toObject, includeInstance)
+    proto.sentiric.user.v1.Contact.toObject, includeInstance),
+preferredLanguageCode: (f = jspb.Message.getField(msg, 6)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -570,6 +571,10 @@ proto.sentiric.user.v1.User.deserializeBinaryFromReader = function(msg, reader) 
       var value = new proto.sentiric.user.v1.Contact;
       reader.readMessage(value,proto.sentiric.user.v1.Contact.deserializeBinaryFromReader);
       msg.addContacts(value);
+      break;
+    case 6:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPreferredLanguageCode(value);
       break;
     default:
       reader.skipField();
@@ -634,6 +639,13 @@ proto.sentiric.user.v1.User.serializeBinaryToWriter = function(message, writer) 
       5,
       f,
       proto.sentiric.user.v1.Contact.serializeBinaryToWriter
+    );
+  }
+  f = /** @type {string} */ (jspb.Message.getField(message, 6));
+  if (f != null) {
+    writer.writeString(
+      6,
+      f
     );
   }
 };
@@ -764,6 +776,42 @@ proto.sentiric.user.v1.User.prototype.addContacts = function(opt_value, opt_inde
  */
 proto.sentiric.user.v1.User.prototype.clearContactsList = function() {
   return this.setContactsList([]);
+};
+
+
+/**
+ * optional string preferred_language_code = 6;
+ * @return {string}
+ */
+proto.sentiric.user.v1.User.prototype.getPreferredLanguageCode = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sentiric.user.v1.User} returns this
+ */
+proto.sentiric.user.v1.User.prototype.setPreferredLanguageCode = function(value) {
+  return jspb.Message.setField(this, 6, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.sentiric.user.v1.User} returns this
+ */
+proto.sentiric.user.v1.User.prototype.clearPreferredLanguageCode = function() {
+  return jspb.Message.setField(this, 6, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sentiric.user.v1.User.prototype.hasPreferredLanguageCode = function() {
+  return jspb.Message.getField(this, 6) != null;
 };
 
 
@@ -1394,7 +1442,8 @@ proto.sentiric.user.v1.CreateUserRequest.toObject = function(includeInstance, ms
 tenantId: jspb.Message.getFieldWithDefault(msg, 1, ""),
 userType: jspb.Message.getFieldWithDefault(msg, 2, ""),
 name: (f = jspb.Message.getField(msg, 3)) == null ? undefined : f,
-initialContact: (f = msg.getInitialContact()) && proto.sentiric.user.v1.CreateUserRequest.InitialContact.toObject(includeInstance, f)
+initialContact: (f = msg.getInitialContact()) && proto.sentiric.user.v1.CreateUserRequest.InitialContact.toObject(includeInstance, f),
+preferredLanguageCode: (f = jspb.Message.getField(msg, 5)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -1447,6 +1496,10 @@ proto.sentiric.user.v1.CreateUserRequest.deserializeBinaryFromReader = function(
       var value = new proto.sentiric.user.v1.CreateUserRequest.InitialContact;
       reader.readMessage(value,proto.sentiric.user.v1.CreateUserRequest.InitialContact.deserializeBinaryFromReader);
       msg.setInitialContact(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPreferredLanguageCode(value);
       break;
     default:
       reader.skipField();
@@ -1504,6 +1557,13 @@ proto.sentiric.user.v1.CreateUserRequest.serializeBinaryToWriter = function(mess
       4,
       f,
       proto.sentiric.user.v1.CreateUserRequest.InitialContact.serializeBinaryToWriter
+    );
+  }
+  f = /** @type {string} */ (jspb.Message.getField(message, 5));
+  if (f != null) {
+    writer.writeString(
+      5,
+      f
     );
   }
 };
@@ -1775,6 +1835,42 @@ proto.sentiric.user.v1.CreateUserRequest.prototype.clearInitialContact = functio
  */
 proto.sentiric.user.v1.CreateUserRequest.prototype.hasInitialContact = function() {
   return jspb.Message.getField(this, 4) != null;
+};
+
+
+/**
+ * optional string preferred_language_code = 5;
+ * @return {string}
+ */
+proto.sentiric.user.v1.CreateUserRequest.prototype.getPreferredLanguageCode = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sentiric.user.v1.CreateUserRequest} returns this
+ */
+proto.sentiric.user.v1.CreateUserRequest.prototype.setPreferredLanguageCode = function(value) {
+  return jspb.Message.setField(this, 5, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.sentiric.user.v1.CreateUserRequest} returns this
+ */
+proto.sentiric.user.v1.CreateUserRequest.prototype.clearPreferredLanguageCode = function() {
+  return jspb.Message.setField(this, 5, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sentiric.user.v1.CreateUserRequest.prototype.hasPreferredLanguageCode = function() {
+  return jspb.Message.getField(this, 5) != null;
 };
 
 

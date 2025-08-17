@@ -26,7 +26,7 @@ class ReleasePortResponse(_message.Message):
     __slots__ = ("success",)
     SUCCESS_FIELD_NUMBER: _ClassVar[int]
     success: bool
-    def __init__(self, success: bool = ...) -> None: ...
+    def __init__(self, success: _Optional[bool] = ...) -> None: ...
 
 class PlayAudioRequest(_message.Message):
     __slots__ = ("rtp_target_addr", "server_rtp_port", "audio_uri")
@@ -44,4 +44,4 @@ class PlayAudioResponse(_message.Message):
     MESSAGE_FIELD_NUMBER: _ClassVar[int]
     success: bool
     message: str
-    def __init__(self, success: bool = ..., message: _Optional[str] = ...) -> None: ...
+    def __init__(self, success: _Optional[bool] = ..., message: _Optional[str] = ...) -> None: ...

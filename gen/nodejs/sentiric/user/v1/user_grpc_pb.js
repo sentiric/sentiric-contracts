@@ -1,7 +1,5 @@
 // GENERATED CODE -- DO NOT EDIT!
 
-// Original file comments:
-// ========== sentiric-contracts/proto/sentiric/user/v1/user.proto ==========
 'use strict';
 var grpc = require('@grpc/grpc-js');
 var sentiric_user_v1_user_pb = require('../../../sentiric/user/v1/user_pb.js');
@@ -107,7 +105,6 @@ var UserServiceService = exports.UserServiceService = {
     responseSerialize: serialize_sentiric_user_v1_CreateUserResponse,
     responseDeserialize: deserialize_sentiric_user_v1_CreateUserResponse,
   },
-  // DÜZELTİLDİ
 };
 
 exports.UserServiceClient = grpc.makeGenericClientConstructor(UserServiceService, 'UserService');

@@ -18,21 +18,23 @@ class Contact(_message.Message):
     contact_type: str
     contact_value: str
     is_primary: bool
-    def __init__(self, id: _Optional[int] = ..., user_id: _Optional[str] = ..., contact_type: _Optional[str] = ..., contact_value: _Optional[str] = ..., is_primary: bool = ...) -> None: ...
+    def __init__(self, id: _Optional[int] = ..., user_id: _Optional[str] = ..., contact_type: _Optional[str] = ..., contact_value: _Optional[str] = ..., is_primary: _Optional[bool] = ...) -> None: ...
 
 class User(_message.Message):
-    __slots__ = ("id", "name", "tenant_id", "user_type", "contacts")
+    __slots__ = ("id", "name", "tenant_id", "user_type", "contacts", "preferred_language_code")
     ID_FIELD_NUMBER: _ClassVar[int]
     NAME_FIELD_NUMBER: _ClassVar[int]
     TENANT_ID_FIELD_NUMBER: _ClassVar[int]
     USER_TYPE_FIELD_NUMBER: _ClassVar[int]
     CONTACTS_FIELD_NUMBER: _ClassVar[int]
+    PREFERRED_LANGUAGE_CODE_FIELD_NUMBER: _ClassVar[int]
     id: str
     name: str
     tenant_id: str
     user_type: str
     contacts: _containers.RepeatedCompositeFieldContainer[Contact]
-    def __init__(self, id: _Optional[str] = ..., name: _Optional[str] = ..., tenant_id: _Optional[str] = ..., user_type: _Optional[str] = ..., contacts: _Optional[_Iterable[_Union[Contact, _Mapping]]] = ...) -> None: ...
+    preferred_language_code: str
+    def __init__(self, id: _Optional[str] = ..., name: _Optional[str] = ..., tenant_id: _Optional[str] = ..., user_type: _Optional[str] = ..., contacts: _Optional[_Iterable[_Union[Contact, _Mapping]]] = ..., preferred_language_code: _Optional[str] = ...) -> None: ...
 
 class GetUserRequest(_message.Message):
     __slots__ = ("user_id",)
@@ -61,7 +63,7 @@ class FindUserByContactResponse(_message.Message):
     def __init__(self, user: _Optional[_Union[User, _Mapping]] = ...) -> None: ...
 
 class CreateUserRequest(_message.Message):
-    __slots__ = ("tenant_id", "user_type", "name", "initial_contact")
+    __slots__ = ("tenant_id", "user_type", "name", "initial_contact", "preferred_language_code")
     class InitialContact(_message.Message):
         __slots__ = ("contact_type", "contact_value")
         CONTACT_TYPE_FIELD_NUMBER: _ClassVar[int]
@@ -73,11 +75,13 @@ class CreateUserRequest(_message.Message):
     USER_TYPE_FIELD_NUMBER: _ClassVar[int]
     NAME_FIELD_NUMBER: _ClassVar[int]
     INITIAL_CONTACT_FIELD_NUMBER: _ClassVar[int]
+    PREFERRED_LANGUAGE_CODE_FIELD_NUMBER: _ClassVar[int]
     tenant_id: str
     user_type: str
     name: str
     initial_contact: CreateUserRequest.InitialContact
-    def __init__(self, tenant_id: _Optional[str] = ..., user_type: _Optional[str] = ..., name: _Optional[str] = ..., initial_contact: _Optional[_Union[CreateUserRequest.InitialContact, _Mapping]] = ...) -> None: ...
+    preferred_language_code: str
+    def __init__(self, tenant_id: _Optional[str] = ..., user_type: _Optional[str] = ..., name: _Optional[str] = ..., initial_contact: _Optional[_Union[CreateUserRequest.InitialContact, _Mapping]] = ..., preferred_language_code: _Optional[str] = ...) -> None: ...
 
 class CreateUserResponse(_message.Message):
     __slots__ = ("user",)

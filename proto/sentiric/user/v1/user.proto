@@ -1,60 +1,53 @@
-// ========== sentiric-contracts/proto/sentiric/user/v1/user.proto ==========
 syntax = "proto3";
-
 package sentiric.user.v1;
-
 option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/user/v1;userv1";
-
 message Contact {
-  int32 id = 1;
-  string user_id = 2;
-  string contact_type = 3;
-  string contact_value = 4;
-  bool is_primary = 5;
+int32 id = 1;
+string user_id = 2;
+string contact_type = 3;
+string contact_value = 4;
+bool is_primary = 5;
 }
-
 message User {
-  string id = 1;
-  optional string name = 2;
-  string tenant_id = 3;
-  string user_type = 4;
-  repeated Contact contacts = 5; 
+string id = 1;
+optional string name = 2;
+string tenant_id = 3;
+string user_type = 4;
+repeated Contact contacts = 5;
+// --- YENİ EKLENEN ALAN ---
+// Kullanıcının tercih ettiği dil. Veritabanından gelir.
+optional string preferred_language_code = 6;
 }
-
 service UserService {
-  rpc GetUser(GetUserRequest) returns (GetUserResponse);
-  rpc FindUserByContact(FindUserByContactRequest) returns (FindUserByContactResponse);
-  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse); // DÜZELTİLDİ
+rpc GetUser(GetUserRequest) returns (GetUserResponse);
+rpc FindUserByContact(FindUserByContactRequest) returns (FindUserByContactResponse);
+rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
 }
-
 message GetUserRequest {
-  string user_id = 1;
+string user_id = 1;
 }
-
 message GetUserResponse {
-  User user = 1;
+User user = 1;
 }
-
 message FindUserByContactRequest {
-  string contact_type = 1;
-  string contact_value = 2;
+string contact_type = 1;
+string contact_value = 2;
 }
-
 message FindUserByContactResponse {
-  User user = 1;
+User user = 1;
 }
-
 message CreateUserRequest {
-  string tenant_id = 1;
-  string user_type = 2;
-  optional string name = 3;
-  message InitialContact {
-    string contact_type = 1;
-    string contact_value = 2;
-  }
-  InitialContact initial_contact = 4;
+string tenant_id = 1;
+string user_type = 2;
+optional string name = 3;
+message InitialContact {
+string contact_type = 1;
+string contact_value = 2;
 }
-
+InitialContact initial_contact = 4;
+// --- YENİ EKLENEN ALAN ---
+optional string preferred_language_code = 5;
+}
 message CreateUserResponse {
-  User user = 1;
+User user = 1;
 }

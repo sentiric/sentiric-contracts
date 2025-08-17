@@ -27,6 +27,10 @@ pub struct User {
     pub user_type: ::prost::alloc::string::String,
     #[prost(message, repeated, tag="5")]
     pub contacts: ::prost::alloc::vec::Vec<Contact>,
+    /// --- YENİ EKLENEN ALAN ---
+    /// Kullanıcının tercih ettiği dil. Veritabanından gelir.
+    #[prost(string, optional, tag="6")]
+    pub preferred_language_code: ::core::option::Option<::prost::alloc::string::String>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -65,6 +69,9 @@ pub struct CreateUserRequest {
     pub name: ::core::option::Option<::prost::alloc::string::String>,
     #[prost(message, optional, tag="4")]
     pub initial_contact: ::core::option::Option<create_user_request::InitialContact>,
+    /// --- YENİ EKLENEN ALAN ---
+    #[prost(string, optional, tag="5")]
+    pub preferred_language_code: ::core::option::Option<::prost::alloc::string::String>,
 }
 /// Nested message and enum types in `CreateUserRequest`.
 pub mod create_user_request {
