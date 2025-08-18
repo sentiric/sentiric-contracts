@@ -24,6 +24,7 @@ const (
 	MediaService_AllocatePort_FullMethodName = "/sentiric.media.v1.MediaService/AllocatePort"
 	MediaService_ReleasePort_FullMethodName  = "/sentiric.media.v1.MediaService/ReleasePort"
 	MediaService_PlayAudio_FullMethodName    = "/sentiric.media.v1.MediaService/PlayAudio"
+	MediaService_RecordAudio_FullMethodName  = "/sentiric.media.v1.MediaService/RecordAudio"
 )
 
 // MediaServiceClient is the client API for MediaService service.
@@ -36,6 +37,8 @@ type MediaServiceClient interface {
 	ReleasePort(ctx context.Context, in *ReleasePortRequest, opts ...grpc.CallOption) (*ReleasePortResponse, error)
 	// Devam eden bir çağrıya bir ses URI'si çalar.
 	PlayAudio(ctx context.Context, in *PlayAudioRequest, opts ...grpc.CallOption) (*PlayAudioResponse, error)
+	// YENİ METOT: Devam eden bir çağrıdan ses kaydını başlatır ve stream eder.
+	RecordAudio(ctx context.Context, in *RecordAudioRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[AudioChunk], error)
 }
 
 type mediaServiceClient struct {
@@ -76,6 +79,25 @@ func (c *mediaServiceClient) PlayAudio(ctx context.Context, in *PlayAudioRequest
 	return out, nil
 }
 
+func (c *mediaServiceClient) RecordAudio(ctx context.Context, in *RecordAudioRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[AudioChunk], error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	stream, err := c.cc.NewStream(ctx, &MediaService_ServiceDesc.Streams[0], MediaService_RecordAudio_FullMethodName, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &grpc.GenericClientStream[RecordAudioRequest, AudioChunk]{ClientStream: stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type MediaService_RecordAudioClient = grpc.ServerStreamingClient[AudioChunk]
+
 // MediaServiceServer is the server API for MediaService service.
 // All implementations should embed UnimplementedMediaServiceServer
 // for forward compatibility.
@@ -86,6 +108,8 @@ type MediaServiceServer interface {
 	ReleasePort(context.Context, *ReleasePortRequest) (*ReleasePortResponse, error)
 	// Devam eden bir çağrıya bir ses URI'si çalar.
 	PlayAudio(context.Context, *PlayAudioRequest) (*PlayAudioResponse, error)
+	// YENİ METOT: Devam eden bir çağrıdan ses kaydını başlatır ve stream eder.
+	RecordAudio(*RecordAudioRequest, grpc.ServerStreamingServer[AudioChunk]) error
 }
 
 // UnimplementedMediaServiceServer should be embedded to have
@@ -103,6 +127,9 @@ func (UnimplementedMediaServiceServer) ReleasePort(context.Context, *ReleasePort
 }
 func (UnimplementedMediaServiceServer) PlayAudio(context.Context, *PlayAudioRequest) (*PlayAudioResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PlayAudio not implemented")
+}
+func (UnimplementedMediaServiceServer) RecordAudio(*RecordAudioRequest, grpc.ServerStreamingServer[AudioChunk]) error {
+	return status.Errorf(codes.Unimplemented, "method RecordAudio not implemented")
 }
 func (UnimplementedMediaServiceServer) testEmbeddedByValue() {}
 
@@ -178,6 +205,17 @@ func _MediaService_PlayAudio_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
+func _MediaService_RecordAudio_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(RecordAudioRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(MediaServiceServer).RecordAudio(m, &grpc.GenericServerStream[RecordAudioRequest, AudioChunk]{ServerStream: stream})
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type MediaService_RecordAudioServer = grpc.ServerStreamingServer[AudioChunk]
+
 // MediaService_ServiceDesc is the grpc.ServiceDesc for MediaService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -198,6 +236,12 @@ var MediaService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _MediaService_PlayAudio_Handler,
 		},
 	},
-	Streams:  []grpc.StreamDesc{},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "RecordAudio",
+			Handler:       _MediaService_RecordAudio_Handler,
+			ServerStreams: true,
+		},
+	},
 	Metadata: "sentiric/media/v1/media.proto",
 }

@@ -45,3 +45,15 @@ class PlayAudioResponse(_message.Message):
     success: bool
     message: str
     def __init__(self, success: _Optional[bool] = ..., message: _Optional[str] = ...) -> None: ...
+
+class RecordAudioRequest(_message.Message):
+    __slots__ = ("server_rtp_port",)
+    SERVER_RTP_PORT_FIELD_NUMBER: _ClassVar[int]
+    server_rtp_port: int
+    def __init__(self, server_rtp_port: _Optional[int] = ...) -> None: ...
+
+class AudioChunk(_message.Message):
+    __slots__ = ("audio_data",)
+    AUDIO_DATA_FIELD_NUMBER: _ClassVar[int]
+    audio_data: bytes
+    def __init__(self, audio_data: _Optional[bytes] = ...) -> None: ...

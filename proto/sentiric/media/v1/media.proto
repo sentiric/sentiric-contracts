@@ -14,8 +14,12 @@ service MediaService {
   
   // Devam eden bir çağrıya bir ses URI'si çalar.
   rpc PlayAudio(PlayAudioRequest) returns (PlayAudioResponse);
+
+  // YENİ METOT: Devam eden bir çağrıdan ses kaydını başlatır ve stream eder.
+  rpc RecordAudio(RecordAudioRequest) returns (stream AudioChunk);
 }
 
+// ... (Mevcut mesajlar aynı kalır) ...
 message AllocatePortRequest {
   string call_id = 1;
 }
@@ -32,25 +36,24 @@ message ReleasePortResponse {
   bool success = 1;
 }
 
-// PlayAudioRequest, bir çağrıya ses çalmak için gereken tüm bilgileri içerir.
 message PlayAudioRequest {
-  // Sesin gönderileceği nihai hedef (IP:Port).
-  // Bu bilgi orijinal INVITE'tan gelir ve agent tarafından sağlanır.
   string rtp_target_addr = 1;
-
-  // Bu isteğin hangi çağrıya ait olduğunu belirtir.
-  // media-service bu port üzerinden doğru RTP oturumunu (soketini) bulur.
   uint32 server_rtp_port = 2;
-
-  // Çalınacak sesin evrensel konumu (URI).
-  // Örn: "file:///audio/tr/welcome.wav" (lokal asset)
-  // Örn: "http://tts-gateway:5002/stream/xyz" (dinamik ses)
-  // Örn: "data:audio/wav;base64,..." (base64 kodlanmış ses verisi)
-  // 'media-service' bu URI'yi yorumlayarak sesi alır.
   string audio_uri = 3;
 }
 
 message PlayAudioResponse {
   bool success = 1;
   string message = 2;
+}
+
+// --- YENİ MESAJLAR ---
+message RecordAudioRequest {
+  // Hangi çağrı oturumunun kaydedileceğini belirtir.
+  uint32 server_rtp_port = 1;
+}
+
+message AudioChunk {
+  // Ham ses verisi (PCMU/G.711 formatında).
+  bytes audio_data = 1;
 }

@@ -29,6 +29,11 @@ class MediaServiceStub(object):
                 request_serializer=sentiric_dot_media_dot_v1_dot_media__pb2.PlayAudioRequest.SerializeToString,
                 response_deserializer=sentiric_dot_media_dot_v1_dot_media__pb2.PlayAudioResponse.FromString,
                 _registered_method=True)
+        self.RecordAudio = channel.unary_stream(
+                '/sentiric.media.v1.MediaService/RecordAudio',
+                request_serializer=sentiric_dot_media_dot_v1_dot_media__pb2.RecordAudioRequest.SerializeToString,
+                response_deserializer=sentiric_dot_media_dot_v1_dot_media__pb2.AudioChunk.FromString,
+                _registered_method=True)
 
 
 class MediaServiceServicer(object):
@@ -55,6 +60,13 @@ class MediaServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def RecordAudio(self, request, context):
+        """YENİ METOT: Devam eden bir çağrıdan ses kaydını başlatır ve stream eder.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_MediaServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -72,6 +84,11 @@ def add_MediaServiceServicer_to_server(servicer, server):
                     servicer.PlayAudio,
                     request_deserializer=sentiric_dot_media_dot_v1_dot_media__pb2.PlayAudioRequest.FromString,
                     response_serializer=sentiric_dot_media_dot_v1_dot_media__pb2.PlayAudioResponse.SerializeToString,
+            ),
+            'RecordAudio': grpc.unary_stream_rpc_method_handler(
+                    servicer.RecordAudio,
+                    request_deserializer=sentiric_dot_media_dot_v1_dot_media__pb2.RecordAudioRequest.FromString,
+                    response_serializer=sentiric_dot_media_dot_v1_dot_media__pb2.AudioChunk.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -155,6 +172,33 @@ class MediaService(object):
             '/sentiric.media.v1.MediaService/PlayAudio',
             sentiric_dot_media_dot_v1_dot_media__pb2.PlayAudioRequest.SerializeToString,
             sentiric_dot_media_dot_v1_dot_media__pb2.PlayAudioResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def RecordAudio(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(
+            request,
+            target,
+            '/sentiric.media.v1.MediaService/RecordAudio',
+            sentiric_dot_media_dot_v1_dot_media__pb2.RecordAudioRequest.SerializeToString,
+            sentiric_dot_media_dot_v1_dot_media__pb2.AudioChunk.FromString,
             options,
             channel_credentials,
             insecure,

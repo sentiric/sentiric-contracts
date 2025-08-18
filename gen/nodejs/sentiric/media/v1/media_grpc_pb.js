@@ -28,6 +28,17 @@ function deserialize_sentiric_media_v1_AllocatePortResponse(buffer_arg) {
   return sentiric_media_v1_media_pb.AllocatePortResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sentiric_media_v1_AudioChunk(arg) {
+  if (!(arg instanceof sentiric_media_v1_media_pb.AudioChunk)) {
+    throw new Error('Expected argument of type sentiric.media.v1.AudioChunk');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sentiric_media_v1_AudioChunk(buffer_arg) {
+  return sentiric_media_v1_media_pb.AudioChunk.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sentiric_media_v1_PlayAudioRequest(arg) {
   if (!(arg instanceof sentiric_media_v1_media_pb.PlayAudioRequest)) {
     throw new Error('Expected argument of type sentiric.media.v1.PlayAudioRequest');
@@ -48,6 +59,17 @@ function serialize_sentiric_media_v1_PlayAudioResponse(arg) {
 
 function deserialize_sentiric_media_v1_PlayAudioResponse(buffer_arg) {
   return sentiric_media_v1_media_pb.PlayAudioResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sentiric_media_v1_RecordAudioRequest(arg) {
+  if (!(arg instanceof sentiric_media_v1_media_pb.RecordAudioRequest)) {
+    throw new Error('Expected argument of type sentiric.media.v1.RecordAudioRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sentiric_media_v1_RecordAudioRequest(buffer_arg) {
+  return sentiric_media_v1_media_pb.RecordAudioRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_sentiric_media_v1_ReleasePortRequest(arg) {
@@ -109,6 +131,18 @@ playAudio: {
     requestDeserialize: deserialize_sentiric_media_v1_PlayAudioRequest,
     responseSerialize: serialize_sentiric_media_v1_PlayAudioResponse,
     responseDeserialize: deserialize_sentiric_media_v1_PlayAudioResponse,
+  },
+  // YENİ METOT: Devam eden bir çağrıdan ses kaydını başlatır ve stream eder.
+recordAudio: {
+    path: '/sentiric.media.v1.MediaService/RecordAudio',
+    requestStream: false,
+    responseStream: true,
+    requestType: sentiric_media_v1_media_pb.RecordAudioRequest,
+    responseType: sentiric_media_v1_media_pb.AudioChunk,
+    requestSerialize: serialize_sentiric_media_v1_RecordAudioRequest,
+    requestDeserialize: deserialize_sentiric_media_v1_RecordAudioRequest,
+    responseSerialize: serialize_sentiric_media_v1_AudioChunk,
+    responseDeserialize: deserialize_sentiric_media_v1_AudioChunk,
   },
 };
 
