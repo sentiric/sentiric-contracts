@@ -1,7 +1,7 @@
 // GENERATED CODE -- DO NOT EDIT!
 
 // Original file comments:
-// ========== FILE: sentiric-contracts/proto/sentiric/dialplan/v1/dialplan.proto ==========
+// ========== FILE: sentiric-contracts/proto/sentiric/dialplan/v1/dialplan.proto (Nihai ve Düzeltilmiş Hali) ==========
 'use strict';
 var grpc = require('@grpc/grpc-js');
 var sentiric_dialplan_v1_dialplan_pb = require('../../../sentiric/dialplan/v1/dialplan_pb.js');

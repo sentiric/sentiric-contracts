@@ -1,4 +1,4 @@
-// ========== FILE: sentiric-contracts/proto/sentiric/dialplan/v1/dialplan.proto ==========
+// ========== FILE: sentiric-contracts/proto/sentiric/dialplan/v1/dialplan.proto (Nihai ve Düzeltilmiş Hali) ==========
 syntax = "proto3";
 
 package sentiric.dialplan.v1;
@@ -25,11 +25,26 @@ message DialplanAction {
   ActionData action_data = 2;
 }
 
+// YENİ: InboundRoute'u temsil eden mesaj
+message InboundRoute {
+  string phone_number = 1;
+  string tenant_id = 2;
+  optional string active_dialplan_id = 3;
+  optional string off_hours_dialplan_id = 4;
+  optional string failsafe_dialplan_id = 5;
+  bool is_maintenance_mode = 6;
+  string default_language_code = 7;
+}
+
+// --- DÜZELTİLMİŞ ResolveDialplanResponse ---
+// Bu mesaj, artık inbound_route alanını da içerecek şekilde GÜNCELLENMİŞTİR.
+// İkinci bir tanıma gerek yoktur.
 message ResolveDialplanResponse {
   string dialplan_id = 1;
   string tenant_id = 2;
   DialplanAction action = 3;
   optional sentiric.user.v1.User matched_user = 4;
-  // YENİ: Hangi contact üzerinden eşleştiğini de belirtiyoruz.
-  optional sentiric.user.v1.Contact matched_contact = 5; 
+  optional sentiric.user.v1.Contact matched_contact = 5;
+  // YENİ ALAN: Hangi hat üzerinden gelindiği bilgisini ekliyoruz.
+  optional InboundRoute inbound_route = 6;
 }

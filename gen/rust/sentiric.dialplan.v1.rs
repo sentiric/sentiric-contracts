@@ -23,6 +23,28 @@ pub struct DialplanAction {
     #[prost(message, optional, tag="2")]
     pub action_data: ::core::option::Option<ActionData>,
 }
+/// YENİ: InboundRoute'u temsil eden mesaj
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct InboundRoute {
+    #[prost(string, tag="1")]
+    pub phone_number: ::prost::alloc::string::String,
+    #[prost(string, tag="2")]
+    pub tenant_id: ::prost::alloc::string::String,
+    #[prost(string, optional, tag="3")]
+    pub active_dialplan_id: ::core::option::Option<::prost::alloc::string::String>,
+    #[prost(string, optional, tag="4")]
+    pub off_hours_dialplan_id: ::core::option::Option<::prost::alloc::string::String>,
+    #[prost(string, optional, tag="5")]
+    pub failsafe_dialplan_id: ::core::option::Option<::prost::alloc::string::String>,
+    #[prost(bool, tag="6")]
+    pub is_maintenance_mode: bool,
+    #[prost(string, tag="7")]
+    pub default_language_code: ::prost::alloc::string::String,
+}
+/// --- DÜZELTİLMİŞ ResolveDialplanResponse ---
+/// Bu mesaj, artık inbound_route alanını da içerecek şekilde GÜNCELLENMİŞTİR.
+/// İkinci bir tanıma gerek yoktur.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ResolveDialplanResponse {
@@ -34,9 +56,11 @@ pub struct ResolveDialplanResponse {
     pub action: ::core::option::Option<DialplanAction>,
     #[prost(message, optional, tag="4")]
     pub matched_user: ::core::option::Option<super::super::user::v1::User>,
-    /// YENİ: Hangi contact üzerinden eşleştiğini de belirtiyoruz.
     #[prost(message, optional, tag="5")]
     pub matched_contact: ::core::option::Option<super::super::user::v1::Contact>,
+    /// YENİ ALAN: Hangi hat üzerinden gelindiği bilgisini ekliyoruz.
+    #[prost(message, optional, tag="6")]
+    pub inbound_route: ::core::option::Option<InboundRoute>,
 }
 include!("sentiric.dialplan.v1.tonic.rs");
 // @@protoc_insertion_point(module)
