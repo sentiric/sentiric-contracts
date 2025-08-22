@@ -13,13 +13,7 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global =
-    (typeof globalThis !== 'undefined' && globalThis) ||
-    (typeof window !== 'undefined' && window) ||
-    (typeof global !== 'undefined' && global) ||
-    (typeof self !== 'undefined' && self) ||
-    (function () { return this; }).call(null) ||
-    Function('return this')();
+var global = globalThis;
 
 goog.exportSymbol('proto.sentiric.media.v1.AllocatePortRequest', null, global);
 goog.exportSymbol('proto.sentiric.media.v1.AllocatePortResponse', null, global);
@@ -267,7 +261,7 @@ proto.sentiric.media.v1.AllocatePortRequest.deserializeBinaryFromReader = functi
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setCallId(value);
       break;
     default:
@@ -789,7 +783,7 @@ proto.sentiric.media.v1.PlayAudioRequest.deserializeBinaryFromReader = function(
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setRtpTargetAddr(value);
       break;
     case 2:
@@ -797,7 +791,7 @@ proto.sentiric.media.v1.PlayAudioRequest.deserializeBinaryFromReader = function(
       msg.setServerRtpPort(value);
       break;
     case 3:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setAudioUri(value);
       break;
     default:
@@ -982,7 +976,7 @@ proto.sentiric.media.v1.PlayAudioResponse.deserializeBinaryFromReader = function
       msg.setSuccess(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setMessage(value);
       break;
     default:
@@ -1099,7 +1093,8 @@ proto.sentiric.media.v1.RecordAudioRequest.prototype.toObject = function(opt_inc
  */
 proto.sentiric.media.v1.RecordAudioRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-serverRtpPort: jspb.Message.getFieldWithDefault(msg, 1, 0)
+serverRtpPort: jspb.Message.getFieldWithDefault(msg, 1, 0),
+targetSampleRate: (f = jspb.Message.getField(msg, 2)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -1140,6 +1135,10 @@ proto.sentiric.media.v1.RecordAudioRequest.deserializeBinaryFromReader = functio
       var value = /** @type {number} */ (reader.readUint32());
       msg.setServerRtpPort(value);
       break;
+    case 2:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setTargetSampleRate(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1176,6 +1175,13 @@ proto.sentiric.media.v1.RecordAudioRequest.serializeBinaryToWriter = function(me
       f
     );
   }
+  f = /** @type {number} */ (jspb.Message.getField(message, 2));
+  if (f != null) {
+    writer.writeUint32(
+      2,
+      f
+    );
+  }
 };
 
 
@@ -1194,6 +1200,42 @@ proto.sentiric.media.v1.RecordAudioRequest.prototype.getServerRtpPort = function
  */
 proto.sentiric.media.v1.RecordAudioRequest.prototype.setServerRtpPort = function(value) {
   return jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * optional uint32 target_sample_rate = 2;
+ * @return {number}
+ */
+proto.sentiric.media.v1.RecordAudioRequest.prototype.getTargetSampleRate = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sentiric.media.v1.RecordAudioRequest} returns this
+ */
+proto.sentiric.media.v1.RecordAudioRequest.prototype.setTargetSampleRate = function(value) {
+  return jspb.Message.setField(this, 2, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.sentiric.media.v1.RecordAudioRequest} returns this
+ */
+proto.sentiric.media.v1.RecordAudioRequest.prototype.clearTargetSampleRate = function() {
+  return jspb.Message.setField(this, 2, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sentiric.media.v1.RecordAudioRequest.prototype.hasTargetSampleRate = function() {
+  return jspb.Message.getField(this, 2) != null;
 };
 
 
@@ -1229,7 +1271,8 @@ proto.sentiric.media.v1.AudioChunk.prototype.toObject = function(opt_includeInst
  */
 proto.sentiric.media.v1.AudioChunk.toObject = function(includeInstance, msg) {
   var f, obj = {
-audioData: msg.getAudioData_asB64()
+audioData: msg.getAudioData_asB64(),
+mediaType: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -1270,6 +1313,10 @@ proto.sentiric.media.v1.AudioChunk.deserializeBinaryFromReader = function(msg, r
       var value = /** @type {!Uint8Array} */ (reader.readBytes());
       msg.setAudioData(value);
       break;
+    case 2:
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
+      msg.setMediaType(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1303,6 +1350,13 @@ proto.sentiric.media.v1.AudioChunk.serializeBinaryToWriter = function(message, w
   if (f.length > 0) {
     writer.writeBytes(
       1,
+      f
+    );
+  }
+  f = message.getMediaType();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
       f
     );
   }
@@ -1348,6 +1402,24 @@ proto.sentiric.media.v1.AudioChunk.prototype.getAudioData_asU8 = function() {
  */
 proto.sentiric.media.v1.AudioChunk.prototype.setAudioData = function(value) {
   return jspb.Message.setProto3BytesField(this, 1, value);
+};
+
+
+/**
+ * optional string media_type = 2;
+ * @return {string}
+ */
+proto.sentiric.media.v1.AudioChunk.prototype.getMediaType = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sentiric.media.v1.AudioChunk} returns this
+ */
+proto.sentiric.media.v1.AudioChunk.prototype.setMediaType = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 

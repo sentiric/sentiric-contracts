@@ -40,28 +40,25 @@ class MediaServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def AllocatePort(self, request, context):
-        """Bir çağrı oturumu için yeni bir RTP portu ayırır.
-        """
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def ReleasePort(self, request, context):
-        """Bir çağrı oturumu bittiğinde kullanılan RTP portunu serbest bırakır.
-        """
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def PlayAudio(self, request, context):
-        """Devam eden bir çağrıya bir ses URI'si çalar.
-        """
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def RecordAudio(self, request, context):
-        """YENİ METOT: Devam eden bir çağrıdan ses kaydını başlatır ve stream eder.
+        """DEĞİŞİKLİK: RecordAudio artık yeni parametreler alıyor.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')

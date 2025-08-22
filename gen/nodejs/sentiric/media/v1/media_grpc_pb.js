@@ -96,8 +96,7 @@ function deserialize_sentiric_media_v1_ReleasePortResponse(buffer_arg) {
 
 
 var MediaServiceService = exports.MediaServiceService = {
-  // Bir çağrı oturumu için yeni bir RTP portu ayırır.
-allocatePort: {
+  allocatePort: {
     path: '/sentiric.media.v1.MediaService/AllocatePort',
     requestStream: false,
     responseStream: false,
@@ -108,8 +107,7 @@ allocatePort: {
     responseSerialize: serialize_sentiric_media_v1_AllocatePortResponse,
     responseDeserialize: deserialize_sentiric_media_v1_AllocatePortResponse,
   },
-  // Bir çağrı oturumu bittiğinde kullanılan RTP portunu serbest bırakır.
-releasePort: {
+  releasePort: {
     path: '/sentiric.media.v1.MediaService/ReleasePort',
     requestStream: false,
     responseStream: false,
@@ -120,8 +118,7 @@ releasePort: {
     responseSerialize: serialize_sentiric_media_v1_ReleasePortResponse,
     responseDeserialize: deserialize_sentiric_media_v1_ReleasePortResponse,
   },
-  // Devam eden bir çağrıya bir ses URI'si çalar.
-playAudio: {
+  playAudio: {
     path: '/sentiric.media.v1.MediaService/PlayAudio',
     requestStream: false,
     responseStream: false,
@@ -132,7 +129,7 @@ playAudio: {
     responseSerialize: serialize_sentiric_media_v1_PlayAudioResponse,
     responseDeserialize: deserialize_sentiric_media_v1_PlayAudioResponse,
   },
-  // YENİ METOT: Devam eden bir çağrıdan ses kaydını başlatır ve stream eder.
+  // DEĞİŞİKLİK: RecordAudio artık yeni parametreler alıyor.
 recordAudio: {
     path: '/sentiric.media.v1.MediaService/RecordAudio',
     requestStream: false,
