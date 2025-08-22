@@ -54,7 +54,7 @@ class RecordAudioRequest(_message.Message):
     target_sample_rate: int
     def __init__(self, server_rtp_port: _Optional[int] = ..., target_sample_rate: _Optional[int] = ...) -> None: ...
 
-class AudioChunk(_message.Message):
+class RecordAudioResponse(_message.Message):
     __slots__ = ("audio_data", "media_type")
     AUDIO_DATA_FIELD_NUMBER: _ClassVar[int]
     MEDIA_TYPE_FIELD_NUMBER: _ClassVar[int]

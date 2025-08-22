@@ -34,8 +34,8 @@ type MediaServiceClient interface {
 	AllocatePort(ctx context.Context, in *AllocatePortRequest, opts ...grpc.CallOption) (*AllocatePortResponse, error)
 	ReleasePort(ctx context.Context, in *ReleasePortRequest, opts ...grpc.CallOption) (*ReleasePortResponse, error)
 	PlayAudio(ctx context.Context, in *PlayAudioRequest, opts ...grpc.CallOption) (*PlayAudioResponse, error)
-	// DEĞİŞİKLİK: RecordAudio artık yeni parametreler alıyor.
-	RecordAudio(ctx context.Context, in *RecordAudioRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[AudioChunk], error)
+	// DÜZELTME: Artık standart isme uygun bir response mesajı stream ediyor.
+	RecordAudio(ctx context.Context, in *RecordAudioRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[RecordAudioResponse], error)
 }
 
 type mediaServiceClient struct {
@@ -76,13 +76,13 @@ func (c *mediaServiceClient) PlayAudio(ctx context.Context, in *PlayAudioRequest
 	return out, nil
 }
 
-func (c *mediaServiceClient) RecordAudio(ctx context.Context, in *RecordAudioRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[AudioChunk], error) {
+func (c *mediaServiceClient) RecordAudio(ctx context.Context, in *RecordAudioRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[RecordAudioResponse], error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	stream, err := c.cc.NewStream(ctx, &MediaService_ServiceDesc.Streams[0], MediaService_RecordAudio_FullMethodName, cOpts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &grpc.GenericClientStream[RecordAudioRequest, AudioChunk]{ClientStream: stream}
+	x := &grpc.GenericClientStream[RecordAudioRequest, RecordAudioResponse]{ClientStream: stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -93,7 +93,7 @@ func (c *mediaServiceClient) RecordAudio(ctx context.Context, in *RecordAudioReq
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type MediaService_RecordAudioClient = grpc.ServerStreamingClient[AudioChunk]
+type MediaService_RecordAudioClient = grpc.ServerStreamingClient[RecordAudioResponse]
 
 // MediaServiceServer is the server API for MediaService service.
 // All implementations should embed UnimplementedMediaServiceServer
@@ -102,8 +102,8 @@ type MediaServiceServer interface {
 	AllocatePort(context.Context, *AllocatePortRequest) (*AllocatePortResponse, error)
 	ReleasePort(context.Context, *ReleasePortRequest) (*ReleasePortResponse, error)
 	PlayAudio(context.Context, *PlayAudioRequest) (*PlayAudioResponse, error)
-	// DEĞİŞİKLİK: RecordAudio artık yeni parametreler alıyor.
-	RecordAudio(*RecordAudioRequest, grpc.ServerStreamingServer[AudioChunk]) error
+	// DÜZELTME: Artık standart isme uygun bir response mesajı stream ediyor.
+	RecordAudio(*RecordAudioRequest, grpc.ServerStreamingServer[RecordAudioResponse]) error
 }
 
 // UnimplementedMediaServiceServer should be embedded to have
@@ -122,7 +122,7 @@ func (UnimplementedMediaServiceServer) ReleasePort(context.Context, *ReleasePort
 func (UnimplementedMediaServiceServer) PlayAudio(context.Context, *PlayAudioRequest) (*PlayAudioResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PlayAudio not implemented")
 }
-func (UnimplementedMediaServiceServer) RecordAudio(*RecordAudioRequest, grpc.ServerStreamingServer[AudioChunk]) error {
+func (UnimplementedMediaServiceServer) RecordAudio(*RecordAudioRequest, grpc.ServerStreamingServer[RecordAudioResponse]) error {
 	return status.Errorf(codes.Unimplemented, "method RecordAudio not implemented")
 }
 func (UnimplementedMediaServiceServer) testEmbeddedByValue() {}
@@ -204,11 +204,11 @@ func _MediaService_RecordAudio_Handler(srv interface{}, stream grpc.ServerStream
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(MediaServiceServer).RecordAudio(m, &grpc.GenericServerStream[RecordAudioRequest, AudioChunk]{ServerStream: stream})
+	return srv.(MediaServiceServer).RecordAudio(m, &grpc.GenericServerStream[RecordAudioRequest, RecordAudioResponse]{ServerStream: stream})
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type MediaService_RecordAudioServer = grpc.ServerStreamingServer[AudioChunk]
+type MediaService_RecordAudioServer = grpc.ServerStreamingServer[RecordAudioResponse]
 
 // MediaService_ServiceDesc is the grpc.ServiceDesc for MediaService service.
 // It's only intended for direct use with grpc.RegisterService,

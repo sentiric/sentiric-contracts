@@ -10,51 +10,46 @@ service MediaService {
   rpc ReleasePort(ReleasePortRequest) returns (ReleasePortResponse);
   rpc PlayAudio(PlayAudioRequest) returns (PlayAudioResponse);
   
-  // DEĞİŞİKLİK: RecordAudio artık yeni parametreler alıyor.
-  rpc RecordAudio(RecordAudioRequest) returns (stream AudioChunk);
+  // DÜZELTME: Artık standart isme uygun bir response mesajı stream ediyor.
+  rpc RecordAudio(RecordAudioRequest) returns (stream RecordAudioResponse);
 }
 
+// ... AllocatePort, ReleasePort, PlayAudio mesajları aynı kalır ...
 message AllocatePortRequest {
   string call_id = 1;
 }
-
 message AllocatePortResponse {
   uint32 rtp_port = 1;
 }
-
 message ReleasePortRequest {
   uint32 rtp_port = 1;
 }
-
 message ReleasePortResponse {
   bool success = 1;
 }
-
 message PlayAudioRequest {
   string rtp_target_addr = 1;
   uint32 server_rtp_port = 2;
   string audio_uri = 3;
 }
-
 message PlayAudioResponse {
   bool success = 1;
   string message = 2;
 }
 
+
 // --- GÜNCELLENMİŞ MESAJLAR ---
 message RecordAudioRequest {
   uint32 server_rtp_port = 1;
-  
-  // YENİ ALAN: İstenen örnekleme oranı (örn: 16000). Belirtilmezse,
-  // ham PCMU verisi (8000 Hz) döner.
   optional uint32 target_sample_rate = 2;
 }
 
-message AudioChunk {
+// YENİ VE LINT KURALLARINA UYGUN YANIT MESAJI
+message RecordAudioResponse {
   // `target_sample_rate` istenirse WAV formatında, istenmezse ham PCMU
   // formatında ses verisi.
   bytes audio_data = 1;
   
-  // YENİ ALAN: Dönen verinin medya tipi (örn: "audio/pcmu", "audio/wav")
+  // Dönen verinin medya tipi (örn: "audio/pcmu", "audio/wav")
   string media_type = 2;
 }

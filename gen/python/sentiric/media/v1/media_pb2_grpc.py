@@ -32,7 +32,7 @@ class MediaServiceStub(object):
         self.RecordAudio = channel.unary_stream(
                 '/sentiric.media.v1.MediaService/RecordAudio',
                 request_serializer=sentiric_dot_media_dot_v1_dot_media__pb2.RecordAudioRequest.SerializeToString,
-                response_deserializer=sentiric_dot_media_dot_v1_dot_media__pb2.AudioChunk.FromString,
+                response_deserializer=sentiric_dot_media_dot_v1_dot_media__pb2.RecordAudioResponse.FromString,
                 _registered_method=True)
 
 
@@ -58,7 +58,7 @@ class MediaServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def RecordAudio(self, request, context):
-        """DEĞİŞİKLİK: RecordAudio artık yeni parametreler alıyor.
+        """DÜZELTME: Artık standart isme uygun bir response mesajı stream ediyor.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -85,7 +85,7 @@ def add_MediaServiceServicer_to_server(servicer, server):
             'RecordAudio': grpc.unary_stream_rpc_method_handler(
                     servicer.RecordAudio,
                     request_deserializer=sentiric_dot_media_dot_v1_dot_media__pb2.RecordAudioRequest.FromString,
-                    response_serializer=sentiric_dot_media_dot_v1_dot_media__pb2.AudioChunk.SerializeToString,
+                    response_serializer=sentiric_dot_media_dot_v1_dot_media__pb2.RecordAudioResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -195,7 +195,7 @@ class MediaService(object):
             target,
             '/sentiric.media.v1.MediaService/RecordAudio',
             sentiric_dot_media_dot_v1_dot_media__pb2.RecordAudioRequest.SerializeToString,
-            sentiric_dot_media_dot_v1_dot_media__pb2.AudioChunk.FromString,
+            sentiric_dot_media_dot_v1_dot_media__pb2.RecordAudioResponse.FromString,
             options,
             channel_credentials,
             insecure,

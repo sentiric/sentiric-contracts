@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1dsentiric/media/v1/media.proto\x12\x11sentiric.media.v1\".\n\x13\x41llocatePortRequest\x12\x17\n\x07\x63\x61ll_id\x18\x01 \x01(\tR\x06\x63\x61llId\"1\n\x14\x41llocatePortResponse\x12\x19\n\x08rtp_port\x18\x01 \x01(\rR\x07rtpPort\"/\n\x12ReleasePortRequest\x12\x19\n\x08rtp_port\x18\x01 \x01(\rR\x07rtpPort\"/\n\x13ReleasePortResponse\x12\x18\n\x07success\x18\x01 \x01(\x08R\x07success\"\x7f\n\x10PlayAudioRequest\x12&\n\x0frtp_target_addr\x18\x01 \x01(\tR\rrtpTargetAddr\x12&\n\x0fserver_rtp_port\x18\x02 \x01(\rR\rserverRtpPort\x12\x1b\n\taudio_uri\x18\x03 \x01(\tR\x08\x61udioUri\"G\n\x11PlayAudioResponse\x12\x18\n\x07success\x18\x01 \x01(\x08R\x07success\x12\x18\n\x07message\x18\x02 \x01(\tR\x07message\"\x86\x01\n\x12RecordAudioRequest\x12&\n\x0fserver_rtp_port\x18\x01 \x01(\rR\rserverRtpPort\x12\x31\n\x12target_sample_rate\x18\x02 \x01(\rH\x00R\x10targetSampleRate\x88\x01\x01\x42\x15\n\x13_target_sample_rate\"J\n\nAudioChunk\x12\x1d\n\naudio_data\x18\x01 \x01(\x0cR\taudioData\x12\x1d\n\nmedia_type\x18\x02 \x01(\tR\tmediaType2\xfc\x02\n\x0cMediaService\x12_\n\x0c\x41llocatePort\x12&.sentiric.media.v1.AllocatePortRequest\x1a\'.sentiric.media.v1.AllocatePortResponse\x12\\\n\x0bReleasePort\x12%.sentiric.media.v1.ReleasePortRequest\x1a&.sentiric.media.v1.ReleasePortResponse\x12V\n\tPlayAudio\x12#.sentiric.media.v1.PlayAudioRequest\x1a$.sentiric.media.v1.PlayAudioResponse\x12U\n\x0bRecordAudio\x12%.sentiric.media.v1.RecordAudioRequest\x1a\x1d.sentiric.media.v1.AudioChunk0\x01\x42IZGgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/media/v1;mediav1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1dsentiric/media/v1/media.proto\x12\x11sentiric.media.v1\".\n\x13\x41llocatePortRequest\x12\x17\n\x07\x63\x61ll_id\x18\x01 \x01(\tR\x06\x63\x61llId\"1\n\x14\x41llocatePortResponse\x12\x19\n\x08rtp_port\x18\x01 \x01(\rR\x07rtpPort\"/\n\x12ReleasePortRequest\x12\x19\n\x08rtp_port\x18\x01 \x01(\rR\x07rtpPort\"/\n\x13ReleasePortResponse\x12\x18\n\x07success\x18\x01 \x01(\x08R\x07success\"\x7f\n\x10PlayAudioRequest\x12&\n\x0frtp_target_addr\x18\x01 \x01(\tR\rrtpTargetAddr\x12&\n\x0fserver_rtp_port\x18\x02 \x01(\rR\rserverRtpPort\x12\x1b\n\taudio_uri\x18\x03 \x01(\tR\x08\x61udioUri\"G\n\x11PlayAudioResponse\x12\x18\n\x07success\x18\x01 \x01(\x08R\x07success\x12\x18\n\x07message\x18\x02 \x01(\tR\x07message\"\x86\x01\n\x12RecordAudioRequest\x12&\n\x0fserver_rtp_port\x18\x01 \x01(\rR\rserverRtpPort\x12\x31\n\x12target_sample_rate\x18\x02 \x01(\rH\x00R\x10targetSampleRate\x88\x01\x01\x42\x15\n\x13_target_sample_rate\"S\n\x13RecordAudioResponse\x12\x1d\n\naudio_data\x18\x01 \x01(\x0cR\taudioData\x12\x1d\n\nmedia_type\x18\x02 \x01(\tR\tmediaType2\x85\x03\n\x0cMediaService\x12_\n\x0c\x41llocatePort\x12&.sentiric.media.v1.AllocatePortRequest\x1a\'.sentiric.media.v1.AllocatePortResponse\x12\\\n\x0bReleasePort\x12%.sentiric.media.v1.ReleasePortRequest\x1a&.sentiric.media.v1.ReleasePortResponse\x12V\n\tPlayAudio\x12#.sentiric.media.v1.PlayAudioRequest\x1a$.sentiric.media.v1.PlayAudioResponse\x12^\n\x0bRecordAudio\x12%.sentiric.media.v1.RecordAudioRequest\x1a&.sentiric.media.v1.RecordAudioResponse0\x01\x42IZGgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/media/v1;mediav1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -46,8 +46,8 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_PLAYAUDIORESPONSE']._serialized_end=449
   _globals['_RECORDAUDIOREQUEST']._serialized_start=452
   _globals['_RECORDAUDIOREQUEST']._serialized_end=586
-  _globals['_AUDIOCHUNK']._serialized_start=588
-  _globals['_AUDIOCHUNK']._serialized_end=662
-  _globals['_MEDIASERVICE']._serialized_start=665
-  _globals['_MEDIASERVICE']._serialized_end=1045
+  _globals['_RECORDAUDIORESPONSE']._serialized_start=588
+  _globals['_RECORDAUDIORESPONSE']._serialized_end=671
+  _globals['_MEDIASERVICE']._serialized_start=674
+  _globals['_MEDIASERVICE']._serialized_end=1063
 # @@protoc_insertion_point(module_scope)

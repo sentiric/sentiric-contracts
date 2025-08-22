@@ -167,7 +167,7 @@ pub mod media_service_client {
             &mut self,
             request: impl tonic::IntoRequest<super::RecordAudioRequest>,
         ) -> std::result::Result<
-            tonic::Response<tonic::codec::Streaming<super::AudioChunk>>,
+            tonic::Response<tonic::codec::Streaming<super::RecordAudioResponse>>,
             tonic::Status,
         > {
             self.inner
@@ -222,7 +222,7 @@ pub mod media_service_server {
         >;
         /// Server streaming response type for the RecordAudio method.
         type RecordAudioStream: tonic::codegen::tokio_stream::Stream<
-                Item = std::result::Result<super::AudioChunk, tonic::Status>,
+                Item = std::result::Result<super::RecordAudioResponse, tonic::Status>,
             >
             + Send
             + 'static;
@@ -452,7 +452,7 @@ pub mod media_service_server {
                         T: MediaService,
                     > tonic::server::ServerStreamingService<super::RecordAudioRequest>
                     for RecordAudioSvc<T> {
-                        type Response = super::AudioChunk;
+                        type Response = super::RecordAudioResponse;
                         type ResponseStream = T::RecordAudioStream;
                         type Future = BoxFuture<
                             tonic::Response<Self::ResponseStream>,

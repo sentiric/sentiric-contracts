@@ -17,10 +17,10 @@ var global = globalThis;
 
 goog.exportSymbol('proto.sentiric.media.v1.AllocatePortRequest', null, global);
 goog.exportSymbol('proto.sentiric.media.v1.AllocatePortResponse', null, global);
-goog.exportSymbol('proto.sentiric.media.v1.AudioChunk', null, global);
 goog.exportSymbol('proto.sentiric.media.v1.PlayAudioRequest', null, global);
 goog.exportSymbol('proto.sentiric.media.v1.PlayAudioResponse', null, global);
 goog.exportSymbol('proto.sentiric.media.v1.RecordAudioRequest', null, global);
+goog.exportSymbol('proto.sentiric.media.v1.RecordAudioResponse', null, global);
 goog.exportSymbol('proto.sentiric.media.v1.ReleasePortRequest', null, global);
 goog.exportSymbol('proto.sentiric.media.v1.ReleasePortResponse', null, global);
 /**
@@ -180,16 +180,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.sentiric.media.v1.AudioChunk = function(opt_data) {
+proto.sentiric.media.v1.RecordAudioResponse = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.sentiric.media.v1.AudioChunk, jspb.Message);
+goog.inherits(proto.sentiric.media.v1.RecordAudioResponse, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.sentiric.media.v1.AudioChunk.displayName = 'proto.sentiric.media.v1.AudioChunk';
+  proto.sentiric.media.v1.RecordAudioResponse.displayName = 'proto.sentiric.media.v1.RecordAudioResponse';
 }
 
 
@@ -1255,8 +1255,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.sentiric.media.v1.AudioChunk.prototype.toObject = function(opt_includeInstance) {
-  return proto.sentiric.media.v1.AudioChunk.toObject(opt_includeInstance, this);
+proto.sentiric.media.v1.RecordAudioResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.sentiric.media.v1.RecordAudioResponse.toObject(opt_includeInstance, this);
 };
 
 
@@ -1265,11 +1265,11 @@ proto.sentiric.media.v1.AudioChunk.prototype.toObject = function(opt_includeInst
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.sentiric.media.v1.AudioChunk} msg The msg instance to transform.
+ * @param {!proto.sentiric.media.v1.RecordAudioResponse} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sentiric.media.v1.AudioChunk.toObject = function(includeInstance, msg) {
+proto.sentiric.media.v1.RecordAudioResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
 audioData: msg.getAudioData_asB64(),
 mediaType: jspb.Message.getFieldWithDefault(msg, 2, "")
@@ -1286,23 +1286,23 @@ mediaType: jspb.Message.getFieldWithDefault(msg, 2, "")
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.sentiric.media.v1.AudioChunk}
+ * @return {!proto.sentiric.media.v1.RecordAudioResponse}
  */
-proto.sentiric.media.v1.AudioChunk.deserializeBinary = function(bytes) {
+proto.sentiric.media.v1.RecordAudioResponse.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.sentiric.media.v1.AudioChunk;
-  return proto.sentiric.media.v1.AudioChunk.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.sentiric.media.v1.RecordAudioResponse;
+  return proto.sentiric.media.v1.RecordAudioResponse.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.sentiric.media.v1.AudioChunk} msg The message object to deserialize into.
+ * @param {!proto.sentiric.media.v1.RecordAudioResponse} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.sentiric.media.v1.AudioChunk}
+ * @return {!proto.sentiric.media.v1.RecordAudioResponse}
  */
-proto.sentiric.media.v1.AudioChunk.deserializeBinaryFromReader = function(msg, reader) {
+proto.sentiric.media.v1.RecordAudioResponse.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -1330,9 +1330,9 @@ proto.sentiric.media.v1.AudioChunk.deserializeBinaryFromReader = function(msg, r
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.sentiric.media.v1.AudioChunk.prototype.serializeBinary = function() {
+proto.sentiric.media.v1.RecordAudioResponse.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.sentiric.media.v1.AudioChunk.serializeBinaryToWriter(this, writer);
+  proto.sentiric.media.v1.RecordAudioResponse.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -1340,11 +1340,11 @@ proto.sentiric.media.v1.AudioChunk.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.sentiric.media.v1.AudioChunk} message
+ * @param {!proto.sentiric.media.v1.RecordAudioResponse} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.sentiric.media.v1.AudioChunk.serializeBinaryToWriter = function(message, writer) {
+proto.sentiric.media.v1.RecordAudioResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getAudioData_asU8();
   if (f.length > 0) {
@@ -1367,7 +1367,7 @@ proto.sentiric.media.v1.AudioChunk.serializeBinaryToWriter = function(message, w
  * optional bytes audio_data = 1;
  * @return {string}
  */
-proto.sentiric.media.v1.AudioChunk.prototype.getAudioData = function() {
+proto.sentiric.media.v1.RecordAudioResponse.prototype.getAudioData = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
@@ -1377,7 +1377,7 @@ proto.sentiric.media.v1.AudioChunk.prototype.getAudioData = function() {
  * This is a type-conversion wrapper around `getAudioData()`
  * @return {string}
  */
-proto.sentiric.media.v1.AudioChunk.prototype.getAudioData_asB64 = function() {
+proto.sentiric.media.v1.RecordAudioResponse.prototype.getAudioData_asB64 = function() {
   return /** @type {string} */ (jspb.Message.bytesAsB64(
       this.getAudioData()));
 };
@@ -1390,7 +1390,7 @@ proto.sentiric.media.v1.AudioChunk.prototype.getAudioData_asB64 = function() {
  * This is a type-conversion wrapper around `getAudioData()`
  * @return {!Uint8Array}
  */
-proto.sentiric.media.v1.AudioChunk.prototype.getAudioData_asU8 = function() {
+proto.sentiric.media.v1.RecordAudioResponse.prototype.getAudioData_asU8 = function() {
   return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
       this.getAudioData()));
 };
@@ -1398,9 +1398,9 @@ proto.sentiric.media.v1.AudioChunk.prototype.getAudioData_asU8 = function() {
 
 /**
  * @param {!(string|Uint8Array)} value
- * @return {!proto.sentiric.media.v1.AudioChunk} returns this
+ * @return {!proto.sentiric.media.v1.RecordAudioResponse} returns this
  */
-proto.sentiric.media.v1.AudioChunk.prototype.setAudioData = function(value) {
+proto.sentiric.media.v1.RecordAudioResponse.prototype.setAudioData = function(value) {
   return jspb.Message.setProto3BytesField(this, 1, value);
 };
 
@@ -1409,16 +1409,16 @@ proto.sentiric.media.v1.AudioChunk.prototype.setAudioData = function(value) {
  * optional string media_type = 2;
  * @return {string}
  */
-proto.sentiric.media.v1.AudioChunk.prototype.getMediaType = function() {
+proto.sentiric.media.v1.RecordAudioResponse.prototype.getMediaType = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /**
  * @param {string} value
- * @return {!proto.sentiric.media.v1.AudioChunk} returns this
+ * @return {!proto.sentiric.media.v1.RecordAudioResponse} returns this
  */
-proto.sentiric.media.v1.AudioChunk.prototype.setMediaType = function(value) {
+proto.sentiric.media.v1.RecordAudioResponse.prototype.setMediaType = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
 };
 

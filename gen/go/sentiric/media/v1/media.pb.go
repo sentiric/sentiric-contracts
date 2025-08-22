@@ -23,6 +23,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// ... AllocatePort, ReleasePort, PlayAudio mesajları aynı kalır ...
 type AllocatePortRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	CallId        string                 `protobuf:"bytes,1,opt,name=call_id,json=callId,proto3" json:"call_id,omitempty"`
@@ -313,11 +314,9 @@ func (x *PlayAudioResponse) GetMessage() string {
 
 // --- GÜNCELLENMİŞ MESAJLAR ---
 type RecordAudioRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	ServerRtpPort uint32                 `protobuf:"varint,1,opt,name=server_rtp_port,json=serverRtpPort,proto3" json:"server_rtp_port,omitempty"`
-	// YENİ ALAN: İstenen örnekleme oranı (örn: 16000). Belirtilmezse,
-	// ham PCMU verisi (8000 Hz) döner.
-	TargetSampleRate *uint32 `protobuf:"varint,2,opt,name=target_sample_rate,json=targetSampleRate,proto3,oneof" json:"target_sample_rate,omitempty"`
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	ServerRtpPort    uint32                 `protobuf:"varint,1,opt,name=server_rtp_port,json=serverRtpPort,proto3" json:"server_rtp_port,omitempty"`
+	TargetSampleRate *uint32                `protobuf:"varint,2,opt,name=target_sample_rate,json=targetSampleRate,proto3,oneof" json:"target_sample_rate,omitempty"`
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache
 }
@@ -366,31 +365,32 @@ func (x *RecordAudioRequest) GetTargetSampleRate() uint32 {
 	return 0
 }
 
-type AudioChunk struct {
+// YENİ VE LINT KURALLARINA UYGUN YANIT MESAJI
+type RecordAudioResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// `target_sample_rate` istenirse WAV formatında, istenmezse ham PCMU
 	// formatında ses verisi.
 	AudioData []byte `protobuf:"bytes,1,opt,name=audio_data,json=audioData,proto3" json:"audio_data,omitempty"`
-	// YENİ ALAN: Dönen verinin medya tipi (örn: "audio/pcmu", "audio/wav")
+	// Dönen verinin medya tipi (örn: "audio/pcmu", "audio/wav")
 	MediaType     string `protobuf:"bytes,2,opt,name=media_type,json=mediaType,proto3" json:"media_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *AudioChunk) Reset() {
-	*x = AudioChunk{}
+func (x *RecordAudioResponse) Reset() {
+	*x = RecordAudioResponse{}
 	mi := &file_sentiric_media_v1_media_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *AudioChunk) String() string {
+func (x *RecordAudioResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*AudioChunk) ProtoMessage() {}
+func (*RecordAudioResponse) ProtoMessage() {}
 
-func (x *AudioChunk) ProtoReflect() protoreflect.Message {
+func (x *RecordAudioResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_sentiric_media_v1_media_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -402,19 +402,19 @@ func (x *AudioChunk) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use AudioChunk.ProtoReflect.Descriptor instead.
-func (*AudioChunk) Descriptor() ([]byte, []int) {
+// Deprecated: Use RecordAudioResponse.ProtoReflect.Descriptor instead.
+func (*RecordAudioResponse) Descriptor() ([]byte, []int) {
 	return file_sentiric_media_v1_media_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *AudioChunk) GetAudioData() []byte {
+func (x *RecordAudioResponse) GetAudioData() []byte {
 	if x != nil {
 		return x.AudioData
 	}
 	return nil
 }
 
-func (x *AudioChunk) GetMediaType() string {
+func (x *RecordAudioResponse) GetMediaType() string {
 	if x != nil {
 		return x.MediaType
 	}
@@ -444,18 +444,17 @@ const file_sentiric_media_v1_media_proto_rawDesc = "" +
 	"\x12RecordAudioRequest\x12&\n" +
 	"\x0fserver_rtp_port\x18\x01 \x01(\rR\rserverRtpPort\x121\n" +
 	"\x12target_sample_rate\x18\x02 \x01(\rH\x00R\x10targetSampleRate\x88\x01\x01B\x15\n" +
-	"\x13_target_sample_rate\"J\n" +
-	"\n" +
-	"AudioChunk\x12\x1d\n" +
+	"\x13_target_sample_rate\"S\n" +
+	"\x13RecordAudioResponse\x12\x1d\n" +
 	"\n" +
 	"audio_data\x18\x01 \x01(\fR\taudioData\x12\x1d\n" +
 	"\n" +
-	"media_type\x18\x02 \x01(\tR\tmediaType2\xfc\x02\n" +
+	"media_type\x18\x02 \x01(\tR\tmediaType2\x85\x03\n" +
 	"\fMediaService\x12_\n" +
 	"\fAllocatePort\x12&.sentiric.media.v1.AllocatePortRequest\x1a'.sentiric.media.v1.AllocatePortResponse\x12\\\n" +
 	"\vReleasePort\x12%.sentiric.media.v1.ReleasePortRequest\x1a&.sentiric.media.v1.ReleasePortResponse\x12V\n" +
-	"\tPlayAudio\x12#.sentiric.media.v1.PlayAudioRequest\x1a$.sentiric.media.v1.PlayAudioResponse\x12U\n" +
-	"\vRecordAudio\x12%.sentiric.media.v1.RecordAudioRequest\x1a\x1d.sentiric.media.v1.AudioChunk0\x01BIZGgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/media/v1;mediav1b\x06proto3"
+	"\tPlayAudio\x12#.sentiric.media.v1.PlayAudioRequest\x1a$.sentiric.media.v1.PlayAudioResponse\x12^\n" +
+	"\vRecordAudio\x12%.sentiric.media.v1.RecordAudioRequest\x1a&.sentiric.media.v1.RecordAudioResponse0\x01BIZGgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/media/v1;mediav1b\x06proto3"
 
 var (
 	file_sentiric_media_v1_media_proto_rawDescOnce sync.Once
@@ -478,7 +477,7 @@ var file_sentiric_media_v1_media_proto_goTypes = []any{
 	(*PlayAudioRequest)(nil),     // 4: sentiric.media.v1.PlayAudioRequest
 	(*PlayAudioResponse)(nil),    // 5: sentiric.media.v1.PlayAudioResponse
 	(*RecordAudioRequest)(nil),   // 6: sentiric.media.v1.RecordAudioRequest
-	(*AudioChunk)(nil),           // 7: sentiric.media.v1.AudioChunk
+	(*RecordAudioResponse)(nil),  // 7: sentiric.media.v1.RecordAudioResponse
 }
 var file_sentiric_media_v1_media_proto_depIdxs = []int32{
 	0, // 0: sentiric.media.v1.MediaService.AllocatePort:input_type -> sentiric.media.v1.AllocatePortRequest
@@ -488,7 +487,7 @@ var file_sentiric_media_v1_media_proto_depIdxs = []int32{
 	1, // 4: sentiric.media.v1.MediaService.AllocatePort:output_type -> sentiric.media.v1.AllocatePortResponse
 	3, // 5: sentiric.media.v1.MediaService.ReleasePort:output_type -> sentiric.media.v1.ReleasePortResponse
 	5, // 6: sentiric.media.v1.MediaService.PlayAudio:output_type -> sentiric.media.v1.PlayAudioResponse
-	7, // 7: sentiric.media.v1.MediaService.RecordAudio:output_type -> sentiric.media.v1.AudioChunk
+	7, // 7: sentiric.media.v1.MediaService.RecordAudio:output_type -> sentiric.media.v1.RecordAudioResponse
 	4, // [4:8] is the sub-list for method output_type
 	0, // [0:4] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
