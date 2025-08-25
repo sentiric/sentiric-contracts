@@ -94,6 +94,50 @@ function deserialize_sentiric_media_v1_ReleasePortResponse(buffer_arg) {
   return sentiric_media_v1_media_pb.ReleasePortResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sentiric_media_v1_StartRecordingRequest(arg) {
+  if (!(arg instanceof sentiric_media_v1_media_pb.StartRecordingRequest)) {
+    throw new Error('Expected argument of type sentiric.media.v1.StartRecordingRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sentiric_media_v1_StartRecordingRequest(buffer_arg) {
+  return sentiric_media_v1_media_pb.StartRecordingRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sentiric_media_v1_StartRecordingResponse(arg) {
+  if (!(arg instanceof sentiric_media_v1_media_pb.StartRecordingResponse)) {
+    throw new Error('Expected argument of type sentiric.media.v1.StartRecordingResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sentiric_media_v1_StartRecordingResponse(buffer_arg) {
+  return sentiric_media_v1_media_pb.StartRecordingResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sentiric_media_v1_StopRecordingRequest(arg) {
+  if (!(arg instanceof sentiric_media_v1_media_pb.StopRecordingRequest)) {
+    throw new Error('Expected argument of type sentiric.media.v1.StopRecordingRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sentiric_media_v1_StopRecordingRequest(buffer_arg) {
+  return sentiric_media_v1_media_pb.StopRecordingRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sentiric_media_v1_StopRecordingResponse(arg) {
+  if (!(arg instanceof sentiric_media_v1_media_pb.StopRecordingResponse)) {
+    throw new Error('Expected argument of type sentiric.media.v1.StopRecordingResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sentiric_media_v1_StopRecordingResponse(buffer_arg) {
+  return sentiric_media_v1_media_pb.StopRecordingResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 
 var MediaServiceService = exports.MediaServiceService = {
   allocatePort: {
@@ -129,8 +173,7 @@ var MediaServiceService = exports.MediaServiceService = {
     responseSerialize: serialize_sentiric_media_v1_PlayAudioResponse,
     responseDeserialize: deserialize_sentiric_media_v1_PlayAudioResponse,
   },
-  // DÜZELTME: Artık standart isme uygun bir response mesajı stream ediyor.
-recordAudio: {
+  recordAudio: {
     path: '/sentiric.media.v1.MediaService/RecordAudio',
     requestStream: false,
     responseStream: true,
@@ -140,6 +183,29 @@ recordAudio: {
     requestDeserialize: deserialize_sentiric_media_v1_RecordAudioRequest,
     responseSerialize: serialize_sentiric_media_v1_RecordAudioResponse,
     responseDeserialize: deserialize_sentiric_media_v1_RecordAudioResponse,
+  },
+  // YENİ RPC'LER
+startRecording: {
+    path: '/sentiric.media.v1.MediaService/StartRecording',
+    requestStream: false,
+    responseStream: false,
+    requestType: sentiric_media_v1_media_pb.StartRecordingRequest,
+    responseType: sentiric_media_v1_media_pb.StartRecordingResponse,
+    requestSerialize: serialize_sentiric_media_v1_StartRecordingRequest,
+    requestDeserialize: deserialize_sentiric_media_v1_StartRecordingRequest,
+    responseSerialize: serialize_sentiric_media_v1_StartRecordingResponse,
+    responseDeserialize: deserialize_sentiric_media_v1_StartRecordingResponse,
+  },
+  stopRecording: {
+    path: '/sentiric.media.v1.MediaService/StopRecording',
+    requestStream: false,
+    responseStream: false,
+    requestType: sentiric_media_v1_media_pb.StopRecordingRequest,
+    responseType: sentiric_media_v1_media_pb.StopRecordingResponse,
+    requestSerialize: serialize_sentiric_media_v1_StopRecordingRequest,
+    requestDeserialize: deserialize_sentiric_media_v1_StopRecordingRequest,
+    responseSerialize: serialize_sentiric_media_v1_StopRecordingResponse,
+    responseDeserialize: deserialize_sentiric_media_v1_StopRecordingResponse,
   },
 };
 

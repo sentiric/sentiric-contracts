@@ -21,10 +21,12 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	MediaService_AllocatePort_FullMethodName = "/sentiric.media.v1.MediaService/AllocatePort"
-	MediaService_ReleasePort_FullMethodName  = "/sentiric.media.v1.MediaService/ReleasePort"
-	MediaService_PlayAudio_FullMethodName    = "/sentiric.media.v1.MediaService/PlayAudio"
-	MediaService_RecordAudio_FullMethodName  = "/sentiric.media.v1.MediaService/RecordAudio"
+	MediaService_AllocatePort_FullMethodName   = "/sentiric.media.v1.MediaService/AllocatePort"
+	MediaService_ReleasePort_FullMethodName    = "/sentiric.media.v1.MediaService/ReleasePort"
+	MediaService_PlayAudio_FullMethodName      = "/sentiric.media.v1.MediaService/PlayAudio"
+	MediaService_RecordAudio_FullMethodName    = "/sentiric.media.v1.MediaService/RecordAudio"
+	MediaService_StartRecording_FullMethodName = "/sentiric.media.v1.MediaService/StartRecording"
+	MediaService_StopRecording_FullMethodName  = "/sentiric.media.v1.MediaService/StopRecording"
 )
 
 // MediaServiceClient is the client API for MediaService service.
@@ -34,8 +36,10 @@ type MediaServiceClient interface {
 	AllocatePort(ctx context.Context, in *AllocatePortRequest, opts ...grpc.CallOption) (*AllocatePortResponse, error)
 	ReleasePort(ctx context.Context, in *ReleasePortRequest, opts ...grpc.CallOption) (*ReleasePortResponse, error)
 	PlayAudio(ctx context.Context, in *PlayAudioRequest, opts ...grpc.CallOption) (*PlayAudioResponse, error)
-	// DÜZELTME: Artık standart isme uygun bir response mesajı stream ediyor.
 	RecordAudio(ctx context.Context, in *RecordAudioRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[RecordAudioResponse], error)
+	// YENİ RPC'LER
+	StartRecording(ctx context.Context, in *StartRecordingRequest, opts ...grpc.CallOption) (*StartRecordingResponse, error)
+	StopRecording(ctx context.Context, in *StopRecordingRequest, opts ...grpc.CallOption) (*StopRecordingResponse, error)
 }
 
 type mediaServiceClient struct {
@@ -95,6 +99,26 @@ func (c *mediaServiceClient) RecordAudio(ctx context.Context, in *RecordAudioReq
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
 type MediaService_RecordAudioClient = grpc.ServerStreamingClient[RecordAudioResponse]
 
+func (c *mediaServiceClient) StartRecording(ctx context.Context, in *StartRecordingRequest, opts ...grpc.CallOption) (*StartRecordingResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(StartRecordingResponse)
+	err := c.cc.Invoke(ctx, MediaService_StartRecording_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *mediaServiceClient) StopRecording(ctx context.Context, in *StopRecordingRequest, opts ...grpc.CallOption) (*StopRecordingResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(StopRecordingResponse)
+	err := c.cc.Invoke(ctx, MediaService_StopRecording_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MediaServiceServer is the server API for MediaService service.
 // All implementations should embed UnimplementedMediaServiceServer
 // for forward compatibility.
@@ -102,8 +126,10 @@ type MediaServiceServer interface {
 	AllocatePort(context.Context, *AllocatePortRequest) (*AllocatePortResponse, error)
 	ReleasePort(context.Context, *ReleasePortRequest) (*ReleasePortResponse, error)
 	PlayAudio(context.Context, *PlayAudioRequest) (*PlayAudioResponse, error)
-	// DÜZELTME: Artık standart isme uygun bir response mesajı stream ediyor.
 	RecordAudio(*RecordAudioRequest, grpc.ServerStreamingServer[RecordAudioResponse]) error
+	// YENİ RPC'LER
+	StartRecording(context.Context, *StartRecordingRequest) (*StartRecordingResponse, error)
+	StopRecording(context.Context, *StopRecordingRequest) (*StopRecordingResponse, error)
 }
 
 // UnimplementedMediaServiceServer should be embedded to have
@@ -124,6 +150,12 @@ func (UnimplementedMediaServiceServer) PlayAudio(context.Context, *PlayAudioRequ
 }
 func (UnimplementedMediaServiceServer) RecordAudio(*RecordAudioRequest, grpc.ServerStreamingServer[RecordAudioResponse]) error {
 	return status.Errorf(codes.Unimplemented, "method RecordAudio not implemented")
+}
+func (UnimplementedMediaServiceServer) StartRecording(context.Context, *StartRecordingRequest) (*StartRecordingResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StartRecording not implemented")
+}
+func (UnimplementedMediaServiceServer) StopRecording(context.Context, *StopRecordingRequest) (*StopRecordingResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StopRecording not implemented")
 }
 func (UnimplementedMediaServiceServer) testEmbeddedByValue() {}
 
@@ -210,6 +242,42 @@ func _MediaService_RecordAudio_Handler(srv interface{}, stream grpc.ServerStream
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
 type MediaService_RecordAudioServer = grpc.ServerStreamingServer[RecordAudioResponse]
 
+func _MediaService_StartRecording_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StartRecordingRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MediaServiceServer).StartRecording(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: MediaService_StartRecording_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MediaServiceServer).StartRecording(ctx, req.(*StartRecordingRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _MediaService_StopRecording_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StopRecordingRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MediaServiceServer).StopRecording(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: MediaService_StopRecording_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MediaServiceServer).StopRecording(ctx, req.(*StopRecordingRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // MediaService_ServiceDesc is the grpc.ServiceDesc for MediaService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -228,6 +296,14 @@ var MediaService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "PlayAudio",
 			Handler:    _MediaService_PlayAudio_Handler,
+		},
+		{
+			MethodName: "StartRecording",
+			Handler:    _MediaService_StartRecording_Handler,
+		},
+		{
+			MethodName: "StopRecording",
+			Handler:    _MediaService_StopRecording_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{

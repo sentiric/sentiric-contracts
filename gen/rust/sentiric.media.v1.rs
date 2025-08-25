@@ -64,5 +64,38 @@ pub struct RecordAudioResponse {
     #[prost(string, tag="2")]
     pub media_type: ::prost::alloc::string::String,
 }
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct StartRecordingRequest {
+    #[prost(uint32, tag="1")]
+    pub server_rtp_port: u32,
+    /// e.g., "file:///path/to/recording.wav" or "s3://bucket/key.mp3"
+    #[prost(string, tag="2")]
+    pub output_uri: ::prost::alloc::string::String,
+    /// e.g., 8000, 16000. Defaults to 16000.
+    #[prost(uint32, optional, tag="3")]
+    pub sample_rate: ::core::option::Option<u32>,
+    /// e.g., "wav", "mp3". Defaults to "wav".
+    #[prost(string, optional, tag="4")]
+    pub format: ::core::option::Option<::prost::alloc::string::String>,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct StartRecordingResponse {
+    #[prost(bool, tag="1")]
+    pub success: bool,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct StopRecordingRequest {
+    #[prost(uint32, tag="1")]
+    pub server_rtp_port: u32,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct StopRecordingResponse {
+    #[prost(bool, tag="1")]
+    pub success: bool,
+}
 include!("sentiric.media.v1.tonic.rs");
 // @@protoc_insertion_point(module)

@@ -34,6 +34,16 @@ class MediaServiceStub(object):
                 request_serializer=sentiric_dot_media_dot_v1_dot_media__pb2.RecordAudioRequest.SerializeToString,
                 response_deserializer=sentiric_dot_media_dot_v1_dot_media__pb2.RecordAudioResponse.FromString,
                 _registered_method=True)
+        self.StartRecording = channel.unary_unary(
+                '/sentiric.media.v1.MediaService/StartRecording',
+                request_serializer=sentiric_dot_media_dot_v1_dot_media__pb2.StartRecordingRequest.SerializeToString,
+                response_deserializer=sentiric_dot_media_dot_v1_dot_media__pb2.StartRecordingResponse.FromString,
+                _registered_method=True)
+        self.StopRecording = channel.unary_unary(
+                '/sentiric.media.v1.MediaService/StopRecording',
+                request_serializer=sentiric_dot_media_dot_v1_dot_media__pb2.StopRecordingRequest.SerializeToString,
+                response_deserializer=sentiric_dot_media_dot_v1_dot_media__pb2.StopRecordingResponse.FromString,
+                _registered_method=True)
 
 
 class MediaServiceServicer(object):
@@ -58,8 +68,20 @@ class MediaServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def RecordAudio(self, request, context):
-        """DÜZELTME: Artık standart isme uygun bir response mesajı stream ediyor.
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def StartRecording(self, request, context):
+        """YENİ RPC'LER
         """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def StopRecording(self, request, context):
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -86,6 +108,16 @@ def add_MediaServiceServicer_to_server(servicer, server):
                     servicer.RecordAudio,
                     request_deserializer=sentiric_dot_media_dot_v1_dot_media__pb2.RecordAudioRequest.FromString,
                     response_serializer=sentiric_dot_media_dot_v1_dot_media__pb2.RecordAudioResponse.SerializeToString,
+            ),
+            'StartRecording': grpc.unary_unary_rpc_method_handler(
+                    servicer.StartRecording,
+                    request_deserializer=sentiric_dot_media_dot_v1_dot_media__pb2.StartRecordingRequest.FromString,
+                    response_serializer=sentiric_dot_media_dot_v1_dot_media__pb2.StartRecordingResponse.SerializeToString,
+            ),
+            'StopRecording': grpc.unary_unary_rpc_method_handler(
+                    servicer.StopRecording,
+                    request_deserializer=sentiric_dot_media_dot_v1_dot_media__pb2.StopRecordingRequest.FromString,
+                    response_serializer=sentiric_dot_media_dot_v1_dot_media__pb2.StopRecordingResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -196,6 +228,60 @@ class MediaService(object):
             '/sentiric.media.v1.MediaService/RecordAudio',
             sentiric_dot_media_dot_v1_dot_media__pb2.RecordAudioRequest.SerializeToString,
             sentiric_dot_media_dot_v1_dot_media__pb2.RecordAudioResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def StartRecording(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/sentiric.media.v1.MediaService/StartRecording',
+            sentiric_dot_media_dot_v1_dot_media__pb2.StartRecordingRequest.SerializeToString,
+            sentiric_dot_media_dot_v1_dot_media__pb2.StartRecordingResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def StopRecording(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/sentiric.media.v1.MediaService/StopRecording',
+            sentiric_dot_media_dot_v1_dot_media__pb2.StopRecordingRequest.SerializeToString,
+            sentiric_dot_media_dot_v1_dot_media__pb2.StopRecordingResponse.FromString,
             options,
             channel_credentials,
             insecure,

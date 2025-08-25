@@ -61,3 +61,33 @@ class RecordAudioResponse(_message.Message):
     audio_data: bytes
     media_type: str
     def __init__(self, audio_data: _Optional[bytes] = ..., media_type: _Optional[str] = ...) -> None: ...
+
+class StartRecordingRequest(_message.Message):
+    __slots__ = ("server_rtp_port", "output_uri", "sample_rate", "format")
+    SERVER_RTP_PORT_FIELD_NUMBER: _ClassVar[int]
+    OUTPUT_URI_FIELD_NUMBER: _ClassVar[int]
+    SAMPLE_RATE_FIELD_NUMBER: _ClassVar[int]
+    FORMAT_FIELD_NUMBER: _ClassVar[int]
+    server_rtp_port: int
+    output_uri: str
+    sample_rate: int
+    format: str
+    def __init__(self, server_rtp_port: _Optional[int] = ..., output_uri: _Optional[str] = ..., sample_rate: _Optional[int] = ..., format: _Optional[str] = ...) -> None: ...
+
+class StartRecordingResponse(_message.Message):
+    __slots__ = ("success",)
+    SUCCESS_FIELD_NUMBER: _ClassVar[int]
+    success: bool
+    def __init__(self, success: _Optional[bool] = ...) -> None: ...
+
+class StopRecordingRequest(_message.Message):
+    __slots__ = ("server_rtp_port",)
+    SERVER_RTP_PORT_FIELD_NUMBER: _ClassVar[int]
+    server_rtp_port: int
+    def __init__(self, server_rtp_port: _Optional[int] = ...) -> None: ...
+
+class StopRecordingResponse(_message.Message):
+    __slots__ = ("success",)
+    SUCCESS_FIELD_NUMBER: _ClassVar[int]
+    success: bool
+    def __init__(self, success: _Optional[bool] = ...) -> None: ...

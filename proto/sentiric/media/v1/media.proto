@@ -9,9 +9,11 @@ service MediaService {
   rpc AllocatePort(AllocatePortRequest) returns (AllocatePortResponse);
   rpc ReleasePort(ReleasePortRequest) returns (ReleasePortResponse);
   rpc PlayAudio(PlayAudioRequest) returns (PlayAudioResponse);
-  
-  // DÜZELTME: Artık standart isme uygun bir response mesajı stream ediyor.
   rpc RecordAudio(RecordAudioRequest) returns (stream RecordAudioResponse);
+
+  // YENİ RPC'LER
+  rpc StartRecording(StartRecordingRequest) returns (StartRecordingResponse);
+  rpc StopRecording(StopRecordingRequest) returns (StopRecordingResponse);
 }
 
 // ... AllocatePort, ReleasePort, PlayAudio mesajları aynı kalır ...
@@ -52,4 +54,23 @@ message RecordAudioResponse {
   
   // Dönen verinin medya tipi (örn: "audio/pcmu", "audio/wav")
   string media_type = 2;
+}
+
+message StartRecordingRequest {
+  uint32 server_rtp_port = 1;
+  string output_uri = 2; // e.g., "file:///path/to/recording.wav" or "s3://bucket/key.mp3"
+  optional uint32 sample_rate = 3; // e.g., 8000, 16000. Defaults to 16000.
+  optional string format = 4; // e.g., "wav", "mp3". Defaults to "wav".
+}
+
+message StartRecordingResponse {
+  bool success = 1;
+}
+
+message StopRecordingRequest {
+  uint32 server_rtp_port = 1;
+}
+
+message StopRecordingResponse {
+  bool success = 1;
 }

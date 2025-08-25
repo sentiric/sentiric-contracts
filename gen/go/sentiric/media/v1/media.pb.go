@@ -421,6 +421,206 @@ func (x *RecordAudioResponse) GetMediaType() string {
 	return ""
 }
 
+type StartRecordingRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ServerRtpPort uint32                 `protobuf:"varint,1,opt,name=server_rtp_port,json=serverRtpPort,proto3" json:"server_rtp_port,omitempty"`
+	OutputUri     string                 `protobuf:"bytes,2,opt,name=output_uri,json=outputUri,proto3" json:"output_uri,omitempty"`           // e.g., "file:///path/to/recording.wav" or "s3://bucket/key.mp3"
+	SampleRate    *uint32                `protobuf:"varint,3,opt,name=sample_rate,json=sampleRate,proto3,oneof" json:"sample_rate,omitempty"` // e.g., 8000, 16000. Defaults to 16000.
+	Format        *string                `protobuf:"bytes,4,opt,name=format,proto3,oneof" json:"format,omitempty"`                            // e.g., "wav", "mp3". Defaults to "wav".
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *StartRecordingRequest) Reset() {
+	*x = StartRecordingRequest{}
+	mi := &file_sentiric_media_v1_media_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StartRecordingRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StartRecordingRequest) ProtoMessage() {}
+
+func (x *StartRecordingRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_media_v1_media_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StartRecordingRequest.ProtoReflect.Descriptor instead.
+func (*StartRecordingRequest) Descriptor() ([]byte, []int) {
+	return file_sentiric_media_v1_media_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *StartRecordingRequest) GetServerRtpPort() uint32 {
+	if x != nil {
+		return x.ServerRtpPort
+	}
+	return 0
+}
+
+func (x *StartRecordingRequest) GetOutputUri() string {
+	if x != nil {
+		return x.OutputUri
+	}
+	return ""
+}
+
+func (x *StartRecordingRequest) GetSampleRate() uint32 {
+	if x != nil && x.SampleRate != nil {
+		return *x.SampleRate
+	}
+	return 0
+}
+
+func (x *StartRecordingRequest) GetFormat() string {
+	if x != nil && x.Format != nil {
+		return *x.Format
+	}
+	return ""
+}
+
+type StartRecordingResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *StartRecordingResponse) Reset() {
+	*x = StartRecordingResponse{}
+	mi := &file_sentiric_media_v1_media_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StartRecordingResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StartRecordingResponse) ProtoMessage() {}
+
+func (x *StartRecordingResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_media_v1_media_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StartRecordingResponse.ProtoReflect.Descriptor instead.
+func (*StartRecordingResponse) Descriptor() ([]byte, []int) {
+	return file_sentiric_media_v1_media_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *StartRecordingResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
+type StopRecordingRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ServerRtpPort uint32                 `protobuf:"varint,1,opt,name=server_rtp_port,json=serverRtpPort,proto3" json:"server_rtp_port,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *StopRecordingRequest) Reset() {
+	*x = StopRecordingRequest{}
+	mi := &file_sentiric_media_v1_media_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StopRecordingRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StopRecordingRequest) ProtoMessage() {}
+
+func (x *StopRecordingRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_media_v1_media_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StopRecordingRequest.ProtoReflect.Descriptor instead.
+func (*StopRecordingRequest) Descriptor() ([]byte, []int) {
+	return file_sentiric_media_v1_media_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *StopRecordingRequest) GetServerRtpPort() uint32 {
+	if x != nil {
+		return x.ServerRtpPort
+	}
+	return 0
+}
+
+type StopRecordingResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *StopRecordingResponse) Reset() {
+	*x = StopRecordingResponse{}
+	mi := &file_sentiric_media_v1_media_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StopRecordingResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StopRecordingResponse) ProtoMessage() {}
+
+func (x *StopRecordingResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_media_v1_media_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StopRecordingResponse.ProtoReflect.Descriptor instead.
+func (*StopRecordingResponse) Descriptor() ([]byte, []int) {
+	return file_sentiric_media_v1_media_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *StopRecordingResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
 var File_sentiric_media_v1_media_proto protoreflect.FileDescriptor
 
 const file_sentiric_media_v1_media_proto_rawDesc = "" +
@@ -449,12 +649,29 @@ const file_sentiric_media_v1_media_proto_rawDesc = "" +
 	"\n" +
 	"audio_data\x18\x01 \x01(\fR\taudioData\x12\x1d\n" +
 	"\n" +
-	"media_type\x18\x02 \x01(\tR\tmediaType2\x85\x03\n" +
+	"media_type\x18\x02 \x01(\tR\tmediaType\"\xbc\x01\n" +
+	"\x15StartRecordingRequest\x12&\n" +
+	"\x0fserver_rtp_port\x18\x01 \x01(\rR\rserverRtpPort\x12\x1d\n" +
+	"\n" +
+	"output_uri\x18\x02 \x01(\tR\toutputUri\x12$\n" +
+	"\vsample_rate\x18\x03 \x01(\rH\x00R\n" +
+	"sampleRate\x88\x01\x01\x12\x1b\n" +
+	"\x06format\x18\x04 \x01(\tH\x01R\x06format\x88\x01\x01B\x0e\n" +
+	"\f_sample_rateB\t\n" +
+	"\a_format\"2\n" +
+	"\x16StartRecordingResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\">\n" +
+	"\x14StopRecordingRequest\x12&\n" +
+	"\x0fserver_rtp_port\x18\x01 \x01(\rR\rserverRtpPort\"1\n" +
+	"\x15StopRecordingResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess2\xd0\x04\n" +
 	"\fMediaService\x12_\n" +
 	"\fAllocatePort\x12&.sentiric.media.v1.AllocatePortRequest\x1a'.sentiric.media.v1.AllocatePortResponse\x12\\\n" +
 	"\vReleasePort\x12%.sentiric.media.v1.ReleasePortRequest\x1a&.sentiric.media.v1.ReleasePortResponse\x12V\n" +
 	"\tPlayAudio\x12#.sentiric.media.v1.PlayAudioRequest\x1a$.sentiric.media.v1.PlayAudioResponse\x12^\n" +
-	"\vRecordAudio\x12%.sentiric.media.v1.RecordAudioRequest\x1a&.sentiric.media.v1.RecordAudioResponse0\x01BIZGgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/media/v1;mediav1b\x06proto3"
+	"\vRecordAudio\x12%.sentiric.media.v1.RecordAudioRequest\x1a&.sentiric.media.v1.RecordAudioResponse0\x01\x12e\n" +
+	"\x0eStartRecording\x12(.sentiric.media.v1.StartRecordingRequest\x1a).sentiric.media.v1.StartRecordingResponse\x12b\n" +
+	"\rStopRecording\x12'.sentiric.media.v1.StopRecordingRequest\x1a(.sentiric.media.v1.StopRecordingResponseBIZGgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/media/v1;mediav1b\x06proto3"
 
 var (
 	file_sentiric_media_v1_media_proto_rawDescOnce sync.Once
@@ -468,31 +685,39 @@ func file_sentiric_media_v1_media_proto_rawDescGZIP() []byte {
 	return file_sentiric_media_v1_media_proto_rawDescData
 }
 
-var file_sentiric_media_v1_media_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_sentiric_media_v1_media_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_sentiric_media_v1_media_proto_goTypes = []any{
-	(*AllocatePortRequest)(nil),  // 0: sentiric.media.v1.AllocatePortRequest
-	(*AllocatePortResponse)(nil), // 1: sentiric.media.v1.AllocatePortResponse
-	(*ReleasePortRequest)(nil),   // 2: sentiric.media.v1.ReleasePortRequest
-	(*ReleasePortResponse)(nil),  // 3: sentiric.media.v1.ReleasePortResponse
-	(*PlayAudioRequest)(nil),     // 4: sentiric.media.v1.PlayAudioRequest
-	(*PlayAudioResponse)(nil),    // 5: sentiric.media.v1.PlayAudioResponse
-	(*RecordAudioRequest)(nil),   // 6: sentiric.media.v1.RecordAudioRequest
-	(*RecordAudioResponse)(nil),  // 7: sentiric.media.v1.RecordAudioResponse
+	(*AllocatePortRequest)(nil),    // 0: sentiric.media.v1.AllocatePortRequest
+	(*AllocatePortResponse)(nil),   // 1: sentiric.media.v1.AllocatePortResponse
+	(*ReleasePortRequest)(nil),     // 2: sentiric.media.v1.ReleasePortRequest
+	(*ReleasePortResponse)(nil),    // 3: sentiric.media.v1.ReleasePortResponse
+	(*PlayAudioRequest)(nil),       // 4: sentiric.media.v1.PlayAudioRequest
+	(*PlayAudioResponse)(nil),      // 5: sentiric.media.v1.PlayAudioResponse
+	(*RecordAudioRequest)(nil),     // 6: sentiric.media.v1.RecordAudioRequest
+	(*RecordAudioResponse)(nil),    // 7: sentiric.media.v1.RecordAudioResponse
+	(*StartRecordingRequest)(nil),  // 8: sentiric.media.v1.StartRecordingRequest
+	(*StartRecordingResponse)(nil), // 9: sentiric.media.v1.StartRecordingResponse
+	(*StopRecordingRequest)(nil),   // 10: sentiric.media.v1.StopRecordingRequest
+	(*StopRecordingResponse)(nil),  // 11: sentiric.media.v1.StopRecordingResponse
 }
 var file_sentiric_media_v1_media_proto_depIdxs = []int32{
-	0, // 0: sentiric.media.v1.MediaService.AllocatePort:input_type -> sentiric.media.v1.AllocatePortRequest
-	2, // 1: sentiric.media.v1.MediaService.ReleasePort:input_type -> sentiric.media.v1.ReleasePortRequest
-	4, // 2: sentiric.media.v1.MediaService.PlayAudio:input_type -> sentiric.media.v1.PlayAudioRequest
-	6, // 3: sentiric.media.v1.MediaService.RecordAudio:input_type -> sentiric.media.v1.RecordAudioRequest
-	1, // 4: sentiric.media.v1.MediaService.AllocatePort:output_type -> sentiric.media.v1.AllocatePortResponse
-	3, // 5: sentiric.media.v1.MediaService.ReleasePort:output_type -> sentiric.media.v1.ReleasePortResponse
-	5, // 6: sentiric.media.v1.MediaService.PlayAudio:output_type -> sentiric.media.v1.PlayAudioResponse
-	7, // 7: sentiric.media.v1.MediaService.RecordAudio:output_type -> sentiric.media.v1.RecordAudioResponse
-	4, // [4:8] is the sub-list for method output_type
-	0, // [0:4] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	0,  // 0: sentiric.media.v1.MediaService.AllocatePort:input_type -> sentiric.media.v1.AllocatePortRequest
+	2,  // 1: sentiric.media.v1.MediaService.ReleasePort:input_type -> sentiric.media.v1.ReleasePortRequest
+	4,  // 2: sentiric.media.v1.MediaService.PlayAudio:input_type -> sentiric.media.v1.PlayAudioRequest
+	6,  // 3: sentiric.media.v1.MediaService.RecordAudio:input_type -> sentiric.media.v1.RecordAudioRequest
+	8,  // 4: sentiric.media.v1.MediaService.StartRecording:input_type -> sentiric.media.v1.StartRecordingRequest
+	10, // 5: sentiric.media.v1.MediaService.StopRecording:input_type -> sentiric.media.v1.StopRecordingRequest
+	1,  // 6: sentiric.media.v1.MediaService.AllocatePort:output_type -> sentiric.media.v1.AllocatePortResponse
+	3,  // 7: sentiric.media.v1.MediaService.ReleasePort:output_type -> sentiric.media.v1.ReleasePortResponse
+	5,  // 8: sentiric.media.v1.MediaService.PlayAudio:output_type -> sentiric.media.v1.PlayAudioResponse
+	7,  // 9: sentiric.media.v1.MediaService.RecordAudio:output_type -> sentiric.media.v1.RecordAudioResponse
+	9,  // 10: sentiric.media.v1.MediaService.StartRecording:output_type -> sentiric.media.v1.StartRecordingResponse
+	11, // 11: sentiric.media.v1.MediaService.StopRecording:output_type -> sentiric.media.v1.StopRecordingResponse
+	6,  // [6:12] is the sub-list for method output_type
+	0,  // [0:6] is the sub-list for method input_type
+	0,  // [0:0] is the sub-list for extension type_name
+	0,  // [0:0] is the sub-list for extension extendee
+	0,  // [0:0] is the sub-list for field type_name
 }
 
 func init() { file_sentiric_media_v1_media_proto_init() }
@@ -501,13 +726,14 @@ func file_sentiric_media_v1_media_proto_init() {
 		return
 	}
 	file_sentiric_media_v1_media_proto_msgTypes[6].OneofWrappers = []any{}
+	file_sentiric_media_v1_media_proto_msgTypes[8].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sentiric_media_v1_media_proto_rawDesc), len(file_sentiric_media_v1_media_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   8,
+			NumMessages:   12,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
