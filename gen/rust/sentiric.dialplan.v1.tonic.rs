@@ -117,7 +117,10 @@ pub mod dialplan_service_client {
         pub async fn create_inbound_route(
             &mut self,
             request: impl tonic::IntoRequest<super::CreateInboundRouteRequest>,
-        ) -> std::result::Result<tonic::Response<super::InboundRoute>, tonic::Status> {
+        ) -> std::result::Result<
+            tonic::Response<super::CreateInboundRouteResponse>,
+            tonic::Status,
+        > {
             self.inner
                 .ready()
                 .await
@@ -144,7 +147,10 @@ pub mod dialplan_service_client {
         pub async fn get_inbound_route(
             &mut self,
             request: impl tonic::IntoRequest<super::GetInboundRouteRequest>,
-        ) -> std::result::Result<tonic::Response<super::InboundRoute>, tonic::Status> {
+        ) -> std::result::Result<
+            tonic::Response<super::GetInboundRouteResponse>,
+            tonic::Status,
+        > {
             self.inner
                 .ready()
                 .await
@@ -171,7 +177,10 @@ pub mod dialplan_service_client {
         pub async fn update_inbound_route(
             &mut self,
             request: impl tonic::IntoRequest<super::UpdateInboundRouteRequest>,
-        ) -> std::result::Result<tonic::Response<super::InboundRoute>, tonic::Status> {
+        ) -> std::result::Result<
+            tonic::Response<super::UpdateInboundRouteResponse>,
+            tonic::Status,
+        > {
             self.inner
                 .ready()
                 .await
@@ -258,7 +267,10 @@ pub mod dialplan_service_client {
         pub async fn create_dialplan(
             &mut self,
             request: impl tonic::IntoRequest<super::CreateDialplanRequest>,
-        ) -> std::result::Result<tonic::Response<super::Dialplan>, tonic::Status> {
+        ) -> std::result::Result<
+            tonic::Response<super::CreateDialplanResponse>,
+            tonic::Status,
+        > {
             self.inner
                 .ready()
                 .await
@@ -285,7 +297,10 @@ pub mod dialplan_service_client {
         pub async fn get_dialplan(
             &mut self,
             request: impl tonic::IntoRequest<super::GetDialplanRequest>,
-        ) -> std::result::Result<tonic::Response<super::Dialplan>, tonic::Status> {
+        ) -> std::result::Result<
+            tonic::Response<super::GetDialplanResponse>,
+            tonic::Status,
+        > {
             self.inner
                 .ready()
                 .await
@@ -312,7 +327,10 @@ pub mod dialplan_service_client {
         pub async fn update_dialplan(
             &mut self,
             request: impl tonic::IntoRequest<super::UpdateDialplanRequest>,
-        ) -> std::result::Result<tonic::Response<super::Dialplan>, tonic::Status> {
+        ) -> std::result::Result<
+            tonic::Response<super::UpdateDialplanResponse>,
+            tonic::Status,
+        > {
             self.inner
                 .ready()
                 .await
@@ -415,15 +433,24 @@ pub mod dialplan_service_server {
         async fn create_inbound_route(
             &self,
             request: tonic::Request<super::CreateInboundRouteRequest>,
-        ) -> std::result::Result<tonic::Response<super::InboundRoute>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::CreateInboundRouteResponse>,
+            tonic::Status,
+        >;
         async fn get_inbound_route(
             &self,
             request: tonic::Request<super::GetInboundRouteRequest>,
-        ) -> std::result::Result<tonic::Response<super::InboundRoute>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::GetInboundRouteResponse>,
+            tonic::Status,
+        >;
         async fn update_inbound_route(
             &self,
             request: tonic::Request<super::UpdateInboundRouteRequest>,
-        ) -> std::result::Result<tonic::Response<super::InboundRoute>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::UpdateInboundRouteResponse>,
+            tonic::Status,
+        >;
         async fn delete_inbound_route(
             &self,
             request: tonic::Request<super::DeleteInboundRouteRequest>,
@@ -441,15 +468,24 @@ pub mod dialplan_service_server {
         async fn create_dialplan(
             &self,
             request: tonic::Request<super::CreateDialplanRequest>,
-        ) -> std::result::Result<tonic::Response<super::Dialplan>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::CreateDialplanResponse>,
+            tonic::Status,
+        >;
         async fn get_dialplan(
             &self,
             request: tonic::Request<super::GetDialplanRequest>,
-        ) -> std::result::Result<tonic::Response<super::Dialplan>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::GetDialplanResponse>,
+            tonic::Status,
+        >;
         async fn update_dialplan(
             &self,
             request: tonic::Request<super::UpdateDialplanRequest>,
-        ) -> std::result::Result<tonic::Response<super::Dialplan>, tonic::Status>;
+        ) -> std::result::Result<
+            tonic::Response<super::UpdateDialplanResponse>,
+            tonic::Status,
+        >;
         async fn delete_dialplan(
             &self,
             request: tonic::Request<super::DeleteDialplanRequest>,
@@ -594,7 +630,7 @@ pub mod dialplan_service_server {
                         T: DialplanService,
                     > tonic::server::UnaryService<super::CreateInboundRouteRequest>
                     for CreateInboundRouteSvc<T> {
-                        type Response = super::InboundRoute;
+                        type Response = super::CreateInboundRouteResponse;
                         type Future = BoxFuture<
                             tonic::Response<Self::Response>,
                             tonic::Status,
@@ -643,7 +679,7 @@ pub mod dialplan_service_server {
                         T: DialplanService,
                     > tonic::server::UnaryService<super::GetInboundRouteRequest>
                     for GetInboundRouteSvc<T> {
-                        type Response = super::InboundRoute;
+                        type Response = super::GetInboundRouteResponse;
                         type Future = BoxFuture<
                             tonic::Response<Self::Response>,
                             tonic::Status,
@@ -689,7 +725,7 @@ pub mod dialplan_service_server {
                         T: DialplanService,
                     > tonic::server::UnaryService<super::UpdateInboundRouteRequest>
                     for UpdateInboundRouteSvc<T> {
-                        type Response = super::InboundRoute;
+                        type Response = super::UpdateInboundRouteResponse;
                         type Future = BoxFuture<
                             tonic::Response<Self::Response>,
                             tonic::Status,
@@ -833,7 +869,7 @@ pub mod dialplan_service_server {
                         T: DialplanService,
                     > tonic::server::UnaryService<super::CreateDialplanRequest>
                     for CreateDialplanSvc<T> {
-                        type Response = super::Dialplan;
+                        type Response = super::CreateDialplanResponse;
                         type Future = BoxFuture<
                             tonic::Response<Self::Response>,
                             tonic::Status,
@@ -879,7 +915,7 @@ pub mod dialplan_service_server {
                         T: DialplanService,
                     > tonic::server::UnaryService<super::GetDialplanRequest>
                     for GetDialplanSvc<T> {
-                        type Response = super::Dialplan;
+                        type Response = super::GetDialplanResponse;
                         type Future = BoxFuture<
                             tonic::Response<Self::Response>,
                             tonic::Status,
@@ -924,7 +960,7 @@ pub mod dialplan_service_server {
                         T: DialplanService,
                     > tonic::server::UnaryService<super::UpdateDialplanRequest>
                     for UpdateDialplanSvc<T> {
-                        type Response = super::Dialplan;
+                        type Response = super::UpdateDialplanResponse;
                         type Future = BoxFuture<
                             tonic::Response<Self::Response>,
                             tonic::Status,

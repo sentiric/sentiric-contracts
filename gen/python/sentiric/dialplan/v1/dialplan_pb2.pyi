@@ -88,13 +88,31 @@ class CreateInboundRouteRequest(_message.Message):
     route: InboundRoute
     def __init__(self, route: _Optional[_Union[InboundRoute, _Mapping]] = ...) -> None: ...
 
+class CreateInboundRouteResponse(_message.Message):
+    __slots__ = ("route",)
+    ROUTE_FIELD_NUMBER: _ClassVar[int]
+    route: InboundRoute
+    def __init__(self, route: _Optional[_Union[InboundRoute, _Mapping]] = ...) -> None: ...
+
 class GetInboundRouteRequest(_message.Message):
     __slots__ = ("phone_number",)
     PHONE_NUMBER_FIELD_NUMBER: _ClassVar[int]
     phone_number: str
     def __init__(self, phone_number: _Optional[str] = ...) -> None: ...
 
+class GetInboundRouteResponse(_message.Message):
+    __slots__ = ("route",)
+    ROUTE_FIELD_NUMBER: _ClassVar[int]
+    route: InboundRoute
+    def __init__(self, route: _Optional[_Union[InboundRoute, _Mapping]] = ...) -> None: ...
+
 class UpdateInboundRouteRequest(_message.Message):
+    __slots__ = ("route",)
+    ROUTE_FIELD_NUMBER: _ClassVar[int]
+    route: InboundRoute
+    def __init__(self, route: _Optional[_Union[InboundRoute, _Mapping]] = ...) -> None: ...
+
+class UpdateInboundRouteResponse(_message.Message):
     __slots__ = ("route",)
     ROUTE_FIELD_NUMBER: _ClassVar[int]
     route: InboundRoute
@@ -136,13 +154,31 @@ class CreateDialplanRequest(_message.Message):
     dialplan: Dialplan
     def __init__(self, dialplan: _Optional[_Union[Dialplan, _Mapping]] = ...) -> None: ...
 
+class CreateDialplanResponse(_message.Message):
+    __slots__ = ("dialplan",)
+    DIALPLAN_FIELD_NUMBER: _ClassVar[int]
+    dialplan: Dialplan
+    def __init__(self, dialplan: _Optional[_Union[Dialplan, _Mapping]] = ...) -> None: ...
+
 class GetDialplanRequest(_message.Message):
     __slots__ = ("id",)
     ID_FIELD_NUMBER: _ClassVar[int]
     id: str
     def __init__(self, id: _Optional[str] = ...) -> None: ...
 
+class GetDialplanResponse(_message.Message):
+    __slots__ = ("dialplan",)
+    DIALPLAN_FIELD_NUMBER: _ClassVar[int]
+    dialplan: Dialplan
+    def __init__(self, dialplan: _Optional[_Union[Dialplan, _Mapping]] = ...) -> None: ...
+
 class UpdateDialplanRequest(_message.Message):
+    __slots__ = ("dialplan",)
+    DIALPLAN_FIELD_NUMBER: _ClassVar[int]
+    dialplan: Dialplan
+    def __init__(self, dialplan: _Optional[_Union[Dialplan, _Mapping]] = ...) -> None: ...
+
+class UpdateDialplanResponse(_message.Message):
     __slots__ = ("dialplan",)
     DIALPLAN_FIELD_NUMBER: _ClassVar[int]
     dialplan: Dialplan

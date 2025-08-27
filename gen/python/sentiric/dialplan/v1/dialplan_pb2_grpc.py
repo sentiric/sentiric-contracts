@@ -26,17 +26,17 @@ class DialplanServiceStub(object):
         self.CreateInboundRoute = channel.unary_unary(
                 '/sentiric.dialplan.v1.DialplanService/CreateInboundRoute',
                 request_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.CreateInboundRouteRequest.SerializeToString,
-                response_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.InboundRoute.FromString,
+                response_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.CreateInboundRouteResponse.FromString,
                 _registered_method=True)
         self.GetInboundRoute = channel.unary_unary(
                 '/sentiric.dialplan.v1.DialplanService/GetInboundRoute',
                 request_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.GetInboundRouteRequest.SerializeToString,
-                response_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.InboundRoute.FromString,
+                response_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.GetInboundRouteResponse.FromString,
                 _registered_method=True)
         self.UpdateInboundRoute = channel.unary_unary(
                 '/sentiric.dialplan.v1.DialplanService/UpdateInboundRoute',
                 request_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.UpdateInboundRouteRequest.SerializeToString,
-                response_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.InboundRoute.FromString,
+                response_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.UpdateInboundRouteResponse.FromString,
                 _registered_method=True)
         self.DeleteInboundRoute = channel.unary_unary(
                 '/sentiric.dialplan.v1.DialplanService/DeleteInboundRoute',
@@ -51,17 +51,17 @@ class DialplanServiceStub(object):
         self.CreateDialplan = channel.unary_unary(
                 '/sentiric.dialplan.v1.DialplanService/CreateDialplan',
                 request_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.CreateDialplanRequest.SerializeToString,
-                response_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.Dialplan.FromString,
+                response_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.CreateDialplanResponse.FromString,
                 _registered_method=True)
         self.GetDialplan = channel.unary_unary(
                 '/sentiric.dialplan.v1.DialplanService/GetDialplan',
                 request_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.GetDialplanRequest.SerializeToString,
-                response_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.Dialplan.FromString,
+                response_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.GetDialplanResponse.FromString,
                 _registered_method=True)
         self.UpdateDialplan = channel.unary_unary(
                 '/sentiric.dialplan.v1.DialplanService/UpdateDialplan',
                 request_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.UpdateDialplanRequest.SerializeToString,
-                response_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.Dialplan.FromString,
+                response_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.UpdateDialplanResponse.FromString,
                 _registered_method=True)
         self.DeleteDialplan = channel.unary_unary(
                 '/sentiric.dialplan.v1.DialplanService/DeleteDialplan',
@@ -83,14 +83,14 @@ class DialplanServiceServicer(object):
     """
 
     def ResolveDialplan(self, request, context):
-        """Ana karar mekanizması RPC'si
-        """
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def CreateInboundRoute(self, request, context):
         """Inbound Route Yönetimi
+        DÜZELTME: Her RPC artık kendine özgü bir Response mesajı kullanıyor.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -122,6 +122,7 @@ class DialplanServiceServicer(object):
 
     def CreateDialplan(self, request, context):
         """Dialplan Yönetimi
+        DÜZELTME: Her RPC artık kendine özgü bir Response mesajı kullanıyor.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -162,17 +163,17 @@ def add_DialplanServiceServicer_to_server(servicer, server):
             'CreateInboundRoute': grpc.unary_unary_rpc_method_handler(
                     servicer.CreateInboundRoute,
                     request_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.CreateInboundRouteRequest.FromString,
-                    response_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.InboundRoute.SerializeToString,
+                    response_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.CreateInboundRouteResponse.SerializeToString,
             ),
             'GetInboundRoute': grpc.unary_unary_rpc_method_handler(
                     servicer.GetInboundRoute,
                     request_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.GetInboundRouteRequest.FromString,
-                    response_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.InboundRoute.SerializeToString,
+                    response_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.GetInboundRouteResponse.SerializeToString,
             ),
             'UpdateInboundRoute': grpc.unary_unary_rpc_method_handler(
                     servicer.UpdateInboundRoute,
                     request_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.UpdateInboundRouteRequest.FromString,
-                    response_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.InboundRoute.SerializeToString,
+                    response_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.UpdateInboundRouteResponse.SerializeToString,
             ),
             'DeleteInboundRoute': grpc.unary_unary_rpc_method_handler(
                     servicer.DeleteInboundRoute,
@@ -187,17 +188,17 @@ def add_DialplanServiceServicer_to_server(servicer, server):
             'CreateDialplan': grpc.unary_unary_rpc_method_handler(
                     servicer.CreateDialplan,
                     request_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.CreateDialplanRequest.FromString,
-                    response_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.Dialplan.SerializeToString,
+                    response_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.CreateDialplanResponse.SerializeToString,
             ),
             'GetDialplan': grpc.unary_unary_rpc_method_handler(
                     servicer.GetDialplan,
                     request_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.GetDialplanRequest.FromString,
-                    response_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.Dialplan.SerializeToString,
+                    response_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.GetDialplanResponse.SerializeToString,
             ),
             'UpdateDialplan': grpc.unary_unary_rpc_method_handler(
                     servicer.UpdateDialplan,
                     request_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.UpdateDialplanRequest.FromString,
-                    response_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.Dialplan.SerializeToString,
+                    response_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.UpdateDialplanResponse.SerializeToString,
             ),
             'DeleteDialplan': grpc.unary_unary_rpc_method_handler(
                     servicer.DeleteDialplan,
@@ -267,7 +268,7 @@ class DialplanService(object):
             target,
             '/sentiric.dialplan.v1.DialplanService/CreateInboundRoute',
             sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.CreateInboundRouteRequest.SerializeToString,
-            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.InboundRoute.FromString,
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.CreateInboundRouteResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -294,7 +295,7 @@ class DialplanService(object):
             target,
             '/sentiric.dialplan.v1.DialplanService/GetInboundRoute',
             sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.GetInboundRouteRequest.SerializeToString,
-            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.InboundRoute.FromString,
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.GetInboundRouteResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -321,7 +322,7 @@ class DialplanService(object):
             target,
             '/sentiric.dialplan.v1.DialplanService/UpdateInboundRoute',
             sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.UpdateInboundRouteRequest.SerializeToString,
-            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.InboundRoute.FromString,
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.UpdateInboundRouteResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -402,7 +403,7 @@ class DialplanService(object):
             target,
             '/sentiric.dialplan.v1.DialplanService/CreateDialplan',
             sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.CreateDialplanRequest.SerializeToString,
-            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.Dialplan.FromString,
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.CreateDialplanResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -429,7 +430,7 @@ class DialplanService(object):
             target,
             '/sentiric.dialplan.v1.DialplanService/GetDialplan',
             sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.GetDialplanRequest.SerializeToString,
-            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.Dialplan.FromString,
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.GetDialplanResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -456,7 +457,7 @@ class DialplanService(object):
             target,
             '/sentiric.dialplan.v1.DialplanService/UpdateDialplan',
             sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.UpdateDialplanRequest.SerializeToString,
-            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.Dialplan.FromString,
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.UpdateDialplanResponse.FromString,
             options,
             channel_credentials,
             insecure,

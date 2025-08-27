@@ -7,10 +7,8 @@
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ResolveDialplanRequest {
-    /// Arayanın telefon numarası vb.
     #[prost(string, tag="1")]
     pub caller_contact_value: ::prost::alloc::string::String,
-    /// Aranan hat numarası
     #[prost(string, tag="2")]
     pub destination_number: ::prost::alloc::string::String,
 }
@@ -84,15 +82,36 @@ pub struct CreateInboundRouteRequest {
     #[prost(message, optional, tag="1")]
     pub route: ::core::option::Option<InboundRoute>,
 }
+/// YENİ: CreateInboundRoute için özel yanıt mesajı
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct CreateInboundRouteResponse {
+    #[prost(message, optional, tag="1")]
+    pub route: ::core::option::Option<InboundRoute>,
+}
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetInboundRouteRequest {
     #[prost(string, tag="1")]
     pub phone_number: ::prost::alloc::string::String,
 }
+/// YENİ: GetInboundRoute için özel yanıt mesajı
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct GetInboundRouteResponse {
+    #[prost(message, optional, tag="1")]
+    pub route: ::core::option::Option<InboundRoute>,
+}
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UpdateInboundRouteRequest {
+    #[prost(message, optional, tag="1")]
+    pub route: ::core::option::Option<InboundRoute>,
+}
+/// YENİ: UpdateInboundRoute için özel yanıt mesajı
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct UpdateInboundRouteResponse {
     #[prost(message, optional, tag="1")]
     pub route: ::core::option::Option<InboundRoute>,
 }
@@ -111,7 +130,6 @@ pub struct DeleteInboundRouteResponse {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ListInboundRoutesRequest {
-    /// Opsiyonel filtre
     #[prost(string, tag="1")]
     pub tenant_id: ::prost::alloc::string::String,
     #[prost(int32, tag="2")]
@@ -137,15 +155,36 @@ pub struct CreateDialplanRequest {
     #[prost(message, optional, tag="1")]
     pub dialplan: ::core::option::Option<Dialplan>,
 }
+/// YENİ: CreateDialplan için özel yanıt mesajı
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct CreateDialplanResponse {
+    #[prost(message, optional, tag="1")]
+    pub dialplan: ::core::option::Option<Dialplan>,
+}
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetDialplanRequest {
     #[prost(string, tag="1")]
     pub id: ::prost::alloc::string::String,
 }
+/// YENİ: GetDialplan için özel yanıt mesajı
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct GetDialplanResponse {
+    #[prost(message, optional, tag="1")]
+    pub dialplan: ::core::option::Option<Dialplan>,
+}
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UpdateDialplanRequest {
+    #[prost(message, optional, tag="1")]
+    pub dialplan: ::core::option::Option<Dialplan>,
+}
+/// YENİ: UpdateDialplan için özel yanıt mesajı
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct UpdateDialplanResponse {
     #[prost(message, optional, tag="1")]
     pub dialplan: ::core::option::Option<Dialplan>,
 }
@@ -164,7 +203,6 @@ pub struct DeleteDialplanResponse {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ListDialplansRequest {
-    /// Opsiyonel filtre
     #[prost(string, tag="1")]
     pub tenant_id: ::prost::alloc::string::String,
     #[prost(int32, tag="2")]

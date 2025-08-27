@@ -36,18 +36,19 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type DialplanServiceClient interface {
-	// Ana karar mekanizması RPC'si
 	ResolveDialplan(ctx context.Context, in *ResolveDialplanRequest, opts ...grpc.CallOption) (*ResolveDialplanResponse, error)
 	// Inbound Route Yönetimi
-	CreateInboundRoute(ctx context.Context, in *CreateInboundRouteRequest, opts ...grpc.CallOption) (*InboundRoute, error)
-	GetInboundRoute(ctx context.Context, in *GetInboundRouteRequest, opts ...grpc.CallOption) (*InboundRoute, error)
-	UpdateInboundRoute(ctx context.Context, in *UpdateInboundRouteRequest, opts ...grpc.CallOption) (*InboundRoute, error)
+	// DÜZELTME: Her RPC artık kendine özgü bir Response mesajı kullanıyor.
+	CreateInboundRoute(ctx context.Context, in *CreateInboundRouteRequest, opts ...grpc.CallOption) (*CreateInboundRouteResponse, error)
+	GetInboundRoute(ctx context.Context, in *GetInboundRouteRequest, opts ...grpc.CallOption) (*GetInboundRouteResponse, error)
+	UpdateInboundRoute(ctx context.Context, in *UpdateInboundRouteRequest, opts ...grpc.CallOption) (*UpdateInboundRouteResponse, error)
 	DeleteInboundRoute(ctx context.Context, in *DeleteInboundRouteRequest, opts ...grpc.CallOption) (*DeleteInboundRouteResponse, error)
 	ListInboundRoutes(ctx context.Context, in *ListInboundRoutesRequest, opts ...grpc.CallOption) (*ListInboundRoutesResponse, error)
 	// Dialplan Yönetimi
-	CreateDialplan(ctx context.Context, in *CreateDialplanRequest, opts ...grpc.CallOption) (*Dialplan, error)
-	GetDialplan(ctx context.Context, in *GetDialplanRequest, opts ...grpc.CallOption) (*Dialplan, error)
-	UpdateDialplan(ctx context.Context, in *UpdateDialplanRequest, opts ...grpc.CallOption) (*Dialplan, error)
+	// DÜZELTME: Her RPC artık kendine özgü bir Response mesajı kullanıyor.
+	CreateDialplan(ctx context.Context, in *CreateDialplanRequest, opts ...grpc.CallOption) (*CreateDialplanResponse, error)
+	GetDialplan(ctx context.Context, in *GetDialplanRequest, opts ...grpc.CallOption) (*GetDialplanResponse, error)
+	UpdateDialplan(ctx context.Context, in *UpdateDialplanRequest, opts ...grpc.CallOption) (*UpdateDialplanResponse, error)
 	DeleteDialplan(ctx context.Context, in *DeleteDialplanRequest, opts ...grpc.CallOption) (*DeleteDialplanResponse, error)
 	ListDialplans(ctx context.Context, in *ListDialplansRequest, opts ...grpc.CallOption) (*ListDialplansResponse, error)
 }
@@ -70,9 +71,9 @@ func (c *dialplanServiceClient) ResolveDialplan(ctx context.Context, in *Resolve
 	return out, nil
 }
 
-func (c *dialplanServiceClient) CreateInboundRoute(ctx context.Context, in *CreateInboundRouteRequest, opts ...grpc.CallOption) (*InboundRoute, error) {
+func (c *dialplanServiceClient) CreateInboundRoute(ctx context.Context, in *CreateInboundRouteRequest, opts ...grpc.CallOption) (*CreateInboundRouteResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(InboundRoute)
+	out := new(CreateInboundRouteResponse)
 	err := c.cc.Invoke(ctx, DialplanService_CreateInboundRoute_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -80,9 +81,9 @@ func (c *dialplanServiceClient) CreateInboundRoute(ctx context.Context, in *Crea
 	return out, nil
 }
 
-func (c *dialplanServiceClient) GetInboundRoute(ctx context.Context, in *GetInboundRouteRequest, opts ...grpc.CallOption) (*InboundRoute, error) {
+func (c *dialplanServiceClient) GetInboundRoute(ctx context.Context, in *GetInboundRouteRequest, opts ...grpc.CallOption) (*GetInboundRouteResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(InboundRoute)
+	out := new(GetInboundRouteResponse)
 	err := c.cc.Invoke(ctx, DialplanService_GetInboundRoute_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -90,9 +91,9 @@ func (c *dialplanServiceClient) GetInboundRoute(ctx context.Context, in *GetInbo
 	return out, nil
 }
 
-func (c *dialplanServiceClient) UpdateInboundRoute(ctx context.Context, in *UpdateInboundRouteRequest, opts ...grpc.CallOption) (*InboundRoute, error) {
+func (c *dialplanServiceClient) UpdateInboundRoute(ctx context.Context, in *UpdateInboundRouteRequest, opts ...grpc.CallOption) (*UpdateInboundRouteResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(InboundRoute)
+	out := new(UpdateInboundRouteResponse)
 	err := c.cc.Invoke(ctx, DialplanService_UpdateInboundRoute_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -120,9 +121,9 @@ func (c *dialplanServiceClient) ListInboundRoutes(ctx context.Context, in *ListI
 	return out, nil
 }
 
-func (c *dialplanServiceClient) CreateDialplan(ctx context.Context, in *CreateDialplanRequest, opts ...grpc.CallOption) (*Dialplan, error) {
+func (c *dialplanServiceClient) CreateDialplan(ctx context.Context, in *CreateDialplanRequest, opts ...grpc.CallOption) (*CreateDialplanResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(Dialplan)
+	out := new(CreateDialplanResponse)
 	err := c.cc.Invoke(ctx, DialplanService_CreateDialplan_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -130,9 +131,9 @@ func (c *dialplanServiceClient) CreateDialplan(ctx context.Context, in *CreateDi
 	return out, nil
 }
 
-func (c *dialplanServiceClient) GetDialplan(ctx context.Context, in *GetDialplanRequest, opts ...grpc.CallOption) (*Dialplan, error) {
+func (c *dialplanServiceClient) GetDialplan(ctx context.Context, in *GetDialplanRequest, opts ...grpc.CallOption) (*GetDialplanResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(Dialplan)
+	out := new(GetDialplanResponse)
 	err := c.cc.Invoke(ctx, DialplanService_GetDialplan_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -140,9 +141,9 @@ func (c *dialplanServiceClient) GetDialplan(ctx context.Context, in *GetDialplan
 	return out, nil
 }
 
-func (c *dialplanServiceClient) UpdateDialplan(ctx context.Context, in *UpdateDialplanRequest, opts ...grpc.CallOption) (*Dialplan, error) {
+func (c *dialplanServiceClient) UpdateDialplan(ctx context.Context, in *UpdateDialplanRequest, opts ...grpc.CallOption) (*UpdateDialplanResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(Dialplan)
+	out := new(UpdateDialplanResponse)
 	err := c.cc.Invoke(ctx, DialplanService_UpdateDialplan_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -174,18 +175,19 @@ func (c *dialplanServiceClient) ListDialplans(ctx context.Context, in *ListDialp
 // All implementations should embed UnimplementedDialplanServiceServer
 // for forward compatibility.
 type DialplanServiceServer interface {
-	// Ana karar mekanizması RPC'si
 	ResolveDialplan(context.Context, *ResolveDialplanRequest) (*ResolveDialplanResponse, error)
 	// Inbound Route Yönetimi
-	CreateInboundRoute(context.Context, *CreateInboundRouteRequest) (*InboundRoute, error)
-	GetInboundRoute(context.Context, *GetInboundRouteRequest) (*InboundRoute, error)
-	UpdateInboundRoute(context.Context, *UpdateInboundRouteRequest) (*InboundRoute, error)
+	// DÜZELTME: Her RPC artık kendine özgü bir Response mesajı kullanıyor.
+	CreateInboundRoute(context.Context, *CreateInboundRouteRequest) (*CreateInboundRouteResponse, error)
+	GetInboundRoute(context.Context, *GetInboundRouteRequest) (*GetInboundRouteResponse, error)
+	UpdateInboundRoute(context.Context, *UpdateInboundRouteRequest) (*UpdateInboundRouteResponse, error)
 	DeleteInboundRoute(context.Context, *DeleteInboundRouteRequest) (*DeleteInboundRouteResponse, error)
 	ListInboundRoutes(context.Context, *ListInboundRoutesRequest) (*ListInboundRoutesResponse, error)
 	// Dialplan Yönetimi
-	CreateDialplan(context.Context, *CreateDialplanRequest) (*Dialplan, error)
-	GetDialplan(context.Context, *GetDialplanRequest) (*Dialplan, error)
-	UpdateDialplan(context.Context, *UpdateDialplanRequest) (*Dialplan, error)
+	// DÜZELTME: Her RPC artık kendine özgü bir Response mesajı kullanıyor.
+	CreateDialplan(context.Context, *CreateDialplanRequest) (*CreateDialplanResponse, error)
+	GetDialplan(context.Context, *GetDialplanRequest) (*GetDialplanResponse, error)
+	UpdateDialplan(context.Context, *UpdateDialplanRequest) (*UpdateDialplanResponse, error)
 	DeleteDialplan(context.Context, *DeleteDialplanRequest) (*DeleteDialplanResponse, error)
 	ListDialplans(context.Context, *ListDialplansRequest) (*ListDialplansResponse, error)
 }
@@ -200,13 +202,13 @@ type UnimplementedDialplanServiceServer struct{}
 func (UnimplementedDialplanServiceServer) ResolveDialplan(context.Context, *ResolveDialplanRequest) (*ResolveDialplanResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ResolveDialplan not implemented")
 }
-func (UnimplementedDialplanServiceServer) CreateInboundRoute(context.Context, *CreateInboundRouteRequest) (*InboundRoute, error) {
+func (UnimplementedDialplanServiceServer) CreateInboundRoute(context.Context, *CreateInboundRouteRequest) (*CreateInboundRouteResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateInboundRoute not implemented")
 }
-func (UnimplementedDialplanServiceServer) GetInboundRoute(context.Context, *GetInboundRouteRequest) (*InboundRoute, error) {
+func (UnimplementedDialplanServiceServer) GetInboundRoute(context.Context, *GetInboundRouteRequest) (*GetInboundRouteResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetInboundRoute not implemented")
 }
-func (UnimplementedDialplanServiceServer) UpdateInboundRoute(context.Context, *UpdateInboundRouteRequest) (*InboundRoute, error) {
+func (UnimplementedDialplanServiceServer) UpdateInboundRoute(context.Context, *UpdateInboundRouteRequest) (*UpdateInboundRouteResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateInboundRoute not implemented")
 }
 func (UnimplementedDialplanServiceServer) DeleteInboundRoute(context.Context, *DeleteInboundRouteRequest) (*DeleteInboundRouteResponse, error) {
@@ -215,13 +217,13 @@ func (UnimplementedDialplanServiceServer) DeleteInboundRoute(context.Context, *D
 func (UnimplementedDialplanServiceServer) ListInboundRoutes(context.Context, *ListInboundRoutesRequest) (*ListInboundRoutesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListInboundRoutes not implemented")
 }
-func (UnimplementedDialplanServiceServer) CreateDialplan(context.Context, *CreateDialplanRequest) (*Dialplan, error) {
+func (UnimplementedDialplanServiceServer) CreateDialplan(context.Context, *CreateDialplanRequest) (*CreateDialplanResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateDialplan not implemented")
 }
-func (UnimplementedDialplanServiceServer) GetDialplan(context.Context, *GetDialplanRequest) (*Dialplan, error) {
+func (UnimplementedDialplanServiceServer) GetDialplan(context.Context, *GetDialplanRequest) (*GetDialplanResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetDialplan not implemented")
 }
-func (UnimplementedDialplanServiceServer) UpdateDialplan(context.Context, *UpdateDialplanRequest) (*Dialplan, error) {
+func (UnimplementedDialplanServiceServer) UpdateDialplan(context.Context, *UpdateDialplanRequest) (*UpdateDialplanResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateDialplan not implemented")
 }
 func (UnimplementedDialplanServiceServer) DeleteDialplan(context.Context, *DeleteDialplanRequest) (*DeleteDialplanResponse, error) {

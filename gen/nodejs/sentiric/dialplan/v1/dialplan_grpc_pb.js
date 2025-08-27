@@ -16,6 +16,17 @@ function deserialize_sentiric_dialplan_v1_CreateDialplanRequest(buffer_arg) {
   return sentiric_dialplan_v1_dialplan_pb.CreateDialplanRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sentiric_dialplan_v1_CreateDialplanResponse(arg) {
+  if (!(arg instanceof sentiric_dialplan_v1_dialplan_pb.CreateDialplanResponse)) {
+    throw new Error('Expected argument of type sentiric.dialplan.v1.CreateDialplanResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sentiric_dialplan_v1_CreateDialplanResponse(buffer_arg) {
+  return sentiric_dialplan_v1_dialplan_pb.CreateDialplanResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sentiric_dialplan_v1_CreateInboundRouteRequest(arg) {
   if (!(arg instanceof sentiric_dialplan_v1_dialplan_pb.CreateInboundRouteRequest)) {
     throw new Error('Expected argument of type sentiric.dialplan.v1.CreateInboundRouteRequest');
@@ -25,6 +36,17 @@ function serialize_sentiric_dialplan_v1_CreateInboundRouteRequest(arg) {
 
 function deserialize_sentiric_dialplan_v1_CreateInboundRouteRequest(buffer_arg) {
   return sentiric_dialplan_v1_dialplan_pb.CreateInboundRouteRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sentiric_dialplan_v1_CreateInboundRouteResponse(arg) {
+  if (!(arg instanceof sentiric_dialplan_v1_dialplan_pb.CreateInboundRouteResponse)) {
+    throw new Error('Expected argument of type sentiric.dialplan.v1.CreateInboundRouteResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sentiric_dialplan_v1_CreateInboundRouteResponse(buffer_arg) {
+  return sentiric_dialplan_v1_dialplan_pb.CreateInboundRouteResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_sentiric_dialplan_v1_DeleteDialplanRequest(arg) {
@@ -71,17 +93,6 @@ function deserialize_sentiric_dialplan_v1_DeleteInboundRouteResponse(buffer_arg)
   return sentiric_dialplan_v1_dialplan_pb.DeleteInboundRouteResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_sentiric_dialplan_v1_Dialplan(arg) {
-  if (!(arg instanceof sentiric_dialplan_v1_dialplan_pb.Dialplan)) {
-    throw new Error('Expected argument of type sentiric.dialplan.v1.Dialplan');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_sentiric_dialplan_v1_Dialplan(buffer_arg) {
-  return sentiric_dialplan_v1_dialplan_pb.Dialplan.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
 function serialize_sentiric_dialplan_v1_GetDialplanRequest(arg) {
   if (!(arg instanceof sentiric_dialplan_v1_dialplan_pb.GetDialplanRequest)) {
     throw new Error('Expected argument of type sentiric.dialplan.v1.GetDialplanRequest');
@@ -91,6 +102,17 @@ function serialize_sentiric_dialplan_v1_GetDialplanRequest(arg) {
 
 function deserialize_sentiric_dialplan_v1_GetDialplanRequest(buffer_arg) {
   return sentiric_dialplan_v1_dialplan_pb.GetDialplanRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sentiric_dialplan_v1_GetDialplanResponse(arg) {
+  if (!(arg instanceof sentiric_dialplan_v1_dialplan_pb.GetDialplanResponse)) {
+    throw new Error('Expected argument of type sentiric.dialplan.v1.GetDialplanResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sentiric_dialplan_v1_GetDialplanResponse(buffer_arg) {
+  return sentiric_dialplan_v1_dialplan_pb.GetDialplanResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_sentiric_dialplan_v1_GetInboundRouteRequest(arg) {
@@ -104,15 +126,15 @@ function deserialize_sentiric_dialplan_v1_GetInboundRouteRequest(buffer_arg) {
   return sentiric_dialplan_v1_dialplan_pb.GetInboundRouteRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_sentiric_dialplan_v1_InboundRoute(arg) {
-  if (!(arg instanceof sentiric_dialplan_v1_dialplan_pb.InboundRoute)) {
-    throw new Error('Expected argument of type sentiric.dialplan.v1.InboundRoute');
+function serialize_sentiric_dialplan_v1_GetInboundRouteResponse(arg) {
+  if (!(arg instanceof sentiric_dialplan_v1_dialplan_pb.GetInboundRouteResponse)) {
+    throw new Error('Expected argument of type sentiric.dialplan.v1.GetInboundRouteResponse');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_sentiric_dialplan_v1_InboundRoute(buffer_arg) {
-  return sentiric_dialplan_v1_dialplan_pb.InboundRoute.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_sentiric_dialplan_v1_GetInboundRouteResponse(buffer_arg) {
+  return sentiric_dialplan_v1_dialplan_pb.GetInboundRouteResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_sentiric_dialplan_v1_ListDialplansRequest(arg) {
@@ -192,6 +214,17 @@ function deserialize_sentiric_dialplan_v1_UpdateDialplanRequest(buffer_arg) {
   return sentiric_dialplan_v1_dialplan_pb.UpdateDialplanRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sentiric_dialplan_v1_UpdateDialplanResponse(arg) {
+  if (!(arg instanceof sentiric_dialplan_v1_dialplan_pb.UpdateDialplanResponse)) {
+    throw new Error('Expected argument of type sentiric.dialplan.v1.UpdateDialplanResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sentiric_dialplan_v1_UpdateDialplanResponse(buffer_arg) {
+  return sentiric_dialplan_v1_dialplan_pb.UpdateDialplanResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sentiric_dialplan_v1_UpdateInboundRouteRequest(arg) {
   if (!(arg instanceof sentiric_dialplan_v1_dialplan_pb.UpdateInboundRouteRequest)) {
     throw new Error('Expected argument of type sentiric.dialplan.v1.UpdateInboundRouteRequest');
@@ -203,14 +236,24 @@ function deserialize_sentiric_dialplan_v1_UpdateInboundRouteRequest(buffer_arg) 
   return sentiric_dialplan_v1_dialplan_pb.UpdateInboundRouteRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sentiric_dialplan_v1_UpdateInboundRouteResponse(arg) {
+  if (!(arg instanceof sentiric_dialplan_v1_dialplan_pb.UpdateInboundRouteResponse)) {
+    throw new Error('Expected argument of type sentiric.dialplan.v1.UpdateInboundRouteResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sentiric_dialplan_v1_UpdateInboundRouteResponse(buffer_arg) {
+  return sentiric_dialplan_v1_dialplan_pb.UpdateInboundRouteResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 
 // =================================================================
 //                            SERVICE DEFINITION
 // =================================================================
 //
 var DialplanServiceService = exports.DialplanServiceService = {
-  // Ana karar mekanizması RPC'si
-resolveDialplan: {
+  resolveDialplan: {
     path: '/sentiric.dialplan.v1.DialplanService/ResolveDialplan',
     requestStream: false,
     responseStream: false,
@@ -222,38 +265,39 @@ resolveDialplan: {
     responseDeserialize: deserialize_sentiric_dialplan_v1_ResolveDialplanResponse,
   },
   // Inbound Route Yönetimi
+// DÜZELTME: Her RPC artık kendine özgü bir Response mesajı kullanıyor.
 createInboundRoute: {
     path: '/sentiric.dialplan.v1.DialplanService/CreateInboundRoute',
     requestStream: false,
     responseStream: false,
     requestType: sentiric_dialplan_v1_dialplan_pb.CreateInboundRouteRequest,
-    responseType: sentiric_dialplan_v1_dialplan_pb.InboundRoute,
+    responseType: sentiric_dialplan_v1_dialplan_pb.CreateInboundRouteResponse,
     requestSerialize: serialize_sentiric_dialplan_v1_CreateInboundRouteRequest,
     requestDeserialize: deserialize_sentiric_dialplan_v1_CreateInboundRouteRequest,
-    responseSerialize: serialize_sentiric_dialplan_v1_InboundRoute,
-    responseDeserialize: deserialize_sentiric_dialplan_v1_InboundRoute,
+    responseSerialize: serialize_sentiric_dialplan_v1_CreateInboundRouteResponse,
+    responseDeserialize: deserialize_sentiric_dialplan_v1_CreateInboundRouteResponse,
   },
   getInboundRoute: {
     path: '/sentiric.dialplan.v1.DialplanService/GetInboundRoute',
     requestStream: false,
     responseStream: false,
     requestType: sentiric_dialplan_v1_dialplan_pb.GetInboundRouteRequest,
-    responseType: sentiric_dialplan_v1_dialplan_pb.InboundRoute,
+    responseType: sentiric_dialplan_v1_dialplan_pb.GetInboundRouteResponse,
     requestSerialize: serialize_sentiric_dialplan_v1_GetInboundRouteRequest,
     requestDeserialize: deserialize_sentiric_dialplan_v1_GetInboundRouteRequest,
-    responseSerialize: serialize_sentiric_dialplan_v1_InboundRoute,
-    responseDeserialize: deserialize_sentiric_dialplan_v1_InboundRoute,
+    responseSerialize: serialize_sentiric_dialplan_v1_GetInboundRouteResponse,
+    responseDeserialize: deserialize_sentiric_dialplan_v1_GetInboundRouteResponse,
   },
   updateInboundRoute: {
     path: '/sentiric.dialplan.v1.DialplanService/UpdateInboundRoute',
     requestStream: false,
     responseStream: false,
     requestType: sentiric_dialplan_v1_dialplan_pb.UpdateInboundRouteRequest,
-    responseType: sentiric_dialplan_v1_dialplan_pb.InboundRoute,
+    responseType: sentiric_dialplan_v1_dialplan_pb.UpdateInboundRouteResponse,
     requestSerialize: serialize_sentiric_dialplan_v1_UpdateInboundRouteRequest,
     requestDeserialize: deserialize_sentiric_dialplan_v1_UpdateInboundRouteRequest,
-    responseSerialize: serialize_sentiric_dialplan_v1_InboundRoute,
-    responseDeserialize: deserialize_sentiric_dialplan_v1_InboundRoute,
+    responseSerialize: serialize_sentiric_dialplan_v1_UpdateInboundRouteResponse,
+    responseDeserialize: deserialize_sentiric_dialplan_v1_UpdateInboundRouteResponse,
   },
   deleteInboundRoute: {
     path: '/sentiric.dialplan.v1.DialplanService/DeleteInboundRoute',
@@ -278,38 +322,39 @@ createInboundRoute: {
     responseDeserialize: deserialize_sentiric_dialplan_v1_ListInboundRoutesResponse,
   },
   // Dialplan Yönetimi
+// DÜZELTME: Her RPC artık kendine özgü bir Response mesajı kullanıyor.
 createDialplan: {
     path: '/sentiric.dialplan.v1.DialplanService/CreateDialplan',
     requestStream: false,
     responseStream: false,
     requestType: sentiric_dialplan_v1_dialplan_pb.CreateDialplanRequest,
-    responseType: sentiric_dialplan_v1_dialplan_pb.Dialplan,
+    responseType: sentiric_dialplan_v1_dialplan_pb.CreateDialplanResponse,
     requestSerialize: serialize_sentiric_dialplan_v1_CreateDialplanRequest,
     requestDeserialize: deserialize_sentiric_dialplan_v1_CreateDialplanRequest,
-    responseSerialize: serialize_sentiric_dialplan_v1_Dialplan,
-    responseDeserialize: deserialize_sentiric_dialplan_v1_Dialplan,
+    responseSerialize: serialize_sentiric_dialplan_v1_CreateDialplanResponse,
+    responseDeserialize: deserialize_sentiric_dialplan_v1_CreateDialplanResponse,
   },
   getDialplan: {
     path: '/sentiric.dialplan.v1.DialplanService/GetDialplan',
     requestStream: false,
     responseStream: false,
     requestType: sentiric_dialplan_v1_dialplan_pb.GetDialplanRequest,
-    responseType: sentiric_dialplan_v1_dialplan_pb.Dialplan,
+    responseType: sentiric_dialplan_v1_dialplan_pb.GetDialplanResponse,
     requestSerialize: serialize_sentiric_dialplan_v1_GetDialplanRequest,
     requestDeserialize: deserialize_sentiric_dialplan_v1_GetDialplanRequest,
-    responseSerialize: serialize_sentiric_dialplan_v1_Dialplan,
-    responseDeserialize: deserialize_sentiric_dialplan_v1_Dialplan,
+    responseSerialize: serialize_sentiric_dialplan_v1_GetDialplanResponse,
+    responseDeserialize: deserialize_sentiric_dialplan_v1_GetDialplanResponse,
   },
   updateDialplan: {
     path: '/sentiric.dialplan.v1.DialplanService/UpdateDialplan',
     requestStream: false,
     responseStream: false,
     requestType: sentiric_dialplan_v1_dialplan_pb.UpdateDialplanRequest,
-    responseType: sentiric_dialplan_v1_dialplan_pb.Dialplan,
+    responseType: sentiric_dialplan_v1_dialplan_pb.UpdateDialplanResponse,
     requestSerialize: serialize_sentiric_dialplan_v1_UpdateDialplanRequest,
     requestDeserialize: deserialize_sentiric_dialplan_v1_UpdateDialplanRequest,
-    responseSerialize: serialize_sentiric_dialplan_v1_Dialplan,
-    responseDeserialize: deserialize_sentiric_dialplan_v1_Dialplan,
+    responseSerialize: serialize_sentiric_dialplan_v1_UpdateDialplanResponse,
+    responseDeserialize: deserialize_sentiric_dialplan_v1_UpdateDialplanResponse,
   },
   deleteDialplan: {
     path: '/sentiric.dialplan.v1.DialplanService/DeleteDialplan',
