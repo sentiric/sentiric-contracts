@@ -6,7 +6,11 @@ from sentiric.dialplan.v1 import dialplan_pb2 as sentiric_dot_dialplan_dot_v1_do
 
 
 class DialplanServiceStub(object):
-    """Missing associated documentation comment in .proto file."""
+    """=================================================================
+    SERVICE DEFINITION
+    =================================================================
+
+    """
 
     def __init__(self, channel):
         """Constructor.
@@ -19,12 +23,129 @@ class DialplanServiceStub(object):
                 request_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.ResolveDialplanRequest.SerializeToString,
                 response_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.ResolveDialplanResponse.FromString,
                 _registered_method=True)
+        self.CreateInboundRoute = channel.unary_unary(
+                '/sentiric.dialplan.v1.DialplanService/CreateInboundRoute',
+                request_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.CreateInboundRouteRequest.SerializeToString,
+                response_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.InboundRoute.FromString,
+                _registered_method=True)
+        self.GetInboundRoute = channel.unary_unary(
+                '/sentiric.dialplan.v1.DialplanService/GetInboundRoute',
+                request_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.GetInboundRouteRequest.SerializeToString,
+                response_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.InboundRoute.FromString,
+                _registered_method=True)
+        self.UpdateInboundRoute = channel.unary_unary(
+                '/sentiric.dialplan.v1.DialplanService/UpdateInboundRoute',
+                request_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.UpdateInboundRouteRequest.SerializeToString,
+                response_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.InboundRoute.FromString,
+                _registered_method=True)
+        self.DeleteInboundRoute = channel.unary_unary(
+                '/sentiric.dialplan.v1.DialplanService/DeleteInboundRoute',
+                request_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.DeleteInboundRouteRequest.SerializeToString,
+                response_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.DeleteInboundRouteResponse.FromString,
+                _registered_method=True)
+        self.ListInboundRoutes = channel.unary_unary(
+                '/sentiric.dialplan.v1.DialplanService/ListInboundRoutes',
+                request_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.ListInboundRoutesRequest.SerializeToString,
+                response_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.ListInboundRoutesResponse.FromString,
+                _registered_method=True)
+        self.CreateDialplan = channel.unary_unary(
+                '/sentiric.dialplan.v1.DialplanService/CreateDialplan',
+                request_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.CreateDialplanRequest.SerializeToString,
+                response_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.Dialplan.FromString,
+                _registered_method=True)
+        self.GetDialplan = channel.unary_unary(
+                '/sentiric.dialplan.v1.DialplanService/GetDialplan',
+                request_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.GetDialplanRequest.SerializeToString,
+                response_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.Dialplan.FromString,
+                _registered_method=True)
+        self.UpdateDialplan = channel.unary_unary(
+                '/sentiric.dialplan.v1.DialplanService/UpdateDialplan',
+                request_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.UpdateDialplanRequest.SerializeToString,
+                response_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.Dialplan.FromString,
+                _registered_method=True)
+        self.DeleteDialplan = channel.unary_unary(
+                '/sentiric.dialplan.v1.DialplanService/DeleteDialplan',
+                request_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.DeleteDialplanRequest.SerializeToString,
+                response_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.DeleteDialplanResponse.FromString,
+                _registered_method=True)
+        self.ListDialplans = channel.unary_unary(
+                '/sentiric.dialplan.v1.DialplanService/ListDialplans',
+                request_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.ListDialplansRequest.SerializeToString,
+                response_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.ListDialplansResponse.FromString,
+                _registered_method=True)
 
 
 class DialplanServiceServicer(object):
-    """Missing associated documentation comment in .proto file."""
+    """=================================================================
+    SERVICE DEFINITION
+    =================================================================
+
+    """
 
     def ResolveDialplan(self, request, context):
+        """Ana karar mekanizması RPC'si
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def CreateInboundRoute(self, request, context):
+        """Inbound Route Yönetimi
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetInboundRoute(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def UpdateInboundRoute(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def DeleteInboundRoute(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def ListInboundRoutes(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def CreateDialplan(self, request, context):
+        """Dialplan Yönetimi
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetDialplan(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def UpdateDialplan(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def DeleteDialplan(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def ListDialplans(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -38,6 +159,56 @@ def add_DialplanServiceServicer_to_server(servicer, server):
                     request_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.ResolveDialplanRequest.FromString,
                     response_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.ResolveDialplanResponse.SerializeToString,
             ),
+            'CreateInboundRoute': grpc.unary_unary_rpc_method_handler(
+                    servicer.CreateInboundRoute,
+                    request_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.CreateInboundRouteRequest.FromString,
+                    response_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.InboundRoute.SerializeToString,
+            ),
+            'GetInboundRoute': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetInboundRoute,
+                    request_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.GetInboundRouteRequest.FromString,
+                    response_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.InboundRoute.SerializeToString,
+            ),
+            'UpdateInboundRoute': grpc.unary_unary_rpc_method_handler(
+                    servicer.UpdateInboundRoute,
+                    request_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.UpdateInboundRouteRequest.FromString,
+                    response_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.InboundRoute.SerializeToString,
+            ),
+            'DeleteInboundRoute': grpc.unary_unary_rpc_method_handler(
+                    servicer.DeleteInboundRoute,
+                    request_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.DeleteInboundRouteRequest.FromString,
+                    response_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.DeleteInboundRouteResponse.SerializeToString,
+            ),
+            'ListInboundRoutes': grpc.unary_unary_rpc_method_handler(
+                    servicer.ListInboundRoutes,
+                    request_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.ListInboundRoutesRequest.FromString,
+                    response_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.ListInboundRoutesResponse.SerializeToString,
+            ),
+            'CreateDialplan': grpc.unary_unary_rpc_method_handler(
+                    servicer.CreateDialplan,
+                    request_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.CreateDialplanRequest.FromString,
+                    response_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.Dialplan.SerializeToString,
+            ),
+            'GetDialplan': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetDialplan,
+                    request_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.GetDialplanRequest.FromString,
+                    response_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.Dialplan.SerializeToString,
+            ),
+            'UpdateDialplan': grpc.unary_unary_rpc_method_handler(
+                    servicer.UpdateDialplan,
+                    request_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.UpdateDialplanRequest.FromString,
+                    response_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.Dialplan.SerializeToString,
+            ),
+            'DeleteDialplan': grpc.unary_unary_rpc_method_handler(
+                    servicer.DeleteDialplan,
+                    request_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.DeleteDialplanRequest.FromString,
+                    response_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.DeleteDialplanResponse.SerializeToString,
+            ),
+            'ListDialplans': grpc.unary_unary_rpc_method_handler(
+                    servicer.ListDialplans,
+                    request_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.ListDialplansRequest.FromString,
+                    response_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.ListDialplansResponse.SerializeToString,
+            ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
             'sentiric.dialplan.v1.DialplanService', rpc_method_handlers)
@@ -47,7 +218,11 @@ def add_DialplanServiceServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class DialplanService(object):
-    """Missing associated documentation comment in .proto file."""
+    """=================================================================
+    SERVICE DEFINITION
+    =================================================================
+
+    """
 
     @staticmethod
     def ResolveDialplan(request,
@@ -66,6 +241,276 @@ class DialplanService(object):
             '/sentiric.dialplan.v1.DialplanService/ResolveDialplan',
             sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.ResolveDialplanRequest.SerializeToString,
             sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.ResolveDialplanResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def CreateInboundRoute(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/sentiric.dialplan.v1.DialplanService/CreateInboundRoute',
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.CreateInboundRouteRequest.SerializeToString,
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.InboundRoute.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetInboundRoute(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/sentiric.dialplan.v1.DialplanService/GetInboundRoute',
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.GetInboundRouteRequest.SerializeToString,
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.InboundRoute.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def UpdateInboundRoute(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/sentiric.dialplan.v1.DialplanService/UpdateInboundRoute',
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.UpdateInboundRouteRequest.SerializeToString,
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.InboundRoute.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def DeleteInboundRoute(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/sentiric.dialplan.v1.DialplanService/DeleteInboundRoute',
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.DeleteInboundRouteRequest.SerializeToString,
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.DeleteInboundRouteResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def ListInboundRoutes(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/sentiric.dialplan.v1.DialplanService/ListInboundRoutes',
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.ListInboundRoutesRequest.SerializeToString,
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.ListInboundRoutesResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def CreateDialplan(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/sentiric.dialplan.v1.DialplanService/CreateDialplan',
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.CreateDialplanRequest.SerializeToString,
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.Dialplan.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetDialplan(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/sentiric.dialplan.v1.DialplanService/GetDialplan',
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.GetDialplanRequest.SerializeToString,
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.Dialplan.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def UpdateDialplan(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/sentiric.dialplan.v1.DialplanService/UpdateDialplan',
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.UpdateDialplanRequest.SerializeToString,
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.Dialplan.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def DeleteDialplan(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/sentiric.dialplan.v1.DialplanService/DeleteDialplan',
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.DeleteDialplanRequest.SerializeToString,
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.DeleteDialplanResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def ListDialplans(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/sentiric.dialplan.v1.DialplanService/ListDialplans',
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.ListDialplansRequest.SerializeToString,
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.ListDialplansResponse.FromString,
             options,
             channel_credentials,
             insecure,

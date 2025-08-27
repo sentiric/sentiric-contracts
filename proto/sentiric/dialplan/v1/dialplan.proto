@@ -1,4 +1,3 @@
-// ========== FILE: sentiric-contracts/proto/sentiric/dialplan/v1/dialplan.proto (Nihai ve Düzeltilmiş Hali) ==========
 syntax = "proto3";
 
 package sentiric.dialplan.v1;
@@ -7,25 +6,47 @@ import "sentiric/user/v1/user.proto";
 
 option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/dialplan/v1;dialplanv1";
 
+// =================================================================
+//                            SERVICE DEFINITION
+// =================================================================
+
 service DialplanService {
+  // Ana karar mekanizması RPC'si
   rpc ResolveDialplan(ResolveDialplanRequest) returns (ResolveDialplanResponse);
+
+  // Inbound Route Yönetimi
+  rpc CreateInboundRoute(CreateInboundRouteRequest) returns (InboundRoute);
+  rpc GetInboundRoute(GetInboundRouteRequest) returns (InboundRoute);
+  rpc UpdateInboundRoute(UpdateInboundRouteRequest) returns (InboundRoute);
+  rpc DeleteInboundRoute(DeleteInboundRouteRequest) returns (DeleteInboundRouteResponse);
+  rpc ListInboundRoutes(ListInboundRoutesRequest) returns (ListInboundRoutesResponse);
+  
+  // Dialplan Yönetimi
+  rpc CreateDialplan(CreateDialplanRequest) returns (Dialplan);
+  rpc GetDialplan(GetDialplanRequest) returns (Dialplan);
+  rpc UpdateDialplan(UpdateDialplanRequest) returns (Dialplan);
+  rpc DeleteDialplan(DeleteDialplanRequest) returns (DeleteDialplanResponse);
+  rpc ListDialplans(ListDialplansRequest) returns (ListDialplansResponse);
 }
+
+// =================================================================
+//                        CORE MESSAGES
+// =================================================================
 
 message ResolveDialplanRequest {
-  string caller_contact_value = 1; // Artık bu bir telefon numarası (veya whatsapp id)
-  string destination_number = 2;
+  string caller_contact_value = 1; // Arayanın telefon numarası vb.
+  string destination_number = 2;   // Aranan hat numarası
 }
 
-message ActionData {
-  map<string, string> data = 1;
+message ResolveDialplanResponse {
+  string dialplan_id = 1;
+  string tenant_id = 2;
+  DialplanAction action = 3;
+  optional sentiric.user.v1.User matched_user = 4;
+  optional sentiric.user.v1.Contact matched_contact = 5;
+  optional InboundRoute inbound_route = 6;
 }
 
-message DialplanAction {
-  string action = 1;
-  ActionData action_data = 2;
-}
-
-// YENİ: InboundRoute'u temsil eden mesaj
 message InboundRoute {
   string phone_number = 1;
   string tenant_id = 2;
@@ -36,15 +57,88 @@ message InboundRoute {
   string default_language_code = 7;
 }
 
-// --- DÜZELTİLMİŞ ResolveDialplanResponse ---
-// Bu mesaj, artık inbound_route alanını da içerecek şekilde GÜNCELLENMİŞTİR.
-// İkinci bir tanıma gerek yoktur.
-message ResolveDialplanResponse {
-  string dialplan_id = 1;
-  string tenant_id = 2;
-  DialplanAction action = 3;
-  optional sentiric.user.v1.User matched_user = 4;
-  optional sentiric.user.v1.Contact matched_contact = 5;
-  // YENİ ALAN: Hangi hat üzerinden gelindiği bilgisini ekliyoruz.
-  optional InboundRoute inbound_route = 6;
+message Dialplan {
+    string id = 1;
+    string tenant_id = 2;
+    string description = 3;
+    DialplanAction action = 4;
+}
+
+message DialplanAction {
+  string action = 1;
+  ActionData action_data = 2;
+}
+
+message ActionData {
+  map<string, string> data = 1;
+}
+
+// =================================================================
+//                  INBOUND ROUTE MANAGEMENT MESSAGES
+// =================================================================
+
+message CreateInboundRouteRequest {
+  InboundRoute route = 1;
+}
+
+message GetInboundRouteRequest {
+  string phone_number = 1;
+}
+
+message UpdateInboundRouteRequest {
+  InboundRoute route = 1;
+}
+
+message DeleteInboundRouteRequest {
+  string phone_number = 1;
+}
+
+message DeleteInboundRouteResponse {
+  bool success = 1;
+}
+
+message ListInboundRoutesRequest {
+  string tenant_id = 1; // Opsiyonel filtre
+  int32 page_size = 2;
+  int32 page = 3;
+}
+
+message ListInboundRoutesResponse {
+  repeated InboundRoute routes = 1;
+  int32 total_count = 2;
+}
+
+// =================================================================
+//                    DIALPLAN MANAGEMENT MESSAGES
+// =================================================================
+
+message CreateDialplanRequest {
+  Dialplan dialplan = 1;
+}
+
+message GetDialplanRequest {
+  string id = 1;
+}
+
+message UpdateDialplanRequest {
+  Dialplan dialplan = 1;
+}
+
+message DeleteDialplanRequest {
+  string id = 1;
+}
+
+message DeleteDialplanResponse {
+  bool success = 1;
+}
+
+message ListDialplansRequest {
+  string tenant_id = 1; // Opsiyonel filtre
+  int32 page_size = 2;
+  int32 page = 3;
+}
+
+message ListDialplansResponse {
+  repeated Dialplan dialplans = 1;
+  int32 total_count = 2;
 }
