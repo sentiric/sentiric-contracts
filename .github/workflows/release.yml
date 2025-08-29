@@ -33,11 +33,11 @@ jobs:
       
       - name: Update dependencies
         run: buf dep update
-        # HATA DÜZELTİLDİ: 'working-directory: proto' kaldırıldı.
+        working-directory: proto # DÜZELTME: Bu komut modül dizininden çalışmalı
 
       - name: Generate all language stubs
         run: buf generate
-        # HATA DÜZELTİLDİ: 'working-directory: proto' kaldırıldı.
+        # BU DOĞRU: Bu komut kök dizinden çalışmalı çünkü buf.gen.yaml burada
 
       - name: Configure Git user for bot
         run: |
@@ -46,7 +46,6 @@ jobs:
 
       - name: Commit generated code
         run: |
-          # HATA DÜZELTİLDİ: Yollar artık kök dizine göre doğru.
           git add -f gen/
           git add -f proto/buf.lock
           if ! git diff --staged --quiet; then
@@ -54,7 +53,6 @@ jobs:
           else
             echo "No changes in generated code to commit."
           fi
-        # HATA DÜZELTİLDİ: 'working-directory' kaldırıldı.
 
       - name: Push changes and update tag
         run: |
@@ -82,6 +80,3 @@ jobs:
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # --- Python YAYINLAMA, GITHUB SORUNU NEDENİYLE GEÇİCİ OLARAK DEVRE DIŞI BIRAKILDI ---
-      # Python ile ilgili bölüm aynı kalabilir.

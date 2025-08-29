@@ -58,6 +58,16 @@ cargo build --release
 3.  Yeni paket versiyonları yayınlamak için yeni bir Git etiketi oluşturun (örn: `git tag v1.8.4` ve `git push origin v1.8.4`). Release pipeline'ı gerisini halleder.
 
 ---
+
+---
+```bash
+# 1. Yereldeki etiketi sil
+git tag -d v1.8.4
+
+# 2. GitHub'daki etiketi sil
+git push --delete origin v1.8.4
+```
+
 ```bash
 dir /s /b | findstr /v "\\.git\\"
 ```
