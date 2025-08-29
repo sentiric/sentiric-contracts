@@ -6,7 +6,11 @@ from sentiric.user.v1 import user_pb2 as sentiric_dot_user_dot_v1_dot_user__pb2
 
 
 class UserServiceStub(object):
-    """Missing associated documentation comment in .proto file."""
+    """=================================================================
+    SERVICE DEFINITION
+    =================================================================
+
+    """
 
     def __init__(self, channel):
         """Constructor.
@@ -29,13 +33,43 @@ class UserServiceStub(object):
                 request_serializer=sentiric_dot_user_dot_v1_dot_user__pb2.CreateUserRequest.SerializeToString,
                 response_deserializer=sentiric_dot_user_dot_v1_dot_user__pb2.CreateUserResponse.FromString,
                 _registered_method=True)
+        self.UpdateUser = channel.unary_unary(
+                '/sentiric.user.v1.UserService/UpdateUser',
+                request_serializer=sentiric_dot_user_dot_v1_dot_user__pb2.UpdateUserRequest.SerializeToString,
+                response_deserializer=sentiric_dot_user_dot_v1_dot_user__pb2.UpdateUserResponse.FromString,
+                _registered_method=True)
+        self.DeleteUser = channel.unary_unary(
+                '/sentiric.user.v1.UserService/DeleteUser',
+                request_serializer=sentiric_dot_user_dot_v1_dot_user__pb2.DeleteUserRequest.SerializeToString,
+                response_deserializer=sentiric_dot_user_dot_v1_dot_user__pb2.DeleteUserResponse.FromString,
+                _registered_method=True)
+        self.AddContact = channel.unary_unary(
+                '/sentiric.user.v1.UserService/AddContact',
+                request_serializer=sentiric_dot_user_dot_v1_dot_user__pb2.AddContactRequest.SerializeToString,
+                response_deserializer=sentiric_dot_user_dot_v1_dot_user__pb2.AddContactResponse.FromString,
+                _registered_method=True)
+        self.UpdateContact = channel.unary_unary(
+                '/sentiric.user.v1.UserService/UpdateContact',
+                request_serializer=sentiric_dot_user_dot_v1_dot_user__pb2.UpdateContactRequest.SerializeToString,
+                response_deserializer=sentiric_dot_user_dot_v1_dot_user__pb2.UpdateContactResponse.FromString,
+                _registered_method=True)
+        self.DeleteContact = channel.unary_unary(
+                '/sentiric.user.v1.UserService/DeleteContact',
+                request_serializer=sentiric_dot_user_dot_v1_dot_user__pb2.DeleteContactRequest.SerializeToString,
+                response_deserializer=sentiric_dot_user_dot_v1_dot_user__pb2.DeleteContactResponse.FromString,
+                _registered_method=True)
 
 
 class UserServiceServicer(object):
-    """Missing associated documentation comment in .proto file."""
+    """=================================================================
+    SERVICE DEFINITION
+    =================================================================
+
+    """
 
     def GetUser(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """Temel okuma operasyonları
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -47,6 +81,38 @@ class UserServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def CreateUser(self, request, context):
+        """Yazma ve yönetim operasyonları
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def UpdateUser(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def DeleteUser(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def AddContact(self, request, context):
+        """Kontak yönetimi
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def UpdateContact(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def DeleteContact(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -70,6 +136,31 @@ def add_UserServiceServicer_to_server(servicer, server):
                     request_deserializer=sentiric_dot_user_dot_v1_dot_user__pb2.CreateUserRequest.FromString,
                     response_serializer=sentiric_dot_user_dot_v1_dot_user__pb2.CreateUserResponse.SerializeToString,
             ),
+            'UpdateUser': grpc.unary_unary_rpc_method_handler(
+                    servicer.UpdateUser,
+                    request_deserializer=sentiric_dot_user_dot_v1_dot_user__pb2.UpdateUserRequest.FromString,
+                    response_serializer=sentiric_dot_user_dot_v1_dot_user__pb2.UpdateUserResponse.SerializeToString,
+            ),
+            'DeleteUser': grpc.unary_unary_rpc_method_handler(
+                    servicer.DeleteUser,
+                    request_deserializer=sentiric_dot_user_dot_v1_dot_user__pb2.DeleteUserRequest.FromString,
+                    response_serializer=sentiric_dot_user_dot_v1_dot_user__pb2.DeleteUserResponse.SerializeToString,
+            ),
+            'AddContact': grpc.unary_unary_rpc_method_handler(
+                    servicer.AddContact,
+                    request_deserializer=sentiric_dot_user_dot_v1_dot_user__pb2.AddContactRequest.FromString,
+                    response_serializer=sentiric_dot_user_dot_v1_dot_user__pb2.AddContactResponse.SerializeToString,
+            ),
+            'UpdateContact': grpc.unary_unary_rpc_method_handler(
+                    servicer.UpdateContact,
+                    request_deserializer=sentiric_dot_user_dot_v1_dot_user__pb2.UpdateContactRequest.FromString,
+                    response_serializer=sentiric_dot_user_dot_v1_dot_user__pb2.UpdateContactResponse.SerializeToString,
+            ),
+            'DeleteContact': grpc.unary_unary_rpc_method_handler(
+                    servicer.DeleteContact,
+                    request_deserializer=sentiric_dot_user_dot_v1_dot_user__pb2.DeleteContactRequest.FromString,
+                    response_serializer=sentiric_dot_user_dot_v1_dot_user__pb2.DeleteContactResponse.SerializeToString,
+            ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
             'sentiric.user.v1.UserService', rpc_method_handlers)
@@ -79,7 +170,11 @@ def add_UserServiceServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class UserService(object):
-    """Missing associated documentation comment in .proto file."""
+    """=================================================================
+    SERVICE DEFINITION
+    =================================================================
+
+    """
 
     @staticmethod
     def GetUser(request,
@@ -152,6 +247,141 @@ class UserService(object):
             '/sentiric.user.v1.UserService/CreateUser',
             sentiric_dot_user_dot_v1_dot_user__pb2.CreateUserRequest.SerializeToString,
             sentiric_dot_user_dot_v1_dot_user__pb2.CreateUserResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def UpdateUser(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/sentiric.user.v1.UserService/UpdateUser',
+            sentiric_dot_user_dot_v1_dot_user__pb2.UpdateUserRequest.SerializeToString,
+            sentiric_dot_user_dot_v1_dot_user__pb2.UpdateUserResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def DeleteUser(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/sentiric.user.v1.UserService/DeleteUser',
+            sentiric_dot_user_dot_v1_dot_user__pb2.DeleteUserRequest.SerializeToString,
+            sentiric_dot_user_dot_v1_dot_user__pb2.DeleteUserResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def AddContact(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/sentiric.user.v1.UserService/AddContact',
+            sentiric_dot_user_dot_v1_dot_user__pb2.AddContactRequest.SerializeToString,
+            sentiric_dot_user_dot_v1_dot_user__pb2.AddContactResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def UpdateContact(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/sentiric.user.v1.UserService/UpdateContact',
+            sentiric_dot_user_dot_v1_dot_user__pb2.UpdateContactRequest.SerializeToString,
+            sentiric_dot_user_dot_v1_dot_user__pb2.UpdateContactResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def DeleteContact(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/sentiric.user.v1.UserService/DeleteContact',
+            sentiric_dot_user_dot_v1_dot_user__pb2.DeleteContactRequest.SerializeToString,
+            sentiric_dot_user_dot_v1_dot_user__pb2.DeleteContactResponse.FromString,
             options,
             channel_credentials,
             insecure,

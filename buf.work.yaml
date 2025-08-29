@@ -1,0 +1,5 @@
+version: v1
+# Bu dosya, buf'a projedeki tüm Protobuf modüllerinin nerede olduğunu söyler.
+# Bizim durumumuzda, tek bir modülümüz var ve o da 'proto' klasörünün içinde.
+directories:
+  - proto

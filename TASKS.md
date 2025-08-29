@@ -1,28 +1,24 @@
-# 🏷️ Sentiric Contracts - Görev Listesi
+# 🏷️ Sentiric Contracts - Görev Listesi (v1.8.4)
+
+Bu belge, `sentiric-contracts` deposuna yapılan ve planlanan değişiklikleri listeler.
 
 ---
 
-### **FAZ 2: Asenkron İletişim Standardizasyonu**
+### **FAZ 2: Asenkron İletişim Standardizasyonu ve Tam CRUD Yetenekleri**
 
--   [ ] **Görev ID: CT-001 - Standart Olay (Event) Mesajları Tanımlama**
-    -   **Açıklama:** Servisler arasında RabbitMQ üzerinden taşınacak olaylar için merkezi ve standart Protobuf tanımları oluştur.
-    -   **Durum:** ⬜ **Planlandı**
+-   [x] **Görev ID: CT-001 - Standart Olay (Event) Mesajları Tanımlama**
+    -   **Açıklama:** RabbitMQ üzerinden taşınacak olaylar için `proto/sentiric/event/v1/event.proto` altında standart Protobuf mesajları oluşturuldu.
+    -   **Durum:** ✅ **Tamamlandı (v1.8.4)**
     -   **Kabul Kriterleri:**
-        -   [ ] `proto/sentiric/event/v1/event.proto` adında yeni bir dosya oluşturulmalı.
-        -   [ ] Bu dosya, `CallStartedEvent` ve `CallEndedEvent` mesajlarını içermeli.
-        -   [ ] `CallStartedEvent`, `dialplan-service`'ten gelen `DialplanAction` bilgisini taşıyabilmeli.
-        -   [ ] `build.rs` ve `src/lib.rs` dosyaları yeni `.proto` dosyasını derleyecek ve modüle dahil edecek şekilde güncellenmeli.
-        -   [ ] Yeni kontratlar `v1.8.4` olarak etiketlenip yayınlanmalı.
+        -   [x] `event.proto` dosyası oluşturuldu.
+        -   [x] `CallStartedEvent`, `CallEndedEvent`, `UserIdentifiedForCallEvent`, `CallRecordingAvailableEvent` mesajları tanımlandı.
+        -   [x] `build.rs` ve `src/lib.rs` yeni dosyayı içerecek şekilde güncellendi.
+        -   [x] Değişiklikler v1.8.4 sürümüyle yayınlandı.
 
--   [ ] **Görev ID: CT-002 - User Service İçin Tam CRUD Operasyonları Ekleme**
-    -   **Açıklama:** `user-service`'in tam yönetimsel yeteneklere kavuşması için gereken tüm RPC ve mesaj tanımlarını `user.proto`'ya ekle.
-    -   **Durum:** ⬜ **Planlandı**
+-   [x] **Görev ID: CT-002 - User Service İçin Tam CRUD Operasyonları Ekleme**
+    -   **Açıklama:** `user-service`'in tam yönetimsel yeteneklere kavuşması için gereken tüm RPC ve mesaj tanımları `user.proto`'ya eklendi.
+    -   **Durum:** ✅ **Tamamlandı (v1.8.4)**
     -   **Kabul Kriterleri:**
-        -   [ ] `UserService` servisine `UpdateUser`, `DeleteUser`, `AddContact`, `UpdateContact`, `DeleteContact` RPC'leri eklenmeli.
-        -   [ ] `UpdateUserRequest` mesajı, güncellenecek `User` nesnesini ve hangi alanların güncelleneceğini belirten bir `google.protobuf.FieldMask` içermeli. `UpdateUserResponse` ise güncellenmiş `User` nesnesini dönmeli.
-        -   [ ] `DeleteUserRequest` (user_id) ve `DeleteUserResponse` (boş veya success bool) mesajları eklenmeli.
-        -   [ ] `AddContactRequest` (user_id, Contact) ve `AddContactResponse` (güncellenmiş User) mesajları eklenmeli.
-        -   [ ] `UpdateContactRequest` (Contact, FieldMask) ve `UpdateContactResponse` (güncellenmiş User) mesajları eklenmeli.
-        -   [ ] `DeleteContactRequest` (contact_id) ve `DeleteContactResponse` (güncellenmiş User) mesajları eklenmeli.
-        -   [ ] `build.rs` ve `src/lib.rs`'in sorunsuz çalıştığı doğrulanmalı.
-        -   [ ] Değişiklikler `v1.8.4` olarak etiketlenip yayınlanmalı.        
+        -   [x] `UserService` servisine `UpdateUser`, `DeleteUser`, `AddContact`, `UpdateContact`, `DeleteContact` RPC'leri eklendi.
+        -   [x] Gerekli tüm `Request` ve `Response` mesajları (`FieldMask` dahil) eklendi.
+        -   [x] Değişiklikler v1.8.4 sürümüyle yayınlandı.

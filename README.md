@@ -42,11 +42,25 @@ package = "sentiric-contracts"
 
 ## 💻 Geliştirme Akışı
 
+```bash
+del Cargo.lock
+cargo clean
+buf lint
+buf generate
+go mod tidy
+cargo build --release
+
+
+```
+
 1.  `/proto` altındaki bir `.proto` dosyasını değiştirin.
 2.  Değişikliklerinizi commit'leyip push'layın. CI, lint ve kırıcı değişiklik kontrolü yapacaktır.
-3.  Yeni paket versiyonları yayınlamak için yeni bir Git etiketi oluşturun (örn: `git tag v1.8.3` ve `git push origin v1.8.3`). Release pipeline'ı gerisini halleder.
+3.  Yeni paket versiyonları yayınlamak için yeni bir Git etiketi oluşturun (örn: `git tag v1.8.4` ve `git push origin v1.8.4`). Release pipeline'ı gerisini halleder.
 
 ---
+```bash
+dir /s /b | findstr /v "\\.git\\"
+```
 
 ---
 ## 🏛️ Anayasal Konum

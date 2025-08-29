@@ -9,6 +9,7 @@ package userv1
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	fieldmaskpb "google.golang.org/protobuf/types/known/fieldmaskpb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -98,15 +99,13 @@ func (x *Contact) GetIsPrimary() bool {
 }
 
 type User struct {
-	state    protoimpl.MessageState `protogen:"open.v1"`
-	Id       string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name     *string                `protobuf:"bytes,2,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	TenantId string                 `protobuf:"bytes,3,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
-	UserType string                 `protobuf:"bytes,4,opt,name=user_type,json=userType,proto3" json:"user_type,omitempty"`
-	Contacts []*Contact             `protobuf:"bytes,5,rep,name=contacts,proto3" json:"contacts,omitempty"`
-	// --- YENİ EKLENEN ALAN ---
-	// Kullanıcının tercih ettiği dil. Veritabanından gelir.
-	PreferredLanguageCode *string `protobuf:"bytes,6,opt,name=preferred_language_code,json=preferredLanguageCode,proto3,oneof" json:"preferred_language_code,omitempty"`
+	state                 protoimpl.MessageState `protogen:"open.v1"`
+	Id                    string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name                  *string                `protobuf:"bytes,2,opt,name=name,proto3,oneof" json:"name,omitempty"`
+	TenantId              string                 `protobuf:"bytes,3,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	UserType              string                 `protobuf:"bytes,4,opt,name=user_type,json=userType,proto3" json:"user_type,omitempty"`
+	Contacts              []*Contact             `protobuf:"bytes,5,rep,name=contacts,proto3" json:"contacts,omitempty"`
+	PreferredLanguageCode *string                `protobuf:"bytes,6,opt,name=preferred_language_code,json=preferredLanguageCode,proto3,oneof" json:"preferred_language_code,omitempty"`
 	unknownFields         protoimpl.UnknownFields
 	sizeCache             protoimpl.SizeCache
 }
@@ -183,6 +182,7 @@ func (x *User) GetPreferredLanguageCode() string {
 	return ""
 }
 
+// --- GetUser ---
 type GetUserRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
@@ -271,6 +271,7 @@ func (x *GetUserResponse) GetUser() *User {
 	return nil
 }
 
+// --- FindUserByContact ---
 type FindUserByContactRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ContactType   string                 `protobuf:"bytes,1,opt,name=contact_type,json=contactType,proto3" json:"contact_type,omitempty"`
@@ -367,14 +368,14 @@ func (x *FindUserByContactResponse) GetUser() *User {
 	return nil
 }
 
+// --- CreateUser ---
 type CreateUserRequest struct {
-	state          protoimpl.MessageState            `protogen:"open.v1"`
-	TenantId       string                            `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
-	UserType       string                            `protobuf:"bytes,2,opt,name=user_type,json=userType,proto3" json:"user_type,omitempty"`
-	Name           *string                           `protobuf:"bytes,3,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	InitialContact *CreateUserRequest_InitialContact `protobuf:"bytes,4,opt,name=initial_contact,json=initialContact,proto3" json:"initial_contact,omitempty"`
-	// --- YENİ EKLENEN ALAN ---
-	PreferredLanguageCode *string `protobuf:"bytes,5,opt,name=preferred_language_code,json=preferredLanguageCode,proto3,oneof" json:"preferred_language_code,omitempty"`
+	state                 protoimpl.MessageState            `protogen:"open.v1"`
+	TenantId              string                            `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	UserType              string                            `protobuf:"bytes,2,opt,name=user_type,json=userType,proto3" json:"user_type,omitempty"`
+	Name                  *string                           `protobuf:"bytes,3,opt,name=name,proto3,oneof" json:"name,omitempty"`
+	InitialContact        *CreateUserRequest_InitialContact `protobuf:"bytes,4,opt,name=initial_contact,json=initialContact,proto3" json:"initial_contact,omitempty"`
+	PreferredLanguageCode *string                           `protobuf:"bytes,5,opt,name=preferred_language_code,json=preferredLanguageCode,proto3,oneof" json:"preferred_language_code,omitempty"`
 	unknownFields         protoimpl.UnknownFields
 	sizeCache             protoimpl.SizeCache
 }
@@ -488,6 +489,475 @@ func (x *CreateUserResponse) GetUser() *User {
 	return nil
 }
 
+// --- UpdateUser ---
+type UpdateUserRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	User          *User                  `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+	UpdateMask    *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"` // Hangi alanların güncelleneceğini belirtir
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateUserRequest) Reset() {
+	*x = UpdateUserRequest{}
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateUserRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateUserRequest) ProtoMessage() {}
+
+func (x *UpdateUserRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateUserRequest.ProtoReflect.Descriptor instead.
+func (*UpdateUserRequest) Descriptor() ([]byte, []int) {
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *UpdateUserRequest) GetUser() *User {
+	if x != nil {
+		return x.User
+	}
+	return nil
+}
+
+func (x *UpdateUserRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
+	if x != nil {
+		return x.UpdateMask
+	}
+	return nil
+}
+
+type UpdateUserResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	User          *User                  `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateUserResponse) Reset() {
+	*x = UpdateUserResponse{}
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateUserResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateUserResponse) ProtoMessage() {}
+
+func (x *UpdateUserResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateUserResponse.ProtoReflect.Descriptor instead.
+func (*UpdateUserResponse) Descriptor() ([]byte, []int) {
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *UpdateUserResponse) GetUser() *User {
+	if x != nil {
+		return x.User
+	}
+	return nil
+}
+
+// --- DeleteUser ---
+type DeleteUserRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteUserRequest) Reset() {
+	*x = DeleteUserRequest{}
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteUserRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteUserRequest) ProtoMessage() {}
+
+func (x *DeleteUserRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteUserRequest.ProtoReflect.Descriptor instead.
+func (*DeleteUserRequest) Descriptor() ([]byte, []int) {
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *DeleteUserRequest) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+type DeleteUserResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteUserResponse) Reset() {
+	*x = DeleteUserResponse{}
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteUserResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteUserResponse) ProtoMessage() {}
+
+func (x *DeleteUserResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteUserResponse.ProtoReflect.Descriptor instead.
+func (*DeleteUserResponse) Descriptor() ([]byte, []int) {
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *DeleteUserResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
+// --- AddContact ---
+type AddContactRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	Contact       *Contact               `protobuf:"bytes,2,opt,name=contact,proto3" json:"contact,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddContactRequest) Reset() {
+	*x = AddContactRequest{}
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddContactRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddContactRequest) ProtoMessage() {}
+
+func (x *AddContactRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddContactRequest.ProtoReflect.Descriptor instead.
+func (*AddContactRequest) Descriptor() ([]byte, []int) {
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *AddContactRequest) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+func (x *AddContactRequest) GetContact() *Contact {
+	if x != nil {
+		return x.Contact
+	}
+	return nil
+}
+
+type AddContactResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	User          *User                  `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"` // Kullanıcının güncel halini döndürür
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddContactResponse) Reset() {
+	*x = AddContactResponse{}
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddContactResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddContactResponse) ProtoMessage() {}
+
+func (x *AddContactResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddContactResponse.ProtoReflect.Descriptor instead.
+func (*AddContactResponse) Descriptor() ([]byte, []int) {
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *AddContactResponse) GetUser() *User {
+	if x != nil {
+		return x.User
+	}
+	return nil
+}
+
+// --- UpdateContact ---
+type UpdateContactRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Contact       *Contact               `protobuf:"bytes,1,opt,name=contact,proto3" json:"contact,omitempty"`
+	UpdateMask    *fieldmaskpb.FieldMask `protobuf:"bytes,2,opt,name=update_mask,json=updateMask,proto3" json:"update_mask,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateContactRequest) Reset() {
+	*x = UpdateContactRequest{}
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateContactRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateContactRequest) ProtoMessage() {}
+
+func (x *UpdateContactRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateContactRequest.ProtoReflect.Descriptor instead.
+func (*UpdateContactRequest) Descriptor() ([]byte, []int) {
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *UpdateContactRequest) GetContact() *Contact {
+	if x != nil {
+		return x.Contact
+	}
+	return nil
+}
+
+func (x *UpdateContactRequest) GetUpdateMask() *fieldmaskpb.FieldMask {
+	if x != nil {
+		return x.UpdateMask
+	}
+	return nil
+}
+
+type UpdateContactResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	User          *User                  `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateContactResponse) Reset() {
+	*x = UpdateContactResponse{}
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateContactResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateContactResponse) ProtoMessage() {}
+
+func (x *UpdateContactResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateContactResponse.ProtoReflect.Descriptor instead.
+func (*UpdateContactResponse) Descriptor() ([]byte, []int) {
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *UpdateContactResponse) GetUser() *User {
+	if x != nil {
+		return x.User
+	}
+	return nil
+}
+
+// --- DeleteContact ---
+type DeleteContactRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ContactId     int32                  `protobuf:"varint,1,opt,name=contact_id,json=contactId,proto3" json:"contact_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteContactRequest) Reset() {
+	*x = DeleteContactRequest{}
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteContactRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteContactRequest) ProtoMessage() {}
+
+func (x *DeleteContactRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteContactRequest.ProtoReflect.Descriptor instead.
+func (*DeleteContactRequest) Descriptor() ([]byte, []int) {
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *DeleteContactRequest) GetContactId() int32 {
+	if x != nil {
+		return x.ContactId
+	}
+	return 0
+}
+
+type DeleteContactResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	User          *User                  `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteContactResponse) Reset() {
+	*x = DeleteContactResponse{}
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteContactResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteContactResponse) ProtoMessage() {}
+
+func (x *DeleteContactResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteContactResponse.ProtoReflect.Descriptor instead.
+func (*DeleteContactResponse) Descriptor() ([]byte, []int) {
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *DeleteContactResponse) GetUser() *User {
+	if x != nil {
+		return x.User
+	}
+	return nil
+}
+
 type CreateUserRequest_InitialContact struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ContactType   string                 `protobuf:"bytes,1,opt,name=contact_type,json=contactType,proto3" json:"contact_type,omitempty"`
@@ -498,7 +968,7 @@ type CreateUserRequest_InitialContact struct {
 
 func (x *CreateUserRequest_InitialContact) Reset() {
 	*x = CreateUserRequest_InitialContact{}
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[8]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -510,7 +980,7 @@ func (x *CreateUserRequest_InitialContact) String() string {
 func (*CreateUserRequest_InitialContact) ProtoMessage() {}
 
 func (x *CreateUserRequest_InitialContact) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[8]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -544,7 +1014,7 @@ var File_sentiric_user_v1_user_proto protoreflect.FileDescriptor
 
 const file_sentiric_user_v1_user_proto_rawDesc = "" +
 	"\n" +
-	"\x1bsentiric/user/v1/user.proto\x12\x10sentiric.user.v1\"\x99\x01\n" +
+	"\x1bsentiric/user/v1/user.proto\x12\x10sentiric.user.v1\x1a google/protobuf/field_mask.proto\"\x99\x01\n" +
 	"\aContact\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x05R\x02id\x12\x17\n" +
 	"\auser_id\x18\x02 \x01(\tR\x06userId\x12!\n" +
@@ -582,12 +1052,46 @@ const file_sentiric_user_v1_user_proto_rawDesc = "" +
 	"\x05_nameB\x1a\n" +
 	"\x18_preferred_language_code\"@\n" +
 	"\x12CreateUserResponse\x12*\n" +
-	"\x04user\x18\x01 \x01(\v2\x16.sentiric.user.v1.UserR\x04user2\xa4\x02\n" +
+	"\x04user\x18\x01 \x01(\v2\x16.sentiric.user.v1.UserR\x04user\"|\n" +
+	"\x11UpdateUserRequest\x12*\n" +
+	"\x04user\x18\x01 \x01(\v2\x16.sentiric.user.v1.UserR\x04user\x12;\n" +
+	"\vupdate_mask\x18\x02 \x01(\v2\x1a.google.protobuf.FieldMaskR\n" +
+	"updateMask\"@\n" +
+	"\x12UpdateUserResponse\x12*\n" +
+	"\x04user\x18\x01 \x01(\v2\x16.sentiric.user.v1.UserR\x04user\",\n" +
+	"\x11DeleteUserRequest\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId\".\n" +
+	"\x12DeleteUserResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"a\n" +
+	"\x11AddContactRequest\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId\x123\n" +
+	"\acontact\x18\x02 \x01(\v2\x19.sentiric.user.v1.ContactR\acontact\"@\n" +
+	"\x12AddContactResponse\x12*\n" +
+	"\x04user\x18\x01 \x01(\v2\x16.sentiric.user.v1.UserR\x04user\"\x88\x01\n" +
+	"\x14UpdateContactRequest\x123\n" +
+	"\acontact\x18\x01 \x01(\v2\x19.sentiric.user.v1.ContactR\acontact\x12;\n" +
+	"\vupdate_mask\x18\x02 \x01(\v2\x1a.google.protobuf.FieldMaskR\n" +
+	"updateMask\"C\n" +
+	"\x15UpdateContactResponse\x12*\n" +
+	"\x04user\x18\x01 \x01(\v2\x16.sentiric.user.v1.UserR\x04user\"5\n" +
+	"\x14DeleteContactRequest\x12\x1d\n" +
+	"\n" +
+	"contact_id\x18\x01 \x01(\x05R\tcontactId\"C\n" +
+	"\x15DeleteContactResponse\x12*\n" +
+	"\x04user\x18\x01 \x01(\v2\x16.sentiric.user.v1.UserR\x04user2\xf3\x05\n" +
 	"\vUserService\x12N\n" +
 	"\aGetUser\x12 .sentiric.user.v1.GetUserRequest\x1a!.sentiric.user.v1.GetUserResponse\x12l\n" +
 	"\x11FindUserByContact\x12*.sentiric.user.v1.FindUserByContactRequest\x1a+.sentiric.user.v1.FindUserByContactResponse\x12W\n" +
 	"\n" +
-	"CreateUser\x12#.sentiric.user.v1.CreateUserRequest\x1a$.sentiric.user.v1.CreateUserResponseBGZEgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/user/v1;userv1b\x06proto3"
+	"CreateUser\x12#.sentiric.user.v1.CreateUserRequest\x1a$.sentiric.user.v1.CreateUserResponse\x12W\n" +
+	"\n" +
+	"UpdateUser\x12#.sentiric.user.v1.UpdateUserRequest\x1a$.sentiric.user.v1.UpdateUserResponse\x12W\n" +
+	"\n" +
+	"DeleteUser\x12#.sentiric.user.v1.DeleteUserRequest\x1a$.sentiric.user.v1.DeleteUserResponse\x12W\n" +
+	"\n" +
+	"AddContact\x12#.sentiric.user.v1.AddContactRequest\x1a$.sentiric.user.v1.AddContactResponse\x12`\n" +
+	"\rUpdateContact\x12&.sentiric.user.v1.UpdateContactRequest\x1a'.sentiric.user.v1.UpdateContactResponse\x12`\n" +
+	"\rDeleteContact\x12&.sentiric.user.v1.DeleteContactRequest\x1a'.sentiric.user.v1.DeleteContactResponseBGZEgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/user/v1;userv1b\x06proto3"
 
 var (
 	file_sentiric_user_v1_user_proto_rawDescOnce sync.Once
@@ -601,7 +1105,7 @@ func file_sentiric_user_v1_user_proto_rawDescGZIP() []byte {
 	return file_sentiric_user_v1_user_proto_rawDescData
 }
 
-var file_sentiric_user_v1_user_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_sentiric_user_v1_user_proto_msgTypes = make([]protoimpl.MessageInfo, 19)
 var file_sentiric_user_v1_user_proto_goTypes = []any{
 	(*Contact)(nil),                          // 0: sentiric.user.v1.Contact
 	(*User)(nil),                             // 1: sentiric.user.v1.User
@@ -611,25 +1115,55 @@ var file_sentiric_user_v1_user_proto_goTypes = []any{
 	(*FindUserByContactResponse)(nil),        // 5: sentiric.user.v1.FindUserByContactResponse
 	(*CreateUserRequest)(nil),                // 6: sentiric.user.v1.CreateUserRequest
 	(*CreateUserResponse)(nil),               // 7: sentiric.user.v1.CreateUserResponse
-	(*CreateUserRequest_InitialContact)(nil), // 8: sentiric.user.v1.CreateUserRequest.InitialContact
+	(*UpdateUserRequest)(nil),                // 8: sentiric.user.v1.UpdateUserRequest
+	(*UpdateUserResponse)(nil),               // 9: sentiric.user.v1.UpdateUserResponse
+	(*DeleteUserRequest)(nil),                // 10: sentiric.user.v1.DeleteUserRequest
+	(*DeleteUserResponse)(nil),               // 11: sentiric.user.v1.DeleteUserResponse
+	(*AddContactRequest)(nil),                // 12: sentiric.user.v1.AddContactRequest
+	(*AddContactResponse)(nil),               // 13: sentiric.user.v1.AddContactResponse
+	(*UpdateContactRequest)(nil),             // 14: sentiric.user.v1.UpdateContactRequest
+	(*UpdateContactResponse)(nil),            // 15: sentiric.user.v1.UpdateContactResponse
+	(*DeleteContactRequest)(nil),             // 16: sentiric.user.v1.DeleteContactRequest
+	(*DeleteContactResponse)(nil),            // 17: sentiric.user.v1.DeleteContactResponse
+	(*CreateUserRequest_InitialContact)(nil), // 18: sentiric.user.v1.CreateUserRequest.InitialContact
+	(*fieldmaskpb.FieldMask)(nil),            // 19: google.protobuf.FieldMask
 }
 var file_sentiric_user_v1_user_proto_depIdxs = []int32{
-	0, // 0: sentiric.user.v1.User.contacts:type_name -> sentiric.user.v1.Contact
-	1, // 1: sentiric.user.v1.GetUserResponse.user:type_name -> sentiric.user.v1.User
-	1, // 2: sentiric.user.v1.FindUserByContactResponse.user:type_name -> sentiric.user.v1.User
-	8, // 3: sentiric.user.v1.CreateUserRequest.initial_contact:type_name -> sentiric.user.v1.CreateUserRequest.InitialContact
-	1, // 4: sentiric.user.v1.CreateUserResponse.user:type_name -> sentiric.user.v1.User
-	2, // 5: sentiric.user.v1.UserService.GetUser:input_type -> sentiric.user.v1.GetUserRequest
-	4, // 6: sentiric.user.v1.UserService.FindUserByContact:input_type -> sentiric.user.v1.FindUserByContactRequest
-	6, // 7: sentiric.user.v1.UserService.CreateUser:input_type -> sentiric.user.v1.CreateUserRequest
-	3, // 8: sentiric.user.v1.UserService.GetUser:output_type -> sentiric.user.v1.GetUserResponse
-	5, // 9: sentiric.user.v1.UserService.FindUserByContact:output_type -> sentiric.user.v1.FindUserByContactResponse
-	7, // 10: sentiric.user.v1.UserService.CreateUser:output_type -> sentiric.user.v1.CreateUserResponse
-	8, // [8:11] is the sub-list for method output_type
-	5, // [5:8] is the sub-list for method input_type
-	5, // [5:5] is the sub-list for extension type_name
-	5, // [5:5] is the sub-list for extension extendee
-	0, // [0:5] is the sub-list for field type_name
+	0,  // 0: sentiric.user.v1.User.contacts:type_name -> sentiric.user.v1.Contact
+	1,  // 1: sentiric.user.v1.GetUserResponse.user:type_name -> sentiric.user.v1.User
+	1,  // 2: sentiric.user.v1.FindUserByContactResponse.user:type_name -> sentiric.user.v1.User
+	18, // 3: sentiric.user.v1.CreateUserRequest.initial_contact:type_name -> sentiric.user.v1.CreateUserRequest.InitialContact
+	1,  // 4: sentiric.user.v1.CreateUserResponse.user:type_name -> sentiric.user.v1.User
+	1,  // 5: sentiric.user.v1.UpdateUserRequest.user:type_name -> sentiric.user.v1.User
+	19, // 6: sentiric.user.v1.UpdateUserRequest.update_mask:type_name -> google.protobuf.FieldMask
+	1,  // 7: sentiric.user.v1.UpdateUserResponse.user:type_name -> sentiric.user.v1.User
+	0,  // 8: sentiric.user.v1.AddContactRequest.contact:type_name -> sentiric.user.v1.Contact
+	1,  // 9: sentiric.user.v1.AddContactResponse.user:type_name -> sentiric.user.v1.User
+	0,  // 10: sentiric.user.v1.UpdateContactRequest.contact:type_name -> sentiric.user.v1.Contact
+	19, // 11: sentiric.user.v1.UpdateContactRequest.update_mask:type_name -> google.protobuf.FieldMask
+	1,  // 12: sentiric.user.v1.UpdateContactResponse.user:type_name -> sentiric.user.v1.User
+	1,  // 13: sentiric.user.v1.DeleteContactResponse.user:type_name -> sentiric.user.v1.User
+	2,  // 14: sentiric.user.v1.UserService.GetUser:input_type -> sentiric.user.v1.GetUserRequest
+	4,  // 15: sentiric.user.v1.UserService.FindUserByContact:input_type -> sentiric.user.v1.FindUserByContactRequest
+	6,  // 16: sentiric.user.v1.UserService.CreateUser:input_type -> sentiric.user.v1.CreateUserRequest
+	8,  // 17: sentiric.user.v1.UserService.UpdateUser:input_type -> sentiric.user.v1.UpdateUserRequest
+	10, // 18: sentiric.user.v1.UserService.DeleteUser:input_type -> sentiric.user.v1.DeleteUserRequest
+	12, // 19: sentiric.user.v1.UserService.AddContact:input_type -> sentiric.user.v1.AddContactRequest
+	14, // 20: sentiric.user.v1.UserService.UpdateContact:input_type -> sentiric.user.v1.UpdateContactRequest
+	16, // 21: sentiric.user.v1.UserService.DeleteContact:input_type -> sentiric.user.v1.DeleteContactRequest
+	3,  // 22: sentiric.user.v1.UserService.GetUser:output_type -> sentiric.user.v1.GetUserResponse
+	5,  // 23: sentiric.user.v1.UserService.FindUserByContact:output_type -> sentiric.user.v1.FindUserByContactResponse
+	7,  // 24: sentiric.user.v1.UserService.CreateUser:output_type -> sentiric.user.v1.CreateUserResponse
+	9,  // 25: sentiric.user.v1.UserService.UpdateUser:output_type -> sentiric.user.v1.UpdateUserResponse
+	11, // 26: sentiric.user.v1.UserService.DeleteUser:output_type -> sentiric.user.v1.DeleteUserResponse
+	13, // 27: sentiric.user.v1.UserService.AddContact:output_type -> sentiric.user.v1.AddContactResponse
+	15, // 28: sentiric.user.v1.UserService.UpdateContact:output_type -> sentiric.user.v1.UpdateContactResponse
+	17, // 29: sentiric.user.v1.UserService.DeleteContact:output_type -> sentiric.user.v1.DeleteContactResponse
+	22, // [22:30] is the sub-list for method output_type
+	14, // [14:22] is the sub-list for method input_type
+	14, // [14:14] is the sub-list for extension type_name
+	14, // [14:14] is the sub-list for extension extendee
+	0,  // [0:14] is the sub-list for field type_name
 }
 
 func init() { file_sentiric_user_v1_user_proto_init() }
@@ -645,7 +1179,7 @@ func file_sentiric_user_v1_user_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sentiric_user_v1_user_proto_rawDesc), len(file_sentiric_user_v1_user_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   9,
+			NumMessages:   19,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

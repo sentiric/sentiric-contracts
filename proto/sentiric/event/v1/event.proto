@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package sentiric.event.v1;
+
+import "google/protobuf/timestamp.proto";
+import "sentiric/dialplan/v1/dialplan.proto";
+import "sentiric/user/v1/user.proto";
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/event/v1;eventv1";
+
+// Not: Bu dosyada tanımlanan mesajlar gRPC için değil,
+// RabbitMQ gibi mesajlaşma kuyruklarında kullanılacak olayların
+// standart yapısını belirlemek içindir.
+
+// call.started olayının standart yapısı.
+message CallStartedEvent {
+  string event_type = 1;
+  string trace_id = 2;
+  string call_id = 3;
+  string from_uri = 4;
+  string to_uri = 5;
+  google.protobuf.Timestamp timestamp = 6;
+  sentiric.dialplan.v1.ResolveDialplanResponse dialplan_resolution = 7;
+  map<string, string> media_info = 8;
+}
+
+// user.created.for_call veya user.identified.for_call olayının standart yapısı.
+message UserIdentifiedForCallEvent {
+  string event_type = 1;
+  string trace_id = 2;
+  string call_id = 3;
+  google.protobuf.Timestamp timestamp = 4;
+  sentiric.user.v1.User user = 5;
+  sentiric.user.v1.Contact contact = 6;
+}
+
+// call.recording.available olayının standart yapısı.
+message CallRecordingAvailableEvent {
+  string event_type = 1;
+  string trace_id = 2;
+  string call_id = 3;
+  google.protobuf.Timestamp timestamp = 4;
+  string recording_uri = 5; // s3://...
+  string public_url = 6; // https://...
+}
+
+// call.ended olayının standart yapısı.
+message CallEndedEvent {
+  string event_type = 1;
+  string trace_id = 2;
+  string call_id = 3;
+  google.protobuf.Timestamp timestamp = 4;
+  string reason = 5; // Örn: "normal_clearing", "terminated_by_request"
+}
