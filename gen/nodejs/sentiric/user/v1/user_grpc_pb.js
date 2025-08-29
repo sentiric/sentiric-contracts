@@ -115,6 +115,28 @@ function deserialize_sentiric_user_v1_FindUserByContactResponse(buffer_arg) {
   return sentiric_user_v1_user_pb.FindUserByContactResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sentiric_user_v1_GetSipCredentialsRequest(arg) {
+  if (!(arg instanceof sentiric_user_v1_user_pb.GetSipCredentialsRequest)) {
+    throw new Error('Expected argument of type sentiric.user.v1.GetSipCredentialsRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sentiric_user_v1_GetSipCredentialsRequest(buffer_arg) {
+  return sentiric_user_v1_user_pb.GetSipCredentialsRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sentiric_user_v1_GetSipCredentialsResponse(arg) {
+  if (!(arg instanceof sentiric_user_v1_user_pb.GetSipCredentialsResponse)) {
+    throw new Error('Expected argument of type sentiric.user.v1.GetSipCredentialsResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sentiric_user_v1_GetSipCredentialsResponse(buffer_arg) {
+  return sentiric_user_v1_user_pb.GetSipCredentialsResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sentiric_user_v1_GetUserRequest(arg) {
   if (!(arg instanceof sentiric_user_v1_user_pb.GetUserRequest)) {
     throw new Error('Expected argument of type sentiric.user.v1.GetUserRequest');
@@ -277,6 +299,18 @@ addContact: {
     requestDeserialize: deserialize_sentiric_user_v1_DeleteContactRequest,
     responseSerialize: serialize_sentiric_user_v1_DeleteContactResponse,
     responseDeserialize: deserialize_sentiric_user_v1_DeleteContactResponse,
+  },
+  // Kimlik doğrulama için SIP bilgilerini getirir
+getSipCredentials: {
+    path: '/sentiric.user.v1.UserService/GetSipCredentials',
+    requestStream: false,
+    responseStream: false,
+    requestType: sentiric_user_v1_user_pb.GetSipCredentialsRequest,
+    responseType: sentiric_user_v1_user_pb.GetSipCredentialsResponse,
+    requestSerialize: serialize_sentiric_user_v1_GetSipCredentialsRequest,
+    requestDeserialize: deserialize_sentiric_user_v1_GetSipCredentialsRequest,
+    responseSerialize: serialize_sentiric_user_v1_GetSipCredentialsResponse,
+    responseDeserialize: deserialize_sentiric_user_v1_GetSipCredentialsResponse,
   },
 };
 

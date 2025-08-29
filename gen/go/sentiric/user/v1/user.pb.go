@@ -958,6 +958,111 @@ func (x *DeleteContactResponse) GetUser() *User {
 	return nil
 }
 
+// --- GetSipCredentials ---
+type GetSipCredentialsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	SipUsername   string                 `protobuf:"bytes,1,opt,name=sip_username,json=sipUsername,proto3" json:"sip_username,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetSipCredentialsRequest) Reset() {
+	*x = GetSipCredentialsRequest{}
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetSipCredentialsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetSipCredentialsRequest) ProtoMessage() {}
+
+func (x *GetSipCredentialsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetSipCredentialsRequest.ProtoReflect.Descriptor instead.
+func (*GetSipCredentialsRequest) Descriptor() ([]byte, []int) {
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *GetSipCredentialsRequest) GetSipUsername() string {
+	if x != nil {
+		return x.SipUsername
+	}
+	return ""
+}
+
+type GetSipCredentialsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	TenantId      string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	Ha1Hash       string                 `protobuf:"bytes,3,opt,name=ha1_hash,json=ha1Hash,proto3" json:"ha1_hash,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetSipCredentialsResponse) Reset() {
+	*x = GetSipCredentialsResponse{}
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetSipCredentialsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetSipCredentialsResponse) ProtoMessage() {}
+
+func (x *GetSipCredentialsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetSipCredentialsResponse.ProtoReflect.Descriptor instead.
+func (*GetSipCredentialsResponse) Descriptor() ([]byte, []int) {
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *GetSipCredentialsResponse) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+func (x *GetSipCredentialsResponse) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *GetSipCredentialsResponse) GetHa1Hash() string {
+	if x != nil {
+		return x.Ha1Hash
+	}
+	return ""
+}
+
 type CreateUserRequest_InitialContact struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ContactType   string                 `protobuf:"bytes,1,opt,name=contact_type,json=contactType,proto3" json:"contact_type,omitempty"`
@@ -968,7 +1073,7 @@ type CreateUserRequest_InitialContact struct {
 
 func (x *CreateUserRequest_InitialContact) Reset() {
 	*x = CreateUserRequest_InitialContact{}
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[18]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -980,7 +1085,7 @@ func (x *CreateUserRequest_InitialContact) String() string {
 func (*CreateUserRequest_InitialContact) ProtoMessage() {}
 
 func (x *CreateUserRequest_InitialContact) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[18]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1078,7 +1183,13 @@ const file_sentiric_user_v1_user_proto_rawDesc = "" +
 	"\n" +
 	"contact_id\x18\x01 \x01(\x05R\tcontactId\"C\n" +
 	"\x15DeleteContactResponse\x12*\n" +
-	"\x04user\x18\x01 \x01(\v2\x16.sentiric.user.v1.UserR\x04user2\xf3\x05\n" +
+	"\x04user\x18\x01 \x01(\v2\x16.sentiric.user.v1.UserR\x04user\"=\n" +
+	"\x18GetSipCredentialsRequest\x12!\n" +
+	"\fsip_username\x18\x01 \x01(\tR\vsipUsername\"l\n" +
+	"\x19GetSipCredentialsResponse\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x1b\n" +
+	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12\x19\n" +
+	"\bha1_hash\x18\x03 \x01(\tR\aha1Hash2\xe1\x06\n" +
 	"\vUserService\x12N\n" +
 	"\aGetUser\x12 .sentiric.user.v1.GetUserRequest\x1a!.sentiric.user.v1.GetUserResponse\x12l\n" +
 	"\x11FindUserByContact\x12*.sentiric.user.v1.FindUserByContactRequest\x1a+.sentiric.user.v1.FindUserByContactResponse\x12W\n" +
@@ -1091,7 +1202,8 @@ const file_sentiric_user_v1_user_proto_rawDesc = "" +
 	"\n" +
 	"AddContact\x12#.sentiric.user.v1.AddContactRequest\x1a$.sentiric.user.v1.AddContactResponse\x12`\n" +
 	"\rUpdateContact\x12&.sentiric.user.v1.UpdateContactRequest\x1a'.sentiric.user.v1.UpdateContactResponse\x12`\n" +
-	"\rDeleteContact\x12&.sentiric.user.v1.DeleteContactRequest\x1a'.sentiric.user.v1.DeleteContactResponseBGZEgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/user/v1;userv1b\x06proto3"
+	"\rDeleteContact\x12&.sentiric.user.v1.DeleteContactRequest\x1a'.sentiric.user.v1.DeleteContactResponse\x12l\n" +
+	"\x11GetSipCredentials\x12*.sentiric.user.v1.GetSipCredentialsRequest\x1a+.sentiric.user.v1.GetSipCredentialsResponseBGZEgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/user/v1;userv1b\x06proto3"
 
 var (
 	file_sentiric_user_v1_user_proto_rawDescOnce sync.Once
@@ -1105,7 +1217,7 @@ func file_sentiric_user_v1_user_proto_rawDescGZIP() []byte {
 	return file_sentiric_user_v1_user_proto_rawDescData
 }
 
-var file_sentiric_user_v1_user_proto_msgTypes = make([]protoimpl.MessageInfo, 19)
+var file_sentiric_user_v1_user_proto_msgTypes = make([]protoimpl.MessageInfo, 21)
 var file_sentiric_user_v1_user_proto_goTypes = []any{
 	(*Contact)(nil),                          // 0: sentiric.user.v1.Contact
 	(*User)(nil),                             // 1: sentiric.user.v1.User
@@ -1125,22 +1237,24 @@ var file_sentiric_user_v1_user_proto_goTypes = []any{
 	(*UpdateContactResponse)(nil),            // 15: sentiric.user.v1.UpdateContactResponse
 	(*DeleteContactRequest)(nil),             // 16: sentiric.user.v1.DeleteContactRequest
 	(*DeleteContactResponse)(nil),            // 17: sentiric.user.v1.DeleteContactResponse
-	(*CreateUserRequest_InitialContact)(nil), // 18: sentiric.user.v1.CreateUserRequest.InitialContact
-	(*fieldmaskpb.FieldMask)(nil),            // 19: google.protobuf.FieldMask
+	(*GetSipCredentialsRequest)(nil),         // 18: sentiric.user.v1.GetSipCredentialsRequest
+	(*GetSipCredentialsResponse)(nil),        // 19: sentiric.user.v1.GetSipCredentialsResponse
+	(*CreateUserRequest_InitialContact)(nil), // 20: sentiric.user.v1.CreateUserRequest.InitialContact
+	(*fieldmaskpb.FieldMask)(nil),            // 21: google.protobuf.FieldMask
 }
 var file_sentiric_user_v1_user_proto_depIdxs = []int32{
 	0,  // 0: sentiric.user.v1.User.contacts:type_name -> sentiric.user.v1.Contact
 	1,  // 1: sentiric.user.v1.GetUserResponse.user:type_name -> sentiric.user.v1.User
 	1,  // 2: sentiric.user.v1.FindUserByContactResponse.user:type_name -> sentiric.user.v1.User
-	18, // 3: sentiric.user.v1.CreateUserRequest.initial_contact:type_name -> sentiric.user.v1.CreateUserRequest.InitialContact
+	20, // 3: sentiric.user.v1.CreateUserRequest.initial_contact:type_name -> sentiric.user.v1.CreateUserRequest.InitialContact
 	1,  // 4: sentiric.user.v1.CreateUserResponse.user:type_name -> sentiric.user.v1.User
 	1,  // 5: sentiric.user.v1.UpdateUserRequest.user:type_name -> sentiric.user.v1.User
-	19, // 6: sentiric.user.v1.UpdateUserRequest.update_mask:type_name -> google.protobuf.FieldMask
+	21, // 6: sentiric.user.v1.UpdateUserRequest.update_mask:type_name -> google.protobuf.FieldMask
 	1,  // 7: sentiric.user.v1.UpdateUserResponse.user:type_name -> sentiric.user.v1.User
 	0,  // 8: sentiric.user.v1.AddContactRequest.contact:type_name -> sentiric.user.v1.Contact
 	1,  // 9: sentiric.user.v1.AddContactResponse.user:type_name -> sentiric.user.v1.User
 	0,  // 10: sentiric.user.v1.UpdateContactRequest.contact:type_name -> sentiric.user.v1.Contact
-	19, // 11: sentiric.user.v1.UpdateContactRequest.update_mask:type_name -> google.protobuf.FieldMask
+	21, // 11: sentiric.user.v1.UpdateContactRequest.update_mask:type_name -> google.protobuf.FieldMask
 	1,  // 12: sentiric.user.v1.UpdateContactResponse.user:type_name -> sentiric.user.v1.User
 	1,  // 13: sentiric.user.v1.DeleteContactResponse.user:type_name -> sentiric.user.v1.User
 	2,  // 14: sentiric.user.v1.UserService.GetUser:input_type -> sentiric.user.v1.GetUserRequest
@@ -1151,16 +1265,18 @@ var file_sentiric_user_v1_user_proto_depIdxs = []int32{
 	12, // 19: sentiric.user.v1.UserService.AddContact:input_type -> sentiric.user.v1.AddContactRequest
 	14, // 20: sentiric.user.v1.UserService.UpdateContact:input_type -> sentiric.user.v1.UpdateContactRequest
 	16, // 21: sentiric.user.v1.UserService.DeleteContact:input_type -> sentiric.user.v1.DeleteContactRequest
-	3,  // 22: sentiric.user.v1.UserService.GetUser:output_type -> sentiric.user.v1.GetUserResponse
-	5,  // 23: sentiric.user.v1.UserService.FindUserByContact:output_type -> sentiric.user.v1.FindUserByContactResponse
-	7,  // 24: sentiric.user.v1.UserService.CreateUser:output_type -> sentiric.user.v1.CreateUserResponse
-	9,  // 25: sentiric.user.v1.UserService.UpdateUser:output_type -> sentiric.user.v1.UpdateUserResponse
-	11, // 26: sentiric.user.v1.UserService.DeleteUser:output_type -> sentiric.user.v1.DeleteUserResponse
-	13, // 27: sentiric.user.v1.UserService.AddContact:output_type -> sentiric.user.v1.AddContactResponse
-	15, // 28: sentiric.user.v1.UserService.UpdateContact:output_type -> sentiric.user.v1.UpdateContactResponse
-	17, // 29: sentiric.user.v1.UserService.DeleteContact:output_type -> sentiric.user.v1.DeleteContactResponse
-	22, // [22:30] is the sub-list for method output_type
-	14, // [14:22] is the sub-list for method input_type
+	18, // 22: sentiric.user.v1.UserService.GetSipCredentials:input_type -> sentiric.user.v1.GetSipCredentialsRequest
+	3,  // 23: sentiric.user.v1.UserService.GetUser:output_type -> sentiric.user.v1.GetUserResponse
+	5,  // 24: sentiric.user.v1.UserService.FindUserByContact:output_type -> sentiric.user.v1.FindUserByContactResponse
+	7,  // 25: sentiric.user.v1.UserService.CreateUser:output_type -> sentiric.user.v1.CreateUserResponse
+	9,  // 26: sentiric.user.v1.UserService.UpdateUser:output_type -> sentiric.user.v1.UpdateUserResponse
+	11, // 27: sentiric.user.v1.UserService.DeleteUser:output_type -> sentiric.user.v1.DeleteUserResponse
+	13, // 28: sentiric.user.v1.UserService.AddContact:output_type -> sentiric.user.v1.AddContactResponse
+	15, // 29: sentiric.user.v1.UserService.UpdateContact:output_type -> sentiric.user.v1.UpdateContactResponse
+	17, // 30: sentiric.user.v1.UserService.DeleteContact:output_type -> sentiric.user.v1.DeleteContactResponse
+	19, // 31: sentiric.user.v1.UserService.GetSipCredentials:output_type -> sentiric.user.v1.GetSipCredentialsResponse
+	23, // [23:32] is the sub-list for method output_type
+	14, // [14:23] is the sub-list for method input_type
 	14, // [14:14] is the sub-list for extension type_name
 	14, // [14:14] is the sub-list for extension extendee
 	0,  // [0:14] is the sub-list for field type_name
@@ -1179,7 +1295,7 @@ func file_sentiric_user_v1_user_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sentiric_user_v1_user_proto_rawDesc), len(file_sentiric_user_v1_user_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   19,
+			NumMessages:   21,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

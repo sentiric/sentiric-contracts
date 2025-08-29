@@ -27,6 +27,7 @@ const (
 	UserService_AddContact_FullMethodName        = "/sentiric.user.v1.UserService/AddContact"
 	UserService_UpdateContact_FullMethodName     = "/sentiric.user.v1.UserService/UpdateContact"
 	UserService_DeleteContact_FullMethodName     = "/sentiric.user.v1.UserService/DeleteContact"
+	UserService_GetSipCredentials_FullMethodName = "/sentiric.user.v1.UserService/GetSipCredentials"
 )
 
 // UserServiceClient is the client API for UserService service.
@@ -44,6 +45,8 @@ type UserServiceClient interface {
 	AddContact(ctx context.Context, in *AddContactRequest, opts ...grpc.CallOption) (*AddContactResponse, error)
 	UpdateContact(ctx context.Context, in *UpdateContactRequest, opts ...grpc.CallOption) (*UpdateContactResponse, error)
 	DeleteContact(ctx context.Context, in *DeleteContactRequest, opts ...grpc.CallOption) (*DeleteContactResponse, error)
+	// Kimlik doğrulama için SIP bilgilerini getirir
+	GetSipCredentials(ctx context.Context, in *GetSipCredentialsRequest, opts ...grpc.CallOption) (*GetSipCredentialsResponse, error)
 }
 
 type userServiceClient struct {
@@ -134,6 +137,16 @@ func (c *userServiceClient) DeleteContact(ctx context.Context, in *DeleteContact
 	return out, nil
 }
 
+func (c *userServiceClient) GetSipCredentials(ctx context.Context, in *GetSipCredentialsRequest, opts ...grpc.CallOption) (*GetSipCredentialsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetSipCredentialsResponse)
+	err := c.cc.Invoke(ctx, UserService_GetSipCredentials_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UserServiceServer is the server API for UserService service.
 // All implementations should embed UnimplementedUserServiceServer
 // for forward compatibility.
@@ -149,6 +162,8 @@ type UserServiceServer interface {
 	AddContact(context.Context, *AddContactRequest) (*AddContactResponse, error)
 	UpdateContact(context.Context, *UpdateContactRequest) (*UpdateContactResponse, error)
 	DeleteContact(context.Context, *DeleteContactRequest) (*DeleteContactResponse, error)
+	// Kimlik doğrulama için SIP bilgilerini getirir
+	GetSipCredentials(context.Context, *GetSipCredentialsRequest) (*GetSipCredentialsResponse, error)
 }
 
 // UnimplementedUserServiceServer should be embedded to have
@@ -181,6 +196,9 @@ func (UnimplementedUserServiceServer) UpdateContact(context.Context, *UpdateCont
 }
 func (UnimplementedUserServiceServer) DeleteContact(context.Context, *DeleteContactRequest) (*DeleteContactResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteContact not implemented")
+}
+func (UnimplementedUserServiceServer) GetSipCredentials(context.Context, *GetSipCredentialsRequest) (*GetSipCredentialsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetSipCredentials not implemented")
 }
 func (UnimplementedUserServiceServer) testEmbeddedByValue() {}
 
@@ -346,6 +364,24 @@ func _UserService_DeleteContact_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UserService_GetSipCredentials_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetSipCredentialsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).GetSipCredentials(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_GetSipCredentials_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).GetSipCredentials(ctx, req.(*GetSipCredentialsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // UserService_ServiceDesc is the grpc.ServiceDesc for UserService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -384,6 +420,10 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeleteContact",
 			Handler:    _UserService_DeleteContact_Handler,
+		},
+		{
+			MethodName: "GetSipCredentials",
+			Handler:    _UserService_GetSipCredentials_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

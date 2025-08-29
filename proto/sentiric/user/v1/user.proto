@@ -45,6 +45,9 @@ service UserService {
   rpc AddContact(AddContactRequest) returns (AddContactResponse);
   rpc UpdateContact(UpdateContactRequest) returns (UpdateContactResponse);
   rpc DeleteContact(DeleteContactRequest) returns (DeleteContactResponse);
+
+  // Kimlik doğrulama için SIP bilgilerini getirir
+  rpc GetSipCredentials(GetSipCredentialsRequest) returns (GetSipCredentialsResponse);
 }
 
 // =================================================================
@@ -125,4 +128,14 @@ message DeleteContactRequest {
 }
 message DeleteContactResponse {
   User user = 1;
+}
+
+// --- GetSipCredentials ---
+message GetSipCredentialsRequest {
+  string sip_username = 1;
+}
+message GetSipCredentialsResponse {
+  string user_id = 1;
+  string tenant_id = 2;
+  string ha1_hash = 3;
 }

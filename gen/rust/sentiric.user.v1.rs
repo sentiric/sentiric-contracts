@@ -171,5 +171,22 @@ pub struct DeleteContactResponse {
     #[prost(message, optional, tag="1")]
     pub user: ::core::option::Option<User>,
 }
+/// --- GetSipCredentials ---
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct GetSipCredentialsRequest {
+    #[prost(string, tag="1")]
+    pub sip_username: ::prost::alloc::string::String,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct GetSipCredentialsResponse {
+    #[prost(string, tag="1")]
+    pub user_id: ::prost::alloc::string::String,
+    #[prost(string, tag="2")]
+    pub tenant_id: ::prost::alloc::string::String,
+    #[prost(string, tag="3")]
+    pub ha1_hash: ::prost::alloc::string::String,
+}
 include!("sentiric.user.v1.tonic.rs");
 // @@protoc_insertion_point(module)

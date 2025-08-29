@@ -58,6 +58,11 @@ class UserServiceStub(object):
                 request_serializer=sentiric_dot_user_dot_v1_dot_user__pb2.DeleteContactRequest.SerializeToString,
                 response_deserializer=sentiric_dot_user_dot_v1_dot_user__pb2.DeleteContactResponse.FromString,
                 _registered_method=True)
+        self.GetSipCredentials = channel.unary_unary(
+                '/sentiric.user.v1.UserService/GetSipCredentials',
+                request_serializer=sentiric_dot_user_dot_v1_dot_user__pb2.GetSipCredentialsRequest.SerializeToString,
+                response_deserializer=sentiric_dot_user_dot_v1_dot_user__pb2.GetSipCredentialsResponse.FromString,
+                _registered_method=True)
 
 
 class UserServiceServicer(object):
@@ -118,6 +123,13 @@ class UserServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetSipCredentials(self, request, context):
+        """Kimlik doğrulama için SIP bilgilerini getirir
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_UserServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -160,6 +172,11 @@ def add_UserServiceServicer_to_server(servicer, server):
                     servicer.DeleteContact,
                     request_deserializer=sentiric_dot_user_dot_v1_dot_user__pb2.DeleteContactRequest.FromString,
                     response_serializer=sentiric_dot_user_dot_v1_dot_user__pb2.DeleteContactResponse.SerializeToString,
+            ),
+            'GetSipCredentials': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetSipCredentials,
+                    request_deserializer=sentiric_dot_user_dot_v1_dot_user__pb2.GetSipCredentialsRequest.FromString,
+                    response_serializer=sentiric_dot_user_dot_v1_dot_user__pb2.GetSipCredentialsResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -382,6 +399,33 @@ class UserService(object):
             '/sentiric.user.v1.UserService/DeleteContact',
             sentiric_dot_user_dot_v1_dot_user__pb2.DeleteContactRequest.SerializeToString,
             sentiric_dot_user_dot_v1_dot_user__pb2.DeleteContactResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetSipCredentials(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/sentiric.user.v1.UserService/GetSipCredentials',
+            sentiric_dot_user_dot_v1_dot_user__pb2.GetSipCredentialsRequest.SerializeToString,
+            sentiric_dot_user_dot_v1_dot_user__pb2.GetSipCredentialsResponse.FromString,
             options,
             channel_credentials,
             insecure,
