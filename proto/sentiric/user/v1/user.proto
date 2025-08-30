@@ -1,3 +1,5 @@
+// File: sentiric-contracts/proto/sentiric/user/v1/user.proto
+
 syntax = "proto3";
 
 package sentiric.user.v1;
@@ -46,8 +48,13 @@ service UserService {
   rpc UpdateContact(UpdateContactRequest) returns (UpdateContactResponse);
   rpc DeleteContact(DeleteContactRequest) returns (DeleteContactResponse);
 
+  // --- YENİ SIP YÖNETİM RPC'LERİ ---
   // Kimlik doğrulama için SIP bilgilerini getirir
   rpc GetSipCredentials(GetSipCredentialsRequest) returns (GetSipCredentialsResponse);
+  // Bir kullanıcı için yeni bir SIP kimliği oluşturur
+  rpc CreateSipCredential(CreateSipCredentialRequest) returns (CreateSipCredentialResponse);
+  // Bir SIP kimliğini siler
+  rpc DeleteSipCredential(DeleteSipCredentialRequest) returns (DeleteSipCredentialResponse);
 }
 
 // =================================================================
@@ -138,4 +145,23 @@ message GetSipCredentialsResponse {
   string user_id = 1;
   string tenant_id = 2;
   string ha1_hash = 3;
+}
+
+// --- YENİ MESAJLAR ---
+// --- CreateSipCredential ---
+message CreateSipCredentialRequest {
+  string user_id = 1;
+  string sip_username = 2;
+  string password = 3;
+}
+message CreateSipCredentialResponse {
+  bool success = 1;
+}
+
+// --- DeleteSipCredential ---
+message DeleteSipCredentialRequest {
+  string sip_username = 1;
+}
+message DeleteSipCredentialResponse {
+  bool success = 1;
 }

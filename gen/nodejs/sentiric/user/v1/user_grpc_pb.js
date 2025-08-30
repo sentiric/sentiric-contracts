@@ -1,5 +1,8 @@
 // GENERATED CODE -- DO NOT EDIT!
 
+// Original file comments:
+// File: sentiric-contracts/proto/sentiric/user/v1/user.proto
+//
 'use strict';
 var grpc = require('@grpc/grpc-js');
 var sentiric_user_v1_user_pb = require('../../../sentiric/user/v1/user_pb.js');
@@ -25,6 +28,28 @@ function serialize_sentiric_user_v1_AddContactResponse(arg) {
 
 function deserialize_sentiric_user_v1_AddContactResponse(buffer_arg) {
   return sentiric_user_v1_user_pb.AddContactResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sentiric_user_v1_CreateSipCredentialRequest(arg) {
+  if (!(arg instanceof sentiric_user_v1_user_pb.CreateSipCredentialRequest)) {
+    throw new Error('Expected argument of type sentiric.user.v1.CreateSipCredentialRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sentiric_user_v1_CreateSipCredentialRequest(buffer_arg) {
+  return sentiric_user_v1_user_pb.CreateSipCredentialRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sentiric_user_v1_CreateSipCredentialResponse(arg) {
+  if (!(arg instanceof sentiric_user_v1_user_pb.CreateSipCredentialResponse)) {
+    throw new Error('Expected argument of type sentiric.user.v1.CreateSipCredentialResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sentiric_user_v1_CreateSipCredentialResponse(buffer_arg) {
+  return sentiric_user_v1_user_pb.CreateSipCredentialResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_sentiric_user_v1_CreateUserRequest(arg) {
@@ -69,6 +94,28 @@ function serialize_sentiric_user_v1_DeleteContactResponse(arg) {
 
 function deserialize_sentiric_user_v1_DeleteContactResponse(buffer_arg) {
   return sentiric_user_v1_user_pb.DeleteContactResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sentiric_user_v1_DeleteSipCredentialRequest(arg) {
+  if (!(arg instanceof sentiric_user_v1_user_pb.DeleteSipCredentialRequest)) {
+    throw new Error('Expected argument of type sentiric.user.v1.DeleteSipCredentialRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sentiric_user_v1_DeleteSipCredentialRequest(buffer_arg) {
+  return sentiric_user_v1_user_pb.DeleteSipCredentialRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sentiric_user_v1_DeleteSipCredentialResponse(arg) {
+  if (!(arg instanceof sentiric_user_v1_user_pb.DeleteSipCredentialResponse)) {
+    throw new Error('Expected argument of type sentiric.user.v1.DeleteSipCredentialResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sentiric_user_v1_DeleteSipCredentialResponse(buffer_arg) {
+  return sentiric_user_v1_user_pb.DeleteSipCredentialResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_sentiric_user_v1_DeleteUserRequest(arg) {
@@ -300,7 +347,8 @@ addContact: {
     responseSerialize: serialize_sentiric_user_v1_DeleteContactResponse,
     responseDeserialize: deserialize_sentiric_user_v1_DeleteContactResponse,
   },
-  // Kimlik doğrulama için SIP bilgilerini getirir
+  // --- YENİ SIP YÖNETİM RPC'LERİ ---
+// Kimlik doğrulama için SIP bilgilerini getirir
 getSipCredentials: {
     path: '/sentiric.user.v1.UserService/GetSipCredentials',
     requestStream: false,
@@ -311,6 +359,30 @@ getSipCredentials: {
     requestDeserialize: deserialize_sentiric_user_v1_GetSipCredentialsRequest,
     responseSerialize: serialize_sentiric_user_v1_GetSipCredentialsResponse,
     responseDeserialize: deserialize_sentiric_user_v1_GetSipCredentialsResponse,
+  },
+  // Bir kullanıcı için yeni bir SIP kimliği oluşturur
+createSipCredential: {
+    path: '/sentiric.user.v1.UserService/CreateSipCredential',
+    requestStream: false,
+    responseStream: false,
+    requestType: sentiric_user_v1_user_pb.CreateSipCredentialRequest,
+    responseType: sentiric_user_v1_user_pb.CreateSipCredentialResponse,
+    requestSerialize: serialize_sentiric_user_v1_CreateSipCredentialRequest,
+    requestDeserialize: deserialize_sentiric_user_v1_CreateSipCredentialRequest,
+    responseSerialize: serialize_sentiric_user_v1_CreateSipCredentialResponse,
+    responseDeserialize: deserialize_sentiric_user_v1_CreateSipCredentialResponse,
+  },
+  // Bir SIP kimliğini siler
+deleteSipCredential: {
+    path: '/sentiric.user.v1.UserService/DeleteSipCredential',
+    requestStream: false,
+    responseStream: false,
+    requestType: sentiric_user_v1_user_pb.DeleteSipCredentialRequest,
+    responseType: sentiric_user_v1_user_pb.DeleteSipCredentialResponse,
+    requestSerialize: serialize_sentiric_user_v1_DeleteSipCredentialRequest,
+    requestDeserialize: deserialize_sentiric_user_v1_DeleteSipCredentialRequest,
+    responseSerialize: serialize_sentiric_user_v1_DeleteSipCredentialResponse,
+    responseDeserialize: deserialize_sentiric_user_v1_DeleteSipCredentialResponse,
   },
 };
 

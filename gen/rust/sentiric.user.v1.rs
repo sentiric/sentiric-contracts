@@ -188,5 +188,36 @@ pub struct GetSipCredentialsResponse {
     #[prost(string, tag="3")]
     pub ha1_hash: ::prost::alloc::string::String,
 }
+/// --- YENİ MESAJLAR ---
+/// --- CreateSipCredential ---
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct CreateSipCredentialRequest {
+    #[prost(string, tag="1")]
+    pub user_id: ::prost::alloc::string::String,
+    #[prost(string, tag="2")]
+    pub sip_username: ::prost::alloc::string::String,
+    #[prost(string, tag="3")]
+    pub password: ::prost::alloc::string::String,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct CreateSipCredentialResponse {
+    #[prost(bool, tag="1")]
+    pub success: bool,
+}
+/// --- DeleteSipCredential ---
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct DeleteSipCredentialRequest {
+    #[prost(string, tag="1")]
+    pub sip_username: ::prost::alloc::string::String,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct DeleteSipCredentialResponse {
+    #[prost(bool, tag="1")]
+    pub success: bool,
+}
 include!("sentiric.user.v1.tonic.rs");
 // @@protoc_insertion_point(module)

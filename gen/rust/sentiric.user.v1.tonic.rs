@@ -317,6 +317,66 @@ pub mod user_service_client {
                 );
             self.inner.unary(req, path, codec).await
         }
+        pub async fn create_sip_credential(
+            &mut self,
+            request: impl tonic::IntoRequest<super::CreateSipCredentialRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::CreateSipCredentialResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/sentiric.user.v1.UserService/CreateSipCredential",
+            );
+            let mut req = request.into_request();
+            req.extensions_mut()
+                .insert(
+                    GrpcMethod::new(
+                        "sentiric.user.v1.UserService",
+                        "CreateSipCredential",
+                    ),
+                );
+            self.inner.unary(req, path, codec).await
+        }
+        pub async fn delete_sip_credential(
+            &mut self,
+            request: impl tonic::IntoRequest<super::DeleteSipCredentialRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::DeleteSipCredentialResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/sentiric.user.v1.UserService/DeleteSipCredential",
+            );
+            let mut req = request.into_request();
+            req.extensions_mut()
+                .insert(
+                    GrpcMethod::new(
+                        "sentiric.user.v1.UserService",
+                        "DeleteSipCredential",
+                    ),
+                );
+            self.inner.unary(req, path, codec).await
+        }
     }
 }
 /// Generated server implementations.
@@ -384,6 +444,20 @@ pub mod user_service_server {
             request: tonic::Request<super::GetSipCredentialsRequest>,
         ) -> std::result::Result<
             tonic::Response<super::GetSipCredentialsResponse>,
+            tonic::Status,
+        >;
+        async fn create_sip_credential(
+            &self,
+            request: tonic::Request<super::CreateSipCredentialRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::CreateSipCredentialResponse>,
+            tonic::Status,
+        >;
+        async fn delete_sip_credential(
+            &self,
+            request: tonic::Request<super::DeleteSipCredentialRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::DeleteSipCredentialResponse>,
             tonic::Status,
         >;
     }
@@ -855,6 +929,98 @@ pub mod user_service_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = GetSipCredentialsSvc(inner);
+                        let codec = tonic::codec::ProstCodec::default();
+                        let mut grpc = tonic::server::Grpc::new(codec)
+                            .apply_compression_config(
+                                accept_compression_encodings,
+                                send_compression_encodings,
+                            )
+                            .apply_max_message_size_config(
+                                max_decoding_message_size,
+                                max_encoding_message_size,
+                            );
+                        let res = grpc.unary(method, req).await;
+                        Ok(res)
+                    };
+                    Box::pin(fut)
+                }
+                "/sentiric.user.v1.UserService/CreateSipCredential" => {
+                    #[allow(non_camel_case_types)]
+                    struct CreateSipCredentialSvc<T: UserService>(pub Arc<T>);
+                    impl<
+                        T: UserService,
+                    > tonic::server::UnaryService<super::CreateSipCredentialRequest>
+                    for CreateSipCredentialSvc<T> {
+                        type Response = super::CreateSipCredentialResponse;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
+                        fn call(
+                            &mut self,
+                            request: tonic::Request<super::CreateSipCredentialRequest>,
+                        ) -> Self::Future {
+                            let inner = Arc::clone(&self.0);
+                            let fut = async move {
+                                <T as UserService>::create_sip_credential(&inner, request)
+                                    .await
+                            };
+                            Box::pin(fut)
+                        }
+                    }
+                    let accept_compression_encodings = self.accept_compression_encodings;
+                    let send_compression_encodings = self.send_compression_encodings;
+                    let max_decoding_message_size = self.max_decoding_message_size;
+                    let max_encoding_message_size = self.max_encoding_message_size;
+                    let inner = self.inner.clone();
+                    let fut = async move {
+                        let method = CreateSipCredentialSvc(inner);
+                        let codec = tonic::codec::ProstCodec::default();
+                        let mut grpc = tonic::server::Grpc::new(codec)
+                            .apply_compression_config(
+                                accept_compression_encodings,
+                                send_compression_encodings,
+                            )
+                            .apply_max_message_size_config(
+                                max_decoding_message_size,
+                                max_encoding_message_size,
+                            );
+                        let res = grpc.unary(method, req).await;
+                        Ok(res)
+                    };
+                    Box::pin(fut)
+                }
+                "/sentiric.user.v1.UserService/DeleteSipCredential" => {
+                    #[allow(non_camel_case_types)]
+                    struct DeleteSipCredentialSvc<T: UserService>(pub Arc<T>);
+                    impl<
+                        T: UserService,
+                    > tonic::server::UnaryService<super::DeleteSipCredentialRequest>
+                    for DeleteSipCredentialSvc<T> {
+                        type Response = super::DeleteSipCredentialResponse;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
+                        fn call(
+                            &mut self,
+                            request: tonic::Request<super::DeleteSipCredentialRequest>,
+                        ) -> Self::Future {
+                            let inner = Arc::clone(&self.0);
+                            let fut = async move {
+                                <T as UserService>::delete_sip_credential(&inner, request)
+                                    .await
+                            };
+                            Box::pin(fut)
+                        }
+                    }
+                    let accept_compression_encodings = self.accept_compression_encodings;
+                    let send_compression_encodings = self.send_compression_encodings;
+                    let max_decoding_message_size = self.max_decoding_message_size;
+                    let max_encoding_message_size = self.max_encoding_message_size;
+                    let inner = self.inner.clone();
+                    let fut = async move {
+                        let method = DeleteSipCredentialSvc(inner);
                         let codec = tonic::codec::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(

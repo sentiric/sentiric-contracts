@@ -63,6 +63,16 @@ class UserServiceStub(object):
                 request_serializer=sentiric_dot_user_dot_v1_dot_user__pb2.GetSipCredentialsRequest.SerializeToString,
                 response_deserializer=sentiric_dot_user_dot_v1_dot_user__pb2.GetSipCredentialsResponse.FromString,
                 _registered_method=True)
+        self.CreateSipCredential = channel.unary_unary(
+                '/sentiric.user.v1.UserService/CreateSipCredential',
+                request_serializer=sentiric_dot_user_dot_v1_dot_user__pb2.CreateSipCredentialRequest.SerializeToString,
+                response_deserializer=sentiric_dot_user_dot_v1_dot_user__pb2.CreateSipCredentialResponse.FromString,
+                _registered_method=True)
+        self.DeleteSipCredential = channel.unary_unary(
+                '/sentiric.user.v1.UserService/DeleteSipCredential',
+                request_serializer=sentiric_dot_user_dot_v1_dot_user__pb2.DeleteSipCredentialRequest.SerializeToString,
+                response_deserializer=sentiric_dot_user_dot_v1_dot_user__pb2.DeleteSipCredentialResponse.FromString,
+                _registered_method=True)
 
 
 class UserServiceServicer(object):
@@ -124,7 +134,22 @@ class UserServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def GetSipCredentials(self, request, context):
-        """Kimlik doğrulama için SIP bilgilerini getirir
+        """--- YENİ SIP YÖNETİM RPC'LERİ ---
+        Kimlik doğrulama için SIP bilgilerini getirir
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def CreateSipCredential(self, request, context):
+        """Bir kullanıcı için yeni bir SIP kimliği oluşturur
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def DeleteSipCredential(self, request, context):
+        """Bir SIP kimliğini siler
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -177,6 +202,16 @@ def add_UserServiceServicer_to_server(servicer, server):
                     servicer.GetSipCredentials,
                     request_deserializer=sentiric_dot_user_dot_v1_dot_user__pb2.GetSipCredentialsRequest.FromString,
                     response_serializer=sentiric_dot_user_dot_v1_dot_user__pb2.GetSipCredentialsResponse.SerializeToString,
+            ),
+            'CreateSipCredential': grpc.unary_unary_rpc_method_handler(
+                    servicer.CreateSipCredential,
+                    request_deserializer=sentiric_dot_user_dot_v1_dot_user__pb2.CreateSipCredentialRequest.FromString,
+                    response_serializer=sentiric_dot_user_dot_v1_dot_user__pb2.CreateSipCredentialResponse.SerializeToString,
+            ),
+            'DeleteSipCredential': grpc.unary_unary_rpc_method_handler(
+                    servicer.DeleteSipCredential,
+                    request_deserializer=sentiric_dot_user_dot_v1_dot_user__pb2.DeleteSipCredentialRequest.FromString,
+                    response_serializer=sentiric_dot_user_dot_v1_dot_user__pb2.DeleteSipCredentialResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -426,6 +461,60 @@ class UserService(object):
             '/sentiric.user.v1.UserService/GetSipCredentials',
             sentiric_dot_user_dot_v1_dot_user__pb2.GetSipCredentialsRequest.SerializeToString,
             sentiric_dot_user_dot_v1_dot_user__pb2.GetSipCredentialsResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def CreateSipCredential(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/sentiric.user.v1.UserService/CreateSipCredential',
+            sentiric_dot_user_dot_v1_dot_user__pb2.CreateSipCredentialRequest.SerializeToString,
+            sentiric_dot_user_dot_v1_dot_user__pb2.CreateSipCredentialResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def DeleteSipCredential(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/sentiric.user.v1.UserService/DeleteSipCredential',
+            sentiric_dot_user_dot_v1_dot_user__pb2.DeleteSipCredentialRequest.SerializeToString,
+            sentiric_dot_user_dot_v1_dot_user__pb2.DeleteSipCredentialResponse.FromString,
             options,
             channel_credentials,
             insecure,

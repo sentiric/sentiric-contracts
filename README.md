@@ -21,13 +21,13 @@ Bu repo, Sentiric mikroservis ekosistemindeki tüm API sözleşmelerinin ve **Pr
 
 ## 🚀 Kullanım
 
-Yeni bir sürüm etiketlendiğinde (örn: `v1.6.2`), release pipeline'ı paketleri otomatik olarak yayınlar. Diğer servisler bu paketleri bağımlılık olarak kullanmalıdır.
+Yeni bir sürüm etiketlendiğinde (örn: `v1.8.6`), release pipeline'ı paketleri otomatik olarak yayınlar. Diğer servisler bu paketleri bağımlılık olarak kullanmalıdır.
 
 ### Go
 `go.mod` dosyanıza ekleyin:
 ```go
 require (
-    github.com/sentiric/sentiric-contracts v1.6.2
+    github.com/sentiric/sentiric-contracts v1.8.6
 )
 ```
 
@@ -36,7 +36,7 @@ require (
 ```toml
 [dependencies.sentiric-contracts]
 git = "https://github.com/sentiric/sentiric-contracts.git"
-tag = "v1.6.2" 
+tag = "v1.8.6" 
 package = "sentiric-contracts"
 ```
 
@@ -55,17 +55,17 @@ cargo build --release
 
 1.  `/proto` altındaki bir `.proto` dosyasını değiştirin.
 2.  Değişikliklerinizi commit'leyip push'layın. CI, lint ve kırıcı değişiklik kontrolü yapacaktır.
-3.  Yeni paket versiyonları yayınlamak için yeni bir Git etiketi oluşturun (örn: `git tag v1.8.5` ve `git push origin v1.8.5`). Release pipeline'ı gerisini halleder.
+3.  Yeni paket versiyonları yayınlamak için yeni bir Git etiketi oluşturun (örn: `git tag v1.8.6` ve `git push origin v1.8.6`). Release pipeline'ı gerisini halleder.
 
 ---
 
 ---
 ```bash
 # 1. Yereldeki etiketi sil
-git tag -d v1.8.5
+git tag -d v1.8.6
 
 # 2. GitHub'daki etiketi sil
-git push --delete origin v1.8.5
+git push --delete origin v1.8.6
 ```
 
 ```bash
