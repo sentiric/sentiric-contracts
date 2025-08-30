@@ -140,6 +140,7 @@ message DeleteContactResponse {
 // --- GetSipCredentials ---
 message GetSipCredentialsRequest {
   string sip_username = 1;
+  string realm = 2; // <-- YENİ ALAN
 }
 message GetSipCredentialsResponse {
   string user_id = 1;

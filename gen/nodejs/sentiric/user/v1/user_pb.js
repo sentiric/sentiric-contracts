@@ -3984,7 +3984,8 @@ proto.sentiric.user.v1.GetSipCredentialsRequest.prototype.toObject = function(op
  */
 proto.sentiric.user.v1.GetSipCredentialsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-sipUsername: jspb.Message.getFieldWithDefault(msg, 1, "")
+sipUsername: jspb.Message.getFieldWithDefault(msg, 1, ""),
+realm: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -4025,6 +4026,10 @@ proto.sentiric.user.v1.GetSipCredentialsRequest.deserializeBinaryFromReader = fu
       var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setSipUsername(value);
       break;
+    case 2:
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
+      msg.setRealm(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -4061,6 +4066,13 @@ proto.sentiric.user.v1.GetSipCredentialsRequest.serializeBinaryToWriter = functi
       f
     );
   }
+  f = message.getRealm();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
 };
 
 
@@ -4079,6 +4091,24 @@ proto.sentiric.user.v1.GetSipCredentialsRequest.prototype.getSipUsername = funct
  */
 proto.sentiric.user.v1.GetSipCredentialsRequest.prototype.setSipUsername = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional string realm = 2;
+ * @return {string}
+ */
+proto.sentiric.user.v1.GetSipCredentialsRequest.prototype.getRealm = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sentiric.user.v1.GetSipCredentialsRequest} returns this
+ */
+proto.sentiric.user.v1.GetSipCredentialsRequest.prototype.setRealm = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 

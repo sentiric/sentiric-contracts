@@ -964,6 +964,7 @@ func (x *DeleteContactResponse) GetUser() *User {
 type GetSipCredentialsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	SipUsername   string                 `protobuf:"bytes,1,opt,name=sip_username,json=sipUsername,proto3" json:"sip_username,omitempty"`
+	Realm         string                 `protobuf:"bytes,2,opt,name=realm,proto3" json:"realm,omitempty"` // <-- YENİ ALAN
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1001,6 +1002,13 @@ func (*GetSipCredentialsRequest) Descriptor() ([]byte, []int) {
 func (x *GetSipCredentialsRequest) GetSipUsername() string {
 	if x != nil {
 		return x.SipUsername
+	}
+	return ""
+}
+
+func (x *GetSipCredentialsRequest) GetRealm() string {
+	if x != nil {
+		return x.Realm
 	}
 	return ""
 }
@@ -1380,9 +1388,10 @@ const file_sentiric_user_v1_user_proto_rawDesc = "" +
 	"\n" +
 	"contact_id\x18\x01 \x01(\x05R\tcontactId\"C\n" +
 	"\x15DeleteContactResponse\x12*\n" +
-	"\x04user\x18\x01 \x01(\v2\x16.sentiric.user.v1.UserR\x04user\"=\n" +
+	"\x04user\x18\x01 \x01(\v2\x16.sentiric.user.v1.UserR\x04user\"S\n" +
 	"\x18GetSipCredentialsRequest\x12!\n" +
-	"\fsip_username\x18\x01 \x01(\tR\vsipUsername\"l\n" +
+	"\fsip_username\x18\x01 \x01(\tR\vsipUsername\x12\x14\n" +
+	"\x05realm\x18\x02 \x01(\tR\x05realm\"l\n" +
 	"\x19GetSipCredentialsResponse\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x1b\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12\x19\n" +

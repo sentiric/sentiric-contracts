@@ -177,6 +177,9 @@ pub struct DeleteContactResponse {
 pub struct GetSipCredentialsRequest {
     #[prost(string, tag="1")]
     pub sip_username: ::prost::alloc::string::String,
+    /// <-- YENİ ALAN
+    #[prost(string, tag="2")]
+    pub realm: ::prost::alloc::string::String,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
