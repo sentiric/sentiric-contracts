@@ -23,7 +23,6 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// ... AllocatePort, ReleasePort, PlayAudio mesajları aynı kalır ...
 type AllocatePortRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	CallId        string                 `protobuf:"bytes,1,opt,name=call_id,json=callId,proto3" json:"call_id,omitempty"`
@@ -312,7 +311,6 @@ func (x *PlayAudioResponse) GetMessage() string {
 	return ""
 }
 
-// --- GÜNCELLENMİŞ MESAJLAR ---
 type RecordAudioRequest struct {
 	state            protoimpl.MessageState `protogen:"open.v1"`
 	ServerRtpPort    uint32                 `protobuf:"varint,1,opt,name=server_rtp_port,json=serverRtpPort,proto3" json:"server_rtp_port,omitempty"`
@@ -365,14 +363,10 @@ func (x *RecordAudioRequest) GetTargetSampleRate() uint32 {
 	return 0
 }
 
-// YENİ VE LINT KURALLARINA UYGUN YANIT MESAJI
 type RecordAudioResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// `target_sample_rate` istenirse WAV formatında, istenmezse ham PCMU
-	// formatında ses verisi.
-	AudioData []byte `protobuf:"bytes,1,opt,name=audio_data,json=audioData,proto3" json:"audio_data,omitempty"`
-	// Dönen verinin medya tipi (örn: "audio/pcmu", "audio/wav")
-	MediaType     string `protobuf:"bytes,2,opt,name=media_type,json=mediaType,proto3" json:"media_type,omitempty"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	AudioData     []byte                 `protobuf:"bytes,1,opt,name=audio_data,json=audioData,proto3" json:"audio_data,omitempty"`
+	MediaType     string                 `protobuf:"bytes,2,opt,name=media_type,json=mediaType,proto3" json:"media_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -424,9 +418,11 @@ func (x *RecordAudioResponse) GetMediaType() string {
 type StartRecordingRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ServerRtpPort uint32                 `protobuf:"varint,1,opt,name=server_rtp_port,json=serverRtpPort,proto3" json:"server_rtp_port,omitempty"`
-	OutputUri     string                 `protobuf:"bytes,2,opt,name=output_uri,json=outputUri,proto3" json:"output_uri,omitempty"`           // e.g., "file:///path/to/recording.wav" or "s3://bucket/key.mp3"
-	SampleRate    *uint32                `protobuf:"varint,3,opt,name=sample_rate,json=sampleRate,proto3,oneof" json:"sample_rate,omitempty"` // e.g., 8000, 16000. Defaults to 16000.
-	Format        *string                `protobuf:"bytes,4,opt,name=format,proto3,oneof" json:"format,omitempty"`                            // e.g., "wav", "mp3". Defaults to "wav".
+	OutputUri     string                 `protobuf:"bytes,2,opt,name=output_uri,json=outputUri,proto3" json:"output_uri,omitempty"`
+	SampleRate    *uint32                `protobuf:"varint,3,opt,name=sample_rate,json=sampleRate,proto3,oneof" json:"sample_rate,omitempty"`
+	Format        *string                `protobuf:"bytes,4,opt,name=format,proto3,oneof" json:"format,omitempty"`
+	CallId        string                 `protobuf:"bytes,5,opt,name=call_id,json=callId,proto3" json:"call_id,omitempty"`
+	TraceId       string                 `protobuf:"bytes,6,opt,name=trace_id,json=traceId,proto3" json:"trace_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -485,6 +481,20 @@ func (x *StartRecordingRequest) GetSampleRate() uint32 {
 func (x *StartRecordingRequest) GetFormat() string {
 	if x != nil && x.Format != nil {
 		return *x.Format
+	}
+	return ""
+}
+
+func (x *StartRecordingRequest) GetCallId() string {
+	if x != nil {
+		return x.CallId
+	}
+	return ""
+}
+
+func (x *StartRecordingRequest) GetTraceId() string {
+	if x != nil {
+		return x.TraceId
 	}
 	return ""
 }
@@ -649,14 +659,16 @@ const file_sentiric_media_v1_media_proto_rawDesc = "" +
 	"\n" +
 	"audio_data\x18\x01 \x01(\fR\taudioData\x12\x1d\n" +
 	"\n" +
-	"media_type\x18\x02 \x01(\tR\tmediaType\"\xbc\x01\n" +
+	"media_type\x18\x02 \x01(\tR\tmediaType\"\xf0\x01\n" +
 	"\x15StartRecordingRequest\x12&\n" +
 	"\x0fserver_rtp_port\x18\x01 \x01(\rR\rserverRtpPort\x12\x1d\n" +
 	"\n" +
 	"output_uri\x18\x02 \x01(\tR\toutputUri\x12$\n" +
 	"\vsample_rate\x18\x03 \x01(\rH\x00R\n" +
 	"sampleRate\x88\x01\x01\x12\x1b\n" +
-	"\x06format\x18\x04 \x01(\tH\x01R\x06format\x88\x01\x01B\x0e\n" +
+	"\x06format\x18\x04 \x01(\tH\x01R\x06format\x88\x01\x01\x12\x17\n" +
+	"\acall_id\x18\x05 \x01(\tR\x06callId\x12\x19\n" +
+	"\btrace_id\x18\x06 \x01(\tR\atraceIdB\x0e\n" +
 	"\f_sample_rateB\t\n" +
 	"\a_format\"2\n" +
 	"\x16StartRecordingResponse\x12\x18\n" +

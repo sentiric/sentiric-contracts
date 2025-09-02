@@ -37,7 +37,6 @@ type MediaServiceClient interface {
 	ReleasePort(ctx context.Context, in *ReleasePortRequest, opts ...grpc.CallOption) (*ReleasePortResponse, error)
 	PlayAudio(ctx context.Context, in *PlayAudioRequest, opts ...grpc.CallOption) (*PlayAudioResponse, error)
 	RecordAudio(ctx context.Context, in *RecordAudioRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[RecordAudioResponse], error)
-	// YENİ RPC'LER
 	StartRecording(ctx context.Context, in *StartRecordingRequest, opts ...grpc.CallOption) (*StartRecordingResponse, error)
 	StopRecording(ctx context.Context, in *StopRecordingRequest, opts ...grpc.CallOption) (*StopRecordingResponse, error)
 }
@@ -127,7 +126,6 @@ type MediaServiceServer interface {
 	ReleasePort(context.Context, *ReleasePortRequest) (*ReleasePortResponse, error)
 	PlayAudio(context.Context, *PlayAudioRequest) (*PlayAudioResponse, error)
 	RecordAudio(*RecordAudioRequest, grpc.ServerStreamingServer[RecordAudioResponse]) error
-	// YENİ RPC'LER
 	StartRecording(context.Context, *StartRecordingRequest) (*StartRecordingResponse, error)
 	StopRecording(context.Context, *StopRecordingRequest) (*StopRecordingResponse, error)
 }

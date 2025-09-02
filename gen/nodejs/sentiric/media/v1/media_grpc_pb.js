@@ -184,8 +184,7 @@ var MediaServiceService = exports.MediaServiceService = {
     responseSerialize: serialize_sentiric_media_v1_RecordAudioResponse,
     responseDeserialize: deserialize_sentiric_media_v1_RecordAudioResponse,
   },
-  // YENİ RPC'LER
-startRecording: {
+  startRecording: {
     path: '/sentiric.media.v1.MediaService/StartRecording',
     requestStream: false,
     responseStream: false,

@@ -10,13 +10,10 @@ service MediaService {
   rpc ReleasePort(ReleasePortRequest) returns (ReleasePortResponse);
   rpc PlayAudio(PlayAudioRequest) returns (PlayAudioResponse);
   rpc RecordAudio(RecordAudioRequest) returns (stream RecordAudioResponse);
-
-  // YENİ RPC'LER
   rpc StartRecording(StartRecordingRequest) returns (StartRecordingResponse);
   rpc StopRecording(StopRecordingRequest) returns (StopRecordingResponse);
 }
 
-// ... AllocatePort, ReleasePort, PlayAudio mesajları aynı kalır ...
 message AllocatePortRequest {
   string call_id = 1;
 }
@@ -38,29 +35,22 @@ message PlayAudioResponse {
   bool success = 1;
   string message = 2;
 }
-
-
-// --- GÜNCELLENMİŞ MESAJLAR ---
 message RecordAudioRequest {
   uint32 server_rtp_port = 1;
   optional uint32 target_sample_rate = 2;
 }
-
-// YENİ VE LINT KURALLARINA UYGUN YANIT MESAJI
 message RecordAudioResponse {
-  // `target_sample_rate` istenirse WAV formatında, istenmezse ham PCMU
-  // formatında ses verisi.
   bytes audio_data = 1;
-  
-  // Dönen verinin medya tipi (örn: "audio/pcmu", "audio/wav")
   string media_type = 2;
 }
 
 message StartRecordingRequest {
   uint32 server_rtp_port = 1;
-  string output_uri = 2; // e.g., "file:///path/to/recording.wav" or "s3://bucket/key.mp3"
-  optional uint32 sample_rate = 3; // e.g., 8000, 16000. Defaults to 16000.
-  optional string format = 4; // e.g., "wav", "mp3". Defaults to "wav".
+  string output_uri = 2;
+  optional uint32 sample_rate = 3;
+  optional string format = 4;
+  string call_id = 5;
+  string trace_id = 6;
 }
 
 message StartRecordingResponse {

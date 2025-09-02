@@ -1546,7 +1546,9 @@ proto.sentiric.media.v1.StartRecordingRequest.toObject = function(includeInstanc
 serverRtpPort: jspb.Message.getFieldWithDefault(msg, 1, 0),
 outputUri: jspb.Message.getFieldWithDefault(msg, 2, ""),
 sampleRate: (f = jspb.Message.getField(msg, 3)) == null ? undefined : f,
-format: (f = jspb.Message.getField(msg, 4)) == null ? undefined : f
+format: (f = jspb.Message.getField(msg, 4)) == null ? undefined : f,
+callId: jspb.Message.getFieldWithDefault(msg, 5, ""),
+traceId: jspb.Message.getFieldWithDefault(msg, 6, "")
   };
 
   if (includeInstance) {
@@ -1598,6 +1600,14 @@ proto.sentiric.media.v1.StartRecordingRequest.deserializeBinaryFromReader = func
     case 4:
       var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setFormat(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
+      msg.setCallId(value);
+      break;
+    case 6:
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
+      msg.setTraceId(value);
       break;
     default:
       reader.skipField();
@@ -1653,6 +1663,20 @@ proto.sentiric.media.v1.StartRecordingRequest.serializeBinaryToWriter = function
   if (f != null) {
     writer.writeString(
       4,
+      f
+    );
+  }
+  f = message.getCallId();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
+      f
+    );
+  }
+  f = message.getTraceId();
+  if (f.length > 0) {
+    writer.writeString(
+      6,
       f
     );
   }
@@ -1764,6 +1788,42 @@ proto.sentiric.media.v1.StartRecordingRequest.prototype.clearFormat = function()
  */
 proto.sentiric.media.v1.StartRecordingRequest.prototype.hasFormat = function() {
   return jspb.Message.getField(this, 4) != null;
+};
+
+
+/**
+ * optional string call_id = 5;
+ * @return {string}
+ */
+proto.sentiric.media.v1.StartRecordingRequest.prototype.getCallId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sentiric.media.v1.StartRecordingRequest} returns this
+ */
+proto.sentiric.media.v1.StartRecordingRequest.prototype.setCallId = function(value) {
+  return jspb.Message.setProto3StringField(this, 5, value);
+};
+
+
+/**
+ * optional string trace_id = 6;
+ * @return {string}
+ */
+proto.sentiric.media.v1.StartRecordingRequest.prototype.getTraceId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sentiric.media.v1.StartRecordingRequest} returns this
+ */
+proto.sentiric.media.v1.StartRecordingRequest.prototype.setTraceId = function(value) {
+  return jspb.Message.setProto3StringField(this, 6, value);
 };
 
 
