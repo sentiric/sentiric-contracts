@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package sentiric.knowledge.v1;
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/knowledge/v1;knowledgev1";
+
+// KnowledgeService, kurumsal bilgi tabanını sorgulamak için metotlar sunar.
+service KnowledgeService {
+  // Verilen bir metin sorgusuna göre bilgi tabanında arama yapar.
+  rpc Query(QueryRequest) returns (QueryResponse);
+}
+
+// QueryRequest, bir bilgi tabanı sorgusunun parametrelerini içerir.
+message QueryRequest {
+  // Sorgunun ait olduğu tenant'ın kimliği.
+  string tenant_id = 1;
+
+  // Kullanıcının veya sistemin aradığı metin sorgusu.
+  string query = 2;
+
+  // Döndürülecek en iyi sonuçların sayısı.
+  int32 top_k = 3;
+}
+
+// QueryResponse, bir sorgunun sonuçlarını içerir.
+message QueryResponse {
+  // Sorguyla en alakalı bulunan sonuçların listesi.
+  repeated QueryResult results = 1;
+}
+
+// QueryResult, bilgi tabanından dönen tek bir sonucu temsil eder.
+message QueryResult {
+  // Bulunan metin parçasının içeriği.
+  string content = 1;
+
+  // Sonucun sorguyla olan alaka düzeyi skoru (örn: 0.0 ile 1.0 arası).
+  float score = 2;
+
+  // Bilginin kaynağını belirten bir tanımlayıcı (örn: "FAQ.pdf", "product_docs/page-15").
+  string source = 3;
+
+  // Kaynakla ilgili ek meta veriler (örn: "category": "billing").
+  map<string, string> metadata = 4;
+}
