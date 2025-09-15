@@ -1,24 +1,22 @@
-# 🏷️ Sentiric Contracts - Görev Listesi (v1.8.4)
+# 🏷️ Sentiric Contracts - Görev Listesi (v1.8.10)
 
 Bu belge, `sentiric-contracts` deposuna yapılan ve planlanan değişiklikleri listeler.
 
 ---
 
-### **FAZ 2: Asenkron İletişim Standardizasyonu ve Tam CRUD Yetenekleri**
+### **FAZ 2: Asenkron İletişim Standardizasyonu ve Tam CRUD Yetenekleri (Tamamlandı)**
 
 -   [x] **Görev ID: CT-001 - Standart Olay (Event) Mesajları Tanımlama**
-    -   **Açıklama:** RabbitMQ üzerinden taşınacak olaylar için `proto/sentiric/event/v1/event.proto` altında standart Protobuf mesajları oluşturuldu.
-    -   **Durum:** ✅ **Tamamlandı (v1.8.4)**
-    -   **Kabul Kriterleri:**
-        -   [x] `event.proto` dosyası oluşturuldu.
-        -   [x] `CallStartedEvent`, `CallEndedEvent`, `UserIdentifiedForCallEvent`, `CallRecordingAvailableEvent` mesajları tanımlandı.
-        -   [x] `build.rs` ve `src/lib.rs` yeni dosyayı içerecek şekilde güncellendi.
-        -   [x] Değişiklikler v1.8.4 sürümüyle yayınlandı.
-
 -   [x] **Görev ID: CT-002 - User Service İçin Tam CRUD Operasyonları Ekleme**
-    -   **Açıklama:** `user-service`'in tam yönetimsel yeteneklere kavuşması için gereken tüm RPC ve mesaj tanımları `user.proto`'ya eklendi.
-    -   **Durum:** ✅ **Tamamlandı (v1.8.4)**
+
+---
+
+### **FAZ 3: Veri Bütünlüğü ve Zenginleştirilmiş Bağlam (Sıradaki Öncelik)**
+
+-   **Görev ID: CT-FEAT-01 - `CallStartedEvent` Mesajını Kullanıcı Bilgileriyle Zenginleştirme**
+    -   **Durum:** ⬜ **Yapılacak (Öncelik 1 - KRİTİK)**
+    -   **Açıklama:** Canlı testler, `sip-signaling`'in `dialplan`'dan aldığı kullanıcı bilgilerini `call.started` olayına eklememesi nedeniyle `agent-service`'in kullanıcıyı tanıyamadığını ve `cdr-service`'in çağrıları kullanıcılarla eşleştiremediğini kesin olarak kanıtlamıştır. Bu, platformdaki en büyük veri bütünlüğü sorunudur.
     -   **Kabul Kriterleri:**
-        -   [x] `UserService` servisine `UpdateUser`, `DeleteUser`, `AddContact`, `UpdateContact`, `DeleteContact` RPC'leri eklendi.
-        -   [x] Gerekli tüm `Request` ve `Response` mesajları (`FieldMask` dahil) eklendi.
-        -   [x] Değişiklikler v1.8.4 sürümüyle yayınlandı.
+        -   [ ] `proto/sentiric/event/v1/event.proto` dosyasındaki `CallStartedEvent` mesajına, `sentiric.dialplan.v1.ResolveDialplanResponse` tipinde `dialplan_resolution` adında yeni bir alan eklenmelidir.
+        -   [ ] Kod üretimi (`buf generate`) başarıyla tamamlanmalı ve tüm diller için yeni kodlar oluşturulmalıdır.
+        -   [ ] Yeni bir sürüm (`v1.8.10`) yayınlanmalıdır.
