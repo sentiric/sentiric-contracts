@@ -4,19 +4,12 @@ Bu belge, `sentiric-contracts` deposuna yapılan ve planlanan değişiklikleri l
 
 ---
 
-### **FAZ 2: Asenkron İletişim Standardizasyonu ve Tam CRUD Yetenekleri (Tamamlandı)**
+### **FAZ 3: Veri Bütünlüğü ve Zenginleştirilmiş Bağlam (Mevcut Odak)**
 
--   [x] **Görev ID: CT-001 - Standart Olay (Event) Mesajları Tanımlama**
--   [x] **Görev ID: CT-002 - User Service İçin Tam CRUD Operasyonları Ekleme**
-
----
-
-### **FAZ 3: Veri Bütünlüğü ve Zenginleştirilmiş Bağlam (Sıradaki Öncelik)**
-
--   **Görev ID: CT-FEAT-01 - `CallStartedEvent` Mesajını Kullanıcı Bilgileriyle Zenginleştirme**
+-   **Görev ID: CT-FEAT-01 - `CallStartedEvent` Mesajını `dialplan` ile Zenginleştirme**
     -   **Durum:** ⬜ **Yapılacak (Öncelik 1 - KRİTİK)**
-    -   **Açıklama:** Canlı testler, `sip-signaling`'in `dialplan`'dan aldığı kullanıcı bilgilerini `call.started` olayına eklememesi nedeniyle `agent-service`'in kullanıcıyı tanıyamadığını ve `cdr-service`'in çağrıları kullanıcılarla eşleştiremediğini kesin olarak kanıtlamıştır. Bu, platformdaki en büyük veri bütünlüğü sorunudur.
+    -   **Açıklama:** Uçtan uca test logları, `sip-signaling`'in `dialplan`'dan aldığı kullanıcı bilgilerini `call.started` olayına ekleyemediğini kesin olarak kanıtlamıştır. Bu, platformdaki en büyük veri bütünlüğü sorunudur ve `agent-service`'in kullanıcıyı tanıyamamasına, dolayısıyla `cdr-service`'in de çağrıları doğru eşleştirememesine yol açmaktadır.
     -   **Kabul Kriterleri:**
         -   [ ] `proto/sentiric/event/v1/event.proto` dosyasındaki `CallStartedEvent` mesajına, `sentiric.dialplan.v1.ResolveDialplanResponse` tipinde `dialplan_resolution` adında yeni bir alan eklenmelidir.
         -   [ ] Kod üretimi (`buf generate`) başarıyla tamamlanmalı ve tüm diller için yeni kodlar oluşturulmalıdır.
-        -   [ ] Yeni bir sürüm (`v1.8.10`) yayınlanmalıdır.
+        -   [ ] Yeni bir sürüm (örn: `v1.8.10`) yayınlanmalıdır.
