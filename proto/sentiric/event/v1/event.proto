@@ -20,6 +20,7 @@ message CallStartedEvent {
   string from_uri = 4;
   string to_uri = 5;
   google.protobuf.Timestamp timestamp = 6;
+  // YENİ ALAN: Dialplan'dan gelen tüm zenginleştirilmiş bilgiyi taşır.
   sentiric.dialplan.v1.ResolveDialplanResponse dialplan_resolution = 7;
   map<string, string> media_info = 8;
 }

@@ -1,15 +1,18 @@
-# 🏷️ Sentiric Contracts - Görev Listesi (v1.8.10)
+# 🏷️ Sentiric Contracts - Görev Listesi (v1.8.9) Bundan sonraki versiyonlar 1.8.xx olarak devam edecek
 
 Bu belge, `sentiric-contracts` deposuna yapılan ve planlanan değişiklikleri listeler.
 
 ---
 
-### **FAZ 3: Veri Bütünlüğü ve Zenginleştirilmiş Bağlam (Mevcut Odak)**
+### **FAZ 1: Uçtan Uca Veri Bütünlüğü (Mevcut Odak)**
 
--   **Görev ID: CT-FEAT-01 - `CallStartedEvent` Mesajını `dialplan` ile Zenginleştirme**
-    -   **Durum:** ⬜ **Yapılacak (Öncelik 1 - KRİTİK)**
-    -   **Açıklama:** Uçtan uca test logları, `sip-signaling`'in `dialplan`'dan aldığı kullanıcı bilgilerini `call.started` olayına ekleyemediğini kesin olarak kanıtlamıştır. Bu, platformdaki en büyük veri bütünlüğü sorunudur ve `agent-service`'in kullanıcıyı tanıyamamasına, dolayısıyla `cdr-service`'in de çağrıları doğru eşleştirememesine yol açmaktadır.
-    -   **Kabul Kriterleri:**
-        -   [ ] `proto/sentiric/event/v1/event.proto` dosyasındaki `CallStartedEvent` mesajına, `sentiric.dialplan.v1.ResolveDialplanResponse` tipinde `dialplan_resolution` adında yeni bir alan eklenmelidir.
-        -   [ ] Kod üretimi (`buf generate`) başarıyla tamamlanmalı ve tüm diller için yeni kodlar oluşturulmalıdır.
-        -   [ ] Yeni bir sürüm (örn: `v1.8.10`) yayınlanmalıdır.
+**Amaç:** Platformdaki en kritik veri akışı kopukluğunu gidermek ve `agent-service`'in çağrıyı yapan kullanıcıyı tanımasını sağlamak.
+
+-   **Görev ID: CT-FIX-01 - `CallStartedEvent` Mesajını `dialplan` ile Zenginleştirme**
+    -   **Durum:** x **Yapılacak (Öncelik 1 - KRİTİK)**
+    -   **Problem:** `sip-signaling` servisi, `dialplan`'dan aldığı kullanıcı bilgilerini `agent-service`'e aktaramamaktadır çünkü `CallStartedEvent` mesajında bu veriyi taşıyacak bir alan yoktur. Bu, platformun temel diyalog ve kayıt mantığını kırmaktadır.
+    -   **Çözüm:**
+        -   [x] `proto/sentiric/event/v1/event.proto` dosyasındaki `CallStartedEvent` mesajına, `sentiric.dialplan.v1.ResolveDialplanResponse` tipinde `dialplan_resolution` adında yeni bir alan eklenmelidir.
+        -   [x] Değişiklik sonrası `buf generate` komutu çalıştırılarak tüm diller için kodlar yeniden üretilmelidir.
+        -   [x] `go mod tidy` ve `cargo build` gibi dile özgü komutlar çalıştırılarak her şeyin yolunda olduğu doğrulanmalıdır.
+        -   [x] Yeni bir MINOR sürüm (örn: `v1.8.9`) yayınlanmalıdır.
