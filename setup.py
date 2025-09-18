@@ -1,4 +1,4 @@
-# setup.py
+# sentiric-contracts/setup.py
 from setuptools import setup, find_namespace_packages
 
 with open("README.md", "r", encoding="utf-8") as fh:
@@ -6,7 +6,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="sentiric-contracts-py",
-    version="1.8.9",
+    version="1.8.10",
     author="Sentiric Team",
     author_email="dev@sentiric.ai",
     description="Auto-generated Python gRPC stubs for the Sentiric platform.",
@@ -20,7 +20,7 @@ setup(
     package_dir={"": "gen/python"},
     install_requires=[
         "grpcio>=1.64.1",
-        "protobuf>=4.21.0,<6.0.0",
+        "protobuf>=6.32.0,<7.0.0",
         "google-api-python-client",
     ],
     python_requires=">=3.8",

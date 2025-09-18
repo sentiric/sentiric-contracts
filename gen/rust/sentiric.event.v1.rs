@@ -20,6 +20,7 @@ pub struct CallStartedEvent {
     pub to_uri: ::prost::alloc::string::String,
     #[prost(message, optional, tag="6")]
     pub timestamp: ::core::option::Option<::prost_types::Timestamp>,
+    /// YENİ ALAN: Dialplan'dan gelen tüm zenginleştirilmiş bilgiyi taşır.
     #[prost(message, optional, tag="7")]
     pub dialplan_resolution: ::core::option::Option<super::super::dialplan::v1::ResolveDialplanResponse>,
     #[prost(map="string, string", tag="8")]
