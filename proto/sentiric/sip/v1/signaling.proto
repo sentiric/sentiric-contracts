@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package sentiric.sip.v1;
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/sip/v1;sipv1";
+
+// SipSignalingService, iç servislerin SIP sinyalleşme mantığını
+// kontrol etmesi için gRPC metotları sunar.
+service SipSignalingService {
+  // Belirtilen Call-ID'ye sahip aktif bir çağrıyı kontrollü bir şekilde sonlandırır.
+  // Bu RPC, genellikle agent-service tarafından, diyalog akışı
+  // tamamlandığında çağrılır.
+  rpc TerminateCall(TerminateCallRequest) returns (TerminateCallResponse);
+}
+
+message TerminateCallRequest {
+  // Sonlandırılacak çağrının benzersiz SIP Call-ID'si.
+  string call_id = 1;
+  // Sonlandırma nedenini belirten kısa bir dize (örn: "completed_by_agent").
+  string reason = 2;
+}
+
+message TerminateCallResponse {
+  // İşlemin başarıyla tetiklenip tetiklenmediğini belirtir.
+  bool success = 1;
+  // İşlemle ilgili ek bilgi içeren bir mesaj.
+  string message = 2;
+}

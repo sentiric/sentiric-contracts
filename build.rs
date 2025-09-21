@@ -27,6 +27,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 "sentiric/media/v1/media.proto",
                 "sentiric/tts/v1/tts.proto",
                 "sentiric/event/v1/event.proto",
+                "sentiric/knowledge/v1/knowledge.proto",
+                "sentiric/sip/v1/signaling.proto", // YENİ SATIR
             ],
             &["proto"],
         )?;
