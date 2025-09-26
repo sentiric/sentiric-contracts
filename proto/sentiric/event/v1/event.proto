@@ -8,26 +8,52 @@ import "sentiric/user/v1/user.proto";
 
 option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/event/v1;eventv1";
 
-// Not: Bu dosyada tanımlanan mesajlar gRPC için değil,
-// RabbitMQ gibi mesajlaşma kuyruklarında kullanılacak olayların
-// standart yapısını belirlemek içindir.
+// =================================================================
+//                            OLAY MESAJLARI (EVENT MESSAGES)
+// =================================================================
+// Not: Bu dosyada tanımlanan mesajlar, servisler arası asenkron iletişimde
+// (örn: RabbitMQ) kullanılacak olayların standart ve tip-güvenli
+// yapısını belirlemek içindir. Bu, platform genelinde veri tutarlılığını garanti eder.
 
-// call.started olayının standart yapısı.
-message CallStartedEvent {
-  string event_type = 1;
-  string trace_id = 2;
-  string call_id = 3;
-  string from_uri = 4;
-  string to_uri = 5;
-  google.protobuf.Timestamp timestamp = 6;
-  // YENİ ALAN: Dialplan'dan gelen tüm zenginleştirilmiş bilgiyi taşır.
-  sentiric.dialplan.v1.ResolveDialplanResponse dialplan_resolution = 7;
-  map<string, string> media_info = 8;
+// MediaInfo, bir çağrının medya (RTP) oturumuyla ilgili temel bilgileri içerir.
+// Bu yapı, `map<string, string>` gibi belirsiz ve hataya açık yapıların
+// yerine geçerek tip güvenliği sağlar.
+message MediaInfo {
+  // Arayan tarafın RTP paketlerini gönderdiği IP adresi ve portu (örn: "1.2.3.4:12345").
+  string caller_rtp_addr = 1;
+  // `media-service` tarafından bu çağrı için tahsis edilen sunucu tarafı RTP portu.
+  uint32 server_rtp_port = 2;
 }
 
-// user.created.for_call veya user.identified.for_call olayının standart yapısı.
-message UserIdentifiedForCallEvent {
+// CallStartedEvent, bir SIP çağrısının `sip-signaling` tarafından başarıyla
+// kurulduğunu ve platformun iç mantığı tarafından işlenmeye hazır olduğunu bildirir.
+// Bu olay, genellikle `agent-service` tarafından tüketilir.
+message CallStartedEvent {
+  // Olayın türü, standart olarak "call.started".
   string event_type = 1;
+  // Tüm çağrı yaşam döngüsü boyunca işlemleri takip etmek için kullanılan benzersiz kimlik.
+  string trace_id = 2;
+  // Çağrının SIP Call-ID'si.
+  string call_id = 3;
+  // Arayanın SIP URI'si.
+  string from_uri = 4;
+  // Arananın SIP URI'si.
+  string to_uri = 5;
+  // Olayın UTC olarak oluşturulma zamanı.
+  google.protobuf.Timestamp timestamp = 6;
+  // `dialplan-service`'ten dönen, çağrının nasıl işleneceğine dair tüm zenginleştirilmiş bilgi.
+  sentiric.dialplan.v1.ResolveDialplanResponse dialplan_resolution = 7;
+  // DEĞİŞİKLİK: `map<string, string>` yerine tip-güvenli `MediaInfo` mesajı kullanılıyor.
+  // Bu, tüketen servislerde (örn: agent-service) anahtar adı hatalarını ve tip dönüşüm
+  // problemlerini ortadan kaldırır.
+  MediaInfo media_info = 8;
+}
+
+// UserIdentifiedForCallEvent, bir çağrı sırasında arayanın kimliğinin
+// `user-service` tarafından belirlendiğini veya yeni bir kullanıcı olarak
+// oluşturulduğunu bildirir.
+message UserIdentifiedForCallEvent {
+  string event_type = 1; // "user.identified.for_call" veya "user.created.for_call"
   string trace_id = 2;
   string call_id = 3;
   google.protobuf.Timestamp timestamp = 4;
@@ -35,21 +61,25 @@ message UserIdentifiedForCallEvent {
   sentiric.user.v1.Contact contact = 6;
 }
 
-// call.recording.available olayının standart yapısı.
+// CallRecordingAvailableEvent, bir çağrının ses kaydının işlenip
+// depolama alanına (örn: S3) yüklendiğini bildirir.
 message CallRecordingAvailableEvent {
-  string event_type = 1;
+  string event_type = 1; // "call.recording.available"
   string trace_id = 2;
   string call_id = 3;
   google.protobuf.Timestamp timestamp = 4;
-  string recording_uri = 5; // s3://...
-  string public_url = 6; // https://...
+  // Kaydın depolama alanındaki URI'si (örn: "s3://sentiric/recordings/call123.wav").
+  string recording_uri = 5;
+  // Kayda erişilebilecek genel URL (eğer varsa).
+  string public_url = 6;
 }
 
-// call.ended olayının standart yapısı.
+// CallEndedEvent, bir çağrının sonlandığını bildirir.
 message CallEndedEvent {
-  string event_type = 1;
+  string event_type = 1; // "call.ended"
   string trace_id = 2;
   string call_id = 3;
   google.protobuf.Timestamp timestamp = 4;
-  string reason = 5; // Örn: "normal_clearing", "terminated_by_request"
+  // Çağrının sonlanma nedeni (örn: "normal_clearing", "terminated_by_request").
+  string reason = 5;
 }

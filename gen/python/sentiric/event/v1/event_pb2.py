@@ -27,7 +27,7 @@ from sentiric.dialplan.v1 import dialplan_pb2 as sentiric_dot_dialplan_dot_v1_do
 from sentiric.user.v1 import user_pb2 as sentiric_dot_user_dot_v1_dot_user__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1dsentiric/event/v1/event.proto\x12\x11sentiric.event.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a#sentiric/dialplan/v1/dialplan.proto\x1a\x1bsentiric/user/v1/user.proto\"\xc2\x03\n\x10\x43\x61llStartedEvent\x12\x1d\n\nevent_type\x18\x01 \x01(\tR\teventType\x12\x19\n\x08trace_id\x18\x02 \x01(\tR\x07traceId\x12\x17\n\x07\x63\x61ll_id\x18\x03 \x01(\tR\x06\x63\x61llId\x12\x19\n\x08\x66rom_uri\x18\x04 \x01(\tR\x07\x66romUri\x12\x15\n\x06to_uri\x18\x05 \x01(\tR\x05toUri\x12\x38\n\ttimestamp\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\ttimestamp\x12^\n\x13\x64ialplan_resolution\x18\x07 \x01(\x0b\x32-.sentiric.dialplan.v1.ResolveDialplanResponseR\x12\x64ialplanResolution\x12Q\n\nmedia_info\x18\x08 \x03(\x0b\x32\x32.sentiric.event.v1.CallStartedEvent.MediaInfoEntryR\tmediaInfo\x1a<\n\x0eMediaInfoEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n\x05value\x18\x02 \x01(\tR\x05value:\x02\x38\x01\"\x8a\x02\n\x1aUserIdentifiedForCallEvent\x12\x1d\n\nevent_type\x18\x01 \x01(\tR\teventType\x12\x19\n\x08trace_id\x18\x02 \x01(\tR\x07traceId\x12\x17\n\x07\x63\x61ll_id\x18\x03 \x01(\tR\x06\x63\x61llId\x12\x38\n\ttimestamp\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\ttimestamp\x12*\n\x04user\x18\x05 \x01(\x0b\x32\x16.sentiric.user.v1.UserR\x04user\x12\x33\n\x07\x63ontact\x18\x06 \x01(\x0b\x32\x19.sentiric.user.v1.ContactR\x07\x63ontact\"\xee\x01\n\x1b\x43\x61llRecordingAvailableEvent\x12\x1d\n\nevent_type\x18\x01 \x01(\tR\teventType\x12\x19\n\x08trace_id\x18\x02 \x01(\tR\x07traceId\x12\x17\n\x07\x63\x61ll_id\x18\x03 \x01(\tR\x06\x63\x61llId\x12\x38\n\ttimestamp\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\ttimestamp\x12#\n\rrecording_uri\x18\x05 \x01(\tR\x0crecordingUri\x12\x1d\n\npublic_url\x18\x06 \x01(\tR\tpublicUrl\"\xb5\x01\n\x0e\x43\x61llEndedEvent\x12\x1d\n\nevent_type\x18\x01 \x01(\tR\teventType\x12\x19\n\x08trace_id\x18\x02 \x01(\tR\x07traceId\x12\x17\n\x07\x63\x61ll_id\x18\x03 \x01(\tR\x06\x63\x61llId\x12\x38\n\ttimestamp\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\ttimestamp\x12\x16\n\x06reason\x18\x05 \x01(\tR\x06reasonBIZGgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/event/v1;eventv1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1dsentiric/event/v1/event.proto\x12\x11sentiric.event.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a#sentiric/dialplan/v1/dialplan.proto\x1a\x1bsentiric/user/v1/user.proto\"[\n\tMediaInfo\x12&\n\x0f\x63\x61ller_rtp_addr\x18\x01 \x01(\tR\rcallerRtpAddr\x12&\n\x0fserver_rtp_port\x18\x02 \x01(\rR\rserverRtpPort\"\xee\x02\n\x10\x43\x61llStartedEvent\x12\x1d\n\nevent_type\x18\x01 \x01(\tR\teventType\x12\x19\n\x08trace_id\x18\x02 \x01(\tR\x07traceId\x12\x17\n\x07\x63\x61ll_id\x18\x03 \x01(\tR\x06\x63\x61llId\x12\x19\n\x08\x66rom_uri\x18\x04 \x01(\tR\x07\x66romUri\x12\x15\n\x06to_uri\x18\x05 \x01(\tR\x05toUri\x12\x38\n\ttimestamp\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\ttimestamp\x12^\n\x13\x64ialplan_resolution\x18\x07 \x01(\x0b\x32-.sentiric.dialplan.v1.ResolveDialplanResponseR\x12\x64ialplanResolution\x12;\n\nmedia_info\x18\x08 \x01(\x0b\x32\x1c.sentiric.event.v1.MediaInfoR\tmediaInfo\"\x8a\x02\n\x1aUserIdentifiedForCallEvent\x12\x1d\n\nevent_type\x18\x01 \x01(\tR\teventType\x12\x19\n\x08trace_id\x18\x02 \x01(\tR\x07traceId\x12\x17\n\x07\x63\x61ll_id\x18\x03 \x01(\tR\x06\x63\x61llId\x12\x38\n\ttimestamp\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\ttimestamp\x12*\n\x04user\x18\x05 \x01(\x0b\x32\x16.sentiric.user.v1.UserR\x04user\x12\x33\n\x07\x63ontact\x18\x06 \x01(\x0b\x32\x19.sentiric.user.v1.ContactR\x07\x63ontact\"\xee\x01\n\x1b\x43\x61llRecordingAvailableEvent\x12\x1d\n\nevent_type\x18\x01 \x01(\tR\teventType\x12\x19\n\x08trace_id\x18\x02 \x01(\tR\x07traceId\x12\x17\n\x07\x63\x61ll_id\x18\x03 \x01(\tR\x06\x63\x61llId\x12\x38\n\ttimestamp\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\ttimestamp\x12#\n\rrecording_uri\x18\x05 \x01(\tR\x0crecordingUri\x12\x1d\n\npublic_url\x18\x06 \x01(\tR\tpublicUrl\"\xb5\x01\n\x0e\x43\x61llEndedEvent\x12\x1d\n\nevent_type\x18\x01 \x01(\tR\teventType\x12\x19\n\x08trace_id\x18\x02 \x01(\tR\x07traceId\x12\x17\n\x07\x63\x61ll_id\x18\x03 \x01(\tR\x06\x63\x61llId\x12\x38\n\ttimestamp\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\ttimestamp\x12\x16\n\x06reason\x18\x05 \x01(\tR\x06reasonBIZGgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/event/v1;eventv1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -35,16 +35,14 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'sentiric.event.v1.event_pb2
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
   _globals['DESCRIPTOR']._serialized_options = b'ZGgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/event/v1;eventv1'
-  _globals['_CALLSTARTEDEVENT_MEDIAINFOENTRY']._loaded_options = None
-  _globals['_CALLSTARTEDEVENT_MEDIAINFOENTRY']._serialized_options = b'8\001'
-  _globals['_CALLSTARTEDEVENT']._serialized_start=152
-  _globals['_CALLSTARTEDEVENT']._serialized_end=602
-  _globals['_CALLSTARTEDEVENT_MEDIAINFOENTRY']._serialized_start=542
-  _globals['_CALLSTARTEDEVENT_MEDIAINFOENTRY']._serialized_end=602
-  _globals['_USERIDENTIFIEDFORCALLEVENT']._serialized_start=605
-  _globals['_USERIDENTIFIEDFORCALLEVENT']._serialized_end=871
-  _globals['_CALLRECORDINGAVAILABLEEVENT']._serialized_start=874
-  _globals['_CALLRECORDINGAVAILABLEEVENT']._serialized_end=1112
-  _globals['_CALLENDEDEVENT']._serialized_start=1115
-  _globals['_CALLENDEDEVENT']._serialized_end=1296
+  _globals['_MEDIAINFO']._serialized_start=151
+  _globals['_MEDIAINFO']._serialized_end=242
+  _globals['_CALLSTARTEDEVENT']._serialized_start=245
+  _globals['_CALLSTARTEDEVENT']._serialized_end=611
+  _globals['_USERIDENTIFIEDFORCALLEVENT']._serialized_start=614
+  _globals['_USERIDENTIFIEDFORCALLEVENT']._serialized_end=880
+  _globals['_CALLRECORDINGAVAILABLEEVENT']._serialized_start=883
+  _globals['_CALLRECORDINGAVAILABLEEVENT']._serialized_end=1121
+  _globals['_CALLENDEDEVENT']._serialized_start=1124
+  _globals['_CALLENDEDEVENT']._serialized_end=1305
 # @@protoc_insertion_point(module_scope)

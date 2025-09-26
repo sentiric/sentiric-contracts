@@ -24,25 +24,93 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// call.started olayının standart yapısı.
+// MediaInfo, bir çağrının medya (RTP) oturumuyla ilgili temel bilgileri içerir.
+// Bu yapı, `map<string, string>` gibi belirsiz ve hataya açık yapıların
+// yerine geçerek tip güvenliği sağlar.
+type MediaInfo struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Arayan tarafın RTP paketlerini gönderdiği IP adresi ve portu (örn: "1.2.3.4:12345").
+	CallerRtpAddr string `protobuf:"bytes,1,opt,name=caller_rtp_addr,json=callerRtpAddr,proto3" json:"caller_rtp_addr,omitempty"`
+	// `media-service` tarafından bu çağrı için tahsis edilen sunucu tarafı RTP portu.
+	ServerRtpPort uint32 `protobuf:"varint,2,opt,name=server_rtp_port,json=serverRtpPort,proto3" json:"server_rtp_port,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MediaInfo) Reset() {
+	*x = MediaInfo{}
+	mi := &file_sentiric_event_v1_event_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MediaInfo) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MediaInfo) ProtoMessage() {}
+
+func (x *MediaInfo) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_event_v1_event_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MediaInfo.ProtoReflect.Descriptor instead.
+func (*MediaInfo) Descriptor() ([]byte, []int) {
+	return file_sentiric_event_v1_event_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *MediaInfo) GetCallerRtpAddr() string {
+	if x != nil {
+		return x.CallerRtpAddr
+	}
+	return ""
+}
+
+func (x *MediaInfo) GetServerRtpPort() uint32 {
+	if x != nil {
+		return x.ServerRtpPort
+	}
+	return 0
+}
+
+// CallStartedEvent, bir SIP çağrısının `sip-signaling` tarafından başarıyla
+// kurulduğunu ve platformun iç mantığı tarafından işlenmeye hazır olduğunu bildirir.
+// Bu olay, genellikle `agent-service` tarafından tüketilir.
 type CallStartedEvent struct {
-	state     protoimpl.MessageState `protogen:"open.v1"`
-	EventType string                 `protobuf:"bytes,1,opt,name=event_type,json=eventType,proto3" json:"event_type,omitempty"`
-	TraceId   string                 `protobuf:"bytes,2,opt,name=trace_id,json=traceId,proto3" json:"trace_id,omitempty"`
-	CallId    string                 `protobuf:"bytes,3,opt,name=call_id,json=callId,proto3" json:"call_id,omitempty"`
-	FromUri   string                 `protobuf:"bytes,4,opt,name=from_uri,json=fromUri,proto3" json:"from_uri,omitempty"`
-	ToUri     string                 `protobuf:"bytes,5,opt,name=to_uri,json=toUri,proto3" json:"to_uri,omitempty"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Olayın türü, standart olarak "call.started".
+	EventType string `protobuf:"bytes,1,opt,name=event_type,json=eventType,proto3" json:"event_type,omitempty"`
+	// Tüm çağrı yaşam döngüsü boyunca işlemleri takip etmek için kullanılan benzersiz kimlik.
+	TraceId string `protobuf:"bytes,2,opt,name=trace_id,json=traceId,proto3" json:"trace_id,omitempty"`
+	// Çağrının SIP Call-ID'si.
+	CallId string `protobuf:"bytes,3,opt,name=call_id,json=callId,proto3" json:"call_id,omitempty"`
+	// Arayanın SIP URI'si.
+	FromUri string `protobuf:"bytes,4,opt,name=from_uri,json=fromUri,proto3" json:"from_uri,omitempty"`
+	// Arananın SIP URI'si.
+	ToUri string `protobuf:"bytes,5,opt,name=to_uri,json=toUri,proto3" json:"to_uri,omitempty"`
+	// Olayın UTC olarak oluşturulma zamanı.
 	Timestamp *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
-	// YENİ ALAN: Dialplan'dan gelen tüm zenginleştirilmiş bilgiyi taşır.
+	// `dialplan-service`'ten dönen, çağrının nasıl işleneceğine dair tüm zenginleştirilmiş bilgi.
 	DialplanResolution *v1.ResolveDialplanResponse `protobuf:"bytes,7,opt,name=dialplan_resolution,json=dialplanResolution,proto3" json:"dialplan_resolution,omitempty"`
-	MediaInfo          map[string]string           `protobuf:"bytes,8,rep,name=media_info,json=mediaInfo,proto3" json:"media_info,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	unknownFields      protoimpl.UnknownFields
-	sizeCache          protoimpl.SizeCache
+	// DEĞİŞİKLİK: `map<string, string>` yerine tip-güvenli `MediaInfo` mesajı kullanılıyor.
+	// Bu, tüketen servislerde (örn: agent-service) anahtar adı hatalarını ve tip dönüşüm
+	// problemlerini ortadan kaldırır.
+	MediaInfo     *MediaInfo `protobuf:"bytes,8,opt,name=media_info,json=mediaInfo,proto3" json:"media_info,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *CallStartedEvent) Reset() {
 	*x = CallStartedEvent{}
-	mi := &file_sentiric_event_v1_event_proto_msgTypes[0]
+	mi := &file_sentiric_event_v1_event_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -54,7 +122,7 @@ func (x *CallStartedEvent) String() string {
 func (*CallStartedEvent) ProtoMessage() {}
 
 func (x *CallStartedEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_event_v1_event_proto_msgTypes[0]
+	mi := &file_sentiric_event_v1_event_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -67,7 +135,7 @@ func (x *CallStartedEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CallStartedEvent.ProtoReflect.Descriptor instead.
 func (*CallStartedEvent) Descriptor() ([]byte, []int) {
-	return file_sentiric_event_v1_event_proto_rawDescGZIP(), []int{0}
+	return file_sentiric_event_v1_event_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *CallStartedEvent) GetEventType() string {
@@ -119,17 +187,19 @@ func (x *CallStartedEvent) GetDialplanResolution() *v1.ResolveDialplanResponse {
 	return nil
 }
 
-func (x *CallStartedEvent) GetMediaInfo() map[string]string {
+func (x *CallStartedEvent) GetMediaInfo() *MediaInfo {
 	if x != nil {
 		return x.MediaInfo
 	}
 	return nil
 }
 
-// user.created.for_call veya user.identified.for_call olayının standart yapısı.
+// UserIdentifiedForCallEvent, bir çağrı sırasında arayanın kimliğinin
+// `user-service` tarafından belirlendiğini veya yeni bir kullanıcı olarak
+// oluşturulduğunu bildirir.
 type UserIdentifiedForCallEvent struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	EventType     string                 `protobuf:"bytes,1,opt,name=event_type,json=eventType,proto3" json:"event_type,omitempty"`
+	EventType     string                 `protobuf:"bytes,1,opt,name=event_type,json=eventType,proto3" json:"event_type,omitempty"` // "user.identified.for_call" veya "user.created.for_call"
 	TraceId       string                 `protobuf:"bytes,2,opt,name=trace_id,json=traceId,proto3" json:"trace_id,omitempty"`
 	CallId        string                 `protobuf:"bytes,3,opt,name=call_id,json=callId,proto3" json:"call_id,omitempty"`
 	Timestamp     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
@@ -141,7 +211,7 @@ type UserIdentifiedForCallEvent struct {
 
 func (x *UserIdentifiedForCallEvent) Reset() {
 	*x = UserIdentifiedForCallEvent{}
-	mi := &file_sentiric_event_v1_event_proto_msgTypes[1]
+	mi := &file_sentiric_event_v1_event_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -153,7 +223,7 @@ func (x *UserIdentifiedForCallEvent) String() string {
 func (*UserIdentifiedForCallEvent) ProtoMessage() {}
 
 func (x *UserIdentifiedForCallEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_event_v1_event_proto_msgTypes[1]
+	mi := &file_sentiric_event_v1_event_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -166,7 +236,7 @@ func (x *UserIdentifiedForCallEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserIdentifiedForCallEvent.ProtoReflect.Descriptor instead.
 func (*UserIdentifiedForCallEvent) Descriptor() ([]byte, []int) {
-	return file_sentiric_event_v1_event_proto_rawDescGZIP(), []int{1}
+	return file_sentiric_event_v1_event_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *UserIdentifiedForCallEvent) GetEventType() string {
@@ -211,22 +281,25 @@ func (x *UserIdentifiedForCallEvent) GetContact() *v11.Contact {
 	return nil
 }
 
-// call.recording.available olayının standart yapısı.
+// CallRecordingAvailableEvent, bir çağrının ses kaydının işlenip
+// depolama alanına (örn: S3) yüklendiğini bildirir.
 type CallRecordingAvailableEvent struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	EventType     string                 `protobuf:"bytes,1,opt,name=event_type,json=eventType,proto3" json:"event_type,omitempty"`
-	TraceId       string                 `protobuf:"bytes,2,opt,name=trace_id,json=traceId,proto3" json:"trace_id,omitempty"`
-	CallId        string                 `protobuf:"bytes,3,opt,name=call_id,json=callId,proto3" json:"call_id,omitempty"`
-	Timestamp     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
-	RecordingUri  string                 `protobuf:"bytes,5,opt,name=recording_uri,json=recordingUri,proto3" json:"recording_uri,omitempty"` // s3://...
-	PublicUrl     string                 `protobuf:"bytes,6,opt,name=public_url,json=publicUrl,proto3" json:"public_url,omitempty"`          // https://...
+	state     protoimpl.MessageState `protogen:"open.v1"`
+	EventType string                 `protobuf:"bytes,1,opt,name=event_type,json=eventType,proto3" json:"event_type,omitempty"` // "call.recording.available"
+	TraceId   string                 `protobuf:"bytes,2,opt,name=trace_id,json=traceId,proto3" json:"trace_id,omitempty"`
+	CallId    string                 `protobuf:"bytes,3,opt,name=call_id,json=callId,proto3" json:"call_id,omitempty"`
+	Timestamp *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
+	// Kaydın depolama alanındaki URI'si (örn: "s3://sentiric/recordings/call123.wav").
+	RecordingUri string `protobuf:"bytes,5,opt,name=recording_uri,json=recordingUri,proto3" json:"recording_uri,omitempty"`
+	// Kayda erişilebilecek genel URL (eğer varsa).
+	PublicUrl     string `protobuf:"bytes,6,opt,name=public_url,json=publicUrl,proto3" json:"public_url,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *CallRecordingAvailableEvent) Reset() {
 	*x = CallRecordingAvailableEvent{}
-	mi := &file_sentiric_event_v1_event_proto_msgTypes[2]
+	mi := &file_sentiric_event_v1_event_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -238,7 +311,7 @@ func (x *CallRecordingAvailableEvent) String() string {
 func (*CallRecordingAvailableEvent) ProtoMessage() {}
 
 func (x *CallRecordingAvailableEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_event_v1_event_proto_msgTypes[2]
+	mi := &file_sentiric_event_v1_event_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -251,7 +324,7 @@ func (x *CallRecordingAvailableEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CallRecordingAvailableEvent.ProtoReflect.Descriptor instead.
 func (*CallRecordingAvailableEvent) Descriptor() ([]byte, []int) {
-	return file_sentiric_event_v1_event_proto_rawDescGZIP(), []int{2}
+	return file_sentiric_event_v1_event_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *CallRecordingAvailableEvent) GetEventType() string {
@@ -296,21 +369,22 @@ func (x *CallRecordingAvailableEvent) GetPublicUrl() string {
 	return ""
 }
 
-// call.ended olayının standart yapısı.
+// CallEndedEvent, bir çağrının sonlandığını bildirir.
 type CallEndedEvent struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	EventType     string                 `protobuf:"bytes,1,opt,name=event_type,json=eventType,proto3" json:"event_type,omitempty"`
-	TraceId       string                 `protobuf:"bytes,2,opt,name=trace_id,json=traceId,proto3" json:"trace_id,omitempty"`
-	CallId        string                 `protobuf:"bytes,3,opt,name=call_id,json=callId,proto3" json:"call_id,omitempty"`
-	Timestamp     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
-	Reason        string                 `protobuf:"bytes,5,opt,name=reason,proto3" json:"reason,omitempty"` // Örn: "normal_clearing", "terminated_by_request"
+	state     protoimpl.MessageState `protogen:"open.v1"`
+	EventType string                 `protobuf:"bytes,1,opt,name=event_type,json=eventType,proto3" json:"event_type,omitempty"` // "call.ended"
+	TraceId   string                 `protobuf:"bytes,2,opt,name=trace_id,json=traceId,proto3" json:"trace_id,omitempty"`
+	CallId    string                 `protobuf:"bytes,3,opt,name=call_id,json=callId,proto3" json:"call_id,omitempty"`
+	Timestamp *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
+	// Çağrının sonlanma nedeni (örn: "normal_clearing", "terminated_by_request").
+	Reason        string `protobuf:"bytes,5,opt,name=reason,proto3" json:"reason,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *CallEndedEvent) Reset() {
 	*x = CallEndedEvent{}
-	mi := &file_sentiric_event_v1_event_proto_msgTypes[3]
+	mi := &file_sentiric_event_v1_event_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -322,7 +396,7 @@ func (x *CallEndedEvent) String() string {
 func (*CallEndedEvent) ProtoMessage() {}
 
 func (x *CallEndedEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_event_v1_event_proto_msgTypes[3]
+	mi := &file_sentiric_event_v1_event_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -335,7 +409,7 @@ func (x *CallEndedEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CallEndedEvent.ProtoReflect.Descriptor instead.
 func (*CallEndedEvent) Descriptor() ([]byte, []int) {
-	return file_sentiric_event_v1_event_proto_rawDescGZIP(), []int{3}
+	return file_sentiric_event_v1_event_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *CallEndedEvent) GetEventType() string {
@@ -377,7 +451,10 @@ var File_sentiric_event_v1_event_proto protoreflect.FileDescriptor
 
 const file_sentiric_event_v1_event_proto_rawDesc = "" +
 	"\n" +
-	"\x1dsentiric/event/v1/event.proto\x12\x11sentiric.event.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a#sentiric/dialplan/v1/dialplan.proto\x1a\x1bsentiric/user/v1/user.proto\"\xc2\x03\n" +
+	"\x1dsentiric/event/v1/event.proto\x12\x11sentiric.event.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a#sentiric/dialplan/v1/dialplan.proto\x1a\x1bsentiric/user/v1/user.proto\"[\n" +
+	"\tMediaInfo\x12&\n" +
+	"\x0fcaller_rtp_addr\x18\x01 \x01(\tR\rcallerRtpAddr\x12&\n" +
+	"\x0fserver_rtp_port\x18\x02 \x01(\rR\rserverRtpPort\"\xee\x02\n" +
 	"\x10CallStartedEvent\x12\x1d\n" +
 	"\n" +
 	"event_type\x18\x01 \x01(\tR\teventType\x12\x19\n" +
@@ -386,12 +463,9 @@ const file_sentiric_event_v1_event_proto_rawDesc = "" +
 	"\bfrom_uri\x18\x04 \x01(\tR\afromUri\x12\x15\n" +
 	"\x06to_uri\x18\x05 \x01(\tR\x05toUri\x128\n" +
 	"\ttimestamp\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\ttimestamp\x12^\n" +
-	"\x13dialplan_resolution\x18\a \x01(\v2-.sentiric.dialplan.v1.ResolveDialplanResponseR\x12dialplanResolution\x12Q\n" +
+	"\x13dialplan_resolution\x18\a \x01(\v2-.sentiric.dialplan.v1.ResolveDialplanResponseR\x12dialplanResolution\x12;\n" +
 	"\n" +
-	"media_info\x18\b \x03(\v22.sentiric.event.v1.CallStartedEvent.MediaInfoEntryR\tmediaInfo\x1a<\n" +
-	"\x0eMediaInfoEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x8a\x02\n" +
+	"media_info\x18\b \x01(\v2\x1c.sentiric.event.v1.MediaInfoR\tmediaInfo\"\x8a\x02\n" +
 	"\x1aUserIdentifiedForCallEvent\x12\x1d\n" +
 	"\n" +
 	"event_type\x18\x01 \x01(\tR\teventType\x12\x19\n" +
@@ -431,11 +505,11 @@ func file_sentiric_event_v1_event_proto_rawDescGZIP() []byte {
 
 var file_sentiric_event_v1_event_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_sentiric_event_v1_event_proto_goTypes = []any{
-	(*CallStartedEvent)(nil),            // 0: sentiric.event.v1.CallStartedEvent
-	(*UserIdentifiedForCallEvent)(nil),  // 1: sentiric.event.v1.UserIdentifiedForCallEvent
-	(*CallRecordingAvailableEvent)(nil), // 2: sentiric.event.v1.CallRecordingAvailableEvent
-	(*CallEndedEvent)(nil),              // 3: sentiric.event.v1.CallEndedEvent
-	nil,                                 // 4: sentiric.event.v1.CallStartedEvent.MediaInfoEntry
+	(*MediaInfo)(nil),                   // 0: sentiric.event.v1.MediaInfo
+	(*CallStartedEvent)(nil),            // 1: sentiric.event.v1.CallStartedEvent
+	(*UserIdentifiedForCallEvent)(nil),  // 2: sentiric.event.v1.UserIdentifiedForCallEvent
+	(*CallRecordingAvailableEvent)(nil), // 3: sentiric.event.v1.CallRecordingAvailableEvent
+	(*CallEndedEvent)(nil),              // 4: sentiric.event.v1.CallEndedEvent
 	(*timestamppb.Timestamp)(nil),       // 5: google.protobuf.Timestamp
 	(*v1.ResolveDialplanResponse)(nil),  // 6: sentiric.dialplan.v1.ResolveDialplanResponse
 	(*v11.User)(nil),                    // 7: sentiric.user.v1.User
@@ -444,7 +518,7 @@ var file_sentiric_event_v1_event_proto_goTypes = []any{
 var file_sentiric_event_v1_event_proto_depIdxs = []int32{
 	5, // 0: sentiric.event.v1.CallStartedEvent.timestamp:type_name -> google.protobuf.Timestamp
 	6, // 1: sentiric.event.v1.CallStartedEvent.dialplan_resolution:type_name -> sentiric.dialplan.v1.ResolveDialplanResponse
-	4, // 2: sentiric.event.v1.CallStartedEvent.media_info:type_name -> sentiric.event.v1.CallStartedEvent.MediaInfoEntry
+	0, // 2: sentiric.event.v1.CallStartedEvent.media_info:type_name -> sentiric.event.v1.MediaInfo
 	5, // 3: sentiric.event.v1.UserIdentifiedForCallEvent.timestamp:type_name -> google.protobuf.Timestamp
 	7, // 4: sentiric.event.v1.UserIdentifiedForCallEvent.user:type_name -> sentiric.user.v1.User
 	8, // 5: sentiric.event.v1.UserIdentifiedForCallEvent.contact:type_name -> sentiric.user.v1.Contact
