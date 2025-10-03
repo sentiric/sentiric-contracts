@@ -1,6 +1,8 @@
-# 🏷️ Sentiric Contracts - Görev Listesi (v1.8.9) Bundan sonraki versiyonlar 1.8.xx olarak devam edecek
+# 🏷️ Sentiric Contracts - Görev Listesi
 
-Bu belge, `sentiric-contracts` deposuna yapılan ve planlanan değişiklikleri listeler.
+Bu servisin mevcut ve gelecekteki tüm geliştirme görevleri, platformun merkezi görev yönetimi reposu olan **`sentiric-tasks`**'ta yönetilmektedir.
+
+➡️ **[Aktif Görev Panosuna Git](https://github.com/sentiric/sentiric-tasks/blob/main/TASKS.md)**
 
 ---
-
+Bu belge, servise özel, çok küçük ve acil görevler için geçici bir not defteri olarak kullanılabilir.
