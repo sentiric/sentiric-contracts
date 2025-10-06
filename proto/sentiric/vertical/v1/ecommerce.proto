@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package sentiric.vertical.v1;
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/vertical/v1;verticalv1";
+
+service EcommerceService {
+  rpc GetOrderStatus(GetOrderStatusRequest) returns (GetOrderStatusResponse); // RPC Kuralı
+}
+
+message GetOrderStatusRequest { // RPC Kuralı
+  string order_id = 1;
+}
+
+message GetOrderStatusResponse { // RPC Kuralı
+  string status = 1;
+}

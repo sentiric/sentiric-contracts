@@ -83,3 +83,17 @@ message CallEndedEvent {
   // Çağrının sonlanma nedeni (örn: "normal_clearing", "terminated_by_request").
   string reason = 5;
 }
+
+// ... CallEndedEvent mesajından sonra ekleyin
+
+// GenericEvent, platform genelinde diğer (çağrı dışı) asenkron olayları kapsar.
+// Örn: UserCreated, DialplanUpdated, RecipeInstalled.
+message GenericEvent {
+  string event_type = 1; // Örn: "user.created", "dialplan.updated"
+  string trace_id = 2;
+  google.protobuf.Timestamp timestamp = 3;
+  string tenant_id = 4;
+
+  // Olayla ilgili seri hale getirilmiş (Protobuf Any veya JSON dize) payload.
+  string payload_json = 5;
+}

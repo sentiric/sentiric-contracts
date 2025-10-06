@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package sentiric.llm.v1;
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/llm/v1;llmv1";
+
+service LlmGatewayService {
+  rpc Generate(GenerateRequest) returns (GenerateResponse);
+  rpc GenerateStream(GenerateStreamRequest) returns (stream GenerateStreamResponse); // Yeniden Adlandırıldı
+}
+
+message GenerateRequest { // Generate için kullanılır
+  string prompt = 1;
+  string model_selector = 2;
+  string tenant_id = 3;
+}
+
+message GenerateResponse { // Generate için kullanılır
+  string generated_text = 1;
+}
+
+message GenerateStreamRequest { // Stream için ayrı bir mesaj tanımladık
+  string prompt = 1;
+  string model_selector = 2;
+  string tenant_id = 3;
+}
+
+message GenerateStreamResponse { // Stream için ayrı bir mesaj tanımladık
+  string generated_text = 1;
+}

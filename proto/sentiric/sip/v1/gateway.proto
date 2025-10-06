@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package sentiric.sip.v1;
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/sip/v1;sipv1";
+
+service SipGatewayService {
+  rpc GetLoad(GetLoadRequest) returns (GetLoadResponse);
+}
+
+message GetLoadRequest { // ESKİ: LoadRequest
+  string region = 1;
+}
+
+message GetLoadResponse { // ESKİ: LoadResponse
+  double current_cpu_load = 1;
+  int32 active_calls = 2;
+}

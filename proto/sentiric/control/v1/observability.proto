@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package sentiric.control.v1;
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/control/v1;controlv1";
+
+service ObservabilityService {
+  rpc GetMetrics(GetMetricsRequest) returns (GetMetricsResponse);
+  rpc GetLogs(GetLogsRequest) returns (GetLogsResponse);
+}
+
+message GetMetricsRequest { // ESKİ: MetricsRequest
+  string service_name = 1;
+}
+
+message GetMetricsResponse { // ESKİ: MetricsResponse
+  map<string, double> metrics = 1;
+}
+
+message GetLogsRequest { // ESKİ: LogRequest
+  string service_name = 1;
+  int32 limit = 2;
+}
+
+message GetLogsResponse { // ESKİ: LogResponse
+  repeated string log_entries = 1;
+}

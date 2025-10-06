@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package sentiric.vertical.v1;
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/vertical/v1;verticalv1";
+
+service HospitalityService {
+  rpc FindHotels(FindHotelsRequest) returns (FindHotelsResponse); // RPC Kuralı
+  rpc BookRoom(BookRoomRequest) returns (BookRoomResponse); // RPC Kuralı
+}
+
+message FindHotelsRequest { // RPC Kuralı
+  string location = 1;
+  string check_in_date = 2;
+}
+
+message FindHotelsResponse { // RPC Kuralı
+  repeated HotelResult results = 1;
+}
+
+message HotelResult {
+  string name = 1;
+  int32 rating = 2;
+}
+
+message BookRoomRequest { // RPC Kuralı
+  string hotel_id = 1;
+  string guest_name = 2;
+  int32 num_guests = 3;
+}
+
+message BookRoomResponse { // RPC Kuralı
+  string booking_id = 1;
+  bool success = 2;
+}

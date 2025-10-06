@@ -10,24 +10,14 @@ service TextToSpeechService {
   rpc Synthesize(SynthesizeRequest) returns (SynthesizeResponse);
 }
 
-message SynthesizeRequest {
-  // Sentezlenecek metin. SSML de destekleyebilir.
+message SynthesizeRequest { // Gateway'e özel request
   string text = 1;
-
-  // Metnin dili (örn: "tr", "en")
   string language_code = 2;
-
-  // Ses klonlama için opsiyonel referans ses dosyası URL'i
   optional string speaker_wav_url = 3;
-
-  // İstenen ses kalitesi veya sağlayıcı (örn: "fast", "premium", "elevenlabs")
   optional string voice_selector = 4;
 }
 
-message SynthesizeResponse {
-  // Sentezlenmiş ses verisi, WAV formatında.
+message SynthesizeResponse { // Gateway'e özel response
   bytes audio_content = 1;
-
-  // Sentezlemenin yapıldığı motorun adı (örn: "coqui-tts", "edge-tts")
   string engine_used = 2;
 }

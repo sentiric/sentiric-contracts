@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package sentiric.external.v1;
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/external/v1;externalv1";
+
+service PaymentService {
+  rpc InitiatePayment(InitiatePaymentRequest) returns (InitiatePaymentResponse);
+}
+
+message InitiatePaymentRequest { // ESKİ: PaymentRequest
+  string tenant_id = 1;
+  string user_id = 2;
+  double amount = 3;
+  string currency = 4;
+}
+
+message InitiatePaymentResponse { // ESKİ: PaymentResponse
+  string transaction_id = 1;
+  string status = 2; // "pending", "completed", "failed"
+}

@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package sentiric.external.v1;
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/external/v1;externalv1";
+
+service MarketplaceService {
+  rpc ListRecipes(ListRecipesRequest) returns (ListRecipesResponse);
+  rpc InstallRecipe(InstallRecipeRequest) returns (InstallRecipeResponse);
+}
+
+message ListRecipesRequest { // ESKİ: ListRequest
+  string category = 1;
+}
+
+message ListRecipesResponse { // ESKİ: ListResponse
+  repeated RecipeInfo recipes = 1;
+}
+
+message RecipeInfo {
+  string recipe_id = 1;
+  string name = 2;
+  string description = 3;
+}
+
+message InstallRecipeRequest { // ESKİ: InstallRequest
+  string recipe_id = 1;
+  string tenant_id = 2;
+}
+
+message InstallRecipeResponse { // ESKİ: InstallResponse
+  bool success = 1;
+  string deployment_status = 2;
+}

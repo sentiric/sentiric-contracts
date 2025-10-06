@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package sentiric.telephony.v1;
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/telephony/v1;telephonyv1";
+
+service TelephonyActionService {
+  rpc PlayAudio(PlayAudioRequest) returns (PlayAudioResponse); // Değişti
+  rpc TerminateCall(TerminateCallRequest) returns (TerminateCallResponse); // Değişti
+  rpc SendTextMessage(SendTextMessageRequest) returns (SendTextMessageResponse); // Mesaj Adı Değişti
+  rpc StartRecording(StartRecordingRequest) returns (StartRecordingResponse); // Değişti
+  rpc StopRecording(StopRecordingRequest) returns (StopRecordingResponse); // Değişti
+}
+
+message PlayAudioRequest {
+  string call_id = 1;
+  string audio_uri = 2;
+}
+message PlayAudioResponse { // YENİ MESAJ
+  bool success = 1;
+}
+
+message TerminateCallRequest {
+  string call_id = 1;
+  string reason = 2;
+}
+message TerminateCallResponse { // YENİ MESAJ
+  bool success = 1;
+}
+
+message SendTextMessageRequest { // Mesaj Adı Değişti
+  string to = 1;
+  string body = 2;
+}
+message SendTextMessageResponse { // YENİ MESAJ
+  bool success = 1;
+}
+
+message StartRecordingRequest {
+  string call_id = 1;
+  string output_uri = 2;
+  optional uint32 sample_rate = 3;
+  optional string format = 4;
+}
+message StartRecordingResponse { // YENİ MESAJ
+  bool success = 1;
+}
+
+message StopRecordingRequest {
+  string call_id = 1;
+}
+message StopRecordingResponse { // YENİ MESAJ
+  bool success = 1;
+}

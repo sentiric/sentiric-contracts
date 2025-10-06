@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package sentiric.sip.v1;
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/sip/v1;sipv1";
+
+// B2BUAService, AI odaklı çağrı başlatma ve transfer mantığını yönetir.
+service B2BUAService {
+  rpc InitiateCall(InitiateCallRequest) returns (InitiateCallResponse);
+  rpc TransferCall(TransferCallRequest) returns (TransferCallResponse);
+}
+
+message InitiateCallRequest {
+  string call_id = 1;
+  string from_uri = 2;
+  string to_uri = 3;
+}
+
+message InitiateCallResponse {
+  bool success = 1;
+  string new_call_id = 2;
+}
+
+message TransferCallRequest {
+  string existing_call_id = 1;
+  string transfer_target_uri = 2;
+}
+
+message TransferCallResponse {
+  bool success = 1;
+}

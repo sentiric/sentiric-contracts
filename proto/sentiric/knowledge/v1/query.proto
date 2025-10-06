@@ -1,0 +1,29 @@
+// proto/sentiric/knowledge/v1/query.proto
+syntax = "proto3";
+
+package sentiric.knowledge.v1; // Paket adı korunur
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/knowledge/v1;knowledgev1";
+
+// KnowledgeQueryService, kurumsal bilgi tabanını sorgulamak için metotlar sunar.
+service KnowledgeQueryService {
+  rpc Query(QueryRequest) returns (QueryResponse);
+}
+
+// Mesajların geri kalanı knowledge.proto'dan buraya taşınmıştır.
+message QueryRequest {
+  string tenant_id = 1;
+  string query = 2;
+  int32 top_k = 3;
+}
+message QueryResponse {
+  repeated QueryResult results = 1;
+}
+message QueryResult {
+  string content = 1;
+  float score = 2;
+  string source = 3;
+  map<string, string> metadata = 4;
+}
+// Diğer Knowledge dosyası iskeleti:
+// proto/sentiric/knowledge/v1/indexing.proto (İçine TriggerReindex RPC'sini ekleyin)

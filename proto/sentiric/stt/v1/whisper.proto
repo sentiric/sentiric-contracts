@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package sentiric.stt.v1;
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/stt/v1;sttv1";
+
+// SttWhisperService, Whisper motoruna özgü düşük seviyeli kontrat.
+service SttWhisperService {
+  rpc WhisperTranscribe(WhisperTranscribeRequest) returns (WhisperTranscribeResponse); // RPC Adı da değişti
+}
+
+message WhisperTranscribeRequest {
+  bytes audio_data = 1;
+  string language = 2;
+}
+
+message WhisperTranscribeResponse {
+  string transcription = 1;
+}

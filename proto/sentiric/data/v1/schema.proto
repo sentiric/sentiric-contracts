@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package sentiric.data.v1;
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/data/v1;datav1";
+
+// UserDBModel, PostgreSQL'deki çekirdek kullanıcı tablosunun yapısını temsil eder.
+message UserDBModel {
+  string user_id = 1;
+  string tenant_id = 2;
+  string name = 3;
+  string user_type = 4;
+}

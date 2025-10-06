@@ -29,6 +29,13 @@ message User {
   optional string preferred_language_code = 6;
 }
 
+message Tenant {
+  string id = 1;
+  string name = 2;
+  string domain = 3;
+  string primary_language_code = 4;
+}
+
 // =================================================================
 //                          SERVICE DEFINITION
 // =================================================================

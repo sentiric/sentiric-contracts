@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package sentiric.external.v1;
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/external/v1;externalv1";
+
+service SchedulingService {
+  rpc CreateAppointment(CreateAppointmentRequest) returns (CreateAppointmentResponse);
+}
+
+message CreateAppointmentRequest { // ESKİ: ApptRequest
+  string user_id = 1;
+  string title = 2;
+  string start_time_iso = 3;
+  string end_time_iso = 4;
+}
+
+message CreateAppointmentResponse { // ESKİ: ApptResponse
+  string appointment_id = 1;
+  bool success = 2; // Başarı durumunu field 2'ye taşıdık
+}

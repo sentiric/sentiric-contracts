@@ -10,7 +10,9 @@ service SipSignalingService {
   // Belirtilen Call-ID'ye sahip aktif bir çağrıyı kontrollü bir şekilde sonlandırır.
   // Bu RPC, genellikle agent-service tarafından, diyalog akışı
   // tamamlandığında çağrılır.
-  rpc TerminateCall(TerminateCallRequest) returns (TerminateCallResponse);
+  rpc TerminateCall(TerminateCallRequest) returns (TerminateCallResponse) {
+    option deprecated = true; // TELEPHONY-ACTION'a göç edin.
+  }
 }
 
 message TerminateCallRequest {

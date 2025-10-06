@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package sentiric.data.v1;
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/data/v1;datav1";
+
+// AppConfig, servislerin başlangıç yapılandırmasını (port, log seviyesi, sertifika yolları) içerir.
+message AppConfig {
+  string service_name = 1;
+  string environment = 2;
+  int32 log_level = 3;
+  optional string tls_cert_path = 4;
+}

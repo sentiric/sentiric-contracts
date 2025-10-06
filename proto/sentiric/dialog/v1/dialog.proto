@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package sentiric.dialog.v1;
+
+import "sentiric/data/v1/context.proto";
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/dialog/v1;dialogv1";
+
+service DialogService {
+  rpc StartDialog(StartDialogRequest) returns (StartDialogResponse);
+  rpc ProcessUserInput(ProcessUserInputRequest) returns (ProcessUserInputResponse);
+}
+
+message StartDialogRequest { // ESKİ: CallContext
+  sentiric.data.v1.CallContext context = 1;
+}
+
+message StartDialogResponse { // ESKİ: DialogResponse (Tekrar Kullanım Çözümü)
+  string response_text = 1;
+  optional string audio_uri = 2;
+  string next_action = 3;
+  sentiric.data.v1.CallContext updated_context = 4;
+}
+
+message ProcessUserInputRequest { // ESKİ: UserInput
+  string call_id = 1;
+  string text = 2;
+  optional bytes audio_data = 3;
+}
+
+message ProcessUserInputResponse { // ESKİ: DialogResponse (Tekrar Kullanım Çözümü)
+  string response_text = 1;
+  optional string audio_uri = 2;
+  string next_action = 3;
+  sentiric.data.v1.CallContext updated_context = 4;
+}

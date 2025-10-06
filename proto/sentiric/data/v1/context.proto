@@ -1,0 +1,17 @@
+// proto/sentiric/data/v1/context.proto
+syntax = "proto3";
+
+package sentiric.data.v1;
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/data/v1;datav1";
+
+// CallContext, bir çağrının runtime durumunu (Redis yapısı) temsil eder. (Hizmet içermez)
+message CallContext {
+  string call_id = 1;
+  string tenant_id = 2;
+  map<string, string> state_variables = 3;
+}
+// Diğer dosyaları da aynı şekilde sadece MESSAGE tanımları ile oluşturun:
+// proto/sentiric/data/v1/schema.proto
+// proto/sentiric/data/v1/config.proto
+// proto/sentiric/data/v1/asset.proto

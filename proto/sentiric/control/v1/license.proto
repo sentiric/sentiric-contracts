@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package sentiric.control.v1;
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/control/v1;controlv1";
+
+service LicenseService {
+  rpc VerifyFeature(VerifyFeatureRequest) returns (VerifyFeatureResponse);
+}
+
+message VerifyFeatureRequest { // ESKİ: FeatureRequest
+  string tenant_id = 1;
+  string feature_name = 2;
+}
+
+message VerifyFeatureResponse { // ESKİ: FeatureResponse
+  bool is_licensed = 1;
+  optional string limit_details = 2;
+}

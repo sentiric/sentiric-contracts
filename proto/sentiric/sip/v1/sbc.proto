@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package sentiric.sip.v1;
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/sip/v1;sipv1";
+
+service SbcService {
+  rpc GetRoute(GetRouteRequest) returns (GetRouteResponse);
+}
+
+message GetRouteRequest { // ESKİ: SipPacket
+  string raw_sip_message = 1;
+  string source_ip = 2;
+}
+
+message GetRouteResponse { // ESKİ: SbcDecision
+  bool allow = 1;
+  optional string next_hop_uri = 2;
+}

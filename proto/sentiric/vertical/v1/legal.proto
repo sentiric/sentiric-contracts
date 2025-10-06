@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package sentiric.vertical.v1;
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/vertical/v1;verticalv1";
+
+service LegalService {
+  rpc CheckCaseStatus(CheckCaseStatusRequest) returns (CheckCaseStatusResponse); // RPC Kuralı
+}
+
+message CheckCaseStatusRequest { // RPC Kuralı
+  string case_number = 1;
+  string client_id = 2;
+}
+
+message CheckCaseStatusResponse { // RPC Kuralı
+  string status = 1;
+  optional string next_hearing_date = 2;
+}

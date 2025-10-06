@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package sentiric.stt.v1;
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/stt/v1;sttv1";
+
+service SttGatewayService {
+  rpc Transcribe(TranscribeRequest) returns (TranscribeResponse);
+  rpc TranscribeStream(stream TranscribeStreamRequest) returns (stream TranscribeStreamResponse);
+}
+
+message TranscribeRequest { // Gateway request
+  bytes audio_content = 1;
+  string language_code = 2;
+}
+
+message TranscribeResponse { // Gateway response
+  string transcription = 1;
+}
+
+message TranscribeStreamRequest {
+  bytes audio_chunk = 1;
+}
+
+message TranscribeStreamResponse {
+  string partial_transcription = 1;
+  bool is_final = 2;
+}

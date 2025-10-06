@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package sentiric.vertical.v1;
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/vertical/v1;verticalv1";
+
+service FinanceService {
+  rpc GetAccountBalance(GetAccountBalanceRequest) returns (GetAccountBalanceResponse); // RPC Kuralı
+}
+
+message GetAccountBalanceRequest { // RPC Kuralı
+  string account_id = 1;
+  string user_id = 2;
+}
+
+message GetAccountBalanceResponse { // RPC Kuralı
+  double balance = 1;
+  string currency = 2;
+  string last_transaction_date = 3;
+}

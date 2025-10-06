@@ -8,7 +8,7 @@ Bu belge, `sentiric-contracts` deposuna katkı yapmak isteyen ekip üyeleri içi
 
 ### 1. `.proto` Dosyasını Güncelle
 
-Tüm tanımlar `proto/` klasöründe yer alır. Yeni bir servis, mesaj veya alan eklemeden önce lütfen mevcut yapıyı ve isimlendirme kurallarını inceleyin.
+Tüm tanımlar `proto/` klasöründe, Kategori/Servis bazlı hiyerarşide yer alır. Yeni bir servis, mesaj veya alan eklemeden önce lütfen [Protobuf Standartları Kılavuzunu](docs/protobuf-standards.md) inceleyin.
 
 ```bash
 cd proto
@@ -17,17 +17,27 @@ cd proto
 
 ---
 
-### 2. Kod Üretimi (`buf generate`)
+### 2. Kalite Kontrol ve Kod Üretimi
 
-Değişiklik yaptıktan sonra, dile özgü kodları otomatik olarak üretmek için aşağıdaki komutu çalıştır:
+Değişiklik yaptıktan sonra, dil özgü kodları otomatik olarak üretmek ve Buf lint kurallarına uyduğunuzdan emin olmak için aşağıdaki komutları çalıştırın:
 
 ```bash
+cargo clean
+
+# Lint kurallarını kontrol et (adlandırma, paket yolları vb.)
+buf lint
+buf dep update
+
+# Dile özgü kodları (Go, Rust, Node.js, Python) üret
 buf generate
+
+# Go bağımlılıklarını senkronize et
+go mod tidy
+
+# Rust build'ini doğrula
+cargo build
+
 ```
-
-Buf, `buf.gen.yaml` dosyasını kullanarak `gen/` dizinine gerekli çıktıları üretir.
-
-> 💡 `go mod tidy` çalıştırmak gerekebilir (özellikle Go için).
 
 ---
 
@@ -38,14 +48,14 @@ Lütfen commit mesajlarını [Conventional Commits](https://www.conventionalcomm
 #### Örnekler
 
 ```bash
-# Yeni bir model eklendi
-git commit -m "feat(data-model): Add UserProfile message"
+# Yeni bir API veya önemli bir model eklendi
+git commit -m "feat(telephony): Add StartRecording and StopRecording RPCs"
 
 # Sadece CI fix'i
 git commit -m "chore(ci): Fix release workflow"
 
-# Build iyileştirildi
-git commit -m "fix(build): Improve buf export path"
+# Lint kuralı veya isimlendirme düzeltildi
+git commit -m "fix(standards): Correct RPC naming in vertical services"
 ```
 
 ---
@@ -57,59 +67,24 @@ Yeni bir sürüm yayınlamak için Git etiketi (`tag`) oluşturmanız yeterlidir
 ### Yeni Sürüm Yayınlama
 
 ```bash
-git commit -m "feat(api): Add new payment method"
+git commit -m "feat(api): Add new services for v1.9.0"
 git push origin main
 
-git tag v1.7.0
-git push origin v1.7.0
+git tag v1.9.0
+git push origin v1.9.0
 ```
 
-> 🎯 Semantic Versioning (semver) kullanıyoruz: `MAJOR.MINOR.PATCH`
-
----
-
-### Fix Sonrası Tekrar Yayınlama
-
-CI başarısız olduysa ya da tekrar yayınlamak istiyorsanız:
-
-```bash
-# Hatalı tag'i sil
-git tag -d v1.6.2
-git push --delete origin v1.6.2
-
-# Yeni commit yap (CI fix gibi)
-git commit -m "chore(release): Increment version to 1.6.3 after CI fix"
-git push origin main
-
-# Yeni tag oluştur
-git tag v1.6.3
-git push origin v1.6.3
-```
+> 🎯 Semantic Versioning (semver) kullanıyoruz: `MAJOR.MINOR.PATCH`. MAJOR değişiklikler geriye dönük uyumsuzluk (breaking change) yaratır.
 
 ---
 
 ## 🔍 Kod Tarzı ve Kalite
 
-* Buf, tüm `.proto` dosyalarını lint eder.
-* CI, kırıcı değişiklikleri tespit eder.
-* Dosya isimleri `snake_case`, mesajlar `PascalCase`, alanlar `snake_case` olmalıdır.
-* Gereksiz bağımlılıklar silinmeli (`go mod tidy` gibi).
-
----
-
-## 🧪 CI & Pipeline'lar
-
-* Her commit → Lint & breaking change kontrolü
-* Her tag → Dil özelinde paketlerin yayınlanması (Go, Rust, Python, TypeScript)
-
----
-
-## 📬 İletişim
-
-Katkılar veya sorular için ilgili mimari temsilciye ya da [Sentiric Governance](https://github.com/sentiric/sentiric-governance) rehberine başvurabilirsiniz.
+*   Buf, tüm `.proto` dosyalarını lint eder. **(BPF kuralı uygulanmalıdır)**
+*   CI, kırıcı değişiklikleri tespit eder.
+*   **Adlandırma Standardı:** RPC'ye özgü istek/yanıt mesajı (`RPCNameRequest`, `RPCNameResponse`) kullanılmalıdır.
+*   Kullanımdan kaldırılan RPC'ler için Protobuf `deprecated = true` niteliği kullanılmalıdır.
 
 ---
 
 Teşekkürler! 🙌
-
-```

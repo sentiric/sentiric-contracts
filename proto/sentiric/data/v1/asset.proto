@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package sentiric.data.v1;
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/data/v1;datav1";
+
+// AnnouncementAsset, Veritabanı ve S3'teki anons dosyalarının yol/meta veri yapısı.
+message AnnouncementAsset {
+  string asset_id = 1;
+  string tenant_id = 2;
+  string file_type = 3;
+  string s3_uri = 4;
+  optional string public_url = 5;
+}

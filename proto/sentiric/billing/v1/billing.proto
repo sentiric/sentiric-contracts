@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package sentiric.billing.v1;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/billing/v1;billingv1";
+
+service BillingService {
+  rpc ProcessUsage(ProcessUsageRequest) returns (ProcessUsageResponse);
+}
+
+message ProcessUsageRequest { // ESKİ: UsageRecordedEvent
+  string tenant_id = 1;
+  string usage_type = 2; // örn: "call_minute", "llm_token"
+  double amount = 3;
+  google.protobuf.Timestamp timestamp = 4;
+}
+
+message ProcessUsageResponse { // ESKİ: BillingResponse
+  bool success = 1;
+  string transaction_id = 2;
+}

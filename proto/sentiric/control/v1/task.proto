@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package sentiric.control.v1;
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/control/v1;controlv1";
+
+service TaskService {
+  rpc DispatchTask(DispatchTaskRequest) returns (DispatchTaskResponse);
+}
+
+message DispatchTaskRequest { // ESKİ: TaskRequest
+  string task_type = 1;
+  map<string, string> payload = 2;
+  optional string due_date = 3;
+}
+
+message DispatchTaskResponse { // ESKİ: TaskID
+  string task_id = 1; // İsim TaskID'den task_id'ye çevrildi
+}

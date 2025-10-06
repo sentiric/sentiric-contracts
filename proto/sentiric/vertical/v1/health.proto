@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package sentiric.vertical.v1;
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/vertical/v1;verticalv1";
+
+service HealthService {
+  rpc FindDoctor(FindDoctorRequest) returns (FindDoctorResponse); // RPC Kuralı
+  rpc ScheduleAppointment(ScheduleAppointmentRequest) returns (ScheduleAppointmentResponse); // RPC Kuralı
+}
+
+message FindDoctorRequest { // RPC Kuralı
+  string specialty = 1;
+  string location = 2;
+}
+
+message FindDoctorResponse { // RPC Kuralı
+  repeated DoctorInfo doctors = 1;
+}
+
+message DoctorInfo {
+  string name = 1;
+  string specialty = 2;
+}
+
+message ScheduleAppointmentRequest { // RPC Kuralı
+  string doctor_id = 1;
+  string patient_id = 2;
+  string preferred_time_iso = 3;
+}
+
+message ScheduleAppointmentResponse { // RPC Kuralı
+  string confirmation_id = 1;
+  bool success = 2;
+}

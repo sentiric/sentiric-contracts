@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package sentiric.tts.v1;
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/tts/v1;ttsv1";
+
+// TtsEdgeService, TTS motorlarından birine özgü düşük seviyeli kontrat.
+service TtsEdgeService {
+  rpc EdgeSynthesize(EdgeSynthesizeRequest) returns (EdgeSynthesizeResponse); // RPC Adı da değişti
+}
+
+message EdgeSynthesizeRequest {
+  string text = 1;
+  string voice_model_id = 2;
+}
+
+message EdgeSynthesizeResponse {
+  bytes audio_content = 1;
+}

@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package sentiric.agent.v1;
+
+import "sentiric/data/v1/context.proto";
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/agent/v1;agentv1";
+
+service AgentOrchestrationService {
+  rpc ProcessCallStart(ProcessCallStartRequest) returns (ProcessCallStartResponse);
+  rpc ProcessSagaStep(ProcessSagaStepRequest) returns (ProcessSagaStepResponse);
+}
+
+message ProcessCallStartRequest { // ESKİ: CallStartEvent
+  string call_id = 1;
+  string dialplan_id = 2;
+  string caller_number = 3;
+}
+
+message ProcessCallStartResponse { // ESKİ: ProcessResponse
+  bool initiated = 1;
+}
+
+message ProcessSagaStepRequest { // ESKİ: SagaStep
+  string saga_id = 1;
+  string step_name = 2;
+  sentiric.data.v1.CallContext context = 3;
+}
+
+message ProcessSagaStepResponse { // ESKİ: SagaResponse
+  bool completed = 1;
+}

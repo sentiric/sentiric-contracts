@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package sentiric.knowledge.v1; // BURASI KESİNLİKLE knowledge.v1 OLMALI
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/knowledge/v1;knowledgev1";
+
+service KnowledgeIndexingService {
+  rpc TriggerReindex(TriggerReindexRequest) returns (TriggerReindexResponse);
+}
+
+message TriggerReindexRequest {
+  string tenant_id = 1;
+  optional string source = 2;
+}
+
+message TriggerReindexResponse {
+  bool success = 1;
+  string job_id = 2;
+}

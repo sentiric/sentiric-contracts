@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package sentiric.sip.v1;
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/sip/v1;sipv1";
+
+service ProxyService {
+  rpc GetNextHop(GetNextHopRequest) returns (GetNextHopResponse);
+}
+
+message GetNextHopRequest { // ESKİ: RouteRequest
+  string destination_uri = 1;
+  string source_ip = 2;
+}
+
+message GetNextHopResponse { // ESKİ: NextHop
+  string uri = 1;
+  string gateway_id = 2;
+}

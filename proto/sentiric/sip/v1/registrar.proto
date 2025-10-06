@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package sentiric.sip.v1;
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/sip/v1;sipv1";
+
+// RegistrarService, SIP uç noktalarının kaydını yönetir.
+service RegistrarService {
+  rpc Register(RegisterRequest) returns (RegisterResponse);
+  rpc Unregister(UnregisterRequest) returns (UnregisterResponse);
+  rpc LookupContact(LookupContactRequest) returns (LookupContactResponse);
+}
+
+message RegisterRequest {
+  string sip_uri = 1;
+  string contact_uri = 2;
+  int32 expires = 3; // saniye cinsinden
+}
+
+message RegisterResponse {
+  bool success = 1;
+}
+
+message UnregisterRequest {
+  string sip_uri = 1;
+}
+
+message UnregisterResponse {
+  bool success = 1;
+}
+
+message LookupContactRequest {
+  string sip_uri = 1;
+}
+
+message LookupContactResponse {
+  repeated string contact_uris = 1;
+}

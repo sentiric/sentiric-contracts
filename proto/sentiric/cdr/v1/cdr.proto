@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package sentiric.cdr.v1;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/cdr/v1;cdrv1";
+
+service CdrService {
+  rpc RecordCallEvent(RecordCallEventRequest) returns (RecordCallEventResponse);
+}
+
+message RecordCallEventRequest { // ESKİ: CallEvent
+  string event_id = 1;
+  string call_id = 2;
+  string tenant_id = 3;
+  string event_type = 4;
+  google.protobuf.Timestamp timestamp = 5;
+  map<string, string> metadata = 6;
+}
+
+message RecordCallEventResponse { // ESKİ: Empty (Artık özel bir yanıt kullanıyoruz)
+  bool success = 1;
+}

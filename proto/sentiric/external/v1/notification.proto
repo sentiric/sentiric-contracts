@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package sentiric.external.v1;
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/external/v1;externalv1";
+
+service NotificationService {
+  rpc SendSMS(SendSMSRequest) returns (SendSMSResponse);
+  rpc SendEmail(SendEmailRequest) returns (SendEmailResponse);
+}
+
+message SendSMSRequest { // ESKİ: SMSRequest
+  string to = 1;
+  string body = 2;
+  string tenant_id = 3;
+}
+
+message SendSMSResponse { // ESKİ: SMSResponse
+  bool success = 1;
+}
+
+message SendEmailRequest { // ESKİ: EmailRequest
+  string to = 1;
+  string subject = 2;
+  string body_html = 3;
+}
+
+message SendEmailResponse { // ESKİ: EmailResponse
+  bool success = 1;
+}
