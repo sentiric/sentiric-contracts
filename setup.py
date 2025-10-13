@@ -20,7 +20,7 @@ setup(
     package_dir={"": "gen/python"},
     install_requires=[
         "grpcio>=1.64.1",
-        "protobuf>=6.32.0,<7.0.0",
+        "protobuf>=4.25.0,<6.0.0",
         "google-api-python-client",
     ],
     python_requires=">=3.8",
