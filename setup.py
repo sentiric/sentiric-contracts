@@ -6,7 +6,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="sentiric-contracts-py",
-    version="1.9.0",
+    version="1.9.2",
     author="Sentiric Team",
     author_email="dev@sentiric.ai",
     description="Auto-generated Python gRPC stubs for the Sentiric platform.",
@@ -19,8 +19,8 @@ setup(
     packages=find_namespace_packages(where="gen/python"),
     package_dir={"": "gen/python"},
     install_requires=[
-        "grpcio>=1.64.1",
-        "protobuf>=4.25.0,<6.0.0",
+        "grpcio>=1.62.0",  # Protobuf 5.x'i destekleyen ilk versiyonlardan
+        "protobuf>=5.26.1,<6.0.0", # grpcio ile uyumlu, modern ve stabil versiyon
         "google-api-python-client",
     ],
     python_requires=">=3.8",
