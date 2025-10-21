@@ -1,31 +1,66 @@
-# 🚀 SENTIRIC PROTOBUF VERSION STANDARDI
-# 📅 Yürürlük Tarihi: 2025-01-20
+# 🚀 SENTIRIC PROTOBUF DEPENDENCY STANDARD
+# 📅 Lessons Learned - 2025-01-20
 
-## 🎯 STANDART KURALLAR
+## 🎯 PROBLEM ÖZETİ & LESSONS LEARNED
 
-### 1. 📦 CONTRACTS PAKETİ
-- **PROTOBUF BAĞIMLILIĞI YOK** - Sadece `grpcio`
-- Versiyon: `sentiric-contracts-py>=1.9.3`
+### ❌ YAPILAN HATALAR:
+1. **Contracts'ta sabit protobuf versiyonu** → `protobuf<6.0.0` (ÇAKIŞMA)
+2. **STT'de sabit protobuf versiyonu** → `protobuf==6.33.0` (ÇAKIŞMA)
+3. **FastAPI vs Instrumentator çakışması** → starlette versiyon uyumsuzluğu
+4. **Eksik paketler** → structlog, pydantic-settings, torch, pydub
 
-### 2. 🔧 MİCROSERVİSLER
-- **Protobuf Range:** `protobuf>=5.26.1,<7.0.0`
-- **gRPC:** `grpcio>=1.62.0`
+### ✅ BULUNAN ÇÖZÜMLER:
+1. **Contracts bağımsız** → protobuf bağımlılığı KALDIRILDI (v1.9.3)
+2. **STT standard range** → `protobuf>=5.26.1,<7.0.0`
+3. **Instrumentator downgrade** → 7.0.0 → 6.0.0 (FastAPI 0.104 uyumlu)
+4. **Tüm paketler eklendi** → tek seferde complete template
 
-### 3. ✅ ZORUNLU UYGULAMA
-```txt
-# TÜML requirements.txt DOSYALARINDA OLMALI:
-protobuf>=5.26.1,<7.0.0
-grpcio>=1.62.0
+## 📦 STANDART KURALLAR
+
+### 1. CONTRACTS PAKETİ
+```python
+# ✅ DOĞRU (setup.py):
+install_requires=[
+    "grpcio>=1.62.0",  # SADECE gRPC
+    # ❌ PROTUBUF BAĞIMLILIĞI YOK
+]
 ```
 
-### 4. ❌ YASAKLAR
-- `protobuf==X.X.X` (SABİT VERSİYON)
-- `protobuf<5.0.0` (ESKİ VERSİYONLAR)
-- `protobuf>=7.0.0` (HENÜZ DESTEKLENMEYEN)
+### 2. MİCROSERVİSLER
+```txt
+# ✅ DOĞRU:
+protobuf>=5.26.1,<7.0.0
+grpcio>=1.62.0
 
-## 🛠 TAMİM EDİLECEK SERVİSLER LİSTESİ
+# ❌ YANLIŞ:
+protobuf==6.33.0        # SABİT VERSİYON - YASAK!
+protobuf<5.0.0          # ÇOK ESKİ - YASAK!
+```
 
-- [ ] sentiric-stt-whisper-service ✅ (TAMAMLANDI)
+### 3. FASTAPI STACK
+```txt
+# ✅ UYUMLU VERSİYONLAR:
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+prometheus-fastapi-instrumentator==6.0.0  # ✅ 7.0.0 DEĞİL!
+
+# ❌ UYUMSUZ:
+prometheus-fastapi-instrumentator==7.0.0  # FastAPI 0.104 ile çakışır
+```
+
+### 4. WHISPER STACK
+```txt
+# ✅ ZORUNLU PAKETLER:
+faster-whisper==1.0.2
+torch==2.3.0            # ✅ KRİTİK: faster-whisper ile BİRLİKTE
+librosa==0.10.1
+soundfile==0.12.1
+pydub==0.25.1           # ✅ AUDIO PROCESSING İÇİN
+```
+
+## 🛠 TAMİM EDİLECEK SERVİSLER
+
+- [x] sentiric-stt-whisper-service ✅ **(TAMAMLANDI - STABLE)**
 - [ ] sentiric-tts-service
 - [ ] sentiric-agent-service  
 - [ ] sentiric-dialog-service
@@ -34,96 +69,24 @@ grpcio>=1.62.0
 - [ ] sentiric-media-service
 - [ ] sentiric-billing-service
 - [ ] TÜM DİĞER SERVİSLER...
-```
 
-### 5. 🔄 **OTOMATİK KONTROL SCRIPT'İ**
-
-**Dosya:** `scripts/check-protobuf-versions.py`
-```python
-#!/usr/bin/env python3
-"""
-Sentiric Protobuf Version Checker
-Tüm servislerde protobuf versiyonlarını kontrol eder
-"""
-
-import os
-import re
-import glob
-
-def check_requirements_files():
-    """Tüm requirements.txt dosyalarını kontrol et"""
-    
-    standard_pattern = r'protobuf>=5\.26\.1,<7\.0\.0'
-    forbidden_patterns = [
-        r'protobuf==\d+\.\d+\.\d+',  # Sabit versiyon
-        r'protobuf<\d+\.\d+\.\d+',   # Çok eski
-        r'protobuf>=7\.\d+\.\d+'     # Çok yeni
-    ]
-    
-    issues = []
-    
-    # Tüm requirements.txt dosyalarını bul
-    for req_file in glob.glob("**/requirements.txt", recursive=True):
-        try:
-            with open(req_file, 'r') as f:
-                content = f.read()
-                
-            # Standart uygun mu?
-            if not re.search(standard_pattern, content):
-                issues.append(f"❌ {req_file}: Standart protobuf range kullanmıyor")
-                
-            # Yasaklı pattern'ler var mı?
-            for pattern in forbidden_patterns:
-                if re.search(pattern, content):
-                    issues.append(f"🚫 {req_file}: Yasaklı pattern: {pattern}")
-                    
-        except Exception as e:
-            issues.append(f"⚠️  {req_file}: Okunamadı - {e}")
-    
-    return issues
-
-if __name__ == "__main__":
-    print("🔍 Sentiric Protobuf Version Kontrolü...")
-    issues = check_requirements_files()
-    
-    if issues:
-        print("\n".join(issues))
-        exit(1)
-    else:
-        print("✅ Tüm servisler standartlara uygun!")
-```
-
-### 6. 🚀 **HIZLI UYGULAMA KOMUTLARI**
+## 🔧 ACİL DÜZELTME SCRIPT'İ
 
 ```bash
-# 1. CONTRACTS GÜNCELLE
-cd sentiric-contracts
-git checkout main
-# setup.py'yi yukarıdaki gibi düzenle
-git add setup.py
-git commit -m "fix(deps): remove protobuf dependency to resolve version conflicts"
-git tag v1.9.3
-git push origin main --tags
+# Tüm servislerde protobuf versiyonunu kontrol et
+find . -name "requirements.txt" -exec grep -H "protobuf" {} \;
 
-# 2. STT SERVİSİNİ DÜZELT
-cd sentiric-stt-whisper-service  
-git checkout main
-# requirements.txt'yi yukarıdaki gibi düzenle
-git add requirements.txt
-git commit -m "fix(deps): apply standard protobuf range >=5.26.1,<7.0.0"
-git push origin main
-
-# 3. DİĞER SERVİSLERİ KONTROL ET
-python3 scripts/check-protobuf-versions.py
+# Uyumsuz versiyonları düzelt
+sed -i 's/protobuf==.*/protobuf>=5.26.1,<7.0.0/g' requirements.txt
 ```
 
-## 🎉 **SON DURUM**
+## 🎉 SONUÇ
 
-**BU ÇÖZÜM İLE:**
-- ✅ **Contracts tamamen bağımsız** - hiç protobuf çakışması yok
-- ✅ **Tüm servisler aynı range'i kullanıyor** 
-- ✅ **Gelecekteki major versiyonlarda bile sorun yok**
-- ✅ **Otomatik kontrol mekanizması var**
-- ✅ **Net standart dokümanı var**
+**BU STANDARTLARA UYARSAK:**
+- ✅ Hiçbir protobuf çakışması olmayacak
+- ✅ Tüm servisler uyumlu çalışacak  
+- ✅ Build'ler her zaman yeşil kalacak
+- ✅ Geliştirme hızı artacak
 
-**Hemen 1. ve 2. adımları uygula, CI yeşil yanacak!** 🟢
+**STANDART: `protobuf>=5.26.1,<7.0.0`**
+**CONTRACTS: `v1.9.3+` (protobuf bağımsız)**
