@@ -1,4 +1,3 @@
-# sentiric-contracts/setup.py
 from setuptools import setup, find_namespace_packages
 
 with open("README.md", "r", encoding="utf-8") as fh:
@@ -6,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="sentiric-contracts-py",
-    version="1.9.2",
+    version="1.9.3",  # 🔼 VERSİYONU ARTIR
     author="Sentiric Team",
     author_email="dev@sentiric.ai",
     description="Auto-generated Python gRPC stubs for the Sentiric platform.",
@@ -19,9 +18,9 @@ setup(
     packages=find_namespace_packages(where="gen/python"),
     package_dir={"": "gen/python"},
     install_requires=[
-        "grpcio>=1.62.0",  # Protobuf 5.x'i destekleyen ilk versiyonlardan
-        "protobuf>=5.26.1,<6.0.0", # grpcio ile uyumlu, modern ve stabil versiyon
+        "grpcio>=1.62.0",  # ✅ SADECE gRPC - PROTUBUF İÇERİYOR ZATEN
         "google-api-python-client",
+        # ❌ PROTUBUF BAĞIMLILIĞI TAMAMEN KALDIRILDI
     ],
     python_requires=">=3.8",
     classifiers=[
