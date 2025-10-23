@@ -30,19 +30,43 @@ pub struct TranscribeStreamResponse {
     #[prost(bool, tag="2")]
     pub is_final: bool,
 }
+/// Dosya tabanlı transkripsiyon için mesajlar
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct WhisperTranscribeRequest {
     #[prost(bytes="vec", tag="1")]
     pub audio_data: ::prost::alloc::vec::Vec<u8>,
-    #[prost(string, tag="2")]
-    pub language: ::prost::alloc::string::String,
+    #[prost(string, optional, tag="2")]
+    pub language: ::core::option::Option<::prost::alloc::string::String>,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct WhisperTranscribeResponse {
     #[prost(string, tag="1")]
     pub transcription: ::prost::alloc::string::String,
+    #[prost(string, tag="2")]
+    pub language: ::prost::alloc::string::String,
+    #[prost(float, tag="3")]
+    pub language_probability: f32,
+    #[prost(double, tag="4")]
+    pub duration: f64,
+}
+/// Akış tabanlı transkripsiyon için mesajlar
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct WhisperTranscribeStreamRequest {
+    /// Ses verisi 16kHz, 16-bit, mono, ham PCM formatında olmalıdır.
+    #[prost(bytes="vec", tag="1")]
+    pub audio_chunk: ::prost::alloc::vec::Vec<u8>,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct WhisperTranscribeStreamResponse {
+    #[prost(string, tag="1")]
+    pub transcription: ::prost::alloc::string::String,
+    /// Bu segmentin nihai sonuç olup olmadığını belirtir.
+    #[prost(bool, tag="2")]
+    pub is_final: bool,
 }
 include!("sentiric.stt.v1.tonic.rs");
 // @@protoc_insertion_point(module)

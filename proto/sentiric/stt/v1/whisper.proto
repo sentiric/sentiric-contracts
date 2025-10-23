@@ -1,3 +1,4 @@
+// File: proto/sentiric/stt/v1/whisper.proto
 syntax = "proto3";
 
 package sentiric.stt.v1;
@@ -6,14 +7,33 @@ option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/stt/
 
 // SttWhisperService, Whisper motoruna özgü düşük seviyeli kontrat.
 service SttWhisperService {
-  rpc WhisperTranscribe(WhisperTranscribeRequest) returns (WhisperTranscribeResponse); // RPC Adı da değişti
+  // Bir ses dosyasının tamamını tek seferde metne çevirir.
+  rpc WhisperTranscribe(WhisperTranscribeRequest) returns (WhisperTranscribeResponse);
+  
+  // Gerçek zamanlı bir ses akışını metne çevirir.
+  rpc WhisperTranscribeStream(stream WhisperTranscribeStreamRequest) returns (stream WhisperTranscribeStreamResponse);
 }
 
+// Dosya tabanlı transkripsiyon için mesajlar
 message WhisperTranscribeRequest {
   bytes audio_data = 1;
-  string language = 2;
+  optional string language = 2;
 }
 
 message WhisperTranscribeResponse {
   string transcription = 1;
+  string language = 2;
+  float language_probability = 3;
+  double duration = 4;
+}
+
+// Akış tabanlı transkripsiyon için mesajlar
+message WhisperTranscribeStreamRequest {
+  // Ses verisi 16kHz, 16-bit, mono, ham PCM formatında olmalıdır.
+  bytes audio_chunk = 1;
+}
+
+message WhisperTranscribeStreamResponse {
+  string transcription = 1;
+  bool is_final = 2; // Bu segmentin nihai sonuç olup olmadığını belirtir.
 }

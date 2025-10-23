@@ -20,6 +20,11 @@ class SttWhisperServiceStub(object):
                 request_serializer=sentiric_dot_stt_dot_v1_dot_whisper__pb2.WhisperTranscribeRequest.SerializeToString,
                 response_deserializer=sentiric_dot_stt_dot_v1_dot_whisper__pb2.WhisperTranscribeResponse.FromString,
                 _registered_method=True)
+        self.WhisperTranscribeStream = channel.stream_stream(
+                '/sentiric.stt.v1.SttWhisperService/WhisperTranscribeStream',
+                request_serializer=sentiric_dot_stt_dot_v1_dot_whisper__pb2.WhisperTranscribeStreamRequest.SerializeToString,
+                response_deserializer=sentiric_dot_stt_dot_v1_dot_whisper__pb2.WhisperTranscribeStreamResponse.FromString,
+                _registered_method=True)
 
 
 class SttWhisperServiceServicer(object):
@@ -27,7 +32,14 @@ class SttWhisperServiceServicer(object):
     """
 
     def WhisperTranscribe(self, request, context):
-        """RPC Adı da değişti
+        """Bir ses dosyasının tamamını tek seferde metne çevirir.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def WhisperTranscribeStream(self, request_iterator, context):
+        """Gerçek zamanlı bir ses akışını metne çevirir.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -40,6 +52,11 @@ def add_SttWhisperServiceServicer_to_server(servicer, server):
                     servicer.WhisperTranscribe,
                     request_deserializer=sentiric_dot_stt_dot_v1_dot_whisper__pb2.WhisperTranscribeRequest.FromString,
                     response_serializer=sentiric_dot_stt_dot_v1_dot_whisper__pb2.WhisperTranscribeResponse.SerializeToString,
+            ),
+            'WhisperTranscribeStream': grpc.stream_stream_rpc_method_handler(
+                    servicer.WhisperTranscribeStream,
+                    request_deserializer=sentiric_dot_stt_dot_v1_dot_whisper__pb2.WhisperTranscribeStreamRequest.FromString,
+                    response_serializer=sentiric_dot_stt_dot_v1_dot_whisper__pb2.WhisperTranscribeStreamResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -70,6 +87,33 @@ class SttWhisperService(object):
             '/sentiric.stt.v1.SttWhisperService/WhisperTranscribe',
             sentiric_dot_stt_dot_v1_dot_whisper__pb2.WhisperTranscribeRequest.SerializeToString,
             sentiric_dot_stt_dot_v1_dot_whisper__pb2.WhisperTranscribeResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def WhisperTranscribeStream(request_iterator,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.stream_stream(
+            request_iterator,
+            target,
+            '/sentiric.stt.v1.SttWhisperService/WhisperTranscribeStream',
+            sentiric_dot_stt_dot_v1_dot_whisper__pb2.WhisperTranscribeStreamRequest.SerializeToString,
+            sentiric_dot_stt_dot_v1_dot_whisper__pb2.WhisperTranscribeStreamResponse.FromString,
             options,
             channel_credentials,
             insecure,

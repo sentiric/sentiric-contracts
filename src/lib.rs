@@ -23,7 +23,7 @@ pub mod sentiric {
     pub mod external { pub mod v1 { tonic::include_proto!("sentiric.external.v1"); } }
 
     // Kategori 3
-    pub mod stt { pub mod v1 { tonic::include_proto!("sentiric.stt.v1"); } }
+    pub mod stt { pub mod v1 { tonic::include_proto!("sentiric.stt.v1"); } } // <-- YENİ EKLENDİ (veya güncellendi)
     pub mod llm { pub mod v1 { tonic::include_proto!("sentiric.llm.v1"); } }
 
     // Kategori 4

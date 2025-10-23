@@ -42,7 +42,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 "sentiric/dialog/v1/dialog.proto",
                 "sentiric/telephony/v1/action.proto", 
                 "sentiric/tts/v1/edge.proto",
-                "sentiric/stt/v1/whisper.proto",
+                "sentiric/stt/v1/whisper.proto", // <-- YENİ EKLENDİ
                 "sentiric/cdr/v1/cdr.proto",
                 "sentiric/external/v1/connector.proto",
                 "sentiric/control/v1/task.proto",
