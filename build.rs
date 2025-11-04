@@ -32,6 +32,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 "sentiric/user/v1/identity.proto",
                 "sentiric/stt/v1/gateway.proto",
                 "sentiric/llm/v1/gateway.proto",
+                "sentiric/llm/v1/local.proto",
                 "sentiric/sip/v1/signaling.proto",
                 "sentiric/sip/v1/sbc.proto",
                 "sentiric/sip/v1/proxy.proto",

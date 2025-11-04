@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package sentiric.llm.v1;
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/llm/v1;llmv1";
+
+// LLMLocalService, yerel bir LLM motoruna özgü düşük seviyeli kontrattır.
+// Bu servis, bir uzman motor olduğu için kendi spesifik istek ve yanıt mesajlarını kullanır.
+service LLMLocalService {
+  // Bir metin isteminden (prompt) yola çıkarak token akışı (stream) üretir.
+  rpc LocalGenerateStream(LocalGenerateStreamRequest) returns (stream LocalGenerateStreamResponse);
+}
+
+message LocalGenerateStreamRequest {
+  string prompt = 1;
+  // Gelecekteki model parametreleri için yer tutucular
+  // float temperature = 2;
+  // int32 max_tokens = 3;
+}
+
+message LocalGenerateStreamResponse {
+  // Üretilen tek bir token'ı içerir.
+  string token = 1;
+}

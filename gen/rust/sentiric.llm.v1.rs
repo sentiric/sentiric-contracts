@@ -36,5 +36,21 @@ pub struct GenerateStreamResponse {
     #[prost(string, tag="1")]
     pub generated_text: ::prost::alloc::string::String,
 }
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct LocalGenerateStreamRequest {
+    /// Gelecekteki model parametreleri için yer tutucular
+    /// float temperature = 2;
+    /// int32 max_tokens = 3;
+    #[prost(string, tag="1")]
+    pub prompt: ::prost::alloc::string::String,
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct LocalGenerateStreamResponse {
+    /// Üretilen tek bir token'ı içerir.
+    #[prost(string, tag="1")]
+    pub token: ::prost::alloc::string::String,
+}
 include!("sentiric.llm.v1.tonic.rs");
 // @@protoc_insertion_point(module)
