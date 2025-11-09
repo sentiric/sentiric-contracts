@@ -22,9 +22,10 @@ _runtime_version.ValidateProtobufRuntimeVersion(
 _sym_db = _symbol_database.Default()
 
 
+from google.protobuf import struct_pb2 as google_dot_protobuf_dot_struct__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1bsentiric/llm/v1/local.proto\x12\x0fsentiric.llm.v1\"4\n\x1aLocalGenerateStreamRequest\x12\x16\n\x06prompt\x18\x01 \x01(\tR\x06prompt\"3\n\x1bLocalGenerateStreamResponse\x12\x14\n\x05token\x18\x01 \x01(\tR\x05token2\x85\x01\n\x0fLLMLocalService\x12r\n\x13LocalGenerateStream\x12+.sentiric.llm.v1.LocalGenerateStreamRequest\x1a,.sentiric.llm.v1.LocalGenerateStreamResponse0\x01\x42\x45ZCgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/llm/v1;llmv1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1bsentiric/llm/v1/local.proto\x12\x0fsentiric.llm.v1\x1a\x1cgoogle/protobuf/struct.proto\"\xd2\x03\n\x10GenerationParams\x12)\n\x0emax_new_tokens\x18\x01 \x01(\x05H\x00R\x0cmaxNewTokens\x88\x01\x01\x12%\n\x0btemperature\x18\x02 \x01(\x02H\x01R\x0btemperature\x88\x01\x01\x12\x18\n\x05top_k\x18\x03 \x01(\x05H\x02R\x04topK\x88\x01\x01\x12\x18\n\x05top_p\x18\x04 \x01(\x02H\x03R\x04topP\x88\x01\x01\x12\x32\n\x12repetition_penalty\x18\x05 \x01(\x02H\x04R\x11repetitionPenalty\x88\x01\x01\x12%\n\x0estop_sequences\x18\x06 \x03(\tR\rstopSequences\x12\x17\n\x04seed\x18\x07 \x01(\x03H\x05R\x04seed\x88\x01\x01\x12R\n\x16\x65ngine_specific_params\x18\x14 \x01(\x0b\x32\x17.google.protobuf.StructH\x06R\x14\x65ngineSpecificParams\x88\x01\x01\x42\x11\n\x0f_max_new_tokensB\x0e\n\x0c_temperatureB\x08\n\x06_top_kB\x08\n\x06_top_pB\x15\n\x13_repetition_penaltyB\x07\n\x05_seedB\x19\n\x17_engine_specific_params\"i\n\x14LocalGenerateRequest\x12\x16\n\x06prompt\x18\x01 \x01(\tR\x06prompt\x12\x39\n\x06params\x18\x02 \x01(\x0b\x32!.sentiric.llm.v1.GenerationParamsR\x06params\"o\n\x1aLocalGenerateStreamRequest\x12\x16\n\x06prompt\x18\x01 \x01(\tR\x06prompt\x12\x39\n\x06params\x18\x02 \x01(\x0b\x32!.sentiric.llm.v1.GenerationParamsR\x06params\"\x99\x01\n\x15LocalGenerateResponse\x12%\n\x0egenerated_text\x18\x01 \x01(\tR\rgeneratedText\x12#\n\rfinish_reason\x18\x02 \x01(\tR\x0c\x66inishReason\x12\x34\n\x16total_tokens_generated\x18\x03 \x01(\x05R\x14totalTokensGenerated\"\x8f\x01\n\x1bLocalGenerateStreamResponse\x12\x16\n\x05token\x18\x01 \x01(\tH\x00R\x05token\x12G\n\x0e\x66inish_details\x18\x02 \x01(\x0b\x32\x1e.sentiric.llm.v1.FinishDetailsH\x00R\rfinishDetailsB\x0f\n\rresponse_type\"\x87\x01\n\rFinishDetails\x12#\n\rfinish_reason\x18\x01 \x01(\tR\x0c\x66inishReason\x12\x34\n\x16total_tokens_generated\x18\x02 \x01(\x05R\x14totalTokensGenerated\x12\x1b\n\tseed_used\x18\x03 \x01(\x03R\x08seedUsed2\xe5\x01\n\x0fLLMLocalService\x12^\n\rLocalGenerate\x12%.sentiric.llm.v1.LocalGenerateRequest\x1a&.sentiric.llm.v1.LocalGenerateResponse\x12r\n\x13LocalGenerateStream\x12+.sentiric.llm.v1.LocalGenerateStreamRequest\x1a,.sentiric.llm.v1.LocalGenerateStreamResponse0\x01\x42\x45ZCgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/llm/v1;llmv1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -32,10 +33,18 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'sentiric.llm.v1.local_pb2',
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
   _globals['DESCRIPTOR']._serialized_options = b'ZCgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/llm/v1;llmv1'
-  _globals['_LOCALGENERATESTREAMREQUEST']._serialized_start=48
-  _globals['_LOCALGENERATESTREAMREQUEST']._serialized_end=100
-  _globals['_LOCALGENERATESTREAMRESPONSE']._serialized_start=102
-  _globals['_LOCALGENERATESTREAMRESPONSE']._serialized_end=153
-  _globals['_LLMLOCALSERVICE']._serialized_start=156
-  _globals['_LLMLOCALSERVICE']._serialized_end=289
+  _globals['_GENERATIONPARAMS']._serialized_start=79
+  _globals['_GENERATIONPARAMS']._serialized_end=545
+  _globals['_LOCALGENERATEREQUEST']._serialized_start=547
+  _globals['_LOCALGENERATEREQUEST']._serialized_end=652
+  _globals['_LOCALGENERATESTREAMREQUEST']._serialized_start=654
+  _globals['_LOCALGENERATESTREAMREQUEST']._serialized_end=765
+  _globals['_LOCALGENERATERESPONSE']._serialized_start=768
+  _globals['_LOCALGENERATERESPONSE']._serialized_end=921
+  _globals['_LOCALGENERATESTREAMRESPONSE']._serialized_start=924
+  _globals['_LOCALGENERATESTREAMRESPONSE']._serialized_end=1067
+  _globals['_FINISHDETAILS']._serialized_start=1070
+  _globals['_FINISHDETAILS']._serialized_end=1205
+  _globals['_LLMLOCALSERVICE']._serialized_start=1208
+  _globals['_LLMLOCALSERVICE']._serialized_end=1437
 # @@protoc_insertion_point(module_scope)

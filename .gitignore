@@ -4,7 +4,11 @@
 *.env
 /node_modules/
 /target/
-/gen/
+# /gen/ DİZİNİ KASITLI OLARAK IGNORE EDİLMİYOR, MEVCUT DESEN BU ŞEKİLDE.
+
+# Build artifact'ları
+*.tar.gz
+*.zip
 
 # Python build artefaktları
 /dist/
@@ -13,3 +17,5 @@
 
 # Diğer sistem dosyaları
 .DS_Store
+.venv/
+validation/cpp/build/

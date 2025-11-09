@@ -1,29 +1,20 @@
 version: v1
 plugins:
-  # Go
+  # Diğer diller aynı kalıyor...
   - plugin: buf.build/protocolbuffers/go
     out: gen/go 
     opt: paths=source_relative
   - plugin: buf.build/grpc/go
     out: gen/go
     opt: paths=source_relative,require_unimplemented_servers=false
-  - plugin: buf.build/grpc-ecosystem/gateway
-    out: gen/go
-    opt: paths=source_relative
-    
-  # Python
   - plugin: buf.build/protocolbuffers/python
     out: gen/python
   - plugin: buf.build/grpc/python
     out: gen/python
-
-  # Rust
   - plugin: buf.build/community/neoeinstein-prost
     out: gen/rust
   - plugin: buf.build/community/neoeinstein-tonic
     out: gen/rust
-    
-  # Node.js
   - plugin: buf.build/protocolbuffers/js
     out: gen/nodejs
     opt:
@@ -32,3 +23,9 @@ plugins:
     out: gen/nodejs
     opt:
       - grpc_js
+
+  # # C++ için en basit, modern buf eklentilerini kullanıyoruz.
+  # - plugin: buf.build/protocolbuffers/cpp
+  #   out: gen/cpp
+  # - plugin: buf.build/grpc/cpp
+  #   out: gen/cpp

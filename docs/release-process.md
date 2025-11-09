@@ -24,21 +24,25 @@ vMAJOR.MINOR.PATCH
 
 ## 🏷️ Yayınlama Adımları
 
-1. Gerekli `.proto` değişikliklerini yap.
-2. `buf generate` ile kodları üret.
-3. Commit'le, push et.
-4. Yeni bir versiyon etiketi (tag) oluştur.
+1.  Gerekli `.proto` değişikliklerini yap.
+2.  `make lint` ile kalite kontrolü yap.
+3.  `make generate-all` ile tüm diller için kodları üret.
+4.  **`make validate` ile tüm dillerin derlendiğini ve testleri geçtiğini doğrula.** (<- YENİ EKLENEN ADIM)
+5.  Değişiklikleri `Conventional Commits` standardına uygun bir mesajla commit'le ve `main`'e push'la.
+6.  Yeni bir versiyon etiketi (tag) oluştur ve bunu da push'la.
 
 ### Örnek Yayın
 
 ```bash
+# Değişiklikleri ekle
 git add .
 git commit -m "feat(user): Add UserSettings message"
 git push origin main
 
-git tag v1.7.0
-git push origin v1.7.0
-````
+# Yeni tag'i oluştur ve gönder
+git tag v1.10.0
+git push origin v1.10.0
+```
 
 ### Ne Olur?
 

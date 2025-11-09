@@ -36,21 +36,86 @@ pub struct GenerateStreamResponse {
     #[prost(string, tag="1")]
     pub generated_text: ::prost::alloc::string::String,
 }
+/// Ortak parametreleri içeren ve her iki istek mesajı tarafından kullanılacak bir mesaj.
+/// Bu, kod tekrarını en aza indirir ve mantığı merkezileştirir.
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct GenerationParams {
+    #[prost(int32, optional, tag="1")]
+    pub max_new_tokens: ::core::option::Option<i32>,
+    #[prost(float, optional, tag="2")]
+    pub temperature: ::core::option::Option<f32>,
+    #[prost(int32, optional, tag="3")]
+    pub top_k: ::core::option::Option<i32>,
+    #[prost(float, optional, tag="4")]
+    pub top_p: ::core::option::Option<f32>,
+    #[prost(float, optional, tag="5")]
+    pub repetition_penalty: ::core::option::Option<f32>,
+    #[prost(string, repeated, tag="6")]
+    pub stop_sequences: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
+    #[prost(int64, optional, tag="7")]
+    pub seed: ::core::option::Option<i64>,
+    #[prost(message, optional, tag="20")]
+    pub engine_specific_params: ::core::option::Option<::prost_types::Struct>,
+}
+/// LocalGenerate RPC'si için istek mesajı.
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct LocalGenerateRequest {
+    #[prost(string, tag="1")]
+    pub prompt: ::prost::alloc::string::String,
+    /// Ortak parametreler buraya gömülüyor (embedded).
+    #[prost(message, optional, tag="2")]
+    pub params: ::core::option::Option<GenerationParams>,
+}
+/// YENİ: LocalGenerateStream RPC'si için ayrı istek mesajı.
+/// Bu, lint kuralını karşılar ve gelecekteki bağımsız değişikliklere izin verir.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct LocalGenerateStreamRequest {
-    /// Gelecekteki model parametreleri için yer tutucular
-    /// float temperature = 2;
-    /// int32 max_tokens = 3;
     #[prost(string, tag="1")]
     pub prompt: ::prost::alloc::string::String,
+    /// Ortak parametreler buraya gömülüyor.
+    #[prost(message, optional, tag="2")]
+    pub params: ::core::option::Option<GenerationParams>,
+}
+/// Yanıt mesajları değişmeden kalır.
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct LocalGenerateResponse {
+    #[prost(string, tag="1")]
+    pub generated_text: ::prost::alloc::string::String,
+    #[prost(string, tag="2")]
+    pub finish_reason: ::prost::alloc::string::String,
+    #[prost(int32, tag="3")]
+    pub total_tokens_generated: i32,
 }
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct LocalGenerateStreamResponse {
-    /// Üretilen tek bir token'ı içerir.
+    #[prost(oneof="local_generate_stream_response::ResponseType", tags="1, 2")]
+    pub response_type: ::core::option::Option<local_generate_stream_response::ResponseType>,
+}
+/// Nested message and enum types in `LocalGenerateStreamResponse`.
+pub mod local_generate_stream_response {
+    #[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Oneof)]
+    pub enum ResponseType {
+        #[prost(string, tag="1")]
+        Token(::prost::alloc::string::String),
+        #[prost(message, tag="2")]
+        FinishDetails(super::FinishDetails),
+    }
+}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct FinishDetails {
     #[prost(string, tag="1")]
-    pub token: ::prost::alloc::string::String,
+    pub finish_reason: ::prost::alloc::string::String,
+    #[prost(int32, tag="2")]
+    pub total_tokens_generated: i32,
+    #[prost(int64, tag="3")]
+    pub seed_used: i64,
 }
 include!("sentiric.llm.v1.tonic.rs");
 // @@protoc_insertion_point(module)

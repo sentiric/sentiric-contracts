@@ -1,24 +1,63 @@
 syntax = "proto3";
 
+import "google/protobuf/struct.proto";
+
 package sentiric.llm.v1;
 
 option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/llm/v1;llmv1";
 
-// LLMLocalService, yerel bir LLM motoruna özgü düşük seviyeli kontrattır.
-// Bu servis, bir uzman motor olduğu için kendi spesifik istek ve yanıt mesajlarını kullanır.
 service LLMLocalService {
-  // Bir metin isteminden (prompt) yola çıkarak token akışı (stream) üretir.
+  rpc LocalGenerate(LocalGenerateRequest) returns (LocalGenerateResponse);
+  
+  // DEĞİŞİKLİK: Artık kendi özel istek mesajını kullanıyor.
   rpc LocalGenerateStream(LocalGenerateStreamRequest) returns (stream LocalGenerateStreamResponse);
 }
 
+// Ortak parametreleri içeren ve her iki istek mesajı tarafından kullanılacak bir mesaj.
+// Bu, kod tekrarını en aza indirir ve mantığı merkezileştirir.
+message GenerationParams {
+  optional int32 max_new_tokens = 1;
+  optional float temperature = 2;
+  optional int32 top_k = 3;
+  optional float top_p = 4;
+  optional float repetition_penalty = 5;
+  repeated string stop_sequences = 6;
+  optional int64 seed = 7;
+  optional google.protobuf.Struct engine_specific_params = 20;
+}
+
+// LocalGenerate RPC'si için istek mesajı.
+message LocalGenerateRequest {
+  string prompt = 1;
+  // Ortak parametreler buraya gömülüyor (embedded).
+  GenerationParams params = 2;
+}
+
+// YENİ: LocalGenerateStream RPC'si için ayrı istek mesajı.
+// Bu, lint kuralını karşılar ve gelecekteki bağımsız değişikliklere izin verir.
 message LocalGenerateStreamRequest {
   string prompt = 1;
-  // Gelecekteki model parametreleri için yer tutucular
-  // float temperature = 2;
-  // int32 max_tokens = 3;
+  // Ortak parametreler buraya gömülüyor.
+  GenerationParams params = 2;
+}
+
+
+// Yanıt mesajları değişmeden kalır.
+message LocalGenerateResponse {
+  string generated_text = 1;
+  string finish_reason = 2;
+  int32 total_tokens_generated = 3;
 }
 
 message LocalGenerateStreamResponse {
-  // Üretilen tek bir token'ı içerir.
-  string token = 1;
+  oneof response_type {
+    string token = 1;
+    FinishDetails finish_details = 2;
+  }
+}
+
+message FinishDetails {
+  string finish_reason = 1;
+  int32 total_tokens_generated = 2;
+  int64 seed_used = 3;
 }

@@ -2,7 +2,7 @@ version: v1
 name: buf.build/sentiric/sentiric-contracts
 lint:
   use:
-    - DEFAULT # << ESKİ HALİNE DÖNDÜRÜLDÜ
+    - STANDARD # << ESKİ HALİNE DÖNDÜRÜLDÜ
 breaking:
   use:
     - FILE
