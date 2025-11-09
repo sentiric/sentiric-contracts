@@ -27,6 +27,8 @@ jobs:
       - name: Setup Buf
         uses: bufbuild/buf-setup-action@v1.35.1
         with:
+          # DÜZELTME: Buf versiyonunu sabitle
+          version: '1.59.0'
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
       # YENİ: C++ derleme bağımlılıklarını kur
