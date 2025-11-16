@@ -29,6 +29,9 @@ namespace sentiric {
 namespace llm {
 namespace v1 {
 
+// =============================================================================
+//                      ANA SERVİS TANIMI (Okuma Akışı Prensibi)
+// =============================================================================
 class LlmGatewayService final {
  public:
   static constexpr char const* service_full_name() {
@@ -37,66 +40,48 @@ class LlmGatewayService final {
   class StubInterface {
    public:
     virtual ~StubInterface() {}
-    virtual ::grpc::Status Generate(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateRequest& request, ::sentiric::llm::v1::GenerateResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::llm::v1::GenerateResponse>> AsyncGenerate(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::llm::v1::GenerateResponse>>(AsyncGenerateRaw(context, request, cq));
+    // Diyalogsal bir istek için akış tabanlı metin üretir.
+    // İsteği, model seçiciye göre uygun bir uzman servise yönlendirir.
+    std::unique_ptr< ::grpc::ClientReaderInterface< ::sentiric::llm::v1::GenerateDialogStreamResponse>> GenerateDialogStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateDialogStreamRequest& request) {
+      return std::unique_ptr< ::grpc::ClientReaderInterface< ::sentiric::llm::v1::GenerateDialogStreamResponse>>(GenerateDialogStreamRaw(context, request));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::llm::v1::GenerateResponse>> PrepareAsyncGenerate(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::llm::v1::GenerateResponse>>(PrepareAsyncGenerateRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::sentiric::llm::v1::GenerateDialogStreamResponse>> AsyncGenerateDialogStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateDialogStreamRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::sentiric::llm::v1::GenerateDialogStreamResponse>>(AsyncGenerateDialogStreamRaw(context, request, cq, tag));
     }
-    std::unique_ptr< ::grpc::ClientReaderInterface< ::sentiric::llm::v1::GenerateStreamResponse>> GenerateStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateStreamRequest& request) {
-      return std::unique_ptr< ::grpc::ClientReaderInterface< ::sentiric::llm::v1::GenerateStreamResponse>>(GenerateStreamRaw(context, request));
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::sentiric::llm::v1::GenerateDialogStreamResponse>> PrepareAsyncGenerateDialogStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateDialogStreamRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::sentiric::llm::v1::GenerateDialogStreamResponse>>(PrepareAsyncGenerateDialogStreamRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::sentiric::llm::v1::GenerateStreamResponse>> AsyncGenerateStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateStreamRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::sentiric::llm::v1::GenerateStreamResponse>>(AsyncGenerateStreamRaw(context, request, cq, tag));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::sentiric::llm::v1::GenerateStreamResponse>> PrepareAsyncGenerateStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateStreamRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::sentiric::llm::v1::GenerateStreamResponse>>(PrepareAsyncGenerateStreamRaw(context, request, cq));
-    }
-    // Yeniden Adlandırıldı
     class async_interface {
      public:
       virtual ~async_interface() {}
-      virtual void Generate(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateRequest* request, ::sentiric::llm::v1::GenerateResponse* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void Generate(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateRequest* request, ::sentiric::llm::v1::GenerateResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      virtual void GenerateStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateStreamRequest* request, ::grpc::ClientReadReactor< ::sentiric::llm::v1::GenerateStreamResponse>* reactor) = 0;
-      // Yeniden Adlandırıldı
+      // Diyalogsal bir istek için akış tabanlı metin üretir.
+      // İsteği, model seçiciye göre uygun bir uzman servise yönlendirir.
+      virtual void GenerateDialogStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateDialogStreamRequest* request, ::grpc::ClientReadReactor< ::sentiric::llm::v1::GenerateDialogStreamResponse>* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
     class async_interface* experimental_async() { return async(); }
    private:
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::llm::v1::GenerateResponse>* AsyncGenerateRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::llm::v1::GenerateResponse>* PrepareAsyncGenerateRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientReaderInterface< ::sentiric::llm::v1::GenerateStreamResponse>* GenerateStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateStreamRequest& request) = 0;
-    virtual ::grpc::ClientAsyncReaderInterface< ::sentiric::llm::v1::GenerateStreamResponse>* AsyncGenerateStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateStreamRequest& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
-    virtual ::grpc::ClientAsyncReaderInterface< ::sentiric::llm::v1::GenerateStreamResponse>* PrepareAsyncGenerateStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateStreamRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientReaderInterface< ::sentiric::llm::v1::GenerateDialogStreamResponse>* GenerateDialogStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateDialogStreamRequest& request) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::sentiric::llm::v1::GenerateDialogStreamResponse>* AsyncGenerateDialogStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateDialogStreamRequest& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::sentiric::llm::v1::GenerateDialogStreamResponse>* PrepareAsyncGenerateDialogStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateDialogStreamRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
     Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
-    ::grpc::Status Generate(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateRequest& request, ::sentiric::llm::v1::GenerateResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::llm::v1::GenerateResponse>> AsyncGenerate(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::llm::v1::GenerateResponse>>(AsyncGenerateRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientReader< ::sentiric::llm::v1::GenerateDialogStreamResponse>> GenerateDialogStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateDialogStreamRequest& request) {
+      return std::unique_ptr< ::grpc::ClientReader< ::sentiric::llm::v1::GenerateDialogStreamResponse>>(GenerateDialogStreamRaw(context, request));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::llm::v1::GenerateResponse>> PrepareAsyncGenerate(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::llm::v1::GenerateResponse>>(PrepareAsyncGenerateRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::sentiric::llm::v1::GenerateDialogStreamResponse>> AsyncGenerateDialogStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateDialogStreamRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::sentiric::llm::v1::GenerateDialogStreamResponse>>(AsyncGenerateDialogStreamRaw(context, request, cq, tag));
     }
-    std::unique_ptr< ::grpc::ClientReader< ::sentiric::llm::v1::GenerateStreamResponse>> GenerateStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateStreamRequest& request) {
-      return std::unique_ptr< ::grpc::ClientReader< ::sentiric::llm::v1::GenerateStreamResponse>>(GenerateStreamRaw(context, request));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncReader< ::sentiric::llm::v1::GenerateStreamResponse>> AsyncGenerateStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateStreamRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
-      return std::unique_ptr< ::grpc::ClientAsyncReader< ::sentiric::llm::v1::GenerateStreamResponse>>(AsyncGenerateStreamRaw(context, request, cq, tag));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncReader< ::sentiric::llm::v1::GenerateStreamResponse>> PrepareAsyncGenerateStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateStreamRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncReader< ::sentiric::llm::v1::GenerateStreamResponse>>(PrepareAsyncGenerateStreamRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::sentiric::llm::v1::GenerateDialogStreamResponse>> PrepareAsyncGenerateDialogStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateDialogStreamRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::sentiric::llm::v1::GenerateDialogStreamResponse>>(PrepareAsyncGenerateDialogStreamRaw(context, request, cq));
     }
     class async final :
       public StubInterface::async_interface {
      public:
-      void Generate(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateRequest* request, ::sentiric::llm::v1::GenerateResponse* response, std::function<void(::grpc::Status)>) override;
-      void Generate(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateRequest* request, ::sentiric::llm::v1::GenerateResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void GenerateStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateStreamRequest* request, ::grpc::ClientReadReactor< ::sentiric::llm::v1::GenerateStreamResponse>* reactor) override;
+      void GenerateDialogStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateDialogStreamRequest* request, ::grpc::ClientReadReactor< ::sentiric::llm::v1::GenerateDialogStreamResponse>* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -108,13 +93,10 @@ class LlmGatewayService final {
    private:
     std::shared_ptr< ::grpc::ChannelInterface> channel_;
     class async async_stub_{this};
-    ::grpc::ClientAsyncResponseReader< ::sentiric::llm::v1::GenerateResponse>* AsyncGenerateRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::sentiric::llm::v1::GenerateResponse>* PrepareAsyncGenerateRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientReader< ::sentiric::llm::v1::GenerateStreamResponse>* GenerateStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateStreamRequest& request) override;
-    ::grpc::ClientAsyncReader< ::sentiric::llm::v1::GenerateStreamResponse>* AsyncGenerateStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateStreamRequest& request, ::grpc::CompletionQueue* cq, void* tag) override;
-    ::grpc::ClientAsyncReader< ::sentiric::llm::v1::GenerateStreamResponse>* PrepareAsyncGenerateStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateStreamRequest& request, ::grpc::CompletionQueue* cq) override;
-    const ::grpc::internal::RpcMethod rpcmethod_Generate_;
-    const ::grpc::internal::RpcMethod rpcmethod_GenerateStream_;
+    ::grpc::ClientReader< ::sentiric::llm::v1::GenerateDialogStreamResponse>* GenerateDialogStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateDialogStreamRequest& request) override;
+    ::grpc::ClientAsyncReader< ::sentiric::llm::v1::GenerateDialogStreamResponse>* AsyncGenerateDialogStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateDialogStreamRequest& request, ::grpc::CompletionQueue* cq, void* tag) override;
+    ::grpc::ClientAsyncReader< ::sentiric::llm::v1::GenerateDialogStreamResponse>* PrepareAsyncGenerateDialogStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateDialogStreamRequest& request, ::grpc::CompletionQueue* cq) override;
+    const ::grpc::internal::RpcMethod rpcmethod_GenerateDialogStream_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -122,277 +104,144 @@ class LlmGatewayService final {
    public:
     Service();
     virtual ~Service();
-    virtual ::grpc::Status Generate(::grpc::ServerContext* context, const ::sentiric::llm::v1::GenerateRequest* request, ::sentiric::llm::v1::GenerateResponse* response);
-    virtual ::grpc::Status GenerateStream(::grpc::ServerContext* context, const ::sentiric::llm::v1::GenerateStreamRequest* request, ::grpc::ServerWriter< ::sentiric::llm::v1::GenerateStreamResponse>* writer);
-    // Yeniden Adlandırıldı
+    // Diyalogsal bir istek için akış tabanlı metin üretir.
+    // İsteği, model seçiciye göre uygun bir uzman servise yönlendirir.
+    virtual ::grpc::Status GenerateDialogStream(::grpc::ServerContext* context, const ::sentiric::llm::v1::GenerateDialogStreamRequest* request, ::grpc::ServerWriter< ::sentiric::llm::v1::GenerateDialogStreamResponse>* writer);
   };
   template <class BaseClass>
-  class WithAsyncMethod_Generate : public BaseClass {
+  class WithAsyncMethod_GenerateDialogStream : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithAsyncMethod_Generate() {
+    WithAsyncMethod_GenerateDialogStream() {
       ::grpc::Service::MarkMethodAsync(0);
     }
-    ~WithAsyncMethod_Generate() override {
+    ~WithAsyncMethod_GenerateDialogStream() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Generate(::grpc::ServerContext* /*context*/, const ::sentiric::llm::v1::GenerateRequest* /*request*/, ::sentiric::llm::v1::GenerateResponse* /*response*/) override {
+    ::grpc::Status GenerateDialogStream(::grpc::ServerContext* /*context*/, const ::sentiric::llm::v1::GenerateDialogStreamRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::llm::v1::GenerateDialogStreamResponse>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestGenerate(::grpc::ServerContext* context, ::sentiric::llm::v1::GenerateRequest* request, ::grpc::ServerAsyncResponseWriter< ::sentiric::llm::v1::GenerateResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
+    void RequestGenerateDialogStream(::grpc::ServerContext* context, ::sentiric::llm::v1::GenerateDialogStreamRequest* request, ::grpc::ServerAsyncWriter< ::sentiric::llm::v1::GenerateDialogStreamResponse>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncServerStreaming(0, context, request, writer, new_call_cq, notification_cq, tag);
     }
   };
+  typedef WithAsyncMethod_GenerateDialogStream<Service > AsyncService;
   template <class BaseClass>
-  class WithAsyncMethod_GenerateStream : public BaseClass {
+  class WithCallbackMethod_GenerateDialogStream : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithAsyncMethod_GenerateStream() {
-      ::grpc::Service::MarkMethodAsync(1);
-    }
-    ~WithAsyncMethod_GenerateStream() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GenerateStream(::grpc::ServerContext* /*context*/, const ::sentiric::llm::v1::GenerateStreamRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::llm::v1::GenerateStreamResponse>* /*writer*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestGenerateStream(::grpc::ServerContext* context, ::sentiric::llm::v1::GenerateStreamRequest* request, ::grpc::ServerAsyncWriter< ::sentiric::llm::v1::GenerateStreamResponse>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncServerStreaming(1, context, request, writer, new_call_cq, notification_cq, tag);
-    }
-  };
-  typedef WithAsyncMethod_Generate<WithAsyncMethod_GenerateStream<Service > > AsyncService;
-  template <class BaseClass>
-  class WithCallbackMethod_Generate : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithCallbackMethod_Generate() {
+    WithCallbackMethod_GenerateDialogStream() {
       ::grpc::Service::MarkMethodCallback(0,
-          new ::grpc::internal::CallbackUnaryHandler< ::sentiric::llm::v1::GenerateRequest, ::sentiric::llm::v1::GenerateResponse>(
+          new ::grpc::internal::CallbackServerStreamingHandler< ::sentiric::llm::v1::GenerateDialogStreamRequest, ::sentiric::llm::v1::GenerateDialogStreamResponse>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::sentiric::llm::v1::GenerateRequest* request, ::sentiric::llm::v1::GenerateResponse* response) { return this->Generate(context, request, response); }));}
-    void SetMessageAllocatorFor_Generate(
-        ::grpc::MessageAllocator< ::sentiric::llm::v1::GenerateRequest, ::sentiric::llm::v1::GenerateResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::sentiric::llm::v1::GenerateRequest, ::sentiric::llm::v1::GenerateResponse>*>(handler)
-              ->SetMessageAllocator(allocator);
+                   ::grpc::CallbackServerContext* context, const ::sentiric::llm::v1::GenerateDialogStreamRequest* request) { return this->GenerateDialogStream(context, request); }));
     }
-    ~WithCallbackMethod_Generate() override {
+    ~WithCallbackMethod_GenerateDialogStream() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Generate(::grpc::ServerContext* /*context*/, const ::sentiric::llm::v1::GenerateRequest* /*request*/, ::sentiric::llm::v1::GenerateResponse* /*response*/) override {
+    ::grpc::Status GenerateDialogStream(::grpc::ServerContext* /*context*/, const ::sentiric::llm::v1::GenerateDialogStreamRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::llm::v1::GenerateDialogStreamResponse>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* Generate(
-      ::grpc::CallbackServerContext* /*context*/, const ::sentiric::llm::v1::GenerateRequest* /*request*/, ::sentiric::llm::v1::GenerateResponse* /*response*/)  { return nullptr; }
+    virtual ::grpc::ServerWriteReactor< ::sentiric::llm::v1::GenerateDialogStreamResponse>* GenerateDialogStream(
+      ::grpc::CallbackServerContext* /*context*/, const ::sentiric::llm::v1::GenerateDialogStreamRequest* /*request*/)  { return nullptr; }
   };
-  template <class BaseClass>
-  class WithCallbackMethod_GenerateStream : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithCallbackMethod_GenerateStream() {
-      ::grpc::Service::MarkMethodCallback(1,
-          new ::grpc::internal::CallbackServerStreamingHandler< ::sentiric::llm::v1::GenerateStreamRequest, ::sentiric::llm::v1::GenerateStreamResponse>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::sentiric::llm::v1::GenerateStreamRequest* request) { return this->GenerateStream(context, request); }));
-    }
-    ~WithCallbackMethod_GenerateStream() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GenerateStream(::grpc::ServerContext* /*context*/, const ::sentiric::llm::v1::GenerateStreamRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::llm::v1::GenerateStreamResponse>* /*writer*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerWriteReactor< ::sentiric::llm::v1::GenerateStreamResponse>* GenerateStream(
-      ::grpc::CallbackServerContext* /*context*/, const ::sentiric::llm::v1::GenerateStreamRequest* /*request*/)  { return nullptr; }
-  };
-  typedef WithCallbackMethod_Generate<WithCallbackMethod_GenerateStream<Service > > CallbackService;
+  typedef WithCallbackMethod_GenerateDialogStream<Service > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
-  class WithGenericMethod_Generate : public BaseClass {
+  class WithGenericMethod_GenerateDialogStream : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithGenericMethod_Generate() {
+    WithGenericMethod_GenerateDialogStream() {
       ::grpc::Service::MarkMethodGeneric(0);
     }
-    ~WithGenericMethod_Generate() override {
+    ~WithGenericMethod_GenerateDialogStream() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Generate(::grpc::ServerContext* /*context*/, const ::sentiric::llm::v1::GenerateRequest* /*request*/, ::sentiric::llm::v1::GenerateResponse* /*response*/) override {
+    ::grpc::Status GenerateDialogStream(::grpc::ServerContext* /*context*/, const ::sentiric::llm::v1::GenerateDialogStreamRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::llm::v1::GenerateDialogStreamResponse>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
   };
   template <class BaseClass>
-  class WithGenericMethod_GenerateStream : public BaseClass {
+  class WithRawMethod_GenerateDialogStream : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithGenericMethod_GenerateStream() {
-      ::grpc::Service::MarkMethodGeneric(1);
-    }
-    ~WithGenericMethod_GenerateStream() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GenerateStream(::grpc::ServerContext* /*context*/, const ::sentiric::llm::v1::GenerateStreamRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::llm::v1::GenerateStreamResponse>* /*writer*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-  };
-  template <class BaseClass>
-  class WithRawMethod_Generate : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawMethod_Generate() {
+    WithRawMethod_GenerateDialogStream() {
       ::grpc::Service::MarkMethodRaw(0);
     }
-    ~WithRawMethod_Generate() override {
+    ~WithRawMethod_GenerateDialogStream() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status Generate(::grpc::ServerContext* /*context*/, const ::sentiric::llm::v1::GenerateRequest* /*request*/, ::sentiric::llm::v1::GenerateResponse* /*response*/) override {
+    ::grpc::Status GenerateDialogStream(::grpc::ServerContext* /*context*/, const ::sentiric::llm::v1::GenerateDialogStreamRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::llm::v1::GenerateDialogStreamResponse>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestGenerate(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
+    void RequestGenerateDialogStream(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncWriter< ::grpc::ByteBuffer>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncServerStreaming(0, context, request, writer, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithRawMethod_GenerateStream : public BaseClass {
+  class WithRawCallbackMethod_GenerateDialogStream : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawMethod_GenerateStream() {
-      ::grpc::Service::MarkMethodRaw(1);
-    }
-    ~WithRawMethod_GenerateStream() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status GenerateStream(::grpc::ServerContext* /*context*/, const ::sentiric::llm::v1::GenerateStreamRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::llm::v1::GenerateStreamResponse>* /*writer*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestGenerateStream(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncWriter< ::grpc::ByteBuffer>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncServerStreaming(1, context, request, writer, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
-  class WithRawCallbackMethod_Generate : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawCallbackMethod_Generate() {
+    WithRawCallbackMethod_GenerateDialogStream() {
       ::grpc::Service::MarkMethodRawCallback(0,
-          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->Generate(context, request, response); }));
-    }
-    ~WithRawCallbackMethod_Generate() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status Generate(::grpc::ServerContext* /*context*/, const ::sentiric::llm::v1::GenerateRequest* /*request*/, ::sentiric::llm::v1::GenerateResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerUnaryReactor* Generate(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
-  };
-  template <class BaseClass>
-  class WithRawCallbackMethod_GenerateStream : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawCallbackMethod_GenerateStream() {
-      ::grpc::Service::MarkMethodRawCallback(1,
           new ::grpc::internal::CallbackServerStreamingHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-                   ::grpc::CallbackServerContext* context, const::grpc::ByteBuffer* request) { return this->GenerateStream(context, request); }));
+                   ::grpc::CallbackServerContext* context, const::grpc::ByteBuffer* request) { return this->GenerateDialogStream(context, request); }));
     }
-    ~WithRawCallbackMethod_GenerateStream() override {
+    ~WithRawCallbackMethod_GenerateDialogStream() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status GenerateStream(::grpc::ServerContext* /*context*/, const ::sentiric::llm::v1::GenerateStreamRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::llm::v1::GenerateStreamResponse>* /*writer*/) override {
+    ::grpc::Status GenerateDialogStream(::grpc::ServerContext* /*context*/, const ::sentiric::llm::v1::GenerateDialogStreamRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::llm::v1::GenerateDialogStreamResponse>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerWriteReactor< ::grpc::ByteBuffer>* GenerateStream(
+    virtual ::grpc::ServerWriteReactor< ::grpc::ByteBuffer>* GenerateDialogStream(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/)  { return nullptr; }
   };
+  typedef Service StreamedUnaryService;
   template <class BaseClass>
-  class WithStreamedUnaryMethod_Generate : public BaseClass {
+  class WithSplitStreamingMethod_GenerateDialogStream : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithStreamedUnaryMethod_Generate() {
+    WithSplitStreamingMethod_GenerateDialogStream() {
       ::grpc::Service::MarkMethodStreamed(0,
-        new ::grpc::internal::StreamedUnaryHandler<
-          ::sentiric::llm::v1::GenerateRequest, ::sentiric::llm::v1::GenerateResponse>(
-            [this](::grpc::ServerContext* context,
-                   ::grpc::ServerUnaryStreamer<
-                     ::sentiric::llm::v1::GenerateRequest, ::sentiric::llm::v1::GenerateResponse>* streamer) {
-                       return this->StreamedGenerate(context,
-                         streamer);
-                  }));
-    }
-    ~WithStreamedUnaryMethod_Generate() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable regular version of this method
-    ::grpc::Status Generate(::grpc::ServerContext* /*context*/, const ::sentiric::llm::v1::GenerateRequest* /*request*/, ::sentiric::llm::v1::GenerateResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedGenerate(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::sentiric::llm::v1::GenerateRequest,::sentiric::llm::v1::GenerateResponse>* server_unary_streamer) = 0;
-  };
-  typedef WithStreamedUnaryMethod_Generate<Service > StreamedUnaryService;
-  template <class BaseClass>
-  class WithSplitStreamingMethod_GenerateStream : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithSplitStreamingMethod_GenerateStream() {
-      ::grpc::Service::MarkMethodStreamed(1,
         new ::grpc::internal::SplitServerStreamingHandler<
-          ::sentiric::llm::v1::GenerateStreamRequest, ::sentiric::llm::v1::GenerateStreamResponse>(
+          ::sentiric::llm::v1::GenerateDialogStreamRequest, ::sentiric::llm::v1::GenerateDialogStreamResponse>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerSplitStreamer<
-                     ::sentiric::llm::v1::GenerateStreamRequest, ::sentiric::llm::v1::GenerateStreamResponse>* streamer) {
-                       return this->StreamedGenerateStream(context,
+                     ::sentiric::llm::v1::GenerateDialogStreamRequest, ::sentiric::llm::v1::GenerateDialogStreamResponse>* streamer) {
+                       return this->StreamedGenerateDialogStream(context,
                          streamer);
                   }));
     }
-    ~WithSplitStreamingMethod_GenerateStream() override {
+    ~WithSplitStreamingMethod_GenerateDialogStream() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status GenerateStream(::grpc::ServerContext* /*context*/, const ::sentiric::llm::v1::GenerateStreamRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::llm::v1::GenerateStreamResponse>* /*writer*/) override {
+    ::grpc::Status GenerateDialogStream(::grpc::ServerContext* /*context*/, const ::sentiric::llm::v1::GenerateDialogStreamRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::llm::v1::GenerateDialogStreamResponse>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with split streamed
-    virtual ::grpc::Status StreamedGenerateStream(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::sentiric::llm::v1::GenerateStreamRequest,::sentiric::llm::v1::GenerateStreamResponse>* server_split_streamer) = 0;
+    virtual ::grpc::Status StreamedGenerateDialogStream(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::sentiric::llm::v1::GenerateDialogStreamRequest,::sentiric::llm::v1::GenerateDialogStreamResponse>* server_split_streamer) = 0;
   };
-  typedef WithSplitStreamingMethod_GenerateStream<Service > SplitStreamedService;
-  typedef WithStreamedUnaryMethod_Generate<WithSplitStreamingMethod_GenerateStream<Service > > StreamedService;
+  typedef WithSplitStreamingMethod_GenerateDialogStream<Service > SplitStreamedService;
+  typedef WithSplitStreamingMethod_GenerateDialogStream<Service > StreamedService;
 };
 
 }  // namespace v1

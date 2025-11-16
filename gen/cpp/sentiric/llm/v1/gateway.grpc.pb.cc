@@ -24,8 +24,7 @@ namespace llm {
 namespace v1 {
 
 static const char* LlmGatewayService_method_names[] = {
-  "/sentiric.llm.v1.LlmGatewayService/Generate",
-  "/sentiric.llm.v1.LlmGatewayService/GenerateStream",
+  "/sentiric.llm.v1.LlmGatewayService/GenerateDialogStream",
 };
 
 std::unique_ptr< LlmGatewayService::Stub> LlmGatewayService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -35,83 +34,42 @@ std::unique_ptr< LlmGatewayService::Stub> LlmGatewayService::NewStub(const std::
 }
 
 LlmGatewayService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
-  : channel_(channel), rpcmethod_Generate_(LlmGatewayService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_GenerateStream_(LlmGatewayService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  : channel_(channel), rpcmethod_GenerateDialogStream_(LlmGatewayService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
   {}
 
-::grpc::Status LlmGatewayService::Stub::Generate(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateRequest& request, ::sentiric::llm::v1::GenerateResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::sentiric::llm::v1::GenerateRequest, ::sentiric::llm::v1::GenerateResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_Generate_, context, request, response);
+::grpc::ClientReader< ::sentiric::llm::v1::GenerateDialogStreamResponse>* LlmGatewayService::Stub::GenerateDialogStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateDialogStreamRequest& request) {
+  return ::grpc::internal::ClientReaderFactory< ::sentiric::llm::v1::GenerateDialogStreamResponse>::Create(channel_.get(), rpcmethod_GenerateDialogStream_, context, request);
 }
 
-void LlmGatewayService::Stub::async::Generate(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateRequest* request, ::sentiric::llm::v1::GenerateResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::sentiric::llm::v1::GenerateRequest, ::sentiric::llm::v1::GenerateResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Generate_, context, request, response, std::move(f));
+void LlmGatewayService::Stub::async::GenerateDialogStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateDialogStreamRequest* request, ::grpc::ClientReadReactor< ::sentiric::llm::v1::GenerateDialogStreamResponse>* reactor) {
+  ::grpc::internal::ClientCallbackReaderFactory< ::sentiric::llm::v1::GenerateDialogStreamResponse>::Create(stub_->channel_.get(), stub_->rpcmethod_GenerateDialogStream_, context, request, reactor);
 }
 
-void LlmGatewayService::Stub::async::Generate(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateRequest* request, ::sentiric::llm::v1::GenerateResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Generate_, context, request, response, reactor);
+::grpc::ClientAsyncReader< ::sentiric::llm::v1::GenerateDialogStreamResponse>* LlmGatewayService::Stub::AsyncGenerateDialogStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateDialogStreamRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::sentiric::llm::v1::GenerateDialogStreamResponse>::Create(channel_.get(), cq, rpcmethod_GenerateDialogStream_, context, request, true, tag);
 }
 
-::grpc::ClientAsyncResponseReader< ::sentiric::llm::v1::GenerateResponse>* LlmGatewayService::Stub::PrepareAsyncGenerateRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::sentiric::llm::v1::GenerateResponse, ::sentiric::llm::v1::GenerateRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_Generate_, context, request);
-}
-
-::grpc::ClientAsyncResponseReader< ::sentiric::llm::v1::GenerateResponse>* LlmGatewayService::Stub::AsyncGenerateRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncGenerateRaw(context, request, cq);
-  result->StartCall();
-  return result;
-}
-
-::grpc::ClientReader< ::sentiric::llm::v1::GenerateStreamResponse>* LlmGatewayService::Stub::GenerateStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateStreamRequest& request) {
-  return ::grpc::internal::ClientReaderFactory< ::sentiric::llm::v1::GenerateStreamResponse>::Create(channel_.get(), rpcmethod_GenerateStream_, context, request);
-}
-
-void LlmGatewayService::Stub::async::GenerateStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateStreamRequest* request, ::grpc::ClientReadReactor< ::sentiric::llm::v1::GenerateStreamResponse>* reactor) {
-  ::grpc::internal::ClientCallbackReaderFactory< ::sentiric::llm::v1::GenerateStreamResponse>::Create(stub_->channel_.get(), stub_->rpcmethod_GenerateStream_, context, request, reactor);
-}
-
-::grpc::ClientAsyncReader< ::sentiric::llm::v1::GenerateStreamResponse>* LlmGatewayService::Stub::AsyncGenerateStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateStreamRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
-  return ::grpc::internal::ClientAsyncReaderFactory< ::sentiric::llm::v1::GenerateStreamResponse>::Create(channel_.get(), cq, rpcmethod_GenerateStream_, context, request, true, tag);
-}
-
-::grpc::ClientAsyncReader< ::sentiric::llm::v1::GenerateStreamResponse>* LlmGatewayService::Stub::PrepareAsyncGenerateStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateStreamRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncReaderFactory< ::sentiric::llm::v1::GenerateStreamResponse>::Create(channel_.get(), cq, rpcmethod_GenerateStream_, context, request, false, nullptr);
+::grpc::ClientAsyncReader< ::sentiric::llm::v1::GenerateDialogStreamResponse>* LlmGatewayService::Stub::PrepareAsyncGenerateDialogStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateDialogStreamRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::sentiric::llm::v1::GenerateDialogStreamResponse>::Create(channel_.get(), cq, rpcmethod_GenerateDialogStream_, context, request, false, nullptr);
 }
 
 LlmGatewayService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       LlmGatewayService_method_names[0],
-      ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< LlmGatewayService::Service, ::sentiric::llm::v1::GenerateRequest, ::sentiric::llm::v1::GenerateResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
-          [](LlmGatewayService::Service* service,
-             ::grpc::ServerContext* ctx,
-             const ::sentiric::llm::v1::GenerateRequest* req,
-             ::sentiric::llm::v1::GenerateResponse* resp) {
-               return service->Generate(ctx, req, resp);
-             }, this)));
-  AddMethod(new ::grpc::internal::RpcServiceMethod(
-      LlmGatewayService_method_names[1],
       ::grpc::internal::RpcMethod::SERVER_STREAMING,
-      new ::grpc::internal::ServerStreamingHandler< LlmGatewayService::Service, ::sentiric::llm::v1::GenerateStreamRequest, ::sentiric::llm::v1::GenerateStreamResponse>(
+      new ::grpc::internal::ServerStreamingHandler< LlmGatewayService::Service, ::sentiric::llm::v1::GenerateDialogStreamRequest, ::sentiric::llm::v1::GenerateDialogStreamResponse>(
           [](LlmGatewayService::Service* service,
              ::grpc::ServerContext* ctx,
-             const ::sentiric::llm::v1::GenerateStreamRequest* req,
-             ::grpc::ServerWriter<::sentiric::llm::v1::GenerateStreamResponse>* writer) {
-               return service->GenerateStream(ctx, req, writer);
+             const ::sentiric::llm::v1::GenerateDialogStreamRequest* req,
+             ::grpc::ServerWriter<::sentiric::llm::v1::GenerateDialogStreamResponse>* writer) {
+               return service->GenerateDialogStream(ctx, req, writer);
              }, this)));
 }
 
 LlmGatewayService::Service::~Service() {
 }
 
-::grpc::Status LlmGatewayService::Service::Generate(::grpc::ServerContext* context, const ::sentiric::llm::v1::GenerateRequest* request, ::sentiric::llm::v1::GenerateResponse* response) {
-  (void) context;
-  (void) request;
-  (void) response;
-  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-}
-
-::grpc::Status LlmGatewayService::Service::GenerateStream(::grpc::ServerContext* context, const ::sentiric::llm::v1::GenerateStreamRequest* request, ::grpc::ServerWriter< ::sentiric::llm::v1::GenerateStreamResponse>* writer) {
+::grpc::Status LlmGatewayService::Service::GenerateDialogStream(::grpc::ServerContext* context, const ::sentiric::llm::v1::GenerateDialogStreamRequest* request, ::grpc::ServerWriter< ::sentiric::llm::v1::GenerateDialogStreamResponse>* writer) {
   (void) context;
   (void) request;
   (void) writer;

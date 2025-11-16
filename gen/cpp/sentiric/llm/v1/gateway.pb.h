@@ -30,6 +30,7 @@
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
 #include <google/protobuf/unknown_field_set.h>
+#include "sentiric/llm/v1/local.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_sentiric_2fllm_2fv1_2fgateway_2eproto
@@ -47,26 +48,18 @@ extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table
 namespace sentiric {
 namespace llm {
 namespace v1 {
-class GenerateRequest;
-struct GenerateRequestDefaultTypeInternal;
-extern GenerateRequestDefaultTypeInternal _GenerateRequest_default_instance_;
-class GenerateResponse;
-struct GenerateResponseDefaultTypeInternal;
-extern GenerateResponseDefaultTypeInternal _GenerateResponse_default_instance_;
-class GenerateStreamRequest;
-struct GenerateStreamRequestDefaultTypeInternal;
-extern GenerateStreamRequestDefaultTypeInternal _GenerateStreamRequest_default_instance_;
-class GenerateStreamResponse;
-struct GenerateStreamResponseDefaultTypeInternal;
-extern GenerateStreamResponseDefaultTypeInternal _GenerateStreamResponse_default_instance_;
+class GenerateDialogStreamRequest;
+struct GenerateDialogStreamRequestDefaultTypeInternal;
+extern GenerateDialogStreamRequestDefaultTypeInternal _GenerateDialogStreamRequest_default_instance_;
+class GenerateDialogStreamResponse;
+struct GenerateDialogStreamResponseDefaultTypeInternal;
+extern GenerateDialogStreamResponseDefaultTypeInternal _GenerateDialogStreamResponse_default_instance_;
 }  // namespace v1
 }  // namespace llm
 }  // namespace sentiric
 PROTOBUF_NAMESPACE_OPEN
-template<> ::sentiric::llm::v1::GenerateRequest* Arena::CreateMaybeMessage<::sentiric::llm::v1::GenerateRequest>(Arena*);
-template<> ::sentiric::llm::v1::GenerateResponse* Arena::CreateMaybeMessage<::sentiric::llm::v1::GenerateResponse>(Arena*);
-template<> ::sentiric::llm::v1::GenerateStreamRequest* Arena::CreateMaybeMessage<::sentiric::llm::v1::GenerateStreamRequest>(Arena*);
-template<> ::sentiric::llm::v1::GenerateStreamResponse* Arena::CreateMaybeMessage<::sentiric::llm::v1::GenerateStreamResponse>(Arena*);
+template<> ::sentiric::llm::v1::GenerateDialogStreamRequest* Arena::CreateMaybeMessage<::sentiric::llm::v1::GenerateDialogStreamRequest>(Arena*);
+template<> ::sentiric::llm::v1::GenerateDialogStreamResponse* Arena::CreateMaybeMessage<::sentiric::llm::v1::GenerateDialogStreamResponse>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace sentiric {
 namespace llm {
@@ -74,24 +67,24 @@ namespace v1 {
 
 // ===================================================================
 
-class GenerateRequest final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.llm.v1.GenerateRequest) */ {
+class GenerateDialogStreamRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.llm.v1.GenerateDialogStreamRequest) */ {
  public:
-  inline GenerateRequest() : GenerateRequest(nullptr) {}
-  ~GenerateRequest() override;
-  explicit PROTOBUF_CONSTEXPR GenerateRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline GenerateDialogStreamRequest() : GenerateDialogStreamRequest(nullptr) {}
+  ~GenerateDialogStreamRequest() override;
+  explicit PROTOBUF_CONSTEXPR GenerateDialogStreamRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  GenerateRequest(const GenerateRequest& from);
-  GenerateRequest(GenerateRequest&& from) noexcept
-    : GenerateRequest() {
+  GenerateDialogStreamRequest(const GenerateDialogStreamRequest& from);
+  GenerateDialogStreamRequest(GenerateDialogStreamRequest&& from) noexcept
+    : GenerateDialogStreamRequest() {
     *this = ::std::move(from);
   }
 
-  inline GenerateRequest& operator=(const GenerateRequest& from) {
+  inline GenerateDialogStreamRequest& operator=(const GenerateDialogStreamRequest& from) {
     CopyFrom(from);
     return *this;
   }
-  inline GenerateRequest& operator=(GenerateRequest&& from) noexcept {
+  inline GenerateDialogStreamRequest& operator=(GenerateDialogStreamRequest&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -114,20 +107,20 @@ class GenerateRequest final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const GenerateRequest& default_instance() {
+  static const GenerateDialogStreamRequest& default_instance() {
     return *internal_default_instance();
   }
-  static inline const GenerateRequest* internal_default_instance() {
-    return reinterpret_cast<const GenerateRequest*>(
-               &_GenerateRequest_default_instance_);
+  static inline const GenerateDialogStreamRequest* internal_default_instance() {
+    return reinterpret_cast<const GenerateDialogStreamRequest*>(
+               &_GenerateDialogStreamRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     0;
 
-  friend void swap(GenerateRequest& a, GenerateRequest& b) {
+  friend void swap(GenerateDialogStreamRequest& a, GenerateDialogStreamRequest& b) {
     a.Swap(&b);
   }
-  inline void Swap(GenerateRequest* other) {
+  inline void Swap(GenerateDialogStreamRequest* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -140,7 +133,7 @@ class GenerateRequest final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(GenerateRequest* other) {
+  void UnsafeArenaSwap(GenerateDialogStreamRequest* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -148,14 +141,14 @@ class GenerateRequest final :
 
   // implements Message ----------------------------------------------
 
-  GenerateRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<GenerateRequest>(arena);
+  GenerateDialogStreamRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<GenerateDialogStreamRequest>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const GenerateRequest& from);
+  void CopyFrom(const GenerateDialogStreamRequest& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom( const GenerateRequest& from) {
-    GenerateRequest::MergeImpl(*this, from);
+  void MergeFrom( const GenerateDialogStreamRequest& from) {
+    GenerateDialogStreamRequest::MergeImpl(*this, from);
   }
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
@@ -173,15 +166,15 @@ class GenerateRequest final :
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(GenerateRequest* other);
+  void InternalSwap(GenerateDialogStreamRequest* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "sentiric.llm.v1.GenerateRequest";
+    return "sentiric.llm.v1.GenerateDialogStreamRequest";
   }
   protected:
-  explicit GenerateRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit GenerateDialogStreamRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   public:
 
@@ -195,25 +188,11 @@ class GenerateRequest final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kPromptFieldNumber = 1,
-    kModelSelectorFieldNumber = 2,
-    kTenantIdFieldNumber = 3,
+    kModelSelectorFieldNumber = 1,
+    kTenantIdFieldNumber = 2,
+    kLocalRequestFieldNumber = 10,
   };
-  // string prompt = 1;
-  void clear_prompt();
-  const std::string& prompt() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_prompt(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_prompt();
-  PROTOBUF_NODISCARD std::string* release_prompt();
-  void set_allocated_prompt(std::string* prompt);
-  private:
-  const std::string& _internal_prompt() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_prompt(const std::string& value);
-  std::string* _internal_mutable_prompt();
-  public:
-
-  // string model_selector = 2;
+  // string model_selector = 1;
   void clear_model_selector();
   const std::string& model_selector() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
@@ -227,7 +206,7 @@ class GenerateRequest final :
   std::string* _internal_mutable_model_selector();
   public:
 
-  // string tenant_id = 3;
+  // string tenant_id = 2;
   void clear_tenant_id();
   const std::string& tenant_id() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
@@ -241,7 +220,25 @@ class GenerateRequest final :
   std::string* _internal_mutable_tenant_id();
   public:
 
-  // @@protoc_insertion_point(class_scope:sentiric.llm.v1.GenerateRequest)
+  // .sentiric.llm.v1.LocalGenerateStreamRequest local_request = 10;
+  bool has_local_request() const;
+  private:
+  bool _internal_has_local_request() const;
+  public:
+  void clear_local_request();
+  const ::sentiric::llm::v1::LocalGenerateStreamRequest& local_request() const;
+  PROTOBUF_NODISCARD ::sentiric::llm::v1::LocalGenerateStreamRequest* release_local_request();
+  ::sentiric::llm::v1::LocalGenerateStreamRequest* mutable_local_request();
+  void set_allocated_local_request(::sentiric::llm::v1::LocalGenerateStreamRequest* local_request);
+  private:
+  const ::sentiric::llm::v1::LocalGenerateStreamRequest& _internal_local_request() const;
+  ::sentiric::llm::v1::LocalGenerateStreamRequest* _internal_mutable_local_request();
+  public:
+  void unsafe_arena_set_allocated_local_request(
+      ::sentiric::llm::v1::LocalGenerateStreamRequest* local_request);
+  ::sentiric::llm::v1::LocalGenerateStreamRequest* unsafe_arena_release_local_request();
+
+  // @@protoc_insertion_point(class_scope:sentiric.llm.v1.GenerateDialogStreamRequest)
  private:
   class _Internal;
 
@@ -249,9 +246,9 @@ class GenerateRequest final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
-    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr prompt_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr model_selector_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr tenant_id_;
+    ::sentiric::llm::v1::LocalGenerateStreamRequest* local_request_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -259,24 +256,24 @@ class GenerateRequest final :
 };
 // -------------------------------------------------------------------
 
-class GenerateResponse final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.llm.v1.GenerateResponse) */ {
+class GenerateDialogStreamResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.llm.v1.GenerateDialogStreamResponse) */ {
  public:
-  inline GenerateResponse() : GenerateResponse(nullptr) {}
-  ~GenerateResponse() override;
-  explicit PROTOBUF_CONSTEXPR GenerateResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline GenerateDialogStreamResponse() : GenerateDialogStreamResponse(nullptr) {}
+  ~GenerateDialogStreamResponse() override;
+  explicit PROTOBUF_CONSTEXPR GenerateDialogStreamResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  GenerateResponse(const GenerateResponse& from);
-  GenerateResponse(GenerateResponse&& from) noexcept
-    : GenerateResponse() {
+  GenerateDialogStreamResponse(const GenerateDialogStreamResponse& from);
+  GenerateDialogStreamResponse(GenerateDialogStreamResponse&& from) noexcept
+    : GenerateDialogStreamResponse() {
     *this = ::std::move(from);
   }
 
-  inline GenerateResponse& operator=(const GenerateResponse& from) {
+  inline GenerateDialogStreamResponse& operator=(const GenerateDialogStreamResponse& from) {
     CopyFrom(from);
     return *this;
   }
-  inline GenerateResponse& operator=(GenerateResponse&& from) noexcept {
+  inline GenerateDialogStreamResponse& operator=(GenerateDialogStreamResponse&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -299,20 +296,20 @@ class GenerateResponse final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const GenerateResponse& default_instance() {
+  static const GenerateDialogStreamResponse& default_instance() {
     return *internal_default_instance();
   }
-  static inline const GenerateResponse* internal_default_instance() {
-    return reinterpret_cast<const GenerateResponse*>(
-               &_GenerateResponse_default_instance_);
+  static inline const GenerateDialogStreamResponse* internal_default_instance() {
+    return reinterpret_cast<const GenerateDialogStreamResponse*>(
+               &_GenerateDialogStreamResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     1;
 
-  friend void swap(GenerateResponse& a, GenerateResponse& b) {
+  friend void swap(GenerateDialogStreamResponse& a, GenerateDialogStreamResponse& b) {
     a.Swap(&b);
   }
-  inline void Swap(GenerateResponse* other) {
+  inline void Swap(GenerateDialogStreamResponse* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -325,7 +322,7 @@ class GenerateResponse final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(GenerateResponse* other) {
+  void UnsafeArenaSwap(GenerateDialogStreamResponse* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -333,14 +330,14 @@ class GenerateResponse final :
 
   // implements Message ----------------------------------------------
 
-  GenerateResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<GenerateResponse>(arena);
+  GenerateDialogStreamResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<GenerateDialogStreamResponse>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const GenerateResponse& from);
+  void CopyFrom(const GenerateDialogStreamResponse& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom( const GenerateResponse& from) {
-    GenerateResponse::MergeImpl(*this, from);
+  void MergeFrom( const GenerateDialogStreamResponse& from) {
+    GenerateDialogStreamResponse::MergeImpl(*this, from);
   }
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
@@ -358,15 +355,15 @@ class GenerateResponse final :
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(GenerateResponse* other);
+  void InternalSwap(GenerateDialogStreamResponse* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "sentiric.llm.v1.GenerateResponse";
+    return "sentiric.llm.v1.GenerateDialogStreamResponse";
   }
   protected:
-  explicit GenerateResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit GenerateDialogStreamResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   public:
 
@@ -380,23 +377,27 @@ class GenerateResponse final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kGeneratedTextFieldNumber = 1,
+    kLocalResponseFieldNumber = 10,
   };
-  // string generated_text = 1;
-  void clear_generated_text();
-  const std::string& generated_text() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_generated_text(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_generated_text();
-  PROTOBUF_NODISCARD std::string* release_generated_text();
-  void set_allocated_generated_text(std::string* generated_text);
+  // .sentiric.llm.v1.LocalGenerateStreamResponse local_response = 10;
+  bool has_local_response() const;
   private:
-  const std::string& _internal_generated_text() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_generated_text(const std::string& value);
-  std::string* _internal_mutable_generated_text();
+  bool _internal_has_local_response() const;
   public:
+  void clear_local_response();
+  const ::sentiric::llm::v1::LocalGenerateStreamResponse& local_response() const;
+  PROTOBUF_NODISCARD ::sentiric::llm::v1::LocalGenerateStreamResponse* release_local_response();
+  ::sentiric::llm::v1::LocalGenerateStreamResponse* mutable_local_response();
+  void set_allocated_local_response(::sentiric::llm::v1::LocalGenerateStreamResponse* local_response);
+  private:
+  const ::sentiric::llm::v1::LocalGenerateStreamResponse& _internal_local_response() const;
+  ::sentiric::llm::v1::LocalGenerateStreamResponse* _internal_mutable_local_response();
+  public:
+  void unsafe_arena_set_allocated_local_response(
+      ::sentiric::llm::v1::LocalGenerateStreamResponse* local_response);
+  ::sentiric::llm::v1::LocalGenerateStreamResponse* unsafe_arena_release_local_response();
 
-  // @@protoc_insertion_point(class_scope:sentiric.llm.v1.GenerateResponse)
+  // @@protoc_insertion_point(class_scope:sentiric.llm.v1.GenerateDialogStreamResponse)
  private:
   class _Internal;
 
@@ -404,345 +405,7 @@ class GenerateResponse final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
-    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr generated_text_;
-    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  };
-  union { Impl_ _impl_; };
-  friend struct ::TableStruct_sentiric_2fllm_2fv1_2fgateway_2eproto;
-};
-// -------------------------------------------------------------------
-
-class GenerateStreamRequest final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.llm.v1.GenerateStreamRequest) */ {
- public:
-  inline GenerateStreamRequest() : GenerateStreamRequest(nullptr) {}
-  ~GenerateStreamRequest() override;
-  explicit PROTOBUF_CONSTEXPR GenerateStreamRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-
-  GenerateStreamRequest(const GenerateStreamRequest& from);
-  GenerateStreamRequest(GenerateStreamRequest&& from) noexcept
-    : GenerateStreamRequest() {
-    *this = ::std::move(from);
-  }
-
-  inline GenerateStreamRequest& operator=(const GenerateStreamRequest& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline GenerateStreamRequest& operator=(GenerateStreamRequest&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetOwningArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const GenerateStreamRequest& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const GenerateStreamRequest* internal_default_instance() {
-    return reinterpret_cast<const GenerateStreamRequest*>(
-               &_GenerateStreamRequest_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    2;
-
-  friend void swap(GenerateStreamRequest& a, GenerateStreamRequest& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(GenerateStreamRequest* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() != nullptr &&
-        GetOwningArena() == other->GetOwningArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() == other->GetOwningArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(GenerateStreamRequest* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  GenerateStreamRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<GenerateStreamRequest>(arena);
-  }
-  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const GenerateStreamRequest& from);
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom( const GenerateStreamRequest& from) {
-    GenerateStreamRequest::MergeImpl(*this, from);
-  }
-  private:
-  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
-  public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
-
-  private:
-  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(GenerateStreamRequest* other);
-
-  private:
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "sentiric.llm.v1.GenerateStreamRequest";
-  }
-  protected:
-  explicit GenerateStreamRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                       bool is_message_owned = false);
-  public:
-
-  static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
-
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kPromptFieldNumber = 1,
-    kModelSelectorFieldNumber = 2,
-    kTenantIdFieldNumber = 3,
-  };
-  // string prompt = 1;
-  void clear_prompt();
-  const std::string& prompt() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_prompt(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_prompt();
-  PROTOBUF_NODISCARD std::string* release_prompt();
-  void set_allocated_prompt(std::string* prompt);
-  private:
-  const std::string& _internal_prompt() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_prompt(const std::string& value);
-  std::string* _internal_mutable_prompt();
-  public:
-
-  // string model_selector = 2;
-  void clear_model_selector();
-  const std::string& model_selector() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_model_selector(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_model_selector();
-  PROTOBUF_NODISCARD std::string* release_model_selector();
-  void set_allocated_model_selector(std::string* model_selector);
-  private:
-  const std::string& _internal_model_selector() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_model_selector(const std::string& value);
-  std::string* _internal_mutable_model_selector();
-  public:
-
-  // string tenant_id = 3;
-  void clear_tenant_id();
-  const std::string& tenant_id() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_tenant_id(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_tenant_id();
-  PROTOBUF_NODISCARD std::string* release_tenant_id();
-  void set_allocated_tenant_id(std::string* tenant_id);
-  private:
-  const std::string& _internal_tenant_id() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_tenant_id(const std::string& value);
-  std::string* _internal_mutable_tenant_id();
-  public:
-
-  // @@protoc_insertion_point(class_scope:sentiric.llm.v1.GenerateStreamRequest)
- private:
-  class _Internal;
-
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  struct Impl_ {
-    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr prompt_;
-    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr model_selector_;
-    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr tenant_id_;
-    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  };
-  union { Impl_ _impl_; };
-  friend struct ::TableStruct_sentiric_2fllm_2fv1_2fgateway_2eproto;
-};
-// -------------------------------------------------------------------
-
-class GenerateStreamResponse final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.llm.v1.GenerateStreamResponse) */ {
- public:
-  inline GenerateStreamResponse() : GenerateStreamResponse(nullptr) {}
-  ~GenerateStreamResponse() override;
-  explicit PROTOBUF_CONSTEXPR GenerateStreamResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-
-  GenerateStreamResponse(const GenerateStreamResponse& from);
-  GenerateStreamResponse(GenerateStreamResponse&& from) noexcept
-    : GenerateStreamResponse() {
-    *this = ::std::move(from);
-  }
-
-  inline GenerateStreamResponse& operator=(const GenerateStreamResponse& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline GenerateStreamResponse& operator=(GenerateStreamResponse&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetOwningArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const GenerateStreamResponse& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const GenerateStreamResponse* internal_default_instance() {
-    return reinterpret_cast<const GenerateStreamResponse*>(
-               &_GenerateStreamResponse_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    3;
-
-  friend void swap(GenerateStreamResponse& a, GenerateStreamResponse& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(GenerateStreamResponse* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() != nullptr &&
-        GetOwningArena() == other->GetOwningArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() == other->GetOwningArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(GenerateStreamResponse* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  GenerateStreamResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<GenerateStreamResponse>(arena);
-  }
-  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const GenerateStreamResponse& from);
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom( const GenerateStreamResponse& from) {
-    GenerateStreamResponse::MergeImpl(*this, from);
-  }
-  private:
-  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
-  public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
-
-  private:
-  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(GenerateStreamResponse* other);
-
-  private:
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "sentiric.llm.v1.GenerateStreamResponse";
-  }
-  protected:
-  explicit GenerateStreamResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                       bool is_message_owned = false);
-  public:
-
-  static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
-
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kGeneratedTextFieldNumber = 1,
-  };
-  // string generated_text = 1;
-  void clear_generated_text();
-  const std::string& generated_text() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_generated_text(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_generated_text();
-  PROTOBUF_NODISCARD std::string* release_generated_text();
-  void set_allocated_generated_text(std::string* generated_text);
-  private:
-  const std::string& _internal_generated_text() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_generated_text(const std::string& value);
-  std::string* _internal_mutable_generated_text();
-  public:
-
-  // @@protoc_insertion_point(class_scope:sentiric.llm.v1.GenerateStreamResponse)
- private:
-  class _Internal;
-
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  struct Impl_ {
-    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr generated_text_;
+    ::sentiric::llm::v1::LocalGenerateStreamResponse* local_response_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -757,94 +420,44 @@ class GenerateStreamResponse final :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
-// GenerateRequest
+// GenerateDialogStreamRequest
 
-// string prompt = 1;
-inline void GenerateRequest::clear_prompt() {
-  _impl_.prompt_.ClearToEmpty();
-}
-inline const std::string& GenerateRequest::prompt() const {
-  // @@protoc_insertion_point(field_get:sentiric.llm.v1.GenerateRequest.prompt)
-  return _internal_prompt();
-}
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void GenerateRequest::set_prompt(ArgT0&& arg0, ArgT... args) {
- 
- _impl_.prompt_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:sentiric.llm.v1.GenerateRequest.prompt)
-}
-inline std::string* GenerateRequest::mutable_prompt() {
-  std::string* _s = _internal_mutable_prompt();
-  // @@protoc_insertion_point(field_mutable:sentiric.llm.v1.GenerateRequest.prompt)
-  return _s;
-}
-inline const std::string& GenerateRequest::_internal_prompt() const {
-  return _impl_.prompt_.Get();
-}
-inline void GenerateRequest::_internal_set_prompt(const std::string& value) {
-  
-  _impl_.prompt_.Set(value, GetArenaForAllocation());
-}
-inline std::string* GenerateRequest::_internal_mutable_prompt() {
-  
-  return _impl_.prompt_.Mutable(GetArenaForAllocation());
-}
-inline std::string* GenerateRequest::release_prompt() {
-  // @@protoc_insertion_point(field_release:sentiric.llm.v1.GenerateRequest.prompt)
-  return _impl_.prompt_.Release();
-}
-inline void GenerateRequest::set_allocated_prompt(std::string* prompt) {
-  if (prompt != nullptr) {
-    
-  } else {
-    
-  }
-  _impl_.prompt_.SetAllocated(prompt, GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (_impl_.prompt_.IsDefault()) {
-    _impl_.prompt_.Set("", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:sentiric.llm.v1.GenerateRequest.prompt)
-}
-
-// string model_selector = 2;
-inline void GenerateRequest::clear_model_selector() {
+// string model_selector = 1;
+inline void GenerateDialogStreamRequest::clear_model_selector() {
   _impl_.model_selector_.ClearToEmpty();
 }
-inline const std::string& GenerateRequest::model_selector() const {
-  // @@protoc_insertion_point(field_get:sentiric.llm.v1.GenerateRequest.model_selector)
+inline const std::string& GenerateDialogStreamRequest::model_selector() const {
+  // @@protoc_insertion_point(field_get:sentiric.llm.v1.GenerateDialogStreamRequest.model_selector)
   return _internal_model_selector();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void GenerateRequest::set_model_selector(ArgT0&& arg0, ArgT... args) {
+void GenerateDialogStreamRequest::set_model_selector(ArgT0&& arg0, ArgT... args) {
  
  _impl_.model_selector_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:sentiric.llm.v1.GenerateRequest.model_selector)
+  // @@protoc_insertion_point(field_set:sentiric.llm.v1.GenerateDialogStreamRequest.model_selector)
 }
-inline std::string* GenerateRequest::mutable_model_selector() {
+inline std::string* GenerateDialogStreamRequest::mutable_model_selector() {
   std::string* _s = _internal_mutable_model_selector();
-  // @@protoc_insertion_point(field_mutable:sentiric.llm.v1.GenerateRequest.model_selector)
+  // @@protoc_insertion_point(field_mutable:sentiric.llm.v1.GenerateDialogStreamRequest.model_selector)
   return _s;
 }
-inline const std::string& GenerateRequest::_internal_model_selector() const {
+inline const std::string& GenerateDialogStreamRequest::_internal_model_selector() const {
   return _impl_.model_selector_.Get();
 }
-inline void GenerateRequest::_internal_set_model_selector(const std::string& value) {
+inline void GenerateDialogStreamRequest::_internal_set_model_selector(const std::string& value) {
   
   _impl_.model_selector_.Set(value, GetArenaForAllocation());
 }
-inline std::string* GenerateRequest::_internal_mutable_model_selector() {
+inline std::string* GenerateDialogStreamRequest::_internal_mutable_model_selector() {
   
   return _impl_.model_selector_.Mutable(GetArenaForAllocation());
 }
-inline std::string* GenerateRequest::release_model_selector() {
-  // @@protoc_insertion_point(field_release:sentiric.llm.v1.GenerateRequest.model_selector)
+inline std::string* GenerateDialogStreamRequest::release_model_selector() {
+  // @@protoc_insertion_point(field_release:sentiric.llm.v1.GenerateDialogStreamRequest.model_selector)
   return _impl_.model_selector_.Release();
 }
-inline void GenerateRequest::set_allocated_model_selector(std::string* model_selector) {
+inline void GenerateDialogStreamRequest::set_allocated_model_selector(std::string* model_selector) {
   if (model_selector != nullptr) {
     
   } else {
@@ -856,45 +469,45 @@ inline void GenerateRequest::set_allocated_model_selector(std::string* model_sel
     _impl_.model_selector_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:sentiric.llm.v1.GenerateRequest.model_selector)
+  // @@protoc_insertion_point(field_set_allocated:sentiric.llm.v1.GenerateDialogStreamRequest.model_selector)
 }
 
-// string tenant_id = 3;
-inline void GenerateRequest::clear_tenant_id() {
+// string tenant_id = 2;
+inline void GenerateDialogStreamRequest::clear_tenant_id() {
   _impl_.tenant_id_.ClearToEmpty();
 }
-inline const std::string& GenerateRequest::tenant_id() const {
-  // @@protoc_insertion_point(field_get:sentiric.llm.v1.GenerateRequest.tenant_id)
+inline const std::string& GenerateDialogStreamRequest::tenant_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.llm.v1.GenerateDialogStreamRequest.tenant_id)
   return _internal_tenant_id();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void GenerateRequest::set_tenant_id(ArgT0&& arg0, ArgT... args) {
+void GenerateDialogStreamRequest::set_tenant_id(ArgT0&& arg0, ArgT... args) {
  
  _impl_.tenant_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:sentiric.llm.v1.GenerateRequest.tenant_id)
+  // @@protoc_insertion_point(field_set:sentiric.llm.v1.GenerateDialogStreamRequest.tenant_id)
 }
-inline std::string* GenerateRequest::mutable_tenant_id() {
+inline std::string* GenerateDialogStreamRequest::mutable_tenant_id() {
   std::string* _s = _internal_mutable_tenant_id();
-  // @@protoc_insertion_point(field_mutable:sentiric.llm.v1.GenerateRequest.tenant_id)
+  // @@protoc_insertion_point(field_mutable:sentiric.llm.v1.GenerateDialogStreamRequest.tenant_id)
   return _s;
 }
-inline const std::string& GenerateRequest::_internal_tenant_id() const {
+inline const std::string& GenerateDialogStreamRequest::_internal_tenant_id() const {
   return _impl_.tenant_id_.Get();
 }
-inline void GenerateRequest::_internal_set_tenant_id(const std::string& value) {
+inline void GenerateDialogStreamRequest::_internal_set_tenant_id(const std::string& value) {
   
   _impl_.tenant_id_.Set(value, GetArenaForAllocation());
 }
-inline std::string* GenerateRequest::_internal_mutable_tenant_id() {
+inline std::string* GenerateDialogStreamRequest::_internal_mutable_tenant_id() {
   
   return _impl_.tenant_id_.Mutable(GetArenaForAllocation());
 }
-inline std::string* GenerateRequest::release_tenant_id() {
-  // @@protoc_insertion_point(field_release:sentiric.llm.v1.GenerateRequest.tenant_id)
+inline std::string* GenerateDialogStreamRequest::release_tenant_id() {
+  // @@protoc_insertion_point(field_release:sentiric.llm.v1.GenerateDialogStreamRequest.tenant_id)
   return _impl_.tenant_id_.Release();
 }
-inline void GenerateRequest::set_allocated_tenant_id(std::string* tenant_id) {
+inline void GenerateDialogStreamRequest::set_allocated_tenant_id(std::string* tenant_id) {
   if (tenant_id != nullptr) {
     
   } else {
@@ -906,278 +519,186 @@ inline void GenerateRequest::set_allocated_tenant_id(std::string* tenant_id) {
     _impl_.tenant_id_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:sentiric.llm.v1.GenerateRequest.tenant_id)
+  // @@protoc_insertion_point(field_set_allocated:sentiric.llm.v1.GenerateDialogStreamRequest.tenant_id)
+}
+
+// .sentiric.llm.v1.LocalGenerateStreamRequest local_request = 10;
+inline bool GenerateDialogStreamRequest::_internal_has_local_request() const {
+  return this != internal_default_instance() && _impl_.local_request_ != nullptr;
+}
+inline bool GenerateDialogStreamRequest::has_local_request() const {
+  return _internal_has_local_request();
+}
+inline const ::sentiric::llm::v1::LocalGenerateStreamRequest& GenerateDialogStreamRequest::_internal_local_request() const {
+  const ::sentiric::llm::v1::LocalGenerateStreamRequest* p = _impl_.local_request_;
+  return p != nullptr ? *p : reinterpret_cast<const ::sentiric::llm::v1::LocalGenerateStreamRequest&>(
+      ::sentiric::llm::v1::_LocalGenerateStreamRequest_default_instance_);
+}
+inline const ::sentiric::llm::v1::LocalGenerateStreamRequest& GenerateDialogStreamRequest::local_request() const {
+  // @@protoc_insertion_point(field_get:sentiric.llm.v1.GenerateDialogStreamRequest.local_request)
+  return _internal_local_request();
+}
+inline void GenerateDialogStreamRequest::unsafe_arena_set_allocated_local_request(
+    ::sentiric::llm::v1::LocalGenerateStreamRequest* local_request) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.local_request_);
+  }
+  _impl_.local_request_ = local_request;
+  if (local_request) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:sentiric.llm.v1.GenerateDialogStreamRequest.local_request)
+}
+inline ::sentiric::llm::v1::LocalGenerateStreamRequest* GenerateDialogStreamRequest::release_local_request() {
+  
+  ::sentiric::llm::v1::LocalGenerateStreamRequest* temp = _impl_.local_request_;
+  _impl_.local_request_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::sentiric::llm::v1::LocalGenerateStreamRequest* GenerateDialogStreamRequest::unsafe_arena_release_local_request() {
+  // @@protoc_insertion_point(field_release:sentiric.llm.v1.GenerateDialogStreamRequest.local_request)
+  
+  ::sentiric::llm::v1::LocalGenerateStreamRequest* temp = _impl_.local_request_;
+  _impl_.local_request_ = nullptr;
+  return temp;
+}
+inline ::sentiric::llm::v1::LocalGenerateStreamRequest* GenerateDialogStreamRequest::_internal_mutable_local_request() {
+  
+  if (_impl_.local_request_ == nullptr) {
+    auto* p = CreateMaybeMessage<::sentiric::llm::v1::LocalGenerateStreamRequest>(GetArenaForAllocation());
+    _impl_.local_request_ = p;
+  }
+  return _impl_.local_request_;
+}
+inline ::sentiric::llm::v1::LocalGenerateStreamRequest* GenerateDialogStreamRequest::mutable_local_request() {
+  ::sentiric::llm::v1::LocalGenerateStreamRequest* _msg = _internal_mutable_local_request();
+  // @@protoc_insertion_point(field_mutable:sentiric.llm.v1.GenerateDialogStreamRequest.local_request)
+  return _msg;
+}
+inline void GenerateDialogStreamRequest::set_allocated_local_request(::sentiric::llm::v1::LocalGenerateStreamRequest* local_request) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.local_request_);
+  }
+  if (local_request) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(local_request));
+    if (message_arena != submessage_arena) {
+      local_request = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, local_request, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.local_request_ = local_request;
+  // @@protoc_insertion_point(field_set_allocated:sentiric.llm.v1.GenerateDialogStreamRequest.local_request)
 }
 
 // -------------------------------------------------------------------
 
-// GenerateResponse
+// GenerateDialogStreamResponse
 
-// string generated_text = 1;
-inline void GenerateResponse::clear_generated_text() {
-  _impl_.generated_text_.ClearToEmpty();
+// .sentiric.llm.v1.LocalGenerateStreamResponse local_response = 10;
+inline bool GenerateDialogStreamResponse::_internal_has_local_response() const {
+  return this != internal_default_instance() && _impl_.local_response_ != nullptr;
 }
-inline const std::string& GenerateResponse::generated_text() const {
-  // @@protoc_insertion_point(field_get:sentiric.llm.v1.GenerateResponse.generated_text)
-  return _internal_generated_text();
+inline bool GenerateDialogStreamResponse::has_local_response() const {
+  return _internal_has_local_response();
 }
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void GenerateResponse::set_generated_text(ArgT0&& arg0, ArgT... args) {
- 
- _impl_.generated_text_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:sentiric.llm.v1.GenerateResponse.generated_text)
+inline const ::sentiric::llm::v1::LocalGenerateStreamResponse& GenerateDialogStreamResponse::_internal_local_response() const {
+  const ::sentiric::llm::v1::LocalGenerateStreamResponse* p = _impl_.local_response_;
+  return p != nullptr ? *p : reinterpret_cast<const ::sentiric::llm::v1::LocalGenerateStreamResponse&>(
+      ::sentiric::llm::v1::_LocalGenerateStreamResponse_default_instance_);
 }
-inline std::string* GenerateResponse::mutable_generated_text() {
-  std::string* _s = _internal_mutable_generated_text();
-  // @@protoc_insertion_point(field_mutable:sentiric.llm.v1.GenerateResponse.generated_text)
-  return _s;
+inline const ::sentiric::llm::v1::LocalGenerateStreamResponse& GenerateDialogStreamResponse::local_response() const {
+  // @@protoc_insertion_point(field_get:sentiric.llm.v1.GenerateDialogStreamResponse.local_response)
+  return _internal_local_response();
 }
-inline const std::string& GenerateResponse::_internal_generated_text() const {
-  return _impl_.generated_text_.Get();
-}
-inline void GenerateResponse::_internal_set_generated_text(const std::string& value) {
-  
-  _impl_.generated_text_.Set(value, GetArenaForAllocation());
-}
-inline std::string* GenerateResponse::_internal_mutable_generated_text() {
-  
-  return _impl_.generated_text_.Mutable(GetArenaForAllocation());
-}
-inline std::string* GenerateResponse::release_generated_text() {
-  // @@protoc_insertion_point(field_release:sentiric.llm.v1.GenerateResponse.generated_text)
-  return _impl_.generated_text_.Release();
-}
-inline void GenerateResponse::set_allocated_generated_text(std::string* generated_text) {
-  if (generated_text != nullptr) {
+inline void GenerateDialogStreamResponse::unsafe_arena_set_allocated_local_response(
+    ::sentiric::llm::v1::LocalGenerateStreamResponse* local_response) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.local_response_);
+  }
+  _impl_.local_response_ = local_response;
+  if (local_response) {
     
   } else {
     
   }
-  _impl_.generated_text_.SetAllocated(generated_text, GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (_impl_.generated_text_.IsDefault()) {
-    _impl_.generated_text_.Set("", GetArenaForAllocation());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:sentiric.llm.v1.GenerateDialogStreamResponse.local_response)
+}
+inline ::sentiric::llm::v1::LocalGenerateStreamResponse* GenerateDialogStreamResponse::release_local_response() {
+  
+  ::sentiric::llm::v1::LocalGenerateStreamResponse* temp = _impl_.local_response_;
+  _impl_.local_response_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
   }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:sentiric.llm.v1.GenerateResponse.generated_text)
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
 }
-
-// -------------------------------------------------------------------
-
-// GenerateStreamRequest
-
-// string prompt = 1;
-inline void GenerateStreamRequest::clear_prompt() {
-  _impl_.prompt_.ClearToEmpty();
-}
-inline const std::string& GenerateStreamRequest::prompt() const {
-  // @@protoc_insertion_point(field_get:sentiric.llm.v1.GenerateStreamRequest.prompt)
-  return _internal_prompt();
-}
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void GenerateStreamRequest::set_prompt(ArgT0&& arg0, ArgT... args) {
- 
- _impl_.prompt_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:sentiric.llm.v1.GenerateStreamRequest.prompt)
-}
-inline std::string* GenerateStreamRequest::mutable_prompt() {
-  std::string* _s = _internal_mutable_prompt();
-  // @@protoc_insertion_point(field_mutable:sentiric.llm.v1.GenerateStreamRequest.prompt)
-  return _s;
-}
-inline const std::string& GenerateStreamRequest::_internal_prompt() const {
-  return _impl_.prompt_.Get();
-}
-inline void GenerateStreamRequest::_internal_set_prompt(const std::string& value) {
+inline ::sentiric::llm::v1::LocalGenerateStreamResponse* GenerateDialogStreamResponse::unsafe_arena_release_local_response() {
+  // @@protoc_insertion_point(field_release:sentiric.llm.v1.GenerateDialogStreamResponse.local_response)
   
-  _impl_.prompt_.Set(value, GetArenaForAllocation());
+  ::sentiric::llm::v1::LocalGenerateStreamResponse* temp = _impl_.local_response_;
+  _impl_.local_response_ = nullptr;
+  return temp;
 }
-inline std::string* GenerateStreamRequest::_internal_mutable_prompt() {
+inline ::sentiric::llm::v1::LocalGenerateStreamResponse* GenerateDialogStreamResponse::_internal_mutable_local_response() {
   
-  return _impl_.prompt_.Mutable(GetArenaForAllocation());
+  if (_impl_.local_response_ == nullptr) {
+    auto* p = CreateMaybeMessage<::sentiric::llm::v1::LocalGenerateStreamResponse>(GetArenaForAllocation());
+    _impl_.local_response_ = p;
+  }
+  return _impl_.local_response_;
 }
-inline std::string* GenerateStreamRequest::release_prompt() {
-  // @@protoc_insertion_point(field_release:sentiric.llm.v1.GenerateStreamRequest.prompt)
-  return _impl_.prompt_.Release();
+inline ::sentiric::llm::v1::LocalGenerateStreamResponse* GenerateDialogStreamResponse::mutable_local_response() {
+  ::sentiric::llm::v1::LocalGenerateStreamResponse* _msg = _internal_mutable_local_response();
+  // @@protoc_insertion_point(field_mutable:sentiric.llm.v1.GenerateDialogStreamResponse.local_response)
+  return _msg;
 }
-inline void GenerateStreamRequest::set_allocated_prompt(std::string* prompt) {
-  if (prompt != nullptr) {
+inline void GenerateDialogStreamResponse::set_allocated_local_response(::sentiric::llm::v1::LocalGenerateStreamResponse* local_response) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.local_response_);
+  }
+  if (local_response) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(local_response));
+    if (message_arena != submessage_arena) {
+      local_response = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, local_response, submessage_arena);
+    }
     
   } else {
     
   }
-  _impl_.prompt_.SetAllocated(prompt, GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (_impl_.prompt_.IsDefault()) {
-    _impl_.prompt_.Set("", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:sentiric.llm.v1.GenerateStreamRequest.prompt)
-}
-
-// string model_selector = 2;
-inline void GenerateStreamRequest::clear_model_selector() {
-  _impl_.model_selector_.ClearToEmpty();
-}
-inline const std::string& GenerateStreamRequest::model_selector() const {
-  // @@protoc_insertion_point(field_get:sentiric.llm.v1.GenerateStreamRequest.model_selector)
-  return _internal_model_selector();
-}
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void GenerateStreamRequest::set_model_selector(ArgT0&& arg0, ArgT... args) {
- 
- _impl_.model_selector_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:sentiric.llm.v1.GenerateStreamRequest.model_selector)
-}
-inline std::string* GenerateStreamRequest::mutable_model_selector() {
-  std::string* _s = _internal_mutable_model_selector();
-  // @@protoc_insertion_point(field_mutable:sentiric.llm.v1.GenerateStreamRequest.model_selector)
-  return _s;
-}
-inline const std::string& GenerateStreamRequest::_internal_model_selector() const {
-  return _impl_.model_selector_.Get();
-}
-inline void GenerateStreamRequest::_internal_set_model_selector(const std::string& value) {
-  
-  _impl_.model_selector_.Set(value, GetArenaForAllocation());
-}
-inline std::string* GenerateStreamRequest::_internal_mutable_model_selector() {
-  
-  return _impl_.model_selector_.Mutable(GetArenaForAllocation());
-}
-inline std::string* GenerateStreamRequest::release_model_selector() {
-  // @@protoc_insertion_point(field_release:sentiric.llm.v1.GenerateStreamRequest.model_selector)
-  return _impl_.model_selector_.Release();
-}
-inline void GenerateStreamRequest::set_allocated_model_selector(std::string* model_selector) {
-  if (model_selector != nullptr) {
-    
-  } else {
-    
-  }
-  _impl_.model_selector_.SetAllocated(model_selector, GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (_impl_.model_selector_.IsDefault()) {
-    _impl_.model_selector_.Set("", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:sentiric.llm.v1.GenerateStreamRequest.model_selector)
-}
-
-// string tenant_id = 3;
-inline void GenerateStreamRequest::clear_tenant_id() {
-  _impl_.tenant_id_.ClearToEmpty();
-}
-inline const std::string& GenerateStreamRequest::tenant_id() const {
-  // @@protoc_insertion_point(field_get:sentiric.llm.v1.GenerateStreamRequest.tenant_id)
-  return _internal_tenant_id();
-}
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void GenerateStreamRequest::set_tenant_id(ArgT0&& arg0, ArgT... args) {
- 
- _impl_.tenant_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:sentiric.llm.v1.GenerateStreamRequest.tenant_id)
-}
-inline std::string* GenerateStreamRequest::mutable_tenant_id() {
-  std::string* _s = _internal_mutable_tenant_id();
-  // @@protoc_insertion_point(field_mutable:sentiric.llm.v1.GenerateStreamRequest.tenant_id)
-  return _s;
-}
-inline const std::string& GenerateStreamRequest::_internal_tenant_id() const {
-  return _impl_.tenant_id_.Get();
-}
-inline void GenerateStreamRequest::_internal_set_tenant_id(const std::string& value) {
-  
-  _impl_.tenant_id_.Set(value, GetArenaForAllocation());
-}
-inline std::string* GenerateStreamRequest::_internal_mutable_tenant_id() {
-  
-  return _impl_.tenant_id_.Mutable(GetArenaForAllocation());
-}
-inline std::string* GenerateStreamRequest::release_tenant_id() {
-  // @@protoc_insertion_point(field_release:sentiric.llm.v1.GenerateStreamRequest.tenant_id)
-  return _impl_.tenant_id_.Release();
-}
-inline void GenerateStreamRequest::set_allocated_tenant_id(std::string* tenant_id) {
-  if (tenant_id != nullptr) {
-    
-  } else {
-    
-  }
-  _impl_.tenant_id_.SetAllocated(tenant_id, GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (_impl_.tenant_id_.IsDefault()) {
-    _impl_.tenant_id_.Set("", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:sentiric.llm.v1.GenerateStreamRequest.tenant_id)
-}
-
-// -------------------------------------------------------------------
-
-// GenerateStreamResponse
-
-// string generated_text = 1;
-inline void GenerateStreamResponse::clear_generated_text() {
-  _impl_.generated_text_.ClearToEmpty();
-}
-inline const std::string& GenerateStreamResponse::generated_text() const {
-  // @@protoc_insertion_point(field_get:sentiric.llm.v1.GenerateStreamResponse.generated_text)
-  return _internal_generated_text();
-}
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void GenerateStreamResponse::set_generated_text(ArgT0&& arg0, ArgT... args) {
- 
- _impl_.generated_text_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:sentiric.llm.v1.GenerateStreamResponse.generated_text)
-}
-inline std::string* GenerateStreamResponse::mutable_generated_text() {
-  std::string* _s = _internal_mutable_generated_text();
-  // @@protoc_insertion_point(field_mutable:sentiric.llm.v1.GenerateStreamResponse.generated_text)
-  return _s;
-}
-inline const std::string& GenerateStreamResponse::_internal_generated_text() const {
-  return _impl_.generated_text_.Get();
-}
-inline void GenerateStreamResponse::_internal_set_generated_text(const std::string& value) {
-  
-  _impl_.generated_text_.Set(value, GetArenaForAllocation());
-}
-inline std::string* GenerateStreamResponse::_internal_mutable_generated_text() {
-  
-  return _impl_.generated_text_.Mutable(GetArenaForAllocation());
-}
-inline std::string* GenerateStreamResponse::release_generated_text() {
-  // @@protoc_insertion_point(field_release:sentiric.llm.v1.GenerateStreamResponse.generated_text)
-  return _impl_.generated_text_.Release();
-}
-inline void GenerateStreamResponse::set_allocated_generated_text(std::string* generated_text) {
-  if (generated_text != nullptr) {
-    
-  } else {
-    
-  }
-  _impl_.generated_text_.SetAllocated(generated_text, GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (_impl_.generated_text_.IsDefault()) {
-    _impl_.generated_text_.Set("", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:sentiric.llm.v1.GenerateStreamResponse.generated_text)
+  _impl_.local_response_ = local_response;
+  // @@protoc_insertion_point(field_set_allocated:sentiric.llm.v1.GenerateDialogStreamResponse.local_response)
 }
 
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
-// -------------------------------------------------------------------
-
-// -------------------------------------------------------------------
-
 // -------------------------------------------------------------------
 
 

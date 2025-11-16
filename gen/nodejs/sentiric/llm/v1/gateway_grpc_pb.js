@@ -3,76 +3,48 @@
 'use strict';
 var grpc = require('@grpc/grpc-js');
 var sentiric_llm_v1_gateway_pb = require('../../../sentiric/llm/v1/gateway_pb.js');
+var sentiric_llm_v1_local_pb = require('../../../sentiric/llm/v1/local_pb.js');
 
-function serialize_sentiric_llm_v1_GenerateRequest(arg) {
-  if (!(arg instanceof sentiric_llm_v1_gateway_pb.GenerateRequest)) {
-    throw new Error('Expected argument of type sentiric.llm.v1.GenerateRequest');
+function serialize_sentiric_llm_v1_GenerateDialogStreamRequest(arg) {
+  if (!(arg instanceof sentiric_llm_v1_gateway_pb.GenerateDialogStreamRequest)) {
+    throw new Error('Expected argument of type sentiric.llm.v1.GenerateDialogStreamRequest');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_sentiric_llm_v1_GenerateRequest(buffer_arg) {
-  return sentiric_llm_v1_gateway_pb.GenerateRequest.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_sentiric_llm_v1_GenerateDialogStreamRequest(buffer_arg) {
+  return sentiric_llm_v1_gateway_pb.GenerateDialogStreamRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_sentiric_llm_v1_GenerateResponse(arg) {
-  if (!(arg instanceof sentiric_llm_v1_gateway_pb.GenerateResponse)) {
-    throw new Error('Expected argument of type sentiric.llm.v1.GenerateResponse');
+function serialize_sentiric_llm_v1_GenerateDialogStreamResponse(arg) {
+  if (!(arg instanceof sentiric_llm_v1_gateway_pb.GenerateDialogStreamResponse)) {
+    throw new Error('Expected argument of type sentiric.llm.v1.GenerateDialogStreamResponse');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_sentiric_llm_v1_GenerateResponse(buffer_arg) {
-  return sentiric_llm_v1_gateway_pb.GenerateResponse.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_sentiric_llm_v1_GenerateStreamRequest(arg) {
-  if (!(arg instanceof sentiric_llm_v1_gateway_pb.GenerateStreamRequest)) {
-    throw new Error('Expected argument of type sentiric.llm.v1.GenerateStreamRequest');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_sentiric_llm_v1_GenerateStreamRequest(buffer_arg) {
-  return sentiric_llm_v1_gateway_pb.GenerateStreamRequest.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_sentiric_llm_v1_GenerateStreamResponse(arg) {
-  if (!(arg instanceof sentiric_llm_v1_gateway_pb.GenerateStreamResponse)) {
-    throw new Error('Expected argument of type sentiric.llm.v1.GenerateStreamResponse');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_sentiric_llm_v1_GenerateStreamResponse(buffer_arg) {
-  return sentiric_llm_v1_gateway_pb.GenerateStreamResponse.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_sentiric_llm_v1_GenerateDialogStreamResponse(buffer_arg) {
+  return sentiric_llm_v1_gateway_pb.GenerateDialogStreamResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 
+// =============================================================================
+//                      ANA SERVİS TANIMI (Okuma Akışı Prensibi)
+// =============================================================================
 var LlmGatewayServiceService = exports.LlmGatewayServiceService = {
-  generate: {
-    path: '/sentiric.llm.v1.LlmGatewayService/Generate',
-    requestStream: false,
-    responseStream: false,
-    requestType: sentiric_llm_v1_gateway_pb.GenerateRequest,
-    responseType: sentiric_llm_v1_gateway_pb.GenerateResponse,
-    requestSerialize: serialize_sentiric_llm_v1_GenerateRequest,
-    requestDeserialize: deserialize_sentiric_llm_v1_GenerateRequest,
-    responseSerialize: serialize_sentiric_llm_v1_GenerateResponse,
-    responseDeserialize: deserialize_sentiric_llm_v1_GenerateResponse,
-  },
-  generateStream: {
-    path: '/sentiric.llm.v1.LlmGatewayService/GenerateStream',
+  // Diyalogsal bir istek için akış tabanlı metin üretir.
+// İsteği, model seçiciye göre uygun bir uzman servise yönlendirir.
+generateDialogStream: {
+    path: '/sentiric.llm.v1.LlmGatewayService/GenerateDialogStream',
     requestStream: false,
     responseStream: true,
-    requestType: sentiric_llm_v1_gateway_pb.GenerateStreamRequest,
-    responseType: sentiric_llm_v1_gateway_pb.GenerateStreamResponse,
-    requestSerialize: serialize_sentiric_llm_v1_GenerateStreamRequest,
-    requestDeserialize: deserialize_sentiric_llm_v1_GenerateStreamRequest,
-    responseSerialize: serialize_sentiric_llm_v1_GenerateStreamResponse,
-    responseDeserialize: deserialize_sentiric_llm_v1_GenerateStreamResponse,
+    requestType: sentiric_llm_v1_gateway_pb.GenerateDialogStreamRequest,
+    responseType: sentiric_llm_v1_gateway_pb.GenerateDialogStreamResponse,
+    requestSerialize: serialize_sentiric_llm_v1_GenerateDialogStreamRequest,
+    requestDeserialize: deserialize_sentiric_llm_v1_GenerateDialogStreamRequest,
+    responseSerialize: serialize_sentiric_llm_v1_GenerateDialogStreamResponse,
+    responseDeserialize: deserialize_sentiric_llm_v1_GenerateDialogStreamResponse,
   },
-  // Yeniden Adlandırıldı
 };
 
 exports.LlmGatewayServiceClient = grpc.makeGenericClientConstructor(LlmGatewayServiceService, 'LlmGatewayService');

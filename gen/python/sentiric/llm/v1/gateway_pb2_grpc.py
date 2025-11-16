@@ -6,7 +6,10 @@ from sentiric.llm.v1 import gateway_pb2 as sentiric_dot_llm_dot_v1_dot_gateway__
 
 
 class LlmGatewayServiceStub(object):
-    """Missing associated documentation comment in .proto file."""
+    """=============================================================================
+    ANA SERVİS TANIMI (Okuma Akışı Prensibi)
+    =============================================================================
+    """
 
     def __init__(self, channel):
         """Constructor.
@@ -14,29 +17,22 @@ class LlmGatewayServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.Generate = channel.unary_unary(
-                '/sentiric.llm.v1.LlmGatewayService/Generate',
-                request_serializer=sentiric_dot_llm_dot_v1_dot_gateway__pb2.GenerateRequest.SerializeToString,
-                response_deserializer=sentiric_dot_llm_dot_v1_dot_gateway__pb2.GenerateResponse.FromString,
-                _registered_method=True)
-        self.GenerateStream = channel.unary_stream(
-                '/sentiric.llm.v1.LlmGatewayService/GenerateStream',
-                request_serializer=sentiric_dot_llm_dot_v1_dot_gateway__pb2.GenerateStreamRequest.SerializeToString,
-                response_deserializer=sentiric_dot_llm_dot_v1_dot_gateway__pb2.GenerateStreamResponse.FromString,
+        self.GenerateDialogStream = channel.unary_stream(
+                '/sentiric.llm.v1.LlmGatewayService/GenerateDialogStream',
+                request_serializer=sentiric_dot_llm_dot_v1_dot_gateway__pb2.GenerateDialogStreamRequest.SerializeToString,
+                response_deserializer=sentiric_dot_llm_dot_v1_dot_gateway__pb2.GenerateDialogStreamResponse.FromString,
                 _registered_method=True)
 
 
 class LlmGatewayServiceServicer(object):
-    """Missing associated documentation comment in .proto file."""
+    """=============================================================================
+    ANA SERVİS TANIMI (Okuma Akışı Prensibi)
+    =============================================================================
+    """
 
-    def Generate(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def GenerateStream(self, request, context):
-        """Yeniden Adlandırıldı
+    def GenerateDialogStream(self, request, context):
+        """Diyalogsal bir istek için akış tabanlı metin üretir.
+        İsteği, model seçiciye göre uygun bir uzman servise yönlendirir.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -45,15 +41,10 @@ class LlmGatewayServiceServicer(object):
 
 def add_LlmGatewayServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'Generate': grpc.unary_unary_rpc_method_handler(
-                    servicer.Generate,
-                    request_deserializer=sentiric_dot_llm_dot_v1_dot_gateway__pb2.GenerateRequest.FromString,
-                    response_serializer=sentiric_dot_llm_dot_v1_dot_gateway__pb2.GenerateResponse.SerializeToString,
-            ),
-            'GenerateStream': grpc.unary_stream_rpc_method_handler(
-                    servicer.GenerateStream,
-                    request_deserializer=sentiric_dot_llm_dot_v1_dot_gateway__pb2.GenerateStreamRequest.FromString,
-                    response_serializer=sentiric_dot_llm_dot_v1_dot_gateway__pb2.GenerateStreamResponse.SerializeToString,
+            'GenerateDialogStream': grpc.unary_stream_rpc_method_handler(
+                    servicer.GenerateDialogStream,
+                    request_deserializer=sentiric_dot_llm_dot_v1_dot_gateway__pb2.GenerateDialogStreamRequest.FromString,
+                    response_serializer=sentiric_dot_llm_dot_v1_dot_gateway__pb2.GenerateDialogStreamResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -64,37 +55,13 @@ def add_LlmGatewayServiceServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class LlmGatewayService(object):
-    """Missing associated documentation comment in .proto file."""
+    """=============================================================================
+    ANA SERVİS TANIMI (Okuma Akışı Prensibi)
+    =============================================================================
+    """
 
     @staticmethod
-    def Generate(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(
-            request,
-            target,
-            '/sentiric.llm.v1.LlmGatewayService/Generate',
-            sentiric_dot_llm_dot_v1_dot_gateway__pb2.GenerateRequest.SerializeToString,
-            sentiric_dot_llm_dot_v1_dot_gateway__pb2.GenerateResponse.FromString,
-            options,
-            channel_credentials,
-            insecure,
-            call_credentials,
-            compression,
-            wait_for_ready,
-            timeout,
-            metadata,
-            _registered_method=True)
-
-    @staticmethod
-    def GenerateStream(request,
+    def GenerateDialogStream(request,
             target,
             options=(),
             channel_credentials=None,
@@ -107,9 +74,9 @@ class LlmGatewayService(object):
         return grpc.experimental.unary_stream(
             request,
             target,
-            '/sentiric.llm.v1.LlmGatewayService/GenerateStream',
-            sentiric_dot_llm_dot_v1_dot_gateway__pb2.GenerateStreamRequest.SerializeToString,
-            sentiric_dot_llm_dot_v1_dot_gateway__pb2.GenerateStreamResponse.FromString,
+            '/sentiric.llm.v1.LlmGatewayService/GenerateDialogStream',
+            sentiric_dot_llm_dot_v1_dot_gateway__pb2.GenerateDialogStreamRequest.SerializeToString,
+            sentiric_dot_llm_dot_v1_dot_gateway__pb2.GenerateDialogStreamResponse.FromString,
             options,
             channel_credentials,
             insecure,

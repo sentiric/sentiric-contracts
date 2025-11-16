@@ -1,20 +1,70 @@
 syntax = "proto3";
 
-import "google/protobuf/struct.proto";
-
 package sentiric.llm.v1;
+
+import "google/protobuf/struct.proto";
 
 option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/llm/v1;llmv1";
 
+// =============================================================================
+//                      ANA SERVİS TANIMI (Okuma Akışı Prensibi)
+// Bu dosyanın "manşeti". Bir geliştirici ilk olarak buraya bakarak dosyanın
+// ne işe yaradığını ve hangi RPC'leri sunduğunu anında görmelidir.
+// =============================================================================
 service LLMLocalService {
-  rpc LocalGenerate(LocalGenerateRequest) returns (LocalGenerateResponse);
-  
-  // DEĞİŞİKLİK: Artık kendi özel istek mesajını kullanıyor.
-  rpc LocalGenerateStream(LocalGenerateStreamRequest) returns (stream LocalGenerateStreamResponse);
+  // Verilen diyalog bağlamına göre token-token metin üretir.
+  rpc GenerateStream(LocalGenerateStreamRequest) returns (stream LocalGenerateStreamResponse);
 }
 
-// Ortak parametreleri içeren ve her iki istek mesajı tarafından kullanılacak bir mesaj.
-// Bu, kod tekrarını en aza indirir ve mantığı merkezileştirir.
+
+// =============================================================================
+//                      RPC MESAJ TANIMLARI (Detaylar)
+// Yukarıdaki servisin kullandığı istek ve yanıt mesajları.
+// =============================================================================
+
+// Bir diyalog adımında gereken tüm bilgileri taşıyan zengin istek mesajı.
+message LocalGenerateStreamRequest {
+  // 1. AI'nın genel kişiliğini ve kurallarını belirleyen ana talimat.
+  string system_prompt = 1;
+
+  // 2. Kullanıcının son söylediği cümle veya sorduğu soru.
+  string user_prompt = 2;
+
+  // 3. (Opsiyonel) RAG için `knowledge-query-service`'ten gelen ek bilgi metni.
+  optional string rag_context = 3;
+
+  // 4. (Opsiyonel) Diyaloğun önceki adımları.
+  repeated ConversationTurn history = 4;
+
+  // 5. (Opsiyonel) Varsayılan token üretme ayarlarını geçersiz kılmak için kullanılır.
+  optional GenerationParams params = 5;
+}
+
+// Sunucudan istemciye gönderilen her bir akış mesajı.
+message LocalGenerateStreamResponse {
+  oneof type {
+    // Üretilen metnin bir sonraki parçası.
+    string token = 1;
+    // Akışın bittiğini ve üretim özetini içeren mesaj.
+    FinishDetails finish_details = 2;
+  }
+}
+
+
+// =============================================================================
+//                      YARDIMCI MESAJ TANIMLARI (Yardımcı Veri Yapıları)
+// Yukarıdaki RPC mesajları tarafından kullanılan alt veri yapıları.
+// =============================================================================
+
+// Bir konuşma geçmişindeki her bir "konuşma balonunu" temsil eder.
+message ConversationTurn {
+  // rol: Mesajın kime ait olduğunu belirtir. "user" veya "assistant" olmalıdır.
+  string role = 1;
+  // content: Mesajın metin içeriği.
+  string content = 2;
+}
+
+// Token üretme sürecini kontrol eden ortak parametreler.
 message GenerationParams {
   optional int32 max_new_tokens = 1;
   optional float temperature = 2;
@@ -26,38 +76,9 @@ message GenerationParams {
   optional google.protobuf.Struct engine_specific_params = 20;
 }
 
-// LocalGenerate RPC'si için istek mesajı.
-message LocalGenerateRequest {
-  string prompt = 1;
-  // Ortak parametreler buraya gömülüyor (embedded).
-  GenerationParams params = 2;
-}
-
-// YENİ: LocalGenerateStream RPC'si için ayrı istek mesajı.
-// Bu, lint kuralını karşılar ve gelecekteki bağımsız değişikliklere izin verir.
-message LocalGenerateStreamRequest {
-  string prompt = 1;
-  // Ortak parametreler buraya gömülüyor.
-  GenerationParams params = 2;
-}
-
-
-// Yanıt mesajları değişmeden kalır.
-message LocalGenerateResponse {
-  string generated_text = 1;
-  string finish_reason = 2;
-  int32 total_tokens_generated = 3;
-}
-
-message LocalGenerateStreamResponse {
-  oneof response_type {
-    string token = 1;
-    FinishDetails finish_details = 2;
-  }
-}
-
+// Stream bittiğinde istemciye gönderilen özet bilgi.
 message FinishDetails {
   string finish_reason = 1;
-  int32 total_tokens_generated = 2;
-  int64 seed_used = 3;
+  int32 prompt_tokens = 2;
+  int32 completion_tokens = 3;
 }

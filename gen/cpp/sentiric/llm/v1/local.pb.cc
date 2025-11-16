@@ -23,6 +23,52 @@ namespace _pbi = _pb::internal;
 namespace sentiric {
 namespace llm {
 namespace v1 {
+PROTOBUF_CONSTEXPR LocalGenerateStreamRequest::LocalGenerateStreamRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.history_)*/{}
+  , /*decltype(_impl_.system_prompt_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.user_prompt_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.rag_context_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.params_)*/nullptr} {}
+struct LocalGenerateStreamRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR LocalGenerateStreamRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~LocalGenerateStreamRequestDefaultTypeInternal() {}
+  union {
+    LocalGenerateStreamRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LocalGenerateStreamRequestDefaultTypeInternal _LocalGenerateStreamRequest_default_instance_;
+PROTOBUF_CONSTEXPR LocalGenerateStreamResponse::LocalGenerateStreamResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.type_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_._oneof_case_)*/{}} {}
+struct LocalGenerateStreamResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR LocalGenerateStreamResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~LocalGenerateStreamResponseDefaultTypeInternal() {}
+  union {
+    LocalGenerateStreamResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LocalGenerateStreamResponseDefaultTypeInternal _LocalGenerateStreamResponse_default_instance_;
+PROTOBUF_CONSTEXPR ConversationTurn::ConversationTurn(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.role_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.content_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct ConversationTurnDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ConversationTurnDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ConversationTurnDefaultTypeInternal() {}
+  union {
+    ConversationTurn _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ConversationTurnDefaultTypeInternal _ConversationTurn_default_instance_;
 PROTOBUF_CONSTEXPR GenerationParams::GenerationParams(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_._has_bits_)*/{}
@@ -44,68 +90,11 @@ struct GenerationParamsDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GenerationParamsDefaultTypeInternal _GenerationParams_default_instance_;
-PROTOBUF_CONSTEXPR LocalGenerateRequest::LocalGenerateRequest(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.prompt_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.params_)*/nullptr
-  , /*decltype(_impl_._cached_size_)*/{}} {}
-struct LocalGenerateRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR LocalGenerateRequestDefaultTypeInternal()
-      : _instance(::_pbi::ConstantInitialized{}) {}
-  ~LocalGenerateRequestDefaultTypeInternal() {}
-  union {
-    LocalGenerateRequest _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LocalGenerateRequestDefaultTypeInternal _LocalGenerateRequest_default_instance_;
-PROTOBUF_CONSTEXPR LocalGenerateStreamRequest::LocalGenerateStreamRequest(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.prompt_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.params_)*/nullptr
-  , /*decltype(_impl_._cached_size_)*/{}} {}
-struct LocalGenerateStreamRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR LocalGenerateStreamRequestDefaultTypeInternal()
-      : _instance(::_pbi::ConstantInitialized{}) {}
-  ~LocalGenerateStreamRequestDefaultTypeInternal() {}
-  union {
-    LocalGenerateStreamRequest _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LocalGenerateStreamRequestDefaultTypeInternal _LocalGenerateStreamRequest_default_instance_;
-PROTOBUF_CONSTEXPR LocalGenerateResponse::LocalGenerateResponse(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.generated_text_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.finish_reason_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.total_tokens_generated_)*/0
-  , /*decltype(_impl_._cached_size_)*/{}} {}
-struct LocalGenerateResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR LocalGenerateResponseDefaultTypeInternal()
-      : _instance(::_pbi::ConstantInitialized{}) {}
-  ~LocalGenerateResponseDefaultTypeInternal() {}
-  union {
-    LocalGenerateResponse _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LocalGenerateResponseDefaultTypeInternal _LocalGenerateResponse_default_instance_;
-PROTOBUF_CONSTEXPR LocalGenerateStreamResponse::LocalGenerateStreamResponse(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.response_type_)*/{}
-  , /*decltype(_impl_._cached_size_)*/{}
-  , /*decltype(_impl_._oneof_case_)*/{}} {}
-struct LocalGenerateStreamResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR LocalGenerateStreamResponseDefaultTypeInternal()
-      : _instance(::_pbi::ConstantInitialized{}) {}
-  ~LocalGenerateStreamResponseDefaultTypeInternal() {}
-  union {
-    LocalGenerateStreamResponse _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LocalGenerateStreamResponseDefaultTypeInternal _LocalGenerateStreamResponse_default_instance_;
 PROTOBUF_CONSTEXPR FinishDetails::FinishDetails(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.finish_reason_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.seed_used_)*/int64_t{0}
-  , /*decltype(_impl_.total_tokens_generated_)*/0
+  , /*decltype(_impl_.prompt_tokens_)*/0
+  , /*decltype(_impl_.completion_tokens_)*/0
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct FinishDetailsDefaultTypeInternal {
   PROTOBUF_CONSTEXPR FinishDetailsDefaultTypeInternal()
@@ -119,11 +108,44 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORIT
 }  // namespace v1
 }  // namespace llm
 }  // namespace sentiric
-static ::_pb::Metadata file_level_metadata_sentiric_2fllm_2fv1_2flocal_2eproto[6];
+static ::_pb::Metadata file_level_metadata_sentiric_2fllm_2fv1_2flocal_2eproto[5];
 static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_sentiric_2fllm_2fv1_2flocal_2eproto = nullptr;
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_sentiric_2fllm_2fv1_2flocal_2eproto = nullptr;
 
 const uint32_t TableStruct_sentiric_2fllm_2fv1_2flocal_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+  PROTOBUF_FIELD_OFFSET(::sentiric::llm::v1::LocalGenerateStreamRequest, _impl_._has_bits_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::llm::v1::LocalGenerateStreamRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::llm::v1::LocalGenerateStreamRequest, _impl_.system_prompt_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::llm::v1::LocalGenerateStreamRequest, _impl_.user_prompt_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::llm::v1::LocalGenerateStreamRequest, _impl_.rag_context_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::llm::v1::LocalGenerateStreamRequest, _impl_.history_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::llm::v1::LocalGenerateStreamRequest, _impl_.params_),
+  ~0u,
+  ~0u,
+  0,
+  ~0u,
+  1,
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::llm::v1::LocalGenerateStreamResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  PROTOBUF_FIELD_OFFSET(::sentiric::llm::v1::LocalGenerateStreamResponse, _impl_._oneof_case_[0]),
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  ::_pbi::kInvalidFieldOffsetTag,
+  ::_pbi::kInvalidFieldOffsetTag,
+  PROTOBUF_FIELD_OFFSET(::sentiric::llm::v1::LocalGenerateStreamResponse, _impl_.type_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::llm::v1::ConversationTurn, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::llm::v1::ConversationTurn, _impl_.role_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::llm::v1::ConversationTurn, _impl_.content_),
   PROTOBUF_FIELD_OFFSET(::sentiric::llm::v1::GenerationParams, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::sentiric::llm::v1::GenerationParams, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -147,109 +169,70 @@ const uint32_t TableStruct_sentiric_2fllm_2fv1_2flocal_2eproto::offsets[] PROTOB
   5,
   0,
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::sentiric::llm::v1::LocalGenerateRequest, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::sentiric::llm::v1::LocalGenerateRequest, _impl_.prompt_),
-  PROTOBUF_FIELD_OFFSET(::sentiric::llm::v1::LocalGenerateRequest, _impl_.params_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::sentiric::llm::v1::LocalGenerateStreamRequest, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::sentiric::llm::v1::LocalGenerateStreamRequest, _impl_.prompt_),
-  PROTOBUF_FIELD_OFFSET(::sentiric::llm::v1::LocalGenerateStreamRequest, _impl_.params_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::sentiric::llm::v1::LocalGenerateResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::sentiric::llm::v1::LocalGenerateResponse, _impl_.generated_text_),
-  PROTOBUF_FIELD_OFFSET(::sentiric::llm::v1::LocalGenerateResponse, _impl_.finish_reason_),
-  PROTOBUF_FIELD_OFFSET(::sentiric::llm::v1::LocalGenerateResponse, _impl_.total_tokens_generated_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::sentiric::llm::v1::LocalGenerateStreamResponse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  PROTOBUF_FIELD_OFFSET(::sentiric::llm::v1::LocalGenerateStreamResponse, _impl_._oneof_case_[0]),
-  ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
-  ::_pbi::kInvalidFieldOffsetTag,
-  ::_pbi::kInvalidFieldOffsetTag,
-  PROTOBUF_FIELD_OFFSET(::sentiric::llm::v1::LocalGenerateStreamResponse, _impl_.response_type_),
-  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::sentiric::llm::v1::FinishDetails, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::sentiric::llm::v1::FinishDetails, _impl_.finish_reason_),
-  PROTOBUF_FIELD_OFFSET(::sentiric::llm::v1::FinishDetails, _impl_.total_tokens_generated_),
-  PROTOBUF_FIELD_OFFSET(::sentiric::llm::v1::FinishDetails, _impl_.seed_used_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::llm::v1::FinishDetails, _impl_.prompt_tokens_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::llm::v1::FinishDetails, _impl_.completion_tokens_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, 14, -1, sizeof(::sentiric::llm::v1::GenerationParams)},
-  { 22, -1, -1, sizeof(::sentiric::llm::v1::LocalGenerateRequest)},
-  { 30, -1, -1, sizeof(::sentiric::llm::v1::LocalGenerateStreamRequest)},
-  { 38, -1, -1, sizeof(::sentiric::llm::v1::LocalGenerateResponse)},
-  { 47, -1, -1, sizeof(::sentiric::llm::v1::LocalGenerateStreamResponse)},
-  { 56, -1, -1, sizeof(::sentiric::llm::v1::FinishDetails)},
+  { 0, 11, -1, sizeof(::sentiric::llm::v1::LocalGenerateStreamRequest)},
+  { 16, -1, -1, sizeof(::sentiric::llm::v1::LocalGenerateStreamResponse)},
+  { 25, -1, -1, sizeof(::sentiric::llm::v1::ConversationTurn)},
+  { 33, 47, -1, sizeof(::sentiric::llm::v1::GenerationParams)},
+  { 55, -1, -1, sizeof(::sentiric::llm::v1::FinishDetails)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
-  &::sentiric::llm::v1::_GenerationParams_default_instance_._instance,
-  &::sentiric::llm::v1::_LocalGenerateRequest_default_instance_._instance,
   &::sentiric::llm::v1::_LocalGenerateStreamRequest_default_instance_._instance,
-  &::sentiric::llm::v1::_LocalGenerateResponse_default_instance_._instance,
   &::sentiric::llm::v1::_LocalGenerateStreamResponse_default_instance_._instance,
+  &::sentiric::llm::v1::_ConversationTurn_default_instance_._instance,
+  &::sentiric::llm::v1::_GenerationParams_default_instance_._instance,
   &::sentiric::llm::v1::_FinishDetails_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_sentiric_2fllm_2fv1_2flocal_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\033sentiric/llm/v1/local.proto\022\017sentiric."
-  "llm.v1\032\034google/protobuf/struct.proto\"\355\002\n"
-  "\020GenerationParams\022\033\n\016max_new_tokens\030\001 \001("
-  "\005H\000\210\001\001\022\030\n\013temperature\030\002 \001(\002H\001\210\001\001\022\022\n\005top_"
-  "k\030\003 \001(\005H\002\210\001\001\022\022\n\005top_p\030\004 \001(\002H\003\210\001\001\022\037\n\022repe"
-  "tition_penalty\030\005 \001(\002H\004\210\001\001\022\026\n\016stop_sequen"
-  "ces\030\006 \003(\t\022\021\n\004seed\030\007 \001(\003H\005\210\001\001\022<\n\026engine_s"
-  "pecific_params\030\024 \001(\0132\027.google.protobuf.S"
-  "tructH\006\210\001\001B\021\n\017_max_new_tokensB\016\n\014_temper"
-  "atureB\010\n\006_top_kB\010\n\006_top_pB\025\n\023_repetition"
-  "_penaltyB\007\n\005_seedB\031\n\027_engine_specific_pa"
-  "rams\"Y\n\024LocalGenerateRequest\022\016\n\006prompt\030\001"
-  " \001(\t\0221\n\006params\030\002 \001(\0132!.sentiric.llm.v1.G"
-  "enerationParams\"_\n\032LocalGenerateStreamRe"
-  "quest\022\016\n\006prompt\030\001 \001(\t\0221\n\006params\030\002 \001(\0132!."
-  "sentiric.llm.v1.GenerationParams\"f\n\025Loca"
-  "lGenerateResponse\022\026\n\016generated_text\030\001 \001("
-  "\t\022\025\n\rfinish_reason\030\002 \001(\t\022\036\n\026total_tokens"
-  "_generated\030\003 \001(\005\"y\n\033LocalGenerateStreamR"
-  "esponse\022\017\n\005token\030\001 \001(\tH\000\0228\n\016finish_detai"
-  "ls\030\002 \001(\0132\036.sentiric.llm.v1.FinishDetails"
-  "H\000B\017\n\rresponse_type\"Y\n\rFinishDetails\022\025\n\r"
-  "finish_reason\030\001 \001(\t\022\036\n\026total_tokens_gene"
-  "rated\030\002 \001(\005\022\021\n\tseed_used\030\003 \001(\0032\345\001\n\017LLMLo"
-  "calService\022^\n\rLocalGenerate\022%.sentiric.l"
-  "lm.v1.LocalGenerateRequest\032&.sentiric.ll"
-  "m.v1.LocalGenerateResponse\022r\n\023LocalGener"
-  "ateStream\022+.sentiric.llm.v1.LocalGenerat"
-  "eStreamRequest\032,.sentiric.llm.v1.LocalGe"
-  "nerateStreamResponse0\001BEZCgithub.com/sen"
-  "tiric/sentiric-contracts/gen/go/sentiric"
-  "/llm/v1;llmv1b\006proto3"
+  "llm.v1\032\034google/protobuf/struct.proto\"\351\001\n"
+  "\032LocalGenerateStreamRequest\022\025\n\rsystem_pr"
+  "ompt\030\001 \001(\t\022\023\n\013user_prompt\030\002 \001(\t\022\030\n\013rag_c"
+  "ontext\030\003 \001(\tH\000\210\001\001\0222\n\007history\030\004 \003(\0132!.sen"
+  "tiric.llm.v1.ConversationTurn\0226\n\006params\030"
+  "\005 \001(\0132!.sentiric.llm.v1.GenerationParams"
+  "H\001\210\001\001B\016\n\014_rag_contextB\t\n\007_params\"p\n\033Loca"
+  "lGenerateStreamResponse\022\017\n\005token\030\001 \001(\tH\000"
+  "\0228\n\016finish_details\030\002 \001(\0132\036.sentiric.llm."
+  "v1.FinishDetailsH\000B\006\n\004type\"1\n\020Conversati"
+  "onTurn\022\014\n\004role\030\001 \001(\t\022\017\n\007content\030\002 \001(\t\"\355\002"
+  "\n\020GenerationParams\022\033\n\016max_new_tokens\030\001 \001"
+  "(\005H\000\210\001\001\022\030\n\013temperature\030\002 \001(\002H\001\210\001\001\022\022\n\005top"
+  "_k\030\003 \001(\005H\002\210\001\001\022\022\n\005top_p\030\004 \001(\002H\003\210\001\001\022\037\n\022rep"
+  "etition_penalty\030\005 \001(\002H\004\210\001\001\022\026\n\016stop_seque"
+  "nces\030\006 \003(\t\022\021\n\004seed\030\007 \001(\003H\005\210\001\001\022<\n\026engine_"
+  "specific_params\030\024 \001(\0132\027.google.protobuf."
+  "StructH\006\210\001\001B\021\n\017_max_new_tokensB\016\n\014_tempe"
+  "ratureB\010\n\006_top_kB\010\n\006_top_pB\025\n\023_repetitio"
+  "n_penaltyB\007\n\005_seedB\031\n\027_engine_specific_p"
+  "arams\"X\n\rFinishDetails\022\025\n\rfinish_reason\030"
+  "\001 \001(\t\022\025\n\rprompt_tokens\030\002 \001(\005\022\031\n\021completi"
+  "on_tokens\030\003 \001(\0052\200\001\n\017LLMLocalService\022m\n\016G"
+  "enerateStream\022+.sentiric.llm.v1.LocalGen"
+  "erateStreamRequest\032,.sentiric.llm.v1.Loc"
+  "alGenerateStreamResponse0\001BEZCgithub.com"
+  "/sentiric/sentiric-contracts/gen/go/sent"
+  "iric/llm/v1;llmv1b\006proto3"
   ;
 static const ::_pbi::DescriptorTable* const descriptor_table_sentiric_2fllm_2fv1_2flocal_2eproto_deps[1] = {
   &::descriptor_table_google_2fprotobuf_2fstruct_2eproto,
 };
 static ::_pbi::once_flag descriptor_table_sentiric_2fllm_2fv1_2flocal_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_sentiric_2fllm_2fv1_2flocal_2eproto = {
-    false, false, 1261, descriptor_table_protodef_sentiric_2fllm_2fv1_2flocal_2eproto,
+    false, false, 1145, descriptor_table_protodef_sentiric_2fllm_2fv1_2flocal_2eproto,
     "sentiric/llm/v1/local.proto",
-    &descriptor_table_sentiric_2fllm_2fv1_2flocal_2eproto_once, descriptor_table_sentiric_2fllm_2fv1_2flocal_2eproto_deps, 1, 6,
+    &descriptor_table_sentiric_2fllm_2fv1_2flocal_2eproto_once, descriptor_table_sentiric_2fllm_2fv1_2flocal_2eproto_deps, 1, 5,
     schemas, file_default_instances, TableStruct_sentiric_2fllm_2fv1_2flocal_2eproto::offsets,
     file_level_metadata_sentiric_2fllm_2fv1_2flocal_2eproto, file_level_enum_descriptors_sentiric_2fllm_2fv1_2flocal_2eproto,
     file_level_service_descriptors_sentiric_2fllm_2fv1_2flocal_2eproto,
@@ -263,6 +246,948 @@ PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_in
 namespace sentiric {
 namespace llm {
 namespace v1 {
+
+// ===================================================================
+
+class LocalGenerateStreamRequest::_Internal {
+ public:
+  using HasBits = decltype(std::declval<LocalGenerateStreamRequest>()._impl_._has_bits_);
+  static void set_has_rag_context(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static const ::sentiric::llm::v1::GenerationParams& params(const LocalGenerateStreamRequest* msg);
+  static void set_has_params(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+};
+
+const ::sentiric::llm::v1::GenerationParams&
+LocalGenerateStreamRequest::_Internal::params(const LocalGenerateStreamRequest* msg) {
+  return *msg->_impl_.params_;
+}
+LocalGenerateStreamRequest::LocalGenerateStreamRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.llm.v1.LocalGenerateStreamRequest)
+}
+LocalGenerateStreamRequest::LocalGenerateStreamRequest(const LocalGenerateStreamRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  LocalGenerateStreamRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.history_){from._impl_.history_}
+    , decltype(_impl_.system_prompt_){}
+    , decltype(_impl_.user_prompt_){}
+    , decltype(_impl_.rag_context_){}
+    , decltype(_impl_.params_){nullptr}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.system_prompt_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.system_prompt_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_system_prompt().empty()) {
+    _this->_impl_.system_prompt_.Set(from._internal_system_prompt(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.user_prompt_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.user_prompt_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_user_prompt().empty()) {
+    _this->_impl_.user_prompt_.Set(from._internal_user_prompt(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.rag_context_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.rag_context_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_rag_context()) {
+    _this->_impl_.rag_context_.Set(from._internal_rag_context(), 
+      _this->GetArenaForAllocation());
+  }
+  if (from._internal_has_params()) {
+    _this->_impl_.params_ = new ::sentiric::llm::v1::GenerationParams(*from._impl_.params_);
+  }
+  // @@protoc_insertion_point(copy_constructor:sentiric.llm.v1.LocalGenerateStreamRequest)
+}
+
+inline void LocalGenerateStreamRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.history_){arena}
+    , decltype(_impl_.system_prompt_){}
+    , decltype(_impl_.user_prompt_){}
+    , decltype(_impl_.rag_context_){}
+    , decltype(_impl_.params_){nullptr}
+  };
+  _impl_.system_prompt_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.system_prompt_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.user_prompt_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.user_prompt_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.rag_context_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.rag_context_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+LocalGenerateStreamRequest::~LocalGenerateStreamRequest() {
+  // @@protoc_insertion_point(destructor:sentiric.llm.v1.LocalGenerateStreamRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void LocalGenerateStreamRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.history_.~RepeatedPtrField();
+  _impl_.system_prompt_.Destroy();
+  _impl_.user_prompt_.Destroy();
+  _impl_.rag_context_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.params_;
+}
+
+void LocalGenerateStreamRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void LocalGenerateStreamRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.llm.v1.LocalGenerateStreamRequest)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.history_.Clear();
+  _impl_.system_prompt_.ClearToEmpty();
+  _impl_.user_prompt_.ClearToEmpty();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      _impl_.rag_context_.ClearNonDefaultToEmpty();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      GOOGLE_DCHECK(_impl_.params_ != nullptr);
+      _impl_.params_->Clear();
+    }
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* LocalGenerateStreamRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string system_prompt = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_system_prompt();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.llm.v1.LocalGenerateStreamRequest.system_prompt"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string user_prompt = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_user_prompt();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.llm.v1.LocalGenerateStreamRequest.user_prompt"));
+        } else
+          goto handle_unusual;
+        continue;
+      // optional string rag_context = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_rag_context();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.llm.v1.LocalGenerateStreamRequest.rag_context"));
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated .sentiric.llm.v1.ConversationTurn history = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_history(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<34>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      // optional .sentiric.llm.v1.GenerationParams params = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
+          ptr = ctx->ParseMessage(_internal_mutable_params(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* LocalGenerateStreamRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.llm.v1.LocalGenerateStreamRequest)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string system_prompt = 1;
+  if (!this->_internal_system_prompt().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_system_prompt().data(), static_cast<int>(this->_internal_system_prompt().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.llm.v1.LocalGenerateStreamRequest.system_prompt");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_system_prompt(), target);
+  }
+
+  // string user_prompt = 2;
+  if (!this->_internal_user_prompt().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_user_prompt().data(), static_cast<int>(this->_internal_user_prompt().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.llm.v1.LocalGenerateStreamRequest.user_prompt");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_user_prompt(), target);
+  }
+
+  // optional string rag_context = 3;
+  if (_internal_has_rag_context()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_rag_context().data(), static_cast<int>(this->_internal_rag_context().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.llm.v1.LocalGenerateStreamRequest.rag_context");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_rag_context(), target);
+  }
+
+  // repeated .sentiric.llm.v1.ConversationTurn history = 4;
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_history_size()); i < n; i++) {
+    const auto& repfield = this->_internal_history(i);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(4, repfield, repfield.GetCachedSize(), target, stream);
+  }
+
+  // optional .sentiric.llm.v1.GenerationParams params = 5;
+  if (_internal_has_params()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(5, _Internal::params(this),
+        _Internal::params(this).GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.llm.v1.LocalGenerateStreamRequest)
+  return target;
+}
+
+size_t LocalGenerateStreamRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.llm.v1.LocalGenerateStreamRequest)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated .sentiric.llm.v1.ConversationTurn history = 4;
+  total_size += 1UL * this->_internal_history_size();
+  for (const auto& msg : this->_impl_.history_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  // string system_prompt = 1;
+  if (!this->_internal_system_prompt().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_system_prompt());
+  }
+
+  // string user_prompt = 2;
+  if (!this->_internal_user_prompt().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_user_prompt());
+  }
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    // optional string rag_context = 3;
+    if (cached_has_bits & 0x00000001u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+          this->_internal_rag_context());
+    }
+
+    // optional .sentiric.llm.v1.GenerationParams params = 5;
+    if (cached_has_bits & 0x00000002u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.params_);
+    }
+
+  }
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData LocalGenerateStreamRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    LocalGenerateStreamRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*LocalGenerateStreamRequest::GetClassData() const { return &_class_data_; }
+
+
+void LocalGenerateStreamRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<LocalGenerateStreamRequest*>(&to_msg);
+  auto& from = static_cast<const LocalGenerateStreamRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.llm.v1.LocalGenerateStreamRequest)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_impl_.history_.MergeFrom(from._impl_.history_);
+  if (!from._internal_system_prompt().empty()) {
+    _this->_internal_set_system_prompt(from._internal_system_prompt());
+  }
+  if (!from._internal_user_prompt().empty()) {
+    _this->_internal_set_user_prompt(from._internal_user_prompt());
+  }
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      _this->_internal_set_rag_context(from._internal_rag_context());
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _this->_internal_mutable_params()->::sentiric::llm::v1::GenerationParams::MergeFrom(
+          from._internal_params());
+    }
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void LocalGenerateStreamRequest::CopyFrom(const LocalGenerateStreamRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.llm.v1.LocalGenerateStreamRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool LocalGenerateStreamRequest::IsInitialized() const {
+  return true;
+}
+
+void LocalGenerateStreamRequest::InternalSwap(LocalGenerateStreamRequest* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  _impl_.history_.InternalSwap(&other->_impl_.history_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.system_prompt_, lhs_arena,
+      &other->_impl_.system_prompt_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.user_prompt_, lhs_arena,
+      &other->_impl_.user_prompt_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.rag_context_, lhs_arena,
+      &other->_impl_.rag_context_, rhs_arena
+  );
+  swap(_impl_.params_, other->_impl_.params_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata LocalGenerateStreamRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fllm_2fv1_2flocal_2eproto_getter, &descriptor_table_sentiric_2fllm_2fv1_2flocal_2eproto_once,
+      file_level_metadata_sentiric_2fllm_2fv1_2flocal_2eproto[0]);
+}
+
+// ===================================================================
+
+class LocalGenerateStreamResponse::_Internal {
+ public:
+  static const ::sentiric::llm::v1::FinishDetails& finish_details(const LocalGenerateStreamResponse* msg);
+};
+
+const ::sentiric::llm::v1::FinishDetails&
+LocalGenerateStreamResponse::_Internal::finish_details(const LocalGenerateStreamResponse* msg) {
+  return *msg->_impl_.type_.finish_details_;
+}
+void LocalGenerateStreamResponse::set_allocated_finish_details(::sentiric::llm::v1::FinishDetails* finish_details) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  clear_type();
+  if (finish_details) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(finish_details);
+    if (message_arena != submessage_arena) {
+      finish_details = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, finish_details, submessage_arena);
+    }
+    set_has_finish_details();
+    _impl_.type_.finish_details_ = finish_details;
+  }
+  // @@protoc_insertion_point(field_set_allocated:sentiric.llm.v1.LocalGenerateStreamResponse.finish_details)
+}
+LocalGenerateStreamResponse::LocalGenerateStreamResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.llm.v1.LocalGenerateStreamResponse)
+}
+LocalGenerateStreamResponse::LocalGenerateStreamResponse(const LocalGenerateStreamResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  LocalGenerateStreamResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.type_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , /*decltype(_impl_._oneof_case_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  clear_has_type();
+  switch (from.type_case()) {
+    case kToken: {
+      _this->_internal_set_token(from._internal_token());
+      break;
+    }
+    case kFinishDetails: {
+      _this->_internal_mutable_finish_details()->::sentiric::llm::v1::FinishDetails::MergeFrom(
+          from._internal_finish_details());
+      break;
+    }
+    case TYPE_NOT_SET: {
+      break;
+    }
+  }
+  // @@protoc_insertion_point(copy_constructor:sentiric.llm.v1.LocalGenerateStreamResponse)
+}
+
+inline void LocalGenerateStreamResponse::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.type_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , /*decltype(_impl_._oneof_case_)*/{}
+  };
+  clear_has_type();
+}
+
+LocalGenerateStreamResponse::~LocalGenerateStreamResponse() {
+  // @@protoc_insertion_point(destructor:sentiric.llm.v1.LocalGenerateStreamResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void LocalGenerateStreamResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  if (has_type()) {
+    clear_type();
+  }
+}
+
+void LocalGenerateStreamResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void LocalGenerateStreamResponse::clear_type() {
+// @@protoc_insertion_point(one_of_clear_start:sentiric.llm.v1.LocalGenerateStreamResponse)
+  switch (type_case()) {
+    case kToken: {
+      _impl_.type_.token_.Destroy();
+      break;
+    }
+    case kFinishDetails: {
+      if (GetArenaForAllocation() == nullptr) {
+        delete _impl_.type_.finish_details_;
+      }
+      break;
+    }
+    case TYPE_NOT_SET: {
+      break;
+    }
+  }
+  _impl_._oneof_case_[0] = TYPE_NOT_SET;
+}
+
+
+void LocalGenerateStreamResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.llm.v1.LocalGenerateStreamResponse)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  clear_type();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* LocalGenerateStreamResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string token = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_token();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.llm.v1.LocalGenerateStreamResponse.token"));
+        } else
+          goto handle_unusual;
+        continue;
+      // .sentiric.llm.v1.FinishDetails finish_details = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          ptr = ctx->ParseMessage(_internal_mutable_finish_details(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* LocalGenerateStreamResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.llm.v1.LocalGenerateStreamResponse)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string token = 1;
+  if (_internal_has_token()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_token().data(), static_cast<int>(this->_internal_token().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.llm.v1.LocalGenerateStreamResponse.token");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_token(), target);
+  }
+
+  // .sentiric.llm.v1.FinishDetails finish_details = 2;
+  if (_internal_has_finish_details()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(2, _Internal::finish_details(this),
+        _Internal::finish_details(this).GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.llm.v1.LocalGenerateStreamResponse)
+  return target;
+}
+
+size_t LocalGenerateStreamResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.llm.v1.LocalGenerateStreamResponse)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  switch (type_case()) {
+    // string token = 1;
+    case kToken: {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+          this->_internal_token());
+      break;
+    }
+    // .sentiric.llm.v1.FinishDetails finish_details = 2;
+    case kFinishDetails: {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.type_.finish_details_);
+      break;
+    }
+    case TYPE_NOT_SET: {
+      break;
+    }
+  }
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData LocalGenerateStreamResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    LocalGenerateStreamResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*LocalGenerateStreamResponse::GetClassData() const { return &_class_data_; }
+
+
+void LocalGenerateStreamResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<LocalGenerateStreamResponse*>(&to_msg);
+  auto& from = static_cast<const LocalGenerateStreamResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.llm.v1.LocalGenerateStreamResponse)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  switch (from.type_case()) {
+    case kToken: {
+      _this->_internal_set_token(from._internal_token());
+      break;
+    }
+    case kFinishDetails: {
+      _this->_internal_mutable_finish_details()->::sentiric::llm::v1::FinishDetails::MergeFrom(
+          from._internal_finish_details());
+      break;
+    }
+    case TYPE_NOT_SET: {
+      break;
+    }
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void LocalGenerateStreamResponse::CopyFrom(const LocalGenerateStreamResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.llm.v1.LocalGenerateStreamResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool LocalGenerateStreamResponse::IsInitialized() const {
+  return true;
+}
+
+void LocalGenerateStreamResponse::InternalSwap(LocalGenerateStreamResponse* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_.type_, other->_impl_.type_);
+  swap(_impl_._oneof_case_[0], other->_impl_._oneof_case_[0]);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata LocalGenerateStreamResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fllm_2fv1_2flocal_2eproto_getter, &descriptor_table_sentiric_2fllm_2fv1_2flocal_2eproto_once,
+      file_level_metadata_sentiric_2fllm_2fv1_2flocal_2eproto[1]);
+}
+
+// ===================================================================
+
+class ConversationTurn::_Internal {
+ public:
+};
+
+ConversationTurn::ConversationTurn(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.llm.v1.ConversationTurn)
+}
+ConversationTurn::ConversationTurn(const ConversationTurn& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ConversationTurn* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.role_){}
+    , decltype(_impl_.content_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.role_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.role_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_role().empty()) {
+    _this->_impl_.role_.Set(from._internal_role(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.content_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.content_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_content().empty()) {
+    _this->_impl_.content_.Set(from._internal_content(), 
+      _this->GetArenaForAllocation());
+  }
+  // @@protoc_insertion_point(copy_constructor:sentiric.llm.v1.ConversationTurn)
+}
+
+inline void ConversationTurn::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.role_){}
+    , decltype(_impl_.content_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.role_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.role_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.content_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.content_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+ConversationTurn::~ConversationTurn() {
+  // @@protoc_insertion_point(destructor:sentiric.llm.v1.ConversationTurn)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void ConversationTurn::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.role_.Destroy();
+  _impl_.content_.Destroy();
+}
+
+void ConversationTurn::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void ConversationTurn::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.llm.v1.ConversationTurn)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.role_.ClearToEmpty();
+  _impl_.content_.ClearToEmpty();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* ConversationTurn::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string role = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_role();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.llm.v1.ConversationTurn.role"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string content = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_content();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.llm.v1.ConversationTurn.content"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* ConversationTurn::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.llm.v1.ConversationTurn)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string role = 1;
+  if (!this->_internal_role().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_role().data(), static_cast<int>(this->_internal_role().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.llm.v1.ConversationTurn.role");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_role(), target);
+  }
+
+  // string content = 2;
+  if (!this->_internal_content().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_content().data(), static_cast<int>(this->_internal_content().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.llm.v1.ConversationTurn.content");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_content(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.llm.v1.ConversationTurn)
+  return target;
+}
+
+size_t ConversationTurn::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.llm.v1.ConversationTurn)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string role = 1;
+  if (!this->_internal_role().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_role());
+  }
+
+  // string content = 2;
+  if (!this->_internal_content().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_content());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ConversationTurn::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ConversationTurn::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ConversationTurn::GetClassData() const { return &_class_data_; }
+
+
+void ConversationTurn::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ConversationTurn*>(&to_msg);
+  auto& from = static_cast<const ConversationTurn&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.llm.v1.ConversationTurn)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_role().empty()) {
+    _this->_internal_set_role(from._internal_role());
+  }
+  if (!from._internal_content().empty()) {
+    _this->_internal_set_content(from._internal_content());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void ConversationTurn::CopyFrom(const ConversationTurn& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.llm.v1.ConversationTurn)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ConversationTurn::IsInitialized() const {
+  return true;
+}
+
+void ConversationTurn::InternalSwap(ConversationTurn* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.role_, lhs_arena,
+      &other->_impl_.role_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.content_, lhs_arena,
+      &other->_impl_.content_, rhs_arena
+  );
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata ConversationTurn::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fllm_2fv1_2flocal_2eproto_getter, &descriptor_table_sentiric_2fllm_2fv1_2flocal_2eproto_once,
+      file_level_metadata_sentiric_2fllm_2fv1_2flocal_2eproto[2]);
+}
 
 // ===================================================================
 
@@ -696,1063 +1621,7 @@ void GenerationParams::InternalSwap(GenerationParams* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata GenerationParams::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fllm_2fv1_2flocal_2eproto_getter, &descriptor_table_sentiric_2fllm_2fv1_2flocal_2eproto_once,
-      file_level_metadata_sentiric_2fllm_2fv1_2flocal_2eproto[0]);
-}
-
-// ===================================================================
-
-class LocalGenerateRequest::_Internal {
- public:
-  static const ::sentiric::llm::v1::GenerationParams& params(const LocalGenerateRequest* msg);
-};
-
-const ::sentiric::llm::v1::GenerationParams&
-LocalGenerateRequest::_Internal::params(const LocalGenerateRequest* msg) {
-  return *msg->_impl_.params_;
-}
-LocalGenerateRequest::LocalGenerateRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor(arena, is_message_owned);
-  // @@protoc_insertion_point(arena_constructor:sentiric.llm.v1.LocalGenerateRequest)
-}
-LocalGenerateRequest::LocalGenerateRequest(const LocalGenerateRequest& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  LocalGenerateRequest* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.prompt_){}
-    , decltype(_impl_.params_){nullptr}
-    , /*decltype(_impl_._cached_size_)*/{}};
-
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  _impl_.prompt_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.prompt_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_prompt().empty()) {
-    _this->_impl_.prompt_.Set(from._internal_prompt(), 
-      _this->GetArenaForAllocation());
-  }
-  if (from._internal_has_params()) {
-    _this->_impl_.params_ = new ::sentiric::llm::v1::GenerationParams(*from._impl_.params_);
-  }
-  // @@protoc_insertion_point(copy_constructor:sentiric.llm.v1.LocalGenerateRequest)
-}
-
-inline void LocalGenerateRequest::SharedCtor(
-    ::_pb::Arena* arena, bool is_message_owned) {
-  (void)arena;
-  (void)is_message_owned;
-  new (&_impl_) Impl_{
-      decltype(_impl_.prompt_){}
-    , decltype(_impl_.params_){nullptr}
-    , /*decltype(_impl_._cached_size_)*/{}
-  };
-  _impl_.prompt_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.prompt_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-}
-
-LocalGenerateRequest::~LocalGenerateRequest() {
-  // @@protoc_insertion_point(destructor:sentiric.llm.v1.LocalGenerateRequest)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
-  SharedDtor();
-}
-
-inline void LocalGenerateRequest::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.prompt_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.params_;
-}
-
-void LocalGenerateRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
-}
-
-void LocalGenerateRequest::Clear() {
-// @@protoc_insertion_point(message_clear_start:sentiric.llm.v1.LocalGenerateRequest)
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  _impl_.prompt_.ClearToEmpty();
-  if (GetArenaForAllocation() == nullptr && _impl_.params_ != nullptr) {
-    delete _impl_.params_;
-  }
-  _impl_.params_ = nullptr;
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-const char* LocalGenerateRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // string prompt = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          auto str = _internal_mutable_prompt();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "sentiric.llm.v1.LocalGenerateRequest.prompt"));
-        } else
-          goto handle_unusual;
-        continue;
-      // .sentiric.llm.v1.GenerationParams params = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
-          ptr = ctx->ParseMessage(_internal_mutable_params(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
-}
-
-uint8_t* LocalGenerateRequest::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:sentiric.llm.v1.LocalGenerateRequest)
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string prompt = 1;
-  if (!this->_internal_prompt().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_prompt().data(), static_cast<int>(this->_internal_prompt().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "sentiric.llm.v1.LocalGenerateRequest.prompt");
-    target = stream->WriteStringMaybeAliased(
-        1, this->_internal_prompt(), target);
-  }
-
-  // .sentiric.llm.v1.GenerationParams params = 2;
-  if (this->_internal_has_params()) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(2, _Internal::params(this),
-        _Internal::params(this).GetCachedSize(), target, stream);
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:sentiric.llm.v1.LocalGenerateRequest)
-  return target;
-}
-
-size_t LocalGenerateRequest::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:sentiric.llm.v1.LocalGenerateRequest)
-  size_t total_size = 0;
-
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  // string prompt = 1;
-  if (!this->_internal_prompt().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_prompt());
-  }
-
-  // .sentiric.llm.v1.GenerationParams params = 2;
-  if (this->_internal_has_params()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *_impl_.params_);
-  }
-
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
-}
-
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData LocalGenerateRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    LocalGenerateRequest::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*LocalGenerateRequest::GetClassData() const { return &_class_data_; }
-
-
-void LocalGenerateRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<LocalGenerateRequest*>(&to_msg);
-  auto& from = static_cast<const LocalGenerateRequest&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.llm.v1.LocalGenerateRequest)
-  GOOGLE_DCHECK_NE(&from, _this);
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (!from._internal_prompt().empty()) {
-    _this->_internal_set_prompt(from._internal_prompt());
-  }
-  if (from._internal_has_params()) {
-    _this->_internal_mutable_params()->::sentiric::llm::v1::GenerationParams::MergeFrom(
-        from._internal_params());
-  }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void LocalGenerateRequest::CopyFrom(const LocalGenerateRequest& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.llm.v1.LocalGenerateRequest)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool LocalGenerateRequest::IsInitialized() const {
-  return true;
-}
-
-void LocalGenerateRequest::InternalSwap(LocalGenerateRequest* other) {
-  using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.prompt_, lhs_arena,
-      &other->_impl_.prompt_, rhs_arena
-  );
-  swap(_impl_.params_, other->_impl_.params_);
-}
-
-::PROTOBUF_NAMESPACE_ID::Metadata LocalGenerateRequest::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
-      &descriptor_table_sentiric_2fllm_2fv1_2flocal_2eproto_getter, &descriptor_table_sentiric_2fllm_2fv1_2flocal_2eproto_once,
-      file_level_metadata_sentiric_2fllm_2fv1_2flocal_2eproto[1]);
-}
-
-// ===================================================================
-
-class LocalGenerateStreamRequest::_Internal {
- public:
-  static const ::sentiric::llm::v1::GenerationParams& params(const LocalGenerateStreamRequest* msg);
-};
-
-const ::sentiric::llm::v1::GenerationParams&
-LocalGenerateStreamRequest::_Internal::params(const LocalGenerateStreamRequest* msg) {
-  return *msg->_impl_.params_;
-}
-LocalGenerateStreamRequest::LocalGenerateStreamRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor(arena, is_message_owned);
-  // @@protoc_insertion_point(arena_constructor:sentiric.llm.v1.LocalGenerateStreamRequest)
-}
-LocalGenerateStreamRequest::LocalGenerateStreamRequest(const LocalGenerateStreamRequest& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  LocalGenerateStreamRequest* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.prompt_){}
-    , decltype(_impl_.params_){nullptr}
-    , /*decltype(_impl_._cached_size_)*/{}};
-
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  _impl_.prompt_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.prompt_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_prompt().empty()) {
-    _this->_impl_.prompt_.Set(from._internal_prompt(), 
-      _this->GetArenaForAllocation());
-  }
-  if (from._internal_has_params()) {
-    _this->_impl_.params_ = new ::sentiric::llm::v1::GenerationParams(*from._impl_.params_);
-  }
-  // @@protoc_insertion_point(copy_constructor:sentiric.llm.v1.LocalGenerateStreamRequest)
-}
-
-inline void LocalGenerateStreamRequest::SharedCtor(
-    ::_pb::Arena* arena, bool is_message_owned) {
-  (void)arena;
-  (void)is_message_owned;
-  new (&_impl_) Impl_{
-      decltype(_impl_.prompt_){}
-    , decltype(_impl_.params_){nullptr}
-    , /*decltype(_impl_._cached_size_)*/{}
-  };
-  _impl_.prompt_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.prompt_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-}
-
-LocalGenerateStreamRequest::~LocalGenerateStreamRequest() {
-  // @@protoc_insertion_point(destructor:sentiric.llm.v1.LocalGenerateStreamRequest)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
-  SharedDtor();
-}
-
-inline void LocalGenerateStreamRequest::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.prompt_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.params_;
-}
-
-void LocalGenerateStreamRequest::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
-}
-
-void LocalGenerateStreamRequest::Clear() {
-// @@protoc_insertion_point(message_clear_start:sentiric.llm.v1.LocalGenerateStreamRequest)
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  _impl_.prompt_.ClearToEmpty();
-  if (GetArenaForAllocation() == nullptr && _impl_.params_ != nullptr) {
-    delete _impl_.params_;
-  }
-  _impl_.params_ = nullptr;
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-const char* LocalGenerateStreamRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // string prompt = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          auto str = _internal_mutable_prompt();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "sentiric.llm.v1.LocalGenerateStreamRequest.prompt"));
-        } else
-          goto handle_unusual;
-        continue;
-      // .sentiric.llm.v1.GenerationParams params = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
-          ptr = ctx->ParseMessage(_internal_mutable_params(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
-}
-
-uint8_t* LocalGenerateStreamRequest::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:sentiric.llm.v1.LocalGenerateStreamRequest)
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string prompt = 1;
-  if (!this->_internal_prompt().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_prompt().data(), static_cast<int>(this->_internal_prompt().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "sentiric.llm.v1.LocalGenerateStreamRequest.prompt");
-    target = stream->WriteStringMaybeAliased(
-        1, this->_internal_prompt(), target);
-  }
-
-  // .sentiric.llm.v1.GenerationParams params = 2;
-  if (this->_internal_has_params()) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(2, _Internal::params(this),
-        _Internal::params(this).GetCachedSize(), target, stream);
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:sentiric.llm.v1.LocalGenerateStreamRequest)
-  return target;
-}
-
-size_t LocalGenerateStreamRequest::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:sentiric.llm.v1.LocalGenerateStreamRequest)
-  size_t total_size = 0;
-
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  // string prompt = 1;
-  if (!this->_internal_prompt().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_prompt());
-  }
-
-  // .sentiric.llm.v1.GenerationParams params = 2;
-  if (this->_internal_has_params()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *_impl_.params_);
-  }
-
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
-}
-
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData LocalGenerateStreamRequest::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    LocalGenerateStreamRequest::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*LocalGenerateStreamRequest::GetClassData() const { return &_class_data_; }
-
-
-void LocalGenerateStreamRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<LocalGenerateStreamRequest*>(&to_msg);
-  auto& from = static_cast<const LocalGenerateStreamRequest&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.llm.v1.LocalGenerateStreamRequest)
-  GOOGLE_DCHECK_NE(&from, _this);
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (!from._internal_prompt().empty()) {
-    _this->_internal_set_prompt(from._internal_prompt());
-  }
-  if (from._internal_has_params()) {
-    _this->_internal_mutable_params()->::sentiric::llm::v1::GenerationParams::MergeFrom(
-        from._internal_params());
-  }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void LocalGenerateStreamRequest::CopyFrom(const LocalGenerateStreamRequest& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.llm.v1.LocalGenerateStreamRequest)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool LocalGenerateStreamRequest::IsInitialized() const {
-  return true;
-}
-
-void LocalGenerateStreamRequest::InternalSwap(LocalGenerateStreamRequest* other) {
-  using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.prompt_, lhs_arena,
-      &other->_impl_.prompt_, rhs_arena
-  );
-  swap(_impl_.params_, other->_impl_.params_);
-}
-
-::PROTOBUF_NAMESPACE_ID::Metadata LocalGenerateStreamRequest::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
-      &descriptor_table_sentiric_2fllm_2fv1_2flocal_2eproto_getter, &descriptor_table_sentiric_2fllm_2fv1_2flocal_2eproto_once,
-      file_level_metadata_sentiric_2fllm_2fv1_2flocal_2eproto[2]);
-}
-
-// ===================================================================
-
-class LocalGenerateResponse::_Internal {
- public:
-};
-
-LocalGenerateResponse::LocalGenerateResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor(arena, is_message_owned);
-  // @@protoc_insertion_point(arena_constructor:sentiric.llm.v1.LocalGenerateResponse)
-}
-LocalGenerateResponse::LocalGenerateResponse(const LocalGenerateResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  LocalGenerateResponse* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.generated_text_){}
-    , decltype(_impl_.finish_reason_){}
-    , decltype(_impl_.total_tokens_generated_){}
-    , /*decltype(_impl_._cached_size_)*/{}};
-
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  _impl_.generated_text_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.generated_text_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_generated_text().empty()) {
-    _this->_impl_.generated_text_.Set(from._internal_generated_text(), 
-      _this->GetArenaForAllocation());
-  }
-  _impl_.finish_reason_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.finish_reason_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_finish_reason().empty()) {
-    _this->_impl_.finish_reason_.Set(from._internal_finish_reason(), 
-      _this->GetArenaForAllocation());
-  }
-  _this->_impl_.total_tokens_generated_ = from._impl_.total_tokens_generated_;
-  // @@protoc_insertion_point(copy_constructor:sentiric.llm.v1.LocalGenerateResponse)
-}
-
-inline void LocalGenerateResponse::SharedCtor(
-    ::_pb::Arena* arena, bool is_message_owned) {
-  (void)arena;
-  (void)is_message_owned;
-  new (&_impl_) Impl_{
-      decltype(_impl_.generated_text_){}
-    , decltype(_impl_.finish_reason_){}
-    , decltype(_impl_.total_tokens_generated_){0}
-    , /*decltype(_impl_._cached_size_)*/{}
-  };
-  _impl_.generated_text_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.generated_text_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.finish_reason_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.finish_reason_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-}
-
-LocalGenerateResponse::~LocalGenerateResponse() {
-  // @@protoc_insertion_point(destructor:sentiric.llm.v1.LocalGenerateResponse)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
-  SharedDtor();
-}
-
-inline void LocalGenerateResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.generated_text_.Destroy();
-  _impl_.finish_reason_.Destroy();
-}
-
-void LocalGenerateResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
-}
-
-void LocalGenerateResponse::Clear() {
-// @@protoc_insertion_point(message_clear_start:sentiric.llm.v1.LocalGenerateResponse)
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  _impl_.generated_text_.ClearToEmpty();
-  _impl_.finish_reason_.ClearToEmpty();
-  _impl_.total_tokens_generated_ = 0;
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-const char* LocalGenerateResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // string generated_text = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          auto str = _internal_mutable_generated_text();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "sentiric.llm.v1.LocalGenerateResponse.generated_text"));
-        } else
-          goto handle_unusual;
-        continue;
-      // string finish_reason = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
-          auto str = _internal_mutable_finish_reason();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "sentiric.llm.v1.LocalGenerateResponse.finish_reason"));
-        } else
-          goto handle_unusual;
-        continue;
-      // int32 total_tokens_generated = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
-          _impl_.total_tokens_generated_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
-}
-
-uint8_t* LocalGenerateResponse::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:sentiric.llm.v1.LocalGenerateResponse)
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string generated_text = 1;
-  if (!this->_internal_generated_text().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_generated_text().data(), static_cast<int>(this->_internal_generated_text().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "sentiric.llm.v1.LocalGenerateResponse.generated_text");
-    target = stream->WriteStringMaybeAliased(
-        1, this->_internal_generated_text(), target);
-  }
-
-  // string finish_reason = 2;
-  if (!this->_internal_finish_reason().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_finish_reason().data(), static_cast<int>(this->_internal_finish_reason().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "sentiric.llm.v1.LocalGenerateResponse.finish_reason");
-    target = stream->WriteStringMaybeAliased(
-        2, this->_internal_finish_reason(), target);
-  }
-
-  // int32 total_tokens_generated = 3;
-  if (this->_internal_total_tokens_generated() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteInt32ToArray(3, this->_internal_total_tokens_generated(), target);
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:sentiric.llm.v1.LocalGenerateResponse)
-  return target;
-}
-
-size_t LocalGenerateResponse::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:sentiric.llm.v1.LocalGenerateResponse)
-  size_t total_size = 0;
-
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  // string generated_text = 1;
-  if (!this->_internal_generated_text().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_generated_text());
-  }
-
-  // string finish_reason = 2;
-  if (!this->_internal_finish_reason().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_finish_reason());
-  }
-
-  // int32 total_tokens_generated = 3;
-  if (this->_internal_total_tokens_generated() != 0) {
-    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_total_tokens_generated());
-  }
-
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
-}
-
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData LocalGenerateResponse::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    LocalGenerateResponse::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*LocalGenerateResponse::GetClassData() const { return &_class_data_; }
-
-
-void LocalGenerateResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<LocalGenerateResponse*>(&to_msg);
-  auto& from = static_cast<const LocalGenerateResponse&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.llm.v1.LocalGenerateResponse)
-  GOOGLE_DCHECK_NE(&from, _this);
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (!from._internal_generated_text().empty()) {
-    _this->_internal_set_generated_text(from._internal_generated_text());
-  }
-  if (!from._internal_finish_reason().empty()) {
-    _this->_internal_set_finish_reason(from._internal_finish_reason());
-  }
-  if (from._internal_total_tokens_generated() != 0) {
-    _this->_internal_set_total_tokens_generated(from._internal_total_tokens_generated());
-  }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void LocalGenerateResponse::CopyFrom(const LocalGenerateResponse& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.llm.v1.LocalGenerateResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool LocalGenerateResponse::IsInitialized() const {
-  return true;
-}
-
-void LocalGenerateResponse::InternalSwap(LocalGenerateResponse* other) {
-  using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.generated_text_, lhs_arena,
-      &other->_impl_.generated_text_, rhs_arena
-  );
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.finish_reason_, lhs_arena,
-      &other->_impl_.finish_reason_, rhs_arena
-  );
-  swap(_impl_.total_tokens_generated_, other->_impl_.total_tokens_generated_);
-}
-
-::PROTOBUF_NAMESPACE_ID::Metadata LocalGenerateResponse::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
-      &descriptor_table_sentiric_2fllm_2fv1_2flocal_2eproto_getter, &descriptor_table_sentiric_2fllm_2fv1_2flocal_2eproto_once,
       file_level_metadata_sentiric_2fllm_2fv1_2flocal_2eproto[3]);
-}
-
-// ===================================================================
-
-class LocalGenerateStreamResponse::_Internal {
- public:
-  static const ::sentiric::llm::v1::FinishDetails& finish_details(const LocalGenerateStreamResponse* msg);
-};
-
-const ::sentiric::llm::v1::FinishDetails&
-LocalGenerateStreamResponse::_Internal::finish_details(const LocalGenerateStreamResponse* msg) {
-  return *msg->_impl_.response_type_.finish_details_;
-}
-void LocalGenerateStreamResponse::set_allocated_finish_details(::sentiric::llm::v1::FinishDetails* finish_details) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  clear_response_type();
-  if (finish_details) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-      ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(finish_details);
-    if (message_arena != submessage_arena) {
-      finish_details = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, finish_details, submessage_arena);
-    }
-    set_has_finish_details();
-    _impl_.response_type_.finish_details_ = finish_details;
-  }
-  // @@protoc_insertion_point(field_set_allocated:sentiric.llm.v1.LocalGenerateStreamResponse.finish_details)
-}
-LocalGenerateStreamResponse::LocalGenerateStreamResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor(arena, is_message_owned);
-  // @@protoc_insertion_point(arena_constructor:sentiric.llm.v1.LocalGenerateStreamResponse)
-}
-LocalGenerateStreamResponse::LocalGenerateStreamResponse(const LocalGenerateStreamResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  LocalGenerateStreamResponse* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.response_type_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , /*decltype(_impl_._oneof_case_)*/{}};
-
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  clear_has_response_type();
-  switch (from.response_type_case()) {
-    case kToken: {
-      _this->_internal_set_token(from._internal_token());
-      break;
-    }
-    case kFinishDetails: {
-      _this->_internal_mutable_finish_details()->::sentiric::llm::v1::FinishDetails::MergeFrom(
-          from._internal_finish_details());
-      break;
-    }
-    case RESPONSE_TYPE_NOT_SET: {
-      break;
-    }
-  }
-  // @@protoc_insertion_point(copy_constructor:sentiric.llm.v1.LocalGenerateStreamResponse)
-}
-
-inline void LocalGenerateStreamResponse::SharedCtor(
-    ::_pb::Arena* arena, bool is_message_owned) {
-  (void)arena;
-  (void)is_message_owned;
-  new (&_impl_) Impl_{
-      decltype(_impl_.response_type_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , /*decltype(_impl_._oneof_case_)*/{}
-  };
-  clear_has_response_type();
-}
-
-LocalGenerateStreamResponse::~LocalGenerateStreamResponse() {
-  // @@protoc_insertion_point(destructor:sentiric.llm.v1.LocalGenerateStreamResponse)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
-  SharedDtor();
-}
-
-inline void LocalGenerateStreamResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  if (has_response_type()) {
-    clear_response_type();
-  }
-}
-
-void LocalGenerateStreamResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
-}
-
-void LocalGenerateStreamResponse::clear_response_type() {
-// @@protoc_insertion_point(one_of_clear_start:sentiric.llm.v1.LocalGenerateStreamResponse)
-  switch (response_type_case()) {
-    case kToken: {
-      _impl_.response_type_.token_.Destroy();
-      break;
-    }
-    case kFinishDetails: {
-      if (GetArenaForAllocation() == nullptr) {
-        delete _impl_.response_type_.finish_details_;
-      }
-      break;
-    }
-    case RESPONSE_TYPE_NOT_SET: {
-      break;
-    }
-  }
-  _impl_._oneof_case_[0] = RESPONSE_TYPE_NOT_SET;
-}
-
-
-void LocalGenerateStreamResponse::Clear() {
-// @@protoc_insertion_point(message_clear_start:sentiric.llm.v1.LocalGenerateStreamResponse)
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  clear_response_type();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-const char* LocalGenerateStreamResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // string token = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          auto str = _internal_mutable_token();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "sentiric.llm.v1.LocalGenerateStreamResponse.token"));
-        } else
-          goto handle_unusual;
-        continue;
-      // .sentiric.llm.v1.FinishDetails finish_details = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
-          ptr = ctx->ParseMessage(_internal_mutable_finish_details(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
-}
-
-uint8_t* LocalGenerateStreamResponse::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:sentiric.llm.v1.LocalGenerateStreamResponse)
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string token = 1;
-  if (_internal_has_token()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_token().data(), static_cast<int>(this->_internal_token().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "sentiric.llm.v1.LocalGenerateStreamResponse.token");
-    target = stream->WriteStringMaybeAliased(
-        1, this->_internal_token(), target);
-  }
-
-  // .sentiric.llm.v1.FinishDetails finish_details = 2;
-  if (_internal_has_finish_details()) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(2, _Internal::finish_details(this),
-        _Internal::finish_details(this).GetCachedSize(), target, stream);
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:sentiric.llm.v1.LocalGenerateStreamResponse)
-  return target;
-}
-
-size_t LocalGenerateStreamResponse::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:sentiric.llm.v1.LocalGenerateStreamResponse)
-  size_t total_size = 0;
-
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  switch (response_type_case()) {
-    // string token = 1;
-    case kToken: {
-      total_size += 1 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-          this->_internal_token());
-      break;
-    }
-    // .sentiric.llm.v1.FinishDetails finish_details = 2;
-    case kFinishDetails: {
-      total_size += 1 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-          *_impl_.response_type_.finish_details_);
-      break;
-    }
-    case RESPONSE_TYPE_NOT_SET: {
-      break;
-    }
-  }
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
-}
-
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData LocalGenerateStreamResponse::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    LocalGenerateStreamResponse::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*LocalGenerateStreamResponse::GetClassData() const { return &_class_data_; }
-
-
-void LocalGenerateStreamResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<LocalGenerateStreamResponse*>(&to_msg);
-  auto& from = static_cast<const LocalGenerateStreamResponse&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.llm.v1.LocalGenerateStreamResponse)
-  GOOGLE_DCHECK_NE(&from, _this);
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  switch (from.response_type_case()) {
-    case kToken: {
-      _this->_internal_set_token(from._internal_token());
-      break;
-    }
-    case kFinishDetails: {
-      _this->_internal_mutable_finish_details()->::sentiric::llm::v1::FinishDetails::MergeFrom(
-          from._internal_finish_details());
-      break;
-    }
-    case RESPONSE_TYPE_NOT_SET: {
-      break;
-    }
-  }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void LocalGenerateStreamResponse::CopyFrom(const LocalGenerateStreamResponse& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.llm.v1.LocalGenerateStreamResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool LocalGenerateStreamResponse::IsInitialized() const {
-  return true;
-}
-
-void LocalGenerateStreamResponse::InternalSwap(LocalGenerateStreamResponse* other) {
-  using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_impl_.response_type_, other->_impl_.response_type_);
-  swap(_impl_._oneof_case_[0], other->_impl_._oneof_case_[0]);
-}
-
-::PROTOBUF_NAMESPACE_ID::Metadata LocalGenerateStreamResponse::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
-      &descriptor_table_sentiric_2fllm_2fv1_2flocal_2eproto_getter, &descriptor_table_sentiric_2fllm_2fv1_2flocal_2eproto_once,
-      file_level_metadata_sentiric_2fllm_2fv1_2flocal_2eproto[4]);
 }
 
 // ===================================================================
@@ -1772,8 +1641,8 @@ FinishDetails::FinishDetails(const FinishDetails& from)
   FinishDetails* const _this = this; (void)_this;
   new (&_impl_) Impl_{
       decltype(_impl_.finish_reason_){}
-    , decltype(_impl_.seed_used_){}
-    , decltype(_impl_.total_tokens_generated_){}
+    , decltype(_impl_.prompt_tokens_){}
+    , decltype(_impl_.completion_tokens_){}
     , /*decltype(_impl_._cached_size_)*/{}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
@@ -1785,9 +1654,9 @@ FinishDetails::FinishDetails(const FinishDetails& from)
     _this->_impl_.finish_reason_.Set(from._internal_finish_reason(), 
       _this->GetArenaForAllocation());
   }
-  ::memcpy(&_impl_.seed_used_, &from._impl_.seed_used_,
-    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.total_tokens_generated_) -
-    reinterpret_cast<char*>(&_impl_.seed_used_)) + sizeof(_impl_.total_tokens_generated_));
+  ::memcpy(&_impl_.prompt_tokens_, &from._impl_.prompt_tokens_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.completion_tokens_) -
+    reinterpret_cast<char*>(&_impl_.prompt_tokens_)) + sizeof(_impl_.completion_tokens_));
   // @@protoc_insertion_point(copy_constructor:sentiric.llm.v1.FinishDetails)
 }
 
@@ -1797,8 +1666,8 @@ inline void FinishDetails::SharedCtor(
   (void)is_message_owned;
   new (&_impl_) Impl_{
       decltype(_impl_.finish_reason_){}
-    , decltype(_impl_.seed_used_){int64_t{0}}
-    , decltype(_impl_.total_tokens_generated_){0}
+    , decltype(_impl_.prompt_tokens_){0}
+    , decltype(_impl_.completion_tokens_){0}
     , /*decltype(_impl_._cached_size_)*/{}
   };
   _impl_.finish_reason_.InitDefault();
@@ -1832,9 +1701,9 @@ void FinishDetails::Clear() {
   (void) cached_has_bits;
 
   _impl_.finish_reason_.ClearToEmpty();
-  ::memset(&_impl_.seed_used_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&_impl_.total_tokens_generated_) -
-      reinterpret_cast<char*>(&_impl_.seed_used_)) + sizeof(_impl_.total_tokens_generated_));
+  ::memset(&_impl_.prompt_tokens_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&_impl_.completion_tokens_) -
+      reinterpret_cast<char*>(&_impl_.prompt_tokens_)) + sizeof(_impl_.completion_tokens_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -1854,18 +1723,18 @@ const char* FinishDetails::_InternalParse(const char* ptr, ::_pbi::ParseContext*
         } else
           goto handle_unusual;
         continue;
-      // int32 total_tokens_generated = 2;
+      // int32 prompt_tokens = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
-          _impl_.total_tokens_generated_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _impl_.prompt_tokens_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // int64 seed_used = 3;
+      // int32 completion_tokens = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
-          _impl_.seed_used_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          _impl_.completion_tokens_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -1909,16 +1778,16 @@ uint8_t* FinishDetails::_InternalSerialize(
         1, this->_internal_finish_reason(), target);
   }
 
-  // int32 total_tokens_generated = 2;
-  if (this->_internal_total_tokens_generated() != 0) {
+  // int32 prompt_tokens = 2;
+  if (this->_internal_prompt_tokens() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteInt32ToArray(2, this->_internal_total_tokens_generated(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(2, this->_internal_prompt_tokens(), target);
   }
 
-  // int64 seed_used = 3;
-  if (this->_internal_seed_used() != 0) {
+  // int32 completion_tokens = 3;
+  if (this->_internal_completion_tokens() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteInt64ToArray(3, this->_internal_seed_used(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(3, this->_internal_completion_tokens(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1944,14 +1813,14 @@ size_t FinishDetails::ByteSizeLong() const {
         this->_internal_finish_reason());
   }
 
-  // int64 seed_used = 3;
-  if (this->_internal_seed_used() != 0) {
-    total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(this->_internal_seed_used());
+  // int32 prompt_tokens = 2;
+  if (this->_internal_prompt_tokens() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_prompt_tokens());
   }
 
-  // int32 total_tokens_generated = 2;
-  if (this->_internal_total_tokens_generated() != 0) {
-    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_total_tokens_generated());
+  // int32 completion_tokens = 3;
+  if (this->_internal_completion_tokens() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_completion_tokens());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
@@ -1975,11 +1844,11 @@ void FinishDetails::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::
   if (!from._internal_finish_reason().empty()) {
     _this->_internal_set_finish_reason(from._internal_finish_reason());
   }
-  if (from._internal_seed_used() != 0) {
-    _this->_internal_set_seed_used(from._internal_seed_used());
+  if (from._internal_prompt_tokens() != 0) {
+    _this->_internal_set_prompt_tokens(from._internal_prompt_tokens());
   }
-  if (from._internal_total_tokens_generated() != 0) {
-    _this->_internal_set_total_tokens_generated(from._internal_total_tokens_generated());
+  if (from._internal_completion_tokens() != 0) {
+    _this->_internal_set_completion_tokens(from._internal_completion_tokens());
   }
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -2005,17 +1874,17 @@ void FinishDetails::InternalSwap(FinishDetails* other) {
       &other->_impl_.finish_reason_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(FinishDetails, _impl_.total_tokens_generated_)
-      + sizeof(FinishDetails::_impl_.total_tokens_generated_)
-      - PROTOBUF_FIELD_OFFSET(FinishDetails, _impl_.seed_used_)>(
-          reinterpret_cast<char*>(&_impl_.seed_used_),
-          reinterpret_cast<char*>(&other->_impl_.seed_used_));
+      PROTOBUF_FIELD_OFFSET(FinishDetails, _impl_.completion_tokens_)
+      + sizeof(FinishDetails::_impl_.completion_tokens_)
+      - PROTOBUF_FIELD_OFFSET(FinishDetails, _impl_.prompt_tokens_)>(
+          reinterpret_cast<char*>(&_impl_.prompt_tokens_),
+          reinterpret_cast<char*>(&other->_impl_.prompt_tokens_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata FinishDetails::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fllm_2fv1_2flocal_2eproto_getter, &descriptor_table_sentiric_2fllm_2fv1_2flocal_2eproto_once,
-      file_level_metadata_sentiric_2fllm_2fv1_2flocal_2eproto[5]);
+      file_level_metadata_sentiric_2fllm_2fv1_2flocal_2eproto[4]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -2023,25 +1892,21 @@ void FinishDetails::InternalSwap(FinishDetails* other) {
 }  // namespace llm
 }  // namespace sentiric
 PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::sentiric::llm::v1::GenerationParams*
-Arena::CreateMaybeMessage< ::sentiric::llm::v1::GenerationParams >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::sentiric::llm::v1::GenerationParams >(arena);
-}
-template<> PROTOBUF_NOINLINE ::sentiric::llm::v1::LocalGenerateRequest*
-Arena::CreateMaybeMessage< ::sentiric::llm::v1::LocalGenerateRequest >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::sentiric::llm::v1::LocalGenerateRequest >(arena);
-}
 template<> PROTOBUF_NOINLINE ::sentiric::llm::v1::LocalGenerateStreamRequest*
 Arena::CreateMaybeMessage< ::sentiric::llm::v1::LocalGenerateStreamRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::sentiric::llm::v1::LocalGenerateStreamRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::sentiric::llm::v1::LocalGenerateResponse*
-Arena::CreateMaybeMessage< ::sentiric::llm::v1::LocalGenerateResponse >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::sentiric::llm::v1::LocalGenerateResponse >(arena);
-}
 template<> PROTOBUF_NOINLINE ::sentiric::llm::v1::LocalGenerateStreamResponse*
 Arena::CreateMaybeMessage< ::sentiric::llm::v1::LocalGenerateStreamResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::sentiric::llm::v1::LocalGenerateStreamResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::llm::v1::ConversationTurn*
+Arena::CreateMaybeMessage< ::sentiric::llm::v1::ConversationTurn >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::llm::v1::ConversationTurn >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::llm::v1::GenerationParams*
+Arena::CreateMaybeMessage< ::sentiric::llm::v1::GenerationParams >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::llm::v1::GenerationParams >(arena);
 }
 template<> PROTOBUF_NOINLINE ::sentiric::llm::v1::FinishDetails*
 Arena::CreateMaybeMessage< ::sentiric::llm::v1::FinishDetails >(Arena* arena) {

@@ -6,7 +6,12 @@ from sentiric.llm.v1 import local_pb2 as sentiric_dot_llm_dot_v1_dot_local__pb2
 
 
 class LLMLocalServiceStub(object):
-    """Missing associated documentation comment in .proto file."""
+    """=============================================================================
+    ANA SERVİS TANIMI (Okuma Akışı Prensibi)
+    Bu dosyanın "manşeti". Bir geliştirici ilk olarak buraya bakarak dosyanın
+    ne işe yaradığını ve hangi RPC'leri sunduğunu anında görmelidir.
+    =============================================================================
+    """
 
     def __init__(self, channel):
         """Constructor.
@@ -14,29 +19,23 @@ class LLMLocalServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.LocalGenerate = channel.unary_unary(
-                '/sentiric.llm.v1.LLMLocalService/LocalGenerate',
-                request_serializer=sentiric_dot_llm_dot_v1_dot_local__pb2.LocalGenerateRequest.SerializeToString,
-                response_deserializer=sentiric_dot_llm_dot_v1_dot_local__pb2.LocalGenerateResponse.FromString,
-                _registered_method=True)
-        self.LocalGenerateStream = channel.unary_stream(
-                '/sentiric.llm.v1.LLMLocalService/LocalGenerateStream',
+        self.GenerateStream = channel.unary_stream(
+                '/sentiric.llm.v1.LLMLocalService/GenerateStream',
                 request_serializer=sentiric_dot_llm_dot_v1_dot_local__pb2.LocalGenerateStreamRequest.SerializeToString,
                 response_deserializer=sentiric_dot_llm_dot_v1_dot_local__pb2.LocalGenerateStreamResponse.FromString,
                 _registered_method=True)
 
 
 class LLMLocalServiceServicer(object):
-    """Missing associated documentation comment in .proto file."""
+    """=============================================================================
+    ANA SERVİS TANIMI (Okuma Akışı Prensibi)
+    Bu dosyanın "manşeti". Bir geliştirici ilk olarak buraya bakarak dosyanın
+    ne işe yaradığını ve hangi RPC'leri sunduğunu anında görmelidir.
+    =============================================================================
+    """
 
-    def LocalGenerate(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def LocalGenerateStream(self, request, context):
-        """DEĞİŞİKLİK: Artık kendi özel istek mesajını kullanıyor.
+    def GenerateStream(self, request, context):
+        """Verilen diyalog bağlamına göre token-token metin üretir.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -45,13 +44,8 @@ class LLMLocalServiceServicer(object):
 
 def add_LLMLocalServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'LocalGenerate': grpc.unary_unary_rpc_method_handler(
-                    servicer.LocalGenerate,
-                    request_deserializer=sentiric_dot_llm_dot_v1_dot_local__pb2.LocalGenerateRequest.FromString,
-                    response_serializer=sentiric_dot_llm_dot_v1_dot_local__pb2.LocalGenerateResponse.SerializeToString,
-            ),
-            'LocalGenerateStream': grpc.unary_stream_rpc_method_handler(
-                    servicer.LocalGenerateStream,
+            'GenerateStream': grpc.unary_stream_rpc_method_handler(
+                    servicer.GenerateStream,
                     request_deserializer=sentiric_dot_llm_dot_v1_dot_local__pb2.LocalGenerateStreamRequest.FromString,
                     response_serializer=sentiric_dot_llm_dot_v1_dot_local__pb2.LocalGenerateStreamResponse.SerializeToString,
             ),
@@ -64,37 +58,15 @@ def add_LLMLocalServiceServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class LLMLocalService(object):
-    """Missing associated documentation comment in .proto file."""
+    """=============================================================================
+    ANA SERVİS TANIMI (Okuma Akışı Prensibi)
+    Bu dosyanın "manşeti". Bir geliştirici ilk olarak buraya bakarak dosyanın
+    ne işe yaradığını ve hangi RPC'leri sunduğunu anında görmelidir.
+    =============================================================================
+    """
 
     @staticmethod
-    def LocalGenerate(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(
-            request,
-            target,
-            '/sentiric.llm.v1.LLMLocalService/LocalGenerate',
-            sentiric_dot_llm_dot_v1_dot_local__pb2.LocalGenerateRequest.SerializeToString,
-            sentiric_dot_llm_dot_v1_dot_local__pb2.LocalGenerateResponse.FromString,
-            options,
-            channel_credentials,
-            insecure,
-            call_credentials,
-            compression,
-            wait_for_ready,
-            timeout,
-            metadata,
-            _registered_method=True)
-
-    @staticmethod
-    def LocalGenerateStream(request,
+    def GenerateStream(request,
             target,
             options=(),
             channel_credentials=None,
@@ -107,7 +79,7 @@ class LLMLocalService(object):
         return grpc.experimental.unary_stream(
             request,
             target,
-            '/sentiric.llm.v1.LLMLocalService/LocalGenerateStream',
+            '/sentiric.llm.v1.LLMLocalService/GenerateStream',
             sentiric_dot_llm_dot_v1_dot_local__pb2.LocalGenerateStreamRequest.SerializeToString,
             sentiric_dot_llm_dot_v1_dot_local__pb2.LocalGenerateStreamResponse.FromString,
             options,

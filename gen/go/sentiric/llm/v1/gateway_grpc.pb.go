@@ -19,16 +19,22 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	LlmGatewayService_Generate_FullMethodName       = "/sentiric.llm.v1.LlmGatewayService/Generate"
-	LlmGatewayService_GenerateStream_FullMethodName = "/sentiric.llm.v1.LlmGatewayService/GenerateStream"
+	LlmGatewayService_GenerateDialogStream_FullMethodName = "/sentiric.llm.v1.LlmGatewayService/GenerateDialogStream"
 )
 
 // LlmGatewayServiceClient is the client API for LlmGatewayService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+//
+// =============================================================================
+//
+//	ANA SERVİS TANIMI (Okuma Akışı Prensibi)
+//
+// =============================================================================
 type LlmGatewayServiceClient interface {
-	Generate(ctx context.Context, in *GenerateRequest, opts ...grpc.CallOption) (*GenerateResponse, error)
-	GenerateStream(ctx context.Context, in *GenerateStreamRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[GenerateStreamResponse], error)
+	// Diyalogsal bir istek için akış tabanlı metin üretir.
+	// İsteği, model seçiciye göre uygun bir uzman servise yönlendirir.
+	GenerateDialogStream(ctx context.Context, in *GenerateDialogStreamRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[GenerateDialogStreamResponse], error)
 }
 
 type llmGatewayServiceClient struct {
@@ -39,23 +45,13 @@ func NewLlmGatewayServiceClient(cc grpc.ClientConnInterface) LlmGatewayServiceCl
 	return &llmGatewayServiceClient{cc}
 }
 
-func (c *llmGatewayServiceClient) Generate(ctx context.Context, in *GenerateRequest, opts ...grpc.CallOption) (*GenerateResponse, error) {
+func (c *llmGatewayServiceClient) GenerateDialogStream(ctx context.Context, in *GenerateDialogStreamRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[GenerateDialogStreamResponse], error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GenerateResponse)
-	err := c.cc.Invoke(ctx, LlmGatewayService_Generate_FullMethodName, in, out, cOpts...)
+	stream, err := c.cc.NewStream(ctx, &LlmGatewayService_ServiceDesc.Streams[0], LlmGatewayService_GenerateDialogStream_FullMethodName, cOpts...)
 	if err != nil {
 		return nil, err
 	}
-	return out, nil
-}
-
-func (c *llmGatewayServiceClient) GenerateStream(ctx context.Context, in *GenerateStreamRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[GenerateStreamResponse], error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	stream, err := c.cc.NewStream(ctx, &LlmGatewayService_ServiceDesc.Streams[0], LlmGatewayService_GenerateStream_FullMethodName, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &grpc.GenericClientStream[GenerateStreamRequest, GenerateStreamResponse]{ClientStream: stream}
+	x := &grpc.GenericClientStream[GenerateDialogStreamRequest, GenerateDialogStreamResponse]{ClientStream: stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -66,14 +62,21 @@ func (c *llmGatewayServiceClient) GenerateStream(ctx context.Context, in *Genera
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type LlmGatewayService_GenerateStreamClient = grpc.ServerStreamingClient[GenerateStreamResponse]
+type LlmGatewayService_GenerateDialogStreamClient = grpc.ServerStreamingClient[GenerateDialogStreamResponse]
 
 // LlmGatewayServiceServer is the server API for LlmGatewayService service.
 // All implementations should embed UnimplementedLlmGatewayServiceServer
 // for forward compatibility.
+//
+// =============================================================================
+//
+//	ANA SERVİS TANIMI (Okuma Akışı Prensibi)
+//
+// =============================================================================
 type LlmGatewayServiceServer interface {
-	Generate(context.Context, *GenerateRequest) (*GenerateResponse, error)
-	GenerateStream(*GenerateStreamRequest, grpc.ServerStreamingServer[GenerateStreamResponse]) error
+	// Diyalogsal bir istek için akış tabanlı metin üretir.
+	// İsteği, model seçiciye göre uygun bir uzman servise yönlendirir.
+	GenerateDialogStream(*GenerateDialogStreamRequest, grpc.ServerStreamingServer[GenerateDialogStreamResponse]) error
 }
 
 // UnimplementedLlmGatewayServiceServer should be embedded to have
@@ -83,11 +86,8 @@ type LlmGatewayServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedLlmGatewayServiceServer struct{}
 
-func (UnimplementedLlmGatewayServiceServer) Generate(context.Context, *GenerateRequest) (*GenerateResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Generate not implemented")
-}
-func (UnimplementedLlmGatewayServiceServer) GenerateStream(*GenerateStreamRequest, grpc.ServerStreamingServer[GenerateStreamResponse]) error {
-	return status.Errorf(codes.Unimplemented, "method GenerateStream not implemented")
+func (UnimplementedLlmGatewayServiceServer) GenerateDialogStream(*GenerateDialogStreamRequest, grpc.ServerStreamingServer[GenerateDialogStreamResponse]) error {
+	return status.Errorf(codes.Unimplemented, "method GenerateDialogStream not implemented")
 }
 func (UnimplementedLlmGatewayServiceServer) testEmbeddedByValue() {}
 
@@ -109,34 +109,16 @@ func RegisterLlmGatewayServiceServer(s grpc.ServiceRegistrar, srv LlmGatewayServ
 	s.RegisterService(&LlmGatewayService_ServiceDesc, srv)
 }
 
-func _LlmGatewayService_Generate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GenerateRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(LlmGatewayServiceServer).Generate(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: LlmGatewayService_Generate_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LlmGatewayServiceServer).Generate(ctx, req.(*GenerateRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _LlmGatewayService_GenerateStream_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(GenerateStreamRequest)
+func _LlmGatewayService_GenerateDialogStream_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(GenerateDialogStreamRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(LlmGatewayServiceServer).GenerateStream(m, &grpc.GenericServerStream[GenerateStreamRequest, GenerateStreamResponse]{ServerStream: stream})
+	return srv.(LlmGatewayServiceServer).GenerateDialogStream(m, &grpc.GenericServerStream[GenerateDialogStreamRequest, GenerateDialogStreamResponse]{ServerStream: stream})
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type LlmGatewayService_GenerateStreamServer = grpc.ServerStreamingServer[GenerateStreamResponse]
+type LlmGatewayService_GenerateDialogStreamServer = grpc.ServerStreamingServer[GenerateDialogStreamResponse]
 
 // LlmGatewayService_ServiceDesc is the grpc.ServiceDesc for LlmGatewayService service.
 // It's only intended for direct use with grpc.RegisterService,
@@ -144,16 +126,11 @@ type LlmGatewayService_GenerateStreamServer = grpc.ServerStreamingServer[Generat
 var LlmGatewayService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "sentiric.llm.v1.LlmGatewayService",
 	HandlerType: (*LlmGatewayServiceServer)(nil),
-	Methods: []grpc.MethodDesc{
-		{
-			MethodName: "Generate",
-			Handler:    _LlmGatewayService_Generate_Handler,
-		},
-	},
+	Methods:     []grpc.MethodDesc{},
 	Streams: []grpc.StreamDesc{
 		{
-			StreamName:    "GenerateStream",
-			Handler:       _LlmGatewayService_GenerateStream_Handler,
+			StreamName:    "GenerateDialogStream",
+			Handler:       _LlmGatewayService_GenerateDialogStream_Handler,
 			ServerStreams: true,
 		},
 	},

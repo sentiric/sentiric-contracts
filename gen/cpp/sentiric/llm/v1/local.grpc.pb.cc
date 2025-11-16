@@ -24,8 +24,7 @@ namespace llm {
 namespace v1 {
 
 static const char* LLMLocalService_method_names[] = {
-  "/sentiric.llm.v1.LLMLocalService/LocalGenerate",
-  "/sentiric.llm.v1.LLMLocalService/LocalGenerateStream",
+  "/sentiric.llm.v1.LLMLocalService/GenerateStream",
 };
 
 std::unique_ptr< LLMLocalService::Stub> LLMLocalService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -35,83 +34,42 @@ std::unique_ptr< LLMLocalService::Stub> LLMLocalService::NewStub(const std::shar
 }
 
 LLMLocalService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
-  : channel_(channel), rpcmethod_LocalGenerate_(LLMLocalService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_LocalGenerateStream_(LLMLocalService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  : channel_(channel), rpcmethod_GenerateStream_(LLMLocalService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
   {}
 
-::grpc::Status LLMLocalService::Stub::LocalGenerate(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateRequest& request, ::sentiric::llm::v1::LocalGenerateResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::sentiric::llm::v1::LocalGenerateRequest, ::sentiric::llm::v1::LocalGenerateResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_LocalGenerate_, context, request, response);
+::grpc::ClientReader< ::sentiric::llm::v1::LocalGenerateStreamResponse>* LLMLocalService::Stub::GenerateStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest& request) {
+  return ::grpc::internal::ClientReaderFactory< ::sentiric::llm::v1::LocalGenerateStreamResponse>::Create(channel_.get(), rpcmethod_GenerateStream_, context, request);
 }
 
-void LLMLocalService::Stub::async::LocalGenerate(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateRequest* request, ::sentiric::llm::v1::LocalGenerateResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::sentiric::llm::v1::LocalGenerateRequest, ::sentiric::llm::v1::LocalGenerateResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_LocalGenerate_, context, request, response, std::move(f));
+void LLMLocalService::Stub::async::GenerateStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest* request, ::grpc::ClientReadReactor< ::sentiric::llm::v1::LocalGenerateStreamResponse>* reactor) {
+  ::grpc::internal::ClientCallbackReaderFactory< ::sentiric::llm::v1::LocalGenerateStreamResponse>::Create(stub_->channel_.get(), stub_->rpcmethod_GenerateStream_, context, request, reactor);
 }
 
-void LLMLocalService::Stub::async::LocalGenerate(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateRequest* request, ::sentiric::llm::v1::LocalGenerateResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_LocalGenerate_, context, request, response, reactor);
+::grpc::ClientAsyncReader< ::sentiric::llm::v1::LocalGenerateStreamResponse>* LLMLocalService::Stub::AsyncGenerateStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::sentiric::llm::v1::LocalGenerateStreamResponse>::Create(channel_.get(), cq, rpcmethod_GenerateStream_, context, request, true, tag);
 }
 
-::grpc::ClientAsyncResponseReader< ::sentiric::llm::v1::LocalGenerateResponse>* LLMLocalService::Stub::PrepareAsyncLocalGenerateRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::sentiric::llm::v1::LocalGenerateResponse, ::sentiric::llm::v1::LocalGenerateRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_LocalGenerate_, context, request);
-}
-
-::grpc::ClientAsyncResponseReader< ::sentiric::llm::v1::LocalGenerateResponse>* LLMLocalService::Stub::AsyncLocalGenerateRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateRequest& request, ::grpc::CompletionQueue* cq) {
-  auto* result =
-    this->PrepareAsyncLocalGenerateRaw(context, request, cq);
-  result->StartCall();
-  return result;
-}
-
-::grpc::ClientReader< ::sentiric::llm::v1::LocalGenerateStreamResponse>* LLMLocalService::Stub::LocalGenerateStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest& request) {
-  return ::grpc::internal::ClientReaderFactory< ::sentiric::llm::v1::LocalGenerateStreamResponse>::Create(channel_.get(), rpcmethod_LocalGenerateStream_, context, request);
-}
-
-void LLMLocalService::Stub::async::LocalGenerateStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest* request, ::grpc::ClientReadReactor< ::sentiric::llm::v1::LocalGenerateStreamResponse>* reactor) {
-  ::grpc::internal::ClientCallbackReaderFactory< ::sentiric::llm::v1::LocalGenerateStreamResponse>::Create(stub_->channel_.get(), stub_->rpcmethod_LocalGenerateStream_, context, request, reactor);
-}
-
-::grpc::ClientAsyncReader< ::sentiric::llm::v1::LocalGenerateStreamResponse>* LLMLocalService::Stub::AsyncLocalGenerateStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
-  return ::grpc::internal::ClientAsyncReaderFactory< ::sentiric::llm::v1::LocalGenerateStreamResponse>::Create(channel_.get(), cq, rpcmethod_LocalGenerateStream_, context, request, true, tag);
-}
-
-::grpc::ClientAsyncReader< ::sentiric::llm::v1::LocalGenerateStreamResponse>* LLMLocalService::Stub::PrepareAsyncLocalGenerateStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncReaderFactory< ::sentiric::llm::v1::LocalGenerateStreamResponse>::Create(channel_.get(), cq, rpcmethod_LocalGenerateStream_, context, request, false, nullptr);
+::grpc::ClientAsyncReader< ::sentiric::llm::v1::LocalGenerateStreamResponse>* LLMLocalService::Stub::PrepareAsyncGenerateStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::sentiric::llm::v1::LocalGenerateStreamResponse>::Create(channel_.get(), cq, rpcmethod_GenerateStream_, context, request, false, nullptr);
 }
 
 LLMLocalService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       LLMLocalService_method_names[0],
-      ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< LLMLocalService::Service, ::sentiric::llm::v1::LocalGenerateRequest, ::sentiric::llm::v1::LocalGenerateResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
-          [](LLMLocalService::Service* service,
-             ::grpc::ServerContext* ctx,
-             const ::sentiric::llm::v1::LocalGenerateRequest* req,
-             ::sentiric::llm::v1::LocalGenerateResponse* resp) {
-               return service->LocalGenerate(ctx, req, resp);
-             }, this)));
-  AddMethod(new ::grpc::internal::RpcServiceMethod(
-      LLMLocalService_method_names[1],
       ::grpc::internal::RpcMethod::SERVER_STREAMING,
       new ::grpc::internal::ServerStreamingHandler< LLMLocalService::Service, ::sentiric::llm::v1::LocalGenerateStreamRequest, ::sentiric::llm::v1::LocalGenerateStreamResponse>(
           [](LLMLocalService::Service* service,
              ::grpc::ServerContext* ctx,
              const ::sentiric::llm::v1::LocalGenerateStreamRequest* req,
              ::grpc::ServerWriter<::sentiric::llm::v1::LocalGenerateStreamResponse>* writer) {
-               return service->LocalGenerateStream(ctx, req, writer);
+               return service->GenerateStream(ctx, req, writer);
              }, this)));
 }
 
 LLMLocalService::Service::~Service() {
 }
 
-::grpc::Status LLMLocalService::Service::LocalGenerate(::grpc::ServerContext* context, const ::sentiric::llm::v1::LocalGenerateRequest* request, ::sentiric::llm::v1::LocalGenerateResponse* response) {
-  (void) context;
-  (void) request;
-  (void) response;
-  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-}
-
-::grpc::Status LLMLocalService::Service::LocalGenerateStream(::grpc::ServerContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest* request, ::grpc::ServerWriter< ::sentiric::llm::v1::LocalGenerateStreamResponse>* writer) {
+::grpc::Status LLMLocalService::Service::GenerateStream(::grpc::ServerContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest* request, ::grpc::ServerWriter< ::sentiric::llm::v1::LocalGenerateStreamResponse>* writer) {
   (void) context;
   (void) request;
   (void) writer;

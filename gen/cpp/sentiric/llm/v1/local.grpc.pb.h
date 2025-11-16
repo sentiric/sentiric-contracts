@@ -29,6 +29,11 @@ namespace sentiric {
 namespace llm {
 namespace v1 {
 
+// =============================================================================
+//                      ANA SERVİS TANIMI (Okuma Akışı Prensibi)
+// Bu dosyanın "manşeti". Bir geliştirici ilk olarak buraya bakarak dosyanın
+// ne işe yaradığını ve hangi RPC'leri sunduğunu anında görmelidir.
+// =============================================================================
 class LLMLocalService final {
  public:
   static constexpr char const* service_full_name() {
@@ -37,66 +42,46 @@ class LLMLocalService final {
   class StubInterface {
    public:
     virtual ~StubInterface() {}
-    virtual ::grpc::Status LocalGenerate(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateRequest& request, ::sentiric::llm::v1::LocalGenerateResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::llm::v1::LocalGenerateResponse>> AsyncLocalGenerate(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::llm::v1::LocalGenerateResponse>>(AsyncLocalGenerateRaw(context, request, cq));
+    // Verilen diyalog bağlamına göre token-token metin üretir.
+    std::unique_ptr< ::grpc::ClientReaderInterface< ::sentiric::llm::v1::LocalGenerateStreamResponse>> GenerateStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest& request) {
+      return std::unique_ptr< ::grpc::ClientReaderInterface< ::sentiric::llm::v1::LocalGenerateStreamResponse>>(GenerateStreamRaw(context, request));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::llm::v1::LocalGenerateResponse>> PrepareAsyncLocalGenerate(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::llm::v1::LocalGenerateResponse>>(PrepareAsyncLocalGenerateRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::sentiric::llm::v1::LocalGenerateStreamResponse>> AsyncGenerateStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::sentiric::llm::v1::LocalGenerateStreamResponse>>(AsyncGenerateStreamRaw(context, request, cq, tag));
     }
-    // DEĞİŞİKLİK: Artık kendi özel istek mesajını kullanıyor.
-    std::unique_ptr< ::grpc::ClientReaderInterface< ::sentiric::llm::v1::LocalGenerateStreamResponse>> LocalGenerateStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest& request) {
-      return std::unique_ptr< ::grpc::ClientReaderInterface< ::sentiric::llm::v1::LocalGenerateStreamResponse>>(LocalGenerateStreamRaw(context, request));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::sentiric::llm::v1::LocalGenerateStreamResponse>> AsyncLocalGenerateStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::sentiric::llm::v1::LocalGenerateStreamResponse>>(AsyncLocalGenerateStreamRaw(context, request, cq, tag));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::sentiric::llm::v1::LocalGenerateStreamResponse>> PrepareAsyncLocalGenerateStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::sentiric::llm::v1::LocalGenerateStreamResponse>>(PrepareAsyncLocalGenerateStreamRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::sentiric::llm::v1::LocalGenerateStreamResponse>> PrepareAsyncGenerateStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::sentiric::llm::v1::LocalGenerateStreamResponse>>(PrepareAsyncGenerateStreamRaw(context, request, cq));
     }
     class async_interface {
      public:
       virtual ~async_interface() {}
-      virtual void LocalGenerate(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateRequest* request, ::sentiric::llm::v1::LocalGenerateResponse* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void LocalGenerate(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateRequest* request, ::sentiric::llm::v1::LocalGenerateResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      // DEĞİŞİKLİK: Artık kendi özel istek mesajını kullanıyor.
-      virtual void LocalGenerateStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest* request, ::grpc::ClientReadReactor< ::sentiric::llm::v1::LocalGenerateStreamResponse>* reactor) = 0;
+      // Verilen diyalog bağlamına göre token-token metin üretir.
+      virtual void GenerateStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest* request, ::grpc::ClientReadReactor< ::sentiric::llm::v1::LocalGenerateStreamResponse>* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
     class async_interface* experimental_async() { return async(); }
    private:
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::llm::v1::LocalGenerateResponse>* AsyncLocalGenerateRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::llm::v1::LocalGenerateResponse>* PrepareAsyncLocalGenerateRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientReaderInterface< ::sentiric::llm::v1::LocalGenerateStreamResponse>* LocalGenerateStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest& request) = 0;
-    virtual ::grpc::ClientAsyncReaderInterface< ::sentiric::llm::v1::LocalGenerateStreamResponse>* AsyncLocalGenerateStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
-    virtual ::grpc::ClientAsyncReaderInterface< ::sentiric::llm::v1::LocalGenerateStreamResponse>* PrepareAsyncLocalGenerateStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientReaderInterface< ::sentiric::llm::v1::LocalGenerateStreamResponse>* GenerateStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest& request) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::sentiric::llm::v1::LocalGenerateStreamResponse>* AsyncGenerateStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::sentiric::llm::v1::LocalGenerateStreamResponse>* PrepareAsyncGenerateStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
     Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
-    ::grpc::Status LocalGenerate(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateRequest& request, ::sentiric::llm::v1::LocalGenerateResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::llm::v1::LocalGenerateResponse>> AsyncLocalGenerate(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::llm::v1::LocalGenerateResponse>>(AsyncLocalGenerateRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientReader< ::sentiric::llm::v1::LocalGenerateStreamResponse>> GenerateStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest& request) {
+      return std::unique_ptr< ::grpc::ClientReader< ::sentiric::llm::v1::LocalGenerateStreamResponse>>(GenerateStreamRaw(context, request));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::llm::v1::LocalGenerateResponse>> PrepareAsyncLocalGenerate(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::llm::v1::LocalGenerateResponse>>(PrepareAsyncLocalGenerateRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::sentiric::llm::v1::LocalGenerateStreamResponse>> AsyncGenerateStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::sentiric::llm::v1::LocalGenerateStreamResponse>>(AsyncGenerateStreamRaw(context, request, cq, tag));
     }
-    std::unique_ptr< ::grpc::ClientReader< ::sentiric::llm::v1::LocalGenerateStreamResponse>> LocalGenerateStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest& request) {
-      return std::unique_ptr< ::grpc::ClientReader< ::sentiric::llm::v1::LocalGenerateStreamResponse>>(LocalGenerateStreamRaw(context, request));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncReader< ::sentiric::llm::v1::LocalGenerateStreamResponse>> AsyncLocalGenerateStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
-      return std::unique_ptr< ::grpc::ClientAsyncReader< ::sentiric::llm::v1::LocalGenerateStreamResponse>>(AsyncLocalGenerateStreamRaw(context, request, cq, tag));
-    }
-    std::unique_ptr< ::grpc::ClientAsyncReader< ::sentiric::llm::v1::LocalGenerateStreamResponse>> PrepareAsyncLocalGenerateStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncReader< ::sentiric::llm::v1::LocalGenerateStreamResponse>>(PrepareAsyncLocalGenerateStreamRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::sentiric::llm::v1::LocalGenerateStreamResponse>> PrepareAsyncGenerateStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::sentiric::llm::v1::LocalGenerateStreamResponse>>(PrepareAsyncGenerateStreamRaw(context, request, cq));
     }
     class async final :
       public StubInterface::async_interface {
      public:
-      void LocalGenerate(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateRequest* request, ::sentiric::llm::v1::LocalGenerateResponse* response, std::function<void(::grpc::Status)>) override;
-      void LocalGenerate(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateRequest* request, ::sentiric::llm::v1::LocalGenerateResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void LocalGenerateStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest* request, ::grpc::ClientReadReactor< ::sentiric::llm::v1::LocalGenerateStreamResponse>* reactor) override;
+      void GenerateStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest* request, ::grpc::ClientReadReactor< ::sentiric::llm::v1::LocalGenerateStreamResponse>* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -108,13 +93,10 @@ class LLMLocalService final {
    private:
     std::shared_ptr< ::grpc::ChannelInterface> channel_;
     class async async_stub_{this};
-    ::grpc::ClientAsyncResponseReader< ::sentiric::llm::v1::LocalGenerateResponse>* AsyncLocalGenerateRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::sentiric::llm::v1::LocalGenerateResponse>* PrepareAsyncLocalGenerateRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientReader< ::sentiric::llm::v1::LocalGenerateStreamResponse>* LocalGenerateStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest& request) override;
-    ::grpc::ClientAsyncReader< ::sentiric::llm::v1::LocalGenerateStreamResponse>* AsyncLocalGenerateStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest& request, ::grpc::CompletionQueue* cq, void* tag) override;
-    ::grpc::ClientAsyncReader< ::sentiric::llm::v1::LocalGenerateStreamResponse>* PrepareAsyncLocalGenerateStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest& request, ::grpc::CompletionQueue* cq) override;
-    const ::grpc::internal::RpcMethod rpcmethod_LocalGenerate_;
-    const ::grpc::internal::RpcMethod rpcmethod_LocalGenerateStream_;
+    ::grpc::ClientReader< ::sentiric::llm::v1::LocalGenerateStreamResponse>* GenerateStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest& request) override;
+    ::grpc::ClientAsyncReader< ::sentiric::llm::v1::LocalGenerateStreamResponse>* AsyncGenerateStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest& request, ::grpc::CompletionQueue* cq, void* tag) override;
+    ::grpc::ClientAsyncReader< ::sentiric::llm::v1::LocalGenerateStreamResponse>* PrepareAsyncGenerateStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest& request, ::grpc::CompletionQueue* cq) override;
+    const ::grpc::internal::RpcMethod rpcmethod_GenerateStream_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -122,277 +104,143 @@ class LLMLocalService final {
    public:
     Service();
     virtual ~Service();
-    virtual ::grpc::Status LocalGenerate(::grpc::ServerContext* context, const ::sentiric::llm::v1::LocalGenerateRequest* request, ::sentiric::llm::v1::LocalGenerateResponse* response);
-    // DEĞİŞİKLİK: Artık kendi özel istek mesajını kullanıyor.
-    virtual ::grpc::Status LocalGenerateStream(::grpc::ServerContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest* request, ::grpc::ServerWriter< ::sentiric::llm::v1::LocalGenerateStreamResponse>* writer);
+    // Verilen diyalog bağlamına göre token-token metin üretir.
+    virtual ::grpc::Status GenerateStream(::grpc::ServerContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest* request, ::grpc::ServerWriter< ::sentiric::llm::v1::LocalGenerateStreamResponse>* writer);
   };
   template <class BaseClass>
-  class WithAsyncMethod_LocalGenerate : public BaseClass {
+  class WithAsyncMethod_GenerateStream : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithAsyncMethod_LocalGenerate() {
+    WithAsyncMethod_GenerateStream() {
       ::grpc::Service::MarkMethodAsync(0);
     }
-    ~WithAsyncMethod_LocalGenerate() override {
+    ~WithAsyncMethod_GenerateStream() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status LocalGenerate(::grpc::ServerContext* /*context*/, const ::sentiric::llm::v1::LocalGenerateRequest* /*request*/, ::sentiric::llm::v1::LocalGenerateResponse* /*response*/) override {
+    ::grpc::Status GenerateStream(::grpc::ServerContext* /*context*/, const ::sentiric::llm::v1::LocalGenerateStreamRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::llm::v1::LocalGenerateStreamResponse>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestLocalGenerate(::grpc::ServerContext* context, ::sentiric::llm::v1::LocalGenerateRequest* request, ::grpc::ServerAsyncResponseWriter< ::sentiric::llm::v1::LocalGenerateResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
+    void RequestGenerateStream(::grpc::ServerContext* context, ::sentiric::llm::v1::LocalGenerateStreamRequest* request, ::grpc::ServerAsyncWriter< ::sentiric::llm::v1::LocalGenerateStreamResponse>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncServerStreaming(0, context, request, writer, new_call_cq, notification_cq, tag);
     }
   };
+  typedef WithAsyncMethod_GenerateStream<Service > AsyncService;
   template <class BaseClass>
-  class WithAsyncMethod_LocalGenerateStream : public BaseClass {
+  class WithCallbackMethod_GenerateStream : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithAsyncMethod_LocalGenerateStream() {
-      ::grpc::Service::MarkMethodAsync(1);
-    }
-    ~WithAsyncMethod_LocalGenerateStream() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status LocalGenerateStream(::grpc::ServerContext* /*context*/, const ::sentiric::llm::v1::LocalGenerateStreamRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::llm::v1::LocalGenerateStreamResponse>* /*writer*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestLocalGenerateStream(::grpc::ServerContext* context, ::sentiric::llm::v1::LocalGenerateStreamRequest* request, ::grpc::ServerAsyncWriter< ::sentiric::llm::v1::LocalGenerateStreamResponse>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncServerStreaming(1, context, request, writer, new_call_cq, notification_cq, tag);
-    }
-  };
-  typedef WithAsyncMethod_LocalGenerate<WithAsyncMethod_LocalGenerateStream<Service > > AsyncService;
-  template <class BaseClass>
-  class WithCallbackMethod_LocalGenerate : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithCallbackMethod_LocalGenerate() {
+    WithCallbackMethod_GenerateStream() {
       ::grpc::Service::MarkMethodCallback(0,
-          new ::grpc::internal::CallbackUnaryHandler< ::sentiric::llm::v1::LocalGenerateRequest, ::sentiric::llm::v1::LocalGenerateResponse>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::sentiric::llm::v1::LocalGenerateRequest* request, ::sentiric::llm::v1::LocalGenerateResponse* response) { return this->LocalGenerate(context, request, response); }));}
-    void SetMessageAllocatorFor_LocalGenerate(
-        ::grpc::MessageAllocator< ::sentiric::llm::v1::LocalGenerateRequest, ::sentiric::llm::v1::LocalGenerateResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::sentiric::llm::v1::LocalGenerateRequest, ::sentiric::llm::v1::LocalGenerateResponse>*>(handler)
-              ->SetMessageAllocator(allocator);
-    }
-    ~WithCallbackMethod_LocalGenerate() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status LocalGenerate(::grpc::ServerContext* /*context*/, const ::sentiric::llm::v1::LocalGenerateRequest* /*request*/, ::sentiric::llm::v1::LocalGenerateResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerUnaryReactor* LocalGenerate(
-      ::grpc::CallbackServerContext* /*context*/, const ::sentiric::llm::v1::LocalGenerateRequest* /*request*/, ::sentiric::llm::v1::LocalGenerateResponse* /*response*/)  { return nullptr; }
-  };
-  template <class BaseClass>
-  class WithCallbackMethod_LocalGenerateStream : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithCallbackMethod_LocalGenerateStream() {
-      ::grpc::Service::MarkMethodCallback(1,
           new ::grpc::internal::CallbackServerStreamingHandler< ::sentiric::llm::v1::LocalGenerateStreamRequest, ::sentiric::llm::v1::LocalGenerateStreamResponse>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest* request) { return this->LocalGenerateStream(context, request); }));
+                   ::grpc::CallbackServerContext* context, const ::sentiric::llm::v1::LocalGenerateStreamRequest* request) { return this->GenerateStream(context, request); }));
     }
-    ~WithCallbackMethod_LocalGenerateStream() override {
+    ~WithCallbackMethod_GenerateStream() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status LocalGenerateStream(::grpc::ServerContext* /*context*/, const ::sentiric::llm::v1::LocalGenerateStreamRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::llm::v1::LocalGenerateStreamResponse>* /*writer*/) override {
+    ::grpc::Status GenerateStream(::grpc::ServerContext* /*context*/, const ::sentiric::llm::v1::LocalGenerateStreamRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::llm::v1::LocalGenerateStreamResponse>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerWriteReactor< ::sentiric::llm::v1::LocalGenerateStreamResponse>* LocalGenerateStream(
+    virtual ::grpc::ServerWriteReactor< ::sentiric::llm::v1::LocalGenerateStreamResponse>* GenerateStream(
       ::grpc::CallbackServerContext* /*context*/, const ::sentiric::llm::v1::LocalGenerateStreamRequest* /*request*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_LocalGenerate<WithCallbackMethod_LocalGenerateStream<Service > > CallbackService;
+  typedef WithCallbackMethod_GenerateStream<Service > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
-  class WithGenericMethod_LocalGenerate : public BaseClass {
+  class WithGenericMethod_GenerateStream : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithGenericMethod_LocalGenerate() {
+    WithGenericMethod_GenerateStream() {
       ::grpc::Service::MarkMethodGeneric(0);
     }
-    ~WithGenericMethod_LocalGenerate() override {
+    ~WithGenericMethod_GenerateStream() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status LocalGenerate(::grpc::ServerContext* /*context*/, const ::sentiric::llm::v1::LocalGenerateRequest* /*request*/, ::sentiric::llm::v1::LocalGenerateResponse* /*response*/) override {
+    ::grpc::Status GenerateStream(::grpc::ServerContext* /*context*/, const ::sentiric::llm::v1::LocalGenerateStreamRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::llm::v1::LocalGenerateStreamResponse>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
   };
   template <class BaseClass>
-  class WithGenericMethod_LocalGenerateStream : public BaseClass {
+  class WithRawMethod_GenerateStream : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithGenericMethod_LocalGenerateStream() {
-      ::grpc::Service::MarkMethodGeneric(1);
-    }
-    ~WithGenericMethod_LocalGenerateStream() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status LocalGenerateStream(::grpc::ServerContext* /*context*/, const ::sentiric::llm::v1::LocalGenerateStreamRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::llm::v1::LocalGenerateStreamResponse>* /*writer*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-  };
-  template <class BaseClass>
-  class WithRawMethod_LocalGenerate : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawMethod_LocalGenerate() {
+    WithRawMethod_GenerateStream() {
       ::grpc::Service::MarkMethodRaw(0);
     }
-    ~WithRawMethod_LocalGenerate() override {
+    ~WithRawMethod_GenerateStream() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status LocalGenerate(::grpc::ServerContext* /*context*/, const ::sentiric::llm::v1::LocalGenerateRequest* /*request*/, ::sentiric::llm::v1::LocalGenerateResponse* /*response*/) override {
+    ::grpc::Status GenerateStream(::grpc::ServerContext* /*context*/, const ::sentiric::llm::v1::LocalGenerateStreamRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::llm::v1::LocalGenerateStreamResponse>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestLocalGenerate(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
+    void RequestGenerateStream(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncWriter< ::grpc::ByteBuffer>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncServerStreaming(0, context, request, writer, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithRawMethod_LocalGenerateStream : public BaseClass {
+  class WithRawCallbackMethod_GenerateStream : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawMethod_LocalGenerateStream() {
-      ::grpc::Service::MarkMethodRaw(1);
-    }
-    ~WithRawMethod_LocalGenerateStream() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status LocalGenerateStream(::grpc::ServerContext* /*context*/, const ::sentiric::llm::v1::LocalGenerateStreamRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::llm::v1::LocalGenerateStreamResponse>* /*writer*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    void RequestLocalGenerateStream(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncWriter< ::grpc::ByteBuffer>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncServerStreaming(1, context, request, writer, new_call_cq, notification_cq, tag);
-    }
-  };
-  template <class BaseClass>
-  class WithRawCallbackMethod_LocalGenerate : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawCallbackMethod_LocalGenerate() {
+    WithRawCallbackMethod_GenerateStream() {
       ::grpc::Service::MarkMethodRawCallback(0,
-          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
-            [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->LocalGenerate(context, request, response); }));
-    }
-    ~WithRawCallbackMethod_LocalGenerate() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable synchronous version of this method
-    ::grpc::Status LocalGenerate(::grpc::ServerContext* /*context*/, const ::sentiric::llm::v1::LocalGenerateRequest* /*request*/, ::sentiric::llm::v1::LocalGenerateResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    virtual ::grpc::ServerUnaryReactor* LocalGenerate(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
-  };
-  template <class BaseClass>
-  class WithRawCallbackMethod_LocalGenerateStream : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithRawCallbackMethod_LocalGenerateStream() {
-      ::grpc::Service::MarkMethodRawCallback(1,
           new ::grpc::internal::CallbackServerStreamingHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-                   ::grpc::CallbackServerContext* context, const::grpc::ByteBuffer* request) { return this->LocalGenerateStream(context, request); }));
+                   ::grpc::CallbackServerContext* context, const::grpc::ByteBuffer* request) { return this->GenerateStream(context, request); }));
     }
-    ~WithRawCallbackMethod_LocalGenerateStream() override {
+    ~WithRawCallbackMethod_GenerateStream() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status LocalGenerateStream(::grpc::ServerContext* /*context*/, const ::sentiric::llm::v1::LocalGenerateStreamRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::llm::v1::LocalGenerateStreamResponse>* /*writer*/) override {
+    ::grpc::Status GenerateStream(::grpc::ServerContext* /*context*/, const ::sentiric::llm::v1::LocalGenerateStreamRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::llm::v1::LocalGenerateStreamResponse>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerWriteReactor< ::grpc::ByteBuffer>* LocalGenerateStream(
+    virtual ::grpc::ServerWriteReactor< ::grpc::ByteBuffer>* GenerateStream(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/)  { return nullptr; }
   };
+  typedef Service StreamedUnaryService;
   template <class BaseClass>
-  class WithStreamedUnaryMethod_LocalGenerate : public BaseClass {
+  class WithSplitStreamingMethod_GenerateStream : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithStreamedUnaryMethod_LocalGenerate() {
+    WithSplitStreamingMethod_GenerateStream() {
       ::grpc::Service::MarkMethodStreamed(0,
-        new ::grpc::internal::StreamedUnaryHandler<
-          ::sentiric::llm::v1::LocalGenerateRequest, ::sentiric::llm::v1::LocalGenerateResponse>(
-            [this](::grpc::ServerContext* context,
-                   ::grpc::ServerUnaryStreamer<
-                     ::sentiric::llm::v1::LocalGenerateRequest, ::sentiric::llm::v1::LocalGenerateResponse>* streamer) {
-                       return this->StreamedLocalGenerate(context,
-                         streamer);
-                  }));
-    }
-    ~WithStreamedUnaryMethod_LocalGenerate() override {
-      BaseClassMustBeDerivedFromService(this);
-    }
-    // disable regular version of this method
-    ::grpc::Status LocalGenerate(::grpc::ServerContext* /*context*/, const ::sentiric::llm::v1::LocalGenerateRequest* /*request*/, ::sentiric::llm::v1::LocalGenerateResponse* /*response*/) override {
-      abort();
-      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
-    }
-    // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedLocalGenerate(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::sentiric::llm::v1::LocalGenerateRequest,::sentiric::llm::v1::LocalGenerateResponse>* server_unary_streamer) = 0;
-  };
-  typedef WithStreamedUnaryMethod_LocalGenerate<Service > StreamedUnaryService;
-  template <class BaseClass>
-  class WithSplitStreamingMethod_LocalGenerateStream : public BaseClass {
-   private:
-    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
-   public:
-    WithSplitStreamingMethod_LocalGenerateStream() {
-      ::grpc::Service::MarkMethodStreamed(1,
         new ::grpc::internal::SplitServerStreamingHandler<
           ::sentiric::llm::v1::LocalGenerateStreamRequest, ::sentiric::llm::v1::LocalGenerateStreamResponse>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerSplitStreamer<
                      ::sentiric::llm::v1::LocalGenerateStreamRequest, ::sentiric::llm::v1::LocalGenerateStreamResponse>* streamer) {
-                       return this->StreamedLocalGenerateStream(context,
+                       return this->StreamedGenerateStream(context,
                          streamer);
                   }));
     }
-    ~WithSplitStreamingMethod_LocalGenerateStream() override {
+    ~WithSplitStreamingMethod_GenerateStream() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status LocalGenerateStream(::grpc::ServerContext* /*context*/, const ::sentiric::llm::v1::LocalGenerateStreamRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::llm::v1::LocalGenerateStreamResponse>* /*writer*/) override {
+    ::grpc::Status GenerateStream(::grpc::ServerContext* /*context*/, const ::sentiric::llm::v1::LocalGenerateStreamRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::llm::v1::LocalGenerateStreamResponse>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with split streamed
-    virtual ::grpc::Status StreamedLocalGenerateStream(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::sentiric::llm::v1::LocalGenerateStreamRequest,::sentiric::llm::v1::LocalGenerateStreamResponse>* server_split_streamer) = 0;
+    virtual ::grpc::Status StreamedGenerateStream(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::sentiric::llm::v1::LocalGenerateStreamRequest,::sentiric::llm::v1::LocalGenerateStreamResponse>* server_split_streamer) = 0;
   };
-  typedef WithSplitStreamingMethod_LocalGenerateStream<Service > SplitStreamedService;
-  typedef WithStreamedUnaryMethod_LocalGenerate<WithSplitStreamingMethod_LocalGenerateStream<Service > > StreamedService;
+  typedef WithSplitStreamingMethod_GenerateStream<Service > SplitStreamedService;
+  typedef WithSplitStreamingMethod_GenerateStream<Service > StreamedService;
 };
 
 }  // namespace v1

@@ -21,29 +21,35 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type GenerateRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Prompt        string                 `protobuf:"bytes,1,opt,name=prompt,proto3" json:"prompt,omitempty"`
-	ModelSelector string                 `protobuf:"bytes,2,opt,name=model_selector,json=modelSelector,proto3" json:"model_selector,omitempty"`
-	TenantId      string                 `protobuf:"bytes,3,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+// Gateway'in, gelen isteği doğru uzman motora yönlendirmek için kullandığı
+// kapsayıcı (wrapper) istek mesajı.
+type GenerateDialogStreamRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// 1. (Zorunlu) İsteğin hangi uzman motora gönderileceğini belirleyen seçici.
+	ModelSelector string `protobuf:"bytes,1,opt,name=model_selector,json=modelSelector,proto3" json:"model_selector,omitempty"`
+	// 2. (Zorunlu) İsteğin hangi kiracıya ait olduğunu belirtir.
+	TenantId string `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	//  3. İsteğin, `llm-llama-service` gibi yerel bir motora yönlendirilmesi
+	//     durumunda kullanılacak olan zengin ve yapılandırılmış veri.
+	LocalRequest  *LocalGenerateStreamRequest `protobuf:"bytes,10,opt,name=local_request,json=localRequest,proto3" json:"local_request,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GenerateRequest) Reset() {
-	*x = GenerateRequest{}
+func (x *GenerateDialogStreamRequest) Reset() {
+	*x = GenerateDialogStreamRequest{}
 	mi := &file_sentiric_llm_v1_gateway_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GenerateRequest) String() string {
+func (x *GenerateDialogStreamRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GenerateRequest) ProtoMessage() {}
+func (*GenerateDialogStreamRequest) ProtoMessage() {}
 
-func (x *GenerateRequest) ProtoReflect() protoreflect.Message {
+func (x *GenerateDialogStreamRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_sentiric_llm_v1_gateway_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -55,53 +61,55 @@ func (x *GenerateRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GenerateRequest.ProtoReflect.Descriptor instead.
-func (*GenerateRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use GenerateDialogStreamRequest.ProtoReflect.Descriptor instead.
+func (*GenerateDialogStreamRequest) Descriptor() ([]byte, []int) {
 	return file_sentiric_llm_v1_gateway_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *GenerateRequest) GetPrompt() string {
-	if x != nil {
-		return x.Prompt
-	}
-	return ""
-}
-
-func (x *GenerateRequest) GetModelSelector() string {
+func (x *GenerateDialogStreamRequest) GetModelSelector() string {
 	if x != nil {
 		return x.ModelSelector
 	}
 	return ""
 }
 
-func (x *GenerateRequest) GetTenantId() string {
+func (x *GenerateDialogStreamRequest) GetTenantId() string {
 	if x != nil {
 		return x.TenantId
 	}
 	return ""
 }
 
-type GenerateResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	GeneratedText string                 `protobuf:"bytes,1,opt,name=generated_text,json=generatedText,proto3" json:"generated_text,omitempty"`
+func (x *GenerateDialogStreamRequest) GetLocalRequest() *LocalGenerateStreamRequest {
+	if x != nil {
+		return x.LocalRequest
+	}
+	return nil
+}
+
+// Gateway'den istemciye geri dönen kapsayıcı akış mesajı.
+type GenerateDialogStreamResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Uzman motordan gelen ham yanıtı olduğu gibi içerir.
+	LocalResponse *LocalGenerateStreamResponse `protobuf:"bytes,10,opt,name=local_response,json=localResponse,proto3" json:"local_response,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GenerateResponse) Reset() {
-	*x = GenerateResponse{}
+func (x *GenerateDialogStreamResponse) Reset() {
+	*x = GenerateDialogStreamResponse{}
 	mi := &file_sentiric_llm_v1_gateway_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GenerateResponse) String() string {
+func (x *GenerateDialogStreamResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GenerateResponse) ProtoMessage() {}
+func (*GenerateDialogStreamResponse) ProtoMessage() {}
 
-func (x *GenerateResponse) ProtoReflect() protoreflect.Message {
+func (x *GenerateDialogStreamResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_sentiric_llm_v1_gateway_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -113,142 +121,33 @@ func (x *GenerateResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GenerateResponse.ProtoReflect.Descriptor instead.
-func (*GenerateResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use GenerateDialogStreamResponse.ProtoReflect.Descriptor instead.
+func (*GenerateDialogStreamResponse) Descriptor() ([]byte, []int) {
 	return file_sentiric_llm_v1_gateway_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *GenerateResponse) GetGeneratedText() string {
+func (x *GenerateDialogStreamResponse) GetLocalResponse() *LocalGenerateStreamResponse {
 	if x != nil {
-		return x.GeneratedText
+		return x.LocalResponse
 	}
-	return ""
-}
-
-type GenerateStreamRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Prompt        string                 `protobuf:"bytes,1,opt,name=prompt,proto3" json:"prompt,omitempty"`
-	ModelSelector string                 `protobuf:"bytes,2,opt,name=model_selector,json=modelSelector,proto3" json:"model_selector,omitempty"`
-	TenantId      string                 `protobuf:"bytes,3,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GenerateStreamRequest) Reset() {
-	*x = GenerateStreamRequest{}
-	mi := &file_sentiric_llm_v1_gateway_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GenerateStreamRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GenerateStreamRequest) ProtoMessage() {}
-
-func (x *GenerateStreamRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_llm_v1_gateway_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GenerateStreamRequest.ProtoReflect.Descriptor instead.
-func (*GenerateStreamRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_llm_v1_gateway_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *GenerateStreamRequest) GetPrompt() string {
-	if x != nil {
-		return x.Prompt
-	}
-	return ""
-}
-
-func (x *GenerateStreamRequest) GetModelSelector() string {
-	if x != nil {
-		return x.ModelSelector
-	}
-	return ""
-}
-
-func (x *GenerateStreamRequest) GetTenantId() string {
-	if x != nil {
-		return x.TenantId
-	}
-	return ""
-}
-
-type GenerateStreamResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	GeneratedText string                 `protobuf:"bytes,1,opt,name=generated_text,json=generatedText,proto3" json:"generated_text,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GenerateStreamResponse) Reset() {
-	*x = GenerateStreamResponse{}
-	mi := &file_sentiric_llm_v1_gateway_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GenerateStreamResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GenerateStreamResponse) ProtoMessage() {}
-
-func (x *GenerateStreamResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_llm_v1_gateway_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GenerateStreamResponse.ProtoReflect.Descriptor instead.
-func (*GenerateStreamResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_llm_v1_gateway_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *GenerateStreamResponse) GetGeneratedText() string {
-	if x != nil {
-		return x.GeneratedText
-	}
-	return ""
+	return nil
 }
 
 var File_sentiric_llm_v1_gateway_proto protoreflect.FileDescriptor
 
 const file_sentiric_llm_v1_gateway_proto_rawDesc = "" +
 	"\n" +
-	"\x1dsentiric/llm/v1/gateway.proto\x12\x0fsentiric.llm.v1\"m\n" +
-	"\x0fGenerateRequest\x12\x16\n" +
-	"\x06prompt\x18\x01 \x01(\tR\x06prompt\x12%\n" +
-	"\x0emodel_selector\x18\x02 \x01(\tR\rmodelSelector\x12\x1b\n" +
-	"\ttenant_id\x18\x03 \x01(\tR\btenantId\"9\n" +
-	"\x10GenerateResponse\x12%\n" +
-	"\x0egenerated_text\x18\x01 \x01(\tR\rgeneratedText\"s\n" +
-	"\x15GenerateStreamRequest\x12\x16\n" +
-	"\x06prompt\x18\x01 \x01(\tR\x06prompt\x12%\n" +
-	"\x0emodel_selector\x18\x02 \x01(\tR\rmodelSelector\x12\x1b\n" +
-	"\ttenant_id\x18\x03 \x01(\tR\btenantId\"?\n" +
-	"\x16GenerateStreamResponse\x12%\n" +
-	"\x0egenerated_text\x18\x01 \x01(\tR\rgeneratedText2\xc9\x01\n" +
-	"\x11LlmGatewayService\x12O\n" +
-	"\bGenerate\x12 .sentiric.llm.v1.GenerateRequest\x1a!.sentiric.llm.v1.GenerateResponse\x12c\n" +
-	"\x0eGenerateStream\x12&.sentiric.llm.v1.GenerateStreamRequest\x1a'.sentiric.llm.v1.GenerateStreamResponse0\x01BEZCgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/llm/v1;llmv1b\x06proto3"
+	"\x1dsentiric/llm/v1/gateway.proto\x12\x0fsentiric.llm.v1\x1a\x1bsentiric/llm/v1/local.proto\"\xb3\x01\n" +
+	"\x1bGenerateDialogStreamRequest\x12%\n" +
+	"\x0emodel_selector\x18\x01 \x01(\tR\rmodelSelector\x12\x1b\n" +
+	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12P\n" +
+	"\rlocal_request\x18\n" +
+	" \x01(\v2+.sentiric.llm.v1.LocalGenerateStreamRequestR\flocalRequest\"s\n" +
+	"\x1cGenerateDialogStreamResponse\x12S\n" +
+	"\x0elocal_response\x18\n" +
+	" \x01(\v2,.sentiric.llm.v1.LocalGenerateStreamResponseR\rlocalResponse2\x8a\x01\n" +
+	"\x11LlmGatewayService\x12u\n" +
+	"\x14GenerateDialogStream\x12,.sentiric.llm.v1.GenerateDialogStreamRequest\x1a-.sentiric.llm.v1.GenerateDialogStreamResponse0\x01BEZCgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/llm/v1;llmv1b\x06proto3"
 
 var (
 	file_sentiric_llm_v1_gateway_proto_rawDescOnce sync.Once
@@ -262,23 +161,23 @@ func file_sentiric_llm_v1_gateway_proto_rawDescGZIP() []byte {
 	return file_sentiric_llm_v1_gateway_proto_rawDescData
 }
 
-var file_sentiric_llm_v1_gateway_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_sentiric_llm_v1_gateway_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_sentiric_llm_v1_gateway_proto_goTypes = []any{
-	(*GenerateRequest)(nil),        // 0: sentiric.llm.v1.GenerateRequest
-	(*GenerateResponse)(nil),       // 1: sentiric.llm.v1.GenerateResponse
-	(*GenerateStreamRequest)(nil),  // 2: sentiric.llm.v1.GenerateStreamRequest
-	(*GenerateStreamResponse)(nil), // 3: sentiric.llm.v1.GenerateStreamResponse
+	(*GenerateDialogStreamRequest)(nil),  // 0: sentiric.llm.v1.GenerateDialogStreamRequest
+	(*GenerateDialogStreamResponse)(nil), // 1: sentiric.llm.v1.GenerateDialogStreamResponse
+	(*LocalGenerateStreamRequest)(nil),   // 2: sentiric.llm.v1.LocalGenerateStreamRequest
+	(*LocalGenerateStreamResponse)(nil),  // 3: sentiric.llm.v1.LocalGenerateStreamResponse
 }
 var file_sentiric_llm_v1_gateway_proto_depIdxs = []int32{
-	0, // 0: sentiric.llm.v1.LlmGatewayService.Generate:input_type -> sentiric.llm.v1.GenerateRequest
-	2, // 1: sentiric.llm.v1.LlmGatewayService.GenerateStream:input_type -> sentiric.llm.v1.GenerateStreamRequest
-	1, // 2: sentiric.llm.v1.LlmGatewayService.Generate:output_type -> sentiric.llm.v1.GenerateResponse
-	3, // 3: sentiric.llm.v1.LlmGatewayService.GenerateStream:output_type -> sentiric.llm.v1.GenerateStreamResponse
-	2, // [2:4] is the sub-list for method output_type
-	0, // [0:2] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	2, // 0: sentiric.llm.v1.GenerateDialogStreamRequest.local_request:type_name -> sentiric.llm.v1.LocalGenerateStreamRequest
+	3, // 1: sentiric.llm.v1.GenerateDialogStreamResponse.local_response:type_name -> sentiric.llm.v1.LocalGenerateStreamResponse
+	0, // 2: sentiric.llm.v1.LlmGatewayService.GenerateDialogStream:input_type -> sentiric.llm.v1.GenerateDialogStreamRequest
+	1, // 3: sentiric.llm.v1.LlmGatewayService.GenerateDialogStream:output_type -> sentiric.llm.v1.GenerateDialogStreamResponse
+	3, // [3:4] is the sub-list for method output_type
+	2, // [2:3] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_sentiric_llm_v1_gateway_proto_init() }
@@ -286,13 +185,14 @@ func file_sentiric_llm_v1_gateway_proto_init() {
 	if File_sentiric_llm_v1_gateway_proto != nil {
 		return
 	}
+	file_sentiric_llm_v1_local_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sentiric_llm_v1_gateway_proto_rawDesc), len(file_sentiric_llm_v1_gateway_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

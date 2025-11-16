@@ -2,29 +2,43 @@ syntax = "proto3";
 
 package sentiric.llm.v1;
 
+import "sentiric/llm/v1/local.proto";
+
 option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/llm/v1;llmv1";
 
+// =============================================================================
+//                      ANA SERVİS TANIMI (Okuma Akışı Prensibi)
+// =============================================================================
 service LlmGatewayService {
-  rpc Generate(GenerateRequest) returns (GenerateResponse);
-  rpc GenerateStream(GenerateStreamRequest) returns (stream GenerateStreamResponse); // Yeniden Adlandırıldı
+  // Diyalogsal bir istek için akış tabanlı metin üretir.
+  // İsteği, model seçiciye göre uygun bir uzman servise yönlendirir.
+  rpc GenerateDialogStream(GenerateDialogStreamRequest) returns (stream GenerateDialogStreamResponse);
 }
 
-message GenerateRequest { // Generate için kullanılır
-  string prompt = 1;
-  string model_selector = 2;
-  string tenant_id = 3;
+// =============================================================================
+//                      RPC MESAJ TANIMLARI (Detaylar)
+// =============================================================================
+
+// Gateway'in, gelen isteği doğru uzman motora yönlendirmek için kullandığı
+// kapsayıcı (wrapper) istek mesajı.
+message GenerateDialogStreamRequest {
+  // 1. (Zorunlu) İsteğin hangi uzman motora gönderileceğini belirleyen seçici.
+  string model_selector = 1;
+
+  // 2. (Zorunlu) İsteğin hangi kiracıya ait olduğunu belirtir.
+  string tenant_id = 2;
+
+  // 3. İsteğin, `llm-llama-service` gibi yerel bir motora yönlendirilmesi
+  //    durumunda kullanılacak olan zengin ve yapılandırılmış veri.
+  LocalGenerateStreamRequest local_request = 10;
+  
+  // Gelecekteki diğer uzman motorlar için alanlar buraya eklenebilir.
 }
 
-message GenerateResponse { // Generate için kullanılır
-  string generated_text = 1;
-}
+// Gateway'den istemciye geri dönen kapsayıcı akış mesajı.
+message GenerateDialogStreamResponse {
+  // Uzman motordan gelen ham yanıtı olduğu gibi içerir.
+  LocalGenerateStreamResponse local_response = 10;
 
-message GenerateStreamRequest { // Stream için ayrı bir mesaj tanımladık
-  string prompt = 1;
-  string model_selector = 2;
-  string tenant_id = 3;
-}
-
-message GenerateStreamResponse { // Stream için ayrı bir mesaj tanımladık
-  string generated_text = 1;
+  // Gelecekteki diğer uzman motor yanıtları için alanlar buraya eklenebilir.
 }
