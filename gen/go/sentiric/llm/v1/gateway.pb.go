@@ -21,17 +21,12 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// Gateway'in, gelen isteği doğru uzman motora yönlendirmek için kullandığı
-// kapsayıcı (wrapper) istek mesajı.
 type GenerateDialogStreamRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// 1. (Zorunlu) İsteğin hangi uzman motora gönderileceğini belirleyen seçici.
-	ModelSelector string `protobuf:"bytes,1,opt,name=model_selector,json=modelSelector,proto3" json:"model_selector,omitempty"`
-	// 2. (Zorunlu) İsteğin hangi kiracıya ait olduğunu belirtir.
-	TenantId string `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
-	//  3. İsteğin, `llm-llama-service` gibi yerel bir motora yönlendirilmesi
-	//     durumunda kullanılacak olan zengin ve yapılandırılmış veri.
-	LocalRequest  *LocalGenerateStreamRequest `protobuf:"bytes,10,opt,name=local_request,json=localRequest,proto3" json:"local_request,omitempty"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ModelSelector string                 `protobuf:"bytes,1,opt,name=model_selector,json=modelSelector,proto3" json:"model_selector,omitempty"`
+	TenantId      string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	// DÜZELTME: Bu alan artık yeni, CI uyumlu mesaj tipini kullanıyor.
+	LocalRequest  *LLMLocalServiceGenerateStreamRequest `protobuf:"bytes,10,opt,name=local_request,json=localRequest,proto3" json:"local_request,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -80,18 +75,17 @@ func (x *GenerateDialogStreamRequest) GetTenantId() string {
 	return ""
 }
 
-func (x *GenerateDialogStreamRequest) GetLocalRequest() *LocalGenerateStreamRequest {
+func (x *GenerateDialogStreamRequest) GetLocalRequest() *LLMLocalServiceGenerateStreamRequest {
 	if x != nil {
 		return x.LocalRequest
 	}
 	return nil
 }
 
-// Gateway'den istemciye geri dönen kapsayıcı akış mesajı.
 type GenerateDialogStreamResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Uzman motordan gelen ham yanıtı olduğu gibi içerir.
-	LocalResponse *LocalGenerateStreamResponse `protobuf:"bytes,10,opt,name=local_response,json=localResponse,proto3" json:"local_response,omitempty"`
+	// DÜZELTME: Bu alan artık yeni, CI uyumlu mesaj tipini kullanıyor.
+	LocalResponse *LLMLocalServiceGenerateStreamResponse `protobuf:"bytes,10,opt,name=local_response,json=localResponse,proto3" json:"local_response,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -126,7 +120,7 @@ func (*GenerateDialogStreamResponse) Descriptor() ([]byte, []int) {
 	return file_sentiric_llm_v1_gateway_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *GenerateDialogStreamResponse) GetLocalResponse() *LocalGenerateStreamResponse {
+func (x *GenerateDialogStreamResponse) GetLocalResponse() *LLMLocalServiceGenerateStreamResponse {
 	if x != nil {
 		return x.LocalResponse
 	}
@@ -137,15 +131,15 @@ var File_sentiric_llm_v1_gateway_proto protoreflect.FileDescriptor
 
 const file_sentiric_llm_v1_gateway_proto_rawDesc = "" +
 	"\n" +
-	"\x1dsentiric/llm/v1/gateway.proto\x12\x0fsentiric.llm.v1\x1a\x1bsentiric/llm/v1/local.proto\"\xb3\x01\n" +
+	"\x1dsentiric/llm/v1/gateway.proto\x12\x0fsentiric.llm.v1\x1a\x1bsentiric/llm/v1/local.proto\"\xbd\x01\n" +
 	"\x1bGenerateDialogStreamRequest\x12%\n" +
 	"\x0emodel_selector\x18\x01 \x01(\tR\rmodelSelector\x12\x1b\n" +
-	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12P\n" +
+	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12Z\n" +
 	"\rlocal_request\x18\n" +
-	" \x01(\v2+.sentiric.llm.v1.LocalGenerateStreamRequestR\flocalRequest\"s\n" +
-	"\x1cGenerateDialogStreamResponse\x12S\n" +
+	" \x01(\v25.sentiric.llm.v1.LLMLocalServiceGenerateStreamRequestR\flocalRequest\"}\n" +
+	"\x1cGenerateDialogStreamResponse\x12]\n" +
 	"\x0elocal_response\x18\n" +
-	" \x01(\v2,.sentiric.llm.v1.LocalGenerateStreamResponseR\rlocalResponse2\x8a\x01\n" +
+	" \x01(\v26.sentiric.llm.v1.LLMLocalServiceGenerateStreamResponseR\rlocalResponse2\x8a\x01\n" +
 	"\x11LlmGatewayService\x12u\n" +
 	"\x14GenerateDialogStream\x12,.sentiric.llm.v1.GenerateDialogStreamRequest\x1a-.sentiric.llm.v1.GenerateDialogStreamResponse0\x01BEZCgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/llm/v1;llmv1b\x06proto3"
 
@@ -163,14 +157,14 @@ func file_sentiric_llm_v1_gateway_proto_rawDescGZIP() []byte {
 
 var file_sentiric_llm_v1_gateway_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_sentiric_llm_v1_gateway_proto_goTypes = []any{
-	(*GenerateDialogStreamRequest)(nil),  // 0: sentiric.llm.v1.GenerateDialogStreamRequest
-	(*GenerateDialogStreamResponse)(nil), // 1: sentiric.llm.v1.GenerateDialogStreamResponse
-	(*LocalGenerateStreamRequest)(nil),   // 2: sentiric.llm.v1.LocalGenerateStreamRequest
-	(*LocalGenerateStreamResponse)(nil),  // 3: sentiric.llm.v1.LocalGenerateStreamResponse
+	(*GenerateDialogStreamRequest)(nil),           // 0: sentiric.llm.v1.GenerateDialogStreamRequest
+	(*GenerateDialogStreamResponse)(nil),          // 1: sentiric.llm.v1.GenerateDialogStreamResponse
+	(*LLMLocalServiceGenerateStreamRequest)(nil),  // 2: sentiric.llm.v1.LLMLocalServiceGenerateStreamRequest
+	(*LLMLocalServiceGenerateStreamResponse)(nil), // 3: sentiric.llm.v1.LLMLocalServiceGenerateStreamResponse
 }
 var file_sentiric_llm_v1_gateway_proto_depIdxs = []int32{
-	2, // 0: sentiric.llm.v1.GenerateDialogStreamRequest.local_request:type_name -> sentiric.llm.v1.LocalGenerateStreamRequest
-	3, // 1: sentiric.llm.v1.GenerateDialogStreamResponse.local_response:type_name -> sentiric.llm.v1.LocalGenerateStreamResponse
+	2, // 0: sentiric.llm.v1.GenerateDialogStreamRequest.local_request:type_name -> sentiric.llm.v1.LLMLocalServiceGenerateStreamRequest
+	3, // 1: sentiric.llm.v1.GenerateDialogStreamResponse.local_response:type_name -> sentiric.llm.v1.LLMLocalServiceGenerateStreamResponse
 	0, // 2: sentiric.llm.v1.LlmGatewayService.GenerateDialogStream:input_type -> sentiric.llm.v1.GenerateDialogStreamRequest
 	1, // 3: sentiric.llm.v1.LlmGatewayService.GenerateDialogStream:output_type -> sentiric.llm.v1.GenerateDialogStreamResponse
 	3, // [3:4] is the sub-list for method output_type

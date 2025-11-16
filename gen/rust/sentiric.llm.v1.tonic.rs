@@ -86,9 +86,11 @@ pub mod llm_local_service_client {
         }
         pub async fn generate_stream(
             &mut self,
-            request: impl tonic::IntoRequest<super::LocalGenerateStreamRequest>,
+            request: impl tonic::IntoRequest<super::LlmLocalServiceGenerateStreamRequest>,
         ) -> std::result::Result<
-            tonic::Response<tonic::codec::Streaming<super::LocalGenerateStreamResponse>>,
+            tonic::Response<
+                tonic::codec::Streaming<super::LlmLocalServiceGenerateStreamResponse>,
+            >,
             tonic::Status,
         > {
             self.inner
@@ -123,7 +125,7 @@ pub mod llm_local_service_server {
         /// Server streaming response type for the GenerateStream method.
         type GenerateStreamStream: tonic::codegen::tokio_stream::Stream<
                 Item = std::result::Result<
-                    super::LocalGenerateStreamResponse,
+                    super::LlmLocalServiceGenerateStreamResponse,
                     tonic::Status,
                 >,
             >
@@ -131,7 +133,7 @@ pub mod llm_local_service_server {
             + 'static;
         async fn generate_stream(
             &self,
-            request: tonic::Request<super::LocalGenerateStreamRequest>,
+            request: tonic::Request<super::LlmLocalServiceGenerateStreamRequest>,
         ) -> std::result::Result<
             tonic::Response<Self::GenerateStreamStream>,
             tonic::Status,
@@ -219,9 +221,9 @@ pub mod llm_local_service_server {
                     impl<
                         T: LlmLocalService,
                     > tonic::server::ServerStreamingService<
-                        super::LocalGenerateStreamRequest,
+                        super::LlmLocalServiceGenerateStreamRequest,
                     > for GenerateStreamSvc<T> {
-                        type Response = super::LocalGenerateStreamResponse;
+                        type Response = super::LlmLocalServiceGenerateStreamResponse;
                         type ResponseStream = T::GenerateStreamStream;
                         type Future = BoxFuture<
                             tonic::Response<Self::ResponseStream>,
@@ -229,7 +231,9 @@ pub mod llm_local_service_server {
                         >;
                         fn call(
                             &mut self,
-                            request: tonic::Request<super::LocalGenerateStreamRequest>,
+                            request: tonic::Request<
+                                super::LlmLocalServiceGenerateStreamRequest,
+                            >,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {

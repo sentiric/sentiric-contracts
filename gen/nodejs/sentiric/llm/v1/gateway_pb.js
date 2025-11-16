@@ -95,7 +95,7 @@ proto.sentiric.llm.v1.GenerateDialogStreamRequest.toObject = function(includeIns
   var f, obj = {
 modelSelector: jspb.Message.getFieldWithDefault(msg, 1, ""),
 tenantId: jspb.Message.getFieldWithDefault(msg, 2, ""),
-localRequest: (f = msg.getLocalRequest()) && sentiric_llm_v1_local_pb.LocalGenerateStreamRequest.toObject(includeInstance, f)
+localRequest: (f = msg.getLocalRequest()) && sentiric_llm_v1_local_pb.LLMLocalServiceGenerateStreamRequest.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -141,8 +141,8 @@ proto.sentiric.llm.v1.GenerateDialogStreamRequest.deserializeBinaryFromReader = 
       msg.setTenantId(value);
       break;
     case 10:
-      var value = new sentiric_llm_v1_local_pb.LocalGenerateStreamRequest;
-      reader.readMessage(value,sentiric_llm_v1_local_pb.LocalGenerateStreamRequest.deserializeBinaryFromReader);
+      var value = new sentiric_llm_v1_local_pb.LLMLocalServiceGenerateStreamRequest;
+      reader.readMessage(value,sentiric_llm_v1_local_pb.LLMLocalServiceGenerateStreamRequest.deserializeBinaryFromReader);
       msg.setLocalRequest(value);
       break;
     default:
@@ -193,7 +193,7 @@ proto.sentiric.llm.v1.GenerateDialogStreamRequest.serializeBinaryToWriter = func
     writer.writeMessage(
       10,
       f,
-      sentiric_llm_v1_local_pb.LocalGenerateStreamRequest.serializeBinaryToWriter
+      sentiric_llm_v1_local_pb.LLMLocalServiceGenerateStreamRequest.serializeBinaryToWriter
     );
   }
 };
@@ -236,17 +236,17 @@ proto.sentiric.llm.v1.GenerateDialogStreamRequest.prototype.setTenantId = functi
 
 
 /**
- * optional LocalGenerateStreamRequest local_request = 10;
- * @return {?proto.sentiric.llm.v1.LocalGenerateStreamRequest}
+ * optional LLMLocalServiceGenerateStreamRequest local_request = 10;
+ * @return {?proto.sentiric.llm.v1.LLMLocalServiceGenerateStreamRequest}
  */
 proto.sentiric.llm.v1.GenerateDialogStreamRequest.prototype.getLocalRequest = function() {
-  return /** @type{?proto.sentiric.llm.v1.LocalGenerateStreamRequest} */ (
-    jspb.Message.getWrapperField(this, sentiric_llm_v1_local_pb.LocalGenerateStreamRequest, 10));
+  return /** @type{?proto.sentiric.llm.v1.LLMLocalServiceGenerateStreamRequest} */ (
+    jspb.Message.getWrapperField(this, sentiric_llm_v1_local_pb.LLMLocalServiceGenerateStreamRequest, 10));
 };
 
 
 /**
- * @param {?proto.sentiric.llm.v1.LocalGenerateStreamRequest|undefined} value
+ * @param {?proto.sentiric.llm.v1.LLMLocalServiceGenerateStreamRequest|undefined} value
  * @return {!proto.sentiric.llm.v1.GenerateDialogStreamRequest} returns this
 */
 proto.sentiric.llm.v1.GenerateDialogStreamRequest.prototype.setLocalRequest = function(value) {
@@ -304,7 +304,7 @@ proto.sentiric.llm.v1.GenerateDialogStreamResponse.prototype.toObject = function
  */
 proto.sentiric.llm.v1.GenerateDialogStreamResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-localResponse: (f = msg.getLocalResponse()) && sentiric_llm_v1_local_pb.LocalGenerateStreamResponse.toObject(includeInstance, f)
+localResponse: (f = msg.getLocalResponse()) && sentiric_llm_v1_local_pb.LLMLocalServiceGenerateStreamResponse.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -342,8 +342,8 @@ proto.sentiric.llm.v1.GenerateDialogStreamResponse.deserializeBinaryFromReader =
     var field = reader.getFieldNumber();
     switch (field) {
     case 10:
-      var value = new sentiric_llm_v1_local_pb.LocalGenerateStreamResponse;
-      reader.readMessage(value,sentiric_llm_v1_local_pb.LocalGenerateStreamResponse.deserializeBinaryFromReader);
+      var value = new sentiric_llm_v1_local_pb.LLMLocalServiceGenerateStreamResponse;
+      reader.readMessage(value,sentiric_llm_v1_local_pb.LLMLocalServiceGenerateStreamResponse.deserializeBinaryFromReader);
       msg.setLocalResponse(value);
       break;
     default:
@@ -380,24 +380,24 @@ proto.sentiric.llm.v1.GenerateDialogStreamResponse.serializeBinaryToWriter = fun
     writer.writeMessage(
       10,
       f,
-      sentiric_llm_v1_local_pb.LocalGenerateStreamResponse.serializeBinaryToWriter
+      sentiric_llm_v1_local_pb.LLMLocalServiceGenerateStreamResponse.serializeBinaryToWriter
     );
   }
 };
 
 
 /**
- * optional LocalGenerateStreamResponse local_response = 10;
- * @return {?proto.sentiric.llm.v1.LocalGenerateStreamResponse}
+ * optional LLMLocalServiceGenerateStreamResponse local_response = 10;
+ * @return {?proto.sentiric.llm.v1.LLMLocalServiceGenerateStreamResponse}
  */
 proto.sentiric.llm.v1.GenerateDialogStreamResponse.prototype.getLocalResponse = function() {
-  return /** @type{?proto.sentiric.llm.v1.LocalGenerateStreamResponse} */ (
-    jspb.Message.getWrapperField(this, sentiric_llm_v1_local_pb.LocalGenerateStreamResponse, 10));
+  return /** @type{?proto.sentiric.llm.v1.LLMLocalServiceGenerateStreamResponse} */ (
+    jspb.Message.getWrapperField(this, sentiric_llm_v1_local_pb.LLMLocalServiceGenerateStreamResponse, 10));
 };
 
 
 /**
- * @param {?proto.sentiric.llm.v1.LocalGenerateStreamResponse|undefined} value
+ * @param {?proto.sentiric.llm.v1.LLMLocalServiceGenerateStreamResponse|undefined} value
  * @return {!proto.sentiric.llm.v1.GenerateDialogStreamResponse} returns this
 */
 proto.sentiric.llm.v1.GenerateDialogStreamResponse.prototype.setLocalResponse = function(value) {

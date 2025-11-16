@@ -7,7 +7,7 @@ from sentiric.llm.v1 import gateway_pb2 as sentiric_dot_llm_dot_v1_dot_gateway__
 
 class LlmGatewayServiceStub(object):
     """=============================================================================
-    ANA SERVİS TANIMI (Okuma Akışı Prensibi)
+    ANA SERVİS TANIMI
     =============================================================================
     """
 
@@ -26,13 +26,12 @@ class LlmGatewayServiceStub(object):
 
 class LlmGatewayServiceServicer(object):
     """=============================================================================
-    ANA SERVİS TANIMI (Okuma Akışı Prensibi)
+    ANA SERVİS TANIMI
     =============================================================================
     """
 
     def GenerateDialogStream(self, request, context):
-        """Diyalogsal bir istek için akış tabanlı metin üretir.
-        İsteği, model seçiciye göre uygun bir uzman servise yönlendirir.
+        """DÜZELTME: RPC, artık yeni kapsayıcı mesajları kullanıyor.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -56,7 +55,7 @@ def add_LlmGatewayServiceServicer_to_server(servicer, server):
  # This class is part of an EXPERIMENTAL API.
 class LlmGatewayService(object):
     """=============================================================================
-    ANA SERVİS TANIMI (Okuma Akışı Prensibi)
+    ANA SERVİS TANIMI
     =============================================================================
     """
 

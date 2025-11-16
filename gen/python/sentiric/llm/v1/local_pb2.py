@@ -25,7 +25,7 @@ _sym_db = _symbol_database.Default()
 from google.protobuf import struct_pb2 as google_dot_protobuf_dot_struct__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1bsentiric/llm/v1/local.proto\x12\x0fsentiric.llm.v1\x1a\x1cgoogle/protobuf/struct.proto\"\xa0\x02\n\x1aLocalGenerateStreamRequest\x12#\n\rsystem_prompt\x18\x01 \x01(\tR\x0csystemPrompt\x12\x1f\n\x0buser_prompt\x18\x02 \x01(\tR\nuserPrompt\x12$\n\x0brag_context\x18\x03 \x01(\tH\x00R\nragContext\x88\x01\x01\x12;\n\x07history\x18\x04 \x03(\x0b\x32!.sentiric.llm.v1.ConversationTurnR\x07history\x12>\n\x06params\x18\x05 \x01(\x0b\x32!.sentiric.llm.v1.GenerationParamsH\x01R\x06params\x88\x01\x01\x42\x0e\n\x0c_rag_contextB\t\n\x07_params\"\x86\x01\n\x1bLocalGenerateStreamResponse\x12\x16\n\x05token\x18\x01 \x01(\tH\x00R\x05token\x12G\n\x0e\x66inish_details\x18\x02 \x01(\x0b\x32\x1e.sentiric.llm.v1.FinishDetailsH\x00R\rfinishDetailsB\x06\n\x04type\"@\n\x10\x43onversationTurn\x12\x12\n\x04role\x18\x01 \x01(\tR\x04role\x12\x18\n\x07\x63ontent\x18\x02 \x01(\tR\x07\x63ontent\"\xd2\x03\n\x10GenerationParams\x12)\n\x0emax_new_tokens\x18\x01 \x01(\x05H\x00R\x0cmaxNewTokens\x88\x01\x01\x12%\n\x0btemperature\x18\x02 \x01(\x02H\x01R\x0btemperature\x88\x01\x01\x12\x18\n\x05top_k\x18\x03 \x01(\x05H\x02R\x04topK\x88\x01\x01\x12\x18\n\x05top_p\x18\x04 \x01(\x02H\x03R\x04topP\x88\x01\x01\x12\x32\n\x12repetition_penalty\x18\x05 \x01(\x02H\x04R\x11repetitionPenalty\x88\x01\x01\x12%\n\x0estop_sequences\x18\x06 \x03(\tR\rstopSequences\x12\x17\n\x04seed\x18\x07 \x01(\x03H\x05R\x04seed\x88\x01\x01\x12R\n\x16\x65ngine_specific_params\x18\x14 \x01(\x0b\x32\x17.google.protobuf.StructH\x06R\x14\x65ngineSpecificParams\x88\x01\x01\x42\x11\n\x0f_max_new_tokensB\x0e\n\x0c_temperatureB\x08\n\x06_top_kB\x08\n\x06_top_pB\x15\n\x13_repetition_penaltyB\x07\n\x05_seedB\x19\n\x17_engine_specific_params\"\x86\x01\n\rFinishDetails\x12#\n\rfinish_reason\x18\x01 \x01(\tR\x0c\x66inishReason\x12#\n\rprompt_tokens\x18\x02 \x01(\x05R\x0cpromptTokens\x12+\n\x11\x63ompletion_tokens\x18\x03 \x01(\x05R\x10\x63ompletionTokens2\x80\x01\n\x0fLLMLocalService\x12m\n\x0eGenerateStream\x12+.sentiric.llm.v1.LocalGenerateStreamRequest\x1a,.sentiric.llm.v1.LocalGenerateStreamResponse0\x01\x42\x45ZCgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/llm/v1;llmv1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1bsentiric/llm/v1/local.proto\x12\x0fsentiric.llm.v1\x1a\x1cgoogle/protobuf/struct.proto\"\xaa\x02\n$LLMLocalServiceGenerateStreamRequest\x12#\n\rsystem_prompt\x18\x01 \x01(\tR\x0csystemPrompt\x12\x1f\n\x0buser_prompt\x18\x02 \x01(\tR\nuserPrompt\x12$\n\x0brag_context\x18\x03 \x01(\tH\x00R\nragContext\x88\x01\x01\x12;\n\x07history\x18\x04 \x03(\x0b\x32!.sentiric.llm.v1.ConversationTurnR\x07history\x12>\n\x06params\x18\x05 \x01(\x0b\x32!.sentiric.llm.v1.GenerationParamsH\x01R\x06params\x88\x01\x01\x42\x0e\n\x0c_rag_contextB\t\n\x07_params\"\x90\x01\n%LLMLocalServiceGenerateStreamResponse\x12\x16\n\x05token\x18\x01 \x01(\tH\x00R\x05token\x12G\n\x0e\x66inish_details\x18\x02 \x01(\x0b\x32\x1e.sentiric.llm.v1.FinishDetailsH\x00R\rfinishDetailsB\x06\n\x04type\"@\n\x10\x43onversationTurn\x12\x12\n\x04role\x18\x01 \x01(\tR\x04role\x12\x18\n\x07\x63ontent\x18\x02 \x01(\tR\x07\x63ontent\"\xd2\x03\n\x10GenerationParams\x12)\n\x0emax_new_tokens\x18\x01 \x01(\x05H\x00R\x0cmaxNewTokens\x88\x01\x01\x12%\n\x0btemperature\x18\x02 \x01(\x02H\x01R\x0btemperature\x88\x01\x01\x12\x18\n\x05top_k\x18\x03 \x01(\x05H\x02R\x04topK\x88\x01\x01\x12\x18\n\x05top_p\x18\x04 \x01(\x02H\x03R\x04topP\x88\x01\x01\x12\x32\n\x12repetition_penalty\x18\x05 \x01(\x02H\x04R\x11repetitionPenalty\x88\x01\x01\x12%\n\x0estop_sequences\x18\x06 \x03(\tR\rstopSequences\x12\x17\n\x04seed\x18\x07 \x01(\x03H\x05R\x04seed\x88\x01\x01\x12R\n\x16\x65ngine_specific_params\x18\x14 \x01(\x0b\x32\x17.google.protobuf.StructH\x06R\x14\x65ngineSpecificParams\x88\x01\x01\x42\x11\n\x0f_max_new_tokensB\x0e\n\x0c_temperatureB\x08\n\x06_top_kB\x08\n\x06_top_pB\x15\n\x13_repetition_penaltyB\x07\n\x05_seedB\x19\n\x17_engine_specific_params\"\x86\x01\n\rFinishDetails\x12#\n\rfinish_reason\x18\x01 \x01(\tR\x0c\x66inishReason\x12#\n\rprompt_tokens\x18\x02 \x01(\x05R\x0cpromptTokens\x12+\n\x11\x63ompletion_tokens\x18\x03 \x01(\x05R\x10\x63ompletionTokens2\x95\x01\n\x0fLLMLocalService\x12\x81\x01\n\x0eGenerateStream\x12\x35.sentiric.llm.v1.LLMLocalServiceGenerateStreamRequest\x1a\x36.sentiric.llm.v1.LLMLocalServiceGenerateStreamResponse0\x01\x42\x45ZCgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/llm/v1;llmv1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -33,16 +33,16 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'sentiric.llm.v1.local_pb2',
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
   _globals['DESCRIPTOR']._serialized_options = b'ZCgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/llm/v1;llmv1'
-  _globals['_LOCALGENERATESTREAMREQUEST']._serialized_start=79
-  _globals['_LOCALGENERATESTREAMREQUEST']._serialized_end=367
-  _globals['_LOCALGENERATESTREAMRESPONSE']._serialized_start=370
-  _globals['_LOCALGENERATESTREAMRESPONSE']._serialized_end=504
-  _globals['_CONVERSATIONTURN']._serialized_start=506
-  _globals['_CONVERSATIONTURN']._serialized_end=570
-  _globals['_GENERATIONPARAMS']._serialized_start=573
-  _globals['_GENERATIONPARAMS']._serialized_end=1039
-  _globals['_FINISHDETAILS']._serialized_start=1042
-  _globals['_FINISHDETAILS']._serialized_end=1176
-  _globals['_LLMLOCALSERVICE']._serialized_start=1179
-  _globals['_LLMLOCALSERVICE']._serialized_end=1307
+  _globals['_LLMLOCALSERVICEGENERATESTREAMREQUEST']._serialized_start=79
+  _globals['_LLMLOCALSERVICEGENERATESTREAMREQUEST']._serialized_end=377
+  _globals['_LLMLOCALSERVICEGENERATESTREAMRESPONSE']._serialized_start=380
+  _globals['_LLMLOCALSERVICEGENERATESTREAMRESPONSE']._serialized_end=524
+  _globals['_CONVERSATIONTURN']._serialized_start=526
+  _globals['_CONVERSATIONTURN']._serialized_end=590
+  _globals['_GENERATIONPARAMS']._serialized_start=593
+  _globals['_GENERATIONPARAMS']._serialized_end=1059
+  _globals['_FINISHDETAILS']._serialized_start=1062
+  _globals['_FINISHDETAILS']._serialized_end=1196
+  _globals['_LLMLOCALSERVICE']._serialized_start=1199
+  _globals['_LLMLOCALSERVICE']._serialized_end=1348
 # @@protoc_insertion_point(module_scope)

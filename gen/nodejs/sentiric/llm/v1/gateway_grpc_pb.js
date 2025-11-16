@@ -29,11 +29,10 @@ function deserialize_sentiric_llm_v1_GenerateDialogStreamResponse(buffer_arg) {
 
 
 // =============================================================================
-//                      ANA SERVİS TANIMI (Okuma Akışı Prensibi)
+//                      ANA SERVİS TANIMI
 // =============================================================================
 var LlmGatewayServiceService = exports.LlmGatewayServiceService = {
-  // Diyalogsal bir istek için akış tabanlı metin üretir.
-// İsteği, model seçiciye göre uygun bir uzman servise yönlendirir.
+  // DÜZELTME: RPC, artık yeni kapsayıcı mesajları kullanıyor.
 generateDialogStream: {
     path: '/sentiric.llm.v1.LlmGatewayService/GenerateDialogStream',
     requestStream: false,

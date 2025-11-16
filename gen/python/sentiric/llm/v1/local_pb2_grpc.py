@@ -7,9 +7,7 @@ from sentiric.llm.v1 import local_pb2 as sentiric_dot_llm_dot_v1_dot_local__pb2
 
 class LLMLocalServiceStub(object):
     """=============================================================================
-    ANA SERVİS TANIMI (Okuma Akışı Prensibi)
-    Bu dosyanın "manşeti". Bir geliştirici ilk olarak buraya bakarak dosyanın
-    ne işe yaradığını ve hangi RPC'leri sunduğunu anında görmelidir.
+    ANA SERVİS TANIMI
     =============================================================================
     """
 
@@ -21,21 +19,20 @@ class LLMLocalServiceStub(object):
         """
         self.GenerateStream = channel.unary_stream(
                 '/sentiric.llm.v1.LLMLocalService/GenerateStream',
-                request_serializer=sentiric_dot_llm_dot_v1_dot_local__pb2.LocalGenerateStreamRequest.SerializeToString,
-                response_deserializer=sentiric_dot_llm_dot_v1_dot_local__pb2.LocalGenerateStreamResponse.FromString,
+                request_serializer=sentiric_dot_llm_dot_v1_dot_local__pb2.LLMLocalServiceGenerateStreamRequest.SerializeToString,
+                response_deserializer=sentiric_dot_llm_dot_v1_dot_local__pb2.LLMLocalServiceGenerateStreamResponse.FromString,
                 _registered_method=True)
 
 
 class LLMLocalServiceServicer(object):
     """=============================================================================
-    ANA SERVİS TANIMI (Okuma Akışı Prensibi)
-    Bu dosyanın "manşeti". Bir geliştirici ilk olarak buraya bakarak dosyanın
-    ne işe yaradığını ve hangi RPC'leri sunduğunu anında görmelidir.
+    ANA SERVİS TANIMI
     =============================================================================
     """
 
     def GenerateStream(self, request, context):
-        """Verilen diyalog bağlamına göre token-token metin üretir.
+        """DÜZELTME: RPC, artık CI/CD standartlarına uygun olarak adlandırılmış
+        yeni mesajları kullanıyor.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -46,8 +43,8 @@ def add_LLMLocalServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'GenerateStream': grpc.unary_stream_rpc_method_handler(
                     servicer.GenerateStream,
-                    request_deserializer=sentiric_dot_llm_dot_v1_dot_local__pb2.LocalGenerateStreamRequest.FromString,
-                    response_serializer=sentiric_dot_llm_dot_v1_dot_local__pb2.LocalGenerateStreamResponse.SerializeToString,
+                    request_deserializer=sentiric_dot_llm_dot_v1_dot_local__pb2.LLMLocalServiceGenerateStreamRequest.FromString,
+                    response_serializer=sentiric_dot_llm_dot_v1_dot_local__pb2.LLMLocalServiceGenerateStreamResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -59,9 +56,7 @@ def add_LLMLocalServiceServicer_to_server(servicer, server):
  # This class is part of an EXPERIMENTAL API.
 class LLMLocalService(object):
     """=============================================================================
-    ANA SERVİS TANIMI (Okuma Akışı Prensibi)
-    Bu dosyanın "manşeti". Bir geliştirici ilk olarak buraya bakarak dosyanın
-    ne işe yaradığını ve hangi RPC'leri sunduğunu anında görmelidir.
+    ANA SERVİS TANIMI
     =============================================================================
     """
 
@@ -80,8 +75,8 @@ class LLMLocalService(object):
             request,
             target,
             '/sentiric.llm.v1.LLMLocalService/GenerateStream',
-            sentiric_dot_llm_dot_v1_dot_local__pb2.LocalGenerateStreamRequest.SerializeToString,
-            sentiric_dot_llm_dot_v1_dot_local__pb2.LocalGenerateStreamResponse.FromString,
+            sentiric_dot_llm_dot_v1_dot_local__pb2.LLMLocalServiceGenerateStreamRequest.SerializeToString,
+            sentiric_dot_llm_dot_v1_dot_local__pb2.LLMLocalServiceGenerateStreamResponse.FromString,
             options,
             channel_credentials,
             insecure,

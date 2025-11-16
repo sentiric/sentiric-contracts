@@ -3,11 +3,9 @@
 #include <iostream>
 
 int main() {
-    // DÜZELTME: Artık var olmayan 'LocalGenerateRequest' yerine,
-    // yeni ve doğru mesaj olan 'LocalGenerateStreamRequest' kullanılıyor.
-    sentiric::llm::v1::LocalGenerateStreamRequest req;
+    // DÜZELTME: Nihai, CI uyumlu mesaj adı kullanılıyor.
+    sentiric::llm::v1::LLMLocalServiceGenerateStreamRequest req;
     
-    // Geri kalan kod, bu mesajın alanlarıyla uyumlu olacak şekilde güncellendi.
     req.set_user_prompt("Hello, C++ validation!");
     
     std::cout << "SUCCESS: C++ protobuf message created with user_prompt: " << req.user_prompt() << std::endl;

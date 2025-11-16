@@ -28,12 +28,11 @@ const (
 //
 // =============================================================================
 //
-//	ANA SERVİS TANIMI (Okuma Akışı Prensibi)
+//	ANA SERVİS TANIMI
 //
 // =============================================================================
 type LlmGatewayServiceClient interface {
-	// Diyalogsal bir istek için akış tabanlı metin üretir.
-	// İsteği, model seçiciye göre uygun bir uzman servise yönlendirir.
+	// DÜZELTME: RPC, artık yeni kapsayıcı mesajları kullanıyor.
 	GenerateDialogStream(ctx context.Context, in *GenerateDialogStreamRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[GenerateDialogStreamResponse], error)
 }
 
@@ -70,12 +69,11 @@ type LlmGatewayService_GenerateDialogStreamClient = grpc.ServerStreamingClient[G
 //
 // =============================================================================
 //
-//	ANA SERVİS TANIMI (Okuma Akışı Prensibi)
+//	ANA SERVİS TANIMI
 //
 // =============================================================================
 type LlmGatewayServiceServer interface {
-	// Diyalogsal bir istek için akış tabanlı metin üretir.
-	// İsteği, model seçiciye göre uygun bir uzman servise yönlendirir.
+	// DÜZELTME: RPC, artık yeni kapsayıcı mesajları kullanıyor.
 	GenerateDialogStream(*GenerateDialogStreamRequest, grpc.ServerStreamingServer[GenerateDialogStreamResponse]) error
 }
 

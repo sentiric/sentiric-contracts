@@ -22,37 +22,33 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// Bir diyalog adımında gereken tüm bilgileri taşıyan zengin istek mesajı.
-type LocalGenerateStreamRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// 1. AI'nın genel kişiliğini ve kurallarını belirleyen ana talimat.
-	SystemPrompt string `protobuf:"bytes,1,opt,name=system_prompt,json=systemPrompt,proto3" json:"system_prompt,omitempty"`
-	// 2. Kullanıcının son söylediği cümle veya sorduğu soru.
-	UserPrompt string `protobuf:"bytes,2,opt,name=user_prompt,json=userPrompt,proto3" json:"user_prompt,omitempty"`
-	// 3. (Opsiyonel) RAG için `knowledge-query-service`'ten gelen ek bilgi metni.
-	RagContext *string `protobuf:"bytes,3,opt,name=rag_context,json=ragContext,proto3,oneof" json:"rag_context,omitempty"`
-	// 4. (Opsiyonel) Diyaloğun önceki adımları.
-	History []*ConversationTurn `protobuf:"bytes,4,rep,name=history,proto3" json:"history,omitempty"`
-	// 5. (Opsiyonel) Varsayılan token üretme ayarlarını geçersiz kılmak için kullanılır.
-	Params        *GenerationParams `protobuf:"bytes,5,opt,name=params,proto3,oneof" json:"params,omitempty"`
+// DÜZELTME: Mesaj adı, "LLMLocalServiceGenerateStreamRequest" olarak güncellendi.
+// Bu, hem 'gateway.proto' ile çakışmayı önler hem de 'buf lint' standartlarına uyar.
+type LLMLocalServiceGenerateStreamRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	SystemPrompt  string                 `protobuf:"bytes,1,opt,name=system_prompt,json=systemPrompt,proto3" json:"system_prompt,omitempty"`
+	UserPrompt    string                 `protobuf:"bytes,2,opt,name=user_prompt,json=userPrompt,proto3" json:"user_prompt,omitempty"`
+	RagContext    *string                `protobuf:"bytes,3,opt,name=rag_context,json=ragContext,proto3,oneof" json:"rag_context,omitempty"`
+	History       []*ConversationTurn    `protobuf:"bytes,4,rep,name=history,proto3" json:"history,omitempty"`
+	Params        *GenerationParams      `protobuf:"bytes,5,opt,name=params,proto3,oneof" json:"params,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *LocalGenerateStreamRequest) Reset() {
-	*x = LocalGenerateStreamRequest{}
+func (x *LLMLocalServiceGenerateStreamRequest) Reset() {
+	*x = LLMLocalServiceGenerateStreamRequest{}
 	mi := &file_sentiric_llm_v1_local_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *LocalGenerateStreamRequest) String() string {
+func (x *LLMLocalServiceGenerateStreamRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*LocalGenerateStreamRequest) ProtoMessage() {}
+func (*LLMLocalServiceGenerateStreamRequest) ProtoMessage() {}
 
-func (x *LocalGenerateStreamRequest) ProtoReflect() protoreflect.Message {
+func (x *LLMLocalServiceGenerateStreamRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_sentiric_llm_v1_local_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -64,72 +60,72 @@ func (x *LocalGenerateStreamRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use LocalGenerateStreamRequest.ProtoReflect.Descriptor instead.
-func (*LocalGenerateStreamRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use LLMLocalServiceGenerateStreamRequest.ProtoReflect.Descriptor instead.
+func (*LLMLocalServiceGenerateStreamRequest) Descriptor() ([]byte, []int) {
 	return file_sentiric_llm_v1_local_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *LocalGenerateStreamRequest) GetSystemPrompt() string {
+func (x *LLMLocalServiceGenerateStreamRequest) GetSystemPrompt() string {
 	if x != nil {
 		return x.SystemPrompt
 	}
 	return ""
 }
 
-func (x *LocalGenerateStreamRequest) GetUserPrompt() string {
+func (x *LLMLocalServiceGenerateStreamRequest) GetUserPrompt() string {
 	if x != nil {
 		return x.UserPrompt
 	}
 	return ""
 }
 
-func (x *LocalGenerateStreamRequest) GetRagContext() string {
+func (x *LLMLocalServiceGenerateStreamRequest) GetRagContext() string {
 	if x != nil && x.RagContext != nil {
 		return *x.RagContext
 	}
 	return ""
 }
 
-func (x *LocalGenerateStreamRequest) GetHistory() []*ConversationTurn {
+func (x *LLMLocalServiceGenerateStreamRequest) GetHistory() []*ConversationTurn {
 	if x != nil {
 		return x.History
 	}
 	return nil
 }
 
-func (x *LocalGenerateStreamRequest) GetParams() *GenerationParams {
+func (x *LLMLocalServiceGenerateStreamRequest) GetParams() *GenerationParams {
 	if x != nil {
 		return x.Params
 	}
 	return nil
 }
 
-// Sunucudan istemciye gönderilen her bir akış mesajı.
-type LocalGenerateStreamResponse struct {
+// DÜZELTME: Mesaj adı, "LLMLocalServiceGenerateStreamResponse" olarak güncellendi.
+type LLMLocalServiceGenerateStreamResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Types that are valid to be assigned to Type:
 	//
-	//	*LocalGenerateStreamResponse_Token
-	//	*LocalGenerateStreamResponse_FinishDetails
-	Type          isLocalGenerateStreamResponse_Type `protobuf_oneof:"type"`
+	//	*LLMLocalServiceGenerateStreamResponse_Token
+	//	*LLMLocalServiceGenerateStreamResponse_FinishDetails
+	Type          isLLMLocalServiceGenerateStreamResponse_Type `protobuf_oneof:"type"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *LocalGenerateStreamResponse) Reset() {
-	*x = LocalGenerateStreamResponse{}
+func (x *LLMLocalServiceGenerateStreamResponse) Reset() {
+	*x = LLMLocalServiceGenerateStreamResponse{}
 	mi := &file_sentiric_llm_v1_local_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *LocalGenerateStreamResponse) String() string {
+func (x *LLMLocalServiceGenerateStreamResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*LocalGenerateStreamResponse) ProtoMessage() {}
+func (*LLMLocalServiceGenerateStreamResponse) ProtoMessage() {}
 
-func (x *LocalGenerateStreamResponse) ProtoReflect() protoreflect.Message {
+func (x *LLMLocalServiceGenerateStreamResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_sentiric_llm_v1_local_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -141,61 +137,57 @@ func (x *LocalGenerateStreamResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use LocalGenerateStreamResponse.ProtoReflect.Descriptor instead.
-func (*LocalGenerateStreamResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use LLMLocalServiceGenerateStreamResponse.ProtoReflect.Descriptor instead.
+func (*LLMLocalServiceGenerateStreamResponse) Descriptor() ([]byte, []int) {
 	return file_sentiric_llm_v1_local_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *LocalGenerateStreamResponse) GetType() isLocalGenerateStreamResponse_Type {
+func (x *LLMLocalServiceGenerateStreamResponse) GetType() isLLMLocalServiceGenerateStreamResponse_Type {
 	if x != nil {
 		return x.Type
 	}
 	return nil
 }
 
-func (x *LocalGenerateStreamResponse) GetToken() string {
+func (x *LLMLocalServiceGenerateStreamResponse) GetToken() string {
 	if x != nil {
-		if x, ok := x.Type.(*LocalGenerateStreamResponse_Token); ok {
+		if x, ok := x.Type.(*LLMLocalServiceGenerateStreamResponse_Token); ok {
 			return x.Token
 		}
 	}
 	return ""
 }
 
-func (x *LocalGenerateStreamResponse) GetFinishDetails() *FinishDetails {
+func (x *LLMLocalServiceGenerateStreamResponse) GetFinishDetails() *FinishDetails {
 	if x != nil {
-		if x, ok := x.Type.(*LocalGenerateStreamResponse_FinishDetails); ok {
+		if x, ok := x.Type.(*LLMLocalServiceGenerateStreamResponse_FinishDetails); ok {
 			return x.FinishDetails
 		}
 	}
 	return nil
 }
 
-type isLocalGenerateStreamResponse_Type interface {
-	isLocalGenerateStreamResponse_Type()
+type isLLMLocalServiceGenerateStreamResponse_Type interface {
+	isLLMLocalServiceGenerateStreamResponse_Type()
 }
 
-type LocalGenerateStreamResponse_Token struct {
-	// Üretilen metnin bir sonraki parçası.
+type LLMLocalServiceGenerateStreamResponse_Token struct {
 	Token string `protobuf:"bytes,1,opt,name=token,proto3,oneof"`
 }
 
-type LocalGenerateStreamResponse_FinishDetails struct {
-	// Akışın bittiğini ve üretim özetini içeren mesaj.
+type LLMLocalServiceGenerateStreamResponse_FinishDetails struct {
 	FinishDetails *FinishDetails `protobuf:"bytes,2,opt,name=finish_details,json=finishDetails,proto3,oneof"`
 }
 
-func (*LocalGenerateStreamResponse_Token) isLocalGenerateStreamResponse_Type() {}
+func (*LLMLocalServiceGenerateStreamResponse_Token) isLLMLocalServiceGenerateStreamResponse_Type() {}
 
-func (*LocalGenerateStreamResponse_FinishDetails) isLocalGenerateStreamResponse_Type() {}
+func (*LLMLocalServiceGenerateStreamResponse_FinishDetails) isLLMLocalServiceGenerateStreamResponse_Type() {
+}
 
-// Bir konuşma geçmişindeki her bir "konuşma balonunu" temsil eder.
 type ConversationTurn struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// rol: Mesajın kime ait olduğunu belirtir. "user" veya "assistant" olmalıdır.
-	Role string `protobuf:"bytes,1,opt,name=role,proto3" json:"role,omitempty"`
-	// content: Mesajın metin içeriği.
-	Content       string `protobuf:"bytes,2,opt,name=content,proto3" json:"content,omitempty"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Role          string                 `protobuf:"bytes,1,opt,name=role,proto3" json:"role,omitempty"`
+	Content       string                 `protobuf:"bytes,2,opt,name=content,proto3" json:"content,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -244,7 +236,6 @@ func (x *ConversationTurn) GetContent() string {
 	return ""
 }
 
-// Token üretme sürecini kontrol eden ortak parametreler.
 type GenerationParams struct {
 	state                protoimpl.MessageState `protogen:"open.v1"`
 	MaxNewTokens         *int32                 `protobuf:"varint,1,opt,name=max_new_tokens,json=maxNewTokens,proto3,oneof" json:"max_new_tokens,omitempty"`
@@ -345,7 +336,6 @@ func (x *GenerationParams) GetEngineSpecificParams() *structpb.Struct {
 	return nil
 }
 
-// Stream bittiğinde istemciye gönderilen özet bilgi.
 type FinishDetails struct {
 	state            protoimpl.MessageState `protogen:"open.v1"`
 	FinishReason     string                 `protobuf:"bytes,1,opt,name=finish_reason,json=finishReason,proto3" json:"finish_reason,omitempty"`
@@ -410,8 +400,8 @@ var File_sentiric_llm_v1_local_proto protoreflect.FileDescriptor
 
 const file_sentiric_llm_v1_local_proto_rawDesc = "" +
 	"\n" +
-	"\x1bsentiric/llm/v1/local.proto\x12\x0fsentiric.llm.v1\x1a\x1cgoogle/protobuf/struct.proto\"\xa0\x02\n" +
-	"\x1aLocalGenerateStreamRequest\x12#\n" +
+	"\x1bsentiric/llm/v1/local.proto\x12\x0fsentiric.llm.v1\x1a\x1cgoogle/protobuf/struct.proto\"\xaa\x02\n" +
+	"$LLMLocalServiceGenerateStreamRequest\x12#\n" +
 	"\rsystem_prompt\x18\x01 \x01(\tR\fsystemPrompt\x12\x1f\n" +
 	"\vuser_prompt\x18\x02 \x01(\tR\n" +
 	"userPrompt\x12$\n" +
@@ -420,8 +410,8 @@ const file_sentiric_llm_v1_local_proto_rawDesc = "" +
 	"\ahistory\x18\x04 \x03(\v2!.sentiric.llm.v1.ConversationTurnR\ahistory\x12>\n" +
 	"\x06params\x18\x05 \x01(\v2!.sentiric.llm.v1.GenerationParamsH\x01R\x06params\x88\x01\x01B\x0e\n" +
 	"\f_rag_contextB\t\n" +
-	"\a_params\"\x86\x01\n" +
-	"\x1bLocalGenerateStreamResponse\x12\x16\n" +
+	"\a_params\"\x90\x01\n" +
+	"%LLMLocalServiceGenerateStreamResponse\x12\x16\n" +
 	"\x05token\x18\x01 \x01(\tH\x00R\x05token\x12G\n" +
 	"\x0efinish_details\x18\x02 \x01(\v2\x1e.sentiric.llm.v1.FinishDetailsH\x00R\rfinishDetailsB\x06\n" +
 	"\x04type\"@\n" +
@@ -447,9 +437,9 @@ const file_sentiric_llm_v1_local_proto_rawDesc = "" +
 	"\rFinishDetails\x12#\n" +
 	"\rfinish_reason\x18\x01 \x01(\tR\ffinishReason\x12#\n" +
 	"\rprompt_tokens\x18\x02 \x01(\x05R\fpromptTokens\x12+\n" +
-	"\x11completion_tokens\x18\x03 \x01(\x05R\x10completionTokens2\x80\x01\n" +
-	"\x0fLLMLocalService\x12m\n" +
-	"\x0eGenerateStream\x12+.sentiric.llm.v1.LocalGenerateStreamRequest\x1a,.sentiric.llm.v1.LocalGenerateStreamResponse0\x01BEZCgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/llm/v1;llmv1b\x06proto3"
+	"\x11completion_tokens\x18\x03 \x01(\x05R\x10completionTokens2\x95\x01\n" +
+	"\x0fLLMLocalService\x12\x81\x01\n" +
+	"\x0eGenerateStream\x125.sentiric.llm.v1.LLMLocalServiceGenerateStreamRequest\x1a6.sentiric.llm.v1.LLMLocalServiceGenerateStreamResponse0\x01BEZCgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/llm/v1;llmv1b\x06proto3"
 
 var (
 	file_sentiric_llm_v1_local_proto_rawDescOnce sync.Once
@@ -465,20 +455,20 @@ func file_sentiric_llm_v1_local_proto_rawDescGZIP() []byte {
 
 var file_sentiric_llm_v1_local_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_sentiric_llm_v1_local_proto_goTypes = []any{
-	(*LocalGenerateStreamRequest)(nil),  // 0: sentiric.llm.v1.LocalGenerateStreamRequest
-	(*LocalGenerateStreamResponse)(nil), // 1: sentiric.llm.v1.LocalGenerateStreamResponse
-	(*ConversationTurn)(nil),            // 2: sentiric.llm.v1.ConversationTurn
-	(*GenerationParams)(nil),            // 3: sentiric.llm.v1.GenerationParams
-	(*FinishDetails)(nil),               // 4: sentiric.llm.v1.FinishDetails
-	(*structpb.Struct)(nil),             // 5: google.protobuf.Struct
+	(*LLMLocalServiceGenerateStreamRequest)(nil),  // 0: sentiric.llm.v1.LLMLocalServiceGenerateStreamRequest
+	(*LLMLocalServiceGenerateStreamResponse)(nil), // 1: sentiric.llm.v1.LLMLocalServiceGenerateStreamResponse
+	(*ConversationTurn)(nil),                      // 2: sentiric.llm.v1.ConversationTurn
+	(*GenerationParams)(nil),                      // 3: sentiric.llm.v1.GenerationParams
+	(*FinishDetails)(nil),                         // 4: sentiric.llm.v1.FinishDetails
+	(*structpb.Struct)(nil),                       // 5: google.protobuf.Struct
 }
 var file_sentiric_llm_v1_local_proto_depIdxs = []int32{
-	2, // 0: sentiric.llm.v1.LocalGenerateStreamRequest.history:type_name -> sentiric.llm.v1.ConversationTurn
-	3, // 1: sentiric.llm.v1.LocalGenerateStreamRequest.params:type_name -> sentiric.llm.v1.GenerationParams
-	4, // 2: sentiric.llm.v1.LocalGenerateStreamResponse.finish_details:type_name -> sentiric.llm.v1.FinishDetails
+	2, // 0: sentiric.llm.v1.LLMLocalServiceGenerateStreamRequest.history:type_name -> sentiric.llm.v1.ConversationTurn
+	3, // 1: sentiric.llm.v1.LLMLocalServiceGenerateStreamRequest.params:type_name -> sentiric.llm.v1.GenerationParams
+	4, // 2: sentiric.llm.v1.LLMLocalServiceGenerateStreamResponse.finish_details:type_name -> sentiric.llm.v1.FinishDetails
 	5, // 3: sentiric.llm.v1.GenerationParams.engine_specific_params:type_name -> google.protobuf.Struct
-	0, // 4: sentiric.llm.v1.LLMLocalService.GenerateStream:input_type -> sentiric.llm.v1.LocalGenerateStreamRequest
-	1, // 5: sentiric.llm.v1.LLMLocalService.GenerateStream:output_type -> sentiric.llm.v1.LocalGenerateStreamResponse
+	0, // 4: sentiric.llm.v1.LLMLocalService.GenerateStream:input_type -> sentiric.llm.v1.LLMLocalServiceGenerateStreamRequest
+	1, // 5: sentiric.llm.v1.LLMLocalService.GenerateStream:output_type -> sentiric.llm.v1.LLMLocalServiceGenerateStreamResponse
 	5, // [5:6] is the sub-list for method output_type
 	4, // [4:5] is the sub-list for method input_type
 	4, // [4:4] is the sub-list for extension type_name
@@ -493,8 +483,8 @@ func file_sentiric_llm_v1_local_proto_init() {
 	}
 	file_sentiric_llm_v1_local_proto_msgTypes[0].OneofWrappers = []any{}
 	file_sentiric_llm_v1_local_proto_msgTypes[1].OneofWrappers = []any{
-		(*LocalGenerateStreamResponse_Token)(nil),
-		(*LocalGenerateStreamResponse_FinishDetails)(nil),
+		(*LLMLocalServiceGenerateStreamResponse_Token)(nil),
+		(*LLMLocalServiceGenerateStreamResponse_FinishDetails)(nil),
 	}
 	file_sentiric_llm_v1_local_proto_msgTypes[3].OneofWrappers = []any{}
 	type x struct{}

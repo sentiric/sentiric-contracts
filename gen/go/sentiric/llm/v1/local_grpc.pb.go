@@ -28,14 +28,13 @@ const (
 //
 // =============================================================================
 //
-//	ANA SERVİS TANIMI (Okuma Akışı Prensibi)
+//	ANA SERVİS TANIMI
 //
-// Bu dosyanın "manşeti". Bir geliştirici ilk olarak buraya bakarak dosyanın
-// ne işe yaradığını ve hangi RPC'leri sunduğunu anında görmelidir.
 // =============================================================================
 type LLMLocalServiceClient interface {
-	// Verilen diyalog bağlamına göre token-token metin üretir.
-	GenerateStream(ctx context.Context, in *LocalGenerateStreamRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[LocalGenerateStreamResponse], error)
+	// DÜZELTME: RPC, artık CI/CD standartlarına uygun olarak adlandırılmış
+	// yeni mesajları kullanıyor.
+	GenerateStream(ctx context.Context, in *LLMLocalServiceGenerateStreamRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[LLMLocalServiceGenerateStreamResponse], error)
 }
 
 type lLMLocalServiceClient struct {
@@ -46,13 +45,13 @@ func NewLLMLocalServiceClient(cc grpc.ClientConnInterface) LLMLocalServiceClient
 	return &lLMLocalServiceClient{cc}
 }
 
-func (c *lLMLocalServiceClient) GenerateStream(ctx context.Context, in *LocalGenerateStreamRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[LocalGenerateStreamResponse], error) {
+func (c *lLMLocalServiceClient) GenerateStream(ctx context.Context, in *LLMLocalServiceGenerateStreamRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[LLMLocalServiceGenerateStreamResponse], error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	stream, err := c.cc.NewStream(ctx, &LLMLocalService_ServiceDesc.Streams[0], LLMLocalService_GenerateStream_FullMethodName, cOpts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &grpc.GenericClientStream[LocalGenerateStreamRequest, LocalGenerateStreamResponse]{ClientStream: stream}
+	x := &grpc.GenericClientStream[LLMLocalServiceGenerateStreamRequest, LLMLocalServiceGenerateStreamResponse]{ClientStream: stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -63,7 +62,7 @@ func (c *lLMLocalServiceClient) GenerateStream(ctx context.Context, in *LocalGen
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type LLMLocalService_GenerateStreamClient = grpc.ServerStreamingClient[LocalGenerateStreamResponse]
+type LLMLocalService_GenerateStreamClient = grpc.ServerStreamingClient[LLMLocalServiceGenerateStreamResponse]
 
 // LLMLocalServiceServer is the server API for LLMLocalService service.
 // All implementations should embed UnimplementedLLMLocalServiceServer
@@ -71,14 +70,13 @@ type LLMLocalService_GenerateStreamClient = grpc.ServerStreamingClient[LocalGene
 //
 // =============================================================================
 //
-//	ANA SERVİS TANIMI (Okuma Akışı Prensibi)
+//	ANA SERVİS TANIMI
 //
-// Bu dosyanın "manşeti". Bir geliştirici ilk olarak buraya bakarak dosyanın
-// ne işe yaradığını ve hangi RPC'leri sunduğunu anında görmelidir.
 // =============================================================================
 type LLMLocalServiceServer interface {
-	// Verilen diyalog bağlamına göre token-token metin üretir.
-	GenerateStream(*LocalGenerateStreamRequest, grpc.ServerStreamingServer[LocalGenerateStreamResponse]) error
+	// DÜZELTME: RPC, artık CI/CD standartlarına uygun olarak adlandırılmış
+	// yeni mesajları kullanıyor.
+	GenerateStream(*LLMLocalServiceGenerateStreamRequest, grpc.ServerStreamingServer[LLMLocalServiceGenerateStreamResponse]) error
 }
 
 // UnimplementedLLMLocalServiceServer should be embedded to have
@@ -88,7 +86,7 @@ type LLMLocalServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedLLMLocalServiceServer struct{}
 
-func (UnimplementedLLMLocalServiceServer) GenerateStream(*LocalGenerateStreamRequest, grpc.ServerStreamingServer[LocalGenerateStreamResponse]) error {
+func (UnimplementedLLMLocalServiceServer) GenerateStream(*LLMLocalServiceGenerateStreamRequest, grpc.ServerStreamingServer[LLMLocalServiceGenerateStreamResponse]) error {
 	return status.Errorf(codes.Unimplemented, "method GenerateStream not implemented")
 }
 func (UnimplementedLLMLocalServiceServer) testEmbeddedByValue() {}
@@ -112,15 +110,15 @@ func RegisterLLMLocalServiceServer(s grpc.ServiceRegistrar, srv LLMLocalServiceS
 }
 
 func _LLMLocalService_GenerateStream_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(LocalGenerateStreamRequest)
+	m := new(LLMLocalServiceGenerateStreamRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(LLMLocalServiceServer).GenerateStream(m, &grpc.GenericServerStream[LocalGenerateStreamRequest, LocalGenerateStreamResponse]{ServerStream: stream})
+	return srv.(LLMLocalServiceServer).GenerateStream(m, &grpc.GenericServerStream[LLMLocalServiceGenerateStreamRequest, LLMLocalServiceGenerateStreamResponse]{ServerStream: stream})
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type LLMLocalService_GenerateStreamServer = grpc.ServerStreamingServer[LocalGenerateStreamResponse]
+type LLMLocalService_GenerateStreamServer = grpc.ServerStreamingServer[LLMLocalServiceGenerateStreamResponse]
 
 // LLMLocalService_ServiceDesc is the grpc.ServiceDesc for LLMLocalService service.
 // It's only intended for direct use with grpc.RegisterService,

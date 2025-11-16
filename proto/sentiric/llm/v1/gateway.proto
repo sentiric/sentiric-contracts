@@ -7,38 +7,26 @@ import "sentiric/llm/v1/local.proto";
 option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/llm/v1;llmv1";
 
 // =============================================================================
-//                      ANA SERVİS TANIMI (Okuma Akışı Prensibi)
+//                      ANA SERVİS TANIMI
 // =============================================================================
 service LlmGatewayService {
-  // Diyalogsal bir istek için akış tabanlı metin üretir.
-  // İsteği, model seçiciye göre uygun bir uzman servise yönlendirir.
+  // DÜZELTME: RPC, artık yeni kapsayıcı mesajları kullanıyor.
   rpc GenerateDialogStream(GenerateDialogStreamRequest) returns (stream GenerateDialogStreamResponse);
 }
 
 // =============================================================================
-//                      RPC MESAJ TANIMLARI (Detaylar)
+//                      RPC MESAJ TANIMLARI
 // =============================================================================
 
-// Gateway'in, gelen isteği doğru uzman motora yönlendirmek için kullandığı
-// kapsayıcı (wrapper) istek mesajı.
 message GenerateDialogStreamRequest {
-  // 1. (Zorunlu) İsteğin hangi uzman motora gönderileceğini belirleyen seçici.
   string model_selector = 1;
-
-  // 2. (Zorunlu) İsteğin hangi kiracıya ait olduğunu belirtir.
   string tenant_id = 2;
 
-  // 3. İsteğin, `llm-llama-service` gibi yerel bir motora yönlendirilmesi
-  //    durumunda kullanılacak olan zengin ve yapılandırılmış veri.
-  LocalGenerateStreamRequest local_request = 10;
-  
-  // Gelecekteki diğer uzman motorlar için alanlar buraya eklenebilir.
+  // DÜZELTME: Bu alan artık yeni, CI uyumlu mesaj tipini kullanıyor.
+  LLMLocalServiceGenerateStreamRequest local_request = 10;
 }
 
-// Gateway'den istemciye geri dönen kapsayıcı akış mesajı.
 message GenerateDialogStreamResponse {
-  // Uzman motordan gelen ham yanıtı olduğu gibi içerir.
-  LocalGenerateStreamResponse local_response = 10;
-
-  // Gelecekteki diğer uzman motor yanıtları için alanlar buraya eklenebilir.
+  // DÜZELTME: Bu alan artık yeni, CI uyumlu mesaj tipini kullanıyor.
+  LLMLocalServiceGenerateStreamResponse local_response = 10;
 }

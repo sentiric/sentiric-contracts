@@ -30,7 +30,7 @@ namespace llm {
 namespace v1 {
 
 // =============================================================================
-//                      ANA SERVİS TANIMI (Okuma Akışı Prensibi)
+//                      ANA SERVİS TANIMI
 // =============================================================================
 class LlmGatewayService final {
  public:
@@ -40,8 +40,7 @@ class LlmGatewayService final {
   class StubInterface {
    public:
     virtual ~StubInterface() {}
-    // Diyalogsal bir istek için akış tabanlı metin üretir.
-    // İsteği, model seçiciye göre uygun bir uzman servise yönlendirir.
+    // DÜZELTME: RPC, artık yeni kapsayıcı mesajları kullanıyor.
     std::unique_ptr< ::grpc::ClientReaderInterface< ::sentiric::llm::v1::GenerateDialogStreamResponse>> GenerateDialogStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateDialogStreamRequest& request) {
       return std::unique_ptr< ::grpc::ClientReaderInterface< ::sentiric::llm::v1::GenerateDialogStreamResponse>>(GenerateDialogStreamRaw(context, request));
     }
@@ -54,8 +53,7 @@ class LlmGatewayService final {
     class async_interface {
      public:
       virtual ~async_interface() {}
-      // Diyalogsal bir istek için akış tabanlı metin üretir.
-      // İsteği, model seçiciye göre uygun bir uzman servise yönlendirir.
+      // DÜZELTME: RPC, artık yeni kapsayıcı mesajları kullanıyor.
       virtual void GenerateDialogStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateDialogStreamRequest* request, ::grpc::ClientReadReactor< ::sentiric::llm::v1::GenerateDialogStreamResponse>* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
@@ -104,8 +102,7 @@ class LlmGatewayService final {
    public:
     Service();
     virtual ~Service();
-    // Diyalogsal bir istek için akış tabanlı metin üretir.
-    // İsteği, model seçiciye göre uygun bir uzman servise yönlendirir.
+    // DÜZELTME: RPC, artık yeni kapsayıcı mesajları kullanıyor.
     virtual ::grpc::Status GenerateDialogStream(::grpc::ServerContext* context, const ::sentiric::llm::v1::GenerateDialogStreamRequest* request, ::grpc::ServerWriter< ::sentiric::llm::v1::GenerateDialogStreamResponse>* writer);
   };
   template <class BaseClass>
