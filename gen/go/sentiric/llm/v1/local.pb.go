@@ -149,13 +149,13 @@ func (x *LLMLocalServiceGenerateStreamResponse) GetType() isLLMLocalServiceGener
 	return nil
 }
 
-func (x *LLMLocalServiceGenerateStreamResponse) GetToken() string {
+func (x *LLMLocalServiceGenerateStreamResponse) GetToken() []byte {
 	if x != nil {
 		if x, ok := x.Type.(*LLMLocalServiceGenerateStreamResponse_Token); ok {
 			return x.Token
 		}
 	}
-	return ""
+	return nil
 }
 
 func (x *LLMLocalServiceGenerateStreamResponse) GetFinishDetails() *FinishDetails {
@@ -172,7 +172,7 @@ type isLLMLocalServiceGenerateStreamResponse_Type interface {
 }
 
 type LLMLocalServiceGenerateStreamResponse_Token struct {
-	Token string `protobuf:"bytes,1,opt,name=token,proto3,oneof"`
+	Token []byte `protobuf:"bytes,1,opt,name=token,proto3,oneof"` // ✅ UTF-8 sorunu çözüldü
 }
 
 type LLMLocalServiceGenerateStreamResponse_FinishDetails struct {
@@ -412,7 +412,7 @@ const file_sentiric_llm_v1_local_proto_rawDesc = "" +
 	"\f_rag_contextB\t\n" +
 	"\a_params\"\x90\x01\n" +
 	"%LLMLocalServiceGenerateStreamResponse\x12\x16\n" +
-	"\x05token\x18\x01 \x01(\tH\x00R\x05token\x12G\n" +
+	"\x05token\x18\x01 \x01(\fH\x00R\x05token\x12G\n" +
 	"\x0efinish_details\x18\x02 \x01(\v2\x1e.sentiric.llm.v1.FinishDetailsH\x00R\rfinishDetailsB\x06\n" +
 	"\x04type\"@\n" +
 	"\x10ConversationTurn\x12\x12\n" +

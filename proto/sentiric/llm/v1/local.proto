@@ -33,7 +33,7 @@ message LLMLocalServiceGenerateStreamRequest {
 // DÜZELTME: Mesaj adı, "LLMLocalServiceGenerateStreamResponse" olarak güncellendi.
 message LLMLocalServiceGenerateStreamResponse {
   oneof type {
-    string token = 1;
+    bytes token = 1;         // ✅ UTF-8 sorunu çözüldü
     FinishDetails finish_details = 2;
   }
 }

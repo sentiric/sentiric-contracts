@@ -204,7 +204,7 @@ const char descriptor_table_protodef_sentiric_2fllm_2fv1_2flocal_2eproto[] PROTO
   "6\n\006params\030\005 \001(\0132!.sentiric.llm.v1.Genera"
   "tionParamsH\001\210\001\001B\016\n\014_rag_contextB\t\n\007_para"
   "ms\"z\n%LLMLocalServiceGenerateStreamRespo"
-  "nse\022\017\n\005token\030\001 \001(\tH\000\0228\n\016finish_details\030\002"
+  "nse\022\017\n\005token\030\001 \001(\014H\000\0228\n\016finish_details\030\002"
   " \001(\0132\036.sentiric.llm.v1.FinishDetailsH\000B\006"
   "\n\004type\"1\n\020ConversationTurn\022\014\n\004role\030\001 \001(\t"
   "\022\017\n\007content\030\002 \001(\t\"\355\002\n\020GenerationParams\022\033"
@@ -779,13 +779,12 @@ const char* LLMLocalServiceGenerateStreamResponse::_InternalParse(const char* pt
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // string token = 1;
+      // bytes token = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           auto str = _internal_mutable_token();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "sentiric.llm.v1.LLMLocalServiceGenerateStreamResponse.token"));
         } else
           goto handle_unusual;
         continue;
@@ -826,13 +825,9 @@ uint8_t* LLMLocalServiceGenerateStreamResponse::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // string token = 1;
+  // bytes token = 1;
   if (_internal_has_token()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_token().data(), static_cast<int>(this->_internal_token().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "sentiric.llm.v1.LLMLocalServiceGenerateStreamResponse.token");
-    target = stream->WriteStringMaybeAliased(
+    target = stream->WriteBytesMaybeAliased(
         1, this->_internal_token(), target);
   }
 
@@ -860,10 +855,10 @@ size_t LLMLocalServiceGenerateStreamResponse::ByteSizeLong() const {
   (void) cached_has_bits;
 
   switch (type_case()) {
-    // string token = 1;
+    // bytes token = 1;
     case kToken: {
       total_size += 1 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
           this->_internal_token());
       break;
     }

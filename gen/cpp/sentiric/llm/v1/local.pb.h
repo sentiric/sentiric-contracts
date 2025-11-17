@@ -439,7 +439,7 @@ class LLMLocalServiceGenerateStreamResponse final :
     kTokenFieldNumber = 1,
     kFinishDetailsFieldNumber = 2,
   };
-  // string token = 1;
+  // bytes token = 1;
   bool has_token() const;
   private:
   bool _internal_has_token() const;
@@ -1434,7 +1434,7 @@ inline void LLMLocalServiceGenerateStreamRequest::set_allocated_params(::sentiri
 
 // LLMLocalServiceGenerateStreamResponse
 
-// string token = 1;
+// bytes token = 1;
 inline bool LLMLocalServiceGenerateStreamResponse::_internal_has_token() const {
   return type_case() == kToken;
 }
@@ -1461,7 +1461,7 @@ inline void LLMLocalServiceGenerateStreamResponse::set_token(ArgT0&& arg0, ArgT.
     set_has_token();
     _impl_.type_.token_.InitDefault();
   }
-  _impl_.type_.token_.Set( static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  _impl_.type_.token_.SetBytes( static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
   // @@protoc_insertion_point(field_set:sentiric.llm.v1.LLMLocalServiceGenerateStreamResponse.token)
 }
 inline std::string* LLMLocalServiceGenerateStreamResponse::mutable_token() {

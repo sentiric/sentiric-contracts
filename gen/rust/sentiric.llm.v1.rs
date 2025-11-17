@@ -32,8 +32,9 @@ pub mod llm_local_service_generate_stream_response {
     #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Type {
-        #[prost(string, tag="1")]
-        Token(::prost::alloc::string::String),
+        /// ✅ UTF-8 sorunu çözüldü
+        #[prost(bytes, tag="1")]
+        Token(::prost::alloc::vec::Vec<u8>),
         #[prost(message, tag="2")]
         FinishDetails(super::FinishDetails),
     }
