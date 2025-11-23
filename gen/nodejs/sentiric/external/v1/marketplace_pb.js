@@ -170,7 +170,7 @@ category: jspb.Message.getFieldWithDefault(msg, 1, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.external.v1.ListRecipesRequest}
  */
 proto.sentiric.external.v1.ListRecipesRequest.deserializeBinary = function(bytes) {
@@ -308,7 +308,7 @@ recipesList: jspb.Message.toObjectList(msg.getRecipesList(),
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.external.v1.ListRecipesResponse}
  */
 proto.sentiric.external.v1.ListRecipesResponse.deserializeBinary = function(bytes) {
@@ -462,7 +462,7 @@ description: jspb.Message.getFieldWithDefault(msg, 3, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.external.v1.RecipeInfo}
  */
 proto.sentiric.external.v1.RecipeInfo.deserializeBinary = function(bytes) {
@@ -651,7 +651,7 @@ tenantId: jspb.Message.getFieldWithDefault(msg, 2, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.external.v1.InstallRecipeRequest}
  */
 proto.sentiric.external.v1.InstallRecipeRequest.deserializeBinary = function(bytes) {
@@ -811,7 +811,7 @@ deploymentStatus: jspb.Message.getFieldWithDefault(msg, 2, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.external.v1.InstallRecipeResponse}
  */
 proto.sentiric.external.v1.InstallRecipeResponse.deserializeBinary = function(bytes) {

@@ -128,7 +128,7 @@ topK: jspb.Message.getFieldWithDefault(msg, 3, 0)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.knowledge.v1.QueryRequest}
  */
 proto.sentiric.knowledge.v1.QueryRequest.deserializeBinary = function(bytes) {
@@ -324,7 +324,7 @@ resultsList: jspb.Message.toObjectList(msg.getResultsList(),
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.knowledge.v1.QueryResponse}
  */
 proto.sentiric.knowledge.v1.QueryResponse.deserializeBinary = function(bytes) {
@@ -479,7 +479,7 @@ metadataMap: (f = msg.getMetadataMap()) ? f.toObject(includeInstance, undefined)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.knowledge.v1.QueryResult}
  */
 proto.sentiric.knowledge.v1.QueryResult.deserializeBinary = function(bytes) {

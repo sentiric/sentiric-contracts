@@ -105,7 +105,7 @@ featureName: jspb.Message.getFieldWithDefault(msg, 2, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.control.v1.VerifyFeatureRequest}
  */
 proto.sentiric.control.v1.VerifyFeatureRequest.deserializeBinary = function(bytes) {
@@ -265,7 +265,7 @@ limitDetails: (f = jspb.Message.getField(msg, 2)) == null ? undefined : f
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.control.v1.VerifyFeatureResponse}
  */
 proto.sentiric.control.v1.VerifyFeatureResponse.deserializeBinary = function(bytes) {

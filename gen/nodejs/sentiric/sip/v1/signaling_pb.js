@@ -105,7 +105,7 @@ reason: jspb.Message.getFieldWithDefault(msg, 2, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.sip.v1.TerminateCallRequest}
  */
 proto.sentiric.sip.v1.TerminateCallRequest.deserializeBinary = function(bytes) {
@@ -265,7 +265,7 @@ message: jspb.Message.getFieldWithDefault(msg, 2, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.sip.v1.TerminateCallResponse}
  */
 proto.sentiric.sip.v1.TerminateCallResponse.deserializeBinary = function(bytes) {

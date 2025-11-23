@@ -107,7 +107,7 @@ endTimeIso: jspb.Message.getFieldWithDefault(msg, 4, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.external.v1.CreateAppointmentRequest}
  */
 proto.sentiric.external.v1.CreateAppointmentRequest.deserializeBinary = function(bytes) {
@@ -325,7 +325,7 @@ success: jspb.Message.getBooleanFieldWithDefault(msg, 2, false)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.external.v1.CreateAppointmentResponse}
  */
 proto.sentiric.external.v1.CreateAppointmentResponse.deserializeBinary = function(bytes) {

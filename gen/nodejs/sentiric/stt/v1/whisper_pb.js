@@ -149,7 +149,7 @@ language: (f = jspb.Message.getField(msg, 2)) == null ? undefined : f
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.stt.v1.WhisperTranscribeRequest}
  */
 proto.sentiric.stt.v1.WhisperTranscribeRequest.deserializeBinary = function(bytes) {
@@ -340,7 +340,11 @@ proto.sentiric.stt.v1.WhisperTranscribeResponse.toObject = function(includeInsta
 transcription: jspb.Message.getFieldWithDefault(msg, 1, ""),
 language: jspb.Message.getFieldWithDefault(msg, 2, ""),
 languageProbability: jspb.Message.getFloatingPointFieldWithDefault(msg, 3, 0.0),
-duration: jspb.Message.getFloatingPointFieldWithDefault(msg, 4, 0.0)
+duration: jspb.Message.getFloatingPointFieldWithDefault(msg, 4, 0.0),
+genderProxy: jspb.Message.getFieldWithDefault(msg, 5, ""),
+emotionProxy: jspb.Message.getFieldWithDefault(msg, 6, ""),
+arousal: jspb.Message.getFloatingPointFieldWithDefault(msg, 7, 0.0),
+valence: jspb.Message.getFloatingPointFieldWithDefault(msg, 8, 0.0)
   };
 
   if (includeInstance) {
@@ -353,7 +357,7 @@ duration: jspb.Message.getFloatingPointFieldWithDefault(msg, 4, 0.0)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.stt.v1.WhisperTranscribeResponse}
  */
 proto.sentiric.stt.v1.WhisperTranscribeResponse.deserializeBinary = function(bytes) {
@@ -392,6 +396,22 @@ proto.sentiric.stt.v1.WhisperTranscribeResponse.deserializeBinaryFromReader = fu
     case 4:
       var value = /** @type {number} */ (reader.readDouble());
       msg.setDuration(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
+      msg.setGenderProxy(value);
+      break;
+    case 6:
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
+      msg.setEmotionProxy(value);
+      break;
+    case 7:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setArousal(value);
+      break;
+    case 8:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setValence(value);
       break;
     default:
       reader.skipField();
@@ -447,6 +467,34 @@ proto.sentiric.stt.v1.WhisperTranscribeResponse.serializeBinaryToWriter = functi
   if (f !== 0.0) {
     writer.writeDouble(
       4,
+      f
+    );
+  }
+  f = message.getGenderProxy();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
+      f
+    );
+  }
+  f = message.getEmotionProxy();
+  if (f.length > 0) {
+    writer.writeString(
+      6,
+      f
+    );
+  }
+  f = message.getArousal();
+  if (f !== 0.0) {
+    writer.writeFloat(
+      7,
+      f
+    );
+  }
+  f = message.getValence();
+  if (f !== 0.0) {
+    writer.writeFloat(
+      8,
       f
     );
   }
@@ -525,6 +573,78 @@ proto.sentiric.stt.v1.WhisperTranscribeResponse.prototype.setDuration = function
 };
 
 
+/**
+ * optional string gender_proxy = 5;
+ * @return {string}
+ */
+proto.sentiric.stt.v1.WhisperTranscribeResponse.prototype.getGenderProxy = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sentiric.stt.v1.WhisperTranscribeResponse} returns this
+ */
+proto.sentiric.stt.v1.WhisperTranscribeResponse.prototype.setGenderProxy = function(value) {
+  return jspb.Message.setProto3StringField(this, 5, value);
+};
+
+
+/**
+ * optional string emotion_proxy = 6;
+ * @return {string}
+ */
+proto.sentiric.stt.v1.WhisperTranscribeResponse.prototype.getEmotionProxy = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sentiric.stt.v1.WhisperTranscribeResponse} returns this
+ */
+proto.sentiric.stt.v1.WhisperTranscribeResponse.prototype.setEmotionProxy = function(value) {
+  return jspb.Message.setProto3StringField(this, 6, value);
+};
+
+
+/**
+ * optional float arousal = 7;
+ * @return {number}
+ */
+proto.sentiric.stt.v1.WhisperTranscribeResponse.prototype.getArousal = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 7, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sentiric.stt.v1.WhisperTranscribeResponse} returns this
+ */
+proto.sentiric.stt.v1.WhisperTranscribeResponse.prototype.setArousal = function(value) {
+  return jspb.Message.setProto3FloatField(this, 7, value);
+};
+
+
+/**
+ * optional float valence = 8;
+ * @return {number}
+ */
+proto.sentiric.stt.v1.WhisperTranscribeResponse.prototype.getValence = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 8, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sentiric.stt.v1.WhisperTranscribeResponse} returns this
+ */
+proto.sentiric.stt.v1.WhisperTranscribeResponse.prototype.setValence = function(value) {
+  return jspb.Message.setProto3FloatField(this, 8, value);
+};
+
+
 
 
 
@@ -570,7 +690,7 @@ audioChunk: msg.getAudioChunk_asB64()
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.stt.v1.WhisperTranscribeStreamRequest}
  */
 proto.sentiric.stt.v1.WhisperTranscribeStreamRequest.deserializeBinary = function(bytes) {
@@ -712,7 +832,11 @@ proto.sentiric.stt.v1.WhisperTranscribeStreamResponse.prototype.toObject = funct
 proto.sentiric.stt.v1.WhisperTranscribeStreamResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
 transcription: jspb.Message.getFieldWithDefault(msg, 1, ""),
-isFinal: jspb.Message.getBooleanFieldWithDefault(msg, 2, false)
+isFinal: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
+genderProxy: jspb.Message.getFieldWithDefault(msg, 3, ""),
+emotionProxy: jspb.Message.getFieldWithDefault(msg, 4, ""),
+arousal: jspb.Message.getFloatingPointFieldWithDefault(msg, 5, 0.0),
+valence: jspb.Message.getFloatingPointFieldWithDefault(msg, 6, 0.0)
   };
 
   if (includeInstance) {
@@ -725,7 +849,7 @@ isFinal: jspb.Message.getBooleanFieldWithDefault(msg, 2, false)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.stt.v1.WhisperTranscribeStreamResponse}
  */
 proto.sentiric.stt.v1.WhisperTranscribeStreamResponse.deserializeBinary = function(bytes) {
@@ -756,6 +880,22 @@ proto.sentiric.stt.v1.WhisperTranscribeStreamResponse.deserializeBinaryFromReade
     case 2:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setIsFinal(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
+      msg.setGenderProxy(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
+      msg.setEmotionProxy(value);
+      break;
+    case 5:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setArousal(value);
+      break;
+    case 6:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setValence(value);
       break;
     default:
       reader.skipField();
@@ -800,6 +940,34 @@ proto.sentiric.stt.v1.WhisperTranscribeStreamResponse.serializeBinaryToWriter = 
       f
     );
   }
+  f = message.getGenderProxy();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
+  f = message.getEmotionProxy();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
+      f
+    );
+  }
+  f = message.getArousal();
+  if (f !== 0.0) {
+    writer.writeFloat(
+      5,
+      f
+    );
+  }
+  f = message.getValence();
+  if (f !== 0.0) {
+    writer.writeFloat(
+      6,
+      f
+    );
+  }
 };
 
 
@@ -836,6 +1004,78 @@ proto.sentiric.stt.v1.WhisperTranscribeStreamResponse.prototype.getIsFinal = fun
  */
 proto.sentiric.stt.v1.WhisperTranscribeStreamResponse.prototype.setIsFinal = function(value) {
   return jspb.Message.setProto3BooleanField(this, 2, value);
+};
+
+
+/**
+ * optional string gender_proxy = 3;
+ * @return {string}
+ */
+proto.sentiric.stt.v1.WhisperTranscribeStreamResponse.prototype.getGenderProxy = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sentiric.stt.v1.WhisperTranscribeStreamResponse} returns this
+ */
+proto.sentiric.stt.v1.WhisperTranscribeStreamResponse.prototype.setGenderProxy = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional string emotion_proxy = 4;
+ * @return {string}
+ */
+proto.sentiric.stt.v1.WhisperTranscribeStreamResponse.prototype.getEmotionProxy = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sentiric.stt.v1.WhisperTranscribeStreamResponse} returns this
+ */
+proto.sentiric.stt.v1.WhisperTranscribeStreamResponse.prototype.setEmotionProxy = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+/**
+ * optional float arousal = 5;
+ * @return {number}
+ */
+proto.sentiric.stt.v1.WhisperTranscribeStreamResponse.prototype.getArousal = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 5, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sentiric.stt.v1.WhisperTranscribeStreamResponse} returns this
+ */
+proto.sentiric.stt.v1.WhisperTranscribeStreamResponse.prototype.setArousal = function(value) {
+  return jspb.Message.setProto3FloatField(this, 5, value);
+};
+
+
+/**
+ * optional float valence = 6;
+ * @return {number}
+ */
+proto.sentiric.stt.v1.WhisperTranscribeStreamResponse.prototype.getValence = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 6, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sentiric.stt.v1.WhisperTranscribeStreamResponse} returns this
+ */
+proto.sentiric.stt.v1.WhisperTranscribeStreamResponse.prototype.setValence = function(value) {
+  return jspb.Message.setProto3FloatField(this, 6, value);
 };
 
 

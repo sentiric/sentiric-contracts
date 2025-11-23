@@ -86,7 +86,7 @@ publicUrl: (f = jspb.Message.getField(msg, 5)) == null ? undefined : f
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.data.v1.AnnouncementAsset}
  */
 proto.sentiric.data.v1.AnnouncementAsset.deserializeBinary = function(bytes) {

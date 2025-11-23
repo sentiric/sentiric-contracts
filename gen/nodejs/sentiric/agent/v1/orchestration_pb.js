@@ -152,7 +152,7 @@ callerNumber: jspb.Message.getFieldWithDefault(msg, 3, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.agent.v1.ProcessCallStartRequest}
  */
 proto.sentiric.agent.v1.ProcessCallStartRequest.deserializeBinary = function(bytes) {
@@ -340,7 +340,7 @@ initiated: jspb.Message.getBooleanFieldWithDefault(msg, 1, false)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.agent.v1.ProcessCallStartResponse}
  */
 proto.sentiric.agent.v1.ProcessCallStartResponse.deserializeBinary = function(bytes) {
@@ -472,7 +472,7 @@ context: (f = msg.getContext()) && sentiric_data_v1_context_pb.CallContext.toObj
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.agent.v1.ProcessSagaStepRequest}
  */
 proto.sentiric.agent.v1.ProcessSagaStepRequest.deserializeBinary = function(bytes) {
@@ -681,7 +681,7 @@ completed: jspb.Message.getBooleanFieldWithDefault(msg, 1, false)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.agent.v1.ProcessSagaStepResponse}
  */
 proto.sentiric.agent.v1.ProcessSagaStepResponse.deserializeBinary = function(bytes) {

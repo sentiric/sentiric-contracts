@@ -108,7 +108,7 @@ localRequest: (f = msg.getLocalRequest()) && sentiric_llm_v1_local_pb.LLMLocalSe
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.llm.v1.GenerateDialogStreamRequest}
  */
 proto.sentiric.llm.v1.GenerateDialogStreamRequest.deserializeBinary = function(bytes) {
@@ -317,7 +317,7 @@ localResponse: (f = msg.getLocalResponse()) && sentiric_llm_v1_local_pb.LLMLocal
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.llm.v1.GenerateDialogStreamResponse}
  */
 proto.sentiric.llm.v1.GenerateDialogStreamResponse.deserializeBinary = function(bytes) {

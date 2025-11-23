@@ -105,7 +105,7 @@ clientId: jspb.Message.getFieldWithDefault(msg, 2, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.vertical.v1.CheckCaseStatusRequest}
  */
 proto.sentiric.vertical.v1.CheckCaseStatusRequest.deserializeBinary = function(bytes) {
@@ -265,7 +265,7 @@ nextHearingDate: (f = jspb.Message.getField(msg, 2)) == null ? undefined : f
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.vertical.v1.CheckCaseStatusResponse}
  */
 proto.sentiric.vertical.v1.CheckCaseStatusResponse.deserializeBinary = function(bytes) {

@@ -84,7 +84,7 @@ stateVariablesMap: (f = msg.getStateVariablesMap()) ? f.toObject(includeInstance
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.data.v1.CallContext}
  */
 proto.sentiric.data.v1.CallContext.deserializeBinary = function(bytes) {

@@ -148,7 +148,7 @@ serviceName: jspb.Message.getFieldWithDefault(msg, 1, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.control.v1.GetMetricsRequest}
  */
 proto.sentiric.control.v1.GetMetricsRequest.deserializeBinary = function(bytes) {
@@ -278,7 +278,7 @@ metricsMap: (f = msg.getMetricsMap()) ? f.toObject(includeInstance, undefined) :
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.control.v1.GetMetricsResponse}
  */
 proto.sentiric.control.v1.GetMetricsResponse.deserializeBinary = function(bytes) {
@@ -418,7 +418,7 @@ limit: jspb.Message.getFieldWithDefault(msg, 2, 0)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.control.v1.GetLogsRequest}
  */
 proto.sentiric.control.v1.GetLogsRequest.deserializeBinary = function(bytes) {
@@ -584,7 +584,7 @@ logEntriesList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined 
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.control.v1.GetLogsResponse}
  */
 proto.sentiric.control.v1.GetLogsResponse.deserializeBinary = function(bytes) {

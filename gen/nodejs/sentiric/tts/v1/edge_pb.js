@@ -105,7 +105,7 @@ voiceModelId: jspb.Message.getFieldWithDefault(msg, 2, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.tts.v1.EdgeSynthesizeRequest}
  */
 proto.sentiric.tts.v1.EdgeSynthesizeRequest.deserializeBinary = function(bytes) {
@@ -264,7 +264,7 @@ audioContent: msg.getAudioContent_asB64()
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.tts.v1.EdgeSynthesizeResponse}
  */
 proto.sentiric.tts.v1.EdgeSynthesizeResponse.deserializeBinary = function(bytes) {

@@ -638,7 +638,7 @@ isPrimary: jspb.Message.getBooleanFieldWithDefault(msg, 5, false)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.user.v1.Contact}
  */
 proto.sentiric.user.v1.Contact.deserializeBinary = function(bytes) {
@@ -897,7 +897,7 @@ preferredLanguageCode: (f = jspb.Message.getField(msg, 6)) == null ? undefined :
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.user.v1.User}
  */
 proto.sentiric.user.v1.User.deserializeBinary = function(bytes) {
@@ -1233,7 +1233,7 @@ primaryLanguageCode: jspb.Message.getFieldWithDefault(msg, 4, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.user.v1.Tenant}
  */
 proto.sentiric.user.v1.Tenant.deserializeBinary = function(bytes) {
@@ -1450,7 +1450,7 @@ userId: jspb.Message.getFieldWithDefault(msg, 1, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.user.v1.GetUserRequest}
  */
 proto.sentiric.user.v1.GetUserRequest.deserializeBinary = function(bytes) {
@@ -1580,7 +1580,7 @@ user: (f = msg.getUser()) && proto.sentiric.user.v1.User.toObject(includeInstanc
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.user.v1.GetUserResponse}
  */
 proto.sentiric.user.v1.GetUserResponse.deserializeBinary = function(bytes) {
@@ -1732,7 +1732,7 @@ contactValue: jspb.Message.getFieldWithDefault(msg, 2, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.user.v1.FindUserByContactRequest}
  */
 proto.sentiric.user.v1.FindUserByContactRequest.deserializeBinary = function(bytes) {
@@ -1891,7 +1891,7 @@ user: (f = msg.getUser()) && proto.sentiric.user.v1.User.toObject(includeInstanc
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.user.v1.FindUserByContactResponse}
  */
 proto.sentiric.user.v1.FindUserByContactResponse.deserializeBinary = function(bytes) {
@@ -2046,7 +2046,7 @@ preferredLanguageCode: (f = jspb.Message.getField(msg, 5)) == null ? undefined :
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.user.v1.CreateUserRequest}
  */
 proto.sentiric.user.v1.CreateUserRequest.deserializeBinary = function(bytes) {
@@ -2205,7 +2205,7 @@ contactValue: jspb.Message.getFieldWithDefault(msg, 2, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.user.v1.CreateUserRequest.InitialContact}
  */
 proto.sentiric.user.v1.CreateUserRequest.InitialContact.deserializeBinary = function(bytes) {
@@ -2509,7 +2509,7 @@ user: (f = msg.getUser()) && proto.sentiric.user.v1.User.toObject(includeInstanc
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.user.v1.CreateUserResponse}
  */
 proto.sentiric.user.v1.CreateUserResponse.deserializeBinary = function(bytes) {
@@ -2661,7 +2661,7 @@ updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.user.v1.UpdateUserRequest}
  */
 proto.sentiric.user.v1.UpdateUserRequest.deserializeBinary = function(bytes) {
@@ -2862,7 +2862,7 @@ user: (f = msg.getUser()) && proto.sentiric.user.v1.User.toObject(includeInstanc
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.user.v1.UpdateUserResponse}
  */
 proto.sentiric.user.v1.UpdateUserResponse.deserializeBinary = function(bytes) {
@@ -3013,7 +3013,7 @@ userId: jspb.Message.getFieldWithDefault(msg, 1, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.user.v1.DeleteUserRequest}
  */
 proto.sentiric.user.v1.DeleteUserRequest.deserializeBinary = function(bytes) {
@@ -3143,7 +3143,7 @@ success: jspb.Message.getBooleanFieldWithDefault(msg, 1, false)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.user.v1.DeleteUserResponse}
  */
 proto.sentiric.user.v1.DeleteUserResponse.deserializeBinary = function(bytes) {
@@ -3274,7 +3274,7 @@ contact: (f = msg.getContact()) && proto.sentiric.user.v1.Contact.toObject(inclu
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.user.v1.AddContactRequest}
  */
 proto.sentiric.user.v1.AddContactRequest.deserializeBinary = function(bytes) {
@@ -3454,7 +3454,7 @@ user: (f = msg.getUser()) && proto.sentiric.user.v1.User.toObject(includeInstanc
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.user.v1.AddContactResponse}
  */
 proto.sentiric.user.v1.AddContactResponse.deserializeBinary = function(bytes) {
@@ -3606,7 +3606,7 @@ updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.user.v1.UpdateContactRequest}
  */
 proto.sentiric.user.v1.UpdateContactRequest.deserializeBinary = function(bytes) {
@@ -3807,7 +3807,7 @@ user: (f = msg.getUser()) && proto.sentiric.user.v1.User.toObject(includeInstanc
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.user.v1.UpdateContactResponse}
  */
 proto.sentiric.user.v1.UpdateContactResponse.deserializeBinary = function(bytes) {
@@ -3958,7 +3958,7 @@ contactId: jspb.Message.getFieldWithDefault(msg, 1, 0)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.user.v1.DeleteContactRequest}
  */
 proto.sentiric.user.v1.DeleteContactRequest.deserializeBinary = function(bytes) {
@@ -4088,7 +4088,7 @@ user: (f = msg.getUser()) && proto.sentiric.user.v1.User.toObject(includeInstanc
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.user.v1.DeleteContactResponse}
  */
 proto.sentiric.user.v1.DeleteContactResponse.deserializeBinary = function(bytes) {
@@ -4240,7 +4240,7 @@ realm: jspb.Message.getFieldWithDefault(msg, 2, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.user.v1.GetSipCredentialsRequest}
  */
 proto.sentiric.user.v1.GetSipCredentialsRequest.deserializeBinary = function(bytes) {
@@ -4401,7 +4401,7 @@ ha1Hash: jspb.Message.getFieldWithDefault(msg, 3, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.user.v1.GetSipCredentialsResponse}
  */
 proto.sentiric.user.v1.GetSipCredentialsResponse.deserializeBinary = function(bytes) {
@@ -4591,7 +4591,7 @@ password: jspb.Message.getFieldWithDefault(msg, 3, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.user.v1.CreateSipCredentialRequest}
  */
 proto.sentiric.user.v1.CreateSipCredentialRequest.deserializeBinary = function(bytes) {
@@ -4779,7 +4779,7 @@ success: jspb.Message.getBooleanFieldWithDefault(msg, 1, false)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.user.v1.CreateSipCredentialResponse}
  */
 proto.sentiric.user.v1.CreateSipCredentialResponse.deserializeBinary = function(bytes) {
@@ -4909,7 +4909,7 @@ sipUsername: jspb.Message.getFieldWithDefault(msg, 1, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.user.v1.DeleteSipCredentialRequest}
  */
 proto.sentiric.user.v1.DeleteSipCredentialRequest.deserializeBinary = function(bytes) {
@@ -5039,7 +5039,7 @@ success: jspb.Message.getBooleanFieldWithDefault(msg, 1, false)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.user.v1.DeleteSipCredentialResponse}
  */
 proto.sentiric.user.v1.DeleteSipCredentialResponse.deserializeBinary = function(bytes) {

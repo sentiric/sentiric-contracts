@@ -85,7 +85,7 @@ tlsCertPath: (f = jspb.Message.getField(msg, 4)) == null ? undefined : f
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.data.v1.AppConfig}
  */
 proto.sentiric.data.v1.AppConfig.deserializeBinary = function(bytes) {

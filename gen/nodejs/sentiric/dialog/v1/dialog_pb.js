@@ -150,7 +150,7 @@ context: (f = msg.getContext()) && sentiric_data_v1_context_pb.CallContext.toObj
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.dialog.v1.StartDialogRequest}
  */
 proto.sentiric.dialog.v1.StartDialogRequest.deserializeBinary = function(bytes) {
@@ -304,7 +304,7 @@ updatedContext: (f = msg.getUpdatedContext()) && sentiric_data_v1_context_pb.Cal
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.dialog.v1.StartDialogResponse}
  */
 proto.sentiric.dialog.v1.StartDialogResponse.deserializeBinary = function(bytes) {
@@ -562,7 +562,7 @@ audioData: msg.getAudioData_asB64()
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.dialog.v1.ProcessUserInputRequest}
  */
 proto.sentiric.dialog.v1.ProcessUserInputRequest.deserializeBinary = function(bytes) {
@@ -795,7 +795,7 @@ updatedContext: (f = msg.getUpdatedContext()) && sentiric_data_v1_context_pb.Cal
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.dialog.v1.ProcessUserInputResponse}
  */
 proto.sentiric.dialog.v1.ProcessUserInputResponse.deserializeBinary = function(bytes) {

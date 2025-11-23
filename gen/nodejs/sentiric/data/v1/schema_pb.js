@@ -85,7 +85,7 @@ userType: jspb.Message.getFieldWithDefault(msg, 4, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.data.v1.UserDBModel}
  */
 proto.sentiric.data.v1.UserDBModel.deserializeBinary = function(bytes) {

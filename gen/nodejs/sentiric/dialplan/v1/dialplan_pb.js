@@ -635,7 +635,7 @@ destinationNumber: jspb.Message.getFieldWithDefault(msg, 2, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.dialplan.v1.ResolveDialplanRequest}
  */
 proto.sentiric.dialplan.v1.ResolveDialplanRequest.deserializeBinary = function(bytes) {
@@ -799,7 +799,7 @@ inboundRoute: (f = msg.getInboundRoute()) && proto.sentiric.dialplan.v1.InboundR
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.dialplan.v1.ResolveDialplanResponse}
  */
 proto.sentiric.dialplan.v1.ResolveDialplanResponse.deserializeBinary = function(bytes) {
@@ -1164,7 +1164,7 @@ defaultLanguageCode: jspb.Message.getFieldWithDefault(msg, 7, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.dialplan.v1.InboundRoute}
  */
 proto.sentiric.dialplan.v1.InboundRoute.deserializeBinary = function(bytes) {
@@ -1525,7 +1525,7 @@ action: (f = msg.getAction()) && proto.sentiric.dialplan.v1.DialplanAction.toObj
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.dialplan.v1.Dialplan}
  */
 proto.sentiric.dialplan.v1.Dialplan.deserializeBinary = function(bytes) {
@@ -1764,7 +1764,7 @@ actionData: (f = msg.getActionData()) && proto.sentiric.dialplan.v1.ActionData.t
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.dialplan.v1.DialplanAction}
  */
 proto.sentiric.dialplan.v1.DialplanAction.deserializeBinary = function(bytes) {
@@ -1944,7 +1944,7 @@ dataMap: (f = msg.getDataMap()) ? f.toObject(includeInstance, undefined) : []
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.dialplan.v1.ActionData}
  */
 proto.sentiric.dialplan.v1.ActionData.deserializeBinary = function(bytes) {
@@ -2083,7 +2083,7 @@ route: (f = msg.getRoute()) && proto.sentiric.dialplan.v1.InboundRoute.toObject(
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.dialplan.v1.CreateInboundRouteRequest}
  */
 proto.sentiric.dialplan.v1.CreateInboundRouteRequest.deserializeBinary = function(bytes) {
@@ -2234,7 +2234,7 @@ route: (f = msg.getRoute()) && proto.sentiric.dialplan.v1.InboundRoute.toObject(
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.dialplan.v1.CreateInboundRouteResponse}
  */
 proto.sentiric.dialplan.v1.CreateInboundRouteResponse.deserializeBinary = function(bytes) {
@@ -2385,7 +2385,7 @@ phoneNumber: jspb.Message.getFieldWithDefault(msg, 1, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.dialplan.v1.GetInboundRouteRequest}
  */
 proto.sentiric.dialplan.v1.GetInboundRouteRequest.deserializeBinary = function(bytes) {
@@ -2515,7 +2515,7 @@ route: (f = msg.getRoute()) && proto.sentiric.dialplan.v1.InboundRoute.toObject(
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.dialplan.v1.GetInboundRouteResponse}
  */
 proto.sentiric.dialplan.v1.GetInboundRouteResponse.deserializeBinary = function(bytes) {
@@ -2666,7 +2666,7 @@ route: (f = msg.getRoute()) && proto.sentiric.dialplan.v1.InboundRoute.toObject(
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.dialplan.v1.UpdateInboundRouteRequest}
  */
 proto.sentiric.dialplan.v1.UpdateInboundRouteRequest.deserializeBinary = function(bytes) {
@@ -2817,7 +2817,7 @@ route: (f = msg.getRoute()) && proto.sentiric.dialplan.v1.InboundRoute.toObject(
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.dialplan.v1.UpdateInboundRouteResponse}
  */
 proto.sentiric.dialplan.v1.UpdateInboundRouteResponse.deserializeBinary = function(bytes) {
@@ -2968,7 +2968,7 @@ phoneNumber: jspb.Message.getFieldWithDefault(msg, 1, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.dialplan.v1.DeleteInboundRouteRequest}
  */
 proto.sentiric.dialplan.v1.DeleteInboundRouteRequest.deserializeBinary = function(bytes) {
@@ -3098,7 +3098,7 @@ success: jspb.Message.getBooleanFieldWithDefault(msg, 1, false)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.dialplan.v1.DeleteInboundRouteResponse}
  */
 proto.sentiric.dialplan.v1.DeleteInboundRouteResponse.deserializeBinary = function(bytes) {
@@ -3230,7 +3230,7 @@ page: jspb.Message.getFieldWithDefault(msg, 3, 0)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.dialplan.v1.ListInboundRoutesRequest}
  */
 proto.sentiric.dialplan.v1.ListInboundRoutesRequest.deserializeBinary = function(bytes) {
@@ -3427,7 +3427,7 @@ totalCount: jspb.Message.getFieldWithDefault(msg, 2, 0)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.dialplan.v1.ListInboundRoutesResponse}
  */
 proto.sentiric.dialplan.v1.ListInboundRoutesResponse.deserializeBinary = function(bytes) {
@@ -3608,7 +3608,7 @@ dialplan: (f = msg.getDialplan()) && proto.sentiric.dialplan.v1.Dialplan.toObjec
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.dialplan.v1.CreateDialplanRequest}
  */
 proto.sentiric.dialplan.v1.CreateDialplanRequest.deserializeBinary = function(bytes) {
@@ -3759,7 +3759,7 @@ dialplan: (f = msg.getDialplan()) && proto.sentiric.dialplan.v1.Dialplan.toObjec
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.dialplan.v1.CreateDialplanResponse}
  */
 proto.sentiric.dialplan.v1.CreateDialplanResponse.deserializeBinary = function(bytes) {
@@ -3910,7 +3910,7 @@ id: jspb.Message.getFieldWithDefault(msg, 1, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.dialplan.v1.GetDialplanRequest}
  */
 proto.sentiric.dialplan.v1.GetDialplanRequest.deserializeBinary = function(bytes) {
@@ -4040,7 +4040,7 @@ dialplan: (f = msg.getDialplan()) && proto.sentiric.dialplan.v1.Dialplan.toObjec
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.dialplan.v1.GetDialplanResponse}
  */
 proto.sentiric.dialplan.v1.GetDialplanResponse.deserializeBinary = function(bytes) {
@@ -4191,7 +4191,7 @@ dialplan: (f = msg.getDialplan()) && proto.sentiric.dialplan.v1.Dialplan.toObjec
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.dialplan.v1.UpdateDialplanRequest}
  */
 proto.sentiric.dialplan.v1.UpdateDialplanRequest.deserializeBinary = function(bytes) {
@@ -4342,7 +4342,7 @@ dialplan: (f = msg.getDialplan()) && proto.sentiric.dialplan.v1.Dialplan.toObjec
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.dialplan.v1.UpdateDialplanResponse}
  */
 proto.sentiric.dialplan.v1.UpdateDialplanResponse.deserializeBinary = function(bytes) {
@@ -4493,7 +4493,7 @@ id: jspb.Message.getFieldWithDefault(msg, 1, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.dialplan.v1.DeleteDialplanRequest}
  */
 proto.sentiric.dialplan.v1.DeleteDialplanRequest.deserializeBinary = function(bytes) {
@@ -4623,7 +4623,7 @@ success: jspb.Message.getBooleanFieldWithDefault(msg, 1, false)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.dialplan.v1.DeleteDialplanResponse}
  */
 proto.sentiric.dialplan.v1.DeleteDialplanResponse.deserializeBinary = function(bytes) {
@@ -4755,7 +4755,7 @@ page: jspb.Message.getFieldWithDefault(msg, 3, 0)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.dialplan.v1.ListDialplansRequest}
  */
 proto.sentiric.dialplan.v1.ListDialplansRequest.deserializeBinary = function(bytes) {
@@ -4952,7 +4952,7 @@ totalCount: jspb.Message.getFieldWithDefault(msg, 2, 0)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.dialplan.v1.ListDialplansResponse}
  */
 proto.sentiric.dialplan.v1.ListDialplansResponse.deserializeBinary = function(bytes) {

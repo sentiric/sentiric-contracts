@@ -185,7 +185,7 @@ params: (f = msg.getParams()) && proto.sentiric.llm.v1.GenerationParams.toObject
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.llm.v1.LLMLocalServiceGenerateStreamRequest}
  */
 proto.sentiric.llm.v1.LLMLocalServiceGenerateStreamRequest.deserializeBinary = function(bytes) {
@@ -519,7 +519,7 @@ finishDetails: (f = msg.getFinishDetails()) && proto.sentiric.llm.v1.FinishDetai
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.llm.v1.LLMLocalServiceGenerateStreamResponse}
  */
 proto.sentiric.llm.v1.LLMLocalServiceGenerateStreamResponse.deserializeBinary = function(bytes) {
@@ -742,7 +742,7 @@ content: jspb.Message.getFieldWithDefault(msg, 2, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.llm.v1.ConversationTurn}
  */
 proto.sentiric.llm.v1.ConversationTurn.deserializeBinary = function(bytes) {
@@ -915,7 +915,7 @@ engineSpecificParams: (f = msg.getEngineSpecificParams()) && google_protobuf_str
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.llm.v1.GenerationParams}
  */
 proto.sentiric.llm.v1.GenerationParams.deserializeBinary = function(bytes) {
@@ -1398,7 +1398,7 @@ completionTokens: jspb.Message.getFieldWithDefault(msg, 3, 0)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.llm.v1.FinishDetails}
  */
 proto.sentiric.llm.v1.FinishDetails.deserializeBinary = function(bytes) {

@@ -199,7 +199,7 @@ serverRtpPort: jspb.Message.getFieldWithDefault(msg, 2, 0)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.event.v1.MediaInfo}
  */
 proto.sentiric.event.v1.MediaInfo.deserializeBinary = function(bytes) {
@@ -365,7 +365,7 @@ mediaInfo: (f = msg.getMediaInfo()) && proto.sentiric.event.v1.MediaInfo.toObjec
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.event.v1.CallStartedEvent}
  */
 proto.sentiric.event.v1.CallStartedEvent.deserializeBinary = function(bytes) {
@@ -766,7 +766,7 @@ contact: (f = msg.getContact()) && sentiric_user_v1_user_pb.Contact.toObject(inc
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.event.v1.UserIdentifiedForCallEvent}
  */
 proto.sentiric.event.v1.UserIdentifiedForCallEvent.deserializeBinary = function(bytes) {
@@ -1109,7 +1109,7 @@ publicUrl: jspb.Message.getFieldWithDefault(msg, 6, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.event.v1.CallRecordingAvailableEvent}
  */
 proto.sentiric.event.v1.CallRecordingAvailableEvent.deserializeBinary = function(bytes) {
@@ -1409,7 +1409,7 @@ reason: jspb.Message.getFieldWithDefault(msg, 5, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.event.v1.CallEndedEvent}
  */
 proto.sentiric.event.v1.CallEndedEvent.deserializeBinary = function(bytes) {
@@ -1680,7 +1680,7 @@ payloadJson: jspb.Message.getFieldWithDefault(msg, 5, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.event.v1.GenericEvent}
  */
 proto.sentiric.event.v1.GenericEvent.deserializeBinary = function(bytes) {

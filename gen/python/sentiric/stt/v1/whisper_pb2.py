@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1dsentiric/stt/v1/whisper.proto\x12\x0fsentiric.stt.v1\"g\n\x18WhisperTranscribeRequest\x12\x1d\n\naudio_data\x18\x01 \x01(\x0cR\taudioData\x12\x1f\n\x08language\x18\x02 \x01(\tH\x00R\x08language\x88\x01\x01\x42\x0b\n\t_language\"\xac\x01\n\x19WhisperTranscribeResponse\x12$\n\rtranscription\x18\x01 \x01(\tR\rtranscription\x12\x1a\n\x08language\x18\x02 \x01(\tR\x08language\x12\x31\n\x14language_probability\x18\x03 \x01(\x02R\x13languageProbability\x12\x1a\n\x08\x64uration\x18\x04 \x01(\x01R\x08\x64uration\"A\n\x1eWhisperTranscribeStreamRequest\x12\x1f\n\x0b\x61udio_chunk\x18\x01 \x01(\x0cR\naudioChunk\"b\n\x1fWhisperTranscribeStreamResponse\x12$\n\rtranscription\x18\x01 \x01(\tR\rtranscription\x12\x19\n\x08is_final\x18\x02 \x01(\x08R\x07isFinal2\x82\x02\n\x11SttWhisperService\x12j\n\x11WhisperTranscribe\x12).sentiric.stt.v1.WhisperTranscribeRequest\x1a*.sentiric.stt.v1.WhisperTranscribeResponse\x12\x80\x01\n\x17WhisperTranscribeStream\x12/.sentiric.stt.v1.WhisperTranscribeStreamRequest\x1a\x30.sentiric.stt.v1.WhisperTranscribeStreamResponse(\x01\x30\x01\x42\x45ZCgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/stt/v1;sttv1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1dsentiric/stt/v1/whisper.proto\x12\x0fsentiric.stt.v1\"g\n\x18WhisperTranscribeRequest\x12\x1d\n\naudio_data\x18\x01 \x01(\x0cR\taudioData\x12\x1f\n\x08language\x18\x02 \x01(\tH\x00R\x08language\x88\x01\x01\x42\x0b\n\t_language\"\xa8\x02\n\x19WhisperTranscribeResponse\x12$\n\rtranscription\x18\x01 \x01(\tR\rtranscription\x12\x1a\n\x08language\x18\x02 \x01(\tR\x08language\x12\x31\n\x14language_probability\x18\x03 \x01(\x02R\x13languageProbability\x12\x1a\n\x08\x64uration\x18\x04 \x01(\x01R\x08\x64uration\x12!\n\x0cgender_proxy\x18\x05 \x01(\tR\x0bgenderProxy\x12#\n\remotion_proxy\x18\x06 \x01(\tR\x0c\x65motionProxy\x12\x18\n\x07\x61rousal\x18\x07 \x01(\x02R\x07\x61rousal\x12\x18\n\x07valence\x18\x08 \x01(\x02R\x07valence\"A\n\x1eWhisperTranscribeStreamRequest\x12\x1f\n\x0b\x61udio_chunk\x18\x01 \x01(\x0cR\naudioChunk\"\xde\x01\n\x1fWhisperTranscribeStreamResponse\x12$\n\rtranscription\x18\x01 \x01(\tR\rtranscription\x12\x19\n\x08is_final\x18\x02 \x01(\x08R\x07isFinal\x12!\n\x0cgender_proxy\x18\x03 \x01(\tR\x0bgenderProxy\x12#\n\remotion_proxy\x18\x04 \x01(\tR\x0c\x65motionProxy\x12\x18\n\x07\x61rousal\x18\x05 \x01(\x02R\x07\x61rousal\x12\x18\n\x07valence\x18\x06 \x01(\x02R\x07valence2\x82\x02\n\x11SttWhisperService\x12j\n\x11WhisperTranscribe\x12).sentiric.stt.v1.WhisperTranscribeRequest\x1a*.sentiric.stt.v1.WhisperTranscribeResponse\x12\x80\x01\n\x17WhisperTranscribeStream\x12/.sentiric.stt.v1.WhisperTranscribeStreamRequest\x1a\x30.sentiric.stt.v1.WhisperTranscribeStreamResponse(\x01\x30\x01\x42\x45ZCgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/stt/v1;sttv1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -35,11 +35,11 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_WHISPERTRANSCRIBEREQUEST']._serialized_start=50
   _globals['_WHISPERTRANSCRIBEREQUEST']._serialized_end=153
   _globals['_WHISPERTRANSCRIBERESPONSE']._serialized_start=156
-  _globals['_WHISPERTRANSCRIBERESPONSE']._serialized_end=328
-  _globals['_WHISPERTRANSCRIBESTREAMREQUEST']._serialized_start=330
-  _globals['_WHISPERTRANSCRIBESTREAMREQUEST']._serialized_end=395
-  _globals['_WHISPERTRANSCRIBESTREAMRESPONSE']._serialized_start=397
-  _globals['_WHISPERTRANSCRIBESTREAMRESPONSE']._serialized_end=495
-  _globals['_STTWHISPERSERVICE']._serialized_start=498
-  _globals['_STTWHISPERSERVICE']._serialized_end=756
+  _globals['_WHISPERTRANSCRIBERESPONSE']._serialized_end=452
+  _globals['_WHISPERTRANSCRIBESTREAMREQUEST']._serialized_start=454
+  _globals['_WHISPERTRANSCRIBESTREAMREQUEST']._serialized_end=519
+  _globals['_WHISPERTRANSCRIBESTREAMRESPONSE']._serialized_start=522
+  _globals['_WHISPERTRANSCRIBESTREAMRESPONSE']._serialized_end=744
+  _globals['_STTWHISPERSERVICE']._serialized_start=747
+  _globals['_STTWHISPERSERVICE']._serialized_end=1005
 # @@protoc_insertion_point(module_scope)

@@ -82,8 +82,13 @@ type WhisperTranscribeResponse struct {
 	Language            string                 `protobuf:"bytes,2,opt,name=language,proto3" json:"language,omitempty"`
 	LanguageProbability float32                `protobuf:"fixed32,3,opt,name=language_probability,json=languageProbability,proto3" json:"language_probability,omitempty"`
 	Duration            float64                `protobuf:"fixed64,4,opt,name=duration,proto3" json:"duration,omitempty"`
-	unknownFields       protoimpl.UnknownFields
-	sizeCache           protoimpl.SizeCache
+	// ---- affective proxies ----
+	GenderProxy   string  `protobuf:"bytes,5,opt,name=gender_proxy,json=genderProxy,proto3" json:"gender_proxy,omitempty"`
+	EmotionProxy  string  `protobuf:"bytes,6,opt,name=emotion_proxy,json=emotionProxy,proto3" json:"emotion_proxy,omitempty"`
+	Arousal       float32 `protobuf:"fixed32,7,opt,name=arousal,proto3" json:"arousal,omitempty"`
+	Valence       float32 `protobuf:"fixed32,8,opt,name=valence,proto3" json:"valence,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *WhisperTranscribeResponse) Reset() {
@@ -144,6 +149,34 @@ func (x *WhisperTranscribeResponse) GetDuration() float64 {
 	return 0
 }
 
+func (x *WhisperTranscribeResponse) GetGenderProxy() string {
+	if x != nil {
+		return x.GenderProxy
+	}
+	return ""
+}
+
+func (x *WhisperTranscribeResponse) GetEmotionProxy() string {
+	if x != nil {
+		return x.EmotionProxy
+	}
+	return ""
+}
+
+func (x *WhisperTranscribeResponse) GetArousal() float32 {
+	if x != nil {
+		return x.Arousal
+	}
+	return 0
+}
+
+func (x *WhisperTranscribeResponse) GetValence() float32 {
+	if x != nil {
+		return x.Valence
+	}
+	return 0
+}
+
 // Akış tabanlı transkripsiyon için mesajlar
 type WhisperTranscribeStreamRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -194,6 +227,11 @@ type WhisperTranscribeStreamResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Transcription string                 `protobuf:"bytes,1,opt,name=transcription,proto3" json:"transcription,omitempty"`
 	IsFinal       bool                   `protobuf:"varint,2,opt,name=is_final,json=isFinal,proto3" json:"is_final,omitempty"` // Bu segmentin nihai sonuç olup olmadığını belirtir.
+	// ---- affective proxies ----
+	GenderProxy   string  `protobuf:"bytes,3,opt,name=gender_proxy,json=genderProxy,proto3" json:"gender_proxy,omitempty"`
+	EmotionProxy  string  `protobuf:"bytes,4,opt,name=emotion_proxy,json=emotionProxy,proto3" json:"emotion_proxy,omitempty"`
+	Arousal       float32 `protobuf:"fixed32,5,opt,name=arousal,proto3" json:"arousal,omitempty"`
+	Valence       float32 `protobuf:"fixed32,6,opt,name=valence,proto3" json:"valence,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -242,6 +280,34 @@ func (x *WhisperTranscribeStreamResponse) GetIsFinal() bool {
 	return false
 }
 
+func (x *WhisperTranscribeStreamResponse) GetGenderProxy() string {
+	if x != nil {
+		return x.GenderProxy
+	}
+	return ""
+}
+
+func (x *WhisperTranscribeStreamResponse) GetEmotionProxy() string {
+	if x != nil {
+		return x.EmotionProxy
+	}
+	return ""
+}
+
+func (x *WhisperTranscribeStreamResponse) GetArousal() float32 {
+	if x != nil {
+		return x.Arousal
+	}
+	return 0
+}
+
+func (x *WhisperTranscribeStreamResponse) GetValence() float32 {
+	if x != nil {
+		return x.Valence
+	}
+	return 0
+}
+
 var File_sentiric_stt_v1_whisper_proto protoreflect.FileDescriptor
 
 const file_sentiric_stt_v1_whisper_proto_rawDesc = "" +
@@ -251,18 +317,26 @@ const file_sentiric_stt_v1_whisper_proto_rawDesc = "" +
 	"\n" +
 	"audio_data\x18\x01 \x01(\fR\taudioData\x12\x1f\n" +
 	"\blanguage\x18\x02 \x01(\tH\x00R\blanguage\x88\x01\x01B\v\n" +
-	"\t_language\"\xac\x01\n" +
+	"\t_language\"\xa8\x02\n" +
 	"\x19WhisperTranscribeResponse\x12$\n" +
 	"\rtranscription\x18\x01 \x01(\tR\rtranscription\x12\x1a\n" +
 	"\blanguage\x18\x02 \x01(\tR\blanguage\x121\n" +
 	"\x14language_probability\x18\x03 \x01(\x02R\x13languageProbability\x12\x1a\n" +
-	"\bduration\x18\x04 \x01(\x01R\bduration\"A\n" +
+	"\bduration\x18\x04 \x01(\x01R\bduration\x12!\n" +
+	"\fgender_proxy\x18\x05 \x01(\tR\vgenderProxy\x12#\n" +
+	"\remotion_proxy\x18\x06 \x01(\tR\femotionProxy\x12\x18\n" +
+	"\aarousal\x18\a \x01(\x02R\aarousal\x12\x18\n" +
+	"\avalence\x18\b \x01(\x02R\avalence\"A\n" +
 	"\x1eWhisperTranscribeStreamRequest\x12\x1f\n" +
 	"\vaudio_chunk\x18\x01 \x01(\fR\n" +
-	"audioChunk\"b\n" +
+	"audioChunk\"\xde\x01\n" +
 	"\x1fWhisperTranscribeStreamResponse\x12$\n" +
 	"\rtranscription\x18\x01 \x01(\tR\rtranscription\x12\x19\n" +
-	"\bis_final\x18\x02 \x01(\bR\aisFinal2\x82\x02\n" +
+	"\bis_final\x18\x02 \x01(\bR\aisFinal\x12!\n" +
+	"\fgender_proxy\x18\x03 \x01(\tR\vgenderProxy\x12#\n" +
+	"\remotion_proxy\x18\x04 \x01(\tR\femotionProxy\x12\x18\n" +
+	"\aarousal\x18\x05 \x01(\x02R\aarousal\x12\x18\n" +
+	"\avalence\x18\x06 \x01(\x02R\avalence2\x82\x02\n" +
 	"\x11SttWhisperService\x12j\n" +
 	"\x11WhisperTranscribe\x12).sentiric.stt.v1.WhisperTranscribeRequest\x1a*.sentiric.stt.v1.WhisperTranscribeResponse\x12\x80\x01\n" +
 	"\x17WhisperTranscribeStream\x12/.sentiric.stt.v1.WhisperTranscribeStreamRequest\x1a0.sentiric.stt.v1.WhisperTranscribeStreamResponse(\x010\x01BEZCgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/stt/v1;sttv1b\x06proto3"

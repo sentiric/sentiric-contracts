@@ -149,7 +149,7 @@ password: jspb.Message.getFieldWithDefault(msg, 2, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.user.v1.AuthenticateRequest}
  */
 proto.sentiric.user.v1.AuthenticateRequest.deserializeBinary = function(bytes) {
@@ -309,7 +309,7 @@ userId: jspb.Message.getFieldWithDefault(msg, 2, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.user.v1.AuthenticateResponse}
  */
 proto.sentiric.user.v1.AuthenticateResponse.deserializeBinary = function(bytes) {
@@ -468,7 +468,7 @@ accessToken: jspb.Message.getFieldWithDefault(msg, 1, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.user.v1.AuthorizeTokenRequest}
  */
 proto.sentiric.user.v1.AuthorizeTokenRequest.deserializeBinary = function(bytes) {
@@ -600,7 +600,7 @@ tenantId: jspb.Message.getFieldWithDefault(msg, 3, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.user.v1.AuthorizeTokenResponse}
  */
 proto.sentiric.user.v1.AuthorizeTokenResponse.deserializeBinary = function(bytes) {

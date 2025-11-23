@@ -171,7 +171,7 @@ checkInDate: jspb.Message.getFieldWithDefault(msg, 2, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.vertical.v1.FindHotelsRequest}
  */
 proto.sentiric.vertical.v1.FindHotelsRequest.deserializeBinary = function(bytes) {
@@ -338,7 +338,7 @@ resultsList: jspb.Message.toObjectList(msg.getResultsList(),
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.vertical.v1.FindHotelsResponse}
  */
 proto.sentiric.vertical.v1.FindHotelsResponse.deserializeBinary = function(bytes) {
@@ -491,7 +491,7 @@ rating: jspb.Message.getFieldWithDefault(msg, 2, 0)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.vertical.v1.HotelResult}
  */
 proto.sentiric.vertical.v1.HotelResult.deserializeBinary = function(bytes) {
@@ -652,7 +652,7 @@ numGuests: jspb.Message.getFieldWithDefault(msg, 3, 0)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.vertical.v1.BookRoomRequest}
  */
 proto.sentiric.vertical.v1.BookRoomRequest.deserializeBinary = function(bytes) {
@@ -841,7 +841,7 @@ success: jspb.Message.getBooleanFieldWithDefault(msg, 2, false)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.vertical.v1.BookRoomResponse}
  */
 proto.sentiric.vertical.v1.BookRoomResponse.deserializeBinary = function(bytes) {

@@ -105,7 +105,7 @@ sourceIp: jspb.Message.getFieldWithDefault(msg, 2, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.sip.v1.GetRouteRequest}
  */
 proto.sentiric.sip.v1.GetRouteRequest.deserializeBinary = function(bytes) {
@@ -265,7 +265,7 @@ nextHopUri: (f = jspb.Message.getField(msg, 2)) == null ? undefined : f
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.sip.v1.GetRouteResponse}
  */
 proto.sentiric.sip.v1.GetRouteResponse.deserializeBinary = function(bytes) {

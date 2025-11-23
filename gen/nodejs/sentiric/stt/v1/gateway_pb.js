@@ -149,7 +149,7 @@ languageCode: jspb.Message.getFieldWithDefault(msg, 2, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.stt.v1.TranscribeRequest}
  */
 proto.sentiric.stt.v1.TranscribeRequest.deserializeBinary = function(bytes) {
@@ -332,7 +332,7 @@ transcription: jspb.Message.getFieldWithDefault(msg, 1, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.stt.v1.TranscribeResponse}
  */
 proto.sentiric.stt.v1.TranscribeResponse.deserializeBinary = function(bytes) {
@@ -462,7 +462,7 @@ audioChunk: msg.getAudioChunk_asB64()
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.stt.v1.TranscribeStreamRequest}
  */
 proto.sentiric.stt.v1.TranscribeStreamRequest.deserializeBinary = function(bytes) {
@@ -617,7 +617,7 @@ isFinal: jspb.Message.getBooleanFieldWithDefault(msg, 2, false)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.stt.v1.TranscribeStreamResponse}
  */
 proto.sentiric.stt.v1.TranscribeStreamResponse.deserializeBinary = function(bytes) {

@@ -281,7 +281,7 @@ audioUri: jspb.Message.getFieldWithDefault(msg, 2, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.telephony.v1.PlayAudioRequest}
  */
 proto.sentiric.telephony.v1.PlayAudioRequest.deserializeBinary = function(bytes) {
@@ -440,7 +440,7 @@ success: jspb.Message.getBooleanFieldWithDefault(msg, 1, false)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.telephony.v1.PlayAudioResponse}
  */
 proto.sentiric.telephony.v1.PlayAudioResponse.deserializeBinary = function(bytes) {
@@ -571,7 +571,7 @@ reason: jspb.Message.getFieldWithDefault(msg, 2, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.telephony.v1.TerminateCallRequest}
  */
 proto.sentiric.telephony.v1.TerminateCallRequest.deserializeBinary = function(bytes) {
@@ -730,7 +730,7 @@ success: jspb.Message.getBooleanFieldWithDefault(msg, 1, false)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.telephony.v1.TerminateCallResponse}
  */
 proto.sentiric.telephony.v1.TerminateCallResponse.deserializeBinary = function(bytes) {
@@ -861,7 +861,7 @@ body: jspb.Message.getFieldWithDefault(msg, 2, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.telephony.v1.SendTextMessageRequest}
  */
 proto.sentiric.telephony.v1.SendTextMessageRequest.deserializeBinary = function(bytes) {
@@ -1020,7 +1020,7 @@ success: jspb.Message.getBooleanFieldWithDefault(msg, 1, false)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.telephony.v1.SendTextMessageResponse}
  */
 proto.sentiric.telephony.v1.SendTextMessageResponse.deserializeBinary = function(bytes) {
@@ -1153,7 +1153,7 @@ format: (f = jspb.Message.getField(msg, 4)) == null ? undefined : f
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.telephony.v1.StartRecordingRequest}
  */
 proto.sentiric.telephony.v1.StartRecordingRequest.deserializeBinary = function(bytes) {
@@ -1406,7 +1406,7 @@ success: jspb.Message.getBooleanFieldWithDefault(msg, 1, false)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.telephony.v1.StartRecordingResponse}
  */
 proto.sentiric.telephony.v1.StartRecordingResponse.deserializeBinary = function(bytes) {
@@ -1536,7 +1536,7 @@ callId: jspb.Message.getFieldWithDefault(msg, 1, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.telephony.v1.StopRecordingRequest}
  */
 proto.sentiric.telephony.v1.StopRecordingRequest.deserializeBinary = function(bytes) {
@@ -1666,7 +1666,7 @@ success: jspb.Message.getBooleanFieldWithDefault(msg, 1, false)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.telephony.v1.StopRecordingResponse}
  */
 proto.sentiric.telephony.v1.StopRecordingResponse.deserializeBinary = function(bytes) {

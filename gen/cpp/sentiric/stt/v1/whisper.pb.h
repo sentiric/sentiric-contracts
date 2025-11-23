@@ -371,8 +371,12 @@ class WhisperTranscribeResponse final :
   enum : int {
     kTranscriptionFieldNumber = 1,
     kLanguageFieldNumber = 2,
+    kGenderProxyFieldNumber = 5,
+    kEmotionProxyFieldNumber = 6,
     kDurationFieldNumber = 4,
     kLanguageProbabilityFieldNumber = 3,
+    kArousalFieldNumber = 7,
+    kValenceFieldNumber = 8,
   };
   // string transcription = 1;
   void clear_transcription();
@@ -402,6 +406,34 @@ class WhisperTranscribeResponse final :
   std::string* _internal_mutable_language();
   public:
 
+  // string gender_proxy = 5;
+  void clear_gender_proxy();
+  const std::string& gender_proxy() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_gender_proxy(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_gender_proxy();
+  PROTOBUF_NODISCARD std::string* release_gender_proxy();
+  void set_allocated_gender_proxy(std::string* gender_proxy);
+  private:
+  const std::string& _internal_gender_proxy() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_gender_proxy(const std::string& value);
+  std::string* _internal_mutable_gender_proxy();
+  public:
+
+  // string emotion_proxy = 6;
+  void clear_emotion_proxy();
+  const std::string& emotion_proxy() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_emotion_proxy(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_emotion_proxy();
+  PROTOBUF_NODISCARD std::string* release_emotion_proxy();
+  void set_allocated_emotion_proxy(std::string* emotion_proxy);
+  private:
+  const std::string& _internal_emotion_proxy() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_emotion_proxy(const std::string& value);
+  std::string* _internal_mutable_emotion_proxy();
+  public:
+
   // double duration = 4;
   void clear_duration();
   double duration() const;
@@ -420,6 +452,24 @@ class WhisperTranscribeResponse final :
   void _internal_set_language_probability(float value);
   public:
 
+  // float arousal = 7;
+  void clear_arousal();
+  float arousal() const;
+  void set_arousal(float value);
+  private:
+  float _internal_arousal() const;
+  void _internal_set_arousal(float value);
+  public:
+
+  // float valence = 8;
+  void clear_valence();
+  float valence() const;
+  void set_valence(float value);
+  private:
+  float _internal_valence() const;
+  void _internal_set_valence(float value);
+  public:
+
   // @@protoc_insertion_point(class_scope:sentiric.stt.v1.WhisperTranscribeResponse)
  private:
   class _Internal;
@@ -430,8 +480,12 @@ class WhisperTranscribeResponse final :
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr transcription_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr language_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr gender_proxy_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr emotion_proxy_;
     double duration_;
     float language_probability_;
+    float arousal_;
+    float valence_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -714,7 +768,11 @@ class WhisperTranscribeStreamResponse final :
 
   enum : int {
     kTranscriptionFieldNumber = 1,
+    kGenderProxyFieldNumber = 3,
+    kEmotionProxyFieldNumber = 4,
     kIsFinalFieldNumber = 2,
+    kArousalFieldNumber = 5,
+    kValenceFieldNumber = 6,
   };
   // string transcription = 1;
   void clear_transcription();
@@ -730,6 +788,34 @@ class WhisperTranscribeStreamResponse final :
   std::string* _internal_mutable_transcription();
   public:
 
+  // string gender_proxy = 3;
+  void clear_gender_proxy();
+  const std::string& gender_proxy() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_gender_proxy(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_gender_proxy();
+  PROTOBUF_NODISCARD std::string* release_gender_proxy();
+  void set_allocated_gender_proxy(std::string* gender_proxy);
+  private:
+  const std::string& _internal_gender_proxy() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_gender_proxy(const std::string& value);
+  std::string* _internal_mutable_gender_proxy();
+  public:
+
+  // string emotion_proxy = 4;
+  void clear_emotion_proxy();
+  const std::string& emotion_proxy() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_emotion_proxy(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_emotion_proxy();
+  PROTOBUF_NODISCARD std::string* release_emotion_proxy();
+  void set_allocated_emotion_proxy(std::string* emotion_proxy);
+  private:
+  const std::string& _internal_emotion_proxy() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_emotion_proxy(const std::string& value);
+  std::string* _internal_mutable_emotion_proxy();
+  public:
+
   // bool is_final = 2;
   void clear_is_final();
   bool is_final() const;
@@ -737,6 +823,24 @@ class WhisperTranscribeStreamResponse final :
   private:
   bool _internal_is_final() const;
   void _internal_set_is_final(bool value);
+  public:
+
+  // float arousal = 5;
+  void clear_arousal();
+  float arousal() const;
+  void set_arousal(float value);
+  private:
+  float _internal_arousal() const;
+  void _internal_set_arousal(float value);
+  public:
+
+  // float valence = 6;
+  void clear_valence();
+  float valence() const;
+  void set_valence(float value);
+  private:
+  float _internal_valence() const;
+  void _internal_set_valence(float value);
   public:
 
   // @@protoc_insertion_point(class_scope:sentiric.stt.v1.WhisperTranscribeStreamResponse)
@@ -748,7 +852,11 @@ class WhisperTranscribeStreamResponse final :
   typedef void DestructorSkippable_;
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr transcription_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr gender_proxy_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr emotion_proxy_;
     bool is_final_;
+    float arousal_;
+    float valence_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -1027,6 +1135,146 @@ inline void WhisperTranscribeResponse::set_duration(double value) {
   // @@protoc_insertion_point(field_set:sentiric.stt.v1.WhisperTranscribeResponse.duration)
 }
 
+// string gender_proxy = 5;
+inline void WhisperTranscribeResponse::clear_gender_proxy() {
+  _impl_.gender_proxy_.ClearToEmpty();
+}
+inline const std::string& WhisperTranscribeResponse::gender_proxy() const {
+  // @@protoc_insertion_point(field_get:sentiric.stt.v1.WhisperTranscribeResponse.gender_proxy)
+  return _internal_gender_proxy();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void WhisperTranscribeResponse::set_gender_proxy(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.gender_proxy_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.stt.v1.WhisperTranscribeResponse.gender_proxy)
+}
+inline std::string* WhisperTranscribeResponse::mutable_gender_proxy() {
+  std::string* _s = _internal_mutable_gender_proxy();
+  // @@protoc_insertion_point(field_mutable:sentiric.stt.v1.WhisperTranscribeResponse.gender_proxy)
+  return _s;
+}
+inline const std::string& WhisperTranscribeResponse::_internal_gender_proxy() const {
+  return _impl_.gender_proxy_.Get();
+}
+inline void WhisperTranscribeResponse::_internal_set_gender_proxy(const std::string& value) {
+  
+  _impl_.gender_proxy_.Set(value, GetArenaForAllocation());
+}
+inline std::string* WhisperTranscribeResponse::_internal_mutable_gender_proxy() {
+  
+  return _impl_.gender_proxy_.Mutable(GetArenaForAllocation());
+}
+inline std::string* WhisperTranscribeResponse::release_gender_proxy() {
+  // @@protoc_insertion_point(field_release:sentiric.stt.v1.WhisperTranscribeResponse.gender_proxy)
+  return _impl_.gender_proxy_.Release();
+}
+inline void WhisperTranscribeResponse::set_allocated_gender_proxy(std::string* gender_proxy) {
+  if (gender_proxy != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.gender_proxy_.SetAllocated(gender_proxy, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.gender_proxy_.IsDefault()) {
+    _impl_.gender_proxy_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.stt.v1.WhisperTranscribeResponse.gender_proxy)
+}
+
+// string emotion_proxy = 6;
+inline void WhisperTranscribeResponse::clear_emotion_proxy() {
+  _impl_.emotion_proxy_.ClearToEmpty();
+}
+inline const std::string& WhisperTranscribeResponse::emotion_proxy() const {
+  // @@protoc_insertion_point(field_get:sentiric.stt.v1.WhisperTranscribeResponse.emotion_proxy)
+  return _internal_emotion_proxy();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void WhisperTranscribeResponse::set_emotion_proxy(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.emotion_proxy_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.stt.v1.WhisperTranscribeResponse.emotion_proxy)
+}
+inline std::string* WhisperTranscribeResponse::mutable_emotion_proxy() {
+  std::string* _s = _internal_mutable_emotion_proxy();
+  // @@protoc_insertion_point(field_mutable:sentiric.stt.v1.WhisperTranscribeResponse.emotion_proxy)
+  return _s;
+}
+inline const std::string& WhisperTranscribeResponse::_internal_emotion_proxy() const {
+  return _impl_.emotion_proxy_.Get();
+}
+inline void WhisperTranscribeResponse::_internal_set_emotion_proxy(const std::string& value) {
+  
+  _impl_.emotion_proxy_.Set(value, GetArenaForAllocation());
+}
+inline std::string* WhisperTranscribeResponse::_internal_mutable_emotion_proxy() {
+  
+  return _impl_.emotion_proxy_.Mutable(GetArenaForAllocation());
+}
+inline std::string* WhisperTranscribeResponse::release_emotion_proxy() {
+  // @@protoc_insertion_point(field_release:sentiric.stt.v1.WhisperTranscribeResponse.emotion_proxy)
+  return _impl_.emotion_proxy_.Release();
+}
+inline void WhisperTranscribeResponse::set_allocated_emotion_proxy(std::string* emotion_proxy) {
+  if (emotion_proxy != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.emotion_proxy_.SetAllocated(emotion_proxy, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.emotion_proxy_.IsDefault()) {
+    _impl_.emotion_proxy_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.stt.v1.WhisperTranscribeResponse.emotion_proxy)
+}
+
+// float arousal = 7;
+inline void WhisperTranscribeResponse::clear_arousal() {
+  _impl_.arousal_ = 0;
+}
+inline float WhisperTranscribeResponse::_internal_arousal() const {
+  return _impl_.arousal_;
+}
+inline float WhisperTranscribeResponse::arousal() const {
+  // @@protoc_insertion_point(field_get:sentiric.stt.v1.WhisperTranscribeResponse.arousal)
+  return _internal_arousal();
+}
+inline void WhisperTranscribeResponse::_internal_set_arousal(float value) {
+  
+  _impl_.arousal_ = value;
+}
+inline void WhisperTranscribeResponse::set_arousal(float value) {
+  _internal_set_arousal(value);
+  // @@protoc_insertion_point(field_set:sentiric.stt.v1.WhisperTranscribeResponse.arousal)
+}
+
+// float valence = 8;
+inline void WhisperTranscribeResponse::clear_valence() {
+  _impl_.valence_ = 0;
+}
+inline float WhisperTranscribeResponse::_internal_valence() const {
+  return _impl_.valence_;
+}
+inline float WhisperTranscribeResponse::valence() const {
+  // @@protoc_insertion_point(field_get:sentiric.stt.v1.WhisperTranscribeResponse.valence)
+  return _internal_valence();
+}
+inline void WhisperTranscribeResponse::_internal_set_valence(float value) {
+  
+  _impl_.valence_ = value;
+}
+inline void WhisperTranscribeResponse::set_valence(float value) {
+  _internal_set_valence(value);
+  // @@protoc_insertion_point(field_set:sentiric.stt.v1.WhisperTranscribeResponse.valence)
+}
+
 // -------------------------------------------------------------------
 
 // WhisperTranscribeStreamRequest
@@ -1153,6 +1401,146 @@ inline void WhisperTranscribeStreamResponse::_internal_set_is_final(bool value) 
 inline void WhisperTranscribeStreamResponse::set_is_final(bool value) {
   _internal_set_is_final(value);
   // @@protoc_insertion_point(field_set:sentiric.stt.v1.WhisperTranscribeStreamResponse.is_final)
+}
+
+// string gender_proxy = 3;
+inline void WhisperTranscribeStreamResponse::clear_gender_proxy() {
+  _impl_.gender_proxy_.ClearToEmpty();
+}
+inline const std::string& WhisperTranscribeStreamResponse::gender_proxy() const {
+  // @@protoc_insertion_point(field_get:sentiric.stt.v1.WhisperTranscribeStreamResponse.gender_proxy)
+  return _internal_gender_proxy();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void WhisperTranscribeStreamResponse::set_gender_proxy(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.gender_proxy_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.stt.v1.WhisperTranscribeStreamResponse.gender_proxy)
+}
+inline std::string* WhisperTranscribeStreamResponse::mutable_gender_proxy() {
+  std::string* _s = _internal_mutable_gender_proxy();
+  // @@protoc_insertion_point(field_mutable:sentiric.stt.v1.WhisperTranscribeStreamResponse.gender_proxy)
+  return _s;
+}
+inline const std::string& WhisperTranscribeStreamResponse::_internal_gender_proxy() const {
+  return _impl_.gender_proxy_.Get();
+}
+inline void WhisperTranscribeStreamResponse::_internal_set_gender_proxy(const std::string& value) {
+  
+  _impl_.gender_proxy_.Set(value, GetArenaForAllocation());
+}
+inline std::string* WhisperTranscribeStreamResponse::_internal_mutable_gender_proxy() {
+  
+  return _impl_.gender_proxy_.Mutable(GetArenaForAllocation());
+}
+inline std::string* WhisperTranscribeStreamResponse::release_gender_proxy() {
+  // @@protoc_insertion_point(field_release:sentiric.stt.v1.WhisperTranscribeStreamResponse.gender_proxy)
+  return _impl_.gender_proxy_.Release();
+}
+inline void WhisperTranscribeStreamResponse::set_allocated_gender_proxy(std::string* gender_proxy) {
+  if (gender_proxy != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.gender_proxy_.SetAllocated(gender_proxy, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.gender_proxy_.IsDefault()) {
+    _impl_.gender_proxy_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.stt.v1.WhisperTranscribeStreamResponse.gender_proxy)
+}
+
+// string emotion_proxy = 4;
+inline void WhisperTranscribeStreamResponse::clear_emotion_proxy() {
+  _impl_.emotion_proxy_.ClearToEmpty();
+}
+inline const std::string& WhisperTranscribeStreamResponse::emotion_proxy() const {
+  // @@protoc_insertion_point(field_get:sentiric.stt.v1.WhisperTranscribeStreamResponse.emotion_proxy)
+  return _internal_emotion_proxy();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void WhisperTranscribeStreamResponse::set_emotion_proxy(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.emotion_proxy_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.stt.v1.WhisperTranscribeStreamResponse.emotion_proxy)
+}
+inline std::string* WhisperTranscribeStreamResponse::mutable_emotion_proxy() {
+  std::string* _s = _internal_mutable_emotion_proxy();
+  // @@protoc_insertion_point(field_mutable:sentiric.stt.v1.WhisperTranscribeStreamResponse.emotion_proxy)
+  return _s;
+}
+inline const std::string& WhisperTranscribeStreamResponse::_internal_emotion_proxy() const {
+  return _impl_.emotion_proxy_.Get();
+}
+inline void WhisperTranscribeStreamResponse::_internal_set_emotion_proxy(const std::string& value) {
+  
+  _impl_.emotion_proxy_.Set(value, GetArenaForAllocation());
+}
+inline std::string* WhisperTranscribeStreamResponse::_internal_mutable_emotion_proxy() {
+  
+  return _impl_.emotion_proxy_.Mutable(GetArenaForAllocation());
+}
+inline std::string* WhisperTranscribeStreamResponse::release_emotion_proxy() {
+  // @@protoc_insertion_point(field_release:sentiric.stt.v1.WhisperTranscribeStreamResponse.emotion_proxy)
+  return _impl_.emotion_proxy_.Release();
+}
+inline void WhisperTranscribeStreamResponse::set_allocated_emotion_proxy(std::string* emotion_proxy) {
+  if (emotion_proxy != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.emotion_proxy_.SetAllocated(emotion_proxy, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.emotion_proxy_.IsDefault()) {
+    _impl_.emotion_proxy_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.stt.v1.WhisperTranscribeStreamResponse.emotion_proxy)
+}
+
+// float arousal = 5;
+inline void WhisperTranscribeStreamResponse::clear_arousal() {
+  _impl_.arousal_ = 0;
+}
+inline float WhisperTranscribeStreamResponse::_internal_arousal() const {
+  return _impl_.arousal_;
+}
+inline float WhisperTranscribeStreamResponse::arousal() const {
+  // @@protoc_insertion_point(field_get:sentiric.stt.v1.WhisperTranscribeStreamResponse.arousal)
+  return _internal_arousal();
+}
+inline void WhisperTranscribeStreamResponse::_internal_set_arousal(float value) {
+  
+  _impl_.arousal_ = value;
+}
+inline void WhisperTranscribeStreamResponse::set_arousal(float value) {
+  _internal_set_arousal(value);
+  // @@protoc_insertion_point(field_set:sentiric.stt.v1.WhisperTranscribeStreamResponse.arousal)
+}
+
+// float valence = 6;
+inline void WhisperTranscribeStreamResponse::clear_valence() {
+  _impl_.valence_ = 0;
+}
+inline float WhisperTranscribeStreamResponse::_internal_valence() const {
+  return _impl_.valence_;
+}
+inline float WhisperTranscribeStreamResponse::valence() const {
+  // @@protoc_insertion_point(field_get:sentiric.stt.v1.WhisperTranscribeStreamResponse.valence)
+  return _internal_valence();
+}
+inline void WhisperTranscribeStreamResponse::_internal_set_valence(float value) {
+  
+  _impl_.valence_ = value;
+}
+inline void WhisperTranscribeStreamResponse::set_valence(float value) {
+  _internal_set_valence(value);
+  // @@protoc_insertion_point(field_set:sentiric.stt.v1.WhisperTranscribeStreamResponse.valence)
 }
 
 #ifdef __GNUC__

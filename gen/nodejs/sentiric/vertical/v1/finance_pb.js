@@ -105,7 +105,7 @@ userId: jspb.Message.getFieldWithDefault(msg, 2, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.vertical.v1.GetAccountBalanceRequest}
  */
 proto.sentiric.vertical.v1.GetAccountBalanceRequest.deserializeBinary = function(bytes) {
@@ -266,7 +266,7 @@ lastTransactionDate: jspb.Message.getFieldWithDefault(msg, 3, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.vertical.v1.GetAccountBalanceResponse}
  */
 proto.sentiric.vertical.v1.GetAccountBalanceResponse.deserializeBinary = function(bytes) {

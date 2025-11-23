@@ -106,7 +106,7 @@ parametersMap: (f = msg.getParametersMap()) ? f.toObject(includeInstance, undefi
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.external.v1.ExecuteActionRequest}
  */
 proto.sentiric.external.v1.ExecuteActionRequest.deserializeBinary = function(bytes) {
@@ -304,7 +304,7 @@ outputMap: (f = msg.getOutputMap()) ? f.toObject(includeInstance, undefined) : [
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.external.v1.ExecuteActionResponse}
  */
 proto.sentiric.external.v1.ExecuteActionResponse.deserializeBinary = function(bytes) {

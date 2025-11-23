@@ -171,7 +171,7 @@ location: jspb.Message.getFieldWithDefault(msg, 2, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.vertical.v1.FindDoctorRequest}
  */
 proto.sentiric.vertical.v1.FindDoctorRequest.deserializeBinary = function(bytes) {
@@ -338,7 +338,7 @@ doctorsList: jspb.Message.toObjectList(msg.getDoctorsList(),
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.vertical.v1.FindDoctorResponse}
  */
 proto.sentiric.vertical.v1.FindDoctorResponse.deserializeBinary = function(bytes) {
@@ -491,7 +491,7 @@ specialty: jspb.Message.getFieldWithDefault(msg, 2, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.vertical.v1.DoctorInfo}
  */
 proto.sentiric.vertical.v1.DoctorInfo.deserializeBinary = function(bytes) {
@@ -652,7 +652,7 @@ preferredTimeIso: jspb.Message.getFieldWithDefault(msg, 3, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.vertical.v1.ScheduleAppointmentRequest}
  */
 proto.sentiric.vertical.v1.ScheduleAppointmentRequest.deserializeBinary = function(bytes) {
@@ -841,7 +841,7 @@ success: jspb.Message.getBooleanFieldWithDefault(msg, 2, false)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.vertical.v1.ScheduleAppointmentResponse}
  */
 proto.sentiric.vertical.v1.ScheduleAppointmentResponse.deserializeBinary = function(bytes) {

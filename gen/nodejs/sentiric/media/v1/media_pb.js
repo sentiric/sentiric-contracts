@@ -148,7 +148,7 @@ callId: jspb.Message.getFieldWithDefault(msg, 1, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.media.v1.AllocatePortRequest}
  */
 proto.sentiric.media.v1.AllocatePortRequest.deserializeBinary = function(bytes) {
@@ -278,7 +278,7 @@ rtpPort: jspb.Message.getFieldWithDefault(msg, 1, 0)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.media.v1.AllocatePortResponse}
  */
 proto.sentiric.media.v1.AllocatePortResponse.deserializeBinary = function(bytes) {
@@ -408,7 +408,7 @@ rtpPort: jspb.Message.getFieldWithDefault(msg, 1, 0)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.media.v1.ReleasePortRequest}
  */
 proto.sentiric.media.v1.ReleasePortRequest.deserializeBinary = function(bytes) {
@@ -538,7 +538,7 @@ success: jspb.Message.getBooleanFieldWithDefault(msg, 1, false)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.media.v1.ReleasePortResponse}
  */
 proto.sentiric.media.v1.ReleasePortResponse.deserializeBinary = function(bytes) {

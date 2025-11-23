@@ -104,7 +104,7 @@ orderId: jspb.Message.getFieldWithDefault(msg, 1, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.vertical.v1.GetOrderStatusRequest}
  */
 proto.sentiric.vertical.v1.GetOrderStatusRequest.deserializeBinary = function(bytes) {
@@ -234,7 +234,7 @@ status: jspb.Message.getFieldWithDefault(msg, 1, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.vertical.v1.GetOrderStatusResponse}
  */
 proto.sentiric.vertical.v1.GetOrderStatusResponse.deserializeBinary = function(bytes) {

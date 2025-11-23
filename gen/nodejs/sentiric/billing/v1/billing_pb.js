@@ -109,7 +109,7 @@ timestamp: (f = msg.getTimestamp()) && google_protobuf_timestamp_pb.Timestamp.to
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.billing.v1.ProcessUsageRequest}
  */
 proto.sentiric.billing.v1.ProcessUsageRequest.deserializeBinary = function(bytes) {
@@ -348,7 +348,7 @@ transactionId: jspb.Message.getFieldWithDefault(msg, 2, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.billing.v1.ProcessUsageResponse}
  */
 proto.sentiric.billing.v1.ProcessUsageResponse.deserializeBinary = function(bytes) {

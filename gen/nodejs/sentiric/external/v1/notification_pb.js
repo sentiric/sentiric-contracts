@@ -150,7 +150,7 @@ tenantId: jspb.Message.getFieldWithDefault(msg, 3, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.external.v1.SendSMSRequest}
  */
 proto.sentiric.external.v1.SendSMSRequest.deserializeBinary = function(bytes) {
@@ -338,7 +338,7 @@ success: jspb.Message.getBooleanFieldWithDefault(msg, 1, false)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.external.v1.SendSMSResponse}
  */
 proto.sentiric.external.v1.SendSMSResponse.deserializeBinary = function(bytes) {
@@ -470,7 +470,7 @@ bodyHtml: jspb.Message.getFieldWithDefault(msg, 3, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.external.v1.SendEmailRequest}
  */
 proto.sentiric.external.v1.SendEmailRequest.deserializeBinary = function(bytes) {
@@ -658,7 +658,7 @@ success: jspb.Message.getBooleanFieldWithDefault(msg, 1, false)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.external.v1.SendEmailResponse}
  */
 proto.sentiric.external.v1.SendEmailResponse.deserializeBinary = function(bytes) {

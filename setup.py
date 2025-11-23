@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="sentiric-contracts-py",
-    version="1.11.1",  # 🔼 VERSİYON ARTIRILDI
+    version="1.11.2",  # 🔼 VERSİYON ARTIRILDI
     author="Sentiric Team",
     author_email="dev@sentiric.ai",
     description="Auto-generated Python gRPC stubs for the Sentiric platform.",

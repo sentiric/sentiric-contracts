@@ -107,7 +107,7 @@ voiceSelector: (f = jspb.Message.getField(msg, 4)) == null ? undefined : f
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.tts.v1.SynthesizeRequest}
  */
 proto.sentiric.tts.v1.SynthesizeRequest.deserializeBinary = function(bytes) {
@@ -361,7 +361,7 @@ engineUsed: jspb.Message.getFieldWithDefault(msg, 2, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.tts.v1.SynthesizeResponse}
  */
 proto.sentiric.tts.v1.SynthesizeResponse.deserializeBinary = function(bytes) {

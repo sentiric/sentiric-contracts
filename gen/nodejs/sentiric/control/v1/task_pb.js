@@ -106,7 +106,7 @@ dueDate: (f = jspb.Message.getField(msg, 3)) == null ? undefined : f
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.control.v1.DispatchTaskRequest}
  */
 proto.sentiric.control.v1.DispatchTaskRequest.deserializeBinary = function(bytes) {
@@ -321,7 +321,7 @@ taskId: jspb.Message.getFieldWithDefault(msg, 1, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.control.v1.DispatchTaskResponse}
  */
 proto.sentiric.control.v1.DispatchTaskResponse.deserializeBinary = function(bytes) {

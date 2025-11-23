@@ -106,7 +106,7 @@ userId: jspb.Message.getFieldWithDefault(msg, 3, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.vertical.v1.SubmitApplicationRequest}
  */
 proto.sentiric.vertical.v1.SubmitApplicationRequest.deserializeBinary = function(bytes) {
@@ -304,7 +304,7 @@ message: jspb.Message.getFieldWithDefault(msg, 2, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.vertical.v1.SubmitApplicationResponse}
  */
 proto.sentiric.vertical.v1.SubmitApplicationResponse.deserializeBinary = function(bytes) {

@@ -150,7 +150,7 @@ toUri: jspb.Message.getFieldWithDefault(msg, 3, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.sip.v1.InitiateCallRequest}
  */
 proto.sentiric.sip.v1.InitiateCallRequest.deserializeBinary = function(bytes) {
@@ -339,7 +339,7 @@ newCallId: jspb.Message.getFieldWithDefault(msg, 2, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.sip.v1.InitiateCallResponse}
  */
 proto.sentiric.sip.v1.InitiateCallResponse.deserializeBinary = function(bytes) {
@@ -499,7 +499,7 @@ transferTargetUri: jspb.Message.getFieldWithDefault(msg, 2, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.sip.v1.TransferCallRequest}
  */
 proto.sentiric.sip.v1.TransferCallRequest.deserializeBinary = function(bytes) {
@@ -658,7 +658,7 @@ success: jspb.Message.getBooleanFieldWithDefault(msg, 1, false)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.sip.v1.TransferCallResponse}
  */
 proto.sentiric.sip.v1.TransferCallResponse.deserializeBinary = function(bytes) {

@@ -107,7 +107,7 @@ currency: jspb.Message.getFieldWithDefault(msg, 4, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.external.v1.InitiatePaymentRequest}
  */
 proto.sentiric.external.v1.InitiatePaymentRequest.deserializeBinary = function(bytes) {
@@ -325,7 +325,7 @@ status: jspb.Message.getFieldWithDefault(msg, 2, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.external.v1.InitiatePaymentResponse}
  */
 proto.sentiric.external.v1.InitiatePaymentResponse.deserializeBinary = function(bytes) {

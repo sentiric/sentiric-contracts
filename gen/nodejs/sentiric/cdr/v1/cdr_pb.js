@@ -111,7 +111,7 @@ metadataMap: (f = msg.getMetadataMap()) ? f.toObject(includeInstance, undefined)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.cdr.v1.RecordCallEventRequest}
  */
 proto.sentiric.cdr.v1.RecordCallEventRequest.deserializeBinary = function(bytes) {
@@ -416,7 +416,7 @@ success: jspb.Message.getBooleanFieldWithDefault(msg, 1, false)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.cdr.v1.RecordCallEventResponse}
  */
 proto.sentiric.cdr.v1.RecordCallEventResponse.deserializeBinary = function(bytes) {

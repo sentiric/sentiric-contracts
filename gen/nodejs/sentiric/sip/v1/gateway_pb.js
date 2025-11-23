@@ -104,7 +104,7 @@ region: jspb.Message.getFieldWithDefault(msg, 1, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.sip.v1.GetLoadRequest}
  */
 proto.sentiric.sip.v1.GetLoadRequest.deserializeBinary = function(bytes) {
@@ -235,7 +235,7 @@ activeCalls: jspb.Message.getFieldWithDefault(msg, 2, 0)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.sip.v1.GetLoadResponse}
  */
 proto.sentiric.sip.v1.GetLoadResponse.deserializeBinary = function(bytes) {

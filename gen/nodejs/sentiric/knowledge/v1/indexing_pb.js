@@ -105,7 +105,7 @@ source: (f = jspb.Message.getField(msg, 2)) == null ? undefined : f
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.knowledge.v1.TriggerReindexRequest}
  */
 proto.sentiric.knowledge.v1.TriggerReindexRequest.deserializeBinary = function(bytes) {
@@ -283,7 +283,7 @@ jobId: jspb.Message.getFieldWithDefault(msg, 2, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.knowledge.v1.TriggerReindexResponse}
  */
 proto.sentiric.knowledge.v1.TriggerReindexResponse.deserializeBinary = function(bytes) {

@@ -194,7 +194,7 @@ expires: jspb.Message.getFieldWithDefault(msg, 3, 0)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.sip.v1.RegisterRequest}
  */
 proto.sentiric.sip.v1.RegisterRequest.deserializeBinary = function(bytes) {
@@ -382,7 +382,7 @@ success: jspb.Message.getBooleanFieldWithDefault(msg, 1, false)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.sip.v1.RegisterResponse}
  */
 proto.sentiric.sip.v1.RegisterResponse.deserializeBinary = function(bytes) {
@@ -512,7 +512,7 @@ sipUri: jspb.Message.getFieldWithDefault(msg, 1, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.sip.v1.UnregisterRequest}
  */
 proto.sentiric.sip.v1.UnregisterRequest.deserializeBinary = function(bytes) {
@@ -642,7 +642,7 @@ success: jspb.Message.getBooleanFieldWithDefault(msg, 1, false)
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.sip.v1.UnregisterResponse}
  */
 proto.sentiric.sip.v1.UnregisterResponse.deserializeBinary = function(bytes) {
@@ -772,7 +772,7 @@ sipUri: jspb.Message.getFieldWithDefault(msg, 1, "")
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.sip.v1.LookupContactRequest}
  */
 proto.sentiric.sip.v1.LookupContactRequest.deserializeBinary = function(bytes) {
@@ -909,7 +909,7 @@ contactUrisList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined
 
 /**
  * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @param {jspb.binary.bytesource.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.sentiric.sip.v1.LookupContactResponse}
  */
 proto.sentiric.sip.v1.LookupContactResponse.deserializeBinary = function(bytes) {

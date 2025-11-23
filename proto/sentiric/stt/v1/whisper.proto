@@ -25,6 +25,11 @@ message WhisperTranscribeResponse {
   string language = 2;
   float language_probability = 3;
   double duration = 4;
+  // ---- affective proxies ----
+  string gender_proxy = 5;
+  string emotion_proxy = 6;
+  float arousal = 7;
+  float valence = 8;  
 }
 
 // Akış tabanlı transkripsiyon için mesajlar
@@ -36,4 +41,9 @@ message WhisperTranscribeStreamRequest {
 message WhisperTranscribeStreamResponse {
   string transcription = 1;
   bool is_final = 2; // Bu segmentin nihai sonuç olup olmadığını belirtir.
+  // ---- affective proxies ----
+  string gender_proxy = 3;
+  string emotion_proxy = 4;
+  float arousal = 5;
+  float valence = 6;  
 }
