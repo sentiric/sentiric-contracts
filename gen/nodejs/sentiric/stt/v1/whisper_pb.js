@@ -51,7 +51,7 @@ if (goog.DEBUG && !COMPILED) {
  * @constructor
  */
 proto.sentiric.stt.v1.WhisperTranscribeResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.sentiric.stt.v1.WhisperTranscribeResponse.repeatedFields_, null);
 };
 goog.inherits(proto.sentiric.stt.v1.WhisperTranscribeResponse, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -93,7 +93,7 @@ if (goog.DEBUG && !COMPILED) {
  * @constructor
  */
 proto.sentiric.stt.v1.WhisperTranscribeStreamResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.sentiric.stt.v1.WhisperTranscribeStreamResponse.repeatedFields_, null);
 };
 goog.inherits(proto.sentiric.stt.v1.WhisperTranscribeStreamResponse, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -306,6 +306,13 @@ proto.sentiric.stt.v1.WhisperTranscribeRequest.prototype.hasLanguage = function(
 
 
 
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.sentiric.stt.v1.WhisperTranscribeResponse.repeatedFields_ = [15];
+
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -344,7 +351,14 @@ duration: jspb.Message.getFloatingPointFieldWithDefault(msg, 4, 0.0),
 genderProxy: jspb.Message.getFieldWithDefault(msg, 5, ""),
 emotionProxy: jspb.Message.getFieldWithDefault(msg, 6, ""),
 arousal: jspb.Message.getFloatingPointFieldWithDefault(msg, 7, 0.0),
-valence: jspb.Message.getFloatingPointFieldWithDefault(msg, 8, 0.0)
+valence: jspb.Message.getFloatingPointFieldWithDefault(msg, 8, 0.0),
+pitchMean: jspb.Message.getFloatingPointFieldWithDefault(msg, 9, 0.0),
+pitchStd: jspb.Message.getFloatingPointFieldWithDefault(msg, 10, 0.0),
+energyMean: jspb.Message.getFloatingPointFieldWithDefault(msg, 11, 0.0),
+energyStd: jspb.Message.getFloatingPointFieldWithDefault(msg, 12, 0.0),
+spectralCentroid: jspb.Message.getFloatingPointFieldWithDefault(msg, 13, 0.0),
+zeroCrossingRate: jspb.Message.getFloatingPointFieldWithDefault(msg, 14, 0.0),
+speakerVecList: (f = jspb.Message.getRepeatedFloatingPointField(msg, 15)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -412,6 +426,33 @@ proto.sentiric.stt.v1.WhisperTranscribeResponse.deserializeBinaryFromReader = fu
     case 8:
       var value = /** @type {number} */ (reader.readFloat());
       msg.setValence(value);
+      break;
+    case 9:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setPitchMean(value);
+      break;
+    case 10:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setPitchStd(value);
+      break;
+    case 11:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setEnergyMean(value);
+      break;
+    case 12:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setEnergyStd(value);
+      break;
+    case 13:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setSpectralCentroid(value);
+      break;
+    case 14:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setZeroCrossingRate(value);
+      break;
+    case 15:
+      reader.readPackableFloatInto(msg.getSpeakerVecList());
       break;
     default:
       reader.skipField();
@@ -495,6 +536,55 @@ proto.sentiric.stt.v1.WhisperTranscribeResponse.serializeBinaryToWriter = functi
   if (f !== 0.0) {
     writer.writeFloat(
       8,
+      f
+    );
+  }
+  f = message.getPitchMean();
+  if (f !== 0.0) {
+    writer.writeFloat(
+      9,
+      f
+    );
+  }
+  f = message.getPitchStd();
+  if (f !== 0.0) {
+    writer.writeFloat(
+      10,
+      f
+    );
+  }
+  f = message.getEnergyMean();
+  if (f !== 0.0) {
+    writer.writeFloat(
+      11,
+      f
+    );
+  }
+  f = message.getEnergyStd();
+  if (f !== 0.0) {
+    writer.writeFloat(
+      12,
+      f
+    );
+  }
+  f = message.getSpectralCentroid();
+  if (f !== 0.0) {
+    writer.writeFloat(
+      13,
+      f
+    );
+  }
+  f = message.getZeroCrossingRate();
+  if (f !== 0.0) {
+    writer.writeFloat(
+      14,
+      f
+    );
+  }
+  f = message.getSpeakerVecList();
+  if (f.length > 0) {
+    writer.writePackedFloat(
+      15,
       f
     );
   }
@@ -642,6 +732,151 @@ proto.sentiric.stt.v1.WhisperTranscribeResponse.prototype.getValence = function(
  */
 proto.sentiric.stt.v1.WhisperTranscribeResponse.prototype.setValence = function(value) {
   return jspb.Message.setProto3FloatField(this, 8, value);
+};
+
+
+/**
+ * optional float pitch_mean = 9;
+ * @return {number}
+ */
+proto.sentiric.stt.v1.WhisperTranscribeResponse.prototype.getPitchMean = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 9, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sentiric.stt.v1.WhisperTranscribeResponse} returns this
+ */
+proto.sentiric.stt.v1.WhisperTranscribeResponse.prototype.setPitchMean = function(value) {
+  return jspb.Message.setProto3FloatField(this, 9, value);
+};
+
+
+/**
+ * optional float pitch_std = 10;
+ * @return {number}
+ */
+proto.sentiric.stt.v1.WhisperTranscribeResponse.prototype.getPitchStd = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 10, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sentiric.stt.v1.WhisperTranscribeResponse} returns this
+ */
+proto.sentiric.stt.v1.WhisperTranscribeResponse.prototype.setPitchStd = function(value) {
+  return jspb.Message.setProto3FloatField(this, 10, value);
+};
+
+
+/**
+ * optional float energy_mean = 11;
+ * @return {number}
+ */
+proto.sentiric.stt.v1.WhisperTranscribeResponse.prototype.getEnergyMean = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 11, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sentiric.stt.v1.WhisperTranscribeResponse} returns this
+ */
+proto.sentiric.stt.v1.WhisperTranscribeResponse.prototype.setEnergyMean = function(value) {
+  return jspb.Message.setProto3FloatField(this, 11, value);
+};
+
+
+/**
+ * optional float energy_std = 12;
+ * @return {number}
+ */
+proto.sentiric.stt.v1.WhisperTranscribeResponse.prototype.getEnergyStd = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 12, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sentiric.stt.v1.WhisperTranscribeResponse} returns this
+ */
+proto.sentiric.stt.v1.WhisperTranscribeResponse.prototype.setEnergyStd = function(value) {
+  return jspb.Message.setProto3FloatField(this, 12, value);
+};
+
+
+/**
+ * optional float spectral_centroid = 13;
+ * @return {number}
+ */
+proto.sentiric.stt.v1.WhisperTranscribeResponse.prototype.getSpectralCentroid = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 13, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sentiric.stt.v1.WhisperTranscribeResponse} returns this
+ */
+proto.sentiric.stt.v1.WhisperTranscribeResponse.prototype.setSpectralCentroid = function(value) {
+  return jspb.Message.setProto3FloatField(this, 13, value);
+};
+
+
+/**
+ * optional float zero_crossing_rate = 14;
+ * @return {number}
+ */
+proto.sentiric.stt.v1.WhisperTranscribeResponse.prototype.getZeroCrossingRate = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 14, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sentiric.stt.v1.WhisperTranscribeResponse} returns this
+ */
+proto.sentiric.stt.v1.WhisperTranscribeResponse.prototype.setZeroCrossingRate = function(value) {
+  return jspb.Message.setProto3FloatField(this, 14, value);
+};
+
+
+/**
+ * repeated float speaker_vec = 15;
+ * @return {!Array<number>}
+ */
+proto.sentiric.stt.v1.WhisperTranscribeResponse.prototype.getSpeakerVecList = function() {
+  return /** @type {!Array<number>} */ (jspb.Message.getRepeatedFloatingPointField(this, 15));
+};
+
+
+/**
+ * @param {!Array<number>} value
+ * @return {!proto.sentiric.stt.v1.WhisperTranscribeResponse} returns this
+ */
+proto.sentiric.stt.v1.WhisperTranscribeResponse.prototype.setSpeakerVecList = function(value) {
+  return jspb.Message.setField(this, 15, value || []);
+};
+
+
+/**
+ * @param {number} value
+ * @param {number=} opt_index
+ * @return {!proto.sentiric.stt.v1.WhisperTranscribeResponse} returns this
+ */
+proto.sentiric.stt.v1.WhisperTranscribeResponse.prototype.addSpeakerVec = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 15, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.sentiric.stt.v1.WhisperTranscribeResponse} returns this
+ */
+proto.sentiric.stt.v1.WhisperTranscribeResponse.prototype.clearSpeakerVecList = function() {
+  return this.setSpeakerVecList([]);
 };
 
 
@@ -800,6 +1035,13 @@ proto.sentiric.stt.v1.WhisperTranscribeStreamRequest.prototype.setAudioChunk = f
 
 
 
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.sentiric.stt.v1.WhisperTranscribeStreamResponse.repeatedFields_ = [13];
+
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -836,7 +1078,14 @@ isFinal: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
 genderProxy: jspb.Message.getFieldWithDefault(msg, 3, ""),
 emotionProxy: jspb.Message.getFieldWithDefault(msg, 4, ""),
 arousal: jspb.Message.getFloatingPointFieldWithDefault(msg, 5, 0.0),
-valence: jspb.Message.getFloatingPointFieldWithDefault(msg, 6, 0.0)
+valence: jspb.Message.getFloatingPointFieldWithDefault(msg, 6, 0.0),
+pitchMean: jspb.Message.getFloatingPointFieldWithDefault(msg, 7, 0.0),
+pitchStd: jspb.Message.getFloatingPointFieldWithDefault(msg, 8, 0.0),
+energyMean: jspb.Message.getFloatingPointFieldWithDefault(msg, 9, 0.0),
+energyStd: jspb.Message.getFloatingPointFieldWithDefault(msg, 10, 0.0),
+spectralCentroid: jspb.Message.getFloatingPointFieldWithDefault(msg, 11, 0.0),
+zeroCrossingRate: jspb.Message.getFloatingPointFieldWithDefault(msg, 12, 0.0),
+speakerVecList: (f = jspb.Message.getRepeatedFloatingPointField(msg, 13)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -896,6 +1145,33 @@ proto.sentiric.stt.v1.WhisperTranscribeStreamResponse.deserializeBinaryFromReade
     case 6:
       var value = /** @type {number} */ (reader.readFloat());
       msg.setValence(value);
+      break;
+    case 7:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setPitchMean(value);
+      break;
+    case 8:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setPitchStd(value);
+      break;
+    case 9:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setEnergyMean(value);
+      break;
+    case 10:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setEnergyStd(value);
+      break;
+    case 11:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setSpectralCentroid(value);
+      break;
+    case 12:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setZeroCrossingRate(value);
+      break;
+    case 13:
+      reader.readPackableFloatInto(msg.getSpeakerVecList());
       break;
     default:
       reader.skipField();
@@ -965,6 +1241,55 @@ proto.sentiric.stt.v1.WhisperTranscribeStreamResponse.serializeBinaryToWriter = 
   if (f !== 0.0) {
     writer.writeFloat(
       6,
+      f
+    );
+  }
+  f = message.getPitchMean();
+  if (f !== 0.0) {
+    writer.writeFloat(
+      7,
+      f
+    );
+  }
+  f = message.getPitchStd();
+  if (f !== 0.0) {
+    writer.writeFloat(
+      8,
+      f
+    );
+  }
+  f = message.getEnergyMean();
+  if (f !== 0.0) {
+    writer.writeFloat(
+      9,
+      f
+    );
+  }
+  f = message.getEnergyStd();
+  if (f !== 0.0) {
+    writer.writeFloat(
+      10,
+      f
+    );
+  }
+  f = message.getSpectralCentroid();
+  if (f !== 0.0) {
+    writer.writeFloat(
+      11,
+      f
+    );
+  }
+  f = message.getZeroCrossingRate();
+  if (f !== 0.0) {
+    writer.writeFloat(
+      12,
+      f
+    );
+  }
+  f = message.getSpeakerVecList();
+  if (f.length > 0) {
+    writer.writePackedFloat(
+      13,
       f
     );
   }
@@ -1076,6 +1401,151 @@ proto.sentiric.stt.v1.WhisperTranscribeStreamResponse.prototype.getValence = fun
  */
 proto.sentiric.stt.v1.WhisperTranscribeStreamResponse.prototype.setValence = function(value) {
   return jspb.Message.setProto3FloatField(this, 6, value);
+};
+
+
+/**
+ * optional float pitch_mean = 7;
+ * @return {number}
+ */
+proto.sentiric.stt.v1.WhisperTranscribeStreamResponse.prototype.getPitchMean = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 7, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sentiric.stt.v1.WhisperTranscribeStreamResponse} returns this
+ */
+proto.sentiric.stt.v1.WhisperTranscribeStreamResponse.prototype.setPitchMean = function(value) {
+  return jspb.Message.setProto3FloatField(this, 7, value);
+};
+
+
+/**
+ * optional float pitch_std = 8;
+ * @return {number}
+ */
+proto.sentiric.stt.v1.WhisperTranscribeStreamResponse.prototype.getPitchStd = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 8, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sentiric.stt.v1.WhisperTranscribeStreamResponse} returns this
+ */
+proto.sentiric.stt.v1.WhisperTranscribeStreamResponse.prototype.setPitchStd = function(value) {
+  return jspb.Message.setProto3FloatField(this, 8, value);
+};
+
+
+/**
+ * optional float energy_mean = 9;
+ * @return {number}
+ */
+proto.sentiric.stt.v1.WhisperTranscribeStreamResponse.prototype.getEnergyMean = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 9, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sentiric.stt.v1.WhisperTranscribeStreamResponse} returns this
+ */
+proto.sentiric.stt.v1.WhisperTranscribeStreamResponse.prototype.setEnergyMean = function(value) {
+  return jspb.Message.setProto3FloatField(this, 9, value);
+};
+
+
+/**
+ * optional float energy_std = 10;
+ * @return {number}
+ */
+proto.sentiric.stt.v1.WhisperTranscribeStreamResponse.prototype.getEnergyStd = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 10, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sentiric.stt.v1.WhisperTranscribeStreamResponse} returns this
+ */
+proto.sentiric.stt.v1.WhisperTranscribeStreamResponse.prototype.setEnergyStd = function(value) {
+  return jspb.Message.setProto3FloatField(this, 10, value);
+};
+
+
+/**
+ * optional float spectral_centroid = 11;
+ * @return {number}
+ */
+proto.sentiric.stt.v1.WhisperTranscribeStreamResponse.prototype.getSpectralCentroid = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 11, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sentiric.stt.v1.WhisperTranscribeStreamResponse} returns this
+ */
+proto.sentiric.stt.v1.WhisperTranscribeStreamResponse.prototype.setSpectralCentroid = function(value) {
+  return jspb.Message.setProto3FloatField(this, 11, value);
+};
+
+
+/**
+ * optional float zero_crossing_rate = 12;
+ * @return {number}
+ */
+proto.sentiric.stt.v1.WhisperTranscribeStreamResponse.prototype.getZeroCrossingRate = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 12, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sentiric.stt.v1.WhisperTranscribeStreamResponse} returns this
+ */
+proto.sentiric.stt.v1.WhisperTranscribeStreamResponse.prototype.setZeroCrossingRate = function(value) {
+  return jspb.Message.setProto3FloatField(this, 12, value);
+};
+
+
+/**
+ * repeated float speaker_vec = 13;
+ * @return {!Array<number>}
+ */
+proto.sentiric.stt.v1.WhisperTranscribeStreamResponse.prototype.getSpeakerVecList = function() {
+  return /** @type {!Array<number>} */ (jspb.Message.getRepeatedFloatingPointField(this, 13));
+};
+
+
+/**
+ * @param {!Array<number>} value
+ * @return {!proto.sentiric.stt.v1.WhisperTranscribeStreamResponse} returns this
+ */
+proto.sentiric.stt.v1.WhisperTranscribeStreamResponse.prototype.setSpeakerVecList = function(value) {
+  return jspb.Message.setField(this, 13, value || []);
+};
+
+
+/**
+ * @param {number} value
+ * @param {number=} opt_index
+ * @return {!proto.sentiric.stt.v1.WhisperTranscribeStreamResponse} returns this
+ */
+proto.sentiric.stt.v1.WhisperTranscribeStreamResponse.prototype.addSpeakerVec = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 13, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.sentiric.stt.v1.WhisperTranscribeStreamResponse} returns this
+ */
+proto.sentiric.stt.v1.WhisperTranscribeStreamResponse.prototype.clearSpeakerVecList = function() {
+  return this.setSpeakerVecList([]);
 };
 
 

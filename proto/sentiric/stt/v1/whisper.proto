@@ -25,11 +25,18 @@ message WhisperTranscribeResponse {
   string language = 2;
   float language_probability = 3;
   double duration = 4;
-  // ---- affective proxies ----
+  // ---- affective & speaker identity ----
   string gender_proxy = 5;
   string emotion_proxy = 6;
   float arousal = 7;
-  float valence = 8;  
+  float valence = 8;
+  float pitch_mean = 9;
+  float pitch_std = 10;
+  float energy_mean = 11;
+  float energy_std = 12;
+  float spectral_centroid = 13;
+  float zero_crossing_rate = 14;
+  repeated float speaker_vec = 15; // 8-D vector
 }
 
 // Akış tabanlı transkripsiyon için mesajlar
@@ -41,9 +48,16 @@ message WhisperTranscribeStreamRequest {
 message WhisperTranscribeStreamResponse {
   string transcription = 1;
   bool is_final = 2; // Bu segmentin nihai sonuç olup olmadığını belirtir.
-  // ---- affective proxies ----
+  // ---- affective & speaker identity ----
   string gender_proxy = 3;
   string emotion_proxy = 4;
   float arousal = 5;
-  float valence = 6;  
+  float valence = 6;
+  float pitch_mean = 7;
+  float pitch_std = 8;
+  float energy_mean = 9;
+  float energy_std = 10;
+  float spectral_centroid = 11;
+  float zero_crossing_rate = 12;
+  repeated float speaker_vec = 13;
 }

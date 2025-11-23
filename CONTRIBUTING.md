@@ -74,8 +74,8 @@ git commit -m "feat(api): Add new services for v1.11.2"
 git push origin main
 
 # Yeni bir tag oluşturun ve gönderin
-git tag v1.11.2
-git push origin v1.11.2
+git tag v1.11.3
+git push origin v1.11.3
 ```
 > 🎯 **Semantic Versioning (semver)** kullanıyoruz: `MAJOR.MINOR.PATCH`. MAJOR değişiklikler geriye dönük uyumsuzluk yaratır.
 

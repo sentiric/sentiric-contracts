@@ -40,7 +40,8 @@ struct WhisperTranscribeRequestDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WhisperTranscribeRequestDefaultTypeInternal _WhisperTranscribeRequest_default_instance_;
 PROTOBUF_CONSTEXPR WhisperTranscribeResponse::WhisperTranscribeResponse(
     ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.transcription_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+    /*decltype(_impl_.speaker_vec_)*/{}
+  , /*decltype(_impl_.transcription_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.language_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.gender_proxy_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.emotion_proxy_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
@@ -48,6 +49,12 @@ PROTOBUF_CONSTEXPR WhisperTranscribeResponse::WhisperTranscribeResponse(
   , /*decltype(_impl_.language_probability_)*/0
   , /*decltype(_impl_.arousal_)*/0
   , /*decltype(_impl_.valence_)*/0
+  , /*decltype(_impl_.pitch_mean_)*/0
+  , /*decltype(_impl_.pitch_std_)*/0
+  , /*decltype(_impl_.energy_mean_)*/0
+  , /*decltype(_impl_.energy_std_)*/0
+  , /*decltype(_impl_.spectral_centroid_)*/0
+  , /*decltype(_impl_.zero_crossing_rate_)*/0
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct WhisperTranscribeResponseDefaultTypeInternal {
   PROTOBUF_CONSTEXPR WhisperTranscribeResponseDefaultTypeInternal()
@@ -73,12 +80,19 @@ struct WhisperTranscribeStreamRequestDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WhisperTranscribeStreamRequestDefaultTypeInternal _WhisperTranscribeStreamRequest_default_instance_;
 PROTOBUF_CONSTEXPR WhisperTranscribeStreamResponse::WhisperTranscribeStreamResponse(
     ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.transcription_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+    /*decltype(_impl_.speaker_vec_)*/{}
+  , /*decltype(_impl_.transcription_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.gender_proxy_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.emotion_proxy_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.is_final_)*/false
   , /*decltype(_impl_.arousal_)*/0
   , /*decltype(_impl_.valence_)*/0
+  , /*decltype(_impl_.pitch_mean_)*/0
+  , /*decltype(_impl_.pitch_std_)*/0
+  , /*decltype(_impl_.energy_mean_)*/0
+  , /*decltype(_impl_.energy_std_)*/0
+  , /*decltype(_impl_.spectral_centroid_)*/0
+  , /*decltype(_impl_.zero_crossing_rate_)*/0
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct WhisperTranscribeStreamResponseDefaultTypeInternal {
   PROTOBUF_CONSTEXPR WhisperTranscribeStreamResponseDefaultTypeInternal()
@@ -121,6 +135,13 @@ const uint32_t TableStruct_sentiric_2fstt_2fv1_2fwhisper_2eproto::offsets[] PROT
   PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::WhisperTranscribeResponse, _impl_.emotion_proxy_),
   PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::WhisperTranscribeResponse, _impl_.arousal_),
   PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::WhisperTranscribeResponse, _impl_.valence_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::WhisperTranscribeResponse, _impl_.pitch_mean_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::WhisperTranscribeResponse, _impl_.pitch_std_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::WhisperTranscribeResponse, _impl_.energy_mean_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::WhisperTranscribeResponse, _impl_.energy_std_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::WhisperTranscribeResponse, _impl_.spectral_centroid_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::WhisperTranscribeResponse, _impl_.zero_crossing_rate_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::WhisperTranscribeResponse, _impl_.speaker_vec_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::WhisperTranscribeStreamRequest, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -140,12 +161,19 @@ const uint32_t TableStruct_sentiric_2fstt_2fv1_2fwhisper_2eproto::offsets[] PROT
   PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::WhisperTranscribeStreamResponse, _impl_.emotion_proxy_),
   PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::WhisperTranscribeStreamResponse, _impl_.arousal_),
   PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::WhisperTranscribeStreamResponse, _impl_.valence_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::WhisperTranscribeStreamResponse, _impl_.pitch_mean_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::WhisperTranscribeStreamResponse, _impl_.pitch_std_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::WhisperTranscribeStreamResponse, _impl_.energy_mean_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::WhisperTranscribeStreamResponse, _impl_.energy_std_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::WhisperTranscribeStreamResponse, _impl_.spectral_centroid_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::WhisperTranscribeStreamResponse, _impl_.zero_crossing_rate_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::WhisperTranscribeStreamResponse, _impl_.speaker_vec_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 8, -1, sizeof(::sentiric::stt::v1::WhisperTranscribeRequest)},
   { 10, -1, -1, sizeof(::sentiric::stt::v1::WhisperTranscribeResponse)},
-  { 24, -1, -1, sizeof(::sentiric::stt::v1::WhisperTranscribeStreamRequest)},
-  { 31, -1, -1, sizeof(::sentiric::stt::v1::WhisperTranscribeStreamResponse)},
+  { 31, -1, -1, sizeof(::sentiric::stt::v1::WhisperTranscribeStreamRequest)},
+  { 38, -1, -1, sizeof(::sentiric::stt::v1::WhisperTranscribeStreamResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -159,30 +187,37 @@ const char descriptor_table_protodef_sentiric_2fstt_2fv1_2fwhisper_2eproto[] PRO
   "\n\035sentiric/stt/v1/whisper.proto\022\017sentiri"
   "c.stt.v1\"R\n\030WhisperTranscribeRequest\022\022\n\n"
   "audio_data\030\001 \001(\014\022\025\n\010language\030\002 \001(\tH\000\210\001\001B"
-  "\013\n\t_language\"\303\001\n\031WhisperTranscribeRespon"
+  "\013\n\t_language\"\337\002\n\031WhisperTranscribeRespon"
   "se\022\025\n\rtranscription\030\001 \001(\t\022\020\n\010language\030\002 "
   "\001(\t\022\034\n\024language_probability\030\003 \001(\002\022\020\n\010dur"
   "ation\030\004 \001(\001\022\024\n\014gender_proxy\030\005 \001(\t\022\025\n\remo"
   "tion_proxy\030\006 \001(\t\022\017\n\007arousal\030\007 \001(\002\022\017\n\007val"
-  "ence\030\010 \001(\002\"5\n\036WhisperTranscribeStreamReq"
-  "uest\022\023\n\013audio_chunk\030\001 \001(\014\"\231\001\n\037WhisperTra"
-  "nscribeStreamResponse\022\025\n\rtranscription\030\001"
-  " \001(\t\022\020\n\010is_final\030\002 \001(\010\022\024\n\014gender_proxy\030\003"
-  " \001(\t\022\025\n\remotion_proxy\030\004 \001(\t\022\017\n\007arousal\030\005"
-  " \001(\002\022\017\n\007valence\030\006 \001(\0022\202\002\n\021SttWhisperServ"
-  "ice\022j\n\021WhisperTranscribe\022).sentiric.stt."
-  "v1.WhisperTranscribeRequest\032*.sentiric.s"
-  "tt.v1.WhisperTranscribeResponse\022\200\001\n\027Whis"
-  "perTranscribeStream\022/.sentiric.stt.v1.Wh"
-  "isperTranscribeStreamRequest\0320.sentiric."
-  "stt.v1.WhisperTranscribeStreamResponse(\001"
-  "0\001BEZCgithub.com/sentiric/sentiric-contr"
-  "acts/gen/go/sentiric/stt/v1;sttv1b\006proto"
-  "3"
+  "ence\030\010 \001(\002\022\022\n\npitch_mean\030\t \001(\002\022\021\n\tpitch_"
+  "std\030\n \001(\002\022\023\n\013energy_mean\030\013 \001(\002\022\022\n\nenergy"
+  "_std\030\014 \001(\002\022\031\n\021spectral_centroid\030\r \001(\002\022\032\n"
+  "\022zero_crossing_rate\030\016 \001(\002\022\023\n\013speaker_vec"
+  "\030\017 \003(\002\"5\n\036WhisperTranscribeStreamRequest"
+  "\022\023\n\013audio_chunk\030\001 \001(\014\"\265\002\n\037WhisperTranscr"
+  "ibeStreamResponse\022\025\n\rtranscription\030\001 \001(\t"
+  "\022\020\n\010is_final\030\002 \001(\010\022\024\n\014gender_proxy\030\003 \001(\t"
+  "\022\025\n\remotion_proxy\030\004 \001(\t\022\017\n\007arousal\030\005 \001(\002"
+  "\022\017\n\007valence\030\006 \001(\002\022\022\n\npitch_mean\030\007 \001(\002\022\021\n"
+  "\tpitch_std\030\010 \001(\002\022\023\n\013energy_mean\030\t \001(\002\022\022\n"
+  "\nenergy_std\030\n \001(\002\022\031\n\021spectral_centroid\030\013"
+  " \001(\002\022\032\n\022zero_crossing_rate\030\014 \001(\002\022\023\n\013spea"
+  "ker_vec\030\r \003(\0022\202\002\n\021SttWhisperService\022j\n\021W"
+  "hisperTranscribe\022).sentiric.stt.v1.Whisp"
+  "erTranscribeRequest\032*.sentiric.stt.v1.Wh"
+  "isperTranscribeResponse\022\200\001\n\027WhisperTrans"
+  "cribeStream\022/.sentiric.stt.v1.WhisperTra"
+  "nscribeStreamRequest\0320.sentiric.stt.v1.W"
+  "hisperTranscribeStreamResponse(\0010\001BEZCgi"
+  "thub.com/sentiric/sentiric-contracts/gen"
+  "/go/sentiric/stt/v1;sttv1b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_sentiric_2fstt_2fv1_2fwhisper_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_sentiric_2fstt_2fv1_2fwhisper_2eproto = {
-    false, false, 881, descriptor_table_protodef_sentiric_2fstt_2fv1_2fwhisper_2eproto,
+    false, false, 1193, descriptor_table_protodef_sentiric_2fstt_2fv1_2fwhisper_2eproto,
     "sentiric/stt/v1/whisper.proto",
     &descriptor_table_sentiric_2fstt_2fv1_2fwhisper_2eproto_once, nullptr, 0, 4,
     schemas, file_default_instances, TableStruct_sentiric_2fstt_2fv1_2fwhisper_2eproto::offsets,
@@ -477,7 +512,8 @@ WhisperTranscribeResponse::WhisperTranscribeResponse(const WhisperTranscribeResp
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   WhisperTranscribeResponse* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.transcription_){}
+      decltype(_impl_.speaker_vec_){from._impl_.speaker_vec_}
+    , decltype(_impl_.transcription_){}
     , decltype(_impl_.language_){}
     , decltype(_impl_.gender_proxy_){}
     , decltype(_impl_.emotion_proxy_){}
@@ -485,6 +521,12 @@ WhisperTranscribeResponse::WhisperTranscribeResponse(const WhisperTranscribeResp
     , decltype(_impl_.language_probability_){}
     , decltype(_impl_.arousal_){}
     , decltype(_impl_.valence_){}
+    , decltype(_impl_.pitch_mean_){}
+    , decltype(_impl_.pitch_std_){}
+    , decltype(_impl_.energy_mean_){}
+    , decltype(_impl_.energy_std_){}
+    , decltype(_impl_.spectral_centroid_){}
+    , decltype(_impl_.zero_crossing_rate_){}
     , /*decltype(_impl_._cached_size_)*/{}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
@@ -521,8 +563,8 @@ WhisperTranscribeResponse::WhisperTranscribeResponse(const WhisperTranscribeResp
       _this->GetArenaForAllocation());
   }
   ::memcpy(&_impl_.duration_, &from._impl_.duration_,
-    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.valence_) -
-    reinterpret_cast<char*>(&_impl_.duration_)) + sizeof(_impl_.valence_));
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.zero_crossing_rate_) -
+    reinterpret_cast<char*>(&_impl_.duration_)) + sizeof(_impl_.zero_crossing_rate_));
   // @@protoc_insertion_point(copy_constructor:sentiric.stt.v1.WhisperTranscribeResponse)
 }
 
@@ -531,7 +573,8 @@ inline void WhisperTranscribeResponse::SharedCtor(
   (void)arena;
   (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.transcription_){}
+      decltype(_impl_.speaker_vec_){arena}
+    , decltype(_impl_.transcription_){}
     , decltype(_impl_.language_){}
     , decltype(_impl_.gender_proxy_){}
     , decltype(_impl_.emotion_proxy_){}
@@ -539,6 +582,12 @@ inline void WhisperTranscribeResponse::SharedCtor(
     , decltype(_impl_.language_probability_){0}
     , decltype(_impl_.arousal_){0}
     , decltype(_impl_.valence_){0}
+    , decltype(_impl_.pitch_mean_){0}
+    , decltype(_impl_.pitch_std_){0}
+    , decltype(_impl_.energy_mean_){0}
+    , decltype(_impl_.energy_std_){0}
+    , decltype(_impl_.spectral_centroid_){0}
+    , decltype(_impl_.zero_crossing_rate_){0}
     , /*decltype(_impl_._cached_size_)*/{}
   };
   _impl_.transcription_.InitDefault();
@@ -570,6 +619,7 @@ WhisperTranscribeResponse::~WhisperTranscribeResponse() {
 
 inline void WhisperTranscribeResponse::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.speaker_vec_.~RepeatedField();
   _impl_.transcription_.Destroy();
   _impl_.language_.Destroy();
   _impl_.gender_proxy_.Destroy();
@@ -586,13 +636,14 @@ void WhisperTranscribeResponse::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  _impl_.speaker_vec_.Clear();
   _impl_.transcription_.ClearToEmpty();
   _impl_.language_.ClearToEmpty();
   _impl_.gender_proxy_.ClearToEmpty();
   _impl_.emotion_proxy_.ClearToEmpty();
   ::memset(&_impl_.duration_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&_impl_.valence_) -
-      reinterpret_cast<char*>(&_impl_.duration_)) + sizeof(_impl_.valence_));
+      reinterpret_cast<char*>(&_impl_.zero_crossing_rate_) -
+      reinterpret_cast<char*>(&_impl_.duration_)) + sizeof(_impl_.zero_crossing_rate_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -670,6 +721,65 @@ const char* WhisperTranscribeResponse::_InternalParse(const char* ptr, ::_pbi::P
       case 8:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 69)) {
           _impl_.valence_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float pitch_mean = 9;
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 77)) {
+          _impl_.pitch_mean_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float pitch_std = 10;
+      case 10:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 85)) {
+          _impl_.pitch_std_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float energy_mean = 11;
+      case 11:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 93)) {
+          _impl_.energy_mean_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float energy_std = 12;
+      case 12:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 101)) {
+          _impl_.energy_std_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float spectral_centroid = 13;
+      case 13:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 109)) {
+          _impl_.spectral_centroid_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float zero_crossing_rate = 14;
+      case 14:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 117)) {
+          _impl_.zero_crossing_rate_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated float speaker_vec = 15;
+      case 15:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 122)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedFloatParser(_internal_mutable_speaker_vec(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<uint8_t>(tag) == 125) {
+          _internal_add_speaker_vec(::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr));
           ptr += sizeof(float);
         } else
           goto handle_unusual;
@@ -783,6 +893,71 @@ uint8_t* WhisperTranscribeResponse::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteFloatToArray(8, this->_internal_valence(), target);
   }
 
+  // float pitch_mean = 9;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_pitch_mean = this->_internal_pitch_mean();
+  uint32_t raw_pitch_mean;
+  memcpy(&raw_pitch_mean, &tmp_pitch_mean, sizeof(tmp_pitch_mean));
+  if (raw_pitch_mean != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(9, this->_internal_pitch_mean(), target);
+  }
+
+  // float pitch_std = 10;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_pitch_std = this->_internal_pitch_std();
+  uint32_t raw_pitch_std;
+  memcpy(&raw_pitch_std, &tmp_pitch_std, sizeof(tmp_pitch_std));
+  if (raw_pitch_std != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(10, this->_internal_pitch_std(), target);
+  }
+
+  // float energy_mean = 11;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_energy_mean = this->_internal_energy_mean();
+  uint32_t raw_energy_mean;
+  memcpy(&raw_energy_mean, &tmp_energy_mean, sizeof(tmp_energy_mean));
+  if (raw_energy_mean != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(11, this->_internal_energy_mean(), target);
+  }
+
+  // float energy_std = 12;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_energy_std = this->_internal_energy_std();
+  uint32_t raw_energy_std;
+  memcpy(&raw_energy_std, &tmp_energy_std, sizeof(tmp_energy_std));
+  if (raw_energy_std != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(12, this->_internal_energy_std(), target);
+  }
+
+  // float spectral_centroid = 13;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_spectral_centroid = this->_internal_spectral_centroid();
+  uint32_t raw_spectral_centroid;
+  memcpy(&raw_spectral_centroid, &tmp_spectral_centroid, sizeof(tmp_spectral_centroid));
+  if (raw_spectral_centroid != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(13, this->_internal_spectral_centroid(), target);
+  }
+
+  // float zero_crossing_rate = 14;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_zero_crossing_rate = this->_internal_zero_crossing_rate();
+  uint32_t raw_zero_crossing_rate;
+  memcpy(&raw_zero_crossing_rate, &tmp_zero_crossing_rate, sizeof(tmp_zero_crossing_rate));
+  if (raw_zero_crossing_rate != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(14, this->_internal_zero_crossing_rate(), target);
+  }
+
+  // repeated float speaker_vec = 15;
+  if (this->_internal_speaker_vec_size() > 0) {
+    target = stream->WriteFixedPacked(15, _internal_speaker_vec(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -798,6 +973,17 @@ size_t WhisperTranscribeResponse::ByteSizeLong() const {
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
+
+  // repeated float speaker_vec = 15;
+  {
+    unsigned int count = static_cast<unsigned int>(this->_internal_speaker_vec_size());
+    size_t data_size = 4UL * count;
+    if (data_size > 0) {
+      total_size += 1 +
+        ::_pbi::WireFormatLite::Int32Size(static_cast<int32_t>(data_size));
+    }
+    total_size += data_size;
+  }
 
   // string transcription = 1;
   if (!this->_internal_transcription().empty()) {
@@ -863,6 +1049,60 @@ size_t WhisperTranscribeResponse::ByteSizeLong() const {
     total_size += 1 + 4;
   }
 
+  // float pitch_mean = 9;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_pitch_mean = this->_internal_pitch_mean();
+  uint32_t raw_pitch_mean;
+  memcpy(&raw_pitch_mean, &tmp_pitch_mean, sizeof(tmp_pitch_mean));
+  if (raw_pitch_mean != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float pitch_std = 10;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_pitch_std = this->_internal_pitch_std();
+  uint32_t raw_pitch_std;
+  memcpy(&raw_pitch_std, &tmp_pitch_std, sizeof(tmp_pitch_std));
+  if (raw_pitch_std != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float energy_mean = 11;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_energy_mean = this->_internal_energy_mean();
+  uint32_t raw_energy_mean;
+  memcpy(&raw_energy_mean, &tmp_energy_mean, sizeof(tmp_energy_mean));
+  if (raw_energy_mean != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float energy_std = 12;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_energy_std = this->_internal_energy_std();
+  uint32_t raw_energy_std;
+  memcpy(&raw_energy_std, &tmp_energy_std, sizeof(tmp_energy_std));
+  if (raw_energy_std != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float spectral_centroid = 13;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_spectral_centroid = this->_internal_spectral_centroid();
+  uint32_t raw_spectral_centroid;
+  memcpy(&raw_spectral_centroid, &tmp_spectral_centroid, sizeof(tmp_spectral_centroid));
+  if (raw_spectral_centroid != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float zero_crossing_rate = 14;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_zero_crossing_rate = this->_internal_zero_crossing_rate();
+  uint32_t raw_zero_crossing_rate;
+  memcpy(&raw_zero_crossing_rate, &tmp_zero_crossing_rate, sizeof(tmp_zero_crossing_rate));
+  if (raw_zero_crossing_rate != 0) {
+    total_size += 1 + 4;
+  }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
@@ -881,6 +1121,7 @@ void WhisperTranscribeResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_m
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  _this->_impl_.speaker_vec_.MergeFrom(from._impl_.speaker_vec_);
   if (!from._internal_transcription().empty()) {
     _this->_internal_set_transcription(from._internal_transcription());
   }
@@ -921,6 +1162,48 @@ void WhisperTranscribeResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_m
   if (raw_valence != 0) {
     _this->_internal_set_valence(from._internal_valence());
   }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_pitch_mean = from._internal_pitch_mean();
+  uint32_t raw_pitch_mean;
+  memcpy(&raw_pitch_mean, &tmp_pitch_mean, sizeof(tmp_pitch_mean));
+  if (raw_pitch_mean != 0) {
+    _this->_internal_set_pitch_mean(from._internal_pitch_mean());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_pitch_std = from._internal_pitch_std();
+  uint32_t raw_pitch_std;
+  memcpy(&raw_pitch_std, &tmp_pitch_std, sizeof(tmp_pitch_std));
+  if (raw_pitch_std != 0) {
+    _this->_internal_set_pitch_std(from._internal_pitch_std());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_energy_mean = from._internal_energy_mean();
+  uint32_t raw_energy_mean;
+  memcpy(&raw_energy_mean, &tmp_energy_mean, sizeof(tmp_energy_mean));
+  if (raw_energy_mean != 0) {
+    _this->_internal_set_energy_mean(from._internal_energy_mean());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_energy_std = from._internal_energy_std();
+  uint32_t raw_energy_std;
+  memcpy(&raw_energy_std, &tmp_energy_std, sizeof(tmp_energy_std));
+  if (raw_energy_std != 0) {
+    _this->_internal_set_energy_std(from._internal_energy_std());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_spectral_centroid = from._internal_spectral_centroid();
+  uint32_t raw_spectral_centroid;
+  memcpy(&raw_spectral_centroid, &tmp_spectral_centroid, sizeof(tmp_spectral_centroid));
+  if (raw_spectral_centroid != 0) {
+    _this->_internal_set_spectral_centroid(from._internal_spectral_centroid());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_zero_crossing_rate = from._internal_zero_crossing_rate();
+  uint32_t raw_zero_crossing_rate;
+  memcpy(&raw_zero_crossing_rate, &tmp_zero_crossing_rate, sizeof(tmp_zero_crossing_rate));
+  if (raw_zero_crossing_rate != 0) {
+    _this->_internal_set_zero_crossing_rate(from._internal_zero_crossing_rate());
+  }
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -940,6 +1223,7 @@ void WhisperTranscribeResponse::InternalSwap(WhisperTranscribeResponse* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.speaker_vec_.InternalSwap(&other->_impl_.speaker_vec_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &_impl_.transcription_, lhs_arena,
       &other->_impl_.transcription_, rhs_arena
@@ -957,8 +1241,8 @@ void WhisperTranscribeResponse::InternalSwap(WhisperTranscribeResponse* other) {
       &other->_impl_.emotion_proxy_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(WhisperTranscribeResponse, _impl_.valence_)
-      + sizeof(WhisperTranscribeResponse::_impl_.valence_)
+      PROTOBUF_FIELD_OFFSET(WhisperTranscribeResponse, _impl_.zero_crossing_rate_)
+      + sizeof(WhisperTranscribeResponse::_impl_.zero_crossing_rate_)
       - PROTOBUF_FIELD_OFFSET(WhisperTranscribeResponse, _impl_.duration_)>(
           reinterpret_cast<char*>(&_impl_.duration_),
           reinterpret_cast<char*>(&other->_impl_.duration_));
@@ -1184,12 +1468,19 @@ WhisperTranscribeStreamResponse::WhisperTranscribeStreamResponse(const WhisperTr
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   WhisperTranscribeStreamResponse* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.transcription_){}
+      decltype(_impl_.speaker_vec_){from._impl_.speaker_vec_}
+    , decltype(_impl_.transcription_){}
     , decltype(_impl_.gender_proxy_){}
     , decltype(_impl_.emotion_proxy_){}
     , decltype(_impl_.is_final_){}
     , decltype(_impl_.arousal_){}
     , decltype(_impl_.valence_){}
+    , decltype(_impl_.pitch_mean_){}
+    , decltype(_impl_.pitch_std_){}
+    , decltype(_impl_.energy_mean_){}
+    , decltype(_impl_.energy_std_){}
+    , decltype(_impl_.spectral_centroid_){}
+    , decltype(_impl_.zero_crossing_rate_){}
     , /*decltype(_impl_._cached_size_)*/{}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
@@ -1218,8 +1509,8 @@ WhisperTranscribeStreamResponse::WhisperTranscribeStreamResponse(const WhisperTr
       _this->GetArenaForAllocation());
   }
   ::memcpy(&_impl_.is_final_, &from._impl_.is_final_,
-    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.valence_) -
-    reinterpret_cast<char*>(&_impl_.is_final_)) + sizeof(_impl_.valence_));
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.zero_crossing_rate_) -
+    reinterpret_cast<char*>(&_impl_.is_final_)) + sizeof(_impl_.zero_crossing_rate_));
   // @@protoc_insertion_point(copy_constructor:sentiric.stt.v1.WhisperTranscribeStreamResponse)
 }
 
@@ -1228,12 +1519,19 @@ inline void WhisperTranscribeStreamResponse::SharedCtor(
   (void)arena;
   (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.transcription_){}
+      decltype(_impl_.speaker_vec_){arena}
+    , decltype(_impl_.transcription_){}
     , decltype(_impl_.gender_proxy_){}
     , decltype(_impl_.emotion_proxy_){}
     , decltype(_impl_.is_final_){false}
     , decltype(_impl_.arousal_){0}
     , decltype(_impl_.valence_){0}
+    , decltype(_impl_.pitch_mean_){0}
+    , decltype(_impl_.pitch_std_){0}
+    , decltype(_impl_.energy_mean_){0}
+    , decltype(_impl_.energy_std_){0}
+    , decltype(_impl_.spectral_centroid_){0}
+    , decltype(_impl_.zero_crossing_rate_){0}
     , /*decltype(_impl_._cached_size_)*/{}
   };
   _impl_.transcription_.InitDefault();
@@ -1261,6 +1559,7 @@ WhisperTranscribeStreamResponse::~WhisperTranscribeStreamResponse() {
 
 inline void WhisperTranscribeStreamResponse::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.speaker_vec_.~RepeatedField();
   _impl_.transcription_.Destroy();
   _impl_.gender_proxy_.Destroy();
   _impl_.emotion_proxy_.Destroy();
@@ -1276,12 +1575,13 @@ void WhisperTranscribeStreamResponse::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  _impl_.speaker_vec_.Clear();
   _impl_.transcription_.ClearToEmpty();
   _impl_.gender_proxy_.ClearToEmpty();
   _impl_.emotion_proxy_.ClearToEmpty();
   ::memset(&_impl_.is_final_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&_impl_.valence_) -
-      reinterpret_cast<char*>(&_impl_.is_final_)) + sizeof(_impl_.valence_));
+      reinterpret_cast<char*>(&_impl_.zero_crossing_rate_) -
+      reinterpret_cast<char*>(&_impl_.is_final_)) + sizeof(_impl_.zero_crossing_rate_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -1341,6 +1641,65 @@ const char* WhisperTranscribeStreamResponse::_InternalParse(const char* ptr, ::_
       case 6:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 53)) {
           _impl_.valence_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float pitch_mean = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 61)) {
+          _impl_.pitch_mean_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float pitch_std = 8;
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 69)) {
+          _impl_.pitch_std_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float energy_mean = 9;
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 77)) {
+          _impl_.energy_mean_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float energy_std = 10;
+      case 10:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 85)) {
+          _impl_.energy_std_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float spectral_centroid = 11;
+      case 11:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 93)) {
+          _impl_.spectral_centroid_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float zero_crossing_rate = 12;
+      case 12:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 101)) {
+          _impl_.zero_crossing_rate_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated float speaker_vec = 13;
+      case 13:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 106)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedFloatParser(_internal_mutable_speaker_vec(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<uint8_t>(tag) == 109) {
+          _internal_add_speaker_vec(::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr));
           ptr += sizeof(float);
         } else
           goto handle_unusual;
@@ -1430,6 +1789,71 @@ uint8_t* WhisperTranscribeStreamResponse::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteFloatToArray(6, this->_internal_valence(), target);
   }
 
+  // float pitch_mean = 7;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_pitch_mean = this->_internal_pitch_mean();
+  uint32_t raw_pitch_mean;
+  memcpy(&raw_pitch_mean, &tmp_pitch_mean, sizeof(tmp_pitch_mean));
+  if (raw_pitch_mean != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(7, this->_internal_pitch_mean(), target);
+  }
+
+  // float pitch_std = 8;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_pitch_std = this->_internal_pitch_std();
+  uint32_t raw_pitch_std;
+  memcpy(&raw_pitch_std, &tmp_pitch_std, sizeof(tmp_pitch_std));
+  if (raw_pitch_std != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(8, this->_internal_pitch_std(), target);
+  }
+
+  // float energy_mean = 9;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_energy_mean = this->_internal_energy_mean();
+  uint32_t raw_energy_mean;
+  memcpy(&raw_energy_mean, &tmp_energy_mean, sizeof(tmp_energy_mean));
+  if (raw_energy_mean != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(9, this->_internal_energy_mean(), target);
+  }
+
+  // float energy_std = 10;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_energy_std = this->_internal_energy_std();
+  uint32_t raw_energy_std;
+  memcpy(&raw_energy_std, &tmp_energy_std, sizeof(tmp_energy_std));
+  if (raw_energy_std != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(10, this->_internal_energy_std(), target);
+  }
+
+  // float spectral_centroid = 11;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_spectral_centroid = this->_internal_spectral_centroid();
+  uint32_t raw_spectral_centroid;
+  memcpy(&raw_spectral_centroid, &tmp_spectral_centroid, sizeof(tmp_spectral_centroid));
+  if (raw_spectral_centroid != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(11, this->_internal_spectral_centroid(), target);
+  }
+
+  // float zero_crossing_rate = 12;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_zero_crossing_rate = this->_internal_zero_crossing_rate();
+  uint32_t raw_zero_crossing_rate;
+  memcpy(&raw_zero_crossing_rate, &tmp_zero_crossing_rate, sizeof(tmp_zero_crossing_rate));
+  if (raw_zero_crossing_rate != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(12, this->_internal_zero_crossing_rate(), target);
+  }
+
+  // repeated float speaker_vec = 13;
+  if (this->_internal_speaker_vec_size() > 0) {
+    target = stream->WriteFixedPacked(13, _internal_speaker_vec(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -1445,6 +1869,17 @@ size_t WhisperTranscribeStreamResponse::ByteSizeLong() const {
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
+
+  // repeated float speaker_vec = 13;
+  {
+    unsigned int count = static_cast<unsigned int>(this->_internal_speaker_vec_size());
+    size_t data_size = 4UL * count;
+    if (data_size > 0) {
+      total_size += 1 +
+        ::_pbi::WireFormatLite::Int32Size(static_cast<int32_t>(data_size));
+    }
+    total_size += data_size;
+  }
 
   // string transcription = 1;
   if (!this->_internal_transcription().empty()) {
@@ -1490,6 +1925,60 @@ size_t WhisperTranscribeStreamResponse::ByteSizeLong() const {
     total_size += 1 + 4;
   }
 
+  // float pitch_mean = 7;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_pitch_mean = this->_internal_pitch_mean();
+  uint32_t raw_pitch_mean;
+  memcpy(&raw_pitch_mean, &tmp_pitch_mean, sizeof(tmp_pitch_mean));
+  if (raw_pitch_mean != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float pitch_std = 8;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_pitch_std = this->_internal_pitch_std();
+  uint32_t raw_pitch_std;
+  memcpy(&raw_pitch_std, &tmp_pitch_std, sizeof(tmp_pitch_std));
+  if (raw_pitch_std != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float energy_mean = 9;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_energy_mean = this->_internal_energy_mean();
+  uint32_t raw_energy_mean;
+  memcpy(&raw_energy_mean, &tmp_energy_mean, sizeof(tmp_energy_mean));
+  if (raw_energy_mean != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float energy_std = 10;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_energy_std = this->_internal_energy_std();
+  uint32_t raw_energy_std;
+  memcpy(&raw_energy_std, &tmp_energy_std, sizeof(tmp_energy_std));
+  if (raw_energy_std != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float spectral_centroid = 11;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_spectral_centroid = this->_internal_spectral_centroid();
+  uint32_t raw_spectral_centroid;
+  memcpy(&raw_spectral_centroid, &tmp_spectral_centroid, sizeof(tmp_spectral_centroid));
+  if (raw_spectral_centroid != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float zero_crossing_rate = 12;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_zero_crossing_rate = this->_internal_zero_crossing_rate();
+  uint32_t raw_zero_crossing_rate;
+  memcpy(&raw_zero_crossing_rate, &tmp_zero_crossing_rate, sizeof(tmp_zero_crossing_rate));
+  if (raw_zero_crossing_rate != 0) {
+    total_size += 1 + 4;
+  }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
@@ -1508,6 +1997,7 @@ void WhisperTranscribeStreamResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  _this->_impl_.speaker_vec_.MergeFrom(from._impl_.speaker_vec_);
   if (!from._internal_transcription().empty()) {
     _this->_internal_set_transcription(from._internal_transcription());
   }
@@ -1534,6 +2024,48 @@ void WhisperTranscribeStreamResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message
   if (raw_valence != 0) {
     _this->_internal_set_valence(from._internal_valence());
   }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_pitch_mean = from._internal_pitch_mean();
+  uint32_t raw_pitch_mean;
+  memcpy(&raw_pitch_mean, &tmp_pitch_mean, sizeof(tmp_pitch_mean));
+  if (raw_pitch_mean != 0) {
+    _this->_internal_set_pitch_mean(from._internal_pitch_mean());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_pitch_std = from._internal_pitch_std();
+  uint32_t raw_pitch_std;
+  memcpy(&raw_pitch_std, &tmp_pitch_std, sizeof(tmp_pitch_std));
+  if (raw_pitch_std != 0) {
+    _this->_internal_set_pitch_std(from._internal_pitch_std());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_energy_mean = from._internal_energy_mean();
+  uint32_t raw_energy_mean;
+  memcpy(&raw_energy_mean, &tmp_energy_mean, sizeof(tmp_energy_mean));
+  if (raw_energy_mean != 0) {
+    _this->_internal_set_energy_mean(from._internal_energy_mean());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_energy_std = from._internal_energy_std();
+  uint32_t raw_energy_std;
+  memcpy(&raw_energy_std, &tmp_energy_std, sizeof(tmp_energy_std));
+  if (raw_energy_std != 0) {
+    _this->_internal_set_energy_std(from._internal_energy_std());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_spectral_centroid = from._internal_spectral_centroid();
+  uint32_t raw_spectral_centroid;
+  memcpy(&raw_spectral_centroid, &tmp_spectral_centroid, sizeof(tmp_spectral_centroid));
+  if (raw_spectral_centroid != 0) {
+    _this->_internal_set_spectral_centroid(from._internal_spectral_centroid());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_zero_crossing_rate = from._internal_zero_crossing_rate();
+  uint32_t raw_zero_crossing_rate;
+  memcpy(&raw_zero_crossing_rate, &tmp_zero_crossing_rate, sizeof(tmp_zero_crossing_rate));
+  if (raw_zero_crossing_rate != 0) {
+    _this->_internal_set_zero_crossing_rate(from._internal_zero_crossing_rate());
+  }
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -1553,6 +2085,7 @@ void WhisperTranscribeStreamResponse::InternalSwap(WhisperTranscribeStreamRespon
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.speaker_vec_.InternalSwap(&other->_impl_.speaker_vec_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &_impl_.transcription_, lhs_arena,
       &other->_impl_.transcription_, rhs_arena
@@ -1566,8 +2099,8 @@ void WhisperTranscribeStreamResponse::InternalSwap(WhisperTranscribeStreamRespon
       &other->_impl_.emotion_proxy_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(WhisperTranscribeStreamResponse, _impl_.valence_)
-      + sizeof(WhisperTranscribeStreamResponse::_impl_.valence_)
+      PROTOBUF_FIELD_OFFSET(WhisperTranscribeStreamResponse, _impl_.zero_crossing_rate_)
+      + sizeof(WhisperTranscribeStreamResponse::_impl_.zero_crossing_rate_)
       - PROTOBUF_FIELD_OFFSET(WhisperTranscribeStreamResponse, _impl_.is_final_)>(
           reinterpret_cast<char*>(&_impl_.is_final_),
           reinterpret_cast<char*>(&other->_impl_.is_final_));

@@ -369,6 +369,7 @@ class WhisperTranscribeResponse final :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kSpeakerVecFieldNumber = 15,
     kTranscriptionFieldNumber = 1,
     kLanguageFieldNumber = 2,
     kGenderProxyFieldNumber = 5,
@@ -377,7 +378,35 @@ class WhisperTranscribeResponse final :
     kLanguageProbabilityFieldNumber = 3,
     kArousalFieldNumber = 7,
     kValenceFieldNumber = 8,
+    kPitchMeanFieldNumber = 9,
+    kPitchStdFieldNumber = 10,
+    kEnergyMeanFieldNumber = 11,
+    kEnergyStdFieldNumber = 12,
+    kSpectralCentroidFieldNumber = 13,
+    kZeroCrossingRateFieldNumber = 14,
   };
+  // repeated float speaker_vec = 15;
+  int speaker_vec_size() const;
+  private:
+  int _internal_speaker_vec_size() const;
+  public:
+  void clear_speaker_vec();
+  private:
+  float _internal_speaker_vec(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+      _internal_speaker_vec() const;
+  void _internal_add_speaker_vec(float value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+      _internal_mutable_speaker_vec();
+  public:
+  float speaker_vec(int index) const;
+  void set_speaker_vec(int index, float value);
+  void add_speaker_vec(float value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+      speaker_vec() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+      mutable_speaker_vec();
+
   // string transcription = 1;
   void clear_transcription();
   const std::string& transcription() const;
@@ -470,6 +499,60 @@ class WhisperTranscribeResponse final :
   void _internal_set_valence(float value);
   public:
 
+  // float pitch_mean = 9;
+  void clear_pitch_mean();
+  float pitch_mean() const;
+  void set_pitch_mean(float value);
+  private:
+  float _internal_pitch_mean() const;
+  void _internal_set_pitch_mean(float value);
+  public:
+
+  // float pitch_std = 10;
+  void clear_pitch_std();
+  float pitch_std() const;
+  void set_pitch_std(float value);
+  private:
+  float _internal_pitch_std() const;
+  void _internal_set_pitch_std(float value);
+  public:
+
+  // float energy_mean = 11;
+  void clear_energy_mean();
+  float energy_mean() const;
+  void set_energy_mean(float value);
+  private:
+  float _internal_energy_mean() const;
+  void _internal_set_energy_mean(float value);
+  public:
+
+  // float energy_std = 12;
+  void clear_energy_std();
+  float energy_std() const;
+  void set_energy_std(float value);
+  private:
+  float _internal_energy_std() const;
+  void _internal_set_energy_std(float value);
+  public:
+
+  // float spectral_centroid = 13;
+  void clear_spectral_centroid();
+  float spectral_centroid() const;
+  void set_spectral_centroid(float value);
+  private:
+  float _internal_spectral_centroid() const;
+  void _internal_set_spectral_centroid(float value);
+  public:
+
+  // float zero_crossing_rate = 14;
+  void clear_zero_crossing_rate();
+  float zero_crossing_rate() const;
+  void set_zero_crossing_rate(float value);
+  private:
+  float _internal_zero_crossing_rate() const;
+  void _internal_set_zero_crossing_rate(float value);
+  public:
+
   // @@protoc_insertion_point(class_scope:sentiric.stt.v1.WhisperTranscribeResponse)
  private:
   class _Internal;
@@ -478,6 +561,7 @@ class WhisperTranscribeResponse final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::RepeatedField< float > speaker_vec_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr transcription_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr language_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr gender_proxy_;
@@ -486,6 +570,12 @@ class WhisperTranscribeResponse final :
     float language_probability_;
     float arousal_;
     float valence_;
+    float pitch_mean_;
+    float pitch_std_;
+    float energy_mean_;
+    float energy_std_;
+    float spectral_centroid_;
+    float zero_crossing_rate_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -767,13 +857,42 @@ class WhisperTranscribeStreamResponse final :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kSpeakerVecFieldNumber = 13,
     kTranscriptionFieldNumber = 1,
     kGenderProxyFieldNumber = 3,
     kEmotionProxyFieldNumber = 4,
     kIsFinalFieldNumber = 2,
     kArousalFieldNumber = 5,
     kValenceFieldNumber = 6,
+    kPitchMeanFieldNumber = 7,
+    kPitchStdFieldNumber = 8,
+    kEnergyMeanFieldNumber = 9,
+    kEnergyStdFieldNumber = 10,
+    kSpectralCentroidFieldNumber = 11,
+    kZeroCrossingRateFieldNumber = 12,
   };
+  // repeated float speaker_vec = 13;
+  int speaker_vec_size() const;
+  private:
+  int _internal_speaker_vec_size() const;
+  public:
+  void clear_speaker_vec();
+  private:
+  float _internal_speaker_vec(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+      _internal_speaker_vec() const;
+  void _internal_add_speaker_vec(float value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+      _internal_mutable_speaker_vec();
+  public:
+  float speaker_vec(int index) const;
+  void set_speaker_vec(int index, float value);
+  void add_speaker_vec(float value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+      speaker_vec() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+      mutable_speaker_vec();
+
   // string transcription = 1;
   void clear_transcription();
   const std::string& transcription() const;
@@ -843,6 +962,60 @@ class WhisperTranscribeStreamResponse final :
   void _internal_set_valence(float value);
   public:
 
+  // float pitch_mean = 7;
+  void clear_pitch_mean();
+  float pitch_mean() const;
+  void set_pitch_mean(float value);
+  private:
+  float _internal_pitch_mean() const;
+  void _internal_set_pitch_mean(float value);
+  public:
+
+  // float pitch_std = 8;
+  void clear_pitch_std();
+  float pitch_std() const;
+  void set_pitch_std(float value);
+  private:
+  float _internal_pitch_std() const;
+  void _internal_set_pitch_std(float value);
+  public:
+
+  // float energy_mean = 9;
+  void clear_energy_mean();
+  float energy_mean() const;
+  void set_energy_mean(float value);
+  private:
+  float _internal_energy_mean() const;
+  void _internal_set_energy_mean(float value);
+  public:
+
+  // float energy_std = 10;
+  void clear_energy_std();
+  float energy_std() const;
+  void set_energy_std(float value);
+  private:
+  float _internal_energy_std() const;
+  void _internal_set_energy_std(float value);
+  public:
+
+  // float spectral_centroid = 11;
+  void clear_spectral_centroid();
+  float spectral_centroid() const;
+  void set_spectral_centroid(float value);
+  private:
+  float _internal_spectral_centroid() const;
+  void _internal_set_spectral_centroid(float value);
+  public:
+
+  // float zero_crossing_rate = 12;
+  void clear_zero_crossing_rate();
+  float zero_crossing_rate() const;
+  void set_zero_crossing_rate(float value);
+  private:
+  float _internal_zero_crossing_rate() const;
+  void _internal_set_zero_crossing_rate(float value);
+  public:
+
   // @@protoc_insertion_point(class_scope:sentiric.stt.v1.WhisperTranscribeStreamResponse)
  private:
   class _Internal;
@@ -851,12 +1024,19 @@ class WhisperTranscribeStreamResponse final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::RepeatedField< float > speaker_vec_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr transcription_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr gender_proxy_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr emotion_proxy_;
     bool is_final_;
     float arousal_;
     float valence_;
+    float pitch_mean_;
+    float pitch_std_;
+    float energy_mean_;
+    float energy_std_;
+    float spectral_centroid_;
+    float zero_crossing_rate_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -1275,6 +1455,173 @@ inline void WhisperTranscribeResponse::set_valence(float value) {
   // @@protoc_insertion_point(field_set:sentiric.stt.v1.WhisperTranscribeResponse.valence)
 }
 
+// float pitch_mean = 9;
+inline void WhisperTranscribeResponse::clear_pitch_mean() {
+  _impl_.pitch_mean_ = 0;
+}
+inline float WhisperTranscribeResponse::_internal_pitch_mean() const {
+  return _impl_.pitch_mean_;
+}
+inline float WhisperTranscribeResponse::pitch_mean() const {
+  // @@protoc_insertion_point(field_get:sentiric.stt.v1.WhisperTranscribeResponse.pitch_mean)
+  return _internal_pitch_mean();
+}
+inline void WhisperTranscribeResponse::_internal_set_pitch_mean(float value) {
+  
+  _impl_.pitch_mean_ = value;
+}
+inline void WhisperTranscribeResponse::set_pitch_mean(float value) {
+  _internal_set_pitch_mean(value);
+  // @@protoc_insertion_point(field_set:sentiric.stt.v1.WhisperTranscribeResponse.pitch_mean)
+}
+
+// float pitch_std = 10;
+inline void WhisperTranscribeResponse::clear_pitch_std() {
+  _impl_.pitch_std_ = 0;
+}
+inline float WhisperTranscribeResponse::_internal_pitch_std() const {
+  return _impl_.pitch_std_;
+}
+inline float WhisperTranscribeResponse::pitch_std() const {
+  // @@protoc_insertion_point(field_get:sentiric.stt.v1.WhisperTranscribeResponse.pitch_std)
+  return _internal_pitch_std();
+}
+inline void WhisperTranscribeResponse::_internal_set_pitch_std(float value) {
+  
+  _impl_.pitch_std_ = value;
+}
+inline void WhisperTranscribeResponse::set_pitch_std(float value) {
+  _internal_set_pitch_std(value);
+  // @@protoc_insertion_point(field_set:sentiric.stt.v1.WhisperTranscribeResponse.pitch_std)
+}
+
+// float energy_mean = 11;
+inline void WhisperTranscribeResponse::clear_energy_mean() {
+  _impl_.energy_mean_ = 0;
+}
+inline float WhisperTranscribeResponse::_internal_energy_mean() const {
+  return _impl_.energy_mean_;
+}
+inline float WhisperTranscribeResponse::energy_mean() const {
+  // @@protoc_insertion_point(field_get:sentiric.stt.v1.WhisperTranscribeResponse.energy_mean)
+  return _internal_energy_mean();
+}
+inline void WhisperTranscribeResponse::_internal_set_energy_mean(float value) {
+  
+  _impl_.energy_mean_ = value;
+}
+inline void WhisperTranscribeResponse::set_energy_mean(float value) {
+  _internal_set_energy_mean(value);
+  // @@protoc_insertion_point(field_set:sentiric.stt.v1.WhisperTranscribeResponse.energy_mean)
+}
+
+// float energy_std = 12;
+inline void WhisperTranscribeResponse::clear_energy_std() {
+  _impl_.energy_std_ = 0;
+}
+inline float WhisperTranscribeResponse::_internal_energy_std() const {
+  return _impl_.energy_std_;
+}
+inline float WhisperTranscribeResponse::energy_std() const {
+  // @@protoc_insertion_point(field_get:sentiric.stt.v1.WhisperTranscribeResponse.energy_std)
+  return _internal_energy_std();
+}
+inline void WhisperTranscribeResponse::_internal_set_energy_std(float value) {
+  
+  _impl_.energy_std_ = value;
+}
+inline void WhisperTranscribeResponse::set_energy_std(float value) {
+  _internal_set_energy_std(value);
+  // @@protoc_insertion_point(field_set:sentiric.stt.v1.WhisperTranscribeResponse.energy_std)
+}
+
+// float spectral_centroid = 13;
+inline void WhisperTranscribeResponse::clear_spectral_centroid() {
+  _impl_.spectral_centroid_ = 0;
+}
+inline float WhisperTranscribeResponse::_internal_spectral_centroid() const {
+  return _impl_.spectral_centroid_;
+}
+inline float WhisperTranscribeResponse::spectral_centroid() const {
+  // @@protoc_insertion_point(field_get:sentiric.stt.v1.WhisperTranscribeResponse.spectral_centroid)
+  return _internal_spectral_centroid();
+}
+inline void WhisperTranscribeResponse::_internal_set_spectral_centroid(float value) {
+  
+  _impl_.spectral_centroid_ = value;
+}
+inline void WhisperTranscribeResponse::set_spectral_centroid(float value) {
+  _internal_set_spectral_centroid(value);
+  // @@protoc_insertion_point(field_set:sentiric.stt.v1.WhisperTranscribeResponse.spectral_centroid)
+}
+
+// float zero_crossing_rate = 14;
+inline void WhisperTranscribeResponse::clear_zero_crossing_rate() {
+  _impl_.zero_crossing_rate_ = 0;
+}
+inline float WhisperTranscribeResponse::_internal_zero_crossing_rate() const {
+  return _impl_.zero_crossing_rate_;
+}
+inline float WhisperTranscribeResponse::zero_crossing_rate() const {
+  // @@protoc_insertion_point(field_get:sentiric.stt.v1.WhisperTranscribeResponse.zero_crossing_rate)
+  return _internal_zero_crossing_rate();
+}
+inline void WhisperTranscribeResponse::_internal_set_zero_crossing_rate(float value) {
+  
+  _impl_.zero_crossing_rate_ = value;
+}
+inline void WhisperTranscribeResponse::set_zero_crossing_rate(float value) {
+  _internal_set_zero_crossing_rate(value);
+  // @@protoc_insertion_point(field_set:sentiric.stt.v1.WhisperTranscribeResponse.zero_crossing_rate)
+}
+
+// repeated float speaker_vec = 15;
+inline int WhisperTranscribeResponse::_internal_speaker_vec_size() const {
+  return _impl_.speaker_vec_.size();
+}
+inline int WhisperTranscribeResponse::speaker_vec_size() const {
+  return _internal_speaker_vec_size();
+}
+inline void WhisperTranscribeResponse::clear_speaker_vec() {
+  _impl_.speaker_vec_.Clear();
+}
+inline float WhisperTranscribeResponse::_internal_speaker_vec(int index) const {
+  return _impl_.speaker_vec_.Get(index);
+}
+inline float WhisperTranscribeResponse::speaker_vec(int index) const {
+  // @@protoc_insertion_point(field_get:sentiric.stt.v1.WhisperTranscribeResponse.speaker_vec)
+  return _internal_speaker_vec(index);
+}
+inline void WhisperTranscribeResponse::set_speaker_vec(int index, float value) {
+  _impl_.speaker_vec_.Set(index, value);
+  // @@protoc_insertion_point(field_set:sentiric.stt.v1.WhisperTranscribeResponse.speaker_vec)
+}
+inline void WhisperTranscribeResponse::_internal_add_speaker_vec(float value) {
+  _impl_.speaker_vec_.Add(value);
+}
+inline void WhisperTranscribeResponse::add_speaker_vec(float value) {
+  _internal_add_speaker_vec(value);
+  // @@protoc_insertion_point(field_add:sentiric.stt.v1.WhisperTranscribeResponse.speaker_vec)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+WhisperTranscribeResponse::_internal_speaker_vec() const {
+  return _impl_.speaker_vec_;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+WhisperTranscribeResponse::speaker_vec() const {
+  // @@protoc_insertion_point(field_list:sentiric.stt.v1.WhisperTranscribeResponse.speaker_vec)
+  return _internal_speaker_vec();
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+WhisperTranscribeResponse::_internal_mutable_speaker_vec() {
+  return &_impl_.speaker_vec_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+WhisperTranscribeResponse::mutable_speaker_vec() {
+  // @@protoc_insertion_point(field_mutable_list:sentiric.stt.v1.WhisperTranscribeResponse.speaker_vec)
+  return _internal_mutable_speaker_vec();
+}
+
 // -------------------------------------------------------------------
 
 // WhisperTranscribeStreamRequest
@@ -1541,6 +1888,173 @@ inline void WhisperTranscribeStreamResponse::_internal_set_valence(float value) 
 inline void WhisperTranscribeStreamResponse::set_valence(float value) {
   _internal_set_valence(value);
   // @@protoc_insertion_point(field_set:sentiric.stt.v1.WhisperTranscribeStreamResponse.valence)
+}
+
+// float pitch_mean = 7;
+inline void WhisperTranscribeStreamResponse::clear_pitch_mean() {
+  _impl_.pitch_mean_ = 0;
+}
+inline float WhisperTranscribeStreamResponse::_internal_pitch_mean() const {
+  return _impl_.pitch_mean_;
+}
+inline float WhisperTranscribeStreamResponse::pitch_mean() const {
+  // @@protoc_insertion_point(field_get:sentiric.stt.v1.WhisperTranscribeStreamResponse.pitch_mean)
+  return _internal_pitch_mean();
+}
+inline void WhisperTranscribeStreamResponse::_internal_set_pitch_mean(float value) {
+  
+  _impl_.pitch_mean_ = value;
+}
+inline void WhisperTranscribeStreamResponse::set_pitch_mean(float value) {
+  _internal_set_pitch_mean(value);
+  // @@protoc_insertion_point(field_set:sentiric.stt.v1.WhisperTranscribeStreamResponse.pitch_mean)
+}
+
+// float pitch_std = 8;
+inline void WhisperTranscribeStreamResponse::clear_pitch_std() {
+  _impl_.pitch_std_ = 0;
+}
+inline float WhisperTranscribeStreamResponse::_internal_pitch_std() const {
+  return _impl_.pitch_std_;
+}
+inline float WhisperTranscribeStreamResponse::pitch_std() const {
+  // @@protoc_insertion_point(field_get:sentiric.stt.v1.WhisperTranscribeStreamResponse.pitch_std)
+  return _internal_pitch_std();
+}
+inline void WhisperTranscribeStreamResponse::_internal_set_pitch_std(float value) {
+  
+  _impl_.pitch_std_ = value;
+}
+inline void WhisperTranscribeStreamResponse::set_pitch_std(float value) {
+  _internal_set_pitch_std(value);
+  // @@protoc_insertion_point(field_set:sentiric.stt.v1.WhisperTranscribeStreamResponse.pitch_std)
+}
+
+// float energy_mean = 9;
+inline void WhisperTranscribeStreamResponse::clear_energy_mean() {
+  _impl_.energy_mean_ = 0;
+}
+inline float WhisperTranscribeStreamResponse::_internal_energy_mean() const {
+  return _impl_.energy_mean_;
+}
+inline float WhisperTranscribeStreamResponse::energy_mean() const {
+  // @@protoc_insertion_point(field_get:sentiric.stt.v1.WhisperTranscribeStreamResponse.energy_mean)
+  return _internal_energy_mean();
+}
+inline void WhisperTranscribeStreamResponse::_internal_set_energy_mean(float value) {
+  
+  _impl_.energy_mean_ = value;
+}
+inline void WhisperTranscribeStreamResponse::set_energy_mean(float value) {
+  _internal_set_energy_mean(value);
+  // @@protoc_insertion_point(field_set:sentiric.stt.v1.WhisperTranscribeStreamResponse.energy_mean)
+}
+
+// float energy_std = 10;
+inline void WhisperTranscribeStreamResponse::clear_energy_std() {
+  _impl_.energy_std_ = 0;
+}
+inline float WhisperTranscribeStreamResponse::_internal_energy_std() const {
+  return _impl_.energy_std_;
+}
+inline float WhisperTranscribeStreamResponse::energy_std() const {
+  // @@protoc_insertion_point(field_get:sentiric.stt.v1.WhisperTranscribeStreamResponse.energy_std)
+  return _internal_energy_std();
+}
+inline void WhisperTranscribeStreamResponse::_internal_set_energy_std(float value) {
+  
+  _impl_.energy_std_ = value;
+}
+inline void WhisperTranscribeStreamResponse::set_energy_std(float value) {
+  _internal_set_energy_std(value);
+  // @@protoc_insertion_point(field_set:sentiric.stt.v1.WhisperTranscribeStreamResponse.energy_std)
+}
+
+// float spectral_centroid = 11;
+inline void WhisperTranscribeStreamResponse::clear_spectral_centroid() {
+  _impl_.spectral_centroid_ = 0;
+}
+inline float WhisperTranscribeStreamResponse::_internal_spectral_centroid() const {
+  return _impl_.spectral_centroid_;
+}
+inline float WhisperTranscribeStreamResponse::spectral_centroid() const {
+  // @@protoc_insertion_point(field_get:sentiric.stt.v1.WhisperTranscribeStreamResponse.spectral_centroid)
+  return _internal_spectral_centroid();
+}
+inline void WhisperTranscribeStreamResponse::_internal_set_spectral_centroid(float value) {
+  
+  _impl_.spectral_centroid_ = value;
+}
+inline void WhisperTranscribeStreamResponse::set_spectral_centroid(float value) {
+  _internal_set_spectral_centroid(value);
+  // @@protoc_insertion_point(field_set:sentiric.stt.v1.WhisperTranscribeStreamResponse.spectral_centroid)
+}
+
+// float zero_crossing_rate = 12;
+inline void WhisperTranscribeStreamResponse::clear_zero_crossing_rate() {
+  _impl_.zero_crossing_rate_ = 0;
+}
+inline float WhisperTranscribeStreamResponse::_internal_zero_crossing_rate() const {
+  return _impl_.zero_crossing_rate_;
+}
+inline float WhisperTranscribeStreamResponse::zero_crossing_rate() const {
+  // @@protoc_insertion_point(field_get:sentiric.stt.v1.WhisperTranscribeStreamResponse.zero_crossing_rate)
+  return _internal_zero_crossing_rate();
+}
+inline void WhisperTranscribeStreamResponse::_internal_set_zero_crossing_rate(float value) {
+  
+  _impl_.zero_crossing_rate_ = value;
+}
+inline void WhisperTranscribeStreamResponse::set_zero_crossing_rate(float value) {
+  _internal_set_zero_crossing_rate(value);
+  // @@protoc_insertion_point(field_set:sentiric.stt.v1.WhisperTranscribeStreamResponse.zero_crossing_rate)
+}
+
+// repeated float speaker_vec = 13;
+inline int WhisperTranscribeStreamResponse::_internal_speaker_vec_size() const {
+  return _impl_.speaker_vec_.size();
+}
+inline int WhisperTranscribeStreamResponse::speaker_vec_size() const {
+  return _internal_speaker_vec_size();
+}
+inline void WhisperTranscribeStreamResponse::clear_speaker_vec() {
+  _impl_.speaker_vec_.Clear();
+}
+inline float WhisperTranscribeStreamResponse::_internal_speaker_vec(int index) const {
+  return _impl_.speaker_vec_.Get(index);
+}
+inline float WhisperTranscribeStreamResponse::speaker_vec(int index) const {
+  // @@protoc_insertion_point(field_get:sentiric.stt.v1.WhisperTranscribeStreamResponse.speaker_vec)
+  return _internal_speaker_vec(index);
+}
+inline void WhisperTranscribeStreamResponse::set_speaker_vec(int index, float value) {
+  _impl_.speaker_vec_.Set(index, value);
+  // @@protoc_insertion_point(field_set:sentiric.stt.v1.WhisperTranscribeStreamResponse.speaker_vec)
+}
+inline void WhisperTranscribeStreamResponse::_internal_add_speaker_vec(float value) {
+  _impl_.speaker_vec_.Add(value);
+}
+inline void WhisperTranscribeStreamResponse::add_speaker_vec(float value) {
+  _internal_add_speaker_vec(value);
+  // @@protoc_insertion_point(field_add:sentiric.stt.v1.WhisperTranscribeStreamResponse.speaker_vec)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+WhisperTranscribeStreamResponse::_internal_speaker_vec() const {
+  return _impl_.speaker_vec_;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+WhisperTranscribeStreamResponse::speaker_vec() const {
+  // @@protoc_insertion_point(field_list:sentiric.stt.v1.WhisperTranscribeStreamResponse.speaker_vec)
+  return _internal_speaker_vec();
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+WhisperTranscribeStreamResponse::_internal_mutable_speaker_vec() {
+  return &_impl_.speaker_vec_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+WhisperTranscribeStreamResponse::mutable_speaker_vec() {
+  // @@protoc_insertion_point(field_mutable_list:sentiric.stt.v1.WhisperTranscribeStreamResponse.speaker_vec)
+  return _internal_mutable_speaker_vec();
 }
 
 #ifdef __GNUC__

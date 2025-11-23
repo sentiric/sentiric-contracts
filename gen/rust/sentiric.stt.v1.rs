@@ -50,7 +50,7 @@ pub struct WhisperTranscribeResponse {
     pub language_probability: f32,
     #[prost(double, tag="4")]
     pub duration: f64,
-    /// ---- affective proxies ----
+    /// ---- affective & speaker identity ----
     #[prost(string, tag="5")]
     pub gender_proxy: ::prost::alloc::string::String,
     #[prost(string, tag="6")]
@@ -59,6 +59,21 @@ pub struct WhisperTranscribeResponse {
     pub arousal: f32,
     #[prost(float, tag="8")]
     pub valence: f32,
+    #[prost(float, tag="9")]
+    pub pitch_mean: f32,
+    #[prost(float, tag="10")]
+    pub pitch_std: f32,
+    #[prost(float, tag="11")]
+    pub energy_mean: f32,
+    #[prost(float, tag="12")]
+    pub energy_std: f32,
+    #[prost(float, tag="13")]
+    pub spectral_centroid: f32,
+    #[prost(float, tag="14")]
+    pub zero_crossing_rate: f32,
+    /// 8-D vector
+    #[prost(float, repeated, tag="15")]
+    pub speaker_vec: ::prost::alloc::vec::Vec<f32>,
 }
 /// Akış tabanlı transkripsiyon için mesajlar
 #[allow(clippy::derive_partial_eq_without_eq)]
@@ -76,7 +91,7 @@ pub struct WhisperTranscribeStreamResponse {
     /// Bu segmentin nihai sonuç olup olmadığını belirtir.
     #[prost(bool, tag="2")]
     pub is_final: bool,
-    /// ---- affective proxies ----
+    /// ---- affective & speaker identity ----
     #[prost(string, tag="3")]
     pub gender_proxy: ::prost::alloc::string::String,
     #[prost(string, tag="4")]
@@ -85,6 +100,20 @@ pub struct WhisperTranscribeStreamResponse {
     pub arousal: f32,
     #[prost(float, tag="6")]
     pub valence: f32,
+    #[prost(float, tag="7")]
+    pub pitch_mean: f32,
+    #[prost(float, tag="8")]
+    pub pitch_std: f32,
+    #[prost(float, tag="9")]
+    pub energy_mean: f32,
+    #[prost(float, tag="10")]
+    pub energy_std: f32,
+    #[prost(float, tag="11")]
+    pub spectral_centroid: f32,
+    #[prost(float, tag="12")]
+    pub zero_crossing_rate: f32,
+    #[prost(float, repeated, tag="13")]
+    pub speaker_vec: ::prost::alloc::vec::Vec<f32>,
 }
 include!("sentiric.stt.v1.tonic.rs");
 // @@protoc_insertion_point(module)

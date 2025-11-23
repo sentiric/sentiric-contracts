@@ -82,13 +82,20 @@ type WhisperTranscribeResponse struct {
 	Language            string                 `protobuf:"bytes,2,opt,name=language,proto3" json:"language,omitempty"`
 	LanguageProbability float32                `protobuf:"fixed32,3,opt,name=language_probability,json=languageProbability,proto3" json:"language_probability,omitempty"`
 	Duration            float64                `protobuf:"fixed64,4,opt,name=duration,proto3" json:"duration,omitempty"`
-	// ---- affective proxies ----
-	GenderProxy   string  `protobuf:"bytes,5,opt,name=gender_proxy,json=genderProxy,proto3" json:"gender_proxy,omitempty"`
-	EmotionProxy  string  `protobuf:"bytes,6,opt,name=emotion_proxy,json=emotionProxy,proto3" json:"emotion_proxy,omitempty"`
-	Arousal       float32 `protobuf:"fixed32,7,opt,name=arousal,proto3" json:"arousal,omitempty"`
-	Valence       float32 `protobuf:"fixed32,8,opt,name=valence,proto3" json:"valence,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	// ---- affective & speaker identity ----
+	GenderProxy      string    `protobuf:"bytes,5,opt,name=gender_proxy,json=genderProxy,proto3" json:"gender_proxy,omitempty"`
+	EmotionProxy     string    `protobuf:"bytes,6,opt,name=emotion_proxy,json=emotionProxy,proto3" json:"emotion_proxy,omitempty"`
+	Arousal          float32   `protobuf:"fixed32,7,opt,name=arousal,proto3" json:"arousal,omitempty"`
+	Valence          float32   `protobuf:"fixed32,8,opt,name=valence,proto3" json:"valence,omitempty"`
+	PitchMean        float32   `protobuf:"fixed32,9,opt,name=pitch_mean,json=pitchMean,proto3" json:"pitch_mean,omitempty"`
+	PitchStd         float32   `protobuf:"fixed32,10,opt,name=pitch_std,json=pitchStd,proto3" json:"pitch_std,omitempty"`
+	EnergyMean       float32   `protobuf:"fixed32,11,opt,name=energy_mean,json=energyMean,proto3" json:"energy_mean,omitempty"`
+	EnergyStd        float32   `protobuf:"fixed32,12,opt,name=energy_std,json=energyStd,proto3" json:"energy_std,omitempty"`
+	SpectralCentroid float32   `protobuf:"fixed32,13,opt,name=spectral_centroid,json=spectralCentroid,proto3" json:"spectral_centroid,omitempty"`
+	ZeroCrossingRate float32   `protobuf:"fixed32,14,opt,name=zero_crossing_rate,json=zeroCrossingRate,proto3" json:"zero_crossing_rate,omitempty"`
+	SpeakerVec       []float32 `protobuf:"fixed32,15,rep,packed,name=speaker_vec,json=speakerVec,proto3" json:"speaker_vec,omitempty"` // 8-D vector
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
 }
 
 func (x *WhisperTranscribeResponse) Reset() {
@@ -177,6 +184,55 @@ func (x *WhisperTranscribeResponse) GetValence() float32 {
 	return 0
 }
 
+func (x *WhisperTranscribeResponse) GetPitchMean() float32 {
+	if x != nil {
+		return x.PitchMean
+	}
+	return 0
+}
+
+func (x *WhisperTranscribeResponse) GetPitchStd() float32 {
+	if x != nil {
+		return x.PitchStd
+	}
+	return 0
+}
+
+func (x *WhisperTranscribeResponse) GetEnergyMean() float32 {
+	if x != nil {
+		return x.EnergyMean
+	}
+	return 0
+}
+
+func (x *WhisperTranscribeResponse) GetEnergyStd() float32 {
+	if x != nil {
+		return x.EnergyStd
+	}
+	return 0
+}
+
+func (x *WhisperTranscribeResponse) GetSpectralCentroid() float32 {
+	if x != nil {
+		return x.SpectralCentroid
+	}
+	return 0
+}
+
+func (x *WhisperTranscribeResponse) GetZeroCrossingRate() float32 {
+	if x != nil {
+		return x.ZeroCrossingRate
+	}
+	return 0
+}
+
+func (x *WhisperTranscribeResponse) GetSpeakerVec() []float32 {
+	if x != nil {
+		return x.SpeakerVec
+	}
+	return nil
+}
+
 // Akış tabanlı transkripsiyon için mesajlar
 type WhisperTranscribeStreamRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -227,13 +283,20 @@ type WhisperTranscribeStreamResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Transcription string                 `protobuf:"bytes,1,opt,name=transcription,proto3" json:"transcription,omitempty"`
 	IsFinal       bool                   `protobuf:"varint,2,opt,name=is_final,json=isFinal,proto3" json:"is_final,omitempty"` // Bu segmentin nihai sonuç olup olmadığını belirtir.
-	// ---- affective proxies ----
-	GenderProxy   string  `protobuf:"bytes,3,opt,name=gender_proxy,json=genderProxy,proto3" json:"gender_proxy,omitempty"`
-	EmotionProxy  string  `protobuf:"bytes,4,opt,name=emotion_proxy,json=emotionProxy,proto3" json:"emotion_proxy,omitempty"`
-	Arousal       float32 `protobuf:"fixed32,5,opt,name=arousal,proto3" json:"arousal,omitempty"`
-	Valence       float32 `protobuf:"fixed32,6,opt,name=valence,proto3" json:"valence,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	// ---- affective & speaker identity ----
+	GenderProxy      string    `protobuf:"bytes,3,opt,name=gender_proxy,json=genderProxy,proto3" json:"gender_proxy,omitempty"`
+	EmotionProxy     string    `protobuf:"bytes,4,opt,name=emotion_proxy,json=emotionProxy,proto3" json:"emotion_proxy,omitempty"`
+	Arousal          float32   `protobuf:"fixed32,5,opt,name=arousal,proto3" json:"arousal,omitempty"`
+	Valence          float32   `protobuf:"fixed32,6,opt,name=valence,proto3" json:"valence,omitempty"`
+	PitchMean        float32   `protobuf:"fixed32,7,opt,name=pitch_mean,json=pitchMean,proto3" json:"pitch_mean,omitempty"`
+	PitchStd         float32   `protobuf:"fixed32,8,opt,name=pitch_std,json=pitchStd,proto3" json:"pitch_std,omitempty"`
+	EnergyMean       float32   `protobuf:"fixed32,9,opt,name=energy_mean,json=energyMean,proto3" json:"energy_mean,omitempty"`
+	EnergyStd        float32   `protobuf:"fixed32,10,opt,name=energy_std,json=energyStd,proto3" json:"energy_std,omitempty"`
+	SpectralCentroid float32   `protobuf:"fixed32,11,opt,name=spectral_centroid,json=spectralCentroid,proto3" json:"spectral_centroid,omitempty"`
+	ZeroCrossingRate float32   `protobuf:"fixed32,12,opt,name=zero_crossing_rate,json=zeroCrossingRate,proto3" json:"zero_crossing_rate,omitempty"`
+	SpeakerVec       []float32 `protobuf:"fixed32,13,rep,packed,name=speaker_vec,json=speakerVec,proto3" json:"speaker_vec,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
 }
 
 func (x *WhisperTranscribeStreamResponse) Reset() {
@@ -308,6 +371,55 @@ func (x *WhisperTranscribeStreamResponse) GetValence() float32 {
 	return 0
 }
 
+func (x *WhisperTranscribeStreamResponse) GetPitchMean() float32 {
+	if x != nil {
+		return x.PitchMean
+	}
+	return 0
+}
+
+func (x *WhisperTranscribeStreamResponse) GetPitchStd() float32 {
+	if x != nil {
+		return x.PitchStd
+	}
+	return 0
+}
+
+func (x *WhisperTranscribeStreamResponse) GetEnergyMean() float32 {
+	if x != nil {
+		return x.EnergyMean
+	}
+	return 0
+}
+
+func (x *WhisperTranscribeStreamResponse) GetEnergyStd() float32 {
+	if x != nil {
+		return x.EnergyStd
+	}
+	return 0
+}
+
+func (x *WhisperTranscribeStreamResponse) GetSpectralCentroid() float32 {
+	if x != nil {
+		return x.SpectralCentroid
+	}
+	return 0
+}
+
+func (x *WhisperTranscribeStreamResponse) GetZeroCrossingRate() float32 {
+	if x != nil {
+		return x.ZeroCrossingRate
+	}
+	return 0
+}
+
+func (x *WhisperTranscribeStreamResponse) GetSpeakerVec() []float32 {
+	if x != nil {
+		return x.SpeakerVec
+	}
+	return nil
+}
+
 var File_sentiric_stt_v1_whisper_proto protoreflect.FileDescriptor
 
 const file_sentiric_stt_v1_whisper_proto_rawDesc = "" +
@@ -317,7 +429,7 @@ const file_sentiric_stt_v1_whisper_proto_rawDesc = "" +
 	"\n" +
 	"audio_data\x18\x01 \x01(\fR\taudioData\x12\x1f\n" +
 	"\blanguage\x18\x02 \x01(\tH\x00R\blanguage\x88\x01\x01B\v\n" +
-	"\t_language\"\xa8\x02\n" +
+	"\t_language\"\xa0\x04\n" +
 	"\x19WhisperTranscribeResponse\x12$\n" +
 	"\rtranscription\x18\x01 \x01(\tR\rtranscription\x12\x1a\n" +
 	"\blanguage\x18\x02 \x01(\tR\blanguage\x121\n" +
@@ -326,17 +438,41 @@ const file_sentiric_stt_v1_whisper_proto_rawDesc = "" +
 	"\fgender_proxy\x18\x05 \x01(\tR\vgenderProxy\x12#\n" +
 	"\remotion_proxy\x18\x06 \x01(\tR\femotionProxy\x12\x18\n" +
 	"\aarousal\x18\a \x01(\x02R\aarousal\x12\x18\n" +
-	"\avalence\x18\b \x01(\x02R\avalence\"A\n" +
+	"\avalence\x18\b \x01(\x02R\avalence\x12\x1d\n" +
+	"\n" +
+	"pitch_mean\x18\t \x01(\x02R\tpitchMean\x12\x1b\n" +
+	"\tpitch_std\x18\n" +
+	" \x01(\x02R\bpitchStd\x12\x1f\n" +
+	"\venergy_mean\x18\v \x01(\x02R\n" +
+	"energyMean\x12\x1d\n" +
+	"\n" +
+	"energy_std\x18\f \x01(\x02R\tenergyStd\x12+\n" +
+	"\x11spectral_centroid\x18\r \x01(\x02R\x10spectralCentroid\x12,\n" +
+	"\x12zero_crossing_rate\x18\x0e \x01(\x02R\x10zeroCrossingRate\x12\x1f\n" +
+	"\vspeaker_vec\x18\x0f \x03(\x02R\n" +
+	"speakerVec\"A\n" +
 	"\x1eWhisperTranscribeStreamRequest\x12\x1f\n" +
 	"\vaudio_chunk\x18\x01 \x01(\fR\n" +
-	"audioChunk\"\xde\x01\n" +
+	"audioChunk\"\xd6\x03\n" +
 	"\x1fWhisperTranscribeStreamResponse\x12$\n" +
 	"\rtranscription\x18\x01 \x01(\tR\rtranscription\x12\x19\n" +
 	"\bis_final\x18\x02 \x01(\bR\aisFinal\x12!\n" +
 	"\fgender_proxy\x18\x03 \x01(\tR\vgenderProxy\x12#\n" +
 	"\remotion_proxy\x18\x04 \x01(\tR\femotionProxy\x12\x18\n" +
 	"\aarousal\x18\x05 \x01(\x02R\aarousal\x12\x18\n" +
-	"\avalence\x18\x06 \x01(\x02R\avalence2\x82\x02\n" +
+	"\avalence\x18\x06 \x01(\x02R\avalence\x12\x1d\n" +
+	"\n" +
+	"pitch_mean\x18\a \x01(\x02R\tpitchMean\x12\x1b\n" +
+	"\tpitch_std\x18\b \x01(\x02R\bpitchStd\x12\x1f\n" +
+	"\venergy_mean\x18\t \x01(\x02R\n" +
+	"energyMean\x12\x1d\n" +
+	"\n" +
+	"energy_std\x18\n" +
+	" \x01(\x02R\tenergyStd\x12+\n" +
+	"\x11spectral_centroid\x18\v \x01(\x02R\x10spectralCentroid\x12,\n" +
+	"\x12zero_crossing_rate\x18\f \x01(\x02R\x10zeroCrossingRate\x12\x1f\n" +
+	"\vspeaker_vec\x18\r \x03(\x02R\n" +
+	"speakerVec2\x82\x02\n" +
 	"\x11SttWhisperService\x12j\n" +
 	"\x11WhisperTranscribe\x12).sentiric.stt.v1.WhisperTranscribeRequest\x1a*.sentiric.stt.v1.WhisperTranscribeResponse\x12\x80\x01\n" +
 	"\x17WhisperTranscribeStream\x12/.sentiric.stt.v1.WhisperTranscribeStreamRequest\x1a0.sentiric.stt.v1.WhisperTranscribeStreamResponse(\x010\x01BEZCgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/stt/v1;sttv1b\x06proto3"
