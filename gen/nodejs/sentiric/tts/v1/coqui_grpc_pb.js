@@ -26,15 +26,31 @@ function deserialize_sentiric_tts_v1_CoquiSynthesizeResponse(buffer_arg) {
   return sentiric_tts_v1_coqui_pb.CoquiSynthesizeResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sentiric_tts_v1_CoquiSynthesizeStreamRequest(arg) {
+  if (!(arg instanceof sentiric_tts_v1_coqui_pb.CoquiSynthesizeStreamRequest)) {
+    throw new Error('Expected argument of type sentiric.tts.v1.CoquiSynthesizeStreamRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
 
-// =============================================================================
-// COQUI ENGINE SERVICE (INTERNAL)
-// =============================================================================
-// Bu servis, Gateway tarafından çağrılır. Doğrudan son kullanıcıya açılmaz.
-// Coqui XTTS v2 modeline özgü düşük seviyeli parametreleri kabul eder.
-//
+function deserialize_sentiric_tts_v1_CoquiSynthesizeStreamRequest(buffer_arg) {
+  return sentiric_tts_v1_coqui_pb.CoquiSynthesizeStreamRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sentiric_tts_v1_CoquiSynthesizeStreamResponse(arg) {
+  if (!(arg instanceof sentiric_tts_v1_coqui_pb.CoquiSynthesizeStreamResponse)) {
+    throw new Error('Expected argument of type sentiric.tts.v1.CoquiSynthesizeStreamResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sentiric_tts_v1_CoquiSynthesizeStreamResponse(buffer_arg) {
+  return sentiric_tts_v1_coqui_pb.CoquiSynthesizeStreamResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+
 var TtsCoquiServiceService = exports.TtsCoquiServiceService = {
-  // Tekil sentezleme (Dosya tabanlı çıktı)
+  // Unary
 coquiSynthesize: {
     path: '/sentiric.tts.v1.TtsCoquiService/CoquiSynthesize',
     requestStream: false,
@@ -46,17 +62,17 @@ coquiSynthesize: {
     responseSerialize: serialize_sentiric_tts_v1_CoquiSynthesizeResponse,
     responseDeserialize: deserialize_sentiric_tts_v1_CoquiSynthesizeResponse,
   },
-  // Streaming sentezleme (Düşük gecikmeli chunk çıkışı)
+  // Stream
 coquiSynthesizeStream: {
     path: '/sentiric.tts.v1.TtsCoquiService/CoquiSynthesizeStream',
     requestStream: false,
     responseStream: true,
-    requestType: sentiric_tts_v1_coqui_pb.CoquiSynthesizeRequest,
-    responseType: sentiric_tts_v1_coqui_pb.CoquiSynthesizeResponse,
-    requestSerialize: serialize_sentiric_tts_v1_CoquiSynthesizeRequest,
-    requestDeserialize: deserialize_sentiric_tts_v1_CoquiSynthesizeRequest,
-    responseSerialize: serialize_sentiric_tts_v1_CoquiSynthesizeResponse,
-    responseDeserialize: deserialize_sentiric_tts_v1_CoquiSynthesizeResponse,
+    requestType: sentiric_tts_v1_coqui_pb.CoquiSynthesizeStreamRequest,
+    responseType: sentiric_tts_v1_coqui_pb.CoquiSynthesizeStreamResponse,
+    requestSerialize: serialize_sentiric_tts_v1_CoquiSynthesizeStreamRequest,
+    requestDeserialize: deserialize_sentiric_tts_v1_CoquiSynthesizeStreamRequest,
+    responseSerialize: serialize_sentiric_tts_v1_CoquiSynthesizeStreamResponse,
+    responseDeserialize: deserialize_sentiric_tts_v1_CoquiSynthesizeStreamResponse,
   },
 };
 

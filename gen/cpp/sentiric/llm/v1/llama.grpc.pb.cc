@@ -37,31 +37,31 @@ LlamaService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& chann
   : channel_(channel), rpcmethod_GenerateStream_(LlamaService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
   {}
 
-::grpc::ClientReader< ::sentiric::llm::v1::LlamaGenerateStreamResponse>* LlamaService::Stub::GenerateStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::LlamaGenerateStreamRequest& request) {
-  return ::grpc::internal::ClientReaderFactory< ::sentiric::llm::v1::LlamaGenerateStreamResponse>::Create(channel_.get(), rpcmethod_GenerateStream_, context, request);
+::grpc::ClientReader< ::sentiric::llm::v1::GenerateStreamResponse>* LlamaService::Stub::GenerateStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateStreamRequest& request) {
+  return ::grpc::internal::ClientReaderFactory< ::sentiric::llm::v1::GenerateStreamResponse>::Create(channel_.get(), rpcmethod_GenerateStream_, context, request);
 }
 
-void LlamaService::Stub::async::GenerateStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::LlamaGenerateStreamRequest* request, ::grpc::ClientReadReactor< ::sentiric::llm::v1::LlamaGenerateStreamResponse>* reactor) {
-  ::grpc::internal::ClientCallbackReaderFactory< ::sentiric::llm::v1::LlamaGenerateStreamResponse>::Create(stub_->channel_.get(), stub_->rpcmethod_GenerateStream_, context, request, reactor);
+void LlamaService::Stub::async::GenerateStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateStreamRequest* request, ::grpc::ClientReadReactor< ::sentiric::llm::v1::GenerateStreamResponse>* reactor) {
+  ::grpc::internal::ClientCallbackReaderFactory< ::sentiric::llm::v1::GenerateStreamResponse>::Create(stub_->channel_.get(), stub_->rpcmethod_GenerateStream_, context, request, reactor);
 }
 
-::grpc::ClientAsyncReader< ::sentiric::llm::v1::LlamaGenerateStreamResponse>* LlamaService::Stub::AsyncGenerateStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::LlamaGenerateStreamRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
-  return ::grpc::internal::ClientAsyncReaderFactory< ::sentiric::llm::v1::LlamaGenerateStreamResponse>::Create(channel_.get(), cq, rpcmethod_GenerateStream_, context, request, true, tag);
+::grpc::ClientAsyncReader< ::sentiric::llm::v1::GenerateStreamResponse>* LlamaService::Stub::AsyncGenerateStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateStreamRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::sentiric::llm::v1::GenerateStreamResponse>::Create(channel_.get(), cq, rpcmethod_GenerateStream_, context, request, true, tag);
 }
 
-::grpc::ClientAsyncReader< ::sentiric::llm::v1::LlamaGenerateStreamResponse>* LlamaService::Stub::PrepareAsyncGenerateStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::LlamaGenerateStreamRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncReaderFactory< ::sentiric::llm::v1::LlamaGenerateStreamResponse>::Create(channel_.get(), cq, rpcmethod_GenerateStream_, context, request, false, nullptr);
+::grpc::ClientAsyncReader< ::sentiric::llm::v1::GenerateStreamResponse>* LlamaService::Stub::PrepareAsyncGenerateStreamRaw(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateStreamRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::sentiric::llm::v1::GenerateStreamResponse>::Create(channel_.get(), cq, rpcmethod_GenerateStream_, context, request, false, nullptr);
 }
 
 LlamaService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       LlamaService_method_names[0],
       ::grpc::internal::RpcMethod::SERVER_STREAMING,
-      new ::grpc::internal::ServerStreamingHandler< LlamaService::Service, ::sentiric::llm::v1::LlamaGenerateStreamRequest, ::sentiric::llm::v1::LlamaGenerateStreamResponse>(
+      new ::grpc::internal::ServerStreamingHandler< LlamaService::Service, ::sentiric::llm::v1::GenerateStreamRequest, ::sentiric::llm::v1::GenerateStreamResponse>(
           [](LlamaService::Service* service,
              ::grpc::ServerContext* ctx,
-             const ::sentiric::llm::v1::LlamaGenerateStreamRequest* req,
-             ::grpc::ServerWriter<::sentiric::llm::v1::LlamaGenerateStreamResponse>* writer) {
+             const ::sentiric::llm::v1::GenerateStreamRequest* req,
+             ::grpc::ServerWriter<::sentiric::llm::v1::GenerateStreamResponse>* writer) {
                return service->GenerateStream(ctx, req, writer);
              }, this)));
 }
@@ -69,7 +69,7 @@ LlamaService::Service::Service() {
 LlamaService::Service::~Service() {
 }
 
-::grpc::Status LlamaService::Service::GenerateStream(::grpc::ServerContext* context, const ::sentiric::llm::v1::LlamaGenerateStreamRequest* request, ::grpc::ServerWriter< ::sentiric::llm::v1::LlamaGenerateStreamResponse>* writer) {
+::grpc::Status LlamaService::Service::GenerateStream(::grpc::ServerContext* context, const ::sentiric::llm::v1::GenerateStreamRequest* request, ::grpc::ServerWriter< ::sentiric::llm::v1::GenerateStreamResponse>* writer) {
   (void) context;
   (void) request;
   (void) writer;

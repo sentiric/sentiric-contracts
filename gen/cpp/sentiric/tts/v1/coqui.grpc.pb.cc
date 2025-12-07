@@ -62,20 +62,20 @@ void TtsCoquiService::Stub::async::CoquiSynthesize(::grpc::ClientContext* contex
   return result;
 }
 
-::grpc::ClientReader< ::sentiric::tts::v1::CoquiSynthesizeResponse>* TtsCoquiService::Stub::CoquiSynthesizeStreamRaw(::grpc::ClientContext* context, const ::sentiric::tts::v1::CoquiSynthesizeRequest& request) {
-  return ::grpc::internal::ClientReaderFactory< ::sentiric::tts::v1::CoquiSynthesizeResponse>::Create(channel_.get(), rpcmethod_CoquiSynthesizeStream_, context, request);
+::grpc::ClientReader< ::sentiric::tts::v1::CoquiSynthesizeStreamResponse>* TtsCoquiService::Stub::CoquiSynthesizeStreamRaw(::grpc::ClientContext* context, const ::sentiric::tts::v1::CoquiSynthesizeStreamRequest& request) {
+  return ::grpc::internal::ClientReaderFactory< ::sentiric::tts::v1::CoquiSynthesizeStreamResponse>::Create(channel_.get(), rpcmethod_CoquiSynthesizeStream_, context, request);
 }
 
-void TtsCoquiService::Stub::async::CoquiSynthesizeStream(::grpc::ClientContext* context, const ::sentiric::tts::v1::CoquiSynthesizeRequest* request, ::grpc::ClientReadReactor< ::sentiric::tts::v1::CoquiSynthesizeResponse>* reactor) {
-  ::grpc::internal::ClientCallbackReaderFactory< ::sentiric::tts::v1::CoquiSynthesizeResponse>::Create(stub_->channel_.get(), stub_->rpcmethod_CoquiSynthesizeStream_, context, request, reactor);
+void TtsCoquiService::Stub::async::CoquiSynthesizeStream(::grpc::ClientContext* context, const ::sentiric::tts::v1::CoquiSynthesizeStreamRequest* request, ::grpc::ClientReadReactor< ::sentiric::tts::v1::CoquiSynthesizeStreamResponse>* reactor) {
+  ::grpc::internal::ClientCallbackReaderFactory< ::sentiric::tts::v1::CoquiSynthesizeStreamResponse>::Create(stub_->channel_.get(), stub_->rpcmethod_CoquiSynthesizeStream_, context, request, reactor);
 }
 
-::grpc::ClientAsyncReader< ::sentiric::tts::v1::CoquiSynthesizeResponse>* TtsCoquiService::Stub::AsyncCoquiSynthesizeStreamRaw(::grpc::ClientContext* context, const ::sentiric::tts::v1::CoquiSynthesizeRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
-  return ::grpc::internal::ClientAsyncReaderFactory< ::sentiric::tts::v1::CoquiSynthesizeResponse>::Create(channel_.get(), cq, rpcmethod_CoquiSynthesizeStream_, context, request, true, tag);
+::grpc::ClientAsyncReader< ::sentiric::tts::v1::CoquiSynthesizeStreamResponse>* TtsCoquiService::Stub::AsyncCoquiSynthesizeStreamRaw(::grpc::ClientContext* context, const ::sentiric::tts::v1::CoquiSynthesizeStreamRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::sentiric::tts::v1::CoquiSynthesizeStreamResponse>::Create(channel_.get(), cq, rpcmethod_CoquiSynthesizeStream_, context, request, true, tag);
 }
 
-::grpc::ClientAsyncReader< ::sentiric::tts::v1::CoquiSynthesizeResponse>* TtsCoquiService::Stub::PrepareAsyncCoquiSynthesizeStreamRaw(::grpc::ClientContext* context, const ::sentiric::tts::v1::CoquiSynthesizeRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncReaderFactory< ::sentiric::tts::v1::CoquiSynthesizeResponse>::Create(channel_.get(), cq, rpcmethod_CoquiSynthesizeStream_, context, request, false, nullptr);
+::grpc::ClientAsyncReader< ::sentiric::tts::v1::CoquiSynthesizeStreamResponse>* TtsCoquiService::Stub::PrepareAsyncCoquiSynthesizeStreamRaw(::grpc::ClientContext* context, const ::sentiric::tts::v1::CoquiSynthesizeStreamRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::sentiric::tts::v1::CoquiSynthesizeStreamResponse>::Create(channel_.get(), cq, rpcmethod_CoquiSynthesizeStream_, context, request, false, nullptr);
 }
 
 TtsCoquiService::Service::Service() {
@@ -92,11 +92,11 @@ TtsCoquiService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       TtsCoquiService_method_names[1],
       ::grpc::internal::RpcMethod::SERVER_STREAMING,
-      new ::grpc::internal::ServerStreamingHandler< TtsCoquiService::Service, ::sentiric::tts::v1::CoquiSynthesizeRequest, ::sentiric::tts::v1::CoquiSynthesizeResponse>(
+      new ::grpc::internal::ServerStreamingHandler< TtsCoquiService::Service, ::sentiric::tts::v1::CoquiSynthesizeStreamRequest, ::sentiric::tts::v1::CoquiSynthesizeStreamResponse>(
           [](TtsCoquiService::Service* service,
              ::grpc::ServerContext* ctx,
-             const ::sentiric::tts::v1::CoquiSynthesizeRequest* req,
-             ::grpc::ServerWriter<::sentiric::tts::v1::CoquiSynthesizeResponse>* writer) {
+             const ::sentiric::tts::v1::CoquiSynthesizeStreamRequest* req,
+             ::grpc::ServerWriter<::sentiric::tts::v1::CoquiSynthesizeStreamResponse>* writer) {
                return service->CoquiSynthesizeStream(ctx, req, writer);
              }, this)));
 }
@@ -111,7 +111,7 @@ TtsCoquiService::Service::~Service() {
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status TtsCoquiService::Service::CoquiSynthesizeStream(::grpc::ServerContext* context, const ::sentiric::tts::v1::CoquiSynthesizeRequest* request, ::grpc::ServerWriter< ::sentiric::tts::v1::CoquiSynthesizeResponse>* writer) {
+::grpc::Status TtsCoquiService::Service::CoquiSynthesizeStream(::grpc::ServerContext* context, const ::sentiric::tts::v1::CoquiSynthesizeStreamRequest* request, ::grpc::ServerWriter< ::sentiric::tts::v1::CoquiSynthesizeStreamResponse>* writer) {
   (void) context;
   (void) request;
   (void) writer;

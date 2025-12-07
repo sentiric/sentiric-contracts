@@ -31,7 +31,6 @@ function deserialize_sentiric_llm_v1_GenerateDialogStreamResponse(buffer_arg) {
 // =============================================================================
 // LLM GATEWAY SERVICE
 // =============================================================================
-// Bu servis, farklı LLM motorlarını (Llama, OpenAI, Claude vb.) soyutlar.
 //
 var LlmGatewayServiceService = exports.LlmGatewayServiceService = {
   generateDialogStream: {

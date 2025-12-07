@@ -21,23 +21,20 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// --- Unary Messages ---
 type CoquiSynthesizeRequest struct {
-	state        protoimpl.MessageState `protogen:"open.v1"`
-	Text         string                 `protobuf:"bytes,1,opt,name=text,proto3" json:"text,omitempty"`
-	LanguageCode string                 `protobuf:"bytes,2,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"` // örn: "tr", "en" (XTTS destekli diller)
-	// Coqui'nin "Voice Cloning" yeteneği için ham ses verisi.
-	// Gateway, veritabanındaki "VoiceID"den bu wav dosyasını bulup buraya yazar.
-	SpeakerWav []byte `protobuf:"bytes,3,opt,name=speaker_wav,json=speakerWav,proto3" json:"speaker_wav,omitempty"`
-	// Model Parametreleri (Gateway'deki 'ProsodyConfig' buraya map edilir)
-	Temperature       float32 `protobuf:"fixed32,4,opt,name=temperature,proto3" json:"temperature,omitempty"`                                      // Varsayılan: 0.75
-	Speed             float32 `protobuf:"fixed32,5,opt,name=speed,proto3" json:"speed,omitempty"`                                                  // Varsayılan: 1.0
-	TopP              float32 `protobuf:"fixed32,6,opt,name=top_p,json=topP,proto3" json:"top_p,omitempty"`                                        // Varsayılan: 0.85
-	TopK              float32 `protobuf:"fixed32,7,opt,name=top_k,json=topK,proto3" json:"top_k,omitempty"`                                        // Varsayılan: 50
-	RepetitionPenalty float32 `protobuf:"fixed32,8,opt,name=repetition_penalty,json=repetitionPenalty,proto3" json:"repetition_penalty,omitempty"` // Varsayılan: 5.0
-	// Çıktı formatı tercihi (Engine seviyesinde WAV veya PCM genelde sabittir ama esneklik için)
-	OutputFormat  string `protobuf:"bytes,9,opt,name=output_format,json=outputFormat,proto3" json:"output_format,omitempty"` // "wav", "pcm"
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state             protoimpl.MessageState `protogen:"open.v1"`
+	Text              string                 `protobuf:"bytes,1,opt,name=text,proto3" json:"text,omitempty"`
+	LanguageCode      string                 `protobuf:"bytes,2,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
+	SpeakerWav        []byte                 `protobuf:"bytes,3,opt,name=speaker_wav,json=speakerWav,proto3" json:"speaker_wav,omitempty"`
+	Temperature       float32                `protobuf:"fixed32,4,opt,name=temperature,proto3" json:"temperature,omitempty"`
+	Speed             float32                `protobuf:"fixed32,5,opt,name=speed,proto3" json:"speed,omitempty"`
+	TopP              float32                `protobuf:"fixed32,6,opt,name=top_p,json=topP,proto3" json:"top_p,omitempty"`
+	TopK              float32                `protobuf:"fixed32,7,opt,name=top_k,json=topK,proto3" json:"top_k,omitempty"`
+	RepetitionPenalty float32                `protobuf:"fixed32,8,opt,name=repetition_penalty,json=repetitionPenalty,proto3" json:"repetition_penalty,omitempty"`
+	OutputFormat      string                 `protobuf:"bytes,9,opt,name=output_format,json=outputFormat,proto3" json:"output_format,omitempty"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
 }
 
 func (x *CoquiSynthesizeRequest) Reset() {
@@ -134,11 +131,8 @@ func (x *CoquiSynthesizeRequest) GetOutputFormat() string {
 }
 
 type CoquiSynthesizeResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// XTTS genelde 24000Hz PCM/WAV üretir.
-	AudioChunk []byte `protobuf:"bytes,1,opt,name=audio_chunk,json=audioChunk,proto3" json:"audio_chunk,omitempty"`
-	// Engine tarafından sağlanan debug bilgileri
-	IsFinal       bool `protobuf:"varint,2,opt,name=is_final,json=isFinal,proto3" json:"is_final,omitempty"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	AudioContent  []byte                 `protobuf:"bytes,1,opt,name=audio_content,json=audioContent,proto3" json:"audio_content,omitempty"` // Tam dosya
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -173,14 +167,168 @@ func (*CoquiSynthesizeResponse) Descriptor() ([]byte, []int) {
 	return file_sentiric_tts_v1_coqui_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *CoquiSynthesizeResponse) GetAudioChunk() []byte {
+func (x *CoquiSynthesizeResponse) GetAudioContent() []byte {
+	if x != nil {
+		return x.AudioContent
+	}
+	return nil
+}
+
+// --- Stream Messages (İçerik aynı olsa bile ayrı tanımlanmalı) ---
+type CoquiSynthesizeStreamRequest struct {
+	state             protoimpl.MessageState `protogen:"open.v1"`
+	Text              string                 `protobuf:"bytes,1,opt,name=text,proto3" json:"text,omitempty"`
+	LanguageCode      string                 `protobuf:"bytes,2,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
+	SpeakerWav        []byte                 `protobuf:"bytes,3,opt,name=speaker_wav,json=speakerWav,proto3" json:"speaker_wav,omitempty"`
+	Temperature       float32                `protobuf:"fixed32,4,opt,name=temperature,proto3" json:"temperature,omitempty"`
+	Speed             float32                `protobuf:"fixed32,5,opt,name=speed,proto3" json:"speed,omitempty"`
+	TopP              float32                `protobuf:"fixed32,6,opt,name=top_p,json=topP,proto3" json:"top_p,omitempty"`
+	TopK              float32                `protobuf:"fixed32,7,opt,name=top_k,json=topK,proto3" json:"top_k,omitempty"`
+	RepetitionPenalty float32                `protobuf:"fixed32,8,opt,name=repetition_penalty,json=repetitionPenalty,proto3" json:"repetition_penalty,omitempty"`
+	OutputFormat      string                 `protobuf:"bytes,9,opt,name=output_format,json=outputFormat,proto3" json:"output_format,omitempty"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
+}
+
+func (x *CoquiSynthesizeStreamRequest) Reset() {
+	*x = CoquiSynthesizeStreamRequest{}
+	mi := &file_sentiric_tts_v1_coqui_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CoquiSynthesizeStreamRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CoquiSynthesizeStreamRequest) ProtoMessage() {}
+
+func (x *CoquiSynthesizeStreamRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_tts_v1_coqui_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CoquiSynthesizeStreamRequest.ProtoReflect.Descriptor instead.
+func (*CoquiSynthesizeStreamRequest) Descriptor() ([]byte, []int) {
+	return file_sentiric_tts_v1_coqui_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *CoquiSynthesizeStreamRequest) GetText() string {
+	if x != nil {
+		return x.Text
+	}
+	return ""
+}
+
+func (x *CoquiSynthesizeStreamRequest) GetLanguageCode() string {
+	if x != nil {
+		return x.LanguageCode
+	}
+	return ""
+}
+
+func (x *CoquiSynthesizeStreamRequest) GetSpeakerWav() []byte {
+	if x != nil {
+		return x.SpeakerWav
+	}
+	return nil
+}
+
+func (x *CoquiSynthesizeStreamRequest) GetTemperature() float32 {
+	if x != nil {
+		return x.Temperature
+	}
+	return 0
+}
+
+func (x *CoquiSynthesizeStreamRequest) GetSpeed() float32 {
+	if x != nil {
+		return x.Speed
+	}
+	return 0
+}
+
+func (x *CoquiSynthesizeStreamRequest) GetTopP() float32 {
+	if x != nil {
+		return x.TopP
+	}
+	return 0
+}
+
+func (x *CoquiSynthesizeStreamRequest) GetTopK() float32 {
+	if x != nil {
+		return x.TopK
+	}
+	return 0
+}
+
+func (x *CoquiSynthesizeStreamRequest) GetRepetitionPenalty() float32 {
+	if x != nil {
+		return x.RepetitionPenalty
+	}
+	return 0
+}
+
+func (x *CoquiSynthesizeStreamRequest) GetOutputFormat() string {
+	if x != nil {
+		return x.OutputFormat
+	}
+	return ""
+}
+
+type CoquiSynthesizeStreamResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	AudioChunk    []byte                 `protobuf:"bytes,1,opt,name=audio_chunk,json=audioChunk,proto3" json:"audio_chunk,omitempty"` // Parça parça veri
+	IsFinal       bool                   `protobuf:"varint,2,opt,name=is_final,json=isFinal,proto3" json:"is_final,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CoquiSynthesizeStreamResponse) Reset() {
+	*x = CoquiSynthesizeStreamResponse{}
+	mi := &file_sentiric_tts_v1_coqui_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CoquiSynthesizeStreamResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CoquiSynthesizeStreamResponse) ProtoMessage() {}
+
+func (x *CoquiSynthesizeStreamResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_tts_v1_coqui_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CoquiSynthesizeStreamResponse.ProtoReflect.Descriptor instead.
+func (*CoquiSynthesizeStreamResponse) Descriptor() ([]byte, []int) {
+	return file_sentiric_tts_v1_coqui_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *CoquiSynthesizeStreamResponse) GetAudioChunk() []byte {
 	if x != nil {
 		return x.AudioChunk
 	}
 	return nil
 }
 
-func (x *CoquiSynthesizeResponse) GetIsFinal() bool {
+func (x *CoquiSynthesizeStreamResponse) GetIsFinal() bool {
 	if x != nil {
 		return x.IsFinal
 	}
@@ -202,14 +350,27 @@ const file_sentiric_tts_v1_coqui_proto_rawDesc = "" +
 	"\x05top_p\x18\x06 \x01(\x02R\x04topP\x12\x13\n" +
 	"\x05top_k\x18\a \x01(\x02R\x04topK\x12-\n" +
 	"\x12repetition_penalty\x18\b \x01(\x02R\x11repetitionPenalty\x12#\n" +
-	"\routput_format\x18\t \x01(\tR\foutputFormat\"U\n" +
-	"\x17CoquiSynthesizeResponse\x12\x1f\n" +
+	"\routput_format\x18\t \x01(\tR\foutputFormat\">\n" +
+	"\x17CoquiSynthesizeResponse\x12#\n" +
+	"\raudio_content\x18\x01 \x01(\fR\faudioContent\"\xae\x02\n" +
+	"\x1cCoquiSynthesizeStreamRequest\x12\x12\n" +
+	"\x04text\x18\x01 \x01(\tR\x04text\x12#\n" +
+	"\rlanguage_code\x18\x02 \x01(\tR\flanguageCode\x12\x1f\n" +
+	"\vspeaker_wav\x18\x03 \x01(\fR\n" +
+	"speakerWav\x12 \n" +
+	"\vtemperature\x18\x04 \x01(\x02R\vtemperature\x12\x14\n" +
+	"\x05speed\x18\x05 \x01(\x02R\x05speed\x12\x13\n" +
+	"\x05top_p\x18\x06 \x01(\x02R\x04topP\x12\x13\n" +
+	"\x05top_k\x18\a \x01(\x02R\x04topK\x12-\n" +
+	"\x12repetition_penalty\x18\b \x01(\x02R\x11repetitionPenalty\x12#\n" +
+	"\routput_format\x18\t \x01(\tR\foutputFormat\"[\n" +
+	"\x1dCoquiSynthesizeStreamResponse\x12\x1f\n" +
 	"\vaudio_chunk\x18\x01 \x01(\fR\n" +
 	"audioChunk\x12\x19\n" +
-	"\bis_final\x18\x02 \x01(\bR\aisFinal2\xe5\x01\n" +
+	"\bis_final\x18\x02 \x01(\bR\aisFinal2\xf1\x01\n" +
 	"\x0fTtsCoquiService\x12d\n" +
-	"\x0fCoquiSynthesize\x12'.sentiric.tts.v1.CoquiSynthesizeRequest\x1a(.sentiric.tts.v1.CoquiSynthesizeResponse\x12l\n" +
-	"\x15CoquiSynthesizeStream\x12'.sentiric.tts.v1.CoquiSynthesizeRequest\x1a(.sentiric.tts.v1.CoquiSynthesizeResponse0\x01BEZCgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/tts/v1;ttsv1b\x06proto3"
+	"\x0fCoquiSynthesize\x12'.sentiric.tts.v1.CoquiSynthesizeRequest\x1a(.sentiric.tts.v1.CoquiSynthesizeResponse\x12x\n" +
+	"\x15CoquiSynthesizeStream\x12-.sentiric.tts.v1.CoquiSynthesizeStreamRequest\x1a..sentiric.tts.v1.CoquiSynthesizeStreamResponse0\x01BEZCgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/tts/v1;ttsv1b\x06proto3"
 
 var (
 	file_sentiric_tts_v1_coqui_proto_rawDescOnce sync.Once
@@ -223,16 +384,18 @@ func file_sentiric_tts_v1_coqui_proto_rawDescGZIP() []byte {
 	return file_sentiric_tts_v1_coqui_proto_rawDescData
 }
 
-var file_sentiric_tts_v1_coqui_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_sentiric_tts_v1_coqui_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_sentiric_tts_v1_coqui_proto_goTypes = []any{
-	(*CoquiSynthesizeRequest)(nil),  // 0: sentiric.tts.v1.CoquiSynthesizeRequest
-	(*CoquiSynthesizeResponse)(nil), // 1: sentiric.tts.v1.CoquiSynthesizeResponse
+	(*CoquiSynthesizeRequest)(nil),        // 0: sentiric.tts.v1.CoquiSynthesizeRequest
+	(*CoquiSynthesizeResponse)(nil),       // 1: sentiric.tts.v1.CoquiSynthesizeResponse
+	(*CoquiSynthesizeStreamRequest)(nil),  // 2: sentiric.tts.v1.CoquiSynthesizeStreamRequest
+	(*CoquiSynthesizeStreamResponse)(nil), // 3: sentiric.tts.v1.CoquiSynthesizeStreamResponse
 }
 var file_sentiric_tts_v1_coqui_proto_depIdxs = []int32{
 	0, // 0: sentiric.tts.v1.TtsCoquiService.CoquiSynthesize:input_type -> sentiric.tts.v1.CoquiSynthesizeRequest
-	0, // 1: sentiric.tts.v1.TtsCoquiService.CoquiSynthesizeStream:input_type -> sentiric.tts.v1.CoquiSynthesizeRequest
+	2, // 1: sentiric.tts.v1.TtsCoquiService.CoquiSynthesizeStream:input_type -> sentiric.tts.v1.CoquiSynthesizeStreamRequest
 	1, // 2: sentiric.tts.v1.TtsCoquiService.CoquiSynthesize:output_type -> sentiric.tts.v1.CoquiSynthesizeResponse
-	1, // 3: sentiric.tts.v1.TtsCoquiService.CoquiSynthesizeStream:output_type -> sentiric.tts.v1.CoquiSynthesizeResponse
+	3, // 3: sentiric.tts.v1.TtsCoquiService.CoquiSynthesizeStream:output_type -> sentiric.tts.v1.CoquiSynthesizeStreamResponse
 	2, // [2:4] is the sub-list for method output_type
 	0, // [0:2] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
@@ -251,7 +414,7 @@ func file_sentiric_tts_v1_coqui_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sentiric_tts_v1_coqui_proto_rawDesc), len(file_sentiric_tts_v1_coqui_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

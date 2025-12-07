@@ -27,10 +27,10 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type TtsCoquiServiceClient interface {
-	// Tekil sentezleme (Dosya tabanlı çıktı)
+	// Unary
 	CoquiSynthesize(ctx context.Context, in *CoquiSynthesizeRequest, opts ...grpc.CallOption) (*CoquiSynthesizeResponse, error)
-	// Streaming sentezleme (Düşük gecikmeli chunk çıkışı)
-	CoquiSynthesizeStream(ctx context.Context, in *CoquiSynthesizeRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[CoquiSynthesizeResponse], error)
+	// Stream
+	CoquiSynthesizeStream(ctx context.Context, in *CoquiSynthesizeStreamRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[CoquiSynthesizeStreamResponse], error)
 }
 
 type ttsCoquiServiceClient struct {
@@ -51,13 +51,13 @@ func (c *ttsCoquiServiceClient) CoquiSynthesize(ctx context.Context, in *CoquiSy
 	return out, nil
 }
 
-func (c *ttsCoquiServiceClient) CoquiSynthesizeStream(ctx context.Context, in *CoquiSynthesizeRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[CoquiSynthesizeResponse], error) {
+func (c *ttsCoquiServiceClient) CoquiSynthesizeStream(ctx context.Context, in *CoquiSynthesizeStreamRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[CoquiSynthesizeStreamResponse], error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	stream, err := c.cc.NewStream(ctx, &TtsCoquiService_ServiceDesc.Streams[0], TtsCoquiService_CoquiSynthesizeStream_FullMethodName, cOpts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &grpc.GenericClientStream[CoquiSynthesizeRequest, CoquiSynthesizeResponse]{ClientStream: stream}
+	x := &grpc.GenericClientStream[CoquiSynthesizeStreamRequest, CoquiSynthesizeStreamResponse]{ClientStream: stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -68,16 +68,16 @@ func (c *ttsCoquiServiceClient) CoquiSynthesizeStream(ctx context.Context, in *C
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type TtsCoquiService_CoquiSynthesizeStreamClient = grpc.ServerStreamingClient[CoquiSynthesizeResponse]
+type TtsCoquiService_CoquiSynthesizeStreamClient = grpc.ServerStreamingClient[CoquiSynthesizeStreamResponse]
 
 // TtsCoquiServiceServer is the server API for TtsCoquiService service.
 // All implementations should embed UnimplementedTtsCoquiServiceServer
 // for forward compatibility.
 type TtsCoquiServiceServer interface {
-	// Tekil sentezleme (Dosya tabanlı çıktı)
+	// Unary
 	CoquiSynthesize(context.Context, *CoquiSynthesizeRequest) (*CoquiSynthesizeResponse, error)
-	// Streaming sentezleme (Düşük gecikmeli chunk çıkışı)
-	CoquiSynthesizeStream(*CoquiSynthesizeRequest, grpc.ServerStreamingServer[CoquiSynthesizeResponse]) error
+	// Stream
+	CoquiSynthesizeStream(*CoquiSynthesizeStreamRequest, grpc.ServerStreamingServer[CoquiSynthesizeStreamResponse]) error
 }
 
 // UnimplementedTtsCoquiServiceServer should be embedded to have
@@ -90,7 +90,7 @@ type UnimplementedTtsCoquiServiceServer struct{}
 func (UnimplementedTtsCoquiServiceServer) CoquiSynthesize(context.Context, *CoquiSynthesizeRequest) (*CoquiSynthesizeResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method CoquiSynthesize not implemented")
 }
-func (UnimplementedTtsCoquiServiceServer) CoquiSynthesizeStream(*CoquiSynthesizeRequest, grpc.ServerStreamingServer[CoquiSynthesizeResponse]) error {
+func (UnimplementedTtsCoquiServiceServer) CoquiSynthesizeStream(*CoquiSynthesizeStreamRequest, grpc.ServerStreamingServer[CoquiSynthesizeStreamResponse]) error {
 	return status.Error(codes.Unimplemented, "method CoquiSynthesizeStream not implemented")
 }
 func (UnimplementedTtsCoquiServiceServer) testEmbeddedByValue() {}
@@ -132,15 +132,15 @@ func _TtsCoquiService_CoquiSynthesize_Handler(srv interface{}, ctx context.Conte
 }
 
 func _TtsCoquiService_CoquiSynthesizeStream_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(CoquiSynthesizeRequest)
+	m := new(CoquiSynthesizeStreamRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(TtsCoquiServiceServer).CoquiSynthesizeStream(m, &grpc.GenericServerStream[CoquiSynthesizeRequest, CoquiSynthesizeResponse]{ServerStream: stream})
+	return srv.(TtsCoquiServiceServer).CoquiSynthesizeStream(m, &grpc.GenericServerStream[CoquiSynthesizeStreamRequest, CoquiSynthesizeStreamResponse]{ServerStream: stream})
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type TtsCoquiService_CoquiSynthesizeStreamServer = grpc.ServerStreamingServer[CoquiSynthesizeResponse]
+type TtsCoquiService_CoquiSynthesizeStreamServer = grpc.ServerStreamingServer[CoquiSynthesizeStreamResponse]
 
 // TtsCoquiService_ServiceDesc is the grpc.ServiceDesc for TtsCoquiService service.
 // It's only intended for direct use with grpc.RegisterService,

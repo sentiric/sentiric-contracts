@@ -28,11 +28,10 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type TtsGatewayServiceClient interface {
-	// Standart Sentezleme
+	// Unary
 	Synthesize(ctx context.Context, in *SynthesizeRequest, opts ...grpc.CallOption) (*SynthesizeResponse, error)
-	// Akış Sentezleme
-	SynthesizeStream(ctx context.Context, in *SynthesizeRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[SynthesizeResponse], error)
-	// Mevcut Sesleri Listeleme
+	// Stream
+	SynthesizeStream(ctx context.Context, in *SynthesizeStreamRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[SynthesizeStreamResponse], error)
 	ListVoices(ctx context.Context, in *ListVoicesRequest, opts ...grpc.CallOption) (*ListVoicesResponse, error)
 }
 
@@ -54,13 +53,13 @@ func (c *ttsGatewayServiceClient) Synthesize(ctx context.Context, in *Synthesize
 	return out, nil
 }
 
-func (c *ttsGatewayServiceClient) SynthesizeStream(ctx context.Context, in *SynthesizeRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[SynthesizeResponse], error) {
+func (c *ttsGatewayServiceClient) SynthesizeStream(ctx context.Context, in *SynthesizeStreamRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[SynthesizeStreamResponse], error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	stream, err := c.cc.NewStream(ctx, &TtsGatewayService_ServiceDesc.Streams[0], TtsGatewayService_SynthesizeStream_FullMethodName, cOpts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &grpc.GenericClientStream[SynthesizeRequest, SynthesizeResponse]{ClientStream: stream}
+	x := &grpc.GenericClientStream[SynthesizeStreamRequest, SynthesizeStreamResponse]{ClientStream: stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -71,7 +70,7 @@ func (c *ttsGatewayServiceClient) SynthesizeStream(ctx context.Context, in *Synt
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type TtsGatewayService_SynthesizeStreamClient = grpc.ServerStreamingClient[SynthesizeResponse]
+type TtsGatewayService_SynthesizeStreamClient = grpc.ServerStreamingClient[SynthesizeStreamResponse]
 
 func (c *ttsGatewayServiceClient) ListVoices(ctx context.Context, in *ListVoicesRequest, opts ...grpc.CallOption) (*ListVoicesResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
@@ -87,11 +86,10 @@ func (c *ttsGatewayServiceClient) ListVoices(ctx context.Context, in *ListVoices
 // All implementations should embed UnimplementedTtsGatewayServiceServer
 // for forward compatibility.
 type TtsGatewayServiceServer interface {
-	// Standart Sentezleme
+	// Unary
 	Synthesize(context.Context, *SynthesizeRequest) (*SynthesizeResponse, error)
-	// Akış Sentezleme
-	SynthesizeStream(*SynthesizeRequest, grpc.ServerStreamingServer[SynthesizeResponse]) error
-	// Mevcut Sesleri Listeleme
+	// Stream
+	SynthesizeStream(*SynthesizeStreamRequest, grpc.ServerStreamingServer[SynthesizeStreamResponse]) error
 	ListVoices(context.Context, *ListVoicesRequest) (*ListVoicesResponse, error)
 }
 
@@ -105,7 +103,7 @@ type UnimplementedTtsGatewayServiceServer struct{}
 func (UnimplementedTtsGatewayServiceServer) Synthesize(context.Context, *SynthesizeRequest) (*SynthesizeResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method Synthesize not implemented")
 }
-func (UnimplementedTtsGatewayServiceServer) SynthesizeStream(*SynthesizeRequest, grpc.ServerStreamingServer[SynthesizeResponse]) error {
+func (UnimplementedTtsGatewayServiceServer) SynthesizeStream(*SynthesizeStreamRequest, grpc.ServerStreamingServer[SynthesizeStreamResponse]) error {
 	return status.Error(codes.Unimplemented, "method SynthesizeStream not implemented")
 }
 func (UnimplementedTtsGatewayServiceServer) ListVoices(context.Context, *ListVoicesRequest) (*ListVoicesResponse, error) {
@@ -150,15 +148,15 @@ func _TtsGatewayService_Synthesize_Handler(srv interface{}, ctx context.Context,
 }
 
 func _TtsGatewayService_SynthesizeStream_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(SynthesizeRequest)
+	m := new(SynthesizeStreamRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(TtsGatewayServiceServer).SynthesizeStream(m, &grpc.GenericServerStream[SynthesizeRequest, SynthesizeResponse]{ServerStream: stream})
+	return srv.(TtsGatewayServiceServer).SynthesizeStream(m, &grpc.GenericServerStream[SynthesizeStreamRequest, SynthesizeStreamResponse]{ServerStream: stream})
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type TtsGatewayService_SynthesizeStreamServer = grpc.ServerStreamingServer[SynthesizeResponse]
+type TtsGatewayService_SynthesizeStreamServer = grpc.ServerStreamingServer[SynthesizeStreamResponse]
 
 func _TtsGatewayService_ListVoices_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListVoicesRequest)

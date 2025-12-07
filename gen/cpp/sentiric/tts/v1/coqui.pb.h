@@ -53,12 +53,20 @@ extern CoquiSynthesizeRequestDefaultTypeInternal _CoquiSynthesizeRequest_default
 class CoquiSynthesizeResponse;
 struct CoquiSynthesizeResponseDefaultTypeInternal;
 extern CoquiSynthesizeResponseDefaultTypeInternal _CoquiSynthesizeResponse_default_instance_;
+class CoquiSynthesizeStreamRequest;
+struct CoquiSynthesizeStreamRequestDefaultTypeInternal;
+extern CoquiSynthesizeStreamRequestDefaultTypeInternal _CoquiSynthesizeStreamRequest_default_instance_;
+class CoquiSynthesizeStreamResponse;
+struct CoquiSynthesizeStreamResponseDefaultTypeInternal;
+extern CoquiSynthesizeStreamResponseDefaultTypeInternal _CoquiSynthesizeStreamResponse_default_instance_;
 }  // namespace v1
 }  // namespace tts
 }  // namespace sentiric
 PROTOBUF_NAMESPACE_OPEN
 template<> ::sentiric::tts::v1::CoquiSynthesizeRequest* Arena::CreateMaybeMessage<::sentiric::tts::v1::CoquiSynthesizeRequest>(Arena*);
 template<> ::sentiric::tts::v1::CoquiSynthesizeResponse* Arena::CreateMaybeMessage<::sentiric::tts::v1::CoquiSynthesizeResponse>(Arena*);
+template<> ::sentiric::tts::v1::CoquiSynthesizeStreamRequest* Arena::CreateMaybeMessage<::sentiric::tts::v1::CoquiSynthesizeStreamRequest>(Arena*);
+template<> ::sentiric::tts::v1::CoquiSynthesizeStreamResponse* Arena::CreateMaybeMessage<::sentiric::tts::v1::CoquiSynthesizeStreamResponse>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace sentiric {
 namespace tts {
@@ -443,6 +451,415 @@ class CoquiSynthesizeResponse final :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kAudioContentFieldNumber = 1,
+  };
+  // bytes audio_content = 1;
+  void clear_audio_content();
+  const std::string& audio_content() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_audio_content(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_audio_content();
+  PROTOBUF_NODISCARD std::string* release_audio_content();
+  void set_allocated_audio_content(std::string* audio_content);
+  private:
+  const std::string& _internal_audio_content() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_audio_content(const std::string& value);
+  std::string* _internal_mutable_audio_content();
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.tts.v1.CoquiSynthesizeResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr audio_content_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2ftts_2fv1_2fcoqui_2eproto;
+};
+// -------------------------------------------------------------------
+
+class CoquiSynthesizeStreamRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.tts.v1.CoquiSynthesizeStreamRequest) */ {
+ public:
+  inline CoquiSynthesizeStreamRequest() : CoquiSynthesizeStreamRequest(nullptr) {}
+  ~CoquiSynthesizeStreamRequest() override;
+  explicit PROTOBUF_CONSTEXPR CoquiSynthesizeStreamRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  CoquiSynthesizeStreamRequest(const CoquiSynthesizeStreamRequest& from);
+  CoquiSynthesizeStreamRequest(CoquiSynthesizeStreamRequest&& from) noexcept
+    : CoquiSynthesizeStreamRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline CoquiSynthesizeStreamRequest& operator=(const CoquiSynthesizeStreamRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline CoquiSynthesizeStreamRequest& operator=(CoquiSynthesizeStreamRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const CoquiSynthesizeStreamRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const CoquiSynthesizeStreamRequest* internal_default_instance() {
+    return reinterpret_cast<const CoquiSynthesizeStreamRequest*>(
+               &_CoquiSynthesizeStreamRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    2;
+
+  friend void swap(CoquiSynthesizeStreamRequest& a, CoquiSynthesizeStreamRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(CoquiSynthesizeStreamRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(CoquiSynthesizeStreamRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  CoquiSynthesizeStreamRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<CoquiSynthesizeStreamRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const CoquiSynthesizeStreamRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const CoquiSynthesizeStreamRequest& from) {
+    CoquiSynthesizeStreamRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(CoquiSynthesizeStreamRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.tts.v1.CoquiSynthesizeStreamRequest";
+  }
+  protected:
+  explicit CoquiSynthesizeStreamRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kTextFieldNumber = 1,
+    kLanguageCodeFieldNumber = 2,
+    kSpeakerWavFieldNumber = 3,
+    kOutputFormatFieldNumber = 9,
+    kTemperatureFieldNumber = 4,
+    kSpeedFieldNumber = 5,
+    kTopPFieldNumber = 6,
+    kTopKFieldNumber = 7,
+    kRepetitionPenaltyFieldNumber = 8,
+  };
+  // string text = 1;
+  void clear_text();
+  const std::string& text() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_text(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_text();
+  PROTOBUF_NODISCARD std::string* release_text();
+  void set_allocated_text(std::string* text);
+  private:
+  const std::string& _internal_text() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_text(const std::string& value);
+  std::string* _internal_mutable_text();
+  public:
+
+  // string language_code = 2;
+  void clear_language_code();
+  const std::string& language_code() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_language_code(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_language_code();
+  PROTOBUF_NODISCARD std::string* release_language_code();
+  void set_allocated_language_code(std::string* language_code);
+  private:
+  const std::string& _internal_language_code() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_language_code(const std::string& value);
+  std::string* _internal_mutable_language_code();
+  public:
+
+  // bytes speaker_wav = 3;
+  void clear_speaker_wav();
+  const std::string& speaker_wav() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_speaker_wav(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_speaker_wav();
+  PROTOBUF_NODISCARD std::string* release_speaker_wav();
+  void set_allocated_speaker_wav(std::string* speaker_wav);
+  private:
+  const std::string& _internal_speaker_wav() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_speaker_wav(const std::string& value);
+  std::string* _internal_mutable_speaker_wav();
+  public:
+
+  // string output_format = 9;
+  void clear_output_format();
+  const std::string& output_format() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_output_format(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_output_format();
+  PROTOBUF_NODISCARD std::string* release_output_format();
+  void set_allocated_output_format(std::string* output_format);
+  private:
+  const std::string& _internal_output_format() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_output_format(const std::string& value);
+  std::string* _internal_mutable_output_format();
+  public:
+
+  // float temperature = 4;
+  void clear_temperature();
+  float temperature() const;
+  void set_temperature(float value);
+  private:
+  float _internal_temperature() const;
+  void _internal_set_temperature(float value);
+  public:
+
+  // float speed = 5;
+  void clear_speed();
+  float speed() const;
+  void set_speed(float value);
+  private:
+  float _internal_speed() const;
+  void _internal_set_speed(float value);
+  public:
+
+  // float top_p = 6;
+  void clear_top_p();
+  float top_p() const;
+  void set_top_p(float value);
+  private:
+  float _internal_top_p() const;
+  void _internal_set_top_p(float value);
+  public:
+
+  // float top_k = 7;
+  void clear_top_k();
+  float top_k() const;
+  void set_top_k(float value);
+  private:
+  float _internal_top_k() const;
+  void _internal_set_top_k(float value);
+  public:
+
+  // float repetition_penalty = 8;
+  void clear_repetition_penalty();
+  float repetition_penalty() const;
+  void set_repetition_penalty(float value);
+  private:
+  float _internal_repetition_penalty() const;
+  void _internal_set_repetition_penalty(float value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.tts.v1.CoquiSynthesizeStreamRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr text_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr language_code_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr speaker_wav_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr output_format_;
+    float temperature_;
+    float speed_;
+    float top_p_;
+    float top_k_;
+    float repetition_penalty_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2ftts_2fv1_2fcoqui_2eproto;
+};
+// -------------------------------------------------------------------
+
+class CoquiSynthesizeStreamResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.tts.v1.CoquiSynthesizeStreamResponse) */ {
+ public:
+  inline CoquiSynthesizeStreamResponse() : CoquiSynthesizeStreamResponse(nullptr) {}
+  ~CoquiSynthesizeStreamResponse() override;
+  explicit PROTOBUF_CONSTEXPR CoquiSynthesizeStreamResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  CoquiSynthesizeStreamResponse(const CoquiSynthesizeStreamResponse& from);
+  CoquiSynthesizeStreamResponse(CoquiSynthesizeStreamResponse&& from) noexcept
+    : CoquiSynthesizeStreamResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline CoquiSynthesizeStreamResponse& operator=(const CoquiSynthesizeStreamResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline CoquiSynthesizeStreamResponse& operator=(CoquiSynthesizeStreamResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const CoquiSynthesizeStreamResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const CoquiSynthesizeStreamResponse* internal_default_instance() {
+    return reinterpret_cast<const CoquiSynthesizeStreamResponse*>(
+               &_CoquiSynthesizeStreamResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  friend void swap(CoquiSynthesizeStreamResponse& a, CoquiSynthesizeStreamResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(CoquiSynthesizeStreamResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(CoquiSynthesizeStreamResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  CoquiSynthesizeStreamResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<CoquiSynthesizeStreamResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const CoquiSynthesizeStreamResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const CoquiSynthesizeStreamResponse& from) {
+    CoquiSynthesizeStreamResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(CoquiSynthesizeStreamResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.tts.v1.CoquiSynthesizeStreamResponse";
+  }
+  protected:
+  explicit CoquiSynthesizeStreamResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
     kAudioChunkFieldNumber = 1,
     kIsFinalFieldNumber = 2,
   };
@@ -469,7 +886,7 @@ class CoquiSynthesizeResponse final :
   void _internal_set_is_final(bool value);
   public:
 
-  // @@protoc_insertion_point(class_scope:sentiric.tts.v1.CoquiSynthesizeResponse)
+  // @@protoc_insertion_point(class_scope:sentiric.tts.v1.CoquiSynthesizeStreamResponse)
  private:
   class _Internal;
 
@@ -799,42 +1216,400 @@ inline void CoquiSynthesizeRequest::set_allocated_output_format(std::string* out
 
 // CoquiSynthesizeResponse
 
+// bytes audio_content = 1;
+inline void CoquiSynthesizeResponse::clear_audio_content() {
+  _impl_.audio_content_.ClearToEmpty();
+}
+inline const std::string& CoquiSynthesizeResponse::audio_content() const {
+  // @@protoc_insertion_point(field_get:sentiric.tts.v1.CoquiSynthesizeResponse.audio_content)
+  return _internal_audio_content();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void CoquiSynthesizeResponse::set_audio_content(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.audio_content_.SetBytes(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.tts.v1.CoquiSynthesizeResponse.audio_content)
+}
+inline std::string* CoquiSynthesizeResponse::mutable_audio_content() {
+  std::string* _s = _internal_mutable_audio_content();
+  // @@protoc_insertion_point(field_mutable:sentiric.tts.v1.CoquiSynthesizeResponse.audio_content)
+  return _s;
+}
+inline const std::string& CoquiSynthesizeResponse::_internal_audio_content() const {
+  return _impl_.audio_content_.Get();
+}
+inline void CoquiSynthesizeResponse::_internal_set_audio_content(const std::string& value) {
+  
+  _impl_.audio_content_.Set(value, GetArenaForAllocation());
+}
+inline std::string* CoquiSynthesizeResponse::_internal_mutable_audio_content() {
+  
+  return _impl_.audio_content_.Mutable(GetArenaForAllocation());
+}
+inline std::string* CoquiSynthesizeResponse::release_audio_content() {
+  // @@protoc_insertion_point(field_release:sentiric.tts.v1.CoquiSynthesizeResponse.audio_content)
+  return _impl_.audio_content_.Release();
+}
+inline void CoquiSynthesizeResponse::set_allocated_audio_content(std::string* audio_content) {
+  if (audio_content != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.audio_content_.SetAllocated(audio_content, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.audio_content_.IsDefault()) {
+    _impl_.audio_content_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.tts.v1.CoquiSynthesizeResponse.audio_content)
+}
+
+// -------------------------------------------------------------------
+
+// CoquiSynthesizeStreamRequest
+
+// string text = 1;
+inline void CoquiSynthesizeStreamRequest::clear_text() {
+  _impl_.text_.ClearToEmpty();
+}
+inline const std::string& CoquiSynthesizeStreamRequest::text() const {
+  // @@protoc_insertion_point(field_get:sentiric.tts.v1.CoquiSynthesizeStreamRequest.text)
+  return _internal_text();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void CoquiSynthesizeStreamRequest::set_text(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.text_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.tts.v1.CoquiSynthesizeStreamRequest.text)
+}
+inline std::string* CoquiSynthesizeStreamRequest::mutable_text() {
+  std::string* _s = _internal_mutable_text();
+  // @@protoc_insertion_point(field_mutable:sentiric.tts.v1.CoquiSynthesizeStreamRequest.text)
+  return _s;
+}
+inline const std::string& CoquiSynthesizeStreamRequest::_internal_text() const {
+  return _impl_.text_.Get();
+}
+inline void CoquiSynthesizeStreamRequest::_internal_set_text(const std::string& value) {
+  
+  _impl_.text_.Set(value, GetArenaForAllocation());
+}
+inline std::string* CoquiSynthesizeStreamRequest::_internal_mutable_text() {
+  
+  return _impl_.text_.Mutable(GetArenaForAllocation());
+}
+inline std::string* CoquiSynthesizeStreamRequest::release_text() {
+  // @@protoc_insertion_point(field_release:sentiric.tts.v1.CoquiSynthesizeStreamRequest.text)
+  return _impl_.text_.Release();
+}
+inline void CoquiSynthesizeStreamRequest::set_allocated_text(std::string* text) {
+  if (text != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.text_.SetAllocated(text, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.text_.IsDefault()) {
+    _impl_.text_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.tts.v1.CoquiSynthesizeStreamRequest.text)
+}
+
+// string language_code = 2;
+inline void CoquiSynthesizeStreamRequest::clear_language_code() {
+  _impl_.language_code_.ClearToEmpty();
+}
+inline const std::string& CoquiSynthesizeStreamRequest::language_code() const {
+  // @@protoc_insertion_point(field_get:sentiric.tts.v1.CoquiSynthesizeStreamRequest.language_code)
+  return _internal_language_code();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void CoquiSynthesizeStreamRequest::set_language_code(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.language_code_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.tts.v1.CoquiSynthesizeStreamRequest.language_code)
+}
+inline std::string* CoquiSynthesizeStreamRequest::mutable_language_code() {
+  std::string* _s = _internal_mutable_language_code();
+  // @@protoc_insertion_point(field_mutable:sentiric.tts.v1.CoquiSynthesizeStreamRequest.language_code)
+  return _s;
+}
+inline const std::string& CoquiSynthesizeStreamRequest::_internal_language_code() const {
+  return _impl_.language_code_.Get();
+}
+inline void CoquiSynthesizeStreamRequest::_internal_set_language_code(const std::string& value) {
+  
+  _impl_.language_code_.Set(value, GetArenaForAllocation());
+}
+inline std::string* CoquiSynthesizeStreamRequest::_internal_mutable_language_code() {
+  
+  return _impl_.language_code_.Mutable(GetArenaForAllocation());
+}
+inline std::string* CoquiSynthesizeStreamRequest::release_language_code() {
+  // @@protoc_insertion_point(field_release:sentiric.tts.v1.CoquiSynthesizeStreamRequest.language_code)
+  return _impl_.language_code_.Release();
+}
+inline void CoquiSynthesizeStreamRequest::set_allocated_language_code(std::string* language_code) {
+  if (language_code != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.language_code_.SetAllocated(language_code, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.language_code_.IsDefault()) {
+    _impl_.language_code_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.tts.v1.CoquiSynthesizeStreamRequest.language_code)
+}
+
+// bytes speaker_wav = 3;
+inline void CoquiSynthesizeStreamRequest::clear_speaker_wav() {
+  _impl_.speaker_wav_.ClearToEmpty();
+}
+inline const std::string& CoquiSynthesizeStreamRequest::speaker_wav() const {
+  // @@protoc_insertion_point(field_get:sentiric.tts.v1.CoquiSynthesizeStreamRequest.speaker_wav)
+  return _internal_speaker_wav();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void CoquiSynthesizeStreamRequest::set_speaker_wav(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.speaker_wav_.SetBytes(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.tts.v1.CoquiSynthesizeStreamRequest.speaker_wav)
+}
+inline std::string* CoquiSynthesizeStreamRequest::mutable_speaker_wav() {
+  std::string* _s = _internal_mutable_speaker_wav();
+  // @@protoc_insertion_point(field_mutable:sentiric.tts.v1.CoquiSynthesizeStreamRequest.speaker_wav)
+  return _s;
+}
+inline const std::string& CoquiSynthesizeStreamRequest::_internal_speaker_wav() const {
+  return _impl_.speaker_wav_.Get();
+}
+inline void CoquiSynthesizeStreamRequest::_internal_set_speaker_wav(const std::string& value) {
+  
+  _impl_.speaker_wav_.Set(value, GetArenaForAllocation());
+}
+inline std::string* CoquiSynthesizeStreamRequest::_internal_mutable_speaker_wav() {
+  
+  return _impl_.speaker_wav_.Mutable(GetArenaForAllocation());
+}
+inline std::string* CoquiSynthesizeStreamRequest::release_speaker_wav() {
+  // @@protoc_insertion_point(field_release:sentiric.tts.v1.CoquiSynthesizeStreamRequest.speaker_wav)
+  return _impl_.speaker_wav_.Release();
+}
+inline void CoquiSynthesizeStreamRequest::set_allocated_speaker_wav(std::string* speaker_wav) {
+  if (speaker_wav != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.speaker_wav_.SetAllocated(speaker_wav, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.speaker_wav_.IsDefault()) {
+    _impl_.speaker_wav_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.tts.v1.CoquiSynthesizeStreamRequest.speaker_wav)
+}
+
+// float temperature = 4;
+inline void CoquiSynthesizeStreamRequest::clear_temperature() {
+  _impl_.temperature_ = 0;
+}
+inline float CoquiSynthesizeStreamRequest::_internal_temperature() const {
+  return _impl_.temperature_;
+}
+inline float CoquiSynthesizeStreamRequest::temperature() const {
+  // @@protoc_insertion_point(field_get:sentiric.tts.v1.CoquiSynthesizeStreamRequest.temperature)
+  return _internal_temperature();
+}
+inline void CoquiSynthesizeStreamRequest::_internal_set_temperature(float value) {
+  
+  _impl_.temperature_ = value;
+}
+inline void CoquiSynthesizeStreamRequest::set_temperature(float value) {
+  _internal_set_temperature(value);
+  // @@protoc_insertion_point(field_set:sentiric.tts.v1.CoquiSynthesizeStreamRequest.temperature)
+}
+
+// float speed = 5;
+inline void CoquiSynthesizeStreamRequest::clear_speed() {
+  _impl_.speed_ = 0;
+}
+inline float CoquiSynthesizeStreamRequest::_internal_speed() const {
+  return _impl_.speed_;
+}
+inline float CoquiSynthesizeStreamRequest::speed() const {
+  // @@protoc_insertion_point(field_get:sentiric.tts.v1.CoquiSynthesizeStreamRequest.speed)
+  return _internal_speed();
+}
+inline void CoquiSynthesizeStreamRequest::_internal_set_speed(float value) {
+  
+  _impl_.speed_ = value;
+}
+inline void CoquiSynthesizeStreamRequest::set_speed(float value) {
+  _internal_set_speed(value);
+  // @@protoc_insertion_point(field_set:sentiric.tts.v1.CoquiSynthesizeStreamRequest.speed)
+}
+
+// float top_p = 6;
+inline void CoquiSynthesizeStreamRequest::clear_top_p() {
+  _impl_.top_p_ = 0;
+}
+inline float CoquiSynthesizeStreamRequest::_internal_top_p() const {
+  return _impl_.top_p_;
+}
+inline float CoquiSynthesizeStreamRequest::top_p() const {
+  // @@protoc_insertion_point(field_get:sentiric.tts.v1.CoquiSynthesizeStreamRequest.top_p)
+  return _internal_top_p();
+}
+inline void CoquiSynthesizeStreamRequest::_internal_set_top_p(float value) {
+  
+  _impl_.top_p_ = value;
+}
+inline void CoquiSynthesizeStreamRequest::set_top_p(float value) {
+  _internal_set_top_p(value);
+  // @@protoc_insertion_point(field_set:sentiric.tts.v1.CoquiSynthesizeStreamRequest.top_p)
+}
+
+// float top_k = 7;
+inline void CoquiSynthesizeStreamRequest::clear_top_k() {
+  _impl_.top_k_ = 0;
+}
+inline float CoquiSynthesizeStreamRequest::_internal_top_k() const {
+  return _impl_.top_k_;
+}
+inline float CoquiSynthesizeStreamRequest::top_k() const {
+  // @@protoc_insertion_point(field_get:sentiric.tts.v1.CoquiSynthesizeStreamRequest.top_k)
+  return _internal_top_k();
+}
+inline void CoquiSynthesizeStreamRequest::_internal_set_top_k(float value) {
+  
+  _impl_.top_k_ = value;
+}
+inline void CoquiSynthesizeStreamRequest::set_top_k(float value) {
+  _internal_set_top_k(value);
+  // @@protoc_insertion_point(field_set:sentiric.tts.v1.CoquiSynthesizeStreamRequest.top_k)
+}
+
+// float repetition_penalty = 8;
+inline void CoquiSynthesizeStreamRequest::clear_repetition_penalty() {
+  _impl_.repetition_penalty_ = 0;
+}
+inline float CoquiSynthesizeStreamRequest::_internal_repetition_penalty() const {
+  return _impl_.repetition_penalty_;
+}
+inline float CoquiSynthesizeStreamRequest::repetition_penalty() const {
+  // @@protoc_insertion_point(field_get:sentiric.tts.v1.CoquiSynthesizeStreamRequest.repetition_penalty)
+  return _internal_repetition_penalty();
+}
+inline void CoquiSynthesizeStreamRequest::_internal_set_repetition_penalty(float value) {
+  
+  _impl_.repetition_penalty_ = value;
+}
+inline void CoquiSynthesizeStreamRequest::set_repetition_penalty(float value) {
+  _internal_set_repetition_penalty(value);
+  // @@protoc_insertion_point(field_set:sentiric.tts.v1.CoquiSynthesizeStreamRequest.repetition_penalty)
+}
+
+// string output_format = 9;
+inline void CoquiSynthesizeStreamRequest::clear_output_format() {
+  _impl_.output_format_.ClearToEmpty();
+}
+inline const std::string& CoquiSynthesizeStreamRequest::output_format() const {
+  // @@protoc_insertion_point(field_get:sentiric.tts.v1.CoquiSynthesizeStreamRequest.output_format)
+  return _internal_output_format();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void CoquiSynthesizeStreamRequest::set_output_format(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.output_format_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.tts.v1.CoquiSynthesizeStreamRequest.output_format)
+}
+inline std::string* CoquiSynthesizeStreamRequest::mutable_output_format() {
+  std::string* _s = _internal_mutable_output_format();
+  // @@protoc_insertion_point(field_mutable:sentiric.tts.v1.CoquiSynthesizeStreamRequest.output_format)
+  return _s;
+}
+inline const std::string& CoquiSynthesizeStreamRequest::_internal_output_format() const {
+  return _impl_.output_format_.Get();
+}
+inline void CoquiSynthesizeStreamRequest::_internal_set_output_format(const std::string& value) {
+  
+  _impl_.output_format_.Set(value, GetArenaForAllocation());
+}
+inline std::string* CoquiSynthesizeStreamRequest::_internal_mutable_output_format() {
+  
+  return _impl_.output_format_.Mutable(GetArenaForAllocation());
+}
+inline std::string* CoquiSynthesizeStreamRequest::release_output_format() {
+  // @@protoc_insertion_point(field_release:sentiric.tts.v1.CoquiSynthesizeStreamRequest.output_format)
+  return _impl_.output_format_.Release();
+}
+inline void CoquiSynthesizeStreamRequest::set_allocated_output_format(std::string* output_format) {
+  if (output_format != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.output_format_.SetAllocated(output_format, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.output_format_.IsDefault()) {
+    _impl_.output_format_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.tts.v1.CoquiSynthesizeStreamRequest.output_format)
+}
+
+// -------------------------------------------------------------------
+
+// CoquiSynthesizeStreamResponse
+
 // bytes audio_chunk = 1;
-inline void CoquiSynthesizeResponse::clear_audio_chunk() {
+inline void CoquiSynthesizeStreamResponse::clear_audio_chunk() {
   _impl_.audio_chunk_.ClearToEmpty();
 }
-inline const std::string& CoquiSynthesizeResponse::audio_chunk() const {
-  // @@protoc_insertion_point(field_get:sentiric.tts.v1.CoquiSynthesizeResponse.audio_chunk)
+inline const std::string& CoquiSynthesizeStreamResponse::audio_chunk() const {
+  // @@protoc_insertion_point(field_get:sentiric.tts.v1.CoquiSynthesizeStreamResponse.audio_chunk)
   return _internal_audio_chunk();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void CoquiSynthesizeResponse::set_audio_chunk(ArgT0&& arg0, ArgT... args) {
+void CoquiSynthesizeStreamResponse::set_audio_chunk(ArgT0&& arg0, ArgT... args) {
  
  _impl_.audio_chunk_.SetBytes(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:sentiric.tts.v1.CoquiSynthesizeResponse.audio_chunk)
+  // @@protoc_insertion_point(field_set:sentiric.tts.v1.CoquiSynthesizeStreamResponse.audio_chunk)
 }
-inline std::string* CoquiSynthesizeResponse::mutable_audio_chunk() {
+inline std::string* CoquiSynthesizeStreamResponse::mutable_audio_chunk() {
   std::string* _s = _internal_mutable_audio_chunk();
-  // @@protoc_insertion_point(field_mutable:sentiric.tts.v1.CoquiSynthesizeResponse.audio_chunk)
+  // @@protoc_insertion_point(field_mutable:sentiric.tts.v1.CoquiSynthesizeStreamResponse.audio_chunk)
   return _s;
 }
-inline const std::string& CoquiSynthesizeResponse::_internal_audio_chunk() const {
+inline const std::string& CoquiSynthesizeStreamResponse::_internal_audio_chunk() const {
   return _impl_.audio_chunk_.Get();
 }
-inline void CoquiSynthesizeResponse::_internal_set_audio_chunk(const std::string& value) {
+inline void CoquiSynthesizeStreamResponse::_internal_set_audio_chunk(const std::string& value) {
   
   _impl_.audio_chunk_.Set(value, GetArenaForAllocation());
 }
-inline std::string* CoquiSynthesizeResponse::_internal_mutable_audio_chunk() {
+inline std::string* CoquiSynthesizeStreamResponse::_internal_mutable_audio_chunk() {
   
   return _impl_.audio_chunk_.Mutable(GetArenaForAllocation());
 }
-inline std::string* CoquiSynthesizeResponse::release_audio_chunk() {
-  // @@protoc_insertion_point(field_release:sentiric.tts.v1.CoquiSynthesizeResponse.audio_chunk)
+inline std::string* CoquiSynthesizeStreamResponse::release_audio_chunk() {
+  // @@protoc_insertion_point(field_release:sentiric.tts.v1.CoquiSynthesizeStreamResponse.audio_chunk)
   return _impl_.audio_chunk_.Release();
 }
-inline void CoquiSynthesizeResponse::set_allocated_audio_chunk(std::string* audio_chunk) {
+inline void CoquiSynthesizeStreamResponse::set_allocated_audio_chunk(std::string* audio_chunk) {
   if (audio_chunk != nullptr) {
     
   } else {
@@ -846,32 +1621,36 @@ inline void CoquiSynthesizeResponse::set_allocated_audio_chunk(std::string* audi
     _impl_.audio_chunk_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:sentiric.tts.v1.CoquiSynthesizeResponse.audio_chunk)
+  // @@protoc_insertion_point(field_set_allocated:sentiric.tts.v1.CoquiSynthesizeStreamResponse.audio_chunk)
 }
 
 // bool is_final = 2;
-inline void CoquiSynthesizeResponse::clear_is_final() {
+inline void CoquiSynthesizeStreamResponse::clear_is_final() {
   _impl_.is_final_ = false;
 }
-inline bool CoquiSynthesizeResponse::_internal_is_final() const {
+inline bool CoquiSynthesizeStreamResponse::_internal_is_final() const {
   return _impl_.is_final_;
 }
-inline bool CoquiSynthesizeResponse::is_final() const {
-  // @@protoc_insertion_point(field_get:sentiric.tts.v1.CoquiSynthesizeResponse.is_final)
+inline bool CoquiSynthesizeStreamResponse::is_final() const {
+  // @@protoc_insertion_point(field_get:sentiric.tts.v1.CoquiSynthesizeStreamResponse.is_final)
   return _internal_is_final();
 }
-inline void CoquiSynthesizeResponse::_internal_set_is_final(bool value) {
+inline void CoquiSynthesizeStreamResponse::_internal_set_is_final(bool value) {
   
   _impl_.is_final_ = value;
 }
-inline void CoquiSynthesizeResponse::set_is_final(bool value) {
+inline void CoquiSynthesizeStreamResponse::set_is_final(bool value) {
   _internal_set_is_final(value);
-  // @@protoc_insertion_point(field_set:sentiric.tts.v1.CoquiSynthesizeResponse.is_final)
+  // @@protoc_insertion_point(field_set:sentiric.tts.v1.CoquiSynthesizeStreamResponse.is_final)
 }
 
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 

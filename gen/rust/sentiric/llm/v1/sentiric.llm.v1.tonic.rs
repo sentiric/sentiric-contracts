@@ -92,9 +92,9 @@ pub mod llama_service_client {
         }
         pub async fn generate_stream(
             &mut self,
-            request: impl tonic::IntoRequest<super::LlamaGenerateStreamRequest>,
+            request: impl tonic::IntoRequest<super::GenerateStreamRequest>,
         ) -> std::result::Result<
-            tonic::Response<tonic::codec::Streaming<super::LlamaGenerateStreamResponse>>,
+            tonic::Response<tonic::codec::Streaming<super::GenerateStreamResponse>>,
             tonic::Status,
         > {
             self.inner
@@ -133,16 +133,13 @@ pub mod llama_service_server {
     pub trait LlamaService: std::marker::Send + std::marker::Sync + 'static {
         /// Server streaming response type for the GenerateStream method.
         type GenerateStreamStream: tonic::codegen::tokio_stream::Stream<
-                Item = std::result::Result<
-                    super::LlamaGenerateStreamResponse,
-                    tonic::Status,
-                >,
+                Item = std::result::Result<super::GenerateStreamResponse, tonic::Status>,
             >
             + std::marker::Send
             + 'static;
         async fn generate_stream(
             &self,
-            request: tonic::Request<super::LlamaGenerateStreamRequest>,
+            request: tonic::Request<super::GenerateStreamRequest>,
         ) -> std::result::Result<
             tonic::Response<Self::GenerateStreamStream>,
             tonic::Status,
@@ -229,10 +226,9 @@ pub mod llama_service_server {
                     struct GenerateStreamSvc<T: LlamaService>(pub Arc<T>);
                     impl<
                         T: LlamaService,
-                    > tonic::server::ServerStreamingService<
-                        super::LlamaGenerateStreamRequest,
-                    > for GenerateStreamSvc<T> {
-                        type Response = super::LlamaGenerateStreamResponse;
+                    > tonic::server::ServerStreamingService<super::GenerateStreamRequest>
+                    for GenerateStreamSvc<T> {
+                        type Response = super::GenerateStreamResponse;
                         type ResponseStream = T::GenerateStreamStream;
                         type Future = BoxFuture<
                             tonic::Response<Self::ResponseStream>,
@@ -240,7 +236,7 @@ pub mod llama_service_server {
                         >;
                         fn call(
                             &mut self,
-                            request: tonic::Request<super::LlamaGenerateStreamRequest>,
+                            request: tonic::Request<super::GenerateStreamRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {

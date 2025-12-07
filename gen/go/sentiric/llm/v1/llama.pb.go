@@ -22,7 +22,8 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type LlamaGenerateStreamRequest struct {
+// Mesaj Adı: GenerateStreamRequest (RPC adı ile aynı olmalı)
+type GenerateStreamRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	SystemPrompt  string                 `protobuf:"bytes,1,opt,name=system_prompt,json=systemPrompt,proto3" json:"system_prompt,omitempty"`
 	UserPrompt    string                 `protobuf:"bytes,2,opt,name=user_prompt,json=userPrompt,proto3" json:"user_prompt,omitempty"`
@@ -33,20 +34,20 @@ type LlamaGenerateStreamRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *LlamaGenerateStreamRequest) Reset() {
-	*x = LlamaGenerateStreamRequest{}
+func (x *GenerateStreamRequest) Reset() {
+	*x = GenerateStreamRequest{}
 	mi := &file_sentiric_llm_v1_llama_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *LlamaGenerateStreamRequest) String() string {
+func (x *GenerateStreamRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*LlamaGenerateStreamRequest) ProtoMessage() {}
+func (*GenerateStreamRequest) ProtoMessage() {}
 
-func (x *LlamaGenerateStreamRequest) ProtoReflect() protoreflect.Message {
+func (x *GenerateStreamRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_sentiric_llm_v1_llama_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -58,71 +59,71 @@ func (x *LlamaGenerateStreamRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use LlamaGenerateStreamRequest.ProtoReflect.Descriptor instead.
-func (*LlamaGenerateStreamRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use GenerateStreamRequest.ProtoReflect.Descriptor instead.
+func (*GenerateStreamRequest) Descriptor() ([]byte, []int) {
 	return file_sentiric_llm_v1_llama_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *LlamaGenerateStreamRequest) GetSystemPrompt() string {
+func (x *GenerateStreamRequest) GetSystemPrompt() string {
 	if x != nil {
 		return x.SystemPrompt
 	}
 	return ""
 }
 
-func (x *LlamaGenerateStreamRequest) GetUserPrompt() string {
+func (x *GenerateStreamRequest) GetUserPrompt() string {
 	if x != nil {
 		return x.UserPrompt
 	}
 	return ""
 }
 
-func (x *LlamaGenerateStreamRequest) GetRagContext() string {
+func (x *GenerateStreamRequest) GetRagContext() string {
 	if x != nil && x.RagContext != nil {
 		return *x.RagContext
 	}
 	return ""
 }
 
-func (x *LlamaGenerateStreamRequest) GetHistory() []*ConversationTurn {
+func (x *GenerateStreamRequest) GetHistory() []*ConversationTurn {
 	if x != nil {
 		return x.History
 	}
 	return nil
 }
 
-func (x *LlamaGenerateStreamRequest) GetParams() *GenerationParams {
+func (x *GenerateStreamRequest) GetParams() *GenerationParams {
 	if x != nil {
 		return x.Params
 	}
 	return nil
 }
 
-type LlamaGenerateStreamResponse struct {
+type GenerateStreamResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Types that are valid to be assigned to Type:
 	//
-	//	*LlamaGenerateStreamResponse_Token
-	//	*LlamaGenerateStreamResponse_FinishDetails
-	Type          isLlamaGenerateStreamResponse_Type `protobuf_oneof:"type"`
+	//	*GenerateStreamResponse_Token
+	//	*GenerateStreamResponse_FinishDetails
+	Type          isGenerateStreamResponse_Type `protobuf_oneof:"type"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *LlamaGenerateStreamResponse) Reset() {
-	*x = LlamaGenerateStreamResponse{}
+func (x *GenerateStreamResponse) Reset() {
+	*x = GenerateStreamResponse{}
 	mi := &file_sentiric_llm_v1_llama_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *LlamaGenerateStreamResponse) String() string {
+func (x *GenerateStreamResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*LlamaGenerateStreamResponse) ProtoMessage() {}
+func (*GenerateStreamResponse) ProtoMessage() {}
 
-func (x *LlamaGenerateStreamResponse) ProtoReflect() protoreflect.Message {
+func (x *GenerateStreamResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_sentiric_llm_v1_llama_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -134,55 +135,56 @@ func (x *LlamaGenerateStreamResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use LlamaGenerateStreamResponse.ProtoReflect.Descriptor instead.
-func (*LlamaGenerateStreamResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use GenerateStreamResponse.ProtoReflect.Descriptor instead.
+func (*GenerateStreamResponse) Descriptor() ([]byte, []int) {
 	return file_sentiric_llm_v1_llama_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *LlamaGenerateStreamResponse) GetType() isLlamaGenerateStreamResponse_Type {
+func (x *GenerateStreamResponse) GetType() isGenerateStreamResponse_Type {
 	if x != nil {
 		return x.Type
 	}
 	return nil
 }
 
-func (x *LlamaGenerateStreamResponse) GetToken() string {
+func (x *GenerateStreamResponse) GetToken() string {
 	if x != nil {
-		if x, ok := x.Type.(*LlamaGenerateStreamResponse_Token); ok {
+		if x, ok := x.Type.(*GenerateStreamResponse_Token); ok {
 			return x.Token
 		}
 	}
 	return ""
 }
 
-func (x *LlamaGenerateStreamResponse) GetFinishDetails() *FinishDetails {
+func (x *GenerateStreamResponse) GetFinishDetails() *FinishDetails {
 	if x != nil {
-		if x, ok := x.Type.(*LlamaGenerateStreamResponse_FinishDetails); ok {
+		if x, ok := x.Type.(*GenerateStreamResponse_FinishDetails); ok {
 			return x.FinishDetails
 		}
 	}
 	return nil
 }
 
-type isLlamaGenerateStreamResponse_Type interface {
-	isLlamaGenerateStreamResponse_Type()
+type isGenerateStreamResponse_Type interface {
+	isGenerateStreamResponse_Type()
 }
 
-type LlamaGenerateStreamResponse_Token struct {
-	Token string `protobuf:"bytes,1,opt,name=token,proto3,oneof"` // UTF-8 string olarak token
+type GenerateStreamResponse_Token struct {
+	Token string `protobuf:"bytes,1,opt,name=token,proto3,oneof"`
 }
 
-type LlamaGenerateStreamResponse_FinishDetails struct {
+type GenerateStreamResponse_FinishDetails struct {
 	FinishDetails *FinishDetails `protobuf:"bytes,2,opt,name=finish_details,json=finishDetails,proto3,oneof"`
 }
 
-func (*LlamaGenerateStreamResponse_Token) isLlamaGenerateStreamResponse_Type() {}
+func (*GenerateStreamResponse_Token) isGenerateStreamResponse_Type() {}
 
-func (*LlamaGenerateStreamResponse_FinishDetails) isLlamaGenerateStreamResponse_Type() {}
+func (*GenerateStreamResponse_FinishDetails) isGenerateStreamResponse_Type() {}
 
+// --- Yardımcılar (Değişmedi) ---
 type ConversationTurn struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Role          string                 `protobuf:"bytes,1,opt,name=role,proto3" json:"role,omitempty"` // "user", "assistant", "system"
+	Role          string                 `protobuf:"bytes,1,opt,name=role,proto3" json:"role,omitempty"`
 	Content       string                 `protobuf:"bytes,2,opt,name=content,proto3" json:"content,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -233,16 +235,15 @@ func (x *ConversationTurn) GetContent() string {
 }
 
 type GenerationParams struct {
-	state             protoimpl.MessageState `protogen:"open.v1"`
-	MaxNewTokens      *int32                 `protobuf:"varint,1,opt,name=max_new_tokens,json=maxNewTokens,proto3,oneof" json:"max_new_tokens,omitempty"`
-	Temperature       *float32               `protobuf:"fixed32,2,opt,name=temperature,proto3,oneof" json:"temperature,omitempty"`
-	TopK              *int32                 `protobuf:"varint,3,opt,name=top_k,json=topK,proto3,oneof" json:"top_k,omitempty"`
-	TopP              *float32               `protobuf:"fixed32,4,opt,name=top_p,json=topP,proto3,oneof" json:"top_p,omitempty"`
-	RepetitionPenalty *float32               `protobuf:"fixed32,5,opt,name=repetition_penalty,json=repetitionPenalty,proto3,oneof" json:"repetition_penalty,omitempty"`
-	StopSequences     []string               `protobuf:"bytes,6,rep,name=stop_sequences,json=stopSequences,proto3" json:"stop_sequences,omitempty"`
-	Seed              *int64                 `protobuf:"varint,7,opt,name=seed,proto3,oneof" json:"seed,omitempty"`
-	// Motor spesifik ekstra parametreler (örn: mirostat)
-	EngineSpecificParams *structpb.Struct `protobuf:"bytes,20,opt,name=engine_specific_params,json=engineSpecificParams,proto3,oneof" json:"engine_specific_params,omitempty"`
+	state                protoimpl.MessageState `protogen:"open.v1"`
+	MaxNewTokens         *int32                 `protobuf:"varint,1,opt,name=max_new_tokens,json=maxNewTokens,proto3,oneof" json:"max_new_tokens,omitempty"`
+	Temperature          *float32               `protobuf:"fixed32,2,opt,name=temperature,proto3,oneof" json:"temperature,omitempty"`
+	TopK                 *int32                 `protobuf:"varint,3,opt,name=top_k,json=topK,proto3,oneof" json:"top_k,omitempty"`
+	TopP                 *float32               `protobuf:"fixed32,4,opt,name=top_p,json=topP,proto3,oneof" json:"top_p,omitempty"`
+	RepetitionPenalty    *float32               `protobuf:"fixed32,5,opt,name=repetition_penalty,json=repetitionPenalty,proto3,oneof" json:"repetition_penalty,omitempty"`
+	StopSequences        []string               `protobuf:"bytes,6,rep,name=stop_sequences,json=stopSequences,proto3" json:"stop_sequences,omitempty"`
+	Seed                 *int64                 `protobuf:"varint,7,opt,name=seed,proto3,oneof" json:"seed,omitempty"`
+	EngineSpecificParams *structpb.Struct       `protobuf:"bytes,20,opt,name=engine_specific_params,json=engineSpecificParams,proto3,oneof" json:"engine_specific_params,omitempty"`
 	unknownFields        protoimpl.UnknownFields
 	sizeCache            protoimpl.SizeCache
 }
@@ -335,7 +336,7 @@ func (x *GenerationParams) GetEngineSpecificParams() *structpb.Struct {
 
 type FinishDetails struct {
 	state            protoimpl.MessageState `protogen:"open.v1"`
-	FinishReason     string                 `protobuf:"bytes,1,opt,name=finish_reason,json=finishReason,proto3" json:"finish_reason,omitempty"` // "stop", "length", "error"
+	FinishReason     string                 `protobuf:"bytes,1,opt,name=finish_reason,json=finishReason,proto3" json:"finish_reason,omitempty"`
 	PromptTokens     int32                  `protobuf:"varint,2,opt,name=prompt_tokens,json=promptTokens,proto3" json:"prompt_tokens,omitempty"`
 	CompletionTokens int32                  `protobuf:"varint,3,opt,name=completion_tokens,json=completionTokens,proto3" json:"completion_tokens,omitempty"`
 	unknownFields    protoimpl.UnknownFields
@@ -397,8 +398,8 @@ var File_sentiric_llm_v1_llama_proto protoreflect.FileDescriptor
 
 const file_sentiric_llm_v1_llama_proto_rawDesc = "" +
 	"\n" +
-	"\x1bsentiric/llm/v1/llama.proto\x12\x0fsentiric.llm.v1\x1a\x1cgoogle/protobuf/struct.proto\"\xa0\x02\n" +
-	"\x1aLlamaGenerateStreamRequest\x12#\n" +
+	"\x1bsentiric/llm/v1/llama.proto\x12\x0fsentiric.llm.v1\x1a\x1cgoogle/protobuf/struct.proto\"\x9b\x02\n" +
+	"\x15GenerateStreamRequest\x12#\n" +
 	"\rsystem_prompt\x18\x01 \x01(\tR\fsystemPrompt\x12\x1f\n" +
 	"\vuser_prompt\x18\x02 \x01(\tR\n" +
 	"userPrompt\x12$\n" +
@@ -407,8 +408,8 @@ const file_sentiric_llm_v1_llama_proto_rawDesc = "" +
 	"\ahistory\x18\x04 \x03(\v2!.sentiric.llm.v1.ConversationTurnR\ahistory\x12>\n" +
 	"\x06params\x18\x05 \x01(\v2!.sentiric.llm.v1.GenerationParamsH\x01R\x06params\x88\x01\x01B\x0e\n" +
 	"\f_rag_contextB\t\n" +
-	"\a_params\"\x86\x01\n" +
-	"\x1bLlamaGenerateStreamResponse\x12\x16\n" +
+	"\a_params\"\x81\x01\n" +
+	"\x16GenerateStreamResponse\x12\x16\n" +
 	"\x05token\x18\x01 \x01(\tH\x00R\x05token\x12G\n" +
 	"\x0efinish_details\x18\x02 \x01(\v2\x1e.sentiric.llm.v1.FinishDetailsH\x00R\rfinishDetailsB\x06\n" +
 	"\x04type\"@\n" +
@@ -434,9 +435,9 @@ const file_sentiric_llm_v1_llama_proto_rawDesc = "" +
 	"\rFinishDetails\x12#\n" +
 	"\rfinish_reason\x18\x01 \x01(\tR\ffinishReason\x12#\n" +
 	"\rprompt_tokens\x18\x02 \x01(\x05R\fpromptTokens\x12+\n" +
-	"\x11completion_tokens\x18\x03 \x01(\x05R\x10completionTokens2}\n" +
-	"\fLlamaService\x12m\n" +
-	"\x0eGenerateStream\x12+.sentiric.llm.v1.LlamaGenerateStreamRequest\x1a,.sentiric.llm.v1.LlamaGenerateStreamResponse0\x01BEZCgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/llm/v1;llmv1b\x06proto3"
+	"\x11completion_tokens\x18\x03 \x01(\x05R\x10completionTokens2s\n" +
+	"\fLlamaService\x12c\n" +
+	"\x0eGenerateStream\x12&.sentiric.llm.v1.GenerateStreamRequest\x1a'.sentiric.llm.v1.GenerateStreamResponse0\x01BEZCgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/llm/v1;llmv1b\x06proto3"
 
 var (
 	file_sentiric_llm_v1_llama_proto_rawDescOnce sync.Once
@@ -452,20 +453,20 @@ func file_sentiric_llm_v1_llama_proto_rawDescGZIP() []byte {
 
 var file_sentiric_llm_v1_llama_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_sentiric_llm_v1_llama_proto_goTypes = []any{
-	(*LlamaGenerateStreamRequest)(nil),  // 0: sentiric.llm.v1.LlamaGenerateStreamRequest
-	(*LlamaGenerateStreamResponse)(nil), // 1: sentiric.llm.v1.LlamaGenerateStreamResponse
-	(*ConversationTurn)(nil),            // 2: sentiric.llm.v1.ConversationTurn
-	(*GenerationParams)(nil),            // 3: sentiric.llm.v1.GenerationParams
-	(*FinishDetails)(nil),               // 4: sentiric.llm.v1.FinishDetails
-	(*structpb.Struct)(nil),             // 5: google.protobuf.Struct
+	(*GenerateStreamRequest)(nil),  // 0: sentiric.llm.v1.GenerateStreamRequest
+	(*GenerateStreamResponse)(nil), // 1: sentiric.llm.v1.GenerateStreamResponse
+	(*ConversationTurn)(nil),       // 2: sentiric.llm.v1.ConversationTurn
+	(*GenerationParams)(nil),       // 3: sentiric.llm.v1.GenerationParams
+	(*FinishDetails)(nil),          // 4: sentiric.llm.v1.FinishDetails
+	(*structpb.Struct)(nil),        // 5: google.protobuf.Struct
 }
 var file_sentiric_llm_v1_llama_proto_depIdxs = []int32{
-	2, // 0: sentiric.llm.v1.LlamaGenerateStreamRequest.history:type_name -> sentiric.llm.v1.ConversationTurn
-	3, // 1: sentiric.llm.v1.LlamaGenerateStreamRequest.params:type_name -> sentiric.llm.v1.GenerationParams
-	4, // 2: sentiric.llm.v1.LlamaGenerateStreamResponse.finish_details:type_name -> sentiric.llm.v1.FinishDetails
+	2, // 0: sentiric.llm.v1.GenerateStreamRequest.history:type_name -> sentiric.llm.v1.ConversationTurn
+	3, // 1: sentiric.llm.v1.GenerateStreamRequest.params:type_name -> sentiric.llm.v1.GenerationParams
+	4, // 2: sentiric.llm.v1.GenerateStreamResponse.finish_details:type_name -> sentiric.llm.v1.FinishDetails
 	5, // 3: sentiric.llm.v1.GenerationParams.engine_specific_params:type_name -> google.protobuf.Struct
-	0, // 4: sentiric.llm.v1.LlamaService.GenerateStream:input_type -> sentiric.llm.v1.LlamaGenerateStreamRequest
-	1, // 5: sentiric.llm.v1.LlamaService.GenerateStream:output_type -> sentiric.llm.v1.LlamaGenerateStreamResponse
+	0, // 4: sentiric.llm.v1.LlamaService.GenerateStream:input_type -> sentiric.llm.v1.GenerateStreamRequest
+	1, // 5: sentiric.llm.v1.LlamaService.GenerateStream:output_type -> sentiric.llm.v1.GenerateStreamResponse
 	5, // [5:6] is the sub-list for method output_type
 	4, // [4:5] is the sub-list for method input_type
 	4, // [4:4] is the sub-list for extension type_name
@@ -480,8 +481,8 @@ func file_sentiric_llm_v1_llama_proto_init() {
 	}
 	file_sentiric_llm_v1_llama_proto_msgTypes[0].OneofWrappers = []any{}
 	file_sentiric_llm_v1_llama_proto_msgTypes[1].OneofWrappers = []any{
-		(*LlamaGenerateStreamResponse_Token)(nil),
-		(*LlamaGenerateStreamResponse_FinishDetails)(nil),
+		(*GenerateStreamResponse_Token)(nil),
+		(*GenerateStreamResponse_FinishDetails)(nil),
 	}
 	file_sentiric_llm_v1_llama_proto_msgTypes[3].OneofWrappers = []any{}
 	type x struct{}

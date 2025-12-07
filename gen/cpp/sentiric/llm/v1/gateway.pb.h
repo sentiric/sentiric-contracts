@@ -220,23 +220,23 @@ class GenerateDialogStreamRequest final :
   std::string* _internal_mutable_tenant_id();
   public:
 
-  // .sentiric.llm.v1.LlamaGenerateStreamRequest llama_request = 10;
+  // .sentiric.llm.v1.GenerateStreamRequest llama_request = 10;
   bool has_llama_request() const;
   private:
   bool _internal_has_llama_request() const;
   public:
   void clear_llama_request();
-  const ::sentiric::llm::v1::LlamaGenerateStreamRequest& llama_request() const;
-  PROTOBUF_NODISCARD ::sentiric::llm::v1::LlamaGenerateStreamRequest* release_llama_request();
-  ::sentiric::llm::v1::LlamaGenerateStreamRequest* mutable_llama_request();
-  void set_allocated_llama_request(::sentiric::llm::v1::LlamaGenerateStreamRequest* llama_request);
+  const ::sentiric::llm::v1::GenerateStreamRequest& llama_request() const;
+  PROTOBUF_NODISCARD ::sentiric::llm::v1::GenerateStreamRequest* release_llama_request();
+  ::sentiric::llm::v1::GenerateStreamRequest* mutable_llama_request();
+  void set_allocated_llama_request(::sentiric::llm::v1::GenerateStreamRequest* llama_request);
   private:
-  const ::sentiric::llm::v1::LlamaGenerateStreamRequest& _internal_llama_request() const;
-  ::sentiric::llm::v1::LlamaGenerateStreamRequest* _internal_mutable_llama_request();
+  const ::sentiric::llm::v1::GenerateStreamRequest& _internal_llama_request() const;
+  ::sentiric::llm::v1::GenerateStreamRequest* _internal_mutable_llama_request();
   public:
   void unsafe_arena_set_allocated_llama_request(
-      ::sentiric::llm::v1::LlamaGenerateStreamRequest* llama_request);
-  ::sentiric::llm::v1::LlamaGenerateStreamRequest* unsafe_arena_release_llama_request();
+      ::sentiric::llm::v1::GenerateStreamRequest* llama_request);
+  ::sentiric::llm::v1::GenerateStreamRequest* unsafe_arena_release_llama_request();
 
   // @@protoc_insertion_point(class_scope:sentiric.llm.v1.GenerateDialogStreamRequest)
  private:
@@ -248,7 +248,7 @@ class GenerateDialogStreamRequest final :
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr model_selector_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr tenant_id_;
-    ::sentiric::llm::v1::LlamaGenerateStreamRequest* llama_request_;
+    ::sentiric::llm::v1::GenerateStreamRequest* llama_request_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -379,23 +379,23 @@ class GenerateDialogStreamResponse final :
   enum : int {
     kLlamaResponseFieldNumber = 10,
   };
-  // .sentiric.llm.v1.LlamaGenerateStreamResponse llama_response = 10;
+  // .sentiric.llm.v1.GenerateStreamResponse llama_response = 10;
   bool has_llama_response() const;
   private:
   bool _internal_has_llama_response() const;
   public:
   void clear_llama_response();
-  const ::sentiric::llm::v1::LlamaGenerateStreamResponse& llama_response() const;
-  PROTOBUF_NODISCARD ::sentiric::llm::v1::LlamaGenerateStreamResponse* release_llama_response();
-  ::sentiric::llm::v1::LlamaGenerateStreamResponse* mutable_llama_response();
-  void set_allocated_llama_response(::sentiric::llm::v1::LlamaGenerateStreamResponse* llama_response);
+  const ::sentiric::llm::v1::GenerateStreamResponse& llama_response() const;
+  PROTOBUF_NODISCARD ::sentiric::llm::v1::GenerateStreamResponse* release_llama_response();
+  ::sentiric::llm::v1::GenerateStreamResponse* mutable_llama_response();
+  void set_allocated_llama_response(::sentiric::llm::v1::GenerateStreamResponse* llama_response);
   private:
-  const ::sentiric::llm::v1::LlamaGenerateStreamResponse& _internal_llama_response() const;
-  ::sentiric::llm::v1::LlamaGenerateStreamResponse* _internal_mutable_llama_response();
+  const ::sentiric::llm::v1::GenerateStreamResponse& _internal_llama_response() const;
+  ::sentiric::llm::v1::GenerateStreamResponse* _internal_mutable_llama_response();
   public:
   void unsafe_arena_set_allocated_llama_response(
-      ::sentiric::llm::v1::LlamaGenerateStreamResponse* llama_response);
-  ::sentiric::llm::v1::LlamaGenerateStreamResponse* unsafe_arena_release_llama_response();
+      ::sentiric::llm::v1::GenerateStreamResponse* llama_response);
+  ::sentiric::llm::v1::GenerateStreamResponse* unsafe_arena_release_llama_response();
 
   // @@protoc_insertion_point(class_scope:sentiric.llm.v1.GenerateDialogStreamResponse)
  private:
@@ -405,7 +405,7 @@ class GenerateDialogStreamResponse final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
-    ::sentiric::llm::v1::LlamaGenerateStreamResponse* llama_response_;
+    ::sentiric::llm::v1::GenerateStreamResponse* llama_response_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -522,24 +522,24 @@ inline void GenerateDialogStreamRequest::set_allocated_tenant_id(std::string* te
   // @@protoc_insertion_point(field_set_allocated:sentiric.llm.v1.GenerateDialogStreamRequest.tenant_id)
 }
 
-// .sentiric.llm.v1.LlamaGenerateStreamRequest llama_request = 10;
+// .sentiric.llm.v1.GenerateStreamRequest llama_request = 10;
 inline bool GenerateDialogStreamRequest::_internal_has_llama_request() const {
   return this != internal_default_instance() && _impl_.llama_request_ != nullptr;
 }
 inline bool GenerateDialogStreamRequest::has_llama_request() const {
   return _internal_has_llama_request();
 }
-inline const ::sentiric::llm::v1::LlamaGenerateStreamRequest& GenerateDialogStreamRequest::_internal_llama_request() const {
-  const ::sentiric::llm::v1::LlamaGenerateStreamRequest* p = _impl_.llama_request_;
-  return p != nullptr ? *p : reinterpret_cast<const ::sentiric::llm::v1::LlamaGenerateStreamRequest&>(
-      ::sentiric::llm::v1::_LlamaGenerateStreamRequest_default_instance_);
+inline const ::sentiric::llm::v1::GenerateStreamRequest& GenerateDialogStreamRequest::_internal_llama_request() const {
+  const ::sentiric::llm::v1::GenerateStreamRequest* p = _impl_.llama_request_;
+  return p != nullptr ? *p : reinterpret_cast<const ::sentiric::llm::v1::GenerateStreamRequest&>(
+      ::sentiric::llm::v1::_GenerateStreamRequest_default_instance_);
 }
-inline const ::sentiric::llm::v1::LlamaGenerateStreamRequest& GenerateDialogStreamRequest::llama_request() const {
+inline const ::sentiric::llm::v1::GenerateStreamRequest& GenerateDialogStreamRequest::llama_request() const {
   // @@protoc_insertion_point(field_get:sentiric.llm.v1.GenerateDialogStreamRequest.llama_request)
   return _internal_llama_request();
 }
 inline void GenerateDialogStreamRequest::unsafe_arena_set_allocated_llama_request(
-    ::sentiric::llm::v1::LlamaGenerateStreamRequest* llama_request) {
+    ::sentiric::llm::v1::GenerateStreamRequest* llama_request) {
   if (GetArenaForAllocation() == nullptr) {
     delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.llama_request_);
   }
@@ -551,9 +551,9 @@ inline void GenerateDialogStreamRequest::unsafe_arena_set_allocated_llama_reques
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:sentiric.llm.v1.GenerateDialogStreamRequest.llama_request)
 }
-inline ::sentiric::llm::v1::LlamaGenerateStreamRequest* GenerateDialogStreamRequest::release_llama_request() {
+inline ::sentiric::llm::v1::GenerateStreamRequest* GenerateDialogStreamRequest::release_llama_request() {
   
-  ::sentiric::llm::v1::LlamaGenerateStreamRequest* temp = _impl_.llama_request_;
+  ::sentiric::llm::v1::GenerateStreamRequest* temp = _impl_.llama_request_;
   _impl_.llama_request_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
   auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
@@ -566,27 +566,27 @@ inline ::sentiric::llm::v1::LlamaGenerateStreamRequest* GenerateDialogStreamRequ
 #endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
   return temp;
 }
-inline ::sentiric::llm::v1::LlamaGenerateStreamRequest* GenerateDialogStreamRequest::unsafe_arena_release_llama_request() {
+inline ::sentiric::llm::v1::GenerateStreamRequest* GenerateDialogStreamRequest::unsafe_arena_release_llama_request() {
   // @@protoc_insertion_point(field_release:sentiric.llm.v1.GenerateDialogStreamRequest.llama_request)
   
-  ::sentiric::llm::v1::LlamaGenerateStreamRequest* temp = _impl_.llama_request_;
+  ::sentiric::llm::v1::GenerateStreamRequest* temp = _impl_.llama_request_;
   _impl_.llama_request_ = nullptr;
   return temp;
 }
-inline ::sentiric::llm::v1::LlamaGenerateStreamRequest* GenerateDialogStreamRequest::_internal_mutable_llama_request() {
+inline ::sentiric::llm::v1::GenerateStreamRequest* GenerateDialogStreamRequest::_internal_mutable_llama_request() {
   
   if (_impl_.llama_request_ == nullptr) {
-    auto* p = CreateMaybeMessage<::sentiric::llm::v1::LlamaGenerateStreamRequest>(GetArenaForAllocation());
+    auto* p = CreateMaybeMessage<::sentiric::llm::v1::GenerateStreamRequest>(GetArenaForAllocation());
     _impl_.llama_request_ = p;
   }
   return _impl_.llama_request_;
 }
-inline ::sentiric::llm::v1::LlamaGenerateStreamRequest* GenerateDialogStreamRequest::mutable_llama_request() {
-  ::sentiric::llm::v1::LlamaGenerateStreamRequest* _msg = _internal_mutable_llama_request();
+inline ::sentiric::llm::v1::GenerateStreamRequest* GenerateDialogStreamRequest::mutable_llama_request() {
+  ::sentiric::llm::v1::GenerateStreamRequest* _msg = _internal_mutable_llama_request();
   // @@protoc_insertion_point(field_mutable:sentiric.llm.v1.GenerateDialogStreamRequest.llama_request)
   return _msg;
 }
-inline void GenerateDialogStreamRequest::set_allocated_llama_request(::sentiric::llm::v1::LlamaGenerateStreamRequest* llama_request) {
+inline void GenerateDialogStreamRequest::set_allocated_llama_request(::sentiric::llm::v1::GenerateStreamRequest* llama_request) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   if (message_arena == nullptr) {
     delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.llama_request_);
@@ -611,24 +611,24 @@ inline void GenerateDialogStreamRequest::set_allocated_llama_request(::sentiric:
 
 // GenerateDialogStreamResponse
 
-// .sentiric.llm.v1.LlamaGenerateStreamResponse llama_response = 10;
+// .sentiric.llm.v1.GenerateStreamResponse llama_response = 10;
 inline bool GenerateDialogStreamResponse::_internal_has_llama_response() const {
   return this != internal_default_instance() && _impl_.llama_response_ != nullptr;
 }
 inline bool GenerateDialogStreamResponse::has_llama_response() const {
   return _internal_has_llama_response();
 }
-inline const ::sentiric::llm::v1::LlamaGenerateStreamResponse& GenerateDialogStreamResponse::_internal_llama_response() const {
-  const ::sentiric::llm::v1::LlamaGenerateStreamResponse* p = _impl_.llama_response_;
-  return p != nullptr ? *p : reinterpret_cast<const ::sentiric::llm::v1::LlamaGenerateStreamResponse&>(
-      ::sentiric::llm::v1::_LlamaGenerateStreamResponse_default_instance_);
+inline const ::sentiric::llm::v1::GenerateStreamResponse& GenerateDialogStreamResponse::_internal_llama_response() const {
+  const ::sentiric::llm::v1::GenerateStreamResponse* p = _impl_.llama_response_;
+  return p != nullptr ? *p : reinterpret_cast<const ::sentiric::llm::v1::GenerateStreamResponse&>(
+      ::sentiric::llm::v1::_GenerateStreamResponse_default_instance_);
 }
-inline const ::sentiric::llm::v1::LlamaGenerateStreamResponse& GenerateDialogStreamResponse::llama_response() const {
+inline const ::sentiric::llm::v1::GenerateStreamResponse& GenerateDialogStreamResponse::llama_response() const {
   // @@protoc_insertion_point(field_get:sentiric.llm.v1.GenerateDialogStreamResponse.llama_response)
   return _internal_llama_response();
 }
 inline void GenerateDialogStreamResponse::unsafe_arena_set_allocated_llama_response(
-    ::sentiric::llm::v1::LlamaGenerateStreamResponse* llama_response) {
+    ::sentiric::llm::v1::GenerateStreamResponse* llama_response) {
   if (GetArenaForAllocation() == nullptr) {
     delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.llama_response_);
   }
@@ -640,9 +640,9 @@ inline void GenerateDialogStreamResponse::unsafe_arena_set_allocated_llama_respo
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:sentiric.llm.v1.GenerateDialogStreamResponse.llama_response)
 }
-inline ::sentiric::llm::v1::LlamaGenerateStreamResponse* GenerateDialogStreamResponse::release_llama_response() {
+inline ::sentiric::llm::v1::GenerateStreamResponse* GenerateDialogStreamResponse::release_llama_response() {
   
-  ::sentiric::llm::v1::LlamaGenerateStreamResponse* temp = _impl_.llama_response_;
+  ::sentiric::llm::v1::GenerateStreamResponse* temp = _impl_.llama_response_;
   _impl_.llama_response_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
   auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
@@ -655,27 +655,27 @@ inline ::sentiric::llm::v1::LlamaGenerateStreamResponse* GenerateDialogStreamRes
 #endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
   return temp;
 }
-inline ::sentiric::llm::v1::LlamaGenerateStreamResponse* GenerateDialogStreamResponse::unsafe_arena_release_llama_response() {
+inline ::sentiric::llm::v1::GenerateStreamResponse* GenerateDialogStreamResponse::unsafe_arena_release_llama_response() {
   // @@protoc_insertion_point(field_release:sentiric.llm.v1.GenerateDialogStreamResponse.llama_response)
   
-  ::sentiric::llm::v1::LlamaGenerateStreamResponse* temp = _impl_.llama_response_;
+  ::sentiric::llm::v1::GenerateStreamResponse* temp = _impl_.llama_response_;
   _impl_.llama_response_ = nullptr;
   return temp;
 }
-inline ::sentiric::llm::v1::LlamaGenerateStreamResponse* GenerateDialogStreamResponse::_internal_mutable_llama_response() {
+inline ::sentiric::llm::v1::GenerateStreamResponse* GenerateDialogStreamResponse::_internal_mutable_llama_response() {
   
   if (_impl_.llama_response_ == nullptr) {
-    auto* p = CreateMaybeMessage<::sentiric::llm::v1::LlamaGenerateStreamResponse>(GetArenaForAllocation());
+    auto* p = CreateMaybeMessage<::sentiric::llm::v1::GenerateStreamResponse>(GetArenaForAllocation());
     _impl_.llama_response_ = p;
   }
   return _impl_.llama_response_;
 }
-inline ::sentiric::llm::v1::LlamaGenerateStreamResponse* GenerateDialogStreamResponse::mutable_llama_response() {
-  ::sentiric::llm::v1::LlamaGenerateStreamResponse* _msg = _internal_mutable_llama_response();
+inline ::sentiric::llm::v1::GenerateStreamResponse* GenerateDialogStreamResponse::mutable_llama_response() {
+  ::sentiric::llm::v1::GenerateStreamResponse* _msg = _internal_mutable_llama_response();
   // @@protoc_insertion_point(field_mutable:sentiric.llm.v1.GenerateDialogStreamResponse.llama_response)
   return _msg;
 }
-inline void GenerateDialogStreamResponse::set_allocated_llama_response(::sentiric::llm::v1::LlamaGenerateStreamResponse* llama_response) {
+inline void GenerateDialogStreamResponse::set_allocated_llama_response(::sentiric::llm::v1::GenerateStreamResponse* llama_response) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   if (message_arena == nullptr) {
     delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.llama_response_);

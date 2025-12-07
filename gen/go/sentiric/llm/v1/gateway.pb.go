@@ -23,11 +23,10 @@ const (
 
 type GenerateDialogStreamRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ModelSelector string                 `protobuf:"bytes,1,opt,name=model_selector,json=modelSelector,proto3" json:"model_selector,omitempty"` // örn: "llama-3-8b", "gpt-4"
+	ModelSelector string                 `protobuf:"bytes,1,opt,name=model_selector,json=modelSelector,proto3" json:"model_selector,omitempty"`
 	TenantId      string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
-	// Llama.cpp motoruna özgü parametreler
-	// DÜZELTME: Tip adı LlamaGenerateStreamRequest olarak güncellendi
-	LlamaRequest  *LlamaGenerateStreamRequest `protobuf:"bytes,10,opt,name=llama_request,json=llamaRequest,proto3" json:"llama_request,omitempty"`
+	// DÜZELTME: Tip adı 'GenerateStreamRequest' olarak güncellendi (llama.proto ile uyumlu)
+	LlamaRequest  *GenerateStreamRequest `protobuf:"bytes,10,opt,name=llama_request,json=llamaRequest,proto3" json:"llama_request,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -76,7 +75,7 @@ func (x *GenerateDialogStreamRequest) GetTenantId() string {
 	return ""
 }
 
-func (x *GenerateDialogStreamRequest) GetLlamaRequest() *LlamaGenerateStreamRequest {
+func (x *GenerateDialogStreamRequest) GetLlamaRequest() *GenerateStreamRequest {
 	if x != nil {
 		return x.LlamaRequest
 	}
@@ -85,8 +84,8 @@ func (x *GenerateDialogStreamRequest) GetLlamaRequest() *LlamaGenerateStreamRequ
 
 type GenerateDialogStreamResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// DÜZELTME: Tip adı LlamaGenerateStreamResponse olarak güncellendi
-	LlamaResponse *LlamaGenerateStreamResponse `protobuf:"bytes,10,opt,name=llama_response,json=llamaResponse,proto3" json:"llama_response,omitempty"`
+	// DÜZELTME: Tip adı 'GenerateStreamResponse' olarak güncellendi
+	LlamaResponse *GenerateStreamResponse `protobuf:"bytes,10,opt,name=llama_response,json=llamaResponse,proto3" json:"llama_response,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -121,7 +120,7 @@ func (*GenerateDialogStreamResponse) Descriptor() ([]byte, []int) {
 	return file_sentiric_llm_v1_gateway_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *GenerateDialogStreamResponse) GetLlamaResponse() *LlamaGenerateStreamResponse {
+func (x *GenerateDialogStreamResponse) GetLlamaResponse() *GenerateStreamResponse {
 	if x != nil {
 		return x.LlamaResponse
 	}
@@ -132,15 +131,15 @@ var File_sentiric_llm_v1_gateway_proto protoreflect.FileDescriptor
 
 const file_sentiric_llm_v1_gateway_proto_rawDesc = "" +
 	"\n" +
-	"\x1dsentiric/llm/v1/gateway.proto\x12\x0fsentiric.llm.v1\x1a\x1bsentiric/llm/v1/llama.proto\"\xb3\x01\n" +
+	"\x1dsentiric/llm/v1/gateway.proto\x12\x0fsentiric.llm.v1\x1a\x1bsentiric/llm/v1/llama.proto\"\xae\x01\n" +
 	"\x1bGenerateDialogStreamRequest\x12%\n" +
 	"\x0emodel_selector\x18\x01 \x01(\tR\rmodelSelector\x12\x1b\n" +
-	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12P\n" +
+	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12K\n" +
 	"\rllama_request\x18\n" +
-	" \x01(\v2+.sentiric.llm.v1.LlamaGenerateStreamRequestR\fllamaRequest\"s\n" +
-	"\x1cGenerateDialogStreamResponse\x12S\n" +
+	" \x01(\v2&.sentiric.llm.v1.GenerateStreamRequestR\fllamaRequest\"n\n" +
+	"\x1cGenerateDialogStreamResponse\x12N\n" +
 	"\x0ellama_response\x18\n" +
-	" \x01(\v2,.sentiric.llm.v1.LlamaGenerateStreamResponseR\rllamaResponse2\x8a\x01\n" +
+	" \x01(\v2'.sentiric.llm.v1.GenerateStreamResponseR\rllamaResponse2\x8a\x01\n" +
 	"\x11LlmGatewayService\x12u\n" +
 	"\x14GenerateDialogStream\x12,.sentiric.llm.v1.GenerateDialogStreamRequest\x1a-.sentiric.llm.v1.GenerateDialogStreamResponse0\x01BEZCgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/llm/v1;llmv1b\x06proto3"
 
@@ -160,12 +159,12 @@ var file_sentiric_llm_v1_gateway_proto_msgTypes = make([]protoimpl.MessageInfo, 
 var file_sentiric_llm_v1_gateway_proto_goTypes = []any{
 	(*GenerateDialogStreamRequest)(nil),  // 0: sentiric.llm.v1.GenerateDialogStreamRequest
 	(*GenerateDialogStreamResponse)(nil), // 1: sentiric.llm.v1.GenerateDialogStreamResponse
-	(*LlamaGenerateStreamRequest)(nil),   // 2: sentiric.llm.v1.LlamaGenerateStreamRequest
-	(*LlamaGenerateStreamResponse)(nil),  // 3: sentiric.llm.v1.LlamaGenerateStreamResponse
+	(*GenerateStreamRequest)(nil),        // 2: sentiric.llm.v1.GenerateStreamRequest
+	(*GenerateStreamResponse)(nil),       // 3: sentiric.llm.v1.GenerateStreamResponse
 }
 var file_sentiric_llm_v1_gateway_proto_depIdxs = []int32{
-	2, // 0: sentiric.llm.v1.GenerateDialogStreamRequest.llama_request:type_name -> sentiric.llm.v1.LlamaGenerateStreamRequest
-	3, // 1: sentiric.llm.v1.GenerateDialogStreamResponse.llama_response:type_name -> sentiric.llm.v1.LlamaGenerateStreamResponse
+	2, // 0: sentiric.llm.v1.GenerateDialogStreamRequest.llama_request:type_name -> sentiric.llm.v1.GenerateStreamRequest
+	3, // 1: sentiric.llm.v1.GenerateDialogStreamResponse.llama_response:type_name -> sentiric.llm.v1.GenerateStreamResponse
 	0, // 2: sentiric.llm.v1.LlmGatewayService.GenerateDialogStream:input_type -> sentiric.llm.v1.GenerateDialogStreamRequest
 	1, // 3: sentiric.llm.v1.LlmGatewayService.GenerateDialogStream:output_type -> sentiric.llm.v1.GenerateDialogStreamResponse
 	3, // [3:4] is the sub-list for method output_type

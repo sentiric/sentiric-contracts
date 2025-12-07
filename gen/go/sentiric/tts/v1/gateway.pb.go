@@ -21,24 +21,124 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type TextType int32
+
+const (
+	TextType_TEXT_TYPE_UNSPECIFIED TextType = 0
+	TextType_TEXT_TYPE_TEXT        TextType = 1
+	TextType_TEXT_TYPE_SSML        TextType = 2
+)
+
+// Enum value maps for TextType.
+var (
+	TextType_name = map[int32]string{
+		0: "TEXT_TYPE_UNSPECIFIED",
+		1: "TEXT_TYPE_TEXT",
+		2: "TEXT_TYPE_SSML",
+	}
+	TextType_value = map[string]int32{
+		"TEXT_TYPE_UNSPECIFIED": 0,
+		"TEXT_TYPE_TEXT":        1,
+		"TEXT_TYPE_SSML":        2,
+	}
+)
+
+func (x TextType) Enum() *TextType {
+	p := new(TextType)
+	*p = x
+	return p
+}
+
+func (x TextType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (TextType) Descriptor() protoreflect.EnumDescriptor {
+	return file_sentiric_tts_v1_gateway_proto_enumTypes[0].Descriptor()
+}
+
+func (TextType) Type() protoreflect.EnumType {
+	return &file_sentiric_tts_v1_gateway_proto_enumTypes[0]
+}
+
+func (x TextType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use TextType.Descriptor instead.
+func (TextType) EnumDescriptor() ([]byte, []int) {
+	return file_sentiric_tts_v1_gateway_proto_rawDescGZIP(), []int{0}
+}
+
+type AudioFormat int32
+
+const (
+	AudioFormat_AUDIO_FORMAT_UNSPECIFIED AudioFormat = 0
+	AudioFormat_AUDIO_FORMAT_PCM_S16LE   AudioFormat = 1
+	AudioFormat_AUDIO_FORMAT_WAV         AudioFormat = 2
+	AudioFormat_AUDIO_FORMAT_MP3         AudioFormat = 3
+	AudioFormat_AUDIO_FORMAT_OGG_OPUS    AudioFormat = 4
+	AudioFormat_AUDIO_FORMAT_MULAW       AudioFormat = 5
+)
+
+// Enum value maps for AudioFormat.
+var (
+	AudioFormat_name = map[int32]string{
+		0: "AUDIO_FORMAT_UNSPECIFIED",
+		1: "AUDIO_FORMAT_PCM_S16LE",
+		2: "AUDIO_FORMAT_WAV",
+		3: "AUDIO_FORMAT_MP3",
+		4: "AUDIO_FORMAT_OGG_OPUS",
+		5: "AUDIO_FORMAT_MULAW",
+	}
+	AudioFormat_value = map[string]int32{
+		"AUDIO_FORMAT_UNSPECIFIED": 0,
+		"AUDIO_FORMAT_PCM_S16LE":   1,
+		"AUDIO_FORMAT_WAV":         2,
+		"AUDIO_FORMAT_MP3":         3,
+		"AUDIO_FORMAT_OGG_OPUS":    4,
+		"AUDIO_FORMAT_MULAW":       5,
+	}
+)
+
+func (x AudioFormat) Enum() *AudioFormat {
+	p := new(AudioFormat)
+	*p = x
+	return p
+}
+
+func (x AudioFormat) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (AudioFormat) Descriptor() protoreflect.EnumDescriptor {
+	return file_sentiric_tts_v1_gateway_proto_enumTypes[1].Descriptor()
+}
+
+func (AudioFormat) Type() protoreflect.EnumType {
+	return &file_sentiric_tts_v1_gateway_proto_enumTypes[1]
+}
+
+func (x AudioFormat) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use AudioFormat.Descriptor instead.
+func (AudioFormat) EnumDescriptor() ([]byte, []int) {
+	return file_sentiric_tts_v1_gateway_proto_rawDescGZIP(), []int{1}
+}
+
+// --- Unary ---
 type SynthesizeRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	Text  string                 `protobuf:"bytes,1,opt,name=text,proto3" json:"text,omitempty"`
-	// "Text" veya "SSML"
-	TextType string `protobuf:"bytes,2,opt,name=text_type,json=textType,proto3" json:"text_type,omitempty"`
-	// Örn: "TR_Ece_Neutral"
-	// Gateway bu ID'yi alıp Coqui için gerekli "speaker_wav"ı bulur.
-	VoiceId string `protobuf:"bytes,3,opt,name=voice_id,json=voiceId,proto3" json:"voice_id,omitempty"`
-	// İstenen çıktı formatı (Gateway, ffmpeg ile dönüşüm yapar)
-	// "mp3", "wav", "opus", "pcm"
-	OutputFormat string `protobuf:"bytes,4,opt,name=output_format,json=outputFormat,proto3" json:"output_format,omitempty"`
-	SampleRate   int32  `protobuf:"varint,5,opt,name=sample_rate,json=sampleRate,proto3" json:"sample_rate,omitempty"`
-	// İnce ayarlar (Opsiyonel)
-	Speed         *float32 `protobuf:"fixed32,6,opt,name=speed,proto3,oneof" json:"speed,omitempty"`
-	Volume        *float32 `protobuf:"fixed32,7,opt,name=volume,proto3,oneof" json:"volume,omitempty"`
-	Pitch         *float32 `protobuf:"fixed32,8,opt,name=pitch,proto3,oneof" json:"pitch,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state             protoimpl.MessageState `protogen:"open.v1"`
+	Text              string                 `protobuf:"bytes,1,opt,name=text,proto3" json:"text,omitempty"`
+	TextType          TextType               `protobuf:"varint,2,opt,name=text_type,json=textType,proto3,enum=sentiric.tts.v1.TextType" json:"text_type,omitempty"`
+	VoiceId           string                 `protobuf:"bytes,3,opt,name=voice_id,json=voiceId,proto3" json:"voice_id,omitempty"`
+	AudioConfig       *AudioConfig           `protobuf:"bytes,4,opt,name=audio_config,json=audioConfig,proto3" json:"audio_config,omitempty"`
+	PreferredProvider string                 `protobuf:"bytes,5,opt,name=preferred_provider,json=preferredProvider,proto3" json:"preferred_provider,omitempty"`
+	Prosody           *ProsodyConfig         `protobuf:"bytes,6,opt,name=prosody,proto3" json:"prosody,omitempty"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
 }
 
 func (x *SynthesizeRequest) Reset() {
@@ -78,11 +178,11 @@ func (x *SynthesizeRequest) GetText() string {
 	return ""
 }
 
-func (x *SynthesizeRequest) GetTextType() string {
+func (x *SynthesizeRequest) GetTextType() TextType {
 	if x != nil {
 		return x.TextType
 	}
-	return ""
+	return TextType_TEXT_TYPE_UNSPECIFIED
 }
 
 func (x *SynthesizeRequest) GetVoiceId() string {
@@ -92,45 +192,32 @@ func (x *SynthesizeRequest) GetVoiceId() string {
 	return ""
 }
 
-func (x *SynthesizeRequest) GetOutputFormat() string {
+func (x *SynthesizeRequest) GetAudioConfig() *AudioConfig {
 	if x != nil {
-		return x.OutputFormat
+		return x.AudioConfig
+	}
+	return nil
+}
+
+func (x *SynthesizeRequest) GetPreferredProvider() string {
+	if x != nil {
+		return x.PreferredProvider
 	}
 	return ""
 }
 
-func (x *SynthesizeRequest) GetSampleRate() int32 {
+func (x *SynthesizeRequest) GetProsody() *ProsodyConfig {
 	if x != nil {
-		return x.SampleRate
+		return x.Prosody
 	}
-	return 0
-}
-
-func (x *SynthesizeRequest) GetSpeed() float32 {
-	if x != nil && x.Speed != nil {
-		return *x.Speed
-	}
-	return 0
-}
-
-func (x *SynthesizeRequest) GetVolume() float32 {
-	if x != nil && x.Volume != nil {
-		return *x.Volume
-	}
-	return 0
-}
-
-func (x *SynthesizeRequest) GetPitch() float32 {
-	if x != nil && x.Pitch != nil {
-		return *x.Pitch
-	}
-	return 0
+	return nil
 }
 
 type SynthesizeResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	AudioContent  []byte                 `protobuf:"bytes,1,opt,name=audio_content,json=audioContent,proto3" json:"audio_content,omitempty"`
-	ContentType   string                 `protobuf:"bytes,2,opt,name=content_type,json=contentType,proto3" json:"content_type,omitempty"` // "audio/mpeg", "audio/wav"
+	ContentType   string                 `protobuf:"bytes,2,opt,name=content_type,json=contentType,proto3" json:"content_type,omitempty"`
+	ProviderUsed  string                 `protobuf:"bytes,3,opt,name=provider_used,json=providerUsed,proto3" json:"provider_used,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -179,6 +266,159 @@ func (x *SynthesizeResponse) GetContentType() string {
 	return ""
 }
 
+func (x *SynthesizeResponse) GetProviderUsed() string {
+	if x != nil {
+		return x.ProviderUsed
+	}
+	return ""
+}
+
+// --- Stream ---
+type SynthesizeStreamRequest struct {
+	state             protoimpl.MessageState `protogen:"open.v1"`
+	Text              string                 `protobuf:"bytes,1,opt,name=text,proto3" json:"text,omitempty"`
+	TextType          TextType               `protobuf:"varint,2,opt,name=text_type,json=textType,proto3,enum=sentiric.tts.v1.TextType" json:"text_type,omitempty"`
+	VoiceId           string                 `protobuf:"bytes,3,opt,name=voice_id,json=voiceId,proto3" json:"voice_id,omitempty"`
+	AudioConfig       *AudioConfig           `protobuf:"bytes,4,opt,name=audio_config,json=audioConfig,proto3" json:"audio_config,omitempty"`
+	PreferredProvider string                 `protobuf:"bytes,5,opt,name=preferred_provider,json=preferredProvider,proto3" json:"preferred_provider,omitempty"`
+	Prosody           *ProsodyConfig         `protobuf:"bytes,6,opt,name=prosody,proto3" json:"prosody,omitempty"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
+}
+
+func (x *SynthesizeStreamRequest) Reset() {
+	*x = SynthesizeStreamRequest{}
+	mi := &file_sentiric_tts_v1_gateway_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SynthesizeStreamRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SynthesizeStreamRequest) ProtoMessage() {}
+
+func (x *SynthesizeStreamRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_tts_v1_gateway_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SynthesizeStreamRequest.ProtoReflect.Descriptor instead.
+func (*SynthesizeStreamRequest) Descriptor() ([]byte, []int) {
+	return file_sentiric_tts_v1_gateway_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *SynthesizeStreamRequest) GetText() string {
+	if x != nil {
+		return x.Text
+	}
+	return ""
+}
+
+func (x *SynthesizeStreamRequest) GetTextType() TextType {
+	if x != nil {
+		return x.TextType
+	}
+	return TextType_TEXT_TYPE_UNSPECIFIED
+}
+
+func (x *SynthesizeStreamRequest) GetVoiceId() string {
+	if x != nil {
+		return x.VoiceId
+	}
+	return ""
+}
+
+func (x *SynthesizeStreamRequest) GetAudioConfig() *AudioConfig {
+	if x != nil {
+		return x.AudioConfig
+	}
+	return nil
+}
+
+func (x *SynthesizeStreamRequest) GetPreferredProvider() string {
+	if x != nil {
+		return x.PreferredProvider
+	}
+	return ""
+}
+
+func (x *SynthesizeStreamRequest) GetProsody() *ProsodyConfig {
+	if x != nil {
+		return x.Prosody
+	}
+	return nil
+}
+
+type SynthesizeStreamResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	AudioContent  []byte                 `protobuf:"bytes,1,opt,name=audio_content,json=audioContent,proto3" json:"audio_content,omitempty"`
+	ContentType   string                 `protobuf:"bytes,2,opt,name=content_type,json=contentType,proto3" json:"content_type,omitempty"`
+	ProviderUsed  string                 `protobuf:"bytes,3,opt,name=provider_used,json=providerUsed,proto3" json:"provider_used,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SynthesizeStreamResponse) Reset() {
+	*x = SynthesizeStreamResponse{}
+	mi := &file_sentiric_tts_v1_gateway_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SynthesizeStreamResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SynthesizeStreamResponse) ProtoMessage() {}
+
+func (x *SynthesizeStreamResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_tts_v1_gateway_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SynthesizeStreamResponse.ProtoReflect.Descriptor instead.
+func (*SynthesizeStreamResponse) Descriptor() ([]byte, []int) {
+	return file_sentiric_tts_v1_gateway_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *SynthesizeStreamResponse) GetAudioContent() []byte {
+	if x != nil {
+		return x.AudioContent
+	}
+	return nil
+}
+
+func (x *SynthesizeStreamResponse) GetContentType() string {
+	if x != nil {
+		return x.ContentType
+	}
+	return ""
+}
+
+func (x *SynthesizeStreamResponse) GetProviderUsed() string {
+	if x != nil {
+		return x.ProviderUsed
+	}
+	return ""
+}
+
+// --- Common ---
 type ListVoicesRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	LanguageCode  string                 `protobuf:"bytes,1,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
@@ -188,7 +428,7 @@ type ListVoicesRequest struct {
 
 func (x *ListVoicesRequest) Reset() {
 	*x = ListVoicesRequest{}
-	mi := &file_sentiric_tts_v1_gateway_proto_msgTypes[2]
+	mi := &file_sentiric_tts_v1_gateway_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -200,7 +440,7 @@ func (x *ListVoicesRequest) String() string {
 func (*ListVoicesRequest) ProtoMessage() {}
 
 func (x *ListVoicesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_tts_v1_gateway_proto_msgTypes[2]
+	mi := &file_sentiric_tts_v1_gateway_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -213,7 +453,7 @@ func (x *ListVoicesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListVoicesRequest.ProtoReflect.Descriptor instead.
 func (*ListVoicesRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_tts_v1_gateway_proto_rawDescGZIP(), []int{2}
+	return file_sentiric_tts_v1_gateway_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *ListVoicesRequest) GetLanguageCode() string {
@@ -232,7 +472,7 @@ type ListVoicesResponse struct {
 
 func (x *ListVoicesResponse) Reset() {
 	*x = ListVoicesResponse{}
-	mi := &file_sentiric_tts_v1_gateway_proto_msgTypes[3]
+	mi := &file_sentiric_tts_v1_gateway_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -244,7 +484,7 @@ func (x *ListVoicesResponse) String() string {
 func (*ListVoicesResponse) ProtoMessage() {}
 
 func (x *ListVoicesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_tts_v1_gateway_proto_msgTypes[3]
+	mi := &file_sentiric_tts_v1_gateway_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -257,7 +497,7 @@ func (x *ListVoicesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListVoicesResponse.ProtoReflect.Descriptor instead.
 func (*ListVoicesResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_tts_v1_gateway_proto_rawDescGZIP(), []int{3}
+	return file_sentiric_tts_v1_gateway_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *ListVoicesResponse) GetVoices() []*VoiceInfo {
@@ -267,20 +507,140 @@ func (x *ListVoicesResponse) GetVoices() []*VoiceInfo {
 	return nil
 }
 
+type AudioConfig struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	AudioFormat     AudioFormat            `protobuf:"varint,1,opt,name=audio_format,json=audioFormat,proto3,enum=sentiric.tts.v1.AudioFormat" json:"audio_format,omitempty"`
+	SampleRateHertz int32                  `protobuf:"varint,2,opt,name=sample_rate_hertz,json=sampleRateHertz,proto3" json:"sample_rate_hertz,omitempty"`
+	VolumeGainDb    float64                `protobuf:"fixed64,3,opt,name=volume_gain_db,json=volumeGainDb,proto3" json:"volume_gain_db,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *AudioConfig) Reset() {
+	*x = AudioConfig{}
+	mi := &file_sentiric_tts_v1_gateway_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AudioConfig) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AudioConfig) ProtoMessage() {}
+
+func (x *AudioConfig) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_tts_v1_gateway_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AudioConfig.ProtoReflect.Descriptor instead.
+func (*AudioConfig) Descriptor() ([]byte, []int) {
+	return file_sentiric_tts_v1_gateway_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *AudioConfig) GetAudioFormat() AudioFormat {
+	if x != nil {
+		return x.AudioFormat
+	}
+	return AudioFormat_AUDIO_FORMAT_UNSPECIFIED
+}
+
+func (x *AudioConfig) GetSampleRateHertz() int32 {
+	if x != nil {
+		return x.SampleRateHertz
+	}
+	return 0
+}
+
+func (x *AudioConfig) GetVolumeGainDb() float64 {
+	if x != nil {
+		return x.VolumeGainDb
+	}
+	return 0
+}
+
+type ProsodyConfig struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Rate          float64                `protobuf:"fixed64,1,opt,name=rate,proto3" json:"rate,omitempty"`
+	Pitch         float64                `protobuf:"fixed64,2,opt,name=pitch,proto3" json:"pitch,omitempty"`
+	Emotion       string                 `protobuf:"bytes,3,opt,name=emotion,proto3" json:"emotion,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ProsodyConfig) Reset() {
+	*x = ProsodyConfig{}
+	mi := &file_sentiric_tts_v1_gateway_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ProsodyConfig) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ProsodyConfig) ProtoMessage() {}
+
+func (x *ProsodyConfig) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_tts_v1_gateway_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ProsodyConfig.ProtoReflect.Descriptor instead.
+func (*ProsodyConfig) Descriptor() ([]byte, []int) {
+	return file_sentiric_tts_v1_gateway_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *ProsodyConfig) GetRate() float64 {
+	if x != nil {
+		return x.Rate
+	}
+	return 0
+}
+
+func (x *ProsodyConfig) GetPitch() float64 {
+	if x != nil {
+		return x.Pitch
+	}
+	return 0
+}
+
+func (x *ProsodyConfig) GetEmotion() string {
+	if x != nil {
+		return x.Emotion
+	}
+	return ""
+}
+
 type VoiceInfo struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Language      string                 `protobuf:"bytes,3,opt,name=language,proto3" json:"language,omitempty"`
 	Gender        string                 `protobuf:"bytes,4,opt,name=gender,proto3" json:"gender,omitempty"`
-	Styles        []string               `protobuf:"bytes,5,rep,name=styles,proto3" json:"styles,omitempty"` // ["neutral", "happy"]
+	Styles        []string               `protobuf:"bytes,5,rep,name=styles,proto3" json:"styles,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *VoiceInfo) Reset() {
 	*x = VoiceInfo{}
-	mi := &file_sentiric_tts_v1_gateway_proto_msgTypes[4]
+	mi := &file_sentiric_tts_v1_gateway_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -292,7 +652,7 @@ func (x *VoiceInfo) String() string {
 func (*VoiceInfo) ProtoMessage() {}
 
 func (x *VoiceInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_tts_v1_gateway_proto_msgTypes[4]
+	mi := &file_sentiric_tts_v1_gateway_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -305,7 +665,7 @@ func (x *VoiceInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VoiceInfo.ProtoReflect.Descriptor instead.
 func (*VoiceInfo) Descriptor() ([]byte, []int) {
-	return file_sentiric_tts_v1_gateway_proto_rawDescGZIP(), []int{4}
+	return file_sentiric_tts_v1_gateway_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *VoiceInfo) GetId() string {
@@ -347,37 +707,62 @@ var File_sentiric_tts_v1_gateway_proto protoreflect.FileDescriptor
 
 const file_sentiric_tts_v1_gateway_proto_rawDesc = "" +
 	"\n" +
-	"\x1dsentiric/tts/v1/gateway.proto\x12\x0fsentiric.tts.v1\"\x97\x02\n" +
+	"\x1dsentiric/tts/v1/gateway.proto\x12\x0fsentiric.tts.v1\"\xa4\x02\n" +
 	"\x11SynthesizeRequest\x12\x12\n" +
-	"\x04text\x18\x01 \x01(\tR\x04text\x12\x1b\n" +
-	"\ttext_type\x18\x02 \x01(\tR\btextType\x12\x19\n" +
-	"\bvoice_id\x18\x03 \x01(\tR\avoiceId\x12#\n" +
-	"\routput_format\x18\x04 \x01(\tR\foutputFormat\x12\x1f\n" +
-	"\vsample_rate\x18\x05 \x01(\x05R\n" +
-	"sampleRate\x12\x19\n" +
-	"\x05speed\x18\x06 \x01(\x02H\x00R\x05speed\x88\x01\x01\x12\x1b\n" +
-	"\x06volume\x18\a \x01(\x02H\x01R\x06volume\x88\x01\x01\x12\x19\n" +
-	"\x05pitch\x18\b \x01(\x02H\x02R\x05pitch\x88\x01\x01B\b\n" +
-	"\x06_speedB\t\n" +
-	"\a_volumeB\b\n" +
-	"\x06_pitch\"\\\n" +
+	"\x04text\x18\x01 \x01(\tR\x04text\x126\n" +
+	"\ttext_type\x18\x02 \x01(\x0e2\x19.sentiric.tts.v1.TextTypeR\btextType\x12\x19\n" +
+	"\bvoice_id\x18\x03 \x01(\tR\avoiceId\x12?\n" +
+	"\faudio_config\x18\x04 \x01(\v2\x1c.sentiric.tts.v1.AudioConfigR\vaudioConfig\x12-\n" +
+	"\x12preferred_provider\x18\x05 \x01(\tR\x11preferredProvider\x128\n" +
+	"\aprosody\x18\x06 \x01(\v2\x1e.sentiric.tts.v1.ProsodyConfigR\aprosody\"\x81\x01\n" +
 	"\x12SynthesizeResponse\x12#\n" +
 	"\raudio_content\x18\x01 \x01(\fR\faudioContent\x12!\n" +
-	"\fcontent_type\x18\x02 \x01(\tR\vcontentType\"8\n" +
+	"\fcontent_type\x18\x02 \x01(\tR\vcontentType\x12#\n" +
+	"\rprovider_used\x18\x03 \x01(\tR\fproviderUsed\"\xaa\x02\n" +
+	"\x17SynthesizeStreamRequest\x12\x12\n" +
+	"\x04text\x18\x01 \x01(\tR\x04text\x126\n" +
+	"\ttext_type\x18\x02 \x01(\x0e2\x19.sentiric.tts.v1.TextTypeR\btextType\x12\x19\n" +
+	"\bvoice_id\x18\x03 \x01(\tR\avoiceId\x12?\n" +
+	"\faudio_config\x18\x04 \x01(\v2\x1c.sentiric.tts.v1.AudioConfigR\vaudioConfig\x12-\n" +
+	"\x12preferred_provider\x18\x05 \x01(\tR\x11preferredProvider\x128\n" +
+	"\aprosody\x18\x06 \x01(\v2\x1e.sentiric.tts.v1.ProsodyConfigR\aprosody\"\x87\x01\n" +
+	"\x18SynthesizeStreamResponse\x12#\n" +
+	"\raudio_content\x18\x01 \x01(\fR\faudioContent\x12!\n" +
+	"\fcontent_type\x18\x02 \x01(\tR\vcontentType\x12#\n" +
+	"\rprovider_used\x18\x03 \x01(\tR\fproviderUsed\"8\n" +
 	"\x11ListVoicesRequest\x12#\n" +
 	"\rlanguage_code\x18\x01 \x01(\tR\flanguageCode\"H\n" +
 	"\x12ListVoicesResponse\x122\n" +
-	"\x06voices\x18\x01 \x03(\v2\x1a.sentiric.tts.v1.VoiceInfoR\x06voices\"{\n" +
+	"\x06voices\x18\x01 \x03(\v2\x1a.sentiric.tts.v1.VoiceInfoR\x06voices\"\xa0\x01\n" +
+	"\vAudioConfig\x12?\n" +
+	"\faudio_format\x18\x01 \x01(\x0e2\x1c.sentiric.tts.v1.AudioFormatR\vaudioFormat\x12*\n" +
+	"\x11sample_rate_hertz\x18\x02 \x01(\x05R\x0fsampleRateHertz\x12$\n" +
+	"\x0evolume_gain_db\x18\x03 \x01(\x01R\fvolumeGainDb\"S\n" +
+	"\rProsodyConfig\x12\x12\n" +
+	"\x04rate\x18\x01 \x01(\x01R\x04rate\x12\x14\n" +
+	"\x05pitch\x18\x02 \x01(\x01R\x05pitch\x12\x18\n" +
+	"\aemotion\x18\x03 \x01(\tR\aemotion\"{\n" +
 	"\tVoiceInfo\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1a\n" +
 	"\blanguage\x18\x03 \x01(\tR\blanguage\x12\x16\n" +
 	"\x06gender\x18\x04 \x01(\tR\x06gender\x12\x16\n" +
-	"\x06styles\x18\x05 \x03(\tR\x06styles2\xa0\x02\n" +
+	"\x06styles\x18\x05 \x03(\tR\x06styles*M\n" +
+	"\bTextType\x12\x19\n" +
+	"\x15TEXT_TYPE_UNSPECIFIED\x10\x00\x12\x12\n" +
+	"\x0eTEXT_TYPE_TEXT\x10\x01\x12\x12\n" +
+	"\x0eTEXT_TYPE_SSML\x10\x02*\xa6\x01\n" +
+	"\vAudioFormat\x12\x1c\n" +
+	"\x18AUDIO_FORMAT_UNSPECIFIED\x10\x00\x12\x1a\n" +
+	"\x16AUDIO_FORMAT_PCM_S16LE\x10\x01\x12\x14\n" +
+	"\x10AUDIO_FORMAT_WAV\x10\x02\x12\x14\n" +
+	"\x10AUDIO_FORMAT_MP3\x10\x03\x12\x19\n" +
+	"\x15AUDIO_FORMAT_OGG_OPUS\x10\x04\x12\x16\n" +
+	"\x12AUDIO_FORMAT_MULAW\x10\x052\xac\x02\n" +
 	"\x11TtsGatewayService\x12U\n" +
 	"\n" +
-	"Synthesize\x12\".sentiric.tts.v1.SynthesizeRequest\x1a#.sentiric.tts.v1.SynthesizeResponse\x12]\n" +
-	"\x10SynthesizeStream\x12\".sentiric.tts.v1.SynthesizeRequest\x1a#.sentiric.tts.v1.SynthesizeResponse0\x01\x12U\n" +
+	"Synthesize\x12\".sentiric.tts.v1.SynthesizeRequest\x1a#.sentiric.tts.v1.SynthesizeResponse\x12i\n" +
+	"\x10SynthesizeStream\x12(.sentiric.tts.v1.SynthesizeStreamRequest\x1a).sentiric.tts.v1.SynthesizeStreamResponse0\x01\x12U\n" +
 	"\n" +
 	"ListVoices\x12\".sentiric.tts.v1.ListVoicesRequest\x1a#.sentiric.tts.v1.ListVoicesResponseBEZCgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/tts/v1;ttsv1b\x06proto3"
 
@@ -393,27 +778,41 @@ func file_sentiric_tts_v1_gateway_proto_rawDescGZIP() []byte {
 	return file_sentiric_tts_v1_gateway_proto_rawDescData
 }
 
-var file_sentiric_tts_v1_gateway_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_sentiric_tts_v1_gateway_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
+var file_sentiric_tts_v1_gateway_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_sentiric_tts_v1_gateway_proto_goTypes = []any{
-	(*SynthesizeRequest)(nil),  // 0: sentiric.tts.v1.SynthesizeRequest
-	(*SynthesizeResponse)(nil), // 1: sentiric.tts.v1.SynthesizeResponse
-	(*ListVoicesRequest)(nil),  // 2: sentiric.tts.v1.ListVoicesRequest
-	(*ListVoicesResponse)(nil), // 3: sentiric.tts.v1.ListVoicesResponse
-	(*VoiceInfo)(nil),          // 4: sentiric.tts.v1.VoiceInfo
+	(TextType)(0),                    // 0: sentiric.tts.v1.TextType
+	(AudioFormat)(0),                 // 1: sentiric.tts.v1.AudioFormat
+	(*SynthesizeRequest)(nil),        // 2: sentiric.tts.v1.SynthesizeRequest
+	(*SynthesizeResponse)(nil),       // 3: sentiric.tts.v1.SynthesizeResponse
+	(*SynthesizeStreamRequest)(nil),  // 4: sentiric.tts.v1.SynthesizeStreamRequest
+	(*SynthesizeStreamResponse)(nil), // 5: sentiric.tts.v1.SynthesizeStreamResponse
+	(*ListVoicesRequest)(nil),        // 6: sentiric.tts.v1.ListVoicesRequest
+	(*ListVoicesResponse)(nil),       // 7: sentiric.tts.v1.ListVoicesResponse
+	(*AudioConfig)(nil),              // 8: sentiric.tts.v1.AudioConfig
+	(*ProsodyConfig)(nil),            // 9: sentiric.tts.v1.ProsodyConfig
+	(*VoiceInfo)(nil),                // 10: sentiric.tts.v1.VoiceInfo
 }
 var file_sentiric_tts_v1_gateway_proto_depIdxs = []int32{
-	4, // 0: sentiric.tts.v1.ListVoicesResponse.voices:type_name -> sentiric.tts.v1.VoiceInfo
-	0, // 1: sentiric.tts.v1.TtsGatewayService.Synthesize:input_type -> sentiric.tts.v1.SynthesizeRequest
-	0, // 2: sentiric.tts.v1.TtsGatewayService.SynthesizeStream:input_type -> sentiric.tts.v1.SynthesizeRequest
-	2, // 3: sentiric.tts.v1.TtsGatewayService.ListVoices:input_type -> sentiric.tts.v1.ListVoicesRequest
-	1, // 4: sentiric.tts.v1.TtsGatewayService.Synthesize:output_type -> sentiric.tts.v1.SynthesizeResponse
-	1, // 5: sentiric.tts.v1.TtsGatewayService.SynthesizeStream:output_type -> sentiric.tts.v1.SynthesizeResponse
-	3, // 6: sentiric.tts.v1.TtsGatewayService.ListVoices:output_type -> sentiric.tts.v1.ListVoicesResponse
-	4, // [4:7] is the sub-list for method output_type
-	1, // [1:4] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	0,  // 0: sentiric.tts.v1.SynthesizeRequest.text_type:type_name -> sentiric.tts.v1.TextType
+	8,  // 1: sentiric.tts.v1.SynthesizeRequest.audio_config:type_name -> sentiric.tts.v1.AudioConfig
+	9,  // 2: sentiric.tts.v1.SynthesizeRequest.prosody:type_name -> sentiric.tts.v1.ProsodyConfig
+	0,  // 3: sentiric.tts.v1.SynthesizeStreamRequest.text_type:type_name -> sentiric.tts.v1.TextType
+	8,  // 4: sentiric.tts.v1.SynthesizeStreamRequest.audio_config:type_name -> sentiric.tts.v1.AudioConfig
+	9,  // 5: sentiric.tts.v1.SynthesizeStreamRequest.prosody:type_name -> sentiric.tts.v1.ProsodyConfig
+	10, // 6: sentiric.tts.v1.ListVoicesResponse.voices:type_name -> sentiric.tts.v1.VoiceInfo
+	1,  // 7: sentiric.tts.v1.AudioConfig.audio_format:type_name -> sentiric.tts.v1.AudioFormat
+	2,  // 8: sentiric.tts.v1.TtsGatewayService.Synthesize:input_type -> sentiric.tts.v1.SynthesizeRequest
+	4,  // 9: sentiric.tts.v1.TtsGatewayService.SynthesizeStream:input_type -> sentiric.tts.v1.SynthesizeStreamRequest
+	6,  // 10: sentiric.tts.v1.TtsGatewayService.ListVoices:input_type -> sentiric.tts.v1.ListVoicesRequest
+	3,  // 11: sentiric.tts.v1.TtsGatewayService.Synthesize:output_type -> sentiric.tts.v1.SynthesizeResponse
+	5,  // 12: sentiric.tts.v1.TtsGatewayService.SynthesizeStream:output_type -> sentiric.tts.v1.SynthesizeStreamResponse
+	7,  // 13: sentiric.tts.v1.TtsGatewayService.ListVoices:output_type -> sentiric.tts.v1.ListVoicesResponse
+	11, // [11:14] is the sub-list for method output_type
+	8,  // [8:11] is the sub-list for method input_type
+	8,  // [8:8] is the sub-list for extension type_name
+	8,  // [8:8] is the sub-list for extension extendee
+	0,  // [0:8] is the sub-list for field type_name
 }
 
 func init() { file_sentiric_tts_v1_gateway_proto_init() }
@@ -421,19 +820,19 @@ func file_sentiric_tts_v1_gateway_proto_init() {
 	if File_sentiric_tts_v1_gateway_proto != nil {
 		return
 	}
-	file_sentiric_tts_v1_gateway_proto_msgTypes[0].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sentiric_tts_v1_gateway_proto_rawDesc), len(file_sentiric_tts_v1_gateway_proto_rawDesc)),
-			NumEnums:      0,
-			NumMessages:   5,
+			NumEnums:      2,
+			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
 		GoTypes:           file_sentiric_tts_v1_gateway_proto_goTypes,
 		DependencyIndexes: file_sentiric_tts_v1_gateway_proto_depIdxs,
+		EnumInfos:         file_sentiric_tts_v1_gateway_proto_enumTypes,
 		MessageInfos:      file_sentiric_tts_v1_gateway_proto_msgTypes,
 	}.Build()
 	File_sentiric_tts_v1_gateway_proto = out.File

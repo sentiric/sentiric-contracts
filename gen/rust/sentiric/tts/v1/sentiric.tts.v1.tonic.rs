@@ -118,9 +118,11 @@ pub mod tts_coqui_service_client {
         }
         pub async fn coqui_synthesize_stream(
             &mut self,
-            request: impl tonic::IntoRequest<super::CoquiSynthesizeRequest>,
+            request: impl tonic::IntoRequest<super::CoquiSynthesizeStreamRequest>,
         ) -> std::result::Result<
-            tonic::Response<tonic::codec::Streaming<super::CoquiSynthesizeResponse>>,
+            tonic::Response<
+                tonic::codec::Streaming<super::CoquiSynthesizeStreamResponse>,
+            >,
             tonic::Status,
         > {
             self.inner
@@ -169,13 +171,16 @@ pub mod tts_coqui_service_server {
         >;
         /// Server streaming response type for the CoquiSynthesizeStream method.
         type CoquiSynthesizeStreamStream: tonic::codegen::tokio_stream::Stream<
-                Item = std::result::Result<super::CoquiSynthesizeResponse, tonic::Status>,
+                Item = std::result::Result<
+                    super::CoquiSynthesizeStreamResponse,
+                    tonic::Status,
+                >,
             >
             + std::marker::Send
             + 'static;
         async fn coqui_synthesize_stream(
             &self,
-            request: tonic::Request<super::CoquiSynthesizeRequest>,
+            request: tonic::Request<super::CoquiSynthesizeStreamRequest>,
         ) -> std::result::Result<
             tonic::Response<Self::CoquiSynthesizeStreamStream>,
             tonic::Status,
@@ -309,9 +314,9 @@ pub mod tts_coqui_service_server {
                     impl<
                         T: TtsCoquiService,
                     > tonic::server::ServerStreamingService<
-                        super::CoquiSynthesizeRequest,
+                        super::CoquiSynthesizeStreamRequest,
                     > for CoquiSynthesizeStreamSvc<T> {
-                        type Response = super::CoquiSynthesizeResponse;
+                        type Response = super::CoquiSynthesizeStreamResponse;
                         type ResponseStream = T::CoquiSynthesizeStreamStream;
                         type Future = BoxFuture<
                             tonic::Response<Self::ResponseStream>,
@@ -319,7 +324,7 @@ pub mod tts_coqui_service_server {
                         >;
                         fn call(
                             &mut self,
-                            request: tonic::Request<super::CoquiSynthesizeRequest>,
+                            request: tonic::Request<super::CoquiSynthesizeStreamRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
@@ -815,9 +820,9 @@ pub mod tts_gateway_service_client {
         }
         pub async fn synthesize_stream(
             &mut self,
-            request: impl tonic::IntoRequest<super::SynthesizeRequest>,
+            request: impl tonic::IntoRequest<super::SynthesizeStreamRequest>,
         ) -> std::result::Result<
-            tonic::Response<tonic::codec::Streaming<super::SynthesizeResponse>>,
+            tonic::Response<tonic::codec::Streaming<super::SynthesizeStreamResponse>>,
             tonic::Status,
         > {
             self.inner
@@ -892,13 +897,16 @@ pub mod tts_gateway_service_server {
         >;
         /// Server streaming response type for the SynthesizeStream method.
         type SynthesizeStreamStream: tonic::codegen::tokio_stream::Stream<
-                Item = std::result::Result<super::SynthesizeResponse, tonic::Status>,
+                Item = std::result::Result<
+                    super::SynthesizeStreamResponse,
+                    tonic::Status,
+                >,
             >
             + std::marker::Send
             + 'static;
         async fn synthesize_stream(
             &self,
-            request: tonic::Request<super::SynthesizeRequest>,
+            request: tonic::Request<super::SynthesizeStreamRequest>,
         ) -> std::result::Result<
             tonic::Response<Self::SynthesizeStreamStream>,
             tonic::Status,
@@ -1037,9 +1045,10 @@ pub mod tts_gateway_service_server {
                     struct SynthesizeStreamSvc<T: TtsGatewayService>(pub Arc<T>);
                     impl<
                         T: TtsGatewayService,
-                    > tonic::server::ServerStreamingService<super::SynthesizeRequest>
-                    for SynthesizeStreamSvc<T> {
-                        type Response = super::SynthesizeResponse;
+                    > tonic::server::ServerStreamingService<
+                        super::SynthesizeStreamRequest,
+                    > for SynthesizeStreamSvc<T> {
+                        type Response = super::SynthesizeStreamResponse;
                         type ResponseStream = T::SynthesizeStreamStream;
                         type Future = BoxFuture<
                             tonic::Response<Self::ResponseStream>,
@@ -1047,7 +1056,7 @@ pub mod tts_gateway_service_server {
                         >;
                         fn call(
                             &mut self,
-                            request: tonic::Request<super::SynthesizeRequest>,
+                            request: tonic::Request<super::SynthesizeStreamRequest>,
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {

@@ -26,8 +26,8 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type LlamaServiceClient interface {
-	// Token akışı sağlayan ana üretim metodu
-	GenerateStream(ctx context.Context, in *LlamaGenerateStreamRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[LlamaGenerateStreamResponse], error)
+	// RPC Adı: GenerateStream
+	GenerateStream(ctx context.Context, in *GenerateStreamRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[GenerateStreamResponse], error)
 }
 
 type llamaServiceClient struct {
@@ -38,13 +38,13 @@ func NewLlamaServiceClient(cc grpc.ClientConnInterface) LlamaServiceClient {
 	return &llamaServiceClient{cc}
 }
 
-func (c *llamaServiceClient) GenerateStream(ctx context.Context, in *LlamaGenerateStreamRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[LlamaGenerateStreamResponse], error) {
+func (c *llamaServiceClient) GenerateStream(ctx context.Context, in *GenerateStreamRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[GenerateStreamResponse], error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	stream, err := c.cc.NewStream(ctx, &LlamaService_ServiceDesc.Streams[0], LlamaService_GenerateStream_FullMethodName, cOpts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &grpc.GenericClientStream[LlamaGenerateStreamRequest, LlamaGenerateStreamResponse]{ClientStream: stream}
+	x := &grpc.GenericClientStream[GenerateStreamRequest, GenerateStreamResponse]{ClientStream: stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -55,14 +55,14 @@ func (c *llamaServiceClient) GenerateStream(ctx context.Context, in *LlamaGenera
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type LlamaService_GenerateStreamClient = grpc.ServerStreamingClient[LlamaGenerateStreamResponse]
+type LlamaService_GenerateStreamClient = grpc.ServerStreamingClient[GenerateStreamResponse]
 
 // LlamaServiceServer is the server API for LlamaService service.
 // All implementations should embed UnimplementedLlamaServiceServer
 // for forward compatibility.
 type LlamaServiceServer interface {
-	// Token akışı sağlayan ana üretim metodu
-	GenerateStream(*LlamaGenerateStreamRequest, grpc.ServerStreamingServer[LlamaGenerateStreamResponse]) error
+	// RPC Adı: GenerateStream
+	GenerateStream(*GenerateStreamRequest, grpc.ServerStreamingServer[GenerateStreamResponse]) error
 }
 
 // UnimplementedLlamaServiceServer should be embedded to have
@@ -72,7 +72,7 @@ type LlamaServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedLlamaServiceServer struct{}
 
-func (UnimplementedLlamaServiceServer) GenerateStream(*LlamaGenerateStreamRequest, grpc.ServerStreamingServer[LlamaGenerateStreamResponse]) error {
+func (UnimplementedLlamaServiceServer) GenerateStream(*GenerateStreamRequest, grpc.ServerStreamingServer[GenerateStreamResponse]) error {
 	return status.Error(codes.Unimplemented, "method GenerateStream not implemented")
 }
 func (UnimplementedLlamaServiceServer) testEmbeddedByValue() {}
@@ -96,15 +96,15 @@ func RegisterLlamaServiceServer(s grpc.ServiceRegistrar, srv LlamaServiceServer)
 }
 
 func _LlamaService_GenerateStream_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(LlamaGenerateStreamRequest)
+	m := new(GenerateStreamRequest)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(LlamaServiceServer).GenerateStream(m, &grpc.GenericServerStream[LlamaGenerateStreamRequest, LlamaGenerateStreamResponse]{ServerStream: stream})
+	return srv.(LlamaServiceServer).GenerateStream(m, &grpc.GenericServerStream[GenerateStreamRequest, GenerateStreamResponse]{ServerStream: stream})
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type LlamaService_GenerateStreamServer = grpc.ServerStreamingServer[LlamaGenerateStreamResponse]
+type LlamaService_GenerateStreamServer = grpc.ServerStreamingServer[GenerateStreamResponse]
 
 // LlamaService_ServiceDesc is the grpc.ServiceDesc for LlamaService service.
 // It's only intended for direct use with grpc.RegisterService,

@@ -64,20 +64,20 @@ void TtsGatewayService::Stub::async::Synthesize(::grpc::ClientContext* context, 
   return result;
 }
 
-::grpc::ClientReader< ::sentiric::tts::v1::SynthesizeResponse>* TtsGatewayService::Stub::SynthesizeStreamRaw(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeRequest& request) {
-  return ::grpc::internal::ClientReaderFactory< ::sentiric::tts::v1::SynthesizeResponse>::Create(channel_.get(), rpcmethod_SynthesizeStream_, context, request);
+::grpc::ClientReader< ::sentiric::tts::v1::SynthesizeStreamResponse>* TtsGatewayService::Stub::SynthesizeStreamRaw(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeStreamRequest& request) {
+  return ::grpc::internal::ClientReaderFactory< ::sentiric::tts::v1::SynthesizeStreamResponse>::Create(channel_.get(), rpcmethod_SynthesizeStream_, context, request);
 }
 
-void TtsGatewayService::Stub::async::SynthesizeStream(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeRequest* request, ::grpc::ClientReadReactor< ::sentiric::tts::v1::SynthesizeResponse>* reactor) {
-  ::grpc::internal::ClientCallbackReaderFactory< ::sentiric::tts::v1::SynthesizeResponse>::Create(stub_->channel_.get(), stub_->rpcmethod_SynthesizeStream_, context, request, reactor);
+void TtsGatewayService::Stub::async::SynthesizeStream(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeStreamRequest* request, ::grpc::ClientReadReactor< ::sentiric::tts::v1::SynthesizeStreamResponse>* reactor) {
+  ::grpc::internal::ClientCallbackReaderFactory< ::sentiric::tts::v1::SynthesizeStreamResponse>::Create(stub_->channel_.get(), stub_->rpcmethod_SynthesizeStream_, context, request, reactor);
 }
 
-::grpc::ClientAsyncReader< ::sentiric::tts::v1::SynthesizeResponse>* TtsGatewayService::Stub::AsyncSynthesizeStreamRaw(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
-  return ::grpc::internal::ClientAsyncReaderFactory< ::sentiric::tts::v1::SynthesizeResponse>::Create(channel_.get(), cq, rpcmethod_SynthesizeStream_, context, request, true, tag);
+::grpc::ClientAsyncReader< ::sentiric::tts::v1::SynthesizeStreamResponse>* TtsGatewayService::Stub::AsyncSynthesizeStreamRaw(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeStreamRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::sentiric::tts::v1::SynthesizeStreamResponse>::Create(channel_.get(), cq, rpcmethod_SynthesizeStream_, context, request, true, tag);
 }
 
-::grpc::ClientAsyncReader< ::sentiric::tts::v1::SynthesizeResponse>* TtsGatewayService::Stub::PrepareAsyncSynthesizeStreamRaw(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncReaderFactory< ::sentiric::tts::v1::SynthesizeResponse>::Create(channel_.get(), cq, rpcmethod_SynthesizeStream_, context, request, false, nullptr);
+::grpc::ClientAsyncReader< ::sentiric::tts::v1::SynthesizeStreamResponse>* TtsGatewayService::Stub::PrepareAsyncSynthesizeStreamRaw(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeStreamRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::sentiric::tts::v1::SynthesizeStreamResponse>::Create(channel_.get(), cq, rpcmethod_SynthesizeStream_, context, request, false, nullptr);
 }
 
 ::grpc::Status TtsGatewayService::Stub::ListVoices(::grpc::ClientContext* context, const ::sentiric::tts::v1::ListVoicesRequest& request, ::sentiric::tts::v1::ListVoicesResponse* response) {
@@ -117,11 +117,11 @@ TtsGatewayService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       TtsGatewayService_method_names[1],
       ::grpc::internal::RpcMethod::SERVER_STREAMING,
-      new ::grpc::internal::ServerStreamingHandler< TtsGatewayService::Service, ::sentiric::tts::v1::SynthesizeRequest, ::sentiric::tts::v1::SynthesizeResponse>(
+      new ::grpc::internal::ServerStreamingHandler< TtsGatewayService::Service, ::sentiric::tts::v1::SynthesizeStreamRequest, ::sentiric::tts::v1::SynthesizeStreamResponse>(
           [](TtsGatewayService::Service* service,
              ::grpc::ServerContext* ctx,
-             const ::sentiric::tts::v1::SynthesizeRequest* req,
-             ::grpc::ServerWriter<::sentiric::tts::v1::SynthesizeResponse>* writer) {
+             const ::sentiric::tts::v1::SynthesizeStreamRequest* req,
+             ::grpc::ServerWriter<::sentiric::tts::v1::SynthesizeStreamResponse>* writer) {
                return service->SynthesizeStream(ctx, req, writer);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
@@ -146,7 +146,7 @@ TtsGatewayService::Service::~Service() {
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status TtsGatewayService::Service::SynthesizeStream(::grpc::ServerContext* context, const ::sentiric::tts::v1::SynthesizeRequest* request, ::grpc::ServerWriter< ::sentiric::tts::v1::SynthesizeResponse>* writer) {
+::grpc::Status TtsGatewayService::Service::SynthesizeStream(::grpc::ServerContext* context, const ::sentiric::tts::v1::SynthesizeStreamRequest* request, ::grpc::ServerWriter< ::sentiric::tts::v1::SynthesizeStreamResponse>* writer) {
   (void) context;
   (void) request;
   (void) writer;

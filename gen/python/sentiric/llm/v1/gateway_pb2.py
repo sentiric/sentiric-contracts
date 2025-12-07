@@ -25,7 +25,7 @@ _sym_db = _symbol_database.Default()
 from sentiric.llm.v1 import llama_pb2 as sentiric_dot_llm_dot_v1_dot_llama__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1dsentiric/llm/v1/gateway.proto\x12\x0fsentiric.llm.v1\x1a\x1bsentiric/llm/v1/llama.proto\"\xb3\x01\n\x1bGenerateDialogStreamRequest\x12%\n\x0emodel_selector\x18\x01 \x01(\tR\rmodelSelector\x12\x1b\n\ttenant_id\x18\x02 \x01(\tR\x08tenantId\x12P\n\rllama_request\x18\n \x01(\x0b\x32+.sentiric.llm.v1.LlamaGenerateStreamRequestR\x0cllamaRequest\"s\n\x1cGenerateDialogStreamResponse\x12S\n\x0ellama_response\x18\n \x01(\x0b\x32,.sentiric.llm.v1.LlamaGenerateStreamResponseR\rllamaResponse2\x8a\x01\n\x11LlmGatewayService\x12u\n\x14GenerateDialogStream\x12,.sentiric.llm.v1.GenerateDialogStreamRequest\x1a-.sentiric.llm.v1.GenerateDialogStreamResponse0\x01\x42\x45ZCgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/llm/v1;llmv1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1dsentiric/llm/v1/gateway.proto\x12\x0fsentiric.llm.v1\x1a\x1bsentiric/llm/v1/llama.proto\"\xae\x01\n\x1bGenerateDialogStreamRequest\x12%\n\x0emodel_selector\x18\x01 \x01(\tR\rmodelSelector\x12\x1b\n\ttenant_id\x18\x02 \x01(\tR\x08tenantId\x12K\n\rllama_request\x18\n \x01(\x0b\x32&.sentiric.llm.v1.GenerateStreamRequestR\x0cllamaRequest\"n\n\x1cGenerateDialogStreamResponse\x12N\n\x0ellama_response\x18\n \x01(\x0b\x32\'.sentiric.llm.v1.GenerateStreamResponseR\rllamaResponse2\x8a\x01\n\x11LlmGatewayService\x12u\n\x14GenerateDialogStream\x12,.sentiric.llm.v1.GenerateDialogStreamRequest\x1a-.sentiric.llm.v1.GenerateDialogStreamResponse0\x01\x42\x45ZCgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/llm/v1;llmv1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -34,9 +34,9 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
   _globals['DESCRIPTOR']._serialized_options = b'ZCgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/llm/v1;llmv1'
   _globals['_GENERATEDIALOGSTREAMREQUEST']._serialized_start=80
-  _globals['_GENERATEDIALOGSTREAMREQUEST']._serialized_end=259
-  _globals['_GENERATEDIALOGSTREAMRESPONSE']._serialized_start=261
-  _globals['_GENERATEDIALOGSTREAMRESPONSE']._serialized_end=376
-  _globals['_LLMGATEWAYSERVICE']._serialized_start=379
-  _globals['_LLMGATEWAYSERVICE']._serialized_end=517
+  _globals['_GENERATEDIALOGSTREAMREQUEST']._serialized_end=254
+  _globals['_GENERATEDIALOGSTREAMRESPONSE']._serialized_start=256
+  _globals['_GENERATEDIALOGSTREAMRESPONSE']._serialized_end=366
+  _globals['_LLMGATEWAYSERVICE']._serialized_start=369
+  _globals['_LLMGATEWAYSERVICE']._serialized_end=507
 # @@protoc_insertion_point(module_scope)

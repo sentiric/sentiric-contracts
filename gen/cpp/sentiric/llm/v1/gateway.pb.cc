@@ -88,26 +88,26 @@ static const ::_pb::Message* const file_default_instances[] = {
 
 const char descriptor_table_protodef_sentiric_2fllm_2fv1_2fgateway_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\035sentiric/llm/v1/gateway.proto\022\017sentiri"
-  "c.llm.v1\032\033sentiric/llm/v1/llama.proto\"\214\001"
+  "c.llm.v1\032\033sentiric/llm/v1/llama.proto\"\207\001"
   "\n\033GenerateDialogStreamRequest\022\026\n\016model_s"
-  "elector\030\001 \001(\t\022\021\n\ttenant_id\030\002 \001(\t\022B\n\rllam"
-  "a_request\030\n \001(\0132+.sentiric.llm.v1.LlamaG"
-  "enerateStreamRequest\"d\n\034GenerateDialogSt"
-  "reamResponse\022D\n\016llama_response\030\n \001(\0132,.s"
-  "entiric.llm.v1.LlamaGenerateStreamRespon"
-  "se2\212\001\n\021LlmGatewayService\022u\n\024GenerateDial"
-  "ogStream\022,.sentiric.llm.v1.GenerateDialo"
-  "gStreamRequest\032-.sentiric.llm.v1.Generat"
-  "eDialogStreamResponse0\001BEZCgithub.com/se"
-  "ntiric/sentiric-contracts/gen/go/sentiri"
-  "c/llm/v1;llmv1b\006proto3"
+  "elector\030\001 \001(\t\022\021\n\ttenant_id\030\002 \001(\t\022=\n\rllam"
+  "a_request\030\n \001(\0132&.sentiric.llm.v1.Genera"
+  "teStreamRequest\"_\n\034GenerateDialogStreamR"
+  "esponse\022\?\n\016llama_response\030\n \001(\0132\'.sentir"
+  "ic.llm.v1.GenerateStreamResponse2\212\001\n\021Llm"
+  "GatewayService\022u\n\024GenerateDialogStream\022,"
+  ".sentiric.llm.v1.GenerateDialogStreamReq"
+  "uest\032-.sentiric.llm.v1.GenerateDialogStr"
+  "eamResponse0\001BEZCgithub.com/sentiric/sen"
+  "tiric-contracts/gen/go/sentiric/llm/v1;l"
+  "lmv1b\006proto3"
   ;
 static const ::_pbi::DescriptorTable* const descriptor_table_sentiric_2fllm_2fv1_2fgateway_2eproto_deps[1] = {
   &::descriptor_table_sentiric_2fllm_2fv1_2fllama_2eproto,
 };
 static ::_pbi::once_flag descriptor_table_sentiric_2fllm_2fv1_2fgateway_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_sentiric_2fllm_2fv1_2fgateway_2eproto = {
-    false, false, 542, descriptor_table_protodef_sentiric_2fllm_2fv1_2fgateway_2eproto,
+    false, false, 532, descriptor_table_protodef_sentiric_2fllm_2fv1_2fgateway_2eproto,
     "sentiric/llm/v1/gateway.proto",
     &descriptor_table_sentiric_2fllm_2fv1_2fgateway_2eproto_once, descriptor_table_sentiric_2fllm_2fv1_2fgateway_2eproto_deps, 1, 2,
     schemas, file_default_instances, TableStruct_sentiric_2fllm_2fv1_2fgateway_2eproto::offsets,
@@ -128,10 +128,10 @@ namespace v1 {
 
 class GenerateDialogStreamRequest::_Internal {
  public:
-  static const ::sentiric::llm::v1::LlamaGenerateStreamRequest& llama_request(const GenerateDialogStreamRequest* msg);
+  static const ::sentiric::llm::v1::GenerateStreamRequest& llama_request(const GenerateDialogStreamRequest* msg);
 };
 
-const ::sentiric::llm::v1::LlamaGenerateStreamRequest&
+const ::sentiric::llm::v1::GenerateStreamRequest&
 GenerateDialogStreamRequest::_Internal::llama_request(const GenerateDialogStreamRequest* msg) {
   return *msg->_impl_.llama_request_;
 }
@@ -174,7 +174,7 @@ GenerateDialogStreamRequest::GenerateDialogStreamRequest(const GenerateDialogStr
       _this->GetArenaForAllocation());
   }
   if (from._internal_has_llama_request()) {
-    _this->_impl_.llama_request_ = new ::sentiric::llm::v1::LlamaGenerateStreamRequest(*from._impl_.llama_request_);
+    _this->_impl_.llama_request_ = new ::sentiric::llm::v1::GenerateStreamRequest(*from._impl_.llama_request_);
   }
   // @@protoc_insertion_point(copy_constructor:sentiric.llm.v1.GenerateDialogStreamRequest)
 }
@@ -260,7 +260,7 @@ const char* GenerateDialogStreamRequest::_InternalParse(const char* ptr, ::_pbi:
         } else
           goto handle_unusual;
         continue;
-      // .sentiric.llm.v1.LlamaGenerateStreamRequest llama_request = 10;
+      // .sentiric.llm.v1.GenerateStreamRequest llama_request = 10;
       case 10:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 82)) {
           ptr = ctx->ParseMessage(_internal_mutable_llama_request(), ptr);
@@ -317,7 +317,7 @@ uint8_t* GenerateDialogStreamRequest::_InternalSerialize(
         2, this->_internal_tenant_id(), target);
   }
 
-  // .sentiric.llm.v1.LlamaGenerateStreamRequest llama_request = 10;
+  // .sentiric.llm.v1.GenerateStreamRequest llama_request = 10;
   if (this->_internal_has_llama_request()) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(10, _Internal::llama_request(this),
@@ -354,7 +354,7 @@ size_t GenerateDialogStreamRequest::ByteSizeLong() const {
         this->_internal_tenant_id());
   }
 
-  // .sentiric.llm.v1.LlamaGenerateStreamRequest llama_request = 10;
+  // .sentiric.llm.v1.GenerateStreamRequest llama_request = 10;
   if (this->_internal_has_llama_request()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
@@ -386,7 +386,7 @@ void GenerateDialogStreamRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to
     _this->_internal_set_tenant_id(from._internal_tenant_id());
   }
   if (from._internal_has_llama_request()) {
-    _this->_internal_mutable_llama_request()->::sentiric::llm::v1::LlamaGenerateStreamRequest::MergeFrom(
+    _this->_internal_mutable_llama_request()->::sentiric::llm::v1::GenerateStreamRequest::MergeFrom(
         from._internal_llama_request());
   }
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
@@ -429,10 +429,10 @@ void GenerateDialogStreamRequest::InternalSwap(GenerateDialogStreamRequest* othe
 
 class GenerateDialogStreamResponse::_Internal {
  public:
-  static const ::sentiric::llm::v1::LlamaGenerateStreamResponse& llama_response(const GenerateDialogStreamResponse* msg);
+  static const ::sentiric::llm::v1::GenerateStreamResponse& llama_response(const GenerateDialogStreamResponse* msg);
 };
 
-const ::sentiric::llm::v1::LlamaGenerateStreamResponse&
+const ::sentiric::llm::v1::GenerateStreamResponse&
 GenerateDialogStreamResponse::_Internal::llama_response(const GenerateDialogStreamResponse* msg) {
   return *msg->_impl_.llama_response_;
 }
@@ -457,7 +457,7 @@ GenerateDialogStreamResponse::GenerateDialogStreamResponse(const GenerateDialogS
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   if (from._internal_has_llama_response()) {
-    _this->_impl_.llama_response_ = new ::sentiric::llm::v1::LlamaGenerateStreamResponse(*from._impl_.llama_response_);
+    _this->_impl_.llama_response_ = new ::sentiric::llm::v1::GenerateStreamResponse(*from._impl_.llama_response_);
   }
   // @@protoc_insertion_point(copy_constructor:sentiric.llm.v1.GenerateDialogStreamResponse)
 }
@@ -509,7 +509,7 @@ const char* GenerateDialogStreamResponse::_InternalParse(const char* ptr, ::_pbi
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // .sentiric.llm.v1.LlamaGenerateStreamResponse llama_response = 10;
+      // .sentiric.llm.v1.GenerateStreamResponse llama_response = 10;
       case 10:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 82)) {
           ptr = ctx->ParseMessage(_internal_mutable_llama_response(), ptr);
@@ -546,7 +546,7 @@ uint8_t* GenerateDialogStreamResponse::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .sentiric.llm.v1.LlamaGenerateStreamResponse llama_response = 10;
+  // .sentiric.llm.v1.GenerateStreamResponse llama_response = 10;
   if (this->_internal_has_llama_response()) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
       InternalWriteMessage(10, _Internal::llama_response(this),
@@ -569,7 +569,7 @@ size_t GenerateDialogStreamResponse::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // .sentiric.llm.v1.LlamaGenerateStreamResponse llama_response = 10;
+  // .sentiric.llm.v1.GenerateStreamResponse llama_response = 10;
   if (this->_internal_has_llama_response()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
@@ -595,7 +595,7 @@ void GenerateDialogStreamResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& t
   (void) cached_has_bits;
 
   if (from._internal_has_llama_response()) {
-    _this->_internal_mutable_llama_response()->::sentiric::llm::v1::LlamaGenerateStreamResponse::MergeFrom(
+    _this->_internal_mutable_llama_response()->::sentiric::llm::v1::GenerateStreamResponse::MergeFrom(
         from._internal_llama_response());
   }
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);

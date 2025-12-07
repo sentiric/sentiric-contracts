@@ -32,8 +32,6 @@ namespace v1 {
 // =============================================================================
 // TTS GATEWAY SERVICE (PUBLIC FACING)
 // =============================================================================
-// İstemciler (Web, Mobil, Diğer Servisler) bu servisi kullanır.
-// Hangi motorun kullanıldığını bilmezler, sadece "VoiceID" bilirler.
 //
 class TtsGatewayService final {
  public:
@@ -43,7 +41,7 @@ class TtsGatewayService final {
   class StubInterface {
    public:
     virtual ~StubInterface() {}
-    // Standart Sentezleme
+    // Unary
     virtual ::grpc::Status Synthesize(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeRequest& request, ::sentiric::tts::v1::SynthesizeResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::tts::v1::SynthesizeResponse>> AsyncSynthesize(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::tts::v1::SynthesizeResponse>>(AsyncSynthesizeRaw(context, request, cq));
@@ -51,17 +49,16 @@ class TtsGatewayService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::tts::v1::SynthesizeResponse>> PrepareAsyncSynthesize(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::tts::v1::SynthesizeResponse>>(PrepareAsyncSynthesizeRaw(context, request, cq));
     }
-    // Akış Sentezleme
-    std::unique_ptr< ::grpc::ClientReaderInterface< ::sentiric::tts::v1::SynthesizeResponse>> SynthesizeStream(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeRequest& request) {
-      return std::unique_ptr< ::grpc::ClientReaderInterface< ::sentiric::tts::v1::SynthesizeResponse>>(SynthesizeStreamRaw(context, request));
+    // Stream
+    std::unique_ptr< ::grpc::ClientReaderInterface< ::sentiric::tts::v1::SynthesizeStreamResponse>> SynthesizeStream(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeStreamRequest& request) {
+      return std::unique_ptr< ::grpc::ClientReaderInterface< ::sentiric::tts::v1::SynthesizeStreamResponse>>(SynthesizeStreamRaw(context, request));
     }
-    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::sentiric::tts::v1::SynthesizeResponse>> AsyncSynthesizeStream(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::sentiric::tts::v1::SynthesizeResponse>>(AsyncSynthesizeStreamRaw(context, request, cq, tag));
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::sentiric::tts::v1::SynthesizeStreamResponse>> AsyncSynthesizeStream(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeStreamRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::sentiric::tts::v1::SynthesizeStreamResponse>>(AsyncSynthesizeStreamRaw(context, request, cq, tag));
     }
-    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::sentiric::tts::v1::SynthesizeResponse>> PrepareAsyncSynthesizeStream(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::sentiric::tts::v1::SynthesizeResponse>>(PrepareAsyncSynthesizeStreamRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::sentiric::tts::v1::SynthesizeStreamResponse>> PrepareAsyncSynthesizeStream(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeStreamRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::sentiric::tts::v1::SynthesizeStreamResponse>>(PrepareAsyncSynthesizeStreamRaw(context, request, cq));
     }
-    // Mevcut Sesleri Listeleme
     virtual ::grpc::Status ListVoices(::grpc::ClientContext* context, const ::sentiric::tts::v1::ListVoicesRequest& request, ::sentiric::tts::v1::ListVoicesResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::tts::v1::ListVoicesResponse>> AsyncListVoices(::grpc::ClientContext* context, const ::sentiric::tts::v1::ListVoicesRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::tts::v1::ListVoicesResponse>>(AsyncListVoicesRaw(context, request, cq));
@@ -72,12 +69,11 @@ class TtsGatewayService final {
     class async_interface {
      public:
       virtual ~async_interface() {}
-      // Standart Sentezleme
+      // Unary
       virtual void Synthesize(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeRequest* request, ::sentiric::tts::v1::SynthesizeResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void Synthesize(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeRequest* request, ::sentiric::tts::v1::SynthesizeResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      // Akış Sentezleme
-      virtual void SynthesizeStream(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeRequest* request, ::grpc::ClientReadReactor< ::sentiric::tts::v1::SynthesizeResponse>* reactor) = 0;
-      // Mevcut Sesleri Listeleme
+      // Stream
+      virtual void SynthesizeStream(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeStreamRequest* request, ::grpc::ClientReadReactor< ::sentiric::tts::v1::SynthesizeStreamResponse>* reactor) = 0;
       virtual void ListVoices(::grpc::ClientContext* context, const ::sentiric::tts::v1::ListVoicesRequest* request, ::sentiric::tts::v1::ListVoicesResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void ListVoices(::grpc::ClientContext* context, const ::sentiric::tts::v1::ListVoicesRequest* request, ::sentiric::tts::v1::ListVoicesResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
     };
@@ -87,9 +83,9 @@ class TtsGatewayService final {
    private:
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::tts::v1::SynthesizeResponse>* AsyncSynthesizeRaw(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::tts::v1::SynthesizeResponse>* PrepareAsyncSynthesizeRaw(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientReaderInterface< ::sentiric::tts::v1::SynthesizeResponse>* SynthesizeStreamRaw(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeRequest& request) = 0;
-    virtual ::grpc::ClientAsyncReaderInterface< ::sentiric::tts::v1::SynthesizeResponse>* AsyncSynthesizeStreamRaw(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeRequest& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
-    virtual ::grpc::ClientAsyncReaderInterface< ::sentiric::tts::v1::SynthesizeResponse>* PrepareAsyncSynthesizeStreamRaw(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientReaderInterface< ::sentiric::tts::v1::SynthesizeStreamResponse>* SynthesizeStreamRaw(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeStreamRequest& request) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::sentiric::tts::v1::SynthesizeStreamResponse>* AsyncSynthesizeStreamRaw(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeStreamRequest& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::sentiric::tts::v1::SynthesizeStreamResponse>* PrepareAsyncSynthesizeStreamRaw(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeStreamRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::tts::v1::ListVoicesResponse>* AsyncListVoicesRaw(::grpc::ClientContext* context, const ::sentiric::tts::v1::ListVoicesRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::tts::v1::ListVoicesResponse>* PrepareAsyncListVoicesRaw(::grpc::ClientContext* context, const ::sentiric::tts::v1::ListVoicesRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
@@ -103,14 +99,14 @@ class TtsGatewayService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::tts::v1::SynthesizeResponse>> PrepareAsyncSynthesize(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::tts::v1::SynthesizeResponse>>(PrepareAsyncSynthesizeRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientReader< ::sentiric::tts::v1::SynthesizeResponse>> SynthesizeStream(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeRequest& request) {
-      return std::unique_ptr< ::grpc::ClientReader< ::sentiric::tts::v1::SynthesizeResponse>>(SynthesizeStreamRaw(context, request));
+    std::unique_ptr< ::grpc::ClientReader< ::sentiric::tts::v1::SynthesizeStreamResponse>> SynthesizeStream(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeStreamRequest& request) {
+      return std::unique_ptr< ::grpc::ClientReader< ::sentiric::tts::v1::SynthesizeStreamResponse>>(SynthesizeStreamRaw(context, request));
     }
-    std::unique_ptr< ::grpc::ClientAsyncReader< ::sentiric::tts::v1::SynthesizeResponse>> AsyncSynthesizeStream(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
-      return std::unique_ptr< ::grpc::ClientAsyncReader< ::sentiric::tts::v1::SynthesizeResponse>>(AsyncSynthesizeStreamRaw(context, request, cq, tag));
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::sentiric::tts::v1::SynthesizeStreamResponse>> AsyncSynthesizeStream(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeStreamRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::sentiric::tts::v1::SynthesizeStreamResponse>>(AsyncSynthesizeStreamRaw(context, request, cq, tag));
     }
-    std::unique_ptr< ::grpc::ClientAsyncReader< ::sentiric::tts::v1::SynthesizeResponse>> PrepareAsyncSynthesizeStream(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncReader< ::sentiric::tts::v1::SynthesizeResponse>>(PrepareAsyncSynthesizeStreamRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::sentiric::tts::v1::SynthesizeStreamResponse>> PrepareAsyncSynthesizeStream(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeStreamRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::sentiric::tts::v1::SynthesizeStreamResponse>>(PrepareAsyncSynthesizeStreamRaw(context, request, cq));
     }
     ::grpc::Status ListVoices(::grpc::ClientContext* context, const ::sentiric::tts::v1::ListVoicesRequest& request, ::sentiric::tts::v1::ListVoicesResponse* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::tts::v1::ListVoicesResponse>> AsyncListVoices(::grpc::ClientContext* context, const ::sentiric::tts::v1::ListVoicesRequest& request, ::grpc::CompletionQueue* cq) {
@@ -124,7 +120,7 @@ class TtsGatewayService final {
      public:
       void Synthesize(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeRequest* request, ::sentiric::tts::v1::SynthesizeResponse* response, std::function<void(::grpc::Status)>) override;
       void Synthesize(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeRequest* request, ::sentiric::tts::v1::SynthesizeResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void SynthesizeStream(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeRequest* request, ::grpc::ClientReadReactor< ::sentiric::tts::v1::SynthesizeResponse>* reactor) override;
+      void SynthesizeStream(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeStreamRequest* request, ::grpc::ClientReadReactor< ::sentiric::tts::v1::SynthesizeStreamResponse>* reactor) override;
       void ListVoices(::grpc::ClientContext* context, const ::sentiric::tts::v1::ListVoicesRequest* request, ::sentiric::tts::v1::ListVoicesResponse* response, std::function<void(::grpc::Status)>) override;
       void ListVoices(::grpc::ClientContext* context, const ::sentiric::tts::v1::ListVoicesRequest* request, ::sentiric::tts::v1::ListVoicesResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
      private:
@@ -140,9 +136,9 @@ class TtsGatewayService final {
     class async async_stub_{this};
     ::grpc::ClientAsyncResponseReader< ::sentiric::tts::v1::SynthesizeResponse>* AsyncSynthesizeRaw(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::sentiric::tts::v1::SynthesizeResponse>* PrepareAsyncSynthesizeRaw(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientReader< ::sentiric::tts::v1::SynthesizeResponse>* SynthesizeStreamRaw(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeRequest& request) override;
-    ::grpc::ClientAsyncReader< ::sentiric::tts::v1::SynthesizeResponse>* AsyncSynthesizeStreamRaw(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeRequest& request, ::grpc::CompletionQueue* cq, void* tag) override;
-    ::grpc::ClientAsyncReader< ::sentiric::tts::v1::SynthesizeResponse>* PrepareAsyncSynthesizeStreamRaw(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientReader< ::sentiric::tts::v1::SynthesizeStreamResponse>* SynthesizeStreamRaw(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeStreamRequest& request) override;
+    ::grpc::ClientAsyncReader< ::sentiric::tts::v1::SynthesizeStreamResponse>* AsyncSynthesizeStreamRaw(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeStreamRequest& request, ::grpc::CompletionQueue* cq, void* tag) override;
+    ::grpc::ClientAsyncReader< ::sentiric::tts::v1::SynthesizeStreamResponse>* PrepareAsyncSynthesizeStreamRaw(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeStreamRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::sentiric::tts::v1::ListVoicesResponse>* AsyncListVoicesRaw(::grpc::ClientContext* context, const ::sentiric::tts::v1::ListVoicesRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::sentiric::tts::v1::ListVoicesResponse>* PrepareAsyncListVoicesRaw(::grpc::ClientContext* context, const ::sentiric::tts::v1::ListVoicesRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_Synthesize_;
@@ -155,11 +151,10 @@ class TtsGatewayService final {
    public:
     Service();
     virtual ~Service();
-    // Standart Sentezleme
+    // Unary
     virtual ::grpc::Status Synthesize(::grpc::ServerContext* context, const ::sentiric::tts::v1::SynthesizeRequest* request, ::sentiric::tts::v1::SynthesizeResponse* response);
-    // Akış Sentezleme
-    virtual ::grpc::Status SynthesizeStream(::grpc::ServerContext* context, const ::sentiric::tts::v1::SynthesizeRequest* request, ::grpc::ServerWriter< ::sentiric::tts::v1::SynthesizeResponse>* writer);
-    // Mevcut Sesleri Listeleme
+    // Stream
+    virtual ::grpc::Status SynthesizeStream(::grpc::ServerContext* context, const ::sentiric::tts::v1::SynthesizeStreamRequest* request, ::grpc::ServerWriter< ::sentiric::tts::v1::SynthesizeStreamResponse>* writer);
     virtual ::grpc::Status ListVoices(::grpc::ServerContext* context, const ::sentiric::tts::v1::ListVoicesRequest* request, ::sentiric::tts::v1::ListVoicesResponse* response);
   };
   template <class BaseClass>
@@ -194,11 +189,11 @@ class TtsGatewayService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status SynthesizeStream(::grpc::ServerContext* /*context*/, const ::sentiric::tts::v1::SynthesizeRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::tts::v1::SynthesizeResponse>* /*writer*/) override {
+    ::grpc::Status SynthesizeStream(::grpc::ServerContext* /*context*/, const ::sentiric::tts::v1::SynthesizeStreamRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::tts::v1::SynthesizeStreamResponse>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestSynthesizeStream(::grpc::ServerContext* context, ::sentiric::tts::v1::SynthesizeRequest* request, ::grpc::ServerAsyncWriter< ::sentiric::tts::v1::SynthesizeResponse>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestSynthesizeStream(::grpc::ServerContext* context, ::sentiric::tts::v1::SynthesizeStreamRequest* request, ::grpc::ServerAsyncWriter< ::sentiric::tts::v1::SynthesizeStreamResponse>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncServerStreaming(1, context, request, writer, new_call_cq, notification_cq, tag);
     }
   };
@@ -257,20 +252,20 @@ class TtsGatewayService final {
    public:
     WithCallbackMethod_SynthesizeStream() {
       ::grpc::Service::MarkMethodCallback(1,
-          new ::grpc::internal::CallbackServerStreamingHandler< ::sentiric::tts::v1::SynthesizeRequest, ::sentiric::tts::v1::SynthesizeResponse>(
+          new ::grpc::internal::CallbackServerStreamingHandler< ::sentiric::tts::v1::SynthesizeStreamRequest, ::sentiric::tts::v1::SynthesizeStreamResponse>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::sentiric::tts::v1::SynthesizeRequest* request) { return this->SynthesizeStream(context, request); }));
+                   ::grpc::CallbackServerContext* context, const ::sentiric::tts::v1::SynthesizeStreamRequest* request) { return this->SynthesizeStream(context, request); }));
     }
     ~WithCallbackMethod_SynthesizeStream() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status SynthesizeStream(::grpc::ServerContext* /*context*/, const ::sentiric::tts::v1::SynthesizeRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::tts::v1::SynthesizeResponse>* /*writer*/) override {
+    ::grpc::Status SynthesizeStream(::grpc::ServerContext* /*context*/, const ::sentiric::tts::v1::SynthesizeStreamRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::tts::v1::SynthesizeStreamResponse>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerWriteReactor< ::sentiric::tts::v1::SynthesizeResponse>* SynthesizeStream(
-      ::grpc::CallbackServerContext* /*context*/, const ::sentiric::tts::v1::SynthesizeRequest* /*request*/)  { return nullptr; }
+    virtual ::grpc::ServerWriteReactor< ::sentiric::tts::v1::SynthesizeStreamResponse>* SynthesizeStream(
+      ::grpc::CallbackServerContext* /*context*/, const ::sentiric::tts::v1::SynthesizeStreamRequest* /*request*/)  { return nullptr; }
   };
   template <class BaseClass>
   class WithCallbackMethod_ListVoices : public BaseClass {
@@ -330,7 +325,7 @@ class TtsGatewayService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status SynthesizeStream(::grpc::ServerContext* /*context*/, const ::sentiric::tts::v1::SynthesizeRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::tts::v1::SynthesizeResponse>* /*writer*/) override {
+    ::grpc::Status SynthesizeStream(::grpc::ServerContext* /*context*/, const ::sentiric::tts::v1::SynthesizeStreamRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::tts::v1::SynthesizeStreamResponse>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -384,7 +379,7 @@ class TtsGatewayService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status SynthesizeStream(::grpc::ServerContext* /*context*/, const ::sentiric::tts::v1::SynthesizeRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::tts::v1::SynthesizeResponse>* /*writer*/) override {
+    ::grpc::Status SynthesizeStream(::grpc::ServerContext* /*context*/, const ::sentiric::tts::v1::SynthesizeStreamRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::tts::v1::SynthesizeStreamResponse>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -449,7 +444,7 @@ class TtsGatewayService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status SynthesizeStream(::grpc::ServerContext* /*context*/, const ::sentiric::tts::v1::SynthesizeRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::tts::v1::SynthesizeResponse>* /*writer*/) override {
+    ::grpc::Status SynthesizeStream(::grpc::ServerContext* /*context*/, const ::sentiric::tts::v1::SynthesizeStreamRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::tts::v1::SynthesizeStreamResponse>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -541,10 +536,10 @@ class TtsGatewayService final {
     WithSplitStreamingMethod_SynthesizeStream() {
       ::grpc::Service::MarkMethodStreamed(1,
         new ::grpc::internal::SplitServerStreamingHandler<
-          ::sentiric::tts::v1::SynthesizeRequest, ::sentiric::tts::v1::SynthesizeResponse>(
+          ::sentiric::tts::v1::SynthesizeStreamRequest, ::sentiric::tts::v1::SynthesizeStreamResponse>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerSplitStreamer<
-                     ::sentiric::tts::v1::SynthesizeRequest, ::sentiric::tts::v1::SynthesizeResponse>* streamer) {
+                     ::sentiric::tts::v1::SynthesizeStreamRequest, ::sentiric::tts::v1::SynthesizeStreamResponse>* streamer) {
                        return this->StreamedSynthesizeStream(context,
                          streamer);
                   }));
@@ -553,12 +548,12 @@ class TtsGatewayService final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status SynthesizeStream(::grpc::ServerContext* /*context*/, const ::sentiric::tts::v1::SynthesizeRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::tts::v1::SynthesizeResponse>* /*writer*/) override {
+    ::grpc::Status SynthesizeStream(::grpc::ServerContext* /*context*/, const ::sentiric::tts::v1::SynthesizeStreamRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::tts::v1::SynthesizeStreamResponse>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with split streamed
-    virtual ::grpc::Status StreamedSynthesizeStream(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::sentiric::tts::v1::SynthesizeRequest,::sentiric::tts::v1::SynthesizeResponse>* server_split_streamer) = 0;
+    virtual ::grpc::Status StreamedSynthesizeStream(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::sentiric::tts::v1::SynthesizeStreamRequest,::sentiric::tts::v1::SynthesizeStreamResponse>* server_split_streamer) = 0;
   };
   typedef WithSplitStreamingMethod_SynthesizeStream<Service > SplitStreamedService;
   typedef WithStreamedUnaryMethod_Synthesize<WithSplitStreamingMethod_SynthesizeStream<WithStreamedUnaryMethod_ListVoices<Service > > > StreamedService;

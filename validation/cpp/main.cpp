@@ -4,7 +4,7 @@
 
 int main() {
     // DÜZELTME: Nihai, CI uyumlu mesaj adı kullanılıyor.
-    sentiric::llm::v1::LlamaGenerateStreamRequest req;
+    sentiric::llm::v1::GenerateStreamRequest req;
     
     req.set_user_prompt("Hello, C++ validation!");
     

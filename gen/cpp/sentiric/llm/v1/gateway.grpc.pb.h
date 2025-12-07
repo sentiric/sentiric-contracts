@@ -32,7 +32,6 @@ namespace v1 {
 // =============================================================================
 // LLM GATEWAY SERVICE
 // =============================================================================
-// Bu servis, farklı LLM motorlarını (Llama, OpenAI, Claude vb.) soyutlar.
 //
 class LlmGatewayService final {
  public:

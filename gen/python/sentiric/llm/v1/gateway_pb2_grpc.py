@@ -9,7 +9,6 @@ class LlmGatewayServiceStub(object):
     """=============================================================================
     LLM GATEWAY SERVICE
     =============================================================================
-    Bu servis, farklı LLM motorlarını (Llama, OpenAI, Claude vb.) soyutlar.
 
     """
 
@@ -30,7 +29,6 @@ class LlmGatewayServiceServicer(object):
     """=============================================================================
     LLM GATEWAY SERVICE
     =============================================================================
-    Bu servis, farklı LLM motorlarını (Llama, OpenAI, Claude vb.) soyutlar.
 
     """
 
@@ -60,7 +58,6 @@ class LlmGatewayService(object):
     """=============================================================================
     LLM GATEWAY SERVICE
     =============================================================================
-    Bu servis, farklı LLM motorlarını (Llama, OpenAI, Claude vb.) soyutlar.
 
     """
 

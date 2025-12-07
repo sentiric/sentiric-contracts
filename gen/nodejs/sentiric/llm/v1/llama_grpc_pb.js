@@ -5,49 +5,42 @@ var grpc = require('@grpc/grpc-js');
 var sentiric_llm_v1_llama_pb = require('../../../sentiric/llm/v1/llama_pb.js');
 var google_protobuf_struct_pb = require('google-protobuf/google/protobuf/struct_pb.js');
 
-function serialize_sentiric_llm_v1_LlamaGenerateStreamRequest(arg) {
-  if (!(arg instanceof sentiric_llm_v1_llama_pb.LlamaGenerateStreamRequest)) {
-    throw new Error('Expected argument of type sentiric.llm.v1.LlamaGenerateStreamRequest');
+function serialize_sentiric_llm_v1_GenerateStreamRequest(arg) {
+  if (!(arg instanceof sentiric_llm_v1_llama_pb.GenerateStreamRequest)) {
+    throw new Error('Expected argument of type sentiric.llm.v1.GenerateStreamRequest');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_sentiric_llm_v1_LlamaGenerateStreamRequest(buffer_arg) {
-  return sentiric_llm_v1_llama_pb.LlamaGenerateStreamRequest.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_sentiric_llm_v1_GenerateStreamRequest(buffer_arg) {
+  return sentiric_llm_v1_llama_pb.GenerateStreamRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_sentiric_llm_v1_LlamaGenerateStreamResponse(arg) {
-  if (!(arg instanceof sentiric_llm_v1_llama_pb.LlamaGenerateStreamResponse)) {
-    throw new Error('Expected argument of type sentiric.llm.v1.LlamaGenerateStreamResponse');
+function serialize_sentiric_llm_v1_GenerateStreamResponse(arg) {
+  if (!(arg instanceof sentiric_llm_v1_llama_pb.GenerateStreamResponse)) {
+    throw new Error('Expected argument of type sentiric.llm.v1.GenerateStreamResponse');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_sentiric_llm_v1_LlamaGenerateStreamResponse(buffer_arg) {
-  return sentiric_llm_v1_llama_pb.LlamaGenerateStreamResponse.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_sentiric_llm_v1_GenerateStreamResponse(buffer_arg) {
+  return sentiric_llm_v1_llama_pb.GenerateStreamResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 
-// =============================================================================
-// LLAMA ENGINE SERVICE (INTERNAL)
-// =============================================================================
-// Bu servis, Gateway veya doğrudan Client tarafından Llama.cpp motoruna 
-// erişmek için kullanılır.
-//
 var LlamaServiceService = exports.LlamaServiceService = {
-  // Token akışı sağlayan ana üretim metodu
+  // RPC Adı: GenerateStream
 generateStream: {
     path: '/sentiric.llm.v1.LlamaService/GenerateStream',
     requestStream: false,
     responseStream: true,
-    requestType: sentiric_llm_v1_llama_pb.LlamaGenerateStreamRequest,
-    responseType: sentiric_llm_v1_llama_pb.LlamaGenerateStreamResponse,
-    requestSerialize: serialize_sentiric_llm_v1_LlamaGenerateStreamRequest,
-    requestDeserialize: deserialize_sentiric_llm_v1_LlamaGenerateStreamRequest,
-    responseSerialize: serialize_sentiric_llm_v1_LlamaGenerateStreamResponse,
-    responseDeserialize: deserialize_sentiric_llm_v1_LlamaGenerateStreamResponse,
+    requestType: sentiric_llm_v1_llama_pb.GenerateStreamRequest,
+    responseType: sentiric_llm_v1_llama_pb.GenerateStreamResponse,
+    requestSerialize: serialize_sentiric_llm_v1_GenerateStreamRequest,
+    requestDeserialize: deserialize_sentiric_llm_v1_GenerateStreamRequest,
+    responseSerialize: serialize_sentiric_llm_v1_GenerateStreamResponse,
+    responseDeserialize: deserialize_sentiric_llm_v1_GenerateStreamResponse,
   },
 };
 
 exports.LlamaServiceClient = grpc.makeGenericClientConstructor(LlamaServiceService, 'LlamaService');
-// ESKİ: LLMLocalService

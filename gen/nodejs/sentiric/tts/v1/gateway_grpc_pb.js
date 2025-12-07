@@ -48,15 +48,35 @@ function deserialize_sentiric_tts_v1_SynthesizeResponse(buffer_arg) {
   return sentiric_tts_v1_gateway_pb.SynthesizeResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sentiric_tts_v1_SynthesizeStreamRequest(arg) {
+  if (!(arg instanceof sentiric_tts_v1_gateway_pb.SynthesizeStreamRequest)) {
+    throw new Error('Expected argument of type sentiric.tts.v1.SynthesizeStreamRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sentiric_tts_v1_SynthesizeStreamRequest(buffer_arg) {
+  return sentiric_tts_v1_gateway_pb.SynthesizeStreamRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sentiric_tts_v1_SynthesizeStreamResponse(arg) {
+  if (!(arg instanceof sentiric_tts_v1_gateway_pb.SynthesizeStreamResponse)) {
+    throw new Error('Expected argument of type sentiric.tts.v1.SynthesizeStreamResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sentiric_tts_v1_SynthesizeStreamResponse(buffer_arg) {
+  return sentiric_tts_v1_gateway_pb.SynthesizeStreamResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 
 // =============================================================================
 // TTS GATEWAY SERVICE (PUBLIC FACING)
 // =============================================================================
-// İstemciler (Web, Mobil, Diğer Servisler) bu servisi kullanır.
-// Hangi motorun kullanıldığını bilmezler, sadece "VoiceID" bilirler.
 //
 var TtsGatewayServiceService = exports.TtsGatewayServiceService = {
-  // Standart Sentezleme
+  // Unary
 synthesize: {
     path: '/sentiric.tts.v1.TtsGatewayService/Synthesize',
     requestStream: false,
@@ -68,20 +88,19 @@ synthesize: {
     responseSerialize: serialize_sentiric_tts_v1_SynthesizeResponse,
     responseDeserialize: deserialize_sentiric_tts_v1_SynthesizeResponse,
   },
-  // Akış Sentezleme
+  // Stream
 synthesizeStream: {
     path: '/sentiric.tts.v1.TtsGatewayService/SynthesizeStream',
     requestStream: false,
     responseStream: true,
-    requestType: sentiric_tts_v1_gateway_pb.SynthesizeRequest,
-    responseType: sentiric_tts_v1_gateway_pb.SynthesizeResponse,
-    requestSerialize: serialize_sentiric_tts_v1_SynthesizeRequest,
-    requestDeserialize: deserialize_sentiric_tts_v1_SynthesizeRequest,
-    responseSerialize: serialize_sentiric_tts_v1_SynthesizeResponse,
-    responseDeserialize: deserialize_sentiric_tts_v1_SynthesizeResponse,
+    requestType: sentiric_tts_v1_gateway_pb.SynthesizeStreamRequest,
+    responseType: sentiric_tts_v1_gateway_pb.SynthesizeStreamResponse,
+    requestSerialize: serialize_sentiric_tts_v1_SynthesizeStreamRequest,
+    requestDeserialize: deserialize_sentiric_tts_v1_SynthesizeStreamRequest,
+    responseSerialize: serialize_sentiric_tts_v1_SynthesizeStreamResponse,
+    responseDeserialize: deserialize_sentiric_tts_v1_SynthesizeStreamResponse,
   },
-  // Mevcut Sesleri Listeleme
-listVoices: {
+  listVoices: {
     path: '/sentiric.tts.v1.TtsGatewayService/ListVoices',
     requestStream: false,
     responseStream: false,

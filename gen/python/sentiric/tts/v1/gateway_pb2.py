@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1dsentiric/tts/v1/gateway.proto\x12\x0fsentiric.tts.v1\"\x97\x02\n\x11SynthesizeRequest\x12\x12\n\x04text\x18\x01 \x01(\tR\x04text\x12\x1b\n\ttext_type\x18\x02 \x01(\tR\x08textType\x12\x19\n\x08voice_id\x18\x03 \x01(\tR\x07voiceId\x12#\n\routput_format\x18\x04 \x01(\tR\x0coutputFormat\x12\x1f\n\x0bsample_rate\x18\x05 \x01(\x05R\nsampleRate\x12\x19\n\x05speed\x18\x06 \x01(\x02H\x00R\x05speed\x88\x01\x01\x12\x1b\n\x06volume\x18\x07 \x01(\x02H\x01R\x06volume\x88\x01\x01\x12\x19\n\x05pitch\x18\x08 \x01(\x02H\x02R\x05pitch\x88\x01\x01\x42\x08\n\x06_speedB\t\n\x07_volumeB\x08\n\x06_pitch\"\\\n\x12SynthesizeResponse\x12#\n\raudio_content\x18\x01 \x01(\x0cR\x0c\x61udioContent\x12!\n\x0c\x63ontent_type\x18\x02 \x01(\tR\x0b\x63ontentType\"8\n\x11ListVoicesRequest\x12#\n\rlanguage_code\x18\x01 \x01(\tR\x0clanguageCode\"H\n\x12ListVoicesResponse\x12\x32\n\x06voices\x18\x01 \x03(\x0b\x32\x1a.sentiric.tts.v1.VoiceInfoR\x06voices\"{\n\tVoiceInfo\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n\x04name\x18\x02 \x01(\tR\x04name\x12\x1a\n\x08language\x18\x03 \x01(\tR\x08language\x12\x16\n\x06gender\x18\x04 \x01(\tR\x06gender\x12\x16\n\x06styles\x18\x05 \x03(\tR\x06styles2\xa0\x02\n\x11TtsGatewayService\x12U\n\nSynthesize\x12\".sentiric.tts.v1.SynthesizeRequest\x1a#.sentiric.tts.v1.SynthesizeResponse\x12]\n\x10SynthesizeStream\x12\".sentiric.tts.v1.SynthesizeRequest\x1a#.sentiric.tts.v1.SynthesizeResponse0\x01\x12U\n\nListVoices\x12\".sentiric.tts.v1.ListVoicesRequest\x1a#.sentiric.tts.v1.ListVoicesResponseBEZCgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/tts/v1;ttsv1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1dsentiric/tts/v1/gateway.proto\x12\x0fsentiric.tts.v1\"\xa4\x02\n\x11SynthesizeRequest\x12\x12\n\x04text\x18\x01 \x01(\tR\x04text\x12\x36\n\ttext_type\x18\x02 \x01(\x0e\x32\x19.sentiric.tts.v1.TextTypeR\x08textType\x12\x19\n\x08voice_id\x18\x03 \x01(\tR\x07voiceId\x12?\n\x0c\x61udio_config\x18\x04 \x01(\x0b\x32\x1c.sentiric.tts.v1.AudioConfigR\x0b\x61udioConfig\x12-\n\x12preferred_provider\x18\x05 \x01(\tR\x11preferredProvider\x12\x38\n\x07prosody\x18\x06 \x01(\x0b\x32\x1e.sentiric.tts.v1.ProsodyConfigR\x07prosody\"\x81\x01\n\x12SynthesizeResponse\x12#\n\raudio_content\x18\x01 \x01(\x0cR\x0c\x61udioContent\x12!\n\x0c\x63ontent_type\x18\x02 \x01(\tR\x0b\x63ontentType\x12#\n\rprovider_used\x18\x03 \x01(\tR\x0cproviderUsed\"\xaa\x02\n\x17SynthesizeStreamRequest\x12\x12\n\x04text\x18\x01 \x01(\tR\x04text\x12\x36\n\ttext_type\x18\x02 \x01(\x0e\x32\x19.sentiric.tts.v1.TextTypeR\x08textType\x12\x19\n\x08voice_id\x18\x03 \x01(\tR\x07voiceId\x12?\n\x0c\x61udio_config\x18\x04 \x01(\x0b\x32\x1c.sentiric.tts.v1.AudioConfigR\x0b\x61udioConfig\x12-\n\x12preferred_provider\x18\x05 \x01(\tR\x11preferredProvider\x12\x38\n\x07prosody\x18\x06 \x01(\x0b\x32\x1e.sentiric.tts.v1.ProsodyConfigR\x07prosody\"\x87\x01\n\x18SynthesizeStreamResponse\x12#\n\raudio_content\x18\x01 \x01(\x0cR\x0c\x61udioContent\x12!\n\x0c\x63ontent_type\x18\x02 \x01(\tR\x0b\x63ontentType\x12#\n\rprovider_used\x18\x03 \x01(\tR\x0cproviderUsed\"8\n\x11ListVoicesRequest\x12#\n\rlanguage_code\x18\x01 \x01(\tR\x0clanguageCode\"H\n\x12ListVoicesResponse\x12\x32\n\x06voices\x18\x01 \x03(\x0b\x32\x1a.sentiric.tts.v1.VoiceInfoR\x06voices\"\xa0\x01\n\x0b\x41udioConfig\x12?\n\x0c\x61udio_format\x18\x01 \x01(\x0e\x32\x1c.sentiric.tts.v1.AudioFormatR\x0b\x61udioFormat\x12*\n\x11sample_rate_hertz\x18\x02 \x01(\x05R\x0fsampleRateHertz\x12$\n\x0evolume_gain_db\x18\x03 \x01(\x01R\x0cvolumeGainDb\"S\n\rProsodyConfig\x12\x12\n\x04rate\x18\x01 \x01(\x01R\x04rate\x12\x14\n\x05pitch\x18\x02 \x01(\x01R\x05pitch\x12\x18\n\x07\x65motion\x18\x03 \x01(\tR\x07\x65motion\"{\n\tVoiceInfo\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n\x04name\x18\x02 \x01(\tR\x04name\x12\x1a\n\x08language\x18\x03 \x01(\tR\x08language\x12\x16\n\x06gender\x18\x04 \x01(\tR\x06gender\x12\x16\n\x06styles\x18\x05 \x03(\tR\x06styles*M\n\x08TextType\x12\x19\n\x15TEXT_TYPE_UNSPECIFIED\x10\x00\x12\x12\n\x0eTEXT_TYPE_TEXT\x10\x01\x12\x12\n\x0eTEXT_TYPE_SSML\x10\x02*\xa6\x01\n\x0b\x41udioFormat\x12\x1c\n\x18\x41UDIO_FORMAT_UNSPECIFIED\x10\x00\x12\x1a\n\x16\x41UDIO_FORMAT_PCM_S16LE\x10\x01\x12\x14\n\x10\x41UDIO_FORMAT_WAV\x10\x02\x12\x14\n\x10\x41UDIO_FORMAT_MP3\x10\x03\x12\x19\n\x15\x41UDIO_FORMAT_OGG_OPUS\x10\x04\x12\x16\n\x12\x41UDIO_FORMAT_MULAW\x10\x05\x32\xac\x02\n\x11TtsGatewayService\x12U\n\nSynthesize\x12\".sentiric.tts.v1.SynthesizeRequest\x1a#.sentiric.tts.v1.SynthesizeResponse\x12i\n\x10SynthesizeStream\x12(.sentiric.tts.v1.SynthesizeStreamRequest\x1a).sentiric.tts.v1.SynthesizeStreamResponse0\x01\x12U\n\nListVoices\x12\".sentiric.tts.v1.ListVoicesRequest\x1a#.sentiric.tts.v1.ListVoicesResponseBEZCgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/tts/v1;ttsv1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -32,16 +32,28 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'sentiric.tts.v1.gateway_pb2
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
   _globals['DESCRIPTOR']._serialized_options = b'ZCgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/tts/v1;ttsv1'
+  _globals['_TEXTTYPE']._serialized_start=1421
+  _globals['_TEXTTYPE']._serialized_end=1498
+  _globals['_AUDIOFORMAT']._serialized_start=1501
+  _globals['_AUDIOFORMAT']._serialized_end=1667
   _globals['_SYNTHESIZEREQUEST']._serialized_start=51
-  _globals['_SYNTHESIZEREQUEST']._serialized_end=330
-  _globals['_SYNTHESIZERESPONSE']._serialized_start=332
-  _globals['_SYNTHESIZERESPONSE']._serialized_end=424
-  _globals['_LISTVOICESREQUEST']._serialized_start=426
-  _globals['_LISTVOICESREQUEST']._serialized_end=482
-  _globals['_LISTVOICESRESPONSE']._serialized_start=484
-  _globals['_LISTVOICESRESPONSE']._serialized_end=556
-  _globals['_VOICEINFO']._serialized_start=558
-  _globals['_VOICEINFO']._serialized_end=681
-  _globals['_TTSGATEWAYSERVICE']._serialized_start=684
-  _globals['_TTSGATEWAYSERVICE']._serialized_end=972
+  _globals['_SYNTHESIZEREQUEST']._serialized_end=343
+  _globals['_SYNTHESIZERESPONSE']._serialized_start=346
+  _globals['_SYNTHESIZERESPONSE']._serialized_end=475
+  _globals['_SYNTHESIZESTREAMREQUEST']._serialized_start=478
+  _globals['_SYNTHESIZESTREAMREQUEST']._serialized_end=776
+  _globals['_SYNTHESIZESTREAMRESPONSE']._serialized_start=779
+  _globals['_SYNTHESIZESTREAMRESPONSE']._serialized_end=914
+  _globals['_LISTVOICESREQUEST']._serialized_start=916
+  _globals['_LISTVOICESREQUEST']._serialized_end=972
+  _globals['_LISTVOICESRESPONSE']._serialized_start=974
+  _globals['_LISTVOICESRESPONSE']._serialized_end=1046
+  _globals['_AUDIOCONFIG']._serialized_start=1049
+  _globals['_AUDIOCONFIG']._serialized_end=1209
+  _globals['_PROSODYCONFIG']._serialized_start=1211
+  _globals['_PROSODYCONFIG']._serialized_end=1294
+  _globals['_VOICEINFO']._serialized_start=1296
+  _globals['_VOICEINFO']._serialized_end=1419
+  _globals['_TTSGATEWAYSERVICE']._serialized_start=1670
+  _globals['_TTSGATEWAYSERVICE']._serialized_end=1970
 # @@protoc_insertion_point(module_scope)

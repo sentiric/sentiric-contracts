@@ -6,13 +6,7 @@ from sentiric.tts.v1 import coqui_pb2 as sentiric_dot_tts_dot_v1_dot_coqui__pb2
 
 
 class TtsCoquiServiceStub(object):
-    """=============================================================================
-    COQUI ENGINE SERVICE (INTERNAL)
-    =============================================================================
-    Bu servis, Gateway tarafından çağrılır. Doğrudan son kullanıcıya açılmaz.
-    Coqui XTTS v2 modeline özgü düşük seviyeli parametreleri kabul eder.
-
-    """
+    """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):
         """Constructor.
@@ -27,29 +21,23 @@ class TtsCoquiServiceStub(object):
                 _registered_method=True)
         self.CoquiSynthesizeStream = channel.unary_stream(
                 '/sentiric.tts.v1.TtsCoquiService/CoquiSynthesizeStream',
-                request_serializer=sentiric_dot_tts_dot_v1_dot_coqui__pb2.CoquiSynthesizeRequest.SerializeToString,
-                response_deserializer=sentiric_dot_tts_dot_v1_dot_coqui__pb2.CoquiSynthesizeResponse.FromString,
+                request_serializer=sentiric_dot_tts_dot_v1_dot_coqui__pb2.CoquiSynthesizeStreamRequest.SerializeToString,
+                response_deserializer=sentiric_dot_tts_dot_v1_dot_coqui__pb2.CoquiSynthesizeStreamResponse.FromString,
                 _registered_method=True)
 
 
 class TtsCoquiServiceServicer(object):
-    """=============================================================================
-    COQUI ENGINE SERVICE (INTERNAL)
-    =============================================================================
-    Bu servis, Gateway tarafından çağrılır. Doğrudan son kullanıcıya açılmaz.
-    Coqui XTTS v2 modeline özgü düşük seviyeli parametreleri kabul eder.
-
-    """
+    """Missing associated documentation comment in .proto file."""
 
     def CoquiSynthesize(self, request, context):
-        """Tekil sentezleme (Dosya tabanlı çıktı)
+        """Unary
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def CoquiSynthesizeStream(self, request, context):
-        """Streaming sentezleme (Düşük gecikmeli chunk çıkışı)
+        """Stream
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -65,8 +53,8 @@ def add_TtsCoquiServiceServicer_to_server(servicer, server):
             ),
             'CoquiSynthesizeStream': grpc.unary_stream_rpc_method_handler(
                     servicer.CoquiSynthesizeStream,
-                    request_deserializer=sentiric_dot_tts_dot_v1_dot_coqui__pb2.CoquiSynthesizeRequest.FromString,
-                    response_serializer=sentiric_dot_tts_dot_v1_dot_coqui__pb2.CoquiSynthesizeResponse.SerializeToString,
+                    request_deserializer=sentiric_dot_tts_dot_v1_dot_coqui__pb2.CoquiSynthesizeStreamRequest.FromString,
+                    response_serializer=sentiric_dot_tts_dot_v1_dot_coqui__pb2.CoquiSynthesizeStreamResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -77,13 +65,7 @@ def add_TtsCoquiServiceServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class TtsCoquiService(object):
-    """=============================================================================
-    COQUI ENGINE SERVICE (INTERNAL)
-    =============================================================================
-    Bu servis, Gateway tarafından çağrılır. Doğrudan son kullanıcıya açılmaz.
-    Coqui XTTS v2 modeline özgü düşük seviyeli parametreleri kabul eder.
-
-    """
+    """Missing associated documentation comment in .proto file."""
 
     @staticmethod
     def CoquiSynthesize(request,
@@ -127,8 +109,8 @@ class TtsCoquiService(object):
             request,
             target,
             '/sentiric.tts.v1.TtsCoquiService/CoquiSynthesizeStream',
-            sentiric_dot_tts_dot_v1_dot_coqui__pb2.CoquiSynthesizeRequest.SerializeToString,
-            sentiric_dot_tts_dot_v1_dot_coqui__pb2.CoquiSynthesizeResponse.FromString,
+            sentiric_dot_tts_dot_v1_dot_coqui__pb2.CoquiSynthesizeStreamRequest.SerializeToString,
+            sentiric_dot_tts_dot_v1_dot_coqui__pb2.CoquiSynthesizeStreamResponse.FromString,
             options,
             channel_credentials,
             insecure,

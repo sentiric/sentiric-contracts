@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1bsentiric/tts/v1/coqui.proto\x12\x0fsentiric.tts.v1\"\xa8\x02\n\x16\x43oquiSynthesizeRequest\x12\x12\n\x04text\x18\x01 \x01(\tR\x04text\x12#\n\rlanguage_code\x18\x02 \x01(\tR\x0clanguageCode\x12\x1f\n\x0bspeaker_wav\x18\x03 \x01(\x0cR\nspeakerWav\x12 \n\x0btemperature\x18\x04 \x01(\x02R\x0btemperature\x12\x14\n\x05speed\x18\x05 \x01(\x02R\x05speed\x12\x13\n\x05top_p\x18\x06 \x01(\x02R\x04topP\x12\x13\n\x05top_k\x18\x07 \x01(\x02R\x04topK\x12-\n\x12repetition_penalty\x18\x08 \x01(\x02R\x11repetitionPenalty\x12#\n\routput_format\x18\t \x01(\tR\x0coutputFormat\"U\n\x17\x43oquiSynthesizeResponse\x12\x1f\n\x0b\x61udio_chunk\x18\x01 \x01(\x0cR\naudioChunk\x12\x19\n\x08is_final\x18\x02 \x01(\x08R\x07isFinal2\xe5\x01\n\x0fTtsCoquiService\x12\x64\n\x0f\x43oquiSynthesize\x12\'.sentiric.tts.v1.CoquiSynthesizeRequest\x1a(.sentiric.tts.v1.CoquiSynthesizeResponse\x12l\n\x15\x43oquiSynthesizeStream\x12\'.sentiric.tts.v1.CoquiSynthesizeRequest\x1a(.sentiric.tts.v1.CoquiSynthesizeResponse0\x01\x42\x45ZCgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/tts/v1;ttsv1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1bsentiric/tts/v1/coqui.proto\x12\x0fsentiric.tts.v1\"\xa8\x02\n\x16\x43oquiSynthesizeRequest\x12\x12\n\x04text\x18\x01 \x01(\tR\x04text\x12#\n\rlanguage_code\x18\x02 \x01(\tR\x0clanguageCode\x12\x1f\n\x0bspeaker_wav\x18\x03 \x01(\x0cR\nspeakerWav\x12 \n\x0btemperature\x18\x04 \x01(\x02R\x0btemperature\x12\x14\n\x05speed\x18\x05 \x01(\x02R\x05speed\x12\x13\n\x05top_p\x18\x06 \x01(\x02R\x04topP\x12\x13\n\x05top_k\x18\x07 \x01(\x02R\x04topK\x12-\n\x12repetition_penalty\x18\x08 \x01(\x02R\x11repetitionPenalty\x12#\n\routput_format\x18\t \x01(\tR\x0coutputFormat\">\n\x17\x43oquiSynthesizeResponse\x12#\n\raudio_content\x18\x01 \x01(\x0cR\x0c\x61udioContent\"\xae\x02\n\x1c\x43oquiSynthesizeStreamRequest\x12\x12\n\x04text\x18\x01 \x01(\tR\x04text\x12#\n\rlanguage_code\x18\x02 \x01(\tR\x0clanguageCode\x12\x1f\n\x0bspeaker_wav\x18\x03 \x01(\x0cR\nspeakerWav\x12 \n\x0btemperature\x18\x04 \x01(\x02R\x0btemperature\x12\x14\n\x05speed\x18\x05 \x01(\x02R\x05speed\x12\x13\n\x05top_p\x18\x06 \x01(\x02R\x04topP\x12\x13\n\x05top_k\x18\x07 \x01(\x02R\x04topK\x12-\n\x12repetition_penalty\x18\x08 \x01(\x02R\x11repetitionPenalty\x12#\n\routput_format\x18\t \x01(\tR\x0coutputFormat\"[\n\x1d\x43oquiSynthesizeStreamResponse\x12\x1f\n\x0b\x61udio_chunk\x18\x01 \x01(\x0cR\naudioChunk\x12\x19\n\x08is_final\x18\x02 \x01(\x08R\x07isFinal2\xf1\x01\n\x0fTtsCoquiService\x12\x64\n\x0f\x43oquiSynthesize\x12\'.sentiric.tts.v1.CoquiSynthesizeRequest\x1a(.sentiric.tts.v1.CoquiSynthesizeResponse\x12x\n\x15\x43oquiSynthesizeStream\x12-.sentiric.tts.v1.CoquiSynthesizeStreamRequest\x1a..sentiric.tts.v1.CoquiSynthesizeStreamResponse0\x01\x42\x45ZCgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/tts/v1;ttsv1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -35,7 +35,11 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_COQUISYNTHESIZEREQUEST']._serialized_start=49
   _globals['_COQUISYNTHESIZEREQUEST']._serialized_end=345
   _globals['_COQUISYNTHESIZERESPONSE']._serialized_start=347
-  _globals['_COQUISYNTHESIZERESPONSE']._serialized_end=432
-  _globals['_TTSCOQUISERVICE']._serialized_start=435
-  _globals['_TTSCOQUISERVICE']._serialized_end=664
+  _globals['_COQUISYNTHESIZERESPONSE']._serialized_end=409
+  _globals['_COQUISYNTHESIZESTREAMREQUEST']._serialized_start=412
+  _globals['_COQUISYNTHESIZESTREAMREQUEST']._serialized_end=714
+  _globals['_COQUISYNTHESIZESTREAMRESPONSE']._serialized_start=716
+  _globals['_COQUISYNTHESIZESTREAMRESPONSE']._serialized_end=807
+  _globals['_TTSCOQUISERVICE']._serialized_start=810
+  _globals['_TTSCOQUISERVICE']._serialized_end=1051
 # @@protoc_insertion_point(module_scope)

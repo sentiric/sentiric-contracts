@@ -9,8 +9,6 @@ class TtsGatewayServiceStub(object):
     """=============================================================================
     TTS GATEWAY SERVICE (PUBLIC FACING)
     =============================================================================
-    İstemciler (Web, Mobil, Diğer Servisler) bu servisi kullanır.
-    Hangi motorun kullanıldığını bilmezler, sadece "VoiceID" bilirler.
 
     """
 
@@ -27,8 +25,8 @@ class TtsGatewayServiceStub(object):
                 _registered_method=True)
         self.SynthesizeStream = channel.unary_stream(
                 '/sentiric.tts.v1.TtsGatewayService/SynthesizeStream',
-                request_serializer=sentiric_dot_tts_dot_v1_dot_gateway__pb2.SynthesizeRequest.SerializeToString,
-                response_deserializer=sentiric_dot_tts_dot_v1_dot_gateway__pb2.SynthesizeResponse.FromString,
+                request_serializer=sentiric_dot_tts_dot_v1_dot_gateway__pb2.SynthesizeStreamRequest.SerializeToString,
+                response_deserializer=sentiric_dot_tts_dot_v1_dot_gateway__pb2.SynthesizeStreamResponse.FromString,
                 _registered_method=True)
         self.ListVoices = channel.unary_unary(
                 '/sentiric.tts.v1.TtsGatewayService/ListVoices',
@@ -41,28 +39,25 @@ class TtsGatewayServiceServicer(object):
     """=============================================================================
     TTS GATEWAY SERVICE (PUBLIC FACING)
     =============================================================================
-    İstemciler (Web, Mobil, Diğer Servisler) bu servisi kullanır.
-    Hangi motorun kullanıldığını bilmezler, sadece "VoiceID" bilirler.
 
     """
 
     def Synthesize(self, request, context):
-        """Standart Sentezleme
+        """Unary
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def SynthesizeStream(self, request, context):
-        """Akış Sentezleme
+        """Stream
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def ListVoices(self, request, context):
-        """Mevcut Sesleri Listeleme
-        """
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -77,8 +72,8 @@ def add_TtsGatewayServiceServicer_to_server(servicer, server):
             ),
             'SynthesizeStream': grpc.unary_stream_rpc_method_handler(
                     servicer.SynthesizeStream,
-                    request_deserializer=sentiric_dot_tts_dot_v1_dot_gateway__pb2.SynthesizeRequest.FromString,
-                    response_serializer=sentiric_dot_tts_dot_v1_dot_gateway__pb2.SynthesizeResponse.SerializeToString,
+                    request_deserializer=sentiric_dot_tts_dot_v1_dot_gateway__pb2.SynthesizeStreamRequest.FromString,
+                    response_serializer=sentiric_dot_tts_dot_v1_dot_gateway__pb2.SynthesizeStreamResponse.SerializeToString,
             ),
             'ListVoices': grpc.unary_unary_rpc_method_handler(
                     servicer.ListVoices,
@@ -97,8 +92,6 @@ class TtsGatewayService(object):
     """=============================================================================
     TTS GATEWAY SERVICE (PUBLIC FACING)
     =============================================================================
-    İstemciler (Web, Mobil, Diğer Servisler) bu servisi kullanır.
-    Hangi motorun kullanıldığını bilmezler, sadece "VoiceID" bilirler.
 
     """
 
@@ -144,8 +137,8 @@ class TtsGatewayService(object):
             request,
             target,
             '/sentiric.tts.v1.TtsGatewayService/SynthesizeStream',
-            sentiric_dot_tts_dot_v1_dot_gateway__pb2.SynthesizeRequest.SerializeToString,
-            sentiric_dot_tts_dot_v1_dot_gateway__pb2.SynthesizeResponse.FromString,
+            sentiric_dot_tts_dot_v1_dot_gateway__pb2.SynthesizeStreamRequest.SerializeToString,
+            sentiric_dot_tts_dot_v1_dot_gateway__pb2.SynthesizeStreamResponse.FromString,
             options,
             channel_credentials,
             insecure,

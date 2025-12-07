@@ -29,6 +29,7 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
+#include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
@@ -47,18 +48,30 @@ extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table
 namespace sentiric {
 namespace tts {
 namespace v1 {
+class AudioConfig;
+struct AudioConfigDefaultTypeInternal;
+extern AudioConfigDefaultTypeInternal _AudioConfig_default_instance_;
 class ListVoicesRequest;
 struct ListVoicesRequestDefaultTypeInternal;
 extern ListVoicesRequestDefaultTypeInternal _ListVoicesRequest_default_instance_;
 class ListVoicesResponse;
 struct ListVoicesResponseDefaultTypeInternal;
 extern ListVoicesResponseDefaultTypeInternal _ListVoicesResponse_default_instance_;
+class ProsodyConfig;
+struct ProsodyConfigDefaultTypeInternal;
+extern ProsodyConfigDefaultTypeInternal _ProsodyConfig_default_instance_;
 class SynthesizeRequest;
 struct SynthesizeRequestDefaultTypeInternal;
 extern SynthesizeRequestDefaultTypeInternal _SynthesizeRequest_default_instance_;
 class SynthesizeResponse;
 struct SynthesizeResponseDefaultTypeInternal;
 extern SynthesizeResponseDefaultTypeInternal _SynthesizeResponse_default_instance_;
+class SynthesizeStreamRequest;
+struct SynthesizeStreamRequestDefaultTypeInternal;
+extern SynthesizeStreamRequestDefaultTypeInternal _SynthesizeStreamRequest_default_instance_;
+class SynthesizeStreamResponse;
+struct SynthesizeStreamResponseDefaultTypeInternal;
+extern SynthesizeStreamResponseDefaultTypeInternal _SynthesizeStreamResponse_default_instance_;
 class VoiceInfo;
 struct VoiceInfoDefaultTypeInternal;
 extern VoiceInfoDefaultTypeInternal _VoiceInfo_default_instance_;
@@ -66,16 +79,75 @@ extern VoiceInfoDefaultTypeInternal _VoiceInfo_default_instance_;
 }  // namespace tts
 }  // namespace sentiric
 PROTOBUF_NAMESPACE_OPEN
+template<> ::sentiric::tts::v1::AudioConfig* Arena::CreateMaybeMessage<::sentiric::tts::v1::AudioConfig>(Arena*);
 template<> ::sentiric::tts::v1::ListVoicesRequest* Arena::CreateMaybeMessage<::sentiric::tts::v1::ListVoicesRequest>(Arena*);
 template<> ::sentiric::tts::v1::ListVoicesResponse* Arena::CreateMaybeMessage<::sentiric::tts::v1::ListVoicesResponse>(Arena*);
+template<> ::sentiric::tts::v1::ProsodyConfig* Arena::CreateMaybeMessage<::sentiric::tts::v1::ProsodyConfig>(Arena*);
 template<> ::sentiric::tts::v1::SynthesizeRequest* Arena::CreateMaybeMessage<::sentiric::tts::v1::SynthesizeRequest>(Arena*);
 template<> ::sentiric::tts::v1::SynthesizeResponse* Arena::CreateMaybeMessage<::sentiric::tts::v1::SynthesizeResponse>(Arena*);
+template<> ::sentiric::tts::v1::SynthesizeStreamRequest* Arena::CreateMaybeMessage<::sentiric::tts::v1::SynthesizeStreamRequest>(Arena*);
+template<> ::sentiric::tts::v1::SynthesizeStreamResponse* Arena::CreateMaybeMessage<::sentiric::tts::v1::SynthesizeStreamResponse>(Arena*);
 template<> ::sentiric::tts::v1::VoiceInfo* Arena::CreateMaybeMessage<::sentiric::tts::v1::VoiceInfo>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace sentiric {
 namespace tts {
 namespace v1 {
 
+enum TextType : int {
+  TEXT_TYPE_UNSPECIFIED = 0,
+  TEXT_TYPE_TEXT = 1,
+  TEXT_TYPE_SSML = 2,
+  TextType_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
+  TextType_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
+};
+bool TextType_IsValid(int value);
+constexpr TextType TextType_MIN = TEXT_TYPE_UNSPECIFIED;
+constexpr TextType TextType_MAX = TEXT_TYPE_SSML;
+constexpr int TextType_ARRAYSIZE = TextType_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* TextType_descriptor();
+template<typename T>
+inline const std::string& TextType_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, TextType>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function TextType_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    TextType_descriptor(), enum_t_value);
+}
+inline bool TextType_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, TextType* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<TextType>(
+    TextType_descriptor(), name, value);
+}
+enum AudioFormat : int {
+  AUDIO_FORMAT_UNSPECIFIED = 0,
+  AUDIO_FORMAT_PCM_S16LE = 1,
+  AUDIO_FORMAT_WAV = 2,
+  AUDIO_FORMAT_MP3 = 3,
+  AUDIO_FORMAT_OGG_OPUS = 4,
+  AUDIO_FORMAT_MULAW = 5,
+  AudioFormat_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
+  AudioFormat_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
+};
+bool AudioFormat_IsValid(int value);
+constexpr AudioFormat AudioFormat_MIN = AUDIO_FORMAT_UNSPECIFIED;
+constexpr AudioFormat AudioFormat_MAX = AUDIO_FORMAT_MULAW;
+constexpr int AudioFormat_ARRAYSIZE = AudioFormat_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* AudioFormat_descriptor();
+template<typename T>
+inline const std::string& AudioFormat_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, AudioFormat>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function AudioFormat_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    AudioFormat_descriptor(), enum_t_value);
+}
+inline bool AudioFormat_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, AudioFormat* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<AudioFormat>(
+    AudioFormat_descriptor(), name, value);
+}
 // ===================================================================
 
 class SynthesizeRequest final :
@@ -200,13 +272,11 @@ class SynthesizeRequest final :
 
   enum : int {
     kTextFieldNumber = 1,
-    kTextTypeFieldNumber = 2,
     kVoiceIdFieldNumber = 3,
-    kOutputFormatFieldNumber = 4,
-    kSampleRateFieldNumber = 5,
-    kSpeedFieldNumber = 6,
-    kVolumeFieldNumber = 7,
-    kPitchFieldNumber = 8,
+    kPreferredProviderFieldNumber = 5,
+    kAudioConfigFieldNumber = 4,
+    kProsodyFieldNumber = 6,
+    kTextTypeFieldNumber = 2,
   };
   // string text = 1;
   void clear_text();
@@ -220,20 +290,6 @@ class SynthesizeRequest final :
   const std::string& _internal_text() const;
   inline PROTOBUF_ALWAYS_INLINE void _internal_set_text(const std::string& value);
   std::string* _internal_mutable_text();
-  public:
-
-  // string text_type = 2;
-  void clear_text_type();
-  const std::string& text_type() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_text_type(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_text_type();
-  PROTOBUF_NODISCARD std::string* release_text_type();
-  void set_allocated_text_type(std::string* text_type);
-  private:
-  const std::string& _internal_text_type() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_text_type(const std::string& value);
-  std::string* _internal_mutable_text_type();
   public:
 
   // string voice_id = 3;
@@ -250,66 +306,63 @@ class SynthesizeRequest final :
   std::string* _internal_mutable_voice_id();
   public:
 
-  // string output_format = 4;
-  void clear_output_format();
-  const std::string& output_format() const;
+  // string preferred_provider = 5;
+  void clear_preferred_provider();
+  const std::string& preferred_provider() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_output_format(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_output_format();
-  PROTOBUF_NODISCARD std::string* release_output_format();
-  void set_allocated_output_format(std::string* output_format);
+  void set_preferred_provider(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_preferred_provider();
+  PROTOBUF_NODISCARD std::string* release_preferred_provider();
+  void set_allocated_preferred_provider(std::string* preferred_provider);
   private:
-  const std::string& _internal_output_format() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_output_format(const std::string& value);
-  std::string* _internal_mutable_output_format();
+  const std::string& _internal_preferred_provider() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_preferred_provider(const std::string& value);
+  std::string* _internal_mutable_preferred_provider();
   public:
 
-  // int32 sample_rate = 5;
-  void clear_sample_rate();
-  int32_t sample_rate() const;
-  void set_sample_rate(int32_t value);
+  // .sentiric.tts.v1.AudioConfig audio_config = 4;
+  bool has_audio_config() const;
   private:
-  int32_t _internal_sample_rate() const;
-  void _internal_set_sample_rate(int32_t value);
+  bool _internal_has_audio_config() const;
   public:
+  void clear_audio_config();
+  const ::sentiric::tts::v1::AudioConfig& audio_config() const;
+  PROTOBUF_NODISCARD ::sentiric::tts::v1::AudioConfig* release_audio_config();
+  ::sentiric::tts::v1::AudioConfig* mutable_audio_config();
+  void set_allocated_audio_config(::sentiric::tts::v1::AudioConfig* audio_config);
+  private:
+  const ::sentiric::tts::v1::AudioConfig& _internal_audio_config() const;
+  ::sentiric::tts::v1::AudioConfig* _internal_mutable_audio_config();
+  public:
+  void unsafe_arena_set_allocated_audio_config(
+      ::sentiric::tts::v1::AudioConfig* audio_config);
+  ::sentiric::tts::v1::AudioConfig* unsafe_arena_release_audio_config();
 
-  // optional float speed = 6;
-  bool has_speed() const;
+  // .sentiric.tts.v1.ProsodyConfig prosody = 6;
+  bool has_prosody() const;
   private:
-  bool _internal_has_speed() const;
+  bool _internal_has_prosody() const;
   public:
-  void clear_speed();
-  float speed() const;
-  void set_speed(float value);
+  void clear_prosody();
+  const ::sentiric::tts::v1::ProsodyConfig& prosody() const;
+  PROTOBUF_NODISCARD ::sentiric::tts::v1::ProsodyConfig* release_prosody();
+  ::sentiric::tts::v1::ProsodyConfig* mutable_prosody();
+  void set_allocated_prosody(::sentiric::tts::v1::ProsodyConfig* prosody);
   private:
-  float _internal_speed() const;
-  void _internal_set_speed(float value);
+  const ::sentiric::tts::v1::ProsodyConfig& _internal_prosody() const;
+  ::sentiric::tts::v1::ProsodyConfig* _internal_mutable_prosody();
   public:
+  void unsafe_arena_set_allocated_prosody(
+      ::sentiric::tts::v1::ProsodyConfig* prosody);
+  ::sentiric::tts::v1::ProsodyConfig* unsafe_arena_release_prosody();
 
-  // optional float volume = 7;
-  bool has_volume() const;
+  // .sentiric.tts.v1.TextType text_type = 2;
+  void clear_text_type();
+  ::sentiric::tts::v1::TextType text_type() const;
+  void set_text_type(::sentiric::tts::v1::TextType value);
   private:
-  bool _internal_has_volume() const;
-  public:
-  void clear_volume();
-  float volume() const;
-  void set_volume(float value);
-  private:
-  float _internal_volume() const;
-  void _internal_set_volume(float value);
-  public:
-
-  // optional float pitch = 8;
-  bool has_pitch() const;
-  private:
-  bool _internal_has_pitch() const;
-  public:
-  void clear_pitch();
-  float pitch() const;
-  void set_pitch(float value);
-  private:
-  float _internal_pitch() const;
-  void _internal_set_pitch(float value);
+  ::sentiric::tts::v1::TextType _internal_text_type() const;
+  void _internal_set_text_type(::sentiric::tts::v1::TextType value);
   public:
 
   // @@protoc_insertion_point(class_scope:sentiric.tts.v1.SynthesizeRequest)
@@ -320,16 +373,13 @@ class SynthesizeRequest final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
-    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
-    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr text_;
-    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr text_type_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr voice_id_;
-    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr output_format_;
-    int32_t sample_rate_;
-    float speed_;
-    float volume_;
-    float pitch_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr preferred_provider_;
+    ::sentiric::tts::v1::AudioConfig* audio_config_;
+    ::sentiric::tts::v1::ProsodyConfig* prosody_;
+    int text_type_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_sentiric_2ftts_2fv1_2fgateway_2eproto;
@@ -459,6 +509,7 @@ class SynthesizeResponse final :
   enum : int {
     kAudioContentFieldNumber = 1,
     kContentTypeFieldNumber = 2,
+    kProviderUsedFieldNumber = 3,
   };
   // bytes audio_content = 1;
   void clear_audio_content();
@@ -488,6 +539,20 @@ class SynthesizeResponse final :
   std::string* _internal_mutable_content_type();
   public:
 
+  // string provider_used = 3;
+  void clear_provider_used();
+  const std::string& provider_used() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_provider_used(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_provider_used();
+  PROTOBUF_NODISCARD std::string* release_provider_used();
+  void set_allocated_provider_used(std::string* provider_used);
+  private:
+  const std::string& _internal_provider_used() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_provider_used(const std::string& value);
+  std::string* _internal_mutable_provider_used();
+  public:
+
   // @@protoc_insertion_point(class_scope:sentiric.tts.v1.SynthesizeResponse)
  private:
   class _Internal;
@@ -498,6 +563,428 @@ class SynthesizeResponse final :
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr audio_content_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr content_type_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr provider_used_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2ftts_2fv1_2fgateway_2eproto;
+};
+// -------------------------------------------------------------------
+
+class SynthesizeStreamRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.tts.v1.SynthesizeStreamRequest) */ {
+ public:
+  inline SynthesizeStreamRequest() : SynthesizeStreamRequest(nullptr) {}
+  ~SynthesizeStreamRequest() override;
+  explicit PROTOBUF_CONSTEXPR SynthesizeStreamRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  SynthesizeStreamRequest(const SynthesizeStreamRequest& from);
+  SynthesizeStreamRequest(SynthesizeStreamRequest&& from) noexcept
+    : SynthesizeStreamRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline SynthesizeStreamRequest& operator=(const SynthesizeStreamRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SynthesizeStreamRequest& operator=(SynthesizeStreamRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SynthesizeStreamRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SynthesizeStreamRequest* internal_default_instance() {
+    return reinterpret_cast<const SynthesizeStreamRequest*>(
+               &_SynthesizeStreamRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    2;
+
+  friend void swap(SynthesizeStreamRequest& a, SynthesizeStreamRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(SynthesizeStreamRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SynthesizeStreamRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SynthesizeStreamRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<SynthesizeStreamRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const SynthesizeStreamRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const SynthesizeStreamRequest& from) {
+    SynthesizeStreamRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(SynthesizeStreamRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.tts.v1.SynthesizeStreamRequest";
+  }
+  protected:
+  explicit SynthesizeStreamRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kTextFieldNumber = 1,
+    kVoiceIdFieldNumber = 3,
+    kPreferredProviderFieldNumber = 5,
+    kAudioConfigFieldNumber = 4,
+    kProsodyFieldNumber = 6,
+    kTextTypeFieldNumber = 2,
+  };
+  // string text = 1;
+  void clear_text();
+  const std::string& text() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_text(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_text();
+  PROTOBUF_NODISCARD std::string* release_text();
+  void set_allocated_text(std::string* text);
+  private:
+  const std::string& _internal_text() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_text(const std::string& value);
+  std::string* _internal_mutable_text();
+  public:
+
+  // string voice_id = 3;
+  void clear_voice_id();
+  const std::string& voice_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_voice_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_voice_id();
+  PROTOBUF_NODISCARD std::string* release_voice_id();
+  void set_allocated_voice_id(std::string* voice_id);
+  private:
+  const std::string& _internal_voice_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_voice_id(const std::string& value);
+  std::string* _internal_mutable_voice_id();
+  public:
+
+  // string preferred_provider = 5;
+  void clear_preferred_provider();
+  const std::string& preferred_provider() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_preferred_provider(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_preferred_provider();
+  PROTOBUF_NODISCARD std::string* release_preferred_provider();
+  void set_allocated_preferred_provider(std::string* preferred_provider);
+  private:
+  const std::string& _internal_preferred_provider() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_preferred_provider(const std::string& value);
+  std::string* _internal_mutable_preferred_provider();
+  public:
+
+  // .sentiric.tts.v1.AudioConfig audio_config = 4;
+  bool has_audio_config() const;
+  private:
+  bool _internal_has_audio_config() const;
+  public:
+  void clear_audio_config();
+  const ::sentiric::tts::v1::AudioConfig& audio_config() const;
+  PROTOBUF_NODISCARD ::sentiric::tts::v1::AudioConfig* release_audio_config();
+  ::sentiric::tts::v1::AudioConfig* mutable_audio_config();
+  void set_allocated_audio_config(::sentiric::tts::v1::AudioConfig* audio_config);
+  private:
+  const ::sentiric::tts::v1::AudioConfig& _internal_audio_config() const;
+  ::sentiric::tts::v1::AudioConfig* _internal_mutable_audio_config();
+  public:
+  void unsafe_arena_set_allocated_audio_config(
+      ::sentiric::tts::v1::AudioConfig* audio_config);
+  ::sentiric::tts::v1::AudioConfig* unsafe_arena_release_audio_config();
+
+  // .sentiric.tts.v1.ProsodyConfig prosody = 6;
+  bool has_prosody() const;
+  private:
+  bool _internal_has_prosody() const;
+  public:
+  void clear_prosody();
+  const ::sentiric::tts::v1::ProsodyConfig& prosody() const;
+  PROTOBUF_NODISCARD ::sentiric::tts::v1::ProsodyConfig* release_prosody();
+  ::sentiric::tts::v1::ProsodyConfig* mutable_prosody();
+  void set_allocated_prosody(::sentiric::tts::v1::ProsodyConfig* prosody);
+  private:
+  const ::sentiric::tts::v1::ProsodyConfig& _internal_prosody() const;
+  ::sentiric::tts::v1::ProsodyConfig* _internal_mutable_prosody();
+  public:
+  void unsafe_arena_set_allocated_prosody(
+      ::sentiric::tts::v1::ProsodyConfig* prosody);
+  ::sentiric::tts::v1::ProsodyConfig* unsafe_arena_release_prosody();
+
+  // .sentiric.tts.v1.TextType text_type = 2;
+  void clear_text_type();
+  ::sentiric::tts::v1::TextType text_type() const;
+  void set_text_type(::sentiric::tts::v1::TextType value);
+  private:
+  ::sentiric::tts::v1::TextType _internal_text_type() const;
+  void _internal_set_text_type(::sentiric::tts::v1::TextType value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.tts.v1.SynthesizeStreamRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr text_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr voice_id_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr preferred_provider_;
+    ::sentiric::tts::v1::AudioConfig* audio_config_;
+    ::sentiric::tts::v1::ProsodyConfig* prosody_;
+    int text_type_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2ftts_2fv1_2fgateway_2eproto;
+};
+// -------------------------------------------------------------------
+
+class SynthesizeStreamResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.tts.v1.SynthesizeStreamResponse) */ {
+ public:
+  inline SynthesizeStreamResponse() : SynthesizeStreamResponse(nullptr) {}
+  ~SynthesizeStreamResponse() override;
+  explicit PROTOBUF_CONSTEXPR SynthesizeStreamResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  SynthesizeStreamResponse(const SynthesizeStreamResponse& from);
+  SynthesizeStreamResponse(SynthesizeStreamResponse&& from) noexcept
+    : SynthesizeStreamResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline SynthesizeStreamResponse& operator=(const SynthesizeStreamResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SynthesizeStreamResponse& operator=(SynthesizeStreamResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SynthesizeStreamResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SynthesizeStreamResponse* internal_default_instance() {
+    return reinterpret_cast<const SynthesizeStreamResponse*>(
+               &_SynthesizeStreamResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  friend void swap(SynthesizeStreamResponse& a, SynthesizeStreamResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(SynthesizeStreamResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SynthesizeStreamResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SynthesizeStreamResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<SynthesizeStreamResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const SynthesizeStreamResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const SynthesizeStreamResponse& from) {
+    SynthesizeStreamResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(SynthesizeStreamResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.tts.v1.SynthesizeStreamResponse";
+  }
+  protected:
+  explicit SynthesizeStreamResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kAudioContentFieldNumber = 1,
+    kContentTypeFieldNumber = 2,
+    kProviderUsedFieldNumber = 3,
+  };
+  // bytes audio_content = 1;
+  void clear_audio_content();
+  const std::string& audio_content() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_audio_content(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_audio_content();
+  PROTOBUF_NODISCARD std::string* release_audio_content();
+  void set_allocated_audio_content(std::string* audio_content);
+  private:
+  const std::string& _internal_audio_content() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_audio_content(const std::string& value);
+  std::string* _internal_mutable_audio_content();
+  public:
+
+  // string content_type = 2;
+  void clear_content_type();
+  const std::string& content_type() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_content_type(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_content_type();
+  PROTOBUF_NODISCARD std::string* release_content_type();
+  void set_allocated_content_type(std::string* content_type);
+  private:
+  const std::string& _internal_content_type() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_content_type(const std::string& value);
+  std::string* _internal_mutable_content_type();
+  public:
+
+  // string provider_used = 3;
+  void clear_provider_used();
+  const std::string& provider_used() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_provider_used(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_provider_used();
+  PROTOBUF_NODISCARD std::string* release_provider_used();
+  void set_allocated_provider_used(std::string* provider_used);
+  private:
+  const std::string& _internal_provider_used() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_provider_used(const std::string& value);
+  std::string* _internal_mutable_provider_used();
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.tts.v1.SynthesizeStreamResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr audio_content_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr content_type_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr provider_used_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -553,7 +1040,7 @@ class ListVoicesRequest final :
                &_ListVoicesRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    4;
 
   friend void swap(ListVoicesRequest& a, ListVoicesRequest& b) {
     a.Swap(&b);
@@ -706,7 +1193,7 @@ class ListVoicesResponse final :
                &_ListVoicesResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    5;
 
   friend void swap(ListVoicesResponse& a, ListVoicesResponse& b) {
     a.Swap(&b);
@@ -815,6 +1302,351 @@ class ListVoicesResponse final :
 };
 // -------------------------------------------------------------------
 
+class AudioConfig final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.tts.v1.AudioConfig) */ {
+ public:
+  inline AudioConfig() : AudioConfig(nullptr) {}
+  ~AudioConfig() override;
+  explicit PROTOBUF_CONSTEXPR AudioConfig(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  AudioConfig(const AudioConfig& from);
+  AudioConfig(AudioConfig&& from) noexcept
+    : AudioConfig() {
+    *this = ::std::move(from);
+  }
+
+  inline AudioConfig& operator=(const AudioConfig& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline AudioConfig& operator=(AudioConfig&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const AudioConfig& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const AudioConfig* internal_default_instance() {
+    return reinterpret_cast<const AudioConfig*>(
+               &_AudioConfig_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    6;
+
+  friend void swap(AudioConfig& a, AudioConfig& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(AudioConfig* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(AudioConfig* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  AudioConfig* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<AudioConfig>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const AudioConfig& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const AudioConfig& from) {
+    AudioConfig::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(AudioConfig* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.tts.v1.AudioConfig";
+  }
+  protected:
+  explicit AudioConfig(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kAudioFormatFieldNumber = 1,
+    kSampleRateHertzFieldNumber = 2,
+    kVolumeGainDbFieldNumber = 3,
+  };
+  // .sentiric.tts.v1.AudioFormat audio_format = 1;
+  void clear_audio_format();
+  ::sentiric::tts::v1::AudioFormat audio_format() const;
+  void set_audio_format(::sentiric::tts::v1::AudioFormat value);
+  private:
+  ::sentiric::tts::v1::AudioFormat _internal_audio_format() const;
+  void _internal_set_audio_format(::sentiric::tts::v1::AudioFormat value);
+  public:
+
+  // int32 sample_rate_hertz = 2;
+  void clear_sample_rate_hertz();
+  int32_t sample_rate_hertz() const;
+  void set_sample_rate_hertz(int32_t value);
+  private:
+  int32_t _internal_sample_rate_hertz() const;
+  void _internal_set_sample_rate_hertz(int32_t value);
+  public:
+
+  // double volume_gain_db = 3;
+  void clear_volume_gain_db();
+  double volume_gain_db() const;
+  void set_volume_gain_db(double value);
+  private:
+  double _internal_volume_gain_db() const;
+  void _internal_set_volume_gain_db(double value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.tts.v1.AudioConfig)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    int audio_format_;
+    int32_t sample_rate_hertz_;
+    double volume_gain_db_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2ftts_2fv1_2fgateway_2eproto;
+};
+// -------------------------------------------------------------------
+
+class ProsodyConfig final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.tts.v1.ProsodyConfig) */ {
+ public:
+  inline ProsodyConfig() : ProsodyConfig(nullptr) {}
+  ~ProsodyConfig() override;
+  explicit PROTOBUF_CONSTEXPR ProsodyConfig(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  ProsodyConfig(const ProsodyConfig& from);
+  ProsodyConfig(ProsodyConfig&& from) noexcept
+    : ProsodyConfig() {
+    *this = ::std::move(from);
+  }
+
+  inline ProsodyConfig& operator=(const ProsodyConfig& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ProsodyConfig& operator=(ProsodyConfig&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ProsodyConfig& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ProsodyConfig* internal_default_instance() {
+    return reinterpret_cast<const ProsodyConfig*>(
+               &_ProsodyConfig_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    7;
+
+  friend void swap(ProsodyConfig& a, ProsodyConfig& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ProsodyConfig* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ProsodyConfig* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ProsodyConfig* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ProsodyConfig>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const ProsodyConfig& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const ProsodyConfig& from) {
+    ProsodyConfig::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ProsodyConfig* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.tts.v1.ProsodyConfig";
+  }
+  protected:
+  explicit ProsodyConfig(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kEmotionFieldNumber = 3,
+    kRateFieldNumber = 1,
+    kPitchFieldNumber = 2,
+  };
+  // string emotion = 3;
+  void clear_emotion();
+  const std::string& emotion() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_emotion(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_emotion();
+  PROTOBUF_NODISCARD std::string* release_emotion();
+  void set_allocated_emotion(std::string* emotion);
+  private:
+  const std::string& _internal_emotion() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_emotion(const std::string& value);
+  std::string* _internal_mutable_emotion();
+  public:
+
+  // double rate = 1;
+  void clear_rate();
+  double rate() const;
+  void set_rate(double value);
+  private:
+  double _internal_rate() const;
+  void _internal_set_rate(double value);
+  public:
+
+  // double pitch = 2;
+  void clear_pitch();
+  double pitch() const;
+  void set_pitch(double value);
+  private:
+  double _internal_pitch() const;
+  void _internal_set_pitch(double value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.tts.v1.ProsodyConfig)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr emotion_;
+    double rate_;
+    double pitch_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2ftts_2fv1_2fgateway_2eproto;
+};
+// -------------------------------------------------------------------
+
 class VoiceInfo final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.tts.v1.VoiceInfo) */ {
  public:
@@ -863,7 +1695,7 @@ class VoiceInfo final :
                &_VoiceInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    8;
 
   friend void swap(VoiceInfo& a, VoiceInfo& b) {
     a.Swap(&b);
@@ -1101,54 +1933,24 @@ inline void SynthesizeRequest::set_allocated_text(std::string* text) {
   // @@protoc_insertion_point(field_set_allocated:sentiric.tts.v1.SynthesizeRequest.text)
 }
 
-// string text_type = 2;
+// .sentiric.tts.v1.TextType text_type = 2;
 inline void SynthesizeRequest::clear_text_type() {
-  _impl_.text_type_.ClearToEmpty();
+  _impl_.text_type_ = 0;
 }
-inline const std::string& SynthesizeRequest::text_type() const {
+inline ::sentiric::tts::v1::TextType SynthesizeRequest::_internal_text_type() const {
+  return static_cast< ::sentiric::tts::v1::TextType >(_impl_.text_type_);
+}
+inline ::sentiric::tts::v1::TextType SynthesizeRequest::text_type() const {
   // @@protoc_insertion_point(field_get:sentiric.tts.v1.SynthesizeRequest.text_type)
   return _internal_text_type();
 }
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void SynthesizeRequest::set_text_type(ArgT0&& arg0, ArgT... args) {
- 
- _impl_.text_type_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+inline void SynthesizeRequest::_internal_set_text_type(::sentiric::tts::v1::TextType value) {
+  
+  _impl_.text_type_ = value;
+}
+inline void SynthesizeRequest::set_text_type(::sentiric::tts::v1::TextType value) {
+  _internal_set_text_type(value);
   // @@protoc_insertion_point(field_set:sentiric.tts.v1.SynthesizeRequest.text_type)
-}
-inline std::string* SynthesizeRequest::mutable_text_type() {
-  std::string* _s = _internal_mutable_text_type();
-  // @@protoc_insertion_point(field_mutable:sentiric.tts.v1.SynthesizeRequest.text_type)
-  return _s;
-}
-inline const std::string& SynthesizeRequest::_internal_text_type() const {
-  return _impl_.text_type_.Get();
-}
-inline void SynthesizeRequest::_internal_set_text_type(const std::string& value) {
-  
-  _impl_.text_type_.Set(value, GetArenaForAllocation());
-}
-inline std::string* SynthesizeRequest::_internal_mutable_text_type() {
-  
-  return _impl_.text_type_.Mutable(GetArenaForAllocation());
-}
-inline std::string* SynthesizeRequest::release_text_type() {
-  // @@protoc_insertion_point(field_release:sentiric.tts.v1.SynthesizeRequest.text_type)
-  return _impl_.text_type_.Release();
-}
-inline void SynthesizeRequest::set_allocated_text_type(std::string* text_type) {
-  if (text_type != nullptr) {
-    
-  } else {
-    
-  }
-  _impl_.text_type_.SetAllocated(text_type, GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (_impl_.text_type_.IsDefault()) {
-    _impl_.text_type_.Set("", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:sentiric.tts.v1.SynthesizeRequest.text_type)
 }
 
 // string voice_id = 3;
@@ -1201,158 +2003,234 @@ inline void SynthesizeRequest::set_allocated_voice_id(std::string* voice_id) {
   // @@protoc_insertion_point(field_set_allocated:sentiric.tts.v1.SynthesizeRequest.voice_id)
 }
 
-// string output_format = 4;
-inline void SynthesizeRequest::clear_output_format() {
-  _impl_.output_format_.ClearToEmpty();
+// .sentiric.tts.v1.AudioConfig audio_config = 4;
+inline bool SynthesizeRequest::_internal_has_audio_config() const {
+  return this != internal_default_instance() && _impl_.audio_config_ != nullptr;
 }
-inline const std::string& SynthesizeRequest::output_format() const {
-  // @@protoc_insertion_point(field_get:sentiric.tts.v1.SynthesizeRequest.output_format)
-  return _internal_output_format();
+inline bool SynthesizeRequest::has_audio_config() const {
+  return _internal_has_audio_config();
 }
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void SynthesizeRequest::set_output_format(ArgT0&& arg0, ArgT... args) {
- 
- _impl_.output_format_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:sentiric.tts.v1.SynthesizeRequest.output_format)
+inline void SynthesizeRequest::clear_audio_config() {
+  if (GetArenaForAllocation() == nullptr && _impl_.audio_config_ != nullptr) {
+    delete _impl_.audio_config_;
+  }
+  _impl_.audio_config_ = nullptr;
 }
-inline std::string* SynthesizeRequest::mutable_output_format() {
-  std::string* _s = _internal_mutable_output_format();
-  // @@protoc_insertion_point(field_mutable:sentiric.tts.v1.SynthesizeRequest.output_format)
-  return _s;
+inline const ::sentiric::tts::v1::AudioConfig& SynthesizeRequest::_internal_audio_config() const {
+  const ::sentiric::tts::v1::AudioConfig* p = _impl_.audio_config_;
+  return p != nullptr ? *p : reinterpret_cast<const ::sentiric::tts::v1::AudioConfig&>(
+      ::sentiric::tts::v1::_AudioConfig_default_instance_);
 }
-inline const std::string& SynthesizeRequest::_internal_output_format() const {
-  return _impl_.output_format_.Get();
+inline const ::sentiric::tts::v1::AudioConfig& SynthesizeRequest::audio_config() const {
+  // @@protoc_insertion_point(field_get:sentiric.tts.v1.SynthesizeRequest.audio_config)
+  return _internal_audio_config();
 }
-inline void SynthesizeRequest::_internal_set_output_format(const std::string& value) {
-  
-  _impl_.output_format_.Set(value, GetArenaForAllocation());
-}
-inline std::string* SynthesizeRequest::_internal_mutable_output_format() {
-  
-  return _impl_.output_format_.Mutable(GetArenaForAllocation());
-}
-inline std::string* SynthesizeRequest::release_output_format() {
-  // @@protoc_insertion_point(field_release:sentiric.tts.v1.SynthesizeRequest.output_format)
-  return _impl_.output_format_.Release();
-}
-inline void SynthesizeRequest::set_allocated_output_format(std::string* output_format) {
-  if (output_format != nullptr) {
+inline void SynthesizeRequest::unsafe_arena_set_allocated_audio_config(
+    ::sentiric::tts::v1::AudioConfig* audio_config) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.audio_config_);
+  }
+  _impl_.audio_config_ = audio_config;
+  if (audio_config) {
     
   } else {
     
   }
-  _impl_.output_format_.SetAllocated(output_format, GetArenaForAllocation());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:sentiric.tts.v1.SynthesizeRequest.audio_config)
+}
+inline ::sentiric::tts::v1::AudioConfig* SynthesizeRequest::release_audio_config() {
+  
+  ::sentiric::tts::v1::AudioConfig* temp = _impl_.audio_config_;
+  _impl_.audio_config_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::sentiric::tts::v1::AudioConfig* SynthesizeRequest::unsafe_arena_release_audio_config() {
+  // @@protoc_insertion_point(field_release:sentiric.tts.v1.SynthesizeRequest.audio_config)
+  
+  ::sentiric::tts::v1::AudioConfig* temp = _impl_.audio_config_;
+  _impl_.audio_config_ = nullptr;
+  return temp;
+}
+inline ::sentiric::tts::v1::AudioConfig* SynthesizeRequest::_internal_mutable_audio_config() {
+  
+  if (_impl_.audio_config_ == nullptr) {
+    auto* p = CreateMaybeMessage<::sentiric::tts::v1::AudioConfig>(GetArenaForAllocation());
+    _impl_.audio_config_ = p;
+  }
+  return _impl_.audio_config_;
+}
+inline ::sentiric::tts::v1::AudioConfig* SynthesizeRequest::mutable_audio_config() {
+  ::sentiric::tts::v1::AudioConfig* _msg = _internal_mutable_audio_config();
+  // @@protoc_insertion_point(field_mutable:sentiric.tts.v1.SynthesizeRequest.audio_config)
+  return _msg;
+}
+inline void SynthesizeRequest::set_allocated_audio_config(::sentiric::tts::v1::AudioConfig* audio_config) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete _impl_.audio_config_;
+  }
+  if (audio_config) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(audio_config);
+    if (message_arena != submessage_arena) {
+      audio_config = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, audio_config, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.audio_config_ = audio_config;
+  // @@protoc_insertion_point(field_set_allocated:sentiric.tts.v1.SynthesizeRequest.audio_config)
+}
+
+// string preferred_provider = 5;
+inline void SynthesizeRequest::clear_preferred_provider() {
+  _impl_.preferred_provider_.ClearToEmpty();
+}
+inline const std::string& SynthesizeRequest::preferred_provider() const {
+  // @@protoc_insertion_point(field_get:sentiric.tts.v1.SynthesizeRequest.preferred_provider)
+  return _internal_preferred_provider();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SynthesizeRequest::set_preferred_provider(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.preferred_provider_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.tts.v1.SynthesizeRequest.preferred_provider)
+}
+inline std::string* SynthesizeRequest::mutable_preferred_provider() {
+  std::string* _s = _internal_mutable_preferred_provider();
+  // @@protoc_insertion_point(field_mutable:sentiric.tts.v1.SynthesizeRequest.preferred_provider)
+  return _s;
+}
+inline const std::string& SynthesizeRequest::_internal_preferred_provider() const {
+  return _impl_.preferred_provider_.Get();
+}
+inline void SynthesizeRequest::_internal_set_preferred_provider(const std::string& value) {
+  
+  _impl_.preferred_provider_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SynthesizeRequest::_internal_mutable_preferred_provider() {
+  
+  return _impl_.preferred_provider_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SynthesizeRequest::release_preferred_provider() {
+  // @@protoc_insertion_point(field_release:sentiric.tts.v1.SynthesizeRequest.preferred_provider)
+  return _impl_.preferred_provider_.Release();
+}
+inline void SynthesizeRequest::set_allocated_preferred_provider(std::string* preferred_provider) {
+  if (preferred_provider != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.preferred_provider_.SetAllocated(preferred_provider, GetArenaForAllocation());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (_impl_.output_format_.IsDefault()) {
-    _impl_.output_format_.Set("", GetArenaForAllocation());
+  if (_impl_.preferred_provider_.IsDefault()) {
+    _impl_.preferred_provider_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:sentiric.tts.v1.SynthesizeRequest.output_format)
+  // @@protoc_insertion_point(field_set_allocated:sentiric.tts.v1.SynthesizeRequest.preferred_provider)
 }
 
-// int32 sample_rate = 5;
-inline void SynthesizeRequest::clear_sample_rate() {
-  _impl_.sample_rate_ = 0;
+// .sentiric.tts.v1.ProsodyConfig prosody = 6;
+inline bool SynthesizeRequest::_internal_has_prosody() const {
+  return this != internal_default_instance() && _impl_.prosody_ != nullptr;
 }
-inline int32_t SynthesizeRequest::_internal_sample_rate() const {
-  return _impl_.sample_rate_;
+inline bool SynthesizeRequest::has_prosody() const {
+  return _internal_has_prosody();
 }
-inline int32_t SynthesizeRequest::sample_rate() const {
-  // @@protoc_insertion_point(field_get:sentiric.tts.v1.SynthesizeRequest.sample_rate)
-  return _internal_sample_rate();
+inline void SynthesizeRequest::clear_prosody() {
+  if (GetArenaForAllocation() == nullptr && _impl_.prosody_ != nullptr) {
+    delete _impl_.prosody_;
+  }
+  _impl_.prosody_ = nullptr;
 }
-inline void SynthesizeRequest::_internal_set_sample_rate(int32_t value) {
+inline const ::sentiric::tts::v1::ProsodyConfig& SynthesizeRequest::_internal_prosody() const {
+  const ::sentiric::tts::v1::ProsodyConfig* p = _impl_.prosody_;
+  return p != nullptr ? *p : reinterpret_cast<const ::sentiric::tts::v1::ProsodyConfig&>(
+      ::sentiric::tts::v1::_ProsodyConfig_default_instance_);
+}
+inline const ::sentiric::tts::v1::ProsodyConfig& SynthesizeRequest::prosody() const {
+  // @@protoc_insertion_point(field_get:sentiric.tts.v1.SynthesizeRequest.prosody)
+  return _internal_prosody();
+}
+inline void SynthesizeRequest::unsafe_arena_set_allocated_prosody(
+    ::sentiric::tts::v1::ProsodyConfig* prosody) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.prosody_);
+  }
+  _impl_.prosody_ = prosody;
+  if (prosody) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:sentiric.tts.v1.SynthesizeRequest.prosody)
+}
+inline ::sentiric::tts::v1::ProsodyConfig* SynthesizeRequest::release_prosody() {
   
-  _impl_.sample_rate_ = value;
+  ::sentiric::tts::v1::ProsodyConfig* temp = _impl_.prosody_;
+  _impl_.prosody_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
 }
-inline void SynthesizeRequest::set_sample_rate(int32_t value) {
-  _internal_set_sample_rate(value);
-  // @@protoc_insertion_point(field_set:sentiric.tts.v1.SynthesizeRequest.sample_rate)
+inline ::sentiric::tts::v1::ProsodyConfig* SynthesizeRequest::unsafe_arena_release_prosody() {
+  // @@protoc_insertion_point(field_release:sentiric.tts.v1.SynthesizeRequest.prosody)
+  
+  ::sentiric::tts::v1::ProsodyConfig* temp = _impl_.prosody_;
+  _impl_.prosody_ = nullptr;
+  return temp;
 }
-
-// optional float speed = 6;
-inline bool SynthesizeRequest::_internal_has_speed() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
-  return value;
+inline ::sentiric::tts::v1::ProsodyConfig* SynthesizeRequest::_internal_mutable_prosody() {
+  
+  if (_impl_.prosody_ == nullptr) {
+    auto* p = CreateMaybeMessage<::sentiric::tts::v1::ProsodyConfig>(GetArenaForAllocation());
+    _impl_.prosody_ = p;
+  }
+  return _impl_.prosody_;
 }
-inline bool SynthesizeRequest::has_speed() const {
-  return _internal_has_speed();
+inline ::sentiric::tts::v1::ProsodyConfig* SynthesizeRequest::mutable_prosody() {
+  ::sentiric::tts::v1::ProsodyConfig* _msg = _internal_mutable_prosody();
+  // @@protoc_insertion_point(field_mutable:sentiric.tts.v1.SynthesizeRequest.prosody)
+  return _msg;
 }
-inline void SynthesizeRequest::clear_speed() {
-  _impl_.speed_ = 0;
-  _impl_._has_bits_[0] &= ~0x00000001u;
-}
-inline float SynthesizeRequest::_internal_speed() const {
-  return _impl_.speed_;
-}
-inline float SynthesizeRequest::speed() const {
-  // @@protoc_insertion_point(field_get:sentiric.tts.v1.SynthesizeRequest.speed)
-  return _internal_speed();
-}
-inline void SynthesizeRequest::_internal_set_speed(float value) {
-  _impl_._has_bits_[0] |= 0x00000001u;
-  _impl_.speed_ = value;
-}
-inline void SynthesizeRequest::set_speed(float value) {
-  _internal_set_speed(value);
-  // @@protoc_insertion_point(field_set:sentiric.tts.v1.SynthesizeRequest.speed)
-}
-
-// optional float volume = 7;
-inline bool SynthesizeRequest::_internal_has_volume() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
-  return value;
-}
-inline bool SynthesizeRequest::has_volume() const {
-  return _internal_has_volume();
-}
-inline void SynthesizeRequest::clear_volume() {
-  _impl_.volume_ = 0;
-  _impl_._has_bits_[0] &= ~0x00000002u;
-}
-inline float SynthesizeRequest::_internal_volume() const {
-  return _impl_.volume_;
-}
-inline float SynthesizeRequest::volume() const {
-  // @@protoc_insertion_point(field_get:sentiric.tts.v1.SynthesizeRequest.volume)
-  return _internal_volume();
-}
-inline void SynthesizeRequest::_internal_set_volume(float value) {
-  _impl_._has_bits_[0] |= 0x00000002u;
-  _impl_.volume_ = value;
-}
-inline void SynthesizeRequest::set_volume(float value) {
-  _internal_set_volume(value);
-  // @@protoc_insertion_point(field_set:sentiric.tts.v1.SynthesizeRequest.volume)
-}
-
-// optional float pitch = 8;
-inline bool SynthesizeRequest::_internal_has_pitch() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
-  return value;
-}
-inline bool SynthesizeRequest::has_pitch() const {
-  return _internal_has_pitch();
-}
-inline void SynthesizeRequest::clear_pitch() {
-  _impl_.pitch_ = 0;
-  _impl_._has_bits_[0] &= ~0x00000004u;
-}
-inline float SynthesizeRequest::_internal_pitch() const {
-  return _impl_.pitch_;
-}
-inline float SynthesizeRequest::pitch() const {
-  // @@protoc_insertion_point(field_get:sentiric.tts.v1.SynthesizeRequest.pitch)
-  return _internal_pitch();
-}
-inline void SynthesizeRequest::_internal_set_pitch(float value) {
-  _impl_._has_bits_[0] |= 0x00000004u;
-  _impl_.pitch_ = value;
-}
-inline void SynthesizeRequest::set_pitch(float value) {
-  _internal_set_pitch(value);
-  // @@protoc_insertion_point(field_set:sentiric.tts.v1.SynthesizeRequest.pitch)
+inline void SynthesizeRequest::set_allocated_prosody(::sentiric::tts::v1::ProsodyConfig* prosody) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete _impl_.prosody_;
+  }
+  if (prosody) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(prosody);
+    if (message_arena != submessage_arena) {
+      prosody = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, prosody, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.prosody_ = prosody;
+  // @@protoc_insertion_point(field_set_allocated:sentiric.tts.v1.SynthesizeRequest.prosody)
 }
 
 // -------------------------------------------------------------------
@@ -1459,6 +2337,564 @@ inline void SynthesizeResponse::set_allocated_content_type(std::string* content_
   // @@protoc_insertion_point(field_set_allocated:sentiric.tts.v1.SynthesizeResponse.content_type)
 }
 
+// string provider_used = 3;
+inline void SynthesizeResponse::clear_provider_used() {
+  _impl_.provider_used_.ClearToEmpty();
+}
+inline const std::string& SynthesizeResponse::provider_used() const {
+  // @@protoc_insertion_point(field_get:sentiric.tts.v1.SynthesizeResponse.provider_used)
+  return _internal_provider_used();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SynthesizeResponse::set_provider_used(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.provider_used_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.tts.v1.SynthesizeResponse.provider_used)
+}
+inline std::string* SynthesizeResponse::mutable_provider_used() {
+  std::string* _s = _internal_mutable_provider_used();
+  // @@protoc_insertion_point(field_mutable:sentiric.tts.v1.SynthesizeResponse.provider_used)
+  return _s;
+}
+inline const std::string& SynthesizeResponse::_internal_provider_used() const {
+  return _impl_.provider_used_.Get();
+}
+inline void SynthesizeResponse::_internal_set_provider_used(const std::string& value) {
+  
+  _impl_.provider_used_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SynthesizeResponse::_internal_mutable_provider_used() {
+  
+  return _impl_.provider_used_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SynthesizeResponse::release_provider_used() {
+  // @@protoc_insertion_point(field_release:sentiric.tts.v1.SynthesizeResponse.provider_used)
+  return _impl_.provider_used_.Release();
+}
+inline void SynthesizeResponse::set_allocated_provider_used(std::string* provider_used) {
+  if (provider_used != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.provider_used_.SetAllocated(provider_used, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.provider_used_.IsDefault()) {
+    _impl_.provider_used_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.tts.v1.SynthesizeResponse.provider_used)
+}
+
+// -------------------------------------------------------------------
+
+// SynthesizeStreamRequest
+
+// string text = 1;
+inline void SynthesizeStreamRequest::clear_text() {
+  _impl_.text_.ClearToEmpty();
+}
+inline const std::string& SynthesizeStreamRequest::text() const {
+  // @@protoc_insertion_point(field_get:sentiric.tts.v1.SynthesizeStreamRequest.text)
+  return _internal_text();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SynthesizeStreamRequest::set_text(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.text_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.tts.v1.SynthesizeStreamRequest.text)
+}
+inline std::string* SynthesizeStreamRequest::mutable_text() {
+  std::string* _s = _internal_mutable_text();
+  // @@protoc_insertion_point(field_mutable:sentiric.tts.v1.SynthesizeStreamRequest.text)
+  return _s;
+}
+inline const std::string& SynthesizeStreamRequest::_internal_text() const {
+  return _impl_.text_.Get();
+}
+inline void SynthesizeStreamRequest::_internal_set_text(const std::string& value) {
+  
+  _impl_.text_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SynthesizeStreamRequest::_internal_mutable_text() {
+  
+  return _impl_.text_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SynthesizeStreamRequest::release_text() {
+  // @@protoc_insertion_point(field_release:sentiric.tts.v1.SynthesizeStreamRequest.text)
+  return _impl_.text_.Release();
+}
+inline void SynthesizeStreamRequest::set_allocated_text(std::string* text) {
+  if (text != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.text_.SetAllocated(text, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.text_.IsDefault()) {
+    _impl_.text_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.tts.v1.SynthesizeStreamRequest.text)
+}
+
+// .sentiric.tts.v1.TextType text_type = 2;
+inline void SynthesizeStreamRequest::clear_text_type() {
+  _impl_.text_type_ = 0;
+}
+inline ::sentiric::tts::v1::TextType SynthesizeStreamRequest::_internal_text_type() const {
+  return static_cast< ::sentiric::tts::v1::TextType >(_impl_.text_type_);
+}
+inline ::sentiric::tts::v1::TextType SynthesizeStreamRequest::text_type() const {
+  // @@protoc_insertion_point(field_get:sentiric.tts.v1.SynthesizeStreamRequest.text_type)
+  return _internal_text_type();
+}
+inline void SynthesizeStreamRequest::_internal_set_text_type(::sentiric::tts::v1::TextType value) {
+  
+  _impl_.text_type_ = value;
+}
+inline void SynthesizeStreamRequest::set_text_type(::sentiric::tts::v1::TextType value) {
+  _internal_set_text_type(value);
+  // @@protoc_insertion_point(field_set:sentiric.tts.v1.SynthesizeStreamRequest.text_type)
+}
+
+// string voice_id = 3;
+inline void SynthesizeStreamRequest::clear_voice_id() {
+  _impl_.voice_id_.ClearToEmpty();
+}
+inline const std::string& SynthesizeStreamRequest::voice_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.tts.v1.SynthesizeStreamRequest.voice_id)
+  return _internal_voice_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SynthesizeStreamRequest::set_voice_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.voice_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.tts.v1.SynthesizeStreamRequest.voice_id)
+}
+inline std::string* SynthesizeStreamRequest::mutable_voice_id() {
+  std::string* _s = _internal_mutable_voice_id();
+  // @@protoc_insertion_point(field_mutable:sentiric.tts.v1.SynthesizeStreamRequest.voice_id)
+  return _s;
+}
+inline const std::string& SynthesizeStreamRequest::_internal_voice_id() const {
+  return _impl_.voice_id_.Get();
+}
+inline void SynthesizeStreamRequest::_internal_set_voice_id(const std::string& value) {
+  
+  _impl_.voice_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SynthesizeStreamRequest::_internal_mutable_voice_id() {
+  
+  return _impl_.voice_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SynthesizeStreamRequest::release_voice_id() {
+  // @@protoc_insertion_point(field_release:sentiric.tts.v1.SynthesizeStreamRequest.voice_id)
+  return _impl_.voice_id_.Release();
+}
+inline void SynthesizeStreamRequest::set_allocated_voice_id(std::string* voice_id) {
+  if (voice_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.voice_id_.SetAllocated(voice_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.voice_id_.IsDefault()) {
+    _impl_.voice_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.tts.v1.SynthesizeStreamRequest.voice_id)
+}
+
+// .sentiric.tts.v1.AudioConfig audio_config = 4;
+inline bool SynthesizeStreamRequest::_internal_has_audio_config() const {
+  return this != internal_default_instance() && _impl_.audio_config_ != nullptr;
+}
+inline bool SynthesizeStreamRequest::has_audio_config() const {
+  return _internal_has_audio_config();
+}
+inline void SynthesizeStreamRequest::clear_audio_config() {
+  if (GetArenaForAllocation() == nullptr && _impl_.audio_config_ != nullptr) {
+    delete _impl_.audio_config_;
+  }
+  _impl_.audio_config_ = nullptr;
+}
+inline const ::sentiric::tts::v1::AudioConfig& SynthesizeStreamRequest::_internal_audio_config() const {
+  const ::sentiric::tts::v1::AudioConfig* p = _impl_.audio_config_;
+  return p != nullptr ? *p : reinterpret_cast<const ::sentiric::tts::v1::AudioConfig&>(
+      ::sentiric::tts::v1::_AudioConfig_default_instance_);
+}
+inline const ::sentiric::tts::v1::AudioConfig& SynthesizeStreamRequest::audio_config() const {
+  // @@protoc_insertion_point(field_get:sentiric.tts.v1.SynthesizeStreamRequest.audio_config)
+  return _internal_audio_config();
+}
+inline void SynthesizeStreamRequest::unsafe_arena_set_allocated_audio_config(
+    ::sentiric::tts::v1::AudioConfig* audio_config) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.audio_config_);
+  }
+  _impl_.audio_config_ = audio_config;
+  if (audio_config) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:sentiric.tts.v1.SynthesizeStreamRequest.audio_config)
+}
+inline ::sentiric::tts::v1::AudioConfig* SynthesizeStreamRequest::release_audio_config() {
+  
+  ::sentiric::tts::v1::AudioConfig* temp = _impl_.audio_config_;
+  _impl_.audio_config_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::sentiric::tts::v1::AudioConfig* SynthesizeStreamRequest::unsafe_arena_release_audio_config() {
+  // @@protoc_insertion_point(field_release:sentiric.tts.v1.SynthesizeStreamRequest.audio_config)
+  
+  ::sentiric::tts::v1::AudioConfig* temp = _impl_.audio_config_;
+  _impl_.audio_config_ = nullptr;
+  return temp;
+}
+inline ::sentiric::tts::v1::AudioConfig* SynthesizeStreamRequest::_internal_mutable_audio_config() {
+  
+  if (_impl_.audio_config_ == nullptr) {
+    auto* p = CreateMaybeMessage<::sentiric::tts::v1::AudioConfig>(GetArenaForAllocation());
+    _impl_.audio_config_ = p;
+  }
+  return _impl_.audio_config_;
+}
+inline ::sentiric::tts::v1::AudioConfig* SynthesizeStreamRequest::mutable_audio_config() {
+  ::sentiric::tts::v1::AudioConfig* _msg = _internal_mutable_audio_config();
+  // @@protoc_insertion_point(field_mutable:sentiric.tts.v1.SynthesizeStreamRequest.audio_config)
+  return _msg;
+}
+inline void SynthesizeStreamRequest::set_allocated_audio_config(::sentiric::tts::v1::AudioConfig* audio_config) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete _impl_.audio_config_;
+  }
+  if (audio_config) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(audio_config);
+    if (message_arena != submessage_arena) {
+      audio_config = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, audio_config, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.audio_config_ = audio_config;
+  // @@protoc_insertion_point(field_set_allocated:sentiric.tts.v1.SynthesizeStreamRequest.audio_config)
+}
+
+// string preferred_provider = 5;
+inline void SynthesizeStreamRequest::clear_preferred_provider() {
+  _impl_.preferred_provider_.ClearToEmpty();
+}
+inline const std::string& SynthesizeStreamRequest::preferred_provider() const {
+  // @@protoc_insertion_point(field_get:sentiric.tts.v1.SynthesizeStreamRequest.preferred_provider)
+  return _internal_preferred_provider();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SynthesizeStreamRequest::set_preferred_provider(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.preferred_provider_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.tts.v1.SynthesizeStreamRequest.preferred_provider)
+}
+inline std::string* SynthesizeStreamRequest::mutable_preferred_provider() {
+  std::string* _s = _internal_mutable_preferred_provider();
+  // @@protoc_insertion_point(field_mutable:sentiric.tts.v1.SynthesizeStreamRequest.preferred_provider)
+  return _s;
+}
+inline const std::string& SynthesizeStreamRequest::_internal_preferred_provider() const {
+  return _impl_.preferred_provider_.Get();
+}
+inline void SynthesizeStreamRequest::_internal_set_preferred_provider(const std::string& value) {
+  
+  _impl_.preferred_provider_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SynthesizeStreamRequest::_internal_mutable_preferred_provider() {
+  
+  return _impl_.preferred_provider_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SynthesizeStreamRequest::release_preferred_provider() {
+  // @@protoc_insertion_point(field_release:sentiric.tts.v1.SynthesizeStreamRequest.preferred_provider)
+  return _impl_.preferred_provider_.Release();
+}
+inline void SynthesizeStreamRequest::set_allocated_preferred_provider(std::string* preferred_provider) {
+  if (preferred_provider != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.preferred_provider_.SetAllocated(preferred_provider, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.preferred_provider_.IsDefault()) {
+    _impl_.preferred_provider_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.tts.v1.SynthesizeStreamRequest.preferred_provider)
+}
+
+// .sentiric.tts.v1.ProsodyConfig prosody = 6;
+inline bool SynthesizeStreamRequest::_internal_has_prosody() const {
+  return this != internal_default_instance() && _impl_.prosody_ != nullptr;
+}
+inline bool SynthesizeStreamRequest::has_prosody() const {
+  return _internal_has_prosody();
+}
+inline void SynthesizeStreamRequest::clear_prosody() {
+  if (GetArenaForAllocation() == nullptr && _impl_.prosody_ != nullptr) {
+    delete _impl_.prosody_;
+  }
+  _impl_.prosody_ = nullptr;
+}
+inline const ::sentiric::tts::v1::ProsodyConfig& SynthesizeStreamRequest::_internal_prosody() const {
+  const ::sentiric::tts::v1::ProsodyConfig* p = _impl_.prosody_;
+  return p != nullptr ? *p : reinterpret_cast<const ::sentiric::tts::v1::ProsodyConfig&>(
+      ::sentiric::tts::v1::_ProsodyConfig_default_instance_);
+}
+inline const ::sentiric::tts::v1::ProsodyConfig& SynthesizeStreamRequest::prosody() const {
+  // @@protoc_insertion_point(field_get:sentiric.tts.v1.SynthesizeStreamRequest.prosody)
+  return _internal_prosody();
+}
+inline void SynthesizeStreamRequest::unsafe_arena_set_allocated_prosody(
+    ::sentiric::tts::v1::ProsodyConfig* prosody) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.prosody_);
+  }
+  _impl_.prosody_ = prosody;
+  if (prosody) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:sentiric.tts.v1.SynthesizeStreamRequest.prosody)
+}
+inline ::sentiric::tts::v1::ProsodyConfig* SynthesizeStreamRequest::release_prosody() {
+  
+  ::sentiric::tts::v1::ProsodyConfig* temp = _impl_.prosody_;
+  _impl_.prosody_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::sentiric::tts::v1::ProsodyConfig* SynthesizeStreamRequest::unsafe_arena_release_prosody() {
+  // @@protoc_insertion_point(field_release:sentiric.tts.v1.SynthesizeStreamRequest.prosody)
+  
+  ::sentiric::tts::v1::ProsodyConfig* temp = _impl_.prosody_;
+  _impl_.prosody_ = nullptr;
+  return temp;
+}
+inline ::sentiric::tts::v1::ProsodyConfig* SynthesizeStreamRequest::_internal_mutable_prosody() {
+  
+  if (_impl_.prosody_ == nullptr) {
+    auto* p = CreateMaybeMessage<::sentiric::tts::v1::ProsodyConfig>(GetArenaForAllocation());
+    _impl_.prosody_ = p;
+  }
+  return _impl_.prosody_;
+}
+inline ::sentiric::tts::v1::ProsodyConfig* SynthesizeStreamRequest::mutable_prosody() {
+  ::sentiric::tts::v1::ProsodyConfig* _msg = _internal_mutable_prosody();
+  // @@protoc_insertion_point(field_mutable:sentiric.tts.v1.SynthesizeStreamRequest.prosody)
+  return _msg;
+}
+inline void SynthesizeStreamRequest::set_allocated_prosody(::sentiric::tts::v1::ProsodyConfig* prosody) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete _impl_.prosody_;
+  }
+  if (prosody) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(prosody);
+    if (message_arena != submessage_arena) {
+      prosody = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, prosody, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.prosody_ = prosody;
+  // @@protoc_insertion_point(field_set_allocated:sentiric.tts.v1.SynthesizeStreamRequest.prosody)
+}
+
+// -------------------------------------------------------------------
+
+// SynthesizeStreamResponse
+
+// bytes audio_content = 1;
+inline void SynthesizeStreamResponse::clear_audio_content() {
+  _impl_.audio_content_.ClearToEmpty();
+}
+inline const std::string& SynthesizeStreamResponse::audio_content() const {
+  // @@protoc_insertion_point(field_get:sentiric.tts.v1.SynthesizeStreamResponse.audio_content)
+  return _internal_audio_content();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SynthesizeStreamResponse::set_audio_content(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.audio_content_.SetBytes(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.tts.v1.SynthesizeStreamResponse.audio_content)
+}
+inline std::string* SynthesizeStreamResponse::mutable_audio_content() {
+  std::string* _s = _internal_mutable_audio_content();
+  // @@protoc_insertion_point(field_mutable:sentiric.tts.v1.SynthesizeStreamResponse.audio_content)
+  return _s;
+}
+inline const std::string& SynthesizeStreamResponse::_internal_audio_content() const {
+  return _impl_.audio_content_.Get();
+}
+inline void SynthesizeStreamResponse::_internal_set_audio_content(const std::string& value) {
+  
+  _impl_.audio_content_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SynthesizeStreamResponse::_internal_mutable_audio_content() {
+  
+  return _impl_.audio_content_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SynthesizeStreamResponse::release_audio_content() {
+  // @@protoc_insertion_point(field_release:sentiric.tts.v1.SynthesizeStreamResponse.audio_content)
+  return _impl_.audio_content_.Release();
+}
+inline void SynthesizeStreamResponse::set_allocated_audio_content(std::string* audio_content) {
+  if (audio_content != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.audio_content_.SetAllocated(audio_content, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.audio_content_.IsDefault()) {
+    _impl_.audio_content_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.tts.v1.SynthesizeStreamResponse.audio_content)
+}
+
+// string content_type = 2;
+inline void SynthesizeStreamResponse::clear_content_type() {
+  _impl_.content_type_.ClearToEmpty();
+}
+inline const std::string& SynthesizeStreamResponse::content_type() const {
+  // @@protoc_insertion_point(field_get:sentiric.tts.v1.SynthesizeStreamResponse.content_type)
+  return _internal_content_type();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SynthesizeStreamResponse::set_content_type(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.content_type_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.tts.v1.SynthesizeStreamResponse.content_type)
+}
+inline std::string* SynthesizeStreamResponse::mutable_content_type() {
+  std::string* _s = _internal_mutable_content_type();
+  // @@protoc_insertion_point(field_mutable:sentiric.tts.v1.SynthesizeStreamResponse.content_type)
+  return _s;
+}
+inline const std::string& SynthesizeStreamResponse::_internal_content_type() const {
+  return _impl_.content_type_.Get();
+}
+inline void SynthesizeStreamResponse::_internal_set_content_type(const std::string& value) {
+  
+  _impl_.content_type_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SynthesizeStreamResponse::_internal_mutable_content_type() {
+  
+  return _impl_.content_type_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SynthesizeStreamResponse::release_content_type() {
+  // @@protoc_insertion_point(field_release:sentiric.tts.v1.SynthesizeStreamResponse.content_type)
+  return _impl_.content_type_.Release();
+}
+inline void SynthesizeStreamResponse::set_allocated_content_type(std::string* content_type) {
+  if (content_type != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.content_type_.SetAllocated(content_type, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.content_type_.IsDefault()) {
+    _impl_.content_type_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.tts.v1.SynthesizeStreamResponse.content_type)
+}
+
+// string provider_used = 3;
+inline void SynthesizeStreamResponse::clear_provider_used() {
+  _impl_.provider_used_.ClearToEmpty();
+}
+inline const std::string& SynthesizeStreamResponse::provider_used() const {
+  // @@protoc_insertion_point(field_get:sentiric.tts.v1.SynthesizeStreamResponse.provider_used)
+  return _internal_provider_used();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SynthesizeStreamResponse::set_provider_used(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.provider_used_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.tts.v1.SynthesizeStreamResponse.provider_used)
+}
+inline std::string* SynthesizeStreamResponse::mutable_provider_used() {
+  std::string* _s = _internal_mutable_provider_used();
+  // @@protoc_insertion_point(field_mutable:sentiric.tts.v1.SynthesizeStreamResponse.provider_used)
+  return _s;
+}
+inline const std::string& SynthesizeStreamResponse::_internal_provider_used() const {
+  return _impl_.provider_used_.Get();
+}
+inline void SynthesizeStreamResponse::_internal_set_provider_used(const std::string& value) {
+  
+  _impl_.provider_used_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SynthesizeStreamResponse::_internal_mutable_provider_used() {
+  
+  return _impl_.provider_used_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SynthesizeStreamResponse::release_provider_used() {
+  // @@protoc_insertion_point(field_release:sentiric.tts.v1.SynthesizeStreamResponse.provider_used)
+  return _impl_.provider_used_.Release();
+}
+inline void SynthesizeStreamResponse::set_allocated_provider_used(std::string* provider_used) {
+  if (provider_used != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.provider_used_.SetAllocated(provider_used, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.provider_used_.IsDefault()) {
+    _impl_.provider_used_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.tts.v1.SynthesizeStreamResponse.provider_used)
+}
+
 // -------------------------------------------------------------------
 
 // ListVoicesRequest
@@ -1555,6 +2991,164 @@ inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::sentiric::tts::v1::Voi
 ListVoicesResponse::voices() const {
   // @@protoc_insertion_point(field_list:sentiric.tts.v1.ListVoicesResponse.voices)
   return _impl_.voices_;
+}
+
+// -------------------------------------------------------------------
+
+// AudioConfig
+
+// .sentiric.tts.v1.AudioFormat audio_format = 1;
+inline void AudioConfig::clear_audio_format() {
+  _impl_.audio_format_ = 0;
+}
+inline ::sentiric::tts::v1::AudioFormat AudioConfig::_internal_audio_format() const {
+  return static_cast< ::sentiric::tts::v1::AudioFormat >(_impl_.audio_format_);
+}
+inline ::sentiric::tts::v1::AudioFormat AudioConfig::audio_format() const {
+  // @@protoc_insertion_point(field_get:sentiric.tts.v1.AudioConfig.audio_format)
+  return _internal_audio_format();
+}
+inline void AudioConfig::_internal_set_audio_format(::sentiric::tts::v1::AudioFormat value) {
+  
+  _impl_.audio_format_ = value;
+}
+inline void AudioConfig::set_audio_format(::sentiric::tts::v1::AudioFormat value) {
+  _internal_set_audio_format(value);
+  // @@protoc_insertion_point(field_set:sentiric.tts.v1.AudioConfig.audio_format)
+}
+
+// int32 sample_rate_hertz = 2;
+inline void AudioConfig::clear_sample_rate_hertz() {
+  _impl_.sample_rate_hertz_ = 0;
+}
+inline int32_t AudioConfig::_internal_sample_rate_hertz() const {
+  return _impl_.sample_rate_hertz_;
+}
+inline int32_t AudioConfig::sample_rate_hertz() const {
+  // @@protoc_insertion_point(field_get:sentiric.tts.v1.AudioConfig.sample_rate_hertz)
+  return _internal_sample_rate_hertz();
+}
+inline void AudioConfig::_internal_set_sample_rate_hertz(int32_t value) {
+  
+  _impl_.sample_rate_hertz_ = value;
+}
+inline void AudioConfig::set_sample_rate_hertz(int32_t value) {
+  _internal_set_sample_rate_hertz(value);
+  // @@protoc_insertion_point(field_set:sentiric.tts.v1.AudioConfig.sample_rate_hertz)
+}
+
+// double volume_gain_db = 3;
+inline void AudioConfig::clear_volume_gain_db() {
+  _impl_.volume_gain_db_ = 0;
+}
+inline double AudioConfig::_internal_volume_gain_db() const {
+  return _impl_.volume_gain_db_;
+}
+inline double AudioConfig::volume_gain_db() const {
+  // @@protoc_insertion_point(field_get:sentiric.tts.v1.AudioConfig.volume_gain_db)
+  return _internal_volume_gain_db();
+}
+inline void AudioConfig::_internal_set_volume_gain_db(double value) {
+  
+  _impl_.volume_gain_db_ = value;
+}
+inline void AudioConfig::set_volume_gain_db(double value) {
+  _internal_set_volume_gain_db(value);
+  // @@protoc_insertion_point(field_set:sentiric.tts.v1.AudioConfig.volume_gain_db)
+}
+
+// -------------------------------------------------------------------
+
+// ProsodyConfig
+
+// double rate = 1;
+inline void ProsodyConfig::clear_rate() {
+  _impl_.rate_ = 0;
+}
+inline double ProsodyConfig::_internal_rate() const {
+  return _impl_.rate_;
+}
+inline double ProsodyConfig::rate() const {
+  // @@protoc_insertion_point(field_get:sentiric.tts.v1.ProsodyConfig.rate)
+  return _internal_rate();
+}
+inline void ProsodyConfig::_internal_set_rate(double value) {
+  
+  _impl_.rate_ = value;
+}
+inline void ProsodyConfig::set_rate(double value) {
+  _internal_set_rate(value);
+  // @@protoc_insertion_point(field_set:sentiric.tts.v1.ProsodyConfig.rate)
+}
+
+// double pitch = 2;
+inline void ProsodyConfig::clear_pitch() {
+  _impl_.pitch_ = 0;
+}
+inline double ProsodyConfig::_internal_pitch() const {
+  return _impl_.pitch_;
+}
+inline double ProsodyConfig::pitch() const {
+  // @@protoc_insertion_point(field_get:sentiric.tts.v1.ProsodyConfig.pitch)
+  return _internal_pitch();
+}
+inline void ProsodyConfig::_internal_set_pitch(double value) {
+  
+  _impl_.pitch_ = value;
+}
+inline void ProsodyConfig::set_pitch(double value) {
+  _internal_set_pitch(value);
+  // @@protoc_insertion_point(field_set:sentiric.tts.v1.ProsodyConfig.pitch)
+}
+
+// string emotion = 3;
+inline void ProsodyConfig::clear_emotion() {
+  _impl_.emotion_.ClearToEmpty();
+}
+inline const std::string& ProsodyConfig::emotion() const {
+  // @@protoc_insertion_point(field_get:sentiric.tts.v1.ProsodyConfig.emotion)
+  return _internal_emotion();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void ProsodyConfig::set_emotion(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.emotion_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.tts.v1.ProsodyConfig.emotion)
+}
+inline std::string* ProsodyConfig::mutable_emotion() {
+  std::string* _s = _internal_mutable_emotion();
+  // @@protoc_insertion_point(field_mutable:sentiric.tts.v1.ProsodyConfig.emotion)
+  return _s;
+}
+inline const std::string& ProsodyConfig::_internal_emotion() const {
+  return _impl_.emotion_.Get();
+}
+inline void ProsodyConfig::_internal_set_emotion(const std::string& value) {
+  
+  _impl_.emotion_.Set(value, GetArenaForAllocation());
+}
+inline std::string* ProsodyConfig::_internal_mutable_emotion() {
+  
+  return _impl_.emotion_.Mutable(GetArenaForAllocation());
+}
+inline std::string* ProsodyConfig::release_emotion() {
+  // @@protoc_insertion_point(field_release:sentiric.tts.v1.ProsodyConfig.emotion)
+  return _impl_.emotion_.Release();
+}
+inline void ProsodyConfig::set_allocated_emotion(std::string* emotion) {
+  if (emotion != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.emotion_.SetAllocated(emotion, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.emotion_.IsDefault()) {
+    _impl_.emotion_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.tts.v1.ProsodyConfig.emotion)
 }
 
 // -------------------------------------------------------------------
@@ -1847,12 +3441,35 @@ VoiceInfo::mutable_styles() {
 
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 
 // @@protoc_insertion_point(namespace_scope)
 
 }  // namespace v1
 }  // namespace tts
 }  // namespace sentiric
+
+PROTOBUF_NAMESPACE_OPEN
+
+template <> struct is_proto_enum< ::sentiric::tts::v1::TextType> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::sentiric::tts::v1::TextType>() {
+  return ::sentiric::tts::v1::TextType_descriptor();
+}
+template <> struct is_proto_enum< ::sentiric::tts::v1::AudioFormat> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::sentiric::tts::v1::AudioFormat>() {
+  return ::sentiric::tts::v1::AudioFormat_descriptor();
+}
+
+PROTOBUF_NAMESPACE_CLOSE
 
 // @@protoc_insertion_point(global_scope)
 

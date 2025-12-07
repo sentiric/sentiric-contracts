@@ -54,24 +54,24 @@ extern ConversationTurnDefaultTypeInternal _ConversationTurn_default_instance_;
 class FinishDetails;
 struct FinishDetailsDefaultTypeInternal;
 extern FinishDetailsDefaultTypeInternal _FinishDetails_default_instance_;
+class GenerateStreamRequest;
+struct GenerateStreamRequestDefaultTypeInternal;
+extern GenerateStreamRequestDefaultTypeInternal _GenerateStreamRequest_default_instance_;
+class GenerateStreamResponse;
+struct GenerateStreamResponseDefaultTypeInternal;
+extern GenerateStreamResponseDefaultTypeInternal _GenerateStreamResponse_default_instance_;
 class GenerationParams;
 struct GenerationParamsDefaultTypeInternal;
 extern GenerationParamsDefaultTypeInternal _GenerationParams_default_instance_;
-class LlamaGenerateStreamRequest;
-struct LlamaGenerateStreamRequestDefaultTypeInternal;
-extern LlamaGenerateStreamRequestDefaultTypeInternal _LlamaGenerateStreamRequest_default_instance_;
-class LlamaGenerateStreamResponse;
-struct LlamaGenerateStreamResponseDefaultTypeInternal;
-extern LlamaGenerateStreamResponseDefaultTypeInternal _LlamaGenerateStreamResponse_default_instance_;
 }  // namespace v1
 }  // namespace llm
 }  // namespace sentiric
 PROTOBUF_NAMESPACE_OPEN
 template<> ::sentiric::llm::v1::ConversationTurn* Arena::CreateMaybeMessage<::sentiric::llm::v1::ConversationTurn>(Arena*);
 template<> ::sentiric::llm::v1::FinishDetails* Arena::CreateMaybeMessage<::sentiric::llm::v1::FinishDetails>(Arena*);
+template<> ::sentiric::llm::v1::GenerateStreamRequest* Arena::CreateMaybeMessage<::sentiric::llm::v1::GenerateStreamRequest>(Arena*);
+template<> ::sentiric::llm::v1::GenerateStreamResponse* Arena::CreateMaybeMessage<::sentiric::llm::v1::GenerateStreamResponse>(Arena*);
 template<> ::sentiric::llm::v1::GenerationParams* Arena::CreateMaybeMessage<::sentiric::llm::v1::GenerationParams>(Arena*);
-template<> ::sentiric::llm::v1::LlamaGenerateStreamRequest* Arena::CreateMaybeMessage<::sentiric::llm::v1::LlamaGenerateStreamRequest>(Arena*);
-template<> ::sentiric::llm::v1::LlamaGenerateStreamResponse* Arena::CreateMaybeMessage<::sentiric::llm::v1::LlamaGenerateStreamResponse>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace sentiric {
 namespace llm {
@@ -79,24 +79,24 @@ namespace v1 {
 
 // ===================================================================
 
-class LlamaGenerateStreamRequest final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.llm.v1.LlamaGenerateStreamRequest) */ {
+class GenerateStreamRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.llm.v1.GenerateStreamRequest) */ {
  public:
-  inline LlamaGenerateStreamRequest() : LlamaGenerateStreamRequest(nullptr) {}
-  ~LlamaGenerateStreamRequest() override;
-  explicit PROTOBUF_CONSTEXPR LlamaGenerateStreamRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline GenerateStreamRequest() : GenerateStreamRequest(nullptr) {}
+  ~GenerateStreamRequest() override;
+  explicit PROTOBUF_CONSTEXPR GenerateStreamRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  LlamaGenerateStreamRequest(const LlamaGenerateStreamRequest& from);
-  LlamaGenerateStreamRequest(LlamaGenerateStreamRequest&& from) noexcept
-    : LlamaGenerateStreamRequest() {
+  GenerateStreamRequest(const GenerateStreamRequest& from);
+  GenerateStreamRequest(GenerateStreamRequest&& from) noexcept
+    : GenerateStreamRequest() {
     *this = ::std::move(from);
   }
 
-  inline LlamaGenerateStreamRequest& operator=(const LlamaGenerateStreamRequest& from) {
+  inline GenerateStreamRequest& operator=(const GenerateStreamRequest& from) {
     CopyFrom(from);
     return *this;
   }
-  inline LlamaGenerateStreamRequest& operator=(LlamaGenerateStreamRequest&& from) noexcept {
+  inline GenerateStreamRequest& operator=(GenerateStreamRequest&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -119,20 +119,20 @@ class LlamaGenerateStreamRequest final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const LlamaGenerateStreamRequest& default_instance() {
+  static const GenerateStreamRequest& default_instance() {
     return *internal_default_instance();
   }
-  static inline const LlamaGenerateStreamRequest* internal_default_instance() {
-    return reinterpret_cast<const LlamaGenerateStreamRequest*>(
-               &_LlamaGenerateStreamRequest_default_instance_);
+  static inline const GenerateStreamRequest* internal_default_instance() {
+    return reinterpret_cast<const GenerateStreamRequest*>(
+               &_GenerateStreamRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     0;
 
-  friend void swap(LlamaGenerateStreamRequest& a, LlamaGenerateStreamRequest& b) {
+  friend void swap(GenerateStreamRequest& a, GenerateStreamRequest& b) {
     a.Swap(&b);
   }
-  inline void Swap(LlamaGenerateStreamRequest* other) {
+  inline void Swap(GenerateStreamRequest* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -145,7 +145,7 @@ class LlamaGenerateStreamRequest final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(LlamaGenerateStreamRequest* other) {
+  void UnsafeArenaSwap(GenerateStreamRequest* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -153,14 +153,14 @@ class LlamaGenerateStreamRequest final :
 
   // implements Message ----------------------------------------------
 
-  LlamaGenerateStreamRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<LlamaGenerateStreamRequest>(arena);
+  GenerateStreamRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<GenerateStreamRequest>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const LlamaGenerateStreamRequest& from);
+  void CopyFrom(const GenerateStreamRequest& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom( const LlamaGenerateStreamRequest& from) {
-    LlamaGenerateStreamRequest::MergeImpl(*this, from);
+  void MergeFrom( const GenerateStreamRequest& from) {
+    GenerateStreamRequest::MergeImpl(*this, from);
   }
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
@@ -178,15 +178,15 @@ class LlamaGenerateStreamRequest final :
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(LlamaGenerateStreamRequest* other);
+  void InternalSwap(GenerateStreamRequest* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "sentiric.llm.v1.LlamaGenerateStreamRequest";
+    return "sentiric.llm.v1.GenerateStreamRequest";
   }
   protected:
-  explicit LlamaGenerateStreamRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit GenerateStreamRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   public:
 
@@ -288,7 +288,7 @@ class LlamaGenerateStreamRequest final :
       ::sentiric::llm::v1::GenerationParams* params);
   ::sentiric::llm::v1::GenerationParams* unsafe_arena_release_params();
 
-  // @@protoc_insertion_point(class_scope:sentiric.llm.v1.LlamaGenerateStreamRequest)
+  // @@protoc_insertion_point(class_scope:sentiric.llm.v1.GenerateStreamRequest)
  private:
   class _Internal;
 
@@ -309,24 +309,24 @@ class LlamaGenerateStreamRequest final :
 };
 // -------------------------------------------------------------------
 
-class LlamaGenerateStreamResponse final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.llm.v1.LlamaGenerateStreamResponse) */ {
+class GenerateStreamResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.llm.v1.GenerateStreamResponse) */ {
  public:
-  inline LlamaGenerateStreamResponse() : LlamaGenerateStreamResponse(nullptr) {}
-  ~LlamaGenerateStreamResponse() override;
-  explicit PROTOBUF_CONSTEXPR LlamaGenerateStreamResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline GenerateStreamResponse() : GenerateStreamResponse(nullptr) {}
+  ~GenerateStreamResponse() override;
+  explicit PROTOBUF_CONSTEXPR GenerateStreamResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  LlamaGenerateStreamResponse(const LlamaGenerateStreamResponse& from);
-  LlamaGenerateStreamResponse(LlamaGenerateStreamResponse&& from) noexcept
-    : LlamaGenerateStreamResponse() {
+  GenerateStreamResponse(const GenerateStreamResponse& from);
+  GenerateStreamResponse(GenerateStreamResponse&& from) noexcept
+    : GenerateStreamResponse() {
     *this = ::std::move(from);
   }
 
-  inline LlamaGenerateStreamResponse& operator=(const LlamaGenerateStreamResponse& from) {
+  inline GenerateStreamResponse& operator=(const GenerateStreamResponse& from) {
     CopyFrom(from);
     return *this;
   }
-  inline LlamaGenerateStreamResponse& operator=(LlamaGenerateStreamResponse&& from) noexcept {
+  inline GenerateStreamResponse& operator=(GenerateStreamResponse&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -349,7 +349,7 @@ class LlamaGenerateStreamResponse final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const LlamaGenerateStreamResponse& default_instance() {
+  static const GenerateStreamResponse& default_instance() {
     return *internal_default_instance();
   }
   enum TypeCase {
@@ -358,17 +358,17 @@ class LlamaGenerateStreamResponse final :
     TYPE_NOT_SET = 0,
   };
 
-  static inline const LlamaGenerateStreamResponse* internal_default_instance() {
-    return reinterpret_cast<const LlamaGenerateStreamResponse*>(
-               &_LlamaGenerateStreamResponse_default_instance_);
+  static inline const GenerateStreamResponse* internal_default_instance() {
+    return reinterpret_cast<const GenerateStreamResponse*>(
+               &_GenerateStreamResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     1;
 
-  friend void swap(LlamaGenerateStreamResponse& a, LlamaGenerateStreamResponse& b) {
+  friend void swap(GenerateStreamResponse& a, GenerateStreamResponse& b) {
     a.Swap(&b);
   }
-  inline void Swap(LlamaGenerateStreamResponse* other) {
+  inline void Swap(GenerateStreamResponse* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -381,7 +381,7 @@ class LlamaGenerateStreamResponse final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(LlamaGenerateStreamResponse* other) {
+  void UnsafeArenaSwap(GenerateStreamResponse* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -389,14 +389,14 @@ class LlamaGenerateStreamResponse final :
 
   // implements Message ----------------------------------------------
 
-  LlamaGenerateStreamResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<LlamaGenerateStreamResponse>(arena);
+  GenerateStreamResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<GenerateStreamResponse>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const LlamaGenerateStreamResponse& from);
+  void CopyFrom(const GenerateStreamResponse& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom( const LlamaGenerateStreamResponse& from) {
-    LlamaGenerateStreamResponse::MergeImpl(*this, from);
+  void MergeFrom( const GenerateStreamResponse& from) {
+    GenerateStreamResponse::MergeImpl(*this, from);
   }
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
@@ -414,15 +414,15 @@ class LlamaGenerateStreamResponse final :
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(LlamaGenerateStreamResponse* other);
+  void InternalSwap(GenerateStreamResponse* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "sentiric.llm.v1.LlamaGenerateStreamResponse";
+    return "sentiric.llm.v1.GenerateStreamResponse";
   }
   protected:
-  explicit LlamaGenerateStreamResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit GenerateStreamResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   public:
 
@@ -477,7 +477,7 @@ class LlamaGenerateStreamResponse final :
 
   void clear_type();
   TypeCase type_case() const;
-  // @@protoc_insertion_point(class_scope:sentiric.llm.v1.LlamaGenerateStreamResponse)
+  // @@protoc_insertion_point(class_scope:sentiric.llm.v1.GenerateStreamResponse)
  private:
   class _Internal;
   void set_has_token();
@@ -1130,44 +1130,44 @@ class FinishDetails final :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
-// LlamaGenerateStreamRequest
+// GenerateStreamRequest
 
 // string system_prompt = 1;
-inline void LlamaGenerateStreamRequest::clear_system_prompt() {
+inline void GenerateStreamRequest::clear_system_prompt() {
   _impl_.system_prompt_.ClearToEmpty();
 }
-inline const std::string& LlamaGenerateStreamRequest::system_prompt() const {
-  // @@protoc_insertion_point(field_get:sentiric.llm.v1.LlamaGenerateStreamRequest.system_prompt)
+inline const std::string& GenerateStreamRequest::system_prompt() const {
+  // @@protoc_insertion_point(field_get:sentiric.llm.v1.GenerateStreamRequest.system_prompt)
   return _internal_system_prompt();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void LlamaGenerateStreamRequest::set_system_prompt(ArgT0&& arg0, ArgT... args) {
+void GenerateStreamRequest::set_system_prompt(ArgT0&& arg0, ArgT... args) {
  
  _impl_.system_prompt_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:sentiric.llm.v1.LlamaGenerateStreamRequest.system_prompt)
+  // @@protoc_insertion_point(field_set:sentiric.llm.v1.GenerateStreamRequest.system_prompt)
 }
-inline std::string* LlamaGenerateStreamRequest::mutable_system_prompt() {
+inline std::string* GenerateStreamRequest::mutable_system_prompt() {
   std::string* _s = _internal_mutable_system_prompt();
-  // @@protoc_insertion_point(field_mutable:sentiric.llm.v1.LlamaGenerateStreamRequest.system_prompt)
+  // @@protoc_insertion_point(field_mutable:sentiric.llm.v1.GenerateStreamRequest.system_prompt)
   return _s;
 }
-inline const std::string& LlamaGenerateStreamRequest::_internal_system_prompt() const {
+inline const std::string& GenerateStreamRequest::_internal_system_prompt() const {
   return _impl_.system_prompt_.Get();
 }
-inline void LlamaGenerateStreamRequest::_internal_set_system_prompt(const std::string& value) {
+inline void GenerateStreamRequest::_internal_set_system_prompt(const std::string& value) {
   
   _impl_.system_prompt_.Set(value, GetArenaForAllocation());
 }
-inline std::string* LlamaGenerateStreamRequest::_internal_mutable_system_prompt() {
+inline std::string* GenerateStreamRequest::_internal_mutable_system_prompt() {
   
   return _impl_.system_prompt_.Mutable(GetArenaForAllocation());
 }
-inline std::string* LlamaGenerateStreamRequest::release_system_prompt() {
-  // @@protoc_insertion_point(field_release:sentiric.llm.v1.LlamaGenerateStreamRequest.system_prompt)
+inline std::string* GenerateStreamRequest::release_system_prompt() {
+  // @@protoc_insertion_point(field_release:sentiric.llm.v1.GenerateStreamRequest.system_prompt)
   return _impl_.system_prompt_.Release();
 }
-inline void LlamaGenerateStreamRequest::set_allocated_system_prompt(std::string* system_prompt) {
+inline void GenerateStreamRequest::set_allocated_system_prompt(std::string* system_prompt) {
   if (system_prompt != nullptr) {
     
   } else {
@@ -1179,45 +1179,45 @@ inline void LlamaGenerateStreamRequest::set_allocated_system_prompt(std::string*
     _impl_.system_prompt_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:sentiric.llm.v1.LlamaGenerateStreamRequest.system_prompt)
+  // @@protoc_insertion_point(field_set_allocated:sentiric.llm.v1.GenerateStreamRequest.system_prompt)
 }
 
 // string user_prompt = 2;
-inline void LlamaGenerateStreamRequest::clear_user_prompt() {
+inline void GenerateStreamRequest::clear_user_prompt() {
   _impl_.user_prompt_.ClearToEmpty();
 }
-inline const std::string& LlamaGenerateStreamRequest::user_prompt() const {
-  // @@protoc_insertion_point(field_get:sentiric.llm.v1.LlamaGenerateStreamRequest.user_prompt)
+inline const std::string& GenerateStreamRequest::user_prompt() const {
+  // @@protoc_insertion_point(field_get:sentiric.llm.v1.GenerateStreamRequest.user_prompt)
   return _internal_user_prompt();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void LlamaGenerateStreamRequest::set_user_prompt(ArgT0&& arg0, ArgT... args) {
+void GenerateStreamRequest::set_user_prompt(ArgT0&& arg0, ArgT... args) {
  
  _impl_.user_prompt_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:sentiric.llm.v1.LlamaGenerateStreamRequest.user_prompt)
+  // @@protoc_insertion_point(field_set:sentiric.llm.v1.GenerateStreamRequest.user_prompt)
 }
-inline std::string* LlamaGenerateStreamRequest::mutable_user_prompt() {
+inline std::string* GenerateStreamRequest::mutable_user_prompt() {
   std::string* _s = _internal_mutable_user_prompt();
-  // @@protoc_insertion_point(field_mutable:sentiric.llm.v1.LlamaGenerateStreamRequest.user_prompt)
+  // @@protoc_insertion_point(field_mutable:sentiric.llm.v1.GenerateStreamRequest.user_prompt)
   return _s;
 }
-inline const std::string& LlamaGenerateStreamRequest::_internal_user_prompt() const {
+inline const std::string& GenerateStreamRequest::_internal_user_prompt() const {
   return _impl_.user_prompt_.Get();
 }
-inline void LlamaGenerateStreamRequest::_internal_set_user_prompt(const std::string& value) {
+inline void GenerateStreamRequest::_internal_set_user_prompt(const std::string& value) {
   
   _impl_.user_prompt_.Set(value, GetArenaForAllocation());
 }
-inline std::string* LlamaGenerateStreamRequest::_internal_mutable_user_prompt() {
+inline std::string* GenerateStreamRequest::_internal_mutable_user_prompt() {
   
   return _impl_.user_prompt_.Mutable(GetArenaForAllocation());
 }
-inline std::string* LlamaGenerateStreamRequest::release_user_prompt() {
-  // @@protoc_insertion_point(field_release:sentiric.llm.v1.LlamaGenerateStreamRequest.user_prompt)
+inline std::string* GenerateStreamRequest::release_user_prompt() {
+  // @@protoc_insertion_point(field_release:sentiric.llm.v1.GenerateStreamRequest.user_prompt)
   return _impl_.user_prompt_.Release();
 }
-inline void LlamaGenerateStreamRequest::set_allocated_user_prompt(std::string* user_prompt) {
+inline void GenerateStreamRequest::set_allocated_user_prompt(std::string* user_prompt) {
   if (user_prompt != nullptr) {
     
   } else {
@@ -1229,50 +1229,50 @@ inline void LlamaGenerateStreamRequest::set_allocated_user_prompt(std::string* u
     _impl_.user_prompt_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:sentiric.llm.v1.LlamaGenerateStreamRequest.user_prompt)
+  // @@protoc_insertion_point(field_set_allocated:sentiric.llm.v1.GenerateStreamRequest.user_prompt)
 }
 
 // optional string rag_context = 3;
-inline bool LlamaGenerateStreamRequest::_internal_has_rag_context() const {
+inline bool GenerateStreamRequest::_internal_has_rag_context() const {
   bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
   return value;
 }
-inline bool LlamaGenerateStreamRequest::has_rag_context() const {
+inline bool GenerateStreamRequest::has_rag_context() const {
   return _internal_has_rag_context();
 }
-inline void LlamaGenerateStreamRequest::clear_rag_context() {
+inline void GenerateStreamRequest::clear_rag_context() {
   _impl_.rag_context_.ClearToEmpty();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-inline const std::string& LlamaGenerateStreamRequest::rag_context() const {
-  // @@protoc_insertion_point(field_get:sentiric.llm.v1.LlamaGenerateStreamRequest.rag_context)
+inline const std::string& GenerateStreamRequest::rag_context() const {
+  // @@protoc_insertion_point(field_get:sentiric.llm.v1.GenerateStreamRequest.rag_context)
   return _internal_rag_context();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void LlamaGenerateStreamRequest::set_rag_context(ArgT0&& arg0, ArgT... args) {
+void GenerateStreamRequest::set_rag_context(ArgT0&& arg0, ArgT... args) {
  _impl_._has_bits_[0] |= 0x00000001u;
  _impl_.rag_context_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:sentiric.llm.v1.LlamaGenerateStreamRequest.rag_context)
+  // @@protoc_insertion_point(field_set:sentiric.llm.v1.GenerateStreamRequest.rag_context)
 }
-inline std::string* LlamaGenerateStreamRequest::mutable_rag_context() {
+inline std::string* GenerateStreamRequest::mutable_rag_context() {
   std::string* _s = _internal_mutable_rag_context();
-  // @@protoc_insertion_point(field_mutable:sentiric.llm.v1.LlamaGenerateStreamRequest.rag_context)
+  // @@protoc_insertion_point(field_mutable:sentiric.llm.v1.GenerateStreamRequest.rag_context)
   return _s;
 }
-inline const std::string& LlamaGenerateStreamRequest::_internal_rag_context() const {
+inline const std::string& GenerateStreamRequest::_internal_rag_context() const {
   return _impl_.rag_context_.Get();
 }
-inline void LlamaGenerateStreamRequest::_internal_set_rag_context(const std::string& value) {
+inline void GenerateStreamRequest::_internal_set_rag_context(const std::string& value) {
   _impl_._has_bits_[0] |= 0x00000001u;
   _impl_.rag_context_.Set(value, GetArenaForAllocation());
 }
-inline std::string* LlamaGenerateStreamRequest::_internal_mutable_rag_context() {
+inline std::string* GenerateStreamRequest::_internal_mutable_rag_context() {
   _impl_._has_bits_[0] |= 0x00000001u;
   return _impl_.rag_context_.Mutable(GetArenaForAllocation());
 }
-inline std::string* LlamaGenerateStreamRequest::release_rag_context() {
-  // @@protoc_insertion_point(field_release:sentiric.llm.v1.LlamaGenerateStreamRequest.rag_context)
+inline std::string* GenerateStreamRequest::release_rag_context() {
+  // @@protoc_insertion_point(field_release:sentiric.llm.v1.GenerateStreamRequest.rag_context)
   if (!_internal_has_rag_context()) {
     return nullptr;
   }
@@ -1285,7 +1285,7 @@ inline std::string* LlamaGenerateStreamRequest::release_rag_context() {
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   return p;
 }
-inline void LlamaGenerateStreamRequest::set_allocated_rag_context(std::string* rag_context) {
+inline void GenerateStreamRequest::set_allocated_rag_context(std::string* rag_context) {
   if (rag_context != nullptr) {
     _impl_._has_bits_[0] |= 0x00000001u;
   } else {
@@ -1297,72 +1297,72 @@ inline void LlamaGenerateStreamRequest::set_allocated_rag_context(std::string* r
     _impl_.rag_context_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:sentiric.llm.v1.LlamaGenerateStreamRequest.rag_context)
+  // @@protoc_insertion_point(field_set_allocated:sentiric.llm.v1.GenerateStreamRequest.rag_context)
 }
 
 // repeated .sentiric.llm.v1.ConversationTurn history = 4;
-inline int LlamaGenerateStreamRequest::_internal_history_size() const {
+inline int GenerateStreamRequest::_internal_history_size() const {
   return _impl_.history_.size();
 }
-inline int LlamaGenerateStreamRequest::history_size() const {
+inline int GenerateStreamRequest::history_size() const {
   return _internal_history_size();
 }
-inline void LlamaGenerateStreamRequest::clear_history() {
+inline void GenerateStreamRequest::clear_history() {
   _impl_.history_.Clear();
 }
-inline ::sentiric::llm::v1::ConversationTurn* LlamaGenerateStreamRequest::mutable_history(int index) {
-  // @@protoc_insertion_point(field_mutable:sentiric.llm.v1.LlamaGenerateStreamRequest.history)
+inline ::sentiric::llm::v1::ConversationTurn* GenerateStreamRequest::mutable_history(int index) {
+  // @@protoc_insertion_point(field_mutable:sentiric.llm.v1.GenerateStreamRequest.history)
   return _impl_.history_.Mutable(index);
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::sentiric::llm::v1::ConversationTurn >*
-LlamaGenerateStreamRequest::mutable_history() {
-  // @@protoc_insertion_point(field_mutable_list:sentiric.llm.v1.LlamaGenerateStreamRequest.history)
+GenerateStreamRequest::mutable_history() {
+  // @@protoc_insertion_point(field_mutable_list:sentiric.llm.v1.GenerateStreamRequest.history)
   return &_impl_.history_;
 }
-inline const ::sentiric::llm::v1::ConversationTurn& LlamaGenerateStreamRequest::_internal_history(int index) const {
+inline const ::sentiric::llm::v1::ConversationTurn& GenerateStreamRequest::_internal_history(int index) const {
   return _impl_.history_.Get(index);
 }
-inline const ::sentiric::llm::v1::ConversationTurn& LlamaGenerateStreamRequest::history(int index) const {
-  // @@protoc_insertion_point(field_get:sentiric.llm.v1.LlamaGenerateStreamRequest.history)
+inline const ::sentiric::llm::v1::ConversationTurn& GenerateStreamRequest::history(int index) const {
+  // @@protoc_insertion_point(field_get:sentiric.llm.v1.GenerateStreamRequest.history)
   return _internal_history(index);
 }
-inline ::sentiric::llm::v1::ConversationTurn* LlamaGenerateStreamRequest::_internal_add_history() {
+inline ::sentiric::llm::v1::ConversationTurn* GenerateStreamRequest::_internal_add_history() {
   return _impl_.history_.Add();
 }
-inline ::sentiric::llm::v1::ConversationTurn* LlamaGenerateStreamRequest::add_history() {
+inline ::sentiric::llm::v1::ConversationTurn* GenerateStreamRequest::add_history() {
   ::sentiric::llm::v1::ConversationTurn* _add = _internal_add_history();
-  // @@protoc_insertion_point(field_add:sentiric.llm.v1.LlamaGenerateStreamRequest.history)
+  // @@protoc_insertion_point(field_add:sentiric.llm.v1.GenerateStreamRequest.history)
   return _add;
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::sentiric::llm::v1::ConversationTurn >&
-LlamaGenerateStreamRequest::history() const {
-  // @@protoc_insertion_point(field_list:sentiric.llm.v1.LlamaGenerateStreamRequest.history)
+GenerateStreamRequest::history() const {
+  // @@protoc_insertion_point(field_list:sentiric.llm.v1.GenerateStreamRequest.history)
   return _impl_.history_;
 }
 
 // optional .sentiric.llm.v1.GenerationParams params = 5;
-inline bool LlamaGenerateStreamRequest::_internal_has_params() const {
+inline bool GenerateStreamRequest::_internal_has_params() const {
   bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
   PROTOBUF_ASSUME(!value || _impl_.params_ != nullptr);
   return value;
 }
-inline bool LlamaGenerateStreamRequest::has_params() const {
+inline bool GenerateStreamRequest::has_params() const {
   return _internal_has_params();
 }
-inline void LlamaGenerateStreamRequest::clear_params() {
+inline void GenerateStreamRequest::clear_params() {
   if (_impl_.params_ != nullptr) _impl_.params_->Clear();
   _impl_._has_bits_[0] &= ~0x00000002u;
 }
-inline const ::sentiric::llm::v1::GenerationParams& LlamaGenerateStreamRequest::_internal_params() const {
+inline const ::sentiric::llm::v1::GenerationParams& GenerateStreamRequest::_internal_params() const {
   const ::sentiric::llm::v1::GenerationParams* p = _impl_.params_;
   return p != nullptr ? *p : reinterpret_cast<const ::sentiric::llm::v1::GenerationParams&>(
       ::sentiric::llm::v1::_GenerationParams_default_instance_);
 }
-inline const ::sentiric::llm::v1::GenerationParams& LlamaGenerateStreamRequest::params() const {
-  // @@protoc_insertion_point(field_get:sentiric.llm.v1.LlamaGenerateStreamRequest.params)
+inline const ::sentiric::llm::v1::GenerationParams& GenerateStreamRequest::params() const {
+  // @@protoc_insertion_point(field_get:sentiric.llm.v1.GenerateStreamRequest.params)
   return _internal_params();
 }
-inline void LlamaGenerateStreamRequest::unsafe_arena_set_allocated_params(
+inline void GenerateStreamRequest::unsafe_arena_set_allocated_params(
     ::sentiric::llm::v1::GenerationParams* params) {
   if (GetArenaForAllocation() == nullptr) {
     delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.params_);
@@ -1373,9 +1373,9 @@ inline void LlamaGenerateStreamRequest::unsafe_arena_set_allocated_params(
   } else {
     _impl_._has_bits_[0] &= ~0x00000002u;
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:sentiric.llm.v1.LlamaGenerateStreamRequest.params)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:sentiric.llm.v1.GenerateStreamRequest.params)
 }
-inline ::sentiric::llm::v1::GenerationParams* LlamaGenerateStreamRequest::release_params() {
+inline ::sentiric::llm::v1::GenerationParams* GenerateStreamRequest::release_params() {
   _impl_._has_bits_[0] &= ~0x00000002u;
   ::sentiric::llm::v1::GenerationParams* temp = _impl_.params_;
   _impl_.params_ = nullptr;
@@ -1390,14 +1390,14 @@ inline ::sentiric::llm::v1::GenerationParams* LlamaGenerateStreamRequest::releas
 #endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
   return temp;
 }
-inline ::sentiric::llm::v1::GenerationParams* LlamaGenerateStreamRequest::unsafe_arena_release_params() {
-  // @@protoc_insertion_point(field_release:sentiric.llm.v1.LlamaGenerateStreamRequest.params)
+inline ::sentiric::llm::v1::GenerationParams* GenerateStreamRequest::unsafe_arena_release_params() {
+  // @@protoc_insertion_point(field_release:sentiric.llm.v1.GenerateStreamRequest.params)
   _impl_._has_bits_[0] &= ~0x00000002u;
   ::sentiric::llm::v1::GenerationParams* temp = _impl_.params_;
   _impl_.params_ = nullptr;
   return temp;
 }
-inline ::sentiric::llm::v1::GenerationParams* LlamaGenerateStreamRequest::_internal_mutable_params() {
+inline ::sentiric::llm::v1::GenerationParams* GenerateStreamRequest::_internal_mutable_params() {
   _impl_._has_bits_[0] |= 0x00000002u;
   if (_impl_.params_ == nullptr) {
     auto* p = CreateMaybeMessage<::sentiric::llm::v1::GenerationParams>(GetArenaForAllocation());
@@ -1405,12 +1405,12 @@ inline ::sentiric::llm::v1::GenerationParams* LlamaGenerateStreamRequest::_inter
   }
   return _impl_.params_;
 }
-inline ::sentiric::llm::v1::GenerationParams* LlamaGenerateStreamRequest::mutable_params() {
+inline ::sentiric::llm::v1::GenerationParams* GenerateStreamRequest::mutable_params() {
   ::sentiric::llm::v1::GenerationParams* _msg = _internal_mutable_params();
-  // @@protoc_insertion_point(field_mutable:sentiric.llm.v1.LlamaGenerateStreamRequest.params)
+  // @@protoc_insertion_point(field_mutable:sentiric.llm.v1.GenerateStreamRequest.params)
   return _msg;
 }
-inline void LlamaGenerateStreamRequest::set_allocated_params(::sentiric::llm::v1::GenerationParams* params) {
+inline void GenerateStreamRequest::set_allocated_params(::sentiric::llm::v1::GenerationParams* params) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   if (message_arena == nullptr) {
     delete _impl_.params_;
@@ -1427,55 +1427,55 @@ inline void LlamaGenerateStreamRequest::set_allocated_params(::sentiric::llm::v1
     _impl_._has_bits_[0] &= ~0x00000002u;
   }
   _impl_.params_ = params;
-  // @@protoc_insertion_point(field_set_allocated:sentiric.llm.v1.LlamaGenerateStreamRequest.params)
+  // @@protoc_insertion_point(field_set_allocated:sentiric.llm.v1.GenerateStreamRequest.params)
 }
 
 // -------------------------------------------------------------------
 
-// LlamaGenerateStreamResponse
+// GenerateStreamResponse
 
 // string token = 1;
-inline bool LlamaGenerateStreamResponse::_internal_has_token() const {
+inline bool GenerateStreamResponse::_internal_has_token() const {
   return type_case() == kToken;
 }
-inline bool LlamaGenerateStreamResponse::has_token() const {
+inline bool GenerateStreamResponse::has_token() const {
   return _internal_has_token();
 }
-inline void LlamaGenerateStreamResponse::set_has_token() {
+inline void GenerateStreamResponse::set_has_token() {
   _impl_._oneof_case_[0] = kToken;
 }
-inline void LlamaGenerateStreamResponse::clear_token() {
+inline void GenerateStreamResponse::clear_token() {
   if (_internal_has_token()) {
     _impl_.type_.token_.Destroy();
     clear_has_type();
   }
 }
-inline const std::string& LlamaGenerateStreamResponse::token() const {
-  // @@protoc_insertion_point(field_get:sentiric.llm.v1.LlamaGenerateStreamResponse.token)
+inline const std::string& GenerateStreamResponse::token() const {
+  // @@protoc_insertion_point(field_get:sentiric.llm.v1.GenerateStreamResponse.token)
   return _internal_token();
 }
 template <typename ArgT0, typename... ArgT>
-inline void LlamaGenerateStreamResponse::set_token(ArgT0&& arg0, ArgT... args) {
+inline void GenerateStreamResponse::set_token(ArgT0&& arg0, ArgT... args) {
   if (!_internal_has_token()) {
     clear_type();
     set_has_token();
     _impl_.type_.token_.InitDefault();
   }
   _impl_.type_.token_.Set( static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:sentiric.llm.v1.LlamaGenerateStreamResponse.token)
+  // @@protoc_insertion_point(field_set:sentiric.llm.v1.GenerateStreamResponse.token)
 }
-inline std::string* LlamaGenerateStreamResponse::mutable_token() {
+inline std::string* GenerateStreamResponse::mutable_token() {
   std::string* _s = _internal_mutable_token();
-  // @@protoc_insertion_point(field_mutable:sentiric.llm.v1.LlamaGenerateStreamResponse.token)
+  // @@protoc_insertion_point(field_mutable:sentiric.llm.v1.GenerateStreamResponse.token)
   return _s;
 }
-inline const std::string& LlamaGenerateStreamResponse::_internal_token() const {
+inline const std::string& GenerateStreamResponse::_internal_token() const {
   if (_internal_has_token()) {
     return _impl_.type_.token_.Get();
   }
   return ::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited();
 }
-inline void LlamaGenerateStreamResponse::_internal_set_token(const std::string& value) {
+inline void GenerateStreamResponse::_internal_set_token(const std::string& value) {
   if (!_internal_has_token()) {
     clear_type();
     set_has_token();
@@ -1483,7 +1483,7 @@ inline void LlamaGenerateStreamResponse::_internal_set_token(const std::string& 
   }
   _impl_.type_.token_.Set(value, GetArenaForAllocation());
 }
-inline std::string* LlamaGenerateStreamResponse::_internal_mutable_token() {
+inline std::string* GenerateStreamResponse::_internal_mutable_token() {
   if (!_internal_has_token()) {
     clear_type();
     set_has_token();
@@ -1491,8 +1491,8 @@ inline std::string* LlamaGenerateStreamResponse::_internal_mutable_token() {
   }
   return _impl_.type_.token_.Mutable(      GetArenaForAllocation());
 }
-inline std::string* LlamaGenerateStreamResponse::release_token() {
-  // @@protoc_insertion_point(field_release:sentiric.llm.v1.LlamaGenerateStreamResponse.token)
+inline std::string* GenerateStreamResponse::release_token() {
+  // @@protoc_insertion_point(field_release:sentiric.llm.v1.GenerateStreamResponse.token)
   if (_internal_has_token()) {
     clear_has_type();
     return _impl_.type_.token_.Release();
@@ -1500,7 +1500,7 @@ inline std::string* LlamaGenerateStreamResponse::release_token() {
     return nullptr;
   }
 }
-inline void LlamaGenerateStreamResponse::set_allocated_token(std::string* token) {
+inline void GenerateStreamResponse::set_allocated_token(std::string* token) {
   if (has_type()) {
     clear_type();
   }
@@ -1508,20 +1508,20 @@ inline void LlamaGenerateStreamResponse::set_allocated_token(std::string* token)
     set_has_token();
     _impl_.type_.token_.InitAllocated(token, GetArenaForAllocation());
   }
-  // @@protoc_insertion_point(field_set_allocated:sentiric.llm.v1.LlamaGenerateStreamResponse.token)
+  // @@protoc_insertion_point(field_set_allocated:sentiric.llm.v1.GenerateStreamResponse.token)
 }
 
 // .sentiric.llm.v1.FinishDetails finish_details = 2;
-inline bool LlamaGenerateStreamResponse::_internal_has_finish_details() const {
+inline bool GenerateStreamResponse::_internal_has_finish_details() const {
   return type_case() == kFinishDetails;
 }
-inline bool LlamaGenerateStreamResponse::has_finish_details() const {
+inline bool GenerateStreamResponse::has_finish_details() const {
   return _internal_has_finish_details();
 }
-inline void LlamaGenerateStreamResponse::set_has_finish_details() {
+inline void GenerateStreamResponse::set_has_finish_details() {
   _impl_._oneof_case_[0] = kFinishDetails;
 }
-inline void LlamaGenerateStreamResponse::clear_finish_details() {
+inline void GenerateStreamResponse::clear_finish_details() {
   if (_internal_has_finish_details()) {
     if (GetArenaForAllocation() == nullptr) {
       delete _impl_.type_.finish_details_;
@@ -1529,8 +1529,8 @@ inline void LlamaGenerateStreamResponse::clear_finish_details() {
     clear_has_type();
   }
 }
-inline ::sentiric::llm::v1::FinishDetails* LlamaGenerateStreamResponse::release_finish_details() {
-  // @@protoc_insertion_point(field_release:sentiric.llm.v1.LlamaGenerateStreamResponse.finish_details)
+inline ::sentiric::llm::v1::FinishDetails* GenerateStreamResponse::release_finish_details() {
+  // @@protoc_insertion_point(field_release:sentiric.llm.v1.GenerateStreamResponse.finish_details)
   if (_internal_has_finish_details()) {
     clear_has_type();
     ::sentiric::llm::v1::FinishDetails* temp = _impl_.type_.finish_details_;
@@ -1543,17 +1543,17 @@ inline ::sentiric::llm::v1::FinishDetails* LlamaGenerateStreamResponse::release_
     return nullptr;
   }
 }
-inline const ::sentiric::llm::v1::FinishDetails& LlamaGenerateStreamResponse::_internal_finish_details() const {
+inline const ::sentiric::llm::v1::FinishDetails& GenerateStreamResponse::_internal_finish_details() const {
   return _internal_has_finish_details()
       ? *_impl_.type_.finish_details_
       : reinterpret_cast< ::sentiric::llm::v1::FinishDetails&>(::sentiric::llm::v1::_FinishDetails_default_instance_);
 }
-inline const ::sentiric::llm::v1::FinishDetails& LlamaGenerateStreamResponse::finish_details() const {
-  // @@protoc_insertion_point(field_get:sentiric.llm.v1.LlamaGenerateStreamResponse.finish_details)
+inline const ::sentiric::llm::v1::FinishDetails& GenerateStreamResponse::finish_details() const {
+  // @@protoc_insertion_point(field_get:sentiric.llm.v1.GenerateStreamResponse.finish_details)
   return _internal_finish_details();
 }
-inline ::sentiric::llm::v1::FinishDetails* LlamaGenerateStreamResponse::unsafe_arena_release_finish_details() {
-  // @@protoc_insertion_point(field_unsafe_arena_release:sentiric.llm.v1.LlamaGenerateStreamResponse.finish_details)
+inline ::sentiric::llm::v1::FinishDetails* GenerateStreamResponse::unsafe_arena_release_finish_details() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:sentiric.llm.v1.GenerateStreamResponse.finish_details)
   if (_internal_has_finish_details()) {
     clear_has_type();
     ::sentiric::llm::v1::FinishDetails* temp = _impl_.type_.finish_details_;
@@ -1563,15 +1563,15 @@ inline ::sentiric::llm::v1::FinishDetails* LlamaGenerateStreamResponse::unsafe_a
     return nullptr;
   }
 }
-inline void LlamaGenerateStreamResponse::unsafe_arena_set_allocated_finish_details(::sentiric::llm::v1::FinishDetails* finish_details) {
+inline void GenerateStreamResponse::unsafe_arena_set_allocated_finish_details(::sentiric::llm::v1::FinishDetails* finish_details) {
   clear_type();
   if (finish_details) {
     set_has_finish_details();
     _impl_.type_.finish_details_ = finish_details;
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:sentiric.llm.v1.LlamaGenerateStreamResponse.finish_details)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:sentiric.llm.v1.GenerateStreamResponse.finish_details)
 }
-inline ::sentiric::llm::v1::FinishDetails* LlamaGenerateStreamResponse::_internal_mutable_finish_details() {
+inline ::sentiric::llm::v1::FinishDetails* GenerateStreamResponse::_internal_mutable_finish_details() {
   if (!_internal_has_finish_details()) {
     clear_type();
     set_has_finish_details();
@@ -1579,20 +1579,20 @@ inline ::sentiric::llm::v1::FinishDetails* LlamaGenerateStreamResponse::_interna
   }
   return _impl_.type_.finish_details_;
 }
-inline ::sentiric::llm::v1::FinishDetails* LlamaGenerateStreamResponse::mutable_finish_details() {
+inline ::sentiric::llm::v1::FinishDetails* GenerateStreamResponse::mutable_finish_details() {
   ::sentiric::llm::v1::FinishDetails* _msg = _internal_mutable_finish_details();
-  // @@protoc_insertion_point(field_mutable:sentiric.llm.v1.LlamaGenerateStreamResponse.finish_details)
+  // @@protoc_insertion_point(field_mutable:sentiric.llm.v1.GenerateStreamResponse.finish_details)
   return _msg;
 }
 
-inline bool LlamaGenerateStreamResponse::has_type() const {
+inline bool GenerateStreamResponse::has_type() const {
   return type_case() != TYPE_NOT_SET;
 }
-inline void LlamaGenerateStreamResponse::clear_has_type() {
+inline void GenerateStreamResponse::clear_has_type() {
   _impl_._oneof_case_[0] = TYPE_NOT_SET;
 }
-inline LlamaGenerateStreamResponse::TypeCase LlamaGenerateStreamResponse::type_case() const {
-  return LlamaGenerateStreamResponse::TypeCase(_impl_._oneof_case_[0]);
+inline GenerateStreamResponse::TypeCase GenerateStreamResponse::type_case() const {
+  return GenerateStreamResponse::TypeCase(_impl_._oneof_case_[0]);
 }
 // -------------------------------------------------------------------
 

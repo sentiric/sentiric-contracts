@@ -6,14 +6,7 @@ from sentiric.llm.v1 import llama_pb2 as sentiric_dot_llm_dot_v1_dot_llama__pb2
 
 
 class LlamaServiceStub(object):
-    """=============================================================================
-    LLAMA ENGINE SERVICE (INTERNAL)
-    =============================================================================
-    Bu servis, Gateway veya doğrudan Client tarafından Llama.cpp motoruna 
-    erişmek için kullanılır.
-
-    ESKİ: LLMLocalService
-    """
+    """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):
         """Constructor.
@@ -23,23 +16,16 @@ class LlamaServiceStub(object):
         """
         self.GenerateStream = channel.unary_stream(
                 '/sentiric.llm.v1.LlamaService/GenerateStream',
-                request_serializer=sentiric_dot_llm_dot_v1_dot_llama__pb2.LlamaGenerateStreamRequest.SerializeToString,
-                response_deserializer=sentiric_dot_llm_dot_v1_dot_llama__pb2.LlamaGenerateStreamResponse.FromString,
+                request_serializer=sentiric_dot_llm_dot_v1_dot_llama__pb2.GenerateStreamRequest.SerializeToString,
+                response_deserializer=sentiric_dot_llm_dot_v1_dot_llama__pb2.GenerateStreamResponse.FromString,
                 _registered_method=True)
 
 
 class LlamaServiceServicer(object):
-    """=============================================================================
-    LLAMA ENGINE SERVICE (INTERNAL)
-    =============================================================================
-    Bu servis, Gateway veya doğrudan Client tarafından Llama.cpp motoruna 
-    erişmek için kullanılır.
-
-    ESKİ: LLMLocalService
-    """
+    """Missing associated documentation comment in .proto file."""
 
     def GenerateStream(self, request, context):
-        """Token akışı sağlayan ana üretim metodu
+        """RPC Adı: GenerateStream
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -50,8 +36,8 @@ def add_LlamaServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'GenerateStream': grpc.unary_stream_rpc_method_handler(
                     servicer.GenerateStream,
-                    request_deserializer=sentiric_dot_llm_dot_v1_dot_llama__pb2.LlamaGenerateStreamRequest.FromString,
-                    response_serializer=sentiric_dot_llm_dot_v1_dot_llama__pb2.LlamaGenerateStreamResponse.SerializeToString,
+                    request_deserializer=sentiric_dot_llm_dot_v1_dot_llama__pb2.GenerateStreamRequest.FromString,
+                    response_serializer=sentiric_dot_llm_dot_v1_dot_llama__pb2.GenerateStreamResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -62,14 +48,7 @@ def add_LlamaServiceServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class LlamaService(object):
-    """=============================================================================
-    LLAMA ENGINE SERVICE (INTERNAL)
-    =============================================================================
-    Bu servis, Gateway veya doğrudan Client tarafından Llama.cpp motoruna 
-    erişmek için kullanılır.
-
-    ESKİ: LLMLocalService
-    """
+    """Missing associated documentation comment in .proto file."""
 
     @staticmethod
     def GenerateStream(request,
@@ -86,8 +65,8 @@ class LlamaService(object):
             request,
             target,
             '/sentiric.llm.v1.LlamaService/GenerateStream',
-            sentiric_dot_llm_dot_v1_dot_llama__pb2.LlamaGenerateStreamRequest.SerializeToString,
-            sentiric_dot_llm_dot_v1_dot_llama__pb2.LlamaGenerateStreamResponse.FromString,
+            sentiric_dot_llm_dot_v1_dot_llama__pb2.GenerateStreamRequest.SerializeToString,
+            sentiric_dot_llm_dot_v1_dot_llama__pb2.GenerateStreamResponse.FromString,
             options,
             channel_credentials,
             insecure,
