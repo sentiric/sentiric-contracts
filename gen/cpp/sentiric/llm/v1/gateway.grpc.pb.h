@@ -30,8 +30,10 @@ namespace llm {
 namespace v1 {
 
 // =============================================================================
-//                      ANA SERVİS TANIMI
+// LLM GATEWAY SERVICE
 // =============================================================================
+// Bu servis, farklı LLM motorlarını (Llama, OpenAI, Claude vb.) soyutlar.
+//
 class LlmGatewayService final {
  public:
   static constexpr char const* service_full_name() {
@@ -40,7 +42,6 @@ class LlmGatewayService final {
   class StubInterface {
    public:
     virtual ~StubInterface() {}
-    // DÜZELTME: RPC, artık yeni kapsayıcı mesajları kullanıyor.
     std::unique_ptr< ::grpc::ClientReaderInterface< ::sentiric::llm::v1::GenerateDialogStreamResponse>> GenerateDialogStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateDialogStreamRequest& request) {
       return std::unique_ptr< ::grpc::ClientReaderInterface< ::sentiric::llm::v1::GenerateDialogStreamResponse>>(GenerateDialogStreamRaw(context, request));
     }
@@ -53,7 +54,6 @@ class LlmGatewayService final {
     class async_interface {
      public:
       virtual ~async_interface() {}
-      // DÜZELTME: RPC, artık yeni kapsayıcı mesajları kullanıyor.
       virtual void GenerateDialogStream(::grpc::ClientContext* context, const ::sentiric::llm::v1::GenerateDialogStreamRequest* request, ::grpc::ClientReadReactor< ::sentiric::llm::v1::GenerateDialogStreamResponse>* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
@@ -102,7 +102,6 @@ class LlmGatewayService final {
    public:
     Service();
     virtual ~Service();
-    // DÜZELTME: RPC, artık yeni kapsayıcı mesajları kullanıyor.
     virtual ::grpc::Status GenerateDialogStream(::grpc::ServerContext* context, const ::sentiric::llm::v1::GenerateDialogStreamRequest* request, ::grpc::ServerWriter< ::sentiric::llm::v1::GenerateDialogStreamResponse>* writer);
   };
   template <class BaseClass>

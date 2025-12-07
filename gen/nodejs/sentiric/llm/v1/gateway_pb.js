@@ -15,8 +15,8 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = globalThis;
 
-var sentiric_llm_v1_local_pb = require('../../../sentiric/llm/v1/local_pb.js');
-goog.object.extend(proto, sentiric_llm_v1_local_pb);
+var sentiric_llm_v1_llama_pb = require('../../../sentiric/llm/v1/llama_pb.js');
+goog.object.extend(proto, sentiric_llm_v1_llama_pb);
 goog.exportSymbol('proto.sentiric.llm.v1.GenerateDialogStreamRequest', null, global);
 goog.exportSymbol('proto.sentiric.llm.v1.GenerateDialogStreamResponse', null, global);
 /**
@@ -95,7 +95,7 @@ proto.sentiric.llm.v1.GenerateDialogStreamRequest.toObject = function(includeIns
   var f, obj = {
 modelSelector: jspb.Message.getFieldWithDefault(msg, 1, ""),
 tenantId: jspb.Message.getFieldWithDefault(msg, 2, ""),
-localRequest: (f = msg.getLocalRequest()) && sentiric_llm_v1_local_pb.LLMLocalServiceGenerateStreamRequest.toObject(includeInstance, f)
+llamaRequest: (f = msg.getLlamaRequest()) && sentiric_llm_v1_llama_pb.LlamaGenerateStreamRequest.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -141,9 +141,9 @@ proto.sentiric.llm.v1.GenerateDialogStreamRequest.deserializeBinaryFromReader = 
       msg.setTenantId(value);
       break;
     case 10:
-      var value = new sentiric_llm_v1_local_pb.LLMLocalServiceGenerateStreamRequest;
-      reader.readMessage(value,sentiric_llm_v1_local_pb.LLMLocalServiceGenerateStreamRequest.deserializeBinaryFromReader);
-      msg.setLocalRequest(value);
+      var value = new sentiric_llm_v1_llama_pb.LlamaGenerateStreamRequest;
+      reader.readMessage(value,sentiric_llm_v1_llama_pb.LlamaGenerateStreamRequest.deserializeBinaryFromReader);
+      msg.setLlamaRequest(value);
       break;
     default:
       reader.skipField();
@@ -188,12 +188,12 @@ proto.sentiric.llm.v1.GenerateDialogStreamRequest.serializeBinaryToWriter = func
       f
     );
   }
-  f = message.getLocalRequest();
+  f = message.getLlamaRequest();
   if (f != null) {
     writer.writeMessage(
       10,
       f,
-      sentiric_llm_v1_local_pb.LLMLocalServiceGenerateStreamRequest.serializeBinaryToWriter
+      sentiric_llm_v1_llama_pb.LlamaGenerateStreamRequest.serializeBinaryToWriter
     );
   }
 };
@@ -236,20 +236,20 @@ proto.sentiric.llm.v1.GenerateDialogStreamRequest.prototype.setTenantId = functi
 
 
 /**
- * optional LLMLocalServiceGenerateStreamRequest local_request = 10;
- * @return {?proto.sentiric.llm.v1.LLMLocalServiceGenerateStreamRequest}
+ * optional LlamaGenerateStreamRequest llama_request = 10;
+ * @return {?proto.sentiric.llm.v1.LlamaGenerateStreamRequest}
  */
-proto.sentiric.llm.v1.GenerateDialogStreamRequest.prototype.getLocalRequest = function() {
-  return /** @type{?proto.sentiric.llm.v1.LLMLocalServiceGenerateStreamRequest} */ (
-    jspb.Message.getWrapperField(this, sentiric_llm_v1_local_pb.LLMLocalServiceGenerateStreamRequest, 10));
+proto.sentiric.llm.v1.GenerateDialogStreamRequest.prototype.getLlamaRequest = function() {
+  return /** @type{?proto.sentiric.llm.v1.LlamaGenerateStreamRequest} */ (
+    jspb.Message.getWrapperField(this, sentiric_llm_v1_llama_pb.LlamaGenerateStreamRequest, 10));
 };
 
 
 /**
- * @param {?proto.sentiric.llm.v1.LLMLocalServiceGenerateStreamRequest|undefined} value
+ * @param {?proto.sentiric.llm.v1.LlamaGenerateStreamRequest|undefined} value
  * @return {!proto.sentiric.llm.v1.GenerateDialogStreamRequest} returns this
 */
-proto.sentiric.llm.v1.GenerateDialogStreamRequest.prototype.setLocalRequest = function(value) {
+proto.sentiric.llm.v1.GenerateDialogStreamRequest.prototype.setLlamaRequest = function(value) {
   return jspb.Message.setWrapperField(this, 10, value);
 };
 
@@ -258,8 +258,8 @@ proto.sentiric.llm.v1.GenerateDialogStreamRequest.prototype.setLocalRequest = fu
  * Clears the message field making it undefined.
  * @return {!proto.sentiric.llm.v1.GenerateDialogStreamRequest} returns this
  */
-proto.sentiric.llm.v1.GenerateDialogStreamRequest.prototype.clearLocalRequest = function() {
-  return this.setLocalRequest(undefined);
+proto.sentiric.llm.v1.GenerateDialogStreamRequest.prototype.clearLlamaRequest = function() {
+  return this.setLlamaRequest(undefined);
 };
 
 
@@ -267,7 +267,7 @@ proto.sentiric.llm.v1.GenerateDialogStreamRequest.prototype.clearLocalRequest = 
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.sentiric.llm.v1.GenerateDialogStreamRequest.prototype.hasLocalRequest = function() {
+proto.sentiric.llm.v1.GenerateDialogStreamRequest.prototype.hasLlamaRequest = function() {
   return jspb.Message.getField(this, 10) != null;
 };
 
@@ -304,7 +304,7 @@ proto.sentiric.llm.v1.GenerateDialogStreamResponse.prototype.toObject = function
  */
 proto.sentiric.llm.v1.GenerateDialogStreamResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-localResponse: (f = msg.getLocalResponse()) && sentiric_llm_v1_local_pb.LLMLocalServiceGenerateStreamResponse.toObject(includeInstance, f)
+llamaResponse: (f = msg.getLlamaResponse()) && sentiric_llm_v1_llama_pb.LlamaGenerateStreamResponse.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -342,9 +342,9 @@ proto.sentiric.llm.v1.GenerateDialogStreamResponse.deserializeBinaryFromReader =
     var field = reader.getFieldNumber();
     switch (field) {
     case 10:
-      var value = new sentiric_llm_v1_local_pb.LLMLocalServiceGenerateStreamResponse;
-      reader.readMessage(value,sentiric_llm_v1_local_pb.LLMLocalServiceGenerateStreamResponse.deserializeBinaryFromReader);
-      msg.setLocalResponse(value);
+      var value = new sentiric_llm_v1_llama_pb.LlamaGenerateStreamResponse;
+      reader.readMessage(value,sentiric_llm_v1_llama_pb.LlamaGenerateStreamResponse.deserializeBinaryFromReader);
+      msg.setLlamaResponse(value);
       break;
     default:
       reader.skipField();
@@ -375,32 +375,32 @@ proto.sentiric.llm.v1.GenerateDialogStreamResponse.prototype.serializeBinary = f
  */
 proto.sentiric.llm.v1.GenerateDialogStreamResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getLocalResponse();
+  f = message.getLlamaResponse();
   if (f != null) {
     writer.writeMessage(
       10,
       f,
-      sentiric_llm_v1_local_pb.LLMLocalServiceGenerateStreamResponse.serializeBinaryToWriter
+      sentiric_llm_v1_llama_pb.LlamaGenerateStreamResponse.serializeBinaryToWriter
     );
   }
 };
 
 
 /**
- * optional LLMLocalServiceGenerateStreamResponse local_response = 10;
- * @return {?proto.sentiric.llm.v1.LLMLocalServiceGenerateStreamResponse}
+ * optional LlamaGenerateStreamResponse llama_response = 10;
+ * @return {?proto.sentiric.llm.v1.LlamaGenerateStreamResponse}
  */
-proto.sentiric.llm.v1.GenerateDialogStreamResponse.prototype.getLocalResponse = function() {
-  return /** @type{?proto.sentiric.llm.v1.LLMLocalServiceGenerateStreamResponse} */ (
-    jspb.Message.getWrapperField(this, sentiric_llm_v1_local_pb.LLMLocalServiceGenerateStreamResponse, 10));
+proto.sentiric.llm.v1.GenerateDialogStreamResponse.prototype.getLlamaResponse = function() {
+  return /** @type{?proto.sentiric.llm.v1.LlamaGenerateStreamResponse} */ (
+    jspb.Message.getWrapperField(this, sentiric_llm_v1_llama_pb.LlamaGenerateStreamResponse, 10));
 };
 
 
 /**
- * @param {?proto.sentiric.llm.v1.LLMLocalServiceGenerateStreamResponse|undefined} value
+ * @param {?proto.sentiric.llm.v1.LlamaGenerateStreamResponse|undefined} value
  * @return {!proto.sentiric.llm.v1.GenerateDialogStreamResponse} returns this
 */
-proto.sentiric.llm.v1.GenerateDialogStreamResponse.prototype.setLocalResponse = function(value) {
+proto.sentiric.llm.v1.GenerateDialogStreamResponse.prototype.setLlamaResponse = function(value) {
   return jspb.Message.setWrapperField(this, 10, value);
 };
 
@@ -409,8 +409,8 @@ proto.sentiric.llm.v1.GenerateDialogStreamResponse.prototype.setLocalResponse = 
  * Clears the message field making it undefined.
  * @return {!proto.sentiric.llm.v1.GenerateDialogStreamResponse} returns this
  */
-proto.sentiric.llm.v1.GenerateDialogStreamResponse.prototype.clearLocalResponse = function() {
-  return this.setLocalResponse(undefined);
+proto.sentiric.llm.v1.GenerateDialogStreamResponse.prototype.clearLlamaResponse = function() {
+  return this.setLlamaResponse(undefined);
 };
 
 
@@ -418,7 +418,7 @@ proto.sentiric.llm.v1.GenerateDialogStreamResponse.prototype.clearLocalResponse 
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.sentiric.llm.v1.GenerateDialogStreamResponse.prototype.hasLocalResponse = function() {
+proto.sentiric.llm.v1.GenerateDialogStreamResponse.prototype.hasLlamaResponse = function() {
   return jspb.Message.getField(this, 10) != null;
 };
 

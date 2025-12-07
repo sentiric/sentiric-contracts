@@ -1,0 +1,68 @@
+syntax = "proto3";
+
+package sentiric.tts.v1;
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/tts/v1;ttsv1";
+
+// =============================================================================
+// TTS GATEWAY SERVICE (PUBLIC FACING)
+// =============================================================================
+// İstemciler (Web, Mobil, Diğer Servisler) bu servisi kullanır.
+// Hangi motorun kullanıldığını bilmezler, sadece "VoiceID" bilirler.
+
+service TtsGatewayService {
+  // Standart Sentezleme
+  rpc Synthesize(SynthesizeRequest) returns (SynthesizeResponse);
+
+  // Akış Sentezleme
+  rpc SynthesizeStream(SynthesizeRequest) returns (stream SynthesizeResponse);
+  
+  // Mevcut Sesleri Listeleme
+  rpc ListVoices(ListVoicesRequest) returns (ListVoicesResponse);
+}
+
+// =============================================================================
+// GENEL MESAJLAR (PROVIDER AGNOSTIC)
+// =============================================================================
+
+message SynthesizeRequest {
+  string text = 1;
+  
+  // "Text" veya "SSML"
+  string text_type = 2;
+
+  // Örn: "TR_Ece_Neutral"
+  // Gateway bu ID'yi alıp Coqui için gerekli "speaker_wav"ı bulur.
+  string voice_id = 3;
+
+  // İstenen çıktı formatı (Gateway, ffmpeg ile dönüşüm yapar)
+  // "mp3", "wav", "opus", "pcm"
+  string output_format = 4;
+  int32 sample_rate = 5;
+
+  // İnce ayarlar (Opsiyonel)
+  optional float speed = 6;
+  optional float volume = 7;
+  optional float pitch = 8;
+}
+
+message SynthesizeResponse {
+  bytes audio_content = 1;
+  string content_type = 2; // "audio/mpeg", "audio/wav"
+}
+
+message ListVoicesRequest {
+  string language_code = 1;
+}
+
+message ListVoicesResponse {
+  repeated VoiceInfo voices = 1;
+}
+
+message VoiceInfo {
+  string id = 1;
+  string name = 2;
+  string language = 3;
+  string gender = 4;
+  repeated string styles = 5; // ["neutral", "happy"]
+}

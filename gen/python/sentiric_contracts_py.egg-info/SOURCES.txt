@@ -43,8 +43,8 @@ gen/python/sentiric/knowledge/v1/query_pb2.py
 gen/python/sentiric/knowledge/v1/query_pb2_grpc.py
 gen/python/sentiric/llm/v1/gateway_pb2.py
 gen/python/sentiric/llm/v1/gateway_pb2_grpc.py
-gen/python/sentiric/llm/v1/local_pb2.py
-gen/python/sentiric/llm/v1/local_pb2_grpc.py
+gen/python/sentiric/llm/v1/llama_pb2.py
+gen/python/sentiric/llm/v1/llama_pb2_grpc.py
 gen/python/sentiric/media/v1/media_pb2.py
 gen/python/sentiric/media/v1/media_pb2_grpc.py
 gen/python/sentiric/sip/v1/b2bua_pb2.py
@@ -65,10 +65,12 @@ gen/python/sentiric/stt/v1/whisper_pb2.py
 gen/python/sentiric/stt/v1/whisper_pb2_grpc.py
 gen/python/sentiric/telephony/v1/action_pb2.py
 gen/python/sentiric/telephony/v1/action_pb2_grpc.py
+gen/python/sentiric/tts/v1/coqui_pb2.py
+gen/python/sentiric/tts/v1/coqui_pb2_grpc.py
 gen/python/sentiric/tts/v1/edge_pb2.py
 gen/python/sentiric/tts/v1/edge_pb2_grpc.py
-gen/python/sentiric/tts/v1/tts_pb2.py
-gen/python/sentiric/tts/v1/tts_pb2_grpc.py
+gen/python/sentiric/tts/v1/gateway_pb2.py
+gen/python/sentiric/tts/v1/gateway_pb2_grpc.py
 gen/python/sentiric/user/v1/identity_pb2.py
 gen/python/sentiric/user/v1/identity_pb2_grpc.py
 gen/python/sentiric/user/v1/user_pb2.py

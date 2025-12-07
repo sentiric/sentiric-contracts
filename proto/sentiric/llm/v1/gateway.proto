@@ -2,31 +2,34 @@ syntax = "proto3";
 
 package sentiric.llm.v1;
 
-import "sentiric/llm/v1/local.proto";
+// KRİTİK DÜZELTME: Artık 'llama.proto' import ediliyor
+import "sentiric/llm/v1/llama.proto";
 
 option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/llm/v1;llmv1";
 
 // =============================================================================
-//                      ANA SERVİS TANIMI
+// LLM GATEWAY SERVICE
 // =============================================================================
+// Bu servis, farklı LLM motorlarını (Llama, OpenAI, Claude vb.) soyutlar.
+
 service LlmGatewayService {
-  // DÜZELTME: RPC, artık yeni kapsayıcı mesajları kullanıyor.
   rpc GenerateDialogStream(GenerateDialogStreamRequest) returns (stream GenerateDialogStreamResponse);
 }
 
 // =============================================================================
-//                      RPC MESAJ TANIMLARI
+// RPC MESAJ TANIMLARI
 // =============================================================================
 
 message GenerateDialogStreamRequest {
-  string model_selector = 1;
+  string model_selector = 1; // örn: "llama-3-8b", "gpt-4"
   string tenant_id = 2;
 
-  // DÜZELTME: Bu alan artık yeni, CI uyumlu mesaj tipini kullanıyor.
-  LLMLocalServiceGenerateStreamRequest local_request = 10;
+  // Llama.cpp motoruna özgü parametreler
+  // DÜZELTME: Tip adı LlamaGenerateStreamRequest olarak güncellendi
+  sentiric.llm.v1.LlamaGenerateStreamRequest llama_request = 10;
 }
 
 message GenerateDialogStreamResponse {
-  // DÜZELTME: Bu alan artık yeni, CI uyumlu mesaj tipini kullanıyor.
-  LLMLocalServiceGenerateStreamResponse local_response = 10;
+  // DÜZELTME: Tip adı LlamaGenerateStreamResponse olarak güncellendi
+  sentiric.llm.v1.LlamaGenerateStreamResponse llama_response = 10;
 }

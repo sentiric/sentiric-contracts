@@ -3,7 +3,7 @@
 'use strict';
 var grpc = require('@grpc/grpc-js');
 var sentiric_llm_v1_gateway_pb = require('../../../sentiric/llm/v1/gateway_pb.js');
-var sentiric_llm_v1_local_pb = require('../../../sentiric/llm/v1/local_pb.js');
+var sentiric_llm_v1_llama_pb = require('../../../sentiric/llm/v1/llama_pb.js');
 
 function serialize_sentiric_llm_v1_GenerateDialogStreamRequest(arg) {
   if (!(arg instanceof sentiric_llm_v1_gateway_pb.GenerateDialogStreamRequest)) {
@@ -29,11 +29,12 @@ function deserialize_sentiric_llm_v1_GenerateDialogStreamResponse(buffer_arg) {
 
 
 // =============================================================================
-//                      ANA SERVİS TANIMI
+// LLM GATEWAY SERVICE
 // =============================================================================
+// Bu servis, farklı LLM motorlarını (Llama, OpenAI, Claude vb.) soyutlar.
+//
 var LlmGatewayServiceService = exports.LlmGatewayServiceService = {
-  // DÜZELTME: RPC, artık yeni kapsayıcı mesajları kullanıyor.
-generateDialogStream: {
+  generateDialogStream: {
     path: '/sentiric.llm.v1.LlmGatewayService/GenerateDialogStream',
     requestStream: false,
     responseStream: true,

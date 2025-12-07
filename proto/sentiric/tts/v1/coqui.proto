@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package sentiric.tts.v1;
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/tts/v1;ttsv1";
+
+// =============================================================================
+// COQUI ENGINE SERVICE (INTERNAL)
+// =============================================================================
+// Bu servis, Gateway tarafından çağrılır. Doğrudan son kullanıcıya açılmaz.
+// Coqui XTTS v2 modeline özgü düşük seviyeli parametreleri kabul eder.
+
+service TtsCoquiService {
+  // Tekil sentezleme (Dosya tabanlı çıktı)
+  rpc CoquiSynthesize(CoquiSynthesizeRequest) returns (CoquiSynthesizeResponse);
+  
+  // Streaming sentezleme (Düşük gecikmeli chunk çıkışı)
+  rpc CoquiSynthesizeStream(CoquiSynthesizeRequest) returns (stream CoquiSynthesizeResponse);
+}
+
+// =============================================================================
+// COQUI SPESİFİK MESAJLAR
+// =============================================================================
+
+message CoquiSynthesizeRequest {
+  string text = 1;
+  string language_code = 2; // örn: "tr", "en" (XTTS destekli diller)
+
+  // Coqui'nin "Voice Cloning" yeteneği için ham ses verisi.
+  // Gateway, veritabanındaki "VoiceID"den bu wav dosyasını bulup buraya yazar.
+  bytes speaker_wav = 3;
+  
+  // Model Parametreleri (Gateway'deki 'ProsodyConfig' buraya map edilir)
+  float temperature = 4;        // Varsayılan: 0.75
+  float speed = 5;              // Varsayılan: 1.0
+  float top_p = 6;              // Varsayılan: 0.85
+  float top_k = 7;              // Varsayılan: 50
+  float repetition_penalty = 8; // Varsayılan: 5.0
+  
+  // Çıktı formatı tercihi (Engine seviyesinde WAV veya PCM genelde sabittir ama esneklik için)
+  string output_format = 9;     // "wav", "pcm"
+}
+
+message CoquiSynthesizeResponse {
+  // XTTS genelde 24000Hz PCM/WAV üretir.
+  bytes audio_chunk = 1;
+  
+  // Engine tarafından sağlanan debug bilgileri
+  bool is_final = 2;
+}

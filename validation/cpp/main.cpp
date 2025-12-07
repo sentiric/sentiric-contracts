@@ -1,10 +1,10 @@
 // Dosya Yolu: validation/cpp/main.cpp
-#include "sentiric/llm/v1/local.pb.h"
+#include "sentiric/llm/v1/llama.pb.h"
 #include <iostream>
 
 int main() {
     // DÜZELTME: Nihai, CI uyumlu mesaj adı kullanılıyor.
-    sentiric::llm::v1::LLMLocalServiceGenerateStreamRequest req;
+    sentiric::llm::v1::LlamaGenerateStreamRequest req;
     
     req.set_user_prompt("Hello, C++ validation!");
     

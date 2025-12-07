@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+package sentiric.llm.v1;
+
+import "google/protobuf/struct.proto";
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/llm/v1;llmv1";
+
+// =============================================================================
+// LLAMA ENGINE SERVICE (INTERNAL)
+// =============================================================================
+// Bu servis, Gateway veya doğrudan Client tarafından Llama.cpp motoruna 
+// erişmek için kullanılır.
+
+service LlamaService { // ESKİ: LLMLocalService
+  // Token akışı sağlayan ana üretim metodu
+  rpc GenerateStream(LlamaGenerateStreamRequest) returns (stream LlamaGenerateStreamResponse);
+}
+
+// =============================================================================
+// RPC MESAJ TANIMLARI
+// =============================================================================
+
+message LlamaGenerateStreamRequest { // ESKİ: LLMLocalServiceGenerateStreamRequest
+  string system_prompt = 1;
+  string user_prompt = 2;
+  optional string rag_context = 3;
+  repeated ConversationTurn history = 4;
+  optional GenerationParams params = 5;
+}
+
+message LlamaGenerateStreamResponse { // ESKİ: LLMLocalServiceGenerateStreamResponse
+  oneof type {
+    string token = 1; // UTF-8 string olarak token
+    FinishDetails finish_details = 2;
+  }
+}
+
+// =============================================================================
+// YARDIMCI MESAJ TANIMLARI
+// =============================================================================
+
+message ConversationTurn {
+  string role = 1;    // "user", "assistant", "system"
+  string content = 2;
+}
+
+message GenerationParams {
+  optional int32 max_new_tokens = 1;
+  optional float temperature = 2;
+  optional int32 top_k = 3;
+  optional float top_p = 4;
+  optional float repetition_penalty = 5;
+  repeated string stop_sequences = 6;
+  optional int64 seed = 7;
+  // Motor spesifik ekstra parametreler (örn: mirostat)
+  optional google.protobuf.Struct engine_specific_params = 20;
+}
+
+message FinishDetails {
+  string finish_reason = 1; // "stop", "length", "error"
+  int32 prompt_tokens = 2;
+  int32 completion_tokens = 3;
+}

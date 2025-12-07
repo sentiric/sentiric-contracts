@@ -31,15 +31,13 @@ build-rust:
 
 validate-py:
 	@echo "--- Validating Python package... ---"
-	@# DÜZELTME 1: Önceki denemelerden kalan artıkları temizle
 	@rm -rf .venv dist build *.egg-info
 	python3 -m venv .venv
 	@. .venv/bin/activate && \
 		pip install -q build wheel && \
 		python3 -m build && \
 		pip install -q dist/*.whl && \
-		python3 -c "from sentiric.llm.v1 import local_pb2; print('Python import OK')"
-	@# DÜZELTME 2: 'deactivate' komutu kaldırıldı ve temizlik komutu 'clean-py' hedefine taşındı.
+		python3 -c "from sentiric.llm.v1 import llama_pb2; from sentiric.tts.v1 import gateway_pb2; from sentiric.tts.v1 import coqui_pb2; print('✅ Python imports OK (Llama, Gateway, Coqui)')"
 
 validate-cpp:
 	@echo "--- Validating C++ build... ---"
