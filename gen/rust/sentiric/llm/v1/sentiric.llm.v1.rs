@@ -23,8 +23,11 @@ pub struct GenerateStreamResponse {
 pub mod generate_stream_response {
     #[derive(Clone, PartialEq, Eq, Hash, ::prost::Oneof)]
     pub enum Type {
-        #[prost(string, tag="1")]
-        Token(::prost::alloc::string::String),
+        /// \[DEĞİŞİKLİK\] String yerine bytes kullanıyoruz.
+        /// LLM tokenları bazen yarım UTF-8 karakteri içerebilir.
+        /// Protobuf string tipi UTF-8 doğrulaması yaptığı için hata veriyordu.
+        #[prost(bytes, tag="1")]
+        Token(::prost::alloc::vec::Vec<u8>),
         #[prost(message, tag="2")]
         FinishDetails(super::FinishDetails),
     }

@@ -505,7 +505,7 @@ proto.sentiric.llm.v1.GenerateStreamResponse.prototype.toObject = function(opt_i
  */
 proto.sentiric.llm.v1.GenerateStreamResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-token: (f = jspb.Message.getField(msg, 1)) == null ? undefined : f,
+token: msg.getToken_asB64(),
 finishDetails: (f = msg.getFinishDetails()) && proto.sentiric.llm.v1.FinishDetails.toObject(includeInstance, f)
   };
 
@@ -544,7 +544,7 @@ proto.sentiric.llm.v1.GenerateStreamResponse.deserializeBinaryFromReader = funct
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readStringRequireUtf8());
+      var value = /** @type {!Uint8Array} */ (reader.readBytes());
       msg.setToken(value);
       break;
     case 2:
@@ -581,9 +581,9 @@ proto.sentiric.llm.v1.GenerateStreamResponse.prototype.serializeBinary = functio
  */
 proto.sentiric.llm.v1.GenerateStreamResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = /** @type {string} */ (jspb.Message.getField(message, 1));
+  f = /** @type {!(string|Uint8Array)} */ (jspb.Message.getField(message, 1));
   if (f != null) {
-    writer.writeString(
+    writer.writeBytes(
       1,
       f
     );
@@ -600,7 +600,7 @@ proto.sentiric.llm.v1.GenerateStreamResponse.serializeBinaryToWriter = function(
 
 
 /**
- * optional string token = 1;
+ * optional bytes token = 1;
  * @return {string}
  */
 proto.sentiric.llm.v1.GenerateStreamResponse.prototype.getToken = function() {
@@ -609,7 +609,31 @@ proto.sentiric.llm.v1.GenerateStreamResponse.prototype.getToken = function() {
 
 
 /**
- * @param {string} value
+ * optional bytes token = 1;
+ * This is a type-conversion wrapper around `getToken()`
+ * @return {string}
+ */
+proto.sentiric.llm.v1.GenerateStreamResponse.prototype.getToken_asB64 = function() {
+  return /** @type {string} */ (jspb.Message.bytesAsB64(
+      this.getToken()));
+};
+
+
+/**
+ * optional bytes token = 1;
+ * Note that Uint8Array is not supported on all browsers.
+ * @see http://caniuse.com/Uint8Array
+ * This is a type-conversion wrapper around `getToken()`
+ * @return {!Uint8Array}
+ */
+proto.sentiric.llm.v1.GenerateStreamResponse.prototype.getToken_asU8 = function() {
+  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
+      this.getToken()));
+};
+
+
+/**
+ * @param {!(string|Uint8Array)} value
  * @return {!proto.sentiric.llm.v1.GenerateStreamResponse} returns this
  */
 proto.sentiric.llm.v1.GenerateStreamResponse.prototype.setToken = function(value) {

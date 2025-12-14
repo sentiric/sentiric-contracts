@@ -439,7 +439,7 @@ class GenerateStreamResponse final :
     kTokenFieldNumber = 1,
     kFinishDetailsFieldNumber = 2,
   };
-  // string token = 1;
+  // bytes token = 1;
   bool has_token() const;
   private:
   bool _internal_has_token() const;
@@ -1434,7 +1434,7 @@ inline void GenerateStreamRequest::set_allocated_params(::sentiric::llm::v1::Gen
 
 // GenerateStreamResponse
 
-// string token = 1;
+// bytes token = 1;
 inline bool GenerateStreamResponse::_internal_has_token() const {
   return type_case() == kToken;
 }
@@ -1461,7 +1461,7 @@ inline void GenerateStreamResponse::set_token(ArgT0&& arg0, ArgT... args) {
     set_has_token();
     _impl_.type_.token_.InitDefault();
   }
-  _impl_.type_.token_.Set( static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  _impl_.type_.token_.SetBytes( static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
   // @@protoc_insertion_point(field_set:sentiric.llm.v1.GenerateStreamResponse.token)
 }
 inline std::string* GenerateStreamResponse::mutable_token() {

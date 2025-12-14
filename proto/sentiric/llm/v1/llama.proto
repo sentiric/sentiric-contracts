@@ -22,7 +22,10 @@ message GenerateStreamRequest {
 
 message GenerateStreamResponse {
   oneof type {
-    string token = 1;
+    // [DEĞİŞİKLİK] String yerine bytes kullanıyoruz.
+    // LLM tokenları bazen yarım UTF-8 karakteri içerebilir.
+    // Protobuf string tipi UTF-8 doğrulaması yaptığı için hata veriyordu.
+    bytes token = 1;
     FinishDetails finish_details = 2;
   }
 }

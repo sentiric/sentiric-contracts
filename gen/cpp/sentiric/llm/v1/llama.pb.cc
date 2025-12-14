@@ -203,7 +203,7 @@ const char descriptor_table_protodef_sentiric_2fllm_2fv1_2fllama_2eproto[] PROTO
   ".llm.v1.ConversationTurn\0226\n\006params\030\005 \001(\013"
   "2!.sentiric.llm.v1.GenerationParamsH\001\210\001\001"
   "B\016\n\014_rag_contextB\t\n\007_params\"k\n\026GenerateS"
-  "treamResponse\022\017\n\005token\030\001 \001(\tH\000\0228\n\016finish"
+  "treamResponse\022\017\n\005token\030\001 \001(\014H\000\0228\n\016finish"
   "_details\030\002 \001(\0132\036.sentiric.llm.v1.FinishD"
   "etailsH\000B\006\n\004type\"1\n\020ConversationTurn\022\014\n\004"
   "role\030\001 \001(\t\022\017\n\007content\030\002 \001(\t\"\355\002\n\020Generati"
@@ -778,13 +778,12 @@ const char* GenerateStreamResponse::_InternalParse(const char* ptr, ::_pbi::Pars
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // string token = 1;
+      // bytes token = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           auto str = _internal_mutable_token();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "sentiric.llm.v1.GenerateStreamResponse.token"));
         } else
           goto handle_unusual;
         continue;
@@ -825,13 +824,9 @@ uint8_t* GenerateStreamResponse::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // string token = 1;
+  // bytes token = 1;
   if (_internal_has_token()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_token().data(), static_cast<int>(this->_internal_token().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "sentiric.llm.v1.GenerateStreamResponse.token");
-    target = stream->WriteStringMaybeAliased(
+    target = stream->WriteBytesMaybeAliased(
         1, this->_internal_token(), target);
   }
 
@@ -859,10 +854,10 @@ size_t GenerateStreamResponse::ByteSizeLong() const {
   (void) cached_has_bits;
 
   switch (type_case()) {
-    // string token = 1;
+    // bytes token = 1;
     case kToken: {
       total_size += 1 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
           this->_internal_token());
       break;
     }
