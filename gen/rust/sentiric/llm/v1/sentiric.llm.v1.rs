@@ -13,6 +13,10 @@ pub struct GenerateStreamRequest {
     pub history: ::prost::alloc::vec::Vec<ConversationTurn>,
     #[prost(message, optional, tag="5")]
     pub params: ::core::option::Option<GenerationParams>,
+    /// \[YENİ\] LoRA Adaptörünü belirtir. Sadece dosya adı, uzantısız.
+    /// Örn: "customer_service_finetune"
+    #[prost(string, optional, tag="6")]
+    pub lora_adapter_id: ::core::option::Option<::prost::alloc::string::String>,
 }
 #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct GenerateStreamResponse {

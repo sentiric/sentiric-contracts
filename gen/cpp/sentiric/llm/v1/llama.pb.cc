@@ -31,6 +31,7 @@ PROTOBUF_CONSTEXPR GenerateStreamRequest::GenerateStreamRequest(
   , /*decltype(_impl_.system_prompt_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.user_prompt_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.rag_context_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.lora_adapter_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.params_)*/nullptr} {}
 struct GenerateStreamRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR GenerateStreamRequestDefaultTypeInternal()
@@ -124,10 +125,12 @@ const uint32_t TableStruct_sentiric_2fllm_2fv1_2fllama_2eproto::offsets[] PROTOB
   PROTOBUF_FIELD_OFFSET(::sentiric::llm::v1::GenerateStreamRequest, _impl_.rag_context_),
   PROTOBUF_FIELD_OFFSET(::sentiric::llm::v1::GenerateStreamRequest, _impl_.history_),
   PROTOBUF_FIELD_OFFSET(::sentiric::llm::v1::GenerateStreamRequest, _impl_.params_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::llm::v1::GenerateStreamRequest, _impl_.lora_adapter_id_),
   ~0u,
   ~0u,
   0,
   ~0u,
+  2,
   1,
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::sentiric::llm::v1::GenerateStreamResponse, _internal_metadata_),
@@ -179,11 +182,11 @@ const uint32_t TableStruct_sentiric_2fllm_2fv1_2fllama_2eproto::offsets[] PROTOB
   PROTOBUF_FIELD_OFFSET(::sentiric::llm::v1::FinishDetails, _impl_.completion_tokens_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, 11, -1, sizeof(::sentiric::llm::v1::GenerateStreamRequest)},
-  { 16, -1, -1, sizeof(::sentiric::llm::v1::GenerateStreamResponse)},
-  { 25, -1, -1, sizeof(::sentiric::llm::v1::ConversationTurn)},
-  { 33, 47, -1, sizeof(::sentiric::llm::v1::GenerationParams)},
-  { 55, -1, -1, sizeof(::sentiric::llm::v1::FinishDetails)},
+  { 0, 12, -1, sizeof(::sentiric::llm::v1::GenerateStreamRequest)},
+  { 18, -1, -1, sizeof(::sentiric::llm::v1::GenerateStreamResponse)},
+  { 27, -1, -1, sizeof(::sentiric::llm::v1::ConversationTurn)},
+  { 35, 49, -1, sizeof(::sentiric::llm::v1::GenerationParams)},
+  { 57, -1, -1, sizeof(::sentiric::llm::v1::FinishDetails)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -196,41 +199,42 @@ static const ::_pb::Message* const file_default_instances[] = {
 
 const char descriptor_table_protodef_sentiric_2fllm_2fv1_2fllama_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\033sentiric/llm/v1/llama.proto\022\017sentiric."
-  "llm.v1\032\034google/protobuf/struct.proto\"\344\001\n"
+  "llm.v1\032\034google/protobuf/struct.proto\"\226\002\n"
   "\025GenerateStreamRequest\022\025\n\rsystem_prompt\030"
   "\001 \001(\t\022\023\n\013user_prompt\030\002 \001(\t\022\030\n\013rag_contex"
   "t\030\003 \001(\tH\000\210\001\001\0222\n\007history\030\004 \003(\0132!.sentiric"
   ".llm.v1.ConversationTurn\0226\n\006params\030\005 \001(\013"
   "2!.sentiric.llm.v1.GenerationParamsH\001\210\001\001"
-  "B\016\n\014_rag_contextB\t\n\007_params\"k\n\026GenerateS"
-  "treamResponse\022\017\n\005token\030\001 \001(\014H\000\0228\n\016finish"
-  "_details\030\002 \001(\0132\036.sentiric.llm.v1.FinishD"
-  "etailsH\000B\006\n\004type\"1\n\020ConversationTurn\022\014\n\004"
-  "role\030\001 \001(\t\022\017\n\007content\030\002 \001(\t\"\355\002\n\020Generati"
-  "onParams\022\033\n\016max_new_tokens\030\001 \001(\005H\000\210\001\001\022\030\n"
-  "\013temperature\030\002 \001(\002H\001\210\001\001\022\022\n\005top_k\030\003 \001(\005H\002"
-  "\210\001\001\022\022\n\005top_p\030\004 \001(\002H\003\210\001\001\022\037\n\022repetition_pe"
-  "nalty\030\005 \001(\002H\004\210\001\001\022\026\n\016stop_sequences\030\006 \003(\t"
-  "\022\021\n\004seed\030\007 \001(\003H\005\210\001\001\022<\n\026engine_specific_p"
-  "arams\030\024 \001(\0132\027.google.protobuf.StructH\006\210\001"
-  "\001B\021\n\017_max_new_tokensB\016\n\014_temperatureB\010\n\006"
-  "_top_kB\010\n\006_top_pB\025\n\023_repetition_penaltyB"
-  "\007\n\005_seedB\031\n\027_engine_specific_params\"X\n\rF"
-  "inishDetails\022\025\n\rfinish_reason\030\001 \001(\t\022\025\n\rp"
-  "rompt_tokens\030\002 \001(\005\022\031\n\021completion_tokens\030"
-  "\003 \001(\0052s\n\014LlamaService\022c\n\016GenerateStream\022"
-  "&.sentiric.llm.v1.GenerateStreamRequest\032"
-  "\'.sentiric.llm.v1.GenerateStreamResponse"
-  "0\001BEZCgithub.com/sentiric/sentiric-contr"
-  "acts/gen/go/sentiric/llm/v1;llmv1b\006proto"
-  "3"
+  "\022\034\n\017lora_adapter_id\030\006 \001(\tH\002\210\001\001B\016\n\014_rag_c"
+  "ontextB\t\n\007_paramsB\022\n\020_lora_adapter_id\"k\n"
+  "\026GenerateStreamResponse\022\017\n\005token\030\001 \001(\014H\000"
+  "\0228\n\016finish_details\030\002 \001(\0132\036.sentiric.llm."
+  "v1.FinishDetailsH\000B\006\n\004type\"1\n\020Conversati"
+  "onTurn\022\014\n\004role\030\001 \001(\t\022\017\n\007content\030\002 \001(\t\"\355\002"
+  "\n\020GenerationParams\022\033\n\016max_new_tokens\030\001 \001"
+  "(\005H\000\210\001\001\022\030\n\013temperature\030\002 \001(\002H\001\210\001\001\022\022\n\005top"
+  "_k\030\003 \001(\005H\002\210\001\001\022\022\n\005top_p\030\004 \001(\002H\003\210\001\001\022\037\n\022rep"
+  "etition_penalty\030\005 \001(\002H\004\210\001\001\022\026\n\016stop_seque"
+  "nces\030\006 \003(\t\022\021\n\004seed\030\007 \001(\003H\005\210\001\001\022<\n\026engine_"
+  "specific_params\030\024 \001(\0132\027.google.protobuf."
+  "StructH\006\210\001\001B\021\n\017_max_new_tokensB\016\n\014_tempe"
+  "ratureB\010\n\006_top_kB\010\n\006_top_pB\025\n\023_repetitio"
+  "n_penaltyB\007\n\005_seedB\031\n\027_engine_specific_p"
+  "arams\"X\n\rFinishDetails\022\025\n\rfinish_reason\030"
+  "\001 \001(\t\022\025\n\rprompt_tokens\030\002 \001(\005\022\031\n\021completi"
+  "on_tokens\030\003 \001(\0052s\n\014LlamaService\022c\n\016Gener"
+  "ateStream\022&.sentiric.llm.v1.GenerateStre"
+  "amRequest\032\'.sentiric.llm.v1.GenerateStre"
+  "amResponse0\001BEZCgithub.com/sentiric/sent"
+  "iric-contracts/gen/go/sentiric/llm/v1;ll"
+  "mv1b\006proto3"
   ;
 static const ::_pbi::DescriptorTable* const descriptor_table_sentiric_2fllm_2fv1_2fllama_2eproto_deps[1] = {
   &::descriptor_table_google_2fprotobuf_2fstruct_2eproto,
 };
 static ::_pbi::once_flag descriptor_table_sentiric_2fllm_2fv1_2fllama_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_sentiric_2fllm_2fv1_2fllama_2eproto = {
-    false, false, 1121, descriptor_table_protodef_sentiric_2fllm_2fv1_2fllama_2eproto,
+    false, false, 1171, descriptor_table_protodef_sentiric_2fllm_2fv1_2fllama_2eproto,
     "sentiric/llm/v1/llama.proto",
     &descriptor_table_sentiric_2fllm_2fv1_2fllama_2eproto_once, descriptor_table_sentiric_2fllm_2fv1_2fllama_2eproto_deps, 1, 5,
     schemas, file_default_instances, TableStruct_sentiric_2fllm_2fv1_2fllama_2eproto::offsets,
@@ -257,6 +261,9 @@ class GenerateStreamRequest::_Internal {
   }
   static const ::sentiric::llm::v1::GenerationParams& params(const GenerateStreamRequest* msg);
   static void set_has_params(HasBits* has_bits) {
+    (*has_bits)[0] |= 4u;
+  }
+  static void set_has_lora_adapter_id(HasBits* has_bits) {
     (*has_bits)[0] |= 2u;
   }
 };
@@ -281,6 +288,7 @@ GenerateStreamRequest::GenerateStreamRequest(const GenerateStreamRequest& from)
     , decltype(_impl_.system_prompt_){}
     , decltype(_impl_.user_prompt_){}
     , decltype(_impl_.rag_context_){}
+    , decltype(_impl_.lora_adapter_id_){}
     , decltype(_impl_.params_){nullptr}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
@@ -308,6 +316,14 @@ GenerateStreamRequest::GenerateStreamRequest(const GenerateStreamRequest& from)
     _this->_impl_.rag_context_.Set(from._internal_rag_context(), 
       _this->GetArenaForAllocation());
   }
+  _impl_.lora_adapter_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.lora_adapter_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_lora_adapter_id()) {
+    _this->_impl_.lora_adapter_id_.Set(from._internal_lora_adapter_id(), 
+      _this->GetArenaForAllocation());
+  }
   if (from._internal_has_params()) {
     _this->_impl_.params_ = new ::sentiric::llm::v1::GenerationParams(*from._impl_.params_);
   }
@@ -325,6 +341,7 @@ inline void GenerateStreamRequest::SharedCtor(
     , decltype(_impl_.system_prompt_){}
     , decltype(_impl_.user_prompt_){}
     , decltype(_impl_.rag_context_){}
+    , decltype(_impl_.lora_adapter_id_){}
     , decltype(_impl_.params_){nullptr}
   };
   _impl_.system_prompt_.InitDefault();
@@ -338,6 +355,10 @@ inline void GenerateStreamRequest::SharedCtor(
   _impl_.rag_context_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
     _impl_.rag_context_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.lora_adapter_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.lora_adapter_id_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
@@ -356,6 +377,7 @@ inline void GenerateStreamRequest::SharedDtor() {
   _impl_.system_prompt_.Destroy();
   _impl_.user_prompt_.Destroy();
   _impl_.rag_context_.Destroy();
+  _impl_.lora_adapter_id_.Destroy();
   if (this != internal_default_instance()) delete _impl_.params_;
 }
 
@@ -373,11 +395,14 @@ void GenerateStreamRequest::Clear() {
   _impl_.system_prompt_.ClearToEmpty();
   _impl_.user_prompt_.ClearToEmpty();
   cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
+  if (cached_has_bits & 0x00000007u) {
     if (cached_has_bits & 0x00000001u) {
       _impl_.rag_context_.ClearNonDefaultToEmpty();
     }
     if (cached_has_bits & 0x00000002u) {
+      _impl_.lora_adapter_id_.ClearNonDefaultToEmpty();
+    }
+    if (cached_has_bits & 0x00000004u) {
       GOOGLE_DCHECK(_impl_.params_ != nullptr);
       _impl_.params_->Clear();
     }
@@ -441,6 +466,16 @@ const char* GenerateStreamRequest::_InternalParse(const char* ptr, ::_pbi::Parse
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
           ptr = ctx->ParseMessage(_internal_mutable_params(), ptr);
           CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // optional string lora_adapter_id = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 50)) {
+          auto str = _internal_mutable_lora_adapter_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.llm.v1.GenerateStreamRequest.lora_adapter_id"));
         } else
           goto handle_unusual;
         continue;
@@ -519,6 +554,16 @@ uint8_t* GenerateStreamRequest::_InternalSerialize(
         _Internal::params(this).GetCachedSize(), target, stream);
   }
 
+  // optional string lora_adapter_id = 6;
+  if (_internal_has_lora_adapter_id()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_lora_adapter_id().data(), static_cast<int>(this->_internal_lora_adapter_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.llm.v1.GenerateStreamRequest.lora_adapter_id");
+    target = stream->WriteStringMaybeAliased(
+        6, this->_internal_lora_adapter_id(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -557,7 +602,7 @@ size_t GenerateStreamRequest::ByteSizeLong() const {
   }
 
   cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
+  if (cached_has_bits & 0x00000007u) {
     // optional string rag_context = 3;
     if (cached_has_bits & 0x00000001u) {
       total_size += 1 +
@@ -565,8 +610,15 @@ size_t GenerateStreamRequest::ByteSizeLong() const {
           this->_internal_rag_context());
     }
 
-    // optional .sentiric.llm.v1.GenerationParams params = 5;
+    // optional string lora_adapter_id = 6;
     if (cached_has_bits & 0x00000002u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+          this->_internal_lora_adapter_id());
+    }
+
+    // optional .sentiric.llm.v1.GenerationParams params = 5;
+    if (cached_has_bits & 0x00000004u) {
       total_size += 1 +
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
           *_impl_.params_);
@@ -599,11 +651,14 @@ void GenerateStreamRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, 
     _this->_internal_set_user_prompt(from._internal_user_prompt());
   }
   cached_has_bits = from._impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
+  if (cached_has_bits & 0x00000007u) {
     if (cached_has_bits & 0x00000001u) {
       _this->_internal_set_rag_context(from._internal_rag_context());
     }
     if (cached_has_bits & 0x00000002u) {
+      _this->_internal_set_lora_adapter_id(from._internal_lora_adapter_id());
+    }
+    if (cached_has_bits & 0x00000004u) {
       _this->_internal_mutable_params()->::sentiric::llm::v1::GenerationParams::MergeFrom(
           from._internal_params());
     }
@@ -640,6 +695,10 @@ void GenerateStreamRequest::InternalSwap(GenerateStreamRequest* other) {
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &_impl_.rag_context_, lhs_arena,
       &other->_impl_.rag_context_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.lora_adapter_id_, lhs_arena,
+      &other->_impl_.lora_adapter_id_, rhs_arena
   );
   swap(_impl_.params_, other->_impl_.params_);
 }

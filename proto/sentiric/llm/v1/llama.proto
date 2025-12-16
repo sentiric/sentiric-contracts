@@ -18,6 +18,9 @@ message GenerateStreamRequest {
   optional string rag_context = 3;
   repeated ConversationTurn history = 4;
   optional GenerationParams params = 5;
+  // [YENİ] LoRA Adaptörünü belirtir. Sadece dosya adı, uzantısız.
+  // Örn: "customer_service_finetune"
+  optional string lora_adapter_id = 6;  
 }
 
 message GenerateStreamResponse {

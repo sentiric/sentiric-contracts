@@ -24,12 +24,15 @@ const (
 
 // Mesaj Adı: GenerateStreamRequest (RPC adı ile aynı olmalı)
 type GenerateStreamRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	SystemPrompt  string                 `protobuf:"bytes,1,opt,name=system_prompt,json=systemPrompt,proto3" json:"system_prompt,omitempty"`
-	UserPrompt    string                 `protobuf:"bytes,2,opt,name=user_prompt,json=userPrompt,proto3" json:"user_prompt,omitempty"`
-	RagContext    *string                `protobuf:"bytes,3,opt,name=rag_context,json=ragContext,proto3,oneof" json:"rag_context,omitempty"`
-	History       []*ConversationTurn    `protobuf:"bytes,4,rep,name=history,proto3" json:"history,omitempty"`
-	Params        *GenerationParams      `protobuf:"bytes,5,opt,name=params,proto3,oneof" json:"params,omitempty"`
+	state        protoimpl.MessageState `protogen:"open.v1"`
+	SystemPrompt string                 `protobuf:"bytes,1,opt,name=system_prompt,json=systemPrompt,proto3" json:"system_prompt,omitempty"`
+	UserPrompt   string                 `protobuf:"bytes,2,opt,name=user_prompt,json=userPrompt,proto3" json:"user_prompt,omitempty"`
+	RagContext   *string                `protobuf:"bytes,3,opt,name=rag_context,json=ragContext,proto3,oneof" json:"rag_context,omitempty"`
+	History      []*ConversationTurn    `protobuf:"bytes,4,rep,name=history,proto3" json:"history,omitempty"`
+	Params       *GenerationParams      `protobuf:"bytes,5,opt,name=params,proto3,oneof" json:"params,omitempty"`
+	// [YENİ] LoRA Adaptörünü belirtir. Sadece dosya adı, uzantısız.
+	// Örn: "customer_service_finetune"
+	LoraAdapterId *string `protobuf:"bytes,6,opt,name=lora_adapter_id,json=loraAdapterId,proto3,oneof" json:"lora_adapter_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -97,6 +100,13 @@ func (x *GenerateStreamRequest) GetParams() *GenerationParams {
 		return x.Params
 	}
 	return nil
+}
+
+func (x *GenerateStreamRequest) GetLoraAdapterId() string {
+	if x != nil && x.LoraAdapterId != nil {
+		return *x.LoraAdapterId
+	}
+	return ""
 }
 
 type GenerateStreamResponse struct {
@@ -401,7 +411,7 @@ var File_sentiric_llm_v1_llama_proto protoreflect.FileDescriptor
 
 const file_sentiric_llm_v1_llama_proto_rawDesc = "" +
 	"\n" +
-	"\x1bsentiric/llm/v1/llama.proto\x12\x0fsentiric.llm.v1\x1a\x1cgoogle/protobuf/struct.proto\"\x9b\x02\n" +
+	"\x1bsentiric/llm/v1/llama.proto\x12\x0fsentiric.llm.v1\x1a\x1cgoogle/protobuf/struct.proto\"\xdc\x02\n" +
 	"\x15GenerateStreamRequest\x12#\n" +
 	"\rsystem_prompt\x18\x01 \x01(\tR\fsystemPrompt\x12\x1f\n" +
 	"\vuser_prompt\x18\x02 \x01(\tR\n" +
@@ -409,9 +419,11 @@ const file_sentiric_llm_v1_llama_proto_rawDesc = "" +
 	"\vrag_context\x18\x03 \x01(\tH\x00R\n" +
 	"ragContext\x88\x01\x01\x12;\n" +
 	"\ahistory\x18\x04 \x03(\v2!.sentiric.llm.v1.ConversationTurnR\ahistory\x12>\n" +
-	"\x06params\x18\x05 \x01(\v2!.sentiric.llm.v1.GenerationParamsH\x01R\x06params\x88\x01\x01B\x0e\n" +
+	"\x06params\x18\x05 \x01(\v2!.sentiric.llm.v1.GenerationParamsH\x01R\x06params\x88\x01\x01\x12+\n" +
+	"\x0flora_adapter_id\x18\x06 \x01(\tH\x02R\rloraAdapterId\x88\x01\x01B\x0e\n" +
 	"\f_rag_contextB\t\n" +
-	"\a_params\"\x81\x01\n" +
+	"\a_paramsB\x12\n" +
+	"\x10_lora_adapter_id\"\x81\x01\n" +
 	"\x16GenerateStreamResponse\x12\x16\n" +
 	"\x05token\x18\x01 \x01(\fH\x00R\x05token\x12G\n" +
 	"\x0efinish_details\x18\x02 \x01(\v2\x1e.sentiric.llm.v1.FinishDetailsH\x00R\rfinishDetailsB\x06\n" +

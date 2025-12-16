@@ -172,7 +172,8 @@ userPrompt: jspb.Message.getFieldWithDefault(msg, 2, ""),
 ragContext: (f = jspb.Message.getField(msg, 3)) == null ? undefined : f,
 historyList: jspb.Message.toObjectList(msg.getHistoryList(),
     proto.sentiric.llm.v1.ConversationTurn.toObject, includeInstance),
-params: (f = msg.getParams()) && proto.sentiric.llm.v1.GenerationParams.toObject(includeInstance, f)
+params: (f = msg.getParams()) && proto.sentiric.llm.v1.GenerationParams.toObject(includeInstance, f),
+loraAdapterId: (f = jspb.Message.getField(msg, 6)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -230,6 +231,10 @@ proto.sentiric.llm.v1.GenerateStreamRequest.deserializeBinaryFromReader = functi
       var value = new proto.sentiric.llm.v1.GenerationParams;
       reader.readMessage(value,proto.sentiric.llm.v1.GenerationParams.deserializeBinaryFromReader);
       msg.setParams(value);
+      break;
+    case 6:
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
+      msg.setLoraAdapterId(value);
       break;
     default:
       reader.skipField();
@@ -295,6 +300,13 @@ proto.sentiric.llm.v1.GenerateStreamRequest.serializeBinaryToWriter = function(m
       5,
       f,
       proto.sentiric.llm.v1.GenerationParams.serializeBinaryToWriter
+    );
+  }
+  f = /** @type {string} */ (jspb.Message.getField(message, 6));
+  if (f != null) {
+    writer.writeString(
+      6,
+      f
     );
   }
 };
@@ -444,6 +456,42 @@ proto.sentiric.llm.v1.GenerateStreamRequest.prototype.clearParams = function() {
  */
 proto.sentiric.llm.v1.GenerateStreamRequest.prototype.hasParams = function() {
   return jspb.Message.getField(this, 5) != null;
+};
+
+
+/**
+ * optional string lora_adapter_id = 6;
+ * @return {string}
+ */
+proto.sentiric.llm.v1.GenerateStreamRequest.prototype.getLoraAdapterId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sentiric.llm.v1.GenerateStreamRequest} returns this
+ */
+proto.sentiric.llm.v1.GenerateStreamRequest.prototype.setLoraAdapterId = function(value) {
+  return jspb.Message.setField(this, 6, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.sentiric.llm.v1.GenerateStreamRequest} returns this
+ */
+proto.sentiric.llm.v1.GenerateStreamRequest.prototype.clearLoraAdapterId = function() {
+  return jspb.Message.setField(this, 6, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sentiric.llm.v1.GenerateStreamRequest.prototype.hasLoraAdapterId = function() {
+  return jspb.Message.getField(this, 6) != null;
 };
 
 

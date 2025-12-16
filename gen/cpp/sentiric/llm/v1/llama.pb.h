@@ -204,6 +204,7 @@ class GenerateStreamRequest final :
     kSystemPromptFieldNumber = 1,
     kUserPromptFieldNumber = 2,
     kRagContextFieldNumber = 3,
+    kLoraAdapterIdFieldNumber = 6,
     kParamsFieldNumber = 5,
   };
   // repeated .sentiric.llm.v1.ConversationTurn history = 4;
@@ -270,6 +271,24 @@ class GenerateStreamRequest final :
   std::string* _internal_mutable_rag_context();
   public:
 
+  // optional string lora_adapter_id = 6;
+  bool has_lora_adapter_id() const;
+  private:
+  bool _internal_has_lora_adapter_id() const;
+  public:
+  void clear_lora_adapter_id();
+  const std::string& lora_adapter_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_lora_adapter_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_lora_adapter_id();
+  PROTOBUF_NODISCARD std::string* release_lora_adapter_id();
+  void set_allocated_lora_adapter_id(std::string* lora_adapter_id);
+  private:
+  const std::string& _internal_lora_adapter_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_lora_adapter_id(const std::string& value);
+  std::string* _internal_mutable_lora_adapter_id();
+  public:
+
   // optional .sentiric.llm.v1.GenerationParams params = 5;
   bool has_params() const;
   private:
@@ -302,6 +321,7 @@ class GenerateStreamRequest final :
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr system_prompt_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr user_prompt_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr rag_context_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr lora_adapter_id_;
     ::sentiric::llm::v1::GenerationParams* params_;
   };
   union { Impl_ _impl_; };
@@ -1342,7 +1362,7 @@ GenerateStreamRequest::history() const {
 
 // optional .sentiric.llm.v1.GenerationParams params = 5;
 inline bool GenerateStreamRequest::_internal_has_params() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
   PROTOBUF_ASSUME(!value || _impl_.params_ != nullptr);
   return value;
 }
@@ -1351,7 +1371,7 @@ inline bool GenerateStreamRequest::has_params() const {
 }
 inline void GenerateStreamRequest::clear_params() {
   if (_impl_.params_ != nullptr) _impl_.params_->Clear();
-  _impl_._has_bits_[0] &= ~0x00000002u;
+  _impl_._has_bits_[0] &= ~0x00000004u;
 }
 inline const ::sentiric::llm::v1::GenerationParams& GenerateStreamRequest::_internal_params() const {
   const ::sentiric::llm::v1::GenerationParams* p = _impl_.params_;
@@ -1369,14 +1389,14 @@ inline void GenerateStreamRequest::unsafe_arena_set_allocated_params(
   }
   _impl_.params_ = params;
   if (params) {
-    _impl_._has_bits_[0] |= 0x00000002u;
+    _impl_._has_bits_[0] |= 0x00000004u;
   } else {
-    _impl_._has_bits_[0] &= ~0x00000002u;
+    _impl_._has_bits_[0] &= ~0x00000004u;
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:sentiric.llm.v1.GenerateStreamRequest.params)
 }
 inline ::sentiric::llm::v1::GenerationParams* GenerateStreamRequest::release_params() {
-  _impl_._has_bits_[0] &= ~0x00000002u;
+  _impl_._has_bits_[0] &= ~0x00000004u;
   ::sentiric::llm::v1::GenerationParams* temp = _impl_.params_;
   _impl_.params_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
@@ -1392,13 +1412,13 @@ inline ::sentiric::llm::v1::GenerationParams* GenerateStreamRequest::release_par
 }
 inline ::sentiric::llm::v1::GenerationParams* GenerateStreamRequest::unsafe_arena_release_params() {
   // @@protoc_insertion_point(field_release:sentiric.llm.v1.GenerateStreamRequest.params)
-  _impl_._has_bits_[0] &= ~0x00000002u;
+  _impl_._has_bits_[0] &= ~0x00000004u;
   ::sentiric::llm::v1::GenerationParams* temp = _impl_.params_;
   _impl_.params_ = nullptr;
   return temp;
 }
 inline ::sentiric::llm::v1::GenerationParams* GenerateStreamRequest::_internal_mutable_params() {
-  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_._has_bits_[0] |= 0x00000004u;
   if (_impl_.params_ == nullptr) {
     auto* p = CreateMaybeMessage<::sentiric::llm::v1::GenerationParams>(GetArenaForAllocation());
     _impl_.params_ = p;
@@ -1422,12 +1442,80 @@ inline void GenerateStreamRequest::set_allocated_params(::sentiric::llm::v1::Gen
       params = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
           message_arena, params, submessage_arena);
     }
+    _impl_._has_bits_[0] |= 0x00000004u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000004u;
+  }
+  _impl_.params_ = params;
+  // @@protoc_insertion_point(field_set_allocated:sentiric.llm.v1.GenerateStreamRequest.params)
+}
+
+// optional string lora_adapter_id = 6;
+inline bool GenerateStreamRequest::_internal_has_lora_adapter_id() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool GenerateStreamRequest::has_lora_adapter_id() const {
+  return _internal_has_lora_adapter_id();
+}
+inline void GenerateStreamRequest::clear_lora_adapter_id() {
+  _impl_.lora_adapter_id_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline const std::string& GenerateStreamRequest::lora_adapter_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.llm.v1.GenerateStreamRequest.lora_adapter_id)
+  return _internal_lora_adapter_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void GenerateStreamRequest::set_lora_adapter_id(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000002u;
+ _impl_.lora_adapter_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.llm.v1.GenerateStreamRequest.lora_adapter_id)
+}
+inline std::string* GenerateStreamRequest::mutable_lora_adapter_id() {
+  std::string* _s = _internal_mutable_lora_adapter_id();
+  // @@protoc_insertion_point(field_mutable:sentiric.llm.v1.GenerateStreamRequest.lora_adapter_id)
+  return _s;
+}
+inline const std::string& GenerateStreamRequest::_internal_lora_adapter_id() const {
+  return _impl_.lora_adapter_id_.Get();
+}
+inline void GenerateStreamRequest::_internal_set_lora_adapter_id(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.lora_adapter_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* GenerateStreamRequest::_internal_mutable_lora_adapter_id() {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  return _impl_.lora_adapter_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* GenerateStreamRequest::release_lora_adapter_id() {
+  // @@protoc_insertion_point(field_release:sentiric.llm.v1.GenerateStreamRequest.lora_adapter_id)
+  if (!_internal_has_lora_adapter_id()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  auto* p = _impl_.lora_adapter_id_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.lora_adapter_id_.IsDefault()) {
+    _impl_.lora_adapter_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void GenerateStreamRequest::set_allocated_lora_adapter_id(std::string* lora_adapter_id) {
+  if (lora_adapter_id != nullptr) {
     _impl_._has_bits_[0] |= 0x00000002u;
   } else {
     _impl_._has_bits_[0] &= ~0x00000002u;
   }
-  _impl_.params_ = params;
-  // @@protoc_insertion_point(field_set_allocated:sentiric.llm.v1.GenerateStreamRequest.params)
+  _impl_.lora_adapter_id_.SetAllocated(lora_adapter_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.lora_adapter_id_.IsDefault()) {
+    _impl_.lora_adapter_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.llm.v1.GenerateStreamRequest.lora_adapter_id)
 }
 
 // -------------------------------------------------------------------
