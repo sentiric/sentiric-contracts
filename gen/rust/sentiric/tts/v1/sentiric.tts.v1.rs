@@ -237,5 +237,55 @@ impl AudioFormat {
         }
     }
 }
+// --- Unary Messages ---
+
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MmsSynthesizeRequest {
+    /// Sentezlenecek ham metin veya SSML.
+    #[prost(string, tag="1")]
+    pub text: ::prost::alloc::string::String,
+    /// ISO dil kodu (örn: "tur" veya "tr"). 
+    /// Model bu kodu desteklenen diller listesinde doğrular.
+    #[prost(string, tag="2")]
+    pub language_code: ::prost::alloc::string::String,
+    /// Konuşma hızı çarpanı (Varsayılan: 1.0).
+    /// MMS VITS mimarisi süre manipülasyonuna izin verir.
+    #[prost(float, tag="3")]
+    pub speed: f32,
+    /// Örnekleme hızı (Varsayılan: Modelin native hızı, genellikle 24000Hz veya 16000Hz).
+    #[prost(int32, tag="4")]
+    pub sample_rate: i32,
+}
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+pub struct MmsSynthesizeResponse {
+    /// Üretilen ses verisi (WAV header dahil veya hariç, yapılandırmaya bağlı).
+    #[prost(bytes="vec", tag="1")]
+    pub audio_content: ::prost::alloc::vec::Vec<u8>,
+    /// Kullanılan örnekleme hızı.
+    #[prost(int32, tag="2")]
+    pub sample_rate: i32,
+}
+// --- Stream Messages ---
+
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MmsSynthesizeStreamRequest {
+    #[prost(string, tag="1")]
+    pub text: ::prost::alloc::string::String,
+    #[prost(string, tag="2")]
+    pub language_code: ::prost::alloc::string::String,
+    #[prost(float, tag="3")]
+    pub speed: f32,
+    #[prost(int32, tag="4")]
+    pub sample_rate: i32,
+}
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+pub struct MmsSynthesizeStreamResponse {
+    /// Ses verisinin bir parçası (Chunk).
+    #[prost(bytes="vec", tag="1")]
+    pub audio_chunk: ::prost::alloc::vec::Vec<u8>,
+    /// Akışın sonlanıp sonlanmadığını belirtir.
+    #[prost(bool, tag="2")]
+    pub is_final: bool,
+}
 include!("sentiric.tts.v1.tonic.rs");
 // @@protoc_insertion_point(module)

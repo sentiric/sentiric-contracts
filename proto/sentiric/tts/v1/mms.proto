@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package sentiric.tts.v1;
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/tts/v1;ttsv1";
+
+// TtsMmsService, Facebook MMS (Massively Multilingual Speech) modeli için
+// özelleştirilmiş, düşük seviyeli sentezleme arayüzüdür.
+service TtsMmsService {
+  // Metni tek seferde sese çevirir (Unary).
+  rpc MmsSynthesize(MmsSynthesizeRequest) returns (MmsSynthesizeResponse);
+  
+  // Metni cümle bazlı parçalayarak akış halinde sese çevirir (Server Streaming).
+  // Not: MMS native streaming desteklemez, bu metot motor tarafında pseudo-streaming uygular.
+  rpc MmsSynthesizeStream(MmsSynthesizeStreamRequest) returns (stream MmsSynthesizeStreamResponse);
+}
+
+// --- Unary Messages ---
+
+message MmsSynthesizeRequest {
+  // Sentezlenecek ham metin veya SSML.
+  string text = 1;
+  
+  // ISO dil kodu (örn: "tur" veya "tr"). 
+  // Model bu kodu desteklenen diller listesinde doğrular.
+  string language_code = 2;
+  
+  // Konuşma hızı çarpanı (Varsayılan: 1.0).
+  // MMS VITS mimarisi süre manipülasyonuna izin verir.
+  float speed = 3;
+  
+  // Örnekleme hızı (Varsayılan: Modelin native hızı, genellikle 24000Hz veya 16000Hz).
+  int32 sample_rate = 4;
+}
+
+message MmsSynthesizeResponse {
+  // Üretilen ses verisi (WAV header dahil veya hariç, yapılandırmaya bağlı).
+  bytes audio_content = 1;
+  
+  // Kullanılan örnekleme hızı.
+  int32 sample_rate = 2;
+}
+
+// --- Stream Messages ---
+
+message MmsSynthesizeStreamRequest {
+  string text = 1;
+  string language_code = 2;
+  float speed = 3;
+  int32 sample_rate = 4;
+}
+
+message MmsSynthesizeStreamResponse {
+  // Ses verisinin bir parçası (Chunk).
+  bytes audio_chunk = 1;
+  
+  // Akışın sonlanıp sonlanmadığını belirtir.
+  bool is_final = 2;
+}

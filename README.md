@@ -22,13 +22,13 @@ Bu depo, Sentiric mikroservis ekosistemindeki tüm API sözleşmelerinin ve **Pr
 
 ## 🚀 Kullanım
 
-Yeni bir sürüm etiketlendiğinde (örn: `v1.10.0`), release pipeline'ı paketleri otomatik olarak yayınlar. Diğer servisler bu paketleri bağımlılık olarak kullanmalıdır.
+Yeni bir sürüm etiketlendiğinde (örn: `v1.12.3`), release pipeline'ı paketleri otomatik olarak yayınlar. Diğer servisler bu paketleri bağımlılık olarak kullanmalıdır.
 
 ### Go
 `go.mod` dosyanıza ekleyin:
 ```go
 require (
-    github.com/sentiric/sentiric-contracts v1.10.0
+    github.com/sentiric/sentiric-contracts v1.12.3
 )
 ```
 
@@ -36,13 +36,13 @@ require (
 `Cargo.toml` dosyanıza ekleyin:
 ```toml
 [dependencies]
-sentiric-contracts = { git = "https://github.com/sentiric/sentiric-contracts.git", tag = "v1.10.0" }
+sentiric-contracts = { git = "https://github.com/sentiric/sentiric-contracts.git", tag = "v1.12.3" }
 ```
 
 ### Python
-`requirements.txt` dosyanıza ekleyin ve PyPI'dan kurun:
+`requirements.txt` dosyanıza ekleyin ve PyPI'dan (Planlanıyor) kurun:
 ```text
-pip install sentiric-contracts-py==1.10.0
+pip install sentiric-contracts-py==1.12.3
 ```
 
 ### TypeScript/Node.js
@@ -50,7 +50,7 @@ pip install sentiric-contracts-py==1.10.0
 ```json
 {
   "dependencies": {
-    "@sentiric/contracts": "1.10.0"
+    "@sentiric/contracts": "1.12.3"
   }
 }
 ```
@@ -72,7 +72,7 @@ pkg_search_module(GRPC REQUIRED grpc++)
 FetchContent_Declare(
   sentiric_contracts
   GIT_REPOSITORY https://github.com/sentiric/sentiric-contracts.git
-  GIT_TAG v1.10.0 # <- Gerekli versiyonu kullanın
+  GIT_TAG v1.12.3
 )
 FetchContent_MakeAvailable(sentiric_contracts)
 

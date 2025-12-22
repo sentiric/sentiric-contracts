@@ -71,6 +71,8 @@ gen/python/sentiric/tts/v1/edge_pb2.py
 gen/python/sentiric/tts/v1/edge_pb2_grpc.py
 gen/python/sentiric/tts/v1/gateway_pb2.py
 gen/python/sentiric/tts/v1/gateway_pb2_grpc.py
+gen/python/sentiric/tts/v1/mms_pb2.py
+gen/python/sentiric/tts/v1/mms_pb2_grpc.py
 gen/python/sentiric/user/v1/identity_pb2.py
 gen/python/sentiric/user/v1/identity_pb2_grpc.py
 gen/python/sentiric/user/v1/user_pb2.py

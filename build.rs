@@ -43,6 +43,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 "sentiric/tts/v1/gateway.proto",  // Genel TTS Arayüzü
                 "sentiric/tts/v1/coqui.proto",    // Coqui XTTS Spesifik
                 "sentiric/tts/v1/edge.proto",     // Edge/Cloud TTS Spesifik
+                "sentiric/tts/v1/mms.proto",     // MMS TTS Spesifik
                 
                 // LLM
                 "sentiric/llm/v1/gateway.proto",  // Genel LLM Arayüzü
