@@ -24,6 +24,7 @@ const (
 	TelephonyActionService_SendTextMessage_FullMethodName = "/sentiric.telephony.v1.TelephonyActionService/SendTextMessage"
 	TelephonyActionService_StartRecording_FullMethodName  = "/sentiric.telephony.v1.TelephonyActionService/StartRecording"
 	TelephonyActionService_StopRecording_FullMethodName   = "/sentiric.telephony.v1.TelephonyActionService/StopRecording"
+	TelephonyActionService_RunPipeline_FullMethodName     = "/sentiric.telephony.v1.TelephonyActionService/RunPipeline"
 )
 
 // TelephonyActionServiceClient is the client API for TelephonyActionService service.
@@ -35,6 +36,9 @@ type TelephonyActionServiceClient interface {
 	SendTextMessage(ctx context.Context, in *SendTextMessageRequest, opts ...grpc.CallOption) (*SendTextMessageResponse, error)
 	StartRecording(ctx context.Context, in *StartRecordingRequest, opts ...grpc.CallOption) (*StartRecordingResponse, error)
 	StopRecording(ctx context.Context, in *StopRecordingRequest, opts ...grpc.CallOption) (*StopRecordingResponse, error)
+	// [STREAMING]
+	// İsim düzeltildi: RunPipeline -> RunPipelineRequest
+	RunPipeline(ctx context.Context, in *RunPipelineRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[RunPipelineResponse], error)
 }
 
 type telephonyActionServiceClient struct {
@@ -95,6 +99,25 @@ func (c *telephonyActionServiceClient) StopRecording(ctx context.Context, in *St
 	return out, nil
 }
 
+func (c *telephonyActionServiceClient) RunPipeline(ctx context.Context, in *RunPipelineRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[RunPipelineResponse], error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	stream, err := c.cc.NewStream(ctx, &TelephonyActionService_ServiceDesc.Streams[0], TelephonyActionService_RunPipeline_FullMethodName, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &grpc.GenericClientStream[RunPipelineRequest, RunPipelineResponse]{ClientStream: stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type TelephonyActionService_RunPipelineClient = grpc.ServerStreamingClient[RunPipelineResponse]
+
 // TelephonyActionServiceServer is the server API for TelephonyActionService service.
 // All implementations should embed UnimplementedTelephonyActionServiceServer
 // for forward compatibility.
@@ -104,6 +127,9 @@ type TelephonyActionServiceServer interface {
 	SendTextMessage(context.Context, *SendTextMessageRequest) (*SendTextMessageResponse, error)
 	StartRecording(context.Context, *StartRecordingRequest) (*StartRecordingResponse, error)
 	StopRecording(context.Context, *StopRecordingRequest) (*StopRecordingResponse, error)
+	// [STREAMING]
+	// İsim düzeltildi: RunPipeline -> RunPipelineRequest
+	RunPipeline(*RunPipelineRequest, grpc.ServerStreamingServer[RunPipelineResponse]) error
 }
 
 // UnimplementedTelephonyActionServiceServer should be embedded to have
@@ -127,6 +153,9 @@ func (UnimplementedTelephonyActionServiceServer) StartRecording(context.Context,
 }
 func (UnimplementedTelephonyActionServiceServer) StopRecording(context.Context, *StopRecordingRequest) (*StopRecordingResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method StopRecording not implemented")
+}
+func (UnimplementedTelephonyActionServiceServer) RunPipeline(*RunPipelineRequest, grpc.ServerStreamingServer[RunPipelineResponse]) error {
+	return status.Error(codes.Unimplemented, "method RunPipeline not implemented")
 }
 func (UnimplementedTelephonyActionServiceServer) testEmbeddedByValue() {}
 
@@ -238,6 +267,17 @@ func _TelephonyActionService_StopRecording_Handler(srv interface{}, ctx context.
 	return interceptor(ctx, in, info, handler)
 }
 
+func _TelephonyActionService_RunPipeline_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(RunPipelineRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(TelephonyActionServiceServer).RunPipeline(m, &grpc.GenericServerStream[RunPipelineRequest, RunPipelineResponse]{ServerStream: stream})
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type TelephonyActionService_RunPipelineServer = grpc.ServerStreamingServer[RunPipelineResponse]
+
 // TelephonyActionService_ServiceDesc is the grpc.ServiceDesc for TelephonyActionService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -266,6 +306,12 @@ var TelephonyActionService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _TelephonyActionService_StopRecording_Handler,
 		},
 	},
-	Streams:  []grpc.StreamDesc{},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "RunPipeline",
+			Handler:       _TelephonyActionService_RunPipeline_Handler,
+			ServerStreams: true,
+		},
+	},
 	Metadata: "sentiric/telephony/v1/action.proto",
 }

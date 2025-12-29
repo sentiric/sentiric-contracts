@@ -25,7 +25,7 @@ _sym_db = _symbol_database.Default()
 from sentiric.data.v1 import context_pb2 as sentiric_dot_data_dot_v1_dot_context__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1fsentiric/dialog/v1/dialog.proto\x12\x12sentiric.dialog.v1\x1a\x1esentiric/data/v1/context.proto\"M\n\x12StartDialogRequest\x12\x37\n\x07\x63ontext\x18\x01 \x01(\x0b\x32\x1d.sentiric.data.v1.CallContextR\x07\x63ontext\"\xd3\x01\n\x13StartDialogResponse\x12#\n\rresponse_text\x18\x01 \x01(\tR\x0cresponseText\x12 \n\taudio_uri\x18\x02 \x01(\tH\x00R\x08\x61udioUri\x88\x01\x01\x12\x1f\n\x0bnext_action\x18\x03 \x01(\tR\nnextAction\x12\x46\n\x0fupdated_context\x18\x04 \x01(\x0b\x32\x1d.sentiric.data.v1.CallContextR\x0eupdatedContextB\x0c\n\n_audio_uri\"y\n\x17ProcessUserInputRequest\x12\x17\n\x07\x63\x61ll_id\x18\x01 \x01(\tR\x06\x63\x61llId\x12\x12\n\x04text\x18\x02 \x01(\tR\x04text\x12\"\n\naudio_data\x18\x03 \x01(\x0cH\x00R\taudioData\x88\x01\x01\x42\r\n\x0b_audio_data\"\xd8\x01\n\x18ProcessUserInputResponse\x12#\n\rresponse_text\x18\x01 \x01(\tR\x0cresponseText\x12 \n\taudio_uri\x18\x02 \x01(\tH\x00R\x08\x61udioUri\x88\x01\x01\x12\x1f\n\x0bnext_action\x18\x03 \x01(\tR\nnextAction\x12\x46\n\x0fupdated_context\x18\x04 \x01(\x0b\x32\x1d.sentiric.data.v1.CallContextR\x0eupdatedContextB\x0c\n\n_audio_uri2\xde\x01\n\rDialogService\x12^\n\x0bStartDialog\x12&.sentiric.dialog.v1.StartDialogRequest\x1a\'.sentiric.dialog.v1.StartDialogResponse\x12m\n\x10ProcessUserInput\x12+.sentiric.dialog.v1.ProcessUserInputRequest\x1a,.sentiric.dialog.v1.ProcessUserInputResponseBKZIgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/dialog/v1;dialogv1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1fsentiric/dialog/v1/dialog.proto\x12\x12sentiric.dialog.v1\x1a\x1esentiric/data/v1/context.proto\"\xb1\x01\n\x19StreamConversationRequest\x12@\n\x06\x63onfig\x18\x01 \x01(\x0b\x32&.sentiric.dialog.v1.ConversationConfigH\x00R\x06\x63onfig\x12\x1f\n\ntext_input\x18\x02 \x01(\tH\x00R\ttextInput\x12&\n\x0eis_final_input\x18\x03 \x01(\x08H\x00R\x0cisFinalInputB\t\n\x07payload\"\xc4\x01\n\x1aStreamConversationResponse\x12%\n\rtext_response\x18\x01 \x01(\tH\x00R\x0ctextResponse\x12\x1d\n\taudio_url\x18\x02 \x01(\tH\x00R\x08\x61udioUrl\x12,\n\x11is_final_response\x18\x03 \x01(\x08H\x00R\x0fisFinalResponse\x12\'\n\x0e\x61\x63tion_command\x18\x04 \x01(\tH\x00R\ractionCommandB\t\n\x07payload\"L\n\x12\x43onversationConfig\x12\x1d\n\nsession_id\x18\x01 \x01(\tR\tsessionId\x12\x17\n\x07user_id\x18\x02 \x01(\tR\x06userId\"M\n\x12StartDialogRequest\x12\x37\n\x07\x63ontext\x18\x01 \x01(\x0b\x32\x1d.sentiric.data.v1.CallContextR\x07\x63ontext\"\xd3\x01\n\x13StartDialogResponse\x12#\n\rresponse_text\x18\x01 \x01(\tR\x0cresponseText\x12 \n\taudio_uri\x18\x02 \x01(\tH\x00R\x08\x61udioUri\x88\x01\x01\x12\x1f\n\x0bnext_action\x18\x03 \x01(\tR\nnextAction\x12\x46\n\x0fupdated_context\x18\x04 \x01(\x0b\x32\x1d.sentiric.data.v1.CallContextR\x0eupdatedContextB\x0c\n\n_audio_uri\"y\n\x17ProcessUserInputRequest\x12\x17\n\x07\x63\x61ll_id\x18\x01 \x01(\tR\x06\x63\x61llId\x12\x12\n\x04text\x18\x02 \x01(\tR\x04text\x12\"\n\naudio_data\x18\x03 \x01(\x0cH\x00R\taudioData\x88\x01\x01\x42\r\n\x0b_audio_data\"\xd8\x01\n\x18ProcessUserInputResponse\x12#\n\rresponse_text\x18\x01 \x01(\tR\x0cresponseText\x12 \n\taudio_uri\x18\x02 \x01(\tH\x00R\x08\x61udioUri\x88\x01\x01\x12\x1f\n\x0bnext_action\x18\x03 \x01(\tR\nnextAction\x12\x46\n\x0fupdated_context\x18\x04 \x01(\x0b\x32\x1d.sentiric.data.v1.CallContextR\x0eupdatedContextB\x0c\n\n_audio_uri2\xd7\x02\n\rDialogService\x12^\n\x0bStartDialog\x12&.sentiric.dialog.v1.StartDialogRequest\x1a\'.sentiric.dialog.v1.StartDialogResponse\x12m\n\x10ProcessUserInput\x12+.sentiric.dialog.v1.ProcessUserInputRequest\x1a,.sentiric.dialog.v1.ProcessUserInputResponse\x12w\n\x12StreamConversation\x12-.sentiric.dialog.v1.StreamConversationRequest\x1a..sentiric.dialog.v1.StreamConversationResponse(\x01\x30\x01\x42KZIgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/dialog/v1;dialogv1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -33,14 +33,20 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'sentiric.dialog.v1.dialog_p
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
   _globals['DESCRIPTOR']._serialized_options = b'ZIgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/dialog/v1;dialogv1'
-  _globals['_STARTDIALOGREQUEST']._serialized_start=87
-  _globals['_STARTDIALOGREQUEST']._serialized_end=164
-  _globals['_STARTDIALOGRESPONSE']._serialized_start=167
-  _globals['_STARTDIALOGRESPONSE']._serialized_end=378
-  _globals['_PROCESSUSERINPUTREQUEST']._serialized_start=380
-  _globals['_PROCESSUSERINPUTREQUEST']._serialized_end=501
-  _globals['_PROCESSUSERINPUTRESPONSE']._serialized_start=504
-  _globals['_PROCESSUSERINPUTRESPONSE']._serialized_end=720
-  _globals['_DIALOGSERVICE']._serialized_start=723
-  _globals['_DIALOGSERVICE']._serialized_end=945
+  _globals['_STREAMCONVERSATIONREQUEST']._serialized_start=88
+  _globals['_STREAMCONVERSATIONREQUEST']._serialized_end=265
+  _globals['_STREAMCONVERSATIONRESPONSE']._serialized_start=268
+  _globals['_STREAMCONVERSATIONRESPONSE']._serialized_end=464
+  _globals['_CONVERSATIONCONFIG']._serialized_start=466
+  _globals['_CONVERSATIONCONFIG']._serialized_end=542
+  _globals['_STARTDIALOGREQUEST']._serialized_start=544
+  _globals['_STARTDIALOGREQUEST']._serialized_end=621
+  _globals['_STARTDIALOGRESPONSE']._serialized_start=624
+  _globals['_STARTDIALOGRESPONSE']._serialized_end=835
+  _globals['_PROCESSUSERINPUTREQUEST']._serialized_start=837
+  _globals['_PROCESSUSERINPUTREQUEST']._serialized_end=958
+  _globals['_PROCESSUSERINPUTRESPONSE']._serialized_start=961
+  _globals['_PROCESSUSERINPUTRESPONSE']._serialized_end=1177
+  _globals['_DIALOGSERVICE']._serialized_start=1180
+  _globals['_DIALOGSERVICE']._serialized_end=1523
 # @@protoc_insertion_point(module_scope)

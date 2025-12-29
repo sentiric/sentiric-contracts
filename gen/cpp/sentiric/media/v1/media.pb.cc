@@ -75,10 +75,126 @@ struct ReleasePortResponseDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ReleasePortResponseDefaultTypeInternal _ReleasePortResponse_default_instance_;
+PROTOBUF_CONSTEXPR PlayAudioRequest::PlayAudioRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.audio_uri_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.rtp_target_addr_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.server_rtp_port_)*/0u
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct PlayAudioRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR PlayAudioRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~PlayAudioRequestDefaultTypeInternal() {}
+  union {
+    PlayAudioRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 PlayAudioRequestDefaultTypeInternal _PlayAudioRequest_default_instance_;
+PROTOBUF_CONSTEXPR PlayAudioResponse::PlayAudioResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.message_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.success_)*/false
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct PlayAudioResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR PlayAudioResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~PlayAudioResponseDefaultTypeInternal() {}
+  union {
+    PlayAudioResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 PlayAudioResponseDefaultTypeInternal _PlayAudioResponse_default_instance_;
+PROTOBUF_CONSTEXPR RecordAudioRequest::RecordAudioRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.server_rtp_port_)*/0u
+  , /*decltype(_impl_.target_sample_rate_)*/0u} {}
+struct RecordAudioRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RecordAudioRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RecordAudioRequestDefaultTypeInternal() {}
+  union {
+    RecordAudioRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RecordAudioRequestDefaultTypeInternal _RecordAudioRequest_default_instance_;
+PROTOBUF_CONSTEXPR RecordAudioResponse::RecordAudioResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.audio_data_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.media_type_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct RecordAudioResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RecordAudioResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RecordAudioResponseDefaultTypeInternal() {}
+  union {
+    RecordAudioResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RecordAudioResponseDefaultTypeInternal _RecordAudioResponse_default_instance_;
+PROTOBUF_CONSTEXPR StartRecordingRequest::StartRecordingRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.output_uri_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.format_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.call_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.trace_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.server_rtp_port_)*/0u
+  , /*decltype(_impl_.sample_rate_)*/0u} {}
+struct StartRecordingRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR StartRecordingRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~StartRecordingRequestDefaultTypeInternal() {}
+  union {
+    StartRecordingRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 StartRecordingRequestDefaultTypeInternal _StartRecordingRequest_default_instance_;
+PROTOBUF_CONSTEXPR StartRecordingResponse::StartRecordingResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.success_)*/false
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct StartRecordingResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR StartRecordingResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~StartRecordingResponseDefaultTypeInternal() {}
+  union {
+    StartRecordingResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 StartRecordingResponseDefaultTypeInternal _StartRecordingResponse_default_instance_;
+PROTOBUF_CONSTEXPR StopRecordingRequest::StopRecordingRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.server_rtp_port_)*/0u
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct StopRecordingRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR StopRecordingRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~StopRecordingRequestDefaultTypeInternal() {}
+  union {
+    StopRecordingRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 StopRecordingRequestDefaultTypeInternal _StopRecordingRequest_default_instance_;
+PROTOBUF_CONSTEXPR StopRecordingResponse::StopRecordingResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.success_)*/false
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct StopRecordingResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR StopRecordingResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~StopRecordingResponseDefaultTypeInternal() {}
+  union {
+    StopRecordingResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 StopRecordingResponseDefaultTypeInternal _StopRecordingResponse_default_instance_;
 }  // namespace v1
 }  // namespace media
 }  // namespace sentiric
-static ::_pb::Metadata file_level_metadata_sentiric_2fmedia_2fv1_2fmedia_2eproto[4];
+static ::_pb::Metadata file_level_metadata_sentiric_2fmedia_2fv1_2fmedia_2eproto[12];
 static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_sentiric_2fmedia_2fv1_2fmedia_2eproto = nullptr;
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_sentiric_2fmedia_2fv1_2fmedia_2eproto = nullptr;
 
@@ -111,12 +227,94 @@ const uint32_t TableStruct_sentiric_2fmedia_2fv1_2fmedia_2eproto::offsets[] PROT
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::sentiric::media::v1::ReleasePortResponse, _impl_.success_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::media::v1::PlayAudioRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::media::v1::PlayAudioRequest, _impl_.audio_uri_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::media::v1::PlayAudioRequest, _impl_.server_rtp_port_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::media::v1::PlayAudioRequest, _impl_.rtp_target_addr_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::media::v1::PlayAudioResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::media::v1::PlayAudioResponse, _impl_.success_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::media::v1::PlayAudioResponse, _impl_.message_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::media::v1::RecordAudioRequest, _impl_._has_bits_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::media::v1::RecordAudioRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::media::v1::RecordAudioRequest, _impl_.server_rtp_port_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::media::v1::RecordAudioRequest, _impl_.target_sample_rate_),
+  ~0u,
+  0,
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::media::v1::RecordAudioResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::media::v1::RecordAudioResponse, _impl_.audio_data_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::media::v1::RecordAudioResponse, _impl_.media_type_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::media::v1::StartRecordingRequest, _impl_._has_bits_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::media::v1::StartRecordingRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::media::v1::StartRecordingRequest, _impl_.server_rtp_port_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::media::v1::StartRecordingRequest, _impl_.output_uri_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::media::v1::StartRecordingRequest, _impl_.sample_rate_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::media::v1::StartRecordingRequest, _impl_.format_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::media::v1::StartRecordingRequest, _impl_.call_id_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::media::v1::StartRecordingRequest, _impl_.trace_id_),
+  ~0u,
+  ~0u,
+  1,
+  0,
+  ~0u,
+  ~0u,
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::media::v1::StartRecordingResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::media::v1::StartRecordingResponse, _impl_.success_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::media::v1::StopRecordingRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::media::v1::StopRecordingRequest, _impl_.server_rtp_port_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::media::v1::StopRecordingResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::media::v1::StopRecordingResponse, _impl_.success_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::sentiric::media::v1::AllocatePortRequest)},
   { 7, -1, -1, sizeof(::sentiric::media::v1::AllocatePortResponse)},
   { 14, -1, -1, sizeof(::sentiric::media::v1::ReleasePortRequest)},
   { 21, -1, -1, sizeof(::sentiric::media::v1::ReleasePortResponse)},
+  { 28, -1, -1, sizeof(::sentiric::media::v1::PlayAudioRequest)},
+  { 37, -1, -1, sizeof(::sentiric::media::v1::PlayAudioResponse)},
+  { 45, 53, -1, sizeof(::sentiric::media::v1::RecordAudioRequest)},
+  { 55, -1, -1, sizeof(::sentiric::media::v1::RecordAudioResponse)},
+  { 63, 75, -1, sizeof(::sentiric::media::v1::StartRecordingRequest)},
+  { 81, -1, -1, sizeof(::sentiric::media::v1::StartRecordingResponse)},
+  { 88, -1, -1, sizeof(::sentiric::media::v1::StopRecordingRequest)},
+  { 95, -1, -1, sizeof(::sentiric::media::v1::StopRecordingResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -124,6 +322,14 @@ static const ::_pb::Message* const file_default_instances[] = {
   &::sentiric::media::v1::_AllocatePortResponse_default_instance_._instance,
   &::sentiric::media::v1::_ReleasePortRequest_default_instance_._instance,
   &::sentiric::media::v1::_ReleasePortResponse_default_instance_._instance,
+  &::sentiric::media::v1::_PlayAudioRequest_default_instance_._instance,
+  &::sentiric::media::v1::_PlayAudioResponse_default_instance_._instance,
+  &::sentiric::media::v1::_RecordAudioRequest_default_instance_._instance,
+  &::sentiric::media::v1::_RecordAudioResponse_default_instance_._instance,
+  &::sentiric::media::v1::_StartRecordingRequest_default_instance_._instance,
+  &::sentiric::media::v1::_StartRecordingResponse_default_instance_._instance,
+  &::sentiric::media::v1::_StopRecordingRequest_default_instance_._instance,
+  &::sentiric::media::v1::_StopRecordingResponse_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_sentiric_2fmedia_2fv1_2fmedia_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -132,20 +338,45 @@ const char descriptor_table_protodef_sentiric_2fmedia_2fv1_2fmedia_2eproto[] PRO
   "l_id\030\001 \001(\t\"(\n\024AllocatePortResponse\022\020\n\010rt"
   "p_port\030\001 \001(\r\"&\n\022ReleasePortRequest\022\020\n\010rt"
   "p_port\030\001 \001(\r\"&\n\023ReleasePortResponse\022\017\n\007s"
-  "uccess\030\001 \001(\0102\315\001\n\014MediaService\022_\n\014Allocat"
-  "ePort\022&.sentiric.media.v1.AllocatePortRe"
-  "quest\032\'.sentiric.media.v1.AllocatePortRe"
-  "sponse\022\\\n\013ReleasePort\022%.sentiric.media.v"
-  "1.ReleasePortRequest\032&.sentiric.media.v1"
-  ".ReleasePortResponseBIZGgithub.com/senti"
-  "ric/sentiric-contracts/gen/go/sentiric/m"
-  "edia/v1;mediav1b\006proto3"
+  "uccess\030\001 \001(\010\"W\n\020PlayAudioRequest\022\021\n\taudi"
+  "o_uri\030\001 \001(\t\022\027\n\017server_rtp_port\030\002 \001(\r\022\027\n\017"
+  "rtp_target_addr\030\003 \001(\t\"5\n\021PlayAudioRespon"
+  "se\022\017\n\007success\030\001 \001(\010\022\017\n\007message\030\002 \001(\t\"e\n\022"
+  "RecordAudioRequest\022\027\n\017server_rtp_port\030\001 "
+  "\001(\r\022\037\n\022target_sample_rate\030\002 \001(\rH\000\210\001\001B\025\n\023"
+  "_target_sample_rate\"=\n\023RecordAudioRespon"
+  "se\022\022\n\naudio_data\030\001 \001(\014\022\022\n\nmedia_type\030\002 \001"
+  "(\t\"\261\001\n\025StartRecordingRequest\022\027\n\017server_r"
+  "tp_port\030\001 \001(\r\022\022\n\noutput_uri\030\002 \001(\t\022\030\n\013sam"
+  "ple_rate\030\003 \001(\rH\000\210\001\001\022\023\n\006format\030\004 \001(\tH\001\210\001\001"
+  "\022\017\n\007call_id\030\005 \001(\t\022\020\n\010trace_id\030\006 \001(\tB\016\n\014_"
+  "sample_rateB\t\n\007_format\")\n\026StartRecording"
+  "Response\022\017\n\007success\030\001 \001(\010\"/\n\024StopRecordi"
+  "ngRequest\022\027\n\017server_rtp_port\030\001 \001(\r\"(\n\025St"
+  "opRecordingResponse\022\017\n\007success\030\001 \001(\0102\320\004\n"
+  "\014MediaService\022_\n\014AllocatePort\022&.sentiric"
+  ".media.v1.AllocatePortRequest\032\'.sentiric"
+  ".media.v1.AllocatePortResponse\022\\\n\013Releas"
+  "ePort\022%.sentiric.media.v1.ReleasePortReq"
+  "uest\032&.sentiric.media.v1.ReleasePortResp"
+  "onse\022V\n\tPlayAudio\022#.sentiric.media.v1.Pl"
+  "ayAudioRequest\032$.sentiric.media.v1.PlayA"
+  "udioResponse\022^\n\013RecordAudio\022%.sentiric.m"
+  "edia.v1.RecordAudioRequest\032&.sentiric.me"
+  "dia.v1.RecordAudioResponse0\001\022e\n\016StartRec"
+  "ording\022(.sentiric.media.v1.StartRecordin"
+  "gRequest\032).sentiric.media.v1.StartRecord"
+  "ingResponse\022b\n\rStopRecording\022\'.sentiric."
+  "media.v1.StopRecordingRequest\032(.sentiric"
+  ".media.v1.StopRecordingResponseBIZGgithu"
+  "b.com/sentiric/sentiric-contracts/gen/go"
+  "/sentiric/media/v1;mediav1b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_sentiric_2fmedia_2fv1_2fmedia_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_sentiric_2fmedia_2fv1_2fmedia_2eproto = {
-    false, false, 503, descriptor_table_protodef_sentiric_2fmedia_2fv1_2fmedia_2eproto,
+    false, false, 1514, descriptor_table_protodef_sentiric_2fmedia_2fv1_2fmedia_2eproto,
     "sentiric/media/v1/media.proto",
-    &descriptor_table_sentiric_2fmedia_2fv1_2fmedia_2eproto_once, nullptr, 0, 4,
+    &descriptor_table_sentiric_2fmedia_2fv1_2fmedia_2eproto_once, nullptr, 0, 12,
     schemas, file_default_instances, TableStruct_sentiric_2fmedia_2fv1_2fmedia_2eproto::offsets,
     file_level_metadata_sentiric_2fmedia_2fv1_2fmedia_2eproto, file_level_enum_descriptors_sentiric_2fmedia_2fv1_2fmedia_2eproto,
     file_level_service_descriptors_sentiric_2fmedia_2fv1_2fmedia_2eproto,
@@ -897,6 +1128,1950 @@ void ReleasePortResponse::InternalSwap(ReleasePortResponse* other) {
       file_level_metadata_sentiric_2fmedia_2fv1_2fmedia_2eproto[3]);
 }
 
+// ===================================================================
+
+class PlayAudioRequest::_Internal {
+ public:
+};
+
+PlayAudioRequest::PlayAudioRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.media.v1.PlayAudioRequest)
+}
+PlayAudioRequest::PlayAudioRequest(const PlayAudioRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  PlayAudioRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.audio_uri_){}
+    , decltype(_impl_.rtp_target_addr_){}
+    , decltype(_impl_.server_rtp_port_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.audio_uri_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.audio_uri_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_audio_uri().empty()) {
+    _this->_impl_.audio_uri_.Set(from._internal_audio_uri(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.rtp_target_addr_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.rtp_target_addr_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_rtp_target_addr().empty()) {
+    _this->_impl_.rtp_target_addr_.Set(from._internal_rtp_target_addr(), 
+      _this->GetArenaForAllocation());
+  }
+  _this->_impl_.server_rtp_port_ = from._impl_.server_rtp_port_;
+  // @@protoc_insertion_point(copy_constructor:sentiric.media.v1.PlayAudioRequest)
+}
+
+inline void PlayAudioRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.audio_uri_){}
+    , decltype(_impl_.rtp_target_addr_){}
+    , decltype(_impl_.server_rtp_port_){0u}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.audio_uri_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.audio_uri_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.rtp_target_addr_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.rtp_target_addr_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+PlayAudioRequest::~PlayAudioRequest() {
+  // @@protoc_insertion_point(destructor:sentiric.media.v1.PlayAudioRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void PlayAudioRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.audio_uri_.Destroy();
+  _impl_.rtp_target_addr_.Destroy();
+}
+
+void PlayAudioRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void PlayAudioRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.media.v1.PlayAudioRequest)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.audio_uri_.ClearToEmpty();
+  _impl_.rtp_target_addr_.ClearToEmpty();
+  _impl_.server_rtp_port_ = 0u;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* PlayAudioRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string audio_uri = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_audio_uri();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.media.v1.PlayAudioRequest.audio_uri"));
+        } else
+          goto handle_unusual;
+        continue;
+      // uint32 server_rtp_port = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          _impl_.server_rtp_port_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string rtp_target_addr = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_rtp_target_addr();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.media.v1.PlayAudioRequest.rtp_target_addr"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* PlayAudioRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.media.v1.PlayAudioRequest)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string audio_uri = 1;
+  if (!this->_internal_audio_uri().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_audio_uri().data(), static_cast<int>(this->_internal_audio_uri().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.media.v1.PlayAudioRequest.audio_uri");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_audio_uri(), target);
+  }
+
+  // uint32 server_rtp_port = 2;
+  if (this->_internal_server_rtp_port() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(2, this->_internal_server_rtp_port(), target);
+  }
+
+  // string rtp_target_addr = 3;
+  if (!this->_internal_rtp_target_addr().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_rtp_target_addr().data(), static_cast<int>(this->_internal_rtp_target_addr().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.media.v1.PlayAudioRequest.rtp_target_addr");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_rtp_target_addr(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.media.v1.PlayAudioRequest)
+  return target;
+}
+
+size_t PlayAudioRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.media.v1.PlayAudioRequest)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string audio_uri = 1;
+  if (!this->_internal_audio_uri().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_audio_uri());
+  }
+
+  // string rtp_target_addr = 3;
+  if (!this->_internal_rtp_target_addr().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_rtp_target_addr());
+  }
+
+  // uint32 server_rtp_port = 2;
+  if (this->_internal_server_rtp_port() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_server_rtp_port());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData PlayAudioRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    PlayAudioRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*PlayAudioRequest::GetClassData() const { return &_class_data_; }
+
+
+void PlayAudioRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<PlayAudioRequest*>(&to_msg);
+  auto& from = static_cast<const PlayAudioRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.media.v1.PlayAudioRequest)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_audio_uri().empty()) {
+    _this->_internal_set_audio_uri(from._internal_audio_uri());
+  }
+  if (!from._internal_rtp_target_addr().empty()) {
+    _this->_internal_set_rtp_target_addr(from._internal_rtp_target_addr());
+  }
+  if (from._internal_server_rtp_port() != 0) {
+    _this->_internal_set_server_rtp_port(from._internal_server_rtp_port());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void PlayAudioRequest::CopyFrom(const PlayAudioRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.media.v1.PlayAudioRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool PlayAudioRequest::IsInitialized() const {
+  return true;
+}
+
+void PlayAudioRequest::InternalSwap(PlayAudioRequest* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.audio_uri_, lhs_arena,
+      &other->_impl_.audio_uri_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.rtp_target_addr_, lhs_arena,
+      &other->_impl_.rtp_target_addr_, rhs_arena
+  );
+  swap(_impl_.server_rtp_port_, other->_impl_.server_rtp_port_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata PlayAudioRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fmedia_2fv1_2fmedia_2eproto_getter, &descriptor_table_sentiric_2fmedia_2fv1_2fmedia_2eproto_once,
+      file_level_metadata_sentiric_2fmedia_2fv1_2fmedia_2eproto[4]);
+}
+
+// ===================================================================
+
+class PlayAudioResponse::_Internal {
+ public:
+};
+
+PlayAudioResponse::PlayAudioResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.media.v1.PlayAudioResponse)
+}
+PlayAudioResponse::PlayAudioResponse(const PlayAudioResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  PlayAudioResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.message_){}
+    , decltype(_impl_.success_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.message_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.message_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_message().empty()) {
+    _this->_impl_.message_.Set(from._internal_message(), 
+      _this->GetArenaForAllocation());
+  }
+  _this->_impl_.success_ = from._impl_.success_;
+  // @@protoc_insertion_point(copy_constructor:sentiric.media.v1.PlayAudioResponse)
+}
+
+inline void PlayAudioResponse::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.message_){}
+    , decltype(_impl_.success_){false}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.message_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.message_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+PlayAudioResponse::~PlayAudioResponse() {
+  // @@protoc_insertion_point(destructor:sentiric.media.v1.PlayAudioResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void PlayAudioResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.message_.Destroy();
+}
+
+void PlayAudioResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void PlayAudioResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.media.v1.PlayAudioResponse)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.message_.ClearToEmpty();
+  _impl_.success_ = false;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* PlayAudioResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // bool success = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          _impl_.success_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string message = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_message();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.media.v1.PlayAudioResponse.message"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* PlayAudioResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.media.v1.PlayAudioResponse)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // bool success = 1;
+  if (this->_internal_success() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(1, this->_internal_success(), target);
+  }
+
+  // string message = 2;
+  if (!this->_internal_message().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_message().data(), static_cast<int>(this->_internal_message().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.media.v1.PlayAudioResponse.message");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_message(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.media.v1.PlayAudioResponse)
+  return target;
+}
+
+size_t PlayAudioResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.media.v1.PlayAudioResponse)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string message = 2;
+  if (!this->_internal_message().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_message());
+  }
+
+  // bool success = 1;
+  if (this->_internal_success() != 0) {
+    total_size += 1 + 1;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData PlayAudioResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    PlayAudioResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*PlayAudioResponse::GetClassData() const { return &_class_data_; }
+
+
+void PlayAudioResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<PlayAudioResponse*>(&to_msg);
+  auto& from = static_cast<const PlayAudioResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.media.v1.PlayAudioResponse)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_message().empty()) {
+    _this->_internal_set_message(from._internal_message());
+  }
+  if (from._internal_success() != 0) {
+    _this->_internal_set_success(from._internal_success());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void PlayAudioResponse::CopyFrom(const PlayAudioResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.media.v1.PlayAudioResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool PlayAudioResponse::IsInitialized() const {
+  return true;
+}
+
+void PlayAudioResponse::InternalSwap(PlayAudioResponse* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.message_, lhs_arena,
+      &other->_impl_.message_, rhs_arena
+  );
+  swap(_impl_.success_, other->_impl_.success_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata PlayAudioResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fmedia_2fv1_2fmedia_2eproto_getter, &descriptor_table_sentiric_2fmedia_2fv1_2fmedia_2eproto_once,
+      file_level_metadata_sentiric_2fmedia_2fv1_2fmedia_2eproto[5]);
+}
+
+// ===================================================================
+
+class RecordAudioRequest::_Internal {
+ public:
+  using HasBits = decltype(std::declval<RecordAudioRequest>()._impl_._has_bits_);
+  static void set_has_target_sample_rate(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+};
+
+RecordAudioRequest::RecordAudioRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.media.v1.RecordAudioRequest)
+}
+RecordAudioRequest::RecordAudioRequest(const RecordAudioRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  RecordAudioRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.server_rtp_port_){}
+    , decltype(_impl_.target_sample_rate_){}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::memcpy(&_impl_.server_rtp_port_, &from._impl_.server_rtp_port_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.target_sample_rate_) -
+    reinterpret_cast<char*>(&_impl_.server_rtp_port_)) + sizeof(_impl_.target_sample_rate_));
+  // @@protoc_insertion_point(copy_constructor:sentiric.media.v1.RecordAudioRequest)
+}
+
+inline void RecordAudioRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.server_rtp_port_){0u}
+    , decltype(_impl_.target_sample_rate_){0u}
+  };
+}
+
+RecordAudioRequest::~RecordAudioRequest() {
+  // @@protoc_insertion_point(destructor:sentiric.media.v1.RecordAudioRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void RecordAudioRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void RecordAudioRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void RecordAudioRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.media.v1.RecordAudioRequest)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.server_rtp_port_ = 0u;
+  _impl_.target_sample_rate_ = 0u;
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* RecordAudioRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // uint32 server_rtp_port = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          _impl_.server_rtp_port_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // optional uint32 target_sample_rate = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          _Internal::set_has_target_sample_rate(&has_bits);
+          _impl_.target_sample_rate_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* RecordAudioRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.media.v1.RecordAudioRequest)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint32 server_rtp_port = 1;
+  if (this->_internal_server_rtp_port() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(1, this->_internal_server_rtp_port(), target);
+  }
+
+  // optional uint32 target_sample_rate = 2;
+  if (_internal_has_target_sample_rate()) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(2, this->_internal_target_sample_rate(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.media.v1.RecordAudioRequest)
+  return target;
+}
+
+size_t RecordAudioRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.media.v1.RecordAudioRequest)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // uint32 server_rtp_port = 1;
+  if (this->_internal_server_rtp_port() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_server_rtp_port());
+  }
+
+  // optional uint32 target_sample_rate = 2;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_target_sample_rate());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData RecordAudioRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    RecordAudioRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*RecordAudioRequest::GetClassData() const { return &_class_data_; }
+
+
+void RecordAudioRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<RecordAudioRequest*>(&to_msg);
+  auto& from = static_cast<const RecordAudioRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.media.v1.RecordAudioRequest)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_server_rtp_port() != 0) {
+    _this->_internal_set_server_rtp_port(from._internal_server_rtp_port());
+  }
+  if (from._internal_has_target_sample_rate()) {
+    _this->_internal_set_target_sample_rate(from._internal_target_sample_rate());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void RecordAudioRequest::CopyFrom(const RecordAudioRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.media.v1.RecordAudioRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool RecordAudioRequest::IsInitialized() const {
+  return true;
+}
+
+void RecordAudioRequest::InternalSwap(RecordAudioRequest* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(RecordAudioRequest, _impl_.target_sample_rate_)
+      + sizeof(RecordAudioRequest::_impl_.target_sample_rate_)
+      - PROTOBUF_FIELD_OFFSET(RecordAudioRequest, _impl_.server_rtp_port_)>(
+          reinterpret_cast<char*>(&_impl_.server_rtp_port_),
+          reinterpret_cast<char*>(&other->_impl_.server_rtp_port_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata RecordAudioRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fmedia_2fv1_2fmedia_2eproto_getter, &descriptor_table_sentiric_2fmedia_2fv1_2fmedia_2eproto_once,
+      file_level_metadata_sentiric_2fmedia_2fv1_2fmedia_2eproto[6]);
+}
+
+// ===================================================================
+
+class RecordAudioResponse::_Internal {
+ public:
+};
+
+RecordAudioResponse::RecordAudioResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.media.v1.RecordAudioResponse)
+}
+RecordAudioResponse::RecordAudioResponse(const RecordAudioResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  RecordAudioResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.audio_data_){}
+    , decltype(_impl_.media_type_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.audio_data_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.audio_data_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_audio_data().empty()) {
+    _this->_impl_.audio_data_.Set(from._internal_audio_data(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.media_type_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.media_type_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_media_type().empty()) {
+    _this->_impl_.media_type_.Set(from._internal_media_type(), 
+      _this->GetArenaForAllocation());
+  }
+  // @@protoc_insertion_point(copy_constructor:sentiric.media.v1.RecordAudioResponse)
+}
+
+inline void RecordAudioResponse::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.audio_data_){}
+    , decltype(_impl_.media_type_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.audio_data_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.audio_data_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.media_type_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.media_type_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+RecordAudioResponse::~RecordAudioResponse() {
+  // @@protoc_insertion_point(destructor:sentiric.media.v1.RecordAudioResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void RecordAudioResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.audio_data_.Destroy();
+  _impl_.media_type_.Destroy();
+}
+
+void RecordAudioResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void RecordAudioResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.media.v1.RecordAudioResponse)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.audio_data_.ClearToEmpty();
+  _impl_.media_type_.ClearToEmpty();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* RecordAudioResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // bytes audio_data = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_audio_data();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string media_type = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_media_type();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.media.v1.RecordAudioResponse.media_type"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* RecordAudioResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.media.v1.RecordAudioResponse)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // bytes audio_data = 1;
+  if (!this->_internal_audio_data().empty()) {
+    target = stream->WriteBytesMaybeAliased(
+        1, this->_internal_audio_data(), target);
+  }
+
+  // string media_type = 2;
+  if (!this->_internal_media_type().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_media_type().data(), static_cast<int>(this->_internal_media_type().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.media.v1.RecordAudioResponse.media_type");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_media_type(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.media.v1.RecordAudioResponse)
+  return target;
+}
+
+size_t RecordAudioResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.media.v1.RecordAudioResponse)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // bytes audio_data = 1;
+  if (!this->_internal_audio_data().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
+        this->_internal_audio_data());
+  }
+
+  // string media_type = 2;
+  if (!this->_internal_media_type().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_media_type());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData RecordAudioResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    RecordAudioResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*RecordAudioResponse::GetClassData() const { return &_class_data_; }
+
+
+void RecordAudioResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<RecordAudioResponse*>(&to_msg);
+  auto& from = static_cast<const RecordAudioResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.media.v1.RecordAudioResponse)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_audio_data().empty()) {
+    _this->_internal_set_audio_data(from._internal_audio_data());
+  }
+  if (!from._internal_media_type().empty()) {
+    _this->_internal_set_media_type(from._internal_media_type());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void RecordAudioResponse::CopyFrom(const RecordAudioResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.media.v1.RecordAudioResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool RecordAudioResponse::IsInitialized() const {
+  return true;
+}
+
+void RecordAudioResponse::InternalSwap(RecordAudioResponse* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.audio_data_, lhs_arena,
+      &other->_impl_.audio_data_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.media_type_, lhs_arena,
+      &other->_impl_.media_type_, rhs_arena
+  );
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata RecordAudioResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fmedia_2fv1_2fmedia_2eproto_getter, &descriptor_table_sentiric_2fmedia_2fv1_2fmedia_2eproto_once,
+      file_level_metadata_sentiric_2fmedia_2fv1_2fmedia_2eproto[7]);
+}
+
+// ===================================================================
+
+class StartRecordingRequest::_Internal {
+ public:
+  using HasBits = decltype(std::declval<StartRecordingRequest>()._impl_._has_bits_);
+  static void set_has_sample_rate(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+  static void set_has_format(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+};
+
+StartRecordingRequest::StartRecordingRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.media.v1.StartRecordingRequest)
+}
+StartRecordingRequest::StartRecordingRequest(const StartRecordingRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  StartRecordingRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.output_uri_){}
+    , decltype(_impl_.format_){}
+    , decltype(_impl_.call_id_){}
+    , decltype(_impl_.trace_id_){}
+    , decltype(_impl_.server_rtp_port_){}
+    , decltype(_impl_.sample_rate_){}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.output_uri_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.output_uri_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_output_uri().empty()) {
+    _this->_impl_.output_uri_.Set(from._internal_output_uri(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.format_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.format_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_format()) {
+    _this->_impl_.format_.Set(from._internal_format(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.call_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.call_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_call_id().empty()) {
+    _this->_impl_.call_id_.Set(from._internal_call_id(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.trace_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.trace_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_trace_id().empty()) {
+    _this->_impl_.trace_id_.Set(from._internal_trace_id(), 
+      _this->GetArenaForAllocation());
+  }
+  ::memcpy(&_impl_.server_rtp_port_, &from._impl_.server_rtp_port_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.sample_rate_) -
+    reinterpret_cast<char*>(&_impl_.server_rtp_port_)) + sizeof(_impl_.sample_rate_));
+  // @@protoc_insertion_point(copy_constructor:sentiric.media.v1.StartRecordingRequest)
+}
+
+inline void StartRecordingRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.output_uri_){}
+    , decltype(_impl_.format_){}
+    , decltype(_impl_.call_id_){}
+    , decltype(_impl_.trace_id_){}
+    , decltype(_impl_.server_rtp_port_){0u}
+    , decltype(_impl_.sample_rate_){0u}
+  };
+  _impl_.output_uri_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.output_uri_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.format_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.format_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.call_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.call_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.trace_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.trace_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+StartRecordingRequest::~StartRecordingRequest() {
+  // @@protoc_insertion_point(destructor:sentiric.media.v1.StartRecordingRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void StartRecordingRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.output_uri_.Destroy();
+  _impl_.format_.Destroy();
+  _impl_.call_id_.Destroy();
+  _impl_.trace_id_.Destroy();
+}
+
+void StartRecordingRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void StartRecordingRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.media.v1.StartRecordingRequest)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.output_uri_.ClearToEmpty();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    _impl_.format_.ClearNonDefaultToEmpty();
+  }
+  _impl_.call_id_.ClearToEmpty();
+  _impl_.trace_id_.ClearToEmpty();
+  _impl_.server_rtp_port_ = 0u;
+  _impl_.sample_rate_ = 0u;
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* StartRecordingRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // uint32 server_rtp_port = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          _impl_.server_rtp_port_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string output_uri = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_output_uri();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.media.v1.StartRecordingRequest.output_uri"));
+        } else
+          goto handle_unusual;
+        continue;
+      // optional uint32 sample_rate = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+          _Internal::set_has_sample_rate(&has_bits);
+          _impl_.sample_rate_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // optional string format = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          auto str = _internal_mutable_format();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.media.v1.StartRecordingRequest.format"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string call_id = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
+          auto str = _internal_mutable_call_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.media.v1.StartRecordingRequest.call_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string trace_id = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 50)) {
+          auto str = _internal_mutable_trace_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.media.v1.StartRecordingRequest.trace_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* StartRecordingRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.media.v1.StartRecordingRequest)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint32 server_rtp_port = 1;
+  if (this->_internal_server_rtp_port() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(1, this->_internal_server_rtp_port(), target);
+  }
+
+  // string output_uri = 2;
+  if (!this->_internal_output_uri().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_output_uri().data(), static_cast<int>(this->_internal_output_uri().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.media.v1.StartRecordingRequest.output_uri");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_output_uri(), target);
+  }
+
+  // optional uint32 sample_rate = 3;
+  if (_internal_has_sample_rate()) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(3, this->_internal_sample_rate(), target);
+  }
+
+  // optional string format = 4;
+  if (_internal_has_format()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_format().data(), static_cast<int>(this->_internal_format().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.media.v1.StartRecordingRequest.format");
+    target = stream->WriteStringMaybeAliased(
+        4, this->_internal_format(), target);
+  }
+
+  // string call_id = 5;
+  if (!this->_internal_call_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_call_id().data(), static_cast<int>(this->_internal_call_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.media.v1.StartRecordingRequest.call_id");
+    target = stream->WriteStringMaybeAliased(
+        5, this->_internal_call_id(), target);
+  }
+
+  // string trace_id = 6;
+  if (!this->_internal_trace_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_trace_id().data(), static_cast<int>(this->_internal_trace_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.media.v1.StartRecordingRequest.trace_id");
+    target = stream->WriteStringMaybeAliased(
+        6, this->_internal_trace_id(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.media.v1.StartRecordingRequest)
+  return target;
+}
+
+size_t StartRecordingRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.media.v1.StartRecordingRequest)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string output_uri = 2;
+  if (!this->_internal_output_uri().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_output_uri());
+  }
+
+  // optional string format = 4;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_format());
+  }
+
+  // string call_id = 5;
+  if (!this->_internal_call_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_call_id());
+  }
+
+  // string trace_id = 6;
+  if (!this->_internal_trace_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_trace_id());
+  }
+
+  // uint32 server_rtp_port = 1;
+  if (this->_internal_server_rtp_port() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_server_rtp_port());
+  }
+
+  // optional uint32 sample_rate = 3;
+  if (cached_has_bits & 0x00000002u) {
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_sample_rate());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData StartRecordingRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    StartRecordingRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*StartRecordingRequest::GetClassData() const { return &_class_data_; }
+
+
+void StartRecordingRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<StartRecordingRequest*>(&to_msg);
+  auto& from = static_cast<const StartRecordingRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.media.v1.StartRecordingRequest)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_output_uri().empty()) {
+    _this->_internal_set_output_uri(from._internal_output_uri());
+  }
+  if (from._internal_has_format()) {
+    _this->_internal_set_format(from._internal_format());
+  }
+  if (!from._internal_call_id().empty()) {
+    _this->_internal_set_call_id(from._internal_call_id());
+  }
+  if (!from._internal_trace_id().empty()) {
+    _this->_internal_set_trace_id(from._internal_trace_id());
+  }
+  if (from._internal_server_rtp_port() != 0) {
+    _this->_internal_set_server_rtp_port(from._internal_server_rtp_port());
+  }
+  if (from._internal_has_sample_rate()) {
+    _this->_internal_set_sample_rate(from._internal_sample_rate());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void StartRecordingRequest::CopyFrom(const StartRecordingRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.media.v1.StartRecordingRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool StartRecordingRequest::IsInitialized() const {
+  return true;
+}
+
+void StartRecordingRequest::InternalSwap(StartRecordingRequest* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.output_uri_, lhs_arena,
+      &other->_impl_.output_uri_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.format_, lhs_arena,
+      &other->_impl_.format_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.call_id_, lhs_arena,
+      &other->_impl_.call_id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.trace_id_, lhs_arena,
+      &other->_impl_.trace_id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(StartRecordingRequest, _impl_.sample_rate_)
+      + sizeof(StartRecordingRequest::_impl_.sample_rate_)
+      - PROTOBUF_FIELD_OFFSET(StartRecordingRequest, _impl_.server_rtp_port_)>(
+          reinterpret_cast<char*>(&_impl_.server_rtp_port_),
+          reinterpret_cast<char*>(&other->_impl_.server_rtp_port_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata StartRecordingRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fmedia_2fv1_2fmedia_2eproto_getter, &descriptor_table_sentiric_2fmedia_2fv1_2fmedia_2eproto_once,
+      file_level_metadata_sentiric_2fmedia_2fv1_2fmedia_2eproto[8]);
+}
+
+// ===================================================================
+
+class StartRecordingResponse::_Internal {
+ public:
+};
+
+StartRecordingResponse::StartRecordingResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.media.v1.StartRecordingResponse)
+}
+StartRecordingResponse::StartRecordingResponse(const StartRecordingResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  StartRecordingResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.success_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_impl_.success_ = from._impl_.success_;
+  // @@protoc_insertion_point(copy_constructor:sentiric.media.v1.StartRecordingResponse)
+}
+
+inline void StartRecordingResponse::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.success_){false}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+StartRecordingResponse::~StartRecordingResponse() {
+  // @@protoc_insertion_point(destructor:sentiric.media.v1.StartRecordingResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void StartRecordingResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void StartRecordingResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void StartRecordingResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.media.v1.StartRecordingResponse)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.success_ = false;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* StartRecordingResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // bool success = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          _impl_.success_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* StartRecordingResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.media.v1.StartRecordingResponse)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // bool success = 1;
+  if (this->_internal_success() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(1, this->_internal_success(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.media.v1.StartRecordingResponse)
+  return target;
+}
+
+size_t StartRecordingResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.media.v1.StartRecordingResponse)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // bool success = 1;
+  if (this->_internal_success() != 0) {
+    total_size += 1 + 1;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData StartRecordingResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    StartRecordingResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*StartRecordingResponse::GetClassData() const { return &_class_data_; }
+
+
+void StartRecordingResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<StartRecordingResponse*>(&to_msg);
+  auto& from = static_cast<const StartRecordingResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.media.v1.StartRecordingResponse)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_success() != 0) {
+    _this->_internal_set_success(from._internal_success());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void StartRecordingResponse::CopyFrom(const StartRecordingResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.media.v1.StartRecordingResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool StartRecordingResponse::IsInitialized() const {
+  return true;
+}
+
+void StartRecordingResponse::InternalSwap(StartRecordingResponse* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_.success_, other->_impl_.success_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata StartRecordingResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fmedia_2fv1_2fmedia_2eproto_getter, &descriptor_table_sentiric_2fmedia_2fv1_2fmedia_2eproto_once,
+      file_level_metadata_sentiric_2fmedia_2fv1_2fmedia_2eproto[9]);
+}
+
+// ===================================================================
+
+class StopRecordingRequest::_Internal {
+ public:
+};
+
+StopRecordingRequest::StopRecordingRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.media.v1.StopRecordingRequest)
+}
+StopRecordingRequest::StopRecordingRequest(const StopRecordingRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  StopRecordingRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.server_rtp_port_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_impl_.server_rtp_port_ = from._impl_.server_rtp_port_;
+  // @@protoc_insertion_point(copy_constructor:sentiric.media.v1.StopRecordingRequest)
+}
+
+inline void StopRecordingRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.server_rtp_port_){0u}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+StopRecordingRequest::~StopRecordingRequest() {
+  // @@protoc_insertion_point(destructor:sentiric.media.v1.StopRecordingRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void StopRecordingRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void StopRecordingRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void StopRecordingRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.media.v1.StopRecordingRequest)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.server_rtp_port_ = 0u;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* StopRecordingRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // uint32 server_rtp_port = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          _impl_.server_rtp_port_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* StopRecordingRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.media.v1.StopRecordingRequest)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // uint32 server_rtp_port = 1;
+  if (this->_internal_server_rtp_port() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(1, this->_internal_server_rtp_port(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.media.v1.StopRecordingRequest)
+  return target;
+}
+
+size_t StopRecordingRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.media.v1.StopRecordingRequest)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // uint32 server_rtp_port = 1;
+  if (this->_internal_server_rtp_port() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_server_rtp_port());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData StopRecordingRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    StopRecordingRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*StopRecordingRequest::GetClassData() const { return &_class_data_; }
+
+
+void StopRecordingRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<StopRecordingRequest*>(&to_msg);
+  auto& from = static_cast<const StopRecordingRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.media.v1.StopRecordingRequest)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_server_rtp_port() != 0) {
+    _this->_internal_set_server_rtp_port(from._internal_server_rtp_port());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void StopRecordingRequest::CopyFrom(const StopRecordingRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.media.v1.StopRecordingRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool StopRecordingRequest::IsInitialized() const {
+  return true;
+}
+
+void StopRecordingRequest::InternalSwap(StopRecordingRequest* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_.server_rtp_port_, other->_impl_.server_rtp_port_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata StopRecordingRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fmedia_2fv1_2fmedia_2eproto_getter, &descriptor_table_sentiric_2fmedia_2fv1_2fmedia_2eproto_once,
+      file_level_metadata_sentiric_2fmedia_2fv1_2fmedia_2eproto[10]);
+}
+
+// ===================================================================
+
+class StopRecordingResponse::_Internal {
+ public:
+};
+
+StopRecordingResponse::StopRecordingResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.media.v1.StopRecordingResponse)
+}
+StopRecordingResponse::StopRecordingResponse(const StopRecordingResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  StopRecordingResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.success_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_impl_.success_ = from._impl_.success_;
+  // @@protoc_insertion_point(copy_constructor:sentiric.media.v1.StopRecordingResponse)
+}
+
+inline void StopRecordingResponse::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.success_){false}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+StopRecordingResponse::~StopRecordingResponse() {
+  // @@protoc_insertion_point(destructor:sentiric.media.v1.StopRecordingResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void StopRecordingResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void StopRecordingResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void StopRecordingResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.media.v1.StopRecordingResponse)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.success_ = false;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* StopRecordingResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // bool success = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          _impl_.success_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* StopRecordingResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.media.v1.StopRecordingResponse)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // bool success = 1;
+  if (this->_internal_success() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(1, this->_internal_success(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.media.v1.StopRecordingResponse)
+  return target;
+}
+
+size_t StopRecordingResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.media.v1.StopRecordingResponse)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // bool success = 1;
+  if (this->_internal_success() != 0) {
+    total_size += 1 + 1;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData StopRecordingResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    StopRecordingResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*StopRecordingResponse::GetClassData() const { return &_class_data_; }
+
+
+void StopRecordingResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<StopRecordingResponse*>(&to_msg);
+  auto& from = static_cast<const StopRecordingResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.media.v1.StopRecordingResponse)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_success() != 0) {
+    _this->_internal_set_success(from._internal_success());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void StopRecordingResponse::CopyFrom(const StopRecordingResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.media.v1.StopRecordingResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool StopRecordingResponse::IsInitialized() const {
+  return true;
+}
+
+void StopRecordingResponse::InternalSwap(StopRecordingResponse* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_.success_, other->_impl_.success_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata StopRecordingResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fmedia_2fv1_2fmedia_2eproto_getter, &descriptor_table_sentiric_2fmedia_2fv1_2fmedia_2eproto_once,
+      file_level_metadata_sentiric_2fmedia_2fv1_2fmedia_2eproto[11]);
+}
+
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace v1
 }  // namespace media
@@ -917,6 +3092,38 @@ Arena::CreateMaybeMessage< ::sentiric::media::v1::ReleasePortRequest >(Arena* ar
 template<> PROTOBUF_NOINLINE ::sentiric::media::v1::ReleasePortResponse*
 Arena::CreateMaybeMessage< ::sentiric::media::v1::ReleasePortResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::sentiric::media::v1::ReleasePortResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::media::v1::PlayAudioRequest*
+Arena::CreateMaybeMessage< ::sentiric::media::v1::PlayAudioRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::media::v1::PlayAudioRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::media::v1::PlayAudioResponse*
+Arena::CreateMaybeMessage< ::sentiric::media::v1::PlayAudioResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::media::v1::PlayAudioResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::media::v1::RecordAudioRequest*
+Arena::CreateMaybeMessage< ::sentiric::media::v1::RecordAudioRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::media::v1::RecordAudioRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::media::v1::RecordAudioResponse*
+Arena::CreateMaybeMessage< ::sentiric::media::v1::RecordAudioResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::media::v1::RecordAudioResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::media::v1::StartRecordingRequest*
+Arena::CreateMaybeMessage< ::sentiric::media::v1::StartRecordingRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::media::v1::StartRecordingRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::media::v1::StartRecordingResponse*
+Arena::CreateMaybeMessage< ::sentiric::media::v1::StartRecordingResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::media::v1::StartRecordingResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::media::v1::StopRecordingRequest*
+Arena::CreateMaybeMessage< ::sentiric::media::v1::StopRecordingRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::media::v1::StopRecordingRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::media::v1::StopRecordingResponse*
+Arena::CreateMaybeMessage< ::sentiric::media::v1::StopRecordingResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::media::v1::StopRecordingResponse >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

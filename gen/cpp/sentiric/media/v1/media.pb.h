@@ -53,20 +53,52 @@ extern AllocatePortRequestDefaultTypeInternal _AllocatePortRequest_default_insta
 class AllocatePortResponse;
 struct AllocatePortResponseDefaultTypeInternal;
 extern AllocatePortResponseDefaultTypeInternal _AllocatePortResponse_default_instance_;
+class PlayAudioRequest;
+struct PlayAudioRequestDefaultTypeInternal;
+extern PlayAudioRequestDefaultTypeInternal _PlayAudioRequest_default_instance_;
+class PlayAudioResponse;
+struct PlayAudioResponseDefaultTypeInternal;
+extern PlayAudioResponseDefaultTypeInternal _PlayAudioResponse_default_instance_;
+class RecordAudioRequest;
+struct RecordAudioRequestDefaultTypeInternal;
+extern RecordAudioRequestDefaultTypeInternal _RecordAudioRequest_default_instance_;
+class RecordAudioResponse;
+struct RecordAudioResponseDefaultTypeInternal;
+extern RecordAudioResponseDefaultTypeInternal _RecordAudioResponse_default_instance_;
 class ReleasePortRequest;
 struct ReleasePortRequestDefaultTypeInternal;
 extern ReleasePortRequestDefaultTypeInternal _ReleasePortRequest_default_instance_;
 class ReleasePortResponse;
 struct ReleasePortResponseDefaultTypeInternal;
 extern ReleasePortResponseDefaultTypeInternal _ReleasePortResponse_default_instance_;
+class StartRecordingRequest;
+struct StartRecordingRequestDefaultTypeInternal;
+extern StartRecordingRequestDefaultTypeInternal _StartRecordingRequest_default_instance_;
+class StartRecordingResponse;
+struct StartRecordingResponseDefaultTypeInternal;
+extern StartRecordingResponseDefaultTypeInternal _StartRecordingResponse_default_instance_;
+class StopRecordingRequest;
+struct StopRecordingRequestDefaultTypeInternal;
+extern StopRecordingRequestDefaultTypeInternal _StopRecordingRequest_default_instance_;
+class StopRecordingResponse;
+struct StopRecordingResponseDefaultTypeInternal;
+extern StopRecordingResponseDefaultTypeInternal _StopRecordingResponse_default_instance_;
 }  // namespace v1
 }  // namespace media
 }  // namespace sentiric
 PROTOBUF_NAMESPACE_OPEN
 template<> ::sentiric::media::v1::AllocatePortRequest* Arena::CreateMaybeMessage<::sentiric::media::v1::AllocatePortRequest>(Arena*);
 template<> ::sentiric::media::v1::AllocatePortResponse* Arena::CreateMaybeMessage<::sentiric::media::v1::AllocatePortResponse>(Arena*);
+template<> ::sentiric::media::v1::PlayAudioRequest* Arena::CreateMaybeMessage<::sentiric::media::v1::PlayAudioRequest>(Arena*);
+template<> ::sentiric::media::v1::PlayAudioResponse* Arena::CreateMaybeMessage<::sentiric::media::v1::PlayAudioResponse>(Arena*);
+template<> ::sentiric::media::v1::RecordAudioRequest* Arena::CreateMaybeMessage<::sentiric::media::v1::RecordAudioRequest>(Arena*);
+template<> ::sentiric::media::v1::RecordAudioResponse* Arena::CreateMaybeMessage<::sentiric::media::v1::RecordAudioResponse>(Arena*);
 template<> ::sentiric::media::v1::ReleasePortRequest* Arena::CreateMaybeMessage<::sentiric::media::v1::ReleasePortRequest>(Arena*);
 template<> ::sentiric::media::v1::ReleasePortResponse* Arena::CreateMaybeMessage<::sentiric::media::v1::ReleasePortResponse>(Arena*);
+template<> ::sentiric::media::v1::StartRecordingRequest* Arena::CreateMaybeMessage<::sentiric::media::v1::StartRecordingRequest>(Arena*);
+template<> ::sentiric::media::v1::StartRecordingResponse* Arena::CreateMaybeMessage<::sentiric::media::v1::StartRecordingResponse>(Arena*);
+template<> ::sentiric::media::v1::StopRecordingRequest* Arena::CreateMaybeMessage<::sentiric::media::v1::StopRecordingRequest>(Arena*);
+template<> ::sentiric::media::v1::StopRecordingResponse* Arena::CreateMaybeMessage<::sentiric::media::v1::StopRecordingResponse>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace sentiric {
 namespace media {
@@ -669,6 +701,1359 @@ class ReleasePortResponse final :
   union { Impl_ _impl_; };
   friend struct ::TableStruct_sentiric_2fmedia_2fv1_2fmedia_2eproto;
 };
+// -------------------------------------------------------------------
+
+class PlayAudioRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.media.v1.PlayAudioRequest) */ {
+ public:
+  inline PlayAudioRequest() : PlayAudioRequest(nullptr) {}
+  ~PlayAudioRequest() override;
+  explicit PROTOBUF_CONSTEXPR PlayAudioRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  PlayAudioRequest(const PlayAudioRequest& from);
+  PlayAudioRequest(PlayAudioRequest&& from) noexcept
+    : PlayAudioRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline PlayAudioRequest& operator=(const PlayAudioRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline PlayAudioRequest& operator=(PlayAudioRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const PlayAudioRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const PlayAudioRequest* internal_default_instance() {
+    return reinterpret_cast<const PlayAudioRequest*>(
+               &_PlayAudioRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    4;
+
+  friend void swap(PlayAudioRequest& a, PlayAudioRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(PlayAudioRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(PlayAudioRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  PlayAudioRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<PlayAudioRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const PlayAudioRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const PlayAudioRequest& from) {
+    PlayAudioRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(PlayAudioRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.media.v1.PlayAudioRequest";
+  }
+  protected:
+  explicit PlayAudioRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kAudioUriFieldNumber = 1,
+    kRtpTargetAddrFieldNumber = 3,
+    kServerRtpPortFieldNumber = 2,
+  };
+  // string audio_uri = 1;
+  void clear_audio_uri();
+  const std::string& audio_uri() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_audio_uri(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_audio_uri();
+  PROTOBUF_NODISCARD std::string* release_audio_uri();
+  void set_allocated_audio_uri(std::string* audio_uri);
+  private:
+  const std::string& _internal_audio_uri() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_audio_uri(const std::string& value);
+  std::string* _internal_mutable_audio_uri();
+  public:
+
+  // string rtp_target_addr = 3;
+  void clear_rtp_target_addr();
+  const std::string& rtp_target_addr() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_rtp_target_addr(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_rtp_target_addr();
+  PROTOBUF_NODISCARD std::string* release_rtp_target_addr();
+  void set_allocated_rtp_target_addr(std::string* rtp_target_addr);
+  private:
+  const std::string& _internal_rtp_target_addr() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_rtp_target_addr(const std::string& value);
+  std::string* _internal_mutable_rtp_target_addr();
+  public:
+
+  // uint32 server_rtp_port = 2;
+  void clear_server_rtp_port();
+  uint32_t server_rtp_port() const;
+  void set_server_rtp_port(uint32_t value);
+  private:
+  uint32_t _internal_server_rtp_port() const;
+  void _internal_set_server_rtp_port(uint32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.media.v1.PlayAudioRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr audio_uri_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr rtp_target_addr_;
+    uint32_t server_rtp_port_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2fmedia_2fv1_2fmedia_2eproto;
+};
+// -------------------------------------------------------------------
+
+class PlayAudioResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.media.v1.PlayAudioResponse) */ {
+ public:
+  inline PlayAudioResponse() : PlayAudioResponse(nullptr) {}
+  ~PlayAudioResponse() override;
+  explicit PROTOBUF_CONSTEXPR PlayAudioResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  PlayAudioResponse(const PlayAudioResponse& from);
+  PlayAudioResponse(PlayAudioResponse&& from) noexcept
+    : PlayAudioResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline PlayAudioResponse& operator=(const PlayAudioResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline PlayAudioResponse& operator=(PlayAudioResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const PlayAudioResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const PlayAudioResponse* internal_default_instance() {
+    return reinterpret_cast<const PlayAudioResponse*>(
+               &_PlayAudioResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    5;
+
+  friend void swap(PlayAudioResponse& a, PlayAudioResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(PlayAudioResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(PlayAudioResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  PlayAudioResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<PlayAudioResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const PlayAudioResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const PlayAudioResponse& from) {
+    PlayAudioResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(PlayAudioResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.media.v1.PlayAudioResponse";
+  }
+  protected:
+  explicit PlayAudioResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kMessageFieldNumber = 2,
+    kSuccessFieldNumber = 1,
+  };
+  // string message = 2;
+  void clear_message();
+  const std::string& message() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_message(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_message();
+  PROTOBUF_NODISCARD std::string* release_message();
+  void set_allocated_message(std::string* message);
+  private:
+  const std::string& _internal_message() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_message(const std::string& value);
+  std::string* _internal_mutable_message();
+  public:
+
+  // bool success = 1;
+  void clear_success();
+  bool success() const;
+  void set_success(bool value);
+  private:
+  bool _internal_success() const;
+  void _internal_set_success(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.media.v1.PlayAudioResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr message_;
+    bool success_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2fmedia_2fv1_2fmedia_2eproto;
+};
+// -------------------------------------------------------------------
+
+class RecordAudioRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.media.v1.RecordAudioRequest) */ {
+ public:
+  inline RecordAudioRequest() : RecordAudioRequest(nullptr) {}
+  ~RecordAudioRequest() override;
+  explicit PROTOBUF_CONSTEXPR RecordAudioRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  RecordAudioRequest(const RecordAudioRequest& from);
+  RecordAudioRequest(RecordAudioRequest&& from) noexcept
+    : RecordAudioRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline RecordAudioRequest& operator=(const RecordAudioRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline RecordAudioRequest& operator=(RecordAudioRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const RecordAudioRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const RecordAudioRequest* internal_default_instance() {
+    return reinterpret_cast<const RecordAudioRequest*>(
+               &_RecordAudioRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    6;
+
+  friend void swap(RecordAudioRequest& a, RecordAudioRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(RecordAudioRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(RecordAudioRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  RecordAudioRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<RecordAudioRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const RecordAudioRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const RecordAudioRequest& from) {
+    RecordAudioRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(RecordAudioRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.media.v1.RecordAudioRequest";
+  }
+  protected:
+  explicit RecordAudioRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kServerRtpPortFieldNumber = 1,
+    kTargetSampleRateFieldNumber = 2,
+  };
+  // uint32 server_rtp_port = 1;
+  void clear_server_rtp_port();
+  uint32_t server_rtp_port() const;
+  void set_server_rtp_port(uint32_t value);
+  private:
+  uint32_t _internal_server_rtp_port() const;
+  void _internal_set_server_rtp_port(uint32_t value);
+  public:
+
+  // optional uint32 target_sample_rate = 2;
+  bool has_target_sample_rate() const;
+  private:
+  bool _internal_has_target_sample_rate() const;
+  public:
+  void clear_target_sample_rate();
+  uint32_t target_sample_rate() const;
+  void set_target_sample_rate(uint32_t value);
+  private:
+  uint32_t _internal_target_sample_rate() const;
+  void _internal_set_target_sample_rate(uint32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.media.v1.RecordAudioRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    uint32_t server_rtp_port_;
+    uint32_t target_sample_rate_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2fmedia_2fv1_2fmedia_2eproto;
+};
+// -------------------------------------------------------------------
+
+class RecordAudioResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.media.v1.RecordAudioResponse) */ {
+ public:
+  inline RecordAudioResponse() : RecordAudioResponse(nullptr) {}
+  ~RecordAudioResponse() override;
+  explicit PROTOBUF_CONSTEXPR RecordAudioResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  RecordAudioResponse(const RecordAudioResponse& from);
+  RecordAudioResponse(RecordAudioResponse&& from) noexcept
+    : RecordAudioResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline RecordAudioResponse& operator=(const RecordAudioResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline RecordAudioResponse& operator=(RecordAudioResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const RecordAudioResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const RecordAudioResponse* internal_default_instance() {
+    return reinterpret_cast<const RecordAudioResponse*>(
+               &_RecordAudioResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    7;
+
+  friend void swap(RecordAudioResponse& a, RecordAudioResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(RecordAudioResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(RecordAudioResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  RecordAudioResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<RecordAudioResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const RecordAudioResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const RecordAudioResponse& from) {
+    RecordAudioResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(RecordAudioResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.media.v1.RecordAudioResponse";
+  }
+  protected:
+  explicit RecordAudioResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kAudioDataFieldNumber = 1,
+    kMediaTypeFieldNumber = 2,
+  };
+  // bytes audio_data = 1;
+  void clear_audio_data();
+  const std::string& audio_data() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_audio_data(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_audio_data();
+  PROTOBUF_NODISCARD std::string* release_audio_data();
+  void set_allocated_audio_data(std::string* audio_data);
+  private:
+  const std::string& _internal_audio_data() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_audio_data(const std::string& value);
+  std::string* _internal_mutable_audio_data();
+  public:
+
+  // string media_type = 2;
+  void clear_media_type();
+  const std::string& media_type() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_media_type(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_media_type();
+  PROTOBUF_NODISCARD std::string* release_media_type();
+  void set_allocated_media_type(std::string* media_type);
+  private:
+  const std::string& _internal_media_type() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_media_type(const std::string& value);
+  std::string* _internal_mutable_media_type();
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.media.v1.RecordAudioResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr audio_data_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr media_type_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2fmedia_2fv1_2fmedia_2eproto;
+};
+// -------------------------------------------------------------------
+
+class StartRecordingRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.media.v1.StartRecordingRequest) */ {
+ public:
+  inline StartRecordingRequest() : StartRecordingRequest(nullptr) {}
+  ~StartRecordingRequest() override;
+  explicit PROTOBUF_CONSTEXPR StartRecordingRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  StartRecordingRequest(const StartRecordingRequest& from);
+  StartRecordingRequest(StartRecordingRequest&& from) noexcept
+    : StartRecordingRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline StartRecordingRequest& operator=(const StartRecordingRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline StartRecordingRequest& operator=(StartRecordingRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const StartRecordingRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const StartRecordingRequest* internal_default_instance() {
+    return reinterpret_cast<const StartRecordingRequest*>(
+               &_StartRecordingRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    8;
+
+  friend void swap(StartRecordingRequest& a, StartRecordingRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(StartRecordingRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(StartRecordingRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  StartRecordingRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<StartRecordingRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const StartRecordingRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const StartRecordingRequest& from) {
+    StartRecordingRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(StartRecordingRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.media.v1.StartRecordingRequest";
+  }
+  protected:
+  explicit StartRecordingRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kOutputUriFieldNumber = 2,
+    kFormatFieldNumber = 4,
+    kCallIdFieldNumber = 5,
+    kTraceIdFieldNumber = 6,
+    kServerRtpPortFieldNumber = 1,
+    kSampleRateFieldNumber = 3,
+  };
+  // string output_uri = 2;
+  void clear_output_uri();
+  const std::string& output_uri() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_output_uri(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_output_uri();
+  PROTOBUF_NODISCARD std::string* release_output_uri();
+  void set_allocated_output_uri(std::string* output_uri);
+  private:
+  const std::string& _internal_output_uri() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_output_uri(const std::string& value);
+  std::string* _internal_mutable_output_uri();
+  public:
+
+  // optional string format = 4;
+  bool has_format() const;
+  private:
+  bool _internal_has_format() const;
+  public:
+  void clear_format();
+  const std::string& format() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_format(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_format();
+  PROTOBUF_NODISCARD std::string* release_format();
+  void set_allocated_format(std::string* format);
+  private:
+  const std::string& _internal_format() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_format(const std::string& value);
+  std::string* _internal_mutable_format();
+  public:
+
+  // string call_id = 5;
+  void clear_call_id();
+  const std::string& call_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_call_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_call_id();
+  PROTOBUF_NODISCARD std::string* release_call_id();
+  void set_allocated_call_id(std::string* call_id);
+  private:
+  const std::string& _internal_call_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_call_id(const std::string& value);
+  std::string* _internal_mutable_call_id();
+  public:
+
+  // string trace_id = 6;
+  void clear_trace_id();
+  const std::string& trace_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_trace_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_trace_id();
+  PROTOBUF_NODISCARD std::string* release_trace_id();
+  void set_allocated_trace_id(std::string* trace_id);
+  private:
+  const std::string& _internal_trace_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_trace_id(const std::string& value);
+  std::string* _internal_mutable_trace_id();
+  public:
+
+  // uint32 server_rtp_port = 1;
+  void clear_server_rtp_port();
+  uint32_t server_rtp_port() const;
+  void set_server_rtp_port(uint32_t value);
+  private:
+  uint32_t _internal_server_rtp_port() const;
+  void _internal_set_server_rtp_port(uint32_t value);
+  public:
+
+  // optional uint32 sample_rate = 3;
+  bool has_sample_rate() const;
+  private:
+  bool _internal_has_sample_rate() const;
+  public:
+  void clear_sample_rate();
+  uint32_t sample_rate() const;
+  void set_sample_rate(uint32_t value);
+  private:
+  uint32_t _internal_sample_rate() const;
+  void _internal_set_sample_rate(uint32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.media.v1.StartRecordingRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr output_uri_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr format_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr call_id_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr trace_id_;
+    uint32_t server_rtp_port_;
+    uint32_t sample_rate_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2fmedia_2fv1_2fmedia_2eproto;
+};
+// -------------------------------------------------------------------
+
+class StartRecordingResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.media.v1.StartRecordingResponse) */ {
+ public:
+  inline StartRecordingResponse() : StartRecordingResponse(nullptr) {}
+  ~StartRecordingResponse() override;
+  explicit PROTOBUF_CONSTEXPR StartRecordingResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  StartRecordingResponse(const StartRecordingResponse& from);
+  StartRecordingResponse(StartRecordingResponse&& from) noexcept
+    : StartRecordingResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline StartRecordingResponse& operator=(const StartRecordingResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline StartRecordingResponse& operator=(StartRecordingResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const StartRecordingResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const StartRecordingResponse* internal_default_instance() {
+    return reinterpret_cast<const StartRecordingResponse*>(
+               &_StartRecordingResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    9;
+
+  friend void swap(StartRecordingResponse& a, StartRecordingResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(StartRecordingResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(StartRecordingResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  StartRecordingResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<StartRecordingResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const StartRecordingResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const StartRecordingResponse& from) {
+    StartRecordingResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(StartRecordingResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.media.v1.StartRecordingResponse";
+  }
+  protected:
+  explicit StartRecordingResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kSuccessFieldNumber = 1,
+  };
+  // bool success = 1;
+  void clear_success();
+  bool success() const;
+  void set_success(bool value);
+  private:
+  bool _internal_success() const;
+  void _internal_set_success(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.media.v1.StartRecordingResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    bool success_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2fmedia_2fv1_2fmedia_2eproto;
+};
+// -------------------------------------------------------------------
+
+class StopRecordingRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.media.v1.StopRecordingRequest) */ {
+ public:
+  inline StopRecordingRequest() : StopRecordingRequest(nullptr) {}
+  ~StopRecordingRequest() override;
+  explicit PROTOBUF_CONSTEXPR StopRecordingRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  StopRecordingRequest(const StopRecordingRequest& from);
+  StopRecordingRequest(StopRecordingRequest&& from) noexcept
+    : StopRecordingRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline StopRecordingRequest& operator=(const StopRecordingRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline StopRecordingRequest& operator=(StopRecordingRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const StopRecordingRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const StopRecordingRequest* internal_default_instance() {
+    return reinterpret_cast<const StopRecordingRequest*>(
+               &_StopRecordingRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    10;
+
+  friend void swap(StopRecordingRequest& a, StopRecordingRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(StopRecordingRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(StopRecordingRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  StopRecordingRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<StopRecordingRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const StopRecordingRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const StopRecordingRequest& from) {
+    StopRecordingRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(StopRecordingRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.media.v1.StopRecordingRequest";
+  }
+  protected:
+  explicit StopRecordingRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kServerRtpPortFieldNumber = 1,
+  };
+  // uint32 server_rtp_port = 1;
+  void clear_server_rtp_port();
+  uint32_t server_rtp_port() const;
+  void set_server_rtp_port(uint32_t value);
+  private:
+  uint32_t _internal_server_rtp_port() const;
+  void _internal_set_server_rtp_port(uint32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.media.v1.StopRecordingRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    uint32_t server_rtp_port_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2fmedia_2fv1_2fmedia_2eproto;
+};
+// -------------------------------------------------------------------
+
+class StopRecordingResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.media.v1.StopRecordingResponse) */ {
+ public:
+  inline StopRecordingResponse() : StopRecordingResponse(nullptr) {}
+  ~StopRecordingResponse() override;
+  explicit PROTOBUF_CONSTEXPR StopRecordingResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  StopRecordingResponse(const StopRecordingResponse& from);
+  StopRecordingResponse(StopRecordingResponse&& from) noexcept
+    : StopRecordingResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline StopRecordingResponse& operator=(const StopRecordingResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline StopRecordingResponse& operator=(StopRecordingResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const StopRecordingResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const StopRecordingResponse* internal_default_instance() {
+    return reinterpret_cast<const StopRecordingResponse*>(
+               &_StopRecordingResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    11;
+
+  friend void swap(StopRecordingResponse& a, StopRecordingResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(StopRecordingResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(StopRecordingResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  StopRecordingResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<StopRecordingResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const StopRecordingResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const StopRecordingResponse& from) {
+    StopRecordingResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(StopRecordingResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.media.v1.StopRecordingResponse";
+  }
+  protected:
+  explicit StopRecordingResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kSuccessFieldNumber = 1,
+  };
+  // bool success = 1;
+  void clear_success();
+  bool success() const;
+  void set_success(bool value);
+  private:
+  bool _internal_success() const;
+  void _internal_set_success(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.media.v1.StopRecordingResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    bool success_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2fmedia_2fv1_2fmedia_2eproto;
+};
 // ===================================================================
 
 
@@ -802,9 +2187,721 @@ inline void ReleasePortResponse::set_success(bool value) {
   // @@protoc_insertion_point(field_set:sentiric.media.v1.ReleasePortResponse.success)
 }
 
+// -------------------------------------------------------------------
+
+// PlayAudioRequest
+
+// string audio_uri = 1;
+inline void PlayAudioRequest::clear_audio_uri() {
+  _impl_.audio_uri_.ClearToEmpty();
+}
+inline const std::string& PlayAudioRequest::audio_uri() const {
+  // @@protoc_insertion_point(field_get:sentiric.media.v1.PlayAudioRequest.audio_uri)
+  return _internal_audio_uri();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void PlayAudioRequest::set_audio_uri(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.audio_uri_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.media.v1.PlayAudioRequest.audio_uri)
+}
+inline std::string* PlayAudioRequest::mutable_audio_uri() {
+  std::string* _s = _internal_mutable_audio_uri();
+  // @@protoc_insertion_point(field_mutable:sentiric.media.v1.PlayAudioRequest.audio_uri)
+  return _s;
+}
+inline const std::string& PlayAudioRequest::_internal_audio_uri() const {
+  return _impl_.audio_uri_.Get();
+}
+inline void PlayAudioRequest::_internal_set_audio_uri(const std::string& value) {
+  
+  _impl_.audio_uri_.Set(value, GetArenaForAllocation());
+}
+inline std::string* PlayAudioRequest::_internal_mutable_audio_uri() {
+  
+  return _impl_.audio_uri_.Mutable(GetArenaForAllocation());
+}
+inline std::string* PlayAudioRequest::release_audio_uri() {
+  // @@protoc_insertion_point(field_release:sentiric.media.v1.PlayAudioRequest.audio_uri)
+  return _impl_.audio_uri_.Release();
+}
+inline void PlayAudioRequest::set_allocated_audio_uri(std::string* audio_uri) {
+  if (audio_uri != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.audio_uri_.SetAllocated(audio_uri, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.audio_uri_.IsDefault()) {
+    _impl_.audio_uri_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.media.v1.PlayAudioRequest.audio_uri)
+}
+
+// uint32 server_rtp_port = 2;
+inline void PlayAudioRequest::clear_server_rtp_port() {
+  _impl_.server_rtp_port_ = 0u;
+}
+inline uint32_t PlayAudioRequest::_internal_server_rtp_port() const {
+  return _impl_.server_rtp_port_;
+}
+inline uint32_t PlayAudioRequest::server_rtp_port() const {
+  // @@protoc_insertion_point(field_get:sentiric.media.v1.PlayAudioRequest.server_rtp_port)
+  return _internal_server_rtp_port();
+}
+inline void PlayAudioRequest::_internal_set_server_rtp_port(uint32_t value) {
+  
+  _impl_.server_rtp_port_ = value;
+}
+inline void PlayAudioRequest::set_server_rtp_port(uint32_t value) {
+  _internal_set_server_rtp_port(value);
+  // @@protoc_insertion_point(field_set:sentiric.media.v1.PlayAudioRequest.server_rtp_port)
+}
+
+// string rtp_target_addr = 3;
+inline void PlayAudioRequest::clear_rtp_target_addr() {
+  _impl_.rtp_target_addr_.ClearToEmpty();
+}
+inline const std::string& PlayAudioRequest::rtp_target_addr() const {
+  // @@protoc_insertion_point(field_get:sentiric.media.v1.PlayAudioRequest.rtp_target_addr)
+  return _internal_rtp_target_addr();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void PlayAudioRequest::set_rtp_target_addr(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.rtp_target_addr_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.media.v1.PlayAudioRequest.rtp_target_addr)
+}
+inline std::string* PlayAudioRequest::mutable_rtp_target_addr() {
+  std::string* _s = _internal_mutable_rtp_target_addr();
+  // @@protoc_insertion_point(field_mutable:sentiric.media.v1.PlayAudioRequest.rtp_target_addr)
+  return _s;
+}
+inline const std::string& PlayAudioRequest::_internal_rtp_target_addr() const {
+  return _impl_.rtp_target_addr_.Get();
+}
+inline void PlayAudioRequest::_internal_set_rtp_target_addr(const std::string& value) {
+  
+  _impl_.rtp_target_addr_.Set(value, GetArenaForAllocation());
+}
+inline std::string* PlayAudioRequest::_internal_mutable_rtp_target_addr() {
+  
+  return _impl_.rtp_target_addr_.Mutable(GetArenaForAllocation());
+}
+inline std::string* PlayAudioRequest::release_rtp_target_addr() {
+  // @@protoc_insertion_point(field_release:sentiric.media.v1.PlayAudioRequest.rtp_target_addr)
+  return _impl_.rtp_target_addr_.Release();
+}
+inline void PlayAudioRequest::set_allocated_rtp_target_addr(std::string* rtp_target_addr) {
+  if (rtp_target_addr != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.rtp_target_addr_.SetAllocated(rtp_target_addr, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.rtp_target_addr_.IsDefault()) {
+    _impl_.rtp_target_addr_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.media.v1.PlayAudioRequest.rtp_target_addr)
+}
+
+// -------------------------------------------------------------------
+
+// PlayAudioResponse
+
+// bool success = 1;
+inline void PlayAudioResponse::clear_success() {
+  _impl_.success_ = false;
+}
+inline bool PlayAudioResponse::_internal_success() const {
+  return _impl_.success_;
+}
+inline bool PlayAudioResponse::success() const {
+  // @@protoc_insertion_point(field_get:sentiric.media.v1.PlayAudioResponse.success)
+  return _internal_success();
+}
+inline void PlayAudioResponse::_internal_set_success(bool value) {
+  
+  _impl_.success_ = value;
+}
+inline void PlayAudioResponse::set_success(bool value) {
+  _internal_set_success(value);
+  // @@protoc_insertion_point(field_set:sentiric.media.v1.PlayAudioResponse.success)
+}
+
+// string message = 2;
+inline void PlayAudioResponse::clear_message() {
+  _impl_.message_.ClearToEmpty();
+}
+inline const std::string& PlayAudioResponse::message() const {
+  // @@protoc_insertion_point(field_get:sentiric.media.v1.PlayAudioResponse.message)
+  return _internal_message();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void PlayAudioResponse::set_message(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.message_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.media.v1.PlayAudioResponse.message)
+}
+inline std::string* PlayAudioResponse::mutable_message() {
+  std::string* _s = _internal_mutable_message();
+  // @@protoc_insertion_point(field_mutable:sentiric.media.v1.PlayAudioResponse.message)
+  return _s;
+}
+inline const std::string& PlayAudioResponse::_internal_message() const {
+  return _impl_.message_.Get();
+}
+inline void PlayAudioResponse::_internal_set_message(const std::string& value) {
+  
+  _impl_.message_.Set(value, GetArenaForAllocation());
+}
+inline std::string* PlayAudioResponse::_internal_mutable_message() {
+  
+  return _impl_.message_.Mutable(GetArenaForAllocation());
+}
+inline std::string* PlayAudioResponse::release_message() {
+  // @@protoc_insertion_point(field_release:sentiric.media.v1.PlayAudioResponse.message)
+  return _impl_.message_.Release();
+}
+inline void PlayAudioResponse::set_allocated_message(std::string* message) {
+  if (message != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.message_.SetAllocated(message, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.message_.IsDefault()) {
+    _impl_.message_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.media.v1.PlayAudioResponse.message)
+}
+
+// -------------------------------------------------------------------
+
+// RecordAudioRequest
+
+// uint32 server_rtp_port = 1;
+inline void RecordAudioRequest::clear_server_rtp_port() {
+  _impl_.server_rtp_port_ = 0u;
+}
+inline uint32_t RecordAudioRequest::_internal_server_rtp_port() const {
+  return _impl_.server_rtp_port_;
+}
+inline uint32_t RecordAudioRequest::server_rtp_port() const {
+  // @@protoc_insertion_point(field_get:sentiric.media.v1.RecordAudioRequest.server_rtp_port)
+  return _internal_server_rtp_port();
+}
+inline void RecordAudioRequest::_internal_set_server_rtp_port(uint32_t value) {
+  
+  _impl_.server_rtp_port_ = value;
+}
+inline void RecordAudioRequest::set_server_rtp_port(uint32_t value) {
+  _internal_set_server_rtp_port(value);
+  // @@protoc_insertion_point(field_set:sentiric.media.v1.RecordAudioRequest.server_rtp_port)
+}
+
+// optional uint32 target_sample_rate = 2;
+inline bool RecordAudioRequest::_internal_has_target_sample_rate() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool RecordAudioRequest::has_target_sample_rate() const {
+  return _internal_has_target_sample_rate();
+}
+inline void RecordAudioRequest::clear_target_sample_rate() {
+  _impl_.target_sample_rate_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline uint32_t RecordAudioRequest::_internal_target_sample_rate() const {
+  return _impl_.target_sample_rate_;
+}
+inline uint32_t RecordAudioRequest::target_sample_rate() const {
+  // @@protoc_insertion_point(field_get:sentiric.media.v1.RecordAudioRequest.target_sample_rate)
+  return _internal_target_sample_rate();
+}
+inline void RecordAudioRequest::_internal_set_target_sample_rate(uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.target_sample_rate_ = value;
+}
+inline void RecordAudioRequest::set_target_sample_rate(uint32_t value) {
+  _internal_set_target_sample_rate(value);
+  // @@protoc_insertion_point(field_set:sentiric.media.v1.RecordAudioRequest.target_sample_rate)
+}
+
+// -------------------------------------------------------------------
+
+// RecordAudioResponse
+
+// bytes audio_data = 1;
+inline void RecordAudioResponse::clear_audio_data() {
+  _impl_.audio_data_.ClearToEmpty();
+}
+inline const std::string& RecordAudioResponse::audio_data() const {
+  // @@protoc_insertion_point(field_get:sentiric.media.v1.RecordAudioResponse.audio_data)
+  return _internal_audio_data();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void RecordAudioResponse::set_audio_data(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.audio_data_.SetBytes(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.media.v1.RecordAudioResponse.audio_data)
+}
+inline std::string* RecordAudioResponse::mutable_audio_data() {
+  std::string* _s = _internal_mutable_audio_data();
+  // @@protoc_insertion_point(field_mutable:sentiric.media.v1.RecordAudioResponse.audio_data)
+  return _s;
+}
+inline const std::string& RecordAudioResponse::_internal_audio_data() const {
+  return _impl_.audio_data_.Get();
+}
+inline void RecordAudioResponse::_internal_set_audio_data(const std::string& value) {
+  
+  _impl_.audio_data_.Set(value, GetArenaForAllocation());
+}
+inline std::string* RecordAudioResponse::_internal_mutable_audio_data() {
+  
+  return _impl_.audio_data_.Mutable(GetArenaForAllocation());
+}
+inline std::string* RecordAudioResponse::release_audio_data() {
+  // @@protoc_insertion_point(field_release:sentiric.media.v1.RecordAudioResponse.audio_data)
+  return _impl_.audio_data_.Release();
+}
+inline void RecordAudioResponse::set_allocated_audio_data(std::string* audio_data) {
+  if (audio_data != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.audio_data_.SetAllocated(audio_data, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.audio_data_.IsDefault()) {
+    _impl_.audio_data_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.media.v1.RecordAudioResponse.audio_data)
+}
+
+// string media_type = 2;
+inline void RecordAudioResponse::clear_media_type() {
+  _impl_.media_type_.ClearToEmpty();
+}
+inline const std::string& RecordAudioResponse::media_type() const {
+  // @@protoc_insertion_point(field_get:sentiric.media.v1.RecordAudioResponse.media_type)
+  return _internal_media_type();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void RecordAudioResponse::set_media_type(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.media_type_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.media.v1.RecordAudioResponse.media_type)
+}
+inline std::string* RecordAudioResponse::mutable_media_type() {
+  std::string* _s = _internal_mutable_media_type();
+  // @@protoc_insertion_point(field_mutable:sentiric.media.v1.RecordAudioResponse.media_type)
+  return _s;
+}
+inline const std::string& RecordAudioResponse::_internal_media_type() const {
+  return _impl_.media_type_.Get();
+}
+inline void RecordAudioResponse::_internal_set_media_type(const std::string& value) {
+  
+  _impl_.media_type_.Set(value, GetArenaForAllocation());
+}
+inline std::string* RecordAudioResponse::_internal_mutable_media_type() {
+  
+  return _impl_.media_type_.Mutable(GetArenaForAllocation());
+}
+inline std::string* RecordAudioResponse::release_media_type() {
+  // @@protoc_insertion_point(field_release:sentiric.media.v1.RecordAudioResponse.media_type)
+  return _impl_.media_type_.Release();
+}
+inline void RecordAudioResponse::set_allocated_media_type(std::string* media_type) {
+  if (media_type != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.media_type_.SetAllocated(media_type, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.media_type_.IsDefault()) {
+    _impl_.media_type_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.media.v1.RecordAudioResponse.media_type)
+}
+
+// -------------------------------------------------------------------
+
+// StartRecordingRequest
+
+// uint32 server_rtp_port = 1;
+inline void StartRecordingRequest::clear_server_rtp_port() {
+  _impl_.server_rtp_port_ = 0u;
+}
+inline uint32_t StartRecordingRequest::_internal_server_rtp_port() const {
+  return _impl_.server_rtp_port_;
+}
+inline uint32_t StartRecordingRequest::server_rtp_port() const {
+  // @@protoc_insertion_point(field_get:sentiric.media.v1.StartRecordingRequest.server_rtp_port)
+  return _internal_server_rtp_port();
+}
+inline void StartRecordingRequest::_internal_set_server_rtp_port(uint32_t value) {
+  
+  _impl_.server_rtp_port_ = value;
+}
+inline void StartRecordingRequest::set_server_rtp_port(uint32_t value) {
+  _internal_set_server_rtp_port(value);
+  // @@protoc_insertion_point(field_set:sentiric.media.v1.StartRecordingRequest.server_rtp_port)
+}
+
+// string output_uri = 2;
+inline void StartRecordingRequest::clear_output_uri() {
+  _impl_.output_uri_.ClearToEmpty();
+}
+inline const std::string& StartRecordingRequest::output_uri() const {
+  // @@protoc_insertion_point(field_get:sentiric.media.v1.StartRecordingRequest.output_uri)
+  return _internal_output_uri();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void StartRecordingRequest::set_output_uri(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.output_uri_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.media.v1.StartRecordingRequest.output_uri)
+}
+inline std::string* StartRecordingRequest::mutable_output_uri() {
+  std::string* _s = _internal_mutable_output_uri();
+  // @@protoc_insertion_point(field_mutable:sentiric.media.v1.StartRecordingRequest.output_uri)
+  return _s;
+}
+inline const std::string& StartRecordingRequest::_internal_output_uri() const {
+  return _impl_.output_uri_.Get();
+}
+inline void StartRecordingRequest::_internal_set_output_uri(const std::string& value) {
+  
+  _impl_.output_uri_.Set(value, GetArenaForAllocation());
+}
+inline std::string* StartRecordingRequest::_internal_mutable_output_uri() {
+  
+  return _impl_.output_uri_.Mutable(GetArenaForAllocation());
+}
+inline std::string* StartRecordingRequest::release_output_uri() {
+  // @@protoc_insertion_point(field_release:sentiric.media.v1.StartRecordingRequest.output_uri)
+  return _impl_.output_uri_.Release();
+}
+inline void StartRecordingRequest::set_allocated_output_uri(std::string* output_uri) {
+  if (output_uri != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.output_uri_.SetAllocated(output_uri, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.output_uri_.IsDefault()) {
+    _impl_.output_uri_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.media.v1.StartRecordingRequest.output_uri)
+}
+
+// optional uint32 sample_rate = 3;
+inline bool StartRecordingRequest::_internal_has_sample_rate() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool StartRecordingRequest::has_sample_rate() const {
+  return _internal_has_sample_rate();
+}
+inline void StartRecordingRequest::clear_sample_rate() {
+  _impl_.sample_rate_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline uint32_t StartRecordingRequest::_internal_sample_rate() const {
+  return _impl_.sample_rate_;
+}
+inline uint32_t StartRecordingRequest::sample_rate() const {
+  // @@protoc_insertion_point(field_get:sentiric.media.v1.StartRecordingRequest.sample_rate)
+  return _internal_sample_rate();
+}
+inline void StartRecordingRequest::_internal_set_sample_rate(uint32_t value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.sample_rate_ = value;
+}
+inline void StartRecordingRequest::set_sample_rate(uint32_t value) {
+  _internal_set_sample_rate(value);
+  // @@protoc_insertion_point(field_set:sentiric.media.v1.StartRecordingRequest.sample_rate)
+}
+
+// optional string format = 4;
+inline bool StartRecordingRequest::_internal_has_format() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool StartRecordingRequest::has_format() const {
+  return _internal_has_format();
+}
+inline void StartRecordingRequest::clear_format() {
+  _impl_.format_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& StartRecordingRequest::format() const {
+  // @@protoc_insertion_point(field_get:sentiric.media.v1.StartRecordingRequest.format)
+  return _internal_format();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void StartRecordingRequest::set_format(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000001u;
+ _impl_.format_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.media.v1.StartRecordingRequest.format)
+}
+inline std::string* StartRecordingRequest::mutable_format() {
+  std::string* _s = _internal_mutable_format();
+  // @@protoc_insertion_point(field_mutable:sentiric.media.v1.StartRecordingRequest.format)
+  return _s;
+}
+inline const std::string& StartRecordingRequest::_internal_format() const {
+  return _impl_.format_.Get();
+}
+inline void StartRecordingRequest::_internal_set_format(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.format_.Set(value, GetArenaForAllocation());
+}
+inline std::string* StartRecordingRequest::_internal_mutable_format() {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  return _impl_.format_.Mutable(GetArenaForAllocation());
+}
+inline std::string* StartRecordingRequest::release_format() {
+  // @@protoc_insertion_point(field_release:sentiric.media.v1.StartRecordingRequest.format)
+  if (!_internal_has_format()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  auto* p = _impl_.format_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.format_.IsDefault()) {
+    _impl_.format_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void StartRecordingRequest::set_allocated_format(std::string* format) {
+  if (format != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  _impl_.format_.SetAllocated(format, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.format_.IsDefault()) {
+    _impl_.format_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.media.v1.StartRecordingRequest.format)
+}
+
+// string call_id = 5;
+inline void StartRecordingRequest::clear_call_id() {
+  _impl_.call_id_.ClearToEmpty();
+}
+inline const std::string& StartRecordingRequest::call_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.media.v1.StartRecordingRequest.call_id)
+  return _internal_call_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void StartRecordingRequest::set_call_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.call_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.media.v1.StartRecordingRequest.call_id)
+}
+inline std::string* StartRecordingRequest::mutable_call_id() {
+  std::string* _s = _internal_mutable_call_id();
+  // @@protoc_insertion_point(field_mutable:sentiric.media.v1.StartRecordingRequest.call_id)
+  return _s;
+}
+inline const std::string& StartRecordingRequest::_internal_call_id() const {
+  return _impl_.call_id_.Get();
+}
+inline void StartRecordingRequest::_internal_set_call_id(const std::string& value) {
+  
+  _impl_.call_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* StartRecordingRequest::_internal_mutable_call_id() {
+  
+  return _impl_.call_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* StartRecordingRequest::release_call_id() {
+  // @@protoc_insertion_point(field_release:sentiric.media.v1.StartRecordingRequest.call_id)
+  return _impl_.call_id_.Release();
+}
+inline void StartRecordingRequest::set_allocated_call_id(std::string* call_id) {
+  if (call_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.call_id_.SetAllocated(call_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.call_id_.IsDefault()) {
+    _impl_.call_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.media.v1.StartRecordingRequest.call_id)
+}
+
+// string trace_id = 6;
+inline void StartRecordingRequest::clear_trace_id() {
+  _impl_.trace_id_.ClearToEmpty();
+}
+inline const std::string& StartRecordingRequest::trace_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.media.v1.StartRecordingRequest.trace_id)
+  return _internal_trace_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void StartRecordingRequest::set_trace_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.trace_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.media.v1.StartRecordingRequest.trace_id)
+}
+inline std::string* StartRecordingRequest::mutable_trace_id() {
+  std::string* _s = _internal_mutable_trace_id();
+  // @@protoc_insertion_point(field_mutable:sentiric.media.v1.StartRecordingRequest.trace_id)
+  return _s;
+}
+inline const std::string& StartRecordingRequest::_internal_trace_id() const {
+  return _impl_.trace_id_.Get();
+}
+inline void StartRecordingRequest::_internal_set_trace_id(const std::string& value) {
+  
+  _impl_.trace_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* StartRecordingRequest::_internal_mutable_trace_id() {
+  
+  return _impl_.trace_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* StartRecordingRequest::release_trace_id() {
+  // @@protoc_insertion_point(field_release:sentiric.media.v1.StartRecordingRequest.trace_id)
+  return _impl_.trace_id_.Release();
+}
+inline void StartRecordingRequest::set_allocated_trace_id(std::string* trace_id) {
+  if (trace_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.trace_id_.SetAllocated(trace_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.trace_id_.IsDefault()) {
+    _impl_.trace_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.media.v1.StartRecordingRequest.trace_id)
+}
+
+// -------------------------------------------------------------------
+
+// StartRecordingResponse
+
+// bool success = 1;
+inline void StartRecordingResponse::clear_success() {
+  _impl_.success_ = false;
+}
+inline bool StartRecordingResponse::_internal_success() const {
+  return _impl_.success_;
+}
+inline bool StartRecordingResponse::success() const {
+  // @@protoc_insertion_point(field_get:sentiric.media.v1.StartRecordingResponse.success)
+  return _internal_success();
+}
+inline void StartRecordingResponse::_internal_set_success(bool value) {
+  
+  _impl_.success_ = value;
+}
+inline void StartRecordingResponse::set_success(bool value) {
+  _internal_set_success(value);
+  // @@protoc_insertion_point(field_set:sentiric.media.v1.StartRecordingResponse.success)
+}
+
+// -------------------------------------------------------------------
+
+// StopRecordingRequest
+
+// uint32 server_rtp_port = 1;
+inline void StopRecordingRequest::clear_server_rtp_port() {
+  _impl_.server_rtp_port_ = 0u;
+}
+inline uint32_t StopRecordingRequest::_internal_server_rtp_port() const {
+  return _impl_.server_rtp_port_;
+}
+inline uint32_t StopRecordingRequest::server_rtp_port() const {
+  // @@protoc_insertion_point(field_get:sentiric.media.v1.StopRecordingRequest.server_rtp_port)
+  return _internal_server_rtp_port();
+}
+inline void StopRecordingRequest::_internal_set_server_rtp_port(uint32_t value) {
+  
+  _impl_.server_rtp_port_ = value;
+}
+inline void StopRecordingRequest::set_server_rtp_port(uint32_t value) {
+  _internal_set_server_rtp_port(value);
+  // @@protoc_insertion_point(field_set:sentiric.media.v1.StopRecordingRequest.server_rtp_port)
+}
+
+// -------------------------------------------------------------------
+
+// StopRecordingResponse
+
+// bool success = 1;
+inline void StopRecordingResponse::clear_success() {
+  _impl_.success_ = false;
+}
+inline bool StopRecordingResponse::_internal_success() const {
+  return _impl_.success_;
+}
+inline bool StopRecordingResponse::success() const {
+  // @@protoc_insertion_point(field_get:sentiric.media.v1.StopRecordingResponse.success)
+  return _internal_success();
+}
+inline void StopRecordingResponse::_internal_set_success(bool value) {
+  
+  _impl_.success_ = value;
+}
+inline void StopRecordingResponse::set_success(bool value) {
+  _internal_set_success(value);
+  // @@protoc_insertion_point(field_set:sentiric.media.v1.StopRecordingResponse.success)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

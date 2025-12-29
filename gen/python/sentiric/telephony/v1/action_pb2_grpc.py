@@ -39,41 +39,49 @@ class TelephonyActionServiceStub(object):
                 request_serializer=sentiric_dot_telephony_dot_v1_dot_action__pb2.StopRecordingRequest.SerializeToString,
                 response_deserializer=sentiric_dot_telephony_dot_v1_dot_action__pb2.StopRecordingResponse.FromString,
                 _registered_method=True)
+        self.RunPipeline = channel.unary_stream(
+                '/sentiric.telephony.v1.TelephonyActionService/RunPipeline',
+                request_serializer=sentiric_dot_telephony_dot_v1_dot_action__pb2.RunPipelineRequest.SerializeToString,
+                response_deserializer=sentiric_dot_telephony_dot_v1_dot_action__pb2.RunPipelineResponse.FromString,
+                _registered_method=True)
 
 
 class TelephonyActionServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def PlayAudio(self, request, context):
-        """Değişti
-        """
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def TerminateCall(self, request, context):
-        """Değişti
-        """
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def SendTextMessage(self, request, context):
-        """Mesaj Adı Değişti
-        """
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def StartRecording(self, request, context):
-        """Değişti
-        """
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def StopRecording(self, request, context):
-        """Değişti
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def RunPipeline(self, request, context):
+        """[STREAMING]
+        İsim düzeltildi: RunPipeline -> RunPipelineRequest
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -106,6 +114,11 @@ def add_TelephonyActionServiceServicer_to_server(servicer, server):
                     servicer.StopRecording,
                     request_deserializer=sentiric_dot_telephony_dot_v1_dot_action__pb2.StopRecordingRequest.FromString,
                     response_serializer=sentiric_dot_telephony_dot_v1_dot_action__pb2.StopRecordingResponse.SerializeToString,
+            ),
+            'RunPipeline': grpc.unary_stream_rpc_method_handler(
+                    servicer.RunPipeline,
+                    request_deserializer=sentiric_dot_telephony_dot_v1_dot_action__pb2.RunPipelineRequest.FromString,
+                    response_serializer=sentiric_dot_telephony_dot_v1_dot_action__pb2.RunPipelineResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -243,6 +256,33 @@ class TelephonyActionService(object):
             '/sentiric.telephony.v1.TelephonyActionService/StopRecording',
             sentiric_dot_telephony_dot_v1_dot_action__pb2.StopRecordingRequest.SerializeToString,
             sentiric_dot_telephony_dot_v1_dot_action__pb2.StopRecordingResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def RunPipeline(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(
+            request,
+            target,
+            '/sentiric.telephony.v1.TelephonyActionService/RunPipeline',
+            sentiric_dot_telephony_dot_v1_dot_action__pb2.RunPipelineRequest.SerializeToString,
+            sentiric_dot_telephony_dot_v1_dot_action__pb2.RunPipelineResponse.FromString,
             options,
             channel_credentials,
             insecure,

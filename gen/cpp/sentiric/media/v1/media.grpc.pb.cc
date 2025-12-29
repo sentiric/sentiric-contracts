@@ -26,6 +26,10 @@ namespace v1 {
 static const char* MediaService_method_names[] = {
   "/sentiric.media.v1.MediaService/AllocatePort",
   "/sentiric.media.v1.MediaService/ReleasePort",
+  "/sentiric.media.v1.MediaService/PlayAudio",
+  "/sentiric.media.v1.MediaService/RecordAudio",
+  "/sentiric.media.v1.MediaService/StartRecording",
+  "/sentiric.media.v1.MediaService/StopRecording",
 };
 
 std::unique_ptr< MediaService::Stub> MediaService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -37,6 +41,10 @@ std::unique_ptr< MediaService::Stub> MediaService::NewStub(const std::shared_ptr
 MediaService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
   : channel_(channel), rpcmethod_AllocatePort_(MediaService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_ReleasePort_(MediaService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_PlayAudio_(MediaService_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_RecordAudio_(MediaService_method_names[3], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  , rpcmethod_StartRecording_(MediaService_method_names[4], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_StopRecording_(MediaService_method_names[5], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status MediaService::Stub::AllocatePort(::grpc::ClientContext* context, const ::sentiric::media::v1::AllocatePortRequest& request, ::sentiric::media::v1::AllocatePortResponse* response) {
@@ -85,6 +93,91 @@ void MediaService::Stub::async::ReleasePort(::grpc::ClientContext* context, cons
   return result;
 }
 
+::grpc::Status MediaService::Stub::PlayAudio(::grpc::ClientContext* context, const ::sentiric::media::v1::PlayAudioRequest& request, ::sentiric::media::v1::PlayAudioResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::sentiric::media::v1::PlayAudioRequest, ::sentiric::media::v1::PlayAudioResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_PlayAudio_, context, request, response);
+}
+
+void MediaService::Stub::async::PlayAudio(::grpc::ClientContext* context, const ::sentiric::media::v1::PlayAudioRequest* request, ::sentiric::media::v1::PlayAudioResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::sentiric::media::v1::PlayAudioRequest, ::sentiric::media::v1::PlayAudioResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PlayAudio_, context, request, response, std::move(f));
+}
+
+void MediaService::Stub::async::PlayAudio(::grpc::ClientContext* context, const ::sentiric::media::v1::PlayAudioRequest* request, ::sentiric::media::v1::PlayAudioResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PlayAudio_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::sentiric::media::v1::PlayAudioResponse>* MediaService::Stub::PrepareAsyncPlayAudioRaw(::grpc::ClientContext* context, const ::sentiric::media::v1::PlayAudioRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::sentiric::media::v1::PlayAudioResponse, ::sentiric::media::v1::PlayAudioRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_PlayAudio_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::sentiric::media::v1::PlayAudioResponse>* MediaService::Stub::AsyncPlayAudioRaw(::grpc::ClientContext* context, const ::sentiric::media::v1::PlayAudioRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncPlayAudioRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::ClientReader< ::sentiric::media::v1::RecordAudioResponse>* MediaService::Stub::RecordAudioRaw(::grpc::ClientContext* context, const ::sentiric::media::v1::RecordAudioRequest& request) {
+  return ::grpc::internal::ClientReaderFactory< ::sentiric::media::v1::RecordAudioResponse>::Create(channel_.get(), rpcmethod_RecordAudio_, context, request);
+}
+
+void MediaService::Stub::async::RecordAudio(::grpc::ClientContext* context, const ::sentiric::media::v1::RecordAudioRequest* request, ::grpc::ClientReadReactor< ::sentiric::media::v1::RecordAudioResponse>* reactor) {
+  ::grpc::internal::ClientCallbackReaderFactory< ::sentiric::media::v1::RecordAudioResponse>::Create(stub_->channel_.get(), stub_->rpcmethod_RecordAudio_, context, request, reactor);
+}
+
+::grpc::ClientAsyncReader< ::sentiric::media::v1::RecordAudioResponse>* MediaService::Stub::AsyncRecordAudioRaw(::grpc::ClientContext* context, const ::sentiric::media::v1::RecordAudioRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::sentiric::media::v1::RecordAudioResponse>::Create(channel_.get(), cq, rpcmethod_RecordAudio_, context, request, true, tag);
+}
+
+::grpc::ClientAsyncReader< ::sentiric::media::v1::RecordAudioResponse>* MediaService::Stub::PrepareAsyncRecordAudioRaw(::grpc::ClientContext* context, const ::sentiric::media::v1::RecordAudioRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncReaderFactory< ::sentiric::media::v1::RecordAudioResponse>::Create(channel_.get(), cq, rpcmethod_RecordAudio_, context, request, false, nullptr);
+}
+
+::grpc::Status MediaService::Stub::StartRecording(::grpc::ClientContext* context, const ::sentiric::media::v1::StartRecordingRequest& request, ::sentiric::media::v1::StartRecordingResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::sentiric::media::v1::StartRecordingRequest, ::sentiric::media::v1::StartRecordingResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_StartRecording_, context, request, response);
+}
+
+void MediaService::Stub::async::StartRecording(::grpc::ClientContext* context, const ::sentiric::media::v1::StartRecordingRequest* request, ::sentiric::media::v1::StartRecordingResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::sentiric::media::v1::StartRecordingRequest, ::sentiric::media::v1::StartRecordingResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_StartRecording_, context, request, response, std::move(f));
+}
+
+void MediaService::Stub::async::StartRecording(::grpc::ClientContext* context, const ::sentiric::media::v1::StartRecordingRequest* request, ::sentiric::media::v1::StartRecordingResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_StartRecording_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::sentiric::media::v1::StartRecordingResponse>* MediaService::Stub::PrepareAsyncStartRecordingRaw(::grpc::ClientContext* context, const ::sentiric::media::v1::StartRecordingRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::sentiric::media::v1::StartRecordingResponse, ::sentiric::media::v1::StartRecordingRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_StartRecording_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::sentiric::media::v1::StartRecordingResponse>* MediaService::Stub::AsyncStartRecordingRaw(::grpc::ClientContext* context, const ::sentiric::media::v1::StartRecordingRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncStartRecordingRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status MediaService::Stub::StopRecording(::grpc::ClientContext* context, const ::sentiric::media::v1::StopRecordingRequest& request, ::sentiric::media::v1::StopRecordingResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::sentiric::media::v1::StopRecordingRequest, ::sentiric::media::v1::StopRecordingResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_StopRecording_, context, request, response);
+}
+
+void MediaService::Stub::async::StopRecording(::grpc::ClientContext* context, const ::sentiric::media::v1::StopRecordingRequest* request, ::sentiric::media::v1::StopRecordingResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::sentiric::media::v1::StopRecordingRequest, ::sentiric::media::v1::StopRecordingResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_StopRecording_, context, request, response, std::move(f));
+}
+
+void MediaService::Stub::async::StopRecording(::grpc::ClientContext* context, const ::sentiric::media::v1::StopRecordingRequest* request, ::sentiric::media::v1::StopRecordingResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_StopRecording_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::sentiric::media::v1::StopRecordingResponse>* MediaService::Stub::PrepareAsyncStopRecordingRaw(::grpc::ClientContext* context, const ::sentiric::media::v1::StopRecordingRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::sentiric::media::v1::StopRecordingResponse, ::sentiric::media::v1::StopRecordingRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_StopRecording_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::sentiric::media::v1::StopRecordingResponse>* MediaService::Stub::AsyncStopRecordingRaw(::grpc::ClientContext* context, const ::sentiric::media::v1::StopRecordingRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncStopRecordingRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
 MediaService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       MediaService_method_names[0],
@@ -106,6 +199,46 @@ MediaService::Service::Service() {
              ::sentiric::media::v1::ReleasePortResponse* resp) {
                return service->ReleasePort(ctx, req, resp);
              }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      MediaService_method_names[2],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< MediaService::Service, ::sentiric::media::v1::PlayAudioRequest, ::sentiric::media::v1::PlayAudioResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](MediaService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::sentiric::media::v1::PlayAudioRequest* req,
+             ::sentiric::media::v1::PlayAudioResponse* resp) {
+               return service->PlayAudio(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      MediaService_method_names[3],
+      ::grpc::internal::RpcMethod::SERVER_STREAMING,
+      new ::grpc::internal::ServerStreamingHandler< MediaService::Service, ::sentiric::media::v1::RecordAudioRequest, ::sentiric::media::v1::RecordAudioResponse>(
+          [](MediaService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::sentiric::media::v1::RecordAudioRequest* req,
+             ::grpc::ServerWriter<::sentiric::media::v1::RecordAudioResponse>* writer) {
+               return service->RecordAudio(ctx, req, writer);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      MediaService_method_names[4],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< MediaService::Service, ::sentiric::media::v1::StartRecordingRequest, ::sentiric::media::v1::StartRecordingResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](MediaService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::sentiric::media::v1::StartRecordingRequest* req,
+             ::sentiric::media::v1::StartRecordingResponse* resp) {
+               return service->StartRecording(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      MediaService_method_names[5],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< MediaService::Service, ::sentiric::media::v1::StopRecordingRequest, ::sentiric::media::v1::StopRecordingResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](MediaService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::sentiric::media::v1::StopRecordingRequest* req,
+             ::sentiric::media::v1::StopRecordingResponse* resp) {
+               return service->StopRecording(ctx, req, resp);
+             }, this)));
 }
 
 MediaService::Service::~Service() {
@@ -119,6 +252,34 @@ MediaService::Service::~Service() {
 }
 
 ::grpc::Status MediaService::Service::ReleasePort(::grpc::ServerContext* context, const ::sentiric::media::v1::ReleasePortRequest* request, ::sentiric::media::v1::ReleasePortResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status MediaService::Service::PlayAudio(::grpc::ServerContext* context, const ::sentiric::media::v1::PlayAudioRequest* request, ::sentiric::media::v1::PlayAudioResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status MediaService::Service::RecordAudio(::grpc::ServerContext* context, const ::sentiric::media::v1::RecordAudioRequest* request, ::grpc::ServerWriter< ::sentiric::media::v1::RecordAudioResponse>* writer) {
+  (void) context;
+  (void) request;
+  (void) writer;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status MediaService::Service::StartRecording(::grpc::ServerContext* context, const ::sentiric::media::v1::StartRecordingRequest* request, ::sentiric::media::v1::StartRecordingResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status MediaService::Service::StopRecording(::grpc::ServerContext* context, const ::sentiric::media::v1::StopRecordingRequest* request, ::sentiric::media::v1::StopRecordingResponse* response) {
   (void) context;
   (void) request;
   (void) response;

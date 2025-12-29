@@ -19,16 +19,21 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	DialogService_StartDialog_FullMethodName      = "/sentiric.dialog.v1.DialogService/StartDialog"
-	DialogService_ProcessUserInput_FullMethodName = "/sentiric.dialog.v1.DialogService/ProcessUserInput"
+	DialogService_StartDialog_FullMethodName        = "/sentiric.dialog.v1.DialogService/StartDialog"
+	DialogService_ProcessUserInput_FullMethodName   = "/sentiric.dialog.v1.DialogService/ProcessUserInput"
+	DialogService_StreamConversation_FullMethodName = "/sentiric.dialog.v1.DialogService/StreamConversation"
 )
 
 // DialogServiceClient is the client API for DialogService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type DialogServiceClient interface {
+	// Legacy
 	StartDialog(ctx context.Context, in *StartDialogRequest, opts ...grpc.CallOption) (*StartDialogResponse, error)
 	ProcessUserInput(ctx context.Context, in *ProcessUserInputRequest, opts ...grpc.CallOption) (*ProcessUserInputResponse, error)
+	// [STREAMING]
+	// Linter Kuralı: Request adı RPC adı + "Request" olmalı.
+	StreamConversation(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[StreamConversationRequest, StreamConversationResponse], error)
 }
 
 type dialogServiceClient struct {
@@ -59,12 +64,29 @@ func (c *dialogServiceClient) ProcessUserInput(ctx context.Context, in *ProcessU
 	return out, nil
 }
 
+func (c *dialogServiceClient) StreamConversation(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[StreamConversationRequest, StreamConversationResponse], error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	stream, err := c.cc.NewStream(ctx, &DialogService_ServiceDesc.Streams[0], DialogService_StreamConversation_FullMethodName, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &grpc.GenericClientStream[StreamConversationRequest, StreamConversationResponse]{ClientStream: stream}
+	return x, nil
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type DialogService_StreamConversationClient = grpc.BidiStreamingClient[StreamConversationRequest, StreamConversationResponse]
+
 // DialogServiceServer is the server API for DialogService service.
 // All implementations should embed UnimplementedDialogServiceServer
 // for forward compatibility.
 type DialogServiceServer interface {
+	// Legacy
 	StartDialog(context.Context, *StartDialogRequest) (*StartDialogResponse, error)
 	ProcessUserInput(context.Context, *ProcessUserInputRequest) (*ProcessUserInputResponse, error)
+	// [STREAMING]
+	// Linter Kuralı: Request adı RPC adı + "Request" olmalı.
+	StreamConversation(grpc.BidiStreamingServer[StreamConversationRequest, StreamConversationResponse]) error
 }
 
 // UnimplementedDialogServiceServer should be embedded to have
@@ -79,6 +101,9 @@ func (UnimplementedDialogServiceServer) StartDialog(context.Context, *StartDialo
 }
 func (UnimplementedDialogServiceServer) ProcessUserInput(context.Context, *ProcessUserInputRequest) (*ProcessUserInputResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ProcessUserInput not implemented")
+}
+func (UnimplementedDialogServiceServer) StreamConversation(grpc.BidiStreamingServer[StreamConversationRequest, StreamConversationResponse]) error {
+	return status.Error(codes.Unimplemented, "method StreamConversation not implemented")
 }
 func (UnimplementedDialogServiceServer) testEmbeddedByValue() {}
 
@@ -136,6 +161,13 @@ func _DialogService_ProcessUserInput_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
+func _DialogService_StreamConversation_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(DialogServiceServer).StreamConversation(&grpc.GenericServerStream[StreamConversationRequest, StreamConversationResponse]{ServerStream: stream})
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type DialogService_StreamConversationServer = grpc.BidiStreamingServer[StreamConversationRequest, StreamConversationResponse]
+
 // DialogService_ServiceDesc is the grpc.ServiceDesc for DialogService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -152,6 +184,13 @@ var DialogService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _DialogService_ProcessUserInput_Handler,
 		},
 	},
-	Streams:  []grpc.StreamDesc{},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "StreamConversation",
+			Handler:       _DialogService_StreamConversation_Handler,
+			ServerStreams: true,
+			ClientStreams: true,
+		},
+	},
 	Metadata: "sentiric/dialog/v1/dialog.proto",
 }

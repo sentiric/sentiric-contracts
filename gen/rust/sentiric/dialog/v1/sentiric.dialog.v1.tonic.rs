@@ -145,6 +145,37 @@ pub mod dialog_service_client {
                 );
             self.inner.unary(req, path, codec).await
         }
+        pub async fn stream_conversation(
+            &mut self,
+            request: impl tonic::IntoStreamingRequest<
+                Message = super::StreamConversationRequest,
+            >,
+        ) -> std::result::Result<
+            tonic::Response<tonic::codec::Streaming<super::StreamConversationResponse>>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::unknown(
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
+            let codec = tonic_prost::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/sentiric.dialog.v1.DialogService/StreamConversation",
+            );
+            let mut req = request.into_streaming_request();
+            req.extensions_mut()
+                .insert(
+                    GrpcMethod::new(
+                        "sentiric.dialog.v1.DialogService",
+                        "StreamConversation",
+                    ),
+                );
+            self.inner.streaming(req, path, codec).await
+        }
     }
 }
 /// Generated server implementations.
@@ -172,6 +203,22 @@ pub mod dialog_service_server {
             request: tonic::Request<super::ProcessUserInputRequest>,
         ) -> std::result::Result<
             tonic::Response<super::ProcessUserInputResponse>,
+            tonic::Status,
+        >;
+        /// Server streaming response type for the StreamConversation method.
+        type StreamConversationStream: tonic::codegen::tokio_stream::Stream<
+                Item = std::result::Result<
+                    super::StreamConversationResponse,
+                    tonic::Status,
+                >,
+            >
+            + std::marker::Send
+            + 'static;
+        async fn stream_conversation(
+            &self,
+            request: tonic::Request<tonic::Streaming<super::StreamConversationRequest>>,
+        ) -> std::result::Result<
+            tonic::Response<Self::StreamConversationStream>,
             tonic::Status,
         >;
     }
@@ -338,6 +385,55 @@ pub mod dialog_service_server {
                                 max_encoding_message_size,
                             );
                         let res = grpc.unary(method, req).await;
+                        Ok(res)
+                    };
+                    Box::pin(fut)
+                }
+                "/sentiric.dialog.v1.DialogService/StreamConversation" => {
+                    #[allow(non_camel_case_types)]
+                    struct StreamConversationSvc<T: DialogService>(pub Arc<T>);
+                    impl<
+                        T: DialogService,
+                    > tonic::server::StreamingService<super::StreamConversationRequest>
+                    for StreamConversationSvc<T> {
+                        type Response = super::StreamConversationResponse;
+                        type ResponseStream = T::StreamConversationStream;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::ResponseStream>,
+                            tonic::Status,
+                        >;
+                        fn call(
+                            &mut self,
+                            request: tonic::Request<
+                                tonic::Streaming<super::StreamConversationRequest>,
+                            >,
+                        ) -> Self::Future {
+                            let inner = Arc::clone(&self.0);
+                            let fut = async move {
+                                <T as DialogService>::stream_conversation(&inner, request)
+                                    .await
+                            };
+                            Box::pin(fut)
+                        }
+                    }
+                    let accept_compression_encodings = self.accept_compression_encodings;
+                    let send_compression_encodings = self.send_compression_encodings;
+                    let max_decoding_message_size = self.max_decoding_message_size;
+                    let max_encoding_message_size = self.max_encoding_message_size;
+                    let inner = self.inner.clone();
+                    let fut = async move {
+                        let method = StreamConversationSvc(inner);
+                        let codec = tonic_prost::ProstCodec::default();
+                        let mut grpc = tonic::server::Grpc::new(codec)
+                            .apply_compression_config(
+                                accept_compression_encodings,
+                                send_compression_encodings,
+                            )
+                            .apply_max_message_size_config(
+                                max_decoding_message_size,
+                                max_encoding_message_size,
+                            );
+                        let res = grpc.streaming(method, req).await;
                         Ok(res)
                     };
                     Box::pin(fut)

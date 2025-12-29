@@ -80,6 +80,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 "sentiric/vertical/v1/legal.proto",
                 "sentiric/vertical/v1/public.proto",
                 "sentiric/vertical/v1/finance.proto",
+
+                 // --- MOBILE ---
+                 "sentiric/mobile/v1/gateway.proto",
             ],
             &["proto"],
         )?;

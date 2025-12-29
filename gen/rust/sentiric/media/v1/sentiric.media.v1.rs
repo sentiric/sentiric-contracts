@@ -20,5 +20,65 @@ pub struct ReleasePortResponse {
     #[prost(bool, tag="1")]
     pub success: bool,
 }
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+pub struct PlayAudioRequest {
+    #[prost(string, tag="1")]
+    pub audio_uri: ::prost::alloc::string::String,
+    #[prost(uint32, tag="2")]
+    pub server_rtp_port: u32,
+    #[prost(string, tag="3")]
+    pub rtp_target_addr: ::prost::alloc::string::String,
+}
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+pub struct PlayAudioResponse {
+    #[prost(bool, tag="1")]
+    pub success: bool,
+    #[prost(string, tag="2")]
+    pub message: ::prost::alloc::string::String,
+}
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+pub struct RecordAudioRequest {
+    #[prost(uint32, tag="1")]
+    pub server_rtp_port: u32,
+    #[prost(uint32, optional, tag="2")]
+    pub target_sample_rate: ::core::option::Option<u32>,
+}
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+pub struct RecordAudioResponse {
+    #[prost(bytes="vec", tag="1")]
+    pub audio_data: ::prost::alloc::vec::Vec<u8>,
+    #[prost(string, tag="2")]
+    pub media_type: ::prost::alloc::string::String,
+}
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+pub struct StartRecordingRequest {
+    #[prost(uint32, tag="1")]
+    pub server_rtp_port: u32,
+    #[prost(string, tag="2")]
+    pub output_uri: ::prost::alloc::string::String,
+    #[prost(uint32, optional, tag="3")]
+    pub sample_rate: ::core::option::Option<u32>,
+    #[prost(string, optional, tag="4")]
+    pub format: ::core::option::Option<::prost::alloc::string::String>,
+    #[prost(string, tag="5")]
+    pub call_id: ::prost::alloc::string::String,
+    #[prost(string, tag="6")]
+    pub trace_id: ::prost::alloc::string::String,
+}
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+pub struct StartRecordingResponse {
+    #[prost(bool, tag="1")]
+    pub success: bool,
+}
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+pub struct StopRecordingRequest {
+    #[prost(uint32, tag="1")]
+    pub server_rtp_port: u32,
+}
+#[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
+pub struct StopRecordingResponse {
+    #[prost(bool, tag="1")]
+    pub success: bool,
+}
 include!("sentiric.media.v1.tonic.rs");
 // @@protoc_insertion_point(module)

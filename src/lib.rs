@@ -36,4 +36,7 @@ pub mod sentiric {
     
     // Dikey Servisler
     pub mod vertical { pub mod v1 { tonic::include_proto!("sentiric.vertical.v1"); } }
+
+    // mobile
+    pub mod mobile { pub mod v1 { tonic::include_proto!("sentiric.mobile.v1"); } }    
 }

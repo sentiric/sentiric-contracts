@@ -5,50 +5,45 @@ package sentiric.telephony.v1;
 option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/telephony/v1;telephonyv1";
 
 service TelephonyActionService {
-  rpc PlayAudio(PlayAudioRequest) returns (PlayAudioResponse); // Değişti
-  rpc TerminateCall(TerminateCallRequest) returns (TerminateCallResponse); // Değişti
-  rpc SendTextMessage(SendTextMessageRequest) returns (SendTextMessageResponse); // Mesaj Adı Değişti
-  rpc StartRecording(StartRecordingRequest) returns (StartRecordingResponse); // Değişti
-  rpc StopRecording(StopRecordingRequest) returns (StopRecordingResponse); // Değişti
+  rpc PlayAudio(PlayAudioRequest) returns (PlayAudioResponse);
+  rpc TerminateCall(TerminateCallRequest) returns (TerminateCallResponse);
+  rpc SendTextMessage(SendTextMessageRequest) returns (SendTextMessageResponse);
+  rpc StartRecording(StartRecordingRequest) returns (StartRecordingResponse);
+  rpc StopRecording(StopRecordingRequest) returns (StopRecordingResponse);
+
+  // [STREAMING]
+  // İsim düzeltildi: RunPipeline -> RunPipelineRequest
+  rpc RunPipeline(RunPipelineRequest) returns (stream RunPipelineResponse);
 }
 
-message PlayAudioRequest {
+message RunPipelineRequest {
   string call_id = 1;
-  string audio_uri = 2;
-}
-message PlayAudioResponse { // YENİ MESAJ
-  bool success = 1;
-}
-
-message TerminateCallRequest {
-  string call_id = 1;
-  string reason = 2;
-}
-message TerminateCallResponse { // YENİ MESAJ
-  bool success = 1;
+  string session_id = 2;
+  string stt_model_id = 3; 
+  string tts_model_id = 4;
+  bool record_session = 5;
 }
 
-message SendTextMessageRequest { // Mesaj Adı Değişti
-  string to = 1;
-  string body = 2;
-}
-message SendTextMessageResponse { // YENİ MESAJ
-  bool success = 1;
-}
-
-message StartRecordingRequest {
-  string call_id = 1;
-  string output_uri = 2;
-  optional uint32 sample_rate = 3;
-  optional string format = 4;
-}
-message StartRecordingResponse { // YENİ MESAJ
-  bool success = 1;
+message RunPipelineResponse {
+  enum State {
+    STATE_UNSPECIFIED = 0;
+    STATE_STARTING = 1;
+    STATE_RUNNING = 2;
+    STATE_STOPPED = 3;
+    STATE_ERROR = 4;
+  }
+  State state = 1;
+  string message = 2;
 }
 
-message StopRecordingRequest {
-  string call_id = 1;
-}
-message StopRecordingResponse { // YENİ MESAJ
-  bool success = 1;
-}
+// --- Legacy Messages ---
+message PlayAudioRequest { string call_id = 1; string audio_uri = 2; }
+message PlayAudioResponse { bool success = 1; }
+message TerminateCallRequest { string call_id = 1; string reason = 2; }
+message TerminateCallResponse { bool success = 1; }
+message SendTextMessageRequest { string to = 1; string body = 2; }
+message SendTextMessageResponse { bool success = 1; }
+message StartRecordingRequest { string call_id = 1; string output_uri = 2; }
+message StartRecordingResponse { bool success = 1; }
+message StopRecordingRequest { string call_id = 1; }
+message StopRecordingResponse { bool success = 1; }

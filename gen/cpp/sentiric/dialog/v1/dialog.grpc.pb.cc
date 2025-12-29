@@ -26,6 +26,7 @@ namespace v1 {
 static const char* DialogService_method_names[] = {
   "/sentiric.dialog.v1.DialogService/StartDialog",
   "/sentiric.dialog.v1.DialogService/ProcessUserInput",
+  "/sentiric.dialog.v1.DialogService/StreamConversation",
 };
 
 std::unique_ptr< DialogService::Stub> DialogService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -37,6 +38,7 @@ std::unique_ptr< DialogService::Stub> DialogService::NewStub(const std::shared_p
 DialogService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
   : channel_(channel), rpcmethod_StartDialog_(DialogService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_ProcessUserInput_(DialogService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_StreamConversation_(DialogService_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::BIDI_STREAMING, channel)
   {}
 
 ::grpc::Status DialogService::Stub::StartDialog(::grpc::ClientContext* context, const ::sentiric::dialog::v1::StartDialogRequest& request, ::sentiric::dialog::v1::StartDialogResponse* response) {
@@ -85,6 +87,22 @@ void DialogService::Stub::async::ProcessUserInput(::grpc::ClientContext* context
   return result;
 }
 
+::grpc::ClientReaderWriter< ::sentiric::dialog::v1::StreamConversationRequest, ::sentiric::dialog::v1::StreamConversationResponse>* DialogService::Stub::StreamConversationRaw(::grpc::ClientContext* context) {
+  return ::grpc::internal::ClientReaderWriterFactory< ::sentiric::dialog::v1::StreamConversationRequest, ::sentiric::dialog::v1::StreamConversationResponse>::Create(channel_.get(), rpcmethod_StreamConversation_, context);
+}
+
+void DialogService::Stub::async::StreamConversation(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::sentiric::dialog::v1::StreamConversationRequest,::sentiric::dialog::v1::StreamConversationResponse>* reactor) {
+  ::grpc::internal::ClientCallbackReaderWriterFactory< ::sentiric::dialog::v1::StreamConversationRequest,::sentiric::dialog::v1::StreamConversationResponse>::Create(stub_->channel_.get(), stub_->rpcmethod_StreamConversation_, context, reactor);
+}
+
+::grpc::ClientAsyncReaderWriter< ::sentiric::dialog::v1::StreamConversationRequest, ::sentiric::dialog::v1::StreamConversationResponse>* DialogService::Stub::AsyncStreamConversationRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc::internal::ClientAsyncReaderWriterFactory< ::sentiric::dialog::v1::StreamConversationRequest, ::sentiric::dialog::v1::StreamConversationResponse>::Create(channel_.get(), cq, rpcmethod_StreamConversation_, context, true, tag);
+}
+
+::grpc::ClientAsyncReaderWriter< ::sentiric::dialog::v1::StreamConversationRequest, ::sentiric::dialog::v1::StreamConversationResponse>* DialogService::Stub::PrepareAsyncStreamConversationRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncReaderWriterFactory< ::sentiric::dialog::v1::StreamConversationRequest, ::sentiric::dialog::v1::StreamConversationResponse>::Create(channel_.get(), cq, rpcmethod_StreamConversation_, context, false, nullptr);
+}
+
 DialogService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       DialogService_method_names[0],
@@ -106,6 +124,16 @@ DialogService::Service::Service() {
              ::sentiric::dialog::v1::ProcessUserInputResponse* resp) {
                return service->ProcessUserInput(ctx, req, resp);
              }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      DialogService_method_names[2],
+      ::grpc::internal::RpcMethod::BIDI_STREAMING,
+      new ::grpc::internal::BidiStreamingHandler< DialogService::Service, ::sentiric::dialog::v1::StreamConversationRequest, ::sentiric::dialog::v1::StreamConversationResponse>(
+          [](DialogService::Service* service,
+             ::grpc::ServerContext* ctx,
+             ::grpc::ServerReaderWriter<::sentiric::dialog::v1::StreamConversationResponse,
+             ::sentiric::dialog::v1::StreamConversationRequest>* stream) {
+               return service->StreamConversation(ctx, stream);
+             }, this)));
 }
 
 DialogService::Service::~Service() {
@@ -122,6 +150,12 @@ DialogService::Service::~Service() {
   (void) context;
   (void) request;
   (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status DialogService::Service::StreamConversation(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::sentiric::dialog::v1::StreamConversationResponse, ::sentiric::dialog::v1::StreamConversationRequest>* stream) {
+  (void) context;
+  (void) stream;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 

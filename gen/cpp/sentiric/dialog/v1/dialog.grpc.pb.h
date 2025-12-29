@@ -37,6 +37,7 @@ class DialogService final {
   class StubInterface {
    public:
     virtual ~StubInterface() {}
+    // Legacy
     virtual ::grpc::Status StartDialog(::grpc::ClientContext* context, const ::sentiric::dialog::v1::StartDialogRequest& request, ::sentiric::dialog::v1::StartDialogResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialog::v1::StartDialogResponse>> AsyncStartDialog(::grpc::ClientContext* context, const ::sentiric::dialog::v1::StartDialogRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialog::v1::StartDialogResponse>>(AsyncStartDialogRaw(context, request, cq));
@@ -51,13 +52,28 @@ class DialogService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialog::v1::ProcessUserInputResponse>> PrepareAsyncProcessUserInput(::grpc::ClientContext* context, const ::sentiric::dialog::v1::ProcessUserInputRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialog::v1::ProcessUserInputResponse>>(PrepareAsyncProcessUserInputRaw(context, request, cq));
     }
+    // [STREAMING]
+    // Linter Kuralı: Request adı RPC adı + "Request" olmalı.
+    std::unique_ptr< ::grpc::ClientReaderWriterInterface< ::sentiric::dialog::v1::StreamConversationRequest, ::sentiric::dialog::v1::StreamConversationResponse>> StreamConversation(::grpc::ClientContext* context) {
+      return std::unique_ptr< ::grpc::ClientReaderWriterInterface< ::sentiric::dialog::v1::StreamConversationRequest, ::sentiric::dialog::v1::StreamConversationResponse>>(StreamConversationRaw(context));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::sentiric::dialog::v1::StreamConversationRequest, ::sentiric::dialog::v1::StreamConversationResponse>> AsyncStreamConversation(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::sentiric::dialog::v1::StreamConversationRequest, ::sentiric::dialog::v1::StreamConversationResponse>>(AsyncStreamConversationRaw(context, cq, tag));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::sentiric::dialog::v1::StreamConversationRequest, ::sentiric::dialog::v1::StreamConversationResponse>> PrepareAsyncStreamConversation(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::sentiric::dialog::v1::StreamConversationRequest, ::sentiric::dialog::v1::StreamConversationResponse>>(PrepareAsyncStreamConversationRaw(context, cq));
+    }
     class async_interface {
      public:
       virtual ~async_interface() {}
+      // Legacy
       virtual void StartDialog(::grpc::ClientContext* context, const ::sentiric::dialog::v1::StartDialogRequest* request, ::sentiric::dialog::v1::StartDialogResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void StartDialog(::grpc::ClientContext* context, const ::sentiric::dialog::v1::StartDialogRequest* request, ::sentiric::dialog::v1::StartDialogResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void ProcessUserInput(::grpc::ClientContext* context, const ::sentiric::dialog::v1::ProcessUserInputRequest* request, ::sentiric::dialog::v1::ProcessUserInputResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void ProcessUserInput(::grpc::ClientContext* context, const ::sentiric::dialog::v1::ProcessUserInputRequest* request, ::sentiric::dialog::v1::ProcessUserInputResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      // [STREAMING]
+      // Linter Kuralı: Request adı RPC adı + "Request" olmalı.
+      virtual void StreamConversation(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::sentiric::dialog::v1::StreamConversationRequest,::sentiric::dialog::v1::StreamConversationResponse>* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
@@ -67,6 +83,9 @@ class DialogService final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialog::v1::StartDialogResponse>* PrepareAsyncStartDialogRaw(::grpc::ClientContext* context, const ::sentiric::dialog::v1::StartDialogRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialog::v1::ProcessUserInputResponse>* AsyncProcessUserInputRaw(::grpc::ClientContext* context, const ::sentiric::dialog::v1::ProcessUserInputRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialog::v1::ProcessUserInputResponse>* PrepareAsyncProcessUserInputRaw(::grpc::ClientContext* context, const ::sentiric::dialog::v1::ProcessUserInputRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientReaderWriterInterface< ::sentiric::dialog::v1::StreamConversationRequest, ::sentiric::dialog::v1::StreamConversationResponse>* StreamConversationRaw(::grpc::ClientContext* context) = 0;
+    virtual ::grpc::ClientAsyncReaderWriterInterface< ::sentiric::dialog::v1::StreamConversationRequest, ::sentiric::dialog::v1::StreamConversationResponse>* AsyncStreamConversationRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) = 0;
+    virtual ::grpc::ClientAsyncReaderWriterInterface< ::sentiric::dialog::v1::StreamConversationRequest, ::sentiric::dialog::v1::StreamConversationResponse>* PrepareAsyncStreamConversationRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -85,6 +104,15 @@ class DialogService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::dialog::v1::ProcessUserInputResponse>> PrepareAsyncProcessUserInput(::grpc::ClientContext* context, const ::sentiric::dialog::v1::ProcessUserInputRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::dialog::v1::ProcessUserInputResponse>>(PrepareAsyncProcessUserInputRaw(context, request, cq));
     }
+    std::unique_ptr< ::grpc::ClientReaderWriter< ::sentiric::dialog::v1::StreamConversationRequest, ::sentiric::dialog::v1::StreamConversationResponse>> StreamConversation(::grpc::ClientContext* context) {
+      return std::unique_ptr< ::grpc::ClientReaderWriter< ::sentiric::dialog::v1::StreamConversationRequest, ::sentiric::dialog::v1::StreamConversationResponse>>(StreamConversationRaw(context));
+    }
+    std::unique_ptr<  ::grpc::ClientAsyncReaderWriter< ::sentiric::dialog::v1::StreamConversationRequest, ::sentiric::dialog::v1::StreamConversationResponse>> AsyncStreamConversation(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderWriter< ::sentiric::dialog::v1::StreamConversationRequest, ::sentiric::dialog::v1::StreamConversationResponse>>(AsyncStreamConversationRaw(context, cq, tag));
+    }
+    std::unique_ptr<  ::grpc::ClientAsyncReaderWriter< ::sentiric::dialog::v1::StreamConversationRequest, ::sentiric::dialog::v1::StreamConversationResponse>> PrepareAsyncStreamConversation(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderWriter< ::sentiric::dialog::v1::StreamConversationRequest, ::sentiric::dialog::v1::StreamConversationResponse>>(PrepareAsyncStreamConversationRaw(context, cq));
+    }
     class async final :
       public StubInterface::async_interface {
      public:
@@ -92,6 +120,7 @@ class DialogService final {
       void StartDialog(::grpc::ClientContext* context, const ::sentiric::dialog::v1::StartDialogRequest* request, ::sentiric::dialog::v1::StartDialogResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void ProcessUserInput(::grpc::ClientContext* context, const ::sentiric::dialog::v1::ProcessUserInputRequest* request, ::sentiric::dialog::v1::ProcessUserInputResponse* response, std::function<void(::grpc::Status)>) override;
       void ProcessUserInput(::grpc::ClientContext* context, const ::sentiric::dialog::v1::ProcessUserInputRequest* request, ::sentiric::dialog::v1::ProcessUserInputResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void StreamConversation(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::sentiric::dialog::v1::StreamConversationRequest,::sentiric::dialog::v1::StreamConversationResponse>* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -107,8 +136,12 @@ class DialogService final {
     ::grpc::ClientAsyncResponseReader< ::sentiric::dialog::v1::StartDialogResponse>* PrepareAsyncStartDialogRaw(::grpc::ClientContext* context, const ::sentiric::dialog::v1::StartDialogRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::sentiric::dialog::v1::ProcessUserInputResponse>* AsyncProcessUserInputRaw(::grpc::ClientContext* context, const ::sentiric::dialog::v1::ProcessUserInputRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::sentiric::dialog::v1::ProcessUserInputResponse>* PrepareAsyncProcessUserInputRaw(::grpc::ClientContext* context, const ::sentiric::dialog::v1::ProcessUserInputRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientReaderWriter< ::sentiric::dialog::v1::StreamConversationRequest, ::sentiric::dialog::v1::StreamConversationResponse>* StreamConversationRaw(::grpc::ClientContext* context) override;
+    ::grpc::ClientAsyncReaderWriter< ::sentiric::dialog::v1::StreamConversationRequest, ::sentiric::dialog::v1::StreamConversationResponse>* AsyncStreamConversationRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) override;
+    ::grpc::ClientAsyncReaderWriter< ::sentiric::dialog::v1::StreamConversationRequest, ::sentiric::dialog::v1::StreamConversationResponse>* PrepareAsyncStreamConversationRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_StartDialog_;
     const ::grpc::internal::RpcMethod rpcmethod_ProcessUserInput_;
+    const ::grpc::internal::RpcMethod rpcmethod_StreamConversation_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -116,8 +149,12 @@ class DialogService final {
    public:
     Service();
     virtual ~Service();
+    // Legacy
     virtual ::grpc::Status StartDialog(::grpc::ServerContext* context, const ::sentiric::dialog::v1::StartDialogRequest* request, ::sentiric::dialog::v1::StartDialogResponse* response);
     virtual ::grpc::Status ProcessUserInput(::grpc::ServerContext* context, const ::sentiric::dialog::v1::ProcessUserInputRequest* request, ::sentiric::dialog::v1::ProcessUserInputResponse* response);
+    // [STREAMING]
+    // Linter Kuralı: Request adı RPC adı + "Request" olmalı.
+    virtual ::grpc::Status StreamConversation(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::sentiric::dialog::v1::StreamConversationResponse, ::sentiric::dialog::v1::StreamConversationRequest>* stream);
   };
   template <class BaseClass>
   class WithAsyncMethod_StartDialog : public BaseClass {
@@ -159,7 +196,27 @@ class DialogService final {
       ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_StartDialog<WithAsyncMethod_ProcessUserInput<Service > > AsyncService;
+  template <class BaseClass>
+  class WithAsyncMethod_StreamConversation : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_StreamConversation() {
+      ::grpc::Service::MarkMethodAsync(2);
+    }
+    ~WithAsyncMethod_StreamConversation() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status StreamConversation(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::sentiric::dialog::v1::StreamConversationResponse, ::sentiric::dialog::v1::StreamConversationRequest>* /*stream*/)  override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestStreamConversation(::grpc::ServerContext* context, ::grpc::ServerAsyncReaderWriter< ::sentiric::dialog::v1::StreamConversationResponse, ::sentiric::dialog::v1::StreamConversationRequest>* stream, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncBidiStreaming(2, context, stream, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_StartDialog<WithAsyncMethod_ProcessUserInput<WithAsyncMethod_StreamConversation<Service > > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_StartDialog : public BaseClass {
    private:
@@ -214,7 +271,30 @@ class DialogService final {
     virtual ::grpc::ServerUnaryReactor* ProcessUserInput(
       ::grpc::CallbackServerContext* /*context*/, const ::sentiric::dialog::v1::ProcessUserInputRequest* /*request*/, ::sentiric::dialog::v1::ProcessUserInputResponse* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_StartDialog<WithCallbackMethod_ProcessUserInput<Service > > CallbackService;
+  template <class BaseClass>
+  class WithCallbackMethod_StreamConversation : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_StreamConversation() {
+      ::grpc::Service::MarkMethodCallback(2,
+          new ::grpc::internal::CallbackBidiHandler< ::sentiric::dialog::v1::StreamConversationRequest, ::sentiric::dialog::v1::StreamConversationResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context) { return this->StreamConversation(context); }));
+    }
+    ~WithCallbackMethod_StreamConversation() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status StreamConversation(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::sentiric::dialog::v1::StreamConversationResponse, ::sentiric::dialog::v1::StreamConversationRequest>* /*stream*/)  override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerBidiReactor< ::sentiric::dialog::v1::StreamConversationRequest, ::sentiric::dialog::v1::StreamConversationResponse>* StreamConversation(
+      ::grpc::CallbackServerContext* /*context*/)
+      { return nullptr; }
+  };
+  typedef WithCallbackMethod_StartDialog<WithCallbackMethod_ProcessUserInput<WithCallbackMethod_StreamConversation<Service > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_StartDialog : public BaseClass {
@@ -246,6 +326,23 @@ class DialogService final {
     }
     // disable synchronous version of this method
     ::grpc::Status ProcessUserInput(::grpc::ServerContext* /*context*/, const ::sentiric::dialog::v1::ProcessUserInputRequest* /*request*/, ::sentiric::dialog::v1::ProcessUserInputResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_StreamConversation : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_StreamConversation() {
+      ::grpc::Service::MarkMethodGeneric(2);
+    }
+    ~WithGenericMethod_StreamConversation() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status StreamConversation(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::sentiric::dialog::v1::StreamConversationResponse, ::sentiric::dialog::v1::StreamConversationRequest>* /*stream*/)  override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -291,6 +388,26 @@ class DialogService final {
     }
   };
   template <class BaseClass>
+  class WithRawMethod_StreamConversation : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_StreamConversation() {
+      ::grpc::Service::MarkMethodRaw(2);
+    }
+    ~WithRawMethod_StreamConversation() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status StreamConversation(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::sentiric::dialog::v1::StreamConversationResponse, ::sentiric::dialog::v1::StreamConversationRequest>* /*stream*/)  override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestStreamConversation(::grpc::ServerContext* context, ::grpc::ServerAsyncReaderWriter< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* stream, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncBidiStreaming(2, context, stream, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithRawCallbackMethod_StartDialog : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
@@ -333,6 +450,29 @@ class DialogService final {
     }
     virtual ::grpc::ServerUnaryReactor* ProcessUserInput(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_StreamConversation : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_StreamConversation() {
+      ::grpc::Service::MarkMethodRawCallback(2,
+          new ::grpc::internal::CallbackBidiHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context) { return this->StreamConversation(context); }));
+    }
+    ~WithRawCallbackMethod_StreamConversation() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status StreamConversation(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::sentiric::dialog::v1::StreamConversationResponse, ::sentiric::dialog::v1::StreamConversationRequest>* /*stream*/)  override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerBidiReactor< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* StreamConversation(
+      ::grpc::CallbackServerContext* /*context*/)
+      { return nullptr; }
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_StartDialog : public BaseClass {

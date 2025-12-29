@@ -7,30 +7,48 @@ import "sentiric/data/v1/context.proto";
 option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/dialog/v1;dialogv1";
 
 service DialogService {
+  // Legacy
   rpc StartDialog(StartDialogRequest) returns (StartDialogResponse);
   rpc ProcessUserInput(ProcessUserInputRequest) returns (ProcessUserInputResponse);
+
+  // [STREAMING]
+  // Linter Kuralı: Request adı RPC adı + "Request" olmalı.
+  rpc StreamConversation(stream StreamConversationRequest) returns (stream StreamConversationResponse);
 }
 
-message StartDialogRequest { // ESKİ: CallContext
-  sentiric.data.v1.CallContext context = 1;
+// --- Streaming Messages ---
+
+message StreamConversationRequest {
+  oneof payload {
+    // Oturum Başlatma
+    ConversationConfig config = 1;
+    // Kullanıcı Girdisi
+    string text_input = 2;
+    // Sinyaller
+    bool is_final_input = 3;
+  }
 }
 
-message StartDialogResponse { // ESKİ: DialogResponse (Tekrar Kullanım Çözümü)
-  string response_text = 1;
-  optional string audio_uri = 2;
-  string next_action = 3;
-  sentiric.data.v1.CallContext updated_context = 4;
+message StreamConversationResponse {
+  oneof payload {
+    // AI Yanıtı (Parçalı)
+    string text_response = 1;
+    // Hazır Medya URL'i
+    string audio_url = 2;
+    // Sinyaller
+    bool is_final_response = 3;
+    // Aksiyonlar (Transfer, Hangup)
+    string action_command = 4;
+  }
 }
 
-message ProcessUserInputRequest { // ESKİ: UserInput
-  string call_id = 1;
-  string text = 2;
-  optional bytes audio_data = 3;
+message ConversationConfig {
+  string session_id = 1;
+  string user_id = 2;
 }
 
-message ProcessUserInputResponse { // ESKİ: DialogResponse (Tekrar Kullanım Çözümü)
-  string response_text = 1;
-  optional string audio_uri = 2;
-  string next_action = 3;
-  sentiric.data.v1.CallContext updated_context = 4;
-}
+// --- Legacy Messages ---
+message StartDialogRequest { sentiric.data.v1.CallContext context = 1; }
+message StartDialogResponse { string response_text = 1; optional string audio_uri = 2; string next_action = 3; sentiric.data.v1.CallContext updated_context = 4; }
+message ProcessUserInputRequest { string call_id = 1; string text = 2; optional bytes audio_data = 3; }
+message ProcessUserInputResponse { string response_text = 1; optional string audio_uri = 2; string next_action = 3; sentiric.data.v1.CallContext updated_context = 4; }

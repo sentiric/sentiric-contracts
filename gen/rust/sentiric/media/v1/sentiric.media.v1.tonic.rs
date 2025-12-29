@@ -142,6 +142,108 @@ pub mod media_service_client {
                 );
             self.inner.unary(req, path, codec).await
         }
+        pub async fn play_audio(
+            &mut self,
+            request: impl tonic::IntoRequest<super::PlayAudioRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::PlayAudioResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::unknown(
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
+            let codec = tonic_prost::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/sentiric.media.v1.MediaService/PlayAudio",
+            );
+            let mut req = request.into_request();
+            req.extensions_mut()
+                .insert(GrpcMethod::new("sentiric.media.v1.MediaService", "PlayAudio"));
+            self.inner.unary(req, path, codec).await
+        }
+        pub async fn record_audio(
+            &mut self,
+            request: impl tonic::IntoRequest<super::RecordAudioRequest>,
+        ) -> std::result::Result<
+            tonic::Response<tonic::codec::Streaming<super::RecordAudioResponse>>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::unknown(
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
+            let codec = tonic_prost::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/sentiric.media.v1.MediaService/RecordAudio",
+            );
+            let mut req = request.into_request();
+            req.extensions_mut()
+                .insert(
+                    GrpcMethod::new("sentiric.media.v1.MediaService", "RecordAudio"),
+                );
+            self.inner.server_streaming(req, path, codec).await
+        }
+        pub async fn start_recording(
+            &mut self,
+            request: impl tonic::IntoRequest<super::StartRecordingRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::StartRecordingResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::unknown(
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
+            let codec = tonic_prost::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/sentiric.media.v1.MediaService/StartRecording",
+            );
+            let mut req = request.into_request();
+            req.extensions_mut()
+                .insert(
+                    GrpcMethod::new("sentiric.media.v1.MediaService", "StartRecording"),
+                );
+            self.inner.unary(req, path, codec).await
+        }
+        pub async fn stop_recording(
+            &mut self,
+            request: impl tonic::IntoRequest<super::StopRecordingRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::StopRecordingResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::unknown(
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
+            let codec = tonic_prost::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/sentiric.media.v1.MediaService/StopRecording",
+            );
+            let mut req = request.into_request();
+            req.extensions_mut()
+                .insert(
+                    GrpcMethod::new("sentiric.media.v1.MediaService", "StopRecording"),
+                );
+            self.inner.unary(req, path, codec).await
+        }
     }
 }
 /// Generated server implementations.
@@ -169,6 +271,40 @@ pub mod media_service_server {
             request: tonic::Request<super::ReleasePortRequest>,
         ) -> std::result::Result<
             tonic::Response<super::ReleasePortResponse>,
+            tonic::Status,
+        >;
+        async fn play_audio(
+            &self,
+            request: tonic::Request<super::PlayAudioRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::PlayAudioResponse>,
+            tonic::Status,
+        >;
+        /// Server streaming response type for the RecordAudio method.
+        type RecordAudioStream: tonic::codegen::tokio_stream::Stream<
+                Item = std::result::Result<super::RecordAudioResponse, tonic::Status>,
+            >
+            + std::marker::Send
+            + 'static;
+        async fn record_audio(
+            &self,
+            request: tonic::Request<super::RecordAudioRequest>,
+        ) -> std::result::Result<
+            tonic::Response<Self::RecordAudioStream>,
+            tonic::Status,
+        >;
+        async fn start_recording(
+            &self,
+            request: tonic::Request<super::StartRecordingRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::StartRecordingResponse>,
+            tonic::Status,
+        >;
+        async fn stop_recording(
+            &self,
+            request: tonic::Request<super::StopRecordingRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::StopRecordingResponse>,
             tonic::Status,
         >;
     }
@@ -323,6 +459,187 @@ pub mod media_service_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = ReleasePortSvc(inner);
+                        let codec = tonic_prost::ProstCodec::default();
+                        let mut grpc = tonic::server::Grpc::new(codec)
+                            .apply_compression_config(
+                                accept_compression_encodings,
+                                send_compression_encodings,
+                            )
+                            .apply_max_message_size_config(
+                                max_decoding_message_size,
+                                max_encoding_message_size,
+                            );
+                        let res = grpc.unary(method, req).await;
+                        Ok(res)
+                    };
+                    Box::pin(fut)
+                }
+                "/sentiric.media.v1.MediaService/PlayAudio" => {
+                    #[allow(non_camel_case_types)]
+                    struct PlayAudioSvc<T: MediaService>(pub Arc<T>);
+                    impl<
+                        T: MediaService,
+                    > tonic::server::UnaryService<super::PlayAudioRequest>
+                    for PlayAudioSvc<T> {
+                        type Response = super::PlayAudioResponse;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
+                        fn call(
+                            &mut self,
+                            request: tonic::Request<super::PlayAudioRequest>,
+                        ) -> Self::Future {
+                            let inner = Arc::clone(&self.0);
+                            let fut = async move {
+                                <T as MediaService>::play_audio(&inner, request).await
+                            };
+                            Box::pin(fut)
+                        }
+                    }
+                    let accept_compression_encodings = self.accept_compression_encodings;
+                    let send_compression_encodings = self.send_compression_encodings;
+                    let max_decoding_message_size = self.max_decoding_message_size;
+                    let max_encoding_message_size = self.max_encoding_message_size;
+                    let inner = self.inner.clone();
+                    let fut = async move {
+                        let method = PlayAudioSvc(inner);
+                        let codec = tonic_prost::ProstCodec::default();
+                        let mut grpc = tonic::server::Grpc::new(codec)
+                            .apply_compression_config(
+                                accept_compression_encodings,
+                                send_compression_encodings,
+                            )
+                            .apply_max_message_size_config(
+                                max_decoding_message_size,
+                                max_encoding_message_size,
+                            );
+                        let res = grpc.unary(method, req).await;
+                        Ok(res)
+                    };
+                    Box::pin(fut)
+                }
+                "/sentiric.media.v1.MediaService/RecordAudio" => {
+                    #[allow(non_camel_case_types)]
+                    struct RecordAudioSvc<T: MediaService>(pub Arc<T>);
+                    impl<
+                        T: MediaService,
+                    > tonic::server::ServerStreamingService<super::RecordAudioRequest>
+                    for RecordAudioSvc<T> {
+                        type Response = super::RecordAudioResponse;
+                        type ResponseStream = T::RecordAudioStream;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::ResponseStream>,
+                            tonic::Status,
+                        >;
+                        fn call(
+                            &mut self,
+                            request: tonic::Request<super::RecordAudioRequest>,
+                        ) -> Self::Future {
+                            let inner = Arc::clone(&self.0);
+                            let fut = async move {
+                                <T as MediaService>::record_audio(&inner, request).await
+                            };
+                            Box::pin(fut)
+                        }
+                    }
+                    let accept_compression_encodings = self.accept_compression_encodings;
+                    let send_compression_encodings = self.send_compression_encodings;
+                    let max_decoding_message_size = self.max_decoding_message_size;
+                    let max_encoding_message_size = self.max_encoding_message_size;
+                    let inner = self.inner.clone();
+                    let fut = async move {
+                        let method = RecordAudioSvc(inner);
+                        let codec = tonic_prost::ProstCodec::default();
+                        let mut grpc = tonic::server::Grpc::new(codec)
+                            .apply_compression_config(
+                                accept_compression_encodings,
+                                send_compression_encodings,
+                            )
+                            .apply_max_message_size_config(
+                                max_decoding_message_size,
+                                max_encoding_message_size,
+                            );
+                        let res = grpc.server_streaming(method, req).await;
+                        Ok(res)
+                    };
+                    Box::pin(fut)
+                }
+                "/sentiric.media.v1.MediaService/StartRecording" => {
+                    #[allow(non_camel_case_types)]
+                    struct StartRecordingSvc<T: MediaService>(pub Arc<T>);
+                    impl<
+                        T: MediaService,
+                    > tonic::server::UnaryService<super::StartRecordingRequest>
+                    for StartRecordingSvc<T> {
+                        type Response = super::StartRecordingResponse;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
+                        fn call(
+                            &mut self,
+                            request: tonic::Request<super::StartRecordingRequest>,
+                        ) -> Self::Future {
+                            let inner = Arc::clone(&self.0);
+                            let fut = async move {
+                                <T as MediaService>::start_recording(&inner, request).await
+                            };
+                            Box::pin(fut)
+                        }
+                    }
+                    let accept_compression_encodings = self.accept_compression_encodings;
+                    let send_compression_encodings = self.send_compression_encodings;
+                    let max_decoding_message_size = self.max_decoding_message_size;
+                    let max_encoding_message_size = self.max_encoding_message_size;
+                    let inner = self.inner.clone();
+                    let fut = async move {
+                        let method = StartRecordingSvc(inner);
+                        let codec = tonic_prost::ProstCodec::default();
+                        let mut grpc = tonic::server::Grpc::new(codec)
+                            .apply_compression_config(
+                                accept_compression_encodings,
+                                send_compression_encodings,
+                            )
+                            .apply_max_message_size_config(
+                                max_decoding_message_size,
+                                max_encoding_message_size,
+                            );
+                        let res = grpc.unary(method, req).await;
+                        Ok(res)
+                    };
+                    Box::pin(fut)
+                }
+                "/sentiric.media.v1.MediaService/StopRecording" => {
+                    #[allow(non_camel_case_types)]
+                    struct StopRecordingSvc<T: MediaService>(pub Arc<T>);
+                    impl<
+                        T: MediaService,
+                    > tonic::server::UnaryService<super::StopRecordingRequest>
+                    for StopRecordingSvc<T> {
+                        type Response = super::StopRecordingResponse;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
+                        fn call(
+                            &mut self,
+                            request: tonic::Request<super::StopRecordingRequest>,
+                        ) -> Self::Future {
+                            let inner = Arc::clone(&self.0);
+                            let fut = async move {
+                                <T as MediaService>::stop_recording(&inner, request).await
+                            };
+                            Box::pin(fut)
+                        }
+                    }
+                    let accept_compression_encodings = self.accept_compression_encodings;
+                    let send_compression_encodings = self.send_compression_encodings;
+                    let max_decoding_message_size = self.max_decoding_message_size;
+                    let max_encoding_message_size = self.max_encoding_message_size;
+                    let inner = self.inner.clone();
+                    let fut = async move {
+                        let method = StopRecordingSvc(inner);
                         let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(

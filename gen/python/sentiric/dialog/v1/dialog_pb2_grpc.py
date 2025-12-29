@@ -24,19 +24,33 @@ class DialogServiceStub(object):
                 request_serializer=sentiric_dot_dialog_dot_v1_dot_dialog__pb2.ProcessUserInputRequest.SerializeToString,
                 response_deserializer=sentiric_dot_dialog_dot_v1_dot_dialog__pb2.ProcessUserInputResponse.FromString,
                 _registered_method=True)
+        self.StreamConversation = channel.stream_stream(
+                '/sentiric.dialog.v1.DialogService/StreamConversation',
+                request_serializer=sentiric_dot_dialog_dot_v1_dot_dialog__pb2.StreamConversationRequest.SerializeToString,
+                response_deserializer=sentiric_dot_dialog_dot_v1_dot_dialog__pb2.StreamConversationResponse.FromString,
+                _registered_method=True)
 
 
 class DialogServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def StartDialog(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """Legacy
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def ProcessUserInput(self, request, context):
         """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def StreamConversation(self, request_iterator, context):
+        """[STREAMING]
+        Linter Kuralı: Request adı RPC adı + "Request" olmalı.
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -53,6 +67,11 @@ def add_DialogServiceServicer_to_server(servicer, server):
                     servicer.ProcessUserInput,
                     request_deserializer=sentiric_dot_dialog_dot_v1_dot_dialog__pb2.ProcessUserInputRequest.FromString,
                     response_serializer=sentiric_dot_dialog_dot_v1_dot_dialog__pb2.ProcessUserInputResponse.SerializeToString,
+            ),
+            'StreamConversation': grpc.stream_stream_rpc_method_handler(
+                    servicer.StreamConversation,
+                    request_deserializer=sentiric_dot_dialog_dot_v1_dot_dialog__pb2.StreamConversationRequest.FromString,
+                    response_serializer=sentiric_dot_dialog_dot_v1_dot_dialog__pb2.StreamConversationResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -109,6 +128,33 @@ class DialogService(object):
             '/sentiric.dialog.v1.DialogService/ProcessUserInput',
             sentiric_dot_dialog_dot_v1_dot_dialog__pb2.ProcessUserInputRequest.SerializeToString,
             sentiric_dot_dialog_dot_v1_dot_dialog__pb2.ProcessUserInputResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def StreamConversation(request_iterator,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.stream_stream(
+            request_iterator,
+            target,
+            '/sentiric.dialog.v1.DialogService/StreamConversation',
+            sentiric_dot_dialog_dot_v1_dot_dialog__pb2.StreamConversationRequest.SerializeToString,
+            sentiric_dot_dialog_dot_v1_dot_dialog__pb2.StreamConversationResponse.FromString,
             options,
             channel_credentials,
             insecure,

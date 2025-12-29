@@ -23,6 +23,48 @@ namespace _pbi = _pb::internal;
 namespace sentiric {
 namespace dialog {
 namespace v1 {
+PROTOBUF_CONSTEXPR StreamConversationRequest::StreamConversationRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.payload_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_._oneof_case_)*/{}} {}
+struct StreamConversationRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR StreamConversationRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~StreamConversationRequestDefaultTypeInternal() {}
+  union {
+    StreamConversationRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 StreamConversationRequestDefaultTypeInternal _StreamConversationRequest_default_instance_;
+PROTOBUF_CONSTEXPR StreamConversationResponse::StreamConversationResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.payload_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_._oneof_case_)*/{}} {}
+struct StreamConversationResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR StreamConversationResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~StreamConversationResponseDefaultTypeInternal() {}
+  union {
+    StreamConversationResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 StreamConversationResponseDefaultTypeInternal _StreamConversationResponse_default_instance_;
+PROTOBUF_CONSTEXPR ConversationConfig::ConversationConfig(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.session_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.user_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct ConversationConfigDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ConversationConfigDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ConversationConfigDefaultTypeInternal() {}
+  union {
+    ConversationConfig _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ConversationConfigDefaultTypeInternal _ConversationConfig_default_instance_;
 PROTOBUF_CONSTEXPR StartDialogRequest::StartDialogRequest(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.context_)*/nullptr
@@ -89,11 +131,40 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORIT
 }  // namespace v1
 }  // namespace dialog
 }  // namespace sentiric
-static ::_pb::Metadata file_level_metadata_sentiric_2fdialog_2fv1_2fdialog_2eproto[4];
+static ::_pb::Metadata file_level_metadata_sentiric_2fdialog_2fv1_2fdialog_2eproto[7];
 static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_sentiric_2fdialog_2fv1_2fdialog_2eproto = nullptr;
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_sentiric_2fdialog_2fv1_2fdialog_2eproto = nullptr;
 
 const uint32_t TableStruct_sentiric_2fdialog_2fv1_2fdialog_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialog::v1::StreamConversationRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialog::v1::StreamConversationRequest, _impl_._oneof_case_[0]),
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  ::_pbi::kInvalidFieldOffsetTag,
+  ::_pbi::kInvalidFieldOffsetTag,
+  ::_pbi::kInvalidFieldOffsetTag,
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialog::v1::StreamConversationRequest, _impl_.payload_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialog::v1::StreamConversationResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialog::v1::StreamConversationResponse, _impl_._oneof_case_[0]),
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  ::_pbi::kInvalidFieldOffsetTag,
+  ::_pbi::kInvalidFieldOffsetTag,
+  ::_pbi::kInvalidFieldOffsetTag,
+  ::_pbi::kInvalidFieldOffsetTag,
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialog::v1::StreamConversationResponse, _impl_.payload_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialog::v1::ConversationConfig, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialog::v1::ConversationConfig, _impl_.session_id_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialog::v1::ConversationConfig, _impl_.user_id_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::sentiric::dialog::v1::StartDialogRequest, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -143,13 +214,19 @@ const uint32_t TableStruct_sentiric_2fdialog_2fv1_2fdialog_2eproto::offsets[] PR
   ~0u,
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, -1, sizeof(::sentiric::dialog::v1::StartDialogRequest)},
-  { 7, 17, -1, sizeof(::sentiric::dialog::v1::StartDialogResponse)},
-  { 21, 30, -1, sizeof(::sentiric::dialog::v1::ProcessUserInputRequest)},
-  { 33, 43, -1, sizeof(::sentiric::dialog::v1::ProcessUserInputResponse)},
+  { 0, -1, -1, sizeof(::sentiric::dialog::v1::StreamConversationRequest)},
+  { 10, -1, -1, sizeof(::sentiric::dialog::v1::StreamConversationResponse)},
+  { 21, -1, -1, sizeof(::sentiric::dialog::v1::ConversationConfig)},
+  { 29, -1, -1, sizeof(::sentiric::dialog::v1::StartDialogRequest)},
+  { 36, 46, -1, sizeof(::sentiric::dialog::v1::StartDialogResponse)},
+  { 50, 59, -1, sizeof(::sentiric::dialog::v1::ProcessUserInputRequest)},
+  { 62, 72, -1, sizeof(::sentiric::dialog::v1::ProcessUserInputResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
+  &::sentiric::dialog::v1::_StreamConversationRequest_default_instance_._instance,
+  &::sentiric::dialog::v1::_StreamConversationResponse_default_instance_._instance,
+  &::sentiric::dialog::v1::_ConversationConfig_default_instance_._instance,
   &::sentiric::dialog::v1::_StartDialogRequest_default_instance_._instance,
   &::sentiric::dialog::v1::_StartDialogResponse_default_instance_._instance,
   &::sentiric::dialog::v1::_ProcessUserInputRequest_default_instance_._instance,
@@ -159,36 +236,48 @@ static const ::_pb::Message* const file_default_instances[] = {
 const char descriptor_table_protodef_sentiric_2fdialog_2fv1_2fdialog_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\037sentiric/dialog/v1/dialog.proto\022\022senti"
   "ric.dialog.v1\032\036sentiric/data/v1/context."
-  "proto\"D\n\022StartDialogRequest\022.\n\007context\030\001"
-  " \001(\0132\035.sentiric.data.v1.CallContext\"\237\001\n\023"
-  "StartDialogResponse\022\025\n\rresponse_text\030\001 \001"
-  "(\t\022\026\n\taudio_uri\030\002 \001(\tH\000\210\001\001\022\023\n\013next_actio"
-  "n\030\003 \001(\t\0226\n\017updated_context\030\004 \001(\0132\035.senti"
-  "ric.data.v1.CallContextB\014\n\n_audio_uri\"`\n"
-  "\027ProcessUserInputRequest\022\017\n\007call_id\030\001 \001("
-  "\t\022\014\n\004text\030\002 \001(\t\022\027\n\naudio_data\030\003 \001(\014H\000\210\001\001"
-  "B\r\n\013_audio_data\"\244\001\n\030ProcessUserInputResp"
-  "onse\022\025\n\rresponse_text\030\001 \001(\t\022\026\n\taudio_uri"
-  "\030\002 \001(\tH\000\210\001\001\022\023\n\013next_action\030\003 \001(\t\0226\n\017upda"
-  "ted_context\030\004 \001(\0132\035.sentiric.data.v1.Cal"
-  "lContextB\014\n\n_audio_uri2\336\001\n\rDialogService"
-  "\022^\n\013StartDialog\022&.sentiric.dialog.v1.Sta"
-  "rtDialogRequest\032\'.sentiric.dialog.v1.Sta"
-  "rtDialogResponse\022m\n\020ProcessUserInput\022+.s"
-  "entiric.dialog.v1.ProcessUserInputReques"
-  "t\032,.sentiric.dialog.v1.ProcessUserInputR"
-  "esponseBKZIgithub.com/sentiric/sentiric-"
-  "contracts/gen/go/sentiric/dialog/v1;dial"
-  "ogv1b\006proto3"
+  "proto\"\220\001\n\031StreamConversationRequest\0228\n\006c"
+  "onfig\030\001 \001(\0132&.sentiric.dialog.v1.Convers"
+  "ationConfigH\000\022\024\n\ntext_input\030\002 \001(\tH\000\022\030\n\016i"
+  "s_final_input\030\003 \001(\010H\000B\t\n\007payload\"\214\001\n\032Str"
+  "eamConversationResponse\022\027\n\rtext_response"
+  "\030\001 \001(\tH\000\022\023\n\taudio_url\030\002 \001(\tH\000\022\033\n\021is_fina"
+  "l_response\030\003 \001(\010H\000\022\030\n\016action_command\030\004 \001"
+  "(\tH\000B\t\n\007payload\"9\n\022ConversationConfig\022\022\n"
+  "\nsession_id\030\001 \001(\t\022\017\n\007user_id\030\002 \001(\t\"D\n\022St"
+  "artDialogRequest\022.\n\007context\030\001 \001(\0132\035.sent"
+  "iric.data.v1.CallContext\"\237\001\n\023StartDialog"
+  "Response\022\025\n\rresponse_text\030\001 \001(\t\022\026\n\taudio"
+  "_uri\030\002 \001(\tH\000\210\001\001\022\023\n\013next_action\030\003 \001(\t\0226\n\017"
+  "updated_context\030\004 \001(\0132\035.sentiric.data.v1"
+  ".CallContextB\014\n\n_audio_uri\"`\n\027ProcessUse"
+  "rInputRequest\022\017\n\007call_id\030\001 \001(\t\022\014\n\004text\030\002"
+  " \001(\t\022\027\n\naudio_data\030\003 \001(\014H\000\210\001\001B\r\n\013_audio_"
+  "data\"\244\001\n\030ProcessUserInputResponse\022\025\n\rres"
+  "ponse_text\030\001 \001(\t\022\026\n\taudio_uri\030\002 \001(\tH\000\210\001\001"
+  "\022\023\n\013next_action\030\003 \001(\t\0226\n\017updated_context"
+  "\030\004 \001(\0132\035.sentiric.data.v1.CallContextB\014\n"
+  "\n_audio_uri2\327\002\n\rDialogService\022^\n\013StartDi"
+  "alog\022&.sentiric.dialog.v1.StartDialogReq"
+  "uest\032\'.sentiric.dialog.v1.StartDialogRes"
+  "ponse\022m\n\020ProcessUserInput\022+.sentiric.dia"
+  "log.v1.ProcessUserInputRequest\032,.sentiri"
+  "c.dialog.v1.ProcessUserInputResponse\022w\n\022"
+  "StreamConversation\022-.sentiric.dialog.v1."
+  "StreamConversationRequest\032..sentiric.dia"
+  "log.v1.StreamConversationResponse(\0010\001BKZ"
+  "Igithub.com/sentiric/sentiric-contracts/"
+  "gen/go/sentiric/dialog/v1;dialogv1b\006prot"
+  "o3"
   ;
 static const ::_pbi::DescriptorTable* const descriptor_table_sentiric_2fdialog_2fv1_2fdialog_2eproto_deps[1] = {
   &::descriptor_table_sentiric_2fdata_2fv1_2fcontext_2eproto,
 };
 static ::_pbi::once_flag descriptor_table_sentiric_2fdialog_2fv1_2fdialog_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_sentiric_2fdialog_2fv1_2fdialog_2eproto = {
-    false, false, 892, descriptor_table_protodef_sentiric_2fdialog_2fv1_2fdialog_2eproto,
+    false, false, 1362, descriptor_table_protodef_sentiric_2fdialog_2fv1_2fdialog_2eproto,
     "sentiric/dialog/v1/dialog.proto",
-    &descriptor_table_sentiric_2fdialog_2fv1_2fdialog_2eproto_once, descriptor_table_sentiric_2fdialog_2fv1_2fdialog_2eproto_deps, 1, 4,
+    &descriptor_table_sentiric_2fdialog_2fv1_2fdialog_2eproto_once, descriptor_table_sentiric_2fdialog_2fv1_2fdialog_2eproto_deps, 1, 7,
     schemas, file_default_instances, TableStruct_sentiric_2fdialog_2fv1_2fdialog_2eproto::offsets,
     file_level_metadata_sentiric_2fdialog_2fv1_2fdialog_2eproto, file_level_enum_descriptors_sentiric_2fdialog_2fv1_2fdialog_2eproto,
     file_level_service_descriptors_sentiric_2fdialog_2fv1_2fdialog_2eproto,
@@ -202,6 +291,913 @@ PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_in
 namespace sentiric {
 namespace dialog {
 namespace v1 {
+
+// ===================================================================
+
+class StreamConversationRequest::_Internal {
+ public:
+  static const ::sentiric::dialog::v1::ConversationConfig& config(const StreamConversationRequest* msg);
+};
+
+const ::sentiric::dialog::v1::ConversationConfig&
+StreamConversationRequest::_Internal::config(const StreamConversationRequest* msg) {
+  return *msg->_impl_.payload_.config_;
+}
+void StreamConversationRequest::set_allocated_config(::sentiric::dialog::v1::ConversationConfig* config) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  clear_payload();
+  if (config) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+      ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(config);
+    if (message_arena != submessage_arena) {
+      config = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, config, submessage_arena);
+    }
+    set_has_config();
+    _impl_.payload_.config_ = config;
+  }
+  // @@protoc_insertion_point(field_set_allocated:sentiric.dialog.v1.StreamConversationRequest.config)
+}
+StreamConversationRequest::StreamConversationRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.dialog.v1.StreamConversationRequest)
+}
+StreamConversationRequest::StreamConversationRequest(const StreamConversationRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  StreamConversationRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.payload_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , /*decltype(_impl_._oneof_case_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  clear_has_payload();
+  switch (from.payload_case()) {
+    case kConfig: {
+      _this->_internal_mutable_config()->::sentiric::dialog::v1::ConversationConfig::MergeFrom(
+          from._internal_config());
+      break;
+    }
+    case kTextInput: {
+      _this->_internal_set_text_input(from._internal_text_input());
+      break;
+    }
+    case kIsFinalInput: {
+      _this->_internal_set_is_final_input(from._internal_is_final_input());
+      break;
+    }
+    case PAYLOAD_NOT_SET: {
+      break;
+    }
+  }
+  // @@protoc_insertion_point(copy_constructor:sentiric.dialog.v1.StreamConversationRequest)
+}
+
+inline void StreamConversationRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.payload_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , /*decltype(_impl_._oneof_case_)*/{}
+  };
+  clear_has_payload();
+}
+
+StreamConversationRequest::~StreamConversationRequest() {
+  // @@protoc_insertion_point(destructor:sentiric.dialog.v1.StreamConversationRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void StreamConversationRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  if (has_payload()) {
+    clear_payload();
+  }
+}
+
+void StreamConversationRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void StreamConversationRequest::clear_payload() {
+// @@protoc_insertion_point(one_of_clear_start:sentiric.dialog.v1.StreamConversationRequest)
+  switch (payload_case()) {
+    case kConfig: {
+      if (GetArenaForAllocation() == nullptr) {
+        delete _impl_.payload_.config_;
+      }
+      break;
+    }
+    case kTextInput: {
+      _impl_.payload_.text_input_.Destroy();
+      break;
+    }
+    case kIsFinalInput: {
+      // No need to clear
+      break;
+    }
+    case PAYLOAD_NOT_SET: {
+      break;
+    }
+  }
+  _impl_._oneof_case_[0] = PAYLOAD_NOT_SET;
+}
+
+
+void StreamConversationRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.dialog.v1.StreamConversationRequest)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  clear_payload();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* StreamConversationRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .sentiric.dialog.v1.ConversationConfig config = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_config(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string text_input = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_text_input();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.dialog.v1.StreamConversationRequest.text_input"));
+        } else
+          goto handle_unusual;
+        continue;
+      // bool is_final_input = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+          _internal_set_is_final_input(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr));
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* StreamConversationRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.dialog.v1.StreamConversationRequest)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .sentiric.dialog.v1.ConversationConfig config = 1;
+  if (_internal_has_config()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::config(this),
+        _Internal::config(this).GetCachedSize(), target, stream);
+  }
+
+  // string text_input = 2;
+  if (_internal_has_text_input()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_text_input().data(), static_cast<int>(this->_internal_text_input().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.dialog.v1.StreamConversationRequest.text_input");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_text_input(), target);
+  }
+
+  // bool is_final_input = 3;
+  if (_internal_has_is_final_input()) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(3, this->_internal_is_final_input(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.dialog.v1.StreamConversationRequest)
+  return target;
+}
+
+size_t StreamConversationRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.dialog.v1.StreamConversationRequest)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  switch (payload_case()) {
+    // .sentiric.dialog.v1.ConversationConfig config = 1;
+    case kConfig: {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.payload_.config_);
+      break;
+    }
+    // string text_input = 2;
+    case kTextInput: {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+          this->_internal_text_input());
+      break;
+    }
+    // bool is_final_input = 3;
+    case kIsFinalInput: {
+      total_size += 1 + 1;
+      break;
+    }
+    case PAYLOAD_NOT_SET: {
+      break;
+    }
+  }
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData StreamConversationRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    StreamConversationRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*StreamConversationRequest::GetClassData() const { return &_class_data_; }
+
+
+void StreamConversationRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<StreamConversationRequest*>(&to_msg);
+  auto& from = static_cast<const StreamConversationRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.dialog.v1.StreamConversationRequest)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  switch (from.payload_case()) {
+    case kConfig: {
+      _this->_internal_mutable_config()->::sentiric::dialog::v1::ConversationConfig::MergeFrom(
+          from._internal_config());
+      break;
+    }
+    case kTextInput: {
+      _this->_internal_set_text_input(from._internal_text_input());
+      break;
+    }
+    case kIsFinalInput: {
+      _this->_internal_set_is_final_input(from._internal_is_final_input());
+      break;
+    }
+    case PAYLOAD_NOT_SET: {
+      break;
+    }
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void StreamConversationRequest::CopyFrom(const StreamConversationRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.dialog.v1.StreamConversationRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool StreamConversationRequest::IsInitialized() const {
+  return true;
+}
+
+void StreamConversationRequest::InternalSwap(StreamConversationRequest* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_.payload_, other->_impl_.payload_);
+  swap(_impl_._oneof_case_[0], other->_impl_._oneof_case_[0]);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata StreamConversationRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fdialog_2fv1_2fdialog_2eproto_getter, &descriptor_table_sentiric_2fdialog_2fv1_2fdialog_2eproto_once,
+      file_level_metadata_sentiric_2fdialog_2fv1_2fdialog_2eproto[0]);
+}
+
+// ===================================================================
+
+class StreamConversationResponse::_Internal {
+ public:
+};
+
+StreamConversationResponse::StreamConversationResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.dialog.v1.StreamConversationResponse)
+}
+StreamConversationResponse::StreamConversationResponse(const StreamConversationResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  StreamConversationResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.payload_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , /*decltype(_impl_._oneof_case_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  clear_has_payload();
+  switch (from.payload_case()) {
+    case kTextResponse: {
+      _this->_internal_set_text_response(from._internal_text_response());
+      break;
+    }
+    case kAudioUrl: {
+      _this->_internal_set_audio_url(from._internal_audio_url());
+      break;
+    }
+    case kIsFinalResponse: {
+      _this->_internal_set_is_final_response(from._internal_is_final_response());
+      break;
+    }
+    case kActionCommand: {
+      _this->_internal_set_action_command(from._internal_action_command());
+      break;
+    }
+    case PAYLOAD_NOT_SET: {
+      break;
+    }
+  }
+  // @@protoc_insertion_point(copy_constructor:sentiric.dialog.v1.StreamConversationResponse)
+}
+
+inline void StreamConversationResponse::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.payload_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , /*decltype(_impl_._oneof_case_)*/{}
+  };
+  clear_has_payload();
+}
+
+StreamConversationResponse::~StreamConversationResponse() {
+  // @@protoc_insertion_point(destructor:sentiric.dialog.v1.StreamConversationResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void StreamConversationResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  if (has_payload()) {
+    clear_payload();
+  }
+}
+
+void StreamConversationResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void StreamConversationResponse::clear_payload() {
+// @@protoc_insertion_point(one_of_clear_start:sentiric.dialog.v1.StreamConversationResponse)
+  switch (payload_case()) {
+    case kTextResponse: {
+      _impl_.payload_.text_response_.Destroy();
+      break;
+    }
+    case kAudioUrl: {
+      _impl_.payload_.audio_url_.Destroy();
+      break;
+    }
+    case kIsFinalResponse: {
+      // No need to clear
+      break;
+    }
+    case kActionCommand: {
+      _impl_.payload_.action_command_.Destroy();
+      break;
+    }
+    case PAYLOAD_NOT_SET: {
+      break;
+    }
+  }
+  _impl_._oneof_case_[0] = PAYLOAD_NOT_SET;
+}
+
+
+void StreamConversationResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.dialog.v1.StreamConversationResponse)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  clear_payload();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* StreamConversationResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string text_response = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_text_response();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.dialog.v1.StreamConversationResponse.text_response"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string audio_url = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_audio_url();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.dialog.v1.StreamConversationResponse.audio_url"));
+        } else
+          goto handle_unusual;
+        continue;
+      // bool is_final_response = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+          _internal_set_is_final_response(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr));
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string action_command = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          auto str = _internal_mutable_action_command();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.dialog.v1.StreamConversationResponse.action_command"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* StreamConversationResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.dialog.v1.StreamConversationResponse)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string text_response = 1;
+  if (_internal_has_text_response()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_text_response().data(), static_cast<int>(this->_internal_text_response().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.dialog.v1.StreamConversationResponse.text_response");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_text_response(), target);
+  }
+
+  // string audio_url = 2;
+  if (_internal_has_audio_url()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_audio_url().data(), static_cast<int>(this->_internal_audio_url().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.dialog.v1.StreamConversationResponse.audio_url");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_audio_url(), target);
+  }
+
+  // bool is_final_response = 3;
+  if (_internal_has_is_final_response()) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(3, this->_internal_is_final_response(), target);
+  }
+
+  // string action_command = 4;
+  if (_internal_has_action_command()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_action_command().data(), static_cast<int>(this->_internal_action_command().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.dialog.v1.StreamConversationResponse.action_command");
+    target = stream->WriteStringMaybeAliased(
+        4, this->_internal_action_command(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.dialog.v1.StreamConversationResponse)
+  return target;
+}
+
+size_t StreamConversationResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.dialog.v1.StreamConversationResponse)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  switch (payload_case()) {
+    // string text_response = 1;
+    case kTextResponse: {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+          this->_internal_text_response());
+      break;
+    }
+    // string audio_url = 2;
+    case kAudioUrl: {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+          this->_internal_audio_url());
+      break;
+    }
+    // bool is_final_response = 3;
+    case kIsFinalResponse: {
+      total_size += 1 + 1;
+      break;
+    }
+    // string action_command = 4;
+    case kActionCommand: {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+          this->_internal_action_command());
+      break;
+    }
+    case PAYLOAD_NOT_SET: {
+      break;
+    }
+  }
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData StreamConversationResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    StreamConversationResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*StreamConversationResponse::GetClassData() const { return &_class_data_; }
+
+
+void StreamConversationResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<StreamConversationResponse*>(&to_msg);
+  auto& from = static_cast<const StreamConversationResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.dialog.v1.StreamConversationResponse)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  switch (from.payload_case()) {
+    case kTextResponse: {
+      _this->_internal_set_text_response(from._internal_text_response());
+      break;
+    }
+    case kAudioUrl: {
+      _this->_internal_set_audio_url(from._internal_audio_url());
+      break;
+    }
+    case kIsFinalResponse: {
+      _this->_internal_set_is_final_response(from._internal_is_final_response());
+      break;
+    }
+    case kActionCommand: {
+      _this->_internal_set_action_command(from._internal_action_command());
+      break;
+    }
+    case PAYLOAD_NOT_SET: {
+      break;
+    }
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void StreamConversationResponse::CopyFrom(const StreamConversationResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.dialog.v1.StreamConversationResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool StreamConversationResponse::IsInitialized() const {
+  return true;
+}
+
+void StreamConversationResponse::InternalSwap(StreamConversationResponse* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_.payload_, other->_impl_.payload_);
+  swap(_impl_._oneof_case_[0], other->_impl_._oneof_case_[0]);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata StreamConversationResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fdialog_2fv1_2fdialog_2eproto_getter, &descriptor_table_sentiric_2fdialog_2fv1_2fdialog_2eproto_once,
+      file_level_metadata_sentiric_2fdialog_2fv1_2fdialog_2eproto[1]);
+}
+
+// ===================================================================
+
+class ConversationConfig::_Internal {
+ public:
+};
+
+ConversationConfig::ConversationConfig(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.dialog.v1.ConversationConfig)
+}
+ConversationConfig::ConversationConfig(const ConversationConfig& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ConversationConfig* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.session_id_){}
+    , decltype(_impl_.user_id_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.session_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.session_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_session_id().empty()) {
+    _this->_impl_.session_id_.Set(from._internal_session_id(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.user_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.user_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_user_id().empty()) {
+    _this->_impl_.user_id_.Set(from._internal_user_id(), 
+      _this->GetArenaForAllocation());
+  }
+  // @@protoc_insertion_point(copy_constructor:sentiric.dialog.v1.ConversationConfig)
+}
+
+inline void ConversationConfig::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.session_id_){}
+    , decltype(_impl_.user_id_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.session_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.session_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.user_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.user_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+ConversationConfig::~ConversationConfig() {
+  // @@protoc_insertion_point(destructor:sentiric.dialog.v1.ConversationConfig)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void ConversationConfig::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.session_id_.Destroy();
+  _impl_.user_id_.Destroy();
+}
+
+void ConversationConfig::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void ConversationConfig::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.dialog.v1.ConversationConfig)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.session_id_.ClearToEmpty();
+  _impl_.user_id_.ClearToEmpty();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* ConversationConfig::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string session_id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_session_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.dialog.v1.ConversationConfig.session_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string user_id = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_user_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.dialog.v1.ConversationConfig.user_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* ConversationConfig::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.dialog.v1.ConversationConfig)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string session_id = 1;
+  if (!this->_internal_session_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_session_id().data(), static_cast<int>(this->_internal_session_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.dialog.v1.ConversationConfig.session_id");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_session_id(), target);
+  }
+
+  // string user_id = 2;
+  if (!this->_internal_user_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_user_id().data(), static_cast<int>(this->_internal_user_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.dialog.v1.ConversationConfig.user_id");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_user_id(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.dialog.v1.ConversationConfig)
+  return target;
+}
+
+size_t ConversationConfig::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.dialog.v1.ConversationConfig)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string session_id = 1;
+  if (!this->_internal_session_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_session_id());
+  }
+
+  // string user_id = 2;
+  if (!this->_internal_user_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_user_id());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ConversationConfig::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ConversationConfig::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ConversationConfig::GetClassData() const { return &_class_data_; }
+
+
+void ConversationConfig::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ConversationConfig*>(&to_msg);
+  auto& from = static_cast<const ConversationConfig&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.dialog.v1.ConversationConfig)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_session_id().empty()) {
+    _this->_internal_set_session_id(from._internal_session_id());
+  }
+  if (!from._internal_user_id().empty()) {
+    _this->_internal_set_user_id(from._internal_user_id());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void ConversationConfig::CopyFrom(const ConversationConfig& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.dialog.v1.ConversationConfig)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ConversationConfig::IsInitialized() const {
+  return true;
+}
+
+void ConversationConfig::InternalSwap(ConversationConfig* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.session_id_, lhs_arena,
+      &other->_impl_.session_id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.user_id_, lhs_arena,
+      &other->_impl_.user_id_, rhs_arena
+  );
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata ConversationConfig::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fdialog_2fv1_2fdialog_2eproto_getter, &descriptor_table_sentiric_2fdialog_2fv1_2fdialog_2eproto_once,
+      file_level_metadata_sentiric_2fdialog_2fv1_2fdialog_2eproto[2]);
+}
 
 // ===================================================================
 
@@ -399,7 +1395,7 @@ void StartDialogRequest::InternalSwap(StartDialogRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata StartDialogRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialog_2fv1_2fdialog_2eproto_getter, &descriptor_table_sentiric_2fdialog_2fv1_2fdialog_2eproto_once,
-      file_level_metadata_sentiric_2fdialog_2fv1_2fdialog_2eproto[0]);
+      file_level_metadata_sentiric_2fdialog_2fv1_2fdialog_2eproto[3]);
 }
 
 // ===================================================================
@@ -764,7 +1760,7 @@ void StartDialogResponse::InternalSwap(StartDialogResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata StartDialogResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialog_2fv1_2fdialog_2eproto_getter, &descriptor_table_sentiric_2fdialog_2fv1_2fdialog_2eproto_once,
-      file_level_metadata_sentiric_2fdialog_2fv1_2fdialog_2eproto[1]);
+      file_level_metadata_sentiric_2fdialog_2fv1_2fdialog_2eproto[4]);
 }
 
 // ===================================================================
@@ -1076,7 +2072,7 @@ void ProcessUserInputRequest::InternalSwap(ProcessUserInputRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ProcessUserInputRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialog_2fv1_2fdialog_2eproto_getter, &descriptor_table_sentiric_2fdialog_2fv1_2fdialog_2eproto_once,
-      file_level_metadata_sentiric_2fdialog_2fv1_2fdialog_2eproto[2]);
+      file_level_metadata_sentiric_2fdialog_2fv1_2fdialog_2eproto[5]);
 }
 
 // ===================================================================
@@ -1441,7 +2437,7 @@ void ProcessUserInputResponse::InternalSwap(ProcessUserInputResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ProcessUserInputResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialog_2fv1_2fdialog_2eproto_getter, &descriptor_table_sentiric_2fdialog_2fv1_2fdialog_2eproto_once,
-      file_level_metadata_sentiric_2fdialog_2fv1_2fdialog_2eproto[3]);
+      file_level_metadata_sentiric_2fdialog_2fv1_2fdialog_2eproto[6]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -1449,6 +2445,18 @@ void ProcessUserInputResponse::InternalSwap(ProcessUserInputResponse* other) {
 }  // namespace dialog
 }  // namespace sentiric
 PROTOBUF_NAMESPACE_OPEN
+template<> PROTOBUF_NOINLINE ::sentiric::dialog::v1::StreamConversationRequest*
+Arena::CreateMaybeMessage< ::sentiric::dialog::v1::StreamConversationRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::dialog::v1::StreamConversationRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::dialog::v1::StreamConversationResponse*
+Arena::CreateMaybeMessage< ::sentiric::dialog::v1::StreamConversationResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::dialog::v1::StreamConversationResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::dialog::v1::ConversationConfig*
+Arena::CreateMaybeMessage< ::sentiric::dialog::v1::ConversationConfig >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::dialog::v1::ConversationConfig >(arena);
+}
 template<> PROTOBUF_NOINLINE ::sentiric::dialog::v1::StartDialogRequest*
 Arena::CreateMaybeMessage< ::sentiric::dialog::v1::StartDialogRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::sentiric::dialog::v1::StartDialogRequest >(arena);

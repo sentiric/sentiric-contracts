@@ -22,6 +22,278 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type StreamConversationRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Types that are valid to be assigned to Payload:
+	//
+	//	*StreamConversationRequest_Config
+	//	*StreamConversationRequest_TextInput
+	//	*StreamConversationRequest_IsFinalInput
+	Payload       isStreamConversationRequest_Payload `protobuf_oneof:"payload"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *StreamConversationRequest) Reset() {
+	*x = StreamConversationRequest{}
+	mi := &file_sentiric_dialog_v1_dialog_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StreamConversationRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StreamConversationRequest) ProtoMessage() {}
+
+func (x *StreamConversationRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_dialog_v1_dialog_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StreamConversationRequest.ProtoReflect.Descriptor instead.
+func (*StreamConversationRequest) Descriptor() ([]byte, []int) {
+	return file_sentiric_dialog_v1_dialog_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *StreamConversationRequest) GetPayload() isStreamConversationRequest_Payload {
+	if x != nil {
+		return x.Payload
+	}
+	return nil
+}
+
+func (x *StreamConversationRequest) GetConfig() *ConversationConfig {
+	if x != nil {
+		if x, ok := x.Payload.(*StreamConversationRequest_Config); ok {
+			return x.Config
+		}
+	}
+	return nil
+}
+
+func (x *StreamConversationRequest) GetTextInput() string {
+	if x != nil {
+		if x, ok := x.Payload.(*StreamConversationRequest_TextInput); ok {
+			return x.TextInput
+		}
+	}
+	return ""
+}
+
+func (x *StreamConversationRequest) GetIsFinalInput() bool {
+	if x != nil {
+		if x, ok := x.Payload.(*StreamConversationRequest_IsFinalInput); ok {
+			return x.IsFinalInput
+		}
+	}
+	return false
+}
+
+type isStreamConversationRequest_Payload interface {
+	isStreamConversationRequest_Payload()
+}
+
+type StreamConversationRequest_Config struct {
+	// Oturum Başlatma
+	Config *ConversationConfig `protobuf:"bytes,1,opt,name=config,proto3,oneof"`
+}
+
+type StreamConversationRequest_TextInput struct {
+	// Kullanıcı Girdisi
+	TextInput string `protobuf:"bytes,2,opt,name=text_input,json=textInput,proto3,oneof"`
+}
+
+type StreamConversationRequest_IsFinalInput struct {
+	// Sinyaller
+	IsFinalInput bool `protobuf:"varint,3,opt,name=is_final_input,json=isFinalInput,proto3,oneof"`
+}
+
+func (*StreamConversationRequest_Config) isStreamConversationRequest_Payload() {}
+
+func (*StreamConversationRequest_TextInput) isStreamConversationRequest_Payload() {}
+
+func (*StreamConversationRequest_IsFinalInput) isStreamConversationRequest_Payload() {}
+
+type StreamConversationResponse struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Types that are valid to be assigned to Payload:
+	//
+	//	*StreamConversationResponse_TextResponse
+	//	*StreamConversationResponse_AudioUrl
+	//	*StreamConversationResponse_IsFinalResponse
+	//	*StreamConversationResponse_ActionCommand
+	Payload       isStreamConversationResponse_Payload `protobuf_oneof:"payload"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *StreamConversationResponse) Reset() {
+	*x = StreamConversationResponse{}
+	mi := &file_sentiric_dialog_v1_dialog_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StreamConversationResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StreamConversationResponse) ProtoMessage() {}
+
+func (x *StreamConversationResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_dialog_v1_dialog_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StreamConversationResponse.ProtoReflect.Descriptor instead.
+func (*StreamConversationResponse) Descriptor() ([]byte, []int) {
+	return file_sentiric_dialog_v1_dialog_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *StreamConversationResponse) GetPayload() isStreamConversationResponse_Payload {
+	if x != nil {
+		return x.Payload
+	}
+	return nil
+}
+
+func (x *StreamConversationResponse) GetTextResponse() string {
+	if x != nil {
+		if x, ok := x.Payload.(*StreamConversationResponse_TextResponse); ok {
+			return x.TextResponse
+		}
+	}
+	return ""
+}
+
+func (x *StreamConversationResponse) GetAudioUrl() string {
+	if x != nil {
+		if x, ok := x.Payload.(*StreamConversationResponse_AudioUrl); ok {
+			return x.AudioUrl
+		}
+	}
+	return ""
+}
+
+func (x *StreamConversationResponse) GetIsFinalResponse() bool {
+	if x != nil {
+		if x, ok := x.Payload.(*StreamConversationResponse_IsFinalResponse); ok {
+			return x.IsFinalResponse
+		}
+	}
+	return false
+}
+
+func (x *StreamConversationResponse) GetActionCommand() string {
+	if x != nil {
+		if x, ok := x.Payload.(*StreamConversationResponse_ActionCommand); ok {
+			return x.ActionCommand
+		}
+	}
+	return ""
+}
+
+type isStreamConversationResponse_Payload interface {
+	isStreamConversationResponse_Payload()
+}
+
+type StreamConversationResponse_TextResponse struct {
+	// AI Yanıtı (Parçalı)
+	TextResponse string `protobuf:"bytes,1,opt,name=text_response,json=textResponse,proto3,oneof"`
+}
+
+type StreamConversationResponse_AudioUrl struct {
+	// Hazır Medya URL'i
+	AudioUrl string `protobuf:"bytes,2,opt,name=audio_url,json=audioUrl,proto3,oneof"`
+}
+
+type StreamConversationResponse_IsFinalResponse struct {
+	// Sinyaller
+	IsFinalResponse bool `protobuf:"varint,3,opt,name=is_final_response,json=isFinalResponse,proto3,oneof"`
+}
+
+type StreamConversationResponse_ActionCommand struct {
+	// Aksiyonlar (Transfer, Hangup)
+	ActionCommand string `protobuf:"bytes,4,opt,name=action_command,json=actionCommand,proto3,oneof"`
+}
+
+func (*StreamConversationResponse_TextResponse) isStreamConversationResponse_Payload() {}
+
+func (*StreamConversationResponse_AudioUrl) isStreamConversationResponse_Payload() {}
+
+func (*StreamConversationResponse_IsFinalResponse) isStreamConversationResponse_Payload() {}
+
+func (*StreamConversationResponse_ActionCommand) isStreamConversationResponse_Payload() {}
+
+type ConversationConfig struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	SessionId     string                 `protobuf:"bytes,1,opt,name=session_id,json=sessionId,proto3" json:"session_id,omitempty"`
+	UserId        string                 `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ConversationConfig) Reset() {
+	*x = ConversationConfig{}
+	mi := &file_sentiric_dialog_v1_dialog_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ConversationConfig) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ConversationConfig) ProtoMessage() {}
+
+func (x *ConversationConfig) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_dialog_v1_dialog_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ConversationConfig.ProtoReflect.Descriptor instead.
+func (*ConversationConfig) Descriptor() ([]byte, []int) {
+	return file_sentiric_dialog_v1_dialog_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *ConversationConfig) GetSessionId() string {
+	if x != nil {
+		return x.SessionId
+	}
+	return ""
+}
+
+func (x *ConversationConfig) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+// --- Legacy Messages ---
 type StartDialogRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Context       *v1.CallContext        `protobuf:"bytes,1,opt,name=context,proto3" json:"context,omitempty"`
@@ -31,7 +303,7 @@ type StartDialogRequest struct {
 
 func (x *StartDialogRequest) Reset() {
 	*x = StartDialogRequest{}
-	mi := &file_sentiric_dialog_v1_dialog_proto_msgTypes[0]
+	mi := &file_sentiric_dialog_v1_dialog_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -43,7 +315,7 @@ func (x *StartDialogRequest) String() string {
 func (*StartDialogRequest) ProtoMessage() {}
 
 func (x *StartDialogRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_dialog_v1_dialog_proto_msgTypes[0]
+	mi := &file_sentiric_dialog_v1_dialog_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -56,7 +328,7 @@ func (x *StartDialogRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StartDialogRequest.ProtoReflect.Descriptor instead.
 func (*StartDialogRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_dialog_v1_dialog_proto_rawDescGZIP(), []int{0}
+	return file_sentiric_dialog_v1_dialog_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *StartDialogRequest) GetContext() *v1.CallContext {
@@ -78,7 +350,7 @@ type StartDialogResponse struct {
 
 func (x *StartDialogResponse) Reset() {
 	*x = StartDialogResponse{}
-	mi := &file_sentiric_dialog_v1_dialog_proto_msgTypes[1]
+	mi := &file_sentiric_dialog_v1_dialog_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -90,7 +362,7 @@ func (x *StartDialogResponse) String() string {
 func (*StartDialogResponse) ProtoMessage() {}
 
 func (x *StartDialogResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_dialog_v1_dialog_proto_msgTypes[1]
+	mi := &file_sentiric_dialog_v1_dialog_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -103,7 +375,7 @@ func (x *StartDialogResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StartDialogResponse.ProtoReflect.Descriptor instead.
 func (*StartDialogResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_dialog_v1_dialog_proto_rawDescGZIP(), []int{1}
+	return file_sentiric_dialog_v1_dialog_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *StartDialogResponse) GetResponseText() string {
@@ -145,7 +417,7 @@ type ProcessUserInputRequest struct {
 
 func (x *ProcessUserInputRequest) Reset() {
 	*x = ProcessUserInputRequest{}
-	mi := &file_sentiric_dialog_v1_dialog_proto_msgTypes[2]
+	mi := &file_sentiric_dialog_v1_dialog_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -157,7 +429,7 @@ func (x *ProcessUserInputRequest) String() string {
 func (*ProcessUserInputRequest) ProtoMessage() {}
 
 func (x *ProcessUserInputRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_dialog_v1_dialog_proto_msgTypes[2]
+	mi := &file_sentiric_dialog_v1_dialog_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -170,7 +442,7 @@ func (x *ProcessUserInputRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ProcessUserInputRequest.ProtoReflect.Descriptor instead.
 func (*ProcessUserInputRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_dialog_v1_dialog_proto_rawDescGZIP(), []int{2}
+	return file_sentiric_dialog_v1_dialog_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *ProcessUserInputRequest) GetCallId() string {
@@ -206,7 +478,7 @@ type ProcessUserInputResponse struct {
 
 func (x *ProcessUserInputResponse) Reset() {
 	*x = ProcessUserInputResponse{}
-	mi := &file_sentiric_dialog_v1_dialog_proto_msgTypes[3]
+	mi := &file_sentiric_dialog_v1_dialog_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -218,7 +490,7 @@ func (x *ProcessUserInputResponse) String() string {
 func (*ProcessUserInputResponse) ProtoMessage() {}
 
 func (x *ProcessUserInputResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_dialog_v1_dialog_proto_msgTypes[3]
+	mi := &file_sentiric_dialog_v1_dialog_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -231,7 +503,7 @@ func (x *ProcessUserInputResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ProcessUserInputResponse.ProtoReflect.Descriptor instead.
 func (*ProcessUserInputResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_dialog_v1_dialog_proto_rawDescGZIP(), []int{3}
+	return file_sentiric_dialog_v1_dialog_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *ProcessUserInputResponse) GetResponseText() string {
@@ -266,7 +538,23 @@ var File_sentiric_dialog_v1_dialog_proto protoreflect.FileDescriptor
 
 const file_sentiric_dialog_v1_dialog_proto_rawDesc = "" +
 	"\n" +
-	"\x1fsentiric/dialog/v1/dialog.proto\x12\x12sentiric.dialog.v1\x1a\x1esentiric/data/v1/context.proto\"M\n" +
+	"\x1fsentiric/dialog/v1/dialog.proto\x12\x12sentiric.dialog.v1\x1a\x1esentiric/data/v1/context.proto\"\xb1\x01\n" +
+	"\x19StreamConversationRequest\x12@\n" +
+	"\x06config\x18\x01 \x01(\v2&.sentiric.dialog.v1.ConversationConfigH\x00R\x06config\x12\x1f\n" +
+	"\n" +
+	"text_input\x18\x02 \x01(\tH\x00R\ttextInput\x12&\n" +
+	"\x0eis_final_input\x18\x03 \x01(\bH\x00R\fisFinalInputB\t\n" +
+	"\apayload\"\xc4\x01\n" +
+	"\x1aStreamConversationResponse\x12%\n" +
+	"\rtext_response\x18\x01 \x01(\tH\x00R\ftextResponse\x12\x1d\n" +
+	"\taudio_url\x18\x02 \x01(\tH\x00R\baudioUrl\x12,\n" +
+	"\x11is_final_response\x18\x03 \x01(\bH\x00R\x0fisFinalResponse\x12'\n" +
+	"\x0eaction_command\x18\x04 \x01(\tH\x00R\ractionCommandB\t\n" +
+	"\apayload\"L\n" +
+	"\x12ConversationConfig\x12\x1d\n" +
+	"\n" +
+	"session_id\x18\x01 \x01(\tR\tsessionId\x12\x17\n" +
+	"\auser_id\x18\x02 \x01(\tR\x06userId\"M\n" +
 	"\x12StartDialogRequest\x127\n" +
 	"\acontext\x18\x01 \x01(\v2\x1d.sentiric.data.v1.CallContextR\acontext\"\xd3\x01\n" +
 	"\x13StartDialogResponse\x12#\n" +
@@ -290,10 +578,11 @@ const file_sentiric_dialog_v1_dialog_proto_rawDesc = "" +
 	"nextAction\x12F\n" +
 	"\x0fupdated_context\x18\x04 \x01(\v2\x1d.sentiric.data.v1.CallContextR\x0eupdatedContextB\f\n" +
 	"\n" +
-	"_audio_uri2\xde\x01\n" +
+	"_audio_uri2\xd7\x02\n" +
 	"\rDialogService\x12^\n" +
 	"\vStartDialog\x12&.sentiric.dialog.v1.StartDialogRequest\x1a'.sentiric.dialog.v1.StartDialogResponse\x12m\n" +
-	"\x10ProcessUserInput\x12+.sentiric.dialog.v1.ProcessUserInputRequest\x1a,.sentiric.dialog.v1.ProcessUserInputResponseBKZIgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/dialog/v1;dialogv1b\x06proto3"
+	"\x10ProcessUserInput\x12+.sentiric.dialog.v1.ProcessUserInputRequest\x1a,.sentiric.dialog.v1.ProcessUserInputResponse\x12w\n" +
+	"\x12StreamConversation\x12-.sentiric.dialog.v1.StreamConversationRequest\x1a..sentiric.dialog.v1.StreamConversationResponse(\x010\x01BKZIgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/dialog/v1;dialogv1b\x06proto3"
 
 var (
 	file_sentiric_dialog_v1_dialog_proto_rawDescOnce sync.Once
@@ -307,27 +596,33 @@ func file_sentiric_dialog_v1_dialog_proto_rawDescGZIP() []byte {
 	return file_sentiric_dialog_v1_dialog_proto_rawDescData
 }
 
-var file_sentiric_dialog_v1_dialog_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_sentiric_dialog_v1_dialog_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_sentiric_dialog_v1_dialog_proto_goTypes = []any{
-	(*StartDialogRequest)(nil),       // 0: sentiric.dialog.v1.StartDialogRequest
-	(*StartDialogResponse)(nil),      // 1: sentiric.dialog.v1.StartDialogResponse
-	(*ProcessUserInputRequest)(nil),  // 2: sentiric.dialog.v1.ProcessUserInputRequest
-	(*ProcessUserInputResponse)(nil), // 3: sentiric.dialog.v1.ProcessUserInputResponse
-	(*v1.CallContext)(nil),           // 4: sentiric.data.v1.CallContext
+	(*StreamConversationRequest)(nil),  // 0: sentiric.dialog.v1.StreamConversationRequest
+	(*StreamConversationResponse)(nil), // 1: sentiric.dialog.v1.StreamConversationResponse
+	(*ConversationConfig)(nil),         // 2: sentiric.dialog.v1.ConversationConfig
+	(*StartDialogRequest)(nil),         // 3: sentiric.dialog.v1.StartDialogRequest
+	(*StartDialogResponse)(nil),        // 4: sentiric.dialog.v1.StartDialogResponse
+	(*ProcessUserInputRequest)(nil),    // 5: sentiric.dialog.v1.ProcessUserInputRequest
+	(*ProcessUserInputResponse)(nil),   // 6: sentiric.dialog.v1.ProcessUserInputResponse
+	(*v1.CallContext)(nil),             // 7: sentiric.data.v1.CallContext
 }
 var file_sentiric_dialog_v1_dialog_proto_depIdxs = []int32{
-	4, // 0: sentiric.dialog.v1.StartDialogRequest.context:type_name -> sentiric.data.v1.CallContext
-	4, // 1: sentiric.dialog.v1.StartDialogResponse.updated_context:type_name -> sentiric.data.v1.CallContext
-	4, // 2: sentiric.dialog.v1.ProcessUserInputResponse.updated_context:type_name -> sentiric.data.v1.CallContext
-	0, // 3: sentiric.dialog.v1.DialogService.StartDialog:input_type -> sentiric.dialog.v1.StartDialogRequest
-	2, // 4: sentiric.dialog.v1.DialogService.ProcessUserInput:input_type -> sentiric.dialog.v1.ProcessUserInputRequest
-	1, // 5: sentiric.dialog.v1.DialogService.StartDialog:output_type -> sentiric.dialog.v1.StartDialogResponse
-	3, // 6: sentiric.dialog.v1.DialogService.ProcessUserInput:output_type -> sentiric.dialog.v1.ProcessUserInputResponse
-	5, // [5:7] is the sub-list for method output_type
-	3, // [3:5] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	2, // 0: sentiric.dialog.v1.StreamConversationRequest.config:type_name -> sentiric.dialog.v1.ConversationConfig
+	7, // 1: sentiric.dialog.v1.StartDialogRequest.context:type_name -> sentiric.data.v1.CallContext
+	7, // 2: sentiric.dialog.v1.StartDialogResponse.updated_context:type_name -> sentiric.data.v1.CallContext
+	7, // 3: sentiric.dialog.v1.ProcessUserInputResponse.updated_context:type_name -> sentiric.data.v1.CallContext
+	3, // 4: sentiric.dialog.v1.DialogService.StartDialog:input_type -> sentiric.dialog.v1.StartDialogRequest
+	5, // 5: sentiric.dialog.v1.DialogService.ProcessUserInput:input_type -> sentiric.dialog.v1.ProcessUserInputRequest
+	0, // 6: sentiric.dialog.v1.DialogService.StreamConversation:input_type -> sentiric.dialog.v1.StreamConversationRequest
+	4, // 7: sentiric.dialog.v1.DialogService.StartDialog:output_type -> sentiric.dialog.v1.StartDialogResponse
+	6, // 8: sentiric.dialog.v1.DialogService.ProcessUserInput:output_type -> sentiric.dialog.v1.ProcessUserInputResponse
+	1, // 9: sentiric.dialog.v1.DialogService.StreamConversation:output_type -> sentiric.dialog.v1.StreamConversationResponse
+	7, // [7:10] is the sub-list for method output_type
+	4, // [4:7] is the sub-list for method input_type
+	4, // [4:4] is the sub-list for extension type_name
+	4, // [4:4] is the sub-list for extension extendee
+	0, // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_sentiric_dialog_v1_dialog_proto_init() }
@@ -335,16 +630,27 @@ func file_sentiric_dialog_v1_dialog_proto_init() {
 	if File_sentiric_dialog_v1_dialog_proto != nil {
 		return
 	}
-	file_sentiric_dialog_v1_dialog_proto_msgTypes[1].OneofWrappers = []any{}
-	file_sentiric_dialog_v1_dialog_proto_msgTypes[2].OneofWrappers = []any{}
-	file_sentiric_dialog_v1_dialog_proto_msgTypes[3].OneofWrappers = []any{}
+	file_sentiric_dialog_v1_dialog_proto_msgTypes[0].OneofWrappers = []any{
+		(*StreamConversationRequest_Config)(nil),
+		(*StreamConversationRequest_TextInput)(nil),
+		(*StreamConversationRequest_IsFinalInput)(nil),
+	}
+	file_sentiric_dialog_v1_dialog_proto_msgTypes[1].OneofWrappers = []any{
+		(*StreamConversationResponse_TextResponse)(nil),
+		(*StreamConversationResponse_AudioUrl)(nil),
+		(*StreamConversationResponse_IsFinalResponse)(nil),
+		(*StreamConversationResponse_ActionCommand)(nil),
+	}
+	file_sentiric_dialog_v1_dialog_proto_msgTypes[4].OneofWrappers = []any{}
+	file_sentiric_dialog_v1_dialog_proto_msgTypes[5].OneofWrappers = []any{}
+	file_sentiric_dialog_v1_dialog_proto_msgTypes[6].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sentiric_dialog_v1_dialog_proto_rawDesc), len(file_sentiric_dialog_v1_dialog_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

@@ -23,6 +23,37 @@ namespace _pbi = _pb::internal;
 namespace sentiric {
 namespace telephony {
 namespace v1 {
+PROTOBUF_CONSTEXPR RunPipelineRequest::RunPipelineRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.call_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.session_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.stt_model_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.tts_model_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.record_session_)*/false
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct RunPipelineRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RunPipelineRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RunPipelineRequestDefaultTypeInternal() {}
+  union {
+    RunPipelineRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RunPipelineRequestDefaultTypeInternal _RunPipelineRequest_default_instance_;
+PROTOBUF_CONSTEXPR RunPipelineResponse::RunPipelineResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.message_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.state_)*/0
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct RunPipelineResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RunPipelineResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RunPipelineResponseDefaultTypeInternal() {}
+  union {
+    RunPipelineResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RunPipelineResponseDefaultTypeInternal _RunPipelineResponse_default_instance_;
 PROTOBUF_CONSTEXPR PlayAudioRequest::PlayAudioRequest(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.call_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
@@ -106,12 +137,9 @@ struct SendTextMessageResponseDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SendTextMessageResponseDefaultTypeInternal _SendTextMessageResponse_default_instance_;
 PROTOBUF_CONSTEXPR StartRecordingRequest::StartRecordingRequest(
     ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_._has_bits_)*/{}
-  , /*decltype(_impl_._cached_size_)*/{}
-  , /*decltype(_impl_.call_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+    /*decltype(_impl_.call_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.output_uri_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.format_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.sample_rate_)*/0u} {}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct StartRecordingRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR StartRecordingRequestDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -163,11 +191,30 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORIT
 }  // namespace v1
 }  // namespace telephony
 }  // namespace sentiric
-static ::_pb::Metadata file_level_metadata_sentiric_2ftelephony_2fv1_2faction_2eproto[10];
-static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_sentiric_2ftelephony_2fv1_2faction_2eproto = nullptr;
+static ::_pb::Metadata file_level_metadata_sentiric_2ftelephony_2fv1_2faction_2eproto[12];
+static const ::_pb::EnumDescriptor* file_level_enum_descriptors_sentiric_2ftelephony_2fv1_2faction_2eproto[1];
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_sentiric_2ftelephony_2fv1_2faction_2eproto = nullptr;
 
 const uint32_t TableStruct_sentiric_2ftelephony_2fv1_2faction_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::telephony::v1::RunPipelineRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::telephony::v1::RunPipelineRequest, _impl_.call_id_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::telephony::v1::RunPipelineRequest, _impl_.session_id_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::telephony::v1::RunPipelineRequest, _impl_.stt_model_id_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::telephony::v1::RunPipelineRequest, _impl_.tts_model_id_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::telephony::v1::RunPipelineRequest, _impl_.record_session_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::telephony::v1::RunPipelineResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::telephony::v1::RunPipelineResponse, _impl_.state_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::telephony::v1::RunPipelineResponse, _impl_.message_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::sentiric::telephony::v1::PlayAudioRequest, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -213,7 +260,7 @@ const uint32_t TableStruct_sentiric_2ftelephony_2fv1_2faction_2eproto::offsets[]
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::sentiric::telephony::v1::SendTextMessageResponse, _impl_.success_),
-  PROTOBUF_FIELD_OFFSET(::sentiric::telephony::v1::StartRecordingRequest, _impl_._has_bits_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::sentiric::telephony::v1::StartRecordingRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -221,12 +268,6 @@ const uint32_t TableStruct_sentiric_2ftelephony_2fv1_2faction_2eproto::offsets[]
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::sentiric::telephony::v1::StartRecordingRequest, _impl_.call_id_),
   PROTOBUF_FIELD_OFFSET(::sentiric::telephony::v1::StartRecordingRequest, _impl_.output_uri_),
-  PROTOBUF_FIELD_OFFSET(::sentiric::telephony::v1::StartRecordingRequest, _impl_.sample_rate_),
-  PROTOBUF_FIELD_OFFSET(::sentiric::telephony::v1::StartRecordingRequest, _impl_.format_),
-  ~0u,
-  ~0u,
-  1,
-  0,
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::sentiric::telephony::v1::StartRecordingResponse, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -250,19 +291,23 @@ const uint32_t TableStruct_sentiric_2ftelephony_2fv1_2faction_2eproto::offsets[]
   PROTOBUF_FIELD_OFFSET(::sentiric::telephony::v1::StopRecordingResponse, _impl_.success_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, -1, sizeof(::sentiric::telephony::v1::PlayAudioRequest)},
-  { 8, -1, -1, sizeof(::sentiric::telephony::v1::PlayAudioResponse)},
-  { 15, -1, -1, sizeof(::sentiric::telephony::v1::TerminateCallRequest)},
-  { 23, -1, -1, sizeof(::sentiric::telephony::v1::TerminateCallResponse)},
-  { 30, -1, -1, sizeof(::sentiric::telephony::v1::SendTextMessageRequest)},
-  { 38, -1, -1, sizeof(::sentiric::telephony::v1::SendTextMessageResponse)},
-  { 45, 55, -1, sizeof(::sentiric::telephony::v1::StartRecordingRequest)},
-  { 59, -1, -1, sizeof(::sentiric::telephony::v1::StartRecordingResponse)},
-  { 66, -1, -1, sizeof(::sentiric::telephony::v1::StopRecordingRequest)},
-  { 73, -1, -1, sizeof(::sentiric::telephony::v1::StopRecordingResponse)},
+  { 0, -1, -1, sizeof(::sentiric::telephony::v1::RunPipelineRequest)},
+  { 11, -1, -1, sizeof(::sentiric::telephony::v1::RunPipelineResponse)},
+  { 19, -1, -1, sizeof(::sentiric::telephony::v1::PlayAudioRequest)},
+  { 27, -1, -1, sizeof(::sentiric::telephony::v1::PlayAudioResponse)},
+  { 34, -1, -1, sizeof(::sentiric::telephony::v1::TerminateCallRequest)},
+  { 42, -1, -1, sizeof(::sentiric::telephony::v1::TerminateCallResponse)},
+  { 49, -1, -1, sizeof(::sentiric::telephony::v1::SendTextMessageRequest)},
+  { 57, -1, -1, sizeof(::sentiric::telephony::v1::SendTextMessageResponse)},
+  { 64, -1, -1, sizeof(::sentiric::telephony::v1::StartRecordingRequest)},
+  { 72, -1, -1, sizeof(::sentiric::telephony::v1::StartRecordingResponse)},
+  { 79, -1, -1, sizeof(::sentiric::telephony::v1::StopRecordingRequest)},
+  { 86, -1, -1, sizeof(::sentiric::telephony::v1::StopRecordingResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
+  &::sentiric::telephony::v1::_RunPipelineRequest_default_instance_._instance,
+  &::sentiric::telephony::v1::_RunPipelineResponse_default_instance_._instance,
   &::sentiric::telephony::v1::_PlayAudioRequest_default_instance_._instance,
   &::sentiric::telephony::v1::_PlayAudioResponse_default_instance_._instance,
   &::sentiric::telephony::v1::_TerminateCallRequest_default_instance_._instance,
@@ -277,43 +322,52 @@ static const ::_pb::Message* const file_default_instances[] = {
 
 const char descriptor_table_protodef_sentiric_2ftelephony_2fv1_2faction_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\"sentiric/telephony/v1/action.proto\022\025se"
-  "ntiric.telephony.v1\"6\n\020PlayAudioRequest\022"
-  "\017\n\007call_id\030\001 \001(\t\022\021\n\taudio_uri\030\002 \001(\t\"$\n\021P"
-  "layAudioResponse\022\017\n\007success\030\001 \001(\010\"7\n\024Ter"
-  "minateCallRequest\022\017\n\007call_id\030\001 \001(\t\022\016\n\006re"
-  "ason\030\002 \001(\t\"(\n\025TerminateCallResponse\022\017\n\007s"
-  "uccess\030\001 \001(\010\"2\n\026SendTextMessageRequest\022\n"
-  "\n\002to\030\001 \001(\t\022\014\n\004body\030\002 \001(\t\"*\n\027SendTextMess"
-  "ageResponse\022\017\n\007success\030\001 \001(\010\"\206\001\n\025StartRe"
-  "cordingRequest\022\017\n\007call_id\030\001 \001(\t\022\022\n\noutpu"
-  "t_uri\030\002 \001(\t\022\030\n\013sample_rate\030\003 \001(\rH\000\210\001\001\022\023\n"
-  "\006format\030\004 \001(\tH\001\210\001\001B\016\n\014_sample_rateB\t\n\007_f"
-  "ormat\")\n\026StartRecordingResponse\022\017\n\007succe"
-  "ss\030\001 \001(\010\"\'\n\024StopRecordingRequest\022\017\n\007call"
-  "_id\030\001 \001(\t\"(\n\025StopRecordingResponse\022\017\n\007su"
-  "ccess\030\001 \001(\0102\261\004\n\026TelephonyActionService\022^"
-  "\n\tPlayAudio\022\'.sentiric.telephony.v1.Play"
-  "AudioRequest\032(.sentiric.telephony.v1.Pla"
-  "yAudioResponse\022j\n\rTerminateCall\022+.sentir"
-  "ic.telephony.v1.TerminateCallRequest\032,.s"
-  "entiric.telephony.v1.TerminateCallRespon"
-  "se\022p\n\017SendTextMessage\022-.sentiric.telepho"
-  "ny.v1.SendTextMessageRequest\032..sentiric."
-  "telephony.v1.SendTextMessageResponse\022m\n\016"
-  "StartRecording\022,.sentiric.telephony.v1.S"
-  "tartRecordingRequest\032-.sentiric.telephon"
-  "y.v1.StartRecordingResponse\022j\n\rStopRecor"
-  "ding\022+.sentiric.telephony.v1.StopRecordi"
-  "ngRequest\032,.sentiric.telephony.v1.StopRe"
-  "cordingResponseBQZOgithub.com/sentiric/s"
-  "entiric-contracts/gen/go/sentiric/teleph"
-  "ony/v1;telephonyv1b\006proto3"
+  "ntiric.telephony.v1\"}\n\022RunPipelineReques"
+  "t\022\017\n\007call_id\030\001 \001(\t\022\022\n\nsession_id\030\002 \001(\t\022\024"
+  "\n\014stt_model_id\030\003 \001(\t\022\024\n\014tts_model_id\030\004 \001"
+  "(\t\022\026\n\016record_session\030\005 \001(\010\"\322\001\n\023RunPipeli"
+  "neResponse\022\?\n\005state\030\001 \001(\01620.sentiric.tel"
+  "ephony.v1.RunPipelineResponse.State\022\017\n\007m"
+  "essage\030\002 \001(\t\"i\n\005State\022\025\n\021STATE_UNSPECIFI"
+  "ED\020\000\022\022\n\016STATE_STARTING\020\001\022\021\n\rSTATE_RUNNIN"
+  "G\020\002\022\021\n\rSTATE_STOPPED\020\003\022\017\n\013STATE_ERROR\020\004\""
+  "6\n\020PlayAudioRequest\022\017\n\007call_id\030\001 \001(\t\022\021\n\t"
+  "audio_uri\030\002 \001(\t\"$\n\021PlayAudioResponse\022\017\n\007"
+  "success\030\001 \001(\010\"7\n\024TerminateCallRequest\022\017\n"
+  "\007call_id\030\001 \001(\t\022\016\n\006reason\030\002 \001(\t\"(\n\025Termin"
+  "ateCallResponse\022\017\n\007success\030\001 \001(\010\"2\n\026Send"
+  "TextMessageRequest\022\n\n\002to\030\001 \001(\t\022\014\n\004body\030\002"
+  " \001(\t\"*\n\027SendTextMessageResponse\022\017\n\007succe"
+  "ss\030\001 \001(\010\"<\n\025StartRecordingRequest\022\017\n\007cal"
+  "l_id\030\001 \001(\t\022\022\n\noutput_uri\030\002 \001(\t\")\n\026StartR"
+  "ecordingResponse\022\017\n\007success\030\001 \001(\010\"\'\n\024Sto"
+  "pRecordingRequest\022\017\n\007call_id\030\001 \001(\t\"(\n\025St"
+  "opRecordingResponse\022\017\n\007success\030\001 \001(\0102\231\005\n"
+  "\026TelephonyActionService\022^\n\tPlayAudio\022\'.s"
+  "entiric.telephony.v1.PlayAudioRequest\032(."
+  "sentiric.telephony.v1.PlayAudioResponse\022"
+  "j\n\rTerminateCall\022+.sentiric.telephony.v1"
+  ".TerminateCallRequest\032,.sentiric.telepho"
+  "ny.v1.TerminateCallResponse\022p\n\017SendTextM"
+  "essage\022-.sentiric.telephony.v1.SendTextM"
+  "essageRequest\032..sentiric.telephony.v1.Se"
+  "ndTextMessageResponse\022m\n\016StartRecording\022"
+  ",.sentiric.telephony.v1.StartRecordingRe"
+  "quest\032-.sentiric.telephony.v1.StartRecor"
+  "dingResponse\022j\n\rStopRecording\022+.sentiric"
+  ".telephony.v1.StopRecordingRequest\032,.sen"
+  "tiric.telephony.v1.StopRecordingResponse"
+  "\022f\n\013RunPipeline\022).sentiric.telephony.v1."
+  "RunPipelineRequest\032*.sentiric.telephony."
+  "v1.RunPipelineResponse0\001BQZOgithub.com/s"
+  "entiric/sentiric-contracts/gen/go/sentir"
+  "ic/telephony/v1;telephonyv1b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_sentiric_2ftelephony_2fv1_2faction_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_sentiric_2ftelephony_2fv1_2faction_2eproto = {
-    false, false, 1266, descriptor_table_protodef_sentiric_2ftelephony_2fv1_2faction_2eproto,
+    false, false, 1635, descriptor_table_protodef_sentiric_2ftelephony_2fv1_2faction_2eproto,
     "sentiric/telephony/v1/action.proto",
-    &descriptor_table_sentiric_2ftelephony_2fv1_2faction_2eproto_once, nullptr, 0, 10,
+    &descriptor_table_sentiric_2ftelephony_2fv1_2faction_2eproto_once, nullptr, 0, 12,
     schemas, file_default_instances, TableStruct_sentiric_2ftelephony_2fv1_2faction_2eproto::offsets,
     file_level_metadata_sentiric_2ftelephony_2fv1_2faction_2eproto, file_level_enum_descriptors_sentiric_2ftelephony_2fv1_2faction_2eproto,
     file_level_service_descriptors_sentiric_2ftelephony_2fv1_2faction_2eproto,
@@ -327,6 +381,646 @@ PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_in
 namespace sentiric {
 namespace telephony {
 namespace v1 {
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* RunPipelineResponse_State_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_sentiric_2ftelephony_2fv1_2faction_2eproto);
+  return file_level_enum_descriptors_sentiric_2ftelephony_2fv1_2faction_2eproto[0];
+}
+bool RunPipelineResponse_State_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+      return true;
+    default:
+      return false;
+  }
+}
+
+#if (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
+constexpr RunPipelineResponse_State RunPipelineResponse::STATE_UNSPECIFIED;
+constexpr RunPipelineResponse_State RunPipelineResponse::STATE_STARTING;
+constexpr RunPipelineResponse_State RunPipelineResponse::STATE_RUNNING;
+constexpr RunPipelineResponse_State RunPipelineResponse::STATE_STOPPED;
+constexpr RunPipelineResponse_State RunPipelineResponse::STATE_ERROR;
+constexpr RunPipelineResponse_State RunPipelineResponse::State_MIN;
+constexpr RunPipelineResponse_State RunPipelineResponse::State_MAX;
+constexpr int RunPipelineResponse::State_ARRAYSIZE;
+#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || (_MSC_VER >= 1900 && _MSC_VER < 1912))
+
+// ===================================================================
+
+class RunPipelineRequest::_Internal {
+ public:
+};
+
+RunPipelineRequest::RunPipelineRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.telephony.v1.RunPipelineRequest)
+}
+RunPipelineRequest::RunPipelineRequest(const RunPipelineRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  RunPipelineRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.call_id_){}
+    , decltype(_impl_.session_id_){}
+    , decltype(_impl_.stt_model_id_){}
+    , decltype(_impl_.tts_model_id_){}
+    , decltype(_impl_.record_session_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.call_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.call_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_call_id().empty()) {
+    _this->_impl_.call_id_.Set(from._internal_call_id(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.session_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.session_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_session_id().empty()) {
+    _this->_impl_.session_id_.Set(from._internal_session_id(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.stt_model_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.stt_model_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_stt_model_id().empty()) {
+    _this->_impl_.stt_model_id_.Set(from._internal_stt_model_id(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.tts_model_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.tts_model_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_tts_model_id().empty()) {
+    _this->_impl_.tts_model_id_.Set(from._internal_tts_model_id(), 
+      _this->GetArenaForAllocation());
+  }
+  _this->_impl_.record_session_ = from._impl_.record_session_;
+  // @@protoc_insertion_point(copy_constructor:sentiric.telephony.v1.RunPipelineRequest)
+}
+
+inline void RunPipelineRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.call_id_){}
+    , decltype(_impl_.session_id_){}
+    , decltype(_impl_.stt_model_id_){}
+    , decltype(_impl_.tts_model_id_){}
+    , decltype(_impl_.record_session_){false}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.call_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.call_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.session_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.session_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.stt_model_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.stt_model_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.tts_model_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.tts_model_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+RunPipelineRequest::~RunPipelineRequest() {
+  // @@protoc_insertion_point(destructor:sentiric.telephony.v1.RunPipelineRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void RunPipelineRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.call_id_.Destroy();
+  _impl_.session_id_.Destroy();
+  _impl_.stt_model_id_.Destroy();
+  _impl_.tts_model_id_.Destroy();
+}
+
+void RunPipelineRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void RunPipelineRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.telephony.v1.RunPipelineRequest)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.call_id_.ClearToEmpty();
+  _impl_.session_id_.ClearToEmpty();
+  _impl_.stt_model_id_.ClearToEmpty();
+  _impl_.tts_model_id_.ClearToEmpty();
+  _impl_.record_session_ = false;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* RunPipelineRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string call_id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_call_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.telephony.v1.RunPipelineRequest.call_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string session_id = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_session_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.telephony.v1.RunPipelineRequest.session_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string stt_model_id = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_stt_model_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.telephony.v1.RunPipelineRequest.stt_model_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string tts_model_id = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          auto str = _internal_mutable_tts_model_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.telephony.v1.RunPipelineRequest.tts_model_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // bool record_session = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
+          _impl_.record_session_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* RunPipelineRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.telephony.v1.RunPipelineRequest)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string call_id = 1;
+  if (!this->_internal_call_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_call_id().data(), static_cast<int>(this->_internal_call_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.telephony.v1.RunPipelineRequest.call_id");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_call_id(), target);
+  }
+
+  // string session_id = 2;
+  if (!this->_internal_session_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_session_id().data(), static_cast<int>(this->_internal_session_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.telephony.v1.RunPipelineRequest.session_id");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_session_id(), target);
+  }
+
+  // string stt_model_id = 3;
+  if (!this->_internal_stt_model_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_stt_model_id().data(), static_cast<int>(this->_internal_stt_model_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.telephony.v1.RunPipelineRequest.stt_model_id");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_stt_model_id(), target);
+  }
+
+  // string tts_model_id = 4;
+  if (!this->_internal_tts_model_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_tts_model_id().data(), static_cast<int>(this->_internal_tts_model_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.telephony.v1.RunPipelineRequest.tts_model_id");
+    target = stream->WriteStringMaybeAliased(
+        4, this->_internal_tts_model_id(), target);
+  }
+
+  // bool record_session = 5;
+  if (this->_internal_record_session() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(5, this->_internal_record_session(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.telephony.v1.RunPipelineRequest)
+  return target;
+}
+
+size_t RunPipelineRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.telephony.v1.RunPipelineRequest)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string call_id = 1;
+  if (!this->_internal_call_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_call_id());
+  }
+
+  // string session_id = 2;
+  if (!this->_internal_session_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_session_id());
+  }
+
+  // string stt_model_id = 3;
+  if (!this->_internal_stt_model_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_stt_model_id());
+  }
+
+  // string tts_model_id = 4;
+  if (!this->_internal_tts_model_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_tts_model_id());
+  }
+
+  // bool record_session = 5;
+  if (this->_internal_record_session() != 0) {
+    total_size += 1 + 1;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData RunPipelineRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    RunPipelineRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*RunPipelineRequest::GetClassData() const { return &_class_data_; }
+
+
+void RunPipelineRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<RunPipelineRequest*>(&to_msg);
+  auto& from = static_cast<const RunPipelineRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.telephony.v1.RunPipelineRequest)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_call_id().empty()) {
+    _this->_internal_set_call_id(from._internal_call_id());
+  }
+  if (!from._internal_session_id().empty()) {
+    _this->_internal_set_session_id(from._internal_session_id());
+  }
+  if (!from._internal_stt_model_id().empty()) {
+    _this->_internal_set_stt_model_id(from._internal_stt_model_id());
+  }
+  if (!from._internal_tts_model_id().empty()) {
+    _this->_internal_set_tts_model_id(from._internal_tts_model_id());
+  }
+  if (from._internal_record_session() != 0) {
+    _this->_internal_set_record_session(from._internal_record_session());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void RunPipelineRequest::CopyFrom(const RunPipelineRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.telephony.v1.RunPipelineRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool RunPipelineRequest::IsInitialized() const {
+  return true;
+}
+
+void RunPipelineRequest::InternalSwap(RunPipelineRequest* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.call_id_, lhs_arena,
+      &other->_impl_.call_id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.session_id_, lhs_arena,
+      &other->_impl_.session_id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.stt_model_id_, lhs_arena,
+      &other->_impl_.stt_model_id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.tts_model_id_, lhs_arena,
+      &other->_impl_.tts_model_id_, rhs_arena
+  );
+  swap(_impl_.record_session_, other->_impl_.record_session_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata RunPipelineRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2ftelephony_2fv1_2faction_2eproto_getter, &descriptor_table_sentiric_2ftelephony_2fv1_2faction_2eproto_once,
+      file_level_metadata_sentiric_2ftelephony_2fv1_2faction_2eproto[0]);
+}
+
+// ===================================================================
+
+class RunPipelineResponse::_Internal {
+ public:
+};
+
+RunPipelineResponse::RunPipelineResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.telephony.v1.RunPipelineResponse)
+}
+RunPipelineResponse::RunPipelineResponse(const RunPipelineResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  RunPipelineResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.message_){}
+    , decltype(_impl_.state_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.message_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.message_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_message().empty()) {
+    _this->_impl_.message_.Set(from._internal_message(), 
+      _this->GetArenaForAllocation());
+  }
+  _this->_impl_.state_ = from._impl_.state_;
+  // @@protoc_insertion_point(copy_constructor:sentiric.telephony.v1.RunPipelineResponse)
+}
+
+inline void RunPipelineResponse::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.message_){}
+    , decltype(_impl_.state_){0}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.message_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.message_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+RunPipelineResponse::~RunPipelineResponse() {
+  // @@protoc_insertion_point(destructor:sentiric.telephony.v1.RunPipelineResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void RunPipelineResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.message_.Destroy();
+}
+
+void RunPipelineResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void RunPipelineResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.telephony.v1.RunPipelineResponse)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.message_.ClearToEmpty();
+  _impl_.state_ = 0;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* RunPipelineResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .sentiric.telephony.v1.RunPipelineResponse.State state = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+          _internal_set_state(static_cast<::sentiric::telephony::v1::RunPipelineResponse_State>(val));
+        } else
+          goto handle_unusual;
+        continue;
+      // string message = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_message();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.telephony.v1.RunPipelineResponse.message"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* RunPipelineResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.telephony.v1.RunPipelineResponse)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .sentiric.telephony.v1.RunPipelineResponse.State state = 1;
+  if (this->_internal_state() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
+      1, this->_internal_state(), target);
+  }
+
+  // string message = 2;
+  if (!this->_internal_message().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_message().data(), static_cast<int>(this->_internal_message().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.telephony.v1.RunPipelineResponse.message");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_message(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.telephony.v1.RunPipelineResponse)
+  return target;
+}
+
+size_t RunPipelineResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.telephony.v1.RunPipelineResponse)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string message = 2;
+  if (!this->_internal_message().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_message());
+  }
+
+  // .sentiric.telephony.v1.RunPipelineResponse.State state = 1;
+  if (this->_internal_state() != 0) {
+    total_size += 1 +
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_state());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData RunPipelineResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    RunPipelineResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*RunPipelineResponse::GetClassData() const { return &_class_data_; }
+
+
+void RunPipelineResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<RunPipelineResponse*>(&to_msg);
+  auto& from = static_cast<const RunPipelineResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.telephony.v1.RunPipelineResponse)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_message().empty()) {
+    _this->_internal_set_message(from._internal_message());
+  }
+  if (from._internal_state() != 0) {
+    _this->_internal_set_state(from._internal_state());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void RunPipelineResponse::CopyFrom(const RunPipelineResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.telephony.v1.RunPipelineResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool RunPipelineResponse::IsInitialized() const {
+  return true;
+}
+
+void RunPipelineResponse::InternalSwap(RunPipelineResponse* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.message_, lhs_arena,
+      &other->_impl_.message_, rhs_arena
+  );
+  swap(_impl_.state_, other->_impl_.state_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata RunPipelineResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2ftelephony_2fv1_2faction_2eproto_getter, &descriptor_table_sentiric_2ftelephony_2fv1_2faction_2eproto_once,
+      file_level_metadata_sentiric_2ftelephony_2fv1_2faction_2eproto[1]);
+}
 
 // ===================================================================
 
@@ -578,7 +1272,7 @@ void PlayAudioRequest::InternalSwap(PlayAudioRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata PlayAudioRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2ftelephony_2fv1_2faction_2eproto_getter, &descriptor_table_sentiric_2ftelephony_2fv1_2faction_2eproto_once,
-      file_level_metadata_sentiric_2ftelephony_2fv1_2faction_2eproto[0]);
+      file_level_metadata_sentiric_2ftelephony_2fv1_2faction_2eproto[2]);
 }
 
 // ===================================================================
@@ -756,7 +1450,7 @@ void PlayAudioResponse::InternalSwap(PlayAudioResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata PlayAudioResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2ftelephony_2fv1_2faction_2eproto_getter, &descriptor_table_sentiric_2ftelephony_2fv1_2faction_2eproto_once,
-      file_level_metadata_sentiric_2ftelephony_2fv1_2faction_2eproto[1]);
+      file_level_metadata_sentiric_2ftelephony_2fv1_2faction_2eproto[3]);
 }
 
 // ===================================================================
@@ -1009,7 +1703,7 @@ void TerminateCallRequest::InternalSwap(TerminateCallRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata TerminateCallRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2ftelephony_2fv1_2faction_2eproto_getter, &descriptor_table_sentiric_2ftelephony_2fv1_2faction_2eproto_once,
-      file_level_metadata_sentiric_2ftelephony_2fv1_2faction_2eproto[2]);
+      file_level_metadata_sentiric_2ftelephony_2fv1_2faction_2eproto[4]);
 }
 
 // ===================================================================
@@ -1187,7 +1881,7 @@ void TerminateCallResponse::InternalSwap(TerminateCallResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata TerminateCallResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2ftelephony_2fv1_2faction_2eproto_getter, &descriptor_table_sentiric_2ftelephony_2fv1_2faction_2eproto_once,
-      file_level_metadata_sentiric_2ftelephony_2fv1_2faction_2eproto[3]);
+      file_level_metadata_sentiric_2ftelephony_2fv1_2faction_2eproto[5]);
 }
 
 // ===================================================================
@@ -1440,7 +2134,7 @@ void SendTextMessageRequest::InternalSwap(SendTextMessageRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SendTextMessageRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2ftelephony_2fv1_2faction_2eproto_getter, &descriptor_table_sentiric_2ftelephony_2fv1_2faction_2eproto_once,
-      file_level_metadata_sentiric_2ftelephony_2fv1_2faction_2eproto[4]);
+      file_level_metadata_sentiric_2ftelephony_2fv1_2faction_2eproto[6]);
 }
 
 // ===================================================================
@@ -1618,20 +2312,13 @@ void SendTextMessageResponse::InternalSwap(SendTextMessageResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SendTextMessageResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2ftelephony_2fv1_2faction_2eproto_getter, &descriptor_table_sentiric_2ftelephony_2fv1_2faction_2eproto_once,
-      file_level_metadata_sentiric_2ftelephony_2fv1_2faction_2eproto[5]);
+      file_level_metadata_sentiric_2ftelephony_2fv1_2faction_2eproto[7]);
 }
 
 // ===================================================================
 
 class StartRecordingRequest::_Internal {
  public:
-  using HasBits = decltype(std::declval<StartRecordingRequest>()._impl_._has_bits_);
-  static void set_has_sample_rate(HasBits* has_bits) {
-    (*has_bits)[0] |= 2u;
-  }
-  static void set_has_format(HasBits* has_bits) {
-    (*has_bits)[0] |= 1u;
-  }
 };
 
 StartRecordingRequest::StartRecordingRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -1644,12 +2331,9 @@ StartRecordingRequest::StartRecordingRequest(const StartRecordingRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   StartRecordingRequest* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){from._impl_._has_bits_}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.call_id_){}
+      decltype(_impl_.call_id_){}
     , decltype(_impl_.output_uri_){}
-    , decltype(_impl_.format_){}
-    , decltype(_impl_.sample_rate_){}};
+    , /*decltype(_impl_._cached_size_)*/{}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   _impl_.call_id_.InitDefault();
@@ -1668,15 +2352,6 @@ StartRecordingRequest::StartRecordingRequest(const StartRecordingRequest& from)
     _this->_impl_.output_uri_.Set(from._internal_output_uri(), 
       _this->GetArenaForAllocation());
   }
-  _impl_.format_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.format_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (from._internal_has_format()) {
-    _this->_impl_.format_.Set(from._internal_format(), 
-      _this->GetArenaForAllocation());
-  }
-  _this->_impl_.sample_rate_ = from._impl_.sample_rate_;
   // @@protoc_insertion_point(copy_constructor:sentiric.telephony.v1.StartRecordingRequest)
 }
 
@@ -1685,12 +2360,9 @@ inline void StartRecordingRequest::SharedCtor(
   (void)arena;
   (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_._has_bits_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-    , decltype(_impl_.call_id_){}
+      decltype(_impl_.call_id_){}
     , decltype(_impl_.output_uri_){}
-    , decltype(_impl_.format_){}
-    , decltype(_impl_.sample_rate_){0u}
+    , /*decltype(_impl_._cached_size_)*/{}
   };
   _impl_.call_id_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -1699,10 +2371,6 @@ inline void StartRecordingRequest::SharedCtor(
   _impl_.output_uri_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
     _impl_.output_uri_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.format_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.format_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
@@ -1719,7 +2387,6 @@ inline void StartRecordingRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.call_id_.Destroy();
   _impl_.output_uri_.Destroy();
-  _impl_.format_.Destroy();
 }
 
 void StartRecordingRequest::SetCachedSize(int size) const {
@@ -1734,18 +2401,11 @@ void StartRecordingRequest::Clear() {
 
   _impl_.call_id_.ClearToEmpty();
   _impl_.output_uri_.ClearToEmpty();
-  cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    _impl_.format_.ClearNonDefaultToEmpty();
-  }
-  _impl_.sample_rate_ = 0u;
-  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* StartRecordingRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
@@ -1770,25 +2430,6 @@ const char* StartRecordingRequest::_InternalParse(const char* ptr, ::_pbi::Parse
         } else
           goto handle_unusual;
         continue;
-      // optional uint32 sample_rate = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
-          _Internal::set_has_sample_rate(&has_bits);
-          _impl_.sample_rate_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // optional string format = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
-          auto str = _internal_mutable_format();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "sentiric.telephony.v1.StartRecordingRequest.format"));
-        } else
-          goto handle_unusual;
-        continue;
       default:
         goto handle_unusual;
     }  // switch
@@ -1805,7 +2446,6 @@ const char* StartRecordingRequest::_InternalParse(const char* ptr, ::_pbi::Parse
     CHK_(ptr != nullptr);
   }  // while
 message_done:
-  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -1839,22 +2479,6 @@ uint8_t* StartRecordingRequest::_InternalSerialize(
         2, this->_internal_output_uri(), target);
   }
 
-  // optional uint32 sample_rate = 3;
-  if (_internal_has_sample_rate()) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(3, this->_internal_sample_rate(), target);
-  }
-
-  // optional string format = 4;
-  if (_internal_has_format()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_format().data(), static_cast<int>(this->_internal_format().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "sentiric.telephony.v1.StartRecordingRequest.format");
-    target = stream->WriteStringMaybeAliased(
-        4, this->_internal_format(), target);
-  }
-
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -1885,21 +2509,6 @@ size_t StartRecordingRequest::ByteSizeLong() const {
         this->_internal_output_uri());
   }
 
-  cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    // optional string format = 4;
-    if (cached_has_bits & 0x00000001u) {
-      total_size += 1 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-          this->_internal_format());
-    }
-
-    // optional uint32 sample_rate = 3;
-    if (cached_has_bits & 0x00000002u) {
-      total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_sample_rate());
-    }
-
-  }
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
@@ -1924,16 +2533,6 @@ void StartRecordingRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, 
   if (!from._internal_output_uri().empty()) {
     _this->_internal_set_output_uri(from._internal_output_uri());
   }
-  cached_has_bits = from._impl_._has_bits_[0];
-  if (cached_has_bits & 0x00000003u) {
-    if (cached_has_bits & 0x00000001u) {
-      _this->_internal_set_format(from._internal_format());
-    }
-    if (cached_has_bits & 0x00000002u) {
-      _this->_impl_.sample_rate_ = from._impl_.sample_rate_;
-    }
-    _this->_impl_._has_bits_[0] |= cached_has_bits;
-  }
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -1953,7 +2552,6 @@ void StartRecordingRequest::InternalSwap(StartRecordingRequest* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &_impl_.call_id_, lhs_arena,
       &other->_impl_.call_id_, rhs_arena
@@ -1962,17 +2560,12 @@ void StartRecordingRequest::InternalSwap(StartRecordingRequest* other) {
       &_impl_.output_uri_, lhs_arena,
       &other->_impl_.output_uri_, rhs_arena
   );
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.format_, lhs_arena,
-      &other->_impl_.format_, rhs_arena
-  );
-  swap(_impl_.sample_rate_, other->_impl_.sample_rate_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata StartRecordingRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2ftelephony_2fv1_2faction_2eproto_getter, &descriptor_table_sentiric_2ftelephony_2fv1_2faction_2eproto_once,
-      file_level_metadata_sentiric_2ftelephony_2fv1_2faction_2eproto[6]);
+      file_level_metadata_sentiric_2ftelephony_2fv1_2faction_2eproto[8]);
 }
 
 // ===================================================================
@@ -2150,7 +2743,7 @@ void StartRecordingResponse::InternalSwap(StartRecordingResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata StartRecordingResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2ftelephony_2fv1_2faction_2eproto_getter, &descriptor_table_sentiric_2ftelephony_2fv1_2faction_2eproto_once,
-      file_level_metadata_sentiric_2ftelephony_2fv1_2faction_2eproto[7]);
+      file_level_metadata_sentiric_2ftelephony_2fv1_2faction_2eproto[9]);
 }
 
 // ===================================================================
@@ -2353,7 +2946,7 @@ void StopRecordingRequest::InternalSwap(StopRecordingRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata StopRecordingRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2ftelephony_2fv1_2faction_2eproto_getter, &descriptor_table_sentiric_2ftelephony_2fv1_2faction_2eproto_once,
-      file_level_metadata_sentiric_2ftelephony_2fv1_2faction_2eproto[8]);
+      file_level_metadata_sentiric_2ftelephony_2fv1_2faction_2eproto[10]);
 }
 
 // ===================================================================
@@ -2531,7 +3124,7 @@ void StopRecordingResponse::InternalSwap(StopRecordingResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata StopRecordingResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2ftelephony_2fv1_2faction_2eproto_getter, &descriptor_table_sentiric_2ftelephony_2fv1_2faction_2eproto_once,
-      file_level_metadata_sentiric_2ftelephony_2fv1_2faction_2eproto[9]);
+      file_level_metadata_sentiric_2ftelephony_2fv1_2faction_2eproto[11]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -2539,6 +3132,14 @@ void StopRecordingResponse::InternalSwap(StopRecordingResponse* other) {
 }  // namespace telephony
 }  // namespace sentiric
 PROTOBUF_NAMESPACE_OPEN
+template<> PROTOBUF_NOINLINE ::sentiric::telephony::v1::RunPipelineRequest*
+Arena::CreateMaybeMessage< ::sentiric::telephony::v1::RunPipelineRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::telephony::v1::RunPipelineRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::telephony::v1::RunPipelineResponse*
+Arena::CreateMaybeMessage< ::sentiric::telephony::v1::RunPipelineResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::telephony::v1::RunPipelineResponse >(arena);
+}
 template<> PROTOBUF_NOINLINE ::sentiric::telephony::v1::PlayAudioRequest*
 Arena::CreateMaybeMessage< ::sentiric::telephony::v1::PlayAudioRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::sentiric::telephony::v1::PlayAudioRequest >(arena);

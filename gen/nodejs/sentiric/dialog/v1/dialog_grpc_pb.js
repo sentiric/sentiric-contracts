@@ -49,9 +49,32 @@ function deserialize_sentiric_dialog_v1_StartDialogResponse(buffer_arg) {
   return sentiric_dialog_v1_dialog_pb.StartDialogResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sentiric_dialog_v1_StreamConversationRequest(arg) {
+  if (!(arg instanceof sentiric_dialog_v1_dialog_pb.StreamConversationRequest)) {
+    throw new Error('Expected argument of type sentiric.dialog.v1.StreamConversationRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sentiric_dialog_v1_StreamConversationRequest(buffer_arg) {
+  return sentiric_dialog_v1_dialog_pb.StreamConversationRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sentiric_dialog_v1_StreamConversationResponse(arg) {
+  if (!(arg instanceof sentiric_dialog_v1_dialog_pb.StreamConversationResponse)) {
+    throw new Error('Expected argument of type sentiric.dialog.v1.StreamConversationResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sentiric_dialog_v1_StreamConversationResponse(buffer_arg) {
+  return sentiric_dialog_v1_dialog_pb.StreamConversationResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 
 var DialogServiceService = exports.DialogServiceService = {
-  startDialog: {
+  // Legacy
+startDialog: {
     path: '/sentiric.dialog.v1.DialogService/StartDialog',
     requestStream: false,
     responseStream: false,
@@ -72,6 +95,19 @@ var DialogServiceService = exports.DialogServiceService = {
     requestDeserialize: deserialize_sentiric_dialog_v1_ProcessUserInputRequest,
     responseSerialize: serialize_sentiric_dialog_v1_ProcessUserInputResponse,
     responseDeserialize: deserialize_sentiric_dialog_v1_ProcessUserInputResponse,
+  },
+  // [STREAMING]
+// Linter Kuralı: Request adı RPC adı + "Request" olmalı.
+streamConversation: {
+    path: '/sentiric.dialog.v1.DialogService/StreamConversation',
+    requestStream: true,
+    responseStream: true,
+    requestType: sentiric_dialog_v1_dialog_pb.StreamConversationRequest,
+    responseType: sentiric_dialog_v1_dialog_pb.StreamConversationResponse,
+    requestSerialize: serialize_sentiric_dialog_v1_StreamConversationRequest,
+    requestDeserialize: deserialize_sentiric_dialog_v1_StreamConversationRequest,
+    responseSerialize: serialize_sentiric_dialog_v1_StreamConversationResponse,
+    responseDeserialize: deserialize_sentiric_dialog_v1_StreamConversationResponse,
   },
 };
 

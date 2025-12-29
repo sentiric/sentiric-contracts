@@ -26,6 +26,28 @@ function deserialize_sentiric_telephony_v1_PlayAudioResponse(buffer_arg) {
   return sentiric_telephony_v1_action_pb.PlayAudioResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sentiric_telephony_v1_RunPipelineRequest(arg) {
+  if (!(arg instanceof sentiric_telephony_v1_action_pb.RunPipelineRequest)) {
+    throw new Error('Expected argument of type sentiric.telephony.v1.RunPipelineRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sentiric_telephony_v1_RunPipelineRequest(buffer_arg) {
+  return sentiric_telephony_v1_action_pb.RunPipelineRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sentiric_telephony_v1_RunPipelineResponse(arg) {
+  if (!(arg instanceof sentiric_telephony_v1_action_pb.RunPipelineResponse)) {
+    throw new Error('Expected argument of type sentiric.telephony.v1.RunPipelineResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sentiric_telephony_v1_RunPipelineResponse(buffer_arg) {
+  return sentiric_telephony_v1_action_pb.RunPipelineResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sentiric_telephony_v1_SendTextMessageRequest(arg) {
   if (!(arg instanceof sentiric_telephony_v1_action_pb.SendTextMessageRequest)) {
     throw new Error('Expected argument of type sentiric.telephony.v1.SendTextMessageRequest');
@@ -127,8 +149,7 @@ var TelephonyActionServiceService = exports.TelephonyActionServiceService = {
     responseSerialize: serialize_sentiric_telephony_v1_PlayAudioResponse,
     responseDeserialize: deserialize_sentiric_telephony_v1_PlayAudioResponse,
   },
-  // Değişti
-terminateCall: {
+  terminateCall: {
     path: '/sentiric.telephony.v1.TelephonyActionService/TerminateCall',
     requestStream: false,
     responseStream: false,
@@ -139,8 +160,7 @@ terminateCall: {
     responseSerialize: serialize_sentiric_telephony_v1_TerminateCallResponse,
     responseDeserialize: deserialize_sentiric_telephony_v1_TerminateCallResponse,
   },
-  // Değişti
-sendTextMessage: {
+  sendTextMessage: {
     path: '/sentiric.telephony.v1.TelephonyActionService/SendTextMessage',
     requestStream: false,
     responseStream: false,
@@ -151,8 +171,7 @@ sendTextMessage: {
     responseSerialize: serialize_sentiric_telephony_v1_SendTextMessageResponse,
     responseDeserialize: deserialize_sentiric_telephony_v1_SendTextMessageResponse,
   },
-  // Mesaj Adı Değişti
-startRecording: {
+  startRecording: {
     path: '/sentiric.telephony.v1.TelephonyActionService/StartRecording',
     requestStream: false,
     responseStream: false,
@@ -163,8 +182,7 @@ startRecording: {
     responseSerialize: serialize_sentiric_telephony_v1_StartRecordingResponse,
     responseDeserialize: deserialize_sentiric_telephony_v1_StartRecordingResponse,
   },
-  // Değişti
-stopRecording: {
+  stopRecording: {
     path: '/sentiric.telephony.v1.TelephonyActionService/StopRecording',
     requestStream: false,
     responseStream: false,
@@ -175,7 +193,19 @@ stopRecording: {
     responseSerialize: serialize_sentiric_telephony_v1_StopRecordingResponse,
     responseDeserialize: deserialize_sentiric_telephony_v1_StopRecordingResponse,
   },
-  // Değişti
+  // [STREAMING]
+// İsim düzeltildi: RunPipeline -> RunPipelineRequest
+runPipeline: {
+    path: '/sentiric.telephony.v1.TelephonyActionService/RunPipeline',
+    requestStream: false,
+    responseStream: true,
+    requestType: sentiric_telephony_v1_action_pb.RunPipelineRequest,
+    responseType: sentiric_telephony_v1_action_pb.RunPipelineResponse,
+    requestSerialize: serialize_sentiric_telephony_v1_RunPipelineRequest,
+    requestDeserialize: deserialize_sentiric_telephony_v1_RunPipelineRequest,
+    responseSerialize: serialize_sentiric_telephony_v1_RunPipelineResponse,
+    responseDeserialize: deserialize_sentiric_telephony_v1_RunPipelineResponse,
+  },
 };
 
 exports.TelephonyActionServiceClient = grpc.makeGenericClientConstructor(TelephonyActionServiceService, 'TelephonyActionService');

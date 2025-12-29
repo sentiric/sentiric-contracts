@@ -44,7 +44,6 @@ class TelephonyActionService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::telephony::v1::PlayAudioResponse>> PrepareAsyncPlayAudio(::grpc::ClientContext* context, const ::sentiric::telephony::v1::PlayAudioRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::telephony::v1::PlayAudioResponse>>(PrepareAsyncPlayAudioRaw(context, request, cq));
     }
-    // Değişti
     virtual ::grpc::Status TerminateCall(::grpc::ClientContext* context, const ::sentiric::telephony::v1::TerminateCallRequest& request, ::sentiric::telephony::v1::TerminateCallResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::telephony::v1::TerminateCallResponse>> AsyncTerminateCall(::grpc::ClientContext* context, const ::sentiric::telephony::v1::TerminateCallRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::telephony::v1::TerminateCallResponse>>(AsyncTerminateCallRaw(context, request, cq));
@@ -52,7 +51,6 @@ class TelephonyActionService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::telephony::v1::TerminateCallResponse>> PrepareAsyncTerminateCall(::grpc::ClientContext* context, const ::sentiric::telephony::v1::TerminateCallRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::telephony::v1::TerminateCallResponse>>(PrepareAsyncTerminateCallRaw(context, request, cq));
     }
-    // Değişti
     virtual ::grpc::Status SendTextMessage(::grpc::ClientContext* context, const ::sentiric::telephony::v1::SendTextMessageRequest& request, ::sentiric::telephony::v1::SendTextMessageResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::telephony::v1::SendTextMessageResponse>> AsyncSendTextMessage(::grpc::ClientContext* context, const ::sentiric::telephony::v1::SendTextMessageRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::telephony::v1::SendTextMessageResponse>>(AsyncSendTextMessageRaw(context, request, cq));
@@ -60,7 +58,6 @@ class TelephonyActionService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::telephony::v1::SendTextMessageResponse>> PrepareAsyncSendTextMessage(::grpc::ClientContext* context, const ::sentiric::telephony::v1::SendTextMessageRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::telephony::v1::SendTextMessageResponse>>(PrepareAsyncSendTextMessageRaw(context, request, cq));
     }
-    // Mesaj Adı Değişti
     virtual ::grpc::Status StartRecording(::grpc::ClientContext* context, const ::sentiric::telephony::v1::StartRecordingRequest& request, ::sentiric::telephony::v1::StartRecordingResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::telephony::v1::StartRecordingResponse>> AsyncStartRecording(::grpc::ClientContext* context, const ::sentiric::telephony::v1::StartRecordingRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::telephony::v1::StartRecordingResponse>>(AsyncStartRecordingRaw(context, request, cq));
@@ -68,7 +65,6 @@ class TelephonyActionService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::telephony::v1::StartRecordingResponse>> PrepareAsyncStartRecording(::grpc::ClientContext* context, const ::sentiric::telephony::v1::StartRecordingRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::telephony::v1::StartRecordingResponse>>(PrepareAsyncStartRecordingRaw(context, request, cq));
     }
-    // Değişti
     virtual ::grpc::Status StopRecording(::grpc::ClientContext* context, const ::sentiric::telephony::v1::StopRecordingRequest& request, ::sentiric::telephony::v1::StopRecordingResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::telephony::v1::StopRecordingResponse>> AsyncStopRecording(::grpc::ClientContext* context, const ::sentiric::telephony::v1::StopRecordingRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::telephony::v1::StopRecordingResponse>>(AsyncStopRecordingRaw(context, request, cq));
@@ -76,25 +72,33 @@ class TelephonyActionService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::telephony::v1::StopRecordingResponse>> PrepareAsyncStopRecording(::grpc::ClientContext* context, const ::sentiric::telephony::v1::StopRecordingRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::telephony::v1::StopRecordingResponse>>(PrepareAsyncStopRecordingRaw(context, request, cq));
     }
-    // Değişti
+    // [STREAMING]
+    // İsim düzeltildi: RunPipeline -> RunPipelineRequest
+    std::unique_ptr< ::grpc::ClientReaderInterface< ::sentiric::telephony::v1::RunPipelineResponse>> RunPipeline(::grpc::ClientContext* context, const ::sentiric::telephony::v1::RunPipelineRequest& request) {
+      return std::unique_ptr< ::grpc::ClientReaderInterface< ::sentiric::telephony::v1::RunPipelineResponse>>(RunPipelineRaw(context, request));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::sentiric::telephony::v1::RunPipelineResponse>> AsyncRunPipeline(::grpc::ClientContext* context, const ::sentiric::telephony::v1::RunPipelineRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::sentiric::telephony::v1::RunPipelineResponse>>(AsyncRunPipelineRaw(context, request, cq, tag));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::sentiric::telephony::v1::RunPipelineResponse>> PrepareAsyncRunPipeline(::grpc::ClientContext* context, const ::sentiric::telephony::v1::RunPipelineRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::sentiric::telephony::v1::RunPipelineResponse>>(PrepareAsyncRunPipelineRaw(context, request, cq));
+    }
     class async_interface {
      public:
       virtual ~async_interface() {}
       virtual void PlayAudio(::grpc::ClientContext* context, const ::sentiric::telephony::v1::PlayAudioRequest* request, ::sentiric::telephony::v1::PlayAudioResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void PlayAudio(::grpc::ClientContext* context, const ::sentiric::telephony::v1::PlayAudioRequest* request, ::sentiric::telephony::v1::PlayAudioResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      // Değişti
       virtual void TerminateCall(::grpc::ClientContext* context, const ::sentiric::telephony::v1::TerminateCallRequest* request, ::sentiric::telephony::v1::TerminateCallResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void TerminateCall(::grpc::ClientContext* context, const ::sentiric::telephony::v1::TerminateCallRequest* request, ::sentiric::telephony::v1::TerminateCallResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      // Değişti
       virtual void SendTextMessage(::grpc::ClientContext* context, const ::sentiric::telephony::v1::SendTextMessageRequest* request, ::sentiric::telephony::v1::SendTextMessageResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void SendTextMessage(::grpc::ClientContext* context, const ::sentiric::telephony::v1::SendTextMessageRequest* request, ::sentiric::telephony::v1::SendTextMessageResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      // Mesaj Adı Değişti
       virtual void StartRecording(::grpc::ClientContext* context, const ::sentiric::telephony::v1::StartRecordingRequest* request, ::sentiric::telephony::v1::StartRecordingResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void StartRecording(::grpc::ClientContext* context, const ::sentiric::telephony::v1::StartRecordingRequest* request, ::sentiric::telephony::v1::StartRecordingResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      // Değişti
       virtual void StopRecording(::grpc::ClientContext* context, const ::sentiric::telephony::v1::StopRecordingRequest* request, ::sentiric::telephony::v1::StopRecordingResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void StopRecording(::grpc::ClientContext* context, const ::sentiric::telephony::v1::StopRecordingRequest* request, ::sentiric::telephony::v1::StopRecordingResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      // Değişti
+      // [STREAMING]
+      // İsim düzeltildi: RunPipeline -> RunPipelineRequest
+      virtual void RunPipeline(::grpc::ClientContext* context, const ::sentiric::telephony::v1::RunPipelineRequest* request, ::grpc::ClientReadReactor< ::sentiric::telephony::v1::RunPipelineResponse>* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
@@ -110,6 +114,9 @@ class TelephonyActionService final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::telephony::v1::StartRecordingResponse>* PrepareAsyncStartRecordingRaw(::grpc::ClientContext* context, const ::sentiric::telephony::v1::StartRecordingRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::telephony::v1::StopRecordingResponse>* AsyncStopRecordingRaw(::grpc::ClientContext* context, const ::sentiric::telephony::v1::StopRecordingRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::telephony::v1::StopRecordingResponse>* PrepareAsyncStopRecordingRaw(::grpc::ClientContext* context, const ::sentiric::telephony::v1::StopRecordingRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientReaderInterface< ::sentiric::telephony::v1::RunPipelineResponse>* RunPipelineRaw(::grpc::ClientContext* context, const ::sentiric::telephony::v1::RunPipelineRequest& request) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::sentiric::telephony::v1::RunPipelineResponse>* AsyncRunPipelineRaw(::grpc::ClientContext* context, const ::sentiric::telephony::v1::RunPipelineRequest& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::sentiric::telephony::v1::RunPipelineResponse>* PrepareAsyncRunPipelineRaw(::grpc::ClientContext* context, const ::sentiric::telephony::v1::RunPipelineRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -149,6 +156,15 @@ class TelephonyActionService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::telephony::v1::StopRecordingResponse>> PrepareAsyncStopRecording(::grpc::ClientContext* context, const ::sentiric::telephony::v1::StopRecordingRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::telephony::v1::StopRecordingResponse>>(PrepareAsyncStopRecordingRaw(context, request, cq));
     }
+    std::unique_ptr< ::grpc::ClientReader< ::sentiric::telephony::v1::RunPipelineResponse>> RunPipeline(::grpc::ClientContext* context, const ::sentiric::telephony::v1::RunPipelineRequest& request) {
+      return std::unique_ptr< ::grpc::ClientReader< ::sentiric::telephony::v1::RunPipelineResponse>>(RunPipelineRaw(context, request));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::sentiric::telephony::v1::RunPipelineResponse>> AsyncRunPipeline(::grpc::ClientContext* context, const ::sentiric::telephony::v1::RunPipelineRequest& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::sentiric::telephony::v1::RunPipelineResponse>>(AsyncRunPipelineRaw(context, request, cq, tag));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::sentiric::telephony::v1::RunPipelineResponse>> PrepareAsyncRunPipeline(::grpc::ClientContext* context, const ::sentiric::telephony::v1::RunPipelineRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::sentiric::telephony::v1::RunPipelineResponse>>(PrepareAsyncRunPipelineRaw(context, request, cq));
+    }
     class async final :
       public StubInterface::async_interface {
      public:
@@ -162,6 +178,7 @@ class TelephonyActionService final {
       void StartRecording(::grpc::ClientContext* context, const ::sentiric::telephony::v1::StartRecordingRequest* request, ::sentiric::telephony::v1::StartRecordingResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void StopRecording(::grpc::ClientContext* context, const ::sentiric::telephony::v1::StopRecordingRequest* request, ::sentiric::telephony::v1::StopRecordingResponse* response, std::function<void(::grpc::Status)>) override;
       void StopRecording(::grpc::ClientContext* context, const ::sentiric::telephony::v1::StopRecordingRequest* request, ::sentiric::telephony::v1::StopRecordingResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void RunPipeline(::grpc::ClientContext* context, const ::sentiric::telephony::v1::RunPipelineRequest* request, ::grpc::ClientReadReactor< ::sentiric::telephony::v1::RunPipelineResponse>* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -183,11 +200,15 @@ class TelephonyActionService final {
     ::grpc::ClientAsyncResponseReader< ::sentiric::telephony::v1::StartRecordingResponse>* PrepareAsyncStartRecordingRaw(::grpc::ClientContext* context, const ::sentiric::telephony::v1::StartRecordingRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::sentiric::telephony::v1::StopRecordingResponse>* AsyncStopRecordingRaw(::grpc::ClientContext* context, const ::sentiric::telephony::v1::StopRecordingRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::sentiric::telephony::v1::StopRecordingResponse>* PrepareAsyncStopRecordingRaw(::grpc::ClientContext* context, const ::sentiric::telephony::v1::StopRecordingRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientReader< ::sentiric::telephony::v1::RunPipelineResponse>* RunPipelineRaw(::grpc::ClientContext* context, const ::sentiric::telephony::v1::RunPipelineRequest& request) override;
+    ::grpc::ClientAsyncReader< ::sentiric::telephony::v1::RunPipelineResponse>* AsyncRunPipelineRaw(::grpc::ClientContext* context, const ::sentiric::telephony::v1::RunPipelineRequest& request, ::grpc::CompletionQueue* cq, void* tag) override;
+    ::grpc::ClientAsyncReader< ::sentiric::telephony::v1::RunPipelineResponse>* PrepareAsyncRunPipelineRaw(::grpc::ClientContext* context, const ::sentiric::telephony::v1::RunPipelineRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_PlayAudio_;
     const ::grpc::internal::RpcMethod rpcmethod_TerminateCall_;
     const ::grpc::internal::RpcMethod rpcmethod_SendTextMessage_;
     const ::grpc::internal::RpcMethod rpcmethod_StartRecording_;
     const ::grpc::internal::RpcMethod rpcmethod_StopRecording_;
+    const ::grpc::internal::RpcMethod rpcmethod_RunPipeline_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -196,15 +217,13 @@ class TelephonyActionService final {
     Service();
     virtual ~Service();
     virtual ::grpc::Status PlayAudio(::grpc::ServerContext* context, const ::sentiric::telephony::v1::PlayAudioRequest* request, ::sentiric::telephony::v1::PlayAudioResponse* response);
-    // Değişti
     virtual ::grpc::Status TerminateCall(::grpc::ServerContext* context, const ::sentiric::telephony::v1::TerminateCallRequest* request, ::sentiric::telephony::v1::TerminateCallResponse* response);
-    // Değişti
     virtual ::grpc::Status SendTextMessage(::grpc::ServerContext* context, const ::sentiric::telephony::v1::SendTextMessageRequest* request, ::sentiric::telephony::v1::SendTextMessageResponse* response);
-    // Mesaj Adı Değişti
     virtual ::grpc::Status StartRecording(::grpc::ServerContext* context, const ::sentiric::telephony::v1::StartRecordingRequest* request, ::sentiric::telephony::v1::StartRecordingResponse* response);
-    // Değişti
     virtual ::grpc::Status StopRecording(::grpc::ServerContext* context, const ::sentiric::telephony::v1::StopRecordingRequest* request, ::sentiric::telephony::v1::StopRecordingResponse* response);
-    // Değişti
+    // [STREAMING]
+    // İsim düzeltildi: RunPipeline -> RunPipelineRequest
+    virtual ::grpc::Status RunPipeline(::grpc::ServerContext* context, const ::sentiric::telephony::v1::RunPipelineRequest* request, ::grpc::ServerWriter< ::sentiric::telephony::v1::RunPipelineResponse>* writer);
   };
   template <class BaseClass>
   class WithAsyncMethod_PlayAudio : public BaseClass {
@@ -306,7 +325,27 @@ class TelephonyActionService final {
       ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_PlayAudio<WithAsyncMethod_TerminateCall<WithAsyncMethod_SendTextMessage<WithAsyncMethod_StartRecording<WithAsyncMethod_StopRecording<Service > > > > > AsyncService;
+  template <class BaseClass>
+  class WithAsyncMethod_RunPipeline : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_RunPipeline() {
+      ::grpc::Service::MarkMethodAsync(5);
+    }
+    ~WithAsyncMethod_RunPipeline() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RunPipeline(::grpc::ServerContext* /*context*/, const ::sentiric::telephony::v1::RunPipelineRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::telephony::v1::RunPipelineResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestRunPipeline(::grpc::ServerContext* context, ::sentiric::telephony::v1::RunPipelineRequest* request, ::grpc::ServerAsyncWriter< ::sentiric::telephony::v1::RunPipelineResponse>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncServerStreaming(5, context, request, writer, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_PlayAudio<WithAsyncMethod_TerminateCall<WithAsyncMethod_SendTextMessage<WithAsyncMethod_StartRecording<WithAsyncMethod_StopRecording<WithAsyncMethod_RunPipeline<Service > > > > > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_PlayAudio : public BaseClass {
    private:
@@ -442,7 +481,29 @@ class TelephonyActionService final {
     virtual ::grpc::ServerUnaryReactor* StopRecording(
       ::grpc::CallbackServerContext* /*context*/, const ::sentiric::telephony::v1::StopRecordingRequest* /*request*/, ::sentiric::telephony::v1::StopRecordingResponse* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_PlayAudio<WithCallbackMethod_TerminateCall<WithCallbackMethod_SendTextMessage<WithCallbackMethod_StartRecording<WithCallbackMethod_StopRecording<Service > > > > > CallbackService;
+  template <class BaseClass>
+  class WithCallbackMethod_RunPipeline : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_RunPipeline() {
+      ::grpc::Service::MarkMethodCallback(5,
+          new ::grpc::internal::CallbackServerStreamingHandler< ::sentiric::telephony::v1::RunPipelineRequest, ::sentiric::telephony::v1::RunPipelineResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::sentiric::telephony::v1::RunPipelineRequest* request) { return this->RunPipeline(context, request); }));
+    }
+    ~WithCallbackMethod_RunPipeline() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RunPipeline(::grpc::ServerContext* /*context*/, const ::sentiric::telephony::v1::RunPipelineRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::telephony::v1::RunPipelineResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerWriteReactor< ::sentiric::telephony::v1::RunPipelineResponse>* RunPipeline(
+      ::grpc::CallbackServerContext* /*context*/, const ::sentiric::telephony::v1::RunPipelineRequest* /*request*/)  { return nullptr; }
+  };
+  typedef WithCallbackMethod_PlayAudio<WithCallbackMethod_TerminateCall<WithCallbackMethod_SendTextMessage<WithCallbackMethod_StartRecording<WithCallbackMethod_StopRecording<WithCallbackMethod_RunPipeline<Service > > > > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_PlayAudio : public BaseClass {
@@ -525,6 +586,23 @@ class TelephonyActionService final {
     }
     // disable synchronous version of this method
     ::grpc::Status StopRecording(::grpc::ServerContext* /*context*/, const ::sentiric::telephony::v1::StopRecordingRequest* /*request*/, ::sentiric::telephony::v1::StopRecordingResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_RunPipeline : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_RunPipeline() {
+      ::grpc::Service::MarkMethodGeneric(5);
+    }
+    ~WithGenericMethod_RunPipeline() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RunPipeline(::grpc::ServerContext* /*context*/, const ::sentiric::telephony::v1::RunPipelineRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::telephony::v1::RunPipelineResponse>* /*writer*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -627,6 +705,26 @@ class TelephonyActionService final {
     }
     void RequestStopRecording(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_RunPipeline : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_RunPipeline() {
+      ::grpc::Service::MarkMethodRaw(5);
+    }
+    ~WithRawMethod_RunPipeline() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RunPipeline(::grpc::ServerContext* /*context*/, const ::sentiric::telephony::v1::RunPipelineRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::telephony::v1::RunPipelineResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestRunPipeline(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncWriter< ::grpc::ByteBuffer>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncServerStreaming(5, context, request, writer, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -738,6 +836,28 @@ class TelephonyActionService final {
     }
     virtual ::grpc::ServerUnaryReactor* StopRecording(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_RunPipeline : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_RunPipeline() {
+      ::grpc::Service::MarkMethodRawCallback(5,
+          new ::grpc::internal::CallbackServerStreamingHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const::grpc::ByteBuffer* request) { return this->RunPipeline(context, request); }));
+    }
+    ~WithRawCallbackMethod_RunPipeline() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RunPipeline(::grpc::ServerContext* /*context*/, const ::sentiric::telephony::v1::RunPipelineRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::telephony::v1::RunPipelineResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerWriteReactor< ::grpc::ByteBuffer>* RunPipeline(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/)  { return nullptr; }
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_PlayAudio : public BaseClass {
@@ -875,8 +995,35 @@ class TelephonyActionService final {
     virtual ::grpc::Status StreamedStopRecording(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::sentiric::telephony::v1::StopRecordingRequest,::sentiric::telephony::v1::StopRecordingResponse>* server_unary_streamer) = 0;
   };
   typedef WithStreamedUnaryMethod_PlayAudio<WithStreamedUnaryMethod_TerminateCall<WithStreamedUnaryMethod_SendTextMessage<WithStreamedUnaryMethod_StartRecording<WithStreamedUnaryMethod_StopRecording<Service > > > > > StreamedUnaryService;
-  typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_PlayAudio<WithStreamedUnaryMethod_TerminateCall<WithStreamedUnaryMethod_SendTextMessage<WithStreamedUnaryMethod_StartRecording<WithStreamedUnaryMethod_StopRecording<Service > > > > > StreamedService;
+  template <class BaseClass>
+  class WithSplitStreamingMethod_RunPipeline : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithSplitStreamingMethod_RunPipeline() {
+      ::grpc::Service::MarkMethodStreamed(5,
+        new ::grpc::internal::SplitServerStreamingHandler<
+          ::sentiric::telephony::v1::RunPipelineRequest, ::sentiric::telephony::v1::RunPipelineResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerSplitStreamer<
+                     ::sentiric::telephony::v1::RunPipelineRequest, ::sentiric::telephony::v1::RunPipelineResponse>* streamer) {
+                       return this->StreamedRunPipeline(context,
+                         streamer);
+                  }));
+    }
+    ~WithSplitStreamingMethod_RunPipeline() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status RunPipeline(::grpc::ServerContext* /*context*/, const ::sentiric::telephony::v1::RunPipelineRequest* /*request*/, ::grpc::ServerWriter< ::sentiric::telephony::v1::RunPipelineResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with split streamed
+    virtual ::grpc::Status StreamedRunPipeline(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::sentiric::telephony::v1::RunPipelineRequest,::sentiric::telephony::v1::RunPipelineResponse>* server_split_streamer) = 0;
+  };
+  typedef WithSplitStreamingMethod_RunPipeline<Service > SplitStreamedService;
+  typedef WithStreamedUnaryMethod_PlayAudio<WithStreamedUnaryMethod_TerminateCall<WithStreamedUnaryMethod_SendTextMessage<WithStreamedUnaryMethod_StartRecording<WithStreamedUnaryMethod_StopRecording<WithSplitStreamingMethod_RunPipeline<Service > > > > > > StreamedService;
 };
 
 }  // namespace v1
