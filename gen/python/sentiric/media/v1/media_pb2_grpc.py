@@ -6,7 +6,12 @@ from sentiric.media.v1 import media_pb2 as sentiric_dot_media_dot_v1_dot_media__
 
 
 class MediaServiceStub(object):
-    """Missing associated documentation comment in .proto file."""
+    """MediaService, platformun ses giriş/çıkış kapısıdır.
+    Hem eski (Unary) hem de yeni nesil (Streaming) ses iletimini destekler.
+    =================================================================
+    1. TEMEL PORT YÖNETİMİ (ALTYAPI)
+    =================================================================
+    """
 
     def __init__(self, channel):
         """Constructor.
@@ -44,43 +49,80 @@ class MediaServiceStub(object):
                 request_serializer=sentiric_dot_media_dot_v1_dot_media__pb2.StopRecordingRequest.SerializeToString,
                 response_deserializer=sentiric_dot_media_dot_v1_dot_media__pb2.StopRecordingResponse.FromString,
                 _registered_method=True)
+        self.StreamAudioToCall = channel.stream_stream(
+                '/sentiric.media.v1.MediaService/StreamAudioToCall',
+                request_serializer=sentiric_dot_media_dot_v1_dot_media__pb2.StreamAudioToCallRequest.SerializeToString,
+                response_deserializer=sentiric_dot_media_dot_v1_dot_media__pb2.StreamAudioToCallResponse.FromString,
+                _registered_method=True)
 
 
 class MediaServiceServicer(object):
-    """Missing associated documentation comment in .proto file."""
+    """MediaService, platformun ses giriş/çıkış kapısıdır.
+    Hem eski (Unary) hem de yeni nesil (Streaming) ses iletimini destekler.
+    =================================================================
+    1. TEMEL PORT YÖNETİMİ (ALTYAPI)
+    =================================================================
+    """
 
     def AllocatePort(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """Yeni bir RTP oturumu için dinamik UDP portu tahsis eder.
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def ReleasePort(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """İş bitince portu serbest bırakır ve karantinaya alır.
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def PlayAudio(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """=================================================================
+        2. LEGACY (UNARY) OPERASYONLAR 
+        (Agent-Service uyumluluğu için korunmaktadır - DEPRECATED)
+        =================================================================
+
+        Bir ses dosyasını (URI) veya Base64 veriyi tek seferde çalar.
+        UYARI: Yüksek gecikmeye (latency) neden olabilir.
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def RecordAudio(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """Canlı sesi dinlemek için stream açar (Tek yönlü: Media -> Client).
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def StartRecording(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """Sesi S3/MinIO'ya kaydetmeye başlar.
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def StopRecording(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """Kaydı durdurur ve dosyayı kapatır.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def StreamAudioToCall(self, request_iterator, context):
+        """=================================================================
+        3. NEXT-GEN (STREAMING) OPERASYONLAR
+        (Gerçek Zamanlı AI Konuşmaları İçin - ÖNERİLEN)
+        =================================================================
+
+        [KRİTİK OPTİMİZASYON]
+        TTS'ten gelen ham ses parçalarını (chunks) anlık olarak RTP'ye basar.
+        Dosya biriktirme veya Base64 dönüşümü yapmaz. 
+        TelephonyActionService tarafından kullanılır.
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -118,6 +160,11 @@ def add_MediaServiceServicer_to_server(servicer, server):
                     request_deserializer=sentiric_dot_media_dot_v1_dot_media__pb2.StopRecordingRequest.FromString,
                     response_serializer=sentiric_dot_media_dot_v1_dot_media__pb2.StopRecordingResponse.SerializeToString,
             ),
+            'StreamAudioToCall': grpc.stream_stream_rpc_method_handler(
+                    servicer.StreamAudioToCall,
+                    request_deserializer=sentiric_dot_media_dot_v1_dot_media__pb2.StreamAudioToCallRequest.FromString,
+                    response_serializer=sentiric_dot_media_dot_v1_dot_media__pb2.StreamAudioToCallResponse.SerializeToString,
+            ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
             'sentiric.media.v1.MediaService', rpc_method_handlers)
@@ -127,7 +174,12 @@ def add_MediaServiceServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class MediaService(object):
-    """Missing associated documentation comment in .proto file."""
+    """MediaService, platformun ses giriş/çıkış kapısıdır.
+    Hem eski (Unary) hem de yeni nesil (Streaming) ses iletimini destekler.
+    =================================================================
+    1. TEMEL PORT YÖNETİMİ (ALTYAPI)
+    =================================================================
+    """
 
     @staticmethod
     def AllocatePort(request,
@@ -281,6 +333,33 @@ class MediaService(object):
             '/sentiric.media.v1.MediaService/StopRecording',
             sentiric_dot_media_dot_v1_dot_media__pb2.StopRecordingRequest.SerializeToString,
             sentiric_dot_media_dot_v1_dot_media__pb2.StopRecordingResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def StreamAudioToCall(request_iterator,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.stream_stream(
+            request_iterator,
+            target,
+            '/sentiric.media.v1.MediaService/StreamAudioToCall',
+            sentiric_dot_media_dot_v1_dot_media__pb2.StreamAudioToCallRequest.SerializeToString,
+            sentiric_dot_media_dot_v1_dot_media__pb2.StreamAudioToCallResponse.FromString,
             options,
             channel_credentials,
             insecure,

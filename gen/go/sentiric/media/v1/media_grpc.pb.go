@@ -19,24 +19,40 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	MediaService_AllocatePort_FullMethodName   = "/sentiric.media.v1.MediaService/AllocatePort"
-	MediaService_ReleasePort_FullMethodName    = "/sentiric.media.v1.MediaService/ReleasePort"
-	MediaService_PlayAudio_FullMethodName      = "/sentiric.media.v1.MediaService/PlayAudio"
-	MediaService_RecordAudio_FullMethodName    = "/sentiric.media.v1.MediaService/RecordAudio"
-	MediaService_StartRecording_FullMethodName = "/sentiric.media.v1.MediaService/StartRecording"
-	MediaService_StopRecording_FullMethodName  = "/sentiric.media.v1.MediaService/StopRecording"
+	MediaService_AllocatePort_FullMethodName      = "/sentiric.media.v1.MediaService/AllocatePort"
+	MediaService_ReleasePort_FullMethodName       = "/sentiric.media.v1.MediaService/ReleasePort"
+	MediaService_PlayAudio_FullMethodName         = "/sentiric.media.v1.MediaService/PlayAudio"
+	MediaService_RecordAudio_FullMethodName       = "/sentiric.media.v1.MediaService/RecordAudio"
+	MediaService_StartRecording_FullMethodName    = "/sentiric.media.v1.MediaService/StartRecording"
+	MediaService_StopRecording_FullMethodName     = "/sentiric.media.v1.MediaService/StopRecording"
+	MediaService_StreamAudioToCall_FullMethodName = "/sentiric.media.v1.MediaService/StreamAudioToCall"
 )
 
 // MediaServiceClient is the client API for MediaService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+//
+// MediaService, platformun ses giriş/çıkış kapısıdır.
+// Hem eski (Unary) hem de yeni nesil (Streaming) ses iletimini destekler.
 type MediaServiceClient interface {
+	// Yeni bir RTP oturumu için dinamik UDP portu tahsis eder.
 	AllocatePort(ctx context.Context, in *AllocatePortRequest, opts ...grpc.CallOption) (*AllocatePortResponse, error)
+	// İş bitince portu serbest bırakır ve karantinaya alır.
 	ReleasePort(ctx context.Context, in *ReleasePortRequest, opts ...grpc.CallOption) (*ReleasePortResponse, error)
+	// Bir ses dosyasını (URI) veya Base64 veriyi tek seferde çalar.
+	// UYARI: Yüksek gecikmeye (latency) neden olabilir.
 	PlayAudio(ctx context.Context, in *PlayAudioRequest, opts ...grpc.CallOption) (*PlayAudioResponse, error)
+	// Canlı sesi dinlemek için stream açar (Tek yönlü: Media -> Client).
 	RecordAudio(ctx context.Context, in *RecordAudioRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[RecordAudioResponse], error)
+	// Sesi S3/MinIO'ya kaydetmeye başlar.
 	StartRecording(ctx context.Context, in *StartRecordingRequest, opts ...grpc.CallOption) (*StartRecordingResponse, error)
+	// Kaydı durdurur ve dosyayı kapatır.
 	StopRecording(ctx context.Context, in *StopRecordingRequest, opts ...grpc.CallOption) (*StopRecordingResponse, error)
+	// [KRİTİK OPTİMİZASYON]
+	// TTS'ten gelen ham ses parçalarını (chunks) anlık olarak RTP'ye basar.
+	// Dosya biriktirme veya Base64 dönüşümü yapmaz.
+	// TelephonyActionService tarafından kullanılır.
+	StreamAudioToCall(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[StreamAudioToCallRequest, StreamAudioToCallResponse], error)
 }
 
 type mediaServiceClient struct {
@@ -116,16 +132,44 @@ func (c *mediaServiceClient) StopRecording(ctx context.Context, in *StopRecordin
 	return out, nil
 }
 
+func (c *mediaServiceClient) StreamAudioToCall(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[StreamAudioToCallRequest, StreamAudioToCallResponse], error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	stream, err := c.cc.NewStream(ctx, &MediaService_ServiceDesc.Streams[1], MediaService_StreamAudioToCall_FullMethodName, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &grpc.GenericClientStream[StreamAudioToCallRequest, StreamAudioToCallResponse]{ClientStream: stream}
+	return x, nil
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type MediaService_StreamAudioToCallClient = grpc.BidiStreamingClient[StreamAudioToCallRequest, StreamAudioToCallResponse]
+
 // MediaServiceServer is the server API for MediaService service.
 // All implementations should embed UnimplementedMediaServiceServer
 // for forward compatibility.
+//
+// MediaService, platformun ses giriş/çıkış kapısıdır.
+// Hem eski (Unary) hem de yeni nesil (Streaming) ses iletimini destekler.
 type MediaServiceServer interface {
+	// Yeni bir RTP oturumu için dinamik UDP portu tahsis eder.
 	AllocatePort(context.Context, *AllocatePortRequest) (*AllocatePortResponse, error)
+	// İş bitince portu serbest bırakır ve karantinaya alır.
 	ReleasePort(context.Context, *ReleasePortRequest) (*ReleasePortResponse, error)
+	// Bir ses dosyasını (URI) veya Base64 veriyi tek seferde çalar.
+	// UYARI: Yüksek gecikmeye (latency) neden olabilir.
 	PlayAudio(context.Context, *PlayAudioRequest) (*PlayAudioResponse, error)
+	// Canlı sesi dinlemek için stream açar (Tek yönlü: Media -> Client).
 	RecordAudio(*RecordAudioRequest, grpc.ServerStreamingServer[RecordAudioResponse]) error
+	// Sesi S3/MinIO'ya kaydetmeye başlar.
 	StartRecording(context.Context, *StartRecordingRequest) (*StartRecordingResponse, error)
+	// Kaydı durdurur ve dosyayı kapatır.
 	StopRecording(context.Context, *StopRecordingRequest) (*StopRecordingResponse, error)
+	// [KRİTİK OPTİMİZASYON]
+	// TTS'ten gelen ham ses parçalarını (chunks) anlık olarak RTP'ye basar.
+	// Dosya biriktirme veya Base64 dönüşümü yapmaz.
+	// TelephonyActionService tarafından kullanılır.
+	StreamAudioToCall(grpc.BidiStreamingServer[StreamAudioToCallRequest, StreamAudioToCallResponse]) error
 }
 
 // UnimplementedMediaServiceServer should be embedded to have
@@ -152,6 +196,9 @@ func (UnimplementedMediaServiceServer) StartRecording(context.Context, *StartRec
 }
 func (UnimplementedMediaServiceServer) StopRecording(context.Context, *StopRecordingRequest) (*StopRecordingResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method StopRecording not implemented")
+}
+func (UnimplementedMediaServiceServer) StreamAudioToCall(grpc.BidiStreamingServer[StreamAudioToCallRequest, StreamAudioToCallResponse]) error {
+	return status.Error(codes.Unimplemented, "method StreamAudioToCall not implemented")
 }
 func (UnimplementedMediaServiceServer) testEmbeddedByValue() {}
 
@@ -274,6 +321,13 @@ func _MediaService_StopRecording_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _MediaService_StreamAudioToCall_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(MediaServiceServer).StreamAudioToCall(&grpc.GenericServerStream[StreamAudioToCallRequest, StreamAudioToCallResponse]{ServerStream: stream})
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type MediaService_StreamAudioToCallServer = grpc.BidiStreamingServer[StreamAudioToCallRequest, StreamAudioToCallResponse]
+
 // MediaService_ServiceDesc is the grpc.ServiceDesc for MediaService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -307,6 +361,12 @@ var MediaService_ServiceDesc = grpc.ServiceDesc{
 			StreamName:    "RecordAudio",
 			Handler:       _MediaService_RecordAudio_Handler,
 			ServerStreams: true,
+		},
+		{
+			StreamName:    "StreamAudioToCall",
+			Handler:       _MediaService_StreamAudioToCall_Handler,
+			ServerStreams: true,
+			ClientStreams: true,
 		},
 	},
 	Metadata: "sentiric/media/v1/media.proto",

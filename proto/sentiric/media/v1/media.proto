@@ -1,25 +1,100 @@
 syntax = "proto3";
+
 package sentiric.media.v1;
+
 option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/media/v1;mediav1";
 
+// MediaService, platformun ses giriş/çıkış kapısıdır.
+// Hem eski (Unary) hem de yeni nesil (Streaming) ses iletimini destekler.
 service MediaService {
+  // =================================================================
+  // 1. TEMEL PORT YÖNETİMİ (ALTYAPI)
+  // =================================================================
+  
+  // Yeni bir RTP oturumu için dinamik UDP portu tahsis eder.
   rpc AllocatePort(AllocatePortRequest) returns (AllocatePortResponse);
+  
+  // İş bitince portu serbest bırakır ve karantinaya alır.
   rpc ReleasePort(ReleasePortRequest) returns (ReleasePortResponse);
+
+  // =================================================================
+  // 2. LEGACY (UNARY) OPERASYONLAR 
+  // (Agent-Service uyumluluğu için korunmaktadır - DEPRECATED)
+  // =================================================================
+  
+  // Bir ses dosyasını (URI) veya Base64 veriyi tek seferde çalar.
+  // UYARI: Yüksek gecikmeye (latency) neden olabilir.
   rpc PlayAudio(PlayAudioRequest) returns (PlayAudioResponse);
+  
+  // Canlı sesi dinlemek için stream açar (Tek yönlü: Media -> Client).
   rpc RecordAudio(RecordAudioRequest) returns (stream RecordAudioResponse);
+  
+  // Sesi S3/MinIO'ya kaydetmeye başlar.
   rpc StartRecording(StartRecordingRequest) returns (StartRecordingResponse);
+  
+  // Kaydı durdurur ve dosyayı kapatır.
   rpc StopRecording(StopRecordingRequest) returns (StopRecordingResponse);
+
+  // =================================================================
+  // 3. NEXT-GEN (STREAMING) OPERASYONLAR
+  // (Gerçek Zamanlı AI Konuşmaları İçin - ÖNERİLEN)
+  // =================================================================
+  
+  // [KRİTİK OPTİMİZASYON]
+  // TTS'ten gelen ham ses parçalarını (chunks) anlık olarak RTP'ye basar.
+  // Dosya biriktirme veya Base64 dönüşümü yapmaz. 
+  // TelephonyActionService tarafından kullanılır.
+  rpc StreamAudioToCall(stream StreamAudioToCallRequest) returns (stream StreamAudioToCallResponse);
+}
+
+// -----------------------------------------------------------------
+// MESAJ TANIMLARI
+// -----------------------------------------------------------------
+
+message StreamAudioToCallRequest {
+  // Hangi çağrıya ses basılacak?
+  string call_id = 1;       
+  // Ham PCM (16kHz Mono) veya Opus verisi.
+  bytes audio_chunk = 2;    
+}
+
+message StreamAudioToCallResponse {
+  bool success = 1;
+  // Olası hata mesajları veya playback durumu (örn: "buffer_underrun")
+  string error_message = 2; 
 }
 
 message AllocatePortRequest { string call_id = 1; }
 message AllocatePortResponse { uint32 rtp_port = 1; }
+
 message ReleasePortRequest { uint32 rtp_port = 1; }
 message ReleasePortResponse { bool success = 1; }
-message PlayAudioRequest { string audio_uri = 1; uint32 server_rtp_port = 2; string rtp_target_addr = 3; }
+
+message PlayAudioRequest { 
+  string audio_uri = 1; 
+  uint32 server_rtp_port = 2; 
+  string rtp_target_addr = 3; 
+}
 message PlayAudioResponse { bool success = 1; string message = 2; }
-message RecordAudioRequest { uint32 server_rtp_port = 1; optional uint32 target_sample_rate = 2; }
-message RecordAudioResponse { bytes audio_data = 1; string media_type = 2; }
-message StartRecordingRequest { uint32 server_rtp_port = 1; string output_uri = 2; optional uint32 sample_rate = 3; optional string format = 4; string call_id = 5; string trace_id = 6; }
+
+message RecordAudioRequest { 
+  uint32 server_rtp_port = 1; 
+  optional uint32 target_sample_rate = 2; 
+}
+message RecordAudioResponse { 
+  bytes audio_data = 1; 
+  string media_type = 2; 
+}
+
+message StartRecordingRequest {
+  uint32 server_rtp_port = 1;
+  string output_uri = 2;
+  optional uint32 sample_rate = 3;
+  optional string format = 4;
+  string call_id = 5;
+  string trace_id = 6;
+}
 message StartRecordingResponse { bool success = 1; }
+
 message StopRecordingRequest { uint32 server_rtp_port = 1; }
 message StopRecordingResponse { bool success = 1; }

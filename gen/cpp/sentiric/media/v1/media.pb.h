@@ -83,6 +83,12 @@ extern StopRecordingRequestDefaultTypeInternal _StopRecordingRequest_default_ins
 class StopRecordingResponse;
 struct StopRecordingResponseDefaultTypeInternal;
 extern StopRecordingResponseDefaultTypeInternal _StopRecordingResponse_default_instance_;
+class StreamAudioToCallRequest;
+struct StreamAudioToCallRequestDefaultTypeInternal;
+extern StreamAudioToCallRequestDefaultTypeInternal _StreamAudioToCallRequest_default_instance_;
+class StreamAudioToCallResponse;
+struct StreamAudioToCallResponseDefaultTypeInternal;
+extern StreamAudioToCallResponseDefaultTypeInternal _StreamAudioToCallResponse_default_instance_;
 }  // namespace v1
 }  // namespace media
 }  // namespace sentiric
@@ -99,12 +105,347 @@ template<> ::sentiric::media::v1::StartRecordingRequest* Arena::CreateMaybeMessa
 template<> ::sentiric::media::v1::StartRecordingResponse* Arena::CreateMaybeMessage<::sentiric::media::v1::StartRecordingResponse>(Arena*);
 template<> ::sentiric::media::v1::StopRecordingRequest* Arena::CreateMaybeMessage<::sentiric::media::v1::StopRecordingRequest>(Arena*);
 template<> ::sentiric::media::v1::StopRecordingResponse* Arena::CreateMaybeMessage<::sentiric::media::v1::StopRecordingResponse>(Arena*);
+template<> ::sentiric::media::v1::StreamAudioToCallRequest* Arena::CreateMaybeMessage<::sentiric::media::v1::StreamAudioToCallRequest>(Arena*);
+template<> ::sentiric::media::v1::StreamAudioToCallResponse* Arena::CreateMaybeMessage<::sentiric::media::v1::StreamAudioToCallResponse>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace sentiric {
 namespace media {
 namespace v1 {
 
 // ===================================================================
+
+class StreamAudioToCallRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.media.v1.StreamAudioToCallRequest) */ {
+ public:
+  inline StreamAudioToCallRequest() : StreamAudioToCallRequest(nullptr) {}
+  ~StreamAudioToCallRequest() override;
+  explicit PROTOBUF_CONSTEXPR StreamAudioToCallRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  StreamAudioToCallRequest(const StreamAudioToCallRequest& from);
+  StreamAudioToCallRequest(StreamAudioToCallRequest&& from) noexcept
+    : StreamAudioToCallRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline StreamAudioToCallRequest& operator=(const StreamAudioToCallRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline StreamAudioToCallRequest& operator=(StreamAudioToCallRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const StreamAudioToCallRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const StreamAudioToCallRequest* internal_default_instance() {
+    return reinterpret_cast<const StreamAudioToCallRequest*>(
+               &_StreamAudioToCallRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    0;
+
+  friend void swap(StreamAudioToCallRequest& a, StreamAudioToCallRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(StreamAudioToCallRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(StreamAudioToCallRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  StreamAudioToCallRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<StreamAudioToCallRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const StreamAudioToCallRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const StreamAudioToCallRequest& from) {
+    StreamAudioToCallRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(StreamAudioToCallRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.media.v1.StreamAudioToCallRequest";
+  }
+  protected:
+  explicit StreamAudioToCallRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kCallIdFieldNumber = 1,
+    kAudioChunkFieldNumber = 2,
+  };
+  // string call_id = 1;
+  void clear_call_id();
+  const std::string& call_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_call_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_call_id();
+  PROTOBUF_NODISCARD std::string* release_call_id();
+  void set_allocated_call_id(std::string* call_id);
+  private:
+  const std::string& _internal_call_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_call_id(const std::string& value);
+  std::string* _internal_mutable_call_id();
+  public:
+
+  // bytes audio_chunk = 2;
+  void clear_audio_chunk();
+  const std::string& audio_chunk() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_audio_chunk(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_audio_chunk();
+  PROTOBUF_NODISCARD std::string* release_audio_chunk();
+  void set_allocated_audio_chunk(std::string* audio_chunk);
+  private:
+  const std::string& _internal_audio_chunk() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_audio_chunk(const std::string& value);
+  std::string* _internal_mutable_audio_chunk();
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.media.v1.StreamAudioToCallRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr call_id_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr audio_chunk_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2fmedia_2fv1_2fmedia_2eproto;
+};
+// -------------------------------------------------------------------
+
+class StreamAudioToCallResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.media.v1.StreamAudioToCallResponse) */ {
+ public:
+  inline StreamAudioToCallResponse() : StreamAudioToCallResponse(nullptr) {}
+  ~StreamAudioToCallResponse() override;
+  explicit PROTOBUF_CONSTEXPR StreamAudioToCallResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  StreamAudioToCallResponse(const StreamAudioToCallResponse& from);
+  StreamAudioToCallResponse(StreamAudioToCallResponse&& from) noexcept
+    : StreamAudioToCallResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline StreamAudioToCallResponse& operator=(const StreamAudioToCallResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline StreamAudioToCallResponse& operator=(StreamAudioToCallResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const StreamAudioToCallResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const StreamAudioToCallResponse* internal_default_instance() {
+    return reinterpret_cast<const StreamAudioToCallResponse*>(
+               &_StreamAudioToCallResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    1;
+
+  friend void swap(StreamAudioToCallResponse& a, StreamAudioToCallResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(StreamAudioToCallResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(StreamAudioToCallResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  StreamAudioToCallResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<StreamAudioToCallResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const StreamAudioToCallResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const StreamAudioToCallResponse& from) {
+    StreamAudioToCallResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(StreamAudioToCallResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.media.v1.StreamAudioToCallResponse";
+  }
+  protected:
+  explicit StreamAudioToCallResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kErrorMessageFieldNumber = 2,
+    kSuccessFieldNumber = 1,
+  };
+  // string error_message = 2;
+  void clear_error_message();
+  const std::string& error_message() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_error_message(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_error_message();
+  PROTOBUF_NODISCARD std::string* release_error_message();
+  void set_allocated_error_message(std::string* error_message);
+  private:
+  const std::string& _internal_error_message() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_error_message(const std::string& value);
+  std::string* _internal_mutable_error_message();
+  public:
+
+  // bool success = 1;
+  void clear_success();
+  bool success() const;
+  void set_success(bool value);
+  private:
+  bool _internal_success() const;
+  void _internal_set_success(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.media.v1.StreamAudioToCallResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr error_message_;
+    bool success_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2fmedia_2fv1_2fmedia_2eproto;
+};
+// -------------------------------------------------------------------
 
 class AllocatePortRequest final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.media.v1.AllocatePortRequest) */ {
@@ -154,7 +495,7 @@ class AllocatePortRequest final :
                &_AllocatePortRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    0;
+    2;
 
   friend void swap(AllocatePortRequest& a, AllocatePortRequest& b) {
     a.Swap(&b);
@@ -307,7 +648,7 @@ class AllocatePortResponse final :
                &_AllocatePortResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    3;
 
   friend void swap(AllocatePortResponse& a, AllocatePortResponse& b) {
     a.Swap(&b);
@@ -455,7 +796,7 @@ class ReleasePortRequest final :
                &_ReleasePortRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    4;
 
   friend void swap(ReleasePortRequest& a, ReleasePortRequest& b) {
     a.Swap(&b);
@@ -603,7 +944,7 @@ class ReleasePortResponse final :
                &_ReleasePortResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    5;
 
   friend void swap(ReleasePortResponse& a, ReleasePortResponse& b) {
     a.Swap(&b);
@@ -751,7 +1092,7 @@ class PlayAudioRequest final :
                &_PlayAudioRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    6;
 
   friend void swap(PlayAudioRequest& a, PlayAudioRequest& b) {
     a.Swap(&b);
@@ -931,7 +1272,7 @@ class PlayAudioResponse final :
                &_PlayAudioResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    7;
 
   friend void swap(PlayAudioResponse& a, PlayAudioResponse& b) {
     a.Swap(&b);
@@ -1095,7 +1436,7 @@ class RecordAudioRequest final :
                &_RecordAudioRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    8;
 
   friend void swap(RecordAudioRequest& a, RecordAudioRequest& b) {
     a.Swap(&b);
@@ -1259,7 +1600,7 @@ class RecordAudioResponse final :
                &_RecordAudioResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    9;
 
   friend void swap(RecordAudioResponse& a, RecordAudioResponse& b) {
     a.Swap(&b);
@@ -1428,7 +1769,7 @@ class StartRecordingRequest final :
                &_StartRecordingRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    10;
 
   friend void swap(StartRecordingRequest& a, StartRecordingRequest& b) {
     a.Swap(&b);
@@ -1660,7 +2001,7 @@ class StartRecordingResponse final :
                &_StartRecordingResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    11;
 
   friend void swap(StartRecordingResponse& a, StartRecordingResponse& b) {
     a.Swap(&b);
@@ -1808,7 +2149,7 @@ class StopRecordingRequest final :
                &_StopRecordingRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    10;
+    12;
 
   friend void swap(StopRecordingRequest& a, StopRecordingRequest& b) {
     a.Swap(&b);
@@ -1956,7 +2297,7 @@ class StopRecordingResponse final :
                &_StopRecordingResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    11;
+    13;
 
   friend void swap(StopRecordingResponse& a, StopRecordingResponse& b) {
     a.Swap(&b);
@@ -2063,6 +2404,184 @@ class StopRecordingResponse final :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
+// StreamAudioToCallRequest
+
+// string call_id = 1;
+inline void StreamAudioToCallRequest::clear_call_id() {
+  _impl_.call_id_.ClearToEmpty();
+}
+inline const std::string& StreamAudioToCallRequest::call_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.media.v1.StreamAudioToCallRequest.call_id)
+  return _internal_call_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void StreamAudioToCallRequest::set_call_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.call_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.media.v1.StreamAudioToCallRequest.call_id)
+}
+inline std::string* StreamAudioToCallRequest::mutable_call_id() {
+  std::string* _s = _internal_mutable_call_id();
+  // @@protoc_insertion_point(field_mutable:sentiric.media.v1.StreamAudioToCallRequest.call_id)
+  return _s;
+}
+inline const std::string& StreamAudioToCallRequest::_internal_call_id() const {
+  return _impl_.call_id_.Get();
+}
+inline void StreamAudioToCallRequest::_internal_set_call_id(const std::string& value) {
+  
+  _impl_.call_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* StreamAudioToCallRequest::_internal_mutable_call_id() {
+  
+  return _impl_.call_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* StreamAudioToCallRequest::release_call_id() {
+  // @@protoc_insertion_point(field_release:sentiric.media.v1.StreamAudioToCallRequest.call_id)
+  return _impl_.call_id_.Release();
+}
+inline void StreamAudioToCallRequest::set_allocated_call_id(std::string* call_id) {
+  if (call_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.call_id_.SetAllocated(call_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.call_id_.IsDefault()) {
+    _impl_.call_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.media.v1.StreamAudioToCallRequest.call_id)
+}
+
+// bytes audio_chunk = 2;
+inline void StreamAudioToCallRequest::clear_audio_chunk() {
+  _impl_.audio_chunk_.ClearToEmpty();
+}
+inline const std::string& StreamAudioToCallRequest::audio_chunk() const {
+  // @@protoc_insertion_point(field_get:sentiric.media.v1.StreamAudioToCallRequest.audio_chunk)
+  return _internal_audio_chunk();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void StreamAudioToCallRequest::set_audio_chunk(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.audio_chunk_.SetBytes(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.media.v1.StreamAudioToCallRequest.audio_chunk)
+}
+inline std::string* StreamAudioToCallRequest::mutable_audio_chunk() {
+  std::string* _s = _internal_mutable_audio_chunk();
+  // @@protoc_insertion_point(field_mutable:sentiric.media.v1.StreamAudioToCallRequest.audio_chunk)
+  return _s;
+}
+inline const std::string& StreamAudioToCallRequest::_internal_audio_chunk() const {
+  return _impl_.audio_chunk_.Get();
+}
+inline void StreamAudioToCallRequest::_internal_set_audio_chunk(const std::string& value) {
+  
+  _impl_.audio_chunk_.Set(value, GetArenaForAllocation());
+}
+inline std::string* StreamAudioToCallRequest::_internal_mutable_audio_chunk() {
+  
+  return _impl_.audio_chunk_.Mutable(GetArenaForAllocation());
+}
+inline std::string* StreamAudioToCallRequest::release_audio_chunk() {
+  // @@protoc_insertion_point(field_release:sentiric.media.v1.StreamAudioToCallRequest.audio_chunk)
+  return _impl_.audio_chunk_.Release();
+}
+inline void StreamAudioToCallRequest::set_allocated_audio_chunk(std::string* audio_chunk) {
+  if (audio_chunk != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.audio_chunk_.SetAllocated(audio_chunk, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.audio_chunk_.IsDefault()) {
+    _impl_.audio_chunk_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.media.v1.StreamAudioToCallRequest.audio_chunk)
+}
+
+// -------------------------------------------------------------------
+
+// StreamAudioToCallResponse
+
+// bool success = 1;
+inline void StreamAudioToCallResponse::clear_success() {
+  _impl_.success_ = false;
+}
+inline bool StreamAudioToCallResponse::_internal_success() const {
+  return _impl_.success_;
+}
+inline bool StreamAudioToCallResponse::success() const {
+  // @@protoc_insertion_point(field_get:sentiric.media.v1.StreamAudioToCallResponse.success)
+  return _internal_success();
+}
+inline void StreamAudioToCallResponse::_internal_set_success(bool value) {
+  
+  _impl_.success_ = value;
+}
+inline void StreamAudioToCallResponse::set_success(bool value) {
+  _internal_set_success(value);
+  // @@protoc_insertion_point(field_set:sentiric.media.v1.StreamAudioToCallResponse.success)
+}
+
+// string error_message = 2;
+inline void StreamAudioToCallResponse::clear_error_message() {
+  _impl_.error_message_.ClearToEmpty();
+}
+inline const std::string& StreamAudioToCallResponse::error_message() const {
+  // @@protoc_insertion_point(field_get:sentiric.media.v1.StreamAudioToCallResponse.error_message)
+  return _internal_error_message();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void StreamAudioToCallResponse::set_error_message(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.error_message_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.media.v1.StreamAudioToCallResponse.error_message)
+}
+inline std::string* StreamAudioToCallResponse::mutable_error_message() {
+  std::string* _s = _internal_mutable_error_message();
+  // @@protoc_insertion_point(field_mutable:sentiric.media.v1.StreamAudioToCallResponse.error_message)
+  return _s;
+}
+inline const std::string& StreamAudioToCallResponse::_internal_error_message() const {
+  return _impl_.error_message_.Get();
+}
+inline void StreamAudioToCallResponse::_internal_set_error_message(const std::string& value) {
+  
+  _impl_.error_message_.Set(value, GetArenaForAllocation());
+}
+inline std::string* StreamAudioToCallResponse::_internal_mutable_error_message() {
+  
+  return _impl_.error_message_.Mutable(GetArenaForAllocation());
+}
+inline std::string* StreamAudioToCallResponse::release_error_message() {
+  // @@protoc_insertion_point(field_release:sentiric.media.v1.StreamAudioToCallResponse.error_message)
+  return _impl_.error_message_.Release();
+}
+inline void StreamAudioToCallResponse::set_allocated_error_message(std::string* error_message) {
+  if (error_message != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.error_message_.SetAllocated(error_message, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.error_message_.IsDefault()) {
+    _impl_.error_message_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.media.v1.StreamAudioToCallResponse.error_message)
+}
+
+// -------------------------------------------------------------------
+
 // AllocatePortRequest
 
 // string call_id = 1;
@@ -2886,6 +3405,10 @@ inline void StopRecordingResponse::set_success(bool value) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

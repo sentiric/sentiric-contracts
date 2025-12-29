@@ -136,9 +136,34 @@ function deserialize_sentiric_media_v1_StopRecordingResponse(buffer_arg) {
   return sentiric_media_v1_media_pb.StopRecordingResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sentiric_media_v1_StreamAudioToCallRequest(arg) {
+  if (!(arg instanceof sentiric_media_v1_media_pb.StreamAudioToCallRequest)) {
+    throw new Error('Expected argument of type sentiric.media.v1.StreamAudioToCallRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
 
+function deserialize_sentiric_media_v1_StreamAudioToCallRequest(buffer_arg) {
+  return sentiric_media_v1_media_pb.StreamAudioToCallRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sentiric_media_v1_StreamAudioToCallResponse(arg) {
+  if (!(arg instanceof sentiric_media_v1_media_pb.StreamAudioToCallResponse)) {
+    throw new Error('Expected argument of type sentiric.media.v1.StreamAudioToCallResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sentiric_media_v1_StreamAudioToCallResponse(buffer_arg) {
+  return sentiric_media_v1_media_pb.StreamAudioToCallResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+
+// MediaService, platformun ses giriş/çıkış kapısıdır.
+// Hem eski (Unary) hem de yeni nesil (Streaming) ses iletimini destekler.
 var MediaServiceService = exports.MediaServiceService = {
-  allocatePort: {
+  // Yeni bir RTP oturumu için dinamik UDP portu tahsis eder.
+allocatePort: {
     path: '/sentiric.media.v1.MediaService/AllocatePort',
     requestStream: false,
     responseStream: false,
@@ -149,7 +174,8 @@ var MediaServiceService = exports.MediaServiceService = {
     responseSerialize: serialize_sentiric_media_v1_AllocatePortResponse,
     responseDeserialize: deserialize_sentiric_media_v1_AllocatePortResponse,
   },
-  releasePort: {
+  // İş bitince portu serbest bırakır ve karantinaya alır.
+releasePort: {
     path: '/sentiric.media.v1.MediaService/ReleasePort',
     requestStream: false,
     responseStream: false,
@@ -160,7 +186,14 @@ var MediaServiceService = exports.MediaServiceService = {
     responseSerialize: serialize_sentiric_media_v1_ReleasePortResponse,
     responseDeserialize: deserialize_sentiric_media_v1_ReleasePortResponse,
   },
-  playAudio: {
+  // =================================================================
+// 2. LEGACY (UNARY) OPERASYONLAR 
+// (Agent-Service uyumluluğu için korunmaktadır - DEPRECATED)
+// =================================================================
+//
+// Bir ses dosyasını (URI) veya Base64 veriyi tek seferde çalar.
+// UYARI: Yüksek gecikmeye (latency) neden olabilir.
+playAudio: {
     path: '/sentiric.media.v1.MediaService/PlayAudio',
     requestStream: false,
     responseStream: false,
@@ -171,7 +204,8 @@ var MediaServiceService = exports.MediaServiceService = {
     responseSerialize: serialize_sentiric_media_v1_PlayAudioResponse,
     responseDeserialize: deserialize_sentiric_media_v1_PlayAudioResponse,
   },
-  recordAudio: {
+  // Canlı sesi dinlemek için stream açar (Tek yönlü: Media -> Client).
+recordAudio: {
     path: '/sentiric.media.v1.MediaService/RecordAudio',
     requestStream: false,
     responseStream: true,
@@ -182,7 +216,8 @@ var MediaServiceService = exports.MediaServiceService = {
     responseSerialize: serialize_sentiric_media_v1_RecordAudioResponse,
     responseDeserialize: deserialize_sentiric_media_v1_RecordAudioResponse,
   },
-  startRecording: {
+  // Sesi S3/MinIO'ya kaydetmeye başlar.
+startRecording: {
     path: '/sentiric.media.v1.MediaService/StartRecording',
     requestStream: false,
     responseStream: false,
@@ -193,7 +228,8 @@ var MediaServiceService = exports.MediaServiceService = {
     responseSerialize: serialize_sentiric_media_v1_StartRecordingResponse,
     responseDeserialize: deserialize_sentiric_media_v1_StartRecordingResponse,
   },
-  stopRecording: {
+  // Kaydı durdurur ve dosyayı kapatır.
+stopRecording: {
     path: '/sentiric.media.v1.MediaService/StopRecording',
     requestStream: false,
     responseStream: false,
@@ -204,6 +240,29 @@ var MediaServiceService = exports.MediaServiceService = {
     responseSerialize: serialize_sentiric_media_v1_StopRecordingResponse,
     responseDeserialize: deserialize_sentiric_media_v1_StopRecordingResponse,
   },
+  // =================================================================
+// 3. NEXT-GEN (STREAMING) OPERASYONLAR
+// (Gerçek Zamanlı AI Konuşmaları İçin - ÖNERİLEN)
+// =================================================================
+//
+// [KRİTİK OPTİMİZASYON]
+// TTS'ten gelen ham ses parçalarını (chunks) anlık olarak RTP'ye basar.
+// Dosya biriktirme veya Base64 dönüşümü yapmaz. 
+// TelephonyActionService tarafından kullanılır.
+streamAudioToCall: {
+    path: '/sentiric.media.v1.MediaService/StreamAudioToCall',
+    requestStream: true,
+    responseStream: true,
+    requestType: sentiric_media_v1_media_pb.StreamAudioToCallRequest,
+    responseType: sentiric_media_v1_media_pb.StreamAudioToCallResponse,
+    requestSerialize: serialize_sentiric_media_v1_StreamAudioToCallRequest,
+    requestDeserialize: deserialize_sentiric_media_v1_StreamAudioToCallRequest,
+    responseSerialize: serialize_sentiric_media_v1_StreamAudioToCallResponse,
+    responseDeserialize: deserialize_sentiric_media_v1_StreamAudioToCallResponse,
+  },
 };
 
 exports.MediaServiceClient = grpc.makeGenericClientConstructor(MediaServiceService, 'MediaService');
+// =================================================================
+// 1. TEMEL PORT YÖNETİMİ (ALTYAPI)
+// =================================================================

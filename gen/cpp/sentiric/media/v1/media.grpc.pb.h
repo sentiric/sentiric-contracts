@@ -29,6 +29,8 @@ namespace sentiric {
 namespace media {
 namespace v1 {
 
+// MediaService, platformun ses giriş/çıkış kapısıdır.
+// Hem eski (Unary) hem de yeni nesil (Streaming) ses iletimini destekler.
 class MediaService final {
  public:
   static constexpr char const* service_full_name() {
@@ -37,6 +39,7 @@ class MediaService final {
   class StubInterface {
    public:
     virtual ~StubInterface() {}
+    // Yeni bir RTP oturumu için dinamik UDP portu tahsis eder.
     virtual ::grpc::Status AllocatePort(::grpc::ClientContext* context, const ::sentiric::media::v1::AllocatePortRequest& request, ::sentiric::media::v1::AllocatePortResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::media::v1::AllocatePortResponse>> AsyncAllocatePort(::grpc::ClientContext* context, const ::sentiric::media::v1::AllocatePortRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::media::v1::AllocatePortResponse>>(AsyncAllocatePortRaw(context, request, cq));
@@ -44,6 +47,7 @@ class MediaService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::media::v1::AllocatePortResponse>> PrepareAsyncAllocatePort(::grpc::ClientContext* context, const ::sentiric::media::v1::AllocatePortRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::media::v1::AllocatePortResponse>>(PrepareAsyncAllocatePortRaw(context, request, cq));
     }
+    // İş bitince portu serbest bırakır ve karantinaya alır.
     virtual ::grpc::Status ReleasePort(::grpc::ClientContext* context, const ::sentiric::media::v1::ReleasePortRequest& request, ::sentiric::media::v1::ReleasePortResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::media::v1::ReleasePortResponse>> AsyncReleasePort(::grpc::ClientContext* context, const ::sentiric::media::v1::ReleasePortRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::media::v1::ReleasePortResponse>>(AsyncReleasePortRaw(context, request, cq));
@@ -51,6 +55,13 @@ class MediaService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::media::v1::ReleasePortResponse>> PrepareAsyncReleasePort(::grpc::ClientContext* context, const ::sentiric::media::v1::ReleasePortRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::media::v1::ReleasePortResponse>>(PrepareAsyncReleasePortRaw(context, request, cq));
     }
+    // =================================================================
+    // 2. LEGACY (UNARY) OPERASYONLAR 
+    // (Agent-Service uyumluluğu için korunmaktadır - DEPRECATED)
+    // =================================================================
+    //
+    // Bir ses dosyasını (URI) veya Base64 veriyi tek seferde çalar.
+    // UYARI: Yüksek gecikmeye (latency) neden olabilir.
     virtual ::grpc::Status PlayAudio(::grpc::ClientContext* context, const ::sentiric::media::v1::PlayAudioRequest& request, ::sentiric::media::v1::PlayAudioResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::media::v1::PlayAudioResponse>> AsyncPlayAudio(::grpc::ClientContext* context, const ::sentiric::media::v1::PlayAudioRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::media::v1::PlayAudioResponse>>(AsyncPlayAudioRaw(context, request, cq));
@@ -58,6 +69,7 @@ class MediaService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::media::v1::PlayAudioResponse>> PrepareAsyncPlayAudio(::grpc::ClientContext* context, const ::sentiric::media::v1::PlayAudioRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::media::v1::PlayAudioResponse>>(PrepareAsyncPlayAudioRaw(context, request, cq));
     }
+    // Canlı sesi dinlemek için stream açar (Tek yönlü: Media -> Client).
     std::unique_ptr< ::grpc::ClientReaderInterface< ::sentiric::media::v1::RecordAudioResponse>> RecordAudio(::grpc::ClientContext* context, const ::sentiric::media::v1::RecordAudioRequest& request) {
       return std::unique_ptr< ::grpc::ClientReaderInterface< ::sentiric::media::v1::RecordAudioResponse>>(RecordAudioRaw(context, request));
     }
@@ -67,6 +79,7 @@ class MediaService final {
     std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::sentiric::media::v1::RecordAudioResponse>> PrepareAsyncRecordAudio(::grpc::ClientContext* context, const ::sentiric::media::v1::RecordAudioRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::sentiric::media::v1::RecordAudioResponse>>(PrepareAsyncRecordAudioRaw(context, request, cq));
     }
+    // Sesi S3/MinIO'ya kaydetmeye başlar.
     virtual ::grpc::Status StartRecording(::grpc::ClientContext* context, const ::sentiric::media::v1::StartRecordingRequest& request, ::sentiric::media::v1::StartRecordingResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::media::v1::StartRecordingResponse>> AsyncStartRecording(::grpc::ClientContext* context, const ::sentiric::media::v1::StartRecordingRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::media::v1::StartRecordingResponse>>(AsyncStartRecordingRaw(context, request, cq));
@@ -74,6 +87,7 @@ class MediaService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::media::v1::StartRecordingResponse>> PrepareAsyncStartRecording(::grpc::ClientContext* context, const ::sentiric::media::v1::StartRecordingRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::media::v1::StartRecordingResponse>>(PrepareAsyncStartRecordingRaw(context, request, cq));
     }
+    // Kaydı durdurur ve dosyayı kapatır.
     virtual ::grpc::Status StopRecording(::grpc::ClientContext* context, const ::sentiric::media::v1::StopRecordingRequest& request, ::sentiric::media::v1::StopRecordingResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::media::v1::StopRecordingResponse>> AsyncStopRecording(::grpc::ClientContext* context, const ::sentiric::media::v1::StopRecordingRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::media::v1::StopRecordingResponse>>(AsyncStopRecordingRaw(context, request, cq));
@@ -81,20 +95,60 @@ class MediaService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::media::v1::StopRecordingResponse>> PrepareAsyncStopRecording(::grpc::ClientContext* context, const ::sentiric::media::v1::StopRecordingRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::media::v1::StopRecordingResponse>>(PrepareAsyncStopRecordingRaw(context, request, cq));
     }
+    // =================================================================
+    // 3. NEXT-GEN (STREAMING) OPERASYONLAR
+    // (Gerçek Zamanlı AI Konuşmaları İçin - ÖNERİLEN)
+    // =================================================================
+    //
+    // [KRİTİK OPTİMİZASYON]
+    // TTS'ten gelen ham ses parçalarını (chunks) anlık olarak RTP'ye basar.
+    // Dosya biriktirme veya Base64 dönüşümü yapmaz. 
+    // TelephonyActionService tarafından kullanılır.
+    std::unique_ptr< ::grpc::ClientReaderWriterInterface< ::sentiric::media::v1::StreamAudioToCallRequest, ::sentiric::media::v1::StreamAudioToCallResponse>> StreamAudioToCall(::grpc::ClientContext* context) {
+      return std::unique_ptr< ::grpc::ClientReaderWriterInterface< ::sentiric::media::v1::StreamAudioToCallRequest, ::sentiric::media::v1::StreamAudioToCallResponse>>(StreamAudioToCallRaw(context));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::sentiric::media::v1::StreamAudioToCallRequest, ::sentiric::media::v1::StreamAudioToCallResponse>> AsyncStreamAudioToCall(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::sentiric::media::v1::StreamAudioToCallRequest, ::sentiric::media::v1::StreamAudioToCallResponse>>(AsyncStreamAudioToCallRaw(context, cq, tag));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::sentiric::media::v1::StreamAudioToCallRequest, ::sentiric::media::v1::StreamAudioToCallResponse>> PrepareAsyncStreamAudioToCall(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderWriterInterface< ::sentiric::media::v1::StreamAudioToCallRequest, ::sentiric::media::v1::StreamAudioToCallResponse>>(PrepareAsyncStreamAudioToCallRaw(context, cq));
+    }
     class async_interface {
      public:
       virtual ~async_interface() {}
+      // Yeni bir RTP oturumu için dinamik UDP portu tahsis eder.
       virtual void AllocatePort(::grpc::ClientContext* context, const ::sentiric::media::v1::AllocatePortRequest* request, ::sentiric::media::v1::AllocatePortResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void AllocatePort(::grpc::ClientContext* context, const ::sentiric::media::v1::AllocatePortRequest* request, ::sentiric::media::v1::AllocatePortResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      // İş bitince portu serbest bırakır ve karantinaya alır.
       virtual void ReleasePort(::grpc::ClientContext* context, const ::sentiric::media::v1::ReleasePortRequest* request, ::sentiric::media::v1::ReleasePortResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void ReleasePort(::grpc::ClientContext* context, const ::sentiric::media::v1::ReleasePortRequest* request, ::sentiric::media::v1::ReleasePortResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      // =================================================================
+      // 2. LEGACY (UNARY) OPERASYONLAR 
+      // (Agent-Service uyumluluğu için korunmaktadır - DEPRECATED)
+      // =================================================================
+      //
+      // Bir ses dosyasını (URI) veya Base64 veriyi tek seferde çalar.
+      // UYARI: Yüksek gecikmeye (latency) neden olabilir.
       virtual void PlayAudio(::grpc::ClientContext* context, const ::sentiric::media::v1::PlayAudioRequest* request, ::sentiric::media::v1::PlayAudioResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void PlayAudio(::grpc::ClientContext* context, const ::sentiric::media::v1::PlayAudioRequest* request, ::sentiric::media::v1::PlayAudioResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      // Canlı sesi dinlemek için stream açar (Tek yönlü: Media -> Client).
       virtual void RecordAudio(::grpc::ClientContext* context, const ::sentiric::media::v1::RecordAudioRequest* request, ::grpc::ClientReadReactor< ::sentiric::media::v1::RecordAudioResponse>* reactor) = 0;
+      // Sesi S3/MinIO'ya kaydetmeye başlar.
       virtual void StartRecording(::grpc::ClientContext* context, const ::sentiric::media::v1::StartRecordingRequest* request, ::sentiric::media::v1::StartRecordingResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void StartRecording(::grpc::ClientContext* context, const ::sentiric::media::v1::StartRecordingRequest* request, ::sentiric::media::v1::StartRecordingResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      // Kaydı durdurur ve dosyayı kapatır.
       virtual void StopRecording(::grpc::ClientContext* context, const ::sentiric::media::v1::StopRecordingRequest* request, ::sentiric::media::v1::StopRecordingResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void StopRecording(::grpc::ClientContext* context, const ::sentiric::media::v1::StopRecordingRequest* request, ::sentiric::media::v1::StopRecordingResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      // =================================================================
+      // 3. NEXT-GEN (STREAMING) OPERASYONLAR
+      // (Gerçek Zamanlı AI Konuşmaları İçin - ÖNERİLEN)
+      // =================================================================
+      //
+      // [KRİTİK OPTİMİZASYON]
+      // TTS'ten gelen ham ses parçalarını (chunks) anlık olarak RTP'ye basar.
+      // Dosya biriktirme veya Base64 dönüşümü yapmaz. 
+      // TelephonyActionService tarafından kullanılır.
+      virtual void StreamAudioToCall(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::sentiric::media::v1::StreamAudioToCallRequest,::sentiric::media::v1::StreamAudioToCallResponse>* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
@@ -113,6 +167,9 @@ class MediaService final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::media::v1::StartRecordingResponse>* PrepareAsyncStartRecordingRaw(::grpc::ClientContext* context, const ::sentiric::media::v1::StartRecordingRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::media::v1::StopRecordingResponse>* AsyncStopRecordingRaw(::grpc::ClientContext* context, const ::sentiric::media::v1::StopRecordingRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::media::v1::StopRecordingResponse>* PrepareAsyncStopRecordingRaw(::grpc::ClientContext* context, const ::sentiric::media::v1::StopRecordingRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientReaderWriterInterface< ::sentiric::media::v1::StreamAudioToCallRequest, ::sentiric::media::v1::StreamAudioToCallResponse>* StreamAudioToCallRaw(::grpc::ClientContext* context) = 0;
+    virtual ::grpc::ClientAsyncReaderWriterInterface< ::sentiric::media::v1::StreamAudioToCallRequest, ::sentiric::media::v1::StreamAudioToCallResponse>* AsyncStreamAudioToCallRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) = 0;
+    virtual ::grpc::ClientAsyncReaderWriterInterface< ::sentiric::media::v1::StreamAudioToCallRequest, ::sentiric::media::v1::StreamAudioToCallResponse>* PrepareAsyncStreamAudioToCallRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -161,6 +218,15 @@ class MediaService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::media::v1::StopRecordingResponse>> PrepareAsyncStopRecording(::grpc::ClientContext* context, const ::sentiric::media::v1::StopRecordingRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::media::v1::StopRecordingResponse>>(PrepareAsyncStopRecordingRaw(context, request, cq));
     }
+    std::unique_ptr< ::grpc::ClientReaderWriter< ::sentiric::media::v1::StreamAudioToCallRequest, ::sentiric::media::v1::StreamAudioToCallResponse>> StreamAudioToCall(::grpc::ClientContext* context) {
+      return std::unique_ptr< ::grpc::ClientReaderWriter< ::sentiric::media::v1::StreamAudioToCallRequest, ::sentiric::media::v1::StreamAudioToCallResponse>>(StreamAudioToCallRaw(context));
+    }
+    std::unique_ptr<  ::grpc::ClientAsyncReaderWriter< ::sentiric::media::v1::StreamAudioToCallRequest, ::sentiric::media::v1::StreamAudioToCallResponse>> AsyncStreamAudioToCall(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderWriter< ::sentiric::media::v1::StreamAudioToCallRequest, ::sentiric::media::v1::StreamAudioToCallResponse>>(AsyncStreamAudioToCallRaw(context, cq, tag));
+    }
+    std::unique_ptr<  ::grpc::ClientAsyncReaderWriter< ::sentiric::media::v1::StreamAudioToCallRequest, ::sentiric::media::v1::StreamAudioToCallResponse>> PrepareAsyncStreamAudioToCall(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderWriter< ::sentiric::media::v1::StreamAudioToCallRequest, ::sentiric::media::v1::StreamAudioToCallResponse>>(PrepareAsyncStreamAudioToCallRaw(context, cq));
+    }
     class async final :
       public StubInterface::async_interface {
      public:
@@ -175,6 +241,7 @@ class MediaService final {
       void StartRecording(::grpc::ClientContext* context, const ::sentiric::media::v1::StartRecordingRequest* request, ::sentiric::media::v1::StartRecordingResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void StopRecording(::grpc::ClientContext* context, const ::sentiric::media::v1::StopRecordingRequest* request, ::sentiric::media::v1::StopRecordingResponse* response, std::function<void(::grpc::Status)>) override;
       void StopRecording(::grpc::ClientContext* context, const ::sentiric::media::v1::StopRecordingRequest* request, ::sentiric::media::v1::StopRecordingResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void StreamAudioToCall(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::sentiric::media::v1::StreamAudioToCallRequest,::sentiric::media::v1::StreamAudioToCallResponse>* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -199,12 +266,16 @@ class MediaService final {
     ::grpc::ClientAsyncResponseReader< ::sentiric::media::v1::StartRecordingResponse>* PrepareAsyncStartRecordingRaw(::grpc::ClientContext* context, const ::sentiric::media::v1::StartRecordingRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::sentiric::media::v1::StopRecordingResponse>* AsyncStopRecordingRaw(::grpc::ClientContext* context, const ::sentiric::media::v1::StopRecordingRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::sentiric::media::v1::StopRecordingResponse>* PrepareAsyncStopRecordingRaw(::grpc::ClientContext* context, const ::sentiric::media::v1::StopRecordingRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientReaderWriter< ::sentiric::media::v1::StreamAudioToCallRequest, ::sentiric::media::v1::StreamAudioToCallResponse>* StreamAudioToCallRaw(::grpc::ClientContext* context) override;
+    ::grpc::ClientAsyncReaderWriter< ::sentiric::media::v1::StreamAudioToCallRequest, ::sentiric::media::v1::StreamAudioToCallResponse>* AsyncStreamAudioToCallRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) override;
+    ::grpc::ClientAsyncReaderWriter< ::sentiric::media::v1::StreamAudioToCallRequest, ::sentiric::media::v1::StreamAudioToCallResponse>* PrepareAsyncStreamAudioToCallRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_AllocatePort_;
     const ::grpc::internal::RpcMethod rpcmethod_ReleasePort_;
     const ::grpc::internal::RpcMethod rpcmethod_PlayAudio_;
     const ::grpc::internal::RpcMethod rpcmethod_RecordAudio_;
     const ::grpc::internal::RpcMethod rpcmethod_StartRecording_;
     const ::grpc::internal::RpcMethod rpcmethod_StopRecording_;
+    const ::grpc::internal::RpcMethod rpcmethod_StreamAudioToCall_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -212,12 +283,34 @@ class MediaService final {
    public:
     Service();
     virtual ~Service();
+    // Yeni bir RTP oturumu için dinamik UDP portu tahsis eder.
     virtual ::grpc::Status AllocatePort(::grpc::ServerContext* context, const ::sentiric::media::v1::AllocatePortRequest* request, ::sentiric::media::v1::AllocatePortResponse* response);
+    // İş bitince portu serbest bırakır ve karantinaya alır.
     virtual ::grpc::Status ReleasePort(::grpc::ServerContext* context, const ::sentiric::media::v1::ReleasePortRequest* request, ::sentiric::media::v1::ReleasePortResponse* response);
+    // =================================================================
+    // 2. LEGACY (UNARY) OPERASYONLAR 
+    // (Agent-Service uyumluluğu için korunmaktadır - DEPRECATED)
+    // =================================================================
+    //
+    // Bir ses dosyasını (URI) veya Base64 veriyi tek seferde çalar.
+    // UYARI: Yüksek gecikmeye (latency) neden olabilir.
     virtual ::grpc::Status PlayAudio(::grpc::ServerContext* context, const ::sentiric::media::v1::PlayAudioRequest* request, ::sentiric::media::v1::PlayAudioResponse* response);
+    // Canlı sesi dinlemek için stream açar (Tek yönlü: Media -> Client).
     virtual ::grpc::Status RecordAudio(::grpc::ServerContext* context, const ::sentiric::media::v1::RecordAudioRequest* request, ::grpc::ServerWriter< ::sentiric::media::v1::RecordAudioResponse>* writer);
+    // Sesi S3/MinIO'ya kaydetmeye başlar.
     virtual ::grpc::Status StartRecording(::grpc::ServerContext* context, const ::sentiric::media::v1::StartRecordingRequest* request, ::sentiric::media::v1::StartRecordingResponse* response);
+    // Kaydı durdurur ve dosyayı kapatır.
     virtual ::grpc::Status StopRecording(::grpc::ServerContext* context, const ::sentiric::media::v1::StopRecordingRequest* request, ::sentiric::media::v1::StopRecordingResponse* response);
+    // =================================================================
+    // 3. NEXT-GEN (STREAMING) OPERASYONLAR
+    // (Gerçek Zamanlı AI Konuşmaları İçin - ÖNERİLEN)
+    // =================================================================
+    //
+    // [KRİTİK OPTİMİZASYON]
+    // TTS'ten gelen ham ses parçalarını (chunks) anlık olarak RTP'ye basar.
+    // Dosya biriktirme veya Base64 dönüşümü yapmaz. 
+    // TelephonyActionService tarafından kullanılır.
+    virtual ::grpc::Status StreamAudioToCall(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::sentiric::media::v1::StreamAudioToCallResponse, ::sentiric::media::v1::StreamAudioToCallRequest>* stream);
   };
   template <class BaseClass>
   class WithAsyncMethod_AllocatePort : public BaseClass {
@@ -339,7 +432,27 @@ class MediaService final {
       ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_AllocatePort<WithAsyncMethod_ReleasePort<WithAsyncMethod_PlayAudio<WithAsyncMethod_RecordAudio<WithAsyncMethod_StartRecording<WithAsyncMethod_StopRecording<Service > > > > > > AsyncService;
+  template <class BaseClass>
+  class WithAsyncMethod_StreamAudioToCall : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_StreamAudioToCall() {
+      ::grpc::Service::MarkMethodAsync(6);
+    }
+    ~WithAsyncMethod_StreamAudioToCall() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status StreamAudioToCall(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::sentiric::media::v1::StreamAudioToCallResponse, ::sentiric::media::v1::StreamAudioToCallRequest>* /*stream*/)  override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestStreamAudioToCall(::grpc::ServerContext* context, ::grpc::ServerAsyncReaderWriter< ::sentiric::media::v1::StreamAudioToCallResponse, ::sentiric::media::v1::StreamAudioToCallRequest>* stream, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncBidiStreaming(6, context, stream, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_AllocatePort<WithAsyncMethod_ReleasePort<WithAsyncMethod_PlayAudio<WithAsyncMethod_RecordAudio<WithAsyncMethod_StartRecording<WithAsyncMethod_StopRecording<WithAsyncMethod_StreamAudioToCall<Service > > > > > > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_AllocatePort : public BaseClass {
    private:
@@ -497,7 +610,30 @@ class MediaService final {
     virtual ::grpc::ServerUnaryReactor* StopRecording(
       ::grpc::CallbackServerContext* /*context*/, const ::sentiric::media::v1::StopRecordingRequest* /*request*/, ::sentiric::media::v1::StopRecordingResponse* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_AllocatePort<WithCallbackMethod_ReleasePort<WithCallbackMethod_PlayAudio<WithCallbackMethod_RecordAudio<WithCallbackMethod_StartRecording<WithCallbackMethod_StopRecording<Service > > > > > > CallbackService;
+  template <class BaseClass>
+  class WithCallbackMethod_StreamAudioToCall : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_StreamAudioToCall() {
+      ::grpc::Service::MarkMethodCallback(6,
+          new ::grpc::internal::CallbackBidiHandler< ::sentiric::media::v1::StreamAudioToCallRequest, ::sentiric::media::v1::StreamAudioToCallResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context) { return this->StreamAudioToCall(context); }));
+    }
+    ~WithCallbackMethod_StreamAudioToCall() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status StreamAudioToCall(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::sentiric::media::v1::StreamAudioToCallResponse, ::sentiric::media::v1::StreamAudioToCallRequest>* /*stream*/)  override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerBidiReactor< ::sentiric::media::v1::StreamAudioToCallRequest, ::sentiric::media::v1::StreamAudioToCallResponse>* StreamAudioToCall(
+      ::grpc::CallbackServerContext* /*context*/)
+      { return nullptr; }
+  };
+  typedef WithCallbackMethod_AllocatePort<WithCallbackMethod_ReleasePort<WithCallbackMethod_PlayAudio<WithCallbackMethod_RecordAudio<WithCallbackMethod_StartRecording<WithCallbackMethod_StopRecording<WithCallbackMethod_StreamAudioToCall<Service > > > > > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_AllocatePort : public BaseClass {
@@ -597,6 +733,23 @@ class MediaService final {
     }
     // disable synchronous version of this method
     ::grpc::Status StopRecording(::grpc::ServerContext* /*context*/, const ::sentiric::media::v1::StopRecordingRequest* /*request*/, ::sentiric::media::v1::StopRecordingResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_StreamAudioToCall : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_StreamAudioToCall() {
+      ::grpc::Service::MarkMethodGeneric(6);
+    }
+    ~WithGenericMethod_StreamAudioToCall() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status StreamAudioToCall(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::sentiric::media::v1::StreamAudioToCallResponse, ::sentiric::media::v1::StreamAudioToCallRequest>* /*stream*/)  override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -719,6 +872,26 @@ class MediaService final {
     }
     void RequestStopRecording(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_StreamAudioToCall : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_StreamAudioToCall() {
+      ::grpc::Service::MarkMethodRaw(6);
+    }
+    ~WithRawMethod_StreamAudioToCall() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status StreamAudioToCall(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::sentiric::media::v1::StreamAudioToCallResponse, ::sentiric::media::v1::StreamAudioToCallRequest>* /*stream*/)  override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestStreamAudioToCall(::grpc::ServerContext* context, ::grpc::ServerAsyncReaderWriter< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* stream, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncBidiStreaming(6, context, stream, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -852,6 +1025,29 @@ class MediaService final {
     }
     virtual ::grpc::ServerUnaryReactor* StopRecording(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_StreamAudioToCall : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_StreamAudioToCall() {
+      ::grpc::Service::MarkMethodRawCallback(6,
+          new ::grpc::internal::CallbackBidiHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context) { return this->StreamAudioToCall(context); }));
+    }
+    ~WithRawCallbackMethod_StreamAudioToCall() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status StreamAudioToCall(::grpc::ServerContext* /*context*/, ::grpc::ServerReaderWriter< ::sentiric::media::v1::StreamAudioToCallResponse, ::sentiric::media::v1::StreamAudioToCallRequest>* /*stream*/)  override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerBidiReactor< ::grpc::ByteBuffer, ::grpc::ByteBuffer>* StreamAudioToCall(
+      ::grpc::CallbackServerContext* /*context*/)
+      { return nullptr; }
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_AllocatePort : public BaseClass {
@@ -1019,6 +1215,9 @@ class MediaService final {
   typedef WithSplitStreamingMethod_RecordAudio<Service > SplitStreamedService;
   typedef WithStreamedUnaryMethod_AllocatePort<WithStreamedUnaryMethod_ReleasePort<WithStreamedUnaryMethod_PlayAudio<WithSplitStreamingMethod_RecordAudio<WithStreamedUnaryMethod_StartRecording<WithStreamedUnaryMethod_StopRecording<Service > > > > > > StreamedService;
 };
+// =================================================================
+// 1. TEMEL PORT YÖNETİMİ (ALTYAPI)
+// =================================================================
 
 }  // namespace v1
 }  // namespace media

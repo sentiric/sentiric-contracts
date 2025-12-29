@@ -244,6 +244,37 @@ pub mod media_service_client {
                 );
             self.inner.unary(req, path, codec).await
         }
+        pub async fn stream_audio_to_call(
+            &mut self,
+            request: impl tonic::IntoStreamingRequest<
+                Message = super::StreamAudioToCallRequest,
+            >,
+        ) -> std::result::Result<
+            tonic::Response<tonic::codec::Streaming<super::StreamAudioToCallResponse>>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::unknown(
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
+            let codec = tonic_prost::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/sentiric.media.v1.MediaService/StreamAudioToCall",
+            );
+            let mut req = request.into_streaming_request();
+            req.extensions_mut()
+                .insert(
+                    GrpcMethod::new(
+                        "sentiric.media.v1.MediaService",
+                        "StreamAudioToCall",
+                    ),
+                );
+            self.inner.streaming(req, path, codec).await
+        }
     }
 }
 /// Generated server implementations.
@@ -305,6 +336,22 @@ pub mod media_service_server {
             request: tonic::Request<super::StopRecordingRequest>,
         ) -> std::result::Result<
             tonic::Response<super::StopRecordingResponse>,
+            tonic::Status,
+        >;
+        /// Server streaming response type for the StreamAudioToCall method.
+        type StreamAudioToCallStream: tonic::codegen::tokio_stream::Stream<
+                Item = std::result::Result<
+                    super::StreamAudioToCallResponse,
+                    tonic::Status,
+                >,
+            >
+            + std::marker::Send
+            + 'static;
+        async fn stream_audio_to_call(
+            &self,
+            request: tonic::Request<tonic::Streaming<super::StreamAudioToCallRequest>>,
+        ) -> std::result::Result<
+            tonic::Response<Self::StreamAudioToCallStream>,
             tonic::Status,
         >;
     }
@@ -651,6 +698,55 @@ pub mod media_service_server {
                                 max_encoding_message_size,
                             );
                         let res = grpc.unary(method, req).await;
+                        Ok(res)
+                    };
+                    Box::pin(fut)
+                }
+                "/sentiric.media.v1.MediaService/StreamAudioToCall" => {
+                    #[allow(non_camel_case_types)]
+                    struct StreamAudioToCallSvc<T: MediaService>(pub Arc<T>);
+                    impl<
+                        T: MediaService,
+                    > tonic::server::StreamingService<super::StreamAudioToCallRequest>
+                    for StreamAudioToCallSvc<T> {
+                        type Response = super::StreamAudioToCallResponse;
+                        type ResponseStream = T::StreamAudioToCallStream;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::ResponseStream>,
+                            tonic::Status,
+                        >;
+                        fn call(
+                            &mut self,
+                            request: tonic::Request<
+                                tonic::Streaming<super::StreamAudioToCallRequest>,
+                            >,
+                        ) -> Self::Future {
+                            let inner = Arc::clone(&self.0);
+                            let fut = async move {
+                                <T as MediaService>::stream_audio_to_call(&inner, request)
+                                    .await
+                            };
+                            Box::pin(fut)
+                        }
+                    }
+                    let accept_compression_encodings = self.accept_compression_encodings;
+                    let send_compression_encodings = self.send_compression_encodings;
+                    let max_decoding_message_size = self.max_decoding_message_size;
+                    let max_encoding_message_size = self.max_encoding_message_size;
+                    let inner = self.inner.clone();
+                    let fut = async move {
+                        let method = StreamAudioToCallSvc(inner);
+                        let codec = tonic_prost::ProstCodec::default();
+                        let mut grpc = tonic::server::Grpc::new(codec)
+                            .apply_compression_config(
+                                accept_compression_encodings,
+                                send_compression_encodings,
+                            )
+                            .apply_max_message_size_config(
+                                max_decoding_message_size,
+                                max_encoding_message_size,
+                            );
+                        let res = grpc.streaming(method, req).await;
                         Ok(res)
                     };
                     Box::pin(fut)

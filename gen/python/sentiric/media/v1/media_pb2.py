@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1dsentiric/media/v1/media.proto\x12\x11sentiric.media.v1\".\n\x13\x41llocatePortRequest\x12\x17\n\x07\x63\x61ll_id\x18\x01 \x01(\tR\x06\x63\x61llId\"1\n\x14\x41llocatePortResponse\x12\x19\n\x08rtp_port\x18\x01 \x01(\rR\x07rtpPort\"/\n\x12ReleasePortRequest\x12\x19\n\x08rtp_port\x18\x01 \x01(\rR\x07rtpPort\"/\n\x13ReleasePortResponse\x12\x18\n\x07success\x18\x01 \x01(\x08R\x07success\"\x7f\n\x10PlayAudioRequest\x12\x1b\n\taudio_uri\x18\x01 \x01(\tR\x08\x61udioUri\x12&\n\x0fserver_rtp_port\x18\x02 \x01(\rR\rserverRtpPort\x12&\n\x0frtp_target_addr\x18\x03 \x01(\tR\rrtpTargetAddr\"G\n\x11PlayAudioResponse\x12\x18\n\x07success\x18\x01 \x01(\x08R\x07success\x12\x18\n\x07message\x18\x02 \x01(\tR\x07message\"\x86\x01\n\x12RecordAudioRequest\x12&\n\x0fserver_rtp_port\x18\x01 \x01(\rR\rserverRtpPort\x12\x31\n\x12target_sample_rate\x18\x02 \x01(\rH\x00R\x10targetSampleRate\x88\x01\x01\x42\x15\n\x13_target_sample_rate\"S\n\x13RecordAudioResponse\x12\x1d\n\naudio_data\x18\x01 \x01(\x0cR\taudioData\x12\x1d\n\nmedia_type\x18\x02 \x01(\tR\tmediaType\"\xf0\x01\n\x15StartRecordingRequest\x12&\n\x0fserver_rtp_port\x18\x01 \x01(\rR\rserverRtpPort\x12\x1d\n\noutput_uri\x18\x02 \x01(\tR\toutputUri\x12$\n\x0bsample_rate\x18\x03 \x01(\rH\x00R\nsampleRate\x88\x01\x01\x12\x1b\n\x06\x66ormat\x18\x04 \x01(\tH\x01R\x06\x66ormat\x88\x01\x01\x12\x17\n\x07\x63\x61ll_id\x18\x05 \x01(\tR\x06\x63\x61llId\x12\x19\n\x08trace_id\x18\x06 \x01(\tR\x07traceIdB\x0e\n\x0c_sample_rateB\t\n\x07_format\"2\n\x16StartRecordingResponse\x12\x18\n\x07success\x18\x01 \x01(\x08R\x07success\">\n\x14StopRecordingRequest\x12&\n\x0fserver_rtp_port\x18\x01 \x01(\rR\rserverRtpPort\"1\n\x15StopRecordingResponse\x12\x18\n\x07success\x18\x01 \x01(\x08R\x07success2\xd0\x04\n\x0cMediaService\x12_\n\x0c\x41llocatePort\x12&.sentiric.media.v1.AllocatePortRequest\x1a\'.sentiric.media.v1.AllocatePortResponse\x12\\\n\x0bReleasePort\x12%.sentiric.media.v1.ReleasePortRequest\x1a&.sentiric.media.v1.ReleasePortResponse\x12V\n\tPlayAudio\x12#.sentiric.media.v1.PlayAudioRequest\x1a$.sentiric.media.v1.PlayAudioResponse\x12^\n\x0bRecordAudio\x12%.sentiric.media.v1.RecordAudioRequest\x1a&.sentiric.media.v1.RecordAudioResponse0\x01\x12\x65\n\x0eStartRecording\x12(.sentiric.media.v1.StartRecordingRequest\x1a).sentiric.media.v1.StartRecordingResponse\x12\x62\n\rStopRecording\x12\'.sentiric.media.v1.StopRecordingRequest\x1a(.sentiric.media.v1.StopRecordingResponseBIZGgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/media/v1;mediav1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1dsentiric/media/v1/media.proto\x12\x11sentiric.media.v1\"T\n\x18StreamAudioToCallRequest\x12\x17\n\x07\x63\x61ll_id\x18\x01 \x01(\tR\x06\x63\x61llId\x12\x1f\n\x0b\x61udio_chunk\x18\x02 \x01(\x0cR\naudioChunk\"Z\n\x19StreamAudioToCallResponse\x12\x18\n\x07success\x18\x01 \x01(\x08R\x07success\x12#\n\rerror_message\x18\x02 \x01(\tR\x0c\x65rrorMessage\".\n\x13\x41llocatePortRequest\x12\x17\n\x07\x63\x61ll_id\x18\x01 \x01(\tR\x06\x63\x61llId\"1\n\x14\x41llocatePortResponse\x12\x19\n\x08rtp_port\x18\x01 \x01(\rR\x07rtpPort\"/\n\x12ReleasePortRequest\x12\x19\n\x08rtp_port\x18\x01 \x01(\rR\x07rtpPort\"/\n\x13ReleasePortResponse\x12\x18\n\x07success\x18\x01 \x01(\x08R\x07success\"\x7f\n\x10PlayAudioRequest\x12\x1b\n\taudio_uri\x18\x01 \x01(\tR\x08\x61udioUri\x12&\n\x0fserver_rtp_port\x18\x02 \x01(\rR\rserverRtpPort\x12&\n\x0frtp_target_addr\x18\x03 \x01(\tR\rrtpTargetAddr\"G\n\x11PlayAudioResponse\x12\x18\n\x07success\x18\x01 \x01(\x08R\x07success\x12\x18\n\x07message\x18\x02 \x01(\tR\x07message\"\x86\x01\n\x12RecordAudioRequest\x12&\n\x0fserver_rtp_port\x18\x01 \x01(\rR\rserverRtpPort\x12\x31\n\x12target_sample_rate\x18\x02 \x01(\rH\x00R\x10targetSampleRate\x88\x01\x01\x42\x15\n\x13_target_sample_rate\"S\n\x13RecordAudioResponse\x12\x1d\n\naudio_data\x18\x01 \x01(\x0cR\taudioData\x12\x1d\n\nmedia_type\x18\x02 \x01(\tR\tmediaType\"\xf0\x01\n\x15StartRecordingRequest\x12&\n\x0fserver_rtp_port\x18\x01 \x01(\rR\rserverRtpPort\x12\x1d\n\noutput_uri\x18\x02 \x01(\tR\toutputUri\x12$\n\x0bsample_rate\x18\x03 \x01(\rH\x00R\nsampleRate\x88\x01\x01\x12\x1b\n\x06\x66ormat\x18\x04 \x01(\tH\x01R\x06\x66ormat\x88\x01\x01\x12\x17\n\x07\x63\x61ll_id\x18\x05 \x01(\tR\x06\x63\x61llId\x12\x19\n\x08trace_id\x18\x06 \x01(\tR\x07traceIdB\x0e\n\x0c_sample_rateB\t\n\x07_format\"2\n\x16StartRecordingResponse\x12\x18\n\x07success\x18\x01 \x01(\x08R\x07success\">\n\x14StopRecordingRequest\x12&\n\x0fserver_rtp_port\x18\x01 \x01(\rR\rserverRtpPort\"1\n\x15StopRecordingResponse\x12\x18\n\x07success\x18\x01 \x01(\x08R\x07success2\xc4\x05\n\x0cMediaService\x12_\n\x0c\x41llocatePort\x12&.sentiric.media.v1.AllocatePortRequest\x1a\'.sentiric.media.v1.AllocatePortResponse\x12\\\n\x0bReleasePort\x12%.sentiric.media.v1.ReleasePortRequest\x1a&.sentiric.media.v1.ReleasePortResponse\x12V\n\tPlayAudio\x12#.sentiric.media.v1.PlayAudioRequest\x1a$.sentiric.media.v1.PlayAudioResponse\x12^\n\x0bRecordAudio\x12%.sentiric.media.v1.RecordAudioRequest\x1a&.sentiric.media.v1.RecordAudioResponse0\x01\x12\x65\n\x0eStartRecording\x12(.sentiric.media.v1.StartRecordingRequest\x1a).sentiric.media.v1.StartRecordingResponse\x12\x62\n\rStopRecording\x12\'.sentiric.media.v1.StopRecordingRequest\x1a(.sentiric.media.v1.StopRecordingResponse\x12r\n\x11StreamAudioToCall\x12+.sentiric.media.v1.StreamAudioToCallRequest\x1a,.sentiric.media.v1.StreamAudioToCallResponse(\x01\x30\x01\x42IZGgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/media/v1;mediav1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -32,30 +32,34 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'sentiric.media.v1.media_pb2
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
   _globals['DESCRIPTOR']._serialized_options = b'ZGgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/media/v1;mediav1'
-  _globals['_ALLOCATEPORTREQUEST']._serialized_start=52
-  _globals['_ALLOCATEPORTREQUEST']._serialized_end=98
-  _globals['_ALLOCATEPORTRESPONSE']._serialized_start=100
-  _globals['_ALLOCATEPORTRESPONSE']._serialized_end=149
-  _globals['_RELEASEPORTREQUEST']._serialized_start=151
-  _globals['_RELEASEPORTREQUEST']._serialized_end=198
-  _globals['_RELEASEPORTRESPONSE']._serialized_start=200
-  _globals['_RELEASEPORTRESPONSE']._serialized_end=247
-  _globals['_PLAYAUDIOREQUEST']._serialized_start=249
-  _globals['_PLAYAUDIOREQUEST']._serialized_end=376
-  _globals['_PLAYAUDIORESPONSE']._serialized_start=378
-  _globals['_PLAYAUDIORESPONSE']._serialized_end=449
-  _globals['_RECORDAUDIOREQUEST']._serialized_start=452
-  _globals['_RECORDAUDIOREQUEST']._serialized_end=586
-  _globals['_RECORDAUDIORESPONSE']._serialized_start=588
-  _globals['_RECORDAUDIORESPONSE']._serialized_end=671
-  _globals['_STARTRECORDINGREQUEST']._serialized_start=674
-  _globals['_STARTRECORDINGREQUEST']._serialized_end=914
-  _globals['_STARTRECORDINGRESPONSE']._serialized_start=916
-  _globals['_STARTRECORDINGRESPONSE']._serialized_end=966
-  _globals['_STOPRECORDINGREQUEST']._serialized_start=968
-  _globals['_STOPRECORDINGREQUEST']._serialized_end=1030
-  _globals['_STOPRECORDINGRESPONSE']._serialized_start=1032
-  _globals['_STOPRECORDINGRESPONSE']._serialized_end=1081
-  _globals['_MEDIASERVICE']._serialized_start=1084
-  _globals['_MEDIASERVICE']._serialized_end=1676
+  _globals['_STREAMAUDIOTOCALLREQUEST']._serialized_start=52
+  _globals['_STREAMAUDIOTOCALLREQUEST']._serialized_end=136
+  _globals['_STREAMAUDIOTOCALLRESPONSE']._serialized_start=138
+  _globals['_STREAMAUDIOTOCALLRESPONSE']._serialized_end=228
+  _globals['_ALLOCATEPORTREQUEST']._serialized_start=230
+  _globals['_ALLOCATEPORTREQUEST']._serialized_end=276
+  _globals['_ALLOCATEPORTRESPONSE']._serialized_start=278
+  _globals['_ALLOCATEPORTRESPONSE']._serialized_end=327
+  _globals['_RELEASEPORTREQUEST']._serialized_start=329
+  _globals['_RELEASEPORTREQUEST']._serialized_end=376
+  _globals['_RELEASEPORTRESPONSE']._serialized_start=378
+  _globals['_RELEASEPORTRESPONSE']._serialized_end=425
+  _globals['_PLAYAUDIOREQUEST']._serialized_start=427
+  _globals['_PLAYAUDIOREQUEST']._serialized_end=554
+  _globals['_PLAYAUDIORESPONSE']._serialized_start=556
+  _globals['_PLAYAUDIORESPONSE']._serialized_end=627
+  _globals['_RECORDAUDIOREQUEST']._serialized_start=630
+  _globals['_RECORDAUDIOREQUEST']._serialized_end=764
+  _globals['_RECORDAUDIORESPONSE']._serialized_start=766
+  _globals['_RECORDAUDIORESPONSE']._serialized_end=849
+  _globals['_STARTRECORDINGREQUEST']._serialized_start=852
+  _globals['_STARTRECORDINGREQUEST']._serialized_end=1092
+  _globals['_STARTRECORDINGRESPONSE']._serialized_start=1094
+  _globals['_STARTRECORDINGRESPONSE']._serialized_end=1144
+  _globals['_STOPRECORDINGREQUEST']._serialized_start=1146
+  _globals['_STOPRECORDINGREQUEST']._serialized_end=1208
+  _globals['_STOPRECORDINGRESPONSE']._serialized_start=1210
+  _globals['_STOPRECORDINGRESPONSE']._serialized_end=1259
+  _globals['_MEDIASERVICE']._serialized_start=1262
+  _globals['_MEDIASERVICE']._serialized_end=1970
 # @@protoc_insertion_point(module_scope)

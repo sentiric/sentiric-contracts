@@ -30,6 +30,7 @@ static const char* MediaService_method_names[] = {
   "/sentiric.media.v1.MediaService/RecordAudio",
   "/sentiric.media.v1.MediaService/StartRecording",
   "/sentiric.media.v1.MediaService/StopRecording",
+  "/sentiric.media.v1.MediaService/StreamAudioToCall",
 };
 
 std::unique_ptr< MediaService::Stub> MediaService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -45,6 +46,7 @@ MediaService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& chann
   , rpcmethod_RecordAudio_(MediaService_method_names[3], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
   , rpcmethod_StartRecording_(MediaService_method_names[4], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_StopRecording_(MediaService_method_names[5], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_StreamAudioToCall_(MediaService_method_names[6], options.suffix_for_stats(),::grpc::internal::RpcMethod::BIDI_STREAMING, channel)
   {}
 
 ::grpc::Status MediaService::Stub::AllocatePort(::grpc::ClientContext* context, const ::sentiric::media::v1::AllocatePortRequest& request, ::sentiric::media::v1::AllocatePortResponse* response) {
@@ -178,6 +180,22 @@ void MediaService::Stub::async::StopRecording(::grpc::ClientContext* context, co
   return result;
 }
 
+::grpc::ClientReaderWriter< ::sentiric::media::v1::StreamAudioToCallRequest, ::sentiric::media::v1::StreamAudioToCallResponse>* MediaService::Stub::StreamAudioToCallRaw(::grpc::ClientContext* context) {
+  return ::grpc::internal::ClientReaderWriterFactory< ::sentiric::media::v1::StreamAudioToCallRequest, ::sentiric::media::v1::StreamAudioToCallResponse>::Create(channel_.get(), rpcmethod_StreamAudioToCall_, context);
+}
+
+void MediaService::Stub::async::StreamAudioToCall(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::sentiric::media::v1::StreamAudioToCallRequest,::sentiric::media::v1::StreamAudioToCallResponse>* reactor) {
+  ::grpc::internal::ClientCallbackReaderWriterFactory< ::sentiric::media::v1::StreamAudioToCallRequest,::sentiric::media::v1::StreamAudioToCallResponse>::Create(stub_->channel_.get(), stub_->rpcmethod_StreamAudioToCall_, context, reactor);
+}
+
+::grpc::ClientAsyncReaderWriter< ::sentiric::media::v1::StreamAudioToCallRequest, ::sentiric::media::v1::StreamAudioToCallResponse>* MediaService::Stub::AsyncStreamAudioToCallRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc::internal::ClientAsyncReaderWriterFactory< ::sentiric::media::v1::StreamAudioToCallRequest, ::sentiric::media::v1::StreamAudioToCallResponse>::Create(channel_.get(), cq, rpcmethod_StreamAudioToCall_, context, true, tag);
+}
+
+::grpc::ClientAsyncReaderWriter< ::sentiric::media::v1::StreamAudioToCallRequest, ::sentiric::media::v1::StreamAudioToCallResponse>* MediaService::Stub::PrepareAsyncStreamAudioToCallRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncReaderWriterFactory< ::sentiric::media::v1::StreamAudioToCallRequest, ::sentiric::media::v1::StreamAudioToCallResponse>::Create(channel_.get(), cq, rpcmethod_StreamAudioToCall_, context, false, nullptr);
+}
+
 MediaService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       MediaService_method_names[0],
@@ -239,6 +257,16 @@ MediaService::Service::Service() {
              ::sentiric::media::v1::StopRecordingResponse* resp) {
                return service->StopRecording(ctx, req, resp);
              }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      MediaService_method_names[6],
+      ::grpc::internal::RpcMethod::BIDI_STREAMING,
+      new ::grpc::internal::BidiStreamingHandler< MediaService::Service, ::sentiric::media::v1::StreamAudioToCallRequest, ::sentiric::media::v1::StreamAudioToCallResponse>(
+          [](MediaService::Service* service,
+             ::grpc::ServerContext* ctx,
+             ::grpc::ServerReaderWriter<::sentiric::media::v1::StreamAudioToCallResponse,
+             ::sentiric::media::v1::StreamAudioToCallRequest>* stream) {
+               return service->StreamAudioToCall(ctx, stream);
+             }, this)));
 }
 
 MediaService::Service::~Service() {
@@ -283,6 +311,12 @@ MediaService::Service::~Service() {
   (void) context;
   (void) request;
   (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status MediaService::Service::StreamAudioToCall(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::sentiric::media::v1::StreamAudioToCallResponse, ::sentiric::media::v1::StreamAudioToCallRequest>* stream) {
+  (void) context;
+  (void) stream;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 

@@ -70,12 +70,12 @@ Yeni bir sürüm yayınlamak için Git etiketi (`tag`) oluşturmanız yeterlidir
 
 ```bash
 # Değişiklikleri main'e gönderin
-git commit -m "feat(api): Add new services for v1.13.0"
+git commit -m "feat(api): Add new services for v1.13.1"
 git push origin main
 
 # Yeni bir tag oluşturun ve gönderin
-git tag v1.13.0
-git push origin v1.13.0
+git tag v1.13.1
+git push origin v1.13.1
 ```
 > 🎯 **Semantic Versioning (semver)** kullanıyoruz: `MAJOR.MINOR.PATCH`. MAJOR değişiklikler geriye dönük uyumsuzluk yaratır.
 
