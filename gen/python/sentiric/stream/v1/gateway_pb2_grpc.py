@@ -2,11 +2,12 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from sentiric.mobile.v1 import gateway_pb2 as sentiric_dot_mobile_dot_v1_dot_gateway__pb2
+from sentiric.stream.v1 import gateway_pb2 as sentiric_dot_stream_dot_v1_dot_gateway__pb2
 
 
-class MobileGatewayServiceStub(object):
-    """Missing associated documentation comment in .proto file."""
+class StreamGatewayServiceStub(object):
+    """DEĞİŞİKLİK: MobileGatewayService -> StreamGatewayService
+    """
 
     def __init__(self, channel):
         """Constructor.
@@ -15,40 +16,41 @@ class MobileGatewayServiceStub(object):
             channel: A grpc.Channel.
         """
         self.StreamSession = channel.stream_stream(
-                '/sentiric.mobile.v1.MobileGatewayService/StreamSession',
-                request_serializer=sentiric_dot_mobile_dot_v1_dot_gateway__pb2.StreamSessionRequest.SerializeToString,
-                response_deserializer=sentiric_dot_mobile_dot_v1_dot_gateway__pb2.StreamSessionResponse.FromString,
+                '/sentiric.stream.v1.StreamGatewayService/StreamSession',
+                request_serializer=sentiric_dot_stream_dot_v1_dot_gateway__pb2.StreamSessionRequest.SerializeToString,
+                response_deserializer=sentiric_dot_stream_dot_v1_dot_gateway__pb2.StreamSessionResponse.FromString,
                 _registered_method=True)
 
 
-class MobileGatewayServiceServicer(object):
-    """Missing associated documentation comment in .proto file."""
+class StreamGatewayServiceServicer(object):
+    """DEĞİŞİKLİK: MobileGatewayService -> StreamGatewayService
+    """
 
     def StreamSession(self, request_iterator, context):
-        """Linter Kuralı: Request/Response isimleri RPC ile eşleşmeli.
-        """
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
 
-def add_MobileGatewayServiceServicer_to_server(servicer, server):
+def add_StreamGatewayServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'StreamSession': grpc.stream_stream_rpc_method_handler(
                     servicer.StreamSession,
-                    request_deserializer=sentiric_dot_mobile_dot_v1_dot_gateway__pb2.StreamSessionRequest.FromString,
-                    response_serializer=sentiric_dot_mobile_dot_v1_dot_gateway__pb2.StreamSessionResponse.SerializeToString,
+                    request_deserializer=sentiric_dot_stream_dot_v1_dot_gateway__pb2.StreamSessionRequest.FromString,
+                    response_serializer=sentiric_dot_stream_dot_v1_dot_gateway__pb2.StreamSessionResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'sentiric.mobile.v1.MobileGatewayService', rpc_method_handlers)
+            'sentiric.stream.v1.StreamGatewayService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('sentiric.mobile.v1.MobileGatewayService', rpc_method_handlers)
+    server.add_registered_method_handlers('sentiric.stream.v1.StreamGatewayService', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
-class MobileGatewayService(object):
-    """Missing associated documentation comment in .proto file."""
+class StreamGatewayService(object):
+    """DEĞİŞİKLİK: MobileGatewayService -> StreamGatewayService
+    """
 
     @staticmethod
     def StreamSession(request_iterator,
@@ -64,9 +66,9 @@ class MobileGatewayService(object):
         return grpc.experimental.stream_stream(
             request_iterator,
             target,
-            '/sentiric.mobile.v1.MobileGatewayService/StreamSession',
-            sentiric_dot_mobile_dot_v1_dot_gateway__pb2.StreamSessionRequest.SerializeToString,
-            sentiric_dot_mobile_dot_v1_dot_gateway__pb2.StreamSessionResponse.FromString,
+            '/sentiric.stream.v1.StreamGatewayService/StreamSession',
+            sentiric_dot_stream_dot_v1_dot_gateway__pb2.StreamSessionRequest.SerializeToString,
+            sentiric_dot_stream_dot_v1_dot_gateway__pb2.StreamSessionResponse.FromString,
             options,
             channel_credentials,
             insecure,

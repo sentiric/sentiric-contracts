@@ -1,14 +1,16 @@
 syntax = "proto3";
 
-package sentiric.mobile.v1;
+// DEĞİŞİKLİK: mobile -> stream
+package sentiric.stream.v1;
 
-option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/mobile/v1;mobilev1";
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/stream/v1;streamv1";
 
-service MobileGatewayService {
-  // Linter Kuralı: Request/Response isimleri RPC ile eşleşmeli.
+// DEĞİŞİKLİK: MobileGatewayService -> StreamGatewayService
+service StreamGatewayService {
   rpc StreamSession(stream StreamSessionRequest) returns (stream StreamSessionResponse);
 }
 
+// ... Mesaj isimleri aynı kalabilir veya StreamSessionRequest olarak genelleyebilirsin ...
 message StreamSessionRequest {
   oneof data {
     SessionConfig config = 1;

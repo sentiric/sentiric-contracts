@@ -2,9 +2,11 @@
 // versions:
 // 	protoc-gen-go v1.36.11
 // 	protoc        (unknown)
-// source: sentiric/mobile/v1/gateway.proto
+// source: sentiric/stream/v1/gateway.proto
 
-package mobilev1
+// DEĞİŞİKLİK: mobile -> stream
+
+package streamv1
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -59,11 +61,11 @@ func (x SessionControl_EventType) String() string {
 }
 
 func (SessionControl_EventType) Descriptor() protoreflect.EnumDescriptor {
-	return file_sentiric_mobile_v1_gateway_proto_enumTypes[0].Descriptor()
+	return file_sentiric_stream_v1_gateway_proto_enumTypes[0].Descriptor()
 }
 
 func (SessionControl_EventType) Type() protoreflect.EnumType {
-	return &file_sentiric_mobile_v1_gateway_proto_enumTypes[0]
+	return &file_sentiric_stream_v1_gateway_proto_enumTypes[0]
 }
 
 func (x SessionControl_EventType) Number() protoreflect.EnumNumber {
@@ -72,9 +74,10 @@ func (x SessionControl_EventType) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use SessionControl_EventType.Descriptor instead.
 func (SessionControl_EventType) EnumDescriptor() ([]byte, []int) {
-	return file_sentiric_mobile_v1_gateway_proto_rawDescGZIP(), []int{3, 0}
+	return file_sentiric_stream_v1_gateway_proto_rawDescGZIP(), []int{3, 0}
 }
 
+// ... Mesaj isimleri aynı kalabilir veya StreamSessionRequest olarak genelleyebilirsin ...
 type StreamSessionRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Types that are valid to be assigned to Data:
@@ -90,7 +93,7 @@ type StreamSessionRequest struct {
 
 func (x *StreamSessionRequest) Reset() {
 	*x = StreamSessionRequest{}
-	mi := &file_sentiric_mobile_v1_gateway_proto_msgTypes[0]
+	mi := &file_sentiric_stream_v1_gateway_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -102,7 +105,7 @@ func (x *StreamSessionRequest) String() string {
 func (*StreamSessionRequest) ProtoMessage() {}
 
 func (x *StreamSessionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_mobile_v1_gateway_proto_msgTypes[0]
+	mi := &file_sentiric_stream_v1_gateway_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -115,7 +118,7 @@ func (x *StreamSessionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StreamSessionRequest.ProtoReflect.Descriptor instead.
 func (*StreamSessionRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_mobile_v1_gateway_proto_rawDescGZIP(), []int{0}
+	return file_sentiric_stream_v1_gateway_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *StreamSessionRequest) GetData() isStreamSessionRequest_Data {
@@ -203,7 +206,7 @@ type StreamSessionResponse struct {
 
 func (x *StreamSessionResponse) Reset() {
 	*x = StreamSessionResponse{}
-	mi := &file_sentiric_mobile_v1_gateway_proto_msgTypes[1]
+	mi := &file_sentiric_stream_v1_gateway_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -215,7 +218,7 @@ func (x *StreamSessionResponse) String() string {
 func (*StreamSessionResponse) ProtoMessage() {}
 
 func (x *StreamSessionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_mobile_v1_gateway_proto_msgTypes[1]
+	mi := &file_sentiric_stream_v1_gateway_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -228,7 +231,7 @@ func (x *StreamSessionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StreamSessionResponse.ProtoReflect.Descriptor instead.
 func (*StreamSessionResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_mobile_v1_gateway_proto_rawDescGZIP(), []int{1}
+	return file_sentiric_stream_v1_gateway_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *StreamSessionResponse) GetData() isStreamSessionResponse_Data {
@@ -298,7 +301,7 @@ type SessionConfig struct {
 
 func (x *SessionConfig) Reset() {
 	*x = SessionConfig{}
-	mi := &file_sentiric_mobile_v1_gateway_proto_msgTypes[2]
+	mi := &file_sentiric_stream_v1_gateway_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -310,7 +313,7 @@ func (x *SessionConfig) String() string {
 func (*SessionConfig) ProtoMessage() {}
 
 func (x *SessionConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_mobile_v1_gateway_proto_msgTypes[2]
+	mi := &file_sentiric_stream_v1_gateway_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -323,7 +326,7 @@ func (x *SessionConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SessionConfig.ProtoReflect.Descriptor instead.
 func (*SessionConfig) Descriptor() ([]byte, []int) {
-	return file_sentiric_mobile_v1_gateway_proto_rawDescGZIP(), []int{2}
+	return file_sentiric_stream_v1_gateway_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *SessionConfig) GetToken() string {
@@ -349,14 +352,14 @@ func (x *SessionConfig) GetSampleRate() uint32 {
 
 type SessionControl struct {
 	state         protoimpl.MessageState   `protogen:"open.v1"`
-	Event         SessionControl_EventType `protobuf:"varint,1,opt,name=event,proto3,enum=sentiric.mobile.v1.SessionControl_EventType" json:"event,omitempty"`
+	Event         SessionControl_EventType `protobuf:"varint,1,opt,name=event,proto3,enum=sentiric.stream.v1.SessionControl_EventType" json:"event,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *SessionControl) Reset() {
 	*x = SessionControl{}
-	mi := &file_sentiric_mobile_v1_gateway_proto_msgTypes[3]
+	mi := &file_sentiric_stream_v1_gateway_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -368,7 +371,7 @@ func (x *SessionControl) String() string {
 func (*SessionControl) ProtoMessage() {}
 
 func (x *SessionControl) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_mobile_v1_gateway_proto_msgTypes[3]
+	mi := &file_sentiric_stream_v1_gateway_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -381,7 +384,7 @@ func (x *SessionControl) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SessionControl.ProtoReflect.Descriptor instead.
 func (*SessionControl) Descriptor() ([]byte, []int) {
-	return file_sentiric_mobile_v1_gateway_proto_rawDescGZIP(), []int{3}
+	return file_sentiric_stream_v1_gateway_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *SessionControl) GetEvent() SessionControl_EventType {
@@ -391,17 +394,17 @@ func (x *SessionControl) GetEvent() SessionControl_EventType {
 	return SessionControl_EVENT_TYPE_UNSPECIFIED
 }
 
-var File_sentiric_mobile_v1_gateway_proto protoreflect.FileDescriptor
+var File_sentiric_stream_v1_gateway_proto protoreflect.FileDescriptor
 
-const file_sentiric_mobile_v1_gateway_proto_rawDesc = "" +
+const file_sentiric_stream_v1_gateway_proto_rawDesc = "" +
 	"\n" +
-	" sentiric/mobile/v1/gateway.proto\x12\x12sentiric.mobile.v1\"\xe3\x01\n" +
+	" sentiric/stream/v1/gateway.proto\x12\x12sentiric.stream.v1\"\xe3\x01\n" +
 	"\x14StreamSessionRequest\x12;\n" +
-	"\x06config\x18\x01 \x01(\v2!.sentiric.mobile.v1.SessionConfigH\x00R\x06config\x12!\n" +
+	"\x06config\x18\x01 \x01(\v2!.sentiric.stream.v1.SessionConfigH\x00R\x06config\x12!\n" +
 	"\vaudio_chunk\x18\x02 \x01(\fH\x00R\n" +
 	"audioChunk\x12#\n" +
 	"\ftext_message\x18\x03 \x01(\tH\x00R\vtextMessage\x12>\n" +
-	"\acontrol\x18\x04 \x01(\v2\".sentiric.mobile.v1.SessionControlH\x00R\acontrolB\x06\n" +
+	"\acontrol\x18\x04 \x01(\v2\".sentiric.stream.v1.SessionControlH\x00R\acontrolB\x06\n" +
 	"\x04data\"\x96\x01\n" +
 	"\x15StreamSessionResponse\x12'\n" +
 	"\x0eaudio_response\x18\x01 \x01(\fH\x00R\raudioResponse\x12%\n" +
@@ -414,42 +417,42 @@ const file_sentiric_mobile_v1_gateway_proto_rawDesc = "" +
 	"\vsample_rate\x18\x03 \x01(\rR\n" +
 	"sampleRate\"\xc2\x01\n" +
 	"\x0eSessionControl\x12B\n" +
-	"\x05event\x18\x01 \x01(\x0e2,.sentiric.mobile.v1.SessionControl.EventTypeR\x05event\"l\n" +
+	"\x05event\x18\x01 \x01(\x0e2,.sentiric.stream.v1.SessionControl.EventTypeR\x05event\"l\n" +
 	"\tEventType\x12\x1a\n" +
 	"\x16EVENT_TYPE_UNSPECIFIED\x10\x00\x12\x18\n" +
 	"\x14EVENT_TYPE_INTERRUPT\x10\x01\x12\x12\n" +
 	"\x0eEVENT_TYPE_EOS\x10\x02\x12\x15\n" +
 	"\x11EVENT_TYPE_HANGUP\x10\x032\x80\x01\n" +
-	"\x14MobileGatewayService\x12h\n" +
-	"\rStreamSession\x12(.sentiric.mobile.v1.StreamSessionRequest\x1a).sentiric.mobile.v1.StreamSessionResponse(\x010\x01BKZIgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/mobile/v1;mobilev1b\x06proto3"
+	"\x14StreamGatewayService\x12h\n" +
+	"\rStreamSession\x12(.sentiric.stream.v1.StreamSessionRequest\x1a).sentiric.stream.v1.StreamSessionResponse(\x010\x01BKZIgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/stream/v1;streamv1b\x06proto3"
 
 var (
-	file_sentiric_mobile_v1_gateway_proto_rawDescOnce sync.Once
-	file_sentiric_mobile_v1_gateway_proto_rawDescData []byte
+	file_sentiric_stream_v1_gateway_proto_rawDescOnce sync.Once
+	file_sentiric_stream_v1_gateway_proto_rawDescData []byte
 )
 
-func file_sentiric_mobile_v1_gateway_proto_rawDescGZIP() []byte {
-	file_sentiric_mobile_v1_gateway_proto_rawDescOnce.Do(func() {
-		file_sentiric_mobile_v1_gateway_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_sentiric_mobile_v1_gateway_proto_rawDesc), len(file_sentiric_mobile_v1_gateway_proto_rawDesc)))
+func file_sentiric_stream_v1_gateway_proto_rawDescGZIP() []byte {
+	file_sentiric_stream_v1_gateway_proto_rawDescOnce.Do(func() {
+		file_sentiric_stream_v1_gateway_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_sentiric_stream_v1_gateway_proto_rawDesc), len(file_sentiric_stream_v1_gateway_proto_rawDesc)))
 	})
-	return file_sentiric_mobile_v1_gateway_proto_rawDescData
+	return file_sentiric_stream_v1_gateway_proto_rawDescData
 }
 
-var file_sentiric_mobile_v1_gateway_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_sentiric_mobile_v1_gateway_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
-var file_sentiric_mobile_v1_gateway_proto_goTypes = []any{
-	(SessionControl_EventType)(0), // 0: sentiric.mobile.v1.SessionControl.EventType
-	(*StreamSessionRequest)(nil),  // 1: sentiric.mobile.v1.StreamSessionRequest
-	(*StreamSessionResponse)(nil), // 2: sentiric.mobile.v1.StreamSessionResponse
-	(*SessionConfig)(nil),         // 3: sentiric.mobile.v1.SessionConfig
-	(*SessionControl)(nil),        // 4: sentiric.mobile.v1.SessionControl
+var file_sentiric_stream_v1_gateway_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
+var file_sentiric_stream_v1_gateway_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_sentiric_stream_v1_gateway_proto_goTypes = []any{
+	(SessionControl_EventType)(0), // 0: sentiric.stream.v1.SessionControl.EventType
+	(*StreamSessionRequest)(nil),  // 1: sentiric.stream.v1.StreamSessionRequest
+	(*StreamSessionResponse)(nil), // 2: sentiric.stream.v1.StreamSessionResponse
+	(*SessionConfig)(nil),         // 3: sentiric.stream.v1.SessionConfig
+	(*SessionControl)(nil),        // 4: sentiric.stream.v1.SessionControl
 }
-var file_sentiric_mobile_v1_gateway_proto_depIdxs = []int32{
-	3, // 0: sentiric.mobile.v1.StreamSessionRequest.config:type_name -> sentiric.mobile.v1.SessionConfig
-	4, // 1: sentiric.mobile.v1.StreamSessionRequest.control:type_name -> sentiric.mobile.v1.SessionControl
-	0, // 2: sentiric.mobile.v1.SessionControl.event:type_name -> sentiric.mobile.v1.SessionControl.EventType
-	1, // 3: sentiric.mobile.v1.MobileGatewayService.StreamSession:input_type -> sentiric.mobile.v1.StreamSessionRequest
-	2, // 4: sentiric.mobile.v1.MobileGatewayService.StreamSession:output_type -> sentiric.mobile.v1.StreamSessionResponse
+var file_sentiric_stream_v1_gateway_proto_depIdxs = []int32{
+	3, // 0: sentiric.stream.v1.StreamSessionRequest.config:type_name -> sentiric.stream.v1.SessionConfig
+	4, // 1: sentiric.stream.v1.StreamSessionRequest.control:type_name -> sentiric.stream.v1.SessionControl
+	0, // 2: sentiric.stream.v1.SessionControl.event:type_name -> sentiric.stream.v1.SessionControl.EventType
+	1, // 3: sentiric.stream.v1.StreamGatewayService.StreamSession:input_type -> sentiric.stream.v1.StreamSessionRequest
+	2, // 4: sentiric.stream.v1.StreamGatewayService.StreamSession:output_type -> sentiric.stream.v1.StreamSessionResponse
 	4, // [4:5] is the sub-list for method output_type
 	3, // [3:4] is the sub-list for method input_type
 	3, // [3:3] is the sub-list for extension type_name
@@ -457,18 +460,18 @@ var file_sentiric_mobile_v1_gateway_proto_depIdxs = []int32{
 	0, // [0:3] is the sub-list for field type_name
 }
 
-func init() { file_sentiric_mobile_v1_gateway_proto_init() }
-func file_sentiric_mobile_v1_gateway_proto_init() {
-	if File_sentiric_mobile_v1_gateway_proto != nil {
+func init() { file_sentiric_stream_v1_gateway_proto_init() }
+func file_sentiric_stream_v1_gateway_proto_init() {
+	if File_sentiric_stream_v1_gateway_proto != nil {
 		return
 	}
-	file_sentiric_mobile_v1_gateway_proto_msgTypes[0].OneofWrappers = []any{
+	file_sentiric_stream_v1_gateway_proto_msgTypes[0].OneofWrappers = []any{
 		(*StreamSessionRequest_Config)(nil),
 		(*StreamSessionRequest_AudioChunk)(nil),
 		(*StreamSessionRequest_TextMessage)(nil),
 		(*StreamSessionRequest_Control)(nil),
 	}
-	file_sentiric_mobile_v1_gateway_proto_msgTypes[1].OneofWrappers = []any{
+	file_sentiric_stream_v1_gateway_proto_msgTypes[1].OneofWrappers = []any{
 		(*StreamSessionResponse_AudioResponse)(nil),
 		(*StreamSessionResponse_TextResponse)(nil),
 		(*StreamSessionResponse_StatusUpdate)(nil),
@@ -477,18 +480,18 @@ func file_sentiric_mobile_v1_gateway_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sentiric_mobile_v1_gateway_proto_rawDesc), len(file_sentiric_mobile_v1_gateway_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sentiric_stream_v1_gateway_proto_rawDesc), len(file_sentiric_stream_v1_gateway_proto_rawDesc)),
 			NumEnums:      1,
 			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_sentiric_mobile_v1_gateway_proto_goTypes,
-		DependencyIndexes: file_sentiric_mobile_v1_gateway_proto_depIdxs,
-		EnumInfos:         file_sentiric_mobile_v1_gateway_proto_enumTypes,
-		MessageInfos:      file_sentiric_mobile_v1_gateway_proto_msgTypes,
+		GoTypes:           file_sentiric_stream_v1_gateway_proto_goTypes,
+		DependencyIndexes: file_sentiric_stream_v1_gateway_proto_depIdxs,
+		EnumInfos:         file_sentiric_stream_v1_gateway_proto_enumTypes,
+		MessageInfos:      file_sentiric_stream_v1_gateway_proto_msgTypes,
 	}.Build()
-	File_sentiric_mobile_v1_gateway_proto = out.File
-	file_sentiric_mobile_v1_gateway_proto_goTypes = nil
-	file_sentiric_mobile_v1_gateway_proto_depIdxs = nil
+	File_sentiric_stream_v1_gateway_proto = out.File
+	file_sentiric_stream_v1_gateway_proto_goTypes = nil
+	file_sentiric_stream_v1_gateway_proto_depIdxs = nil
 }

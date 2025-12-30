@@ -47,8 +47,6 @@ gen/python/sentiric/llm/v1/llama_pb2.py
 gen/python/sentiric/llm/v1/llama_pb2_grpc.py
 gen/python/sentiric/media/v1/media_pb2.py
 gen/python/sentiric/media/v1/media_pb2_grpc.py
-gen/python/sentiric/mobile/v1/gateway_pb2.py
-gen/python/sentiric/mobile/v1/gateway_pb2_grpc.py
 gen/python/sentiric/sip/v1/b2bua_pb2.py
 gen/python/sentiric/sip/v1/b2bua_pb2_grpc.py
 gen/python/sentiric/sip/v1/gateway_pb2.py
@@ -61,6 +59,8 @@ gen/python/sentiric/sip/v1/sbc_pb2.py
 gen/python/sentiric/sip/v1/sbc_pb2_grpc.py
 gen/python/sentiric/sip/v1/signaling_pb2.py
 gen/python/sentiric/sip/v1/signaling_pb2_grpc.py
+gen/python/sentiric/stream/v1/gateway_pb2.py
+gen/python/sentiric/stream/v1/gateway_pb2_grpc.py
 gen/python/sentiric/stt/v1/gateway_pb2.py
 gen/python/sentiric/stt/v1/gateway_pb2_grpc.py
 gen/python/sentiric/stt/v1/whisper_pb2.py

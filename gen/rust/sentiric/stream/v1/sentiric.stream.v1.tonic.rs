@@ -1,6 +1,6 @@
 // @generated
 /// Generated client implementations.
-pub mod mobile_gateway_service_client {
+pub mod stream_gateway_service_client {
     #![allow(
         unused_variables,
         dead_code,
@@ -11,10 +11,10 @@ pub mod mobile_gateway_service_client {
     use tonic::codegen::*;
     use tonic::codegen::http::Uri;
     #[derive(Debug, Clone)]
-    pub struct MobileGatewayServiceClient<T> {
+    pub struct StreamGatewayServiceClient<T> {
         inner: tonic::client::Grpc<T>,
     }
-    impl MobileGatewayServiceClient<tonic::transport::Channel> {
+    impl StreamGatewayServiceClient<tonic::transport::Channel> {
         /// Attempt to create a new client by connecting to a given endpoint.
         pub async fn connect<D>(dst: D) -> Result<Self, tonic::transport::Error>
         where
@@ -25,7 +25,7 @@ pub mod mobile_gateway_service_client {
             Ok(Self::new(conn))
         }
     }
-    impl<T> MobileGatewayServiceClient<T>
+    impl<T> StreamGatewayServiceClient<T>
     where
         T: tonic::client::GrpcService<tonic::body::Body>,
         T::Error: Into<StdError>,
@@ -43,7 +43,7 @@ pub mod mobile_gateway_service_client {
         pub fn with_interceptor<F>(
             inner: T,
             interceptor: F,
-        ) -> MobileGatewayServiceClient<InterceptedService<T, F>>
+        ) -> StreamGatewayServiceClient<InterceptedService<T, F>>
         where
             F: tonic::service::Interceptor,
             T::ResponseBody: Default,
@@ -57,7 +57,7 @@ pub mod mobile_gateway_service_client {
                 http::Request<tonic::body::Body>,
             >>::Error: Into<StdError> + std::marker::Send + std::marker::Sync,
         {
-            MobileGatewayServiceClient::new(InterceptedService::new(inner, interceptor))
+            StreamGatewayServiceClient::new(InterceptedService::new(inner, interceptor))
         }
         /// Compress requests with the given encoding.
         ///
@@ -109,13 +109,13 @@ pub mod mobile_gateway_service_client {
                 })?;
             let codec = tonic_prost::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
-                "/sentiric.mobile.v1.MobileGatewayService/StreamSession",
+                "/sentiric.stream.v1.StreamGatewayService/StreamSession",
             );
             let mut req = request.into_streaming_request();
             req.extensions_mut()
                 .insert(
                     GrpcMethod::new(
-                        "sentiric.mobile.v1.MobileGatewayService",
+                        "sentiric.stream.v1.StreamGatewayService",
                         "StreamSession",
                     ),
                 );
@@ -124,7 +124,7 @@ pub mod mobile_gateway_service_client {
     }
 }
 /// Generated server implementations.
-pub mod mobile_gateway_service_server {
+pub mod stream_gateway_service_server {
     #![allow(
         unused_variables,
         dead_code,
@@ -133,9 +133,9 @@ pub mod mobile_gateway_service_server {
         clippy::let_unit_value,
     )]
     use tonic::codegen::*;
-    /// Generated trait containing gRPC methods that should be implemented for use with MobileGatewayServiceServer.
+    /// Generated trait containing gRPC methods that should be implemented for use with StreamGatewayServiceServer.
     #[async_trait]
-    pub trait MobileGatewayService: std::marker::Send + std::marker::Sync + 'static {
+    pub trait StreamGatewayService: std::marker::Send + std::marker::Sync + 'static {
         /// Server streaming response type for the StreamSession method.
         type StreamSessionStream: tonic::codegen::tokio_stream::Stream<
                 Item = std::result::Result<super::StreamSessionResponse, tonic::Status>,
@@ -151,14 +151,14 @@ pub mod mobile_gateway_service_server {
         >;
     }
     #[derive(Debug)]
-    pub struct MobileGatewayServiceServer<T> {
+    pub struct StreamGatewayServiceServer<T> {
         inner: Arc<T>,
         accept_compression_encodings: EnabledCompressionEncodings,
         send_compression_encodings: EnabledCompressionEncodings,
         max_decoding_message_size: Option<usize>,
         max_encoding_message_size: Option<usize>,
     }
-    impl<T> MobileGatewayServiceServer<T> {
+    impl<T> StreamGatewayServiceServer<T> {
         pub fn new(inner: T) -> Self {
             Self::from_arc(Arc::new(inner))
         }
@@ -210,9 +210,9 @@ pub mod mobile_gateway_service_server {
         }
     }
     impl<T, B> tonic::codegen::Service<http::Request<B>>
-    for MobileGatewayServiceServer<T>
+    for StreamGatewayServiceServer<T>
     where
-        T: MobileGatewayService,
+        T: StreamGatewayService,
         B: Body + std::marker::Send + 'static,
         B::Error: Into<StdError> + std::marker::Send + 'static,
     {
@@ -227,11 +227,11 @@ pub mod mobile_gateway_service_server {
         }
         fn call(&mut self, req: http::Request<B>) -> Self::Future {
             match req.uri().path() {
-                "/sentiric.mobile.v1.MobileGatewayService/StreamSession" => {
+                "/sentiric.stream.v1.StreamGatewayService/StreamSession" => {
                     #[allow(non_camel_case_types)]
-                    struct StreamSessionSvc<T: MobileGatewayService>(pub Arc<T>);
+                    struct StreamSessionSvc<T: StreamGatewayService>(pub Arc<T>);
                     impl<
-                        T: MobileGatewayService,
+                        T: StreamGatewayService,
                     > tonic::server::StreamingService<super::StreamSessionRequest>
                     for StreamSessionSvc<T> {
                         type Response = super::StreamSessionResponse;
@@ -248,7 +248,7 @@ pub mod mobile_gateway_service_server {
                         ) -> Self::Future {
                             let inner = Arc::clone(&self.0);
                             let fut = async move {
-                                <T as MobileGatewayService>::stream_session(&inner, request)
+                                <T as StreamGatewayService>::stream_session(&inner, request)
                                     .await
                             };
                             Box::pin(fut)
@@ -298,7 +298,7 @@ pub mod mobile_gateway_service_server {
             }
         }
     }
-    impl<T> Clone for MobileGatewayServiceServer<T> {
+    impl<T> Clone for StreamGatewayServiceServer<T> {
         fn clone(&self) -> Self {
             let inner = self.inner.clone();
             Self {
@@ -311,8 +311,8 @@ pub mod mobile_gateway_service_server {
         }
     }
     /// Generated gRPC service name
-    pub const SERVICE_NAME: &str = "sentiric.mobile.v1.MobileGatewayService";
-    impl<T> tonic::server::NamedService for MobileGatewayServiceServer<T> {
+    pub const SERVICE_NAME: &str = "sentiric.stream.v1.StreamGatewayService";
+    impl<T> tonic::server::NamedService for StreamGatewayServiceServer<T> {
         const NAME: &'static str = SERVICE_NAME;
     }
 }
