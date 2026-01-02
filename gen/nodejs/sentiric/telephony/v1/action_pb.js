@@ -15,6 +15,8 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = globalThis;
 
+var sentiric_event_v1_event_pb = require('../../../sentiric/event/v1/event_pb.js');
+goog.object.extend(proto, sentiric_event_v1_event_pb);
 goog.exportSymbol('proto.sentiric.telephony.v1.PlayAudioRequest', null, global);
 goog.exportSymbol('proto.sentiric.telephony.v1.PlayAudioResponse', null, global);
 goog.exportSymbol('proto.sentiric.telephony.v1.RunPipelineRequest', null, global);
@@ -316,7 +318,8 @@ callId: jspb.Message.getFieldWithDefault(msg, 1, ""),
 sessionId: jspb.Message.getFieldWithDefault(msg, 2, ""),
 sttModelId: jspb.Message.getFieldWithDefault(msg, 3, ""),
 ttsModelId: jspb.Message.getFieldWithDefault(msg, 4, ""),
-recordSession: jspb.Message.getBooleanFieldWithDefault(msg, 5, false)
+recordSession: jspb.Message.getBooleanFieldWithDefault(msg, 5, false),
+mediaInfo: (f = msg.getMediaInfo()) && sentiric_event_v1_event_pb.MediaInfo.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -372,6 +375,11 @@ proto.sentiric.telephony.v1.RunPipelineRequest.deserializeBinaryFromReader = fun
     case 5:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setRecordSession(value);
+      break;
+    case 6:
+      var value = new sentiric_event_v1_event_pb.MediaInfo;
+      reader.readMessage(value,sentiric_event_v1_event_pb.MediaInfo.deserializeBinaryFromReader);
+      msg.setMediaInfo(value);
       break;
     default:
       reader.skipField();
@@ -435,6 +443,14 @@ proto.sentiric.telephony.v1.RunPipelineRequest.serializeBinaryToWriter = functio
     writer.writeBool(
       5,
       f
+    );
+  }
+  f = message.getMediaInfo();
+  if (f != null) {
+    writer.writeMessage(
+      6,
+      f,
+      sentiric_event_v1_event_pb.MediaInfo.serializeBinaryToWriter
     );
   }
 };
@@ -527,6 +543,43 @@ proto.sentiric.telephony.v1.RunPipelineRequest.prototype.getRecordSession = func
  */
 proto.sentiric.telephony.v1.RunPipelineRequest.prototype.setRecordSession = function(value) {
   return jspb.Message.setProto3BooleanField(this, 5, value);
+};
+
+
+/**
+ * optional sentiric.event.v1.MediaInfo media_info = 6;
+ * @return {?proto.sentiric.event.v1.MediaInfo}
+ */
+proto.sentiric.telephony.v1.RunPipelineRequest.prototype.getMediaInfo = function() {
+  return /** @type{?proto.sentiric.event.v1.MediaInfo} */ (
+    jspb.Message.getWrapperField(this, sentiric_event_v1_event_pb.MediaInfo, 6));
+};
+
+
+/**
+ * @param {?proto.sentiric.event.v1.MediaInfo|undefined} value
+ * @return {!proto.sentiric.telephony.v1.RunPipelineRequest} returns this
+*/
+proto.sentiric.telephony.v1.RunPipelineRequest.prototype.setMediaInfo = function(value) {
+  return jspb.Message.setWrapperField(this, 6, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sentiric.telephony.v1.RunPipelineRequest} returns this
+ */
+proto.sentiric.telephony.v1.RunPipelineRequest.prototype.clearMediaInfo = function() {
+  return this.setMediaInfo(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sentiric.telephony.v1.RunPipelineRequest.prototype.hasMediaInfo = function() {
+  return jspb.Message.getField(this, 6) != null;
 };
 
 

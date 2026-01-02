@@ -80,8 +80,7 @@ class TelephonyActionServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def RunPipeline(self, request, context):
-        """[STREAMING]
-        İsim düzeltildi: RunPipeline -> RunPipelineRequest
+        """[GÜNCELLENDİ] Gerçek zamanlı ses işleme boru hattı
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')

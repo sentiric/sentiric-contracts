@@ -3,6 +3,7 @@
 'use strict';
 var grpc = require('@grpc/grpc-js');
 var sentiric_telephony_v1_action_pb = require('../../../sentiric/telephony/v1/action_pb.js');
+var sentiric_event_v1_event_pb = require('../../../sentiric/event/v1/event_pb.js');
 
 function serialize_sentiric_telephony_v1_PlayAudioRequest(arg) {
   if (!(arg instanceof sentiric_telephony_v1_action_pb.PlayAudioRequest)) {
@@ -193,8 +194,7 @@ var TelephonyActionServiceService = exports.TelephonyActionServiceService = {
     responseSerialize: serialize_sentiric_telephony_v1_StopRecordingResponse,
     responseDeserialize: deserialize_sentiric_telephony_v1_StopRecordingResponse,
   },
-  // [STREAMING]
-// İsim düzeltildi: RunPipeline -> RunPipelineRequest
+  // [GÜNCELLENDİ] Gerçek zamanlı ses işleme boru hattı
 runPipeline: {
     path: '/sentiric.telephony.v1.TelephonyActionService/RunPipeline',
     requestStream: false,

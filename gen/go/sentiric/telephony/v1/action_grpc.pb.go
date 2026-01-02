@@ -36,8 +36,7 @@ type TelephonyActionServiceClient interface {
 	SendTextMessage(ctx context.Context, in *SendTextMessageRequest, opts ...grpc.CallOption) (*SendTextMessageResponse, error)
 	StartRecording(ctx context.Context, in *StartRecordingRequest, opts ...grpc.CallOption) (*StartRecordingResponse, error)
 	StopRecording(ctx context.Context, in *StopRecordingRequest, opts ...grpc.CallOption) (*StopRecordingResponse, error)
-	// [STREAMING]
-	// İsim düzeltildi: RunPipeline -> RunPipelineRequest
+	// [GÜNCELLENDİ] Gerçek zamanlı ses işleme boru hattı
 	RunPipeline(ctx context.Context, in *RunPipelineRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[RunPipelineResponse], error)
 }
 
@@ -127,8 +126,7 @@ type TelephonyActionServiceServer interface {
 	SendTextMessage(context.Context, *SendTextMessageRequest) (*SendTextMessageResponse, error)
 	StartRecording(context.Context, *StartRecordingRequest) (*StartRecordingResponse, error)
 	StopRecording(context.Context, *StopRecordingRequest) (*StopRecordingResponse, error)
-	// [STREAMING]
-	// İsim düzeltildi: RunPipeline -> RunPipelineRequest
+	// [GÜNCELLENDİ] Gerçek zamanlı ses işleme boru hattı
 	RunPipeline(*RunPipelineRequest, grpc.ServerStreamingServer[RunPipelineResponse]) error
 }
 

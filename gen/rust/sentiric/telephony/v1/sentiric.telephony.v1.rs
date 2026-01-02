@@ -6,12 +6,16 @@ pub struct RunPipelineRequest {
     pub call_id: ::prost::alloc::string::String,
     #[prost(string, tag="2")]
     pub session_id: ::prost::alloc::string::String,
+    /// Hangi AI modellerinin kullanılacağı
     #[prost(string, tag="3")]
     pub stt_model_id: ::prost::alloc::string::String,
     #[prost(string, tag="4")]
     pub tts_model_id: ::prost::alloc::string::String,
     #[prost(bool, tag="5")]
     pub record_session: bool,
+    /// \[YENİ\] Medya bağlantı bilgileri (Agent Service bunu CallStartedEvent'ten alıp buraya paslar)
+    #[prost(message, optional, tag="6")]
+    pub media_info: ::core::option::Option<super::super::event::v1::MediaInfo>,
 }
 #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct RunPipelineResponse {
@@ -58,7 +62,7 @@ pub mod run_pipeline_response {
         }
     }
 }
-/// --- Legacy Messages ---
+/// ... Diğer mesajlar aynı kalır ...
 #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct PlayAudioRequest {
     #[prost(string, tag="1")]

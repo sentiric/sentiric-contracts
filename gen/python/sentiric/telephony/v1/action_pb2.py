@@ -22,9 +22,10 @@ _runtime_version.ValidateProtobufRuntimeVersion(
 _sym_db = _symbol_database.Default()
 
 
+from sentiric.event.v1 import event_pb2 as sentiric_dot_event_dot_v1_dot_event__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\"sentiric/telephony/v1/action.proto\x12\x15sentiric.telephony.v1\"\xb7\x01\n\x12RunPipelineRequest\x12\x17\n\x07\x63\x61ll_id\x18\x01 \x01(\tR\x06\x63\x61llId\x12\x1d\n\nsession_id\x18\x02 \x01(\tR\tsessionId\x12 \n\x0cstt_model_id\x18\x03 \x01(\tR\nsttModelId\x12 \n\x0ctts_model_id\x18\x04 \x01(\tR\nttsModelId\x12%\n\x0erecord_session\x18\x05 \x01(\x08R\rrecordSession\"\xe2\x01\n\x13RunPipelineResponse\x12\x46\n\x05state\x18\x01 \x01(\x0e\x32\x30.sentiric.telephony.v1.RunPipelineResponse.StateR\x05state\x12\x18\n\x07message\x18\x02 \x01(\tR\x07message\"i\n\x05State\x12\x15\n\x11STATE_UNSPECIFIED\x10\x00\x12\x12\n\x0eSTATE_STARTING\x10\x01\x12\x11\n\rSTATE_RUNNING\x10\x02\x12\x11\n\rSTATE_STOPPED\x10\x03\x12\x0f\n\x0bSTATE_ERROR\x10\x04\"H\n\x10PlayAudioRequest\x12\x17\n\x07\x63\x61ll_id\x18\x01 \x01(\tR\x06\x63\x61llId\x12\x1b\n\taudio_uri\x18\x02 \x01(\tR\x08\x61udioUri\"-\n\x11PlayAudioResponse\x12\x18\n\x07success\x18\x01 \x01(\x08R\x07success\"G\n\x14TerminateCallRequest\x12\x17\n\x07\x63\x61ll_id\x18\x01 \x01(\tR\x06\x63\x61llId\x12\x16\n\x06reason\x18\x02 \x01(\tR\x06reason\"1\n\x15TerminateCallResponse\x12\x18\n\x07success\x18\x01 \x01(\x08R\x07success\"<\n\x16SendTextMessageRequest\x12\x0e\n\x02to\x18\x01 \x01(\tR\x02to\x12\x12\n\x04\x62ody\x18\x02 \x01(\tR\x04\x62ody\"3\n\x17SendTextMessageResponse\x12\x18\n\x07success\x18\x01 \x01(\x08R\x07success\"O\n\x15StartRecordingRequest\x12\x17\n\x07\x63\x61ll_id\x18\x01 \x01(\tR\x06\x63\x61llId\x12\x1d\n\noutput_uri\x18\x02 \x01(\tR\toutputUri\"2\n\x16StartRecordingResponse\x12\x18\n\x07success\x18\x01 \x01(\x08R\x07success\"/\n\x14StopRecordingRequest\x12\x17\n\x07\x63\x61ll_id\x18\x01 \x01(\tR\x06\x63\x61llId\"1\n\x15StopRecordingResponse\x12\x18\n\x07success\x18\x01 \x01(\x08R\x07success2\x99\x05\n\x16TelephonyActionService\x12^\n\tPlayAudio\x12\'.sentiric.telephony.v1.PlayAudioRequest\x1a(.sentiric.telephony.v1.PlayAudioResponse\x12j\n\rTerminateCall\x12+.sentiric.telephony.v1.TerminateCallRequest\x1a,.sentiric.telephony.v1.TerminateCallResponse\x12p\n\x0fSendTextMessage\x12-.sentiric.telephony.v1.SendTextMessageRequest\x1a..sentiric.telephony.v1.SendTextMessageResponse\x12m\n\x0eStartRecording\x12,.sentiric.telephony.v1.StartRecordingRequest\x1a-.sentiric.telephony.v1.StartRecordingResponse\x12j\n\rStopRecording\x12+.sentiric.telephony.v1.StopRecordingRequest\x1a,.sentiric.telephony.v1.StopRecordingResponse\x12\x66\n\x0bRunPipeline\x12).sentiric.telephony.v1.RunPipelineRequest\x1a*.sentiric.telephony.v1.RunPipelineResponse0\x01\x42QZOgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/telephony/v1;telephonyv1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\"sentiric/telephony/v1/action.proto\x12\x15sentiric.telephony.v1\x1a\x1dsentiric/event/v1/event.proto\"\xf4\x01\n\x12RunPipelineRequest\x12\x17\n\x07\x63\x61ll_id\x18\x01 \x01(\tR\x06\x63\x61llId\x12\x1d\n\nsession_id\x18\x02 \x01(\tR\tsessionId\x12 \n\x0cstt_model_id\x18\x03 \x01(\tR\nsttModelId\x12 \n\x0ctts_model_id\x18\x04 \x01(\tR\nttsModelId\x12%\n\x0erecord_session\x18\x05 \x01(\x08R\rrecordSession\x12;\n\nmedia_info\x18\x06 \x01(\x0b\x32\x1c.sentiric.event.v1.MediaInfoR\tmediaInfo\"\xe2\x01\n\x13RunPipelineResponse\x12\x46\n\x05state\x18\x01 \x01(\x0e\x32\x30.sentiric.telephony.v1.RunPipelineResponse.StateR\x05state\x12\x18\n\x07message\x18\x02 \x01(\tR\x07message\"i\n\x05State\x12\x15\n\x11STATE_UNSPECIFIED\x10\x00\x12\x12\n\x0eSTATE_STARTING\x10\x01\x12\x11\n\rSTATE_RUNNING\x10\x02\x12\x11\n\rSTATE_STOPPED\x10\x03\x12\x0f\n\x0bSTATE_ERROR\x10\x04\"H\n\x10PlayAudioRequest\x12\x17\n\x07\x63\x61ll_id\x18\x01 \x01(\tR\x06\x63\x61llId\x12\x1b\n\taudio_uri\x18\x02 \x01(\tR\x08\x61udioUri\"-\n\x11PlayAudioResponse\x12\x18\n\x07success\x18\x01 \x01(\x08R\x07success\"G\n\x14TerminateCallRequest\x12\x17\n\x07\x63\x61ll_id\x18\x01 \x01(\tR\x06\x63\x61llId\x12\x16\n\x06reason\x18\x02 \x01(\tR\x06reason\"1\n\x15TerminateCallResponse\x12\x18\n\x07success\x18\x01 \x01(\x08R\x07success\"<\n\x16SendTextMessageRequest\x12\x0e\n\x02to\x18\x01 \x01(\tR\x02to\x12\x12\n\x04\x62ody\x18\x02 \x01(\tR\x04\x62ody\"3\n\x17SendTextMessageResponse\x12\x18\n\x07success\x18\x01 \x01(\x08R\x07success\"O\n\x15StartRecordingRequest\x12\x17\n\x07\x63\x61ll_id\x18\x01 \x01(\tR\x06\x63\x61llId\x12\x1d\n\noutput_uri\x18\x02 \x01(\tR\toutputUri\"2\n\x16StartRecordingResponse\x12\x18\n\x07success\x18\x01 \x01(\x08R\x07success\"/\n\x14StopRecordingRequest\x12\x17\n\x07\x63\x61ll_id\x18\x01 \x01(\tR\x06\x63\x61llId\"1\n\x15StopRecordingResponse\x12\x18\n\x07success\x18\x01 \x01(\x08R\x07success2\x99\x05\n\x16TelephonyActionService\x12^\n\tPlayAudio\x12\'.sentiric.telephony.v1.PlayAudioRequest\x1a(.sentiric.telephony.v1.PlayAudioResponse\x12j\n\rTerminateCall\x12+.sentiric.telephony.v1.TerminateCallRequest\x1a,.sentiric.telephony.v1.TerminateCallResponse\x12p\n\x0fSendTextMessage\x12-.sentiric.telephony.v1.SendTextMessageRequest\x1a..sentiric.telephony.v1.SendTextMessageResponse\x12m\n\x0eStartRecording\x12,.sentiric.telephony.v1.StartRecordingRequest\x1a-.sentiric.telephony.v1.StartRecordingResponse\x12j\n\rStopRecording\x12+.sentiric.telephony.v1.StopRecordingRequest\x1a,.sentiric.telephony.v1.StopRecordingResponse\x12\x66\n\x0bRunPipeline\x12).sentiric.telephony.v1.RunPipelineRequest\x1a*.sentiric.telephony.v1.RunPipelineResponse0\x01\x42QZOgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/telephony/v1;telephonyv1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -32,32 +33,32 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'sentiric.telephony.v1.actio
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
   _globals['DESCRIPTOR']._serialized_options = b'ZOgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/telephony/v1;telephonyv1'
-  _globals['_RUNPIPELINEREQUEST']._serialized_start=62
-  _globals['_RUNPIPELINEREQUEST']._serialized_end=245
-  _globals['_RUNPIPELINERESPONSE']._serialized_start=248
-  _globals['_RUNPIPELINERESPONSE']._serialized_end=474
-  _globals['_RUNPIPELINERESPONSE_STATE']._serialized_start=369
-  _globals['_RUNPIPELINERESPONSE_STATE']._serialized_end=474
-  _globals['_PLAYAUDIOREQUEST']._serialized_start=476
-  _globals['_PLAYAUDIOREQUEST']._serialized_end=548
-  _globals['_PLAYAUDIORESPONSE']._serialized_start=550
-  _globals['_PLAYAUDIORESPONSE']._serialized_end=595
-  _globals['_TERMINATECALLREQUEST']._serialized_start=597
-  _globals['_TERMINATECALLREQUEST']._serialized_end=668
-  _globals['_TERMINATECALLRESPONSE']._serialized_start=670
-  _globals['_TERMINATECALLRESPONSE']._serialized_end=719
-  _globals['_SENDTEXTMESSAGEREQUEST']._serialized_start=721
-  _globals['_SENDTEXTMESSAGEREQUEST']._serialized_end=781
-  _globals['_SENDTEXTMESSAGERESPONSE']._serialized_start=783
-  _globals['_SENDTEXTMESSAGERESPONSE']._serialized_end=834
-  _globals['_STARTRECORDINGREQUEST']._serialized_start=836
-  _globals['_STARTRECORDINGREQUEST']._serialized_end=915
-  _globals['_STARTRECORDINGRESPONSE']._serialized_start=917
-  _globals['_STARTRECORDINGRESPONSE']._serialized_end=967
-  _globals['_STOPRECORDINGREQUEST']._serialized_start=969
-  _globals['_STOPRECORDINGREQUEST']._serialized_end=1016
-  _globals['_STOPRECORDINGRESPONSE']._serialized_start=1018
-  _globals['_STOPRECORDINGRESPONSE']._serialized_end=1067
-  _globals['_TELEPHONYACTIONSERVICE']._serialized_start=1070
-  _globals['_TELEPHONYACTIONSERVICE']._serialized_end=1735
+  _globals['_RUNPIPELINEREQUEST']._serialized_start=93
+  _globals['_RUNPIPELINEREQUEST']._serialized_end=337
+  _globals['_RUNPIPELINERESPONSE']._serialized_start=340
+  _globals['_RUNPIPELINERESPONSE']._serialized_end=566
+  _globals['_RUNPIPELINERESPONSE_STATE']._serialized_start=461
+  _globals['_RUNPIPELINERESPONSE_STATE']._serialized_end=566
+  _globals['_PLAYAUDIOREQUEST']._serialized_start=568
+  _globals['_PLAYAUDIOREQUEST']._serialized_end=640
+  _globals['_PLAYAUDIORESPONSE']._serialized_start=642
+  _globals['_PLAYAUDIORESPONSE']._serialized_end=687
+  _globals['_TERMINATECALLREQUEST']._serialized_start=689
+  _globals['_TERMINATECALLREQUEST']._serialized_end=760
+  _globals['_TERMINATECALLRESPONSE']._serialized_start=762
+  _globals['_TERMINATECALLRESPONSE']._serialized_end=811
+  _globals['_SENDTEXTMESSAGEREQUEST']._serialized_start=813
+  _globals['_SENDTEXTMESSAGEREQUEST']._serialized_end=873
+  _globals['_SENDTEXTMESSAGERESPONSE']._serialized_start=875
+  _globals['_SENDTEXTMESSAGERESPONSE']._serialized_end=926
+  _globals['_STARTRECORDINGREQUEST']._serialized_start=928
+  _globals['_STARTRECORDINGREQUEST']._serialized_end=1007
+  _globals['_STARTRECORDINGRESPONSE']._serialized_start=1009
+  _globals['_STARTRECORDINGRESPONSE']._serialized_end=1059
+  _globals['_STOPRECORDINGREQUEST']._serialized_start=1061
+  _globals['_STOPRECORDINGREQUEST']._serialized_end=1108
+  _globals['_STOPRECORDINGRESPONSE']._serialized_start=1110
+  _globals['_STOPRECORDINGRESPONSE']._serialized_end=1159
+  _globals['_TELEPHONYACTIONSERVICE']._serialized_start=1162
+  _globals['_TELEPHONYACTIONSERVICE']._serialized_end=1827
 # @@protoc_insertion_point(module_scope)

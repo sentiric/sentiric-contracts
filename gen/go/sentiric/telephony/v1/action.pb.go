@@ -7,6 +7,7 @@
 package telephonyv1
 
 import (
+	v1 "github.com/sentiric/sentiric-contracts/gen/go/sentiric/event/v1"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -77,12 +78,15 @@ func (RunPipelineResponse_State) EnumDescriptor() ([]byte, []int) {
 }
 
 type RunPipelineRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	CallId        string                 `protobuf:"bytes,1,opt,name=call_id,json=callId,proto3" json:"call_id,omitempty"`
-	SessionId     string                 `protobuf:"bytes,2,opt,name=session_id,json=sessionId,proto3" json:"session_id,omitempty"`
-	SttModelId    string                 `protobuf:"bytes,3,opt,name=stt_model_id,json=sttModelId,proto3" json:"stt_model_id,omitempty"`
-	TtsModelId    string                 `protobuf:"bytes,4,opt,name=tts_model_id,json=ttsModelId,proto3" json:"tts_model_id,omitempty"`
-	RecordSession bool                   `protobuf:"varint,5,opt,name=record_session,json=recordSession,proto3" json:"record_session,omitempty"`
+	state     protoimpl.MessageState `protogen:"open.v1"`
+	CallId    string                 `protobuf:"bytes,1,opt,name=call_id,json=callId,proto3" json:"call_id,omitempty"`
+	SessionId string                 `protobuf:"bytes,2,opt,name=session_id,json=sessionId,proto3" json:"session_id,omitempty"`
+	// Hangi AI modellerinin kullanılacağı
+	SttModelId    string `protobuf:"bytes,3,opt,name=stt_model_id,json=sttModelId,proto3" json:"stt_model_id,omitempty"`
+	TtsModelId    string `protobuf:"bytes,4,opt,name=tts_model_id,json=ttsModelId,proto3" json:"tts_model_id,omitempty"`
+	RecordSession bool   `protobuf:"varint,5,opt,name=record_session,json=recordSession,proto3" json:"record_session,omitempty"`
+	// [YENİ] Medya bağlantı bilgileri (Agent Service bunu CallStartedEvent'ten alıp buraya paslar)
+	MediaInfo     *v1.MediaInfo `protobuf:"bytes,6,opt,name=media_info,json=mediaInfo,proto3" json:"media_info,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -152,6 +156,13 @@ func (x *RunPipelineRequest) GetRecordSession() bool {
 	return false
 }
 
+func (x *RunPipelineRequest) GetMediaInfo() *v1.MediaInfo {
+	if x != nil {
+		return x.MediaInfo
+	}
+	return nil
+}
+
 type RunPipelineResponse struct {
 	state         protoimpl.MessageState    `protogen:"open.v1"`
 	State         RunPipelineResponse_State `protobuf:"varint,1,opt,name=state,proto3,enum=sentiric.telephony.v1.RunPipelineResponse_State" json:"state,omitempty"`
@@ -204,7 +215,7 @@ func (x *RunPipelineResponse) GetMessage() string {
 	return ""
 }
 
-// --- Legacy Messages ---
+// ... Diğer mesajlar aynı kalır ...
 type PlayAudioRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	CallId        string                 `protobuf:"bytes,1,opt,name=call_id,json=callId,proto3" json:"call_id,omitempty"`
@@ -681,7 +692,7 @@ var File_sentiric_telephony_v1_action_proto protoreflect.FileDescriptor
 
 const file_sentiric_telephony_v1_action_proto_rawDesc = "" +
 	"\n" +
-	"\"sentiric/telephony/v1/action.proto\x12\x15sentiric.telephony.v1\"\xb7\x01\n" +
+	"\"sentiric/telephony/v1/action.proto\x12\x15sentiric.telephony.v1\x1a\x1dsentiric/event/v1/event.proto\"\xf4\x01\n" +
 	"\x12RunPipelineRequest\x12\x17\n" +
 	"\acall_id\x18\x01 \x01(\tR\x06callId\x12\x1d\n" +
 	"\n" +
@@ -690,7 +701,9 @@ const file_sentiric_telephony_v1_action_proto_rawDesc = "" +
 	"sttModelId\x12 \n" +
 	"\ftts_model_id\x18\x04 \x01(\tR\n" +
 	"ttsModelId\x12%\n" +
-	"\x0erecord_session\x18\x05 \x01(\bR\rrecordSession\"\xe2\x01\n" +
+	"\x0erecord_session\x18\x05 \x01(\bR\rrecordSession\x12;\n" +
+	"\n" +
+	"media_info\x18\x06 \x01(\v2\x1c.sentiric.event.v1.MediaInfoR\tmediaInfo\"\xe2\x01\n" +
 	"\x13RunPipelineResponse\x12F\n" +
 	"\x05state\x18\x01 \x01(\x0e20.sentiric.telephony.v1.RunPipelineResponse.StateR\x05state\x12\x18\n" +
 	"\amessage\x18\x02 \x01(\tR\amessage\"i\n" +
@@ -761,26 +774,28 @@ var file_sentiric_telephony_v1_action_proto_goTypes = []any{
 	(*StartRecordingResponse)(nil),  // 10: sentiric.telephony.v1.StartRecordingResponse
 	(*StopRecordingRequest)(nil),    // 11: sentiric.telephony.v1.StopRecordingRequest
 	(*StopRecordingResponse)(nil),   // 12: sentiric.telephony.v1.StopRecordingResponse
+	(*v1.MediaInfo)(nil),            // 13: sentiric.event.v1.MediaInfo
 }
 var file_sentiric_telephony_v1_action_proto_depIdxs = []int32{
-	0,  // 0: sentiric.telephony.v1.RunPipelineResponse.state:type_name -> sentiric.telephony.v1.RunPipelineResponse.State
-	3,  // 1: sentiric.telephony.v1.TelephonyActionService.PlayAudio:input_type -> sentiric.telephony.v1.PlayAudioRequest
-	5,  // 2: sentiric.telephony.v1.TelephonyActionService.TerminateCall:input_type -> sentiric.telephony.v1.TerminateCallRequest
-	7,  // 3: sentiric.telephony.v1.TelephonyActionService.SendTextMessage:input_type -> sentiric.telephony.v1.SendTextMessageRequest
-	9,  // 4: sentiric.telephony.v1.TelephonyActionService.StartRecording:input_type -> sentiric.telephony.v1.StartRecordingRequest
-	11, // 5: sentiric.telephony.v1.TelephonyActionService.StopRecording:input_type -> sentiric.telephony.v1.StopRecordingRequest
-	1,  // 6: sentiric.telephony.v1.TelephonyActionService.RunPipeline:input_type -> sentiric.telephony.v1.RunPipelineRequest
-	4,  // 7: sentiric.telephony.v1.TelephonyActionService.PlayAudio:output_type -> sentiric.telephony.v1.PlayAudioResponse
-	6,  // 8: sentiric.telephony.v1.TelephonyActionService.TerminateCall:output_type -> sentiric.telephony.v1.TerminateCallResponse
-	8,  // 9: sentiric.telephony.v1.TelephonyActionService.SendTextMessage:output_type -> sentiric.telephony.v1.SendTextMessageResponse
-	10, // 10: sentiric.telephony.v1.TelephonyActionService.StartRecording:output_type -> sentiric.telephony.v1.StartRecordingResponse
-	12, // 11: sentiric.telephony.v1.TelephonyActionService.StopRecording:output_type -> sentiric.telephony.v1.StopRecordingResponse
-	2,  // 12: sentiric.telephony.v1.TelephonyActionService.RunPipeline:output_type -> sentiric.telephony.v1.RunPipelineResponse
-	7,  // [7:13] is the sub-list for method output_type
-	1,  // [1:7] is the sub-list for method input_type
-	1,  // [1:1] is the sub-list for extension type_name
-	1,  // [1:1] is the sub-list for extension extendee
-	0,  // [0:1] is the sub-list for field type_name
+	13, // 0: sentiric.telephony.v1.RunPipelineRequest.media_info:type_name -> sentiric.event.v1.MediaInfo
+	0,  // 1: sentiric.telephony.v1.RunPipelineResponse.state:type_name -> sentiric.telephony.v1.RunPipelineResponse.State
+	3,  // 2: sentiric.telephony.v1.TelephonyActionService.PlayAudio:input_type -> sentiric.telephony.v1.PlayAudioRequest
+	5,  // 3: sentiric.telephony.v1.TelephonyActionService.TerminateCall:input_type -> sentiric.telephony.v1.TerminateCallRequest
+	7,  // 4: sentiric.telephony.v1.TelephonyActionService.SendTextMessage:input_type -> sentiric.telephony.v1.SendTextMessageRequest
+	9,  // 5: sentiric.telephony.v1.TelephonyActionService.StartRecording:input_type -> sentiric.telephony.v1.StartRecordingRequest
+	11, // 6: sentiric.telephony.v1.TelephonyActionService.StopRecording:input_type -> sentiric.telephony.v1.StopRecordingRequest
+	1,  // 7: sentiric.telephony.v1.TelephonyActionService.RunPipeline:input_type -> sentiric.telephony.v1.RunPipelineRequest
+	4,  // 8: sentiric.telephony.v1.TelephonyActionService.PlayAudio:output_type -> sentiric.telephony.v1.PlayAudioResponse
+	6,  // 9: sentiric.telephony.v1.TelephonyActionService.TerminateCall:output_type -> sentiric.telephony.v1.TerminateCallResponse
+	8,  // 10: sentiric.telephony.v1.TelephonyActionService.SendTextMessage:output_type -> sentiric.telephony.v1.SendTextMessageResponse
+	10, // 11: sentiric.telephony.v1.TelephonyActionService.StartRecording:output_type -> sentiric.telephony.v1.StartRecordingResponse
+	12, // 12: sentiric.telephony.v1.TelephonyActionService.StopRecording:output_type -> sentiric.telephony.v1.StopRecordingResponse
+	2,  // 13: sentiric.telephony.v1.TelephonyActionService.RunPipeline:output_type -> sentiric.telephony.v1.RunPipelineResponse
+	8,  // [8:14] is the sub-list for method output_type
+	2,  // [2:8] is the sub-list for method input_type
+	2,  // [2:2] is the sub-list for extension type_name
+	2,  // [2:2] is the sub-list for extension extendee
+	0,  // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_sentiric_telephony_v1_action_proto_init() }

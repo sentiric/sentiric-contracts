@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package sentiric.telephony.v1;
 
+import "sentiric/event/v1/event.proto"; // MediaInfo için import
+
 option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/telephony/v1;telephonyv1";
 
 service TelephonyActionService {
@@ -11,17 +13,20 @@ service TelephonyActionService {
   rpc StartRecording(StartRecordingRequest) returns (StartRecordingResponse);
   rpc StopRecording(StopRecordingRequest) returns (StopRecordingResponse);
 
-  // [STREAMING]
-  // İsim düzeltildi: RunPipeline -> RunPipelineRequest
+  // [GÜNCELLENDİ] Gerçek zamanlı ses işleme boru hattı
   rpc RunPipeline(RunPipelineRequest) returns (stream RunPipelineResponse);
 }
 
 message RunPipelineRequest {
   string call_id = 1;
   string session_id = 2;
+  // Hangi AI modellerinin kullanılacağı
   string stt_model_id = 3; 
   string tts_model_id = 4;
   bool record_session = 5;
+  
+  // [YENİ] Medya bağlantı bilgileri (Agent Service bunu CallStartedEvent'ten alıp buraya paslar)
+  sentiric.event.v1.MediaInfo media_info = 6;
 }
 
 message RunPipelineResponse {
@@ -36,7 +41,7 @@ message RunPipelineResponse {
   string message = 2;
 }
 
-// --- Legacy Messages ---
+// ... Diğer mesajlar aynı kalır ...
 message PlayAudioRequest { string call_id = 1; string audio_uri = 2; }
 message PlayAudioResponse { bool success = 1; }
 message TerminateCallRequest { string call_id = 1; string reason = 2; }

@@ -72,8 +72,7 @@ class TelephonyActionService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::telephony::v1::StopRecordingResponse>> PrepareAsyncStopRecording(::grpc::ClientContext* context, const ::sentiric::telephony::v1::StopRecordingRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::telephony::v1::StopRecordingResponse>>(PrepareAsyncStopRecordingRaw(context, request, cq));
     }
-    // [STREAMING]
-    // İsim düzeltildi: RunPipeline -> RunPipelineRequest
+    // [GÜNCELLENDİ] Gerçek zamanlı ses işleme boru hattı
     std::unique_ptr< ::grpc::ClientReaderInterface< ::sentiric::telephony::v1::RunPipelineResponse>> RunPipeline(::grpc::ClientContext* context, const ::sentiric::telephony::v1::RunPipelineRequest& request) {
       return std::unique_ptr< ::grpc::ClientReaderInterface< ::sentiric::telephony::v1::RunPipelineResponse>>(RunPipelineRaw(context, request));
     }
@@ -96,8 +95,7 @@ class TelephonyActionService final {
       virtual void StartRecording(::grpc::ClientContext* context, const ::sentiric::telephony::v1::StartRecordingRequest* request, ::sentiric::telephony::v1::StartRecordingResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void StopRecording(::grpc::ClientContext* context, const ::sentiric::telephony::v1::StopRecordingRequest* request, ::sentiric::telephony::v1::StopRecordingResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void StopRecording(::grpc::ClientContext* context, const ::sentiric::telephony::v1::StopRecordingRequest* request, ::sentiric::telephony::v1::StopRecordingResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      // [STREAMING]
-      // İsim düzeltildi: RunPipeline -> RunPipelineRequest
+      // [GÜNCELLENDİ] Gerçek zamanlı ses işleme boru hattı
       virtual void RunPipeline(::grpc::ClientContext* context, const ::sentiric::telephony::v1::RunPipelineRequest* request, ::grpc::ClientReadReactor< ::sentiric::telephony::v1::RunPipelineResponse>* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
@@ -221,8 +219,7 @@ class TelephonyActionService final {
     virtual ::grpc::Status SendTextMessage(::grpc::ServerContext* context, const ::sentiric::telephony::v1::SendTextMessageRequest* request, ::sentiric::telephony::v1::SendTextMessageResponse* response);
     virtual ::grpc::Status StartRecording(::grpc::ServerContext* context, const ::sentiric::telephony::v1::StartRecordingRequest* request, ::sentiric::telephony::v1::StartRecordingResponse* response);
     virtual ::grpc::Status StopRecording(::grpc::ServerContext* context, const ::sentiric::telephony::v1::StopRecordingRequest* request, ::sentiric::telephony::v1::StopRecordingResponse* response);
-    // [STREAMING]
-    // İsim düzeltildi: RunPipeline -> RunPipelineRequest
+    // [GÜNCELLENDİ] Gerçek zamanlı ses işleme boru hattı
     virtual ::grpc::Status RunPipeline(::grpc::ServerContext* context, const ::sentiric::telephony::v1::RunPipelineRequest* request, ::grpc::ServerWriter< ::sentiric::telephony::v1::RunPipelineResponse>* writer);
   };
   template <class BaseClass>

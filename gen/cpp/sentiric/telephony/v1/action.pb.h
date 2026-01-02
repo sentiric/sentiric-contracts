@@ -31,6 +31,7 @@
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
 #include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
+#include "sentiric/event/v1/event.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_sentiric_2ftelephony_2fv1_2faction_2eproto
@@ -260,6 +261,7 @@ class RunPipelineRequest final :
     kSessionIdFieldNumber = 2,
     kSttModelIdFieldNumber = 3,
     kTtsModelIdFieldNumber = 4,
+    kMediaInfoFieldNumber = 6,
     kRecordSessionFieldNumber = 5,
   };
   // string call_id = 1;
@@ -318,6 +320,24 @@ class RunPipelineRequest final :
   std::string* _internal_mutable_tts_model_id();
   public:
 
+  // .sentiric.event.v1.MediaInfo media_info = 6;
+  bool has_media_info() const;
+  private:
+  bool _internal_has_media_info() const;
+  public:
+  void clear_media_info();
+  const ::sentiric::event::v1::MediaInfo& media_info() const;
+  PROTOBUF_NODISCARD ::sentiric::event::v1::MediaInfo* release_media_info();
+  ::sentiric::event::v1::MediaInfo* mutable_media_info();
+  void set_allocated_media_info(::sentiric::event::v1::MediaInfo* media_info);
+  private:
+  const ::sentiric::event::v1::MediaInfo& _internal_media_info() const;
+  ::sentiric::event::v1::MediaInfo* _internal_mutable_media_info();
+  public:
+  void unsafe_arena_set_allocated_media_info(
+      ::sentiric::event::v1::MediaInfo* media_info);
+  ::sentiric::event::v1::MediaInfo* unsafe_arena_release_media_info();
+
   // bool record_session = 5;
   void clear_record_session();
   bool record_session() const;
@@ -339,6 +359,7 @@ class RunPipelineRequest final :
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr session_id_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr stt_model_id_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr tts_model_id_;
+    ::sentiric::event::v1::MediaInfo* media_info_;
     bool record_session_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
@@ -2343,6 +2364,91 @@ inline void RunPipelineRequest::_internal_set_record_session(bool value) {
 inline void RunPipelineRequest::set_record_session(bool value) {
   _internal_set_record_session(value);
   // @@protoc_insertion_point(field_set:sentiric.telephony.v1.RunPipelineRequest.record_session)
+}
+
+// .sentiric.event.v1.MediaInfo media_info = 6;
+inline bool RunPipelineRequest::_internal_has_media_info() const {
+  return this != internal_default_instance() && _impl_.media_info_ != nullptr;
+}
+inline bool RunPipelineRequest::has_media_info() const {
+  return _internal_has_media_info();
+}
+inline const ::sentiric::event::v1::MediaInfo& RunPipelineRequest::_internal_media_info() const {
+  const ::sentiric::event::v1::MediaInfo* p = _impl_.media_info_;
+  return p != nullptr ? *p : reinterpret_cast<const ::sentiric::event::v1::MediaInfo&>(
+      ::sentiric::event::v1::_MediaInfo_default_instance_);
+}
+inline const ::sentiric::event::v1::MediaInfo& RunPipelineRequest::media_info() const {
+  // @@protoc_insertion_point(field_get:sentiric.telephony.v1.RunPipelineRequest.media_info)
+  return _internal_media_info();
+}
+inline void RunPipelineRequest::unsafe_arena_set_allocated_media_info(
+    ::sentiric::event::v1::MediaInfo* media_info) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.media_info_);
+  }
+  _impl_.media_info_ = media_info;
+  if (media_info) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:sentiric.telephony.v1.RunPipelineRequest.media_info)
+}
+inline ::sentiric::event::v1::MediaInfo* RunPipelineRequest::release_media_info() {
+  
+  ::sentiric::event::v1::MediaInfo* temp = _impl_.media_info_;
+  _impl_.media_info_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::sentiric::event::v1::MediaInfo* RunPipelineRequest::unsafe_arena_release_media_info() {
+  // @@protoc_insertion_point(field_release:sentiric.telephony.v1.RunPipelineRequest.media_info)
+  
+  ::sentiric::event::v1::MediaInfo* temp = _impl_.media_info_;
+  _impl_.media_info_ = nullptr;
+  return temp;
+}
+inline ::sentiric::event::v1::MediaInfo* RunPipelineRequest::_internal_mutable_media_info() {
+  
+  if (_impl_.media_info_ == nullptr) {
+    auto* p = CreateMaybeMessage<::sentiric::event::v1::MediaInfo>(GetArenaForAllocation());
+    _impl_.media_info_ = p;
+  }
+  return _impl_.media_info_;
+}
+inline ::sentiric::event::v1::MediaInfo* RunPipelineRequest::mutable_media_info() {
+  ::sentiric::event::v1::MediaInfo* _msg = _internal_mutable_media_info();
+  // @@protoc_insertion_point(field_mutable:sentiric.telephony.v1.RunPipelineRequest.media_info)
+  return _msg;
+}
+inline void RunPipelineRequest::set_allocated_media_info(::sentiric::event::v1::MediaInfo* media_info) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.media_info_);
+  }
+  if (media_info) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(media_info));
+    if (message_arena != submessage_arena) {
+      media_info = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, media_info, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.media_info_ = media_info;
+  // @@protoc_insertion_point(field_set_allocated:sentiric.telephony.v1.RunPipelineRequest.media_info)
 }
 
 // -------------------------------------------------------------------
