@@ -67,6 +67,12 @@ extern SendTextMessageRequestDefaultTypeInternal _SendTextMessageRequest_default
 class SendTextMessageResponse;
 struct SendTextMessageResponseDefaultTypeInternal;
 extern SendTextMessageResponseDefaultTypeInternal _SendTextMessageResponse_default_instance_;
+class SpeakTextRequest;
+struct SpeakTextRequestDefaultTypeInternal;
+extern SpeakTextRequestDefaultTypeInternal _SpeakTextRequest_default_instance_;
+class SpeakTextResponse;
+struct SpeakTextResponseDefaultTypeInternal;
+extern SpeakTextResponseDefaultTypeInternal _SpeakTextResponse_default_instance_;
 class StartRecordingRequest;
 struct StartRecordingRequestDefaultTypeInternal;
 extern StartRecordingRequestDefaultTypeInternal _StartRecordingRequest_default_instance_;
@@ -95,6 +101,8 @@ template<> ::sentiric::telephony::v1::RunPipelineRequest* Arena::CreateMaybeMess
 template<> ::sentiric::telephony::v1::RunPipelineResponse* Arena::CreateMaybeMessage<::sentiric::telephony::v1::RunPipelineResponse>(Arena*);
 template<> ::sentiric::telephony::v1::SendTextMessageRequest* Arena::CreateMaybeMessage<::sentiric::telephony::v1::SendTextMessageRequest>(Arena*);
 template<> ::sentiric::telephony::v1::SendTextMessageResponse* Arena::CreateMaybeMessage<::sentiric::telephony::v1::SendTextMessageResponse>(Arena*);
+template<> ::sentiric::telephony::v1::SpeakTextRequest* Arena::CreateMaybeMessage<::sentiric::telephony::v1::SpeakTextRequest>(Arena*);
+template<> ::sentiric::telephony::v1::SpeakTextResponse* Arena::CreateMaybeMessage<::sentiric::telephony::v1::SpeakTextResponse>(Arena*);
 template<> ::sentiric::telephony::v1::StartRecordingRequest* Arena::CreateMaybeMessage<::sentiric::telephony::v1::StartRecordingRequest>(Arena*);
 template<> ::sentiric::telephony::v1::StartRecordingResponse* Arena::CreateMaybeMessage<::sentiric::telephony::v1::StartRecordingResponse>(Arena*);
 template<> ::sentiric::telephony::v1::StopRecordingRequest* Arena::CreateMaybeMessage<::sentiric::telephony::v1::StopRecordingRequest>(Arena*);
@@ -568,6 +576,375 @@ class RunPipelineResponse final :
 };
 // -------------------------------------------------------------------
 
+class SpeakTextRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.telephony.v1.SpeakTextRequest) */ {
+ public:
+  inline SpeakTextRequest() : SpeakTextRequest(nullptr) {}
+  ~SpeakTextRequest() override;
+  explicit PROTOBUF_CONSTEXPR SpeakTextRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  SpeakTextRequest(const SpeakTextRequest& from);
+  SpeakTextRequest(SpeakTextRequest&& from) noexcept
+    : SpeakTextRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline SpeakTextRequest& operator=(const SpeakTextRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SpeakTextRequest& operator=(SpeakTextRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SpeakTextRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SpeakTextRequest* internal_default_instance() {
+    return reinterpret_cast<const SpeakTextRequest*>(
+               &_SpeakTextRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    2;
+
+  friend void swap(SpeakTextRequest& a, SpeakTextRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(SpeakTextRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SpeakTextRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SpeakTextRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<SpeakTextRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const SpeakTextRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const SpeakTextRequest& from) {
+    SpeakTextRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(SpeakTextRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.telephony.v1.SpeakTextRequest";
+  }
+  protected:
+  explicit SpeakTextRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kCallIdFieldNumber = 1,
+    kTextFieldNumber = 2,
+    kVoiceIdFieldNumber = 3,
+    kMediaInfoFieldNumber = 4,
+  };
+  // string call_id = 1;
+  void clear_call_id();
+  const std::string& call_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_call_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_call_id();
+  PROTOBUF_NODISCARD std::string* release_call_id();
+  void set_allocated_call_id(std::string* call_id);
+  private:
+  const std::string& _internal_call_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_call_id(const std::string& value);
+  std::string* _internal_mutable_call_id();
+  public:
+
+  // string text = 2;
+  void clear_text();
+  const std::string& text() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_text(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_text();
+  PROTOBUF_NODISCARD std::string* release_text();
+  void set_allocated_text(std::string* text);
+  private:
+  const std::string& _internal_text() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_text(const std::string& value);
+  std::string* _internal_mutable_text();
+  public:
+
+  // string voice_id = 3;
+  void clear_voice_id();
+  const std::string& voice_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_voice_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_voice_id();
+  PROTOBUF_NODISCARD std::string* release_voice_id();
+  void set_allocated_voice_id(std::string* voice_id);
+  private:
+  const std::string& _internal_voice_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_voice_id(const std::string& value);
+  std::string* _internal_mutable_voice_id();
+  public:
+
+  // .sentiric.event.v1.MediaInfo media_info = 4;
+  bool has_media_info() const;
+  private:
+  bool _internal_has_media_info() const;
+  public:
+  void clear_media_info();
+  const ::sentiric::event::v1::MediaInfo& media_info() const;
+  PROTOBUF_NODISCARD ::sentiric::event::v1::MediaInfo* release_media_info();
+  ::sentiric::event::v1::MediaInfo* mutable_media_info();
+  void set_allocated_media_info(::sentiric::event::v1::MediaInfo* media_info);
+  private:
+  const ::sentiric::event::v1::MediaInfo& _internal_media_info() const;
+  ::sentiric::event::v1::MediaInfo* _internal_mutable_media_info();
+  public:
+  void unsafe_arena_set_allocated_media_info(
+      ::sentiric::event::v1::MediaInfo* media_info);
+  ::sentiric::event::v1::MediaInfo* unsafe_arena_release_media_info();
+
+  // @@protoc_insertion_point(class_scope:sentiric.telephony.v1.SpeakTextRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr call_id_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr text_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr voice_id_;
+    ::sentiric::event::v1::MediaInfo* media_info_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2ftelephony_2fv1_2faction_2eproto;
+};
+// -------------------------------------------------------------------
+
+class SpeakTextResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.telephony.v1.SpeakTextResponse) */ {
+ public:
+  inline SpeakTextResponse() : SpeakTextResponse(nullptr) {}
+  ~SpeakTextResponse() override;
+  explicit PROTOBUF_CONSTEXPR SpeakTextResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  SpeakTextResponse(const SpeakTextResponse& from);
+  SpeakTextResponse(SpeakTextResponse&& from) noexcept
+    : SpeakTextResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline SpeakTextResponse& operator=(const SpeakTextResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SpeakTextResponse& operator=(SpeakTextResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SpeakTextResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SpeakTextResponse* internal_default_instance() {
+    return reinterpret_cast<const SpeakTextResponse*>(
+               &_SpeakTextResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  friend void swap(SpeakTextResponse& a, SpeakTextResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(SpeakTextResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SpeakTextResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SpeakTextResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<SpeakTextResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const SpeakTextResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const SpeakTextResponse& from) {
+    SpeakTextResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(SpeakTextResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.telephony.v1.SpeakTextResponse";
+  }
+  protected:
+  explicit SpeakTextResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kMessageFieldNumber = 2,
+    kSuccessFieldNumber = 1,
+  };
+  // string message = 2;
+  void clear_message();
+  const std::string& message() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_message(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_message();
+  PROTOBUF_NODISCARD std::string* release_message();
+  void set_allocated_message(std::string* message);
+  private:
+  const std::string& _internal_message() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_message(const std::string& value);
+  std::string* _internal_mutable_message();
+  public:
+
+  // bool success = 1;
+  void clear_success();
+  bool success() const;
+  void set_success(bool value);
+  private:
+  bool _internal_success() const;
+  void _internal_set_success(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.telephony.v1.SpeakTextResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr message_;
+    bool success_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2ftelephony_2fv1_2faction_2eproto;
+};
+// -------------------------------------------------------------------
+
 class PlayAudioRequest final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.telephony.v1.PlayAudioRequest) */ {
  public:
@@ -616,7 +993,7 @@ class PlayAudioRequest final :
                &_PlayAudioRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    4;
 
   friend void swap(PlayAudioRequest& a, PlayAudioRequest& b) {
     a.Swap(&b);
@@ -785,7 +1162,7 @@ class PlayAudioResponse final :
                &_PlayAudioResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    5;
 
   friend void swap(PlayAudioResponse& a, PlayAudioResponse& b) {
     a.Swap(&b);
@@ -933,7 +1310,7 @@ class TerminateCallRequest final :
                &_TerminateCallRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    6;
 
   friend void swap(TerminateCallRequest& a, TerminateCallRequest& b) {
     a.Swap(&b);
@@ -1102,7 +1479,7 @@ class TerminateCallResponse final :
                &_TerminateCallResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    7;
 
   friend void swap(TerminateCallResponse& a, TerminateCallResponse& b) {
     a.Swap(&b);
@@ -1250,7 +1627,7 @@ class SendTextMessageRequest final :
                &_SendTextMessageRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    8;
 
   friend void swap(SendTextMessageRequest& a, SendTextMessageRequest& b) {
     a.Swap(&b);
@@ -1419,7 +1796,7 @@ class SendTextMessageResponse final :
                &_SendTextMessageResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    9;
 
   friend void swap(SendTextMessageResponse& a, SendTextMessageResponse& b) {
     a.Swap(&b);
@@ -1567,7 +1944,7 @@ class StartRecordingRequest final :
                &_StartRecordingRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    10;
 
   friend void swap(StartRecordingRequest& a, StartRecordingRequest& b) {
     a.Swap(&b);
@@ -1736,7 +2113,7 @@ class StartRecordingResponse final :
                &_StartRecordingResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    11;
 
   friend void swap(StartRecordingResponse& a, StartRecordingResponse& b) {
     a.Swap(&b);
@@ -1884,7 +2261,7 @@ class StopRecordingRequest final :
                &_StopRecordingRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    10;
+    12;
 
   friend void swap(StopRecordingRequest& a, StopRecordingRequest& b) {
     a.Swap(&b);
@@ -2037,7 +2414,7 @@ class StopRecordingResponse final :
                &_StopRecordingResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    11;
+    13;
 
   friend void swap(StopRecordingResponse& a, StopRecordingResponse& b) {
     a.Swap(&b);
@@ -2523,6 +2900,319 @@ inline void RunPipelineResponse::set_allocated_message(std::string* message) {
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:sentiric.telephony.v1.RunPipelineResponse.message)
+}
+
+// -------------------------------------------------------------------
+
+// SpeakTextRequest
+
+// string call_id = 1;
+inline void SpeakTextRequest::clear_call_id() {
+  _impl_.call_id_.ClearToEmpty();
+}
+inline const std::string& SpeakTextRequest::call_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.telephony.v1.SpeakTextRequest.call_id)
+  return _internal_call_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SpeakTextRequest::set_call_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.call_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.telephony.v1.SpeakTextRequest.call_id)
+}
+inline std::string* SpeakTextRequest::mutable_call_id() {
+  std::string* _s = _internal_mutable_call_id();
+  // @@protoc_insertion_point(field_mutable:sentiric.telephony.v1.SpeakTextRequest.call_id)
+  return _s;
+}
+inline const std::string& SpeakTextRequest::_internal_call_id() const {
+  return _impl_.call_id_.Get();
+}
+inline void SpeakTextRequest::_internal_set_call_id(const std::string& value) {
+  
+  _impl_.call_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SpeakTextRequest::_internal_mutable_call_id() {
+  
+  return _impl_.call_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SpeakTextRequest::release_call_id() {
+  // @@protoc_insertion_point(field_release:sentiric.telephony.v1.SpeakTextRequest.call_id)
+  return _impl_.call_id_.Release();
+}
+inline void SpeakTextRequest::set_allocated_call_id(std::string* call_id) {
+  if (call_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.call_id_.SetAllocated(call_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.call_id_.IsDefault()) {
+    _impl_.call_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.telephony.v1.SpeakTextRequest.call_id)
+}
+
+// string text = 2;
+inline void SpeakTextRequest::clear_text() {
+  _impl_.text_.ClearToEmpty();
+}
+inline const std::string& SpeakTextRequest::text() const {
+  // @@protoc_insertion_point(field_get:sentiric.telephony.v1.SpeakTextRequest.text)
+  return _internal_text();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SpeakTextRequest::set_text(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.text_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.telephony.v1.SpeakTextRequest.text)
+}
+inline std::string* SpeakTextRequest::mutable_text() {
+  std::string* _s = _internal_mutable_text();
+  // @@protoc_insertion_point(field_mutable:sentiric.telephony.v1.SpeakTextRequest.text)
+  return _s;
+}
+inline const std::string& SpeakTextRequest::_internal_text() const {
+  return _impl_.text_.Get();
+}
+inline void SpeakTextRequest::_internal_set_text(const std::string& value) {
+  
+  _impl_.text_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SpeakTextRequest::_internal_mutable_text() {
+  
+  return _impl_.text_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SpeakTextRequest::release_text() {
+  // @@protoc_insertion_point(field_release:sentiric.telephony.v1.SpeakTextRequest.text)
+  return _impl_.text_.Release();
+}
+inline void SpeakTextRequest::set_allocated_text(std::string* text) {
+  if (text != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.text_.SetAllocated(text, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.text_.IsDefault()) {
+    _impl_.text_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.telephony.v1.SpeakTextRequest.text)
+}
+
+// string voice_id = 3;
+inline void SpeakTextRequest::clear_voice_id() {
+  _impl_.voice_id_.ClearToEmpty();
+}
+inline const std::string& SpeakTextRequest::voice_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.telephony.v1.SpeakTextRequest.voice_id)
+  return _internal_voice_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SpeakTextRequest::set_voice_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.voice_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.telephony.v1.SpeakTextRequest.voice_id)
+}
+inline std::string* SpeakTextRequest::mutable_voice_id() {
+  std::string* _s = _internal_mutable_voice_id();
+  // @@protoc_insertion_point(field_mutable:sentiric.telephony.v1.SpeakTextRequest.voice_id)
+  return _s;
+}
+inline const std::string& SpeakTextRequest::_internal_voice_id() const {
+  return _impl_.voice_id_.Get();
+}
+inline void SpeakTextRequest::_internal_set_voice_id(const std::string& value) {
+  
+  _impl_.voice_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SpeakTextRequest::_internal_mutable_voice_id() {
+  
+  return _impl_.voice_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SpeakTextRequest::release_voice_id() {
+  // @@protoc_insertion_point(field_release:sentiric.telephony.v1.SpeakTextRequest.voice_id)
+  return _impl_.voice_id_.Release();
+}
+inline void SpeakTextRequest::set_allocated_voice_id(std::string* voice_id) {
+  if (voice_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.voice_id_.SetAllocated(voice_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.voice_id_.IsDefault()) {
+    _impl_.voice_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.telephony.v1.SpeakTextRequest.voice_id)
+}
+
+// .sentiric.event.v1.MediaInfo media_info = 4;
+inline bool SpeakTextRequest::_internal_has_media_info() const {
+  return this != internal_default_instance() && _impl_.media_info_ != nullptr;
+}
+inline bool SpeakTextRequest::has_media_info() const {
+  return _internal_has_media_info();
+}
+inline const ::sentiric::event::v1::MediaInfo& SpeakTextRequest::_internal_media_info() const {
+  const ::sentiric::event::v1::MediaInfo* p = _impl_.media_info_;
+  return p != nullptr ? *p : reinterpret_cast<const ::sentiric::event::v1::MediaInfo&>(
+      ::sentiric::event::v1::_MediaInfo_default_instance_);
+}
+inline const ::sentiric::event::v1::MediaInfo& SpeakTextRequest::media_info() const {
+  // @@protoc_insertion_point(field_get:sentiric.telephony.v1.SpeakTextRequest.media_info)
+  return _internal_media_info();
+}
+inline void SpeakTextRequest::unsafe_arena_set_allocated_media_info(
+    ::sentiric::event::v1::MediaInfo* media_info) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.media_info_);
+  }
+  _impl_.media_info_ = media_info;
+  if (media_info) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:sentiric.telephony.v1.SpeakTextRequest.media_info)
+}
+inline ::sentiric::event::v1::MediaInfo* SpeakTextRequest::release_media_info() {
+  
+  ::sentiric::event::v1::MediaInfo* temp = _impl_.media_info_;
+  _impl_.media_info_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::sentiric::event::v1::MediaInfo* SpeakTextRequest::unsafe_arena_release_media_info() {
+  // @@protoc_insertion_point(field_release:sentiric.telephony.v1.SpeakTextRequest.media_info)
+  
+  ::sentiric::event::v1::MediaInfo* temp = _impl_.media_info_;
+  _impl_.media_info_ = nullptr;
+  return temp;
+}
+inline ::sentiric::event::v1::MediaInfo* SpeakTextRequest::_internal_mutable_media_info() {
+  
+  if (_impl_.media_info_ == nullptr) {
+    auto* p = CreateMaybeMessage<::sentiric::event::v1::MediaInfo>(GetArenaForAllocation());
+    _impl_.media_info_ = p;
+  }
+  return _impl_.media_info_;
+}
+inline ::sentiric::event::v1::MediaInfo* SpeakTextRequest::mutable_media_info() {
+  ::sentiric::event::v1::MediaInfo* _msg = _internal_mutable_media_info();
+  // @@protoc_insertion_point(field_mutable:sentiric.telephony.v1.SpeakTextRequest.media_info)
+  return _msg;
+}
+inline void SpeakTextRequest::set_allocated_media_info(::sentiric::event::v1::MediaInfo* media_info) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.media_info_);
+  }
+  if (media_info) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(media_info));
+    if (message_arena != submessage_arena) {
+      media_info = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, media_info, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.media_info_ = media_info;
+  // @@protoc_insertion_point(field_set_allocated:sentiric.telephony.v1.SpeakTextRequest.media_info)
+}
+
+// -------------------------------------------------------------------
+
+// SpeakTextResponse
+
+// bool success = 1;
+inline void SpeakTextResponse::clear_success() {
+  _impl_.success_ = false;
+}
+inline bool SpeakTextResponse::_internal_success() const {
+  return _impl_.success_;
+}
+inline bool SpeakTextResponse::success() const {
+  // @@protoc_insertion_point(field_get:sentiric.telephony.v1.SpeakTextResponse.success)
+  return _internal_success();
+}
+inline void SpeakTextResponse::_internal_set_success(bool value) {
+  
+  _impl_.success_ = value;
+}
+inline void SpeakTextResponse::set_success(bool value) {
+  _internal_set_success(value);
+  // @@protoc_insertion_point(field_set:sentiric.telephony.v1.SpeakTextResponse.success)
+}
+
+// string message = 2;
+inline void SpeakTextResponse::clear_message() {
+  _impl_.message_.ClearToEmpty();
+}
+inline const std::string& SpeakTextResponse::message() const {
+  // @@protoc_insertion_point(field_get:sentiric.telephony.v1.SpeakTextResponse.message)
+  return _internal_message();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SpeakTextResponse::set_message(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.message_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.telephony.v1.SpeakTextResponse.message)
+}
+inline std::string* SpeakTextResponse::mutable_message() {
+  std::string* _s = _internal_mutable_message();
+  // @@protoc_insertion_point(field_mutable:sentiric.telephony.v1.SpeakTextResponse.message)
+  return _s;
+}
+inline const std::string& SpeakTextResponse::_internal_message() const {
+  return _impl_.message_.Get();
+}
+inline void SpeakTextResponse::_internal_set_message(const std::string& value) {
+  
+  _impl_.message_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SpeakTextResponse::_internal_mutable_message() {
+  
+  return _impl_.message_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SpeakTextResponse::release_message() {
+  // @@protoc_insertion_point(field_release:sentiric.telephony.v1.SpeakTextResponse.message)
+  return _impl_.message_.Release();
+}
+inline void SpeakTextResponse::set_allocated_message(std::string* message) {
+  if (message != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.message_.SetAllocated(message, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.message_.IsDefault()) {
+    _impl_.message_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.telephony.v1.SpeakTextResponse.message)
 }
 
 // -------------------------------------------------------------------
@@ -3118,6 +3808,10 @@ inline void StopRecordingResponse::set_success(bool value) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

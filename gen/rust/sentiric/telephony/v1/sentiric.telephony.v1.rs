@@ -13,7 +13,7 @@ pub struct RunPipelineRequest {
     pub tts_model_id: ::prost::alloc::string::String,
     #[prost(bool, tag="5")]
     pub record_session: bool,
-    /// \[YENİ\] Medya bağlantı bilgileri (Agent Service bunu CallStartedEvent'ten alıp buraya paslar)
+    /// Medya bağlantı bilgileri
     #[prost(message, optional, tag="6")]
     pub media_info: ::core::option::Option<super::super::event::v1::MediaInfo>,
 }
@@ -62,7 +62,28 @@ pub mod run_pipeline_response {
         }
     }
 }
-/// ... Diğer mesajlar aynı kalır ...
+/// --- SpeakText Messages ---
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+pub struct SpeakTextRequest {
+    #[prost(string, tag="1")]
+    pub call_id: ::prost::alloc::string::String,
+    #[prost(string, tag="2")]
+    pub text: ::prost::alloc::string::String,
+    /// örn: "coqui:default"
+    #[prost(string, tag="3")]
+    pub voice_id: ::prost::alloc::string::String,
+    /// Sesin nereye basılacağı bilgisi
+    #[prost(message, optional, tag="4")]
+    pub media_info: ::core::option::Option<super::super::event::v1::MediaInfo>,
+}
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+pub struct SpeakTextResponse {
+    #[prost(bool, tag="1")]
+    pub success: bool,
+    #[prost(string, tag="2")]
+    pub message: ::prost::alloc::string::String,
+}
+/// --- Diğer Mesajlar ---
 #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct PlayAudioRequest {
     #[prost(string, tag="1")]

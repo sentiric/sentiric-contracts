@@ -44,6 +44,11 @@ class TelephonyActionServiceStub(object):
                 request_serializer=sentiric_dot_telephony_dot_v1_dot_action__pb2.RunPipelineRequest.SerializeToString,
                 response_deserializer=sentiric_dot_telephony_dot_v1_dot_action__pb2.RunPipelineResponse.FromString,
                 _registered_method=True)
+        self.SpeakText = channel.unary_unary(
+                '/sentiric.telephony.v1.TelephonyActionService/SpeakText',
+                request_serializer=sentiric_dot_telephony_dot_v1_dot_action__pb2.SpeakTextRequest.SerializeToString,
+                response_deserializer=sentiric_dot_telephony_dot_v1_dot_action__pb2.SpeakTextResponse.FromString,
+                _registered_method=True)
 
 
 class TelephonyActionServiceServicer(object):
@@ -80,7 +85,14 @@ class TelephonyActionServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def RunPipeline(self, request, context):
-        """[GÜNCELLENDİ] Gerçek zamanlı ses işleme boru hattı
+        """Gerçek zamanlı ses işleme boru hattı
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def SpeakText(self, request, context):
+        """[YENİ] Metni sese çevirip çalma (Agent Service yükünü almak için)
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -118,6 +130,11 @@ def add_TelephonyActionServiceServicer_to_server(servicer, server):
                     servicer.RunPipeline,
                     request_deserializer=sentiric_dot_telephony_dot_v1_dot_action__pb2.RunPipelineRequest.FromString,
                     response_serializer=sentiric_dot_telephony_dot_v1_dot_action__pb2.RunPipelineResponse.SerializeToString,
+            ),
+            'SpeakText': grpc.unary_unary_rpc_method_handler(
+                    servicer.SpeakText,
+                    request_deserializer=sentiric_dot_telephony_dot_v1_dot_action__pb2.SpeakTextRequest.FromString,
+                    response_serializer=sentiric_dot_telephony_dot_v1_dot_action__pb2.SpeakTextResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -282,6 +299,33 @@ class TelephonyActionService(object):
             '/sentiric.telephony.v1.TelephonyActionService/RunPipeline',
             sentiric_dot_telephony_dot_v1_dot_action__pb2.RunPipelineRequest.SerializeToString,
             sentiric_dot_telephony_dot_v1_dot_action__pb2.RunPipelineResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def SpeakText(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/sentiric.telephony.v1.TelephonyActionService/SpeakText',
+            sentiric_dot_telephony_dot_v1_dot_action__pb2.SpeakTextRequest.SerializeToString,
+            sentiric_dot_telephony_dot_v1_dot_action__pb2.SpeakTextResponse.FromString,
             options,
             channel_credentials,
             insecure,

@@ -30,6 +30,7 @@ static const char* TelephonyActionService_method_names[] = {
   "/sentiric.telephony.v1.TelephonyActionService/StartRecording",
   "/sentiric.telephony.v1.TelephonyActionService/StopRecording",
   "/sentiric.telephony.v1.TelephonyActionService/RunPipeline",
+  "/sentiric.telephony.v1.TelephonyActionService/SpeakText",
 };
 
 std::unique_ptr< TelephonyActionService::Stub> TelephonyActionService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -45,6 +46,7 @@ TelephonyActionService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterfa
   , rpcmethod_StartRecording_(TelephonyActionService_method_names[3], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_StopRecording_(TelephonyActionService_method_names[4], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_RunPipeline_(TelephonyActionService_method_names[5], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  , rpcmethod_SpeakText_(TelephonyActionService_method_names[6], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status TelephonyActionService::Stub::PlayAudio(::grpc::ClientContext* context, const ::sentiric::telephony::v1::PlayAudioRequest& request, ::sentiric::telephony::v1::PlayAudioResponse* response) {
@@ -178,6 +180,29 @@ void TelephonyActionService::Stub::async::RunPipeline(::grpc::ClientContext* con
   return ::grpc::internal::ClientAsyncReaderFactory< ::sentiric::telephony::v1::RunPipelineResponse>::Create(channel_.get(), cq, rpcmethod_RunPipeline_, context, request, false, nullptr);
 }
 
+::grpc::Status TelephonyActionService::Stub::SpeakText(::grpc::ClientContext* context, const ::sentiric::telephony::v1::SpeakTextRequest& request, ::sentiric::telephony::v1::SpeakTextResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::sentiric::telephony::v1::SpeakTextRequest, ::sentiric::telephony::v1::SpeakTextResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_SpeakText_, context, request, response);
+}
+
+void TelephonyActionService::Stub::async::SpeakText(::grpc::ClientContext* context, const ::sentiric::telephony::v1::SpeakTextRequest* request, ::sentiric::telephony::v1::SpeakTextResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::sentiric::telephony::v1::SpeakTextRequest, ::sentiric::telephony::v1::SpeakTextResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SpeakText_, context, request, response, std::move(f));
+}
+
+void TelephonyActionService::Stub::async::SpeakText(::grpc::ClientContext* context, const ::sentiric::telephony::v1::SpeakTextRequest* request, ::sentiric::telephony::v1::SpeakTextResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SpeakText_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::sentiric::telephony::v1::SpeakTextResponse>* TelephonyActionService::Stub::PrepareAsyncSpeakTextRaw(::grpc::ClientContext* context, const ::sentiric::telephony::v1::SpeakTextRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::sentiric::telephony::v1::SpeakTextResponse, ::sentiric::telephony::v1::SpeakTextRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_SpeakText_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::sentiric::telephony::v1::SpeakTextResponse>* TelephonyActionService::Stub::AsyncSpeakTextRaw(::grpc::ClientContext* context, const ::sentiric::telephony::v1::SpeakTextRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncSpeakTextRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
 TelephonyActionService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       TelephonyActionService_method_names[0],
@@ -239,6 +264,16 @@ TelephonyActionService::Service::Service() {
              ::grpc::ServerWriter<::sentiric::telephony::v1::RunPipelineResponse>* writer) {
                return service->RunPipeline(ctx, req, writer);
              }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      TelephonyActionService_method_names[6],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< TelephonyActionService::Service, ::sentiric::telephony::v1::SpeakTextRequest, ::sentiric::telephony::v1::SpeakTextResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](TelephonyActionService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::sentiric::telephony::v1::SpeakTextRequest* req,
+             ::sentiric::telephony::v1::SpeakTextResponse* resp) {
+               return service->SpeakText(ctx, req, resp);
+             }, this)));
 }
 
 TelephonyActionService::Service::~Service() {
@@ -283,6 +318,13 @@ TelephonyActionService::Service::~Service() {
   (void) context;
   (void) request;
   (void) writer;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status TelephonyActionService::Service::SpeakText(::grpc::ServerContext* context, const ::sentiric::telephony::v1::SpeakTextRequest* request, ::sentiric::telephony::v1::SpeakTextResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 

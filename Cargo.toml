@@ -1,6 +1,6 @@
 [package]
 name = "sentiric-contracts"
-version = "1.13.3"
+version = "1.13.4"
 edition = "2021"
 description = "Provides pre-compiled Rust gRPC stubs for the Sentiric platform."
 license = "Apache-2.0"

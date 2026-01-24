@@ -71,6 +71,28 @@ function deserialize_sentiric_telephony_v1_SendTextMessageResponse(buffer_arg) {
   return sentiric_telephony_v1_action_pb.SendTextMessageResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sentiric_telephony_v1_SpeakTextRequest(arg) {
+  if (!(arg instanceof sentiric_telephony_v1_action_pb.SpeakTextRequest)) {
+    throw new Error('Expected argument of type sentiric.telephony.v1.SpeakTextRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sentiric_telephony_v1_SpeakTextRequest(buffer_arg) {
+  return sentiric_telephony_v1_action_pb.SpeakTextRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sentiric_telephony_v1_SpeakTextResponse(arg) {
+  if (!(arg instanceof sentiric_telephony_v1_action_pb.SpeakTextResponse)) {
+    throw new Error('Expected argument of type sentiric.telephony.v1.SpeakTextResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sentiric_telephony_v1_SpeakTextResponse(buffer_arg) {
+  return sentiric_telephony_v1_action_pb.SpeakTextResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sentiric_telephony_v1_StartRecordingRequest(arg) {
   if (!(arg instanceof sentiric_telephony_v1_action_pb.StartRecordingRequest)) {
     throw new Error('Expected argument of type sentiric.telephony.v1.StartRecordingRequest');
@@ -194,7 +216,7 @@ var TelephonyActionServiceService = exports.TelephonyActionServiceService = {
     responseSerialize: serialize_sentiric_telephony_v1_StopRecordingResponse,
     responseDeserialize: deserialize_sentiric_telephony_v1_StopRecordingResponse,
   },
-  // [GÜNCELLENDİ] Gerçek zamanlı ses işleme boru hattı
+  // Gerçek zamanlı ses işleme boru hattı
 runPipeline: {
     path: '/sentiric.telephony.v1.TelephonyActionService/RunPipeline',
     requestStream: false,
@@ -205,6 +227,18 @@ runPipeline: {
     requestDeserialize: deserialize_sentiric_telephony_v1_RunPipelineRequest,
     responseSerialize: serialize_sentiric_telephony_v1_RunPipelineResponse,
     responseDeserialize: deserialize_sentiric_telephony_v1_RunPipelineResponse,
+  },
+  // [YENİ] Metni sese çevirip çalma (Agent Service yükünü almak için)
+speakText: {
+    path: '/sentiric.telephony.v1.TelephonyActionService/SpeakText',
+    requestStream: false,
+    responseStream: false,
+    requestType: sentiric_telephony_v1_action_pb.SpeakTextRequest,
+    responseType: sentiric_telephony_v1_action_pb.SpeakTextResponse,
+    requestSerialize: serialize_sentiric_telephony_v1_SpeakTextRequest,
+    requestDeserialize: deserialize_sentiric_telephony_v1_SpeakTextRequest,
+    responseSerialize: serialize_sentiric_telephony_v1_SpeakTextResponse,
+    responseDeserialize: deserialize_sentiric_telephony_v1_SpeakTextResponse,
   },
 };
 

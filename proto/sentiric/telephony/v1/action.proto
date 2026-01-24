@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package sentiric.telephony.v1;
 
-import "sentiric/event/v1/event.proto"; // MediaInfo için import
+import "sentiric/event/v1/event.proto"; // MediaInfo için
 
 option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/telephony/v1;telephonyv1";
 
@@ -13,8 +13,11 @@ service TelephonyActionService {
   rpc StartRecording(StartRecordingRequest) returns (StartRecordingResponse);
   rpc StopRecording(StopRecordingRequest) returns (StopRecordingResponse);
 
-  // [GÜNCELLENDİ] Gerçek zamanlı ses işleme boru hattı
+  // Gerçek zamanlı ses işleme boru hattı
   rpc RunPipeline(RunPipelineRequest) returns (stream RunPipelineResponse);
+
+  // [YENİ] Metni sese çevirip çalma (Agent Service yükünü almak için)
+  rpc SpeakText(SpeakTextRequest) returns (SpeakTextResponse);
 }
 
 message RunPipelineRequest {
@@ -25,7 +28,7 @@ message RunPipelineRequest {
   string tts_model_id = 4;
   bool record_session = 5;
   
-  // [YENİ] Medya bağlantı bilgileri (Agent Service bunu CallStartedEvent'ten alıp buraya paslar)
+  // Medya bağlantı bilgileri
   sentiric.event.v1.MediaInfo media_info = 6;
 }
 
@@ -41,14 +44,61 @@ message RunPipelineResponse {
   string message = 2;
 }
 
-// ... Diğer mesajlar aynı kalır ...
-message PlayAudioRequest { string call_id = 1; string audio_uri = 2; }
-message PlayAudioResponse { bool success = 1; }
-message TerminateCallRequest { string call_id = 1; string reason = 2; }
-message TerminateCallResponse { bool success = 1; }
-message SendTextMessageRequest { string to = 1; string body = 2; }
-message SendTextMessageResponse { bool success = 1; }
-message StartRecordingRequest { string call_id = 1; string output_uri = 2; }
-message StartRecordingResponse { bool success = 1; }
-message StopRecordingRequest { string call_id = 1; }
-message StopRecordingResponse { bool success = 1; }
+// --- SpeakText Messages ---
+message SpeakTextRequest {
+  string call_id = 1;
+  string text = 2;
+  string voice_id = 3; // örn: "coqui:default"
+  // Sesin nereye basılacağı bilgisi
+  sentiric.event.v1.MediaInfo media_info = 4; 
+}
+
+message SpeakTextResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+// --- Diğer Mesajlar ---
+message PlayAudioRequest { 
+  string call_id = 1; 
+  string audio_uri = 2; 
+}
+
+message PlayAudioResponse { 
+  bool success = 1; 
+}
+
+message TerminateCallRequest { 
+  string call_id = 1; 
+  string reason = 2; 
+}
+
+message TerminateCallResponse { 
+  bool success = 1; 
+}
+
+message SendTextMessageRequest { 
+  string to = 1; 
+  string body = 2; 
+}
+
+message SendTextMessageResponse { 
+  bool success = 1; 
+}
+
+message StartRecordingRequest { 
+  string call_id = 1; 
+  string output_uri = 2; 
+}
+
+message StartRecordingResponse { 
+  bool success = 1; 
+}
+
+message StopRecordingRequest { 
+  string call_id = 1; 
+}
+
+message StopRecordingResponse { 
+  bool success = 1; 
+}

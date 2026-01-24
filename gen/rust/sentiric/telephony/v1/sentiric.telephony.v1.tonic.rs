@@ -266,6 +266,35 @@ pub mod telephony_action_service_client {
                 );
             self.inner.server_streaming(req, path, codec).await
         }
+        pub async fn speak_text(
+            &mut self,
+            request: impl tonic::IntoRequest<super::SpeakTextRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::SpeakTextResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::unknown(
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
+            let codec = tonic_prost::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/sentiric.telephony.v1.TelephonyActionService/SpeakText",
+            );
+            let mut req = request.into_request();
+            req.extensions_mut()
+                .insert(
+                    GrpcMethod::new(
+                        "sentiric.telephony.v1.TelephonyActionService",
+                        "SpeakText",
+                    ),
+                );
+            self.inner.unary(req, path, codec).await
+        }
     }
 }
 /// Generated server implementations.
@@ -327,6 +356,13 @@ pub mod telephony_action_service_server {
             request: tonic::Request<super::RunPipelineRequest>,
         ) -> std::result::Result<
             tonic::Response<Self::RunPipelineStream>,
+            tonic::Status,
+        >;
+        async fn speak_text(
+            &self,
+            request: tonic::Request<super::SpeakTextRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::SpeakTextResponse>,
             tonic::Status,
         >;
     }
@@ -692,6 +728,52 @@ pub mod telephony_action_service_server {
                                 max_encoding_message_size,
                             );
                         let res = grpc.server_streaming(method, req).await;
+                        Ok(res)
+                    };
+                    Box::pin(fut)
+                }
+                "/sentiric.telephony.v1.TelephonyActionService/SpeakText" => {
+                    #[allow(non_camel_case_types)]
+                    struct SpeakTextSvc<T: TelephonyActionService>(pub Arc<T>);
+                    impl<
+                        T: TelephonyActionService,
+                    > tonic::server::UnaryService<super::SpeakTextRequest>
+                    for SpeakTextSvc<T> {
+                        type Response = super::SpeakTextResponse;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
+                        fn call(
+                            &mut self,
+                            request: tonic::Request<super::SpeakTextRequest>,
+                        ) -> Self::Future {
+                            let inner = Arc::clone(&self.0);
+                            let fut = async move {
+                                <T as TelephonyActionService>::speak_text(&inner, request)
+                                    .await
+                            };
+                            Box::pin(fut)
+                        }
+                    }
+                    let accept_compression_encodings = self.accept_compression_encodings;
+                    let send_compression_encodings = self.send_compression_encodings;
+                    let max_decoding_message_size = self.max_decoding_message_size;
+                    let max_encoding_message_size = self.max_encoding_message_size;
+                    let inner = self.inner.clone();
+                    let fut = async move {
+                        let method = SpeakTextSvc(inner);
+                        let codec = tonic_prost::ProstCodec::default();
+                        let mut grpc = tonic::server::Grpc::new(codec)
+                            .apply_compression_config(
+                                accept_compression_encodings,
+                                send_compression_encodings,
+                            )
+                            .apply_max_message_size_config(
+                                max_decoding_message_size,
+                                max_encoding_message_size,
+                            );
+                        let res = grpc.unary(method, req).await;
                         Ok(res)
                     };
                     Box::pin(fut)
