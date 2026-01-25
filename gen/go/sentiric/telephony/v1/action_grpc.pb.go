@@ -26,6 +26,7 @@ const (
 	TelephonyActionService_StopRecording_FullMethodName   = "/sentiric.telephony.v1.TelephonyActionService/StopRecording"
 	TelephonyActionService_RunPipeline_FullMethodName     = "/sentiric.telephony.v1.TelephonyActionService/RunPipeline"
 	TelephonyActionService_SpeakText_FullMethodName       = "/sentiric.telephony.v1.TelephonyActionService/SpeakText"
+	TelephonyActionService_BridgeCall_FullMethodName      = "/sentiric.telephony.v1.TelephonyActionService/BridgeCall"
 )
 
 // TelephonyActionServiceClient is the client API for TelephonyActionService service.
@@ -39,8 +40,10 @@ type TelephonyActionServiceClient interface {
 	StopRecording(ctx context.Context, in *StopRecordingRequest, opts ...grpc.CallOption) (*StopRecordingResponse, error)
 	// Gerçek zamanlı ses işleme boru hattı
 	RunPipeline(ctx context.Context, in *RunPipelineRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[RunPipelineResponse], error)
-	// [YENİ] Metni sese çevirip çalma (Agent Service yükünü almak için)
+	// Metni sese çevirip çalma (Agent Service yükünü almak için)
 	SpeakText(ctx context.Context, in *SpeakTextRequest, opts ...grpc.CallOption) (*SpeakTextResponse, error)
+	// [YENİ v1.13.5] İki çağrı bacağını (Leg) birbirine bağlar (Bridging)
+	BridgeCall(ctx context.Context, in *BridgeCallRequest, opts ...grpc.CallOption) (*BridgeCallResponse, error)
 }
 
 type telephonyActionServiceClient struct {
@@ -130,6 +133,16 @@ func (c *telephonyActionServiceClient) SpeakText(ctx context.Context, in *SpeakT
 	return out, nil
 }
 
+func (c *telephonyActionServiceClient) BridgeCall(ctx context.Context, in *BridgeCallRequest, opts ...grpc.CallOption) (*BridgeCallResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(BridgeCallResponse)
+	err := c.cc.Invoke(ctx, TelephonyActionService_BridgeCall_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // TelephonyActionServiceServer is the server API for TelephonyActionService service.
 // All implementations should embed UnimplementedTelephonyActionServiceServer
 // for forward compatibility.
@@ -141,8 +154,10 @@ type TelephonyActionServiceServer interface {
 	StopRecording(context.Context, *StopRecordingRequest) (*StopRecordingResponse, error)
 	// Gerçek zamanlı ses işleme boru hattı
 	RunPipeline(*RunPipelineRequest, grpc.ServerStreamingServer[RunPipelineResponse]) error
-	// [YENİ] Metni sese çevirip çalma (Agent Service yükünü almak için)
+	// Metni sese çevirip çalma (Agent Service yükünü almak için)
 	SpeakText(context.Context, *SpeakTextRequest) (*SpeakTextResponse, error)
+	// [YENİ v1.13.5] İki çağrı bacağını (Leg) birbirine bağlar (Bridging)
+	BridgeCall(context.Context, *BridgeCallRequest) (*BridgeCallResponse, error)
 }
 
 // UnimplementedTelephonyActionServiceServer should be embedded to have
@@ -172,6 +187,9 @@ func (UnimplementedTelephonyActionServiceServer) RunPipeline(*RunPipelineRequest
 }
 func (UnimplementedTelephonyActionServiceServer) SpeakText(context.Context, *SpeakTextRequest) (*SpeakTextResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method SpeakText not implemented")
+}
+func (UnimplementedTelephonyActionServiceServer) BridgeCall(context.Context, *BridgeCallRequest) (*BridgeCallResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method BridgeCall not implemented")
 }
 func (UnimplementedTelephonyActionServiceServer) testEmbeddedByValue() {}
 
@@ -312,6 +330,24 @@ func _TelephonyActionService_SpeakText_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
+func _TelephonyActionService_BridgeCall_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(BridgeCallRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TelephonyActionServiceServer).BridgeCall(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TelephonyActionService_BridgeCall_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TelephonyActionServiceServer).BridgeCall(ctx, req.(*BridgeCallRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // TelephonyActionService_ServiceDesc is the grpc.ServiceDesc for TelephonyActionService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -342,6 +378,10 @@ var TelephonyActionService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SpeakText",
 			Handler:    _TelephonyActionService_SpeakText_Handler,
+		},
+		{
+			MethodName: "BridgeCall",
+			Handler:    _TelephonyActionService_BridgeCall_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{

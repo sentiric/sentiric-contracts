@@ -49,6 +49,12 @@ extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table
 namespace sentiric {
 namespace telephony {
 namespace v1 {
+class BridgeCallRequest;
+struct BridgeCallRequestDefaultTypeInternal;
+extern BridgeCallRequestDefaultTypeInternal _BridgeCallRequest_default_instance_;
+class BridgeCallResponse;
+struct BridgeCallResponseDefaultTypeInternal;
+extern BridgeCallResponseDefaultTypeInternal _BridgeCallResponse_default_instance_;
 class PlayAudioRequest;
 struct PlayAudioRequestDefaultTypeInternal;
 extern PlayAudioRequestDefaultTypeInternal _PlayAudioRequest_default_instance_;
@@ -95,6 +101,8 @@ extern TerminateCallResponseDefaultTypeInternal _TerminateCallResponse_default_i
 }  // namespace telephony
 }  // namespace sentiric
 PROTOBUF_NAMESPACE_OPEN
+template<> ::sentiric::telephony::v1::BridgeCallRequest* Arena::CreateMaybeMessage<::sentiric::telephony::v1::BridgeCallRequest>(Arena*);
+template<> ::sentiric::telephony::v1::BridgeCallResponse* Arena::CreateMaybeMessage<::sentiric::telephony::v1::BridgeCallResponse>(Arena*);
 template<> ::sentiric::telephony::v1::PlayAudioRequest* Arena::CreateMaybeMessage<::sentiric::telephony::v1::PlayAudioRequest>(Arena*);
 template<> ::sentiric::telephony::v1::PlayAudioResponse* Arena::CreateMaybeMessage<::sentiric::telephony::v1::PlayAudioResponse>(Arena*);
 template<> ::sentiric::telephony::v1::RunPipelineRequest* Arena::CreateMaybeMessage<::sentiric::telephony::v1::RunPipelineRequest>(Arena*);
@@ -144,6 +152,355 @@ inline bool RunPipelineResponse_State_Parse(
 }
 // ===================================================================
 
+class BridgeCallRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.telephony.v1.BridgeCallRequest) */ {
+ public:
+  inline BridgeCallRequest() : BridgeCallRequest(nullptr) {}
+  ~BridgeCallRequest() override;
+  explicit PROTOBUF_CONSTEXPR BridgeCallRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  BridgeCallRequest(const BridgeCallRequest& from);
+  BridgeCallRequest(BridgeCallRequest&& from) noexcept
+    : BridgeCallRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline BridgeCallRequest& operator=(const BridgeCallRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline BridgeCallRequest& operator=(BridgeCallRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const BridgeCallRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const BridgeCallRequest* internal_default_instance() {
+    return reinterpret_cast<const BridgeCallRequest*>(
+               &_BridgeCallRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    0;
+
+  friend void swap(BridgeCallRequest& a, BridgeCallRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(BridgeCallRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(BridgeCallRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  BridgeCallRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<BridgeCallRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const BridgeCallRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const BridgeCallRequest& from) {
+    BridgeCallRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(BridgeCallRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.telephony.v1.BridgeCallRequest";
+  }
+  protected:
+  explicit BridgeCallRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kCallIdAFieldNumber = 1,
+    kTargetUriFieldNumber = 2,
+    kCallIdBFieldNumber = 3,
+  };
+  // string call_id_a = 1;
+  void clear_call_id_a();
+  const std::string& call_id_a() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_call_id_a(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_call_id_a();
+  PROTOBUF_NODISCARD std::string* release_call_id_a();
+  void set_allocated_call_id_a(std::string* call_id_a);
+  private:
+  const std::string& _internal_call_id_a() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_call_id_a(const std::string& value);
+  std::string* _internal_mutable_call_id_a();
+  public:
+
+  // string target_uri = 2;
+  void clear_target_uri();
+  const std::string& target_uri() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_target_uri(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_target_uri();
+  PROTOBUF_NODISCARD std::string* release_target_uri();
+  void set_allocated_target_uri(std::string* target_uri);
+  private:
+  const std::string& _internal_target_uri() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_target_uri(const std::string& value);
+  std::string* _internal_mutable_target_uri();
+  public:
+
+  // string call_id_b = 3;
+  void clear_call_id_b();
+  const std::string& call_id_b() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_call_id_b(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_call_id_b();
+  PROTOBUF_NODISCARD std::string* release_call_id_b();
+  void set_allocated_call_id_b(std::string* call_id_b);
+  private:
+  const std::string& _internal_call_id_b() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_call_id_b(const std::string& value);
+  std::string* _internal_mutable_call_id_b();
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.telephony.v1.BridgeCallRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr call_id_a_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr target_uri_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr call_id_b_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2ftelephony_2fv1_2faction_2eproto;
+};
+// -------------------------------------------------------------------
+
+class BridgeCallResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.telephony.v1.BridgeCallResponse) */ {
+ public:
+  inline BridgeCallResponse() : BridgeCallResponse(nullptr) {}
+  ~BridgeCallResponse() override;
+  explicit PROTOBUF_CONSTEXPR BridgeCallResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  BridgeCallResponse(const BridgeCallResponse& from);
+  BridgeCallResponse(BridgeCallResponse&& from) noexcept
+    : BridgeCallResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline BridgeCallResponse& operator=(const BridgeCallResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline BridgeCallResponse& operator=(BridgeCallResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const BridgeCallResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const BridgeCallResponse* internal_default_instance() {
+    return reinterpret_cast<const BridgeCallResponse*>(
+               &_BridgeCallResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    1;
+
+  friend void swap(BridgeCallResponse& a, BridgeCallResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(BridgeCallResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(BridgeCallResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  BridgeCallResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<BridgeCallResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const BridgeCallResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const BridgeCallResponse& from) {
+    BridgeCallResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(BridgeCallResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.telephony.v1.BridgeCallResponse";
+  }
+  protected:
+  explicit BridgeCallResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kMessageFieldNumber = 2,
+    kSuccessFieldNumber = 1,
+  };
+  // string message = 2;
+  void clear_message();
+  const std::string& message() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_message(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_message();
+  PROTOBUF_NODISCARD std::string* release_message();
+  void set_allocated_message(std::string* message);
+  private:
+  const std::string& _internal_message() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_message(const std::string& value);
+  std::string* _internal_mutable_message();
+  public:
+
+  // bool success = 1;
+  void clear_success();
+  bool success() const;
+  void set_success(bool value);
+  private:
+  bool _internal_success() const;
+  void _internal_set_success(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.telephony.v1.BridgeCallResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr message_;
+    bool success_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2ftelephony_2fv1_2faction_2eproto;
+};
+// -------------------------------------------------------------------
+
 class RunPipelineRequest final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.telephony.v1.RunPipelineRequest) */ {
  public:
@@ -192,7 +549,7 @@ class RunPipelineRequest final :
                &_RunPipelineRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    0;
+    2;
 
   friend void swap(RunPipelineRequest& a, RunPipelineRequest& b) {
     a.Swap(&b);
@@ -424,7 +781,7 @@ class RunPipelineResponse final :
                &_RunPipelineResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    3;
 
   friend void swap(RunPipelineResponse& a, RunPipelineResponse& b) {
     a.Swap(&b);
@@ -624,7 +981,7 @@ class SpeakTextRequest final :
                &_SpeakTextRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    4;
 
   friend void swap(SpeakTextRequest& a, SpeakTextRequest& b) {
     a.Swap(&b);
@@ -829,7 +1186,7 @@ class SpeakTextResponse final :
                &_SpeakTextResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    5;
 
   friend void swap(SpeakTextResponse& a, SpeakTextResponse& b) {
     a.Swap(&b);
@@ -993,7 +1350,7 @@ class PlayAudioRequest final :
                &_PlayAudioRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    6;
 
   friend void swap(PlayAudioRequest& a, PlayAudioRequest& b) {
     a.Swap(&b);
@@ -1162,7 +1519,7 @@ class PlayAudioResponse final :
                &_PlayAudioResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    7;
 
   friend void swap(PlayAudioResponse& a, PlayAudioResponse& b) {
     a.Swap(&b);
@@ -1310,7 +1667,7 @@ class TerminateCallRequest final :
                &_TerminateCallRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    8;
 
   friend void swap(TerminateCallRequest& a, TerminateCallRequest& b) {
     a.Swap(&b);
@@ -1479,7 +1836,7 @@ class TerminateCallResponse final :
                &_TerminateCallResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    9;
 
   friend void swap(TerminateCallResponse& a, TerminateCallResponse& b) {
     a.Swap(&b);
@@ -1627,7 +1984,7 @@ class SendTextMessageRequest final :
                &_SendTextMessageRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    10;
 
   friend void swap(SendTextMessageRequest& a, SendTextMessageRequest& b) {
     a.Swap(&b);
@@ -1796,7 +2153,7 @@ class SendTextMessageResponse final :
                &_SendTextMessageResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    11;
 
   friend void swap(SendTextMessageResponse& a, SendTextMessageResponse& b) {
     a.Swap(&b);
@@ -1944,7 +2301,7 @@ class StartRecordingRequest final :
                &_StartRecordingRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    10;
+    12;
 
   friend void swap(StartRecordingRequest& a, StartRecordingRequest& b) {
     a.Swap(&b);
@@ -2113,7 +2470,7 @@ class StartRecordingResponse final :
                &_StartRecordingResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    11;
+    13;
 
   friend void swap(StartRecordingResponse& a, StartRecordingResponse& b) {
     a.Swap(&b);
@@ -2261,7 +2618,7 @@ class StopRecordingRequest final :
                &_StopRecordingRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    12;
+    14;
 
   friend void swap(StopRecordingRequest& a, StopRecordingRequest& b) {
     a.Swap(&b);
@@ -2414,7 +2771,7 @@ class StopRecordingResponse final :
                &_StopRecordingResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    13;
+    15;
 
   friend void swap(StopRecordingResponse& a, StopRecordingResponse& b) {
     a.Swap(&b);
@@ -2521,6 +2878,234 @@ class StopRecordingResponse final :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
+// BridgeCallRequest
+
+// string call_id_a = 1;
+inline void BridgeCallRequest::clear_call_id_a() {
+  _impl_.call_id_a_.ClearToEmpty();
+}
+inline const std::string& BridgeCallRequest::call_id_a() const {
+  // @@protoc_insertion_point(field_get:sentiric.telephony.v1.BridgeCallRequest.call_id_a)
+  return _internal_call_id_a();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void BridgeCallRequest::set_call_id_a(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.call_id_a_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.telephony.v1.BridgeCallRequest.call_id_a)
+}
+inline std::string* BridgeCallRequest::mutable_call_id_a() {
+  std::string* _s = _internal_mutable_call_id_a();
+  // @@protoc_insertion_point(field_mutable:sentiric.telephony.v1.BridgeCallRequest.call_id_a)
+  return _s;
+}
+inline const std::string& BridgeCallRequest::_internal_call_id_a() const {
+  return _impl_.call_id_a_.Get();
+}
+inline void BridgeCallRequest::_internal_set_call_id_a(const std::string& value) {
+  
+  _impl_.call_id_a_.Set(value, GetArenaForAllocation());
+}
+inline std::string* BridgeCallRequest::_internal_mutable_call_id_a() {
+  
+  return _impl_.call_id_a_.Mutable(GetArenaForAllocation());
+}
+inline std::string* BridgeCallRequest::release_call_id_a() {
+  // @@protoc_insertion_point(field_release:sentiric.telephony.v1.BridgeCallRequest.call_id_a)
+  return _impl_.call_id_a_.Release();
+}
+inline void BridgeCallRequest::set_allocated_call_id_a(std::string* call_id_a) {
+  if (call_id_a != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.call_id_a_.SetAllocated(call_id_a, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.call_id_a_.IsDefault()) {
+    _impl_.call_id_a_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.telephony.v1.BridgeCallRequest.call_id_a)
+}
+
+// string target_uri = 2;
+inline void BridgeCallRequest::clear_target_uri() {
+  _impl_.target_uri_.ClearToEmpty();
+}
+inline const std::string& BridgeCallRequest::target_uri() const {
+  // @@protoc_insertion_point(field_get:sentiric.telephony.v1.BridgeCallRequest.target_uri)
+  return _internal_target_uri();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void BridgeCallRequest::set_target_uri(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.target_uri_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.telephony.v1.BridgeCallRequest.target_uri)
+}
+inline std::string* BridgeCallRequest::mutable_target_uri() {
+  std::string* _s = _internal_mutable_target_uri();
+  // @@protoc_insertion_point(field_mutable:sentiric.telephony.v1.BridgeCallRequest.target_uri)
+  return _s;
+}
+inline const std::string& BridgeCallRequest::_internal_target_uri() const {
+  return _impl_.target_uri_.Get();
+}
+inline void BridgeCallRequest::_internal_set_target_uri(const std::string& value) {
+  
+  _impl_.target_uri_.Set(value, GetArenaForAllocation());
+}
+inline std::string* BridgeCallRequest::_internal_mutable_target_uri() {
+  
+  return _impl_.target_uri_.Mutable(GetArenaForAllocation());
+}
+inline std::string* BridgeCallRequest::release_target_uri() {
+  // @@protoc_insertion_point(field_release:sentiric.telephony.v1.BridgeCallRequest.target_uri)
+  return _impl_.target_uri_.Release();
+}
+inline void BridgeCallRequest::set_allocated_target_uri(std::string* target_uri) {
+  if (target_uri != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.target_uri_.SetAllocated(target_uri, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.target_uri_.IsDefault()) {
+    _impl_.target_uri_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.telephony.v1.BridgeCallRequest.target_uri)
+}
+
+// string call_id_b = 3;
+inline void BridgeCallRequest::clear_call_id_b() {
+  _impl_.call_id_b_.ClearToEmpty();
+}
+inline const std::string& BridgeCallRequest::call_id_b() const {
+  // @@protoc_insertion_point(field_get:sentiric.telephony.v1.BridgeCallRequest.call_id_b)
+  return _internal_call_id_b();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void BridgeCallRequest::set_call_id_b(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.call_id_b_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.telephony.v1.BridgeCallRequest.call_id_b)
+}
+inline std::string* BridgeCallRequest::mutable_call_id_b() {
+  std::string* _s = _internal_mutable_call_id_b();
+  // @@protoc_insertion_point(field_mutable:sentiric.telephony.v1.BridgeCallRequest.call_id_b)
+  return _s;
+}
+inline const std::string& BridgeCallRequest::_internal_call_id_b() const {
+  return _impl_.call_id_b_.Get();
+}
+inline void BridgeCallRequest::_internal_set_call_id_b(const std::string& value) {
+  
+  _impl_.call_id_b_.Set(value, GetArenaForAllocation());
+}
+inline std::string* BridgeCallRequest::_internal_mutable_call_id_b() {
+  
+  return _impl_.call_id_b_.Mutable(GetArenaForAllocation());
+}
+inline std::string* BridgeCallRequest::release_call_id_b() {
+  // @@protoc_insertion_point(field_release:sentiric.telephony.v1.BridgeCallRequest.call_id_b)
+  return _impl_.call_id_b_.Release();
+}
+inline void BridgeCallRequest::set_allocated_call_id_b(std::string* call_id_b) {
+  if (call_id_b != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.call_id_b_.SetAllocated(call_id_b, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.call_id_b_.IsDefault()) {
+    _impl_.call_id_b_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.telephony.v1.BridgeCallRequest.call_id_b)
+}
+
+// -------------------------------------------------------------------
+
+// BridgeCallResponse
+
+// bool success = 1;
+inline void BridgeCallResponse::clear_success() {
+  _impl_.success_ = false;
+}
+inline bool BridgeCallResponse::_internal_success() const {
+  return _impl_.success_;
+}
+inline bool BridgeCallResponse::success() const {
+  // @@protoc_insertion_point(field_get:sentiric.telephony.v1.BridgeCallResponse.success)
+  return _internal_success();
+}
+inline void BridgeCallResponse::_internal_set_success(bool value) {
+  
+  _impl_.success_ = value;
+}
+inline void BridgeCallResponse::set_success(bool value) {
+  _internal_set_success(value);
+  // @@protoc_insertion_point(field_set:sentiric.telephony.v1.BridgeCallResponse.success)
+}
+
+// string message = 2;
+inline void BridgeCallResponse::clear_message() {
+  _impl_.message_.ClearToEmpty();
+}
+inline const std::string& BridgeCallResponse::message() const {
+  // @@protoc_insertion_point(field_get:sentiric.telephony.v1.BridgeCallResponse.message)
+  return _internal_message();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void BridgeCallResponse::set_message(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.message_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.telephony.v1.BridgeCallResponse.message)
+}
+inline std::string* BridgeCallResponse::mutable_message() {
+  std::string* _s = _internal_mutable_message();
+  // @@protoc_insertion_point(field_mutable:sentiric.telephony.v1.BridgeCallResponse.message)
+  return _s;
+}
+inline const std::string& BridgeCallResponse::_internal_message() const {
+  return _impl_.message_.Get();
+}
+inline void BridgeCallResponse::_internal_set_message(const std::string& value) {
+  
+  _impl_.message_.Set(value, GetArenaForAllocation());
+}
+inline std::string* BridgeCallResponse::_internal_mutable_message() {
+  
+  return _impl_.message_.Mutable(GetArenaForAllocation());
+}
+inline std::string* BridgeCallResponse::release_message() {
+  // @@protoc_insertion_point(field_release:sentiric.telephony.v1.BridgeCallResponse.message)
+  return _impl_.message_.Release();
+}
+inline void BridgeCallResponse::set_allocated_message(std::string* message) {
+  if (message != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.message_.SetAllocated(message, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.message_.IsDefault()) {
+    _impl_.message_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.telephony.v1.BridgeCallResponse.message)
+}
+
+// -------------------------------------------------------------------
+
 // RunPipelineRequest
 
 // string call_id = 1;
@@ -3808,6 +4393,10 @@ inline void StopRecordingResponse::set_success(bool value) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

@@ -5,6 +5,28 @@ var grpc = require('@grpc/grpc-js');
 var sentiric_telephony_v1_action_pb = require('../../../sentiric/telephony/v1/action_pb.js');
 var sentiric_event_v1_event_pb = require('../../../sentiric/event/v1/event_pb.js');
 
+function serialize_sentiric_telephony_v1_BridgeCallRequest(arg) {
+  if (!(arg instanceof sentiric_telephony_v1_action_pb.BridgeCallRequest)) {
+    throw new Error('Expected argument of type sentiric.telephony.v1.BridgeCallRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sentiric_telephony_v1_BridgeCallRequest(buffer_arg) {
+  return sentiric_telephony_v1_action_pb.BridgeCallRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sentiric_telephony_v1_BridgeCallResponse(arg) {
+  if (!(arg instanceof sentiric_telephony_v1_action_pb.BridgeCallResponse)) {
+    throw new Error('Expected argument of type sentiric.telephony.v1.BridgeCallResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sentiric_telephony_v1_BridgeCallResponse(buffer_arg) {
+  return sentiric_telephony_v1_action_pb.BridgeCallResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sentiric_telephony_v1_PlayAudioRequest(arg) {
   if (!(arg instanceof sentiric_telephony_v1_action_pb.PlayAudioRequest)) {
     throw new Error('Expected argument of type sentiric.telephony.v1.PlayAudioRequest');
@@ -228,7 +250,7 @@ runPipeline: {
     responseSerialize: serialize_sentiric_telephony_v1_RunPipelineResponse,
     responseDeserialize: deserialize_sentiric_telephony_v1_RunPipelineResponse,
   },
-  // [YENİ] Metni sese çevirip çalma (Agent Service yükünü almak için)
+  // Metni sese çevirip çalma (Agent Service yükünü almak için)
 speakText: {
     path: '/sentiric.telephony.v1.TelephonyActionService/SpeakText',
     requestStream: false,
@@ -239,6 +261,18 @@ speakText: {
     requestDeserialize: deserialize_sentiric_telephony_v1_SpeakTextRequest,
     responseSerialize: serialize_sentiric_telephony_v1_SpeakTextResponse,
     responseDeserialize: deserialize_sentiric_telephony_v1_SpeakTextResponse,
+  },
+  // [YENİ v1.13.5] İki çağrı bacağını (Leg) birbirine bağlar (Bridging)
+bridgeCall: {
+    path: '/sentiric.telephony.v1.TelephonyActionService/BridgeCall',
+    requestStream: false,
+    responseStream: false,
+    requestType: sentiric_telephony_v1_action_pb.BridgeCallRequest,
+    responseType: sentiric_telephony_v1_action_pb.BridgeCallResponse,
+    requestSerialize: serialize_sentiric_telephony_v1_BridgeCallRequest,
+    requestDeserialize: deserialize_sentiric_telephony_v1_BridgeCallRequest,
+    responseSerialize: serialize_sentiric_telephony_v1_BridgeCallResponse,
+    responseDeserialize: deserialize_sentiric_telephony_v1_BridgeCallResponse,
   },
 };
 

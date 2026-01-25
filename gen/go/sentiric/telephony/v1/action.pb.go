@@ -74,9 +74,124 @@ func (x RunPipelineResponse_State) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use RunPipelineResponse_State.Descriptor instead.
 func (RunPipelineResponse_State) EnumDescriptor() ([]byte, []int) {
-	return file_sentiric_telephony_v1_action_proto_rawDescGZIP(), []int{1, 0}
+	return file_sentiric_telephony_v1_action_proto_rawDescGZIP(), []int{3, 0}
 }
 
+// --- BridgeCall Messages ---
+type BridgeCallRequest struct {
+	state     protoimpl.MessageState `protogen:"open.v1"`
+	CallIdA   string                 `protobuf:"bytes,1,opt,name=call_id_a,json=callIdA,proto3" json:"call_id_a,omitempty"`     // Bağlanacak birinci taraf (Genellikle müşteri)
+	TargetUri string                 `protobuf:"bytes,2,opt,name=target_uri,json=targetUri,proto3" json:"target_uri,omitempty"` // Bağlanılacak hedef (Örn: sip:agent@10.0.0.1)
+	// Veya mevcut iki call_id'yi bağlamak için opsiyonel alan:
+	CallIdB       string `protobuf:"bytes,3,opt,name=call_id_b,json=callIdB,proto3" json:"call_id_b,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BridgeCallRequest) Reset() {
+	*x = BridgeCallRequest{}
+	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BridgeCallRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BridgeCallRequest) ProtoMessage() {}
+
+func (x *BridgeCallRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BridgeCallRequest.ProtoReflect.Descriptor instead.
+func (*BridgeCallRequest) Descriptor() ([]byte, []int) {
+	return file_sentiric_telephony_v1_action_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *BridgeCallRequest) GetCallIdA() string {
+	if x != nil {
+		return x.CallIdA
+	}
+	return ""
+}
+
+func (x *BridgeCallRequest) GetTargetUri() string {
+	if x != nil {
+		return x.TargetUri
+	}
+	return ""
+}
+
+func (x *BridgeCallRequest) GetCallIdB() string {
+	if x != nil {
+		return x.CallIdB
+	}
+	return ""
+}
+
+type BridgeCallResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	Message       string                 `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BridgeCallResponse) Reset() {
+	*x = BridgeCallResponse{}
+	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BridgeCallResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BridgeCallResponse) ProtoMessage() {}
+
+func (x *BridgeCallResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BridgeCallResponse.ProtoReflect.Descriptor instead.
+func (*BridgeCallResponse) Descriptor() ([]byte, []int) {
+	return file_sentiric_telephony_v1_action_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *BridgeCallResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
+func (x *BridgeCallResponse) GetMessage() string {
+	if x != nil {
+		return x.Message
+	}
+	return ""
+}
+
+// --- RunPipeline Messages ---
 type RunPipelineRequest struct {
 	state     protoimpl.MessageState `protogen:"open.v1"`
 	CallId    string                 `protobuf:"bytes,1,opt,name=call_id,json=callId,proto3" json:"call_id,omitempty"`
@@ -93,7 +208,7 @@ type RunPipelineRequest struct {
 
 func (x *RunPipelineRequest) Reset() {
 	*x = RunPipelineRequest{}
-	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[0]
+	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -105,7 +220,7 @@ func (x *RunPipelineRequest) String() string {
 func (*RunPipelineRequest) ProtoMessage() {}
 
 func (x *RunPipelineRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[0]
+	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -118,7 +233,7 @@ func (x *RunPipelineRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RunPipelineRequest.ProtoReflect.Descriptor instead.
 func (*RunPipelineRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_telephony_v1_action_proto_rawDescGZIP(), []int{0}
+	return file_sentiric_telephony_v1_action_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *RunPipelineRequest) GetCallId() string {
@@ -173,7 +288,7 @@ type RunPipelineResponse struct {
 
 func (x *RunPipelineResponse) Reset() {
 	*x = RunPipelineResponse{}
-	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[1]
+	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -185,7 +300,7 @@ func (x *RunPipelineResponse) String() string {
 func (*RunPipelineResponse) ProtoMessage() {}
 
 func (x *RunPipelineResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[1]
+	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -198,7 +313,7 @@ func (x *RunPipelineResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RunPipelineResponse.ProtoReflect.Descriptor instead.
 func (*RunPipelineResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_telephony_v1_action_proto_rawDescGZIP(), []int{1}
+	return file_sentiric_telephony_v1_action_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *RunPipelineResponse) GetState() RunPipelineResponse_State {
@@ -229,7 +344,7 @@ type SpeakTextRequest struct {
 
 func (x *SpeakTextRequest) Reset() {
 	*x = SpeakTextRequest{}
-	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[2]
+	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -241,7 +356,7 @@ func (x *SpeakTextRequest) String() string {
 func (*SpeakTextRequest) ProtoMessage() {}
 
 func (x *SpeakTextRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[2]
+	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -254,7 +369,7 @@ func (x *SpeakTextRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SpeakTextRequest.ProtoReflect.Descriptor instead.
 func (*SpeakTextRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_telephony_v1_action_proto_rawDescGZIP(), []int{2}
+	return file_sentiric_telephony_v1_action_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *SpeakTextRequest) GetCallId() string {
@@ -295,7 +410,7 @@ type SpeakTextResponse struct {
 
 func (x *SpeakTextResponse) Reset() {
 	*x = SpeakTextResponse{}
-	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[3]
+	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -307,7 +422,7 @@ func (x *SpeakTextResponse) String() string {
 func (*SpeakTextResponse) ProtoMessage() {}
 
 func (x *SpeakTextResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[3]
+	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -320,7 +435,7 @@ func (x *SpeakTextResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SpeakTextResponse.ProtoReflect.Descriptor instead.
 func (*SpeakTextResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_telephony_v1_action_proto_rawDescGZIP(), []int{3}
+	return file_sentiric_telephony_v1_action_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *SpeakTextResponse) GetSuccess() bool {
@@ -348,7 +463,7 @@ type PlayAudioRequest struct {
 
 func (x *PlayAudioRequest) Reset() {
 	*x = PlayAudioRequest{}
-	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[4]
+	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -360,7 +475,7 @@ func (x *PlayAudioRequest) String() string {
 func (*PlayAudioRequest) ProtoMessage() {}
 
 func (x *PlayAudioRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[4]
+	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -373,7 +488,7 @@ func (x *PlayAudioRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PlayAudioRequest.ProtoReflect.Descriptor instead.
 func (*PlayAudioRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_telephony_v1_action_proto_rawDescGZIP(), []int{4}
+	return file_sentiric_telephony_v1_action_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *PlayAudioRequest) GetCallId() string {
@@ -399,7 +514,7 @@ type PlayAudioResponse struct {
 
 func (x *PlayAudioResponse) Reset() {
 	*x = PlayAudioResponse{}
-	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[5]
+	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -411,7 +526,7 @@ func (x *PlayAudioResponse) String() string {
 func (*PlayAudioResponse) ProtoMessage() {}
 
 func (x *PlayAudioResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[5]
+	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -424,7 +539,7 @@ func (x *PlayAudioResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PlayAudioResponse.ProtoReflect.Descriptor instead.
 func (*PlayAudioResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_telephony_v1_action_proto_rawDescGZIP(), []int{5}
+	return file_sentiric_telephony_v1_action_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *PlayAudioResponse) GetSuccess() bool {
@@ -444,7 +559,7 @@ type TerminateCallRequest struct {
 
 func (x *TerminateCallRequest) Reset() {
 	*x = TerminateCallRequest{}
-	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[6]
+	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -456,7 +571,7 @@ func (x *TerminateCallRequest) String() string {
 func (*TerminateCallRequest) ProtoMessage() {}
 
 func (x *TerminateCallRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[6]
+	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -469,7 +584,7 @@ func (x *TerminateCallRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TerminateCallRequest.ProtoReflect.Descriptor instead.
 func (*TerminateCallRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_telephony_v1_action_proto_rawDescGZIP(), []int{6}
+	return file_sentiric_telephony_v1_action_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *TerminateCallRequest) GetCallId() string {
@@ -495,7 +610,7 @@ type TerminateCallResponse struct {
 
 func (x *TerminateCallResponse) Reset() {
 	*x = TerminateCallResponse{}
-	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[7]
+	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -507,7 +622,7 @@ func (x *TerminateCallResponse) String() string {
 func (*TerminateCallResponse) ProtoMessage() {}
 
 func (x *TerminateCallResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[7]
+	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -520,7 +635,7 @@ func (x *TerminateCallResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TerminateCallResponse.ProtoReflect.Descriptor instead.
 func (*TerminateCallResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_telephony_v1_action_proto_rawDescGZIP(), []int{7}
+	return file_sentiric_telephony_v1_action_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *TerminateCallResponse) GetSuccess() bool {
@@ -540,7 +655,7 @@ type SendTextMessageRequest struct {
 
 func (x *SendTextMessageRequest) Reset() {
 	*x = SendTextMessageRequest{}
-	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[8]
+	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -552,7 +667,7 @@ func (x *SendTextMessageRequest) String() string {
 func (*SendTextMessageRequest) ProtoMessage() {}
 
 func (x *SendTextMessageRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[8]
+	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -565,7 +680,7 @@ func (x *SendTextMessageRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendTextMessageRequest.ProtoReflect.Descriptor instead.
 func (*SendTextMessageRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_telephony_v1_action_proto_rawDescGZIP(), []int{8}
+	return file_sentiric_telephony_v1_action_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *SendTextMessageRequest) GetTo() string {
@@ -591,7 +706,7 @@ type SendTextMessageResponse struct {
 
 func (x *SendTextMessageResponse) Reset() {
 	*x = SendTextMessageResponse{}
-	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[9]
+	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -603,7 +718,7 @@ func (x *SendTextMessageResponse) String() string {
 func (*SendTextMessageResponse) ProtoMessage() {}
 
 func (x *SendTextMessageResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[9]
+	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -616,7 +731,7 @@ func (x *SendTextMessageResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendTextMessageResponse.ProtoReflect.Descriptor instead.
 func (*SendTextMessageResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_telephony_v1_action_proto_rawDescGZIP(), []int{9}
+	return file_sentiric_telephony_v1_action_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *SendTextMessageResponse) GetSuccess() bool {
@@ -636,7 +751,7 @@ type StartRecordingRequest struct {
 
 func (x *StartRecordingRequest) Reset() {
 	*x = StartRecordingRequest{}
-	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[10]
+	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -648,7 +763,7 @@ func (x *StartRecordingRequest) String() string {
 func (*StartRecordingRequest) ProtoMessage() {}
 
 func (x *StartRecordingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[10]
+	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -661,7 +776,7 @@ func (x *StartRecordingRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StartRecordingRequest.ProtoReflect.Descriptor instead.
 func (*StartRecordingRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_telephony_v1_action_proto_rawDescGZIP(), []int{10}
+	return file_sentiric_telephony_v1_action_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *StartRecordingRequest) GetCallId() string {
@@ -687,7 +802,7 @@ type StartRecordingResponse struct {
 
 func (x *StartRecordingResponse) Reset() {
 	*x = StartRecordingResponse{}
-	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[11]
+	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -699,7 +814,7 @@ func (x *StartRecordingResponse) String() string {
 func (*StartRecordingResponse) ProtoMessage() {}
 
 func (x *StartRecordingResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[11]
+	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -712,7 +827,7 @@ func (x *StartRecordingResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StartRecordingResponse.ProtoReflect.Descriptor instead.
 func (*StartRecordingResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_telephony_v1_action_proto_rawDescGZIP(), []int{11}
+	return file_sentiric_telephony_v1_action_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *StartRecordingResponse) GetSuccess() bool {
@@ -731,7 +846,7 @@ type StopRecordingRequest struct {
 
 func (x *StopRecordingRequest) Reset() {
 	*x = StopRecordingRequest{}
-	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[12]
+	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -743,7 +858,7 @@ func (x *StopRecordingRequest) String() string {
 func (*StopRecordingRequest) ProtoMessage() {}
 
 func (x *StopRecordingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[12]
+	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -756,7 +871,7 @@ func (x *StopRecordingRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StopRecordingRequest.ProtoReflect.Descriptor instead.
 func (*StopRecordingRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_telephony_v1_action_proto_rawDescGZIP(), []int{12}
+	return file_sentiric_telephony_v1_action_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *StopRecordingRequest) GetCallId() string {
@@ -775,7 +890,7 @@ type StopRecordingResponse struct {
 
 func (x *StopRecordingResponse) Reset() {
 	*x = StopRecordingResponse{}
-	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[13]
+	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -787,7 +902,7 @@ func (x *StopRecordingResponse) String() string {
 func (*StopRecordingResponse) ProtoMessage() {}
 
 func (x *StopRecordingResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[13]
+	mi := &file_sentiric_telephony_v1_action_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -800,7 +915,7 @@ func (x *StopRecordingResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StopRecordingResponse.ProtoReflect.Descriptor instead.
 func (*StopRecordingResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_telephony_v1_action_proto_rawDescGZIP(), []int{13}
+	return file_sentiric_telephony_v1_action_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *StopRecordingResponse) GetSuccess() bool {
@@ -814,7 +929,15 @@ var File_sentiric_telephony_v1_action_proto protoreflect.FileDescriptor
 
 const file_sentiric_telephony_v1_action_proto_rawDesc = "" +
 	"\n" +
-	"\"sentiric/telephony/v1/action.proto\x12\x15sentiric.telephony.v1\x1a\x1dsentiric/event/v1/event.proto\"\xf4\x01\n" +
+	"\"sentiric/telephony/v1/action.proto\x12\x15sentiric.telephony.v1\x1a\x1dsentiric/event/v1/event.proto\"j\n" +
+	"\x11BridgeCallRequest\x12\x1a\n" +
+	"\tcall_id_a\x18\x01 \x01(\tR\acallIdA\x12\x1d\n" +
+	"\n" +
+	"target_uri\x18\x02 \x01(\tR\ttargetUri\x12\x1a\n" +
+	"\tcall_id_b\x18\x03 \x01(\tR\acallIdB\"H\n" +
+	"\x12BridgeCallResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x18\n" +
+	"\amessage\x18\x02 \x01(\tR\amessage\"\xf4\x01\n" +
 	"\x12RunPipelineRequest\x12\x17\n" +
 	"\acall_id\x18\x01 \x01(\tR\x06callId\x12\x1d\n" +
 	"\n" +
@@ -868,7 +991,7 @@ const file_sentiric_telephony_v1_action_proto_rawDesc = "" +
 	"\x14StopRecordingRequest\x12\x17\n" +
 	"\acall_id\x18\x01 \x01(\tR\x06callId\"1\n" +
 	"\x15StopRecordingResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess2\xf9\x05\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess2\xdc\x06\n" +
 	"\x16TelephonyActionService\x12^\n" +
 	"\tPlayAudio\x12'.sentiric.telephony.v1.PlayAudioRequest\x1a(.sentiric.telephony.v1.PlayAudioResponse\x12j\n" +
 	"\rTerminateCall\x12+.sentiric.telephony.v1.TerminateCallRequest\x1a,.sentiric.telephony.v1.TerminateCallResponse\x12p\n" +
@@ -876,7 +999,9 @@ const file_sentiric_telephony_v1_action_proto_rawDesc = "" +
 	"\x0eStartRecording\x12,.sentiric.telephony.v1.StartRecordingRequest\x1a-.sentiric.telephony.v1.StartRecordingResponse\x12j\n" +
 	"\rStopRecording\x12+.sentiric.telephony.v1.StopRecordingRequest\x1a,.sentiric.telephony.v1.StopRecordingResponse\x12f\n" +
 	"\vRunPipeline\x12).sentiric.telephony.v1.RunPipelineRequest\x1a*.sentiric.telephony.v1.RunPipelineResponse0\x01\x12^\n" +
-	"\tSpeakText\x12'.sentiric.telephony.v1.SpeakTextRequest\x1a(.sentiric.telephony.v1.SpeakTextResponseBQZOgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/telephony/v1;telephonyv1b\x06proto3"
+	"\tSpeakText\x12'.sentiric.telephony.v1.SpeakTextRequest\x1a(.sentiric.telephony.v1.SpeakTextResponse\x12a\n" +
+	"\n" +
+	"BridgeCall\x12(.sentiric.telephony.v1.BridgeCallRequest\x1a).sentiric.telephony.v1.BridgeCallResponseBQZOgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/telephony/v1;telephonyv1b\x06proto3"
 
 var (
 	file_sentiric_telephony_v1_action_proto_rawDescOnce sync.Once
@@ -891,45 +1016,49 @@ func file_sentiric_telephony_v1_action_proto_rawDescGZIP() []byte {
 }
 
 var file_sentiric_telephony_v1_action_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_sentiric_telephony_v1_action_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
+var file_sentiric_telephony_v1_action_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
 var file_sentiric_telephony_v1_action_proto_goTypes = []any{
 	(RunPipelineResponse_State)(0),  // 0: sentiric.telephony.v1.RunPipelineResponse.State
-	(*RunPipelineRequest)(nil),      // 1: sentiric.telephony.v1.RunPipelineRequest
-	(*RunPipelineResponse)(nil),     // 2: sentiric.telephony.v1.RunPipelineResponse
-	(*SpeakTextRequest)(nil),        // 3: sentiric.telephony.v1.SpeakTextRequest
-	(*SpeakTextResponse)(nil),       // 4: sentiric.telephony.v1.SpeakTextResponse
-	(*PlayAudioRequest)(nil),        // 5: sentiric.telephony.v1.PlayAudioRequest
-	(*PlayAudioResponse)(nil),       // 6: sentiric.telephony.v1.PlayAudioResponse
-	(*TerminateCallRequest)(nil),    // 7: sentiric.telephony.v1.TerminateCallRequest
-	(*TerminateCallResponse)(nil),   // 8: sentiric.telephony.v1.TerminateCallResponse
-	(*SendTextMessageRequest)(nil),  // 9: sentiric.telephony.v1.SendTextMessageRequest
-	(*SendTextMessageResponse)(nil), // 10: sentiric.telephony.v1.SendTextMessageResponse
-	(*StartRecordingRequest)(nil),   // 11: sentiric.telephony.v1.StartRecordingRequest
-	(*StartRecordingResponse)(nil),  // 12: sentiric.telephony.v1.StartRecordingResponse
-	(*StopRecordingRequest)(nil),    // 13: sentiric.telephony.v1.StopRecordingRequest
-	(*StopRecordingResponse)(nil),   // 14: sentiric.telephony.v1.StopRecordingResponse
-	(*v1.MediaInfo)(nil),            // 15: sentiric.event.v1.MediaInfo
+	(*BridgeCallRequest)(nil),       // 1: sentiric.telephony.v1.BridgeCallRequest
+	(*BridgeCallResponse)(nil),      // 2: sentiric.telephony.v1.BridgeCallResponse
+	(*RunPipelineRequest)(nil),      // 3: sentiric.telephony.v1.RunPipelineRequest
+	(*RunPipelineResponse)(nil),     // 4: sentiric.telephony.v1.RunPipelineResponse
+	(*SpeakTextRequest)(nil),        // 5: sentiric.telephony.v1.SpeakTextRequest
+	(*SpeakTextResponse)(nil),       // 6: sentiric.telephony.v1.SpeakTextResponse
+	(*PlayAudioRequest)(nil),        // 7: sentiric.telephony.v1.PlayAudioRequest
+	(*PlayAudioResponse)(nil),       // 8: sentiric.telephony.v1.PlayAudioResponse
+	(*TerminateCallRequest)(nil),    // 9: sentiric.telephony.v1.TerminateCallRequest
+	(*TerminateCallResponse)(nil),   // 10: sentiric.telephony.v1.TerminateCallResponse
+	(*SendTextMessageRequest)(nil),  // 11: sentiric.telephony.v1.SendTextMessageRequest
+	(*SendTextMessageResponse)(nil), // 12: sentiric.telephony.v1.SendTextMessageResponse
+	(*StartRecordingRequest)(nil),   // 13: sentiric.telephony.v1.StartRecordingRequest
+	(*StartRecordingResponse)(nil),  // 14: sentiric.telephony.v1.StartRecordingResponse
+	(*StopRecordingRequest)(nil),    // 15: sentiric.telephony.v1.StopRecordingRequest
+	(*StopRecordingResponse)(nil),   // 16: sentiric.telephony.v1.StopRecordingResponse
+	(*v1.MediaInfo)(nil),            // 17: sentiric.event.v1.MediaInfo
 }
 var file_sentiric_telephony_v1_action_proto_depIdxs = []int32{
-	15, // 0: sentiric.telephony.v1.RunPipelineRequest.media_info:type_name -> sentiric.event.v1.MediaInfo
+	17, // 0: sentiric.telephony.v1.RunPipelineRequest.media_info:type_name -> sentiric.event.v1.MediaInfo
 	0,  // 1: sentiric.telephony.v1.RunPipelineResponse.state:type_name -> sentiric.telephony.v1.RunPipelineResponse.State
-	15, // 2: sentiric.telephony.v1.SpeakTextRequest.media_info:type_name -> sentiric.event.v1.MediaInfo
-	5,  // 3: sentiric.telephony.v1.TelephonyActionService.PlayAudio:input_type -> sentiric.telephony.v1.PlayAudioRequest
-	7,  // 4: sentiric.telephony.v1.TelephonyActionService.TerminateCall:input_type -> sentiric.telephony.v1.TerminateCallRequest
-	9,  // 5: sentiric.telephony.v1.TelephonyActionService.SendTextMessage:input_type -> sentiric.telephony.v1.SendTextMessageRequest
-	11, // 6: sentiric.telephony.v1.TelephonyActionService.StartRecording:input_type -> sentiric.telephony.v1.StartRecordingRequest
-	13, // 7: sentiric.telephony.v1.TelephonyActionService.StopRecording:input_type -> sentiric.telephony.v1.StopRecordingRequest
-	1,  // 8: sentiric.telephony.v1.TelephonyActionService.RunPipeline:input_type -> sentiric.telephony.v1.RunPipelineRequest
-	3,  // 9: sentiric.telephony.v1.TelephonyActionService.SpeakText:input_type -> sentiric.telephony.v1.SpeakTextRequest
-	6,  // 10: sentiric.telephony.v1.TelephonyActionService.PlayAudio:output_type -> sentiric.telephony.v1.PlayAudioResponse
-	8,  // 11: sentiric.telephony.v1.TelephonyActionService.TerminateCall:output_type -> sentiric.telephony.v1.TerminateCallResponse
-	10, // 12: sentiric.telephony.v1.TelephonyActionService.SendTextMessage:output_type -> sentiric.telephony.v1.SendTextMessageResponse
-	12, // 13: sentiric.telephony.v1.TelephonyActionService.StartRecording:output_type -> sentiric.telephony.v1.StartRecordingResponse
-	14, // 14: sentiric.telephony.v1.TelephonyActionService.StopRecording:output_type -> sentiric.telephony.v1.StopRecordingResponse
-	2,  // 15: sentiric.telephony.v1.TelephonyActionService.RunPipeline:output_type -> sentiric.telephony.v1.RunPipelineResponse
-	4,  // 16: sentiric.telephony.v1.TelephonyActionService.SpeakText:output_type -> sentiric.telephony.v1.SpeakTextResponse
-	10, // [10:17] is the sub-list for method output_type
-	3,  // [3:10] is the sub-list for method input_type
+	17, // 2: sentiric.telephony.v1.SpeakTextRequest.media_info:type_name -> sentiric.event.v1.MediaInfo
+	7,  // 3: sentiric.telephony.v1.TelephonyActionService.PlayAudio:input_type -> sentiric.telephony.v1.PlayAudioRequest
+	9,  // 4: sentiric.telephony.v1.TelephonyActionService.TerminateCall:input_type -> sentiric.telephony.v1.TerminateCallRequest
+	11, // 5: sentiric.telephony.v1.TelephonyActionService.SendTextMessage:input_type -> sentiric.telephony.v1.SendTextMessageRequest
+	13, // 6: sentiric.telephony.v1.TelephonyActionService.StartRecording:input_type -> sentiric.telephony.v1.StartRecordingRequest
+	15, // 7: sentiric.telephony.v1.TelephonyActionService.StopRecording:input_type -> sentiric.telephony.v1.StopRecordingRequest
+	3,  // 8: sentiric.telephony.v1.TelephonyActionService.RunPipeline:input_type -> sentiric.telephony.v1.RunPipelineRequest
+	5,  // 9: sentiric.telephony.v1.TelephonyActionService.SpeakText:input_type -> sentiric.telephony.v1.SpeakTextRequest
+	1,  // 10: sentiric.telephony.v1.TelephonyActionService.BridgeCall:input_type -> sentiric.telephony.v1.BridgeCallRequest
+	8,  // 11: sentiric.telephony.v1.TelephonyActionService.PlayAudio:output_type -> sentiric.telephony.v1.PlayAudioResponse
+	10, // 12: sentiric.telephony.v1.TelephonyActionService.TerminateCall:output_type -> sentiric.telephony.v1.TerminateCallResponse
+	12, // 13: sentiric.telephony.v1.TelephonyActionService.SendTextMessage:output_type -> sentiric.telephony.v1.SendTextMessageResponse
+	14, // 14: sentiric.telephony.v1.TelephonyActionService.StartRecording:output_type -> sentiric.telephony.v1.StartRecordingResponse
+	16, // 15: sentiric.telephony.v1.TelephonyActionService.StopRecording:output_type -> sentiric.telephony.v1.StopRecordingResponse
+	4,  // 16: sentiric.telephony.v1.TelephonyActionService.RunPipeline:output_type -> sentiric.telephony.v1.RunPipelineResponse
+	6,  // 17: sentiric.telephony.v1.TelephonyActionService.SpeakText:output_type -> sentiric.telephony.v1.SpeakTextResponse
+	2,  // 18: sentiric.telephony.v1.TelephonyActionService.BridgeCall:output_type -> sentiric.telephony.v1.BridgeCallResponse
+	11, // [11:19] is the sub-list for method output_type
+	3,  // [3:11] is the sub-list for method input_type
 	3,  // [3:3] is the sub-list for extension type_name
 	3,  // [3:3] is the sub-list for extension extendee
 	0,  // [0:3] is the sub-list for field type_name
@@ -946,7 +1075,7 @@ func file_sentiric_telephony_v1_action_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sentiric_telephony_v1_action_proto_rawDesc), len(file_sentiric_telephony_v1_action_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   14,
+			NumMessages:   16,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

@@ -31,6 +31,7 @@ static const char* TelephonyActionService_method_names[] = {
   "/sentiric.telephony.v1.TelephonyActionService/StopRecording",
   "/sentiric.telephony.v1.TelephonyActionService/RunPipeline",
   "/sentiric.telephony.v1.TelephonyActionService/SpeakText",
+  "/sentiric.telephony.v1.TelephonyActionService/BridgeCall",
 };
 
 std::unique_ptr< TelephonyActionService::Stub> TelephonyActionService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -47,6 +48,7 @@ TelephonyActionService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterfa
   , rpcmethod_StopRecording_(TelephonyActionService_method_names[4], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_RunPipeline_(TelephonyActionService_method_names[5], options.suffix_for_stats(),::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
   , rpcmethod_SpeakText_(TelephonyActionService_method_names[6], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_BridgeCall_(TelephonyActionService_method_names[7], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status TelephonyActionService::Stub::PlayAudio(::grpc::ClientContext* context, const ::sentiric::telephony::v1::PlayAudioRequest& request, ::sentiric::telephony::v1::PlayAudioResponse* response) {
@@ -203,6 +205,29 @@ void TelephonyActionService::Stub::async::SpeakText(::grpc::ClientContext* conte
   return result;
 }
 
+::grpc::Status TelephonyActionService::Stub::BridgeCall(::grpc::ClientContext* context, const ::sentiric::telephony::v1::BridgeCallRequest& request, ::sentiric::telephony::v1::BridgeCallResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::sentiric::telephony::v1::BridgeCallRequest, ::sentiric::telephony::v1::BridgeCallResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_BridgeCall_, context, request, response);
+}
+
+void TelephonyActionService::Stub::async::BridgeCall(::grpc::ClientContext* context, const ::sentiric::telephony::v1::BridgeCallRequest* request, ::sentiric::telephony::v1::BridgeCallResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::sentiric::telephony::v1::BridgeCallRequest, ::sentiric::telephony::v1::BridgeCallResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_BridgeCall_, context, request, response, std::move(f));
+}
+
+void TelephonyActionService::Stub::async::BridgeCall(::grpc::ClientContext* context, const ::sentiric::telephony::v1::BridgeCallRequest* request, ::sentiric::telephony::v1::BridgeCallResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_BridgeCall_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::sentiric::telephony::v1::BridgeCallResponse>* TelephonyActionService::Stub::PrepareAsyncBridgeCallRaw(::grpc::ClientContext* context, const ::sentiric::telephony::v1::BridgeCallRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::sentiric::telephony::v1::BridgeCallResponse, ::sentiric::telephony::v1::BridgeCallRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_BridgeCall_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::sentiric::telephony::v1::BridgeCallResponse>* TelephonyActionService::Stub::AsyncBridgeCallRaw(::grpc::ClientContext* context, const ::sentiric::telephony::v1::BridgeCallRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncBridgeCallRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
 TelephonyActionService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       TelephonyActionService_method_names[0],
@@ -274,6 +299,16 @@ TelephonyActionService::Service::Service() {
              ::sentiric::telephony::v1::SpeakTextResponse* resp) {
                return service->SpeakText(ctx, req, resp);
              }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      TelephonyActionService_method_names[7],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< TelephonyActionService::Service, ::sentiric::telephony::v1::BridgeCallRequest, ::sentiric::telephony::v1::BridgeCallResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](TelephonyActionService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::sentiric::telephony::v1::BridgeCallRequest* req,
+             ::sentiric::telephony::v1::BridgeCallResponse* resp) {
+               return service->BridgeCall(ctx, req, resp);
+             }, this)));
 }
 
 TelephonyActionService::Service::~Service() {
@@ -322,6 +357,13 @@ TelephonyActionService::Service::~Service() {
 }
 
 ::grpc::Status TelephonyActionService::Service::SpeakText(::grpc::ServerContext* context, const ::sentiric::telephony::v1::SpeakTextRequest* request, ::sentiric::telephony::v1::SpeakTextResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status TelephonyActionService::Service::BridgeCall(::grpc::ServerContext* context, const ::sentiric::telephony::v1::BridgeCallRequest* request, ::sentiric::telephony::v1::BridgeCallResponse* response) {
   (void) context;
   (void) request;
   (void) response;

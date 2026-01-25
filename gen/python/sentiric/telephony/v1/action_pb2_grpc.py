@@ -49,6 +49,11 @@ class TelephonyActionServiceStub(object):
                 request_serializer=sentiric_dot_telephony_dot_v1_dot_action__pb2.SpeakTextRequest.SerializeToString,
                 response_deserializer=sentiric_dot_telephony_dot_v1_dot_action__pb2.SpeakTextResponse.FromString,
                 _registered_method=True)
+        self.BridgeCall = channel.unary_unary(
+                '/sentiric.telephony.v1.TelephonyActionService/BridgeCall',
+                request_serializer=sentiric_dot_telephony_dot_v1_dot_action__pb2.BridgeCallRequest.SerializeToString,
+                response_deserializer=sentiric_dot_telephony_dot_v1_dot_action__pb2.BridgeCallResponse.FromString,
+                _registered_method=True)
 
 
 class TelephonyActionServiceServicer(object):
@@ -92,7 +97,14 @@ class TelephonyActionServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def SpeakText(self, request, context):
-        """[YENİ] Metni sese çevirip çalma (Agent Service yükünü almak için)
+        """Metni sese çevirip çalma (Agent Service yükünü almak için)
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def BridgeCall(self, request, context):
+        """[YENİ v1.13.5] İki çağrı bacağını (Leg) birbirine bağlar (Bridging)
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -135,6 +147,11 @@ def add_TelephonyActionServiceServicer_to_server(servicer, server):
                     servicer.SpeakText,
                     request_deserializer=sentiric_dot_telephony_dot_v1_dot_action__pb2.SpeakTextRequest.FromString,
                     response_serializer=sentiric_dot_telephony_dot_v1_dot_action__pb2.SpeakTextResponse.SerializeToString,
+            ),
+            'BridgeCall': grpc.unary_unary_rpc_method_handler(
+                    servicer.BridgeCall,
+                    request_deserializer=sentiric_dot_telephony_dot_v1_dot_action__pb2.BridgeCallRequest.FromString,
+                    response_serializer=sentiric_dot_telephony_dot_v1_dot_action__pb2.BridgeCallResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -326,6 +343,33 @@ class TelephonyActionService(object):
             '/sentiric.telephony.v1.TelephonyActionService/SpeakText',
             sentiric_dot_telephony_dot_v1_dot_action__pb2.SpeakTextRequest.SerializeToString,
             sentiric_dot_telephony_dot_v1_dot_action__pb2.SpeakTextResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def BridgeCall(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/sentiric.telephony.v1.TelephonyActionService/BridgeCall',
+            sentiric_dot_telephony_dot_v1_dot_action__pb2.BridgeCallRequest.SerializeToString,
+            sentiric_dot_telephony_dot_v1_dot_action__pb2.BridgeCallResponse.FromString,
             options,
             channel_credentials,
             insecure,

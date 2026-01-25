@@ -1,6 +1,6 @@
 {
   "name": "@sentiric/contracts",
-  "version": "1.13.4",
+  "version": "1.13.5",
   "description": "API contracts for Sentiric microservices, published via GitHub Packages.",
   "repository": {
     "type": "git",

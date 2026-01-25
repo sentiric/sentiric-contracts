@@ -16,10 +16,27 @@ service TelephonyActionService {
   // Gerçek zamanlı ses işleme boru hattı
   rpc RunPipeline(RunPipelineRequest) returns (stream RunPipelineResponse);
 
-  // [YENİ] Metni sese çevirip çalma (Agent Service yükünü almak için)
+  // Metni sese çevirip çalma (Agent Service yükünü almak için)
   rpc SpeakText(SpeakTextRequest) returns (SpeakTextResponse);
+
+  // [YENİ v1.13.5] İki çağrı bacağını (Leg) birbirine bağlar (Bridging)
+  rpc BridgeCall(BridgeCallRequest) returns (BridgeCallResponse);
 }
 
+// --- BridgeCall Messages ---
+message BridgeCallRequest {
+  string call_id_a = 1; // Bağlanacak birinci taraf (Genellikle müşteri)
+  string target_uri = 2; // Bağlanılacak hedef (Örn: sip:agent@10.0.0.1)
+  // Veya mevcut iki call_id'yi bağlamak için opsiyonel alan:
+  string call_id_b = 3; 
+}
+
+message BridgeCallResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+// --- RunPipeline Messages ---
 message RunPipelineRequest {
   string call_id = 1;
   string session_id = 2;

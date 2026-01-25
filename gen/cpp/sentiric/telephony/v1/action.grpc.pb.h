@@ -82,13 +82,21 @@ class TelephonyActionService final {
     std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::sentiric::telephony::v1::RunPipelineResponse>> PrepareAsyncRunPipeline(::grpc::ClientContext* context, const ::sentiric::telephony::v1::RunPipelineRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::sentiric::telephony::v1::RunPipelineResponse>>(PrepareAsyncRunPipelineRaw(context, request, cq));
     }
-    // [YENİ] Metni sese çevirip çalma (Agent Service yükünü almak için)
+    // Metni sese çevirip çalma (Agent Service yükünü almak için)
     virtual ::grpc::Status SpeakText(::grpc::ClientContext* context, const ::sentiric::telephony::v1::SpeakTextRequest& request, ::sentiric::telephony::v1::SpeakTextResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::telephony::v1::SpeakTextResponse>> AsyncSpeakText(::grpc::ClientContext* context, const ::sentiric::telephony::v1::SpeakTextRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::telephony::v1::SpeakTextResponse>>(AsyncSpeakTextRaw(context, request, cq));
     }
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::telephony::v1::SpeakTextResponse>> PrepareAsyncSpeakText(::grpc::ClientContext* context, const ::sentiric::telephony::v1::SpeakTextRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::telephony::v1::SpeakTextResponse>>(PrepareAsyncSpeakTextRaw(context, request, cq));
+    }
+    // [YENİ v1.13.5] İki çağrı bacağını (Leg) birbirine bağlar (Bridging)
+    virtual ::grpc::Status BridgeCall(::grpc::ClientContext* context, const ::sentiric::telephony::v1::BridgeCallRequest& request, ::sentiric::telephony::v1::BridgeCallResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::telephony::v1::BridgeCallResponse>> AsyncBridgeCall(::grpc::ClientContext* context, const ::sentiric::telephony::v1::BridgeCallRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::telephony::v1::BridgeCallResponse>>(AsyncBridgeCallRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::telephony::v1::BridgeCallResponse>> PrepareAsyncBridgeCall(::grpc::ClientContext* context, const ::sentiric::telephony::v1::BridgeCallRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::telephony::v1::BridgeCallResponse>>(PrepareAsyncBridgeCallRaw(context, request, cq));
     }
     class async_interface {
      public:
@@ -105,9 +113,12 @@ class TelephonyActionService final {
       virtual void StopRecording(::grpc::ClientContext* context, const ::sentiric::telephony::v1::StopRecordingRequest* request, ::sentiric::telephony::v1::StopRecordingResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       // Gerçek zamanlı ses işleme boru hattı
       virtual void RunPipeline(::grpc::ClientContext* context, const ::sentiric::telephony::v1::RunPipelineRequest* request, ::grpc::ClientReadReactor< ::sentiric::telephony::v1::RunPipelineResponse>* reactor) = 0;
-      // [YENİ] Metni sese çevirip çalma (Agent Service yükünü almak için)
+      // Metni sese çevirip çalma (Agent Service yükünü almak için)
       virtual void SpeakText(::grpc::ClientContext* context, const ::sentiric::telephony::v1::SpeakTextRequest* request, ::sentiric::telephony::v1::SpeakTextResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void SpeakText(::grpc::ClientContext* context, const ::sentiric::telephony::v1::SpeakTextRequest* request, ::sentiric::telephony::v1::SpeakTextResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      // [YENİ v1.13.5] İki çağrı bacağını (Leg) birbirine bağlar (Bridging)
+      virtual void BridgeCall(::grpc::ClientContext* context, const ::sentiric::telephony::v1::BridgeCallRequest* request, ::sentiric::telephony::v1::BridgeCallResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void BridgeCall(::grpc::ClientContext* context, const ::sentiric::telephony::v1::BridgeCallRequest* request, ::sentiric::telephony::v1::BridgeCallResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
@@ -128,6 +139,8 @@ class TelephonyActionService final {
     virtual ::grpc::ClientAsyncReaderInterface< ::sentiric::telephony::v1::RunPipelineResponse>* PrepareAsyncRunPipelineRaw(::grpc::ClientContext* context, const ::sentiric::telephony::v1::RunPipelineRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::telephony::v1::SpeakTextResponse>* AsyncSpeakTextRaw(::grpc::ClientContext* context, const ::sentiric::telephony::v1::SpeakTextRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::telephony::v1::SpeakTextResponse>* PrepareAsyncSpeakTextRaw(::grpc::ClientContext* context, const ::sentiric::telephony::v1::SpeakTextRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::telephony::v1::BridgeCallResponse>* AsyncBridgeCallRaw(::grpc::ClientContext* context, const ::sentiric::telephony::v1::BridgeCallRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::telephony::v1::BridgeCallResponse>* PrepareAsyncBridgeCallRaw(::grpc::ClientContext* context, const ::sentiric::telephony::v1::BridgeCallRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -183,6 +196,13 @@ class TelephonyActionService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::telephony::v1::SpeakTextResponse>> PrepareAsyncSpeakText(::grpc::ClientContext* context, const ::sentiric::telephony::v1::SpeakTextRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::telephony::v1::SpeakTextResponse>>(PrepareAsyncSpeakTextRaw(context, request, cq));
     }
+    ::grpc::Status BridgeCall(::grpc::ClientContext* context, const ::sentiric::telephony::v1::BridgeCallRequest& request, ::sentiric::telephony::v1::BridgeCallResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::telephony::v1::BridgeCallResponse>> AsyncBridgeCall(::grpc::ClientContext* context, const ::sentiric::telephony::v1::BridgeCallRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::telephony::v1::BridgeCallResponse>>(AsyncBridgeCallRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::telephony::v1::BridgeCallResponse>> PrepareAsyncBridgeCall(::grpc::ClientContext* context, const ::sentiric::telephony::v1::BridgeCallRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::telephony::v1::BridgeCallResponse>>(PrepareAsyncBridgeCallRaw(context, request, cq));
+    }
     class async final :
       public StubInterface::async_interface {
      public:
@@ -199,6 +219,8 @@ class TelephonyActionService final {
       void RunPipeline(::grpc::ClientContext* context, const ::sentiric::telephony::v1::RunPipelineRequest* request, ::grpc::ClientReadReactor< ::sentiric::telephony::v1::RunPipelineResponse>* reactor) override;
       void SpeakText(::grpc::ClientContext* context, const ::sentiric::telephony::v1::SpeakTextRequest* request, ::sentiric::telephony::v1::SpeakTextResponse* response, std::function<void(::grpc::Status)>) override;
       void SpeakText(::grpc::ClientContext* context, const ::sentiric::telephony::v1::SpeakTextRequest* request, ::sentiric::telephony::v1::SpeakTextResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void BridgeCall(::grpc::ClientContext* context, const ::sentiric::telephony::v1::BridgeCallRequest* request, ::sentiric::telephony::v1::BridgeCallResponse* response, std::function<void(::grpc::Status)>) override;
+      void BridgeCall(::grpc::ClientContext* context, const ::sentiric::telephony::v1::BridgeCallRequest* request, ::sentiric::telephony::v1::BridgeCallResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -225,6 +247,8 @@ class TelephonyActionService final {
     ::grpc::ClientAsyncReader< ::sentiric::telephony::v1::RunPipelineResponse>* PrepareAsyncRunPipelineRaw(::grpc::ClientContext* context, const ::sentiric::telephony::v1::RunPipelineRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::sentiric::telephony::v1::SpeakTextResponse>* AsyncSpeakTextRaw(::grpc::ClientContext* context, const ::sentiric::telephony::v1::SpeakTextRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::sentiric::telephony::v1::SpeakTextResponse>* PrepareAsyncSpeakTextRaw(::grpc::ClientContext* context, const ::sentiric::telephony::v1::SpeakTextRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::sentiric::telephony::v1::BridgeCallResponse>* AsyncBridgeCallRaw(::grpc::ClientContext* context, const ::sentiric::telephony::v1::BridgeCallRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::sentiric::telephony::v1::BridgeCallResponse>* PrepareAsyncBridgeCallRaw(::grpc::ClientContext* context, const ::sentiric::telephony::v1::BridgeCallRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_PlayAudio_;
     const ::grpc::internal::RpcMethod rpcmethod_TerminateCall_;
     const ::grpc::internal::RpcMethod rpcmethod_SendTextMessage_;
@@ -232,6 +256,7 @@ class TelephonyActionService final {
     const ::grpc::internal::RpcMethod rpcmethod_StopRecording_;
     const ::grpc::internal::RpcMethod rpcmethod_RunPipeline_;
     const ::grpc::internal::RpcMethod rpcmethod_SpeakText_;
+    const ::grpc::internal::RpcMethod rpcmethod_BridgeCall_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -246,8 +271,10 @@ class TelephonyActionService final {
     virtual ::grpc::Status StopRecording(::grpc::ServerContext* context, const ::sentiric::telephony::v1::StopRecordingRequest* request, ::sentiric::telephony::v1::StopRecordingResponse* response);
     // Gerçek zamanlı ses işleme boru hattı
     virtual ::grpc::Status RunPipeline(::grpc::ServerContext* context, const ::sentiric::telephony::v1::RunPipelineRequest* request, ::grpc::ServerWriter< ::sentiric::telephony::v1::RunPipelineResponse>* writer);
-    // [YENİ] Metni sese çevirip çalma (Agent Service yükünü almak için)
+    // Metni sese çevirip çalma (Agent Service yükünü almak için)
     virtual ::grpc::Status SpeakText(::grpc::ServerContext* context, const ::sentiric::telephony::v1::SpeakTextRequest* request, ::sentiric::telephony::v1::SpeakTextResponse* response);
+    // [YENİ v1.13.5] İki çağrı bacağını (Leg) birbirine bağlar (Bridging)
+    virtual ::grpc::Status BridgeCall(::grpc::ServerContext* context, const ::sentiric::telephony::v1::BridgeCallRequest* request, ::sentiric::telephony::v1::BridgeCallResponse* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_PlayAudio : public BaseClass {
@@ -389,7 +416,27 @@ class TelephonyActionService final {
       ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_PlayAudio<WithAsyncMethod_TerminateCall<WithAsyncMethod_SendTextMessage<WithAsyncMethod_StartRecording<WithAsyncMethod_StopRecording<WithAsyncMethod_RunPipeline<WithAsyncMethod_SpeakText<Service > > > > > > > AsyncService;
+  template <class BaseClass>
+  class WithAsyncMethod_BridgeCall : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_BridgeCall() {
+      ::grpc::Service::MarkMethodAsync(7);
+    }
+    ~WithAsyncMethod_BridgeCall() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status BridgeCall(::grpc::ServerContext* /*context*/, const ::sentiric::telephony::v1::BridgeCallRequest* /*request*/, ::sentiric::telephony::v1::BridgeCallResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestBridgeCall(::grpc::ServerContext* context, ::sentiric::telephony::v1::BridgeCallRequest* request, ::grpc::ServerAsyncResponseWriter< ::sentiric::telephony::v1::BridgeCallResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_PlayAudio<WithAsyncMethod_TerminateCall<WithAsyncMethod_SendTextMessage<WithAsyncMethod_StartRecording<WithAsyncMethod_StopRecording<WithAsyncMethod_RunPipeline<WithAsyncMethod_SpeakText<WithAsyncMethod_BridgeCall<Service > > > > > > > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_PlayAudio : public BaseClass {
    private:
@@ -574,7 +621,34 @@ class TelephonyActionService final {
     virtual ::grpc::ServerUnaryReactor* SpeakText(
       ::grpc::CallbackServerContext* /*context*/, const ::sentiric::telephony::v1::SpeakTextRequest* /*request*/, ::sentiric::telephony::v1::SpeakTextResponse* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_PlayAudio<WithCallbackMethod_TerminateCall<WithCallbackMethod_SendTextMessage<WithCallbackMethod_StartRecording<WithCallbackMethod_StopRecording<WithCallbackMethod_RunPipeline<WithCallbackMethod_SpeakText<Service > > > > > > > CallbackService;
+  template <class BaseClass>
+  class WithCallbackMethod_BridgeCall : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_BridgeCall() {
+      ::grpc::Service::MarkMethodCallback(7,
+          new ::grpc::internal::CallbackUnaryHandler< ::sentiric::telephony::v1::BridgeCallRequest, ::sentiric::telephony::v1::BridgeCallResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::sentiric::telephony::v1::BridgeCallRequest* request, ::sentiric::telephony::v1::BridgeCallResponse* response) { return this->BridgeCall(context, request, response); }));}
+    void SetMessageAllocatorFor_BridgeCall(
+        ::grpc::MessageAllocator< ::sentiric::telephony::v1::BridgeCallRequest, ::sentiric::telephony::v1::BridgeCallResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(7);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::sentiric::telephony::v1::BridgeCallRequest, ::sentiric::telephony::v1::BridgeCallResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_BridgeCall() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status BridgeCall(::grpc::ServerContext* /*context*/, const ::sentiric::telephony::v1::BridgeCallRequest* /*request*/, ::sentiric::telephony::v1::BridgeCallResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* BridgeCall(
+      ::grpc::CallbackServerContext* /*context*/, const ::sentiric::telephony::v1::BridgeCallRequest* /*request*/, ::sentiric::telephony::v1::BridgeCallResponse* /*response*/)  { return nullptr; }
+  };
+  typedef WithCallbackMethod_PlayAudio<WithCallbackMethod_TerminateCall<WithCallbackMethod_SendTextMessage<WithCallbackMethod_StartRecording<WithCallbackMethod_StopRecording<WithCallbackMethod_RunPipeline<WithCallbackMethod_SpeakText<WithCallbackMethod_BridgeCall<Service > > > > > > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_PlayAudio : public BaseClass {
@@ -691,6 +765,23 @@ class TelephonyActionService final {
     }
     // disable synchronous version of this method
     ::grpc::Status SpeakText(::grpc::ServerContext* /*context*/, const ::sentiric::telephony::v1::SpeakTextRequest* /*request*/, ::sentiric::telephony::v1::SpeakTextResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_BridgeCall : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_BridgeCall() {
+      ::grpc::Service::MarkMethodGeneric(7);
+    }
+    ~WithGenericMethod_BridgeCall() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status BridgeCall(::grpc::ServerContext* /*context*/, const ::sentiric::telephony::v1::BridgeCallRequest* /*request*/, ::sentiric::telephony::v1::BridgeCallResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -833,6 +924,26 @@ class TelephonyActionService final {
     }
     void RequestSpeakText(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_BridgeCall : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_BridgeCall() {
+      ::grpc::Service::MarkMethodRaw(7);
+    }
+    ~WithRawMethod_BridgeCall() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status BridgeCall(::grpc::ServerContext* /*context*/, const ::sentiric::telephony::v1::BridgeCallRequest* /*request*/, ::sentiric::telephony::v1::BridgeCallResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestBridgeCall(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -987,6 +1098,28 @@ class TelephonyActionService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerUnaryReactor* SpeakText(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_BridgeCall : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_BridgeCall() {
+      ::grpc::Service::MarkMethodRawCallback(7,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->BridgeCall(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_BridgeCall() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status BridgeCall(::grpc::ServerContext* /*context*/, const ::sentiric::telephony::v1::BridgeCallRequest* /*request*/, ::sentiric::telephony::v1::BridgeCallResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* BridgeCall(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
@@ -1151,7 +1284,34 @@ class TelephonyActionService final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedSpeakText(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::sentiric::telephony::v1::SpeakTextRequest,::sentiric::telephony::v1::SpeakTextResponse>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_PlayAudio<WithStreamedUnaryMethod_TerminateCall<WithStreamedUnaryMethod_SendTextMessage<WithStreamedUnaryMethod_StartRecording<WithStreamedUnaryMethod_StopRecording<WithStreamedUnaryMethod_SpeakText<Service > > > > > > StreamedUnaryService;
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_BridgeCall : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_BridgeCall() {
+      ::grpc::Service::MarkMethodStreamed(7,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::sentiric::telephony::v1::BridgeCallRequest, ::sentiric::telephony::v1::BridgeCallResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::sentiric::telephony::v1::BridgeCallRequest, ::sentiric::telephony::v1::BridgeCallResponse>* streamer) {
+                       return this->StreamedBridgeCall(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_BridgeCall() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status BridgeCall(::grpc::ServerContext* /*context*/, const ::sentiric::telephony::v1::BridgeCallRequest* /*request*/, ::sentiric::telephony::v1::BridgeCallResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedBridgeCall(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::sentiric::telephony::v1::BridgeCallRequest,::sentiric::telephony::v1::BridgeCallResponse>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_PlayAudio<WithStreamedUnaryMethod_TerminateCall<WithStreamedUnaryMethod_SendTextMessage<WithStreamedUnaryMethod_StartRecording<WithStreamedUnaryMethod_StopRecording<WithStreamedUnaryMethod_SpeakText<WithStreamedUnaryMethod_BridgeCall<Service > > > > > > > StreamedUnaryService;
   template <class BaseClass>
   class WithSplitStreamingMethod_RunPipeline : public BaseClass {
    private:
@@ -1180,7 +1340,7 @@ class TelephonyActionService final {
     virtual ::grpc::Status StreamedRunPipeline(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::sentiric::telephony::v1::RunPipelineRequest,::sentiric::telephony::v1::RunPipelineResponse>* server_split_streamer) = 0;
   };
   typedef WithSplitStreamingMethod_RunPipeline<Service > SplitStreamedService;
-  typedef WithStreamedUnaryMethod_PlayAudio<WithStreamedUnaryMethod_TerminateCall<WithStreamedUnaryMethod_SendTextMessage<WithStreamedUnaryMethod_StartRecording<WithStreamedUnaryMethod_StopRecording<WithSplitStreamingMethod_RunPipeline<WithStreamedUnaryMethod_SpeakText<Service > > > > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_PlayAudio<WithStreamedUnaryMethod_TerminateCall<WithStreamedUnaryMethod_SendTextMessage<WithStreamedUnaryMethod_StartRecording<WithStreamedUnaryMethod_StopRecording<WithSplitStreamingMethod_RunPipeline<WithStreamedUnaryMethod_SpeakText<WithStreamedUnaryMethod_BridgeCall<Service > > > > > > > > StreamedService;
 };
 
 }  // namespace v1
