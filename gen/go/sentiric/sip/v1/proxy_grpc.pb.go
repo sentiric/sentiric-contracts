@@ -26,6 +26,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ProxyServiceClient interface {
+	// SBC, bir SIP paketini nereye yönlendireceğini sormak için bunu çağırır.
 	GetNextHop(ctx context.Context, in *GetNextHopRequest, opts ...grpc.CallOption) (*GetNextHopResponse, error)
 }
 
@@ -51,6 +52,7 @@ func (c *proxyServiceClient) GetNextHop(ctx context.Context, in *GetNextHopReque
 // All implementations should embed UnimplementedProxyServiceServer
 // for forward compatibility.
 type ProxyServiceServer interface {
+	// SBC, bir SIP paketini nereye yönlendireceğini sormak için bunu çağırır.
 	GetNextHop(context.Context, *GetNextHopRequest) (*GetNextHopResponse, error)
 }
 

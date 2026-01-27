@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1bsentiric/sip/v1/proxy.proto\x12\x0fsentiric.sip.v1\"Y\n\x11GetNextHopRequest\x12\'\n\x0f\x64\x65stination_uri\x18\x01 \x01(\tR\x0e\x64\x65stinationUri\x12\x1b\n\tsource_ip\x18\x02 \x01(\tR\x08sourceIp\"E\n\x12GetNextHopResponse\x12\x10\n\x03uri\x18\x01 \x01(\tR\x03uri\x12\x1d\n\ngateway_id\x18\x02 \x01(\tR\tgatewayId2e\n\x0cProxyService\x12U\n\nGetNextHop\x12\".sentiric.sip.v1.GetNextHopRequest\x1a#.sentiric.sip.v1.GetNextHopResponseBEZCgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/sip/v1;sipv1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1bsentiric/sip/v1/proxy.proto\x12\x0fsentiric.sip.v1\"q\n\x11GetNextHopRequest\x12\'\n\x0f\x64\x65stination_uri\x18\x01 \x01(\tR\x0e\x64\x65stinationUri\x12\x1b\n\tsource_ip\x18\x02 \x01(\tR\x08sourceIp\x12\x16\n\x06method\x18\x03 \x01(\tR\x06method\"E\n\x12GetNextHopResponse\x12\x10\n\x03uri\x18\x01 \x01(\tR\x03uri\x12\x1d\n\ngateway_id\x18\x02 \x01(\tR\tgatewayId2e\n\x0cProxyService\x12U\n\nGetNextHop\x12\".sentiric.sip.v1.GetNextHopRequest\x1a#.sentiric.sip.v1.GetNextHopResponseBEZCgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/sip/v1;sipv1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -33,9 +33,9 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
   _globals['DESCRIPTOR']._serialized_options = b'ZCgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/sip/v1;sipv1'
   _globals['_GETNEXTHOPREQUEST']._serialized_start=48
-  _globals['_GETNEXTHOPREQUEST']._serialized_end=137
-  _globals['_GETNEXTHOPRESPONSE']._serialized_start=139
-  _globals['_GETNEXTHOPRESPONSE']._serialized_end=208
-  _globals['_PROXYSERVICE']._serialized_start=210
-  _globals['_PROXYSERVICE']._serialized_end=311
+  _globals['_GETNEXTHOPREQUEST']._serialized_end=161
+  _globals['_GETNEXTHOPRESPONSE']._serialized_start=163
+  _globals['_GETNEXTHOPRESPONSE']._serialized_end=232
+  _globals['_PROXYSERVICE']._serialized_start=234
+  _globals['_PROXYSERVICE']._serialized_end=335
 # @@protoc_insertion_point(module_scope)

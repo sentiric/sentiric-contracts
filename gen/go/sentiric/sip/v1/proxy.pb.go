@@ -23,10 +23,13 @@ const (
 
 type GetNextHopRequest struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
-	DestinationUri string                 `protobuf:"bytes,1,opt,name=destination_uri,json=destinationUri,proto3" json:"destination_uri,omitempty"`
-	SourceIp       string                 `protobuf:"bytes,2,opt,name=source_ip,json=sourceIp,proto3" json:"source_ip,omitempty"`
-	unknownFields  protoimpl.UnknownFields
-	sizeCache      protoimpl.SizeCache
+	DestinationUri string                 `protobuf:"bytes,1,opt,name=destination_uri,json=destinationUri,proto3" json:"destination_uri,omitempty"` // Örn: sip:2002@domain
+	SourceIp       string                 `protobuf:"bytes,2,opt,name=source_ip,json=sourceIp,proto3" json:"source_ip,omitempty"`                   // Örn: 1.2.3.4
+	// [YENİ ALAN] Yönlendirme kararı için kritik.
+	// Değerler: "INVITE", "REGISTER", "OPTIONS", "BYE" vb.
+	Method        string `protobuf:"bytes,3,opt,name=method,proto3" json:"method,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *GetNextHopRequest) Reset() {
@@ -73,10 +76,20 @@ func (x *GetNextHopRequest) GetSourceIp() string {
 	return ""
 }
 
+func (x *GetNextHopRequest) GetMethod() string {
+	if x != nil {
+		return x.Method
+	}
+	return ""
+}
+
 type GetNextHopResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Uri           string                 `protobuf:"bytes,1,opt,name=uri,proto3" json:"uri,omitempty"`
-	GatewayId     string                 `protobuf:"bytes,2,opt,name=gateway_id,json=gatewayId,proto3" json:"gateway_id,omitempty"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Hedef SIP URI (IP:Port formatında).
+	// SBC bu adrese UDP paketi fırlatır.
+	Uri string `protobuf:"bytes,1,opt,name=uri,proto3" json:"uri,omitempty"`
+	// Loglama ve izleme için mantıksal isim.
+	GatewayId     string `protobuf:"bytes,2,opt,name=gateway_id,json=gatewayId,proto3" json:"gateway_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -129,10 +142,11 @@ var File_sentiric_sip_v1_proxy_proto protoreflect.FileDescriptor
 
 const file_sentiric_sip_v1_proxy_proto_rawDesc = "" +
 	"\n" +
-	"\x1bsentiric/sip/v1/proxy.proto\x12\x0fsentiric.sip.v1\"Y\n" +
+	"\x1bsentiric/sip/v1/proxy.proto\x12\x0fsentiric.sip.v1\"q\n" +
 	"\x11GetNextHopRequest\x12'\n" +
 	"\x0fdestination_uri\x18\x01 \x01(\tR\x0edestinationUri\x12\x1b\n" +
-	"\tsource_ip\x18\x02 \x01(\tR\bsourceIp\"E\n" +
+	"\tsource_ip\x18\x02 \x01(\tR\bsourceIp\x12\x16\n" +
+	"\x06method\x18\x03 \x01(\tR\x06method\"E\n" +
 	"\x12GetNextHopResponse\x12\x10\n" +
 	"\x03uri\x18\x01 \x01(\tR\x03uri\x12\x1d\n" +
 	"\n" +

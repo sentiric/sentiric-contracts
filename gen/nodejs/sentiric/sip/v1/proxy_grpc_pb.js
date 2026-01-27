@@ -28,7 +28,8 @@ function deserialize_sentiric_sip_v1_GetNextHopResponse(buffer_arg) {
 
 
 var ProxyServiceService = exports.ProxyServiceService = {
-  getNextHop: {
+  // SBC, bir SIP paketini nereye yönlendireceğini sormak için bunu çağırır.
+getNextHop: {
     path: '/sentiric.sip.v1.ProxyService/GetNextHop',
     requestStream: false,
     responseStream: false,

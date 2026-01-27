@@ -42,19 +42,26 @@ pub struct GetLoadResponse {
     #[prost(int32, tag="2")]
     pub active_calls: i32,
 }
-/// ESKİ: RouteRequest
 #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct GetNextHopRequest {
+    /// Örn: sip:2002@domain
     #[prost(string, tag="1")]
     pub destination_uri: ::prost::alloc::string::String,
+    /// Örn: 1.2.3.4
     #[prost(string, tag="2")]
     pub source_ip: ::prost::alloc::string::String,
+    /// \[YENİ ALAN\] Yönlendirme kararı için kritik.
+    /// Değerler: "INVITE", "REGISTER", "OPTIONS", "BYE" vb.
+    #[prost(string, tag="3")]
+    pub method: ::prost::alloc::string::String,
 }
-/// ESKİ: NextHop
 #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct GetNextHopResponse {
+    /// Hedef SIP URI (IP:Port formatında). 
+    /// SBC bu adrese UDP paketi fırlatır.
     #[prost(string, tag="1")]
     pub uri: ::prost::alloc::string::String,
+    /// Loglama ve izleme için mantıksal isim.
     #[prost(string, tag="2")]
     pub gateway_id: ::prost::alloc::string::String,
 }

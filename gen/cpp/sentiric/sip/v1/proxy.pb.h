@@ -189,6 +189,7 @@ class GetNextHopRequest final :
   enum : int {
     kDestinationUriFieldNumber = 1,
     kSourceIpFieldNumber = 2,
+    kMethodFieldNumber = 3,
   };
   // string destination_uri = 1;
   void clear_destination_uri();
@@ -218,6 +219,20 @@ class GetNextHopRequest final :
   std::string* _internal_mutable_source_ip();
   public:
 
+  // string method = 3;
+  void clear_method();
+  const std::string& method() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_method(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_method();
+  PROTOBUF_NODISCARD std::string* release_method();
+  void set_allocated_method(std::string* method);
+  private:
+  const std::string& _internal_method() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_method(const std::string& value);
+  std::string* _internal_mutable_method();
+  public:
+
   // @@protoc_insertion_point(class_scope:sentiric.sip.v1.GetNextHopRequest)
  private:
   class _Internal;
@@ -228,6 +243,7 @@ class GetNextHopRequest final :
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr destination_uri_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr source_ip_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr method_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -511,6 +527,56 @@ inline void GetNextHopRequest::set_allocated_source_ip(std::string* source_ip) {
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:sentiric.sip.v1.GetNextHopRequest.source_ip)
+}
+
+// string method = 3;
+inline void GetNextHopRequest::clear_method() {
+  _impl_.method_.ClearToEmpty();
+}
+inline const std::string& GetNextHopRequest::method() const {
+  // @@protoc_insertion_point(field_get:sentiric.sip.v1.GetNextHopRequest.method)
+  return _internal_method();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void GetNextHopRequest::set_method(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.method_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.sip.v1.GetNextHopRequest.method)
+}
+inline std::string* GetNextHopRequest::mutable_method() {
+  std::string* _s = _internal_mutable_method();
+  // @@protoc_insertion_point(field_mutable:sentiric.sip.v1.GetNextHopRequest.method)
+  return _s;
+}
+inline const std::string& GetNextHopRequest::_internal_method() const {
+  return _impl_.method_.Get();
+}
+inline void GetNextHopRequest::_internal_set_method(const std::string& value) {
+  
+  _impl_.method_.Set(value, GetArenaForAllocation());
+}
+inline std::string* GetNextHopRequest::_internal_mutable_method() {
+  
+  return _impl_.method_.Mutable(GetArenaForAllocation());
+}
+inline std::string* GetNextHopRequest::release_method() {
+  // @@protoc_insertion_point(field_release:sentiric.sip.v1.GetNextHopRequest.method)
+  return _impl_.method_.Release();
+}
+inline void GetNextHopRequest::set_allocated_method(std::string* method) {
+  if (method != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.method_.SetAllocated(method, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.method_.IsDefault()) {
+    _impl_.method_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.sip.v1.GetNextHopRequest.method)
 }
 
 // -------------------------------------------------------------------

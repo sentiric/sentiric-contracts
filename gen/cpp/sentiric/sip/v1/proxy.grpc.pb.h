@@ -37,6 +37,7 @@ class ProxyService final {
   class StubInterface {
    public:
     virtual ~StubInterface() {}
+    // SBC, bir SIP paketini nereye yönlendireceğini sormak için bunu çağırır.
     virtual ::grpc::Status GetNextHop(::grpc::ClientContext* context, const ::sentiric::sip::v1::GetNextHopRequest& request, ::sentiric::sip::v1::GetNextHopResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::sip::v1::GetNextHopResponse>> AsyncGetNextHop(::grpc::ClientContext* context, const ::sentiric::sip::v1::GetNextHopRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::sip::v1::GetNextHopResponse>>(AsyncGetNextHopRaw(context, request, cq));
@@ -47,6 +48,7 @@ class ProxyService final {
     class async_interface {
      public:
       virtual ~async_interface() {}
+      // SBC, bir SIP paketini nereye yönlendireceğini sormak için bunu çağırır.
       virtual void GetNextHop(::grpc::ClientContext* context, const ::sentiric::sip::v1::GetNextHopRequest* request, ::sentiric::sip::v1::GetNextHopResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void GetNextHop(::grpc::ClientContext* context, const ::sentiric::sip::v1::GetNextHopRequest* request, ::sentiric::sip::v1::GetNextHopResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
     };
@@ -93,6 +95,7 @@ class ProxyService final {
    public:
     Service();
     virtual ~Service();
+    // SBC, bir SIP paketini nereye yönlendireceğini sormak için bunu çağırır.
     virtual ::grpc::Status GetNextHop(::grpc::ServerContext* context, const ::sentiric::sip::v1::GetNextHopRequest* request, ::sentiric::sip::v1::GetNextHopResponse* response);
   };
   template <class BaseClass>

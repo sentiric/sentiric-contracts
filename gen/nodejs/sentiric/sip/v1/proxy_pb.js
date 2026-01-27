@@ -92,7 +92,8 @@ proto.sentiric.sip.v1.GetNextHopRequest.prototype.toObject = function(opt_includ
 proto.sentiric.sip.v1.GetNextHopRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
 destinationUri: jspb.Message.getFieldWithDefault(msg, 1, ""),
-sourceIp: jspb.Message.getFieldWithDefault(msg, 2, "")
+sourceIp: jspb.Message.getFieldWithDefault(msg, 2, ""),
+method: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
   if (includeInstance) {
@@ -137,6 +138,10 @@ proto.sentiric.sip.v1.GetNextHopRequest.deserializeBinaryFromReader = function(m
       var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setSourceIp(value);
       break;
+    case 3:
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
+      msg.setMethod(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -180,6 +185,13 @@ proto.sentiric.sip.v1.GetNextHopRequest.serializeBinaryToWriter = function(messa
       f
     );
   }
+  f = message.getMethod();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
 };
 
 
@@ -216,6 +228,24 @@ proto.sentiric.sip.v1.GetNextHopRequest.prototype.getSourceIp = function() {
  */
 proto.sentiric.sip.v1.GetNextHopRequest.prototype.setSourceIp = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional string method = 3;
+ * @return {string}
+ */
+proto.sentiric.sip.v1.GetNextHopRequest.prototype.getMethod = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sentiric.sip.v1.GetNextHopRequest} returns this
+ */
+proto.sentiric.sip.v1.GetNextHopRequest.prototype.setMethod = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 

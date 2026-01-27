@@ -27,6 +27,7 @@ PROTOBUF_CONSTEXPR GetNextHopRequest::GetNextHopRequest(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.destination_uri_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.source_ip_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.method_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct GetNextHopRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR GetNextHopRequestDefaultTypeInternal()
@@ -67,6 +68,7 @@ const uint32_t TableStruct_sentiric_2fsip_2fv1_2fproxy_2eproto::offsets[] PROTOB
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::sentiric::sip::v1::GetNextHopRequest, _impl_.destination_uri_),
   PROTOBUF_FIELD_OFFSET(::sentiric::sip::v1::GetNextHopRequest, _impl_.source_ip_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::sip::v1::GetNextHopRequest, _impl_.method_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::sentiric::sip::v1::GetNextHopResponse, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -78,7 +80,7 @@ const uint32_t TableStruct_sentiric_2fsip_2fv1_2fproxy_2eproto::offsets[] PROTOB
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::sentiric::sip::v1::GetNextHopRequest)},
-  { 8, -1, -1, sizeof(::sentiric::sip::v1::GetNextHopResponse)},
+  { 9, -1, -1, sizeof(::sentiric::sip::v1::GetNextHopResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -88,18 +90,19 @@ static const ::_pb::Message* const file_default_instances[] = {
 
 const char descriptor_table_protodef_sentiric_2fsip_2fv1_2fproxy_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\033sentiric/sip/v1/proxy.proto\022\017sentiric."
-  "sip.v1\"\?\n\021GetNextHopRequest\022\027\n\017destinati"
-  "on_uri\030\001 \001(\t\022\021\n\tsource_ip\030\002 \001(\t\"5\n\022GetNe"
-  "xtHopResponse\022\013\n\003uri\030\001 \001(\t\022\022\n\ngateway_id"
-  "\030\002 \001(\t2e\n\014ProxyService\022U\n\nGetNextHop\022\".s"
-  "entiric.sip.v1.GetNextHopRequest\032#.senti"
-  "ric.sip.v1.GetNextHopResponseBEZCgithub."
-  "com/sentiric/sentiric-contracts/gen/go/s"
-  "entiric/sip/v1;sipv1b\006proto3"
+  "sip.v1\"O\n\021GetNextHopRequest\022\027\n\017destinati"
+  "on_uri\030\001 \001(\t\022\021\n\tsource_ip\030\002 \001(\t\022\016\n\006metho"
+  "d\030\003 \001(\t\"5\n\022GetNextHopResponse\022\013\n\003uri\030\001 \001"
+  "(\t\022\022\n\ngateway_id\030\002 \001(\t2e\n\014ProxyService\022U"
+  "\n\nGetNextHop\022\".sentiric.sip.v1.GetNextHo"
+  "pRequest\032#.sentiric.sip.v1.GetNextHopRes"
+  "ponseBEZCgithub.com/sentiric/sentiric-co"
+  "ntracts/gen/go/sentiric/sip/v1;sipv1b\006pr"
+  "oto3"
   ;
 static ::_pbi::once_flag descriptor_table_sentiric_2fsip_2fv1_2fproxy_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_sentiric_2fsip_2fv1_2fproxy_2eproto = {
-    false, false, 348, descriptor_table_protodef_sentiric_2fsip_2fv1_2fproxy_2eproto,
+    false, false, 364, descriptor_table_protodef_sentiric_2fsip_2fv1_2fproxy_2eproto,
     "sentiric/sip/v1/proxy.proto",
     &descriptor_table_sentiric_2fsip_2fv1_2fproxy_2eproto_once, nullptr, 0, 2,
     schemas, file_default_instances, TableStruct_sentiric_2fsip_2fv1_2fproxy_2eproto::offsets,
@@ -134,6 +137,7 @@ GetNextHopRequest::GetNextHopRequest(const GetNextHopRequest& from)
   new (&_impl_) Impl_{
       decltype(_impl_.destination_uri_){}
     , decltype(_impl_.source_ip_){}
+    , decltype(_impl_.method_){}
     , /*decltype(_impl_._cached_size_)*/{}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
@@ -153,6 +157,14 @@ GetNextHopRequest::GetNextHopRequest(const GetNextHopRequest& from)
     _this->_impl_.source_ip_.Set(from._internal_source_ip(), 
       _this->GetArenaForAllocation());
   }
+  _impl_.method_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.method_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_method().empty()) {
+    _this->_impl_.method_.Set(from._internal_method(), 
+      _this->GetArenaForAllocation());
+  }
   // @@protoc_insertion_point(copy_constructor:sentiric.sip.v1.GetNextHopRequest)
 }
 
@@ -163,6 +175,7 @@ inline void GetNextHopRequest::SharedCtor(
   new (&_impl_) Impl_{
       decltype(_impl_.destination_uri_){}
     , decltype(_impl_.source_ip_){}
+    , decltype(_impl_.method_){}
     , /*decltype(_impl_._cached_size_)*/{}
   };
   _impl_.destination_uri_.InitDefault();
@@ -172,6 +185,10 @@ inline void GetNextHopRequest::SharedCtor(
   _impl_.source_ip_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
     _impl_.source_ip_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.method_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.method_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
@@ -188,6 +205,7 @@ inline void GetNextHopRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.destination_uri_.Destroy();
   _impl_.source_ip_.Destroy();
+  _impl_.method_.Destroy();
 }
 
 void GetNextHopRequest::SetCachedSize(int size) const {
@@ -202,6 +220,7 @@ void GetNextHopRequest::Clear() {
 
   _impl_.destination_uri_.ClearToEmpty();
   _impl_.source_ip_.ClearToEmpty();
+  _impl_.method_.ClearToEmpty();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -228,6 +247,16 @@ const char* GetNextHopRequest::_InternalParse(const char* ptr, ::_pbi::ParseCont
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
           CHK_(::_pbi::VerifyUTF8(str, "sentiric.sip.v1.GetNextHopRequest.source_ip"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string method = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_method();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.sip.v1.GetNextHopRequest.method"));
         } else
           goto handle_unusual;
         continue;
@@ -280,6 +309,16 @@ uint8_t* GetNextHopRequest::_InternalSerialize(
         2, this->_internal_source_ip(), target);
   }
 
+  // string method = 3;
+  if (!this->_internal_method().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_method().data(), static_cast<int>(this->_internal_method().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.sip.v1.GetNextHopRequest.method");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_method(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -310,6 +349,13 @@ size_t GetNextHopRequest::ByteSizeLong() const {
         this->_internal_source_ip());
   }
 
+  // string method = 3;
+  if (!this->_internal_method().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_method());
+  }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
@@ -333,6 +379,9 @@ void GetNextHopRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, cons
   }
   if (!from._internal_source_ip().empty()) {
     _this->_internal_set_source_ip(from._internal_source_ip());
+  }
+  if (!from._internal_method().empty()) {
+    _this->_internal_set_method(from._internal_method());
   }
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -360,6 +409,10 @@ void GetNextHopRequest::InternalSwap(GetNextHopRequest* other) {
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &_impl_.source_ip_, lhs_arena,
       &other->_impl_.source_ip_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.method_, lhs_arena,
+      &other->_impl_.method_, rhs_arena
   );
 }
 

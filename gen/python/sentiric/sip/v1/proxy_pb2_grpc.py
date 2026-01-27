@@ -25,7 +25,8 @@ class ProxyServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def GetNextHop(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """SBC, bir SIP paketini nereye yönlendireceğini sormak için bunu çağırır.
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
