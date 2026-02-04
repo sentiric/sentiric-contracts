@@ -19,6 +19,11 @@ class AgentOrchestrationServiceStub(object):
                 request_serializer=sentiric_dot_agent_dot_v1_dot_orchestration__pb2.ProcessCallStartRequest.SerializeToString,
                 response_deserializer=sentiric_dot_agent_dot_v1_dot_orchestration__pb2.ProcessCallStartResponse.FromString,
                 _registered_method=True)
+        self.ProcessManualDial = channel.unary_unary(
+                '/sentiric.agent.v1.AgentOrchestrationService/ProcessManualDial',
+                request_serializer=sentiric_dot_agent_dot_v1_dot_orchestration__pb2.ProcessManualDialRequest.SerializeToString,
+                response_deserializer=sentiric_dot_agent_dot_v1_dot_orchestration__pb2.ProcessManualDialResponse.FromString,
+                _registered_method=True)
         self.ProcessSagaStep = channel.unary_unary(
                 '/sentiric.agent.v1.AgentOrchestrationService/ProcessSagaStep',
                 request_serializer=sentiric_dot_agent_dot_v1_dot_orchestration__pb2.ProcessSagaStepRequest.SerializeToString,
@@ -30,7 +35,15 @@ class AgentOrchestrationServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def ProcessCallStart(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """Gelen çağrıların başlatılması (Inbound)
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def ProcessManualDial(self, request, context):
+        """Manuel dış arama başlatma (Outbound) - YENİ
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -48,6 +61,11 @@ def add_AgentOrchestrationServiceServicer_to_server(servicer, server):
                     servicer.ProcessCallStart,
                     request_deserializer=sentiric_dot_agent_dot_v1_dot_orchestration__pb2.ProcessCallStartRequest.FromString,
                     response_serializer=sentiric_dot_agent_dot_v1_dot_orchestration__pb2.ProcessCallStartResponse.SerializeToString,
+            ),
+            'ProcessManualDial': grpc.unary_unary_rpc_method_handler(
+                    servicer.ProcessManualDial,
+                    request_deserializer=sentiric_dot_agent_dot_v1_dot_orchestration__pb2.ProcessManualDialRequest.FromString,
+                    response_serializer=sentiric_dot_agent_dot_v1_dot_orchestration__pb2.ProcessManualDialResponse.SerializeToString,
             ),
             'ProcessSagaStep': grpc.unary_unary_rpc_method_handler(
                     servicer.ProcessSagaStep,
@@ -82,6 +100,33 @@ class AgentOrchestrationService(object):
             '/sentiric.agent.v1.AgentOrchestrationService/ProcessCallStart',
             sentiric_dot_agent_dot_v1_dot_orchestration__pb2.ProcessCallStartRequest.SerializeToString,
             sentiric_dot_agent_dot_v1_dot_orchestration__pb2.ProcessCallStartResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def ProcessManualDial(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/sentiric.agent.v1.AgentOrchestrationService/ProcessManualDial',
+            sentiric_dot_agent_dot_v1_dot_orchestration__pb2.ProcessManualDialRequest.SerializeToString,
+            sentiric_dot_agent_dot_v1_dot_orchestration__pb2.ProcessManualDialResponse.FromString,
             options,
             channel_credentials,
             insecure,

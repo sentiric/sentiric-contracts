@@ -37,12 +37,21 @@ class AgentOrchestrationService final {
   class StubInterface {
    public:
     virtual ~StubInterface() {}
+    // Gelen çağrıların başlatılması (Inbound)
     virtual ::grpc::Status ProcessCallStart(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessCallStartRequest& request, ::sentiric::agent::v1::ProcessCallStartResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::agent::v1::ProcessCallStartResponse>> AsyncProcessCallStart(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessCallStartRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::agent::v1::ProcessCallStartResponse>>(AsyncProcessCallStartRaw(context, request, cq));
     }
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::agent::v1::ProcessCallStartResponse>> PrepareAsyncProcessCallStart(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessCallStartRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::agent::v1::ProcessCallStartResponse>>(PrepareAsyncProcessCallStartRaw(context, request, cq));
+    }
+    // Manuel dış arama başlatma (Outbound) - YENİ
+    virtual ::grpc::Status ProcessManualDial(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessManualDialRequest& request, ::sentiric::agent::v1::ProcessManualDialResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::agent::v1::ProcessManualDialResponse>> AsyncProcessManualDial(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessManualDialRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::agent::v1::ProcessManualDialResponse>>(AsyncProcessManualDialRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::agent::v1::ProcessManualDialResponse>> PrepareAsyncProcessManualDial(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessManualDialRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::agent::v1::ProcessManualDialResponse>>(PrepareAsyncProcessManualDialRaw(context, request, cq));
     }
     virtual ::grpc::Status ProcessSagaStep(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessSagaStepRequest& request, ::sentiric::agent::v1::ProcessSagaStepResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::agent::v1::ProcessSagaStepResponse>> AsyncProcessSagaStep(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessSagaStepRequest& request, ::grpc::CompletionQueue* cq) {
@@ -54,8 +63,12 @@ class AgentOrchestrationService final {
     class async_interface {
      public:
       virtual ~async_interface() {}
+      // Gelen çağrıların başlatılması (Inbound)
       virtual void ProcessCallStart(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessCallStartRequest* request, ::sentiric::agent::v1::ProcessCallStartResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void ProcessCallStart(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessCallStartRequest* request, ::sentiric::agent::v1::ProcessCallStartResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      // Manuel dış arama başlatma (Outbound) - YENİ
+      virtual void ProcessManualDial(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessManualDialRequest* request, ::sentiric::agent::v1::ProcessManualDialResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void ProcessManualDial(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessManualDialRequest* request, ::sentiric::agent::v1::ProcessManualDialResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void ProcessSagaStep(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessSagaStepRequest* request, ::sentiric::agent::v1::ProcessSagaStepResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void ProcessSagaStep(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessSagaStepRequest* request, ::sentiric::agent::v1::ProcessSagaStepResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
     };
@@ -65,6 +78,8 @@ class AgentOrchestrationService final {
    private:
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::agent::v1::ProcessCallStartResponse>* AsyncProcessCallStartRaw(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessCallStartRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::agent::v1::ProcessCallStartResponse>* PrepareAsyncProcessCallStartRaw(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessCallStartRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::agent::v1::ProcessManualDialResponse>* AsyncProcessManualDialRaw(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessManualDialRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::agent::v1::ProcessManualDialResponse>* PrepareAsyncProcessManualDialRaw(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessManualDialRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::agent::v1::ProcessSagaStepResponse>* AsyncProcessSagaStepRaw(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessSagaStepRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::agent::v1::ProcessSagaStepResponse>* PrepareAsyncProcessSagaStepRaw(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessSagaStepRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
@@ -78,6 +93,13 @@ class AgentOrchestrationService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::agent::v1::ProcessCallStartResponse>> PrepareAsyncProcessCallStart(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessCallStartRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::agent::v1::ProcessCallStartResponse>>(PrepareAsyncProcessCallStartRaw(context, request, cq));
     }
+    ::grpc::Status ProcessManualDial(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessManualDialRequest& request, ::sentiric::agent::v1::ProcessManualDialResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::agent::v1::ProcessManualDialResponse>> AsyncProcessManualDial(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessManualDialRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::agent::v1::ProcessManualDialResponse>>(AsyncProcessManualDialRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::agent::v1::ProcessManualDialResponse>> PrepareAsyncProcessManualDial(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessManualDialRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::agent::v1::ProcessManualDialResponse>>(PrepareAsyncProcessManualDialRaw(context, request, cq));
+    }
     ::grpc::Status ProcessSagaStep(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessSagaStepRequest& request, ::sentiric::agent::v1::ProcessSagaStepResponse* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::agent::v1::ProcessSagaStepResponse>> AsyncProcessSagaStep(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessSagaStepRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::agent::v1::ProcessSagaStepResponse>>(AsyncProcessSagaStepRaw(context, request, cq));
@@ -90,6 +112,8 @@ class AgentOrchestrationService final {
      public:
       void ProcessCallStart(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessCallStartRequest* request, ::sentiric::agent::v1::ProcessCallStartResponse* response, std::function<void(::grpc::Status)>) override;
       void ProcessCallStart(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessCallStartRequest* request, ::sentiric::agent::v1::ProcessCallStartResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void ProcessManualDial(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessManualDialRequest* request, ::sentiric::agent::v1::ProcessManualDialResponse* response, std::function<void(::grpc::Status)>) override;
+      void ProcessManualDial(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessManualDialRequest* request, ::sentiric::agent::v1::ProcessManualDialResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void ProcessSagaStep(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessSagaStepRequest* request, ::sentiric::agent::v1::ProcessSagaStepResponse* response, std::function<void(::grpc::Status)>) override;
       void ProcessSagaStep(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessSagaStepRequest* request, ::sentiric::agent::v1::ProcessSagaStepResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
      private:
@@ -105,9 +129,12 @@ class AgentOrchestrationService final {
     class async async_stub_{this};
     ::grpc::ClientAsyncResponseReader< ::sentiric::agent::v1::ProcessCallStartResponse>* AsyncProcessCallStartRaw(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessCallStartRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::sentiric::agent::v1::ProcessCallStartResponse>* PrepareAsyncProcessCallStartRaw(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessCallStartRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::sentiric::agent::v1::ProcessManualDialResponse>* AsyncProcessManualDialRaw(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessManualDialRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::sentiric::agent::v1::ProcessManualDialResponse>* PrepareAsyncProcessManualDialRaw(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessManualDialRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::sentiric::agent::v1::ProcessSagaStepResponse>* AsyncProcessSagaStepRaw(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessSagaStepRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::sentiric::agent::v1::ProcessSagaStepResponse>* PrepareAsyncProcessSagaStepRaw(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessSagaStepRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_ProcessCallStart_;
+    const ::grpc::internal::RpcMethod rpcmethod_ProcessManualDial_;
     const ::grpc::internal::RpcMethod rpcmethod_ProcessSagaStep_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
@@ -116,7 +143,10 @@ class AgentOrchestrationService final {
    public:
     Service();
     virtual ~Service();
+    // Gelen çağrıların başlatılması (Inbound)
     virtual ::grpc::Status ProcessCallStart(::grpc::ServerContext* context, const ::sentiric::agent::v1::ProcessCallStartRequest* request, ::sentiric::agent::v1::ProcessCallStartResponse* response);
+    // Manuel dış arama başlatma (Outbound) - YENİ
+    virtual ::grpc::Status ProcessManualDial(::grpc::ServerContext* context, const ::sentiric::agent::v1::ProcessManualDialRequest* request, ::sentiric::agent::v1::ProcessManualDialResponse* response);
     virtual ::grpc::Status ProcessSagaStep(::grpc::ServerContext* context, const ::sentiric::agent::v1::ProcessSagaStepRequest* request, ::sentiric::agent::v1::ProcessSagaStepResponse* response);
   };
   template <class BaseClass>
@@ -140,12 +170,32 @@ class AgentOrchestrationService final {
     }
   };
   template <class BaseClass>
+  class WithAsyncMethod_ProcessManualDial : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_ProcessManualDial() {
+      ::grpc::Service::MarkMethodAsync(1);
+    }
+    ~WithAsyncMethod_ProcessManualDial() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ProcessManualDial(::grpc::ServerContext* /*context*/, const ::sentiric::agent::v1::ProcessManualDialRequest* /*request*/, ::sentiric::agent::v1::ProcessManualDialResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestProcessManualDial(::grpc::ServerContext* context, ::sentiric::agent::v1::ProcessManualDialRequest* request, ::grpc::ServerAsyncResponseWriter< ::sentiric::agent::v1::ProcessManualDialResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithAsyncMethod_ProcessSagaStep : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_ProcessSagaStep() {
-      ::grpc::Service::MarkMethodAsync(1);
+      ::grpc::Service::MarkMethodAsync(2);
     }
     ~WithAsyncMethod_ProcessSagaStep() override {
       BaseClassMustBeDerivedFromService(this);
@@ -156,10 +206,10 @@ class AgentOrchestrationService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestProcessSagaStep(::grpc::ServerContext* context, ::sentiric::agent::v1::ProcessSagaStepRequest* request, ::grpc::ServerAsyncResponseWriter< ::sentiric::agent::v1::ProcessSagaStepResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_ProcessCallStart<WithAsyncMethod_ProcessSagaStep<Service > > AsyncService;
+  typedef WithAsyncMethod_ProcessCallStart<WithAsyncMethod_ProcessManualDial<WithAsyncMethod_ProcessSagaStep<Service > > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_ProcessCallStart : public BaseClass {
    private:
@@ -188,18 +238,45 @@ class AgentOrchestrationService final {
       ::grpc::CallbackServerContext* /*context*/, const ::sentiric::agent::v1::ProcessCallStartRequest* /*request*/, ::sentiric::agent::v1::ProcessCallStartResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
+  class WithCallbackMethod_ProcessManualDial : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_ProcessManualDial() {
+      ::grpc::Service::MarkMethodCallback(1,
+          new ::grpc::internal::CallbackUnaryHandler< ::sentiric::agent::v1::ProcessManualDialRequest, ::sentiric::agent::v1::ProcessManualDialResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::sentiric::agent::v1::ProcessManualDialRequest* request, ::sentiric::agent::v1::ProcessManualDialResponse* response) { return this->ProcessManualDial(context, request, response); }));}
+    void SetMessageAllocatorFor_ProcessManualDial(
+        ::grpc::MessageAllocator< ::sentiric::agent::v1::ProcessManualDialRequest, ::sentiric::agent::v1::ProcessManualDialResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::sentiric::agent::v1::ProcessManualDialRequest, ::sentiric::agent::v1::ProcessManualDialResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_ProcessManualDial() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ProcessManualDial(::grpc::ServerContext* /*context*/, const ::sentiric::agent::v1::ProcessManualDialRequest* /*request*/, ::sentiric::agent::v1::ProcessManualDialResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* ProcessManualDial(
+      ::grpc::CallbackServerContext* /*context*/, const ::sentiric::agent::v1::ProcessManualDialRequest* /*request*/, ::sentiric::agent::v1::ProcessManualDialResponse* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
   class WithCallbackMethod_ProcessSagaStep : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithCallbackMethod_ProcessSagaStep() {
-      ::grpc::Service::MarkMethodCallback(1,
+      ::grpc::Service::MarkMethodCallback(2,
           new ::grpc::internal::CallbackUnaryHandler< ::sentiric::agent::v1::ProcessSagaStepRequest, ::sentiric::agent::v1::ProcessSagaStepResponse>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::sentiric::agent::v1::ProcessSagaStepRequest* request, ::sentiric::agent::v1::ProcessSagaStepResponse* response) { return this->ProcessSagaStep(context, request, response); }));}
     void SetMessageAllocatorFor_ProcessSagaStep(
         ::grpc::MessageAllocator< ::sentiric::agent::v1::ProcessSagaStepRequest, ::sentiric::agent::v1::ProcessSagaStepResponse>* allocator) {
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(2);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::sentiric::agent::v1::ProcessSagaStepRequest, ::sentiric::agent::v1::ProcessSagaStepResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
@@ -214,7 +291,7 @@ class AgentOrchestrationService final {
     virtual ::grpc::ServerUnaryReactor* ProcessSagaStep(
       ::grpc::CallbackServerContext* /*context*/, const ::sentiric::agent::v1::ProcessSagaStepRequest* /*request*/, ::sentiric::agent::v1::ProcessSagaStepResponse* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_ProcessCallStart<WithCallbackMethod_ProcessSagaStep<Service > > CallbackService;
+  typedef WithCallbackMethod_ProcessCallStart<WithCallbackMethod_ProcessManualDial<WithCallbackMethod_ProcessSagaStep<Service > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_ProcessCallStart : public BaseClass {
@@ -234,12 +311,29 @@ class AgentOrchestrationService final {
     }
   };
   template <class BaseClass>
+  class WithGenericMethod_ProcessManualDial : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_ProcessManualDial() {
+      ::grpc::Service::MarkMethodGeneric(1);
+    }
+    ~WithGenericMethod_ProcessManualDial() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ProcessManualDial(::grpc::ServerContext* /*context*/, const ::sentiric::agent::v1::ProcessManualDialRequest* /*request*/, ::sentiric::agent::v1::ProcessManualDialResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
   class WithGenericMethod_ProcessSagaStep : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_ProcessSagaStep() {
-      ::grpc::Service::MarkMethodGeneric(1);
+      ::grpc::Service::MarkMethodGeneric(2);
     }
     ~WithGenericMethod_ProcessSagaStep() override {
       BaseClassMustBeDerivedFromService(this);
@@ -271,12 +365,32 @@ class AgentOrchestrationService final {
     }
   };
   template <class BaseClass>
+  class WithRawMethod_ProcessManualDial : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_ProcessManualDial() {
+      ::grpc::Service::MarkMethodRaw(1);
+    }
+    ~WithRawMethod_ProcessManualDial() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ProcessManualDial(::grpc::ServerContext* /*context*/, const ::sentiric::agent::v1::ProcessManualDialRequest* /*request*/, ::sentiric::agent::v1::ProcessManualDialResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestProcessManualDial(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithRawMethod_ProcessSagaStep : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_ProcessSagaStep() {
-      ::grpc::Service::MarkMethodRaw(1);
+      ::grpc::Service::MarkMethodRaw(2);
     }
     ~WithRawMethod_ProcessSagaStep() override {
       BaseClassMustBeDerivedFromService(this);
@@ -287,7 +401,7 @@ class AgentOrchestrationService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestProcessSagaStep(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -313,12 +427,34 @@ class AgentOrchestrationService final {
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
+  class WithRawCallbackMethod_ProcessManualDial : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_ProcessManualDial() {
+      ::grpc::Service::MarkMethodRawCallback(1,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ProcessManualDial(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_ProcessManualDial() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ProcessManualDial(::grpc::ServerContext* /*context*/, const ::sentiric::agent::v1::ProcessManualDialRequest* /*request*/, ::sentiric::agent::v1::ProcessManualDialResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* ProcessManualDial(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
   class WithRawCallbackMethod_ProcessSagaStep : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawCallbackMethod_ProcessSagaStep() {
-      ::grpc::Service::MarkMethodRawCallback(1,
+      ::grpc::Service::MarkMethodRawCallback(2,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
                    ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ProcessSagaStep(context, request, response); }));
@@ -362,12 +498,39 @@ class AgentOrchestrationService final {
     virtual ::grpc::Status StreamedProcessCallStart(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::sentiric::agent::v1::ProcessCallStartRequest,::sentiric::agent::v1::ProcessCallStartResponse>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
+  class WithStreamedUnaryMethod_ProcessManualDial : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_ProcessManualDial() {
+      ::grpc::Service::MarkMethodStreamed(1,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::sentiric::agent::v1::ProcessManualDialRequest, ::sentiric::agent::v1::ProcessManualDialResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::sentiric::agent::v1::ProcessManualDialRequest, ::sentiric::agent::v1::ProcessManualDialResponse>* streamer) {
+                       return this->StreamedProcessManualDial(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_ProcessManualDial() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status ProcessManualDial(::grpc::ServerContext* /*context*/, const ::sentiric::agent::v1::ProcessManualDialRequest* /*request*/, ::sentiric::agent::v1::ProcessManualDialResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedProcessManualDial(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::sentiric::agent::v1::ProcessManualDialRequest,::sentiric::agent::v1::ProcessManualDialResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
   class WithStreamedUnaryMethod_ProcessSagaStep : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_ProcessSagaStep() {
-      ::grpc::Service::MarkMethodStreamed(1,
+      ::grpc::Service::MarkMethodStreamed(2,
         new ::grpc::internal::StreamedUnaryHandler<
           ::sentiric::agent::v1::ProcessSagaStepRequest, ::sentiric::agent::v1::ProcessSagaStepResponse>(
             [this](::grpc::ServerContext* context,
@@ -388,9 +551,9 @@ class AgentOrchestrationService final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedProcessSagaStep(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::sentiric::agent::v1::ProcessSagaStepRequest,::sentiric::agent::v1::ProcessSagaStepResponse>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_ProcessCallStart<WithStreamedUnaryMethod_ProcessSagaStep<Service > > StreamedUnaryService;
+  typedef WithStreamedUnaryMethod_ProcessCallStart<WithStreamedUnaryMethod_ProcessManualDial<WithStreamedUnaryMethod_ProcessSagaStep<Service > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_ProcessCallStart<WithStreamedUnaryMethod_ProcessSagaStep<Service > > StreamedService;
+  typedef WithStreamedUnaryMethod_ProcessCallStart<WithStreamedUnaryMethod_ProcessManualDial<WithStreamedUnaryMethod_ProcessSagaStep<Service > > > StreamedService;
 };
 
 }  // namespace v1

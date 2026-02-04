@@ -27,6 +27,28 @@ function deserialize_sentiric_agent_v1_ProcessCallStartResponse(buffer_arg) {
   return sentiric_agent_v1_orchestration_pb.ProcessCallStartResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sentiric_agent_v1_ProcessManualDialRequest(arg) {
+  if (!(arg instanceof sentiric_agent_v1_orchestration_pb.ProcessManualDialRequest)) {
+    throw new Error('Expected argument of type sentiric.agent.v1.ProcessManualDialRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sentiric_agent_v1_ProcessManualDialRequest(buffer_arg) {
+  return sentiric_agent_v1_orchestration_pb.ProcessManualDialRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sentiric_agent_v1_ProcessManualDialResponse(arg) {
+  if (!(arg instanceof sentiric_agent_v1_orchestration_pb.ProcessManualDialResponse)) {
+    throw new Error('Expected argument of type sentiric.agent.v1.ProcessManualDialResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sentiric_agent_v1_ProcessManualDialResponse(buffer_arg) {
+  return sentiric_agent_v1_orchestration_pb.ProcessManualDialResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sentiric_agent_v1_ProcessSagaStepRequest(arg) {
   if (!(arg instanceof sentiric_agent_v1_orchestration_pb.ProcessSagaStepRequest)) {
     throw new Error('Expected argument of type sentiric.agent.v1.ProcessSagaStepRequest');
@@ -51,7 +73,8 @@ function deserialize_sentiric_agent_v1_ProcessSagaStepResponse(buffer_arg) {
 
 
 var AgentOrchestrationServiceService = exports.AgentOrchestrationServiceService = {
-  processCallStart: {
+  // Gelen çağrıların başlatılması (Inbound)
+processCallStart: {
     path: '/sentiric.agent.v1.AgentOrchestrationService/ProcessCallStart',
     requestStream: false,
     responseStream: false,
@@ -61,6 +84,18 @@ var AgentOrchestrationServiceService = exports.AgentOrchestrationServiceService 
     requestDeserialize: deserialize_sentiric_agent_v1_ProcessCallStartRequest,
     responseSerialize: serialize_sentiric_agent_v1_ProcessCallStartResponse,
     responseDeserialize: deserialize_sentiric_agent_v1_ProcessCallStartResponse,
+  },
+  // Manuel dış arama başlatma (Outbound) - YENİ
+processManualDial: {
+    path: '/sentiric.agent.v1.AgentOrchestrationService/ProcessManualDial',
+    requestStream: false,
+    responseStream: false,
+    requestType: sentiric_agent_v1_orchestration_pb.ProcessManualDialRequest,
+    responseType: sentiric_agent_v1_orchestration_pb.ProcessManualDialResponse,
+    requestSerialize: serialize_sentiric_agent_v1_ProcessManualDialRequest,
+    requestDeserialize: deserialize_sentiric_agent_v1_ProcessManualDialRequest,
+    responseSerialize: serialize_sentiric_agent_v1_ProcessManualDialResponse,
+    responseDeserialize: deserialize_sentiric_agent_v1_ProcessManualDialResponse,
   },
   processSagaStep: {
     path: '/sentiric.agent.v1.AgentOrchestrationService/ProcessSagaStep',

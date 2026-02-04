@@ -54,6 +54,12 @@ extern ProcessCallStartRequestDefaultTypeInternal _ProcessCallStartRequest_defau
 class ProcessCallStartResponse;
 struct ProcessCallStartResponseDefaultTypeInternal;
 extern ProcessCallStartResponseDefaultTypeInternal _ProcessCallStartResponse_default_instance_;
+class ProcessManualDialRequest;
+struct ProcessManualDialRequestDefaultTypeInternal;
+extern ProcessManualDialRequestDefaultTypeInternal _ProcessManualDialRequest_default_instance_;
+class ProcessManualDialResponse;
+struct ProcessManualDialResponseDefaultTypeInternal;
+extern ProcessManualDialResponseDefaultTypeInternal _ProcessManualDialResponse_default_instance_;
 class ProcessSagaStepRequest;
 struct ProcessSagaStepRequestDefaultTypeInternal;
 extern ProcessSagaStepRequestDefaultTypeInternal _ProcessSagaStepRequest_default_instance_;
@@ -66,6 +72,8 @@ extern ProcessSagaStepResponseDefaultTypeInternal _ProcessSagaStepResponse_defau
 PROTOBUF_NAMESPACE_OPEN
 template<> ::sentiric::agent::v1::ProcessCallStartRequest* Arena::CreateMaybeMessage<::sentiric::agent::v1::ProcessCallStartRequest>(Arena*);
 template<> ::sentiric::agent::v1::ProcessCallStartResponse* Arena::CreateMaybeMessage<::sentiric::agent::v1::ProcessCallStartResponse>(Arena*);
+template<> ::sentiric::agent::v1::ProcessManualDialRequest* Arena::CreateMaybeMessage<::sentiric::agent::v1::ProcessManualDialRequest>(Arena*);
+template<> ::sentiric::agent::v1::ProcessManualDialResponse* Arena::CreateMaybeMessage<::sentiric::agent::v1::ProcessManualDialResponse>(Arena*);
 template<> ::sentiric::agent::v1::ProcessSagaStepRequest* Arena::CreateMaybeMessage<::sentiric::agent::v1::ProcessSagaStepRequest>(Arena*);
 template<> ::sentiric::agent::v1::ProcessSagaStepResponse* Arena::CreateMaybeMessage<::sentiric::agent::v1::ProcessSagaStepResponse>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
@@ -74,6 +82,371 @@ namespace agent {
 namespace v1 {
 
 // ===================================================================
+
+class ProcessManualDialRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.agent.v1.ProcessManualDialRequest) */ {
+ public:
+  inline ProcessManualDialRequest() : ProcessManualDialRequest(nullptr) {}
+  ~ProcessManualDialRequest() override;
+  explicit PROTOBUF_CONSTEXPR ProcessManualDialRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  ProcessManualDialRequest(const ProcessManualDialRequest& from);
+  ProcessManualDialRequest(ProcessManualDialRequest&& from) noexcept
+    : ProcessManualDialRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline ProcessManualDialRequest& operator=(const ProcessManualDialRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ProcessManualDialRequest& operator=(ProcessManualDialRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ProcessManualDialRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ProcessManualDialRequest* internal_default_instance() {
+    return reinterpret_cast<const ProcessManualDialRequest*>(
+               &_ProcessManualDialRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    0;
+
+  friend void swap(ProcessManualDialRequest& a, ProcessManualDialRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ProcessManualDialRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ProcessManualDialRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ProcessManualDialRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ProcessManualDialRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const ProcessManualDialRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const ProcessManualDialRequest& from) {
+    ProcessManualDialRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ProcessManualDialRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.agent.v1.ProcessManualDialRequest";
+  }
+  protected:
+  explicit ProcessManualDialRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kDestinationNumberFieldNumber = 1,
+    kUserIdFieldNumber = 2,
+    kTenantIdFieldNumber = 3,
+  };
+  // string destination_number = 1;
+  void clear_destination_number();
+  const std::string& destination_number() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_destination_number(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_destination_number();
+  PROTOBUF_NODISCARD std::string* release_destination_number();
+  void set_allocated_destination_number(std::string* destination_number);
+  private:
+  const std::string& _internal_destination_number() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_destination_number(const std::string& value);
+  std::string* _internal_mutable_destination_number();
+  public:
+
+  // string user_id = 2;
+  void clear_user_id();
+  const std::string& user_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_user_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_user_id();
+  PROTOBUF_NODISCARD std::string* release_user_id();
+  void set_allocated_user_id(std::string* user_id);
+  private:
+  const std::string& _internal_user_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_user_id(const std::string& value);
+  std::string* _internal_mutable_user_id();
+  public:
+
+  // string tenant_id = 3;
+  void clear_tenant_id();
+  const std::string& tenant_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_tenant_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_tenant_id();
+  PROTOBUF_NODISCARD std::string* release_tenant_id();
+  void set_allocated_tenant_id(std::string* tenant_id);
+  private:
+  const std::string& _internal_tenant_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_tenant_id(const std::string& value);
+  std::string* _internal_mutable_tenant_id();
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.agent.v1.ProcessManualDialRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr destination_number_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr user_id_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr tenant_id_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2fagent_2fv1_2forchestration_2eproto;
+};
+// -------------------------------------------------------------------
+
+class ProcessManualDialResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.agent.v1.ProcessManualDialResponse) */ {
+ public:
+  inline ProcessManualDialResponse() : ProcessManualDialResponse(nullptr) {}
+  ~ProcessManualDialResponse() override;
+  explicit PROTOBUF_CONSTEXPR ProcessManualDialResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  ProcessManualDialResponse(const ProcessManualDialResponse& from);
+  ProcessManualDialResponse(ProcessManualDialResponse&& from) noexcept
+    : ProcessManualDialResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline ProcessManualDialResponse& operator=(const ProcessManualDialResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ProcessManualDialResponse& operator=(ProcessManualDialResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ProcessManualDialResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ProcessManualDialResponse* internal_default_instance() {
+    return reinterpret_cast<const ProcessManualDialResponse*>(
+               &_ProcessManualDialResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    1;
+
+  friend void swap(ProcessManualDialResponse& a, ProcessManualDialResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ProcessManualDialResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ProcessManualDialResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ProcessManualDialResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ProcessManualDialResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const ProcessManualDialResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const ProcessManualDialResponse& from) {
+    ProcessManualDialResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ProcessManualDialResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.agent.v1.ProcessManualDialResponse";
+  }
+  protected:
+  explicit ProcessManualDialResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kCallIdFieldNumber = 2,
+    kErrorMessageFieldNumber = 3,
+    kAcceptedFieldNumber = 1,
+  };
+  // string call_id = 2;
+  void clear_call_id();
+  const std::string& call_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_call_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_call_id();
+  PROTOBUF_NODISCARD std::string* release_call_id();
+  void set_allocated_call_id(std::string* call_id);
+  private:
+  const std::string& _internal_call_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_call_id(const std::string& value);
+  std::string* _internal_mutable_call_id();
+  public:
+
+  // string error_message = 3;
+  void clear_error_message();
+  const std::string& error_message() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_error_message(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_error_message();
+  PROTOBUF_NODISCARD std::string* release_error_message();
+  void set_allocated_error_message(std::string* error_message);
+  private:
+  const std::string& _internal_error_message() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_error_message(const std::string& value);
+  std::string* _internal_mutable_error_message();
+  public:
+
+  // bool accepted = 1;
+  void clear_accepted();
+  bool accepted() const;
+  void set_accepted(bool value);
+  private:
+  bool _internal_accepted() const;
+  void _internal_set_accepted(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.agent.v1.ProcessManualDialResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr call_id_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr error_message_;
+    bool accepted_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2fagent_2fv1_2forchestration_2eproto;
+};
+// -------------------------------------------------------------------
 
 class ProcessCallStartRequest final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.agent.v1.ProcessCallStartRequest) */ {
@@ -123,7 +496,7 @@ class ProcessCallStartRequest final :
                &_ProcessCallStartRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    0;
+    2;
 
   friend void swap(ProcessCallStartRequest& a, ProcessCallStartRequest& b) {
     a.Swap(&b);
@@ -308,7 +681,7 @@ class ProcessCallStartResponse final :
                &_ProcessCallStartResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    3;
 
   friend void swap(ProcessCallStartResponse& a, ProcessCallStartResponse& b) {
     a.Swap(&b);
@@ -456,7 +829,7 @@ class ProcessSagaStepRequest final :
                &_ProcessSagaStepRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    4;
 
   friend void swap(ProcessSagaStepRequest& a, ProcessSagaStepRequest& b) {
     a.Swap(&b);
@@ -645,7 +1018,7 @@ class ProcessSagaStepResponse final :
                &_ProcessSagaStepResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    5;
 
   friend void swap(ProcessSagaStepResponse& a, ProcessSagaStepResponse& b) {
     a.Swap(&b);
@@ -752,6 +1125,284 @@ class ProcessSagaStepResponse final :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
+// ProcessManualDialRequest
+
+// string destination_number = 1;
+inline void ProcessManualDialRequest::clear_destination_number() {
+  _impl_.destination_number_.ClearToEmpty();
+}
+inline const std::string& ProcessManualDialRequest::destination_number() const {
+  // @@protoc_insertion_point(field_get:sentiric.agent.v1.ProcessManualDialRequest.destination_number)
+  return _internal_destination_number();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void ProcessManualDialRequest::set_destination_number(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.destination_number_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.agent.v1.ProcessManualDialRequest.destination_number)
+}
+inline std::string* ProcessManualDialRequest::mutable_destination_number() {
+  std::string* _s = _internal_mutable_destination_number();
+  // @@protoc_insertion_point(field_mutable:sentiric.agent.v1.ProcessManualDialRequest.destination_number)
+  return _s;
+}
+inline const std::string& ProcessManualDialRequest::_internal_destination_number() const {
+  return _impl_.destination_number_.Get();
+}
+inline void ProcessManualDialRequest::_internal_set_destination_number(const std::string& value) {
+  
+  _impl_.destination_number_.Set(value, GetArenaForAllocation());
+}
+inline std::string* ProcessManualDialRequest::_internal_mutable_destination_number() {
+  
+  return _impl_.destination_number_.Mutable(GetArenaForAllocation());
+}
+inline std::string* ProcessManualDialRequest::release_destination_number() {
+  // @@protoc_insertion_point(field_release:sentiric.agent.v1.ProcessManualDialRequest.destination_number)
+  return _impl_.destination_number_.Release();
+}
+inline void ProcessManualDialRequest::set_allocated_destination_number(std::string* destination_number) {
+  if (destination_number != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.destination_number_.SetAllocated(destination_number, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.destination_number_.IsDefault()) {
+    _impl_.destination_number_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.agent.v1.ProcessManualDialRequest.destination_number)
+}
+
+// string user_id = 2;
+inline void ProcessManualDialRequest::clear_user_id() {
+  _impl_.user_id_.ClearToEmpty();
+}
+inline const std::string& ProcessManualDialRequest::user_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.agent.v1.ProcessManualDialRequest.user_id)
+  return _internal_user_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void ProcessManualDialRequest::set_user_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.user_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.agent.v1.ProcessManualDialRequest.user_id)
+}
+inline std::string* ProcessManualDialRequest::mutable_user_id() {
+  std::string* _s = _internal_mutable_user_id();
+  // @@protoc_insertion_point(field_mutable:sentiric.agent.v1.ProcessManualDialRequest.user_id)
+  return _s;
+}
+inline const std::string& ProcessManualDialRequest::_internal_user_id() const {
+  return _impl_.user_id_.Get();
+}
+inline void ProcessManualDialRequest::_internal_set_user_id(const std::string& value) {
+  
+  _impl_.user_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* ProcessManualDialRequest::_internal_mutable_user_id() {
+  
+  return _impl_.user_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* ProcessManualDialRequest::release_user_id() {
+  // @@protoc_insertion_point(field_release:sentiric.agent.v1.ProcessManualDialRequest.user_id)
+  return _impl_.user_id_.Release();
+}
+inline void ProcessManualDialRequest::set_allocated_user_id(std::string* user_id) {
+  if (user_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.user_id_.SetAllocated(user_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.user_id_.IsDefault()) {
+    _impl_.user_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.agent.v1.ProcessManualDialRequest.user_id)
+}
+
+// string tenant_id = 3;
+inline void ProcessManualDialRequest::clear_tenant_id() {
+  _impl_.tenant_id_.ClearToEmpty();
+}
+inline const std::string& ProcessManualDialRequest::tenant_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.agent.v1.ProcessManualDialRequest.tenant_id)
+  return _internal_tenant_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void ProcessManualDialRequest::set_tenant_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.tenant_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.agent.v1.ProcessManualDialRequest.tenant_id)
+}
+inline std::string* ProcessManualDialRequest::mutable_tenant_id() {
+  std::string* _s = _internal_mutable_tenant_id();
+  // @@protoc_insertion_point(field_mutable:sentiric.agent.v1.ProcessManualDialRequest.tenant_id)
+  return _s;
+}
+inline const std::string& ProcessManualDialRequest::_internal_tenant_id() const {
+  return _impl_.tenant_id_.Get();
+}
+inline void ProcessManualDialRequest::_internal_set_tenant_id(const std::string& value) {
+  
+  _impl_.tenant_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* ProcessManualDialRequest::_internal_mutable_tenant_id() {
+  
+  return _impl_.tenant_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* ProcessManualDialRequest::release_tenant_id() {
+  // @@protoc_insertion_point(field_release:sentiric.agent.v1.ProcessManualDialRequest.tenant_id)
+  return _impl_.tenant_id_.Release();
+}
+inline void ProcessManualDialRequest::set_allocated_tenant_id(std::string* tenant_id) {
+  if (tenant_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.tenant_id_.SetAllocated(tenant_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.tenant_id_.IsDefault()) {
+    _impl_.tenant_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.agent.v1.ProcessManualDialRequest.tenant_id)
+}
+
+// -------------------------------------------------------------------
+
+// ProcessManualDialResponse
+
+// bool accepted = 1;
+inline void ProcessManualDialResponse::clear_accepted() {
+  _impl_.accepted_ = false;
+}
+inline bool ProcessManualDialResponse::_internal_accepted() const {
+  return _impl_.accepted_;
+}
+inline bool ProcessManualDialResponse::accepted() const {
+  // @@protoc_insertion_point(field_get:sentiric.agent.v1.ProcessManualDialResponse.accepted)
+  return _internal_accepted();
+}
+inline void ProcessManualDialResponse::_internal_set_accepted(bool value) {
+  
+  _impl_.accepted_ = value;
+}
+inline void ProcessManualDialResponse::set_accepted(bool value) {
+  _internal_set_accepted(value);
+  // @@protoc_insertion_point(field_set:sentiric.agent.v1.ProcessManualDialResponse.accepted)
+}
+
+// string call_id = 2;
+inline void ProcessManualDialResponse::clear_call_id() {
+  _impl_.call_id_.ClearToEmpty();
+}
+inline const std::string& ProcessManualDialResponse::call_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.agent.v1.ProcessManualDialResponse.call_id)
+  return _internal_call_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void ProcessManualDialResponse::set_call_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.call_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.agent.v1.ProcessManualDialResponse.call_id)
+}
+inline std::string* ProcessManualDialResponse::mutable_call_id() {
+  std::string* _s = _internal_mutable_call_id();
+  // @@protoc_insertion_point(field_mutable:sentiric.agent.v1.ProcessManualDialResponse.call_id)
+  return _s;
+}
+inline const std::string& ProcessManualDialResponse::_internal_call_id() const {
+  return _impl_.call_id_.Get();
+}
+inline void ProcessManualDialResponse::_internal_set_call_id(const std::string& value) {
+  
+  _impl_.call_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* ProcessManualDialResponse::_internal_mutable_call_id() {
+  
+  return _impl_.call_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* ProcessManualDialResponse::release_call_id() {
+  // @@protoc_insertion_point(field_release:sentiric.agent.v1.ProcessManualDialResponse.call_id)
+  return _impl_.call_id_.Release();
+}
+inline void ProcessManualDialResponse::set_allocated_call_id(std::string* call_id) {
+  if (call_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.call_id_.SetAllocated(call_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.call_id_.IsDefault()) {
+    _impl_.call_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.agent.v1.ProcessManualDialResponse.call_id)
+}
+
+// string error_message = 3;
+inline void ProcessManualDialResponse::clear_error_message() {
+  _impl_.error_message_.ClearToEmpty();
+}
+inline const std::string& ProcessManualDialResponse::error_message() const {
+  // @@protoc_insertion_point(field_get:sentiric.agent.v1.ProcessManualDialResponse.error_message)
+  return _internal_error_message();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void ProcessManualDialResponse::set_error_message(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.error_message_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.agent.v1.ProcessManualDialResponse.error_message)
+}
+inline std::string* ProcessManualDialResponse::mutable_error_message() {
+  std::string* _s = _internal_mutable_error_message();
+  // @@protoc_insertion_point(field_mutable:sentiric.agent.v1.ProcessManualDialResponse.error_message)
+  return _s;
+}
+inline const std::string& ProcessManualDialResponse::_internal_error_message() const {
+  return _impl_.error_message_.Get();
+}
+inline void ProcessManualDialResponse::_internal_set_error_message(const std::string& value) {
+  
+  _impl_.error_message_.Set(value, GetArenaForAllocation());
+}
+inline std::string* ProcessManualDialResponse::_internal_mutable_error_message() {
+  
+  return _impl_.error_message_.Mutable(GetArenaForAllocation());
+}
+inline std::string* ProcessManualDialResponse::release_error_message() {
+  // @@protoc_insertion_point(field_release:sentiric.agent.v1.ProcessManualDialResponse.error_message)
+  return _impl_.error_message_.Release();
+}
+inline void ProcessManualDialResponse::set_allocated_error_message(std::string* error_message) {
+  if (error_message != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.error_message_.SetAllocated(error_message, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.error_message_.IsDefault()) {
+    _impl_.error_message_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.agent.v1.ProcessManualDialResponse.error_message)
+}
+
+// -------------------------------------------------------------------
+
 // ProcessCallStartRequest
 
 // string call_id = 1;
@@ -1144,6 +1795,10 @@ inline void ProcessSagaStepResponse::set_completed(bool value) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

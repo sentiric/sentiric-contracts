@@ -121,6 +121,35 @@ pub mod agent_orchestration_service_client {
                 );
             self.inner.unary(req, path, codec).await
         }
+        pub async fn process_manual_dial(
+            &mut self,
+            request: impl tonic::IntoRequest<super::ProcessManualDialRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::ProcessManualDialResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::unknown(
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
+            let codec = tonic_prost::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/sentiric.agent.v1.AgentOrchestrationService/ProcessManualDial",
+            );
+            let mut req = request.into_request();
+            req.extensions_mut()
+                .insert(
+                    GrpcMethod::new(
+                        "sentiric.agent.v1.AgentOrchestrationService",
+                        "ProcessManualDial",
+                    ),
+                );
+            self.inner.unary(req, path, codec).await
+        }
         pub async fn process_saga_step(
             &mut self,
             request: impl tonic::IntoRequest<super::ProcessSagaStepRequest>,
@@ -170,6 +199,13 @@ pub mod agent_orchestration_service_server {
             request: tonic::Request<super::ProcessCallStartRequest>,
         ) -> std::result::Result<
             tonic::Response<super::ProcessCallStartResponse>,
+            tonic::Status,
+        >;
+        async fn process_manual_dial(
+            &self,
+            request: tonic::Request<super::ProcessManualDialRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::ProcessManualDialResponse>,
             tonic::Status,
         >;
         async fn process_saga_step(
@@ -291,6 +327,57 @@ pub mod agent_orchestration_service_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = ProcessCallStartSvc(inner);
+                        let codec = tonic_prost::ProstCodec::default();
+                        let mut grpc = tonic::server::Grpc::new(codec)
+                            .apply_compression_config(
+                                accept_compression_encodings,
+                                send_compression_encodings,
+                            )
+                            .apply_max_message_size_config(
+                                max_decoding_message_size,
+                                max_encoding_message_size,
+                            );
+                        let res = grpc.unary(method, req).await;
+                        Ok(res)
+                    };
+                    Box::pin(fut)
+                }
+                "/sentiric.agent.v1.AgentOrchestrationService/ProcessManualDial" => {
+                    #[allow(non_camel_case_types)]
+                    struct ProcessManualDialSvc<T: AgentOrchestrationService>(
+                        pub Arc<T>,
+                    );
+                    impl<
+                        T: AgentOrchestrationService,
+                    > tonic::server::UnaryService<super::ProcessManualDialRequest>
+                    for ProcessManualDialSvc<T> {
+                        type Response = super::ProcessManualDialResponse;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
+                        fn call(
+                            &mut self,
+                            request: tonic::Request<super::ProcessManualDialRequest>,
+                        ) -> Self::Future {
+                            let inner = Arc::clone(&self.0);
+                            let fut = async move {
+                                <T as AgentOrchestrationService>::process_manual_dial(
+                                        &inner,
+                                        request,
+                                    )
+                                    .await
+                            };
+                            Box::pin(fut)
+                        }
+                    }
+                    let accept_compression_encodings = self.accept_compression_encodings;
+                    let send_compression_encodings = self.send_compression_encodings;
+                    let max_decoding_message_size = self.max_decoding_message_size;
+                    let max_encoding_message_size = self.max_encoding_message_size;
+                    let inner = self.inner.clone();
+                    let fut = async move {
+                        let method = ProcessManualDialSvc(inner);
                         let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(

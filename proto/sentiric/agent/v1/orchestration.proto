@@ -7,26 +7,43 @@ import "sentiric/data/v1/context.proto";
 option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/agent/v1;agentv1";
 
 service AgentOrchestrationService {
+  // Gelen çağrıların başlatılması (Inbound)
   rpc ProcessCallStart(ProcessCallStartRequest) returns (ProcessCallStartResponse);
+  
+  // Manuel dış arama başlatma (Outbound) - YENİ
+  rpc ProcessManualDial(ProcessManualDialRequest) returns (ProcessManualDialResponse);
+
   rpc ProcessSagaStep(ProcessSagaStepRequest) returns (ProcessSagaStepResponse);
 }
 
-message ProcessCallStartRequest { // ESKİ: CallStartEvent
+message ProcessManualDialRequest {
+  string destination_number = 1; // Örn: 905551234567
+  string user_id = 2;            // Aramayı başlatan temsilci ID
+  string tenant_id = 3;          // Hangi firma adına aranıyor
+}
+
+message ProcessManualDialResponse {
+  bool accepted = 1;
+  string call_id = 2;            // Oluşturulan global Call-ID
+  string error_message = 3;
+}
+
+message ProcessCallStartRequest {
   string call_id = 1;
   string dialplan_id = 2;
   string caller_number = 3;
 }
 
-message ProcessCallStartResponse { // ESKİ: ProcessResponse
+message ProcessCallStartResponse {
   bool initiated = 1;
 }
 
-message ProcessSagaStepRequest { // ESKİ: SagaStep
+message ProcessSagaStepRequest {
   string saga_id = 1;
   string step_name = 2;
   sentiric.data.v1.CallContext context = 3;
 }
 
-message ProcessSagaStepResponse { // ESKİ: SagaResponse
+message ProcessSagaStepResponse {
   bool completed = 1;
 }

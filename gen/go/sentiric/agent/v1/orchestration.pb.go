@@ -22,6 +22,126 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type ProcessManualDialRequest struct {
+	state             protoimpl.MessageState `protogen:"open.v1"`
+	DestinationNumber string                 `protobuf:"bytes,1,opt,name=destination_number,json=destinationNumber,proto3" json:"destination_number,omitempty"` // Örn: 905551234567
+	UserId            string                 `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`                                  // Aramayı başlatan temsilci ID
+	TenantId          string                 `protobuf:"bytes,3,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`                            // Hangi firma adına aranıyor
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
+}
+
+func (x *ProcessManualDialRequest) Reset() {
+	*x = ProcessManualDialRequest{}
+	mi := &file_sentiric_agent_v1_orchestration_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ProcessManualDialRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ProcessManualDialRequest) ProtoMessage() {}
+
+func (x *ProcessManualDialRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_agent_v1_orchestration_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ProcessManualDialRequest.ProtoReflect.Descriptor instead.
+func (*ProcessManualDialRequest) Descriptor() ([]byte, []int) {
+	return file_sentiric_agent_v1_orchestration_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *ProcessManualDialRequest) GetDestinationNumber() string {
+	if x != nil {
+		return x.DestinationNumber
+	}
+	return ""
+}
+
+func (x *ProcessManualDialRequest) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+func (x *ProcessManualDialRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+type ProcessManualDialResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Accepted      bool                   `protobuf:"varint,1,opt,name=accepted,proto3" json:"accepted,omitempty"`
+	CallId        string                 `protobuf:"bytes,2,opt,name=call_id,json=callId,proto3" json:"call_id,omitempty"` // Oluşturulan global Call-ID
+	ErrorMessage  string                 `protobuf:"bytes,3,opt,name=error_message,json=errorMessage,proto3" json:"error_message,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ProcessManualDialResponse) Reset() {
+	*x = ProcessManualDialResponse{}
+	mi := &file_sentiric_agent_v1_orchestration_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ProcessManualDialResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ProcessManualDialResponse) ProtoMessage() {}
+
+func (x *ProcessManualDialResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_agent_v1_orchestration_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ProcessManualDialResponse.ProtoReflect.Descriptor instead.
+func (*ProcessManualDialResponse) Descriptor() ([]byte, []int) {
+	return file_sentiric_agent_v1_orchestration_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *ProcessManualDialResponse) GetAccepted() bool {
+	if x != nil {
+		return x.Accepted
+	}
+	return false
+}
+
+func (x *ProcessManualDialResponse) GetCallId() string {
+	if x != nil {
+		return x.CallId
+	}
+	return ""
+}
+
+func (x *ProcessManualDialResponse) GetErrorMessage() string {
+	if x != nil {
+		return x.ErrorMessage
+	}
+	return ""
+}
+
 type ProcessCallStartRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	CallId        string                 `protobuf:"bytes,1,opt,name=call_id,json=callId,proto3" json:"call_id,omitempty"`
@@ -33,7 +153,7 @@ type ProcessCallStartRequest struct {
 
 func (x *ProcessCallStartRequest) Reset() {
 	*x = ProcessCallStartRequest{}
-	mi := &file_sentiric_agent_v1_orchestration_proto_msgTypes[0]
+	mi := &file_sentiric_agent_v1_orchestration_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -45,7 +165,7 @@ func (x *ProcessCallStartRequest) String() string {
 func (*ProcessCallStartRequest) ProtoMessage() {}
 
 func (x *ProcessCallStartRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_agent_v1_orchestration_proto_msgTypes[0]
+	mi := &file_sentiric_agent_v1_orchestration_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -58,7 +178,7 @@ func (x *ProcessCallStartRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ProcessCallStartRequest.ProtoReflect.Descriptor instead.
 func (*ProcessCallStartRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_agent_v1_orchestration_proto_rawDescGZIP(), []int{0}
+	return file_sentiric_agent_v1_orchestration_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *ProcessCallStartRequest) GetCallId() string {
@@ -91,7 +211,7 @@ type ProcessCallStartResponse struct {
 
 func (x *ProcessCallStartResponse) Reset() {
 	*x = ProcessCallStartResponse{}
-	mi := &file_sentiric_agent_v1_orchestration_proto_msgTypes[1]
+	mi := &file_sentiric_agent_v1_orchestration_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -103,7 +223,7 @@ func (x *ProcessCallStartResponse) String() string {
 func (*ProcessCallStartResponse) ProtoMessage() {}
 
 func (x *ProcessCallStartResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_agent_v1_orchestration_proto_msgTypes[1]
+	mi := &file_sentiric_agent_v1_orchestration_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -116,7 +236,7 @@ func (x *ProcessCallStartResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ProcessCallStartResponse.ProtoReflect.Descriptor instead.
 func (*ProcessCallStartResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_agent_v1_orchestration_proto_rawDescGZIP(), []int{1}
+	return file_sentiric_agent_v1_orchestration_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *ProcessCallStartResponse) GetInitiated() bool {
@@ -137,7 +257,7 @@ type ProcessSagaStepRequest struct {
 
 func (x *ProcessSagaStepRequest) Reset() {
 	*x = ProcessSagaStepRequest{}
-	mi := &file_sentiric_agent_v1_orchestration_proto_msgTypes[2]
+	mi := &file_sentiric_agent_v1_orchestration_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -149,7 +269,7 @@ func (x *ProcessSagaStepRequest) String() string {
 func (*ProcessSagaStepRequest) ProtoMessage() {}
 
 func (x *ProcessSagaStepRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_agent_v1_orchestration_proto_msgTypes[2]
+	mi := &file_sentiric_agent_v1_orchestration_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -162,7 +282,7 @@ func (x *ProcessSagaStepRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ProcessSagaStepRequest.ProtoReflect.Descriptor instead.
 func (*ProcessSagaStepRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_agent_v1_orchestration_proto_rawDescGZIP(), []int{2}
+	return file_sentiric_agent_v1_orchestration_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *ProcessSagaStepRequest) GetSagaId() string {
@@ -195,7 +315,7 @@ type ProcessSagaStepResponse struct {
 
 func (x *ProcessSagaStepResponse) Reset() {
 	*x = ProcessSagaStepResponse{}
-	mi := &file_sentiric_agent_v1_orchestration_proto_msgTypes[3]
+	mi := &file_sentiric_agent_v1_orchestration_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -207,7 +327,7 @@ func (x *ProcessSagaStepResponse) String() string {
 func (*ProcessSagaStepResponse) ProtoMessage() {}
 
 func (x *ProcessSagaStepResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_agent_v1_orchestration_proto_msgTypes[3]
+	mi := &file_sentiric_agent_v1_orchestration_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -220,7 +340,7 @@ func (x *ProcessSagaStepResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ProcessSagaStepResponse.ProtoReflect.Descriptor instead.
 func (*ProcessSagaStepResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_agent_v1_orchestration_proto_rawDescGZIP(), []int{3}
+	return file_sentiric_agent_v1_orchestration_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *ProcessSagaStepResponse) GetCompleted() bool {
@@ -234,7 +354,15 @@ var File_sentiric_agent_v1_orchestration_proto protoreflect.FileDescriptor
 
 const file_sentiric_agent_v1_orchestration_proto_rawDesc = "" +
 	"\n" +
-	"%sentiric/agent/v1/orchestration.proto\x12\x11sentiric.agent.v1\x1a\x1esentiric/data/v1/context.proto\"x\n" +
+	"%sentiric/agent/v1/orchestration.proto\x12\x11sentiric.agent.v1\x1a\x1esentiric/data/v1/context.proto\"\x7f\n" +
+	"\x18ProcessManualDialRequest\x12-\n" +
+	"\x12destination_number\x18\x01 \x01(\tR\x11destinationNumber\x12\x17\n" +
+	"\auser_id\x18\x02 \x01(\tR\x06userId\x12\x1b\n" +
+	"\ttenant_id\x18\x03 \x01(\tR\btenantId\"u\n" +
+	"\x19ProcessManualDialResponse\x12\x1a\n" +
+	"\baccepted\x18\x01 \x01(\bR\baccepted\x12\x17\n" +
+	"\acall_id\x18\x02 \x01(\tR\x06callId\x12#\n" +
+	"\rerror_message\x18\x03 \x01(\tR\ferrorMessage\"x\n" +
 	"\x17ProcessCallStartRequest\x12\x17\n" +
 	"\acall_id\x18\x01 \x01(\tR\x06callId\x12\x1f\n" +
 	"\vdialplan_id\x18\x02 \x01(\tR\n" +
@@ -247,9 +375,10 @@ const file_sentiric_agent_v1_orchestration_proto_rawDesc = "" +
 	"\tstep_name\x18\x02 \x01(\tR\bstepName\x127\n" +
 	"\acontext\x18\x03 \x01(\v2\x1d.sentiric.data.v1.CallContextR\acontext\"7\n" +
 	"\x17ProcessSagaStepResponse\x12\x1c\n" +
-	"\tcompleted\x18\x01 \x01(\bR\tcompleted2\xf2\x01\n" +
+	"\tcompleted\x18\x01 \x01(\bR\tcompleted2\xe2\x02\n" +
 	"\x19AgentOrchestrationService\x12k\n" +
-	"\x10ProcessCallStart\x12*.sentiric.agent.v1.ProcessCallStartRequest\x1a+.sentiric.agent.v1.ProcessCallStartResponse\x12h\n" +
+	"\x10ProcessCallStart\x12*.sentiric.agent.v1.ProcessCallStartRequest\x1a+.sentiric.agent.v1.ProcessCallStartResponse\x12n\n" +
+	"\x11ProcessManualDial\x12+.sentiric.agent.v1.ProcessManualDialRequest\x1a,.sentiric.agent.v1.ProcessManualDialResponse\x12h\n" +
 	"\x0fProcessSagaStep\x12).sentiric.agent.v1.ProcessSagaStepRequest\x1a*.sentiric.agent.v1.ProcessSagaStepResponseBIZGgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/agent/v1;agentv1b\x06proto3"
 
 var (
@@ -264,22 +393,26 @@ func file_sentiric_agent_v1_orchestration_proto_rawDescGZIP() []byte {
 	return file_sentiric_agent_v1_orchestration_proto_rawDescData
 }
 
-var file_sentiric_agent_v1_orchestration_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_sentiric_agent_v1_orchestration_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_sentiric_agent_v1_orchestration_proto_goTypes = []any{
-	(*ProcessCallStartRequest)(nil),  // 0: sentiric.agent.v1.ProcessCallStartRequest
-	(*ProcessCallStartResponse)(nil), // 1: sentiric.agent.v1.ProcessCallStartResponse
-	(*ProcessSagaStepRequest)(nil),   // 2: sentiric.agent.v1.ProcessSagaStepRequest
-	(*ProcessSagaStepResponse)(nil),  // 3: sentiric.agent.v1.ProcessSagaStepResponse
-	(*v1.CallContext)(nil),           // 4: sentiric.data.v1.CallContext
+	(*ProcessManualDialRequest)(nil),  // 0: sentiric.agent.v1.ProcessManualDialRequest
+	(*ProcessManualDialResponse)(nil), // 1: sentiric.agent.v1.ProcessManualDialResponse
+	(*ProcessCallStartRequest)(nil),   // 2: sentiric.agent.v1.ProcessCallStartRequest
+	(*ProcessCallStartResponse)(nil),  // 3: sentiric.agent.v1.ProcessCallStartResponse
+	(*ProcessSagaStepRequest)(nil),    // 4: sentiric.agent.v1.ProcessSagaStepRequest
+	(*ProcessSagaStepResponse)(nil),   // 5: sentiric.agent.v1.ProcessSagaStepResponse
+	(*v1.CallContext)(nil),            // 6: sentiric.data.v1.CallContext
 }
 var file_sentiric_agent_v1_orchestration_proto_depIdxs = []int32{
-	4, // 0: sentiric.agent.v1.ProcessSagaStepRequest.context:type_name -> sentiric.data.v1.CallContext
-	0, // 1: sentiric.agent.v1.AgentOrchestrationService.ProcessCallStart:input_type -> sentiric.agent.v1.ProcessCallStartRequest
-	2, // 2: sentiric.agent.v1.AgentOrchestrationService.ProcessSagaStep:input_type -> sentiric.agent.v1.ProcessSagaStepRequest
-	1, // 3: sentiric.agent.v1.AgentOrchestrationService.ProcessCallStart:output_type -> sentiric.agent.v1.ProcessCallStartResponse
-	3, // 4: sentiric.agent.v1.AgentOrchestrationService.ProcessSagaStep:output_type -> sentiric.agent.v1.ProcessSagaStepResponse
-	3, // [3:5] is the sub-list for method output_type
-	1, // [1:3] is the sub-list for method input_type
+	6, // 0: sentiric.agent.v1.ProcessSagaStepRequest.context:type_name -> sentiric.data.v1.CallContext
+	2, // 1: sentiric.agent.v1.AgentOrchestrationService.ProcessCallStart:input_type -> sentiric.agent.v1.ProcessCallStartRequest
+	0, // 2: sentiric.agent.v1.AgentOrchestrationService.ProcessManualDial:input_type -> sentiric.agent.v1.ProcessManualDialRequest
+	4, // 3: sentiric.agent.v1.AgentOrchestrationService.ProcessSagaStep:input_type -> sentiric.agent.v1.ProcessSagaStepRequest
+	3, // 4: sentiric.agent.v1.AgentOrchestrationService.ProcessCallStart:output_type -> sentiric.agent.v1.ProcessCallStartResponse
+	1, // 5: sentiric.agent.v1.AgentOrchestrationService.ProcessManualDial:output_type -> sentiric.agent.v1.ProcessManualDialResponse
+	5, // 6: sentiric.agent.v1.AgentOrchestrationService.ProcessSagaStep:output_type -> sentiric.agent.v1.ProcessSagaStepResponse
+	4, // [4:7] is the sub-list for method output_type
+	1, // [1:4] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
 	1, // [1:1] is the sub-list for extension extendee
 	0, // [0:1] is the sub-list for field type_name
@@ -296,7 +429,7 @@ func file_sentiric_agent_v1_orchestration_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sentiric_agent_v1_orchestration_proto_rawDesc), len(file_sentiric_agent_v1_orchestration_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

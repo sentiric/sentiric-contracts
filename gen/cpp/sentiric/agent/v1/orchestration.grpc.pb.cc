@@ -25,6 +25,7 @@ namespace v1 {
 
 static const char* AgentOrchestrationService_method_names[] = {
   "/sentiric.agent.v1.AgentOrchestrationService/ProcessCallStart",
+  "/sentiric.agent.v1.AgentOrchestrationService/ProcessManualDial",
   "/sentiric.agent.v1.AgentOrchestrationService/ProcessSagaStep",
 };
 
@@ -36,7 +37,8 @@ std::unique_ptr< AgentOrchestrationService::Stub> AgentOrchestrationService::New
 
 AgentOrchestrationService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
   : channel_(channel), rpcmethod_ProcessCallStart_(AgentOrchestrationService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_ProcessSagaStep_(AgentOrchestrationService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ProcessManualDial_(AgentOrchestrationService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ProcessSagaStep_(AgentOrchestrationService_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status AgentOrchestrationService::Stub::ProcessCallStart(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessCallStartRequest& request, ::sentiric::agent::v1::ProcessCallStartResponse* response) {
@@ -58,6 +60,29 @@ void AgentOrchestrationService::Stub::async::ProcessCallStart(::grpc::ClientCont
 ::grpc::ClientAsyncResponseReader< ::sentiric::agent::v1::ProcessCallStartResponse>* AgentOrchestrationService::Stub::AsyncProcessCallStartRaw(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessCallStartRequest& request, ::grpc::CompletionQueue* cq) {
   auto* result =
     this->PrepareAsyncProcessCallStartRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status AgentOrchestrationService::Stub::ProcessManualDial(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessManualDialRequest& request, ::sentiric::agent::v1::ProcessManualDialResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::sentiric::agent::v1::ProcessManualDialRequest, ::sentiric::agent::v1::ProcessManualDialResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ProcessManualDial_, context, request, response);
+}
+
+void AgentOrchestrationService::Stub::async::ProcessManualDial(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessManualDialRequest* request, ::sentiric::agent::v1::ProcessManualDialResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::sentiric::agent::v1::ProcessManualDialRequest, ::sentiric::agent::v1::ProcessManualDialResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ProcessManualDial_, context, request, response, std::move(f));
+}
+
+void AgentOrchestrationService::Stub::async::ProcessManualDial(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessManualDialRequest* request, ::sentiric::agent::v1::ProcessManualDialResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ProcessManualDial_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::sentiric::agent::v1::ProcessManualDialResponse>* AgentOrchestrationService::Stub::PrepareAsyncProcessManualDialRaw(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessManualDialRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::sentiric::agent::v1::ProcessManualDialResponse, ::sentiric::agent::v1::ProcessManualDialRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_ProcessManualDial_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::sentiric::agent::v1::ProcessManualDialResponse>* AgentOrchestrationService::Stub::AsyncProcessManualDialRaw(::grpc::ClientContext* context, const ::sentiric::agent::v1::ProcessManualDialRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncProcessManualDialRaw(context, request, cq);
   result->StartCall();
   return result;
 }
@@ -99,6 +124,16 @@ AgentOrchestrationService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       AgentOrchestrationService_method_names[1],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< AgentOrchestrationService::Service, ::sentiric::agent::v1::ProcessManualDialRequest, ::sentiric::agent::v1::ProcessManualDialResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](AgentOrchestrationService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::sentiric::agent::v1::ProcessManualDialRequest* req,
+             ::sentiric::agent::v1::ProcessManualDialResponse* resp) {
+               return service->ProcessManualDial(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      AgentOrchestrationService_method_names[2],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< AgentOrchestrationService::Service, ::sentiric::agent::v1::ProcessSagaStepRequest, ::sentiric::agent::v1::ProcessSagaStepResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](AgentOrchestrationService::Service* service,
              ::grpc::ServerContext* ctx,
@@ -112,6 +147,13 @@ AgentOrchestrationService::Service::~Service() {
 }
 
 ::grpc::Status AgentOrchestrationService::Service::ProcessCallStart(::grpc::ServerContext* context, const ::sentiric::agent::v1::ProcessCallStartRequest* request, ::sentiric::agent::v1::ProcessCallStartResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status AgentOrchestrationService::Service::ProcessManualDial(::grpc::ServerContext* context, const ::sentiric::agent::v1::ProcessManualDialRequest* request, ::sentiric::agent::v1::ProcessManualDialResponse* response) {
   (void) context;
   (void) request;
   (void) response;

@@ -23,6 +23,36 @@ namespace _pbi = _pb::internal;
 namespace sentiric {
 namespace agent {
 namespace v1 {
+PROTOBUF_CONSTEXPR ProcessManualDialRequest::ProcessManualDialRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.destination_number_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.user_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.tenant_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct ProcessManualDialRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ProcessManualDialRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ProcessManualDialRequestDefaultTypeInternal() {}
+  union {
+    ProcessManualDialRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ProcessManualDialRequestDefaultTypeInternal _ProcessManualDialRequest_default_instance_;
+PROTOBUF_CONSTEXPR ProcessManualDialResponse::ProcessManualDialResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.call_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.error_message_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.accepted_)*/false
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct ProcessManualDialResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ProcessManualDialResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ProcessManualDialResponseDefaultTypeInternal() {}
+  union {
+    ProcessManualDialResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ProcessManualDialResponseDefaultTypeInternal _ProcessManualDialResponse_default_instance_;
 PROTOBUF_CONSTEXPR ProcessCallStartRequest::ProcessCallStartRequest(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.call_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
@@ -82,11 +112,29 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORIT
 }  // namespace v1
 }  // namespace agent
 }  // namespace sentiric
-static ::_pb::Metadata file_level_metadata_sentiric_2fagent_2fv1_2forchestration_2eproto[4];
+static ::_pb::Metadata file_level_metadata_sentiric_2fagent_2fv1_2forchestration_2eproto[6];
 static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_sentiric_2fagent_2fv1_2forchestration_2eproto = nullptr;
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_sentiric_2fagent_2fv1_2forchestration_2eproto = nullptr;
 
 const uint32_t TableStruct_sentiric_2fagent_2fv1_2forchestration_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::agent::v1::ProcessManualDialRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::agent::v1::ProcessManualDialRequest, _impl_.destination_number_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::agent::v1::ProcessManualDialRequest, _impl_.user_id_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::agent::v1::ProcessManualDialRequest, _impl_.tenant_id_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::agent::v1::ProcessManualDialResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::agent::v1::ProcessManualDialResponse, _impl_.accepted_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::agent::v1::ProcessManualDialResponse, _impl_.call_id_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::agent::v1::ProcessManualDialResponse, _impl_.error_message_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::sentiric::agent::v1::ProcessCallStartRequest, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -121,13 +169,17 @@ const uint32_t TableStruct_sentiric_2fagent_2fv1_2forchestration_2eproto::offset
   PROTOBUF_FIELD_OFFSET(::sentiric::agent::v1::ProcessSagaStepResponse, _impl_.completed_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, -1, sizeof(::sentiric::agent::v1::ProcessCallStartRequest)},
-  { 9, -1, -1, sizeof(::sentiric::agent::v1::ProcessCallStartResponse)},
-  { 16, -1, -1, sizeof(::sentiric::agent::v1::ProcessSagaStepRequest)},
-  { 25, -1, -1, sizeof(::sentiric::agent::v1::ProcessSagaStepResponse)},
+  { 0, -1, -1, sizeof(::sentiric::agent::v1::ProcessManualDialRequest)},
+  { 9, -1, -1, sizeof(::sentiric::agent::v1::ProcessManualDialResponse)},
+  { 18, -1, -1, sizeof(::sentiric::agent::v1::ProcessCallStartRequest)},
+  { 27, -1, -1, sizeof(::sentiric::agent::v1::ProcessCallStartResponse)},
+  { 34, -1, -1, sizeof(::sentiric::agent::v1::ProcessSagaStepRequest)},
+  { 43, -1, -1, sizeof(::sentiric::agent::v1::ProcessSagaStepResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
+  &::sentiric::agent::v1::_ProcessManualDialRequest_default_instance_._instance,
+  &::sentiric::agent::v1::_ProcessManualDialResponse_default_instance_._instance,
   &::sentiric::agent::v1::_ProcessCallStartRequest_default_instance_._instance,
   &::sentiric::agent::v1::_ProcessCallStartResponse_default_instance_._instance,
   &::sentiric::agent::v1::_ProcessSagaStepRequest_default_instance_._instance,
@@ -137,31 +189,38 @@ static const ::_pb::Message* const file_default_instances[] = {
 const char descriptor_table_protodef_sentiric_2fagent_2fv1_2forchestration_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n%sentiric/agent/v1/orchestration.proto\022"
   "\021sentiric.agent.v1\032\036sentiric/data/v1/con"
-  "text.proto\"V\n\027ProcessCallStartRequest\022\017\n"
-  "\007call_id\030\001 \001(\t\022\023\n\013dialplan_id\030\002 \001(\t\022\025\n\rc"
-  "aller_number\030\003 \001(\t\"-\n\030ProcessCallStartRe"
-  "sponse\022\021\n\tinitiated\030\001 \001(\010\"l\n\026ProcessSaga"
-  "StepRequest\022\017\n\007saga_id\030\001 \001(\t\022\021\n\tstep_nam"
-  "e\030\002 \001(\t\022.\n\007context\030\003 \001(\0132\035.sentiric.data"
-  ".v1.CallContext\",\n\027ProcessSagaStepRespon"
-  "se\022\021\n\tcompleted\030\001 \001(\0102\362\001\n\031AgentOrchestra"
-  "tionService\022k\n\020ProcessCallStart\022*.sentir"
-  "ic.agent.v1.ProcessCallStartRequest\032+.se"
-  "ntiric.agent.v1.ProcessCallStartResponse"
-  "\022h\n\017ProcessSagaStep\022).sentiric.agent.v1."
-  "ProcessSagaStepRequest\032*.sentiric.agent."
-  "v1.ProcessSagaStepResponseBIZGgithub.com"
-  "/sentiric/sentiric-contracts/gen/go/sent"
-  "iric/agent/v1;agentv1b\006proto3"
+  "text.proto\"Z\n\030ProcessManualDialRequest\022\032"
+  "\n\022destination_number\030\001 \001(\t\022\017\n\007user_id\030\002 "
+  "\001(\t\022\021\n\ttenant_id\030\003 \001(\t\"U\n\031ProcessManualD"
+  "ialResponse\022\020\n\010accepted\030\001 \001(\010\022\017\n\007call_id"
+  "\030\002 \001(\t\022\025\n\rerror_message\030\003 \001(\t\"V\n\027Process"
+  "CallStartRequest\022\017\n\007call_id\030\001 \001(\t\022\023\n\013dia"
+  "lplan_id\030\002 \001(\t\022\025\n\rcaller_number\030\003 \001(\t\"-\n"
+  "\030ProcessCallStartResponse\022\021\n\tinitiated\030\001"
+  " \001(\010\"l\n\026ProcessSagaStepRequest\022\017\n\007saga_i"
+  "d\030\001 \001(\t\022\021\n\tstep_name\030\002 \001(\t\022.\n\007context\030\003 "
+  "\001(\0132\035.sentiric.data.v1.CallContext\",\n\027Pr"
+  "ocessSagaStepResponse\022\021\n\tcompleted\030\001 \001(\010"
+  "2\342\002\n\031AgentOrchestrationService\022k\n\020Proces"
+  "sCallStart\022*.sentiric.agent.v1.ProcessCa"
+  "llStartRequest\032+.sentiric.agent.v1.Proce"
+  "ssCallStartResponse\022n\n\021ProcessManualDial"
+  "\022+.sentiric.agent.v1.ProcessManualDialRe"
+  "quest\032,.sentiric.agent.v1.ProcessManualD"
+  "ialResponse\022h\n\017ProcessSagaStep\022).sentiri"
+  "c.agent.v1.ProcessSagaStepRequest\032*.sent"
+  "iric.agent.v1.ProcessSagaStepResponseBIZ"
+  "Ggithub.com/sentiric/sentiric-contracts/"
+  "gen/go/sentiric/agent/v1;agentv1b\006proto3"
   ;
 static const ::_pbi::DescriptorTable* const descriptor_table_sentiric_2fagent_2fv1_2forchestration_2eproto_deps[1] = {
   &::descriptor_table_sentiric_2fdata_2fv1_2fcontext_2eproto,
 };
 static ::_pbi::once_flag descriptor_table_sentiric_2fagent_2fv1_2forchestration_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_sentiric_2fagent_2fv1_2forchestration_2eproto = {
-    false, false, 709, descriptor_table_protodef_sentiric_2fagent_2fv1_2forchestration_2eproto,
+    false, false, 1000, descriptor_table_protodef_sentiric_2fagent_2fv1_2forchestration_2eproto,
     "sentiric/agent/v1/orchestration.proto",
-    &descriptor_table_sentiric_2fagent_2fv1_2forchestration_2eproto_once, descriptor_table_sentiric_2fagent_2fv1_2forchestration_2eproto_deps, 1, 4,
+    &descriptor_table_sentiric_2fagent_2fv1_2forchestration_2eproto_once, descriptor_table_sentiric_2fagent_2fv1_2forchestration_2eproto_deps, 1, 6,
     schemas, file_default_instances, TableStruct_sentiric_2fagent_2fv1_2forchestration_2eproto::offsets,
     file_level_metadata_sentiric_2fagent_2fv1_2forchestration_2eproto, file_level_enum_descriptors_sentiric_2fagent_2fv1_2forchestration_2eproto,
     file_level_service_descriptors_sentiric_2fagent_2fv1_2forchestration_2eproto,
@@ -175,6 +234,589 @@ PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_in
 namespace sentiric {
 namespace agent {
 namespace v1 {
+
+// ===================================================================
+
+class ProcessManualDialRequest::_Internal {
+ public:
+};
+
+ProcessManualDialRequest::ProcessManualDialRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.agent.v1.ProcessManualDialRequest)
+}
+ProcessManualDialRequest::ProcessManualDialRequest(const ProcessManualDialRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ProcessManualDialRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.destination_number_){}
+    , decltype(_impl_.user_id_){}
+    , decltype(_impl_.tenant_id_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.destination_number_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.destination_number_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_destination_number().empty()) {
+    _this->_impl_.destination_number_.Set(from._internal_destination_number(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.user_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.user_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_user_id().empty()) {
+    _this->_impl_.user_id_.Set(from._internal_user_id(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.tenant_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.tenant_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_tenant_id().empty()) {
+    _this->_impl_.tenant_id_.Set(from._internal_tenant_id(), 
+      _this->GetArenaForAllocation());
+  }
+  // @@protoc_insertion_point(copy_constructor:sentiric.agent.v1.ProcessManualDialRequest)
+}
+
+inline void ProcessManualDialRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.destination_number_){}
+    , decltype(_impl_.user_id_){}
+    , decltype(_impl_.tenant_id_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.destination_number_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.destination_number_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.user_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.user_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.tenant_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.tenant_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+ProcessManualDialRequest::~ProcessManualDialRequest() {
+  // @@protoc_insertion_point(destructor:sentiric.agent.v1.ProcessManualDialRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void ProcessManualDialRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.destination_number_.Destroy();
+  _impl_.user_id_.Destroy();
+  _impl_.tenant_id_.Destroy();
+}
+
+void ProcessManualDialRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void ProcessManualDialRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.agent.v1.ProcessManualDialRequest)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.destination_number_.ClearToEmpty();
+  _impl_.user_id_.ClearToEmpty();
+  _impl_.tenant_id_.ClearToEmpty();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* ProcessManualDialRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string destination_number = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_destination_number();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.agent.v1.ProcessManualDialRequest.destination_number"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string user_id = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_user_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.agent.v1.ProcessManualDialRequest.user_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string tenant_id = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_tenant_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.agent.v1.ProcessManualDialRequest.tenant_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* ProcessManualDialRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.agent.v1.ProcessManualDialRequest)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string destination_number = 1;
+  if (!this->_internal_destination_number().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_destination_number().data(), static_cast<int>(this->_internal_destination_number().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.agent.v1.ProcessManualDialRequest.destination_number");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_destination_number(), target);
+  }
+
+  // string user_id = 2;
+  if (!this->_internal_user_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_user_id().data(), static_cast<int>(this->_internal_user_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.agent.v1.ProcessManualDialRequest.user_id");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_user_id(), target);
+  }
+
+  // string tenant_id = 3;
+  if (!this->_internal_tenant_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_tenant_id().data(), static_cast<int>(this->_internal_tenant_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.agent.v1.ProcessManualDialRequest.tenant_id");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_tenant_id(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.agent.v1.ProcessManualDialRequest)
+  return target;
+}
+
+size_t ProcessManualDialRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.agent.v1.ProcessManualDialRequest)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string destination_number = 1;
+  if (!this->_internal_destination_number().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_destination_number());
+  }
+
+  // string user_id = 2;
+  if (!this->_internal_user_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_user_id());
+  }
+
+  // string tenant_id = 3;
+  if (!this->_internal_tenant_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_tenant_id());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ProcessManualDialRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ProcessManualDialRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ProcessManualDialRequest::GetClassData() const { return &_class_data_; }
+
+
+void ProcessManualDialRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ProcessManualDialRequest*>(&to_msg);
+  auto& from = static_cast<const ProcessManualDialRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.agent.v1.ProcessManualDialRequest)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_destination_number().empty()) {
+    _this->_internal_set_destination_number(from._internal_destination_number());
+  }
+  if (!from._internal_user_id().empty()) {
+    _this->_internal_set_user_id(from._internal_user_id());
+  }
+  if (!from._internal_tenant_id().empty()) {
+    _this->_internal_set_tenant_id(from._internal_tenant_id());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void ProcessManualDialRequest::CopyFrom(const ProcessManualDialRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.agent.v1.ProcessManualDialRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ProcessManualDialRequest::IsInitialized() const {
+  return true;
+}
+
+void ProcessManualDialRequest::InternalSwap(ProcessManualDialRequest* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.destination_number_, lhs_arena,
+      &other->_impl_.destination_number_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.user_id_, lhs_arena,
+      &other->_impl_.user_id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.tenant_id_, lhs_arena,
+      &other->_impl_.tenant_id_, rhs_arena
+  );
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata ProcessManualDialRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fagent_2fv1_2forchestration_2eproto_getter, &descriptor_table_sentiric_2fagent_2fv1_2forchestration_2eproto_once,
+      file_level_metadata_sentiric_2fagent_2fv1_2forchestration_2eproto[0]);
+}
+
+// ===================================================================
+
+class ProcessManualDialResponse::_Internal {
+ public:
+};
+
+ProcessManualDialResponse::ProcessManualDialResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.agent.v1.ProcessManualDialResponse)
+}
+ProcessManualDialResponse::ProcessManualDialResponse(const ProcessManualDialResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ProcessManualDialResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.call_id_){}
+    , decltype(_impl_.error_message_){}
+    , decltype(_impl_.accepted_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.call_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.call_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_call_id().empty()) {
+    _this->_impl_.call_id_.Set(from._internal_call_id(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.error_message_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.error_message_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_error_message().empty()) {
+    _this->_impl_.error_message_.Set(from._internal_error_message(), 
+      _this->GetArenaForAllocation());
+  }
+  _this->_impl_.accepted_ = from._impl_.accepted_;
+  // @@protoc_insertion_point(copy_constructor:sentiric.agent.v1.ProcessManualDialResponse)
+}
+
+inline void ProcessManualDialResponse::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.call_id_){}
+    , decltype(_impl_.error_message_){}
+    , decltype(_impl_.accepted_){false}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.call_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.call_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.error_message_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.error_message_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+ProcessManualDialResponse::~ProcessManualDialResponse() {
+  // @@protoc_insertion_point(destructor:sentiric.agent.v1.ProcessManualDialResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void ProcessManualDialResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.call_id_.Destroy();
+  _impl_.error_message_.Destroy();
+}
+
+void ProcessManualDialResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void ProcessManualDialResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.agent.v1.ProcessManualDialResponse)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.call_id_.ClearToEmpty();
+  _impl_.error_message_.ClearToEmpty();
+  _impl_.accepted_ = false;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* ProcessManualDialResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // bool accepted = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          _impl_.accepted_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string call_id = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_call_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.agent.v1.ProcessManualDialResponse.call_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string error_message = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_error_message();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.agent.v1.ProcessManualDialResponse.error_message"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* ProcessManualDialResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.agent.v1.ProcessManualDialResponse)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // bool accepted = 1;
+  if (this->_internal_accepted() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(1, this->_internal_accepted(), target);
+  }
+
+  // string call_id = 2;
+  if (!this->_internal_call_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_call_id().data(), static_cast<int>(this->_internal_call_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.agent.v1.ProcessManualDialResponse.call_id");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_call_id(), target);
+  }
+
+  // string error_message = 3;
+  if (!this->_internal_error_message().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_error_message().data(), static_cast<int>(this->_internal_error_message().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.agent.v1.ProcessManualDialResponse.error_message");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_error_message(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.agent.v1.ProcessManualDialResponse)
+  return target;
+}
+
+size_t ProcessManualDialResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.agent.v1.ProcessManualDialResponse)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string call_id = 2;
+  if (!this->_internal_call_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_call_id());
+  }
+
+  // string error_message = 3;
+  if (!this->_internal_error_message().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_error_message());
+  }
+
+  // bool accepted = 1;
+  if (this->_internal_accepted() != 0) {
+    total_size += 1 + 1;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ProcessManualDialResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ProcessManualDialResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ProcessManualDialResponse::GetClassData() const { return &_class_data_; }
+
+
+void ProcessManualDialResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ProcessManualDialResponse*>(&to_msg);
+  auto& from = static_cast<const ProcessManualDialResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.agent.v1.ProcessManualDialResponse)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_call_id().empty()) {
+    _this->_internal_set_call_id(from._internal_call_id());
+  }
+  if (!from._internal_error_message().empty()) {
+    _this->_internal_set_error_message(from._internal_error_message());
+  }
+  if (from._internal_accepted() != 0) {
+    _this->_internal_set_accepted(from._internal_accepted());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void ProcessManualDialResponse::CopyFrom(const ProcessManualDialResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.agent.v1.ProcessManualDialResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ProcessManualDialResponse::IsInitialized() const {
+  return true;
+}
+
+void ProcessManualDialResponse::InternalSwap(ProcessManualDialResponse* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.call_id_, lhs_arena,
+      &other->_impl_.call_id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.error_message_, lhs_arena,
+      &other->_impl_.error_message_, rhs_arena
+  );
+  swap(_impl_.accepted_, other->_impl_.accepted_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata ProcessManualDialResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fagent_2fv1_2forchestration_2eproto_getter, &descriptor_table_sentiric_2fagent_2fv1_2forchestration_2eproto_once,
+      file_level_metadata_sentiric_2fagent_2fv1_2forchestration_2eproto[1]);
+}
 
 // ===================================================================
 
@@ -476,7 +1118,7 @@ void ProcessCallStartRequest::InternalSwap(ProcessCallStartRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ProcessCallStartRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fagent_2fv1_2forchestration_2eproto_getter, &descriptor_table_sentiric_2fagent_2fv1_2forchestration_2eproto_once,
-      file_level_metadata_sentiric_2fagent_2fv1_2forchestration_2eproto[0]);
+      file_level_metadata_sentiric_2fagent_2fv1_2forchestration_2eproto[2]);
 }
 
 // ===================================================================
@@ -654,7 +1296,7 @@ void ProcessCallStartResponse::InternalSwap(ProcessCallStartResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ProcessCallStartResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fagent_2fv1_2forchestration_2eproto_getter, &descriptor_table_sentiric_2fagent_2fv1_2forchestration_2eproto_once,
-      file_level_metadata_sentiric_2fagent_2fv1_2forchestration_2eproto[1]);
+      file_level_metadata_sentiric_2fagent_2fv1_2forchestration_2eproto[3]);
 }
 
 // ===================================================================
@@ -955,7 +1597,7 @@ void ProcessSagaStepRequest::InternalSwap(ProcessSagaStepRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ProcessSagaStepRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fagent_2fv1_2forchestration_2eproto_getter, &descriptor_table_sentiric_2fagent_2fv1_2forchestration_2eproto_once,
-      file_level_metadata_sentiric_2fagent_2fv1_2forchestration_2eproto[2]);
+      file_level_metadata_sentiric_2fagent_2fv1_2forchestration_2eproto[4]);
 }
 
 // ===================================================================
@@ -1133,7 +1775,7 @@ void ProcessSagaStepResponse::InternalSwap(ProcessSagaStepResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ProcessSagaStepResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fagent_2fv1_2forchestration_2eproto_getter, &descriptor_table_sentiric_2fagent_2fv1_2forchestration_2eproto_once,
-      file_level_metadata_sentiric_2fagent_2fv1_2forchestration_2eproto[3]);
+      file_level_metadata_sentiric_2fagent_2fv1_2forchestration_2eproto[5]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -1141,6 +1783,14 @@ void ProcessSagaStepResponse::InternalSwap(ProcessSagaStepResponse* other) {
 }  // namespace agent
 }  // namespace sentiric
 PROTOBUF_NAMESPACE_OPEN
+template<> PROTOBUF_NOINLINE ::sentiric::agent::v1::ProcessManualDialRequest*
+Arena::CreateMaybeMessage< ::sentiric::agent::v1::ProcessManualDialRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::agent::v1::ProcessManualDialRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::agent::v1::ProcessManualDialResponse*
+Arena::CreateMaybeMessage< ::sentiric::agent::v1::ProcessManualDialResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::agent::v1::ProcessManualDialResponse >(arena);
+}
 template<> PROTOBUF_NOINLINE ::sentiric::agent::v1::ProcessCallStartRequest*
 Arena::CreateMaybeMessage< ::sentiric::agent::v1::ProcessCallStartRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::sentiric::agent::v1::ProcessCallStartRequest >(arena);
