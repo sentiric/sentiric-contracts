@@ -25,8 +25,11 @@ const (
 // ProxyServiceClient is the client API for ProxyService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+//
+// ProxyService, SBC ve diğer sinyalleşme birimlerinin yönlendirme kararı
+// alması için kullanılan merkezi otoritedir.
 type ProxyServiceClient interface {
-	// SBC, bir SIP paketini nereye yönlendireceğini sormak için bunu çağırır.
+	// GetNextHop: Verilen hedefe giden yolun (Next-Hop) bilgisini döndürür.
 	GetNextHop(ctx context.Context, in *GetNextHopRequest, opts ...grpc.CallOption) (*GetNextHopResponse, error)
 }
 
@@ -51,8 +54,11 @@ func (c *proxyServiceClient) GetNextHop(ctx context.Context, in *GetNextHopReque
 // ProxyServiceServer is the server API for ProxyService service.
 // All implementations should embed UnimplementedProxyServiceServer
 // for forward compatibility.
+//
+// ProxyService, SBC ve diğer sinyalleşme birimlerinin yönlendirme kararı
+// alması için kullanılan merkezi otoritedir.
 type ProxyServiceServer interface {
-	// SBC, bir SIP paketini nereye yönlendireceğini sormak için bunu çağırır.
+	// GetNextHop: Verilen hedefe giden yolun (Next-Hop) bilgisini döndürür.
 	GetNextHop(context.Context, *GetNextHopRequest) (*GetNextHopResponse, error)
 }
 

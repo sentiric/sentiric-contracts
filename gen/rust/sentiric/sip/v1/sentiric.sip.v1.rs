@@ -44,24 +44,26 @@ pub struct GetLoadResponse {
 }
 #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct GetNextHopRequest {
-    /// Örn: sip:2002@domain
+    /// destination_uri: Aranan hedef (örn: sip:9999@sentiric.cloud)
     #[prost(string, tag="1")]
     pub destination_uri: ::prost::alloc::string::String,
-    /// Örn: 1.2.3.4
+    /// source_ip: Paketin SBC'ye ulaştığı fiziksel IP adresi (Rate-limit için).
     #[prost(string, tag="2")]
     pub source_ip: ::prost::alloc::string::String,
-    /// \[YENİ ALAN\] Yönlendirme kararı için kritik.
-    /// Değerler: "INVITE", "REGISTER", "OPTIONS", "BYE" vb.
+    /// method: SIP Metodu (örn: INVITE, REGISTER).
     #[prost(string, tag="3")]
     pub method: ::prost::alloc::string::String,
+    /// from_uri: Arayan kişinin kimlik bilgisi (örn: <sip:+905548777858@34.122.40.122>)
+    /// \[NEW v1.15.0\]: Dialplan katmanında kimlik tanıma için eklenmiştir.
+    #[prost(string, tag="4")]
+    pub from_uri: ::prost::alloc::string::String,
 }
 #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct GetNextHopResponse {
-    /// Hedef SIP URI (IP:Port formatında). 
-    /// SBC bu adrese UDP paketi fırlatır.
+    /// uri: Hedefin SIP adresi (örn: 100.67.38.96:13084)
     #[prost(string, tag="1")]
     pub uri: ::prost::alloc::string::String,
-    /// Loglama ve izleme için mantıksal isim.
+    /// gateway_id: İşlemi yürüten ağ geçidinin mantıksal adı.
     #[prost(string, tag="2")]
     pub gateway_id: ::prost::alloc::string::String,
 }

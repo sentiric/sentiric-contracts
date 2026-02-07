@@ -190,6 +190,7 @@ class GetNextHopRequest final :
     kDestinationUriFieldNumber = 1,
     kSourceIpFieldNumber = 2,
     kMethodFieldNumber = 3,
+    kFromUriFieldNumber = 4,
   };
   // string destination_uri = 1;
   void clear_destination_uri();
@@ -233,6 +234,20 @@ class GetNextHopRequest final :
   std::string* _internal_mutable_method();
   public:
 
+  // string from_uri = 4;
+  void clear_from_uri();
+  const std::string& from_uri() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_from_uri(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_from_uri();
+  PROTOBUF_NODISCARD std::string* release_from_uri();
+  void set_allocated_from_uri(std::string* from_uri);
+  private:
+  const std::string& _internal_from_uri() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_from_uri(const std::string& value);
+  std::string* _internal_mutable_from_uri();
+  public:
+
   // @@protoc_insertion_point(class_scope:sentiric.sip.v1.GetNextHopRequest)
  private:
   class _Internal;
@@ -244,6 +259,7 @@ class GetNextHopRequest final :
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr destination_uri_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr source_ip_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr method_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr from_uri_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -577,6 +593,56 @@ inline void GetNextHopRequest::set_allocated_method(std::string* method) {
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:sentiric.sip.v1.GetNextHopRequest.method)
+}
+
+// string from_uri = 4;
+inline void GetNextHopRequest::clear_from_uri() {
+  _impl_.from_uri_.ClearToEmpty();
+}
+inline const std::string& GetNextHopRequest::from_uri() const {
+  // @@protoc_insertion_point(field_get:sentiric.sip.v1.GetNextHopRequest.from_uri)
+  return _internal_from_uri();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void GetNextHopRequest::set_from_uri(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.from_uri_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.sip.v1.GetNextHopRequest.from_uri)
+}
+inline std::string* GetNextHopRequest::mutable_from_uri() {
+  std::string* _s = _internal_mutable_from_uri();
+  // @@protoc_insertion_point(field_mutable:sentiric.sip.v1.GetNextHopRequest.from_uri)
+  return _s;
+}
+inline const std::string& GetNextHopRequest::_internal_from_uri() const {
+  return _impl_.from_uri_.Get();
+}
+inline void GetNextHopRequest::_internal_set_from_uri(const std::string& value) {
+  
+  _impl_.from_uri_.Set(value, GetArenaForAllocation());
+}
+inline std::string* GetNextHopRequest::_internal_mutable_from_uri() {
+  
+  return _impl_.from_uri_.Mutable(GetArenaForAllocation());
+}
+inline std::string* GetNextHopRequest::release_from_uri() {
+  // @@protoc_insertion_point(field_release:sentiric.sip.v1.GetNextHopRequest.from_uri)
+  return _impl_.from_uri_.Release();
+}
+inline void GetNextHopRequest::set_allocated_from_uri(std::string* from_uri) {
+  if (from_uri != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.from_uri_.SetAllocated(from_uri, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.from_uri_.IsDefault()) {
+    _impl_.from_uri_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.sip.v1.GetNextHopRequest.from_uri)
 }
 
 // -------------------------------------------------------------------

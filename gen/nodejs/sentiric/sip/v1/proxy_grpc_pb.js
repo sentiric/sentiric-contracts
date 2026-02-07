@@ -27,8 +27,10 @@ function deserialize_sentiric_sip_v1_GetNextHopResponse(buffer_arg) {
 }
 
 
+// ProxyService, SBC ve diğer sinyalleşme birimlerinin yönlendirme kararı 
+// alması için kullanılan merkezi otoritedir.
 var ProxyServiceService = exports.ProxyServiceService = {
-  // SBC, bir SIP paketini nereye yönlendireceğini sormak için bunu çağırır.
+  // GetNextHop: Verilen hedefe giden yolun (Next-Hop) bilgisini döndürür.
 getNextHop: {
     path: '/sentiric.sip.v1.ProxyService/GetNextHop',
     requestStream: false,

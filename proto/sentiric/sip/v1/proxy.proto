@@ -4,25 +4,32 @@ package sentiric.sip.v1;
 
 option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/sip/v1;sipv1";
 
+// ProxyService, SBC ve diğer sinyalleşme birimlerinin yönlendirme kararı 
+// alması için kullanılan merkezi otoritedir.
 service ProxyService {
-  // SBC, bir SIP paketini nereye yönlendireceğini sormak için bunu çağırır.
+  // GetNextHop: Verilen hedefe giden yolun (Next-Hop) bilgisini döndürür.
   rpc GetNextHop(GetNextHopRequest) returns (GetNextHopResponse);
 }
 
 message GetNextHopRequest {
-  string destination_uri = 1; // Örn: sip:2002@domain
-  string source_ip = 2;       // Örn: 1.2.3.4
+  // destination_uri: Aranan hedef (örn: sip:9999@sentiric.cloud)
+  string destination_uri = 1; 
+
+  // source_ip: Paketin SBC'ye ulaştığı fiziksel IP adresi (Rate-limit için).
+  string source_ip = 2;       
   
-  // [YENİ ALAN] Yönlendirme kararı için kritik.
-  // Değerler: "INVITE", "REGISTER", "OPTIONS", "BYE" vb.
+  // method: SIP Metodu (örn: INVITE, REGISTER).
   string method = 3; 
+
+  // from_uri: Arayan kişinin kimlik bilgisi (örn: <sip:+905548777858@34.122.40.122>)
+  // [NEW v1.15.0]: Dialplan katmanında kimlik tanıma için eklenmiştir.
+  string from_uri = 4;
 }
 
 message GetNextHopResponse {
-  // Hedef SIP URI (IP:Port formatında). 
-  // SBC bu adrese UDP paketi fırlatır.
+  // uri: Hedefin SIP adresi (örn: 100.67.38.96:13084)
   string uri = 1; 
   
-  // Loglama ve izleme için mantıksal isim.
+  // gateway_id: İşlemi yürüten ağ geçidinin mantıksal adı.
   string gateway_id = 2;
 }
