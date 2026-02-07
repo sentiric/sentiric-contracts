@@ -11,10 +11,10 @@ option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/dial
 // =================================================================
 
 service DialplanService {
+  // Gelen çağrının nasıl yönlendirileceğine karar veren ana metot.
   rpc ResolveDialplan(ResolveDialplanRequest) returns (ResolveDialplanResponse);
 
   // Inbound Route Yönetimi
-  // DÜZELTME: Her RPC artık kendine özgü bir Response mesajı kullanıyor.
   rpc CreateInboundRoute(CreateInboundRouteRequest) returns (CreateInboundRouteResponse);
   rpc GetInboundRoute(GetInboundRouteRequest) returns (GetInboundRouteResponse);
   rpc UpdateInboundRoute(UpdateInboundRouteRequest) returns (UpdateInboundRouteResponse);
@@ -22,7 +22,6 @@ service DialplanService {
   rpc ListInboundRoutes(ListInboundRoutesRequest) returns (ListInboundRoutesResponse);
   
   // Dialplan Yönetimi
-  // DÜZELTME: Her RPC artık kendine özgü bir Response mesajı kullanıyor.
   rpc CreateDialplan(CreateDialplanRequest) returns (CreateDialplanResponse);
   rpc GetDialplan(GetDialplanRequest) returns (GetDialplanResponse);
   rpc UpdateDialplan(UpdateDialplanRequest) returns (UpdateDialplanResponse);
@@ -31,8 +30,30 @@ service DialplanService {
 }
 
 // =================================================================
-//                        CORE MESSAGES
+//                        CORE MESSAGES & ENUMS
 // =================================================================
+
+// Dialplan aksiyon tipleri (Telekom-First standardı)
+// LINT FIX: Değerler enum ismi ile prefix'lendi.
+enum ActionType {
+  ACTION_TYPE_UNSPECIFIED = 0;
+  ACTION_TYPE_START_AI_CONVERSATION = 1;      // Agent-Service orkestrasyonu
+  ACTION_TYPE_BRIDGE_CALL = 2;                // Dahili abone-abone köprüleme
+  ACTION_TYPE_ECHO_TEST = 3;                  // Media-Service native loopback
+  ACTION_TYPE_PLAY_STATIC_ANNOUNCEMENT = 4;   // AI olmayan sabit anons
+}
+
+message DialplanAction {
+  // action: Geriye dönük uyum için string formatı (örn: "ECHO_TEST")
+  string action = 1; 
+  
+  // type: Tip-güvenli aksiyon seçimi
+  ActionType type = 2;
+
+  // action_data: Aksiyon için gerekli parametreler (örn: announcement_id, voice_id)
+  // Eski ActionData mesajı yerine daha esnek olan map yapısına geçildi.
+  map<string, string> action_data = 3;
+}
 
 message ResolveDialplanRequest {
   string caller_contact_value = 1;
@@ -65,111 +86,28 @@ message Dialplan {
     DialplanAction action = 4;
 }
 
-message DialplanAction {
-  string action = 1;
-  ActionData action_data = 2;
-}
-
-message ActionData {
-  map<string, string> data = 1;
-}
-
 // =================================================================
-//                  INBOUND ROUTE MANAGEMENT MESSAGES
+//                  MANAGEMENT MESSAGES (CRUD)
 // =================================================================
 
-message CreateInboundRouteRequest {
-  InboundRoute route = 1;
-}
+message CreateInboundRouteRequest { InboundRoute route = 1; }
+message CreateInboundRouteResponse { InboundRoute route = 1; }
+message GetInboundRouteRequest { string phone_number = 1; }
+message GetInboundRouteResponse { InboundRoute route = 1; }
+message UpdateInboundRouteRequest { InboundRoute route = 1; }
+message UpdateInboundRouteResponse { InboundRoute route = 1; }
+message DeleteInboundRouteRequest { string phone_number = 1; }
+message DeleteInboundRouteResponse { bool success = 1; }
+message ListInboundRoutesRequest { string tenant_id = 1; int32 page_size = 2; int32 page = 3; }
+message ListInboundRoutesResponse { repeated InboundRoute routes = 1; int32 total_count = 2; }
 
-// YENİ: CreateInboundRoute için özel yanıt mesajı
-message CreateInboundRouteResponse {
-  InboundRoute route = 1;
-}
-
-message GetInboundRouteRequest {
-  string phone_number = 1;
-}
-
-// YENİ: GetInboundRoute için özel yanıt mesajı
-message GetInboundRouteResponse {
-  InboundRoute route = 1;
-}
-
-message UpdateInboundRouteRequest {
-  InboundRoute route = 1;
-}
-
-// YENİ: UpdateInboundRoute için özel yanıt mesajı
-message UpdateInboundRouteResponse {
-  InboundRoute route = 1;
-}
-
-message DeleteInboundRouteRequest {
-  string phone_number = 1;
-}
-
-message DeleteInboundRouteResponse {
-  bool success = 1;
-}
-
-message ListInboundRoutesRequest {
-  string tenant_id = 1;
-  int32 page_size = 2;
-  int32 page = 3;
-}
-
-message ListInboundRoutesResponse {
-  repeated InboundRoute routes = 1;
-  int32 total_count = 2;
-}
-
-// =================================================================
-//                    DIALPLAN MANAGEMENT MESSAGES
-// =================================================================
-
-message CreateDialplanRequest {
-  Dialplan dialplan = 1;
-}
-
-// YENİ: CreateDialplan için özel yanıt mesajı
-message CreateDialplanResponse {
-  Dialplan dialplan = 1;
-}
-
-message GetDialplanRequest {
-  string id = 1;
-}
-
-// YENİ: GetDialplan için özel yanıt mesajı
-message GetDialplanResponse {
-  Dialplan dialplan = 1;
-}
-
-message UpdateDialplanRequest {
-  Dialplan dialplan = 1;
-}
-
-// YENİ: UpdateDialplan için özel yanıt mesajı
-message UpdateDialplanResponse {
-  Dialplan dialplan = 1;
-}
-
-message DeleteDialplanRequest {
-  string id = 1;
-}
-
-message DeleteDialplanResponse {
-  bool success = 1;
-}
-
-message ListDialplansRequest {
-  string tenant_id = 1;
-  int32 page_size = 2;
-  int32 page = 3;
-}
-
-message ListDialplansResponse {
-  repeated Dialplan dialplans = 1;
-  int32 total_count = 2;
-}
+message CreateDialplanRequest { Dialplan dialplan = 1; }
+message CreateDialplanResponse { Dialplan dialplan = 1; }
+message GetDialplanRequest { string id = 1; }
+message GetDialplanResponse { Dialplan dialplan = 1; }
+message UpdateDialplanRequest { Dialplan dialplan = 1; }
+message UpdateDialplanResponse { Dialplan dialplan = 1; }
+message DeleteDialplanRequest { string id = 1; }
+message DeleteDialplanResponse { bool success = 1; }
+message ListDialplansRequest { string tenant_id = 1; int32 page_size = 2; int32 page = 3; }
+message ListDialplansResponse { repeated Dialplan dialplans = 1; int32 total_count = 2; }

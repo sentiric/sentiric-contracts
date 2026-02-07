@@ -69,13 +69,20 @@ git commit -m "chore(ci): Fix C++ validation step"
 Yeni bir sürüm yayınlamak için Git etiketi (`tag`) oluşturmanız yeterlidir. CI/CD otomatik olarak paketleri yayınlayacaktır.
 
 ```bash
-# Değişiklikleri main'e gönderin
-git commit -m "feat(telephony): implement end-to-end manual outbound dialing from web-agent-ui for v1.13.7"
-git push origin main
+# 1. Kodları üret (buf generate + make targets)
+make generate-all
 
-# Yeni bir tag oluşturun ve gönderin
-git tag v1.13.7
-git push origin v1.13.7
+# 2. Commit mesajı (Standartlara uygun)
+git add .
+git commit -m "feat(dialplan): add ActionType enum and support native telecom features"
+
+# 3. Tag (Sürümü yükseltiyoruz)
+# Mevcut v1.13.7 idi, v1.14.0 yapıyoruz çünkü enum ve map ekledik (Minor Change).
+git tag -a v1.14.0 -m "Release v1.14.0 - Native Telecom Contracts"
+
+# 4. Push
+git push origin main
+git push origin v1.14.0
 ```
 > 🎯 **Semantic Versioning (semver)** kullanıyoruz: `MAJOR.MINOR.PATCH`. MAJOR değişiklikler geriye dönük uyumsuzluk yaratır.
 

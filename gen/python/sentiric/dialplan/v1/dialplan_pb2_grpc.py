@@ -83,14 +83,14 @@ class DialplanServiceServicer(object):
     """
 
     def ResolveDialplan(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """Gelen çağrının nasıl yönlendirileceğine karar veren ana metot.
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def CreateInboundRoute(self, request, context):
         """Inbound Route Yönetimi
-        DÜZELTME: Her RPC artık kendine özgü bir Response mesajı kullanıyor.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -122,7 +122,6 @@ class DialplanServiceServicer(object):
 
     def CreateDialplan(self, request, context):
         """Dialplan Yönetimi
-        DÜZELTME: Her RPC artık kendine özgü bir Response mesajı kullanıyor.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')

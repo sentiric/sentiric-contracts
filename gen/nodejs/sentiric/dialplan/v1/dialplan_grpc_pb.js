@@ -253,7 +253,8 @@ function deserialize_sentiric_dialplan_v1_UpdateInboundRouteResponse(buffer_arg)
 // =================================================================
 //
 var DialplanServiceService = exports.DialplanServiceService = {
-  resolveDialplan: {
+  // Gelen çağrının nasıl yönlendirileceğine karar veren ana metot.
+resolveDialplan: {
     path: '/sentiric.dialplan.v1.DialplanService/ResolveDialplan',
     requestStream: false,
     responseStream: false,
@@ -265,7 +266,6 @@ var DialplanServiceService = exports.DialplanServiceService = {
     responseDeserialize: deserialize_sentiric_dialplan_v1_ResolveDialplanResponse,
   },
   // Inbound Route Yönetimi
-// DÜZELTME: Her RPC artık kendine özgü bir Response mesajı kullanıyor.
 createInboundRoute: {
     path: '/sentiric.dialplan.v1.DialplanService/CreateInboundRoute',
     requestStream: false,
@@ -322,7 +322,6 @@ createInboundRoute: {
     responseDeserialize: deserialize_sentiric_dialplan_v1_ListInboundRoutesResponse,
   },
   // Dialplan Yönetimi
-// DÜZELTME: Her RPC artık kendine özgü bir Response mesajı kullanıyor.
 createDialplan: {
     path: '/sentiric.dialplan.v1.DialplanService/CreateDialplan',
     requestStream: false,

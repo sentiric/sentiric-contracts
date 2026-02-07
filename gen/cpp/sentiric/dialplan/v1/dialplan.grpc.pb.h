@@ -41,6 +41,7 @@ class DialplanService final {
   class StubInterface {
    public:
     virtual ~StubInterface() {}
+    // Gelen çağrının nasıl yönlendirileceğine karar veren ana metot.
     virtual ::grpc::Status ResolveDialplan(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::ResolveDialplanRequest& request, ::sentiric::dialplan::v1::ResolveDialplanResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::ResolveDialplanResponse>> AsyncResolveDialplan(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::ResolveDialplanRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::ResolveDialplanResponse>>(AsyncResolveDialplanRaw(context, request, cq));
@@ -49,7 +50,6 @@ class DialplanService final {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::ResolveDialplanResponse>>(PrepareAsyncResolveDialplanRaw(context, request, cq));
     }
     // Inbound Route Yönetimi
-    // DÜZELTME: Her RPC artık kendine özgü bir Response mesajı kullanıyor.
     virtual ::grpc::Status CreateInboundRoute(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateInboundRouteRequest& request, ::sentiric::dialplan::v1::CreateInboundRouteResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::CreateInboundRouteResponse>> AsyncCreateInboundRoute(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateInboundRouteRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::CreateInboundRouteResponse>>(AsyncCreateInboundRouteRaw(context, request, cq));
@@ -86,7 +86,6 @@ class DialplanService final {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::ListInboundRoutesResponse>>(PrepareAsyncListInboundRoutesRaw(context, request, cq));
     }
     // Dialplan Yönetimi
-    // DÜZELTME: Her RPC artık kendine özgü bir Response mesajı kullanıyor.
     virtual ::grpc::Status CreateDialplan(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateDialplanRequest& request, ::sentiric::dialplan::v1::CreateDialplanResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::CreateDialplanResponse>> AsyncCreateDialplan(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateDialplanRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::CreateDialplanResponse>>(AsyncCreateDialplanRaw(context, request, cq));
@@ -125,10 +124,10 @@ class DialplanService final {
     class async_interface {
      public:
       virtual ~async_interface() {}
+      // Gelen çağrının nasıl yönlendirileceğine karar veren ana metot.
       virtual void ResolveDialplan(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::ResolveDialplanRequest* request, ::sentiric::dialplan::v1::ResolveDialplanResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void ResolveDialplan(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::ResolveDialplanRequest* request, ::sentiric::dialplan::v1::ResolveDialplanResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       // Inbound Route Yönetimi
-      // DÜZELTME: Her RPC artık kendine özgü bir Response mesajı kullanıyor.
       virtual void CreateInboundRoute(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateInboundRouteRequest* request, ::sentiric::dialplan::v1::CreateInboundRouteResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void CreateInboundRoute(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateInboundRouteRequest* request, ::sentiric::dialplan::v1::CreateInboundRouteResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void GetInboundRoute(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::GetInboundRouteRequest* request, ::sentiric::dialplan::v1::GetInboundRouteResponse* response, std::function<void(::grpc::Status)>) = 0;
@@ -140,7 +139,6 @@ class DialplanService final {
       virtual void ListInboundRoutes(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::ListInboundRoutesRequest* request, ::sentiric::dialplan::v1::ListInboundRoutesResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void ListInboundRoutes(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::ListInboundRoutesRequest* request, ::sentiric::dialplan::v1::ListInboundRoutesResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       // Dialplan Yönetimi
-      // DÜZELTME: Her RPC artık kendine özgü bir Response mesajı kullanıyor.
       virtual void CreateDialplan(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateDialplanRequest* request, ::sentiric::dialplan::v1::CreateDialplanResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void CreateDialplan(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateDialplanRequest* request, ::sentiric::dialplan::v1::CreateDialplanResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void GetDialplan(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::GetDialplanRequest* request, ::sentiric::dialplan::v1::GetDialplanResponse* response, std::function<void(::grpc::Status)>) = 0;
@@ -335,16 +333,15 @@ class DialplanService final {
    public:
     Service();
     virtual ~Service();
+    // Gelen çağrının nasıl yönlendirileceğine karar veren ana metot.
     virtual ::grpc::Status ResolveDialplan(::grpc::ServerContext* context, const ::sentiric::dialplan::v1::ResolveDialplanRequest* request, ::sentiric::dialplan::v1::ResolveDialplanResponse* response);
     // Inbound Route Yönetimi
-    // DÜZELTME: Her RPC artık kendine özgü bir Response mesajı kullanıyor.
     virtual ::grpc::Status CreateInboundRoute(::grpc::ServerContext* context, const ::sentiric::dialplan::v1::CreateInboundRouteRequest* request, ::sentiric::dialplan::v1::CreateInboundRouteResponse* response);
     virtual ::grpc::Status GetInboundRoute(::grpc::ServerContext* context, const ::sentiric::dialplan::v1::GetInboundRouteRequest* request, ::sentiric::dialplan::v1::GetInboundRouteResponse* response);
     virtual ::grpc::Status UpdateInboundRoute(::grpc::ServerContext* context, const ::sentiric::dialplan::v1::UpdateInboundRouteRequest* request, ::sentiric::dialplan::v1::UpdateInboundRouteResponse* response);
     virtual ::grpc::Status DeleteInboundRoute(::grpc::ServerContext* context, const ::sentiric::dialplan::v1::DeleteInboundRouteRequest* request, ::sentiric::dialplan::v1::DeleteInboundRouteResponse* response);
     virtual ::grpc::Status ListInboundRoutes(::grpc::ServerContext* context, const ::sentiric::dialplan::v1::ListInboundRoutesRequest* request, ::sentiric::dialplan::v1::ListInboundRoutesResponse* response);
     // Dialplan Yönetimi
-    // DÜZELTME: Her RPC artık kendine özgü bir Response mesajı kullanıyor.
     virtual ::grpc::Status CreateDialplan(::grpc::ServerContext* context, const ::sentiric::dialplan::v1::CreateDialplanRequest* request, ::sentiric::dialplan::v1::CreateDialplanResponse* response);
     virtual ::grpc::Status GetDialplan(::grpc::ServerContext* context, const ::sentiric::dialplan::v1::GetDialplanRequest* request, ::sentiric::dialplan::v1::GetDialplanResponse* response);
     virtual ::grpc::Status UpdateDialplan(::grpc::ServerContext* context, const ::sentiric::dialplan::v1::UpdateDialplanRequest* request, ::sentiric::dialplan::v1::UpdateDialplanResponse* response);

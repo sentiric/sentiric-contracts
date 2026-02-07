@@ -36,16 +36,15 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type DialplanServiceClient interface {
+	// Gelen çağrının nasıl yönlendirileceğine karar veren ana metot.
 	ResolveDialplan(ctx context.Context, in *ResolveDialplanRequest, opts ...grpc.CallOption) (*ResolveDialplanResponse, error)
 	// Inbound Route Yönetimi
-	// DÜZELTME: Her RPC artık kendine özgü bir Response mesajı kullanıyor.
 	CreateInboundRoute(ctx context.Context, in *CreateInboundRouteRequest, opts ...grpc.CallOption) (*CreateInboundRouteResponse, error)
 	GetInboundRoute(ctx context.Context, in *GetInboundRouteRequest, opts ...grpc.CallOption) (*GetInboundRouteResponse, error)
 	UpdateInboundRoute(ctx context.Context, in *UpdateInboundRouteRequest, opts ...grpc.CallOption) (*UpdateInboundRouteResponse, error)
 	DeleteInboundRoute(ctx context.Context, in *DeleteInboundRouteRequest, opts ...grpc.CallOption) (*DeleteInboundRouteResponse, error)
 	ListInboundRoutes(ctx context.Context, in *ListInboundRoutesRequest, opts ...grpc.CallOption) (*ListInboundRoutesResponse, error)
 	// Dialplan Yönetimi
-	// DÜZELTME: Her RPC artık kendine özgü bir Response mesajı kullanıyor.
 	CreateDialplan(ctx context.Context, in *CreateDialplanRequest, opts ...grpc.CallOption) (*CreateDialplanResponse, error)
 	GetDialplan(ctx context.Context, in *GetDialplanRequest, opts ...grpc.CallOption) (*GetDialplanResponse, error)
 	UpdateDialplan(ctx context.Context, in *UpdateDialplanRequest, opts ...grpc.CallOption) (*UpdateDialplanResponse, error)
@@ -175,16 +174,15 @@ func (c *dialplanServiceClient) ListDialplans(ctx context.Context, in *ListDialp
 // All implementations should embed UnimplementedDialplanServiceServer
 // for forward compatibility.
 type DialplanServiceServer interface {
+	// Gelen çağrının nasıl yönlendirileceğine karar veren ana metot.
 	ResolveDialplan(context.Context, *ResolveDialplanRequest) (*ResolveDialplanResponse, error)
 	// Inbound Route Yönetimi
-	// DÜZELTME: Her RPC artık kendine özgü bir Response mesajı kullanıyor.
 	CreateInboundRoute(context.Context, *CreateInboundRouteRequest) (*CreateInboundRouteResponse, error)
 	GetInboundRoute(context.Context, *GetInboundRouteRequest) (*GetInboundRouteResponse, error)
 	UpdateInboundRoute(context.Context, *UpdateInboundRouteRequest) (*UpdateInboundRouteResponse, error)
 	DeleteInboundRoute(context.Context, *DeleteInboundRouteRequest) (*DeleteInboundRouteResponse, error)
 	ListInboundRoutes(context.Context, *ListInboundRoutesRequest) (*ListInboundRoutesResponse, error)
 	// Dialplan Yönetimi
-	// DÜZELTME: Her RPC artık kendine özgü bir Response mesajı kullanıyor.
 	CreateDialplan(context.Context, *CreateDialplanRequest) (*CreateDialplanResponse, error)
 	GetDialplan(context.Context, *GetDialplanRequest) (*GetDialplanResponse, error)
 	UpdateDialplan(context.Context, *UpdateDialplanRequest) (*UpdateDialplanResponse, error)

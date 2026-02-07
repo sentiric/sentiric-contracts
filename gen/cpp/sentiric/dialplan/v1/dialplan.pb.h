@@ -32,6 +32,7 @@
 #include <google/protobuf/map.h>  // IWYU pragma: export
 #include <google/protobuf/map_entry.h>
 #include <google/protobuf/map_field_inl.h>
+#include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 #include "sentiric/user/v1/user.pb.h"
 // @@protoc_insertion_point(includes)
@@ -51,12 +52,6 @@ extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table
 namespace sentiric {
 namespace dialplan {
 namespace v1 {
-class ActionData;
-struct ActionDataDefaultTypeInternal;
-extern ActionDataDefaultTypeInternal _ActionData_default_instance_;
-class ActionData_DataEntry_DoNotUse;
-struct ActionData_DataEntry_DoNotUseDefaultTypeInternal;
-extern ActionData_DataEntry_DoNotUseDefaultTypeInternal _ActionData_DataEntry_DoNotUse_default_instance_;
 class CreateDialplanRequest;
 struct CreateDialplanRequestDefaultTypeInternal;
 extern CreateDialplanRequestDefaultTypeInternal _CreateDialplanRequest_default_instance_;
@@ -87,6 +82,9 @@ extern DialplanDefaultTypeInternal _Dialplan_default_instance_;
 class DialplanAction;
 struct DialplanActionDefaultTypeInternal;
 extern DialplanActionDefaultTypeInternal _DialplanAction_default_instance_;
+class DialplanAction_ActionDataEntry_DoNotUse;
+struct DialplanAction_ActionDataEntry_DoNotUseDefaultTypeInternal;
+extern DialplanAction_ActionDataEntry_DoNotUseDefaultTypeInternal _DialplanAction_ActionDataEntry_DoNotUse_default_instance_;
 class GetDialplanRequest;
 struct GetDialplanRequestDefaultTypeInternal;
 extern GetDialplanRequestDefaultTypeInternal _GetDialplanRequest_default_instance_;
@@ -136,8 +134,6 @@ extern UpdateInboundRouteResponseDefaultTypeInternal _UpdateInboundRouteResponse
 }  // namespace dialplan
 }  // namespace sentiric
 PROTOBUF_NAMESPACE_OPEN
-template<> ::sentiric::dialplan::v1::ActionData* Arena::CreateMaybeMessage<::sentiric::dialplan::v1::ActionData>(Arena*);
-template<> ::sentiric::dialplan::v1::ActionData_DataEntry_DoNotUse* Arena::CreateMaybeMessage<::sentiric::dialplan::v1::ActionData_DataEntry_DoNotUse>(Arena*);
 template<> ::sentiric::dialplan::v1::CreateDialplanRequest* Arena::CreateMaybeMessage<::sentiric::dialplan::v1::CreateDialplanRequest>(Arena*);
 template<> ::sentiric::dialplan::v1::CreateDialplanResponse* Arena::CreateMaybeMessage<::sentiric::dialplan::v1::CreateDialplanResponse>(Arena*);
 template<> ::sentiric::dialplan::v1::CreateInboundRouteRequest* Arena::CreateMaybeMessage<::sentiric::dialplan::v1::CreateInboundRouteRequest>(Arena*);
@@ -148,6 +144,7 @@ template<> ::sentiric::dialplan::v1::DeleteInboundRouteRequest* Arena::CreateMay
 template<> ::sentiric::dialplan::v1::DeleteInboundRouteResponse* Arena::CreateMaybeMessage<::sentiric::dialplan::v1::DeleteInboundRouteResponse>(Arena*);
 template<> ::sentiric::dialplan::v1::Dialplan* Arena::CreateMaybeMessage<::sentiric::dialplan::v1::Dialplan>(Arena*);
 template<> ::sentiric::dialplan::v1::DialplanAction* Arena::CreateMaybeMessage<::sentiric::dialplan::v1::DialplanAction>(Arena*);
+template<> ::sentiric::dialplan::v1::DialplanAction_ActionDataEntry_DoNotUse* Arena::CreateMaybeMessage<::sentiric::dialplan::v1::DialplanAction_ActionDataEntry_DoNotUse>(Arena*);
 template<> ::sentiric::dialplan::v1::GetDialplanRequest* Arena::CreateMaybeMessage<::sentiric::dialplan::v1::GetDialplanRequest>(Arena*);
 template<> ::sentiric::dialplan::v1::GetDialplanResponse* Arena::CreateMaybeMessage<::sentiric::dialplan::v1::GetDialplanResponse>(Arena*);
 template<> ::sentiric::dialplan::v1::GetInboundRouteRequest* Arena::CreateMaybeMessage<::sentiric::dialplan::v1::GetInboundRouteRequest>(Arena*);
@@ -168,7 +165,253 @@ namespace sentiric {
 namespace dialplan {
 namespace v1 {
 
+enum ActionType : int {
+  ACTION_TYPE_UNSPECIFIED = 0,
+  ACTION_TYPE_START_AI_CONVERSATION = 1,
+  ACTION_TYPE_BRIDGE_CALL = 2,
+  ACTION_TYPE_ECHO_TEST = 3,
+  ACTION_TYPE_PLAY_STATIC_ANNOUNCEMENT = 4,
+  ActionType_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
+  ActionType_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
+};
+bool ActionType_IsValid(int value);
+constexpr ActionType ActionType_MIN = ACTION_TYPE_UNSPECIFIED;
+constexpr ActionType ActionType_MAX = ACTION_TYPE_PLAY_STATIC_ANNOUNCEMENT;
+constexpr int ActionType_ARRAYSIZE = ActionType_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* ActionType_descriptor();
+template<typename T>
+inline const std::string& ActionType_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, ActionType>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function ActionType_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    ActionType_descriptor(), enum_t_value);
+}
+inline bool ActionType_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, ActionType* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<ActionType>(
+    ActionType_descriptor(), name, value);
+}
 // ===================================================================
+
+class DialplanAction_ActionDataEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<DialplanAction_ActionDataEntry_DoNotUse, 
+    std::string, std::string,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING> {
+public:
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<DialplanAction_ActionDataEntry_DoNotUse, 
+    std::string, std::string,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING> SuperType;
+  DialplanAction_ActionDataEntry_DoNotUse();
+  explicit PROTOBUF_CONSTEXPR DialplanAction_ActionDataEntry_DoNotUse(
+      ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  explicit DialplanAction_ActionDataEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const DialplanAction_ActionDataEntry_DoNotUse& other);
+  static const DialplanAction_ActionDataEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const DialplanAction_ActionDataEntry_DoNotUse*>(&_DialplanAction_ActionDataEntry_DoNotUse_default_instance_); }
+  static bool ValidateKey(std::string* s) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "sentiric.dialplan.v1.DialplanAction.ActionDataEntry.key");
+ }
+  static bool ValidateValue(std::string* s) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "sentiric.dialplan.v1.DialplanAction.ActionDataEntry.value");
+ }
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  friend struct ::TableStruct_sentiric_2fdialplan_2fv1_2fdialplan_2eproto;
+};
+
+// -------------------------------------------------------------------
+
+class DialplanAction final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.dialplan.v1.DialplanAction) */ {
+ public:
+  inline DialplanAction() : DialplanAction(nullptr) {}
+  ~DialplanAction() override;
+  explicit PROTOBUF_CONSTEXPR DialplanAction(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  DialplanAction(const DialplanAction& from);
+  DialplanAction(DialplanAction&& from) noexcept
+    : DialplanAction() {
+    *this = ::std::move(from);
+  }
+
+  inline DialplanAction& operator=(const DialplanAction& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline DialplanAction& operator=(DialplanAction&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const DialplanAction& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const DialplanAction* internal_default_instance() {
+    return reinterpret_cast<const DialplanAction*>(
+               &_DialplanAction_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    1;
+
+  friend void swap(DialplanAction& a, DialplanAction& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(DialplanAction* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(DialplanAction* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  DialplanAction* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<DialplanAction>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const DialplanAction& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const DialplanAction& from) {
+    DialplanAction::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(DialplanAction* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.dialplan.v1.DialplanAction";
+  }
+  protected:
+  explicit DialplanAction(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kActionDataFieldNumber = 3,
+    kActionFieldNumber = 1,
+    kTypeFieldNumber = 2,
+  };
+  // map<string, string> action_data = 3;
+  int action_data_size() const;
+  private:
+  int _internal_action_data_size() const;
+  public:
+  void clear_action_data();
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+      _internal_action_data() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+      _internal_mutable_action_data();
+  public:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+      action_data() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+      mutable_action_data();
+
+  // string action = 1;
+  void clear_action();
+  const std::string& action() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_action(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_action();
+  PROTOBUF_NODISCARD std::string* release_action();
+  void set_allocated_action(std::string* action);
+  private:
+  const std::string& _internal_action() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_action(const std::string& value);
+  std::string* _internal_mutable_action();
+  public:
+
+  // .sentiric.dialplan.v1.ActionType type = 2;
+  void clear_type();
+  ::sentiric::dialplan::v1::ActionType type() const;
+  void set_type(::sentiric::dialplan::v1::ActionType value);
+  private:
+  ::sentiric::dialplan::v1::ActionType _internal_type() const;
+  void _internal_set_type(::sentiric::dialplan::v1::ActionType value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.dialplan.v1.DialplanAction)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::MapField<
+        DialplanAction_ActionDataEntry_DoNotUse,
+        std::string, std::string,
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING> action_data_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr action_;
+    int type_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2fdialplan_2fv1_2fdialplan_2eproto;
+};
+// -------------------------------------------------------------------
 
 class ResolveDialplanRequest final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.dialplan.v1.ResolveDialplanRequest) */ {
@@ -218,7 +461,7 @@ class ResolveDialplanRequest final :
                &_ResolveDialplanRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    0;
+    2;
 
   friend void swap(ResolveDialplanRequest& a, ResolveDialplanRequest& b) {
     a.Swap(&b);
@@ -387,7 +630,7 @@ class ResolveDialplanResponse final :
                &_ResolveDialplanResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    3;
 
   friend void swap(ResolveDialplanResponse& a, ResolveDialplanResponse& b) {
     a.Swap(&b);
@@ -637,7 +880,7 @@ class InboundRoute final :
                &_InboundRoute_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    4;
 
   friend void swap(InboundRoute& a, InboundRoute& b) {
     a.Swap(&b);
@@ -894,7 +1137,7 @@ class Dialplan final :
                &_Dialplan_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    5;
 
   friend void swap(Dialplan& a, Dialplan& b) {
     a.Swap(&b);
@@ -1051,370 +1294,6 @@ class Dialplan final :
 };
 // -------------------------------------------------------------------
 
-class DialplanAction final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.dialplan.v1.DialplanAction) */ {
- public:
-  inline DialplanAction() : DialplanAction(nullptr) {}
-  ~DialplanAction() override;
-  explicit PROTOBUF_CONSTEXPR DialplanAction(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-
-  DialplanAction(const DialplanAction& from);
-  DialplanAction(DialplanAction&& from) noexcept
-    : DialplanAction() {
-    *this = ::std::move(from);
-  }
-
-  inline DialplanAction& operator=(const DialplanAction& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline DialplanAction& operator=(DialplanAction&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetOwningArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const DialplanAction& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const DialplanAction* internal_default_instance() {
-    return reinterpret_cast<const DialplanAction*>(
-               &_DialplanAction_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    4;
-
-  friend void swap(DialplanAction& a, DialplanAction& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(DialplanAction* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() != nullptr &&
-        GetOwningArena() == other->GetOwningArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() == other->GetOwningArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(DialplanAction* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  DialplanAction* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<DialplanAction>(arena);
-  }
-  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const DialplanAction& from);
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom( const DialplanAction& from) {
-    DialplanAction::MergeImpl(*this, from);
-  }
-  private:
-  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
-  public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
-
-  private:
-  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(DialplanAction* other);
-
-  private:
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "sentiric.dialplan.v1.DialplanAction";
-  }
-  protected:
-  explicit DialplanAction(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                       bool is_message_owned = false);
-  public:
-
-  static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
-
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kActionFieldNumber = 1,
-    kActionDataFieldNumber = 2,
-  };
-  // string action = 1;
-  void clear_action();
-  const std::string& action() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_action(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_action();
-  PROTOBUF_NODISCARD std::string* release_action();
-  void set_allocated_action(std::string* action);
-  private:
-  const std::string& _internal_action() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_action(const std::string& value);
-  std::string* _internal_mutable_action();
-  public:
-
-  // .sentiric.dialplan.v1.ActionData action_data = 2;
-  bool has_action_data() const;
-  private:
-  bool _internal_has_action_data() const;
-  public:
-  void clear_action_data();
-  const ::sentiric::dialplan::v1::ActionData& action_data() const;
-  PROTOBUF_NODISCARD ::sentiric::dialplan::v1::ActionData* release_action_data();
-  ::sentiric::dialplan::v1::ActionData* mutable_action_data();
-  void set_allocated_action_data(::sentiric::dialplan::v1::ActionData* action_data);
-  private:
-  const ::sentiric::dialplan::v1::ActionData& _internal_action_data() const;
-  ::sentiric::dialplan::v1::ActionData* _internal_mutable_action_data();
-  public:
-  void unsafe_arena_set_allocated_action_data(
-      ::sentiric::dialplan::v1::ActionData* action_data);
-  ::sentiric::dialplan::v1::ActionData* unsafe_arena_release_action_data();
-
-  // @@protoc_insertion_point(class_scope:sentiric.dialplan.v1.DialplanAction)
- private:
-  class _Internal;
-
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  struct Impl_ {
-    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr action_;
-    ::sentiric::dialplan::v1::ActionData* action_data_;
-    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  };
-  union { Impl_ _impl_; };
-  friend struct ::TableStruct_sentiric_2fdialplan_2fv1_2fdialplan_2eproto;
-};
-// -------------------------------------------------------------------
-
-class ActionData_DataEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<ActionData_DataEntry_DoNotUse, 
-    std::string, std::string,
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING> {
-public:
-  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<ActionData_DataEntry_DoNotUse, 
-    std::string, std::string,
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING> SuperType;
-  ActionData_DataEntry_DoNotUse();
-  explicit PROTOBUF_CONSTEXPR ActionData_DataEntry_DoNotUse(
-      ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-  explicit ActionData_DataEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  void MergeFrom(const ActionData_DataEntry_DoNotUse& other);
-  static const ActionData_DataEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const ActionData_DataEntry_DoNotUse*>(&_ActionData_DataEntry_DoNotUse_default_instance_); }
-  static bool ValidateKey(std::string* s) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "sentiric.dialplan.v1.ActionData.DataEntry.key");
- }
-  static bool ValidateValue(std::string* s) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "sentiric.dialplan.v1.ActionData.DataEntry.value");
- }
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-  friend struct ::TableStruct_sentiric_2fdialplan_2fv1_2fdialplan_2eproto;
-};
-
-// -------------------------------------------------------------------
-
-class ActionData final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.dialplan.v1.ActionData) */ {
- public:
-  inline ActionData() : ActionData(nullptr) {}
-  ~ActionData() override;
-  explicit PROTOBUF_CONSTEXPR ActionData(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
-
-  ActionData(const ActionData& from);
-  ActionData(ActionData&& from) noexcept
-    : ActionData() {
-    *this = ::std::move(from);
-  }
-
-  inline ActionData& operator=(const ActionData& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline ActionData& operator=(ActionData&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()
-  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetOwningArena() != nullptr
-  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const ActionData& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const ActionData* internal_default_instance() {
-    return reinterpret_cast<const ActionData*>(
-               &_ActionData_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    6;
-
-  friend void swap(ActionData& a, ActionData& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(ActionData* other) {
-    if (other == this) return;
-  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() != nullptr &&
-        GetOwningArena() == other->GetOwningArena()) {
-   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetOwningArena() == other->GetOwningArena()) {
-  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(ActionData* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  ActionData* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<ActionData>(arena);
-  }
-  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const ActionData& from);
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom( const ActionData& from) {
-    ActionData::MergeImpl(*this, from);
-  }
-  private:
-  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
-  public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
-
-  private:
-  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(ActionData* other);
-
-  private:
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "sentiric.dialplan.v1.ActionData";
-  }
-  protected:
-  explicit ActionData(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                       bool is_message_owned = false);
-  private:
-  static void ArenaDtor(void* object);
-  public:
-
-  static const ClassData _class_data_;
-  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
-
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-
-  // accessors -------------------------------------------------------
-
-  enum : int {
-    kDataFieldNumber = 1,
-  };
-  // map<string, string> data = 1;
-  int data_size() const;
-  private:
-  int _internal_data_size() const;
-  public:
-  void clear_data();
-  private:
-  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
-      _internal_data() const;
-  ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
-      _internal_mutable_data();
-  public:
-  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
-      data() const;
-  ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
-      mutable_data();
-
-  // @@protoc_insertion_point(class_scope:sentiric.dialplan.v1.ActionData)
- private:
-  class _Internal;
-
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  struct Impl_ {
-    ::PROTOBUF_NAMESPACE_ID::internal::MapField<
-        ActionData_DataEntry_DoNotUse,
-        std::string, std::string,
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING> data_;
-    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  };
-  union { Impl_ _impl_; };
-  friend struct ::TableStruct_sentiric_2fdialplan_2fv1_2fdialplan_2eproto;
-};
-// -------------------------------------------------------------------
-
 class CreateInboundRouteRequest final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.dialplan.v1.CreateInboundRouteRequest) */ {
  public:
@@ -1463,7 +1342,7 @@ class CreateInboundRouteRequest final :
                &_CreateInboundRouteRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    6;
 
   friend void swap(CreateInboundRouteRequest& a, CreateInboundRouteRequest& b) {
     a.Swap(&b);
@@ -1620,7 +1499,7 @@ class CreateInboundRouteResponse final :
                &_CreateInboundRouteResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    7;
 
   friend void swap(CreateInboundRouteResponse& a, CreateInboundRouteResponse& b) {
     a.Swap(&b);
@@ -1777,7 +1656,7 @@ class GetInboundRouteRequest final :
                &_GetInboundRouteRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    8;
 
   friend void swap(GetInboundRouteRequest& a, GetInboundRouteRequest& b) {
     a.Swap(&b);
@@ -1930,7 +1809,7 @@ class GetInboundRouteResponse final :
                &_GetInboundRouteResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    10;
+    9;
 
   friend void swap(GetInboundRouteResponse& a, GetInboundRouteResponse& b) {
     a.Swap(&b);
@@ -2087,7 +1966,7 @@ class UpdateInboundRouteRequest final :
                &_UpdateInboundRouteRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    11;
+    10;
 
   friend void swap(UpdateInboundRouteRequest& a, UpdateInboundRouteRequest& b) {
     a.Swap(&b);
@@ -2244,7 +2123,7 @@ class UpdateInboundRouteResponse final :
                &_UpdateInboundRouteResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    12;
+    11;
 
   friend void swap(UpdateInboundRouteResponse& a, UpdateInboundRouteResponse& b) {
     a.Swap(&b);
@@ -2401,7 +2280,7 @@ class DeleteInboundRouteRequest final :
                &_DeleteInboundRouteRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    13;
+    12;
 
   friend void swap(DeleteInboundRouteRequest& a, DeleteInboundRouteRequest& b) {
     a.Swap(&b);
@@ -2554,7 +2433,7 @@ class DeleteInboundRouteResponse final :
                &_DeleteInboundRouteResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    14;
+    13;
 
   friend void swap(DeleteInboundRouteResponse& a, DeleteInboundRouteResponse& b) {
     a.Swap(&b);
@@ -2702,7 +2581,7 @@ class ListInboundRoutesRequest final :
                &_ListInboundRoutesRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    15;
+    14;
 
   friend void swap(ListInboundRoutesRequest& a, ListInboundRoutesRequest& b) {
     a.Swap(&b);
@@ -2877,7 +2756,7 @@ class ListInboundRoutesResponse final :
                &_ListInboundRoutesResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    16;
+    15;
 
   friend void swap(ListInboundRoutesResponse& a, ListInboundRoutesResponse& b) {
     a.Swap(&b);
@@ -3045,7 +2924,7 @@ class CreateDialplanRequest final :
                &_CreateDialplanRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    17;
+    16;
 
   friend void swap(CreateDialplanRequest& a, CreateDialplanRequest& b) {
     a.Swap(&b);
@@ -3202,7 +3081,7 @@ class CreateDialplanResponse final :
                &_CreateDialplanResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    18;
+    17;
 
   friend void swap(CreateDialplanResponse& a, CreateDialplanResponse& b) {
     a.Swap(&b);
@@ -3359,7 +3238,7 @@ class GetDialplanRequest final :
                &_GetDialplanRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    19;
+    18;
 
   friend void swap(GetDialplanRequest& a, GetDialplanRequest& b) {
     a.Swap(&b);
@@ -3512,7 +3391,7 @@ class GetDialplanResponse final :
                &_GetDialplanResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    20;
+    19;
 
   friend void swap(GetDialplanResponse& a, GetDialplanResponse& b) {
     a.Swap(&b);
@@ -3669,7 +3548,7 @@ class UpdateDialplanRequest final :
                &_UpdateDialplanRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    21;
+    20;
 
   friend void swap(UpdateDialplanRequest& a, UpdateDialplanRequest& b) {
     a.Swap(&b);
@@ -3826,7 +3705,7 @@ class UpdateDialplanResponse final :
                &_UpdateDialplanResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    22;
+    21;
 
   friend void swap(UpdateDialplanResponse& a, UpdateDialplanResponse& b) {
     a.Swap(&b);
@@ -3983,7 +3862,7 @@ class DeleteDialplanRequest final :
                &_DeleteDialplanRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    23;
+    22;
 
   friend void swap(DeleteDialplanRequest& a, DeleteDialplanRequest& b) {
     a.Swap(&b);
@@ -4136,7 +4015,7 @@ class DeleteDialplanResponse final :
                &_DeleteDialplanResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    24;
+    23;
 
   friend void swap(DeleteDialplanResponse& a, DeleteDialplanResponse& b) {
     a.Swap(&b);
@@ -4284,7 +4163,7 @@ class ListDialplansRequest final :
                &_ListDialplansRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    25;
+    24;
 
   friend void swap(ListDialplansRequest& a, ListDialplansRequest& b) {
     a.Swap(&b);
@@ -4459,7 +4338,7 @@ class ListDialplansResponse final :
                &_ListDialplansResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    26;
+    25;
 
   friend void swap(ListDialplansResponse& a, ListDialplansResponse& b) {
     a.Swap(&b);
@@ -4586,6 +4465,111 @@ class ListDialplansResponse final :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// DialplanAction
+
+// string action = 1;
+inline void DialplanAction::clear_action() {
+  _impl_.action_.ClearToEmpty();
+}
+inline const std::string& DialplanAction::action() const {
+  // @@protoc_insertion_point(field_get:sentiric.dialplan.v1.DialplanAction.action)
+  return _internal_action();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void DialplanAction::set_action(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.action_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.dialplan.v1.DialplanAction.action)
+}
+inline std::string* DialplanAction::mutable_action() {
+  std::string* _s = _internal_mutable_action();
+  // @@protoc_insertion_point(field_mutable:sentiric.dialplan.v1.DialplanAction.action)
+  return _s;
+}
+inline const std::string& DialplanAction::_internal_action() const {
+  return _impl_.action_.Get();
+}
+inline void DialplanAction::_internal_set_action(const std::string& value) {
+  
+  _impl_.action_.Set(value, GetArenaForAllocation());
+}
+inline std::string* DialplanAction::_internal_mutable_action() {
+  
+  return _impl_.action_.Mutable(GetArenaForAllocation());
+}
+inline std::string* DialplanAction::release_action() {
+  // @@protoc_insertion_point(field_release:sentiric.dialplan.v1.DialplanAction.action)
+  return _impl_.action_.Release();
+}
+inline void DialplanAction::set_allocated_action(std::string* action) {
+  if (action != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.action_.SetAllocated(action, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.action_.IsDefault()) {
+    _impl_.action_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.dialplan.v1.DialplanAction.action)
+}
+
+// .sentiric.dialplan.v1.ActionType type = 2;
+inline void DialplanAction::clear_type() {
+  _impl_.type_ = 0;
+}
+inline ::sentiric::dialplan::v1::ActionType DialplanAction::_internal_type() const {
+  return static_cast< ::sentiric::dialplan::v1::ActionType >(_impl_.type_);
+}
+inline ::sentiric::dialplan::v1::ActionType DialplanAction::type() const {
+  // @@protoc_insertion_point(field_get:sentiric.dialplan.v1.DialplanAction.type)
+  return _internal_type();
+}
+inline void DialplanAction::_internal_set_type(::sentiric::dialplan::v1::ActionType value) {
+  
+  _impl_.type_ = value;
+}
+inline void DialplanAction::set_type(::sentiric::dialplan::v1::ActionType value) {
+  _internal_set_type(value);
+  // @@protoc_insertion_point(field_set:sentiric.dialplan.v1.DialplanAction.type)
+}
+
+// map<string, string> action_data = 3;
+inline int DialplanAction::_internal_action_data_size() const {
+  return _impl_.action_data_.size();
+}
+inline int DialplanAction::action_data_size() const {
+  return _internal_action_data_size();
+}
+inline void DialplanAction::clear_action_data() {
+  _impl_.action_data_.Clear();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+DialplanAction::_internal_action_data() const {
+  return _impl_.action_data_.GetMap();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+DialplanAction::action_data() const {
+  // @@protoc_insertion_point(field_map:sentiric.dialplan.v1.DialplanAction.action_data)
+  return _internal_action_data();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+DialplanAction::_internal_mutable_action_data() {
+  return _impl_.action_data_.MutableMap();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+DialplanAction::mutable_action_data() {
+  // @@protoc_insertion_point(field_mutable_map:sentiric.dialplan.v1.DialplanAction.action_data)
+  return _internal_mutable_action_data();
+}
+
+// -------------------------------------------------------------------
+
 // ResolveDialplanRequest
 
 // string caller_contact_value = 1;
@@ -5766,185 +5750,6 @@ inline void Dialplan::set_allocated_action(::sentiric::dialplan::v1::DialplanAct
   }
   _impl_.action_ = action;
   // @@protoc_insertion_point(field_set_allocated:sentiric.dialplan.v1.Dialplan.action)
-}
-
-// -------------------------------------------------------------------
-
-// DialplanAction
-
-// string action = 1;
-inline void DialplanAction::clear_action() {
-  _impl_.action_.ClearToEmpty();
-}
-inline const std::string& DialplanAction::action() const {
-  // @@protoc_insertion_point(field_get:sentiric.dialplan.v1.DialplanAction.action)
-  return _internal_action();
-}
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void DialplanAction::set_action(ArgT0&& arg0, ArgT... args) {
- 
- _impl_.action_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:sentiric.dialplan.v1.DialplanAction.action)
-}
-inline std::string* DialplanAction::mutable_action() {
-  std::string* _s = _internal_mutable_action();
-  // @@protoc_insertion_point(field_mutable:sentiric.dialplan.v1.DialplanAction.action)
-  return _s;
-}
-inline const std::string& DialplanAction::_internal_action() const {
-  return _impl_.action_.Get();
-}
-inline void DialplanAction::_internal_set_action(const std::string& value) {
-  
-  _impl_.action_.Set(value, GetArenaForAllocation());
-}
-inline std::string* DialplanAction::_internal_mutable_action() {
-  
-  return _impl_.action_.Mutable(GetArenaForAllocation());
-}
-inline std::string* DialplanAction::release_action() {
-  // @@protoc_insertion_point(field_release:sentiric.dialplan.v1.DialplanAction.action)
-  return _impl_.action_.Release();
-}
-inline void DialplanAction::set_allocated_action(std::string* action) {
-  if (action != nullptr) {
-    
-  } else {
-    
-  }
-  _impl_.action_.SetAllocated(action, GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (_impl_.action_.IsDefault()) {
-    _impl_.action_.Set("", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:sentiric.dialplan.v1.DialplanAction.action)
-}
-
-// .sentiric.dialplan.v1.ActionData action_data = 2;
-inline bool DialplanAction::_internal_has_action_data() const {
-  return this != internal_default_instance() && _impl_.action_data_ != nullptr;
-}
-inline bool DialplanAction::has_action_data() const {
-  return _internal_has_action_data();
-}
-inline void DialplanAction::clear_action_data() {
-  if (GetArenaForAllocation() == nullptr && _impl_.action_data_ != nullptr) {
-    delete _impl_.action_data_;
-  }
-  _impl_.action_data_ = nullptr;
-}
-inline const ::sentiric::dialplan::v1::ActionData& DialplanAction::_internal_action_data() const {
-  const ::sentiric::dialplan::v1::ActionData* p = _impl_.action_data_;
-  return p != nullptr ? *p : reinterpret_cast<const ::sentiric::dialplan::v1::ActionData&>(
-      ::sentiric::dialplan::v1::_ActionData_default_instance_);
-}
-inline const ::sentiric::dialplan::v1::ActionData& DialplanAction::action_data() const {
-  // @@protoc_insertion_point(field_get:sentiric.dialplan.v1.DialplanAction.action_data)
-  return _internal_action_data();
-}
-inline void DialplanAction::unsafe_arena_set_allocated_action_data(
-    ::sentiric::dialplan::v1::ActionData* action_data) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.action_data_);
-  }
-  _impl_.action_data_ = action_data;
-  if (action_data) {
-    
-  } else {
-    
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:sentiric.dialplan.v1.DialplanAction.action_data)
-}
-inline ::sentiric::dialplan::v1::ActionData* DialplanAction::release_action_data() {
-  
-  ::sentiric::dialplan::v1::ActionData* temp = _impl_.action_data_;
-  _impl_.action_data_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::sentiric::dialplan::v1::ActionData* DialplanAction::unsafe_arena_release_action_data() {
-  // @@protoc_insertion_point(field_release:sentiric.dialplan.v1.DialplanAction.action_data)
-  
-  ::sentiric::dialplan::v1::ActionData* temp = _impl_.action_data_;
-  _impl_.action_data_ = nullptr;
-  return temp;
-}
-inline ::sentiric::dialplan::v1::ActionData* DialplanAction::_internal_mutable_action_data() {
-  
-  if (_impl_.action_data_ == nullptr) {
-    auto* p = CreateMaybeMessage<::sentiric::dialplan::v1::ActionData>(GetArenaForAllocation());
-    _impl_.action_data_ = p;
-  }
-  return _impl_.action_data_;
-}
-inline ::sentiric::dialplan::v1::ActionData* DialplanAction::mutable_action_data() {
-  ::sentiric::dialplan::v1::ActionData* _msg = _internal_mutable_action_data();
-  // @@protoc_insertion_point(field_mutable:sentiric.dialplan.v1.DialplanAction.action_data)
-  return _msg;
-}
-inline void DialplanAction::set_allocated_action_data(::sentiric::dialplan::v1::ActionData* action_data) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete _impl_.action_data_;
-  }
-  if (action_data) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(action_data);
-    if (message_arena != submessage_arena) {
-      action_data = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, action_data, submessage_arena);
-    }
-    
-  } else {
-    
-  }
-  _impl_.action_data_ = action_data;
-  // @@protoc_insertion_point(field_set_allocated:sentiric.dialplan.v1.DialplanAction.action_data)
-}
-
-// -------------------------------------------------------------------
-
-// -------------------------------------------------------------------
-
-// ActionData
-
-// map<string, string> data = 1;
-inline int ActionData::_internal_data_size() const {
-  return _impl_.data_.size();
-}
-inline int ActionData::data_size() const {
-  return _internal_data_size();
-}
-inline void ActionData::clear_data() {
-  _impl_.data_.Clear();
-}
-inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
-ActionData::_internal_data() const {
-  return _impl_.data_.GetMap();
-}
-inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
-ActionData::data() const {
-  // @@protoc_insertion_point(field_map:sentiric.dialplan.v1.ActionData.data)
-  return _internal_data();
-}
-inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
-ActionData::_internal_mutable_data() {
-  return _impl_.data_.MutableMap();
-}
-inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
-ActionData::mutable_data() {
-  // @@protoc_insertion_point(field_mutable_map:sentiric.dialplan.v1.ActionData.data)
-  return _internal_mutable_data();
 }
 
 // -------------------------------------------------------------------
@@ -7520,14 +7325,22 @@ inline void ListDialplansResponse::set_total_count(int32_t value) {
 
 // -------------------------------------------------------------------
 
-// -------------------------------------------------------------------
-
 
 // @@protoc_insertion_point(namespace_scope)
 
 }  // namespace v1
 }  // namespace dialplan
 }  // namespace sentiric
+
+PROTOBUF_NAMESPACE_OPEN
+
+template <> struct is_proto_enum< ::sentiric::dialplan::v1::ActionType> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::sentiric::dialplan::v1::ActionType>() {
+  return ::sentiric::dialplan::v1::ActionType_descriptor();
+}
+
+PROTOBUF_NAMESPACE_CLOSE
 
 // @@protoc_insertion_point(global_scope)
 

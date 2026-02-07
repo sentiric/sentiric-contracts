@@ -23,6 +23,32 @@ namespace _pbi = _pb::internal;
 namespace sentiric {
 namespace dialplan {
 namespace v1 {
+PROTOBUF_CONSTEXPR DialplanAction_ActionDataEntry_DoNotUse::DialplanAction_ActionDataEntry_DoNotUse(
+    ::_pbi::ConstantInitialized) {}
+struct DialplanAction_ActionDataEntry_DoNotUseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DialplanAction_ActionDataEntry_DoNotUseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DialplanAction_ActionDataEntry_DoNotUseDefaultTypeInternal() {}
+  union {
+    DialplanAction_ActionDataEntry_DoNotUse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DialplanAction_ActionDataEntry_DoNotUseDefaultTypeInternal _DialplanAction_ActionDataEntry_DoNotUse_default_instance_;
+PROTOBUF_CONSTEXPR DialplanAction::DialplanAction(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.action_data_)*/{::_pbi::ConstantInitialized()}
+  , /*decltype(_impl_.action_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.type_)*/0
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct DialplanActionDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DialplanActionDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DialplanActionDefaultTypeInternal() {}
+  union {
+    DialplanAction _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DialplanActionDefaultTypeInternal _DialplanAction_default_instance_;
 PROTOBUF_CONSTEXPR ResolveDialplanRequest::ResolveDialplanRequest(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.caller_contact_value_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
@@ -92,44 +118,6 @@ struct DialplanDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DialplanDefaultTypeInternal _Dialplan_default_instance_;
-PROTOBUF_CONSTEXPR DialplanAction::DialplanAction(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.action_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.action_data_)*/nullptr
-  , /*decltype(_impl_._cached_size_)*/{}} {}
-struct DialplanActionDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR DialplanActionDefaultTypeInternal()
-      : _instance(::_pbi::ConstantInitialized{}) {}
-  ~DialplanActionDefaultTypeInternal() {}
-  union {
-    DialplanAction _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DialplanActionDefaultTypeInternal _DialplanAction_default_instance_;
-PROTOBUF_CONSTEXPR ActionData_DataEntry_DoNotUse::ActionData_DataEntry_DoNotUse(
-    ::_pbi::ConstantInitialized) {}
-struct ActionData_DataEntry_DoNotUseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR ActionData_DataEntry_DoNotUseDefaultTypeInternal()
-      : _instance(::_pbi::ConstantInitialized{}) {}
-  ~ActionData_DataEntry_DoNotUseDefaultTypeInternal() {}
-  union {
-    ActionData_DataEntry_DoNotUse _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ActionData_DataEntry_DoNotUseDefaultTypeInternal _ActionData_DataEntry_DoNotUse_default_instance_;
-PROTOBUF_CONSTEXPR ActionData::ActionData(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.data_)*/{::_pbi::ConstantInitialized()}
-  , /*decltype(_impl_._cached_size_)*/{}} {}
-struct ActionDataDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR ActionDataDefaultTypeInternal()
-      : _instance(::_pbi::ConstantInitialized{}) {}
-  ~ActionDataDefaultTypeInternal() {}
-  union {
-    ActionData _instance;
-  };
-};
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ActionDataDefaultTypeInternal _ActionData_default_instance_;
 PROTOBUF_CONSTEXPR CreateInboundRouteRequest::CreateInboundRouteRequest(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.route_)*/nullptr
@@ -399,11 +387,30 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORIT
 }  // namespace v1
 }  // namespace dialplan
 }  // namespace sentiric
-static ::_pb::Metadata file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[27];
-static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_sentiric_2fdialplan_2fv1_2fdialplan_2eproto = nullptr;
+static ::_pb::Metadata file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[26];
+static const ::_pb::EnumDescriptor* file_level_enum_descriptors_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[1];
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_sentiric_2fdialplan_2fv1_2fdialplan_2eproto = nullptr;
 
 const uint32_t TableStruct_sentiric_2fdialplan_2fv1_2fdialplan_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::DialplanAction_ActionDataEntry_DoNotUse, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::DialplanAction_ActionDataEntry_DoNotUse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::DialplanAction_ActionDataEntry_DoNotUse, key_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::DialplanAction_ActionDataEntry_DoNotUse, value_),
+  0,
+  1,
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::DialplanAction, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::DialplanAction, _impl_.action_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::DialplanAction, _impl_.type_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::DialplanAction, _impl_.action_data_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::ResolveDialplanRequest, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -460,31 +467,6 @@ const uint32_t TableStruct_sentiric_2fdialplan_2fv1_2fdialplan_2eproto::offsets[
   PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::Dialplan, _impl_.tenant_id_),
   PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::Dialplan, _impl_.description_),
   PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::Dialplan, _impl_.action_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::DialplanAction, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::DialplanAction, _impl_.action_),
-  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::DialplanAction, _impl_.action_data_),
-  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::ActionData_DataEntry_DoNotUse, _has_bits_),
-  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::ActionData_DataEntry_DoNotUse, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::ActionData_DataEntry_DoNotUse, key_),
-  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::ActionData_DataEntry_DoNotUse, value_),
-  0,
-  1,
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::ActionData, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::ActionData, _impl_.data_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::CreateInboundRouteRequest, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -633,43 +615,41 @@ const uint32_t TableStruct_sentiric_2fdialplan_2fv1_2fdialplan_2eproto::offsets[
   PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::ListDialplansResponse, _impl_.total_count_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, -1, sizeof(::sentiric::dialplan::v1::ResolveDialplanRequest)},
-  { 8, 20, -1, sizeof(::sentiric::dialplan::v1::ResolveDialplanResponse)},
-  { 26, 39, -1, sizeof(::sentiric::dialplan::v1::InboundRoute)},
-  { 46, -1, -1, sizeof(::sentiric::dialplan::v1::Dialplan)},
-  { 56, -1, -1, sizeof(::sentiric::dialplan::v1::DialplanAction)},
-  { 64, 72, -1, sizeof(::sentiric::dialplan::v1::ActionData_DataEntry_DoNotUse)},
-  { 74, -1, -1, sizeof(::sentiric::dialplan::v1::ActionData)},
-  { 81, -1, -1, sizeof(::sentiric::dialplan::v1::CreateInboundRouteRequest)},
-  { 88, -1, -1, sizeof(::sentiric::dialplan::v1::CreateInboundRouteResponse)},
-  { 95, -1, -1, sizeof(::sentiric::dialplan::v1::GetInboundRouteRequest)},
-  { 102, -1, -1, sizeof(::sentiric::dialplan::v1::GetInboundRouteResponse)},
-  { 109, -1, -1, sizeof(::sentiric::dialplan::v1::UpdateInboundRouteRequest)},
-  { 116, -1, -1, sizeof(::sentiric::dialplan::v1::UpdateInboundRouteResponse)},
-  { 123, -1, -1, sizeof(::sentiric::dialplan::v1::DeleteInboundRouteRequest)},
-  { 130, -1, -1, sizeof(::sentiric::dialplan::v1::DeleteInboundRouteResponse)},
-  { 137, -1, -1, sizeof(::sentiric::dialplan::v1::ListInboundRoutesRequest)},
-  { 146, -1, -1, sizeof(::sentiric::dialplan::v1::ListInboundRoutesResponse)},
-  { 154, -1, -1, sizeof(::sentiric::dialplan::v1::CreateDialplanRequest)},
-  { 161, -1, -1, sizeof(::sentiric::dialplan::v1::CreateDialplanResponse)},
-  { 168, -1, -1, sizeof(::sentiric::dialplan::v1::GetDialplanRequest)},
-  { 175, -1, -1, sizeof(::sentiric::dialplan::v1::GetDialplanResponse)},
-  { 182, -1, -1, sizeof(::sentiric::dialplan::v1::UpdateDialplanRequest)},
-  { 189, -1, -1, sizeof(::sentiric::dialplan::v1::UpdateDialplanResponse)},
-  { 196, -1, -1, sizeof(::sentiric::dialplan::v1::DeleteDialplanRequest)},
-  { 203, -1, -1, sizeof(::sentiric::dialplan::v1::DeleteDialplanResponse)},
-  { 210, -1, -1, sizeof(::sentiric::dialplan::v1::ListDialplansRequest)},
-  { 219, -1, -1, sizeof(::sentiric::dialplan::v1::ListDialplansResponse)},
+  { 0, 8, -1, sizeof(::sentiric::dialplan::v1::DialplanAction_ActionDataEntry_DoNotUse)},
+  { 10, -1, -1, sizeof(::sentiric::dialplan::v1::DialplanAction)},
+  { 19, -1, -1, sizeof(::sentiric::dialplan::v1::ResolveDialplanRequest)},
+  { 27, 39, -1, sizeof(::sentiric::dialplan::v1::ResolveDialplanResponse)},
+  { 45, 58, -1, sizeof(::sentiric::dialplan::v1::InboundRoute)},
+  { 65, -1, -1, sizeof(::sentiric::dialplan::v1::Dialplan)},
+  { 75, -1, -1, sizeof(::sentiric::dialplan::v1::CreateInboundRouteRequest)},
+  { 82, -1, -1, sizeof(::sentiric::dialplan::v1::CreateInboundRouteResponse)},
+  { 89, -1, -1, sizeof(::sentiric::dialplan::v1::GetInboundRouteRequest)},
+  { 96, -1, -1, sizeof(::sentiric::dialplan::v1::GetInboundRouteResponse)},
+  { 103, -1, -1, sizeof(::sentiric::dialplan::v1::UpdateInboundRouteRequest)},
+  { 110, -1, -1, sizeof(::sentiric::dialplan::v1::UpdateInboundRouteResponse)},
+  { 117, -1, -1, sizeof(::sentiric::dialplan::v1::DeleteInboundRouteRequest)},
+  { 124, -1, -1, sizeof(::sentiric::dialplan::v1::DeleteInboundRouteResponse)},
+  { 131, -1, -1, sizeof(::sentiric::dialplan::v1::ListInboundRoutesRequest)},
+  { 140, -1, -1, sizeof(::sentiric::dialplan::v1::ListInboundRoutesResponse)},
+  { 148, -1, -1, sizeof(::sentiric::dialplan::v1::CreateDialplanRequest)},
+  { 155, -1, -1, sizeof(::sentiric::dialplan::v1::CreateDialplanResponse)},
+  { 162, -1, -1, sizeof(::sentiric::dialplan::v1::GetDialplanRequest)},
+  { 169, -1, -1, sizeof(::sentiric::dialplan::v1::GetDialplanResponse)},
+  { 176, -1, -1, sizeof(::sentiric::dialplan::v1::UpdateDialplanRequest)},
+  { 183, -1, -1, sizeof(::sentiric::dialplan::v1::UpdateDialplanResponse)},
+  { 190, -1, -1, sizeof(::sentiric::dialplan::v1::DeleteDialplanRequest)},
+  { 197, -1, -1, sizeof(::sentiric::dialplan::v1::DeleteDialplanResponse)},
+  { 204, -1, -1, sizeof(::sentiric::dialplan::v1::ListDialplansRequest)},
+  { 213, -1, -1, sizeof(::sentiric::dialplan::v1::ListDialplansResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
+  &::sentiric::dialplan::v1::_DialplanAction_ActionDataEntry_DoNotUse_default_instance_._instance,
+  &::sentiric::dialplan::v1::_DialplanAction_default_instance_._instance,
   &::sentiric::dialplan::v1::_ResolveDialplanRequest_default_instance_._instance,
   &::sentiric::dialplan::v1::_ResolveDialplanResponse_default_instance_._instance,
   &::sentiric::dialplan::v1::_InboundRoute_default_instance_._instance,
   &::sentiric::dialplan::v1::_Dialplan_default_instance_._instance,
-  &::sentiric::dialplan::v1::_DialplanAction_default_instance_._instance,
-  &::sentiric::dialplan::v1::_ActionData_DataEntry_DoNotUse_default_instance_._instance,
-  &::sentiric::dialplan::v1::_ActionData_default_instance_._instance,
   &::sentiric::dialplan::v1::_CreateInboundRouteRequest_default_instance_._instance,
   &::sentiric::dialplan::v1::_CreateInboundRouteResponse_default_instance_._instance,
   &::sentiric::dialplan::v1::_GetInboundRouteRequest_default_instance_._instance,
@@ -695,110 +675,115 @@ static const ::_pb::Message* const file_default_instances[] = {
 const char descriptor_table_protodef_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n#sentiric/dialplan/v1/dialplan.proto\022\024s"
   "entiric.dialplan.v1\032\033sentiric/user/v1/us"
-  "er.proto\"R\n\026ResolveDialplanRequest\022\034\n\024ca"
-  "ller_contact_value\030\001 \001(\t\022\032\n\022destination_"
-  "number\030\002 \001(\t\"\332\002\n\027ResolveDialplanResponse"
-  "\022\023\n\013dialplan_id\030\001 \001(\t\022\021\n\ttenant_id\030\002 \001(\t"
-  "\0224\n\006action\030\003 \001(\0132$.sentiric.dialplan.v1."
-  "DialplanAction\0221\n\014matched_user\030\004 \001(\0132\026.s"
-  "entiric.user.v1.UserH\000\210\001\001\0227\n\017matched_con"
-  "tact\030\005 \001(\0132\031.sentiric.user.v1.ContactH\001\210"
-  "\001\001\022>\n\rinbound_route\030\006 \001(\0132\".sentiric.dia"
-  "lplan.v1.InboundRouteH\002\210\001\001B\017\n\r_matched_u"
-  "serB\022\n\020_matched_contactB\020\n\016_inbound_rout"
-  "e\"\245\002\n\014InboundRoute\022\024\n\014phone_number\030\001 \001(\t"
-  "\022\021\n\ttenant_id\030\002 \001(\t\022\037\n\022active_dialplan_i"
-  "d\030\003 \001(\tH\000\210\001\001\022\"\n\025off_hours_dialplan_id\030\004 "
-  "\001(\tH\001\210\001\001\022!\n\024failsafe_dialplan_id\030\005 \001(\tH\002"
-  "\210\001\001\022\033\n\023is_maintenance_mode\030\006 \001(\010\022\035\n\025defa"
-  "ult_language_code\030\007 \001(\tB\025\n\023_active_dialp"
-  "lan_idB\030\n\026_off_hours_dialplan_idB\027\n\025_fai"
-  "lsafe_dialplan_id\"t\n\010Dialplan\022\n\n\002id\030\001 \001("
-  "\t\022\021\n\ttenant_id\030\002 \001(\t\022\023\n\013description\030\003 \001("
-  "\t\0224\n\006action\030\004 \001(\0132$.sentiric.dialplan.v1"
-  ".DialplanAction\"W\n\016DialplanAction\022\016\n\006act"
-  "ion\030\001 \001(\t\0225\n\013action_data\030\002 \001(\0132 .sentiri"
-  "c.dialplan.v1.ActionData\"s\n\nActionData\0228"
-  "\n\004data\030\001 \003(\0132*.sentiric.dialplan.v1.Acti"
-  "onData.DataEntry\032+\n\tDataEntry\022\013\n\003key\030\001 \001"
-  "(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"N\n\031CreateInboundRo"
-  "uteRequest\0221\n\005route\030\001 \001(\0132\".sentiric.dia"
-  "lplan.v1.InboundRoute\"O\n\032CreateInboundRo"
-  "uteResponse\0221\n\005route\030\001 \001(\0132\".sentiric.di"
-  "alplan.v1.InboundRoute\".\n\026GetInboundRout"
-  "eRequest\022\024\n\014phone_number\030\001 \001(\t\"L\n\027GetInb"
-  "oundRouteResponse\0221\n\005route\030\001 \001(\0132\".senti"
-  "ric.dialplan.v1.InboundRoute\"N\n\031UpdateIn"
-  "boundRouteRequest\0221\n\005route\030\001 \001(\0132\".senti"
-  "ric.dialplan.v1.InboundRoute\"O\n\032UpdateIn"
-  "boundRouteResponse\0221\n\005route\030\001 \001(\0132\".sent"
-  "iric.dialplan.v1.InboundRoute\"1\n\031DeleteI"
-  "nboundRouteRequest\022\024\n\014phone_number\030\001 \001(\t"
-  "\"-\n\032DeleteInboundRouteResponse\022\017\n\007succes"
-  "s\030\001 \001(\010\"N\n\030ListInboundRoutesRequest\022\021\n\tt"
-  "enant_id\030\001 \001(\t\022\021\n\tpage_size\030\002 \001(\005\022\014\n\004pag"
-  "e\030\003 \001(\005\"d\n\031ListInboundRoutesResponse\0222\n\006"
-  "routes\030\001 \003(\0132\".sentiric.dialplan.v1.Inbo"
-  "undRoute\022\023\n\013total_count\030\002 \001(\005\"I\n\025CreateD"
-  "ialplanRequest\0220\n\010dialplan\030\001 \001(\0132\036.senti"
-  "ric.dialplan.v1.Dialplan\"J\n\026CreateDialpl"
-  "anResponse\0220\n\010dialplan\030\001 \001(\0132\036.sentiric."
-  "dialplan.v1.Dialplan\" \n\022GetDialplanReque"
-  "st\022\n\n\002id\030\001 \001(\t\"G\n\023GetDialplanResponse\0220\n"
-  "\010dialplan\030\001 \001(\0132\036.sentiric.dialplan.v1.D"
-  "ialplan\"I\n\025UpdateDialplanRequest\0220\n\010dial"
-  "plan\030\001 \001(\0132\036.sentiric.dialplan.v1.Dialpl"
-  "an\"J\n\026UpdateDialplanResponse\0220\n\010dialplan"
-  "\030\001 \001(\0132\036.sentiric.dialplan.v1.Dialplan\"#"
-  "\n\025DeleteDialplanRequest\022\n\n\002id\030\001 \001(\t\")\n\026D"
-  "eleteDialplanResponse\022\017\n\007success\030\001 \001(\010\"J"
-  "\n\024ListDialplansRequest\022\021\n\ttenant_id\030\001 \001("
-  "\t\022\021\n\tpage_size\030\002 \001(\005\022\014\n\004page\030\003 \001(\005\"_\n\025Li"
-  "stDialplansResponse\0221\n\tdialplans\030\001 \003(\0132\036"
-  ".sentiric.dialplan.v1.Dialplan\022\023\n\013total_"
-  "count\030\002 \001(\0052\347\t\n\017DialplanService\022n\n\017Resol"
-  "veDialplan\022,.sentiric.dialplan.v1.Resolv"
-  "eDialplanRequest\032-.sentiric.dialplan.v1."
-  "ResolveDialplanResponse\022w\n\022CreateInbound"
-  "Route\022/.sentiric.dialplan.v1.CreateInbou"
-  "ndRouteRequest\0320.sentiric.dialplan.v1.Cr"
-  "eateInboundRouteResponse\022n\n\017GetInboundRo"
-  "ute\022,.sentiric.dialplan.v1.GetInboundRou"
-  "teRequest\032-.sentiric.dialplan.v1.GetInbo"
-  "undRouteResponse\022w\n\022UpdateInboundRoute\022/"
-  ".sentiric.dialplan.v1.UpdateInboundRoute"
-  "Request\0320.sentiric.dialplan.v1.UpdateInb"
-  "oundRouteResponse\022w\n\022DeleteInboundRoute\022"
-  "/.sentiric.dialplan.v1.DeleteInboundRout"
-  "eRequest\0320.sentiric.dialplan.v1.DeleteIn"
-  "boundRouteResponse\022t\n\021ListInboundRoutes\022"
-  "..sentiric.dialplan.v1.ListInboundRoutes"
-  "Request\032/.sentiric.dialplan.v1.ListInbou"
-  "ndRoutesResponse\022k\n\016CreateDialplan\022+.sen"
-  "tiric.dialplan.v1.CreateDialplanRequest\032"
-  ",.sentiric.dialplan.v1.CreateDialplanRes"
-  "ponse\022b\n\013GetDialplan\022(.sentiric.dialplan"
-  ".v1.GetDialplanRequest\032).sentiric.dialpl"
-  "an.v1.GetDialplanResponse\022k\n\016UpdateDialp"
-  "lan\022+.sentiric.dialplan.v1.UpdateDialpla"
-  "nRequest\032,.sentiric.dialplan.v1.UpdateDi"
-  "alplanResponse\022k\n\016DeleteDialplan\022+.senti"
-  "ric.dialplan.v1.DeleteDialplanRequest\032,."
-  "sentiric.dialplan.v1.DeleteDialplanRespo"
-  "nse\022h\n\rListDialplans\022*.sentiric.dialplan"
-  ".v1.ListDialplansRequest\032+.sentiric.dial"
-  "plan.v1.ListDialplansResponseBOZMgithub."
-  "com/sentiric/sentiric-contracts/gen/go/s"
-  "entiric/dialplan/v1;dialplanv1b\006proto3"
+  "er.proto\"\316\001\n\016DialplanAction\022\016\n\006action\030\001 "
+  "\001(\t\022.\n\004type\030\002 \001(\0162 .sentiric.dialplan.v1"
+  ".ActionType\022I\n\013action_data\030\003 \003(\01324.senti"
+  "ric.dialplan.v1.DialplanAction.ActionDat"
+  "aEntry\0321\n\017ActionDataEntry\022\013\n\003key\030\001 \001(\t\022\r"
+  "\n\005value\030\002 \001(\t:\0028\001\"R\n\026ResolveDialplanRequ"
+  "est\022\034\n\024caller_contact_value\030\001 \001(\t\022\032\n\022des"
+  "tination_number\030\002 \001(\t\"\332\002\n\027ResolveDialpla"
+  "nResponse\022\023\n\013dialplan_id\030\001 \001(\t\022\021\n\ttenant"
+  "_id\030\002 \001(\t\0224\n\006action\030\003 \001(\0132$.sentiric.dia"
+  "lplan.v1.DialplanAction\0221\n\014matched_user\030"
+  "\004 \001(\0132\026.sentiric.user.v1.UserH\000\210\001\001\0227\n\017ma"
+  "tched_contact\030\005 \001(\0132\031.sentiric.user.v1.C"
+  "ontactH\001\210\001\001\022>\n\rinbound_route\030\006 \001(\0132\".sen"
+  "tiric.dialplan.v1.InboundRouteH\002\210\001\001B\017\n\r_"
+  "matched_userB\022\n\020_matched_contactB\020\n\016_inb"
+  "ound_route\"\245\002\n\014InboundRoute\022\024\n\014phone_num"
+  "ber\030\001 \001(\t\022\021\n\ttenant_id\030\002 \001(\t\022\037\n\022active_d"
+  "ialplan_id\030\003 \001(\tH\000\210\001\001\022\"\n\025off_hours_dialp"
+  "lan_id\030\004 \001(\tH\001\210\001\001\022!\n\024failsafe_dialplan_i"
+  "d\030\005 \001(\tH\002\210\001\001\022\033\n\023is_maintenance_mode\030\006 \001("
+  "\010\022\035\n\025default_language_code\030\007 \001(\tB\025\n\023_act"
+  "ive_dialplan_idB\030\n\026_off_hours_dialplan_i"
+  "dB\027\n\025_failsafe_dialplan_id\"t\n\010Dialplan\022\n"
+  "\n\002id\030\001 \001(\t\022\021\n\ttenant_id\030\002 \001(\t\022\023\n\013descrip"
+  "tion\030\003 \001(\t\0224\n\006action\030\004 \001(\0132$.sentiric.di"
+  "alplan.v1.DialplanAction\"N\n\031CreateInboun"
+  "dRouteRequest\0221\n\005route\030\001 \001(\0132\".sentiric."
+  "dialplan.v1.InboundRoute\"O\n\032CreateInboun"
+  "dRouteResponse\0221\n\005route\030\001 \001(\0132\".sentiric"
+  ".dialplan.v1.InboundRoute\".\n\026GetInboundR"
+  "outeRequest\022\024\n\014phone_number\030\001 \001(\t\"L\n\027Get"
+  "InboundRouteResponse\0221\n\005route\030\001 \001(\0132\".se"
+  "ntiric.dialplan.v1.InboundRoute\"N\n\031Updat"
+  "eInboundRouteRequest\0221\n\005route\030\001 \001(\0132\".se"
+  "ntiric.dialplan.v1.InboundRoute\"O\n\032Updat"
+  "eInboundRouteResponse\0221\n\005route\030\001 \001(\0132\".s"
+  "entiric.dialplan.v1.InboundRoute\"1\n\031Dele"
+  "teInboundRouteRequest\022\024\n\014phone_number\030\001 "
+  "\001(\t\"-\n\032DeleteInboundRouteResponse\022\017\n\007suc"
+  "cess\030\001 \001(\010\"N\n\030ListInboundRoutesRequest\022\021"
+  "\n\ttenant_id\030\001 \001(\t\022\021\n\tpage_size\030\002 \001(\005\022\014\n\004"
+  "page\030\003 \001(\005\"d\n\031ListInboundRoutesResponse\022"
+  "2\n\006routes\030\001 \003(\0132\".sentiric.dialplan.v1.I"
+  "nboundRoute\022\023\n\013total_count\030\002 \001(\005\"I\n\025Crea"
+  "teDialplanRequest\0220\n\010dialplan\030\001 \001(\0132\036.se"
+  "ntiric.dialplan.v1.Dialplan\"J\n\026CreateDia"
+  "lplanResponse\0220\n\010dialplan\030\001 \001(\0132\036.sentir"
+  "ic.dialplan.v1.Dialplan\" \n\022GetDialplanRe"
+  "quest\022\n\n\002id\030\001 \001(\t\"G\n\023GetDialplanResponse"
+  "\0220\n\010dialplan\030\001 \001(\0132\036.sentiric.dialplan.v"
+  "1.Dialplan\"I\n\025UpdateDialplanRequest\0220\n\010d"
+  "ialplan\030\001 \001(\0132\036.sentiric.dialplan.v1.Dia"
+  "lplan\"J\n\026UpdateDialplanResponse\0220\n\010dialp"
+  "lan\030\001 \001(\0132\036.sentiric.dialplan.v1.Dialpla"
+  "n\"#\n\025DeleteDialplanRequest\022\n\n\002id\030\001 \001(\t\")"
+  "\n\026DeleteDialplanResponse\022\017\n\007success\030\001 \001("
+  "\010\"J\n\024ListDialplansRequest\022\021\n\ttenant_id\030\001"
+  " \001(\t\022\021\n\tpage_size\030\002 \001(\005\022\014\n\004page\030\003 \001(\005\"_\n"
+  "\025ListDialplansResponse\0221\n\tdialplans\030\001 \003("
+  "\0132\036.sentiric.dialplan.v1.Dialplan\022\023\n\013tot"
+  "al_count\030\002 \001(\005*\262\001\n\nActionType\022\033\n\027ACTION_"
+  "TYPE_UNSPECIFIED\020\000\022%\n!ACTION_TYPE_START_"
+  "AI_CONVERSATION\020\001\022\033\n\027ACTION_TYPE_BRIDGE_"
+  "CALL\020\002\022\031\n\025ACTION_TYPE_ECHO_TEST\020\003\022(\n$ACT"
+  "ION_TYPE_PLAY_STATIC_ANNOUNCEMENT\020\0042\347\t\n\017"
+  "DialplanService\022n\n\017ResolveDialplan\022,.sen"
+  "tiric.dialplan.v1.ResolveDialplanRequest"
+  "\032-.sentiric.dialplan.v1.ResolveDialplanR"
+  "esponse\022w\n\022CreateInboundRoute\022/.sentiric"
+  ".dialplan.v1.CreateInboundRouteRequest\0320"
+  ".sentiric.dialplan.v1.CreateInboundRoute"
+  "Response\022n\n\017GetInboundRoute\022,.sentiric.d"
+  "ialplan.v1.GetInboundRouteRequest\032-.sent"
+  "iric.dialplan.v1.GetInboundRouteResponse"
+  "\022w\n\022UpdateInboundRoute\022/.sentiric.dialpl"
+  "an.v1.UpdateInboundRouteRequest\0320.sentir"
+  "ic.dialplan.v1.UpdateInboundRouteRespons"
+  "e\022w\n\022DeleteInboundRoute\022/.sentiric.dialp"
+  "lan.v1.DeleteInboundRouteRequest\0320.senti"
+  "ric.dialplan.v1.DeleteInboundRouteRespon"
+  "se\022t\n\021ListInboundRoutes\022..sentiric.dialp"
+  "lan.v1.ListInboundRoutesRequest\032/.sentir"
+  "ic.dialplan.v1.ListInboundRoutesResponse"
+  "\022k\n\016CreateDialplan\022+.sentiric.dialplan.v"
+  "1.CreateDialplanRequest\032,.sentiric.dialp"
+  "lan.v1.CreateDialplanResponse\022b\n\013GetDial"
+  "plan\022(.sentiric.dialplan.v1.GetDialplanR"
+  "equest\032).sentiric.dialplan.v1.GetDialpla"
+  "nResponse\022k\n\016UpdateDialplan\022+.sentiric.d"
+  "ialplan.v1.UpdateDialplanRequest\032,.senti"
+  "ric.dialplan.v1.UpdateDialplanResponse\022k"
+  "\n\016DeleteDialplan\022+.sentiric.dialplan.v1."
+  "DeleteDialplanRequest\032,.sentiric.dialpla"
+  "n.v1.DeleteDialplanResponse\022h\n\rListDialp"
+  "lans\022*.sentiric.dialplan.v1.ListDialplan"
+  "sRequest\032+.sentiric.dialplan.v1.ListDial"
+  "plansResponseBOZMgithub.com/sentiric/sen"
+  "tiric-contracts/gen/go/sentiric/dialplan"
+  "/v1;dialplanv1b\006proto3"
   ;
 static const ::_pbi::DescriptorTable* const descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_deps[1] = {
   &::descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto,
 };
 static ::_pbi::once_flag descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto = {
-    false, false, 3878, descriptor_table_protodef_sentiric_2fdialplan_2fv1_2fdialplan_2eproto,
+    false, false, 4062, descriptor_table_protodef_sentiric_2fdialplan_2fv1_2fdialplan_2eproto,
     "sentiric/dialplan/v1/dialplan.proto",
-    &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once, descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_deps, 1, 27,
+    &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once, descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_deps, 1, 26,
     schemas, file_default_instances, TableStruct_sentiric_2fdialplan_2fv1_2fdialplan_2eproto::offsets,
     file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto, file_level_enum_descriptors_sentiric_2fdialplan_2fv1_2fdialplan_2eproto,
     file_level_service_descriptors_sentiric_2fdialplan_2fv1_2fdialplan_2eproto,
@@ -812,6 +797,338 @@ PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_in
 namespace sentiric {
 namespace dialplan {
 namespace v1 {
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* ActionType_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto);
+  return file_level_enum_descriptors_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[0];
+}
+bool ActionType_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+      return true;
+    default:
+      return false;
+  }
+}
+
+
+// ===================================================================
+
+DialplanAction_ActionDataEntry_DoNotUse::DialplanAction_ActionDataEntry_DoNotUse() {}
+DialplanAction_ActionDataEntry_DoNotUse::DialplanAction_ActionDataEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+    : SuperType(arena) {}
+void DialplanAction_ActionDataEntry_DoNotUse::MergeFrom(const DialplanAction_ActionDataEntry_DoNotUse& other) {
+  MergeFromInternal(other);
+}
+::PROTOBUF_NAMESPACE_ID::Metadata DialplanAction_ActionDataEntry_DoNotUse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[0]);
+}
+
+// ===================================================================
+
+class DialplanAction::_Internal {
+ public:
+};
+
+DialplanAction::DialplanAction(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  if (arena != nullptr && !is_message_owned) {
+    arena->OwnCustomDestructor(this, &DialplanAction::ArenaDtor);
+  }
+  // @@protoc_insertion_point(arena_constructor:sentiric.dialplan.v1.DialplanAction)
+}
+DialplanAction::DialplanAction(const DialplanAction& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  DialplanAction* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      /*decltype(_impl_.action_data_)*/{}
+    , decltype(_impl_.action_){}
+    , decltype(_impl_.type_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_impl_.action_data_.MergeFrom(from._impl_.action_data_);
+  _impl_.action_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.action_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_action().empty()) {
+    _this->_impl_.action_.Set(from._internal_action(), 
+      _this->GetArenaForAllocation());
+  }
+  _this->_impl_.type_ = from._impl_.type_;
+  // @@protoc_insertion_point(copy_constructor:sentiric.dialplan.v1.DialplanAction)
+}
+
+inline void DialplanAction::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      /*decltype(_impl_.action_data_)*/{::_pbi::ArenaInitialized(), arena}
+    , decltype(_impl_.action_){}
+    , decltype(_impl_.type_){0}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.action_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.action_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+DialplanAction::~DialplanAction() {
+  // @@protoc_insertion_point(destructor:sentiric.dialplan.v1.DialplanAction)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    ArenaDtor(this);
+    return;
+  }
+  SharedDtor();
+}
+
+inline void DialplanAction::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.action_data_.Destruct();
+  _impl_.action_data_.~MapField();
+  _impl_.action_.Destroy();
+}
+
+void DialplanAction::ArenaDtor(void* object) {
+  DialplanAction* _this = reinterpret_cast< DialplanAction* >(object);
+  _this->_impl_.action_data_.Destruct();
+}
+void DialplanAction::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void DialplanAction::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.dialplan.v1.DialplanAction)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.action_data_.Clear();
+  _impl_.action_.ClearToEmpty();
+  _impl_.type_ = 0;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* DialplanAction::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string action = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_action();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.dialplan.v1.DialplanAction.action"));
+        } else
+          goto handle_unusual;
+        continue;
+      // .sentiric.dialplan.v1.ActionType type = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+          _internal_set_type(static_cast<::sentiric::dialplan::v1::ActionType>(val));
+        } else
+          goto handle_unusual;
+        continue;
+      // map<string, string> action_data = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(&_impl_.action_data_, ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* DialplanAction::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.dialplan.v1.DialplanAction)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string action = 1;
+  if (!this->_internal_action().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_action().data(), static_cast<int>(this->_internal_action().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.dialplan.v1.DialplanAction.action");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_action(), target);
+  }
+
+  // .sentiric.dialplan.v1.ActionType type = 2;
+  if (this->_internal_type() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
+      2, this->_internal_type(), target);
+  }
+
+  // map<string, string> action_data = 3;
+  if (!this->_internal_action_data().empty()) {
+    using MapType = ::_pb::Map<std::string, std::string>;
+    using WireHelper = DialplanAction_ActionDataEntry_DoNotUse::Funcs;
+    const auto& map_field = this->_internal_action_data();
+    auto check_utf8 = [](const MapType::value_type& entry) {
+      (void)entry;
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+        entry.first.data(), static_cast<int>(entry.first.length()),
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+        "sentiric.dialplan.v1.DialplanAction.ActionDataEntry.key");
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+        entry.second.data(), static_cast<int>(entry.second.length()),
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+        "sentiric.dialplan.v1.DialplanAction.ActionDataEntry.value");
+    };
+
+    if (stream->IsSerializationDeterministic() && map_field.size() > 1) {
+      for (const auto& entry : ::_pbi::MapSorterPtr<MapType>(map_field)) {
+        target = WireHelper::InternalSerialize(3, entry.first, entry.second, target, stream);
+        check_utf8(entry);
+      }
+    } else {
+      for (const auto& entry : map_field) {
+        target = WireHelper::InternalSerialize(3, entry.first, entry.second, target, stream);
+        check_utf8(entry);
+      }
+    }
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.dialplan.v1.DialplanAction)
+  return target;
+}
+
+size_t DialplanAction::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.dialplan.v1.DialplanAction)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // map<string, string> action_data = 3;
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_action_data_size());
+  for (::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::const_iterator
+      it = this->_internal_action_data().begin();
+      it != this->_internal_action_data().end(); ++it) {
+    total_size += DialplanAction_ActionDataEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
+  }
+
+  // string action = 1;
+  if (!this->_internal_action().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_action());
+  }
+
+  // .sentiric.dialplan.v1.ActionType type = 2;
+  if (this->_internal_type() != 0) {
+    total_size += 1 +
+      ::_pbi::WireFormatLite::EnumSize(this->_internal_type());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DialplanAction::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    DialplanAction::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DialplanAction::GetClassData() const { return &_class_data_; }
+
+
+void DialplanAction::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<DialplanAction*>(&to_msg);
+  auto& from = static_cast<const DialplanAction&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.dialplan.v1.DialplanAction)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_impl_.action_data_.MergeFrom(from._impl_.action_data_);
+  if (!from._internal_action().empty()) {
+    _this->_internal_set_action(from._internal_action());
+  }
+  if (from._internal_type() != 0) {
+    _this->_internal_set_type(from._internal_type());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void DialplanAction::CopyFrom(const DialplanAction& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.dialplan.v1.DialplanAction)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool DialplanAction::IsInitialized() const {
+  return true;
+}
+
+void DialplanAction::InternalSwap(DialplanAction* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.action_data_.InternalSwap(&other->_impl_.action_data_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.action_, lhs_arena,
+      &other->_impl_.action_, rhs_arena
+  );
+  swap(_impl_.type_, other->_impl_.type_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata DialplanAction::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[1]);
+}
 
 // ===================================================================
 
@@ -1063,7 +1380,7 @@ void ResolveDialplanRequest::InternalSwap(ResolveDialplanRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ResolveDialplanRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[0]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[2]);
 }
 
 // ===================================================================
@@ -1519,7 +1836,7 @@ void ResolveDialplanResponse::InternalSwap(ResolveDialplanResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ResolveDialplanResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[1]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[3]);
 }
 
 // ===================================================================
@@ -2030,7 +2347,7 @@ void InboundRoute::InternalSwap(InboundRoute* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata InboundRoute::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[2]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[4]);
 }
 
 // ===================================================================
@@ -2375,485 +2692,7 @@ void Dialplan::InternalSwap(Dialplan* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata Dialplan::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[3]);
-}
-
-// ===================================================================
-
-class DialplanAction::_Internal {
- public:
-  static const ::sentiric::dialplan::v1::ActionData& action_data(const DialplanAction* msg);
-};
-
-const ::sentiric::dialplan::v1::ActionData&
-DialplanAction::_Internal::action_data(const DialplanAction* msg) {
-  return *msg->_impl_.action_data_;
-}
-DialplanAction::DialplanAction(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor(arena, is_message_owned);
-  // @@protoc_insertion_point(arena_constructor:sentiric.dialplan.v1.DialplanAction)
-}
-DialplanAction::DialplanAction(const DialplanAction& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  DialplanAction* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.action_){}
-    , decltype(_impl_.action_data_){nullptr}
-    , /*decltype(_impl_._cached_size_)*/{}};
-
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  _impl_.action_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.action_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_action().empty()) {
-    _this->_impl_.action_.Set(from._internal_action(), 
-      _this->GetArenaForAllocation());
-  }
-  if (from._internal_has_action_data()) {
-    _this->_impl_.action_data_ = new ::sentiric::dialplan::v1::ActionData(*from._impl_.action_data_);
-  }
-  // @@protoc_insertion_point(copy_constructor:sentiric.dialplan.v1.DialplanAction)
-}
-
-inline void DialplanAction::SharedCtor(
-    ::_pb::Arena* arena, bool is_message_owned) {
-  (void)arena;
-  (void)is_message_owned;
-  new (&_impl_) Impl_{
-      decltype(_impl_.action_){}
-    , decltype(_impl_.action_data_){nullptr}
-    , /*decltype(_impl_._cached_size_)*/{}
-  };
-  _impl_.action_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.action_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-}
-
-DialplanAction::~DialplanAction() {
-  // @@protoc_insertion_point(destructor:sentiric.dialplan.v1.DialplanAction)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
-  SharedDtor();
-}
-
-inline void DialplanAction::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.action_.Destroy();
-  if (this != internal_default_instance()) delete _impl_.action_data_;
-}
-
-void DialplanAction::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
-}
-
-void DialplanAction::Clear() {
-// @@protoc_insertion_point(message_clear_start:sentiric.dialplan.v1.DialplanAction)
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  _impl_.action_.ClearToEmpty();
-  if (GetArenaForAllocation() == nullptr && _impl_.action_data_ != nullptr) {
-    delete _impl_.action_data_;
-  }
-  _impl_.action_data_ = nullptr;
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-const char* DialplanAction::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // string action = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          auto str = _internal_mutable_action();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "sentiric.dialplan.v1.DialplanAction.action"));
-        } else
-          goto handle_unusual;
-        continue;
-      // .sentiric.dialplan.v1.ActionData action_data = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
-          ptr = ctx->ParseMessage(_internal_mutable_action_data(), ptr);
-          CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
-}
-
-uint8_t* DialplanAction::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:sentiric.dialplan.v1.DialplanAction)
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string action = 1;
-  if (!this->_internal_action().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_action().data(), static_cast<int>(this->_internal_action().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "sentiric.dialplan.v1.DialplanAction.action");
-    target = stream->WriteStringMaybeAliased(
-        1, this->_internal_action(), target);
-  }
-
-  // .sentiric.dialplan.v1.ActionData action_data = 2;
-  if (this->_internal_has_action_data()) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(2, _Internal::action_data(this),
-        _Internal::action_data(this).GetCachedSize(), target, stream);
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:sentiric.dialplan.v1.DialplanAction)
-  return target;
-}
-
-size_t DialplanAction::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:sentiric.dialplan.v1.DialplanAction)
-  size_t total_size = 0;
-
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  // string action = 1;
-  if (!this->_internal_action().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_action());
-  }
-
-  // .sentiric.dialplan.v1.ActionData action_data = 2;
-  if (this->_internal_has_action_data()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *_impl_.action_data_);
-  }
-
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
-}
-
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DialplanAction::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    DialplanAction::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DialplanAction::GetClassData() const { return &_class_data_; }
-
-
-void DialplanAction::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<DialplanAction*>(&to_msg);
-  auto& from = static_cast<const DialplanAction&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.dialplan.v1.DialplanAction)
-  GOOGLE_DCHECK_NE(&from, _this);
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  if (!from._internal_action().empty()) {
-    _this->_internal_set_action(from._internal_action());
-  }
-  if (from._internal_has_action_data()) {
-    _this->_internal_mutable_action_data()->::sentiric::dialplan::v1::ActionData::MergeFrom(
-        from._internal_action_data());
-  }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void DialplanAction::CopyFrom(const DialplanAction& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.dialplan.v1.DialplanAction)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool DialplanAction::IsInitialized() const {
-  return true;
-}
-
-void DialplanAction::InternalSwap(DialplanAction* other) {
-  using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.action_, lhs_arena,
-      &other->_impl_.action_, rhs_arena
-  );
-  swap(_impl_.action_data_, other->_impl_.action_data_);
-}
-
-::PROTOBUF_NAMESPACE_ID::Metadata DialplanAction::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
-      &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[4]);
-}
-
-// ===================================================================
-
-ActionData_DataEntry_DoNotUse::ActionData_DataEntry_DoNotUse() {}
-ActionData_DataEntry_DoNotUse::ActionData_DataEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
-    : SuperType(arena) {}
-void ActionData_DataEntry_DoNotUse::MergeFrom(const ActionData_DataEntry_DoNotUse& other) {
-  MergeFromInternal(other);
-}
-::PROTOBUF_NAMESPACE_ID::Metadata ActionData_DataEntry_DoNotUse::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
-      &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
       file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[5]);
-}
-
-// ===================================================================
-
-class ActionData::_Internal {
- public:
-};
-
-ActionData::ActionData(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor(arena, is_message_owned);
-  if (arena != nullptr && !is_message_owned) {
-    arena->OwnCustomDestructor(this, &ActionData::ArenaDtor);
-  }
-  // @@protoc_insertion_point(arena_constructor:sentiric.dialplan.v1.ActionData)
-}
-ActionData::ActionData(const ActionData& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  ActionData* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      /*decltype(_impl_.data_)*/{}
-    , /*decltype(_impl_._cached_size_)*/{}};
-
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  _this->_impl_.data_.MergeFrom(from._impl_.data_);
-  // @@protoc_insertion_point(copy_constructor:sentiric.dialplan.v1.ActionData)
-}
-
-inline void ActionData::SharedCtor(
-    ::_pb::Arena* arena, bool is_message_owned) {
-  (void)arena;
-  (void)is_message_owned;
-  new (&_impl_) Impl_{
-      /*decltype(_impl_.data_)*/{::_pbi::ArenaInitialized(), arena}
-    , /*decltype(_impl_._cached_size_)*/{}
-  };
-}
-
-ActionData::~ActionData() {
-  // @@protoc_insertion_point(destructor:sentiric.dialplan.v1.ActionData)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    ArenaDtor(this);
-    return;
-  }
-  SharedDtor();
-}
-
-inline void ActionData::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.data_.Destruct();
-  _impl_.data_.~MapField();
-}
-
-void ActionData::ArenaDtor(void* object) {
-  ActionData* _this = reinterpret_cast< ActionData* >(object);
-  _this->_impl_.data_.Destruct();
-}
-void ActionData::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
-}
-
-void ActionData::Clear() {
-// @@protoc_insertion_point(message_clear_start:sentiric.dialplan.v1.ActionData)
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  _impl_.data_.Clear();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-const char* ActionData::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // map<string, string> data = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          ptr -= 1;
-          do {
-            ptr += 1;
-            ptr = ctx->ParseMessage(&_impl_.data_, ptr);
-            CHK_(ptr);
-            if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
-        } else
-          goto handle_unusual;
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
-}
-
-uint8_t* ActionData::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:sentiric.dialplan.v1.ActionData)
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // map<string, string> data = 1;
-  if (!this->_internal_data().empty()) {
-    using MapType = ::_pb::Map<std::string, std::string>;
-    using WireHelper = ActionData_DataEntry_DoNotUse::Funcs;
-    const auto& map_field = this->_internal_data();
-    auto check_utf8 = [](const MapType::value_type& entry) {
-      (void)entry;
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        entry.first.data(), static_cast<int>(entry.first.length()),
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-        "sentiric.dialplan.v1.ActionData.DataEntry.key");
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-        entry.second.data(), static_cast<int>(entry.second.length()),
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-        "sentiric.dialplan.v1.ActionData.DataEntry.value");
-    };
-
-    if (stream->IsSerializationDeterministic() && map_field.size() > 1) {
-      for (const auto& entry : ::_pbi::MapSorterPtr<MapType>(map_field)) {
-        target = WireHelper::InternalSerialize(1, entry.first, entry.second, target, stream);
-        check_utf8(entry);
-      }
-    } else {
-      for (const auto& entry : map_field) {
-        target = WireHelper::InternalSerialize(1, entry.first, entry.second, target, stream);
-        check_utf8(entry);
-      }
-    }
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:sentiric.dialplan.v1.ActionData)
-  return target;
-}
-
-size_t ActionData::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:sentiric.dialplan.v1.ActionData)
-  size_t total_size = 0;
-
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  // map<string, string> data = 1;
-  total_size += 1 *
-      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_data_size());
-  for (::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::const_iterator
-      it = this->_internal_data().begin();
-      it != this->_internal_data().end(); ++it) {
-    total_size += ActionData_DataEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
-  }
-
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
-}
-
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ActionData::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    ActionData::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ActionData::GetClassData() const { return &_class_data_; }
-
-
-void ActionData::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<ActionData*>(&to_msg);
-  auto& from = static_cast<const ActionData&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.dialplan.v1.ActionData)
-  GOOGLE_DCHECK_NE(&from, _this);
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  _this->_impl_.data_.MergeFrom(from._impl_.data_);
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-}
-
-void ActionData::CopyFrom(const ActionData& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.dialplan.v1.ActionData)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool ActionData::IsInitialized() const {
-  return true;
-}
-
-void ActionData::InternalSwap(ActionData* other) {
-  using std::swap;
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  _impl_.data_.InternalSwap(&other->_impl_.data_);
-}
-
-::PROTOBUF_NAMESPACE_ID::Metadata ActionData::GetMetadata() const {
-  return ::_pbi::AssignDescriptors(
-      &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[6]);
 }
 
 // ===================================================================
@@ -3046,7 +2885,7 @@ void CreateInboundRouteRequest::InternalSwap(CreateInboundRouteRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata CreateInboundRouteRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[7]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[6]);
 }
 
 // ===================================================================
@@ -3239,7 +3078,7 @@ void CreateInboundRouteResponse::InternalSwap(CreateInboundRouteResponse* other)
 ::PROTOBUF_NAMESPACE_ID::Metadata CreateInboundRouteResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[8]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[7]);
 }
 
 // ===================================================================
@@ -3442,7 +3281,7 @@ void GetInboundRouteRequest::InternalSwap(GetInboundRouteRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata GetInboundRouteRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[9]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[8]);
 }
 
 // ===================================================================
@@ -3635,7 +3474,7 @@ void GetInboundRouteResponse::InternalSwap(GetInboundRouteResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata GetInboundRouteResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[10]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[9]);
 }
 
 // ===================================================================
@@ -3828,7 +3667,7 @@ void UpdateInboundRouteRequest::InternalSwap(UpdateInboundRouteRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata UpdateInboundRouteRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[11]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[10]);
 }
 
 // ===================================================================
@@ -4021,7 +3860,7 @@ void UpdateInboundRouteResponse::InternalSwap(UpdateInboundRouteResponse* other)
 ::PROTOBUF_NAMESPACE_ID::Metadata UpdateInboundRouteResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[12]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[11]);
 }
 
 // ===================================================================
@@ -4224,7 +4063,7 @@ void DeleteInboundRouteRequest::InternalSwap(DeleteInboundRouteRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DeleteInboundRouteRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[13]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[12]);
 }
 
 // ===================================================================
@@ -4402,7 +4241,7 @@ void DeleteInboundRouteResponse::InternalSwap(DeleteInboundRouteResponse* other)
 ::PROTOBUF_NAMESPACE_ID::Metadata DeleteInboundRouteResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[14]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[13]);
 }
 
 // ===================================================================
@@ -4665,7 +4504,7 @@ void ListInboundRoutesRequest::InternalSwap(ListInboundRoutesRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ListInboundRoutesRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[15]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[14]);
 }
 
 // ===================================================================
@@ -4877,7 +4716,7 @@ void ListInboundRoutesResponse::InternalSwap(ListInboundRoutesResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ListInboundRoutesResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[16]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[15]);
 }
 
 // ===================================================================
@@ -5070,7 +4909,7 @@ void CreateDialplanRequest::InternalSwap(CreateDialplanRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata CreateDialplanRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[17]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[16]);
 }
 
 // ===================================================================
@@ -5263,7 +5102,7 @@ void CreateDialplanResponse::InternalSwap(CreateDialplanResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata CreateDialplanResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[18]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[17]);
 }
 
 // ===================================================================
@@ -5466,7 +5305,7 @@ void GetDialplanRequest::InternalSwap(GetDialplanRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata GetDialplanRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[19]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[18]);
 }
 
 // ===================================================================
@@ -5659,7 +5498,7 @@ void GetDialplanResponse::InternalSwap(GetDialplanResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata GetDialplanResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[20]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[19]);
 }
 
 // ===================================================================
@@ -5852,7 +5691,7 @@ void UpdateDialplanRequest::InternalSwap(UpdateDialplanRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata UpdateDialplanRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[21]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[20]);
 }
 
 // ===================================================================
@@ -6045,7 +5884,7 @@ void UpdateDialplanResponse::InternalSwap(UpdateDialplanResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata UpdateDialplanResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[22]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[21]);
 }
 
 // ===================================================================
@@ -6248,7 +6087,7 @@ void DeleteDialplanRequest::InternalSwap(DeleteDialplanRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DeleteDialplanRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[23]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[22]);
 }
 
 // ===================================================================
@@ -6426,7 +6265,7 @@ void DeleteDialplanResponse::InternalSwap(DeleteDialplanResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DeleteDialplanResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[24]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[23]);
 }
 
 // ===================================================================
@@ -6689,7 +6528,7 @@ void ListDialplansRequest::InternalSwap(ListDialplansRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ListDialplansRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[25]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[24]);
 }
 
 // ===================================================================
@@ -6901,7 +6740,7 @@ void ListDialplansResponse::InternalSwap(ListDialplansResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ListDialplansResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[26]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[25]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -6909,6 +6748,14 @@ void ListDialplansResponse::InternalSwap(ListDialplansResponse* other) {
 }  // namespace dialplan
 }  // namespace sentiric
 PROTOBUF_NAMESPACE_OPEN
+template<> PROTOBUF_NOINLINE ::sentiric::dialplan::v1::DialplanAction_ActionDataEntry_DoNotUse*
+Arena::CreateMaybeMessage< ::sentiric::dialplan::v1::DialplanAction_ActionDataEntry_DoNotUse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::dialplan::v1::DialplanAction_ActionDataEntry_DoNotUse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::dialplan::v1::DialplanAction*
+Arena::CreateMaybeMessage< ::sentiric::dialplan::v1::DialplanAction >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::dialplan::v1::DialplanAction >(arena);
+}
 template<> PROTOBUF_NOINLINE ::sentiric::dialplan::v1::ResolveDialplanRequest*
 Arena::CreateMaybeMessage< ::sentiric::dialplan::v1::ResolveDialplanRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::sentiric::dialplan::v1::ResolveDialplanRequest >(arena);
@@ -6924,18 +6771,6 @@ Arena::CreateMaybeMessage< ::sentiric::dialplan::v1::InboundRoute >(Arena* arena
 template<> PROTOBUF_NOINLINE ::sentiric::dialplan::v1::Dialplan*
 Arena::CreateMaybeMessage< ::sentiric::dialplan::v1::Dialplan >(Arena* arena) {
   return Arena::CreateMessageInternal< ::sentiric::dialplan::v1::Dialplan >(arena);
-}
-template<> PROTOBUF_NOINLINE ::sentiric::dialplan::v1::DialplanAction*
-Arena::CreateMaybeMessage< ::sentiric::dialplan::v1::DialplanAction >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::sentiric::dialplan::v1::DialplanAction >(arena);
-}
-template<> PROTOBUF_NOINLINE ::sentiric::dialplan::v1::ActionData_DataEntry_DoNotUse*
-Arena::CreateMaybeMessage< ::sentiric::dialplan::v1::ActionData_DataEntry_DoNotUse >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::sentiric::dialplan::v1::ActionData_DataEntry_DoNotUse >(arena);
-}
-template<> PROTOBUF_NOINLINE ::sentiric::dialplan::v1::ActionData*
-Arena::CreateMaybeMessage< ::sentiric::dialplan::v1::ActionData >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::sentiric::dialplan::v1::ActionData >(arena);
 }
 template<> PROTOBUF_NOINLINE ::sentiric::dialplan::v1::CreateInboundRouteRequest*
 Arena::CreateMaybeMessage< ::sentiric::dialplan::v1::CreateInboundRouteRequest >(Arena* arena) {

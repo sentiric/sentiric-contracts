@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: sentiric-contracts-py
-Version: 1.13.7
+Version: 1.14.0
 Summary: Auto-generated Python gRPC stubs for the Sentiric platform.
 Home-page: https://github.com/sentiric/sentiric-contracts
 Author: Sentiric Team

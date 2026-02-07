@@ -22,6 +22,127 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// Dialplan aksiyon tipleri (Telekom-First standardı)
+// LINT FIX: Değerler enum ismi ile prefix'lendi.
+type ActionType int32
+
+const (
+	ActionType_ACTION_TYPE_UNSPECIFIED              ActionType = 0
+	ActionType_ACTION_TYPE_START_AI_CONVERSATION    ActionType = 1 // Agent-Service orkestrasyonu
+	ActionType_ACTION_TYPE_BRIDGE_CALL              ActionType = 2 // Dahili abone-abone köprüleme
+	ActionType_ACTION_TYPE_ECHO_TEST                ActionType = 3 // Media-Service native loopback
+	ActionType_ACTION_TYPE_PLAY_STATIC_ANNOUNCEMENT ActionType = 4 // AI olmayan sabit anons
+)
+
+// Enum value maps for ActionType.
+var (
+	ActionType_name = map[int32]string{
+		0: "ACTION_TYPE_UNSPECIFIED",
+		1: "ACTION_TYPE_START_AI_CONVERSATION",
+		2: "ACTION_TYPE_BRIDGE_CALL",
+		3: "ACTION_TYPE_ECHO_TEST",
+		4: "ACTION_TYPE_PLAY_STATIC_ANNOUNCEMENT",
+	}
+	ActionType_value = map[string]int32{
+		"ACTION_TYPE_UNSPECIFIED":              0,
+		"ACTION_TYPE_START_AI_CONVERSATION":    1,
+		"ACTION_TYPE_BRIDGE_CALL":              2,
+		"ACTION_TYPE_ECHO_TEST":                3,
+		"ACTION_TYPE_PLAY_STATIC_ANNOUNCEMENT": 4,
+	}
+)
+
+func (x ActionType) Enum() *ActionType {
+	p := new(ActionType)
+	*p = x
+	return p
+}
+
+func (x ActionType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (ActionType) Descriptor() protoreflect.EnumDescriptor {
+	return file_sentiric_dialplan_v1_dialplan_proto_enumTypes[0].Descriptor()
+}
+
+func (ActionType) Type() protoreflect.EnumType {
+	return &file_sentiric_dialplan_v1_dialplan_proto_enumTypes[0]
+}
+
+func (x ActionType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use ActionType.Descriptor instead.
+func (ActionType) EnumDescriptor() ([]byte, []int) {
+	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{0}
+}
+
+type DialplanAction struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// action: Geriye dönük uyum için string formatı (örn: "ECHO_TEST")
+	Action string `protobuf:"bytes,1,opt,name=action,proto3" json:"action,omitempty"`
+	// type: Tip-güvenli aksiyon seçimi
+	Type ActionType `protobuf:"varint,2,opt,name=type,proto3,enum=sentiric.dialplan.v1.ActionType" json:"type,omitempty"`
+	// action_data: Aksiyon için gerekli parametreler (örn: announcement_id, voice_id)
+	// Eski ActionData mesajı yerine daha esnek olan map yapısına geçildi.
+	ActionData    map[string]string `protobuf:"bytes,3,rep,name=action_data,json=actionData,proto3" json:"action_data,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DialplanAction) Reset() {
+	*x = DialplanAction{}
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DialplanAction) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DialplanAction) ProtoMessage() {}
+
+func (x *DialplanAction) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DialplanAction.ProtoReflect.Descriptor instead.
+func (*DialplanAction) Descriptor() ([]byte, []int) {
+	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *DialplanAction) GetAction() string {
+	if x != nil {
+		return x.Action
+	}
+	return ""
+}
+
+func (x *DialplanAction) GetType() ActionType {
+	if x != nil {
+		return x.Type
+	}
+	return ActionType_ACTION_TYPE_UNSPECIFIED
+}
+
+func (x *DialplanAction) GetActionData() map[string]string {
+	if x != nil {
+		return x.ActionData
+	}
+	return nil
+}
+
 type ResolveDialplanRequest struct {
 	state              protoimpl.MessageState `protogen:"open.v1"`
 	CallerContactValue string                 `protobuf:"bytes,1,opt,name=caller_contact_value,json=callerContactValue,proto3" json:"caller_contact_value,omitempty"`
@@ -32,7 +153,7 @@ type ResolveDialplanRequest struct {
 
 func (x *ResolveDialplanRequest) Reset() {
 	*x = ResolveDialplanRequest{}
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[0]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -44,7 +165,7 @@ func (x *ResolveDialplanRequest) String() string {
 func (*ResolveDialplanRequest) ProtoMessage() {}
 
 func (x *ResolveDialplanRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[0]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -57,7 +178,7 @@ func (x *ResolveDialplanRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ResolveDialplanRequest.ProtoReflect.Descriptor instead.
 func (*ResolveDialplanRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{0}
+	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *ResolveDialplanRequest) GetCallerContactValue() string {
@@ -88,7 +209,7 @@ type ResolveDialplanResponse struct {
 
 func (x *ResolveDialplanResponse) Reset() {
 	*x = ResolveDialplanResponse{}
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[1]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -100,7 +221,7 @@ func (x *ResolveDialplanResponse) String() string {
 func (*ResolveDialplanResponse) ProtoMessage() {}
 
 func (x *ResolveDialplanResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[1]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -113,7 +234,7 @@ func (x *ResolveDialplanResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ResolveDialplanResponse.ProtoReflect.Descriptor instead.
 func (*ResolveDialplanResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{1}
+	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *ResolveDialplanResponse) GetDialplanId() string {
@@ -173,7 +294,7 @@ type InboundRoute struct {
 
 func (x *InboundRoute) Reset() {
 	*x = InboundRoute{}
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[2]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -185,7 +306,7 @@ func (x *InboundRoute) String() string {
 func (*InboundRoute) ProtoMessage() {}
 
 func (x *InboundRoute) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[2]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -198,7 +319,7 @@ func (x *InboundRoute) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use InboundRoute.ProtoReflect.Descriptor instead.
 func (*InboundRoute) Descriptor() ([]byte, []int) {
-	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{2}
+	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *InboundRoute) GetPhoneNumber() string {
@@ -262,7 +383,7 @@ type Dialplan struct {
 
 func (x *Dialplan) Reset() {
 	*x = Dialplan{}
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[3]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -274,7 +395,7 @@ func (x *Dialplan) String() string {
 func (*Dialplan) ProtoMessage() {}
 
 func (x *Dialplan) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[3]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -287,7 +408,7 @@ func (x *Dialplan) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Dialplan.ProtoReflect.Descriptor instead.
 func (*Dialplan) Descriptor() ([]byte, []int) {
-	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{3}
+	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *Dialplan) GetId() string {
@@ -318,102 +439,6 @@ func (x *Dialplan) GetAction() *DialplanAction {
 	return nil
 }
 
-type DialplanAction struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Action        string                 `protobuf:"bytes,1,opt,name=action,proto3" json:"action,omitempty"`
-	ActionData    *ActionData            `protobuf:"bytes,2,opt,name=action_data,json=actionData,proto3" json:"action_data,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DialplanAction) Reset() {
-	*x = DialplanAction{}
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DialplanAction) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DialplanAction) ProtoMessage() {}
-
-func (x *DialplanAction) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DialplanAction.ProtoReflect.Descriptor instead.
-func (*DialplanAction) Descriptor() ([]byte, []int) {
-	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *DialplanAction) GetAction() string {
-	if x != nil {
-		return x.Action
-	}
-	return ""
-}
-
-func (x *DialplanAction) GetActionData() *ActionData {
-	if x != nil {
-		return x.ActionData
-	}
-	return nil
-}
-
-type ActionData struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Data          map[string]string      `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ActionData) Reset() {
-	*x = ActionData{}
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ActionData) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ActionData) ProtoMessage() {}
-
-func (x *ActionData) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ActionData.ProtoReflect.Descriptor instead.
-func (*ActionData) Descriptor() ([]byte, []int) {
-	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *ActionData) GetData() map[string]string {
-	if x != nil {
-		return x.Data
-	}
-	return nil
-}
-
 type CreateInboundRouteRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Route         *InboundRoute          `protobuf:"bytes,1,opt,name=route,proto3" json:"route,omitempty"`
@@ -423,7 +448,7 @@ type CreateInboundRouteRequest struct {
 
 func (x *CreateInboundRouteRequest) Reset() {
 	*x = CreateInboundRouteRequest{}
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[6]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -435,7 +460,7 @@ func (x *CreateInboundRouteRequest) String() string {
 func (*CreateInboundRouteRequest) ProtoMessage() {}
 
 func (x *CreateInboundRouteRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[6]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -448,7 +473,7 @@ func (x *CreateInboundRouteRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateInboundRouteRequest.ProtoReflect.Descriptor instead.
 func (*CreateInboundRouteRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{6}
+	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *CreateInboundRouteRequest) GetRoute() *InboundRoute {
@@ -458,7 +483,6 @@ func (x *CreateInboundRouteRequest) GetRoute() *InboundRoute {
 	return nil
 }
 
-// YENİ: CreateInboundRoute için özel yanıt mesajı
 type CreateInboundRouteResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Route         *InboundRoute          `protobuf:"bytes,1,opt,name=route,proto3" json:"route,omitempty"`
@@ -468,7 +492,7 @@ type CreateInboundRouteResponse struct {
 
 func (x *CreateInboundRouteResponse) Reset() {
 	*x = CreateInboundRouteResponse{}
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[7]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -480,7 +504,7 @@ func (x *CreateInboundRouteResponse) String() string {
 func (*CreateInboundRouteResponse) ProtoMessage() {}
 
 func (x *CreateInboundRouteResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[7]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -493,7 +517,7 @@ func (x *CreateInboundRouteResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateInboundRouteResponse.ProtoReflect.Descriptor instead.
 func (*CreateInboundRouteResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{7}
+	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *CreateInboundRouteResponse) GetRoute() *InboundRoute {
@@ -512,7 +536,7 @@ type GetInboundRouteRequest struct {
 
 func (x *GetInboundRouteRequest) Reset() {
 	*x = GetInboundRouteRequest{}
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[8]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -524,7 +548,7 @@ func (x *GetInboundRouteRequest) String() string {
 func (*GetInboundRouteRequest) ProtoMessage() {}
 
 func (x *GetInboundRouteRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[8]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -537,7 +561,7 @@ func (x *GetInboundRouteRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetInboundRouteRequest.ProtoReflect.Descriptor instead.
 func (*GetInboundRouteRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{8}
+	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *GetInboundRouteRequest) GetPhoneNumber() string {
@@ -547,7 +571,6 @@ func (x *GetInboundRouteRequest) GetPhoneNumber() string {
 	return ""
 }
 
-// YENİ: GetInboundRoute için özel yanıt mesajı
 type GetInboundRouteResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Route         *InboundRoute          `protobuf:"bytes,1,opt,name=route,proto3" json:"route,omitempty"`
@@ -557,7 +580,7 @@ type GetInboundRouteResponse struct {
 
 func (x *GetInboundRouteResponse) Reset() {
 	*x = GetInboundRouteResponse{}
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[9]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -569,7 +592,7 @@ func (x *GetInboundRouteResponse) String() string {
 func (*GetInboundRouteResponse) ProtoMessage() {}
 
 func (x *GetInboundRouteResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[9]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -582,7 +605,7 @@ func (x *GetInboundRouteResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetInboundRouteResponse.ProtoReflect.Descriptor instead.
 func (*GetInboundRouteResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{9}
+	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *GetInboundRouteResponse) GetRoute() *InboundRoute {
@@ -601,7 +624,7 @@ type UpdateInboundRouteRequest struct {
 
 func (x *UpdateInboundRouteRequest) Reset() {
 	*x = UpdateInboundRouteRequest{}
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[10]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -613,7 +636,7 @@ func (x *UpdateInboundRouteRequest) String() string {
 func (*UpdateInboundRouteRequest) ProtoMessage() {}
 
 func (x *UpdateInboundRouteRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[10]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -626,7 +649,7 @@ func (x *UpdateInboundRouteRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateInboundRouteRequest.ProtoReflect.Descriptor instead.
 func (*UpdateInboundRouteRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{10}
+	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *UpdateInboundRouteRequest) GetRoute() *InboundRoute {
@@ -636,7 +659,6 @@ func (x *UpdateInboundRouteRequest) GetRoute() *InboundRoute {
 	return nil
 }
 
-// YENİ: UpdateInboundRoute için özel yanıt mesajı
 type UpdateInboundRouteResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Route         *InboundRoute          `protobuf:"bytes,1,opt,name=route,proto3" json:"route,omitempty"`
@@ -646,7 +668,7 @@ type UpdateInboundRouteResponse struct {
 
 func (x *UpdateInboundRouteResponse) Reset() {
 	*x = UpdateInboundRouteResponse{}
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[11]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -658,7 +680,7 @@ func (x *UpdateInboundRouteResponse) String() string {
 func (*UpdateInboundRouteResponse) ProtoMessage() {}
 
 func (x *UpdateInboundRouteResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[11]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -671,7 +693,7 @@ func (x *UpdateInboundRouteResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateInboundRouteResponse.ProtoReflect.Descriptor instead.
 func (*UpdateInboundRouteResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{11}
+	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *UpdateInboundRouteResponse) GetRoute() *InboundRoute {
@@ -690,7 +712,7 @@ type DeleteInboundRouteRequest struct {
 
 func (x *DeleteInboundRouteRequest) Reset() {
 	*x = DeleteInboundRouteRequest{}
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[12]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -702,7 +724,7 @@ func (x *DeleteInboundRouteRequest) String() string {
 func (*DeleteInboundRouteRequest) ProtoMessage() {}
 
 func (x *DeleteInboundRouteRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[12]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -715,7 +737,7 @@ func (x *DeleteInboundRouteRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteInboundRouteRequest.ProtoReflect.Descriptor instead.
 func (*DeleteInboundRouteRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{12}
+	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *DeleteInboundRouteRequest) GetPhoneNumber() string {
@@ -734,7 +756,7 @@ type DeleteInboundRouteResponse struct {
 
 func (x *DeleteInboundRouteResponse) Reset() {
 	*x = DeleteInboundRouteResponse{}
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[13]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -746,7 +768,7 @@ func (x *DeleteInboundRouteResponse) String() string {
 func (*DeleteInboundRouteResponse) ProtoMessage() {}
 
 func (x *DeleteInboundRouteResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[13]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -759,7 +781,7 @@ func (x *DeleteInboundRouteResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteInboundRouteResponse.ProtoReflect.Descriptor instead.
 func (*DeleteInboundRouteResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{13}
+	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *DeleteInboundRouteResponse) GetSuccess() bool {
@@ -780,7 +802,7 @@ type ListInboundRoutesRequest struct {
 
 func (x *ListInboundRoutesRequest) Reset() {
 	*x = ListInboundRoutesRequest{}
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[14]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -792,7 +814,7 @@ func (x *ListInboundRoutesRequest) String() string {
 func (*ListInboundRoutesRequest) ProtoMessage() {}
 
 func (x *ListInboundRoutesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[14]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -805,7 +827,7 @@ func (x *ListInboundRoutesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListInboundRoutesRequest.ProtoReflect.Descriptor instead.
 func (*ListInboundRoutesRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{14}
+	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *ListInboundRoutesRequest) GetTenantId() string {
@@ -839,7 +861,7 @@ type ListInboundRoutesResponse struct {
 
 func (x *ListInboundRoutesResponse) Reset() {
 	*x = ListInboundRoutesResponse{}
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[15]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -851,7 +873,7 @@ func (x *ListInboundRoutesResponse) String() string {
 func (*ListInboundRoutesResponse) ProtoMessage() {}
 
 func (x *ListInboundRoutesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[15]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -864,7 +886,7 @@ func (x *ListInboundRoutesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListInboundRoutesResponse.ProtoReflect.Descriptor instead.
 func (*ListInboundRoutesResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{15}
+	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *ListInboundRoutesResponse) GetRoutes() []*InboundRoute {
@@ -890,7 +912,7 @@ type CreateDialplanRequest struct {
 
 func (x *CreateDialplanRequest) Reset() {
 	*x = CreateDialplanRequest{}
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[16]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -902,7 +924,7 @@ func (x *CreateDialplanRequest) String() string {
 func (*CreateDialplanRequest) ProtoMessage() {}
 
 func (x *CreateDialplanRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[16]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -915,7 +937,7 @@ func (x *CreateDialplanRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateDialplanRequest.ProtoReflect.Descriptor instead.
 func (*CreateDialplanRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{16}
+	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *CreateDialplanRequest) GetDialplan() *Dialplan {
@@ -925,7 +947,6 @@ func (x *CreateDialplanRequest) GetDialplan() *Dialplan {
 	return nil
 }
 
-// YENİ: CreateDialplan için özel yanıt mesajı
 type CreateDialplanResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Dialplan      *Dialplan              `protobuf:"bytes,1,opt,name=dialplan,proto3" json:"dialplan,omitempty"`
@@ -935,7 +956,7 @@ type CreateDialplanResponse struct {
 
 func (x *CreateDialplanResponse) Reset() {
 	*x = CreateDialplanResponse{}
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[17]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -947,7 +968,7 @@ func (x *CreateDialplanResponse) String() string {
 func (*CreateDialplanResponse) ProtoMessage() {}
 
 func (x *CreateDialplanResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[17]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -960,7 +981,7 @@ func (x *CreateDialplanResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateDialplanResponse.ProtoReflect.Descriptor instead.
 func (*CreateDialplanResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{17}
+	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *CreateDialplanResponse) GetDialplan() *Dialplan {
@@ -979,7 +1000,7 @@ type GetDialplanRequest struct {
 
 func (x *GetDialplanRequest) Reset() {
 	*x = GetDialplanRequest{}
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[18]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -991,7 +1012,7 @@ func (x *GetDialplanRequest) String() string {
 func (*GetDialplanRequest) ProtoMessage() {}
 
 func (x *GetDialplanRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[18]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1004,7 +1025,7 @@ func (x *GetDialplanRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetDialplanRequest.ProtoReflect.Descriptor instead.
 func (*GetDialplanRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{18}
+	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *GetDialplanRequest) GetId() string {
@@ -1014,7 +1035,6 @@ func (x *GetDialplanRequest) GetId() string {
 	return ""
 }
 
-// YENİ: GetDialplan için özel yanıt mesajı
 type GetDialplanResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Dialplan      *Dialplan              `protobuf:"bytes,1,opt,name=dialplan,proto3" json:"dialplan,omitempty"`
@@ -1024,7 +1044,7 @@ type GetDialplanResponse struct {
 
 func (x *GetDialplanResponse) Reset() {
 	*x = GetDialplanResponse{}
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[19]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1036,7 +1056,7 @@ func (x *GetDialplanResponse) String() string {
 func (*GetDialplanResponse) ProtoMessage() {}
 
 func (x *GetDialplanResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[19]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1049,7 +1069,7 @@ func (x *GetDialplanResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetDialplanResponse.ProtoReflect.Descriptor instead.
 func (*GetDialplanResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{19}
+	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *GetDialplanResponse) GetDialplan() *Dialplan {
@@ -1068,7 +1088,7 @@ type UpdateDialplanRequest struct {
 
 func (x *UpdateDialplanRequest) Reset() {
 	*x = UpdateDialplanRequest{}
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[20]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1080,7 +1100,7 @@ func (x *UpdateDialplanRequest) String() string {
 func (*UpdateDialplanRequest) ProtoMessage() {}
 
 func (x *UpdateDialplanRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[20]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1093,7 +1113,7 @@ func (x *UpdateDialplanRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateDialplanRequest.ProtoReflect.Descriptor instead.
 func (*UpdateDialplanRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{20}
+	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *UpdateDialplanRequest) GetDialplan() *Dialplan {
@@ -1103,7 +1123,6 @@ func (x *UpdateDialplanRequest) GetDialplan() *Dialplan {
 	return nil
 }
 
-// YENİ: UpdateDialplan için özel yanıt mesajı
 type UpdateDialplanResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Dialplan      *Dialplan              `protobuf:"bytes,1,opt,name=dialplan,proto3" json:"dialplan,omitempty"`
@@ -1113,7 +1132,7 @@ type UpdateDialplanResponse struct {
 
 func (x *UpdateDialplanResponse) Reset() {
 	*x = UpdateDialplanResponse{}
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[21]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1125,7 +1144,7 @@ func (x *UpdateDialplanResponse) String() string {
 func (*UpdateDialplanResponse) ProtoMessage() {}
 
 func (x *UpdateDialplanResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[21]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1138,7 +1157,7 @@ func (x *UpdateDialplanResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateDialplanResponse.ProtoReflect.Descriptor instead.
 func (*UpdateDialplanResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{21}
+	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *UpdateDialplanResponse) GetDialplan() *Dialplan {
@@ -1157,7 +1176,7 @@ type DeleteDialplanRequest struct {
 
 func (x *DeleteDialplanRequest) Reset() {
 	*x = DeleteDialplanRequest{}
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[22]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1169,7 +1188,7 @@ func (x *DeleteDialplanRequest) String() string {
 func (*DeleteDialplanRequest) ProtoMessage() {}
 
 func (x *DeleteDialplanRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[22]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1182,7 +1201,7 @@ func (x *DeleteDialplanRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteDialplanRequest.ProtoReflect.Descriptor instead.
 func (*DeleteDialplanRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{22}
+	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *DeleteDialplanRequest) GetId() string {
@@ -1201,7 +1220,7 @@ type DeleteDialplanResponse struct {
 
 func (x *DeleteDialplanResponse) Reset() {
 	*x = DeleteDialplanResponse{}
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[23]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1213,7 +1232,7 @@ func (x *DeleteDialplanResponse) String() string {
 func (*DeleteDialplanResponse) ProtoMessage() {}
 
 func (x *DeleteDialplanResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[23]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1226,7 +1245,7 @@ func (x *DeleteDialplanResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteDialplanResponse.ProtoReflect.Descriptor instead.
 func (*DeleteDialplanResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{23}
+	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *DeleteDialplanResponse) GetSuccess() bool {
@@ -1247,7 +1266,7 @@ type ListDialplansRequest struct {
 
 func (x *ListDialplansRequest) Reset() {
 	*x = ListDialplansRequest{}
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[24]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1259,7 +1278,7 @@ func (x *ListDialplansRequest) String() string {
 func (*ListDialplansRequest) ProtoMessage() {}
 
 func (x *ListDialplansRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[24]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1272,7 +1291,7 @@ func (x *ListDialplansRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListDialplansRequest.ProtoReflect.Descriptor instead.
 func (*ListDialplansRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{24}
+	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *ListDialplansRequest) GetTenantId() string {
@@ -1306,7 +1325,7 @@ type ListDialplansResponse struct {
 
 func (x *ListDialplansResponse) Reset() {
 	*x = ListDialplansResponse{}
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[25]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1318,7 +1337,7 @@ func (x *ListDialplansResponse) String() string {
 func (*ListDialplansResponse) ProtoMessage() {}
 
 func (x *ListDialplansResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[25]
+	mi := &file_sentiric_dialplan_v1_dialplan_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1331,7 +1350,7 @@ func (x *ListDialplansResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListDialplansResponse.ProtoReflect.Descriptor instead.
 func (*ListDialplansResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{25}
+	return file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *ListDialplansResponse) GetDialplans() []*Dialplan {
@@ -1352,7 +1371,15 @@ var File_sentiric_dialplan_v1_dialplan_proto protoreflect.FileDescriptor
 
 const file_sentiric_dialplan_v1_dialplan_proto_rawDesc = "" +
 	"\n" +
-	"#sentiric/dialplan/v1/dialplan.proto\x12\x14sentiric.dialplan.v1\x1a\x1bsentiric/user/v1/user.proto\"y\n" +
+	"#sentiric/dialplan/v1/dialplan.proto\x12\x14sentiric.dialplan.v1\x1a\x1bsentiric/user/v1/user.proto\"\xf4\x01\n" +
+	"\x0eDialplanAction\x12\x16\n" +
+	"\x06action\x18\x01 \x01(\tR\x06action\x124\n" +
+	"\x04type\x18\x02 \x01(\x0e2 .sentiric.dialplan.v1.ActionTypeR\x04type\x12U\n" +
+	"\vaction_data\x18\x03 \x03(\v24.sentiric.dialplan.v1.DialplanAction.ActionDataEntryR\n" +
+	"actionData\x1a=\n" +
+	"\x0fActionDataEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"y\n" +
 	"\x16ResolveDialplanRequest\x120\n" +
 	"\x14caller_contact_value\x18\x01 \x01(\tR\x12callerContactValue\x12-\n" +
 	"\x12destination_number\x18\x02 \x01(\tR\x11destinationNumber\"\xa3\x03\n" +
@@ -1382,17 +1409,7 @@ const file_sentiric_dialplan_v1_dialplan_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12 \n" +
 	"\vdescription\x18\x03 \x01(\tR\vdescription\x12<\n" +
-	"\x06action\x18\x04 \x01(\v2$.sentiric.dialplan.v1.DialplanActionR\x06action\"k\n" +
-	"\x0eDialplanAction\x12\x16\n" +
-	"\x06action\x18\x01 \x01(\tR\x06action\x12A\n" +
-	"\vaction_data\x18\x02 \x01(\v2 .sentiric.dialplan.v1.ActionDataR\n" +
-	"actionData\"\x85\x01\n" +
-	"\n" +
-	"ActionData\x12>\n" +
-	"\x04data\x18\x01 \x03(\v2*.sentiric.dialplan.v1.ActionData.DataEntryR\x04data\x1a7\n" +
-	"\tDataEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"U\n" +
+	"\x06action\x18\x04 \x01(\v2$.sentiric.dialplan.v1.DialplanActionR\x06action\"U\n" +
 	"\x19CreateInboundRouteRequest\x128\n" +
 	"\x05route\x18\x01 \x01(\v2\".sentiric.dialplan.v1.InboundRouteR\x05route\"V\n" +
 	"\x1aCreateInboundRouteResponse\x128\n" +
@@ -1440,7 +1457,14 @@ const file_sentiric_dialplan_v1_dialplan_proto_rawDesc = "" +
 	"\x15ListDialplansResponse\x12<\n" +
 	"\tdialplans\x18\x01 \x03(\v2\x1e.sentiric.dialplan.v1.DialplanR\tdialplans\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount2\xe7\t\n" +
+	"totalCount*\xb2\x01\n" +
+	"\n" +
+	"ActionType\x12\x1b\n" +
+	"\x17ACTION_TYPE_UNSPECIFIED\x10\x00\x12%\n" +
+	"!ACTION_TYPE_START_AI_CONVERSATION\x10\x01\x12\x1b\n" +
+	"\x17ACTION_TYPE_BRIDGE_CALL\x10\x02\x12\x19\n" +
+	"\x15ACTION_TYPE_ECHO_TEST\x10\x03\x12(\n" +
+	"$ACTION_TYPE_PLAY_STATIC_ANNOUNCEMENT\x10\x042\xe7\t\n" +
 	"\x0fDialplanService\x12n\n" +
 	"\x0fResolveDialplan\x12,.sentiric.dialplan.v1.ResolveDialplanRequest\x1a-.sentiric.dialplan.v1.ResolveDialplanResponse\x12w\n" +
 	"\x12CreateInboundRoute\x12/.sentiric.dialplan.v1.CreateInboundRouteRequest\x1a0.sentiric.dialplan.v1.CreateInboundRouteResponse\x12n\n" +
@@ -1466,14 +1490,15 @@ func file_sentiric_dialplan_v1_dialplan_proto_rawDescGZIP() []byte {
 	return file_sentiric_dialplan_v1_dialplan_proto_rawDescData
 }
 
-var file_sentiric_dialplan_v1_dialplan_proto_msgTypes = make([]protoimpl.MessageInfo, 27)
+var file_sentiric_dialplan_v1_dialplan_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
+var file_sentiric_dialplan_v1_dialplan_proto_msgTypes = make([]protoimpl.MessageInfo, 26)
 var file_sentiric_dialplan_v1_dialplan_proto_goTypes = []any{
-	(*ResolveDialplanRequest)(nil),     // 0: sentiric.dialplan.v1.ResolveDialplanRequest
-	(*ResolveDialplanResponse)(nil),    // 1: sentiric.dialplan.v1.ResolveDialplanResponse
-	(*InboundRoute)(nil),               // 2: sentiric.dialplan.v1.InboundRoute
-	(*Dialplan)(nil),                   // 3: sentiric.dialplan.v1.Dialplan
-	(*DialplanAction)(nil),             // 4: sentiric.dialplan.v1.DialplanAction
-	(*ActionData)(nil),                 // 5: sentiric.dialplan.v1.ActionData
+	(ActionType)(0),                    // 0: sentiric.dialplan.v1.ActionType
+	(*DialplanAction)(nil),             // 1: sentiric.dialplan.v1.DialplanAction
+	(*ResolveDialplanRequest)(nil),     // 2: sentiric.dialplan.v1.ResolveDialplanRequest
+	(*ResolveDialplanResponse)(nil),    // 3: sentiric.dialplan.v1.ResolveDialplanResponse
+	(*InboundRoute)(nil),               // 4: sentiric.dialplan.v1.InboundRoute
+	(*Dialplan)(nil),                   // 5: sentiric.dialplan.v1.Dialplan
 	(*CreateInboundRouteRequest)(nil),  // 6: sentiric.dialplan.v1.CreateInboundRouteRequest
 	(*CreateInboundRouteResponse)(nil), // 7: sentiric.dialplan.v1.CreateInboundRouteResponse
 	(*GetInboundRouteRequest)(nil),     // 8: sentiric.dialplan.v1.GetInboundRouteRequest
@@ -1494,31 +1519,31 @@ var file_sentiric_dialplan_v1_dialplan_proto_goTypes = []any{
 	(*DeleteDialplanResponse)(nil),     // 23: sentiric.dialplan.v1.DeleteDialplanResponse
 	(*ListDialplansRequest)(nil),       // 24: sentiric.dialplan.v1.ListDialplansRequest
 	(*ListDialplansResponse)(nil),      // 25: sentiric.dialplan.v1.ListDialplansResponse
-	nil,                                // 26: sentiric.dialplan.v1.ActionData.DataEntry
+	nil,                                // 26: sentiric.dialplan.v1.DialplanAction.ActionDataEntry
 	(*v1.User)(nil),                    // 27: sentiric.user.v1.User
 	(*v1.Contact)(nil),                 // 28: sentiric.user.v1.Contact
 }
 var file_sentiric_dialplan_v1_dialplan_proto_depIdxs = []int32{
-	4,  // 0: sentiric.dialplan.v1.ResolveDialplanResponse.action:type_name -> sentiric.dialplan.v1.DialplanAction
-	27, // 1: sentiric.dialplan.v1.ResolveDialplanResponse.matched_user:type_name -> sentiric.user.v1.User
-	28, // 2: sentiric.dialplan.v1.ResolveDialplanResponse.matched_contact:type_name -> sentiric.user.v1.Contact
-	2,  // 3: sentiric.dialplan.v1.ResolveDialplanResponse.inbound_route:type_name -> sentiric.dialplan.v1.InboundRoute
-	4,  // 4: sentiric.dialplan.v1.Dialplan.action:type_name -> sentiric.dialplan.v1.DialplanAction
-	5,  // 5: sentiric.dialplan.v1.DialplanAction.action_data:type_name -> sentiric.dialplan.v1.ActionData
-	26, // 6: sentiric.dialplan.v1.ActionData.data:type_name -> sentiric.dialplan.v1.ActionData.DataEntry
-	2,  // 7: sentiric.dialplan.v1.CreateInboundRouteRequest.route:type_name -> sentiric.dialplan.v1.InboundRoute
-	2,  // 8: sentiric.dialplan.v1.CreateInboundRouteResponse.route:type_name -> sentiric.dialplan.v1.InboundRoute
-	2,  // 9: sentiric.dialplan.v1.GetInboundRouteResponse.route:type_name -> sentiric.dialplan.v1.InboundRoute
-	2,  // 10: sentiric.dialplan.v1.UpdateInboundRouteRequest.route:type_name -> sentiric.dialplan.v1.InboundRoute
-	2,  // 11: sentiric.dialplan.v1.UpdateInboundRouteResponse.route:type_name -> sentiric.dialplan.v1.InboundRoute
-	2,  // 12: sentiric.dialplan.v1.ListInboundRoutesResponse.routes:type_name -> sentiric.dialplan.v1.InboundRoute
-	3,  // 13: sentiric.dialplan.v1.CreateDialplanRequest.dialplan:type_name -> sentiric.dialplan.v1.Dialplan
-	3,  // 14: sentiric.dialplan.v1.CreateDialplanResponse.dialplan:type_name -> sentiric.dialplan.v1.Dialplan
-	3,  // 15: sentiric.dialplan.v1.GetDialplanResponse.dialplan:type_name -> sentiric.dialplan.v1.Dialplan
-	3,  // 16: sentiric.dialplan.v1.UpdateDialplanRequest.dialplan:type_name -> sentiric.dialplan.v1.Dialplan
-	3,  // 17: sentiric.dialplan.v1.UpdateDialplanResponse.dialplan:type_name -> sentiric.dialplan.v1.Dialplan
-	3,  // 18: sentiric.dialplan.v1.ListDialplansResponse.dialplans:type_name -> sentiric.dialplan.v1.Dialplan
-	0,  // 19: sentiric.dialplan.v1.DialplanService.ResolveDialplan:input_type -> sentiric.dialplan.v1.ResolveDialplanRequest
+	0,  // 0: sentiric.dialplan.v1.DialplanAction.type:type_name -> sentiric.dialplan.v1.ActionType
+	26, // 1: sentiric.dialplan.v1.DialplanAction.action_data:type_name -> sentiric.dialplan.v1.DialplanAction.ActionDataEntry
+	1,  // 2: sentiric.dialplan.v1.ResolveDialplanResponse.action:type_name -> sentiric.dialplan.v1.DialplanAction
+	27, // 3: sentiric.dialplan.v1.ResolveDialplanResponse.matched_user:type_name -> sentiric.user.v1.User
+	28, // 4: sentiric.dialplan.v1.ResolveDialplanResponse.matched_contact:type_name -> sentiric.user.v1.Contact
+	4,  // 5: sentiric.dialplan.v1.ResolveDialplanResponse.inbound_route:type_name -> sentiric.dialplan.v1.InboundRoute
+	1,  // 6: sentiric.dialplan.v1.Dialplan.action:type_name -> sentiric.dialplan.v1.DialplanAction
+	4,  // 7: sentiric.dialplan.v1.CreateInboundRouteRequest.route:type_name -> sentiric.dialplan.v1.InboundRoute
+	4,  // 8: sentiric.dialplan.v1.CreateInboundRouteResponse.route:type_name -> sentiric.dialplan.v1.InboundRoute
+	4,  // 9: sentiric.dialplan.v1.GetInboundRouteResponse.route:type_name -> sentiric.dialplan.v1.InboundRoute
+	4,  // 10: sentiric.dialplan.v1.UpdateInboundRouteRequest.route:type_name -> sentiric.dialplan.v1.InboundRoute
+	4,  // 11: sentiric.dialplan.v1.UpdateInboundRouteResponse.route:type_name -> sentiric.dialplan.v1.InboundRoute
+	4,  // 12: sentiric.dialplan.v1.ListInboundRoutesResponse.routes:type_name -> sentiric.dialplan.v1.InboundRoute
+	5,  // 13: sentiric.dialplan.v1.CreateDialplanRequest.dialplan:type_name -> sentiric.dialplan.v1.Dialplan
+	5,  // 14: sentiric.dialplan.v1.CreateDialplanResponse.dialplan:type_name -> sentiric.dialplan.v1.Dialplan
+	5,  // 15: sentiric.dialplan.v1.GetDialplanResponse.dialplan:type_name -> sentiric.dialplan.v1.Dialplan
+	5,  // 16: sentiric.dialplan.v1.UpdateDialplanRequest.dialplan:type_name -> sentiric.dialplan.v1.Dialplan
+	5,  // 17: sentiric.dialplan.v1.UpdateDialplanResponse.dialplan:type_name -> sentiric.dialplan.v1.Dialplan
+	5,  // 18: sentiric.dialplan.v1.ListDialplansResponse.dialplans:type_name -> sentiric.dialplan.v1.Dialplan
+	2,  // 19: sentiric.dialplan.v1.DialplanService.ResolveDialplan:input_type -> sentiric.dialplan.v1.ResolveDialplanRequest
 	6,  // 20: sentiric.dialplan.v1.DialplanService.CreateInboundRoute:input_type -> sentiric.dialplan.v1.CreateInboundRouteRequest
 	8,  // 21: sentiric.dialplan.v1.DialplanService.GetInboundRoute:input_type -> sentiric.dialplan.v1.GetInboundRouteRequest
 	10, // 22: sentiric.dialplan.v1.DialplanService.UpdateInboundRoute:input_type -> sentiric.dialplan.v1.UpdateInboundRouteRequest
@@ -1529,7 +1554,7 @@ var file_sentiric_dialplan_v1_dialplan_proto_depIdxs = []int32{
 	20, // 27: sentiric.dialplan.v1.DialplanService.UpdateDialplan:input_type -> sentiric.dialplan.v1.UpdateDialplanRequest
 	22, // 28: sentiric.dialplan.v1.DialplanService.DeleteDialplan:input_type -> sentiric.dialplan.v1.DeleteDialplanRequest
 	24, // 29: sentiric.dialplan.v1.DialplanService.ListDialplans:input_type -> sentiric.dialplan.v1.ListDialplansRequest
-	1,  // 30: sentiric.dialplan.v1.DialplanService.ResolveDialplan:output_type -> sentiric.dialplan.v1.ResolveDialplanResponse
+	3,  // 30: sentiric.dialplan.v1.DialplanService.ResolveDialplan:output_type -> sentiric.dialplan.v1.ResolveDialplanResponse
 	7,  // 31: sentiric.dialplan.v1.DialplanService.CreateInboundRoute:output_type -> sentiric.dialplan.v1.CreateInboundRouteResponse
 	9,  // 32: sentiric.dialplan.v1.DialplanService.GetInboundRoute:output_type -> sentiric.dialplan.v1.GetInboundRouteResponse
 	11, // 33: sentiric.dialplan.v1.DialplanService.UpdateInboundRoute:output_type -> sentiric.dialplan.v1.UpdateInboundRouteResponse
@@ -1552,20 +1577,21 @@ func file_sentiric_dialplan_v1_dialplan_proto_init() {
 	if File_sentiric_dialplan_v1_dialplan_proto != nil {
 		return
 	}
-	file_sentiric_dialplan_v1_dialplan_proto_msgTypes[1].OneofWrappers = []any{}
 	file_sentiric_dialplan_v1_dialplan_proto_msgTypes[2].OneofWrappers = []any{}
+	file_sentiric_dialplan_v1_dialplan_proto_msgTypes[3].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sentiric_dialplan_v1_dialplan_proto_rawDesc), len(file_sentiric_dialplan_v1_dialplan_proto_rawDesc)),
-			NumEnums:      0,
-			NumMessages:   27,
+			NumEnums:      1,
+			NumMessages:   26,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
 		GoTypes:           file_sentiric_dialplan_v1_dialplan_proto_goTypes,
 		DependencyIndexes: file_sentiric_dialplan_v1_dialplan_proto_depIdxs,
+		EnumInfos:         file_sentiric_dialplan_v1_dialplan_proto_enumTypes,
 		MessageInfos:      file_sentiric_dialplan_v1_dialplan_proto_msgTypes,
 	}.Build()
 	File_sentiric_dialplan_v1_dialplan_proto = out.File
