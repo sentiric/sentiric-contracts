@@ -25,13 +25,15 @@ namespace tts {
 namespace v1 {
 PROTOBUF_CONSTEXPR SynthesizeRequest::SynthesizeRequest(
     ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.text_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.text_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.voice_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.preferred_provider_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.cloning_audio_data_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.audio_config_)*/nullptr
-  , /*decltype(_impl_.prosody_)*/nullptr
-  , /*decltype(_impl_.text_type_)*/0
-  , /*decltype(_impl_._cached_size_)*/{}} {}
+  , /*decltype(_impl_.tuning_)*/nullptr
+  , /*decltype(_impl_.text_type_)*/0} {}
 struct SynthesizeRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR SynthesizeRequestDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -58,13 +60,15 @@ struct SynthesizeResponseDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SynthesizeResponseDefaultTypeInternal _SynthesizeResponse_default_instance_;
 PROTOBUF_CONSTEXPR SynthesizeStreamRequest::SynthesizeStreamRequest(
     ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.text_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.text_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.voice_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.preferred_provider_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.cloning_audio_data_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.audio_config_)*/nullptr
-  , /*decltype(_impl_.prosody_)*/nullptr
-  , /*decltype(_impl_.text_type_)*/0
-  , /*decltype(_impl_._cached_size_)*/{}} {}
+  , /*decltype(_impl_.tuning_)*/nullptr
+  , /*decltype(_impl_.text_type_)*/0} {}
 struct SynthesizeStreamRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR SynthesizeStreamRequestDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -115,6 +119,23 @@ struct ListVoicesResponseDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ListVoicesResponseDefaultTypeInternal _ListVoicesResponse_default_instance_;
+PROTOBUF_CONSTEXPR TuningParams::TuningParams(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.temperature_)*/0
+  , /*decltype(_impl_.top_p_)*/0
+  , /*decltype(_impl_.top_k_)*/0
+  , /*decltype(_impl_.repetition_penalty_)*/0
+  , /*decltype(_impl_.speed_)*/0
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct TuningParamsDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR TuningParamsDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~TuningParamsDefaultTypeInternal() {}
+  union {
+    TuningParams _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TuningParamsDefaultTypeInternal _TuningParams_default_instance_;
 PROTOBUF_CONSTEXPR AudioConfig::AudioConfig(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.audio_format_)*/0
@@ -165,12 +186,12 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORIT
 }  // namespace v1
 }  // namespace tts
 }  // namespace sentiric
-static ::_pb::Metadata file_level_metadata_sentiric_2ftts_2fv1_2fgateway_2eproto[9];
+static ::_pb::Metadata file_level_metadata_sentiric_2ftts_2fv1_2fgateway_2eproto[10];
 static const ::_pb::EnumDescriptor* file_level_enum_descriptors_sentiric_2ftts_2fv1_2fgateway_2eproto[2];
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_sentiric_2ftts_2fv1_2fgateway_2eproto = nullptr;
 
 const uint32_t TableStruct_sentiric_2ftts_2fv1_2fgateway_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::SynthesizeRequest, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::SynthesizeRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -181,7 +202,15 @@ const uint32_t TableStruct_sentiric_2ftts_2fv1_2fgateway_2eproto::offsets[] PROT
   PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::SynthesizeRequest, _impl_.voice_id_),
   PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::SynthesizeRequest, _impl_.audio_config_),
   PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::SynthesizeRequest, _impl_.preferred_provider_),
-  PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::SynthesizeRequest, _impl_.prosody_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::SynthesizeRequest, _impl_.tuning_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::SynthesizeRequest, _impl_.cloning_audio_data_),
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  1,
+  0,
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::SynthesizeResponse, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -191,7 +220,7 @@ const uint32_t TableStruct_sentiric_2ftts_2fv1_2fgateway_2eproto::offsets[] PROT
   PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::SynthesizeResponse, _impl_.audio_content_),
   PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::SynthesizeResponse, _impl_.content_type_),
   PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::SynthesizeResponse, _impl_.provider_used_),
-  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::SynthesizeStreamRequest, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::SynthesizeStreamRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -202,7 +231,15 @@ const uint32_t TableStruct_sentiric_2ftts_2fv1_2fgateway_2eproto::offsets[] PROT
   PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::SynthesizeStreamRequest, _impl_.voice_id_),
   PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::SynthesizeStreamRequest, _impl_.audio_config_),
   PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::SynthesizeStreamRequest, _impl_.preferred_provider_),
-  PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::SynthesizeStreamRequest, _impl_.prosody_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::SynthesizeStreamRequest, _impl_.tuning_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::SynthesizeStreamRequest, _impl_.cloning_audio_data_),
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  1,
+  0,
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::SynthesizeStreamResponse, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -226,6 +263,17 @@ const uint32_t TableStruct_sentiric_2ftts_2fv1_2fgateway_2eproto::offsets[] PROT
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::ListVoicesResponse, _impl_.voices_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::TuningParams, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::TuningParams, _impl_.temperature_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::TuningParams, _impl_.top_p_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::TuningParams, _impl_.top_k_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::TuningParams, _impl_.repetition_penalty_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::TuningParams, _impl_.speed_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::AudioConfig, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -257,15 +305,16 @@ const uint32_t TableStruct_sentiric_2ftts_2fv1_2fgateway_2eproto::offsets[] PROT
   PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::VoiceInfo, _impl_.styles_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, -1, sizeof(::sentiric::tts::v1::SynthesizeRequest)},
-  { 12, -1, -1, sizeof(::sentiric::tts::v1::SynthesizeResponse)},
-  { 21, -1, -1, sizeof(::sentiric::tts::v1::SynthesizeStreamRequest)},
-  { 33, -1, -1, sizeof(::sentiric::tts::v1::SynthesizeStreamResponse)},
-  { 42, -1, -1, sizeof(::sentiric::tts::v1::ListVoicesRequest)},
-  { 49, -1, -1, sizeof(::sentiric::tts::v1::ListVoicesResponse)},
-  { 56, -1, -1, sizeof(::sentiric::tts::v1::AudioConfig)},
-  { 65, -1, -1, sizeof(::sentiric::tts::v1::ProsodyConfig)},
-  { 74, -1, -1, sizeof(::sentiric::tts::v1::VoiceInfo)},
+  { 0, 13, -1, sizeof(::sentiric::tts::v1::SynthesizeRequest)},
+  { 20, -1, -1, sizeof(::sentiric::tts::v1::SynthesizeResponse)},
+  { 29, 42, -1, sizeof(::sentiric::tts::v1::SynthesizeStreamRequest)},
+  { 49, -1, -1, sizeof(::sentiric::tts::v1::SynthesizeStreamResponse)},
+  { 58, -1, -1, sizeof(::sentiric::tts::v1::ListVoicesRequest)},
+  { 65, -1, -1, sizeof(::sentiric::tts::v1::ListVoicesResponse)},
+  { 72, -1, -1, sizeof(::sentiric::tts::v1::TuningParams)},
+  { 83, -1, -1, sizeof(::sentiric::tts::v1::AudioConfig)},
+  { 92, -1, -1, sizeof(::sentiric::tts::v1::ProsodyConfig)},
+  { 101, -1, -1, sizeof(::sentiric::tts::v1::VoiceInfo)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -275,6 +324,7 @@ static const ::_pb::Message* const file_default_instances[] = {
   &::sentiric::tts::v1::_SynthesizeStreamResponse_default_instance_._instance,
   &::sentiric::tts::v1::_ListVoicesRequest_default_instance_._instance,
   &::sentiric::tts::v1::_ListVoicesResponse_default_instance_._instance,
+  &::sentiric::tts::v1::_TuningParams_default_instance_._instance,
   &::sentiric::tts::v1::_AudioConfig_default_instance_._instance,
   &::sentiric::tts::v1::_ProsodyConfig_default_instance_._instance,
   &::sentiric::tts::v1::_VoiceInfo_default_instance_._instance,
@@ -282,54 +332,60 @@ static const ::_pb::Message* const file_default_instances[] = {
 
 const char descriptor_table_protodef_sentiric_2ftts_2fv1_2fgateway_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\035sentiric/tts/v1/gateway.proto\022\017sentiri"
-  "c.tts.v1\"\342\001\n\021SynthesizeRequest\022\014\n\004text\030\001"
+  "c.tts.v1\"\250\002\n\021SynthesizeRequest\022\014\n\004text\030\001"
   " \001(\t\022,\n\ttext_type\030\002 \001(\0162\031.sentiric.tts.v"
   "1.TextType\022\020\n\010voice_id\030\003 \001(\t\0222\n\014audio_co"
   "nfig\030\004 \001(\0132\034.sentiric.tts.v1.AudioConfig"
-  "\022\032\n\022preferred_provider\030\005 \001(\t\022/\n\007prosody\030"
-  "\006 \001(\0132\036.sentiric.tts.v1.ProsodyConfig\"X\n"
-  "\022SynthesizeResponse\022\025\n\raudio_content\030\001 \001"
-  "(\014\022\024\n\014content_type\030\002 \001(\t\022\025\n\rprovider_use"
-  "d\030\003 \001(\t\"\350\001\n\027SynthesizeStreamRequest\022\014\n\004t"
-  "ext\030\001 \001(\t\022,\n\ttext_type\030\002 \001(\0162\031.sentiric."
-  "tts.v1.TextType\022\020\n\010voice_id\030\003 \001(\t\0222\n\014aud"
-  "io_config\030\004 \001(\0132\034.sentiric.tts.v1.AudioC"
-  "onfig\022\032\n\022preferred_provider\030\005 \001(\t\022/\n\007pro"
-  "sody\030\006 \001(\0132\036.sentiric.tts.v1.ProsodyConf"
-  "ig\"^\n\030SynthesizeStreamResponse\022\025\n\raudio_"
-  "content\030\001 \001(\014\022\024\n\014content_type\030\002 \001(\t\022\025\n\rp"
-  "rovider_used\030\003 \001(\t\"*\n\021ListVoicesRequest\022"
-  "\025\n\rlanguage_code\030\001 \001(\t\"@\n\022ListVoicesResp"
-  "onse\022*\n\006voices\030\001 \003(\0132\032.sentiric.tts.v1.V"
-  "oiceInfo\"t\n\013AudioConfig\0222\n\014audio_format\030"
-  "\001 \001(\0162\034.sentiric.tts.v1.AudioFormat\022\031\n\021s"
-  "ample_rate_hertz\030\002 \001(\005\022\026\n\016volume_gain_db"
-  "\030\003 \001(\001\"=\n\rProsodyConfig\022\014\n\004rate\030\001 \001(\001\022\r\n"
-  "\005pitch\030\002 \001(\001\022\017\n\007emotion\030\003 \001(\t\"W\n\tVoiceIn"
-  "fo\022\n\n\002id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\020\n\010language"
-  "\030\003 \001(\t\022\016\n\006gender\030\004 \001(\t\022\016\n\006styles\030\005 \003(\t*M"
-  "\n\010TextType\022\031\n\025TEXT_TYPE_UNSPECIFIED\020\000\022\022\n"
-  "\016TEXT_TYPE_TEXT\020\001\022\022\n\016TEXT_TYPE_SSML\020\002*\246\001"
-  "\n\013AudioFormat\022\034\n\030AUDIO_FORMAT_UNSPECIFIE"
-  "D\020\000\022\032\n\026AUDIO_FORMAT_PCM_S16LE\020\001\022\024\n\020AUDIO"
-  "_FORMAT_WAV\020\002\022\024\n\020AUDIO_FORMAT_MP3\020\003\022\031\n\025A"
-  "UDIO_FORMAT_OGG_OPUS\020\004\022\026\n\022AUDIO_FORMAT_M"
-  "ULAW\020\0052\254\002\n\021TtsGatewayService\022U\n\nSynthesi"
-  "ze\022\".sentiric.tts.v1.SynthesizeRequest\032#"
-  ".sentiric.tts.v1.SynthesizeResponse\022i\n\020S"
-  "ynthesizeStream\022(.sentiric.tts.v1.Synthe"
-  "sizeStreamRequest\032).sentiric.tts.v1.Synt"
-  "hesizeStreamResponse0\001\022U\n\nListVoices\022\".s"
-  "entiric.tts.v1.ListVoicesRequest\032#.senti"
-  "ric.tts.v1.ListVoicesResponseBEZCgithub."
-  "com/sentiric/sentiric-contracts/gen/go/s"
-  "entiric/tts/v1;ttsv1b\006proto3"
+  "\022\032\n\022preferred_provider\030\005 \001(\t\0222\n\006tuning\030\006"
+  " \001(\0132\035.sentiric.tts.v1.TuningParamsH\000\210\001\001"
+  "\022\037\n\022cloning_audio_data\030\007 \001(\014H\001\210\001\001B\t\n\007_tu"
+  "ningB\025\n\023_cloning_audio_data\"X\n\022Synthesiz"
+  "eResponse\022\025\n\raudio_content\030\001 \001(\014\022\024\n\014cont"
+  "ent_type\030\002 \001(\t\022\025\n\rprovider_used\030\003 \001(\t\"\256\002"
+  "\n\027SynthesizeStreamRequest\022\014\n\004text\030\001 \001(\t\022"
+  ",\n\ttext_type\030\002 \001(\0162\031.sentiric.tts.v1.Tex"
+  "tType\022\020\n\010voice_id\030\003 \001(\t\0222\n\014audio_config\030"
+  "\004 \001(\0132\034.sentiric.tts.v1.AudioConfig\022\032\n\022p"
+  "referred_provider\030\005 \001(\t\0222\n\006tuning\030\006 \001(\0132"
+  "\035.sentiric.tts.v1.TuningParamsH\000\210\001\001\022\037\n\022c"
+  "loning_audio_data\030\007 \001(\014H\001\210\001\001B\t\n\007_tuningB"
+  "\025\n\023_cloning_audio_data\"^\n\030SynthesizeStre"
+  "amResponse\022\025\n\raudio_content\030\001 \001(\014\022\024\n\014con"
+  "tent_type\030\002 \001(\t\022\025\n\rprovider_used\030\003 \001(\t\"*"
+  "\n\021ListVoicesRequest\022\025\n\rlanguage_code\030\001 \001"
+  "(\t\"@\n\022ListVoicesResponse\022*\n\006voices\030\001 \003(\013"
+  "2\032.sentiric.tts.v1.VoiceInfo\"l\n\014TuningPa"
+  "rams\022\023\n\013temperature\030\001 \001(\002\022\r\n\005top_p\030\002 \001(\002"
+  "\022\r\n\005top_k\030\003 \001(\005\022\032\n\022repetition_penalty\030\004 "
+  "\001(\002\022\r\n\005speed\030\005 \001(\002\"t\n\013AudioConfig\0222\n\014aud"
+  "io_format\030\001 \001(\0162\034.sentiric.tts.v1.AudioF"
+  "ormat\022\031\n\021sample_rate_hertz\030\002 \001(\005\022\026\n\016volu"
+  "me_gain_db\030\003 \001(\001\"=\n\rProsodyConfig\022\014\n\004rat"
+  "e\030\001 \001(\001\022\r\n\005pitch\030\002 \001(\001\022\017\n\007emotion\030\003 \001(\t\""
+  "W\n\tVoiceInfo\022\n\n\002id\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\020"
+  "\n\010language\030\003 \001(\t\022\016\n\006gender\030\004 \001(\t\022\016\n\006styl"
+  "es\030\005 \003(\t*M\n\010TextType\022\031\n\025TEXT_TYPE_UNSPEC"
+  "IFIED\020\000\022\022\n\016TEXT_TYPE_TEXT\020\001\022\022\n\016TEXT_TYPE"
+  "_SSML\020\002*\246\001\n\013AudioFormat\022\034\n\030AUDIO_FORMAT_"
+  "UNSPECIFIED\020\000\022\032\n\026AUDIO_FORMAT_PCM_S16LE\020"
+  "\001\022\024\n\020AUDIO_FORMAT_WAV\020\002\022\024\n\020AUDIO_FORMAT_"
+  "MP3\020\003\022\031\n\025AUDIO_FORMAT_OGG_OPUS\020\004\022\026\n\022AUDI"
+  "O_FORMAT_MULAW\020\0052\254\002\n\021TtsGatewayService\022U"
+  "\n\nSynthesize\022\".sentiric.tts.v1.Synthesiz"
+  "eRequest\032#.sentiric.tts.v1.SynthesizeRes"
+  "ponse\022i\n\020SynthesizeStream\022(.sentiric.tts"
+  ".v1.SynthesizeStreamRequest\032).sentiric.t"
+  "ts.v1.SynthesizeStreamResponse0\001\022U\n\nList"
+  "Voices\022\".sentiric.tts.v1.ListVoicesReque"
+  "st\032#.sentiric.tts.v1.ListVoicesResponseB"
+  "EZCgithub.com/sentiric/sentiric-contract"
+  "s/gen/go/sentiric/tts/v1;ttsv1b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_sentiric_2ftts_2fv1_2fgateway_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_sentiric_2ftts_2fv1_2fgateway_2eproto = {
-    false, false, 1708, descriptor_table_protodef_sentiric_2ftts_2fv1_2fgateway_2eproto,
+    false, false, 1958, descriptor_table_protodef_sentiric_2ftts_2fv1_2fgateway_2eproto,
     "sentiric/tts/v1/gateway.proto",
-    &descriptor_table_sentiric_2ftts_2fv1_2fgateway_2eproto_once, nullptr, 0, 9,
+    &descriptor_table_sentiric_2ftts_2fv1_2fgateway_2eproto_once, nullptr, 0, 10,
     schemas, file_default_instances, TableStruct_sentiric_2ftts_2fv1_2fgateway_2eproto::offsets,
     file_level_metadata_sentiric_2ftts_2fv1_2fgateway_2eproto, file_level_enum_descriptors_sentiric_2ftts_2fv1_2fgateway_2eproto,
     file_level_service_descriptors_sentiric_2ftts_2fv1_2fgateway_2eproto,
@@ -381,17 +437,24 @@ bool AudioFormat_IsValid(int value) {
 
 class SynthesizeRequest::_Internal {
  public:
+  using HasBits = decltype(std::declval<SynthesizeRequest>()._impl_._has_bits_);
   static const ::sentiric::tts::v1::AudioConfig& audio_config(const SynthesizeRequest* msg);
-  static const ::sentiric::tts::v1::ProsodyConfig& prosody(const SynthesizeRequest* msg);
+  static const ::sentiric::tts::v1::TuningParams& tuning(const SynthesizeRequest* msg);
+  static void set_has_tuning(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+  static void set_has_cloning_audio_data(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::sentiric::tts::v1::AudioConfig&
 SynthesizeRequest::_Internal::audio_config(const SynthesizeRequest* msg) {
   return *msg->_impl_.audio_config_;
 }
-const ::sentiric::tts::v1::ProsodyConfig&
-SynthesizeRequest::_Internal::prosody(const SynthesizeRequest* msg) {
-  return *msg->_impl_.prosody_;
+const ::sentiric::tts::v1::TuningParams&
+SynthesizeRequest::_Internal::tuning(const SynthesizeRequest* msg) {
+  return *msg->_impl_.tuning_;
 }
 SynthesizeRequest::SynthesizeRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
@@ -403,13 +466,15 @@ SynthesizeRequest::SynthesizeRequest(const SynthesizeRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   SynthesizeRequest* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.text_){}
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.text_){}
     , decltype(_impl_.voice_id_){}
     , decltype(_impl_.preferred_provider_){}
+    , decltype(_impl_.cloning_audio_data_){}
     , decltype(_impl_.audio_config_){nullptr}
-    , decltype(_impl_.prosody_){nullptr}
-    , decltype(_impl_.text_type_){}
-    , /*decltype(_impl_._cached_size_)*/{}};
+    , decltype(_impl_.tuning_){nullptr}
+    , decltype(_impl_.text_type_){}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   _impl_.text_.InitDefault();
@@ -436,11 +501,19 @@ SynthesizeRequest::SynthesizeRequest(const SynthesizeRequest& from)
     _this->_impl_.preferred_provider_.Set(from._internal_preferred_provider(), 
       _this->GetArenaForAllocation());
   }
+  _impl_.cloning_audio_data_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.cloning_audio_data_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_cloning_audio_data()) {
+    _this->_impl_.cloning_audio_data_.Set(from._internal_cloning_audio_data(), 
+      _this->GetArenaForAllocation());
+  }
   if (from._internal_has_audio_config()) {
     _this->_impl_.audio_config_ = new ::sentiric::tts::v1::AudioConfig(*from._impl_.audio_config_);
   }
-  if (from._internal_has_prosody()) {
-    _this->_impl_.prosody_ = new ::sentiric::tts::v1::ProsodyConfig(*from._impl_.prosody_);
+  if (from._internal_has_tuning()) {
+    _this->_impl_.tuning_ = new ::sentiric::tts::v1::TuningParams(*from._impl_.tuning_);
   }
   _this->_impl_.text_type_ = from._impl_.text_type_;
   // @@protoc_insertion_point(copy_constructor:sentiric.tts.v1.SynthesizeRequest)
@@ -451,13 +524,15 @@ inline void SynthesizeRequest::SharedCtor(
   (void)arena;
   (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.text_){}
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.text_){}
     , decltype(_impl_.voice_id_){}
     , decltype(_impl_.preferred_provider_){}
+    , decltype(_impl_.cloning_audio_data_){}
     , decltype(_impl_.audio_config_){nullptr}
-    , decltype(_impl_.prosody_){nullptr}
+    , decltype(_impl_.tuning_){nullptr}
     , decltype(_impl_.text_type_){0}
-    , /*decltype(_impl_._cached_size_)*/{}
   };
   _impl_.text_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -470,6 +545,10 @@ inline void SynthesizeRequest::SharedCtor(
   _impl_.preferred_provider_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
     _impl_.preferred_provider_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.cloning_audio_data_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.cloning_audio_data_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
@@ -487,8 +566,9 @@ inline void SynthesizeRequest::SharedDtor() {
   _impl_.text_.Destroy();
   _impl_.voice_id_.Destroy();
   _impl_.preferred_provider_.Destroy();
+  _impl_.cloning_audio_data_.Destroy();
   if (this != internal_default_instance()) delete _impl_.audio_config_;
-  if (this != internal_default_instance()) delete _impl_.prosody_;
+  if (this != internal_default_instance()) delete _impl_.tuning_;
 }
 
 void SynthesizeRequest::SetCachedSize(int size) const {
@@ -504,20 +584,26 @@ void SynthesizeRequest::Clear() {
   _impl_.text_.ClearToEmpty();
   _impl_.voice_id_.ClearToEmpty();
   _impl_.preferred_provider_.ClearToEmpty();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    _impl_.cloning_audio_data_.ClearNonDefaultToEmpty();
+  }
   if (GetArenaForAllocation() == nullptr && _impl_.audio_config_ != nullptr) {
     delete _impl_.audio_config_;
   }
   _impl_.audio_config_ = nullptr;
-  if (GetArenaForAllocation() == nullptr && _impl_.prosody_ != nullptr) {
-    delete _impl_.prosody_;
+  if (cached_has_bits & 0x00000002u) {
+    GOOGLE_DCHECK(_impl_.tuning_ != nullptr);
+    _impl_.tuning_->Clear();
   }
-  _impl_.prosody_ = nullptr;
   _impl_.text_type_ = 0;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* SynthesizeRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
@@ -569,10 +655,19 @@ const char* SynthesizeRequest::_InternalParse(const char* ptr, ::_pbi::ParseCont
         } else
           goto handle_unusual;
         continue;
-      // .sentiric.tts.v1.ProsodyConfig prosody = 6;
+      // optional .sentiric.tts.v1.TuningParams tuning = 6;
       case 6:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 50)) {
-          ptr = ctx->ParseMessage(_internal_mutable_prosody(), ptr);
+          ptr = ctx->ParseMessage(_internal_mutable_tuning(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // optional bytes cloning_audio_data = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 58)) {
+          auto str = _internal_mutable_cloning_audio_data();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -593,6 +688,7 @@ const char* SynthesizeRequest::_InternalParse(const char* ptr, ::_pbi::ParseCont
     CHK_(ptr != nullptr);
   }  // while
 message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -650,11 +746,17 @@ uint8_t* SynthesizeRequest::_InternalSerialize(
         5, this->_internal_preferred_provider(), target);
   }
 
-  // .sentiric.tts.v1.ProsodyConfig prosody = 6;
-  if (this->_internal_has_prosody()) {
+  // optional .sentiric.tts.v1.TuningParams tuning = 6;
+  if (_internal_has_tuning()) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(6, _Internal::prosody(this),
-        _Internal::prosody(this).GetCachedSize(), target, stream);
+      InternalWriteMessage(6, _Internal::tuning(this),
+        _Internal::tuning(this).GetCachedSize(), target, stream);
+  }
+
+  // optional bytes cloning_audio_data = 7;
+  if (_internal_has_cloning_audio_data()) {
+    target = stream->WriteBytesMaybeAliased(
+        7, this->_internal_cloning_audio_data(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -694,6 +796,14 @@ size_t SynthesizeRequest::ByteSizeLong() const {
         this->_internal_preferred_provider());
   }
 
+  // optional bytes cloning_audio_data = 7;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
+        this->_internal_cloning_audio_data());
+  }
+
   // .sentiric.tts.v1.AudioConfig audio_config = 4;
   if (this->_internal_has_audio_config()) {
     total_size += 1 +
@@ -701,11 +811,11 @@ size_t SynthesizeRequest::ByteSizeLong() const {
         *_impl_.audio_config_);
   }
 
-  // .sentiric.tts.v1.ProsodyConfig prosody = 6;
-  if (this->_internal_has_prosody()) {
+  // optional .sentiric.tts.v1.TuningParams tuning = 6;
+  if (cached_has_bits & 0x00000002u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *_impl_.prosody_);
+        *_impl_.tuning_);
   }
 
   // .sentiric.tts.v1.TextType text_type = 2;
@@ -741,13 +851,16 @@ void SynthesizeRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, cons
   if (!from._internal_preferred_provider().empty()) {
     _this->_internal_set_preferred_provider(from._internal_preferred_provider());
   }
+  if (from._internal_has_cloning_audio_data()) {
+    _this->_internal_set_cloning_audio_data(from._internal_cloning_audio_data());
+  }
   if (from._internal_has_audio_config()) {
     _this->_internal_mutable_audio_config()->::sentiric::tts::v1::AudioConfig::MergeFrom(
         from._internal_audio_config());
   }
-  if (from._internal_has_prosody()) {
-    _this->_internal_mutable_prosody()->::sentiric::tts::v1::ProsodyConfig::MergeFrom(
-        from._internal_prosody());
+  if (from._internal_has_tuning()) {
+    _this->_internal_mutable_tuning()->::sentiric::tts::v1::TuningParams::MergeFrom(
+        from._internal_tuning());
   }
   if (from._internal_text_type() != 0) {
     _this->_internal_set_text_type(from._internal_text_type());
@@ -771,6 +884,7 @@ void SynthesizeRequest::InternalSwap(SynthesizeRequest* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &_impl_.text_, lhs_arena,
       &other->_impl_.text_, rhs_arena
@@ -782,6 +896,10 @@ void SynthesizeRequest::InternalSwap(SynthesizeRequest* other) {
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &_impl_.preferred_provider_, lhs_arena,
       &other->_impl_.preferred_provider_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.cloning_audio_data_, lhs_arena,
+      &other->_impl_.cloning_audio_data_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(SynthesizeRequest, _impl_.text_type_)
@@ -1099,17 +1217,24 @@ void SynthesizeResponse::InternalSwap(SynthesizeResponse* other) {
 
 class SynthesizeStreamRequest::_Internal {
  public:
+  using HasBits = decltype(std::declval<SynthesizeStreamRequest>()._impl_._has_bits_);
   static const ::sentiric::tts::v1::AudioConfig& audio_config(const SynthesizeStreamRequest* msg);
-  static const ::sentiric::tts::v1::ProsodyConfig& prosody(const SynthesizeStreamRequest* msg);
+  static const ::sentiric::tts::v1::TuningParams& tuning(const SynthesizeStreamRequest* msg);
+  static void set_has_tuning(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+  static void set_has_cloning_audio_data(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 const ::sentiric::tts::v1::AudioConfig&
 SynthesizeStreamRequest::_Internal::audio_config(const SynthesizeStreamRequest* msg) {
   return *msg->_impl_.audio_config_;
 }
-const ::sentiric::tts::v1::ProsodyConfig&
-SynthesizeStreamRequest::_Internal::prosody(const SynthesizeStreamRequest* msg) {
-  return *msg->_impl_.prosody_;
+const ::sentiric::tts::v1::TuningParams&
+SynthesizeStreamRequest::_Internal::tuning(const SynthesizeStreamRequest* msg) {
+  return *msg->_impl_.tuning_;
 }
 SynthesizeStreamRequest::SynthesizeStreamRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
@@ -1121,13 +1246,15 @@ SynthesizeStreamRequest::SynthesizeStreamRequest(const SynthesizeStreamRequest& 
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   SynthesizeStreamRequest* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.text_){}
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.text_){}
     , decltype(_impl_.voice_id_){}
     , decltype(_impl_.preferred_provider_){}
+    , decltype(_impl_.cloning_audio_data_){}
     , decltype(_impl_.audio_config_){nullptr}
-    , decltype(_impl_.prosody_){nullptr}
-    , decltype(_impl_.text_type_){}
-    , /*decltype(_impl_._cached_size_)*/{}};
+    , decltype(_impl_.tuning_){nullptr}
+    , decltype(_impl_.text_type_){}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   _impl_.text_.InitDefault();
@@ -1154,11 +1281,19 @@ SynthesizeStreamRequest::SynthesizeStreamRequest(const SynthesizeStreamRequest& 
     _this->_impl_.preferred_provider_.Set(from._internal_preferred_provider(), 
       _this->GetArenaForAllocation());
   }
+  _impl_.cloning_audio_data_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.cloning_audio_data_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_cloning_audio_data()) {
+    _this->_impl_.cloning_audio_data_.Set(from._internal_cloning_audio_data(), 
+      _this->GetArenaForAllocation());
+  }
   if (from._internal_has_audio_config()) {
     _this->_impl_.audio_config_ = new ::sentiric::tts::v1::AudioConfig(*from._impl_.audio_config_);
   }
-  if (from._internal_has_prosody()) {
-    _this->_impl_.prosody_ = new ::sentiric::tts::v1::ProsodyConfig(*from._impl_.prosody_);
+  if (from._internal_has_tuning()) {
+    _this->_impl_.tuning_ = new ::sentiric::tts::v1::TuningParams(*from._impl_.tuning_);
   }
   _this->_impl_.text_type_ = from._impl_.text_type_;
   // @@protoc_insertion_point(copy_constructor:sentiric.tts.v1.SynthesizeStreamRequest)
@@ -1169,13 +1304,15 @@ inline void SynthesizeStreamRequest::SharedCtor(
   (void)arena;
   (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.text_){}
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.text_){}
     , decltype(_impl_.voice_id_){}
     , decltype(_impl_.preferred_provider_){}
+    , decltype(_impl_.cloning_audio_data_){}
     , decltype(_impl_.audio_config_){nullptr}
-    , decltype(_impl_.prosody_){nullptr}
+    , decltype(_impl_.tuning_){nullptr}
     , decltype(_impl_.text_type_){0}
-    , /*decltype(_impl_._cached_size_)*/{}
   };
   _impl_.text_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -1188,6 +1325,10 @@ inline void SynthesizeStreamRequest::SharedCtor(
   _impl_.preferred_provider_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
     _impl_.preferred_provider_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.cloning_audio_data_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.cloning_audio_data_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
@@ -1205,8 +1346,9 @@ inline void SynthesizeStreamRequest::SharedDtor() {
   _impl_.text_.Destroy();
   _impl_.voice_id_.Destroy();
   _impl_.preferred_provider_.Destroy();
+  _impl_.cloning_audio_data_.Destroy();
   if (this != internal_default_instance()) delete _impl_.audio_config_;
-  if (this != internal_default_instance()) delete _impl_.prosody_;
+  if (this != internal_default_instance()) delete _impl_.tuning_;
 }
 
 void SynthesizeStreamRequest::SetCachedSize(int size) const {
@@ -1222,20 +1364,26 @@ void SynthesizeStreamRequest::Clear() {
   _impl_.text_.ClearToEmpty();
   _impl_.voice_id_.ClearToEmpty();
   _impl_.preferred_provider_.ClearToEmpty();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    _impl_.cloning_audio_data_.ClearNonDefaultToEmpty();
+  }
   if (GetArenaForAllocation() == nullptr && _impl_.audio_config_ != nullptr) {
     delete _impl_.audio_config_;
   }
   _impl_.audio_config_ = nullptr;
-  if (GetArenaForAllocation() == nullptr && _impl_.prosody_ != nullptr) {
-    delete _impl_.prosody_;
+  if (cached_has_bits & 0x00000002u) {
+    GOOGLE_DCHECK(_impl_.tuning_ != nullptr);
+    _impl_.tuning_->Clear();
   }
-  _impl_.prosody_ = nullptr;
   _impl_.text_type_ = 0;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* SynthesizeStreamRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
@@ -1287,10 +1435,19 @@ const char* SynthesizeStreamRequest::_InternalParse(const char* ptr, ::_pbi::Par
         } else
           goto handle_unusual;
         continue;
-      // .sentiric.tts.v1.ProsodyConfig prosody = 6;
+      // optional .sentiric.tts.v1.TuningParams tuning = 6;
       case 6:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 50)) {
-          ptr = ctx->ParseMessage(_internal_mutable_prosody(), ptr);
+          ptr = ctx->ParseMessage(_internal_mutable_tuning(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // optional bytes cloning_audio_data = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 58)) {
+          auto str = _internal_mutable_cloning_audio_data();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -1311,6 +1468,7 @@ const char* SynthesizeStreamRequest::_InternalParse(const char* ptr, ::_pbi::Par
     CHK_(ptr != nullptr);
   }  // while
 message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -1368,11 +1526,17 @@ uint8_t* SynthesizeStreamRequest::_InternalSerialize(
         5, this->_internal_preferred_provider(), target);
   }
 
-  // .sentiric.tts.v1.ProsodyConfig prosody = 6;
-  if (this->_internal_has_prosody()) {
+  // optional .sentiric.tts.v1.TuningParams tuning = 6;
+  if (_internal_has_tuning()) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(6, _Internal::prosody(this),
-        _Internal::prosody(this).GetCachedSize(), target, stream);
+      InternalWriteMessage(6, _Internal::tuning(this),
+        _Internal::tuning(this).GetCachedSize(), target, stream);
+  }
+
+  // optional bytes cloning_audio_data = 7;
+  if (_internal_has_cloning_audio_data()) {
+    target = stream->WriteBytesMaybeAliased(
+        7, this->_internal_cloning_audio_data(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1412,6 +1576,14 @@ size_t SynthesizeStreamRequest::ByteSizeLong() const {
         this->_internal_preferred_provider());
   }
 
+  // optional bytes cloning_audio_data = 7;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
+        this->_internal_cloning_audio_data());
+  }
+
   // .sentiric.tts.v1.AudioConfig audio_config = 4;
   if (this->_internal_has_audio_config()) {
     total_size += 1 +
@@ -1419,11 +1591,11 @@ size_t SynthesizeStreamRequest::ByteSizeLong() const {
         *_impl_.audio_config_);
   }
 
-  // .sentiric.tts.v1.ProsodyConfig prosody = 6;
-  if (this->_internal_has_prosody()) {
+  // optional .sentiric.tts.v1.TuningParams tuning = 6;
+  if (cached_has_bits & 0x00000002u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *_impl_.prosody_);
+        *_impl_.tuning_);
   }
 
   // .sentiric.tts.v1.TextType text_type = 2;
@@ -1459,13 +1631,16 @@ void SynthesizeStreamRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg
   if (!from._internal_preferred_provider().empty()) {
     _this->_internal_set_preferred_provider(from._internal_preferred_provider());
   }
+  if (from._internal_has_cloning_audio_data()) {
+    _this->_internal_set_cloning_audio_data(from._internal_cloning_audio_data());
+  }
   if (from._internal_has_audio_config()) {
     _this->_internal_mutable_audio_config()->::sentiric::tts::v1::AudioConfig::MergeFrom(
         from._internal_audio_config());
   }
-  if (from._internal_has_prosody()) {
-    _this->_internal_mutable_prosody()->::sentiric::tts::v1::ProsodyConfig::MergeFrom(
-        from._internal_prosody());
+  if (from._internal_has_tuning()) {
+    _this->_internal_mutable_tuning()->::sentiric::tts::v1::TuningParams::MergeFrom(
+        from._internal_tuning());
   }
   if (from._internal_text_type() != 0) {
     _this->_internal_set_text_type(from._internal_text_type());
@@ -1489,6 +1664,7 @@ void SynthesizeStreamRequest::InternalSwap(SynthesizeStreamRequest* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &_impl_.text_, lhs_arena,
       &other->_impl_.text_, rhs_arena
@@ -1500,6 +1676,10 @@ void SynthesizeStreamRequest::InternalSwap(SynthesizeStreamRequest* other) {
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &_impl_.preferred_provider_, lhs_arena,
       &other->_impl_.preferred_provider_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.cloning_audio_data_, lhs_arena,
+      &other->_impl_.cloning_audio_data_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(SynthesizeStreamRequest, _impl_.text_type_)
@@ -2203,6 +2383,337 @@ void ListVoicesResponse::InternalSwap(ListVoicesResponse* other) {
 
 // ===================================================================
 
+class TuningParams::_Internal {
+ public:
+};
+
+TuningParams::TuningParams(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.tts.v1.TuningParams)
+}
+TuningParams::TuningParams(const TuningParams& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  TuningParams* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.temperature_){}
+    , decltype(_impl_.top_p_){}
+    , decltype(_impl_.top_k_){}
+    , decltype(_impl_.repetition_penalty_){}
+    , decltype(_impl_.speed_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::memcpy(&_impl_.temperature_, &from._impl_.temperature_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.speed_) -
+    reinterpret_cast<char*>(&_impl_.temperature_)) + sizeof(_impl_.speed_));
+  // @@protoc_insertion_point(copy_constructor:sentiric.tts.v1.TuningParams)
+}
+
+inline void TuningParams::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.temperature_){0}
+    , decltype(_impl_.top_p_){0}
+    , decltype(_impl_.top_k_){0}
+    , decltype(_impl_.repetition_penalty_){0}
+    , decltype(_impl_.speed_){0}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+TuningParams::~TuningParams() {
+  // @@protoc_insertion_point(destructor:sentiric.tts.v1.TuningParams)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void TuningParams::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void TuningParams::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void TuningParams::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.tts.v1.TuningParams)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&_impl_.temperature_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&_impl_.speed_) -
+      reinterpret_cast<char*>(&_impl_.temperature_)) + sizeof(_impl_.speed_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* TuningParams::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // float temperature = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 13)) {
+          _impl_.temperature_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float top_p = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 21)) {
+          _impl_.top_p_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 top_k = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+          _impl_.top_k_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // float repetition_penalty = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 37)) {
+          _impl_.repetition_penalty_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float speed = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 45)) {
+          _impl_.speed_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* TuningParams::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.tts.v1.TuningParams)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // float temperature = 1;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_temperature = this->_internal_temperature();
+  uint32_t raw_temperature;
+  memcpy(&raw_temperature, &tmp_temperature, sizeof(tmp_temperature));
+  if (raw_temperature != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(1, this->_internal_temperature(), target);
+  }
+
+  // float top_p = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_top_p = this->_internal_top_p();
+  uint32_t raw_top_p;
+  memcpy(&raw_top_p, &tmp_top_p, sizeof(tmp_top_p));
+  if (raw_top_p != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(2, this->_internal_top_p(), target);
+  }
+
+  // int32 top_k = 3;
+  if (this->_internal_top_k() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(3, this->_internal_top_k(), target);
+  }
+
+  // float repetition_penalty = 4;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_repetition_penalty = this->_internal_repetition_penalty();
+  uint32_t raw_repetition_penalty;
+  memcpy(&raw_repetition_penalty, &tmp_repetition_penalty, sizeof(tmp_repetition_penalty));
+  if (raw_repetition_penalty != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(4, this->_internal_repetition_penalty(), target);
+  }
+
+  // float speed = 5;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_speed = this->_internal_speed();
+  uint32_t raw_speed;
+  memcpy(&raw_speed, &tmp_speed, sizeof(tmp_speed));
+  if (raw_speed != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(5, this->_internal_speed(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.tts.v1.TuningParams)
+  return target;
+}
+
+size_t TuningParams::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.tts.v1.TuningParams)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // float temperature = 1;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_temperature = this->_internal_temperature();
+  uint32_t raw_temperature;
+  memcpy(&raw_temperature, &tmp_temperature, sizeof(tmp_temperature));
+  if (raw_temperature != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float top_p = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_top_p = this->_internal_top_p();
+  uint32_t raw_top_p;
+  memcpy(&raw_top_p, &tmp_top_p, sizeof(tmp_top_p));
+  if (raw_top_p != 0) {
+    total_size += 1 + 4;
+  }
+
+  // int32 top_k = 3;
+  if (this->_internal_top_k() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_top_k());
+  }
+
+  // float repetition_penalty = 4;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_repetition_penalty = this->_internal_repetition_penalty();
+  uint32_t raw_repetition_penalty;
+  memcpy(&raw_repetition_penalty, &tmp_repetition_penalty, sizeof(tmp_repetition_penalty));
+  if (raw_repetition_penalty != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float speed = 5;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_speed = this->_internal_speed();
+  uint32_t raw_speed;
+  memcpy(&raw_speed, &tmp_speed, sizeof(tmp_speed));
+  if (raw_speed != 0) {
+    total_size += 1 + 4;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData TuningParams::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    TuningParams::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*TuningParams::GetClassData() const { return &_class_data_; }
+
+
+void TuningParams::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<TuningParams*>(&to_msg);
+  auto& from = static_cast<const TuningParams&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.tts.v1.TuningParams)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_temperature = from._internal_temperature();
+  uint32_t raw_temperature;
+  memcpy(&raw_temperature, &tmp_temperature, sizeof(tmp_temperature));
+  if (raw_temperature != 0) {
+    _this->_internal_set_temperature(from._internal_temperature());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_top_p = from._internal_top_p();
+  uint32_t raw_top_p;
+  memcpy(&raw_top_p, &tmp_top_p, sizeof(tmp_top_p));
+  if (raw_top_p != 0) {
+    _this->_internal_set_top_p(from._internal_top_p());
+  }
+  if (from._internal_top_k() != 0) {
+    _this->_internal_set_top_k(from._internal_top_k());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_repetition_penalty = from._internal_repetition_penalty();
+  uint32_t raw_repetition_penalty;
+  memcpy(&raw_repetition_penalty, &tmp_repetition_penalty, sizeof(tmp_repetition_penalty));
+  if (raw_repetition_penalty != 0) {
+    _this->_internal_set_repetition_penalty(from._internal_repetition_penalty());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_speed = from._internal_speed();
+  uint32_t raw_speed;
+  memcpy(&raw_speed, &tmp_speed, sizeof(tmp_speed));
+  if (raw_speed != 0) {
+    _this->_internal_set_speed(from._internal_speed());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void TuningParams::CopyFrom(const TuningParams& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.tts.v1.TuningParams)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool TuningParams::IsInitialized() const {
+  return true;
+}
+
+void TuningParams::InternalSwap(TuningParams* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(TuningParams, _impl_.speed_)
+      + sizeof(TuningParams::_impl_.speed_)
+      - PROTOBUF_FIELD_OFFSET(TuningParams, _impl_.temperature_)>(
+          reinterpret_cast<char*>(&_impl_.temperature_),
+          reinterpret_cast<char*>(&other->_impl_.temperature_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata TuningParams::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2ftts_2fv1_2fgateway_2eproto_getter, &descriptor_table_sentiric_2ftts_2fv1_2fgateway_2eproto_once,
+      file_level_metadata_sentiric_2ftts_2fv1_2fgateway_2eproto[6]);
+}
+
+// ===================================================================
+
 class AudioConfig::_Internal {
  public:
 };
@@ -2448,7 +2959,7 @@ void AudioConfig::InternalSwap(AudioConfig* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata AudioConfig::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2ftts_2fv1_2fgateway_2eproto_getter, &descriptor_table_sentiric_2ftts_2fv1_2fgateway_2eproto_once,
-      file_level_metadata_sentiric_2ftts_2fv1_2fgateway_2eproto[6]);
+      file_level_metadata_sentiric_2ftts_2fv1_2fgateway_2eproto[7]);
 }
 
 // ===================================================================
@@ -2735,7 +3246,7 @@ void ProsodyConfig::InternalSwap(ProsodyConfig* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ProsodyConfig::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2ftts_2fv1_2fgateway_2eproto_getter, &descriptor_table_sentiric_2ftts_2fv1_2fgateway_2eproto_once,
-      file_level_metadata_sentiric_2ftts_2fv1_2fgateway_2eproto[7]);
+      file_level_metadata_sentiric_2ftts_2fv1_2fgateway_2eproto[8]);
 }
 
 // ===================================================================
@@ -3127,7 +3638,7 @@ void VoiceInfo::InternalSwap(VoiceInfo* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata VoiceInfo::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2ftts_2fv1_2fgateway_2eproto_getter, &descriptor_table_sentiric_2ftts_2fv1_2fgateway_2eproto_once,
-      file_level_metadata_sentiric_2ftts_2fv1_2fgateway_2eproto[8]);
+      file_level_metadata_sentiric_2ftts_2fv1_2fgateway_2eproto[9]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -3158,6 +3669,10 @@ Arena::CreateMaybeMessage< ::sentiric::tts::v1::ListVoicesRequest >(Arena* arena
 template<> PROTOBUF_NOINLINE ::sentiric::tts::v1::ListVoicesResponse*
 Arena::CreateMaybeMessage< ::sentiric::tts::v1::ListVoicesResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::sentiric::tts::v1::ListVoicesResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::tts::v1::TuningParams*
+Arena::CreateMaybeMessage< ::sentiric::tts::v1::TuningParams >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::tts::v1::TuningParams >(arena);
 }
 template<> PROTOBUF_NOINLINE ::sentiric::tts::v1::AudioConfig*
 Arena::CreateMaybeMessage< ::sentiric::tts::v1::AudioConfig >(Arena* arena) {

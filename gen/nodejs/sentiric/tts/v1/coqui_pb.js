@@ -143,7 +143,8 @@ speed: jspb.Message.getFloatingPointFieldWithDefault(msg, 5, 0.0),
 topP: jspb.Message.getFloatingPointFieldWithDefault(msg, 6, 0.0),
 topK: jspb.Message.getFloatingPointFieldWithDefault(msg, 7, 0.0),
 repetitionPenalty: jspb.Message.getFloatingPointFieldWithDefault(msg, 8, 0.0),
-outputFormat: jspb.Message.getFieldWithDefault(msg, 9, "")
+outputFormat: jspb.Message.getFieldWithDefault(msg, 9, ""),
+sampleRate: jspb.Message.getFieldWithDefault(msg, 10, 0)
   };
 
   if (includeInstance) {
@@ -216,6 +217,10 @@ proto.sentiric.tts.v1.CoquiSynthesizeRequest.deserializeBinaryFromReader = funct
       var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setOutputFormat(value);
       break;
+    case 10:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setSampleRate(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -259,8 +264,8 @@ proto.sentiric.tts.v1.CoquiSynthesizeRequest.serializeBinaryToWriter = function(
       f
     );
   }
-  f = message.getSpeakerWav_asU8();
-  if (f.length > 0) {
+  f = /** @type {!(string|Uint8Array)} */ (jspb.Message.getField(message, 3));
+  if (f != null) {
     writer.writeBytes(
       3,
       f
@@ -305,6 +310,13 @@ proto.sentiric.tts.v1.CoquiSynthesizeRequest.serializeBinaryToWriter = function(
   if (f.length > 0) {
     writer.writeString(
       9,
+      f
+    );
+  }
+  f = message.getSampleRate();
+  if (f !== 0) {
+    writer.writeInt32(
+      10,
       f
     );
   }
@@ -385,7 +397,25 @@ proto.sentiric.tts.v1.CoquiSynthesizeRequest.prototype.getSpeakerWav_asU8 = func
  * @return {!proto.sentiric.tts.v1.CoquiSynthesizeRequest} returns this
  */
 proto.sentiric.tts.v1.CoquiSynthesizeRequest.prototype.setSpeakerWav = function(value) {
-  return jspb.Message.setProto3BytesField(this, 3, value);
+  return jspb.Message.setField(this, 3, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.sentiric.tts.v1.CoquiSynthesizeRequest} returns this
+ */
+proto.sentiric.tts.v1.CoquiSynthesizeRequest.prototype.clearSpeakerWav = function() {
+  return jspb.Message.setField(this, 3, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sentiric.tts.v1.CoquiSynthesizeRequest.prototype.hasSpeakerWav = function() {
+  return jspb.Message.getField(this, 3) != null;
 };
 
 
@@ -494,6 +524,24 @@ proto.sentiric.tts.v1.CoquiSynthesizeRequest.prototype.getOutputFormat = functio
  */
 proto.sentiric.tts.v1.CoquiSynthesizeRequest.prototype.setOutputFormat = function(value) {
   return jspb.Message.setProto3StringField(this, 9, value);
+};
+
+
+/**
+ * optional int32 sample_rate = 10;
+ * @return {number}
+ */
+proto.sentiric.tts.v1.CoquiSynthesizeRequest.prototype.getSampleRate = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 10, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sentiric.tts.v1.CoquiSynthesizeRequest} returns this
+ */
+proto.sentiric.tts.v1.CoquiSynthesizeRequest.prototype.setSampleRate = function(value) {
+  return jspb.Message.setProto3IntField(this, 10, value);
 };
 
 
@@ -691,7 +739,8 @@ speed: jspb.Message.getFloatingPointFieldWithDefault(msg, 5, 0.0),
 topP: jspb.Message.getFloatingPointFieldWithDefault(msg, 6, 0.0),
 topK: jspb.Message.getFloatingPointFieldWithDefault(msg, 7, 0.0),
 repetitionPenalty: jspb.Message.getFloatingPointFieldWithDefault(msg, 8, 0.0),
-outputFormat: jspb.Message.getFieldWithDefault(msg, 9, "")
+outputFormat: jspb.Message.getFieldWithDefault(msg, 9, ""),
+sampleRate: jspb.Message.getFieldWithDefault(msg, 10, 0)
   };
 
   if (includeInstance) {
@@ -764,6 +813,10 @@ proto.sentiric.tts.v1.CoquiSynthesizeStreamRequest.deserializeBinaryFromReader =
       var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setOutputFormat(value);
       break;
+    case 10:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setSampleRate(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -807,8 +860,8 @@ proto.sentiric.tts.v1.CoquiSynthesizeStreamRequest.serializeBinaryToWriter = fun
       f
     );
   }
-  f = message.getSpeakerWav_asU8();
-  if (f.length > 0) {
+  f = /** @type {!(string|Uint8Array)} */ (jspb.Message.getField(message, 3));
+  if (f != null) {
     writer.writeBytes(
       3,
       f
@@ -853,6 +906,13 @@ proto.sentiric.tts.v1.CoquiSynthesizeStreamRequest.serializeBinaryToWriter = fun
   if (f.length > 0) {
     writer.writeString(
       9,
+      f
+    );
+  }
+  f = message.getSampleRate();
+  if (f !== 0) {
+    writer.writeInt32(
+      10,
       f
     );
   }
@@ -933,7 +993,25 @@ proto.sentiric.tts.v1.CoquiSynthesizeStreamRequest.prototype.getSpeakerWav_asU8 
  * @return {!proto.sentiric.tts.v1.CoquiSynthesizeStreamRequest} returns this
  */
 proto.sentiric.tts.v1.CoquiSynthesizeStreamRequest.prototype.setSpeakerWav = function(value) {
-  return jspb.Message.setProto3BytesField(this, 3, value);
+  return jspb.Message.setField(this, 3, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.sentiric.tts.v1.CoquiSynthesizeStreamRequest} returns this
+ */
+proto.sentiric.tts.v1.CoquiSynthesizeStreamRequest.prototype.clearSpeakerWav = function() {
+  return jspb.Message.setField(this, 3, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sentiric.tts.v1.CoquiSynthesizeStreamRequest.prototype.hasSpeakerWav = function() {
+  return jspb.Message.getField(this, 3) != null;
 };
 
 
@@ -1042,6 +1120,24 @@ proto.sentiric.tts.v1.CoquiSynthesizeStreamRequest.prototype.getOutputFormat = f
  */
 proto.sentiric.tts.v1.CoquiSynthesizeStreamRequest.prototype.setOutputFormat = function(value) {
   return jspb.Message.setProto3StringField(this, 9, value);
+};
+
+
+/**
+ * optional int32 sample_rate = 10;
+ * @return {number}
+ */
+proto.sentiric.tts.v1.CoquiSynthesizeStreamRequest.prototype.getSampleRate = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 10, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sentiric.tts.v1.CoquiSynthesizeStreamRequest} returns this
+ */
+proto.sentiric.tts.v1.CoquiSynthesizeStreamRequest.prototype.setSampleRate = function(value) {
+  return jspb.Message.setProto3IntField(this, 10, value);
 };
 
 

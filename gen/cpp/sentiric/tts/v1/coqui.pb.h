@@ -204,6 +204,7 @@ class CoquiSynthesizeRequest final :
     kTopPFieldNumber = 6,
     kTopKFieldNumber = 7,
     kRepetitionPenaltyFieldNumber = 8,
+    kSampleRateFieldNumber = 10,
   };
   // string text = 1;
   void clear_text();
@@ -233,7 +234,11 @@ class CoquiSynthesizeRequest final :
   std::string* _internal_mutable_language_code();
   public:
 
-  // bytes speaker_wav = 3;
+  // optional bytes speaker_wav = 3;
+  bool has_speaker_wav() const;
+  private:
+  bool _internal_has_speaker_wav() const;
+  public:
   void clear_speaker_wav();
   const std::string& speaker_wav() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
@@ -306,6 +311,15 @@ class CoquiSynthesizeRequest final :
   void _internal_set_repetition_penalty(float value);
   public:
 
+  // int32 sample_rate = 10;
+  void clear_sample_rate();
+  int32_t sample_rate() const;
+  void set_sample_rate(int32_t value);
+  private:
+  int32_t _internal_sample_rate() const;
+  void _internal_set_sample_rate(int32_t value);
+  public:
+
   // @@protoc_insertion_point(class_scope:sentiric.tts.v1.CoquiSynthesizeRequest)
  private:
   class _Internal;
@@ -314,6 +328,8 @@ class CoquiSynthesizeRequest final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr text_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr language_code_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr speaker_wav_;
@@ -323,7 +339,7 @@ class CoquiSynthesizeRequest final :
     float top_p_;
     float top_k_;
     float repetition_penalty_;
-    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    int32_t sample_rate_;
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_sentiric_2ftts_2fv1_2fcoqui_2eproto;
@@ -613,6 +629,7 @@ class CoquiSynthesizeStreamRequest final :
     kTopPFieldNumber = 6,
     kTopKFieldNumber = 7,
     kRepetitionPenaltyFieldNumber = 8,
+    kSampleRateFieldNumber = 10,
   };
   // string text = 1;
   void clear_text();
@@ -642,7 +659,11 @@ class CoquiSynthesizeStreamRequest final :
   std::string* _internal_mutable_language_code();
   public:
 
-  // bytes speaker_wav = 3;
+  // optional bytes speaker_wav = 3;
+  bool has_speaker_wav() const;
+  private:
+  bool _internal_has_speaker_wav() const;
+  public:
   void clear_speaker_wav();
   const std::string& speaker_wav() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
@@ -715,6 +736,15 @@ class CoquiSynthesizeStreamRequest final :
   void _internal_set_repetition_penalty(float value);
   public:
 
+  // int32 sample_rate = 10;
+  void clear_sample_rate();
+  int32_t sample_rate() const;
+  void set_sample_rate(int32_t value);
+  private:
+  int32_t _internal_sample_rate() const;
+  void _internal_set_sample_rate(int32_t value);
+  public:
+
   // @@protoc_insertion_point(class_scope:sentiric.tts.v1.CoquiSynthesizeStreamRequest)
  private:
   class _Internal;
@@ -723,6 +753,8 @@ class CoquiSynthesizeStreamRequest final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr text_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr language_code_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr speaker_wav_;
@@ -732,7 +764,7 @@ class CoquiSynthesizeStreamRequest final :
     float top_p_;
     float top_k_;
     float repetition_penalty_;
-    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    int32_t sample_rate_;
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_sentiric_2ftts_2fv1_2fcoqui_2eproto;
@@ -1012,9 +1044,17 @@ inline void CoquiSynthesizeRequest::set_allocated_language_code(std::string* lan
   // @@protoc_insertion_point(field_set_allocated:sentiric.tts.v1.CoquiSynthesizeRequest.language_code)
 }
 
-// bytes speaker_wav = 3;
+// optional bytes speaker_wav = 3;
+inline bool CoquiSynthesizeRequest::_internal_has_speaker_wav() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool CoquiSynthesizeRequest::has_speaker_wav() const {
+  return _internal_has_speaker_wav();
+}
 inline void CoquiSynthesizeRequest::clear_speaker_wav() {
   _impl_.speaker_wav_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 inline const std::string& CoquiSynthesizeRequest::speaker_wav() const {
   // @@protoc_insertion_point(field_get:sentiric.tts.v1.CoquiSynthesizeRequest.speaker_wav)
@@ -1023,7 +1063,7 @@ inline const std::string& CoquiSynthesizeRequest::speaker_wav() const {
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
 void CoquiSynthesizeRequest::set_speaker_wav(ArgT0&& arg0, ArgT... args) {
- 
+ _impl_._has_bits_[0] |= 0x00000001u;
  _impl_.speaker_wav_.SetBytes(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
   // @@protoc_insertion_point(field_set:sentiric.tts.v1.CoquiSynthesizeRequest.speaker_wav)
 }
@@ -1036,22 +1076,32 @@ inline const std::string& CoquiSynthesizeRequest::_internal_speaker_wav() const 
   return _impl_.speaker_wav_.Get();
 }
 inline void CoquiSynthesizeRequest::_internal_set_speaker_wav(const std::string& value) {
-  
+  _impl_._has_bits_[0] |= 0x00000001u;
   _impl_.speaker_wav_.Set(value, GetArenaForAllocation());
 }
 inline std::string* CoquiSynthesizeRequest::_internal_mutable_speaker_wav() {
-  
+  _impl_._has_bits_[0] |= 0x00000001u;
   return _impl_.speaker_wav_.Mutable(GetArenaForAllocation());
 }
 inline std::string* CoquiSynthesizeRequest::release_speaker_wav() {
   // @@protoc_insertion_point(field_release:sentiric.tts.v1.CoquiSynthesizeRequest.speaker_wav)
-  return _impl_.speaker_wav_.Release();
+  if (!_internal_has_speaker_wav()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  auto* p = _impl_.speaker_wav_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.speaker_wav_.IsDefault()) {
+    _impl_.speaker_wav_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
 }
 inline void CoquiSynthesizeRequest::set_allocated_speaker_wav(std::string* speaker_wav) {
   if (speaker_wav != nullptr) {
-    
+    _impl_._has_bits_[0] |= 0x00000001u;
   } else {
-    
+    _impl_._has_bits_[0] &= ~0x00000001u;
   }
   _impl_.speaker_wav_.SetAllocated(speaker_wav, GetArenaForAllocation());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -1212,6 +1262,26 @@ inline void CoquiSynthesizeRequest::set_allocated_output_format(std::string* out
   // @@protoc_insertion_point(field_set_allocated:sentiric.tts.v1.CoquiSynthesizeRequest.output_format)
 }
 
+// int32 sample_rate = 10;
+inline void CoquiSynthesizeRequest::clear_sample_rate() {
+  _impl_.sample_rate_ = 0;
+}
+inline int32_t CoquiSynthesizeRequest::_internal_sample_rate() const {
+  return _impl_.sample_rate_;
+}
+inline int32_t CoquiSynthesizeRequest::sample_rate() const {
+  // @@protoc_insertion_point(field_get:sentiric.tts.v1.CoquiSynthesizeRequest.sample_rate)
+  return _internal_sample_rate();
+}
+inline void CoquiSynthesizeRequest::_internal_set_sample_rate(int32_t value) {
+  
+  _impl_.sample_rate_ = value;
+}
+inline void CoquiSynthesizeRequest::set_sample_rate(int32_t value) {
+  _internal_set_sample_rate(value);
+  // @@protoc_insertion_point(field_set:sentiric.tts.v1.CoquiSynthesizeRequest.sample_rate)
+}
+
 // -------------------------------------------------------------------
 
 // CoquiSynthesizeResponse
@@ -1370,9 +1440,17 @@ inline void CoquiSynthesizeStreamRequest::set_allocated_language_code(std::strin
   // @@protoc_insertion_point(field_set_allocated:sentiric.tts.v1.CoquiSynthesizeStreamRequest.language_code)
 }
 
-// bytes speaker_wav = 3;
+// optional bytes speaker_wav = 3;
+inline bool CoquiSynthesizeStreamRequest::_internal_has_speaker_wav() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool CoquiSynthesizeStreamRequest::has_speaker_wav() const {
+  return _internal_has_speaker_wav();
+}
 inline void CoquiSynthesizeStreamRequest::clear_speaker_wav() {
   _impl_.speaker_wav_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 inline const std::string& CoquiSynthesizeStreamRequest::speaker_wav() const {
   // @@protoc_insertion_point(field_get:sentiric.tts.v1.CoquiSynthesizeStreamRequest.speaker_wav)
@@ -1381,7 +1459,7 @@ inline const std::string& CoquiSynthesizeStreamRequest::speaker_wav() const {
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
 void CoquiSynthesizeStreamRequest::set_speaker_wav(ArgT0&& arg0, ArgT... args) {
- 
+ _impl_._has_bits_[0] |= 0x00000001u;
  _impl_.speaker_wav_.SetBytes(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
   // @@protoc_insertion_point(field_set:sentiric.tts.v1.CoquiSynthesizeStreamRequest.speaker_wav)
 }
@@ -1394,22 +1472,32 @@ inline const std::string& CoquiSynthesizeStreamRequest::_internal_speaker_wav() 
   return _impl_.speaker_wav_.Get();
 }
 inline void CoquiSynthesizeStreamRequest::_internal_set_speaker_wav(const std::string& value) {
-  
+  _impl_._has_bits_[0] |= 0x00000001u;
   _impl_.speaker_wav_.Set(value, GetArenaForAllocation());
 }
 inline std::string* CoquiSynthesizeStreamRequest::_internal_mutable_speaker_wav() {
-  
+  _impl_._has_bits_[0] |= 0x00000001u;
   return _impl_.speaker_wav_.Mutable(GetArenaForAllocation());
 }
 inline std::string* CoquiSynthesizeStreamRequest::release_speaker_wav() {
   // @@protoc_insertion_point(field_release:sentiric.tts.v1.CoquiSynthesizeStreamRequest.speaker_wav)
-  return _impl_.speaker_wav_.Release();
+  if (!_internal_has_speaker_wav()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  auto* p = _impl_.speaker_wav_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.speaker_wav_.IsDefault()) {
+    _impl_.speaker_wav_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
 }
 inline void CoquiSynthesizeStreamRequest::set_allocated_speaker_wav(std::string* speaker_wav) {
   if (speaker_wav != nullptr) {
-    
+    _impl_._has_bits_[0] |= 0x00000001u;
   } else {
-    
+    _impl_._has_bits_[0] &= ~0x00000001u;
   }
   _impl_.speaker_wav_.SetAllocated(speaker_wav, GetArenaForAllocation());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -1568,6 +1656,26 @@ inline void CoquiSynthesizeStreamRequest::set_allocated_output_format(std::strin
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:sentiric.tts.v1.CoquiSynthesizeStreamRequest.output_format)
+}
+
+// int32 sample_rate = 10;
+inline void CoquiSynthesizeStreamRequest::clear_sample_rate() {
+  _impl_.sample_rate_ = 0;
+}
+inline int32_t CoquiSynthesizeStreamRequest::_internal_sample_rate() const {
+  return _impl_.sample_rate_;
+}
+inline int32_t CoquiSynthesizeStreamRequest::sample_rate() const {
+  // @@protoc_insertion_point(field_get:sentiric.tts.v1.CoquiSynthesizeStreamRequest.sample_rate)
+  return _internal_sample_rate();
+}
+inline void CoquiSynthesizeStreamRequest::_internal_set_sample_rate(int32_t value) {
+  
+  _impl_.sample_rate_ = value;
+}
+inline void CoquiSynthesizeStreamRequest::set_sample_rate(int32_t value) {
+  _internal_set_sample_rate(value);
+  // @@protoc_insertion_point(field_set:sentiric.tts.v1.CoquiSynthesizeStreamRequest.sample_rate)
 }
 
 // -------------------------------------------------------------------

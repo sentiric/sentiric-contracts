@@ -28,9 +28,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type TtsGatewayServiceClient interface {
-	// Unary
 	Synthesize(ctx context.Context, in *SynthesizeRequest, opts ...grpc.CallOption) (*SynthesizeResponse, error)
-	// Stream
 	SynthesizeStream(ctx context.Context, in *SynthesizeStreamRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[SynthesizeStreamResponse], error)
 	ListVoices(ctx context.Context, in *ListVoicesRequest, opts ...grpc.CallOption) (*ListVoicesResponse, error)
 }
@@ -86,9 +84,7 @@ func (c *ttsGatewayServiceClient) ListVoices(ctx context.Context, in *ListVoices
 // All implementations should embed UnimplementedTtsGatewayServiceServer
 // for forward compatibility.
 type TtsGatewayServiceServer interface {
-	// Unary
 	Synthesize(context.Context, *SynthesizeRequest) (*SynthesizeResponse, error)
-	// Stream
 	SynthesizeStream(*SynthesizeStreamRequest, grpc.ServerStreamingServer[SynthesizeStreamResponse]) error
 	ListVoices(context.Context, *ListVoicesRequest) (*ListVoicesResponse, error)
 }

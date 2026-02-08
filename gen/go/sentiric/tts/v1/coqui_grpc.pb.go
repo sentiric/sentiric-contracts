@@ -27,9 +27,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type TtsCoquiServiceClient interface {
-	// Unary
 	CoquiSynthesize(ctx context.Context, in *CoquiSynthesizeRequest, opts ...grpc.CallOption) (*CoquiSynthesizeResponse, error)
-	// Stream
 	CoquiSynthesizeStream(ctx context.Context, in *CoquiSynthesizeStreamRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[CoquiSynthesizeStreamResponse], error)
 }
 
@@ -74,9 +72,7 @@ type TtsCoquiService_CoquiSynthesizeStreamClient = grpc.ServerStreamingClient[Co
 // All implementations should embed UnimplementedTtsCoquiServiceServer
 // for forward compatibility.
 type TtsCoquiServiceServer interface {
-	// Unary
 	CoquiSynthesize(context.Context, *CoquiSynthesizeRequest) (*CoquiSynthesizeResponse, error)
-	// Stream
 	CoquiSynthesizeStream(*CoquiSynthesizeStreamRequest, grpc.ServerStreamingServer[CoquiSynthesizeStreamResponse]) error
 }
 

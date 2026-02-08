@@ -23,18 +23,23 @@ const (
 
 // --- Unary Messages ---
 type CoquiSynthesizeRequest struct {
-	state             protoimpl.MessageState `protogen:"open.v1"`
-	Text              string                 `protobuf:"bytes,1,opt,name=text,proto3" json:"text,omitempty"`
-	LanguageCode      string                 `protobuf:"bytes,2,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
-	SpeakerWav        []byte                 `protobuf:"bytes,3,opt,name=speaker_wav,json=speakerWav,proto3" json:"speaker_wav,omitempty"`
-	Temperature       float32                `protobuf:"fixed32,4,opt,name=temperature,proto3" json:"temperature,omitempty"`
-	Speed             float32                `protobuf:"fixed32,5,opt,name=speed,proto3" json:"speed,omitempty"`
-	TopP              float32                `protobuf:"fixed32,6,opt,name=top_p,json=topP,proto3" json:"top_p,omitempty"`
-	TopK              float32                `protobuf:"fixed32,7,opt,name=top_k,json=topK,proto3" json:"top_k,omitempty"`
-	RepetitionPenalty float32                `protobuf:"fixed32,8,opt,name=repetition_penalty,json=repetitionPenalty,proto3" json:"repetition_penalty,omitempty"`
-	OutputFormat      string                 `protobuf:"bytes,9,opt,name=output_format,json=outputFormat,proto3" json:"output_format,omitempty"`
-	unknownFields     protoimpl.UnknownFields
-	sizeCache         protoimpl.SizeCache
+	state        protoimpl.MessageState `protogen:"open.v1"`
+	Text         string                 `protobuf:"bytes,1,opt,name=text,proto3" json:"text,omitempty"`
+	LanguageCode string                 `protobuf:"bytes,2,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
+	// [MİMARİ GÜNCELLEME]: Klonlama için referans ses.
+	// Bu, speaker_idx'i geçersiz kılar.
+	SpeakerWav        []byte  `protobuf:"bytes,3,opt,name=speaker_wav,json=speakerWav,proto3,oneof" json:"speaker_wav,omitempty"`
+	Temperature       float32 `protobuf:"fixed32,4,opt,name=temperature,proto3" json:"temperature,omitempty"`
+	Speed             float32 `protobuf:"fixed32,5,opt,name=speed,proto3" json:"speed,omitempty"`
+	TopP              float32 `protobuf:"fixed32,6,opt,name=top_p,json=topP,proto3" json:"top_p,omitempty"`
+	TopK              float32 `protobuf:"fixed32,7,opt,name=top_k,json=topK,proto3" json:"top_k,omitempty"`
+	RepetitionPenalty float32 `protobuf:"fixed32,8,opt,name=repetition_penalty,json=repetitionPenalty,proto3" json:"repetition_penalty,omitempty"`
+	OutputFormat      string  `protobuf:"bytes,9,opt,name=output_format,json=outputFormat,proto3" json:"output_format,omitempty"`
+	// [DEEP VOICE FIX]: İstenen örnekleme hızını belirtmek için yeni alan.
+	// Eğer 0 ise, motorun doğal hızı (24000Hz) kullanılır.
+	SampleRate    int32 `protobuf:"varint,10,opt,name=sample_rate,json=sampleRate,proto3" json:"sample_rate,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *CoquiSynthesizeRequest) Reset() {
@@ -130,9 +135,16 @@ func (x *CoquiSynthesizeRequest) GetOutputFormat() string {
 	return ""
 }
 
+func (x *CoquiSynthesizeRequest) GetSampleRate() int32 {
+	if x != nil {
+		return x.SampleRate
+	}
+	return 0
+}
+
 type CoquiSynthesizeResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	AudioContent  []byte                 `protobuf:"bytes,1,opt,name=audio_content,json=audioContent,proto3" json:"audio_content,omitempty"` // Tam dosya
+	AudioContent  []byte                 `protobuf:"bytes,1,opt,name=audio_content,json=audioContent,proto3" json:"audio_content,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -174,20 +186,23 @@ func (x *CoquiSynthesizeResponse) GetAudioContent() []byte {
 	return nil
 }
 
-// --- Stream Messages (İçerik aynı olsa bile ayrı tanımlanmalı) ---
+// --- Stream Messages ---
 type CoquiSynthesizeStreamRequest struct {
-	state             protoimpl.MessageState `protogen:"open.v1"`
-	Text              string                 `protobuf:"bytes,1,opt,name=text,proto3" json:"text,omitempty"`
-	LanguageCode      string                 `protobuf:"bytes,2,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
-	SpeakerWav        []byte                 `protobuf:"bytes,3,opt,name=speaker_wav,json=speakerWav,proto3" json:"speaker_wav,omitempty"`
-	Temperature       float32                `protobuf:"fixed32,4,opt,name=temperature,proto3" json:"temperature,omitempty"`
-	Speed             float32                `protobuf:"fixed32,5,opt,name=speed,proto3" json:"speed,omitempty"`
-	TopP              float32                `protobuf:"fixed32,6,opt,name=top_p,json=topP,proto3" json:"top_p,omitempty"`
-	TopK              float32                `protobuf:"fixed32,7,opt,name=top_k,json=topK,proto3" json:"top_k,omitempty"`
-	RepetitionPenalty float32                `protobuf:"fixed32,8,opt,name=repetition_penalty,json=repetitionPenalty,proto3" json:"repetition_penalty,omitempty"`
-	OutputFormat      string                 `protobuf:"bytes,9,opt,name=output_format,json=outputFormat,proto3" json:"output_format,omitempty"`
-	unknownFields     protoimpl.UnknownFields
-	sizeCache         protoimpl.SizeCache
+	state        protoimpl.MessageState `protogen:"open.v1"`
+	Text         string                 `protobuf:"bytes,1,opt,name=text,proto3" json:"text,omitempty"`
+	LanguageCode string                 `protobuf:"bytes,2,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
+	// [MİMARİ GÜNCELLEME]: Klonlama için referans ses.
+	SpeakerWav        []byte  `protobuf:"bytes,3,opt,name=speaker_wav,json=speakerWav,proto3,oneof" json:"speaker_wav,omitempty"`
+	Temperature       float32 `protobuf:"fixed32,4,opt,name=temperature,proto3" json:"temperature,omitempty"`
+	Speed             float32 `protobuf:"fixed32,5,opt,name=speed,proto3" json:"speed,omitempty"`
+	TopP              float32 `protobuf:"fixed32,6,opt,name=top_p,json=topP,proto3" json:"top_p,omitempty"`
+	TopK              float32 `protobuf:"fixed32,7,opt,name=top_k,json=topK,proto3" json:"top_k,omitempty"`
+	RepetitionPenalty float32 `protobuf:"fixed32,8,opt,name=repetition_penalty,json=repetitionPenalty,proto3" json:"repetition_penalty,omitempty"`
+	OutputFormat      string  `protobuf:"bytes,9,opt,name=output_format,json=outputFormat,proto3" json:"output_format,omitempty"`
+	// [DEEP VOICE FIX]: İstenen örnekleme hızını belirtmek için yeni alan.
+	SampleRate    int32 `protobuf:"varint,10,opt,name=sample_rate,json=sampleRate,proto3" json:"sample_rate,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *CoquiSynthesizeStreamRequest) Reset() {
@@ -283,9 +298,16 @@ func (x *CoquiSynthesizeStreamRequest) GetOutputFormat() string {
 	return ""
 }
 
+func (x *CoquiSynthesizeStreamRequest) GetSampleRate() int32 {
+	if x != nil {
+		return x.SampleRate
+	}
+	return 0
+}
+
 type CoquiSynthesizeStreamResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	AudioChunk    []byte                 `protobuf:"bytes,1,opt,name=audio_chunk,json=audioChunk,proto3" json:"audio_chunk,omitempty"` // Parça parça veri
+	AudioChunk    []byte                 `protobuf:"bytes,1,opt,name=audio_chunk,json=audioChunk,proto3" json:"audio_chunk,omitempty"`
 	IsFinal       bool                   `protobuf:"varint,2,opt,name=is_final,json=isFinal,proto3" json:"is_final,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -339,31 +361,39 @@ var File_sentiric_tts_v1_coqui_proto protoreflect.FileDescriptor
 
 const file_sentiric_tts_v1_coqui_proto_rawDesc = "" +
 	"\n" +
-	"\x1bsentiric/tts/v1/coqui.proto\x12\x0fsentiric.tts.v1\"\xa8\x02\n" +
+	"\x1bsentiric/tts/v1/coqui.proto\x12\x0fsentiric.tts.v1\"\xde\x02\n" +
 	"\x16CoquiSynthesizeRequest\x12\x12\n" +
 	"\x04text\x18\x01 \x01(\tR\x04text\x12#\n" +
-	"\rlanguage_code\x18\x02 \x01(\tR\flanguageCode\x12\x1f\n" +
-	"\vspeaker_wav\x18\x03 \x01(\fR\n" +
-	"speakerWav\x12 \n" +
+	"\rlanguage_code\x18\x02 \x01(\tR\flanguageCode\x12$\n" +
+	"\vspeaker_wav\x18\x03 \x01(\fH\x00R\n" +
+	"speakerWav\x88\x01\x01\x12 \n" +
 	"\vtemperature\x18\x04 \x01(\x02R\vtemperature\x12\x14\n" +
 	"\x05speed\x18\x05 \x01(\x02R\x05speed\x12\x13\n" +
 	"\x05top_p\x18\x06 \x01(\x02R\x04topP\x12\x13\n" +
 	"\x05top_k\x18\a \x01(\x02R\x04topK\x12-\n" +
 	"\x12repetition_penalty\x18\b \x01(\x02R\x11repetitionPenalty\x12#\n" +
-	"\routput_format\x18\t \x01(\tR\foutputFormat\">\n" +
+	"\routput_format\x18\t \x01(\tR\foutputFormat\x12\x1f\n" +
+	"\vsample_rate\x18\n" +
+	" \x01(\x05R\n" +
+	"sampleRateB\x0e\n" +
+	"\f_speaker_wav\">\n" +
 	"\x17CoquiSynthesizeResponse\x12#\n" +
-	"\raudio_content\x18\x01 \x01(\fR\faudioContent\"\xae\x02\n" +
+	"\raudio_content\x18\x01 \x01(\fR\faudioContent\"\xe4\x02\n" +
 	"\x1cCoquiSynthesizeStreamRequest\x12\x12\n" +
 	"\x04text\x18\x01 \x01(\tR\x04text\x12#\n" +
-	"\rlanguage_code\x18\x02 \x01(\tR\flanguageCode\x12\x1f\n" +
-	"\vspeaker_wav\x18\x03 \x01(\fR\n" +
-	"speakerWav\x12 \n" +
+	"\rlanguage_code\x18\x02 \x01(\tR\flanguageCode\x12$\n" +
+	"\vspeaker_wav\x18\x03 \x01(\fH\x00R\n" +
+	"speakerWav\x88\x01\x01\x12 \n" +
 	"\vtemperature\x18\x04 \x01(\x02R\vtemperature\x12\x14\n" +
 	"\x05speed\x18\x05 \x01(\x02R\x05speed\x12\x13\n" +
 	"\x05top_p\x18\x06 \x01(\x02R\x04topP\x12\x13\n" +
 	"\x05top_k\x18\a \x01(\x02R\x04topK\x12-\n" +
 	"\x12repetition_penalty\x18\b \x01(\x02R\x11repetitionPenalty\x12#\n" +
-	"\routput_format\x18\t \x01(\tR\foutputFormat\"[\n" +
+	"\routput_format\x18\t \x01(\tR\foutputFormat\x12\x1f\n" +
+	"\vsample_rate\x18\n" +
+	" \x01(\x05R\n" +
+	"sampleRateB\x0e\n" +
+	"\f_speaker_wav\"[\n" +
 	"\x1dCoquiSynthesizeStreamResponse\x12\x1f\n" +
 	"\vaudio_chunk\x18\x01 \x01(\fR\n" +
 	"audioChunk\x12\x19\n" +
@@ -408,6 +438,8 @@ func file_sentiric_tts_v1_coqui_proto_init() {
 	if File_sentiric_tts_v1_coqui_proto != nil {
 		return
 	}
+	file_sentiric_tts_v1_coqui_proto_msgTypes[0].OneofWrappers = []any{}
+	file_sentiric_tts_v1_coqui_proto_msgTypes[2].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

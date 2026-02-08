@@ -8,6 +8,7 @@ from sentiric.tts.v1 import gateway_pb2 as sentiric_dot_tts_dot_v1_dot_gateway__
 class TtsGatewayServiceStub(object):
     """=============================================================================
     TTS GATEWAY SERVICE (PUBLIC FACING)
+    v1.16.0: Sample Rate ve Tuning Parametreleri Eklendi
     =============================================================================
 
     """
@@ -38,20 +39,19 @@ class TtsGatewayServiceStub(object):
 class TtsGatewayServiceServicer(object):
     """=============================================================================
     TTS GATEWAY SERVICE (PUBLIC FACING)
+    v1.16.0: Sample Rate ve Tuning Parametreleri Eklendi
     =============================================================================
 
     """
 
     def Synthesize(self, request, context):
-        """Unary
-        """
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def SynthesizeStream(self, request, context):
-        """Stream
-        """
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -91,6 +91,7 @@ def add_TtsGatewayServiceServicer_to_server(servicer, server):
 class TtsGatewayService(object):
     """=============================================================================
     TTS GATEWAY SERVICE (PUBLIC FACING)
+    v1.16.0: Sample Rate ve Tuning Parametreleri Eklendi
     =============================================================================
 
     """

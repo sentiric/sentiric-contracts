@@ -73,11 +73,11 @@ function deserialize_sentiric_tts_v1_SynthesizeStreamResponse(buffer_arg) {
 
 // =============================================================================
 // TTS GATEWAY SERVICE (PUBLIC FACING)
+// v1.16.0: Sample Rate ve Tuning Parametreleri Eklendi
 // =============================================================================
 //
 var TtsGatewayServiceService = exports.TtsGatewayServiceService = {
-  // Unary
-synthesize: {
+  synthesize: {
     path: '/sentiric.tts.v1.TtsGatewayService/Synthesize',
     requestStream: false,
     responseStream: false,
@@ -88,8 +88,7 @@ synthesize: {
     responseSerialize: serialize_sentiric_tts_v1_SynthesizeResponse,
     responseDeserialize: deserialize_sentiric_tts_v1_SynthesizeResponse,
   },
-  // Stream
-synthesizeStream: {
+  synthesizeStream: {
     path: '/sentiric.tts.v1.TtsGatewayService/SynthesizeStream',
     requestStream: false,
     responseStream: true,

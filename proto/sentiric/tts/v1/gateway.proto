@@ -2,37 +2,33 @@ syntax = "proto3";
 
 package sentiric.tts.v1;
 
-// DÜZELTME: Kullanılmayan import kaldırıldı.
-// import "sentiric/tts/v1/coqui.proto"; 
-
 option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/tts/v1;ttsv1";
 
 // =============================================================================
 // TTS GATEWAY SERVICE (PUBLIC FACING)
+// v1.16.0: Sample Rate ve Tuning Parametreleri Eklendi
 // =============================================================================
 
 service TtsGatewayService {
-  // Unary
   rpc Synthesize(SynthesizeRequest) returns (SynthesizeResponse);
-
-  // Stream
   rpc SynthesizeStream(SynthesizeStreamRequest) returns (stream SynthesizeStreamResponse);
-  
   rpc ListVoices(ListVoicesRequest) returns (ListVoicesResponse);
 }
 
 // =============================================================================
-// MESAJ TANIMLARI
+// RPC MESAJLARI
 // =============================================================================
 
-// --- Unary ---
 message SynthesizeRequest {
   string text = 1;
   TextType text_type = 2;
   string voice_id = 3;
+  // [MİMARİ KARAR]: AudioConfig zorunludur. Her istek format ve sample rate belirtmelidir.
   AudioConfig audio_config = 4;
   string preferred_provider = 5;
-  ProsodyConfig prosody = 6;
+  // [MİMARİ KARAR]: İnce ayar parametreleri opsiyonel bir alt mesaj olarak eklendi.
+  optional TuningParams tuning = 6;
+  optional bytes cloning_audio_data = 7;
 }
 
 message SynthesizeResponse {
@@ -41,14 +37,16 @@ message SynthesizeResponse {
   string provider_used = 3;
 }
 
-// --- Stream ---
 message SynthesizeStreamRequest {
   string text = 1;
   TextType text_type = 2;
   string voice_id = 3;
+  // [MİMARİ KARAR]: AudioConfig zorunludur.
   AudioConfig audio_config = 4;
   string preferred_provider = 5;
-  ProsodyConfig prosody = 6;
+  // [MİMARİ KARAR]: İnce ayar parametreleri opsiyonel bir alt mesaj olarak eklendi.
+  optional TuningParams tuning = 6;
+  optional bytes cloning_audio_data = 7;
 }
 
 message SynthesizeStreamResponse {
@@ -57,18 +55,21 @@ message SynthesizeStreamResponse {
   string provider_used = 3;
 }
 
-// --- Common ---
-message ListVoicesRequest {
-  string language_code = 1;
-}
-
-message ListVoicesResponse {
-  repeated VoiceInfo voices = 1;
-}
+message ListVoicesRequest { string language_code = 1; }
+message ListVoicesResponse { repeated VoiceInfo voices = 1; }
 
 // =============================================================================
 // YARDIMCI TİPLER & ENUMLAR
 // =============================================================================
+
+// [YENİ MESAJ]: Ses üretiminin ince ayarlarını kontrol eder.
+message TuningParams {
+    float temperature = 1;       // Rastgelelik: Yüksek değerler daha yaratıcı, düşük değerler daha deterministik. (0.0-2.0)
+    float top_p = 2;             // Nucleus sampling: Olasılık eşiği. (0.0-1.0)
+    int32 top_k = 3;             // En olası K token arasından seçim yap.
+    float repetition_penalty = 4; // Tekrar eden kelimeleri cezalandır. (1.0+)
+    float speed = 5;              // Konuşma hızı. (0.25-4.0)
+}
 
 enum TextType {
   TEXT_TYPE_UNSPECIFIED = 0;
@@ -91,6 +92,8 @@ message AudioConfig {
   double volume_gain_db = 3;
 }
 
+// ProsodyConfig eski versiyonlarla uyumluluk için tutuluyor,
+// ancak yeni sistemler TuningParams kullanmalı.
 message ProsodyConfig {
   double rate = 1;
   double pitch = 2;

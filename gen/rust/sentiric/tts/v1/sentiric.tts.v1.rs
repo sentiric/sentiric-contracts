@@ -7,8 +7,10 @@ pub struct CoquiSynthesizeRequest {
     pub text: ::prost::alloc::string::String,
     #[prost(string, tag="2")]
     pub language_code: ::prost::alloc::string::String,
-    #[prost(bytes="vec", tag="3")]
-    pub speaker_wav: ::prost::alloc::vec::Vec<u8>,
+    /// \[MİMARİ GÜNCELLEME\]: Klonlama için referans ses.
+    /// Bu, speaker_idx'i geçersiz kılar.
+    #[prost(bytes="vec", optional, tag="3")]
+    pub speaker_wav: ::core::option::Option<::prost::alloc::vec::Vec<u8>>,
     #[prost(float, tag="4")]
     pub temperature: f32,
     #[prost(float, tag="5")]
@@ -21,22 +23,26 @@ pub struct CoquiSynthesizeRequest {
     pub repetition_penalty: f32,
     #[prost(string, tag="9")]
     pub output_format: ::prost::alloc::string::String,
+    /// \[DEEP VOICE FIX\]: İstenen örnekleme hızını belirtmek için yeni alan.
+    /// Eğer 0 ise, motorun doğal hızı (24000Hz) kullanılır.
+    #[prost(int32, tag="10")]
+    pub sample_rate: i32,
 }
 #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CoquiSynthesizeResponse {
-    /// Tam dosya
     #[prost(bytes="vec", tag="1")]
     pub audio_content: ::prost::alloc::vec::Vec<u8>,
 }
-/// --- Stream Messages (İçerik aynı olsa bile ayrı tanımlanmalı) ---
+/// --- Stream Messages ---
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CoquiSynthesizeStreamRequest {
     #[prost(string, tag="1")]
     pub text: ::prost::alloc::string::String,
     #[prost(string, tag="2")]
     pub language_code: ::prost::alloc::string::String,
-    #[prost(bytes="vec", tag="3")]
-    pub speaker_wav: ::prost::alloc::vec::Vec<u8>,
+    /// \[MİMARİ GÜNCELLEME\]: Klonlama için referans ses.
+    #[prost(bytes="vec", optional, tag="3")]
+    pub speaker_wav: ::core::option::Option<::prost::alloc::vec::Vec<u8>>,
     #[prost(float, tag="4")]
     pub temperature: f32,
     #[prost(float, tag="5")]
@@ -49,10 +55,12 @@ pub struct CoquiSynthesizeStreamRequest {
     pub repetition_penalty: f32,
     #[prost(string, tag="9")]
     pub output_format: ::prost::alloc::string::String,
+    /// \[DEEP VOICE FIX\]: İstenen örnekleme hızını belirtmek için yeni alan.
+    #[prost(int32, tag="10")]
+    pub sample_rate: i32,
 }
 #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct CoquiSynthesizeStreamResponse {
-    /// Parça parça veri
     #[prost(bytes="vec", tag="1")]
     pub audio_chunk: ::prost::alloc::vec::Vec<u8>,
     #[prost(bool, tag="2")]
@@ -71,10 +79,9 @@ pub struct EdgeSynthesizeResponse {
     pub audio_content: ::prost::alloc::vec::Vec<u8>,
 }
 // =============================================================================
-// MESAJ TANIMLARI
+// RPC MESAJLARI
 // =============================================================================
 
-/// --- Unary ---
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SynthesizeRequest {
     #[prost(string, tag="1")]
@@ -83,12 +90,16 @@ pub struct SynthesizeRequest {
     pub text_type: i32,
     #[prost(string, tag="3")]
     pub voice_id: ::prost::alloc::string::String,
+    /// \[MİMARİ KARAR\]: AudioConfig zorunludur. Her istek format ve sample rate belirtmelidir.
     #[prost(message, optional, tag="4")]
     pub audio_config: ::core::option::Option<AudioConfig>,
     #[prost(string, tag="5")]
     pub preferred_provider: ::prost::alloc::string::String,
+    /// \[MİMARİ KARAR\]: İnce ayar parametreleri opsiyonel bir alt mesaj olarak eklendi.
     #[prost(message, optional, tag="6")]
-    pub prosody: ::core::option::Option<ProsodyConfig>,
+    pub tuning: ::core::option::Option<TuningParams>,
+    #[prost(bytes="vec", optional, tag="7")]
+    pub cloning_audio_data: ::core::option::Option<::prost::alloc::vec::Vec<u8>>,
 }
 #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct SynthesizeResponse {
@@ -99,7 +110,6 @@ pub struct SynthesizeResponse {
     #[prost(string, tag="3")]
     pub provider_used: ::prost::alloc::string::String,
 }
-/// --- Stream ---
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct SynthesizeStreamRequest {
     #[prost(string, tag="1")]
@@ -108,12 +118,16 @@ pub struct SynthesizeStreamRequest {
     pub text_type: i32,
     #[prost(string, tag="3")]
     pub voice_id: ::prost::alloc::string::String,
+    /// \[MİMARİ KARAR\]: AudioConfig zorunludur.
     #[prost(message, optional, tag="4")]
     pub audio_config: ::core::option::Option<AudioConfig>,
     #[prost(string, tag="5")]
     pub preferred_provider: ::prost::alloc::string::String,
+    /// \[MİMARİ KARAR\]: İnce ayar parametreleri opsiyonel bir alt mesaj olarak eklendi.
     #[prost(message, optional, tag="6")]
-    pub prosody: ::core::option::Option<ProsodyConfig>,
+    pub tuning: ::core::option::Option<TuningParams>,
+    #[prost(bytes="vec", optional, tag="7")]
+    pub cloning_audio_data: ::core::option::Option<::prost::alloc::vec::Vec<u8>>,
 }
 #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct SynthesizeStreamResponse {
@@ -124,7 +138,6 @@ pub struct SynthesizeStreamResponse {
     #[prost(string, tag="3")]
     pub provider_used: ::prost::alloc::string::String,
 }
-/// --- Common ---
 #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ListVoicesRequest {
     #[prost(string, tag="1")]
@@ -135,6 +148,29 @@ pub struct ListVoicesResponse {
     #[prost(message, repeated, tag="1")]
     pub voices: ::prost::alloc::vec::Vec<VoiceInfo>,
 }
+// =============================================================================
+// YARDIMCI TİPLER & ENUMLAR
+// =============================================================================
+
+/// \[YENİ MESAJ\]: Ses üretiminin ince ayarlarını kontrol eder.
+#[derive(Clone, Copy, PartialEq, ::prost::Message)]
+pub struct TuningParams {
+    /// Rastgelelik: Yüksek değerler daha yaratıcı, düşük değerler daha deterministik. (0.0-2.0)
+    #[prost(float, tag="1")]
+    pub temperature: f32,
+    /// Nucleus sampling: Olasılık eşiği. (0.0-1.0)
+    #[prost(float, tag="2")]
+    pub top_p: f32,
+    /// En olası K token arasından seçim yap.
+    #[prost(int32, tag="3")]
+    pub top_k: i32,
+    /// Tekrar eden kelimeleri cezalandır. (1.0+)
+    #[prost(float, tag="4")]
+    pub repetition_penalty: f32,
+    /// Konuşma hızı. (0.25-4.0)
+    #[prost(float, tag="5")]
+    pub speed: f32,
+}
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct AudioConfig {
     #[prost(enumeration="AudioFormat", tag="1")]
@@ -144,6 +180,8 @@ pub struct AudioConfig {
     #[prost(double, tag="3")]
     pub volume_gain_db: f64,
 }
+/// ProsodyConfig eski versiyonlarla uyumluluk için tutuluyor,
+/// ancak yeni sistemler TuningParams kullanmalı.
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ProsodyConfig {
     #[prost(double, tag="1")]
@@ -166,10 +204,6 @@ pub struct VoiceInfo {
     #[prost(string, repeated, tag="5")]
     pub styles: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
 }
-// =============================================================================
-// YARDIMCI TİPLER & ENUMLAR
-// =============================================================================
-
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum TextType {

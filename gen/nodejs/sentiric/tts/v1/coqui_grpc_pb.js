@@ -50,8 +50,7 @@ function deserialize_sentiric_tts_v1_CoquiSynthesizeStreamResponse(buffer_arg) {
 
 
 var TtsCoquiServiceService = exports.TtsCoquiServiceService = {
-  // Unary
-coquiSynthesize: {
+  coquiSynthesize: {
     path: '/sentiric.tts.v1.TtsCoquiService/CoquiSynthesize',
     requestStream: false,
     responseStream: false,
@@ -62,8 +61,7 @@ coquiSynthesize: {
     responseSerialize: serialize_sentiric_tts_v1_CoquiSynthesizeResponse,
     responseDeserialize: deserialize_sentiric_tts_v1_CoquiSynthesizeResponse,
   },
-  // Stream
-coquiSynthesizeStream: {
+  coquiSynthesizeStream: {
     path: '/sentiric.tts.v1.TtsCoquiService/CoquiSynthesizeStream',
     requestStream: false,
     responseStream: true,

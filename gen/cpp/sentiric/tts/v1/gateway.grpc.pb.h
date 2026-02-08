@@ -31,6 +31,7 @@ namespace v1 {
 
 // =============================================================================
 // TTS GATEWAY SERVICE (PUBLIC FACING)
+// v1.16.0: Sample Rate ve Tuning Parametreleri Eklendi
 // =============================================================================
 //
 class TtsGatewayService final {
@@ -41,7 +42,6 @@ class TtsGatewayService final {
   class StubInterface {
    public:
     virtual ~StubInterface() {}
-    // Unary
     virtual ::grpc::Status Synthesize(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeRequest& request, ::sentiric::tts::v1::SynthesizeResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::tts::v1::SynthesizeResponse>> AsyncSynthesize(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::tts::v1::SynthesizeResponse>>(AsyncSynthesizeRaw(context, request, cq));
@@ -49,7 +49,6 @@ class TtsGatewayService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::tts::v1::SynthesizeResponse>> PrepareAsyncSynthesize(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::tts::v1::SynthesizeResponse>>(PrepareAsyncSynthesizeRaw(context, request, cq));
     }
-    // Stream
     std::unique_ptr< ::grpc::ClientReaderInterface< ::sentiric::tts::v1::SynthesizeStreamResponse>> SynthesizeStream(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeStreamRequest& request) {
       return std::unique_ptr< ::grpc::ClientReaderInterface< ::sentiric::tts::v1::SynthesizeStreamResponse>>(SynthesizeStreamRaw(context, request));
     }
@@ -69,10 +68,8 @@ class TtsGatewayService final {
     class async_interface {
      public:
       virtual ~async_interface() {}
-      // Unary
       virtual void Synthesize(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeRequest* request, ::sentiric::tts::v1::SynthesizeResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void Synthesize(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeRequest* request, ::sentiric::tts::v1::SynthesizeResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      // Stream
       virtual void SynthesizeStream(::grpc::ClientContext* context, const ::sentiric::tts::v1::SynthesizeStreamRequest* request, ::grpc::ClientReadReactor< ::sentiric::tts::v1::SynthesizeStreamResponse>* reactor) = 0;
       virtual void ListVoices(::grpc::ClientContext* context, const ::sentiric::tts::v1::ListVoicesRequest* request, ::sentiric::tts::v1::ListVoicesResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void ListVoices(::grpc::ClientContext* context, const ::sentiric::tts::v1::ListVoicesRequest* request, ::sentiric::tts::v1::ListVoicesResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
@@ -151,9 +148,7 @@ class TtsGatewayService final {
    public:
     Service();
     virtual ~Service();
-    // Unary
     virtual ::grpc::Status Synthesize(::grpc::ServerContext* context, const ::sentiric::tts::v1::SynthesizeRequest* request, ::sentiric::tts::v1::SynthesizeResponse* response);
-    // Stream
     virtual ::grpc::Status SynthesizeStream(::grpc::ServerContext* context, const ::sentiric::tts::v1::SynthesizeStreamRequest* request, ::grpc::ServerWriter< ::sentiric::tts::v1::SynthesizeStreamResponse>* writer);
     virtual ::grpc::Status ListVoices(::grpc::ServerContext* context, const ::sentiric::tts::v1::ListVoicesRequest* request, ::sentiric::tts::v1::ListVoicesResponse* response);
   };

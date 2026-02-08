@@ -5,10 +5,7 @@ package sentiric.tts.v1;
 option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/tts/v1;ttsv1";
 
 service TtsCoquiService {
-  // Unary
   rpc CoquiSynthesize(CoquiSynthesizeRequest) returns (CoquiSynthesizeResponse);
-  
-  // Stream
   rpc CoquiSynthesizeStream(CoquiSynthesizeStreamRequest) returns (stream CoquiSynthesizeStreamResponse);
 }
 
@@ -16,33 +13,41 @@ service TtsCoquiService {
 message CoquiSynthesizeRequest {
   string text = 1;
   string language_code = 2;
-  bytes speaker_wav = 3;
+  // [MİMARİ GÜNCELLEME]: Klonlama için referans ses.
+  // Bu, speaker_idx'i geçersiz kılar.
+  optional bytes speaker_wav = 3;
   float temperature = 4;
   float speed = 5;
   float top_p = 6;
   float top_k = 7;
   float repetition_penalty = 8;
   string output_format = 9;
+  // [DEEP VOICE FIX]: İstenen örnekleme hızını belirtmek için yeni alan.
+  // Eğer 0 ise, motorun doğal hızı (24000Hz) kullanılır.
+  int32 sample_rate = 10;
 }
 
 message CoquiSynthesizeResponse {
-  bytes audio_content = 1; // Tam dosya
+  bytes audio_content = 1;
 }
 
-// --- Stream Messages (İçerik aynı olsa bile ayrı tanımlanmalı) ---
+// --- Stream Messages ---
 message CoquiSynthesizeStreamRequest {
   string text = 1;
   string language_code = 2;
-  bytes speaker_wav = 3;
+  // [MİMARİ GÜNCELLEME]: Klonlama için referans ses.
+  optional bytes speaker_wav = 3;
   float temperature = 4;
   float speed = 5;
   float top_p = 6;
   float top_k = 7;
   float repetition_penalty = 8;
   string output_format = 9;
+  // [DEEP VOICE FIX]: İstenen örnekleme hızını belirtmek için yeni alan.
+  int32 sample_rate = 10;
 }
 
 message CoquiSynthesizeStreamResponse {
-  bytes audio_chunk = 1; // Parça parça veri
+  bytes audio_chunk = 1;
   bool is_final = 2;
 }

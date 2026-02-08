@@ -25,7 +25,9 @@ namespace tts {
 namespace v1 {
 PROTOBUF_CONSTEXPR CoquiSynthesizeRequest::CoquiSynthesizeRequest(
     ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.text_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.text_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.language_code_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.speaker_wav_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.output_format_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
@@ -34,7 +36,7 @@ PROTOBUF_CONSTEXPR CoquiSynthesizeRequest::CoquiSynthesizeRequest(
   , /*decltype(_impl_.top_p_)*/0
   , /*decltype(_impl_.top_k_)*/0
   , /*decltype(_impl_.repetition_penalty_)*/0
-  , /*decltype(_impl_._cached_size_)*/{}} {}
+  , /*decltype(_impl_.sample_rate_)*/0} {}
 struct CoquiSynthesizeRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR CoquiSynthesizeRequestDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -59,7 +61,9 @@ struct CoquiSynthesizeResponseDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CoquiSynthesizeResponseDefaultTypeInternal _CoquiSynthesizeResponse_default_instance_;
 PROTOBUF_CONSTEXPR CoquiSynthesizeStreamRequest::CoquiSynthesizeStreamRequest(
     ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.text_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.text_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.language_code_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.speaker_wav_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.output_format_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
@@ -68,7 +72,7 @@ PROTOBUF_CONSTEXPR CoquiSynthesizeStreamRequest::CoquiSynthesizeStreamRequest(
   , /*decltype(_impl_.top_p_)*/0
   , /*decltype(_impl_.top_k_)*/0
   , /*decltype(_impl_.repetition_penalty_)*/0
-  , /*decltype(_impl_._cached_size_)*/{}} {}
+  , /*decltype(_impl_.sample_rate_)*/0} {}
 struct CoquiSynthesizeStreamRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR CoquiSynthesizeStreamRequestDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -100,7 +104,7 @@ static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_senti
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_sentiric_2ftts_2fv1_2fcoqui_2eproto = nullptr;
 
 const uint32_t TableStruct_sentiric_2ftts_2fv1_2fcoqui_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::CoquiSynthesizeRequest, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::CoquiSynthesizeRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -115,6 +119,17 @@ const uint32_t TableStruct_sentiric_2ftts_2fv1_2fcoqui_2eproto::offsets[] PROTOB
   PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::CoquiSynthesizeRequest, _impl_.top_k_),
   PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::CoquiSynthesizeRequest, _impl_.repetition_penalty_),
   PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::CoquiSynthesizeRequest, _impl_.output_format_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::CoquiSynthesizeRequest, _impl_.sample_rate_),
+  ~0u,
+  ~0u,
+  0,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::CoquiSynthesizeResponse, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -122,7 +137,7 @@ const uint32_t TableStruct_sentiric_2ftts_2fv1_2fcoqui_2eproto::offsets[] PROTOB
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::CoquiSynthesizeResponse, _impl_.audio_content_),
-  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::CoquiSynthesizeStreamRequest, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::CoquiSynthesizeStreamRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -137,6 +152,17 @@ const uint32_t TableStruct_sentiric_2ftts_2fv1_2fcoqui_2eproto::offsets[] PROTOB
   PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::CoquiSynthesizeStreamRequest, _impl_.top_k_),
   PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::CoquiSynthesizeStreamRequest, _impl_.repetition_penalty_),
   PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::CoquiSynthesizeStreamRequest, _impl_.output_format_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::CoquiSynthesizeStreamRequest, _impl_.sample_rate_),
+  ~0u,
+  ~0u,
+  0,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
+  ~0u,
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::CoquiSynthesizeStreamResponse, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -147,10 +173,10 @@ const uint32_t TableStruct_sentiric_2ftts_2fv1_2fcoqui_2eproto::offsets[] PROTOB
   PROTOBUF_FIELD_OFFSET(::sentiric::tts::v1::CoquiSynthesizeStreamResponse, _impl_.is_final_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, -1, sizeof(::sentiric::tts::v1::CoquiSynthesizeRequest)},
-  { 15, -1, -1, sizeof(::sentiric::tts::v1::CoquiSynthesizeResponse)},
-  { 22, -1, -1, sizeof(::sentiric::tts::v1::CoquiSynthesizeStreamRequest)},
-  { 37, -1, -1, sizeof(::sentiric::tts::v1::CoquiSynthesizeStreamResponse)},
+  { 0, 16, -1, sizeof(::sentiric::tts::v1::CoquiSynthesizeRequest)},
+  { 26, -1, -1, sizeof(::sentiric::tts::v1::CoquiSynthesizeResponse)},
+  { 33, 49, -1, sizeof(::sentiric::tts::v1::CoquiSynthesizeStreamRequest)},
+  { 59, -1, -1, sizeof(::sentiric::tts::v1::CoquiSynthesizeStreamResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -162,32 +188,34 @@ static const ::_pb::Message* const file_default_instances[] = {
 
 const char descriptor_table_protodef_sentiric_2ftts_2fv1_2fcoqui_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\033sentiric/tts/v1/coqui.proto\022\017sentiric."
-  "tts.v1\"\307\001\n\026CoquiSynthesizeRequest\022\014\n\004tex"
-  "t\030\001 \001(\t\022\025\n\rlanguage_code\030\002 \001(\t\022\023\n\013speake"
-  "r_wav\030\003 \001(\014\022\023\n\013temperature\030\004 \001(\002\022\r\n\005spee"
-  "d\030\005 \001(\002\022\r\n\005top_p\030\006 \001(\002\022\r\n\005top_k\030\007 \001(\002\022\032\n"
-  "\022repetition_penalty\030\010 \001(\002\022\025\n\routput_form"
-  "at\030\t \001(\t\"0\n\027CoquiSynthesizeResponse\022\025\n\ra"
-  "udio_content\030\001 \001(\014\"\315\001\n\034CoquiSynthesizeSt"
-  "reamRequest\022\014\n\004text\030\001 \001(\t\022\025\n\rlanguage_co"
-  "de\030\002 \001(\t\022\023\n\013speaker_wav\030\003 \001(\014\022\023\n\013tempera"
-  "ture\030\004 \001(\002\022\r\n\005speed\030\005 \001(\002\022\r\n\005top_p\030\006 \001(\002"
-  "\022\r\n\005top_k\030\007 \001(\002\022\032\n\022repetition_penalty\030\010 "
-  "\001(\002\022\025\n\routput_format\030\t \001(\t\"F\n\035CoquiSynth"
-  "esizeStreamResponse\022\023\n\013audio_chunk\030\001 \001(\014"
-  "\022\020\n\010is_final\030\002 \001(\0102\361\001\n\017TtsCoquiService\022d"
-  "\n\017CoquiSynthesize\022\'.sentiric.tts.v1.Coqu"
-  "iSynthesizeRequest\032(.sentiric.tts.v1.Coq"
-  "uiSynthesizeResponse\022x\n\025CoquiSynthesizeS"
-  "tream\022-.sentiric.tts.v1.CoquiSynthesizeS"
-  "treamRequest\032..sentiric.tts.v1.CoquiSynt"
-  "hesizeStreamResponse0\001BEZCgithub.com/sen"
-  "tiric/sentiric-contracts/gen/go/sentiric"
-  "/tts/v1;ttsv1b\006proto3"
+  "tts.v1\"\361\001\n\026CoquiSynthesizeRequest\022\014\n\004tex"
+  "t\030\001 \001(\t\022\025\n\rlanguage_code\030\002 \001(\t\022\030\n\013speake"
+  "r_wav\030\003 \001(\014H\000\210\001\001\022\023\n\013temperature\030\004 \001(\002\022\r\n"
+  "\005speed\030\005 \001(\002\022\r\n\005top_p\030\006 \001(\002\022\r\n\005top_k\030\007 \001"
+  "(\002\022\032\n\022repetition_penalty\030\010 \001(\002\022\025\n\routput"
+  "_format\030\t \001(\t\022\023\n\013sample_rate\030\n \001(\005B\016\n\014_s"
+  "peaker_wav\"0\n\027CoquiSynthesizeResponse\022\025\n"
+  "\raudio_content\030\001 \001(\014\"\367\001\n\034CoquiSynthesize"
+  "StreamRequest\022\014\n\004text\030\001 \001(\t\022\025\n\rlanguage_"
+  "code\030\002 \001(\t\022\030\n\013speaker_wav\030\003 \001(\014H\000\210\001\001\022\023\n\013"
+  "temperature\030\004 \001(\002\022\r\n\005speed\030\005 \001(\002\022\r\n\005top_"
+  "p\030\006 \001(\002\022\r\n\005top_k\030\007 \001(\002\022\032\n\022repetition_pen"
+  "alty\030\010 \001(\002\022\025\n\routput_format\030\t \001(\t\022\023\n\013sam"
+  "ple_rate\030\n \001(\005B\016\n\014_speaker_wav\"F\n\035CoquiS"
+  "ynthesizeStreamResponse\022\023\n\013audio_chunk\030\001"
+  " \001(\014\022\020\n\010is_final\030\002 \001(\0102\361\001\n\017TtsCoquiServi"
+  "ce\022d\n\017CoquiSynthesize\022\'.sentiric.tts.v1."
+  "CoquiSynthesizeRequest\032(.sentiric.tts.v1"
+  ".CoquiSynthesizeResponse\022x\n\025CoquiSynthes"
+  "izeStream\022-.sentiric.tts.v1.CoquiSynthes"
+  "izeStreamRequest\032..sentiric.tts.v1.Coqui"
+  "SynthesizeStreamResponse0\001BEZCgithub.com"
+  "/sentiric/sentiric-contracts/gen/go/sent"
+  "iric/tts/v1;ttsv1b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_sentiric_2ftts_2fv1_2fcoqui_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_sentiric_2ftts_2fv1_2fcoqui_2eproto = {
-    false, false, 901, descriptor_table_protodef_sentiric_2ftts_2fv1_2fcoqui_2eproto,
+    false, false, 985, descriptor_table_protodef_sentiric_2ftts_2fv1_2fcoqui_2eproto,
     "sentiric/tts/v1/coqui.proto",
     &descriptor_table_sentiric_2ftts_2fv1_2fcoqui_2eproto_once, nullptr, 0, 4,
     schemas, file_default_instances, TableStruct_sentiric_2ftts_2fv1_2fcoqui_2eproto::offsets,
@@ -208,6 +236,10 @@ namespace v1 {
 
 class CoquiSynthesizeRequest::_Internal {
  public:
+  using HasBits = decltype(std::declval<CoquiSynthesizeRequest>()._impl_._has_bits_);
+  static void set_has_speaker_wav(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 CoquiSynthesizeRequest::CoquiSynthesizeRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -220,7 +252,9 @@ CoquiSynthesizeRequest::CoquiSynthesizeRequest(const CoquiSynthesizeRequest& fro
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   CoquiSynthesizeRequest* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.text_){}
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.text_){}
     , decltype(_impl_.language_code_){}
     , decltype(_impl_.speaker_wav_){}
     , decltype(_impl_.output_format_){}
@@ -229,7 +263,7 @@ CoquiSynthesizeRequest::CoquiSynthesizeRequest(const CoquiSynthesizeRequest& fro
     , decltype(_impl_.top_p_){}
     , decltype(_impl_.top_k_){}
     , decltype(_impl_.repetition_penalty_){}
-    , /*decltype(_impl_._cached_size_)*/{}};
+    , decltype(_impl_.sample_rate_){}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   _impl_.text_.InitDefault();
@@ -252,7 +286,7 @@ CoquiSynthesizeRequest::CoquiSynthesizeRequest(const CoquiSynthesizeRequest& fro
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
     _impl_.speaker_wav_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_speaker_wav().empty()) {
+  if (from._internal_has_speaker_wav()) {
     _this->_impl_.speaker_wav_.Set(from._internal_speaker_wav(), 
       _this->GetArenaForAllocation());
   }
@@ -265,8 +299,8 @@ CoquiSynthesizeRequest::CoquiSynthesizeRequest(const CoquiSynthesizeRequest& fro
       _this->GetArenaForAllocation());
   }
   ::memcpy(&_impl_.temperature_, &from._impl_.temperature_,
-    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.repetition_penalty_) -
-    reinterpret_cast<char*>(&_impl_.temperature_)) + sizeof(_impl_.repetition_penalty_));
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.sample_rate_) -
+    reinterpret_cast<char*>(&_impl_.temperature_)) + sizeof(_impl_.sample_rate_));
   // @@protoc_insertion_point(copy_constructor:sentiric.tts.v1.CoquiSynthesizeRequest)
 }
 
@@ -275,7 +309,9 @@ inline void CoquiSynthesizeRequest::SharedCtor(
   (void)arena;
   (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.text_){}
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.text_){}
     , decltype(_impl_.language_code_){}
     , decltype(_impl_.speaker_wav_){}
     , decltype(_impl_.output_format_){}
@@ -284,7 +320,7 @@ inline void CoquiSynthesizeRequest::SharedCtor(
     , decltype(_impl_.top_p_){0}
     , decltype(_impl_.top_k_){0}
     , decltype(_impl_.repetition_penalty_){0}
-    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.sample_rate_){0}
   };
   _impl_.text_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -333,16 +369,21 @@ void CoquiSynthesizeRequest::Clear() {
 
   _impl_.text_.ClearToEmpty();
   _impl_.language_code_.ClearToEmpty();
-  _impl_.speaker_wav_.ClearToEmpty();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    _impl_.speaker_wav_.ClearNonDefaultToEmpty();
+  }
   _impl_.output_format_.ClearToEmpty();
   ::memset(&_impl_.temperature_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&_impl_.repetition_penalty_) -
-      reinterpret_cast<char*>(&_impl_.temperature_)) + sizeof(_impl_.repetition_penalty_));
+      reinterpret_cast<char*>(&_impl_.sample_rate_) -
+      reinterpret_cast<char*>(&_impl_.temperature_)) + sizeof(_impl_.sample_rate_));
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* CoquiSynthesizeRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
@@ -367,7 +408,7 @@ const char* CoquiSynthesizeRequest::_InternalParse(const char* ptr, ::_pbi::Pars
         } else
           goto handle_unusual;
         continue;
-      // bytes speaker_wav = 3;
+      // optional bytes speaker_wav = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
           auto str = _internal_mutable_speaker_wav();
@@ -426,6 +467,14 @@ const char* CoquiSynthesizeRequest::_InternalParse(const char* ptr, ::_pbi::Pars
         } else
           goto handle_unusual;
         continue;
+      // int32 sample_rate = 10;
+      case 10:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 80)) {
+          _impl_.sample_rate_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
       default:
         goto handle_unusual;
     }  // switch
@@ -442,6 +491,7 @@ const char* CoquiSynthesizeRequest::_InternalParse(const char* ptr, ::_pbi::Pars
     CHK_(ptr != nullptr);
   }  // while
 message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -475,8 +525,8 @@ uint8_t* CoquiSynthesizeRequest::_InternalSerialize(
         2, this->_internal_language_code(), target);
   }
 
-  // bytes speaker_wav = 3;
-  if (!this->_internal_speaker_wav().empty()) {
+  // optional bytes speaker_wav = 3;
+  if (_internal_has_speaker_wav()) {
     target = stream->WriteBytesMaybeAliased(
         3, this->_internal_speaker_wav(), target);
   }
@@ -541,6 +591,12 @@ uint8_t* CoquiSynthesizeRequest::_InternalSerialize(
         9, this->_internal_output_format(), target);
   }
 
+  // int32 sample_rate = 10;
+  if (this->_internal_sample_rate() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(10, this->_internal_sample_rate(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -571,8 +627,9 @@ size_t CoquiSynthesizeRequest::ByteSizeLong() const {
         this->_internal_language_code());
   }
 
-  // bytes speaker_wav = 3;
-  if (!this->_internal_speaker_wav().empty()) {
+  // optional bytes speaker_wav = 3;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
         this->_internal_speaker_wav());
@@ -630,6 +687,11 @@ size_t CoquiSynthesizeRequest::ByteSizeLong() const {
     total_size += 1 + 4;
   }
 
+  // int32 sample_rate = 10;
+  if (this->_internal_sample_rate() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_sample_rate());
+  }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
@@ -654,7 +716,7 @@ void CoquiSynthesizeRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg,
   if (!from._internal_language_code().empty()) {
     _this->_internal_set_language_code(from._internal_language_code());
   }
-  if (!from._internal_speaker_wav().empty()) {
+  if (from._internal_has_speaker_wav()) {
     _this->_internal_set_speaker_wav(from._internal_speaker_wav());
   }
   if (!from._internal_output_format().empty()) {
@@ -695,6 +757,9 @@ void CoquiSynthesizeRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg,
   if (raw_repetition_penalty != 0) {
     _this->_internal_set_repetition_penalty(from._internal_repetition_penalty());
   }
+  if (from._internal_sample_rate() != 0) {
+    _this->_internal_set_sample_rate(from._internal_sample_rate());
+  }
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -714,6 +779,7 @@ void CoquiSynthesizeRequest::InternalSwap(CoquiSynthesizeRequest* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &_impl_.text_, lhs_arena,
       &other->_impl_.text_, rhs_arena
@@ -731,8 +797,8 @@ void CoquiSynthesizeRequest::InternalSwap(CoquiSynthesizeRequest* other) {
       &other->_impl_.output_format_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(CoquiSynthesizeRequest, _impl_.repetition_penalty_)
-      + sizeof(CoquiSynthesizeRequest::_impl_.repetition_penalty_)
+      PROTOBUF_FIELD_OFFSET(CoquiSynthesizeRequest, _impl_.sample_rate_)
+      + sizeof(CoquiSynthesizeRequest::_impl_.sample_rate_)
       - PROTOBUF_FIELD_OFFSET(CoquiSynthesizeRequest, _impl_.temperature_)>(
           reinterpret_cast<char*>(&_impl_.temperature_),
           reinterpret_cast<char*>(&other->_impl_.temperature_));
@@ -946,6 +1012,10 @@ void CoquiSynthesizeResponse::InternalSwap(CoquiSynthesizeResponse* other) {
 
 class CoquiSynthesizeStreamRequest::_Internal {
  public:
+  using HasBits = decltype(std::declval<CoquiSynthesizeStreamRequest>()._impl_._has_bits_);
+  static void set_has_speaker_wav(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
 CoquiSynthesizeStreamRequest::CoquiSynthesizeStreamRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -958,7 +1028,9 @@ CoquiSynthesizeStreamRequest::CoquiSynthesizeStreamRequest(const CoquiSynthesize
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   CoquiSynthesizeStreamRequest* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.text_){}
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.text_){}
     , decltype(_impl_.language_code_){}
     , decltype(_impl_.speaker_wav_){}
     , decltype(_impl_.output_format_){}
@@ -967,7 +1039,7 @@ CoquiSynthesizeStreamRequest::CoquiSynthesizeStreamRequest(const CoquiSynthesize
     , decltype(_impl_.top_p_){}
     , decltype(_impl_.top_k_){}
     , decltype(_impl_.repetition_penalty_){}
-    , /*decltype(_impl_._cached_size_)*/{}};
+    , decltype(_impl_.sample_rate_){}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   _impl_.text_.InitDefault();
@@ -990,7 +1062,7 @@ CoquiSynthesizeStreamRequest::CoquiSynthesizeStreamRequest(const CoquiSynthesize
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
     _impl_.speaker_wav_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_speaker_wav().empty()) {
+  if (from._internal_has_speaker_wav()) {
     _this->_impl_.speaker_wav_.Set(from._internal_speaker_wav(), 
       _this->GetArenaForAllocation());
   }
@@ -1003,8 +1075,8 @@ CoquiSynthesizeStreamRequest::CoquiSynthesizeStreamRequest(const CoquiSynthesize
       _this->GetArenaForAllocation());
   }
   ::memcpy(&_impl_.temperature_, &from._impl_.temperature_,
-    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.repetition_penalty_) -
-    reinterpret_cast<char*>(&_impl_.temperature_)) + sizeof(_impl_.repetition_penalty_));
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.sample_rate_) -
+    reinterpret_cast<char*>(&_impl_.temperature_)) + sizeof(_impl_.sample_rate_));
   // @@protoc_insertion_point(copy_constructor:sentiric.tts.v1.CoquiSynthesizeStreamRequest)
 }
 
@@ -1013,7 +1085,9 @@ inline void CoquiSynthesizeStreamRequest::SharedCtor(
   (void)arena;
   (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.text_){}
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.text_){}
     , decltype(_impl_.language_code_){}
     , decltype(_impl_.speaker_wav_){}
     , decltype(_impl_.output_format_){}
@@ -1022,7 +1096,7 @@ inline void CoquiSynthesizeStreamRequest::SharedCtor(
     , decltype(_impl_.top_p_){0}
     , decltype(_impl_.top_k_){0}
     , decltype(_impl_.repetition_penalty_){0}
-    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.sample_rate_){0}
   };
   _impl_.text_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -1071,16 +1145,21 @@ void CoquiSynthesizeStreamRequest::Clear() {
 
   _impl_.text_.ClearToEmpty();
   _impl_.language_code_.ClearToEmpty();
-  _impl_.speaker_wav_.ClearToEmpty();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    _impl_.speaker_wav_.ClearNonDefaultToEmpty();
+  }
   _impl_.output_format_.ClearToEmpty();
   ::memset(&_impl_.temperature_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&_impl_.repetition_penalty_) -
-      reinterpret_cast<char*>(&_impl_.temperature_)) + sizeof(_impl_.repetition_penalty_));
+      reinterpret_cast<char*>(&_impl_.sample_rate_) -
+      reinterpret_cast<char*>(&_impl_.temperature_)) + sizeof(_impl_.sample_rate_));
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
 const char* CoquiSynthesizeStreamRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
@@ -1105,7 +1184,7 @@ const char* CoquiSynthesizeStreamRequest::_InternalParse(const char* ptr, ::_pbi
         } else
           goto handle_unusual;
         continue;
-      // bytes speaker_wav = 3;
+      // optional bytes speaker_wav = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
           auto str = _internal_mutable_speaker_wav();
@@ -1164,6 +1243,14 @@ const char* CoquiSynthesizeStreamRequest::_InternalParse(const char* ptr, ::_pbi
         } else
           goto handle_unusual;
         continue;
+      // int32 sample_rate = 10;
+      case 10:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 80)) {
+          _impl_.sample_rate_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
       default:
         goto handle_unusual;
     }  // switch
@@ -1180,6 +1267,7 @@ const char* CoquiSynthesizeStreamRequest::_InternalParse(const char* ptr, ::_pbi
     CHK_(ptr != nullptr);
   }  // while
 message_done:
+  _impl_._has_bits_.Or(has_bits);
   return ptr;
 failure:
   ptr = nullptr;
@@ -1213,8 +1301,8 @@ uint8_t* CoquiSynthesizeStreamRequest::_InternalSerialize(
         2, this->_internal_language_code(), target);
   }
 
-  // bytes speaker_wav = 3;
-  if (!this->_internal_speaker_wav().empty()) {
+  // optional bytes speaker_wav = 3;
+  if (_internal_has_speaker_wav()) {
     target = stream->WriteBytesMaybeAliased(
         3, this->_internal_speaker_wav(), target);
   }
@@ -1279,6 +1367,12 @@ uint8_t* CoquiSynthesizeStreamRequest::_InternalSerialize(
         9, this->_internal_output_format(), target);
   }
 
+  // int32 sample_rate = 10;
+  if (this->_internal_sample_rate() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(10, this->_internal_sample_rate(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -1309,8 +1403,9 @@ size_t CoquiSynthesizeStreamRequest::ByteSizeLong() const {
         this->_internal_language_code());
   }
 
-  // bytes speaker_wav = 3;
-  if (!this->_internal_speaker_wav().empty()) {
+  // optional bytes speaker_wav = 3;
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
         this->_internal_speaker_wav());
@@ -1368,6 +1463,11 @@ size_t CoquiSynthesizeStreamRequest::ByteSizeLong() const {
     total_size += 1 + 4;
   }
 
+  // int32 sample_rate = 10;
+  if (this->_internal_sample_rate() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_sample_rate());
+  }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
@@ -1392,7 +1492,7 @@ void CoquiSynthesizeStreamRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& t
   if (!from._internal_language_code().empty()) {
     _this->_internal_set_language_code(from._internal_language_code());
   }
-  if (!from._internal_speaker_wav().empty()) {
+  if (from._internal_has_speaker_wav()) {
     _this->_internal_set_speaker_wav(from._internal_speaker_wav());
   }
   if (!from._internal_output_format().empty()) {
@@ -1433,6 +1533,9 @@ void CoquiSynthesizeStreamRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& t
   if (raw_repetition_penalty != 0) {
     _this->_internal_set_repetition_penalty(from._internal_repetition_penalty());
   }
+  if (from._internal_sample_rate() != 0) {
+    _this->_internal_set_sample_rate(from._internal_sample_rate());
+  }
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -1452,6 +1555,7 @@ void CoquiSynthesizeStreamRequest::InternalSwap(CoquiSynthesizeStreamRequest* ot
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &_impl_.text_, lhs_arena,
       &other->_impl_.text_, rhs_arena
@@ -1469,8 +1573,8 @@ void CoquiSynthesizeStreamRequest::InternalSwap(CoquiSynthesizeStreamRequest* ot
       &other->_impl_.output_format_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(CoquiSynthesizeStreamRequest, _impl_.repetition_penalty_)
-      + sizeof(CoquiSynthesizeStreamRequest::_impl_.repetition_penalty_)
+      PROTOBUF_FIELD_OFFSET(CoquiSynthesizeStreamRequest, _impl_.sample_rate_)
+      + sizeof(CoquiSynthesizeStreamRequest::_impl_.sample_rate_)
       - PROTOBUF_FIELD_OFFSET(CoquiSynthesizeStreamRequest, _impl_.temperature_)>(
           reinterpret_cast<char*>(&_impl_.temperature_),
           reinterpret_cast<char*>(&other->_impl_.temperature_));

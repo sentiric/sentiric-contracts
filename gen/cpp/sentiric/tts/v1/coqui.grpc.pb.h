@@ -37,7 +37,6 @@ class TtsCoquiService final {
   class StubInterface {
    public:
     virtual ~StubInterface() {}
-    // Unary
     virtual ::grpc::Status CoquiSynthesize(::grpc::ClientContext* context, const ::sentiric::tts::v1::CoquiSynthesizeRequest& request, ::sentiric::tts::v1::CoquiSynthesizeResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::tts::v1::CoquiSynthesizeResponse>> AsyncCoquiSynthesize(::grpc::ClientContext* context, const ::sentiric::tts::v1::CoquiSynthesizeRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::tts::v1::CoquiSynthesizeResponse>>(AsyncCoquiSynthesizeRaw(context, request, cq));
@@ -45,7 +44,6 @@ class TtsCoquiService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::tts::v1::CoquiSynthesizeResponse>> PrepareAsyncCoquiSynthesize(::grpc::ClientContext* context, const ::sentiric::tts::v1::CoquiSynthesizeRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::tts::v1::CoquiSynthesizeResponse>>(PrepareAsyncCoquiSynthesizeRaw(context, request, cq));
     }
-    // Stream
     std::unique_ptr< ::grpc::ClientReaderInterface< ::sentiric::tts::v1::CoquiSynthesizeStreamResponse>> CoquiSynthesizeStream(::grpc::ClientContext* context, const ::sentiric::tts::v1::CoquiSynthesizeStreamRequest& request) {
       return std::unique_ptr< ::grpc::ClientReaderInterface< ::sentiric::tts::v1::CoquiSynthesizeStreamResponse>>(CoquiSynthesizeStreamRaw(context, request));
     }
@@ -58,10 +56,8 @@ class TtsCoquiService final {
     class async_interface {
      public:
       virtual ~async_interface() {}
-      // Unary
       virtual void CoquiSynthesize(::grpc::ClientContext* context, const ::sentiric::tts::v1::CoquiSynthesizeRequest* request, ::sentiric::tts::v1::CoquiSynthesizeResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void CoquiSynthesize(::grpc::ClientContext* context, const ::sentiric::tts::v1::CoquiSynthesizeRequest* request, ::sentiric::tts::v1::CoquiSynthesizeResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      // Stream
       virtual void CoquiSynthesizeStream(::grpc::ClientContext* context, const ::sentiric::tts::v1::CoquiSynthesizeStreamRequest* request, ::grpc::ClientReadReactor< ::sentiric::tts::v1::CoquiSynthesizeStreamResponse>* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
@@ -124,9 +120,7 @@ class TtsCoquiService final {
    public:
     Service();
     virtual ~Service();
-    // Unary
     virtual ::grpc::Status CoquiSynthesize(::grpc::ServerContext* context, const ::sentiric::tts::v1::CoquiSynthesizeRequest* request, ::sentiric::tts::v1::CoquiSynthesizeResponse* response);
-    // Stream
     virtual ::grpc::Status CoquiSynthesizeStream(::grpc::ServerContext* context, const ::sentiric::tts::v1::CoquiSynthesizeStreamRequest* request, ::grpc::ServerWriter< ::sentiric::tts::v1::CoquiSynthesizeStreamResponse>* writer);
   };
   template <class BaseClass>
