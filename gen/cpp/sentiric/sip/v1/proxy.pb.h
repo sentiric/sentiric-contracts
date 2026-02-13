@@ -191,6 +191,7 @@ class GetNextHopRequest final :
     kSourceIpFieldNumber = 2,
     kMethodFieldNumber = 3,
     kFromUriFieldNumber = 4,
+    kIsInDialogFieldNumber = 5,
   };
   // string destination_uri = 1;
   void clear_destination_uri();
@@ -248,6 +249,15 @@ class GetNextHopRequest final :
   std::string* _internal_mutable_from_uri();
   public:
 
+  // bool is_in_dialog = 5;
+  void clear_is_in_dialog();
+  bool is_in_dialog() const;
+  void set_is_in_dialog(bool value);
+  private:
+  bool _internal_is_in_dialog() const;
+  void _internal_set_is_in_dialog(bool value);
+  public:
+
   // @@protoc_insertion_point(class_scope:sentiric.sip.v1.GetNextHopRequest)
  private:
   class _Internal;
@@ -260,6 +270,7 @@ class GetNextHopRequest final :
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr source_ip_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr method_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr from_uri_;
+    bool is_in_dialog_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -643,6 +654,26 @@ inline void GetNextHopRequest::set_allocated_from_uri(std::string* from_uri) {
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:sentiric.sip.v1.GetNextHopRequest.from_uri)
+}
+
+// bool is_in_dialog = 5;
+inline void GetNextHopRequest::clear_is_in_dialog() {
+  _impl_.is_in_dialog_ = false;
+}
+inline bool GetNextHopRequest::_internal_is_in_dialog() const {
+  return _impl_.is_in_dialog_;
+}
+inline bool GetNextHopRequest::is_in_dialog() const {
+  // @@protoc_insertion_point(field_get:sentiric.sip.v1.GetNextHopRequest.is_in_dialog)
+  return _internal_is_in_dialog();
+}
+inline void GetNextHopRequest::_internal_set_is_in_dialog(bool value) {
+  
+  _impl_.is_in_dialog_ = value;
+}
+inline void GetNextHopRequest::set_is_in_dialog(bool value) {
+  _internal_set_is_in_dialog(value);
+  // @@protoc_insertion_point(field_set:sentiric.sip.v1.GetNextHopRequest.is_in_dialog)
 }
 
 // -------------------------------------------------------------------

@@ -6,8 +6,11 @@ from sentiric.sip.v1 import proxy_pb2 as sentiric_dot_sip_dot_v1_dot_proxy__pb2
 
 
 class ProxyServiceStub(object):
-    """ProxyService, SBC ve diğer sinyalleşme birimlerinin yönlendirme kararı 
-    alması için kullanılan merkezi otoritedir.
+    """=================================================================
+    🛡️ Proxy Service (SIP Yönlendirici)
+    Gelen SIP isteklerinin nereye gideceğine karar verir.
+    =================================================================
+
     """
 
     def __init__(self, channel):
@@ -24,13 +27,15 @@ class ProxyServiceStub(object):
 
 
 class ProxyServiceServicer(object):
-    """ProxyService, SBC ve diğer sinyalleşme birimlerinin yönlendirme kararı 
-    alması için kullanılan merkezi otoritedir.
+    """=================================================================
+    🛡️ Proxy Service (SIP Yönlendirici)
+    Gelen SIP isteklerinin nereye gideceğine karar verir.
+    =================================================================
+
     """
 
     def GetNextHop(self, request, context):
-        """GetNextHop: Verilen hedefe giden yolun (Next-Hop) bilgisini döndürür.
-        """
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -52,8 +57,11 @@ def add_ProxyServiceServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class ProxyService(object):
-    """ProxyService, SBC ve diğer sinyalleşme birimlerinin yönlendirme kararı 
-    alması için kullanılan merkezi otoritedir.
+    """=================================================================
+    🛡️ Proxy Service (SIP Yönlendirici)
+    Gelen SIP isteklerinin nereye gideceğine karar verir.
+    =================================================================
+
     """
 
     @staticmethod

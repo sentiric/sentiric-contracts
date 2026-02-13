@@ -94,7 +94,8 @@ proto.sentiric.sip.v1.GetNextHopRequest.toObject = function(includeInstance, msg
 destinationUri: jspb.Message.getFieldWithDefault(msg, 1, ""),
 sourceIp: jspb.Message.getFieldWithDefault(msg, 2, ""),
 method: jspb.Message.getFieldWithDefault(msg, 3, ""),
-fromUri: jspb.Message.getFieldWithDefault(msg, 4, "")
+fromUri: jspb.Message.getFieldWithDefault(msg, 4, ""),
+isInDialog: jspb.Message.getBooleanFieldWithDefault(msg, 5, false)
   };
 
   if (includeInstance) {
@@ -146,6 +147,10 @@ proto.sentiric.sip.v1.GetNextHopRequest.deserializeBinaryFromReader = function(m
     case 4:
       var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setFromUri(value);
+      break;
+    case 5:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setIsInDialog(value);
       break;
     default:
       reader.skipField();
@@ -201,6 +206,13 @@ proto.sentiric.sip.v1.GetNextHopRequest.serializeBinaryToWriter = function(messa
   if (f.length > 0) {
     writer.writeString(
       4,
+      f
+    );
+  }
+  f = message.getIsInDialog();
+  if (f) {
+    writer.writeBool(
+      5,
       f
     );
   }
@@ -276,6 +288,24 @@ proto.sentiric.sip.v1.GetNextHopRequest.prototype.getFromUri = function() {
  */
 proto.sentiric.sip.v1.GetNextHopRequest.prototype.setFromUri = function(value) {
   return jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+/**
+ * optional bool is_in_dialog = 5;
+ * @return {boolean}
+ */
+proto.sentiric.sip.v1.GetNextHopRequest.prototype.getIsInDialog = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 5, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.sentiric.sip.v1.GetNextHopRequest} returns this
+ */
+proto.sentiric.sip.v1.GetNextHopRequest.prototype.setIsInDialog = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 5, value);
 };
 
 

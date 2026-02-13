@@ -77,14 +77,14 @@ make all
 
 # 2. Commit (Conventional Commits standardı)
 git add .
-git commit -m "feat(sip): add from_uri to GetNextHopRequest for identity resolution"
+git commit -m "feat(contracts): add is_in_dialog to GetNextHopRequest for routing"
 
 # 3. Yeni versiyonu mühürle
-git tag -a v1.15.0 -m "Release v1.15.0 - Identity Restoration Support"
+git tag -a v1.17.0 -m "Release v1.17.0 - add is_in_dialog to GetNextHopRequest for routing"
 
 # 4. Push
 git push origin main
-git push origin v1.15.0
+git push origin v1.17.0
 ```
 > 🎯 **Semantic Versioning (semver)** kullanıyoruz: `MAJOR.MINOR.PATCH`. MAJOR değişiklikler geriye dönük uyumsuzluk yaratır.
 

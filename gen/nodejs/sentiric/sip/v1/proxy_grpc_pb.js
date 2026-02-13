@@ -1,5 +1,8 @@
 // GENERATED CODE -- DO NOT EDIT!
 
+// Original file comments:
+// proto/sentiric/sip/v1/proxy_service.proto
+//
 'use strict';
 var grpc = require('@grpc/grpc-js');
 var sentiric_sip_v1_proxy_pb = require('../../../sentiric/sip/v1/proxy_pb.js');
@@ -27,11 +30,13 @@ function deserialize_sentiric_sip_v1_GetNextHopResponse(buffer_arg) {
 }
 
 
-// ProxyService, SBC ve diğer sinyalleşme birimlerinin yönlendirme kararı 
-// alması için kullanılan merkezi otoritedir.
+// =================================================================
+// 🛡️ Proxy Service (SIP Yönlendirici)
+// Gelen SIP isteklerinin nereye gideceğine karar verir.
+// =================================================================
+//
 var ProxyServiceService = exports.ProxyServiceService = {
-  // GetNextHop: Verilen hedefe giden yolun (Next-Hop) bilgisini döndürür.
-getNextHop: {
+  getNextHop: {
     path: '/sentiric.sip.v1.ProxyService/GetNextHop',
     requestStream: false,
     responseStream: false,

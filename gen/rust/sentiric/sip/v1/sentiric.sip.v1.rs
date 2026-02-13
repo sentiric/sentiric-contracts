@@ -44,26 +44,33 @@ pub struct GetLoadResponse {
 }
 #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct GetNextHopRequest {
-    /// destination_uri: Aranan hedef (örn: sip:9999@sentiric.cloud)
+    /// Hedef URI (Request-URI)
+    /// Örn: sip:1001@sentiric_demo veya sip:b2bua@10.88.30.8:13084
     #[prost(string, tag="1")]
     pub destination_uri: ::prost::alloc::string::String,
-    /// source_ip: Paketin SBC'ye ulaştığı fiziksel IP adresi (Rate-limit için).
+    /// İsteği gönderen kaynağın IP adresi
     #[prost(string, tag="2")]
     pub source_ip: ::prost::alloc::string::String,
-    /// method: SIP Metodu (örn: INVITE, REGISTER).
+    /// SIP Metodu (INVITE, ACK, BYE, REGISTER vb.)
     #[prost(string, tag="3")]
     pub method: ::prost::alloc::string::String,
-    /// from_uri: Arayan kişinin kimlik bilgisi (örn: <sip:+905548777858@34.122.40.122>)
-    /// \[NEW v1.15.0\]: Dialplan katmanında kimlik tanıma için eklenmiştir.
+    /// Arayanın kimliği (From header'dan ayıklanır)
     #[prost(string, tag="4")]
     pub from_uri: ::prost::alloc::string::String,
+    /// \[v1.17.0 EKLENDİ\]
+    /// Bu isteğin devam eden bir diyalog (ACK, BYE) içinde olup olmadığını belirtir.
+    /// Eğer 'true' ise, Dialplan sorgusu atlanır ve yönlendirme doğrudan yapılır.
+    #[prost(bool, tag="5")]
+    pub is_in_dialog: bool,
 }
 #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct GetNextHopResponse {
-    /// uri: Hedefin SIP adresi (örn: 100.67.38.96:13084)
+    /// Bir sonraki hedefin SIP adresi (IP:Port veya FQDN:Port)
+    /// Örn: 10.88.30.8:13084
     #[prost(string, tag="1")]
     pub uri: ::prost::alloc::string::String,
-    /// gateway_id: İşlemi yürüten ağ geçidinin mantıksal adı.
+    /// Yönlendirme kararının kaynağı (debug için)
+    /// Örn: "sentiric-ai-gateway", "direct-route-in-dialog"
     #[prost(string, tag="2")]
     pub gateway_id: ::prost::alloc::string::String,
 }

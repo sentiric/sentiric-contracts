@@ -29,6 +29,7 @@ PROTOBUF_CONSTEXPR GetNextHopRequest::GetNextHopRequest(
   , /*decltype(_impl_.source_ip_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.method_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.from_uri_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.is_in_dialog_)*/false
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct GetNextHopRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR GetNextHopRequestDefaultTypeInternal()
@@ -71,6 +72,7 @@ const uint32_t TableStruct_sentiric_2fsip_2fv1_2fproxy_2eproto::offsets[] PROTOB
   PROTOBUF_FIELD_OFFSET(::sentiric::sip::v1::GetNextHopRequest, _impl_.source_ip_),
   PROTOBUF_FIELD_OFFSET(::sentiric::sip::v1::GetNextHopRequest, _impl_.method_),
   PROTOBUF_FIELD_OFFSET(::sentiric::sip::v1::GetNextHopRequest, _impl_.from_uri_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::sip::v1::GetNextHopRequest, _impl_.is_in_dialog_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::sentiric::sip::v1::GetNextHopResponse, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -82,7 +84,7 @@ const uint32_t TableStruct_sentiric_2fsip_2fv1_2fproxy_2eproto::offsets[] PROTOB
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::sentiric::sip::v1::GetNextHopRequest)},
-  { 10, -1, -1, sizeof(::sentiric::sip::v1::GetNextHopResponse)},
+  { 11, -1, -1, sizeof(::sentiric::sip::v1::GetNextHopResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -92,19 +94,20 @@ static const ::_pb::Message* const file_default_instances[] = {
 
 const char descriptor_table_protodef_sentiric_2fsip_2fv1_2fproxy_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\033sentiric/sip/v1/proxy.proto\022\017sentiric."
-  "sip.v1\"a\n\021GetNextHopRequest\022\027\n\017destinati"
+  "sip.v1\"w\n\021GetNextHopRequest\022\027\n\017destinati"
   "on_uri\030\001 \001(\t\022\021\n\tsource_ip\030\002 \001(\t\022\016\n\006metho"
-  "d\030\003 \001(\t\022\020\n\010from_uri\030\004 \001(\t\"5\n\022GetNextHopR"
-  "esponse\022\013\n\003uri\030\001 \001(\t\022\022\n\ngateway_id\030\002 \001(\t"
-  "2e\n\014ProxyService\022U\n\nGetNextHop\022\".sentiri"
-  "c.sip.v1.GetNextHopRequest\032#.sentiric.si"
-  "p.v1.GetNextHopResponseBEZCgithub.com/se"
-  "ntiric/sentiric-contracts/gen/go/sentiri"
-  "c/sip/v1;sipv1b\006proto3"
+  "d\030\003 \001(\t\022\020\n\010from_uri\030\004 \001(\t\022\024\n\014is_in_dialo"
+  "g\030\005 \001(\010\"5\n\022GetNextHopResponse\022\013\n\003uri\030\001 \001"
+  "(\t\022\022\n\ngateway_id\030\002 \001(\t2e\n\014ProxyService\022U"
+  "\n\nGetNextHop\022\".sentiric.sip.v1.GetNextHo"
+  "pRequest\032#.sentiric.sip.v1.GetNextHopRes"
+  "ponseBEZCgithub.com/sentiric/sentiric-co"
+  "ntracts/gen/go/sentiric/sip/v1;sipv1b\006pr"
+  "oto3"
   ;
 static ::_pbi::once_flag descriptor_table_sentiric_2fsip_2fv1_2fproxy_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_sentiric_2fsip_2fv1_2fproxy_2eproto = {
-    false, false, 382, descriptor_table_protodef_sentiric_2fsip_2fv1_2fproxy_2eproto,
+    false, false, 404, descriptor_table_protodef_sentiric_2fsip_2fv1_2fproxy_2eproto,
     "sentiric/sip/v1/proxy.proto",
     &descriptor_table_sentiric_2fsip_2fv1_2fproxy_2eproto_once, nullptr, 0, 2,
     schemas, file_default_instances, TableStruct_sentiric_2fsip_2fv1_2fproxy_2eproto::offsets,
@@ -141,6 +144,7 @@ GetNextHopRequest::GetNextHopRequest(const GetNextHopRequest& from)
     , decltype(_impl_.source_ip_){}
     , decltype(_impl_.method_){}
     , decltype(_impl_.from_uri_){}
+    , decltype(_impl_.is_in_dialog_){}
     , /*decltype(_impl_._cached_size_)*/{}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
@@ -176,6 +180,7 @@ GetNextHopRequest::GetNextHopRequest(const GetNextHopRequest& from)
     _this->_impl_.from_uri_.Set(from._internal_from_uri(), 
       _this->GetArenaForAllocation());
   }
+  _this->_impl_.is_in_dialog_ = from._impl_.is_in_dialog_;
   // @@protoc_insertion_point(copy_constructor:sentiric.sip.v1.GetNextHopRequest)
 }
 
@@ -188,6 +193,7 @@ inline void GetNextHopRequest::SharedCtor(
     , decltype(_impl_.source_ip_){}
     , decltype(_impl_.method_){}
     , decltype(_impl_.from_uri_){}
+    , decltype(_impl_.is_in_dialog_){false}
     , /*decltype(_impl_._cached_size_)*/{}
   };
   _impl_.destination_uri_.InitDefault();
@@ -239,6 +245,7 @@ void GetNextHopRequest::Clear() {
   _impl_.source_ip_.ClearToEmpty();
   _impl_.method_.ClearToEmpty();
   _impl_.from_uri_.ClearToEmpty();
+  _impl_.is_in_dialog_ = false;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -285,6 +292,14 @@ const char* GetNextHopRequest::_InternalParse(const char* ptr, ::_pbi::ParseCont
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
           CHK_(::_pbi::VerifyUTF8(str, "sentiric.sip.v1.GetNextHopRequest.from_uri"));
+        } else
+          goto handle_unusual;
+        continue;
+      // bool is_in_dialog = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
+          _impl_.is_in_dialog_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
@@ -357,6 +372,12 @@ uint8_t* GetNextHopRequest::_InternalSerialize(
         4, this->_internal_from_uri(), target);
   }
 
+  // bool is_in_dialog = 5;
+  if (this->_internal_is_in_dialog() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(5, this->_internal_is_in_dialog(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -401,6 +422,11 @@ size_t GetNextHopRequest::ByteSizeLong() const {
         this->_internal_from_uri());
   }
 
+  // bool is_in_dialog = 5;
+  if (this->_internal_is_in_dialog() != 0) {
+    total_size += 1 + 1;
+  }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
@@ -430,6 +456,9 @@ void GetNextHopRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, cons
   }
   if (!from._internal_from_uri().empty()) {
     _this->_internal_set_from_uri(from._internal_from_uri());
+  }
+  if (from._internal_is_in_dialog() != 0) {
+    _this->_internal_set_is_in_dialog(from._internal_is_in_dialog());
   }
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -466,6 +495,7 @@ void GetNextHopRequest::InternalSwap(GetNextHopRequest* other) {
       &_impl_.from_uri_, lhs_arena,
       &other->_impl_.from_uri_, rhs_arena
   );
+  swap(_impl_.is_in_dialog_, other->_impl_.is_in_dialog_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata GetNextHopRequest::GetMetadata() const {

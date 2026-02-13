@@ -1,35 +1,46 @@
+// proto/sentiric/sip/v1/proxy_service.proto
+
 syntax = "proto3";
 
 package sentiric.sip.v1;
 
 option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/sip/v1;sipv1";
 
-// ProxyService, SBC ve diğer sinyalleşme birimlerinin yönlendirme kararı 
-// alması için kullanılan merkezi otoritedir.
+// =================================================================
+// 🛡️ Proxy Service (SIP Yönlendirici)
+// Gelen SIP isteklerinin nereye gideceğine karar verir.
+// =================================================================
+
 service ProxyService {
-  // GetNextHop: Verilen hedefe giden yolun (Next-Hop) bilgisini döndürür.
   rpc GetNextHop(GetNextHopRequest) returns (GetNextHopResponse);
 }
 
 message GetNextHopRequest {
-  // destination_uri: Aranan hedef (örn: sip:9999@sentiric.cloud)
-  string destination_uri = 1; 
+  // Hedef URI (Request-URI)
+  // Örn: sip:1001@sentiric_demo veya sip:b2bua@10.88.30.8:13084
+  string destination_uri = 1;
 
-  // source_ip: Paketin SBC'ye ulaştığı fiziksel IP adresi (Rate-limit için).
-  string source_ip = 2;       
-  
-  // method: SIP Metodu (örn: INVITE, REGISTER).
-  string method = 3; 
+  // İsteği gönderen kaynağın IP adresi
+  string source_ip = 2;
 
-  // from_uri: Arayan kişinin kimlik bilgisi (örn: <sip:+905548777858@34.122.40.122>)
-  // [NEW v1.15.0]: Dialplan katmanında kimlik tanıma için eklenmiştir.
+  // SIP Metodu (INVITE, ACK, BYE, REGISTER vb.)
+  string method = 3;
+
+  // Arayanın kimliği (From header'dan ayıklanır)
   string from_uri = 4;
+  
+  // [v1.17.0 EKLENDİ]
+  // Bu isteğin devam eden bir diyalog (ACK, BYE) içinde olup olmadığını belirtir.
+  // Eğer 'true' ise, Dialplan sorgusu atlanır ve yönlendirme doğrudan yapılır.
+  bool is_in_dialog = 5;
 }
 
 message GetNextHopResponse {
-  // uri: Hedefin SIP adresi (örn: 100.67.38.96:13084)
-  string uri = 1; 
-  
-  // gateway_id: İşlemi yürüten ağ geçidinin mantıksal adı.
+  // Bir sonraki hedefin SIP adresi (IP:Port veya FQDN:Port)
+  // Örn: 10.88.30.8:13084
+  string uri = 1;
+
+  // Yönlendirme kararının kaynağı (debug için)
+  // Örn: "sentiric-ai-gateway", "direct-route-in-dialog"
   string gateway_id = 2;
 }
