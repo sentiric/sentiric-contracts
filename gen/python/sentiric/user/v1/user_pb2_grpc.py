@@ -73,6 +73,11 @@ class UserServiceStub(object):
                 request_serializer=sentiric_dot_user_dot_v1_dot_user__pb2.DeleteSipCredentialRequest.SerializeToString,
                 response_deserializer=sentiric_dot_user_dot_v1_dot_user__pb2.DeleteSipCredentialResponse.FromString,
                 _registered_method=True)
+        self.GetAgentProfile = channel.unary_unary(
+                '/sentiric.user.v1.UserService/GetAgentProfile',
+                request_serializer=sentiric_dot_user_dot_v1_dot_user__pb2.GetAgentProfileRequest.SerializeToString,
+                response_deserializer=sentiric_dot_user_dot_v1_dot_user__pb2.GetAgentProfileResponse.FromString,
+                _registered_method=True)
 
 
 class UserServiceServicer(object):
@@ -155,6 +160,12 @@ class UserServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetAgentProfile(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_UserServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -212,6 +223,11 @@ def add_UserServiceServicer_to_server(servicer, server):
                     servicer.DeleteSipCredential,
                     request_deserializer=sentiric_dot_user_dot_v1_dot_user__pb2.DeleteSipCredentialRequest.FromString,
                     response_serializer=sentiric_dot_user_dot_v1_dot_user__pb2.DeleteSipCredentialResponse.SerializeToString,
+            ),
+            'GetAgentProfile': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetAgentProfile,
+                    request_deserializer=sentiric_dot_user_dot_v1_dot_user__pb2.GetAgentProfileRequest.FromString,
+                    response_serializer=sentiric_dot_user_dot_v1_dot_user__pb2.GetAgentProfileResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -515,6 +531,33 @@ class UserService(object):
             '/sentiric.user.v1.UserService/DeleteSipCredential',
             sentiric_dot_user_dot_v1_dot_user__pb2.DeleteSipCredentialRequest.SerializeToString,
             sentiric_dot_user_dot_v1_dot_user__pb2.DeleteSipCredentialResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetAgentProfile(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/sentiric.user.v1.UserService/GetAgentProfile',
+            sentiric_dot_user_dot_v1_dot_user__pb2.GetAgentProfileRequest.SerializeToString,
+            sentiric_dot_user_dot_v1_dot_user__pb2.GetAgentProfileResponse.FromString,
             options,
             channel_credentials,
             insecure,

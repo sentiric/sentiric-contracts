@@ -51,6 +51,15 @@ extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table
 namespace sentiric {
 namespace cdr {
 namespace v1 {
+class CallRecord;
+struct CallRecordDefaultTypeInternal;
+extern CallRecordDefaultTypeInternal _CallRecord_default_instance_;
+class CreateCallRecordRequest;
+struct CreateCallRecordRequestDefaultTypeInternal;
+extern CreateCallRecordRequestDefaultTypeInternal _CreateCallRecordRequest_default_instance_;
+class CreateCallRecordResponse;
+struct CreateCallRecordResponseDefaultTypeInternal;
+extern CreateCallRecordResponseDefaultTypeInternal _CreateCallRecordResponse_default_instance_;
 class RecordCallEventRequest;
 struct RecordCallEventRequestDefaultTypeInternal;
 extern RecordCallEventRequestDefaultTypeInternal _RecordCallEventRequest_default_instance_;
@@ -60,19 +69,1179 @@ extern RecordCallEventRequest_MetadataEntry_DoNotUseDefaultTypeInternal _RecordC
 class RecordCallEventResponse;
 struct RecordCallEventResponseDefaultTypeInternal;
 extern RecordCallEventResponseDefaultTypeInternal _RecordCallEventResponse_default_instance_;
+class UpdateCallRecordRequest;
+struct UpdateCallRecordRequestDefaultTypeInternal;
+extern UpdateCallRecordRequestDefaultTypeInternal _UpdateCallRecordRequest_default_instance_;
+class UpdateCallRecordResponse;
+struct UpdateCallRecordResponseDefaultTypeInternal;
+extern UpdateCallRecordResponseDefaultTypeInternal _UpdateCallRecordResponse_default_instance_;
 }  // namespace v1
 }  // namespace cdr
 }  // namespace sentiric
 PROTOBUF_NAMESPACE_OPEN
+template<> ::sentiric::cdr::v1::CallRecord* Arena::CreateMaybeMessage<::sentiric::cdr::v1::CallRecord>(Arena*);
+template<> ::sentiric::cdr::v1::CreateCallRecordRequest* Arena::CreateMaybeMessage<::sentiric::cdr::v1::CreateCallRecordRequest>(Arena*);
+template<> ::sentiric::cdr::v1::CreateCallRecordResponse* Arena::CreateMaybeMessage<::sentiric::cdr::v1::CreateCallRecordResponse>(Arena*);
 template<> ::sentiric::cdr::v1::RecordCallEventRequest* Arena::CreateMaybeMessage<::sentiric::cdr::v1::RecordCallEventRequest>(Arena*);
 template<> ::sentiric::cdr::v1::RecordCallEventRequest_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage<::sentiric::cdr::v1::RecordCallEventRequest_MetadataEntry_DoNotUse>(Arena*);
 template<> ::sentiric::cdr::v1::RecordCallEventResponse* Arena::CreateMaybeMessage<::sentiric::cdr::v1::RecordCallEventResponse>(Arena*);
+template<> ::sentiric::cdr::v1::UpdateCallRecordRequest* Arena::CreateMaybeMessage<::sentiric::cdr::v1::UpdateCallRecordRequest>(Arena*);
+template<> ::sentiric::cdr::v1::UpdateCallRecordResponse* Arena::CreateMaybeMessage<::sentiric::cdr::v1::UpdateCallRecordResponse>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace sentiric {
 namespace cdr {
 namespace v1 {
 
 // ===================================================================
+
+class CallRecord final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.cdr.v1.CallRecord) */ {
+ public:
+  inline CallRecord() : CallRecord(nullptr) {}
+  ~CallRecord() override;
+  explicit PROTOBUF_CONSTEXPR CallRecord(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  CallRecord(const CallRecord& from);
+  CallRecord(CallRecord&& from) noexcept
+    : CallRecord() {
+    *this = ::std::move(from);
+  }
+
+  inline CallRecord& operator=(const CallRecord& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline CallRecord& operator=(CallRecord&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const CallRecord& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const CallRecord* internal_default_instance() {
+    return reinterpret_cast<const CallRecord*>(
+               &_CallRecord_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    0;
+
+  friend void swap(CallRecord& a, CallRecord& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(CallRecord* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(CallRecord* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  CallRecord* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<CallRecord>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const CallRecord& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const CallRecord& from) {
+    CallRecord::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(CallRecord* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.cdr.v1.CallRecord";
+  }
+  protected:
+  explicit CallRecord(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kCallIdFieldNumber = 1,
+    kTenantIdFieldNumber = 2,
+    kDirectionFieldNumber = 3,
+    kCallerNumberFieldNumber = 4,
+    kCalleeNumberFieldNumber = 5,
+    kUserIdFieldNumber = 6,
+    kStatusFieldNumber = 8,
+    kDispositionFieldNumber = 9,
+    kHangupSourceFieldNumber = 10,
+    kRecordingUrlFieldNumber = 12,
+    kStartTimeFieldNumber = 14,
+    kEndTimeFieldNumber = 15,
+    kDurationSecondsFieldNumber = 7,
+    kTotalCostFieldNumber = 13,
+    kSipHangupCauseFieldNumber = 11,
+  };
+  // string call_id = 1;
+  void clear_call_id();
+  const std::string& call_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_call_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_call_id();
+  PROTOBUF_NODISCARD std::string* release_call_id();
+  void set_allocated_call_id(std::string* call_id);
+  private:
+  const std::string& _internal_call_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_call_id(const std::string& value);
+  std::string* _internal_mutable_call_id();
+  public:
+
+  // string tenant_id = 2;
+  void clear_tenant_id();
+  const std::string& tenant_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_tenant_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_tenant_id();
+  PROTOBUF_NODISCARD std::string* release_tenant_id();
+  void set_allocated_tenant_id(std::string* tenant_id);
+  private:
+  const std::string& _internal_tenant_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_tenant_id(const std::string& value);
+  std::string* _internal_mutable_tenant_id();
+  public:
+
+  // string direction = 3;
+  void clear_direction();
+  const std::string& direction() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_direction(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_direction();
+  PROTOBUF_NODISCARD std::string* release_direction();
+  void set_allocated_direction(std::string* direction);
+  private:
+  const std::string& _internal_direction() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_direction(const std::string& value);
+  std::string* _internal_mutable_direction();
+  public:
+
+  // string caller_number = 4;
+  void clear_caller_number();
+  const std::string& caller_number() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_caller_number(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_caller_number();
+  PROTOBUF_NODISCARD std::string* release_caller_number();
+  void set_allocated_caller_number(std::string* caller_number);
+  private:
+  const std::string& _internal_caller_number() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_caller_number(const std::string& value);
+  std::string* _internal_mutable_caller_number();
+  public:
+
+  // string callee_number = 5;
+  void clear_callee_number();
+  const std::string& callee_number() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_callee_number(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_callee_number();
+  PROTOBUF_NODISCARD std::string* release_callee_number();
+  void set_allocated_callee_number(std::string* callee_number);
+  private:
+  const std::string& _internal_callee_number() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_callee_number(const std::string& value);
+  std::string* _internal_mutable_callee_number();
+  public:
+
+  // string user_id = 6;
+  void clear_user_id();
+  const std::string& user_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_user_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_user_id();
+  PROTOBUF_NODISCARD std::string* release_user_id();
+  void set_allocated_user_id(std::string* user_id);
+  private:
+  const std::string& _internal_user_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_user_id(const std::string& value);
+  std::string* _internal_mutable_user_id();
+  public:
+
+  // string status = 8;
+  void clear_status();
+  const std::string& status() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_status(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_status();
+  PROTOBUF_NODISCARD std::string* release_status();
+  void set_allocated_status(std::string* status);
+  private:
+  const std::string& _internal_status() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_status(const std::string& value);
+  std::string* _internal_mutable_status();
+  public:
+
+  // string disposition = 9;
+  void clear_disposition();
+  const std::string& disposition() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_disposition(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_disposition();
+  PROTOBUF_NODISCARD std::string* release_disposition();
+  void set_allocated_disposition(std::string* disposition);
+  private:
+  const std::string& _internal_disposition() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_disposition(const std::string& value);
+  std::string* _internal_mutable_disposition();
+  public:
+
+  // string hangup_source = 10;
+  void clear_hangup_source();
+  const std::string& hangup_source() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_hangup_source(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_hangup_source();
+  PROTOBUF_NODISCARD std::string* release_hangup_source();
+  void set_allocated_hangup_source(std::string* hangup_source);
+  private:
+  const std::string& _internal_hangup_source() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_hangup_source(const std::string& value);
+  std::string* _internal_mutable_hangup_source();
+  public:
+
+  // string recording_url = 12;
+  void clear_recording_url();
+  const std::string& recording_url() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_recording_url(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_recording_url();
+  PROTOBUF_NODISCARD std::string* release_recording_url();
+  void set_allocated_recording_url(std::string* recording_url);
+  private:
+  const std::string& _internal_recording_url() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_recording_url(const std::string& value);
+  std::string* _internal_mutable_recording_url();
+  public:
+
+  // .google.protobuf.Timestamp start_time = 14;
+  bool has_start_time() const;
+  private:
+  bool _internal_has_start_time() const;
+  public:
+  void clear_start_time();
+  const ::PROTOBUF_NAMESPACE_ID::Timestamp& start_time() const;
+  PROTOBUF_NODISCARD ::PROTOBUF_NAMESPACE_ID::Timestamp* release_start_time();
+  ::PROTOBUF_NAMESPACE_ID::Timestamp* mutable_start_time();
+  void set_allocated_start_time(::PROTOBUF_NAMESPACE_ID::Timestamp* start_time);
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Timestamp& _internal_start_time() const;
+  ::PROTOBUF_NAMESPACE_ID::Timestamp* _internal_mutable_start_time();
+  public:
+  void unsafe_arena_set_allocated_start_time(
+      ::PROTOBUF_NAMESPACE_ID::Timestamp* start_time);
+  ::PROTOBUF_NAMESPACE_ID::Timestamp* unsafe_arena_release_start_time();
+
+  // .google.protobuf.Timestamp end_time = 15;
+  bool has_end_time() const;
+  private:
+  bool _internal_has_end_time() const;
+  public:
+  void clear_end_time();
+  const ::PROTOBUF_NAMESPACE_ID::Timestamp& end_time() const;
+  PROTOBUF_NODISCARD ::PROTOBUF_NAMESPACE_ID::Timestamp* release_end_time();
+  ::PROTOBUF_NAMESPACE_ID::Timestamp* mutable_end_time();
+  void set_allocated_end_time(::PROTOBUF_NAMESPACE_ID::Timestamp* end_time);
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Timestamp& _internal_end_time() const;
+  ::PROTOBUF_NAMESPACE_ID::Timestamp* _internal_mutable_end_time();
+  public:
+  void unsafe_arena_set_allocated_end_time(
+      ::PROTOBUF_NAMESPACE_ID::Timestamp* end_time);
+  ::PROTOBUF_NAMESPACE_ID::Timestamp* unsafe_arena_release_end_time();
+
+  // int64 duration_seconds = 7;
+  void clear_duration_seconds();
+  int64_t duration_seconds() const;
+  void set_duration_seconds(int64_t value);
+  private:
+  int64_t _internal_duration_seconds() const;
+  void _internal_set_duration_seconds(int64_t value);
+  public:
+
+  // double total_cost = 13;
+  void clear_total_cost();
+  double total_cost() const;
+  void set_total_cost(double value);
+  private:
+  double _internal_total_cost() const;
+  void _internal_set_total_cost(double value);
+  public:
+
+  // int32 sip_hangup_cause = 11;
+  void clear_sip_hangup_cause();
+  int32_t sip_hangup_cause() const;
+  void set_sip_hangup_cause(int32_t value);
+  private:
+  int32_t _internal_sip_hangup_cause() const;
+  void _internal_set_sip_hangup_cause(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.cdr.v1.CallRecord)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr call_id_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr tenant_id_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr direction_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr caller_number_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr callee_number_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr user_id_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr status_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr disposition_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr hangup_source_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr recording_url_;
+    ::PROTOBUF_NAMESPACE_ID::Timestamp* start_time_;
+    ::PROTOBUF_NAMESPACE_ID::Timestamp* end_time_;
+    int64_t duration_seconds_;
+    double total_cost_;
+    int32_t sip_hangup_cause_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2fcdr_2fv1_2fcdr_2eproto;
+};
+// -------------------------------------------------------------------
+
+class CreateCallRecordRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.cdr.v1.CreateCallRecordRequest) */ {
+ public:
+  inline CreateCallRecordRequest() : CreateCallRecordRequest(nullptr) {}
+  ~CreateCallRecordRequest() override;
+  explicit PROTOBUF_CONSTEXPR CreateCallRecordRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  CreateCallRecordRequest(const CreateCallRecordRequest& from);
+  CreateCallRecordRequest(CreateCallRecordRequest&& from) noexcept
+    : CreateCallRecordRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline CreateCallRecordRequest& operator=(const CreateCallRecordRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline CreateCallRecordRequest& operator=(CreateCallRecordRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const CreateCallRecordRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const CreateCallRecordRequest* internal_default_instance() {
+    return reinterpret_cast<const CreateCallRecordRequest*>(
+               &_CreateCallRecordRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    1;
+
+  friend void swap(CreateCallRecordRequest& a, CreateCallRecordRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(CreateCallRecordRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(CreateCallRecordRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  CreateCallRecordRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<CreateCallRecordRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const CreateCallRecordRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const CreateCallRecordRequest& from) {
+    CreateCallRecordRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(CreateCallRecordRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.cdr.v1.CreateCallRecordRequest";
+  }
+  protected:
+  explicit CreateCallRecordRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kCallIdFieldNumber = 1,
+    kTenantIdFieldNumber = 2,
+    kDirectionFieldNumber = 3,
+    kCallerNumberFieldNumber = 4,
+    kCalleeNumberFieldNumber = 5,
+    kUserIdFieldNumber = 6,
+  };
+  // string call_id = 1;
+  void clear_call_id();
+  const std::string& call_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_call_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_call_id();
+  PROTOBUF_NODISCARD std::string* release_call_id();
+  void set_allocated_call_id(std::string* call_id);
+  private:
+  const std::string& _internal_call_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_call_id(const std::string& value);
+  std::string* _internal_mutable_call_id();
+  public:
+
+  // string tenant_id = 2;
+  void clear_tenant_id();
+  const std::string& tenant_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_tenant_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_tenant_id();
+  PROTOBUF_NODISCARD std::string* release_tenant_id();
+  void set_allocated_tenant_id(std::string* tenant_id);
+  private:
+  const std::string& _internal_tenant_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_tenant_id(const std::string& value);
+  std::string* _internal_mutable_tenant_id();
+  public:
+
+  // string direction = 3;
+  void clear_direction();
+  const std::string& direction() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_direction(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_direction();
+  PROTOBUF_NODISCARD std::string* release_direction();
+  void set_allocated_direction(std::string* direction);
+  private:
+  const std::string& _internal_direction() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_direction(const std::string& value);
+  std::string* _internal_mutable_direction();
+  public:
+
+  // string caller_number = 4;
+  void clear_caller_number();
+  const std::string& caller_number() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_caller_number(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_caller_number();
+  PROTOBUF_NODISCARD std::string* release_caller_number();
+  void set_allocated_caller_number(std::string* caller_number);
+  private:
+  const std::string& _internal_caller_number() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_caller_number(const std::string& value);
+  std::string* _internal_mutable_caller_number();
+  public:
+
+  // string callee_number = 5;
+  void clear_callee_number();
+  const std::string& callee_number() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_callee_number(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_callee_number();
+  PROTOBUF_NODISCARD std::string* release_callee_number();
+  void set_allocated_callee_number(std::string* callee_number);
+  private:
+  const std::string& _internal_callee_number() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_callee_number(const std::string& value);
+  std::string* _internal_mutable_callee_number();
+  public:
+
+  // string user_id = 6;
+  void clear_user_id();
+  const std::string& user_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_user_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_user_id();
+  PROTOBUF_NODISCARD std::string* release_user_id();
+  void set_allocated_user_id(std::string* user_id);
+  private:
+  const std::string& _internal_user_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_user_id(const std::string& value);
+  std::string* _internal_mutable_user_id();
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.cdr.v1.CreateCallRecordRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr call_id_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr tenant_id_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr direction_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr caller_number_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr callee_number_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr user_id_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2fcdr_2fv1_2fcdr_2eproto;
+};
+// -------------------------------------------------------------------
+
+class CreateCallRecordResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.cdr.v1.CreateCallRecordResponse) */ {
+ public:
+  inline CreateCallRecordResponse() : CreateCallRecordResponse(nullptr) {}
+  ~CreateCallRecordResponse() override;
+  explicit PROTOBUF_CONSTEXPR CreateCallRecordResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  CreateCallRecordResponse(const CreateCallRecordResponse& from);
+  CreateCallRecordResponse(CreateCallRecordResponse&& from) noexcept
+    : CreateCallRecordResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline CreateCallRecordResponse& operator=(const CreateCallRecordResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline CreateCallRecordResponse& operator=(CreateCallRecordResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const CreateCallRecordResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const CreateCallRecordResponse* internal_default_instance() {
+    return reinterpret_cast<const CreateCallRecordResponse*>(
+               &_CreateCallRecordResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    2;
+
+  friend void swap(CreateCallRecordResponse& a, CreateCallRecordResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(CreateCallRecordResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(CreateCallRecordResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  CreateCallRecordResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<CreateCallRecordResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const CreateCallRecordResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const CreateCallRecordResponse& from) {
+    CreateCallRecordResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(CreateCallRecordResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.cdr.v1.CreateCallRecordResponse";
+  }
+  protected:
+  explicit CreateCallRecordResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kSuccessFieldNumber = 1,
+  };
+  // bool success = 1;
+  void clear_success();
+  bool success() const;
+  void set_success(bool value);
+  private:
+  bool _internal_success() const;
+  void _internal_set_success(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.cdr.v1.CreateCallRecordResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    bool success_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2fcdr_2fv1_2fcdr_2eproto;
+};
+// -------------------------------------------------------------------
+
+class UpdateCallRecordRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.cdr.v1.UpdateCallRecordRequest) */ {
+ public:
+  inline UpdateCallRecordRequest() : UpdateCallRecordRequest(nullptr) {}
+  ~UpdateCallRecordRequest() override;
+  explicit PROTOBUF_CONSTEXPR UpdateCallRecordRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  UpdateCallRecordRequest(const UpdateCallRecordRequest& from);
+  UpdateCallRecordRequest(UpdateCallRecordRequest&& from) noexcept
+    : UpdateCallRecordRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline UpdateCallRecordRequest& operator=(const UpdateCallRecordRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline UpdateCallRecordRequest& operator=(UpdateCallRecordRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const UpdateCallRecordRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const UpdateCallRecordRequest* internal_default_instance() {
+    return reinterpret_cast<const UpdateCallRecordRequest*>(
+               &_UpdateCallRecordRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  friend void swap(UpdateCallRecordRequest& a, UpdateCallRecordRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(UpdateCallRecordRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(UpdateCallRecordRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  UpdateCallRecordRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<UpdateCallRecordRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const UpdateCallRecordRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const UpdateCallRecordRequest& from) {
+    UpdateCallRecordRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(UpdateCallRecordRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.cdr.v1.UpdateCallRecordRequest";
+  }
+  protected:
+  explicit UpdateCallRecordRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kCallIdFieldNumber = 1,
+    kStatusFieldNumber = 3,
+    kDispositionFieldNumber = 4,
+    kHangupSourceFieldNumber = 5,
+    kRecordingUrlFieldNumber = 7,
+    kDurationSecondsFieldNumber = 2,
+    kTotalCostFieldNumber = 8,
+    kSipHangupCauseFieldNumber = 6,
+  };
+  // string call_id = 1;
+  void clear_call_id();
+  const std::string& call_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_call_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_call_id();
+  PROTOBUF_NODISCARD std::string* release_call_id();
+  void set_allocated_call_id(std::string* call_id);
+  private:
+  const std::string& _internal_call_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_call_id(const std::string& value);
+  std::string* _internal_mutable_call_id();
+  public:
+
+  // string status = 3;
+  void clear_status();
+  const std::string& status() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_status(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_status();
+  PROTOBUF_NODISCARD std::string* release_status();
+  void set_allocated_status(std::string* status);
+  private:
+  const std::string& _internal_status() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_status(const std::string& value);
+  std::string* _internal_mutable_status();
+  public:
+
+  // string disposition = 4;
+  void clear_disposition();
+  const std::string& disposition() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_disposition(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_disposition();
+  PROTOBUF_NODISCARD std::string* release_disposition();
+  void set_allocated_disposition(std::string* disposition);
+  private:
+  const std::string& _internal_disposition() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_disposition(const std::string& value);
+  std::string* _internal_mutable_disposition();
+  public:
+
+  // string hangup_source = 5;
+  void clear_hangup_source();
+  const std::string& hangup_source() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_hangup_source(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_hangup_source();
+  PROTOBUF_NODISCARD std::string* release_hangup_source();
+  void set_allocated_hangup_source(std::string* hangup_source);
+  private:
+  const std::string& _internal_hangup_source() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_hangup_source(const std::string& value);
+  std::string* _internal_mutable_hangup_source();
+  public:
+
+  // string recording_url = 7;
+  void clear_recording_url();
+  const std::string& recording_url() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_recording_url(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_recording_url();
+  PROTOBUF_NODISCARD std::string* release_recording_url();
+  void set_allocated_recording_url(std::string* recording_url);
+  private:
+  const std::string& _internal_recording_url() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_recording_url(const std::string& value);
+  std::string* _internal_mutable_recording_url();
+  public:
+
+  // int64 duration_seconds = 2;
+  void clear_duration_seconds();
+  int64_t duration_seconds() const;
+  void set_duration_seconds(int64_t value);
+  private:
+  int64_t _internal_duration_seconds() const;
+  void _internal_set_duration_seconds(int64_t value);
+  public:
+
+  // double total_cost = 8;
+  void clear_total_cost();
+  double total_cost() const;
+  void set_total_cost(double value);
+  private:
+  double _internal_total_cost() const;
+  void _internal_set_total_cost(double value);
+  public:
+
+  // int32 sip_hangup_cause = 6;
+  void clear_sip_hangup_cause();
+  int32_t sip_hangup_cause() const;
+  void set_sip_hangup_cause(int32_t value);
+  private:
+  int32_t _internal_sip_hangup_cause() const;
+  void _internal_set_sip_hangup_cause(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.cdr.v1.UpdateCallRecordRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr call_id_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr status_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr disposition_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr hangup_source_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr recording_url_;
+    int64_t duration_seconds_;
+    double total_cost_;
+    int32_t sip_hangup_cause_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2fcdr_2fv1_2fcdr_2eproto;
+};
+// -------------------------------------------------------------------
+
+class UpdateCallRecordResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.cdr.v1.UpdateCallRecordResponse) */ {
+ public:
+  inline UpdateCallRecordResponse() : UpdateCallRecordResponse(nullptr) {}
+  ~UpdateCallRecordResponse() override;
+  explicit PROTOBUF_CONSTEXPR UpdateCallRecordResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  UpdateCallRecordResponse(const UpdateCallRecordResponse& from);
+  UpdateCallRecordResponse(UpdateCallRecordResponse&& from) noexcept
+    : UpdateCallRecordResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline UpdateCallRecordResponse& operator=(const UpdateCallRecordResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline UpdateCallRecordResponse& operator=(UpdateCallRecordResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const UpdateCallRecordResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const UpdateCallRecordResponse* internal_default_instance() {
+    return reinterpret_cast<const UpdateCallRecordResponse*>(
+               &_UpdateCallRecordResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    4;
+
+  friend void swap(UpdateCallRecordResponse& a, UpdateCallRecordResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(UpdateCallRecordResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(UpdateCallRecordResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  UpdateCallRecordResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<UpdateCallRecordResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const UpdateCallRecordResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const UpdateCallRecordResponse& from) {
+    UpdateCallRecordResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(UpdateCallRecordResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.cdr.v1.UpdateCallRecordResponse";
+  }
+  protected:
+  explicit UpdateCallRecordResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kSuccessFieldNumber = 1,
+  };
+  // bool success = 1;
+  void clear_success();
+  bool success() const;
+  void set_success(bool value);
+  private:
+  bool _internal_success() const;
+  void _internal_set_success(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.cdr.v1.UpdateCallRecordResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    bool success_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2fcdr_2fv1_2fcdr_2eproto;
+};
+// -------------------------------------------------------------------
 
 class RecordCallEventRequest_MetadataEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<RecordCallEventRequest_MetadataEntry_DoNotUse, 
     std::string, std::string,
@@ -150,7 +1319,7 @@ class RecordCallEventRequest final :
                &_RecordCallEventRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    6;
 
   friend void swap(RecordCallEventRequest& a, RecordCallEventRequest& b) {
     a.Swap(&b);
@@ -397,7 +1566,7 @@ class RecordCallEventResponse final :
                &_RecordCallEventResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    7;
 
   friend void swap(RecordCallEventResponse& a, RecordCallEventResponse& b) {
     a.Swap(&b);
@@ -504,6 +1673,1406 @@ class RecordCallEventResponse final :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
+// CallRecord
+
+// string call_id = 1;
+inline void CallRecord::clear_call_id() {
+  _impl_.call_id_.ClearToEmpty();
+}
+inline const std::string& CallRecord::call_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.cdr.v1.CallRecord.call_id)
+  return _internal_call_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void CallRecord::set_call_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.call_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.cdr.v1.CallRecord.call_id)
+}
+inline std::string* CallRecord::mutable_call_id() {
+  std::string* _s = _internal_mutable_call_id();
+  // @@protoc_insertion_point(field_mutable:sentiric.cdr.v1.CallRecord.call_id)
+  return _s;
+}
+inline const std::string& CallRecord::_internal_call_id() const {
+  return _impl_.call_id_.Get();
+}
+inline void CallRecord::_internal_set_call_id(const std::string& value) {
+  
+  _impl_.call_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* CallRecord::_internal_mutable_call_id() {
+  
+  return _impl_.call_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* CallRecord::release_call_id() {
+  // @@protoc_insertion_point(field_release:sentiric.cdr.v1.CallRecord.call_id)
+  return _impl_.call_id_.Release();
+}
+inline void CallRecord::set_allocated_call_id(std::string* call_id) {
+  if (call_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.call_id_.SetAllocated(call_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.call_id_.IsDefault()) {
+    _impl_.call_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.cdr.v1.CallRecord.call_id)
+}
+
+// string tenant_id = 2;
+inline void CallRecord::clear_tenant_id() {
+  _impl_.tenant_id_.ClearToEmpty();
+}
+inline const std::string& CallRecord::tenant_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.cdr.v1.CallRecord.tenant_id)
+  return _internal_tenant_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void CallRecord::set_tenant_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.tenant_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.cdr.v1.CallRecord.tenant_id)
+}
+inline std::string* CallRecord::mutable_tenant_id() {
+  std::string* _s = _internal_mutable_tenant_id();
+  // @@protoc_insertion_point(field_mutable:sentiric.cdr.v1.CallRecord.tenant_id)
+  return _s;
+}
+inline const std::string& CallRecord::_internal_tenant_id() const {
+  return _impl_.tenant_id_.Get();
+}
+inline void CallRecord::_internal_set_tenant_id(const std::string& value) {
+  
+  _impl_.tenant_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* CallRecord::_internal_mutable_tenant_id() {
+  
+  return _impl_.tenant_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* CallRecord::release_tenant_id() {
+  // @@protoc_insertion_point(field_release:sentiric.cdr.v1.CallRecord.tenant_id)
+  return _impl_.tenant_id_.Release();
+}
+inline void CallRecord::set_allocated_tenant_id(std::string* tenant_id) {
+  if (tenant_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.tenant_id_.SetAllocated(tenant_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.tenant_id_.IsDefault()) {
+    _impl_.tenant_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.cdr.v1.CallRecord.tenant_id)
+}
+
+// string direction = 3;
+inline void CallRecord::clear_direction() {
+  _impl_.direction_.ClearToEmpty();
+}
+inline const std::string& CallRecord::direction() const {
+  // @@protoc_insertion_point(field_get:sentiric.cdr.v1.CallRecord.direction)
+  return _internal_direction();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void CallRecord::set_direction(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.direction_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.cdr.v1.CallRecord.direction)
+}
+inline std::string* CallRecord::mutable_direction() {
+  std::string* _s = _internal_mutable_direction();
+  // @@protoc_insertion_point(field_mutable:sentiric.cdr.v1.CallRecord.direction)
+  return _s;
+}
+inline const std::string& CallRecord::_internal_direction() const {
+  return _impl_.direction_.Get();
+}
+inline void CallRecord::_internal_set_direction(const std::string& value) {
+  
+  _impl_.direction_.Set(value, GetArenaForAllocation());
+}
+inline std::string* CallRecord::_internal_mutable_direction() {
+  
+  return _impl_.direction_.Mutable(GetArenaForAllocation());
+}
+inline std::string* CallRecord::release_direction() {
+  // @@protoc_insertion_point(field_release:sentiric.cdr.v1.CallRecord.direction)
+  return _impl_.direction_.Release();
+}
+inline void CallRecord::set_allocated_direction(std::string* direction) {
+  if (direction != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.direction_.SetAllocated(direction, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.direction_.IsDefault()) {
+    _impl_.direction_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.cdr.v1.CallRecord.direction)
+}
+
+// string caller_number = 4;
+inline void CallRecord::clear_caller_number() {
+  _impl_.caller_number_.ClearToEmpty();
+}
+inline const std::string& CallRecord::caller_number() const {
+  // @@protoc_insertion_point(field_get:sentiric.cdr.v1.CallRecord.caller_number)
+  return _internal_caller_number();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void CallRecord::set_caller_number(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.caller_number_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.cdr.v1.CallRecord.caller_number)
+}
+inline std::string* CallRecord::mutable_caller_number() {
+  std::string* _s = _internal_mutable_caller_number();
+  // @@protoc_insertion_point(field_mutable:sentiric.cdr.v1.CallRecord.caller_number)
+  return _s;
+}
+inline const std::string& CallRecord::_internal_caller_number() const {
+  return _impl_.caller_number_.Get();
+}
+inline void CallRecord::_internal_set_caller_number(const std::string& value) {
+  
+  _impl_.caller_number_.Set(value, GetArenaForAllocation());
+}
+inline std::string* CallRecord::_internal_mutable_caller_number() {
+  
+  return _impl_.caller_number_.Mutable(GetArenaForAllocation());
+}
+inline std::string* CallRecord::release_caller_number() {
+  // @@protoc_insertion_point(field_release:sentiric.cdr.v1.CallRecord.caller_number)
+  return _impl_.caller_number_.Release();
+}
+inline void CallRecord::set_allocated_caller_number(std::string* caller_number) {
+  if (caller_number != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.caller_number_.SetAllocated(caller_number, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.caller_number_.IsDefault()) {
+    _impl_.caller_number_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.cdr.v1.CallRecord.caller_number)
+}
+
+// string callee_number = 5;
+inline void CallRecord::clear_callee_number() {
+  _impl_.callee_number_.ClearToEmpty();
+}
+inline const std::string& CallRecord::callee_number() const {
+  // @@protoc_insertion_point(field_get:sentiric.cdr.v1.CallRecord.callee_number)
+  return _internal_callee_number();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void CallRecord::set_callee_number(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.callee_number_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.cdr.v1.CallRecord.callee_number)
+}
+inline std::string* CallRecord::mutable_callee_number() {
+  std::string* _s = _internal_mutable_callee_number();
+  // @@protoc_insertion_point(field_mutable:sentiric.cdr.v1.CallRecord.callee_number)
+  return _s;
+}
+inline const std::string& CallRecord::_internal_callee_number() const {
+  return _impl_.callee_number_.Get();
+}
+inline void CallRecord::_internal_set_callee_number(const std::string& value) {
+  
+  _impl_.callee_number_.Set(value, GetArenaForAllocation());
+}
+inline std::string* CallRecord::_internal_mutable_callee_number() {
+  
+  return _impl_.callee_number_.Mutable(GetArenaForAllocation());
+}
+inline std::string* CallRecord::release_callee_number() {
+  // @@protoc_insertion_point(field_release:sentiric.cdr.v1.CallRecord.callee_number)
+  return _impl_.callee_number_.Release();
+}
+inline void CallRecord::set_allocated_callee_number(std::string* callee_number) {
+  if (callee_number != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.callee_number_.SetAllocated(callee_number, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.callee_number_.IsDefault()) {
+    _impl_.callee_number_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.cdr.v1.CallRecord.callee_number)
+}
+
+// string user_id = 6;
+inline void CallRecord::clear_user_id() {
+  _impl_.user_id_.ClearToEmpty();
+}
+inline const std::string& CallRecord::user_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.cdr.v1.CallRecord.user_id)
+  return _internal_user_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void CallRecord::set_user_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.user_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.cdr.v1.CallRecord.user_id)
+}
+inline std::string* CallRecord::mutable_user_id() {
+  std::string* _s = _internal_mutable_user_id();
+  // @@protoc_insertion_point(field_mutable:sentiric.cdr.v1.CallRecord.user_id)
+  return _s;
+}
+inline const std::string& CallRecord::_internal_user_id() const {
+  return _impl_.user_id_.Get();
+}
+inline void CallRecord::_internal_set_user_id(const std::string& value) {
+  
+  _impl_.user_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* CallRecord::_internal_mutable_user_id() {
+  
+  return _impl_.user_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* CallRecord::release_user_id() {
+  // @@protoc_insertion_point(field_release:sentiric.cdr.v1.CallRecord.user_id)
+  return _impl_.user_id_.Release();
+}
+inline void CallRecord::set_allocated_user_id(std::string* user_id) {
+  if (user_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.user_id_.SetAllocated(user_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.user_id_.IsDefault()) {
+    _impl_.user_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.cdr.v1.CallRecord.user_id)
+}
+
+// int64 duration_seconds = 7;
+inline void CallRecord::clear_duration_seconds() {
+  _impl_.duration_seconds_ = int64_t{0};
+}
+inline int64_t CallRecord::_internal_duration_seconds() const {
+  return _impl_.duration_seconds_;
+}
+inline int64_t CallRecord::duration_seconds() const {
+  // @@protoc_insertion_point(field_get:sentiric.cdr.v1.CallRecord.duration_seconds)
+  return _internal_duration_seconds();
+}
+inline void CallRecord::_internal_set_duration_seconds(int64_t value) {
+  
+  _impl_.duration_seconds_ = value;
+}
+inline void CallRecord::set_duration_seconds(int64_t value) {
+  _internal_set_duration_seconds(value);
+  // @@protoc_insertion_point(field_set:sentiric.cdr.v1.CallRecord.duration_seconds)
+}
+
+// string status = 8;
+inline void CallRecord::clear_status() {
+  _impl_.status_.ClearToEmpty();
+}
+inline const std::string& CallRecord::status() const {
+  // @@protoc_insertion_point(field_get:sentiric.cdr.v1.CallRecord.status)
+  return _internal_status();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void CallRecord::set_status(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.status_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.cdr.v1.CallRecord.status)
+}
+inline std::string* CallRecord::mutable_status() {
+  std::string* _s = _internal_mutable_status();
+  // @@protoc_insertion_point(field_mutable:sentiric.cdr.v1.CallRecord.status)
+  return _s;
+}
+inline const std::string& CallRecord::_internal_status() const {
+  return _impl_.status_.Get();
+}
+inline void CallRecord::_internal_set_status(const std::string& value) {
+  
+  _impl_.status_.Set(value, GetArenaForAllocation());
+}
+inline std::string* CallRecord::_internal_mutable_status() {
+  
+  return _impl_.status_.Mutable(GetArenaForAllocation());
+}
+inline std::string* CallRecord::release_status() {
+  // @@protoc_insertion_point(field_release:sentiric.cdr.v1.CallRecord.status)
+  return _impl_.status_.Release();
+}
+inline void CallRecord::set_allocated_status(std::string* status) {
+  if (status != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.status_.SetAllocated(status, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.status_.IsDefault()) {
+    _impl_.status_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.cdr.v1.CallRecord.status)
+}
+
+// string disposition = 9;
+inline void CallRecord::clear_disposition() {
+  _impl_.disposition_.ClearToEmpty();
+}
+inline const std::string& CallRecord::disposition() const {
+  // @@protoc_insertion_point(field_get:sentiric.cdr.v1.CallRecord.disposition)
+  return _internal_disposition();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void CallRecord::set_disposition(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.disposition_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.cdr.v1.CallRecord.disposition)
+}
+inline std::string* CallRecord::mutable_disposition() {
+  std::string* _s = _internal_mutable_disposition();
+  // @@protoc_insertion_point(field_mutable:sentiric.cdr.v1.CallRecord.disposition)
+  return _s;
+}
+inline const std::string& CallRecord::_internal_disposition() const {
+  return _impl_.disposition_.Get();
+}
+inline void CallRecord::_internal_set_disposition(const std::string& value) {
+  
+  _impl_.disposition_.Set(value, GetArenaForAllocation());
+}
+inline std::string* CallRecord::_internal_mutable_disposition() {
+  
+  return _impl_.disposition_.Mutable(GetArenaForAllocation());
+}
+inline std::string* CallRecord::release_disposition() {
+  // @@protoc_insertion_point(field_release:sentiric.cdr.v1.CallRecord.disposition)
+  return _impl_.disposition_.Release();
+}
+inline void CallRecord::set_allocated_disposition(std::string* disposition) {
+  if (disposition != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.disposition_.SetAllocated(disposition, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.disposition_.IsDefault()) {
+    _impl_.disposition_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.cdr.v1.CallRecord.disposition)
+}
+
+// string hangup_source = 10;
+inline void CallRecord::clear_hangup_source() {
+  _impl_.hangup_source_.ClearToEmpty();
+}
+inline const std::string& CallRecord::hangup_source() const {
+  // @@protoc_insertion_point(field_get:sentiric.cdr.v1.CallRecord.hangup_source)
+  return _internal_hangup_source();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void CallRecord::set_hangup_source(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.hangup_source_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.cdr.v1.CallRecord.hangup_source)
+}
+inline std::string* CallRecord::mutable_hangup_source() {
+  std::string* _s = _internal_mutable_hangup_source();
+  // @@protoc_insertion_point(field_mutable:sentiric.cdr.v1.CallRecord.hangup_source)
+  return _s;
+}
+inline const std::string& CallRecord::_internal_hangup_source() const {
+  return _impl_.hangup_source_.Get();
+}
+inline void CallRecord::_internal_set_hangup_source(const std::string& value) {
+  
+  _impl_.hangup_source_.Set(value, GetArenaForAllocation());
+}
+inline std::string* CallRecord::_internal_mutable_hangup_source() {
+  
+  return _impl_.hangup_source_.Mutable(GetArenaForAllocation());
+}
+inline std::string* CallRecord::release_hangup_source() {
+  // @@protoc_insertion_point(field_release:sentiric.cdr.v1.CallRecord.hangup_source)
+  return _impl_.hangup_source_.Release();
+}
+inline void CallRecord::set_allocated_hangup_source(std::string* hangup_source) {
+  if (hangup_source != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.hangup_source_.SetAllocated(hangup_source, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.hangup_source_.IsDefault()) {
+    _impl_.hangup_source_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.cdr.v1.CallRecord.hangup_source)
+}
+
+// int32 sip_hangup_cause = 11;
+inline void CallRecord::clear_sip_hangup_cause() {
+  _impl_.sip_hangup_cause_ = 0;
+}
+inline int32_t CallRecord::_internal_sip_hangup_cause() const {
+  return _impl_.sip_hangup_cause_;
+}
+inline int32_t CallRecord::sip_hangup_cause() const {
+  // @@protoc_insertion_point(field_get:sentiric.cdr.v1.CallRecord.sip_hangup_cause)
+  return _internal_sip_hangup_cause();
+}
+inline void CallRecord::_internal_set_sip_hangup_cause(int32_t value) {
+  
+  _impl_.sip_hangup_cause_ = value;
+}
+inline void CallRecord::set_sip_hangup_cause(int32_t value) {
+  _internal_set_sip_hangup_cause(value);
+  // @@protoc_insertion_point(field_set:sentiric.cdr.v1.CallRecord.sip_hangup_cause)
+}
+
+// string recording_url = 12;
+inline void CallRecord::clear_recording_url() {
+  _impl_.recording_url_.ClearToEmpty();
+}
+inline const std::string& CallRecord::recording_url() const {
+  // @@protoc_insertion_point(field_get:sentiric.cdr.v1.CallRecord.recording_url)
+  return _internal_recording_url();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void CallRecord::set_recording_url(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.recording_url_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.cdr.v1.CallRecord.recording_url)
+}
+inline std::string* CallRecord::mutable_recording_url() {
+  std::string* _s = _internal_mutable_recording_url();
+  // @@protoc_insertion_point(field_mutable:sentiric.cdr.v1.CallRecord.recording_url)
+  return _s;
+}
+inline const std::string& CallRecord::_internal_recording_url() const {
+  return _impl_.recording_url_.Get();
+}
+inline void CallRecord::_internal_set_recording_url(const std::string& value) {
+  
+  _impl_.recording_url_.Set(value, GetArenaForAllocation());
+}
+inline std::string* CallRecord::_internal_mutable_recording_url() {
+  
+  return _impl_.recording_url_.Mutable(GetArenaForAllocation());
+}
+inline std::string* CallRecord::release_recording_url() {
+  // @@protoc_insertion_point(field_release:sentiric.cdr.v1.CallRecord.recording_url)
+  return _impl_.recording_url_.Release();
+}
+inline void CallRecord::set_allocated_recording_url(std::string* recording_url) {
+  if (recording_url != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.recording_url_.SetAllocated(recording_url, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.recording_url_.IsDefault()) {
+    _impl_.recording_url_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.cdr.v1.CallRecord.recording_url)
+}
+
+// double total_cost = 13;
+inline void CallRecord::clear_total_cost() {
+  _impl_.total_cost_ = 0;
+}
+inline double CallRecord::_internal_total_cost() const {
+  return _impl_.total_cost_;
+}
+inline double CallRecord::total_cost() const {
+  // @@protoc_insertion_point(field_get:sentiric.cdr.v1.CallRecord.total_cost)
+  return _internal_total_cost();
+}
+inline void CallRecord::_internal_set_total_cost(double value) {
+  
+  _impl_.total_cost_ = value;
+}
+inline void CallRecord::set_total_cost(double value) {
+  _internal_set_total_cost(value);
+  // @@protoc_insertion_point(field_set:sentiric.cdr.v1.CallRecord.total_cost)
+}
+
+// .google.protobuf.Timestamp start_time = 14;
+inline bool CallRecord::_internal_has_start_time() const {
+  return this != internal_default_instance() && _impl_.start_time_ != nullptr;
+}
+inline bool CallRecord::has_start_time() const {
+  return _internal_has_start_time();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Timestamp& CallRecord::_internal_start_time() const {
+  const ::PROTOBUF_NAMESPACE_ID::Timestamp* p = _impl_.start_time_;
+  return p != nullptr ? *p : reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Timestamp&>(
+      ::PROTOBUF_NAMESPACE_ID::_Timestamp_default_instance_);
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Timestamp& CallRecord::start_time() const {
+  // @@protoc_insertion_point(field_get:sentiric.cdr.v1.CallRecord.start_time)
+  return _internal_start_time();
+}
+inline void CallRecord::unsafe_arena_set_allocated_start_time(
+    ::PROTOBUF_NAMESPACE_ID::Timestamp* start_time) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.start_time_);
+  }
+  _impl_.start_time_ = start_time;
+  if (start_time) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:sentiric.cdr.v1.CallRecord.start_time)
+}
+inline ::PROTOBUF_NAMESPACE_ID::Timestamp* CallRecord::release_start_time() {
+  
+  ::PROTOBUF_NAMESPACE_ID::Timestamp* temp = _impl_.start_time_;
+  _impl_.start_time_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Timestamp* CallRecord::unsafe_arena_release_start_time() {
+  // @@protoc_insertion_point(field_release:sentiric.cdr.v1.CallRecord.start_time)
+  
+  ::PROTOBUF_NAMESPACE_ID::Timestamp* temp = _impl_.start_time_;
+  _impl_.start_time_ = nullptr;
+  return temp;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Timestamp* CallRecord::_internal_mutable_start_time() {
+  
+  if (_impl_.start_time_ == nullptr) {
+    auto* p = CreateMaybeMessage<::PROTOBUF_NAMESPACE_ID::Timestamp>(GetArenaForAllocation());
+    _impl_.start_time_ = p;
+  }
+  return _impl_.start_time_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Timestamp* CallRecord::mutable_start_time() {
+  ::PROTOBUF_NAMESPACE_ID::Timestamp* _msg = _internal_mutable_start_time();
+  // @@protoc_insertion_point(field_mutable:sentiric.cdr.v1.CallRecord.start_time)
+  return _msg;
+}
+inline void CallRecord::set_allocated_start_time(::PROTOBUF_NAMESPACE_ID::Timestamp* start_time) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.start_time_);
+  }
+  if (start_time) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(start_time));
+    if (message_arena != submessage_arena) {
+      start_time = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, start_time, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.start_time_ = start_time;
+  // @@protoc_insertion_point(field_set_allocated:sentiric.cdr.v1.CallRecord.start_time)
+}
+
+// .google.protobuf.Timestamp end_time = 15;
+inline bool CallRecord::_internal_has_end_time() const {
+  return this != internal_default_instance() && _impl_.end_time_ != nullptr;
+}
+inline bool CallRecord::has_end_time() const {
+  return _internal_has_end_time();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Timestamp& CallRecord::_internal_end_time() const {
+  const ::PROTOBUF_NAMESPACE_ID::Timestamp* p = _impl_.end_time_;
+  return p != nullptr ? *p : reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Timestamp&>(
+      ::PROTOBUF_NAMESPACE_ID::_Timestamp_default_instance_);
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Timestamp& CallRecord::end_time() const {
+  // @@protoc_insertion_point(field_get:sentiric.cdr.v1.CallRecord.end_time)
+  return _internal_end_time();
+}
+inline void CallRecord::unsafe_arena_set_allocated_end_time(
+    ::PROTOBUF_NAMESPACE_ID::Timestamp* end_time) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.end_time_);
+  }
+  _impl_.end_time_ = end_time;
+  if (end_time) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:sentiric.cdr.v1.CallRecord.end_time)
+}
+inline ::PROTOBUF_NAMESPACE_ID::Timestamp* CallRecord::release_end_time() {
+  
+  ::PROTOBUF_NAMESPACE_ID::Timestamp* temp = _impl_.end_time_;
+  _impl_.end_time_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Timestamp* CallRecord::unsafe_arena_release_end_time() {
+  // @@protoc_insertion_point(field_release:sentiric.cdr.v1.CallRecord.end_time)
+  
+  ::PROTOBUF_NAMESPACE_ID::Timestamp* temp = _impl_.end_time_;
+  _impl_.end_time_ = nullptr;
+  return temp;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Timestamp* CallRecord::_internal_mutable_end_time() {
+  
+  if (_impl_.end_time_ == nullptr) {
+    auto* p = CreateMaybeMessage<::PROTOBUF_NAMESPACE_ID::Timestamp>(GetArenaForAllocation());
+    _impl_.end_time_ = p;
+  }
+  return _impl_.end_time_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Timestamp* CallRecord::mutable_end_time() {
+  ::PROTOBUF_NAMESPACE_ID::Timestamp* _msg = _internal_mutable_end_time();
+  // @@protoc_insertion_point(field_mutable:sentiric.cdr.v1.CallRecord.end_time)
+  return _msg;
+}
+inline void CallRecord::set_allocated_end_time(::PROTOBUF_NAMESPACE_ID::Timestamp* end_time) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.end_time_);
+  }
+  if (end_time) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(end_time));
+    if (message_arena != submessage_arena) {
+      end_time = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, end_time, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.end_time_ = end_time;
+  // @@protoc_insertion_point(field_set_allocated:sentiric.cdr.v1.CallRecord.end_time)
+}
+
+// -------------------------------------------------------------------
+
+// CreateCallRecordRequest
+
+// string call_id = 1;
+inline void CreateCallRecordRequest::clear_call_id() {
+  _impl_.call_id_.ClearToEmpty();
+}
+inline const std::string& CreateCallRecordRequest::call_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.cdr.v1.CreateCallRecordRequest.call_id)
+  return _internal_call_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void CreateCallRecordRequest::set_call_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.call_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.cdr.v1.CreateCallRecordRequest.call_id)
+}
+inline std::string* CreateCallRecordRequest::mutable_call_id() {
+  std::string* _s = _internal_mutable_call_id();
+  // @@protoc_insertion_point(field_mutable:sentiric.cdr.v1.CreateCallRecordRequest.call_id)
+  return _s;
+}
+inline const std::string& CreateCallRecordRequest::_internal_call_id() const {
+  return _impl_.call_id_.Get();
+}
+inline void CreateCallRecordRequest::_internal_set_call_id(const std::string& value) {
+  
+  _impl_.call_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* CreateCallRecordRequest::_internal_mutable_call_id() {
+  
+  return _impl_.call_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* CreateCallRecordRequest::release_call_id() {
+  // @@protoc_insertion_point(field_release:sentiric.cdr.v1.CreateCallRecordRequest.call_id)
+  return _impl_.call_id_.Release();
+}
+inline void CreateCallRecordRequest::set_allocated_call_id(std::string* call_id) {
+  if (call_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.call_id_.SetAllocated(call_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.call_id_.IsDefault()) {
+    _impl_.call_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.cdr.v1.CreateCallRecordRequest.call_id)
+}
+
+// string tenant_id = 2;
+inline void CreateCallRecordRequest::clear_tenant_id() {
+  _impl_.tenant_id_.ClearToEmpty();
+}
+inline const std::string& CreateCallRecordRequest::tenant_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.cdr.v1.CreateCallRecordRequest.tenant_id)
+  return _internal_tenant_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void CreateCallRecordRequest::set_tenant_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.tenant_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.cdr.v1.CreateCallRecordRequest.tenant_id)
+}
+inline std::string* CreateCallRecordRequest::mutable_tenant_id() {
+  std::string* _s = _internal_mutable_tenant_id();
+  // @@protoc_insertion_point(field_mutable:sentiric.cdr.v1.CreateCallRecordRequest.tenant_id)
+  return _s;
+}
+inline const std::string& CreateCallRecordRequest::_internal_tenant_id() const {
+  return _impl_.tenant_id_.Get();
+}
+inline void CreateCallRecordRequest::_internal_set_tenant_id(const std::string& value) {
+  
+  _impl_.tenant_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* CreateCallRecordRequest::_internal_mutable_tenant_id() {
+  
+  return _impl_.tenant_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* CreateCallRecordRequest::release_tenant_id() {
+  // @@protoc_insertion_point(field_release:sentiric.cdr.v1.CreateCallRecordRequest.tenant_id)
+  return _impl_.tenant_id_.Release();
+}
+inline void CreateCallRecordRequest::set_allocated_tenant_id(std::string* tenant_id) {
+  if (tenant_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.tenant_id_.SetAllocated(tenant_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.tenant_id_.IsDefault()) {
+    _impl_.tenant_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.cdr.v1.CreateCallRecordRequest.tenant_id)
+}
+
+// string direction = 3;
+inline void CreateCallRecordRequest::clear_direction() {
+  _impl_.direction_.ClearToEmpty();
+}
+inline const std::string& CreateCallRecordRequest::direction() const {
+  // @@protoc_insertion_point(field_get:sentiric.cdr.v1.CreateCallRecordRequest.direction)
+  return _internal_direction();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void CreateCallRecordRequest::set_direction(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.direction_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.cdr.v1.CreateCallRecordRequest.direction)
+}
+inline std::string* CreateCallRecordRequest::mutable_direction() {
+  std::string* _s = _internal_mutable_direction();
+  // @@protoc_insertion_point(field_mutable:sentiric.cdr.v1.CreateCallRecordRequest.direction)
+  return _s;
+}
+inline const std::string& CreateCallRecordRequest::_internal_direction() const {
+  return _impl_.direction_.Get();
+}
+inline void CreateCallRecordRequest::_internal_set_direction(const std::string& value) {
+  
+  _impl_.direction_.Set(value, GetArenaForAllocation());
+}
+inline std::string* CreateCallRecordRequest::_internal_mutable_direction() {
+  
+  return _impl_.direction_.Mutable(GetArenaForAllocation());
+}
+inline std::string* CreateCallRecordRequest::release_direction() {
+  // @@protoc_insertion_point(field_release:sentiric.cdr.v1.CreateCallRecordRequest.direction)
+  return _impl_.direction_.Release();
+}
+inline void CreateCallRecordRequest::set_allocated_direction(std::string* direction) {
+  if (direction != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.direction_.SetAllocated(direction, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.direction_.IsDefault()) {
+    _impl_.direction_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.cdr.v1.CreateCallRecordRequest.direction)
+}
+
+// string caller_number = 4;
+inline void CreateCallRecordRequest::clear_caller_number() {
+  _impl_.caller_number_.ClearToEmpty();
+}
+inline const std::string& CreateCallRecordRequest::caller_number() const {
+  // @@protoc_insertion_point(field_get:sentiric.cdr.v1.CreateCallRecordRequest.caller_number)
+  return _internal_caller_number();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void CreateCallRecordRequest::set_caller_number(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.caller_number_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.cdr.v1.CreateCallRecordRequest.caller_number)
+}
+inline std::string* CreateCallRecordRequest::mutable_caller_number() {
+  std::string* _s = _internal_mutable_caller_number();
+  // @@protoc_insertion_point(field_mutable:sentiric.cdr.v1.CreateCallRecordRequest.caller_number)
+  return _s;
+}
+inline const std::string& CreateCallRecordRequest::_internal_caller_number() const {
+  return _impl_.caller_number_.Get();
+}
+inline void CreateCallRecordRequest::_internal_set_caller_number(const std::string& value) {
+  
+  _impl_.caller_number_.Set(value, GetArenaForAllocation());
+}
+inline std::string* CreateCallRecordRequest::_internal_mutable_caller_number() {
+  
+  return _impl_.caller_number_.Mutable(GetArenaForAllocation());
+}
+inline std::string* CreateCallRecordRequest::release_caller_number() {
+  // @@protoc_insertion_point(field_release:sentiric.cdr.v1.CreateCallRecordRequest.caller_number)
+  return _impl_.caller_number_.Release();
+}
+inline void CreateCallRecordRequest::set_allocated_caller_number(std::string* caller_number) {
+  if (caller_number != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.caller_number_.SetAllocated(caller_number, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.caller_number_.IsDefault()) {
+    _impl_.caller_number_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.cdr.v1.CreateCallRecordRequest.caller_number)
+}
+
+// string callee_number = 5;
+inline void CreateCallRecordRequest::clear_callee_number() {
+  _impl_.callee_number_.ClearToEmpty();
+}
+inline const std::string& CreateCallRecordRequest::callee_number() const {
+  // @@protoc_insertion_point(field_get:sentiric.cdr.v1.CreateCallRecordRequest.callee_number)
+  return _internal_callee_number();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void CreateCallRecordRequest::set_callee_number(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.callee_number_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.cdr.v1.CreateCallRecordRequest.callee_number)
+}
+inline std::string* CreateCallRecordRequest::mutable_callee_number() {
+  std::string* _s = _internal_mutable_callee_number();
+  // @@protoc_insertion_point(field_mutable:sentiric.cdr.v1.CreateCallRecordRequest.callee_number)
+  return _s;
+}
+inline const std::string& CreateCallRecordRequest::_internal_callee_number() const {
+  return _impl_.callee_number_.Get();
+}
+inline void CreateCallRecordRequest::_internal_set_callee_number(const std::string& value) {
+  
+  _impl_.callee_number_.Set(value, GetArenaForAllocation());
+}
+inline std::string* CreateCallRecordRequest::_internal_mutable_callee_number() {
+  
+  return _impl_.callee_number_.Mutable(GetArenaForAllocation());
+}
+inline std::string* CreateCallRecordRequest::release_callee_number() {
+  // @@protoc_insertion_point(field_release:sentiric.cdr.v1.CreateCallRecordRequest.callee_number)
+  return _impl_.callee_number_.Release();
+}
+inline void CreateCallRecordRequest::set_allocated_callee_number(std::string* callee_number) {
+  if (callee_number != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.callee_number_.SetAllocated(callee_number, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.callee_number_.IsDefault()) {
+    _impl_.callee_number_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.cdr.v1.CreateCallRecordRequest.callee_number)
+}
+
+// string user_id = 6;
+inline void CreateCallRecordRequest::clear_user_id() {
+  _impl_.user_id_.ClearToEmpty();
+}
+inline const std::string& CreateCallRecordRequest::user_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.cdr.v1.CreateCallRecordRequest.user_id)
+  return _internal_user_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void CreateCallRecordRequest::set_user_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.user_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.cdr.v1.CreateCallRecordRequest.user_id)
+}
+inline std::string* CreateCallRecordRequest::mutable_user_id() {
+  std::string* _s = _internal_mutable_user_id();
+  // @@protoc_insertion_point(field_mutable:sentiric.cdr.v1.CreateCallRecordRequest.user_id)
+  return _s;
+}
+inline const std::string& CreateCallRecordRequest::_internal_user_id() const {
+  return _impl_.user_id_.Get();
+}
+inline void CreateCallRecordRequest::_internal_set_user_id(const std::string& value) {
+  
+  _impl_.user_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* CreateCallRecordRequest::_internal_mutable_user_id() {
+  
+  return _impl_.user_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* CreateCallRecordRequest::release_user_id() {
+  // @@protoc_insertion_point(field_release:sentiric.cdr.v1.CreateCallRecordRequest.user_id)
+  return _impl_.user_id_.Release();
+}
+inline void CreateCallRecordRequest::set_allocated_user_id(std::string* user_id) {
+  if (user_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.user_id_.SetAllocated(user_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.user_id_.IsDefault()) {
+    _impl_.user_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.cdr.v1.CreateCallRecordRequest.user_id)
+}
+
+// -------------------------------------------------------------------
+
+// CreateCallRecordResponse
+
+// bool success = 1;
+inline void CreateCallRecordResponse::clear_success() {
+  _impl_.success_ = false;
+}
+inline bool CreateCallRecordResponse::_internal_success() const {
+  return _impl_.success_;
+}
+inline bool CreateCallRecordResponse::success() const {
+  // @@protoc_insertion_point(field_get:sentiric.cdr.v1.CreateCallRecordResponse.success)
+  return _internal_success();
+}
+inline void CreateCallRecordResponse::_internal_set_success(bool value) {
+  
+  _impl_.success_ = value;
+}
+inline void CreateCallRecordResponse::set_success(bool value) {
+  _internal_set_success(value);
+  // @@protoc_insertion_point(field_set:sentiric.cdr.v1.CreateCallRecordResponse.success)
+}
+
+// -------------------------------------------------------------------
+
+// UpdateCallRecordRequest
+
+// string call_id = 1;
+inline void UpdateCallRecordRequest::clear_call_id() {
+  _impl_.call_id_.ClearToEmpty();
+}
+inline const std::string& UpdateCallRecordRequest::call_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.cdr.v1.UpdateCallRecordRequest.call_id)
+  return _internal_call_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void UpdateCallRecordRequest::set_call_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.call_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.cdr.v1.UpdateCallRecordRequest.call_id)
+}
+inline std::string* UpdateCallRecordRequest::mutable_call_id() {
+  std::string* _s = _internal_mutable_call_id();
+  // @@protoc_insertion_point(field_mutable:sentiric.cdr.v1.UpdateCallRecordRequest.call_id)
+  return _s;
+}
+inline const std::string& UpdateCallRecordRequest::_internal_call_id() const {
+  return _impl_.call_id_.Get();
+}
+inline void UpdateCallRecordRequest::_internal_set_call_id(const std::string& value) {
+  
+  _impl_.call_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* UpdateCallRecordRequest::_internal_mutable_call_id() {
+  
+  return _impl_.call_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* UpdateCallRecordRequest::release_call_id() {
+  // @@protoc_insertion_point(field_release:sentiric.cdr.v1.UpdateCallRecordRequest.call_id)
+  return _impl_.call_id_.Release();
+}
+inline void UpdateCallRecordRequest::set_allocated_call_id(std::string* call_id) {
+  if (call_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.call_id_.SetAllocated(call_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.call_id_.IsDefault()) {
+    _impl_.call_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.cdr.v1.UpdateCallRecordRequest.call_id)
+}
+
+// int64 duration_seconds = 2;
+inline void UpdateCallRecordRequest::clear_duration_seconds() {
+  _impl_.duration_seconds_ = int64_t{0};
+}
+inline int64_t UpdateCallRecordRequest::_internal_duration_seconds() const {
+  return _impl_.duration_seconds_;
+}
+inline int64_t UpdateCallRecordRequest::duration_seconds() const {
+  // @@protoc_insertion_point(field_get:sentiric.cdr.v1.UpdateCallRecordRequest.duration_seconds)
+  return _internal_duration_seconds();
+}
+inline void UpdateCallRecordRequest::_internal_set_duration_seconds(int64_t value) {
+  
+  _impl_.duration_seconds_ = value;
+}
+inline void UpdateCallRecordRequest::set_duration_seconds(int64_t value) {
+  _internal_set_duration_seconds(value);
+  // @@protoc_insertion_point(field_set:sentiric.cdr.v1.UpdateCallRecordRequest.duration_seconds)
+}
+
+// string status = 3;
+inline void UpdateCallRecordRequest::clear_status() {
+  _impl_.status_.ClearToEmpty();
+}
+inline const std::string& UpdateCallRecordRequest::status() const {
+  // @@protoc_insertion_point(field_get:sentiric.cdr.v1.UpdateCallRecordRequest.status)
+  return _internal_status();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void UpdateCallRecordRequest::set_status(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.status_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.cdr.v1.UpdateCallRecordRequest.status)
+}
+inline std::string* UpdateCallRecordRequest::mutable_status() {
+  std::string* _s = _internal_mutable_status();
+  // @@protoc_insertion_point(field_mutable:sentiric.cdr.v1.UpdateCallRecordRequest.status)
+  return _s;
+}
+inline const std::string& UpdateCallRecordRequest::_internal_status() const {
+  return _impl_.status_.Get();
+}
+inline void UpdateCallRecordRequest::_internal_set_status(const std::string& value) {
+  
+  _impl_.status_.Set(value, GetArenaForAllocation());
+}
+inline std::string* UpdateCallRecordRequest::_internal_mutable_status() {
+  
+  return _impl_.status_.Mutable(GetArenaForAllocation());
+}
+inline std::string* UpdateCallRecordRequest::release_status() {
+  // @@protoc_insertion_point(field_release:sentiric.cdr.v1.UpdateCallRecordRequest.status)
+  return _impl_.status_.Release();
+}
+inline void UpdateCallRecordRequest::set_allocated_status(std::string* status) {
+  if (status != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.status_.SetAllocated(status, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.status_.IsDefault()) {
+    _impl_.status_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.cdr.v1.UpdateCallRecordRequest.status)
+}
+
+// string disposition = 4;
+inline void UpdateCallRecordRequest::clear_disposition() {
+  _impl_.disposition_.ClearToEmpty();
+}
+inline const std::string& UpdateCallRecordRequest::disposition() const {
+  // @@protoc_insertion_point(field_get:sentiric.cdr.v1.UpdateCallRecordRequest.disposition)
+  return _internal_disposition();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void UpdateCallRecordRequest::set_disposition(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.disposition_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.cdr.v1.UpdateCallRecordRequest.disposition)
+}
+inline std::string* UpdateCallRecordRequest::mutable_disposition() {
+  std::string* _s = _internal_mutable_disposition();
+  // @@protoc_insertion_point(field_mutable:sentiric.cdr.v1.UpdateCallRecordRequest.disposition)
+  return _s;
+}
+inline const std::string& UpdateCallRecordRequest::_internal_disposition() const {
+  return _impl_.disposition_.Get();
+}
+inline void UpdateCallRecordRequest::_internal_set_disposition(const std::string& value) {
+  
+  _impl_.disposition_.Set(value, GetArenaForAllocation());
+}
+inline std::string* UpdateCallRecordRequest::_internal_mutable_disposition() {
+  
+  return _impl_.disposition_.Mutable(GetArenaForAllocation());
+}
+inline std::string* UpdateCallRecordRequest::release_disposition() {
+  // @@protoc_insertion_point(field_release:sentiric.cdr.v1.UpdateCallRecordRequest.disposition)
+  return _impl_.disposition_.Release();
+}
+inline void UpdateCallRecordRequest::set_allocated_disposition(std::string* disposition) {
+  if (disposition != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.disposition_.SetAllocated(disposition, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.disposition_.IsDefault()) {
+    _impl_.disposition_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.cdr.v1.UpdateCallRecordRequest.disposition)
+}
+
+// string hangup_source = 5;
+inline void UpdateCallRecordRequest::clear_hangup_source() {
+  _impl_.hangup_source_.ClearToEmpty();
+}
+inline const std::string& UpdateCallRecordRequest::hangup_source() const {
+  // @@protoc_insertion_point(field_get:sentiric.cdr.v1.UpdateCallRecordRequest.hangup_source)
+  return _internal_hangup_source();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void UpdateCallRecordRequest::set_hangup_source(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.hangup_source_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.cdr.v1.UpdateCallRecordRequest.hangup_source)
+}
+inline std::string* UpdateCallRecordRequest::mutable_hangup_source() {
+  std::string* _s = _internal_mutable_hangup_source();
+  // @@protoc_insertion_point(field_mutable:sentiric.cdr.v1.UpdateCallRecordRequest.hangup_source)
+  return _s;
+}
+inline const std::string& UpdateCallRecordRequest::_internal_hangup_source() const {
+  return _impl_.hangup_source_.Get();
+}
+inline void UpdateCallRecordRequest::_internal_set_hangup_source(const std::string& value) {
+  
+  _impl_.hangup_source_.Set(value, GetArenaForAllocation());
+}
+inline std::string* UpdateCallRecordRequest::_internal_mutable_hangup_source() {
+  
+  return _impl_.hangup_source_.Mutable(GetArenaForAllocation());
+}
+inline std::string* UpdateCallRecordRequest::release_hangup_source() {
+  // @@protoc_insertion_point(field_release:sentiric.cdr.v1.UpdateCallRecordRequest.hangup_source)
+  return _impl_.hangup_source_.Release();
+}
+inline void UpdateCallRecordRequest::set_allocated_hangup_source(std::string* hangup_source) {
+  if (hangup_source != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.hangup_source_.SetAllocated(hangup_source, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.hangup_source_.IsDefault()) {
+    _impl_.hangup_source_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.cdr.v1.UpdateCallRecordRequest.hangup_source)
+}
+
+// int32 sip_hangup_cause = 6;
+inline void UpdateCallRecordRequest::clear_sip_hangup_cause() {
+  _impl_.sip_hangup_cause_ = 0;
+}
+inline int32_t UpdateCallRecordRequest::_internal_sip_hangup_cause() const {
+  return _impl_.sip_hangup_cause_;
+}
+inline int32_t UpdateCallRecordRequest::sip_hangup_cause() const {
+  // @@protoc_insertion_point(field_get:sentiric.cdr.v1.UpdateCallRecordRequest.sip_hangup_cause)
+  return _internal_sip_hangup_cause();
+}
+inline void UpdateCallRecordRequest::_internal_set_sip_hangup_cause(int32_t value) {
+  
+  _impl_.sip_hangup_cause_ = value;
+}
+inline void UpdateCallRecordRequest::set_sip_hangup_cause(int32_t value) {
+  _internal_set_sip_hangup_cause(value);
+  // @@protoc_insertion_point(field_set:sentiric.cdr.v1.UpdateCallRecordRequest.sip_hangup_cause)
+}
+
+// string recording_url = 7;
+inline void UpdateCallRecordRequest::clear_recording_url() {
+  _impl_.recording_url_.ClearToEmpty();
+}
+inline const std::string& UpdateCallRecordRequest::recording_url() const {
+  // @@protoc_insertion_point(field_get:sentiric.cdr.v1.UpdateCallRecordRequest.recording_url)
+  return _internal_recording_url();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void UpdateCallRecordRequest::set_recording_url(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.recording_url_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.cdr.v1.UpdateCallRecordRequest.recording_url)
+}
+inline std::string* UpdateCallRecordRequest::mutable_recording_url() {
+  std::string* _s = _internal_mutable_recording_url();
+  // @@protoc_insertion_point(field_mutable:sentiric.cdr.v1.UpdateCallRecordRequest.recording_url)
+  return _s;
+}
+inline const std::string& UpdateCallRecordRequest::_internal_recording_url() const {
+  return _impl_.recording_url_.Get();
+}
+inline void UpdateCallRecordRequest::_internal_set_recording_url(const std::string& value) {
+  
+  _impl_.recording_url_.Set(value, GetArenaForAllocation());
+}
+inline std::string* UpdateCallRecordRequest::_internal_mutable_recording_url() {
+  
+  return _impl_.recording_url_.Mutable(GetArenaForAllocation());
+}
+inline std::string* UpdateCallRecordRequest::release_recording_url() {
+  // @@protoc_insertion_point(field_release:sentiric.cdr.v1.UpdateCallRecordRequest.recording_url)
+  return _impl_.recording_url_.Release();
+}
+inline void UpdateCallRecordRequest::set_allocated_recording_url(std::string* recording_url) {
+  if (recording_url != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.recording_url_.SetAllocated(recording_url, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.recording_url_.IsDefault()) {
+    _impl_.recording_url_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.cdr.v1.UpdateCallRecordRequest.recording_url)
+}
+
+// double total_cost = 8;
+inline void UpdateCallRecordRequest::clear_total_cost() {
+  _impl_.total_cost_ = 0;
+}
+inline double UpdateCallRecordRequest::_internal_total_cost() const {
+  return _impl_.total_cost_;
+}
+inline double UpdateCallRecordRequest::total_cost() const {
+  // @@protoc_insertion_point(field_get:sentiric.cdr.v1.UpdateCallRecordRequest.total_cost)
+  return _internal_total_cost();
+}
+inline void UpdateCallRecordRequest::_internal_set_total_cost(double value) {
+  
+  _impl_.total_cost_ = value;
+}
+inline void UpdateCallRecordRequest::set_total_cost(double value) {
+  _internal_set_total_cost(value);
+  // @@protoc_insertion_point(field_set:sentiric.cdr.v1.UpdateCallRecordRequest.total_cost)
+}
+
+// -------------------------------------------------------------------
+
+// UpdateCallRecordResponse
+
+// bool success = 1;
+inline void UpdateCallRecordResponse::clear_success() {
+  _impl_.success_ = false;
+}
+inline bool UpdateCallRecordResponse::_internal_success() const {
+  return _impl_.success_;
+}
+inline bool UpdateCallRecordResponse::success() const {
+  // @@protoc_insertion_point(field_get:sentiric.cdr.v1.UpdateCallRecordResponse.success)
+  return _internal_success();
+}
+inline void UpdateCallRecordResponse::_internal_set_success(bool value) {
+  
+  _impl_.success_ = value;
+}
+inline void UpdateCallRecordResponse::set_success(bool value) {
+  _internal_set_success(value);
+  // @@protoc_insertion_point(field_set:sentiric.cdr.v1.UpdateCallRecordResponse.success)
+}
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // RecordCallEventRequest
@@ -849,6 +3418,16 @@ inline void RecordCallEventResponse::set_success(bool value) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

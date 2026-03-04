@@ -19,6 +19,16 @@ class CdrServiceStub(object):
                 request_serializer=sentiric_dot_cdr_dot_v1_dot_cdr__pb2.RecordCallEventRequest.SerializeToString,
                 response_deserializer=sentiric_dot_cdr_dot_v1_dot_cdr__pb2.RecordCallEventResponse.FromString,
                 _registered_method=True)
+        self.CreateCallRecord = channel.unary_unary(
+                '/sentiric.cdr.v1.CdrService/CreateCallRecord',
+                request_serializer=sentiric_dot_cdr_dot_v1_dot_cdr__pb2.CreateCallRecordRequest.SerializeToString,
+                response_deserializer=sentiric_dot_cdr_dot_v1_dot_cdr__pb2.CreateCallRecordResponse.FromString,
+                _registered_method=True)
+        self.UpdateCallRecord = channel.unary_unary(
+                '/sentiric.cdr.v1.CdrService/UpdateCallRecord',
+                request_serializer=sentiric_dot_cdr_dot_v1_dot_cdr__pb2.UpdateCallRecordRequest.SerializeToString,
+                response_deserializer=sentiric_dot_cdr_dot_v1_dot_cdr__pb2.UpdateCallRecordResponse.FromString,
+                _registered_method=True)
 
 
 class CdrServiceServicer(object):
@@ -30,6 +40,20 @@ class CdrServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def CreateCallRecord(self, request, context):
+        """[YENİ] Çağrı Başlangıcını Kaydet (Create)
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def UpdateCallRecord(self, request, context):
+        """[YENİ] Çağrı Bitişini Güncelle (Update)
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_CdrServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -37,6 +61,16 @@ def add_CdrServiceServicer_to_server(servicer, server):
                     servicer.RecordCallEvent,
                     request_deserializer=sentiric_dot_cdr_dot_v1_dot_cdr__pb2.RecordCallEventRequest.FromString,
                     response_serializer=sentiric_dot_cdr_dot_v1_dot_cdr__pb2.RecordCallEventResponse.SerializeToString,
+            ),
+            'CreateCallRecord': grpc.unary_unary_rpc_method_handler(
+                    servicer.CreateCallRecord,
+                    request_deserializer=sentiric_dot_cdr_dot_v1_dot_cdr__pb2.CreateCallRecordRequest.FromString,
+                    response_serializer=sentiric_dot_cdr_dot_v1_dot_cdr__pb2.CreateCallRecordResponse.SerializeToString,
+            ),
+            'UpdateCallRecord': grpc.unary_unary_rpc_method_handler(
+                    servicer.UpdateCallRecord,
+                    request_deserializer=sentiric_dot_cdr_dot_v1_dot_cdr__pb2.UpdateCallRecordRequest.FromString,
+                    response_serializer=sentiric_dot_cdr_dot_v1_dot_cdr__pb2.UpdateCallRecordResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -66,6 +100,60 @@ class CdrService(object):
             '/sentiric.cdr.v1.CdrService/RecordCallEvent',
             sentiric_dot_cdr_dot_v1_dot_cdr__pb2.RecordCallEventRequest.SerializeToString,
             sentiric_dot_cdr_dot_v1_dot_cdr__pb2.RecordCallEventResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def CreateCallRecord(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/sentiric.cdr.v1.CdrService/CreateCallRecord',
+            sentiric_dot_cdr_dot_v1_dot_cdr__pb2.CreateCallRecordRequest.SerializeToString,
+            sentiric_dot_cdr_dot_v1_dot_cdr__pb2.CreateCallRecordResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def UpdateCallRecord(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/sentiric.cdr.v1.CdrService/UpdateCallRecord',
+            sentiric_dot_cdr_dot_v1_dot_cdr__pb2.UpdateCallRecordRequest.SerializeToString,
+            sentiric_dot_cdr_dot_v1_dot_cdr__pb2.UpdateCallRecordResponse.FromString,
             options,
             channel_credentials,
             insecure,

@@ -22,6 +22,435 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// [YENİ] Tam Çağrı Modeli (Database Şemasına Uygun)
+type CallRecord struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	CallId          string                 `protobuf:"bytes,1,opt,name=call_id,json=callId,proto3" json:"call_id,omitempty"`
+	TenantId        string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	Direction       string                 `protobuf:"bytes,3,opt,name=direction,proto3" json:"direction,omitempty"` // INBOUND, OUTBOUND
+	CallerNumber    string                 `protobuf:"bytes,4,opt,name=caller_number,json=callerNumber,proto3" json:"caller_number,omitempty"`
+	CalleeNumber    string                 `protobuf:"bytes,5,opt,name=callee_number,json=calleeNumber,proto3" json:"callee_number,omitempty"`
+	UserId          string                 `protobuf:"bytes,6,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	DurationSeconds int64                  `protobuf:"varint,7,opt,name=duration_seconds,json=durationSeconds,proto3" json:"duration_seconds,omitempty"`
+	Status          string                 `protobuf:"bytes,8,opt,name=status,proto3" json:"status,omitempty"`
+	Disposition     string                 `protobuf:"bytes,9,opt,name=disposition,proto3" json:"disposition,omitempty"`
+	HangupSource    string                 `protobuf:"bytes,10,opt,name=hangup_source,json=hangupSource,proto3" json:"hangup_source,omitempty"`
+	SipHangupCause  int32                  `protobuf:"varint,11,opt,name=sip_hangup_cause,json=sipHangupCause,proto3" json:"sip_hangup_cause,omitempty"`
+	RecordingUrl    string                 `protobuf:"bytes,12,opt,name=recording_url,json=recordingUrl,proto3" json:"recording_url,omitempty"`
+	TotalCost       float64                `protobuf:"fixed64,13,opt,name=total_cost,json=totalCost,proto3" json:"total_cost,omitempty"`
+	StartTime       *timestamppb.Timestamp `protobuf:"bytes,14,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
+	EndTime         *timestamppb.Timestamp `protobuf:"bytes,15,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *CallRecord) Reset() {
+	*x = CallRecord{}
+	mi := &file_sentiric_cdr_v1_cdr_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CallRecord) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CallRecord) ProtoMessage() {}
+
+func (x *CallRecord) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_cdr_v1_cdr_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CallRecord.ProtoReflect.Descriptor instead.
+func (*CallRecord) Descriptor() ([]byte, []int) {
+	return file_sentiric_cdr_v1_cdr_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *CallRecord) GetCallId() string {
+	if x != nil {
+		return x.CallId
+	}
+	return ""
+}
+
+func (x *CallRecord) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *CallRecord) GetDirection() string {
+	if x != nil {
+		return x.Direction
+	}
+	return ""
+}
+
+func (x *CallRecord) GetCallerNumber() string {
+	if x != nil {
+		return x.CallerNumber
+	}
+	return ""
+}
+
+func (x *CallRecord) GetCalleeNumber() string {
+	if x != nil {
+		return x.CalleeNumber
+	}
+	return ""
+}
+
+func (x *CallRecord) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+func (x *CallRecord) GetDurationSeconds() int64 {
+	if x != nil {
+		return x.DurationSeconds
+	}
+	return 0
+}
+
+func (x *CallRecord) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+func (x *CallRecord) GetDisposition() string {
+	if x != nil {
+		return x.Disposition
+	}
+	return ""
+}
+
+func (x *CallRecord) GetHangupSource() string {
+	if x != nil {
+		return x.HangupSource
+	}
+	return ""
+}
+
+func (x *CallRecord) GetSipHangupCause() int32 {
+	if x != nil {
+		return x.SipHangupCause
+	}
+	return 0
+}
+
+func (x *CallRecord) GetRecordingUrl() string {
+	if x != nil {
+		return x.RecordingUrl
+	}
+	return ""
+}
+
+func (x *CallRecord) GetTotalCost() float64 {
+	if x != nil {
+		return x.TotalCost
+	}
+	return 0
+}
+
+func (x *CallRecord) GetStartTime() *timestamppb.Timestamp {
+	if x != nil {
+		return x.StartTime
+	}
+	return nil
+}
+
+func (x *CallRecord) GetEndTime() *timestamppb.Timestamp {
+	if x != nil {
+		return x.EndTime
+	}
+	return nil
+}
+
+type CreateCallRecordRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	CallId        string                 `protobuf:"bytes,1,opt,name=call_id,json=callId,proto3" json:"call_id,omitempty"`
+	TenantId      string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	Direction     string                 `protobuf:"bytes,3,opt,name=direction,proto3" json:"direction,omitempty"`
+	CallerNumber  string                 `protobuf:"bytes,4,opt,name=caller_number,json=callerNumber,proto3" json:"caller_number,omitempty"`
+	CalleeNumber  string                 `protobuf:"bytes,5,opt,name=callee_number,json=calleeNumber,proto3" json:"callee_number,omitempty"`
+	UserId        string                 `protobuf:"bytes,6,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"` // Opsiyonel
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateCallRecordRequest) Reset() {
+	*x = CreateCallRecordRequest{}
+	mi := &file_sentiric_cdr_v1_cdr_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateCallRecordRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateCallRecordRequest) ProtoMessage() {}
+
+func (x *CreateCallRecordRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_cdr_v1_cdr_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateCallRecordRequest.ProtoReflect.Descriptor instead.
+func (*CreateCallRecordRequest) Descriptor() ([]byte, []int) {
+	return file_sentiric_cdr_v1_cdr_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *CreateCallRecordRequest) GetCallId() string {
+	if x != nil {
+		return x.CallId
+	}
+	return ""
+}
+
+func (x *CreateCallRecordRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *CreateCallRecordRequest) GetDirection() string {
+	if x != nil {
+		return x.Direction
+	}
+	return ""
+}
+
+func (x *CreateCallRecordRequest) GetCallerNumber() string {
+	if x != nil {
+		return x.CallerNumber
+	}
+	return ""
+}
+
+func (x *CreateCallRecordRequest) GetCalleeNumber() string {
+	if x != nil {
+		return x.CalleeNumber
+	}
+	return ""
+}
+
+func (x *CreateCallRecordRequest) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+type CreateCallRecordResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateCallRecordResponse) Reset() {
+	*x = CreateCallRecordResponse{}
+	mi := &file_sentiric_cdr_v1_cdr_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateCallRecordResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateCallRecordResponse) ProtoMessage() {}
+
+func (x *CreateCallRecordResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_cdr_v1_cdr_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateCallRecordResponse.ProtoReflect.Descriptor instead.
+func (*CreateCallRecordResponse) Descriptor() ([]byte, []int) {
+	return file_sentiric_cdr_v1_cdr_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *CreateCallRecordResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
+type UpdateCallRecordRequest struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	CallId          string                 `protobuf:"bytes,1,opt,name=call_id,json=callId,proto3" json:"call_id,omitempty"`
+	DurationSeconds int64                  `protobuf:"varint,2,opt,name=duration_seconds,json=durationSeconds,proto3" json:"duration_seconds,omitempty"`
+	Status          string                 `protobuf:"bytes,3,opt,name=status,proto3" json:"status,omitempty"`
+	Disposition     string                 `protobuf:"bytes,4,opt,name=disposition,proto3" json:"disposition,omitempty"`
+	HangupSource    string                 `protobuf:"bytes,5,opt,name=hangup_source,json=hangupSource,proto3" json:"hangup_source,omitempty"`
+	SipHangupCause  int32                  `protobuf:"varint,6,opt,name=sip_hangup_cause,json=sipHangupCause,proto3" json:"sip_hangup_cause,omitempty"`
+	RecordingUrl    string                 `protobuf:"bytes,7,opt,name=recording_url,json=recordingUrl,proto3" json:"recording_url,omitempty"`
+	TotalCost       float64                `protobuf:"fixed64,8,opt,name=total_cost,json=totalCost,proto3" json:"total_cost,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *UpdateCallRecordRequest) Reset() {
+	*x = UpdateCallRecordRequest{}
+	mi := &file_sentiric_cdr_v1_cdr_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateCallRecordRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateCallRecordRequest) ProtoMessage() {}
+
+func (x *UpdateCallRecordRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_cdr_v1_cdr_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateCallRecordRequest.ProtoReflect.Descriptor instead.
+func (*UpdateCallRecordRequest) Descriptor() ([]byte, []int) {
+	return file_sentiric_cdr_v1_cdr_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *UpdateCallRecordRequest) GetCallId() string {
+	if x != nil {
+		return x.CallId
+	}
+	return ""
+}
+
+func (x *UpdateCallRecordRequest) GetDurationSeconds() int64 {
+	if x != nil {
+		return x.DurationSeconds
+	}
+	return 0
+}
+
+func (x *UpdateCallRecordRequest) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+func (x *UpdateCallRecordRequest) GetDisposition() string {
+	if x != nil {
+		return x.Disposition
+	}
+	return ""
+}
+
+func (x *UpdateCallRecordRequest) GetHangupSource() string {
+	if x != nil {
+		return x.HangupSource
+	}
+	return ""
+}
+
+func (x *UpdateCallRecordRequest) GetSipHangupCause() int32 {
+	if x != nil {
+		return x.SipHangupCause
+	}
+	return 0
+}
+
+func (x *UpdateCallRecordRequest) GetRecordingUrl() string {
+	if x != nil {
+		return x.RecordingUrl
+	}
+	return ""
+}
+
+func (x *UpdateCallRecordRequest) GetTotalCost() float64 {
+	if x != nil {
+		return x.TotalCost
+	}
+	return 0
+}
+
+type UpdateCallRecordResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateCallRecordResponse) Reset() {
+	*x = UpdateCallRecordResponse{}
+	mi := &file_sentiric_cdr_v1_cdr_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateCallRecordResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateCallRecordResponse) ProtoMessage() {}
+
+func (x *UpdateCallRecordResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_cdr_v1_cdr_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateCallRecordResponse.ProtoReflect.Descriptor instead.
+func (*UpdateCallRecordResponse) Descriptor() ([]byte, []int) {
+	return file_sentiric_cdr_v1_cdr_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *UpdateCallRecordResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
 type RecordCallEventRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	EventId       string                 `protobuf:"bytes,1,opt,name=event_id,json=eventId,proto3" json:"event_id,omitempty"`
@@ -36,7 +465,7 @@ type RecordCallEventRequest struct {
 
 func (x *RecordCallEventRequest) Reset() {
 	*x = RecordCallEventRequest{}
-	mi := &file_sentiric_cdr_v1_cdr_proto_msgTypes[0]
+	mi := &file_sentiric_cdr_v1_cdr_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -48,7 +477,7 @@ func (x *RecordCallEventRequest) String() string {
 func (*RecordCallEventRequest) ProtoMessage() {}
 
 func (x *RecordCallEventRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_cdr_v1_cdr_proto_msgTypes[0]
+	mi := &file_sentiric_cdr_v1_cdr_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -61,7 +490,7 @@ func (x *RecordCallEventRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecordCallEventRequest.ProtoReflect.Descriptor instead.
 func (*RecordCallEventRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_cdr_v1_cdr_proto_rawDescGZIP(), []int{0}
+	return file_sentiric_cdr_v1_cdr_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *RecordCallEventRequest) GetEventId() string {
@@ -115,7 +544,7 @@ type RecordCallEventResponse struct {
 
 func (x *RecordCallEventResponse) Reset() {
 	*x = RecordCallEventResponse{}
-	mi := &file_sentiric_cdr_v1_cdr_proto_msgTypes[1]
+	mi := &file_sentiric_cdr_v1_cdr_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -127,7 +556,7 @@ func (x *RecordCallEventResponse) String() string {
 func (*RecordCallEventResponse) ProtoMessage() {}
 
 func (x *RecordCallEventResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_cdr_v1_cdr_proto_msgTypes[1]
+	mi := &file_sentiric_cdr_v1_cdr_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -140,7 +569,7 @@ func (x *RecordCallEventResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RecordCallEventResponse.ProtoReflect.Descriptor instead.
 func (*RecordCallEventResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_cdr_v1_cdr_proto_rawDescGZIP(), []int{1}
+	return file_sentiric_cdr_v1_cdr_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *RecordCallEventResponse) GetSuccess() bool {
@@ -154,7 +583,48 @@ var File_sentiric_cdr_v1_cdr_proto protoreflect.FileDescriptor
 
 const file_sentiric_cdr_v1_cdr_proto_rawDesc = "" +
 	"\n" +
-	"\x19sentiric/cdr/v1/cdr.proto\x12\x0fsentiric.cdr.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"\xd2\x02\n" +
+	"\x19sentiric/cdr/v1/cdr.proto\x12\x0fsentiric.cdr.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"\xad\x04\n" +
+	"\n" +
+	"CallRecord\x12\x17\n" +
+	"\acall_id\x18\x01 \x01(\tR\x06callId\x12\x1b\n" +
+	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12\x1c\n" +
+	"\tdirection\x18\x03 \x01(\tR\tdirection\x12#\n" +
+	"\rcaller_number\x18\x04 \x01(\tR\fcallerNumber\x12#\n" +
+	"\rcallee_number\x18\x05 \x01(\tR\fcalleeNumber\x12\x17\n" +
+	"\auser_id\x18\x06 \x01(\tR\x06userId\x12)\n" +
+	"\x10duration_seconds\x18\a \x01(\x03R\x0fdurationSeconds\x12\x16\n" +
+	"\x06status\x18\b \x01(\tR\x06status\x12 \n" +
+	"\vdisposition\x18\t \x01(\tR\vdisposition\x12#\n" +
+	"\rhangup_source\x18\n" +
+	" \x01(\tR\fhangupSource\x12(\n" +
+	"\x10sip_hangup_cause\x18\v \x01(\x05R\x0esipHangupCause\x12#\n" +
+	"\rrecording_url\x18\f \x01(\tR\frecordingUrl\x12\x1d\n" +
+	"\n" +
+	"total_cost\x18\r \x01(\x01R\ttotalCost\x129\n" +
+	"\n" +
+	"start_time\x18\x0e \x01(\v2\x1a.google.protobuf.TimestampR\tstartTime\x125\n" +
+	"\bend_time\x18\x0f \x01(\v2\x1a.google.protobuf.TimestampR\aendTime\"\xd0\x01\n" +
+	"\x17CreateCallRecordRequest\x12\x17\n" +
+	"\acall_id\x18\x01 \x01(\tR\x06callId\x12\x1b\n" +
+	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12\x1c\n" +
+	"\tdirection\x18\x03 \x01(\tR\tdirection\x12#\n" +
+	"\rcaller_number\x18\x04 \x01(\tR\fcallerNumber\x12#\n" +
+	"\rcallee_number\x18\x05 \x01(\tR\fcalleeNumber\x12\x17\n" +
+	"\auser_id\x18\x06 \x01(\tR\x06userId\"4\n" +
+	"\x18CreateCallRecordResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"\xaa\x02\n" +
+	"\x17UpdateCallRecordRequest\x12\x17\n" +
+	"\acall_id\x18\x01 \x01(\tR\x06callId\x12)\n" +
+	"\x10duration_seconds\x18\x02 \x01(\x03R\x0fdurationSeconds\x12\x16\n" +
+	"\x06status\x18\x03 \x01(\tR\x06status\x12 \n" +
+	"\vdisposition\x18\x04 \x01(\tR\vdisposition\x12#\n" +
+	"\rhangup_source\x18\x05 \x01(\tR\fhangupSource\x12(\n" +
+	"\x10sip_hangup_cause\x18\x06 \x01(\x05R\x0esipHangupCause\x12#\n" +
+	"\rrecording_url\x18\a \x01(\tR\frecordingUrl\x12\x1d\n" +
+	"\n" +
+	"total_cost\x18\b \x01(\x01R\ttotalCost\"4\n" +
+	"\x18UpdateCallRecordResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"\xd2\x02\n" +
 	"\x16RecordCallEventRequest\x12\x19\n" +
 	"\bevent_id\x18\x01 \x01(\tR\aeventId\x12\x17\n" +
 	"\acall_id\x18\x02 \x01(\tR\x06callId\x12\x1b\n" +
@@ -167,10 +637,12 @@ const file_sentiric_cdr_v1_cdr_proto_rawDesc = "" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"3\n" +
 	"\x17RecordCallEventResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess2r\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess2\xc4\x02\n" +
 	"\n" +
 	"CdrService\x12d\n" +
-	"\x0fRecordCallEvent\x12'.sentiric.cdr.v1.RecordCallEventRequest\x1a(.sentiric.cdr.v1.RecordCallEventResponseBEZCgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/cdr/v1;cdrv1b\x06proto3"
+	"\x0fRecordCallEvent\x12'.sentiric.cdr.v1.RecordCallEventRequest\x1a(.sentiric.cdr.v1.RecordCallEventResponse\x12g\n" +
+	"\x10CreateCallRecord\x12(.sentiric.cdr.v1.CreateCallRecordRequest\x1a).sentiric.cdr.v1.CreateCallRecordResponse\x12g\n" +
+	"\x10UpdateCallRecord\x12(.sentiric.cdr.v1.UpdateCallRecordRequest\x1a).sentiric.cdr.v1.UpdateCallRecordResponseBEZCgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/cdr/v1;cdrv1b\x06proto3"
 
 var (
 	file_sentiric_cdr_v1_cdr_proto_rawDescOnce sync.Once
@@ -184,23 +656,34 @@ func file_sentiric_cdr_v1_cdr_proto_rawDescGZIP() []byte {
 	return file_sentiric_cdr_v1_cdr_proto_rawDescData
 }
 
-var file_sentiric_cdr_v1_cdr_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
+var file_sentiric_cdr_v1_cdr_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_sentiric_cdr_v1_cdr_proto_goTypes = []any{
-	(*RecordCallEventRequest)(nil),  // 0: sentiric.cdr.v1.RecordCallEventRequest
-	(*RecordCallEventResponse)(nil), // 1: sentiric.cdr.v1.RecordCallEventResponse
-	nil,                             // 2: sentiric.cdr.v1.RecordCallEventRequest.MetadataEntry
-	(*timestamppb.Timestamp)(nil),   // 3: google.protobuf.Timestamp
+	(*CallRecord)(nil),               // 0: sentiric.cdr.v1.CallRecord
+	(*CreateCallRecordRequest)(nil),  // 1: sentiric.cdr.v1.CreateCallRecordRequest
+	(*CreateCallRecordResponse)(nil), // 2: sentiric.cdr.v1.CreateCallRecordResponse
+	(*UpdateCallRecordRequest)(nil),  // 3: sentiric.cdr.v1.UpdateCallRecordRequest
+	(*UpdateCallRecordResponse)(nil), // 4: sentiric.cdr.v1.UpdateCallRecordResponse
+	(*RecordCallEventRequest)(nil),   // 5: sentiric.cdr.v1.RecordCallEventRequest
+	(*RecordCallEventResponse)(nil),  // 6: sentiric.cdr.v1.RecordCallEventResponse
+	nil,                              // 7: sentiric.cdr.v1.RecordCallEventRequest.MetadataEntry
+	(*timestamppb.Timestamp)(nil),    // 8: google.protobuf.Timestamp
 }
 var file_sentiric_cdr_v1_cdr_proto_depIdxs = []int32{
-	3, // 0: sentiric.cdr.v1.RecordCallEventRequest.timestamp:type_name -> google.protobuf.Timestamp
-	2, // 1: sentiric.cdr.v1.RecordCallEventRequest.metadata:type_name -> sentiric.cdr.v1.RecordCallEventRequest.MetadataEntry
-	0, // 2: sentiric.cdr.v1.CdrService.RecordCallEvent:input_type -> sentiric.cdr.v1.RecordCallEventRequest
-	1, // 3: sentiric.cdr.v1.CdrService.RecordCallEvent:output_type -> sentiric.cdr.v1.RecordCallEventResponse
-	3, // [3:4] is the sub-list for method output_type
-	2, // [2:3] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	8, // 0: sentiric.cdr.v1.CallRecord.start_time:type_name -> google.protobuf.Timestamp
+	8, // 1: sentiric.cdr.v1.CallRecord.end_time:type_name -> google.protobuf.Timestamp
+	8, // 2: sentiric.cdr.v1.RecordCallEventRequest.timestamp:type_name -> google.protobuf.Timestamp
+	7, // 3: sentiric.cdr.v1.RecordCallEventRequest.metadata:type_name -> sentiric.cdr.v1.RecordCallEventRequest.MetadataEntry
+	5, // 4: sentiric.cdr.v1.CdrService.RecordCallEvent:input_type -> sentiric.cdr.v1.RecordCallEventRequest
+	1, // 5: sentiric.cdr.v1.CdrService.CreateCallRecord:input_type -> sentiric.cdr.v1.CreateCallRecordRequest
+	3, // 6: sentiric.cdr.v1.CdrService.UpdateCallRecord:input_type -> sentiric.cdr.v1.UpdateCallRecordRequest
+	6, // 7: sentiric.cdr.v1.CdrService.RecordCallEvent:output_type -> sentiric.cdr.v1.RecordCallEventResponse
+	2, // 8: sentiric.cdr.v1.CdrService.CreateCallRecord:output_type -> sentiric.cdr.v1.CreateCallRecordResponse
+	4, // 9: sentiric.cdr.v1.CdrService.UpdateCallRecord:output_type -> sentiric.cdr.v1.UpdateCallRecordResponse
+	7, // [7:10] is the sub-list for method output_type
+	4, // [4:7] is the sub-list for method input_type
+	4, // [4:4] is the sub-list for extension type_name
+	4, // [4:4] is the sub-list for extension extendee
+	0, // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_sentiric_cdr_v1_cdr_proto_init() }
@@ -214,7 +697,7 @@ func file_sentiric_cdr_v1_cdr_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sentiric_cdr_v1_cdr_proto_rawDesc), len(file_sentiric_cdr_v1_cdr_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   3,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

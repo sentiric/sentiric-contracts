@@ -73,6 +73,41 @@ class DialplanServiceStub(object):
                 request_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.ListDialplansRequest.SerializeToString,
                 response_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.ListDialplansResponse.FromString,
                 _registered_method=True)
+        self.CreateQueue = channel.unary_unary(
+                '/sentiric.dialplan.v1.DialplanService/CreateQueue',
+                request_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.CreateQueueRequest.SerializeToString,
+                response_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.CreateQueueResponse.FromString,
+                _registered_method=True)
+        self.GetQueue = channel.unary_unary(
+                '/sentiric.dialplan.v1.DialplanService/GetQueue',
+                request_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.GetQueueRequest.SerializeToString,
+                response_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.GetQueueResponse.FromString,
+                _registered_method=True)
+        self.UpdateQueue = channel.unary_unary(
+                '/sentiric.dialplan.v1.DialplanService/UpdateQueue',
+                request_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.UpdateQueueRequest.SerializeToString,
+                response_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.UpdateQueueResponse.FromString,
+                _registered_method=True)
+        self.DeleteQueue = channel.unary_unary(
+                '/sentiric.dialplan.v1.DialplanService/DeleteQueue',
+                request_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.DeleteQueueRequest.SerializeToString,
+                response_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.DeleteQueueResponse.FromString,
+                _registered_method=True)
+        self.ListQueues = channel.unary_unary(
+                '/sentiric.dialplan.v1.DialplanService/ListQueues',
+                request_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.ListQueuesRequest.SerializeToString,
+                response_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.ListQueuesResponse.FromString,
+                _registered_method=True)
+        self.CreateSchedule = channel.unary_unary(
+                '/sentiric.dialplan.v1.DialplanService/CreateSchedule',
+                request_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.CreateScheduleRequest.SerializeToString,
+                response_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.CreateScheduleResponse.FromString,
+                _registered_method=True)
+        self.GetSchedule = channel.unary_unary(
+                '/sentiric.dialplan.v1.DialplanService/GetSchedule',
+                request_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.GetScheduleRequest.SerializeToString,
+                response_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.GetScheduleResponse.FromString,
+                _registered_method=True)
 
 
 class DialplanServiceServicer(object):
@@ -83,14 +118,13 @@ class DialplanServiceServicer(object):
     """
 
     def ResolveDialplan(self, request, context):
-        """Gelen çağrının nasıl yönlendirileceğine karar veren ana metot.
-        """
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def CreateInboundRoute(self, request, context):
-        """Inbound Route Yönetimi
+        """Inbound Route
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -121,7 +155,7 @@ class DialplanServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def CreateDialplan(self, request, context):
-        """Dialplan Yönetimi
+        """Dialplan
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -146,6 +180,50 @@ class DialplanServiceServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def ListDialplans(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def CreateQueue(self, request, context):
+        """[YENİ] Queue (Kuyruk) Yönetimi
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetQueue(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def UpdateQueue(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def DeleteQueue(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def ListQueues(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def CreateSchedule(self, request, context):
+        """[YENİ] Schedule (Zamanlama) Yönetimi
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetSchedule(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -208,6 +286,41 @@ def add_DialplanServiceServicer_to_server(servicer, server):
                     servicer.ListDialplans,
                     request_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.ListDialplansRequest.FromString,
                     response_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.ListDialplansResponse.SerializeToString,
+            ),
+            'CreateQueue': grpc.unary_unary_rpc_method_handler(
+                    servicer.CreateQueue,
+                    request_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.CreateQueueRequest.FromString,
+                    response_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.CreateQueueResponse.SerializeToString,
+            ),
+            'GetQueue': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetQueue,
+                    request_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.GetQueueRequest.FromString,
+                    response_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.GetQueueResponse.SerializeToString,
+            ),
+            'UpdateQueue': grpc.unary_unary_rpc_method_handler(
+                    servicer.UpdateQueue,
+                    request_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.UpdateQueueRequest.FromString,
+                    response_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.UpdateQueueResponse.SerializeToString,
+            ),
+            'DeleteQueue': grpc.unary_unary_rpc_method_handler(
+                    servicer.DeleteQueue,
+                    request_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.DeleteQueueRequest.FromString,
+                    response_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.DeleteQueueResponse.SerializeToString,
+            ),
+            'ListQueues': grpc.unary_unary_rpc_method_handler(
+                    servicer.ListQueues,
+                    request_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.ListQueuesRequest.FromString,
+                    response_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.ListQueuesResponse.SerializeToString,
+            ),
+            'CreateSchedule': grpc.unary_unary_rpc_method_handler(
+                    servicer.CreateSchedule,
+                    request_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.CreateScheduleRequest.FromString,
+                    response_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.CreateScheduleResponse.SerializeToString,
+            ),
+            'GetSchedule': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetSchedule,
+                    request_deserializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.GetScheduleRequest.FromString,
+                    response_serializer=sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.GetScheduleResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -511,6 +624,195 @@ class DialplanService(object):
             '/sentiric.dialplan.v1.DialplanService/ListDialplans',
             sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.ListDialplansRequest.SerializeToString,
             sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.ListDialplansResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def CreateQueue(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/sentiric.dialplan.v1.DialplanService/CreateQueue',
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.CreateQueueRequest.SerializeToString,
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.CreateQueueResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetQueue(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/sentiric.dialplan.v1.DialplanService/GetQueue',
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.GetQueueRequest.SerializeToString,
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.GetQueueResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def UpdateQueue(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/sentiric.dialplan.v1.DialplanService/UpdateQueue',
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.UpdateQueueRequest.SerializeToString,
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.UpdateQueueResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def DeleteQueue(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/sentiric.dialplan.v1.DialplanService/DeleteQueue',
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.DeleteQueueRequest.SerializeToString,
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.DeleteQueueResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def ListQueues(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/sentiric.dialplan.v1.DialplanService/ListQueues',
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.ListQueuesRequest.SerializeToString,
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.ListQueuesResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def CreateSchedule(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/sentiric.dialplan.v1.DialplanService/CreateSchedule',
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.CreateScheduleRequest.SerializeToString,
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.CreateScheduleResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetSchedule(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/sentiric.dialplan.v1.DialplanService/GetSchedule',
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.GetScheduleRequest.SerializeToString,
+            sentiric_dot_dialplan_dot_v1_dot_dialplan__pb2.GetScheduleResponse.FromString,
             options,
             channel_credentials,
             insecure,

@@ -11,47 +11,50 @@ option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/dial
 // =================================================================
 
 service DialplanService {
-  // Gelen çağrının nasıl yönlendirileceğine karar veren ana metot.
   rpc ResolveDialplan(ResolveDialplanRequest) returns (ResolveDialplanResponse);
 
-  // Inbound Route Yönetimi
+  // Inbound Route
   rpc CreateInboundRoute(CreateInboundRouteRequest) returns (CreateInboundRouteResponse);
   rpc GetInboundRoute(GetInboundRouteRequest) returns (GetInboundRouteResponse);
   rpc UpdateInboundRoute(UpdateInboundRouteRequest) returns (UpdateInboundRouteResponse);
   rpc DeleteInboundRoute(DeleteInboundRouteRequest) returns (DeleteInboundRouteResponse);
   rpc ListInboundRoutes(ListInboundRoutesRequest) returns (ListInboundRoutesResponse);
   
-  // Dialplan Yönetimi
+  // Dialplan
   rpc CreateDialplan(CreateDialplanRequest) returns (CreateDialplanResponse);
   rpc GetDialplan(GetDialplanRequest) returns (GetDialplanResponse);
   rpc UpdateDialplan(UpdateDialplanRequest) returns (UpdateDialplanResponse);
   rpc DeleteDialplan(DeleteDialplanRequest) returns (DeleteDialplanResponse);
   rpc ListDialplans(ListDialplansRequest) returns (ListDialplansResponse);
+
+  // [YENİ] Queue (Kuyruk) Yönetimi
+  rpc CreateQueue(CreateQueueRequest) returns (CreateQueueResponse);
+  rpc GetQueue(GetQueueRequest) returns (GetQueueResponse);
+  rpc UpdateQueue(UpdateQueueRequest) returns (UpdateQueueResponse);
+  rpc DeleteQueue(DeleteQueueRequest) returns (DeleteQueueResponse);
+  rpc ListQueues(ListQueuesRequest) returns (ListQueuesResponse);
+
+  // [YENİ] Schedule (Zamanlama) Yönetimi
+  rpc CreateSchedule(CreateScheduleRequest) returns (CreateScheduleResponse);
+  rpc GetSchedule(GetScheduleRequest) returns (GetScheduleResponse);
 }
 
 // =================================================================
 //                        CORE MESSAGES & ENUMS
 // =================================================================
 
-// Dialplan aksiyon tipleri (Telekom-First standardı)
-// LINT FIX: Değerler enum ismi ile prefix'lendi.
 enum ActionType {
   ACTION_TYPE_UNSPECIFIED = 0;
-  ACTION_TYPE_START_AI_CONVERSATION = 1;      // Agent-Service orkestrasyonu
-  ACTION_TYPE_BRIDGE_CALL = 2;                // Dahili abone-abone köprüleme
-  ACTION_TYPE_ECHO_TEST = 3;                  // Media-Service native loopback
-  ACTION_TYPE_PLAY_STATIC_ANNOUNCEMENT = 4;   // AI olmayan sabit anons
+  ACTION_TYPE_START_AI_CONVERSATION = 1;
+  ACTION_TYPE_BRIDGE_CALL = 2;
+  ACTION_TYPE_ECHO_TEST = 3;
+  ACTION_TYPE_PLAY_STATIC_ANNOUNCEMENT = 4;
+  ACTION_TYPE_ENQUEUE_CALL = 5; // [YENİ] Kuyruğa atma aksiyonu
 }
 
 message DialplanAction {
-  // action: Geriye dönük uyum için string formatı (örn: "ECHO_TEST")
   string action = 1; 
-  
-  // type: Tip-güvenli aksiyon seçimi
   ActionType type = 2;
-
-  // action_data: Aksiyon için gerekli parametreler (örn: announcement_id, voice_id)
-  // Eski ActionData mesajı yerine daha esnek olan map yapısına geçildi.
   map<string, string> action_data = 3;
 }
 
@@ -73,7 +76,12 @@ message InboundRoute {
   string phone_number = 1;
   string tenant_id = 2;
   optional string active_dialplan_id = 3;
+  
+  // [YENİ ALANLAR]
+  optional string schedule_id = 8;
   optional string off_hours_dialplan_id = 4;
+  bool block_anonymous = 9;
+
   optional string failsafe_dialplan_id = 5;
   bool is_maintenance_mode = 6;
   string default_language_code = 7;
@@ -84,6 +92,26 @@ message Dialplan {
     string tenant_id = 2;
     string description = 3;
     DialplanAction action = 4;
+}
+
+// [YENİ] Queue Modeli
+message Queue {
+    string id = 1;
+    string tenant_id = 2;
+    string name = 3;
+    string routing_strategy = 4; // 'LONGEST_IDLE', 'RING_ALL'
+    int32 max_wait_time_seconds = 5;
+    string fallback_action = 6;
+    bool is_active = 7;
+}
+
+// [YENİ] Schedule Modeli
+message Schedule {
+    string id = 1;
+    string tenant_id = 2;
+    string name = 3;
+    string timezone = 4;
+    string schedule_json = 5; // JSON string olarak tutuyoruz
 }
 
 // =================================================================
@@ -111,3 +139,21 @@ message DeleteDialplanRequest { string id = 1; }
 message DeleteDialplanResponse { bool success = 1; }
 message ListDialplansRequest { string tenant_id = 1; int32 page_size = 2; int32 page = 3; }
 message ListDialplansResponse { repeated Dialplan dialplans = 1; int32 total_count = 2; }
+
+// Queue CRUD
+message CreateQueueRequest { Queue queue = 1; }
+message CreateQueueResponse { Queue queue = 1; }
+message GetQueueRequest { string id = 1; }
+message GetQueueResponse { Queue queue = 1; }
+message UpdateQueueRequest { Queue queue = 1; }
+message UpdateQueueResponse { Queue queue = 1; }
+message DeleteQueueRequest { string id = 1; }
+message DeleteQueueResponse { bool success = 1; }
+message ListQueuesRequest { string tenant_id = 1; int32 page_size = 2; int32 page = 3; }
+message ListQueuesResponse { repeated Queue queues = 1; int32 total_count = 2; }
+
+// Schedule CRUD
+message CreateScheduleRequest { Schedule schedule = 1; }
+message CreateScheduleResponse { Schedule schedule = 1; }
+message GetScheduleRequest { string id = 1; }
+message GetScheduleResponse { Schedule schedule = 1; }

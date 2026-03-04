@@ -47,6 +47,29 @@ pub struct Tenant {
 //                          RPC MESSAGES
 // =================================================================
 
+/// Mesajlar:
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+pub struct AgentProfile {
+    #[prost(string, tag="1")]
+    pub user_id: ::prost::alloc::string::String,
+    #[prost(string, tag="2")]
+    pub display_name: ::prost::alloc::string::String,
+    #[prost(int32, tag="3")]
+    pub max_concurrent_calls: i32,
+    /// ONLINE, BUSY
+    #[prost(string, tag="4")]
+    pub status: ::prost::alloc::string::String,
+}
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+pub struct GetAgentProfileRequest {
+    #[prost(string, tag="1")]
+    pub user_id: ::prost::alloc::string::String,
+}
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+pub struct GetAgentProfileResponse {
+    #[prost(message, optional, tag="1")]
+    pub profile: ::core::option::Option<AgentProfile>,
+}
 /// --- GetUser ---
 #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct GetUserRequest {

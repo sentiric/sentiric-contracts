@@ -3,28 +3,49 @@ syntax = "proto3";
 package sentiric.agent.v1;
 
 import "sentiric/data/v1/context.proto";
+import "google/protobuf/timestamp.proto";
 
 option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/agent/v1;agentv1";
 
 service AgentOrchestrationService {
-  // Gelen çağrıların başlatılması (Inbound)
   rpc ProcessCallStart(ProcessCallStartRequest) returns (ProcessCallStartResponse);
-  
-  // Manuel dış arama başlatma (Outbound) - YENİ
   rpc ProcessManualDial(ProcessManualDialRequest) returns (ProcessManualDialResponse);
-
   rpc ProcessSagaStep(ProcessSagaStepRequest) returns (ProcessSagaStepResponse);
+
+  // [YENİ] Konuşma Geçmişi (Transcript)
+  rpc GetConversationTranscript(GetConversationTranscriptRequest) returns (GetConversationTranscriptResponse);
 }
 
+// [YENİ] Transcript Modeli
+message TranscriptEntry {
+    string sender_type = 1; // USER, AI, AGENT
+    string message_text = 2;
+    float sentiment_score = 3;
+    google.protobuf.Timestamp created_at = 4;
+    // Media Payload (JSON string olarak taşınır)
+    string media_payload_json = 5; 
+}
+
+message GetConversationTranscriptRequest {
+    string call_id = 1;
+}
+
+message GetConversationTranscriptResponse {
+    repeated TranscriptEntry entries = 1;
+    string summary = 2;
+    float overall_sentiment = 3;
+}
+
+// --- Mevcut Mesajlar ---
 message ProcessManualDialRequest {
-  string destination_number = 1; // Örn: 905551234567
-  string user_id = 2;            // Aramayı başlatan temsilci ID
-  string tenant_id = 3;          // Hangi firma adına aranıyor
+  string destination_number = 1; 
+  string user_id = 2;            
+  string tenant_id = 3;          
 }
 
 message ProcessManualDialResponse {
   bool accepted = 1;
-  string call_id = 2;            // Oluşturulan global Call-ID
+  string call_id = 2;            
   string error_message = 3;
 }
 

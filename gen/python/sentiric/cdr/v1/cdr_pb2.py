@@ -25,7 +25,7 @@ _sym_db = _symbol_database.Default()
 from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x19sentiric/cdr/v1/cdr.proto\x12\x0fsentiric.cdr.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"\xd2\x02\n\x16RecordCallEventRequest\x12\x19\n\x08\x65vent_id\x18\x01 \x01(\tR\x07\x65ventId\x12\x17\n\x07\x63\x61ll_id\x18\x02 \x01(\tR\x06\x63\x61llId\x12\x1b\n\ttenant_id\x18\x03 \x01(\tR\x08tenantId\x12\x1d\n\nevent_type\x18\x04 \x01(\tR\teventType\x12\x38\n\ttimestamp\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\ttimestamp\x12Q\n\x08metadata\x18\x06 \x03(\x0b\x32\x35.sentiric.cdr.v1.RecordCallEventRequest.MetadataEntryR\x08metadata\x1a;\n\rMetadataEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n\x05value\x18\x02 \x01(\tR\x05value:\x02\x38\x01\"3\n\x17RecordCallEventResponse\x12\x18\n\x07success\x18\x01 \x01(\x08R\x07success2r\n\nCdrService\x12\x64\n\x0fRecordCallEvent\x12\'.sentiric.cdr.v1.RecordCallEventRequest\x1a(.sentiric.cdr.v1.RecordCallEventResponseBEZCgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/cdr/v1;cdrv1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x19sentiric/cdr/v1/cdr.proto\x12\x0fsentiric.cdr.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"\xad\x04\n\nCallRecord\x12\x17\n\x07\x63\x61ll_id\x18\x01 \x01(\tR\x06\x63\x61llId\x12\x1b\n\ttenant_id\x18\x02 \x01(\tR\x08tenantId\x12\x1c\n\tdirection\x18\x03 \x01(\tR\tdirection\x12#\n\rcaller_number\x18\x04 \x01(\tR\x0c\x63\x61llerNumber\x12#\n\rcallee_number\x18\x05 \x01(\tR\x0c\x63\x61lleeNumber\x12\x17\n\x07user_id\x18\x06 \x01(\tR\x06userId\x12)\n\x10\x64uration_seconds\x18\x07 \x01(\x03R\x0f\x64urationSeconds\x12\x16\n\x06status\x18\x08 \x01(\tR\x06status\x12 \n\x0b\x64isposition\x18\t \x01(\tR\x0b\x64isposition\x12#\n\rhangup_source\x18\n \x01(\tR\x0changupSource\x12(\n\x10sip_hangup_cause\x18\x0b \x01(\x05R\x0esipHangupCause\x12#\n\rrecording_url\x18\x0c \x01(\tR\x0crecordingUrl\x12\x1d\n\ntotal_cost\x18\r \x01(\x01R\ttotalCost\x12\x39\n\nstart_time\x18\x0e \x01(\x0b\x32\x1a.google.protobuf.TimestampR\tstartTime\x12\x35\n\x08\x65nd_time\x18\x0f \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x07\x65ndTime\"\xd0\x01\n\x17\x43reateCallRecordRequest\x12\x17\n\x07\x63\x61ll_id\x18\x01 \x01(\tR\x06\x63\x61llId\x12\x1b\n\ttenant_id\x18\x02 \x01(\tR\x08tenantId\x12\x1c\n\tdirection\x18\x03 \x01(\tR\tdirection\x12#\n\rcaller_number\x18\x04 \x01(\tR\x0c\x63\x61llerNumber\x12#\n\rcallee_number\x18\x05 \x01(\tR\x0c\x63\x61lleeNumber\x12\x17\n\x07user_id\x18\x06 \x01(\tR\x06userId\"4\n\x18\x43reateCallRecordResponse\x12\x18\n\x07success\x18\x01 \x01(\x08R\x07success\"\xaa\x02\n\x17UpdateCallRecordRequest\x12\x17\n\x07\x63\x61ll_id\x18\x01 \x01(\tR\x06\x63\x61llId\x12)\n\x10\x64uration_seconds\x18\x02 \x01(\x03R\x0f\x64urationSeconds\x12\x16\n\x06status\x18\x03 \x01(\tR\x06status\x12 \n\x0b\x64isposition\x18\x04 \x01(\tR\x0b\x64isposition\x12#\n\rhangup_source\x18\x05 \x01(\tR\x0changupSource\x12(\n\x10sip_hangup_cause\x18\x06 \x01(\x05R\x0esipHangupCause\x12#\n\rrecording_url\x18\x07 \x01(\tR\x0crecordingUrl\x12\x1d\n\ntotal_cost\x18\x08 \x01(\x01R\ttotalCost\"4\n\x18UpdateCallRecordResponse\x12\x18\n\x07success\x18\x01 \x01(\x08R\x07success\"\xd2\x02\n\x16RecordCallEventRequest\x12\x19\n\x08\x65vent_id\x18\x01 \x01(\tR\x07\x65ventId\x12\x17\n\x07\x63\x61ll_id\x18\x02 \x01(\tR\x06\x63\x61llId\x12\x1b\n\ttenant_id\x18\x03 \x01(\tR\x08tenantId\x12\x1d\n\nevent_type\x18\x04 \x01(\tR\teventType\x12\x38\n\ttimestamp\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\ttimestamp\x12Q\n\x08metadata\x18\x06 \x03(\x0b\x32\x35.sentiric.cdr.v1.RecordCallEventRequest.MetadataEntryR\x08metadata\x1a;\n\rMetadataEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n\x05value\x18\x02 \x01(\tR\x05value:\x02\x38\x01\"3\n\x17RecordCallEventResponse\x12\x18\n\x07success\x18\x01 \x01(\x08R\x07success2\xc4\x02\n\nCdrService\x12\x64\n\x0fRecordCallEvent\x12\'.sentiric.cdr.v1.RecordCallEventRequest\x1a(.sentiric.cdr.v1.RecordCallEventResponse\x12g\n\x10\x43reateCallRecord\x12(.sentiric.cdr.v1.CreateCallRecordRequest\x1a).sentiric.cdr.v1.CreateCallRecordResponse\x12g\n\x10UpdateCallRecord\x12(.sentiric.cdr.v1.UpdateCallRecordRequest\x1a).sentiric.cdr.v1.UpdateCallRecordResponseBEZCgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/cdr/v1;cdrv1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -35,12 +35,22 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._serialized_options = b'ZCgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/cdr/v1;cdrv1'
   _globals['_RECORDCALLEVENTREQUEST_METADATAENTRY']._loaded_options = None
   _globals['_RECORDCALLEVENTREQUEST_METADATAENTRY']._serialized_options = b'8\001'
-  _globals['_RECORDCALLEVENTREQUEST']._serialized_start=80
-  _globals['_RECORDCALLEVENTREQUEST']._serialized_end=418
-  _globals['_RECORDCALLEVENTREQUEST_METADATAENTRY']._serialized_start=359
-  _globals['_RECORDCALLEVENTREQUEST_METADATAENTRY']._serialized_end=418
-  _globals['_RECORDCALLEVENTRESPONSE']._serialized_start=420
-  _globals['_RECORDCALLEVENTRESPONSE']._serialized_end=471
-  _globals['_CDRSERVICE']._serialized_start=473
-  _globals['_CDRSERVICE']._serialized_end=587
+  _globals['_CALLRECORD']._serialized_start=80
+  _globals['_CALLRECORD']._serialized_end=637
+  _globals['_CREATECALLRECORDREQUEST']._serialized_start=640
+  _globals['_CREATECALLRECORDREQUEST']._serialized_end=848
+  _globals['_CREATECALLRECORDRESPONSE']._serialized_start=850
+  _globals['_CREATECALLRECORDRESPONSE']._serialized_end=902
+  _globals['_UPDATECALLRECORDREQUEST']._serialized_start=905
+  _globals['_UPDATECALLRECORDREQUEST']._serialized_end=1203
+  _globals['_UPDATECALLRECORDRESPONSE']._serialized_start=1205
+  _globals['_UPDATECALLRECORDRESPONSE']._serialized_end=1257
+  _globals['_RECORDCALLEVENTREQUEST']._serialized_start=1260
+  _globals['_RECORDCALLEVENTREQUEST']._serialized_end=1598
+  _globals['_RECORDCALLEVENTREQUEST_METADATAENTRY']._serialized_start=1539
+  _globals['_RECORDCALLEVENTREQUEST_METADATAENTRY']._serialized_end=1598
+  _globals['_RECORDCALLEVENTRESPONSE']._serialized_start=1600
+  _globals['_RECORDCALLEVENTRESPONSE']._serialized_end=1651
+  _globals['_CDRSERVICE']._serialized_start=1654
+  _globals['_CDRSERVICE']._serialized_end=1978
 # @@protoc_insertion_point(module_scope)

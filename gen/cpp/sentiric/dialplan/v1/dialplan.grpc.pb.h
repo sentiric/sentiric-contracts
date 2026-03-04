@@ -41,7 +41,6 @@ class DialplanService final {
   class StubInterface {
    public:
     virtual ~StubInterface() {}
-    // Gelen çağrının nasıl yönlendirileceğine karar veren ana metot.
     virtual ::grpc::Status ResolveDialplan(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::ResolveDialplanRequest& request, ::sentiric::dialplan::v1::ResolveDialplanResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::ResolveDialplanResponse>> AsyncResolveDialplan(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::ResolveDialplanRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::ResolveDialplanResponse>>(AsyncResolveDialplanRaw(context, request, cq));
@@ -49,7 +48,7 @@ class DialplanService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::ResolveDialplanResponse>> PrepareAsyncResolveDialplan(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::ResolveDialplanRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::ResolveDialplanResponse>>(PrepareAsyncResolveDialplanRaw(context, request, cq));
     }
-    // Inbound Route Yönetimi
+    // Inbound Route
     virtual ::grpc::Status CreateInboundRoute(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateInboundRouteRequest& request, ::sentiric::dialplan::v1::CreateInboundRouteResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::CreateInboundRouteResponse>> AsyncCreateInboundRoute(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateInboundRouteRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::CreateInboundRouteResponse>>(AsyncCreateInboundRouteRaw(context, request, cq));
@@ -85,7 +84,7 @@ class DialplanService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::ListInboundRoutesResponse>> PrepareAsyncListInboundRoutes(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::ListInboundRoutesRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::ListInboundRoutesResponse>>(PrepareAsyncListInboundRoutesRaw(context, request, cq));
     }
-    // Dialplan Yönetimi
+    // Dialplan
     virtual ::grpc::Status CreateDialplan(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateDialplanRequest& request, ::sentiric::dialplan::v1::CreateDialplanResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::CreateDialplanResponse>> AsyncCreateDialplan(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateDialplanRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::CreateDialplanResponse>>(AsyncCreateDialplanRaw(context, request, cq));
@@ -121,13 +120,63 @@ class DialplanService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::ListDialplansResponse>> PrepareAsyncListDialplans(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::ListDialplansRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::ListDialplansResponse>>(PrepareAsyncListDialplansRaw(context, request, cq));
     }
+    // [YENİ] Queue (Kuyruk) Yönetimi
+    virtual ::grpc::Status CreateQueue(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateQueueRequest& request, ::sentiric::dialplan::v1::CreateQueueResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::CreateQueueResponse>> AsyncCreateQueue(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateQueueRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::CreateQueueResponse>>(AsyncCreateQueueRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::CreateQueueResponse>> PrepareAsyncCreateQueue(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateQueueRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::CreateQueueResponse>>(PrepareAsyncCreateQueueRaw(context, request, cq));
+    }
+    virtual ::grpc::Status GetQueue(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::GetQueueRequest& request, ::sentiric::dialplan::v1::GetQueueResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::GetQueueResponse>> AsyncGetQueue(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::GetQueueRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::GetQueueResponse>>(AsyncGetQueueRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::GetQueueResponse>> PrepareAsyncGetQueue(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::GetQueueRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::GetQueueResponse>>(PrepareAsyncGetQueueRaw(context, request, cq));
+    }
+    virtual ::grpc::Status UpdateQueue(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::UpdateQueueRequest& request, ::sentiric::dialplan::v1::UpdateQueueResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::UpdateQueueResponse>> AsyncUpdateQueue(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::UpdateQueueRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::UpdateQueueResponse>>(AsyncUpdateQueueRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::UpdateQueueResponse>> PrepareAsyncUpdateQueue(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::UpdateQueueRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::UpdateQueueResponse>>(PrepareAsyncUpdateQueueRaw(context, request, cq));
+    }
+    virtual ::grpc::Status DeleteQueue(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::DeleteQueueRequest& request, ::sentiric::dialplan::v1::DeleteQueueResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::DeleteQueueResponse>> AsyncDeleteQueue(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::DeleteQueueRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::DeleteQueueResponse>>(AsyncDeleteQueueRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::DeleteQueueResponse>> PrepareAsyncDeleteQueue(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::DeleteQueueRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::DeleteQueueResponse>>(PrepareAsyncDeleteQueueRaw(context, request, cq));
+    }
+    virtual ::grpc::Status ListQueues(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::ListQueuesRequest& request, ::sentiric::dialplan::v1::ListQueuesResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::ListQueuesResponse>> AsyncListQueues(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::ListQueuesRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::ListQueuesResponse>>(AsyncListQueuesRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::ListQueuesResponse>> PrepareAsyncListQueues(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::ListQueuesRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::ListQueuesResponse>>(PrepareAsyncListQueuesRaw(context, request, cq));
+    }
+    // [YENİ] Schedule (Zamanlama) Yönetimi
+    virtual ::grpc::Status CreateSchedule(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateScheduleRequest& request, ::sentiric::dialplan::v1::CreateScheduleResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::CreateScheduleResponse>> AsyncCreateSchedule(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateScheduleRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::CreateScheduleResponse>>(AsyncCreateScheduleRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::CreateScheduleResponse>> PrepareAsyncCreateSchedule(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateScheduleRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::CreateScheduleResponse>>(PrepareAsyncCreateScheduleRaw(context, request, cq));
+    }
+    virtual ::grpc::Status GetSchedule(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::GetScheduleRequest& request, ::sentiric::dialplan::v1::GetScheduleResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::GetScheduleResponse>> AsyncGetSchedule(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::GetScheduleRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::GetScheduleResponse>>(AsyncGetScheduleRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::GetScheduleResponse>> PrepareAsyncGetSchedule(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::GetScheduleRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::GetScheduleResponse>>(PrepareAsyncGetScheduleRaw(context, request, cq));
+    }
     class async_interface {
      public:
       virtual ~async_interface() {}
-      // Gelen çağrının nasıl yönlendirileceğine karar veren ana metot.
       virtual void ResolveDialplan(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::ResolveDialplanRequest* request, ::sentiric::dialplan::v1::ResolveDialplanResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void ResolveDialplan(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::ResolveDialplanRequest* request, ::sentiric::dialplan::v1::ResolveDialplanResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      // Inbound Route Yönetimi
+      // Inbound Route
       virtual void CreateInboundRoute(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateInboundRouteRequest* request, ::sentiric::dialplan::v1::CreateInboundRouteResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void CreateInboundRoute(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateInboundRouteRequest* request, ::sentiric::dialplan::v1::CreateInboundRouteResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void GetInboundRoute(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::GetInboundRouteRequest* request, ::sentiric::dialplan::v1::GetInboundRouteResponse* response, std::function<void(::grpc::Status)>) = 0;
@@ -138,7 +187,7 @@ class DialplanService final {
       virtual void DeleteInboundRoute(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::DeleteInboundRouteRequest* request, ::sentiric::dialplan::v1::DeleteInboundRouteResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void ListInboundRoutes(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::ListInboundRoutesRequest* request, ::sentiric::dialplan::v1::ListInboundRoutesResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void ListInboundRoutes(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::ListInboundRoutesRequest* request, ::sentiric::dialplan::v1::ListInboundRoutesResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      // Dialplan Yönetimi
+      // Dialplan
       virtual void CreateDialplan(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateDialplanRequest* request, ::sentiric::dialplan::v1::CreateDialplanResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void CreateDialplan(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateDialplanRequest* request, ::sentiric::dialplan::v1::CreateDialplanResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void GetDialplan(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::GetDialplanRequest* request, ::sentiric::dialplan::v1::GetDialplanResponse* response, std::function<void(::grpc::Status)>) = 0;
@@ -149,6 +198,22 @@ class DialplanService final {
       virtual void DeleteDialplan(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::DeleteDialplanRequest* request, ::sentiric::dialplan::v1::DeleteDialplanResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void ListDialplans(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::ListDialplansRequest* request, ::sentiric::dialplan::v1::ListDialplansResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void ListDialplans(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::ListDialplansRequest* request, ::sentiric::dialplan::v1::ListDialplansResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      // [YENİ] Queue (Kuyruk) Yönetimi
+      virtual void CreateQueue(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateQueueRequest* request, ::sentiric::dialplan::v1::CreateQueueResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void CreateQueue(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateQueueRequest* request, ::sentiric::dialplan::v1::CreateQueueResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void GetQueue(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::GetQueueRequest* request, ::sentiric::dialplan::v1::GetQueueResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void GetQueue(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::GetQueueRequest* request, ::sentiric::dialplan::v1::GetQueueResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void UpdateQueue(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::UpdateQueueRequest* request, ::sentiric::dialplan::v1::UpdateQueueResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void UpdateQueue(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::UpdateQueueRequest* request, ::sentiric::dialplan::v1::UpdateQueueResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void DeleteQueue(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::DeleteQueueRequest* request, ::sentiric::dialplan::v1::DeleteQueueResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void DeleteQueue(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::DeleteQueueRequest* request, ::sentiric::dialplan::v1::DeleteQueueResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void ListQueues(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::ListQueuesRequest* request, ::sentiric::dialplan::v1::ListQueuesResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void ListQueues(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::ListQueuesRequest* request, ::sentiric::dialplan::v1::ListQueuesResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      // [YENİ] Schedule (Zamanlama) Yönetimi
+      virtual void CreateSchedule(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateScheduleRequest* request, ::sentiric::dialplan::v1::CreateScheduleResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void CreateSchedule(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateScheduleRequest* request, ::sentiric::dialplan::v1::CreateScheduleResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void GetSchedule(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::GetScheduleRequest* request, ::sentiric::dialplan::v1::GetScheduleResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void GetSchedule(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::GetScheduleRequest* request, ::sentiric::dialplan::v1::GetScheduleResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
@@ -176,6 +241,20 @@ class DialplanService final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::DeleteDialplanResponse>* PrepareAsyncDeleteDialplanRaw(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::DeleteDialplanRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::ListDialplansResponse>* AsyncListDialplansRaw(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::ListDialplansRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::ListDialplansResponse>* PrepareAsyncListDialplansRaw(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::ListDialplansRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::CreateQueueResponse>* AsyncCreateQueueRaw(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateQueueRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::CreateQueueResponse>* PrepareAsyncCreateQueueRaw(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateQueueRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::GetQueueResponse>* AsyncGetQueueRaw(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::GetQueueRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::GetQueueResponse>* PrepareAsyncGetQueueRaw(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::GetQueueRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::UpdateQueueResponse>* AsyncUpdateQueueRaw(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::UpdateQueueRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::UpdateQueueResponse>* PrepareAsyncUpdateQueueRaw(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::UpdateQueueRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::DeleteQueueResponse>* AsyncDeleteQueueRaw(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::DeleteQueueRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::DeleteQueueResponse>* PrepareAsyncDeleteQueueRaw(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::DeleteQueueRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::ListQueuesResponse>* AsyncListQueuesRaw(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::ListQueuesRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::ListQueuesResponse>* PrepareAsyncListQueuesRaw(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::ListQueuesRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::CreateScheduleResponse>* AsyncCreateScheduleRaw(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateScheduleRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::CreateScheduleResponse>* PrepareAsyncCreateScheduleRaw(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateScheduleRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::GetScheduleResponse>* AsyncGetScheduleRaw(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::GetScheduleRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::dialplan::v1::GetScheduleResponse>* PrepareAsyncGetScheduleRaw(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::GetScheduleRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -257,6 +336,55 @@ class DialplanService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::ListDialplansResponse>> PrepareAsyncListDialplans(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::ListDialplansRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::ListDialplansResponse>>(PrepareAsyncListDialplansRaw(context, request, cq));
     }
+    ::grpc::Status CreateQueue(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateQueueRequest& request, ::sentiric::dialplan::v1::CreateQueueResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::CreateQueueResponse>> AsyncCreateQueue(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateQueueRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::CreateQueueResponse>>(AsyncCreateQueueRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::CreateQueueResponse>> PrepareAsyncCreateQueue(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateQueueRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::CreateQueueResponse>>(PrepareAsyncCreateQueueRaw(context, request, cq));
+    }
+    ::grpc::Status GetQueue(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::GetQueueRequest& request, ::sentiric::dialplan::v1::GetQueueResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::GetQueueResponse>> AsyncGetQueue(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::GetQueueRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::GetQueueResponse>>(AsyncGetQueueRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::GetQueueResponse>> PrepareAsyncGetQueue(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::GetQueueRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::GetQueueResponse>>(PrepareAsyncGetQueueRaw(context, request, cq));
+    }
+    ::grpc::Status UpdateQueue(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::UpdateQueueRequest& request, ::sentiric::dialplan::v1::UpdateQueueResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::UpdateQueueResponse>> AsyncUpdateQueue(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::UpdateQueueRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::UpdateQueueResponse>>(AsyncUpdateQueueRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::UpdateQueueResponse>> PrepareAsyncUpdateQueue(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::UpdateQueueRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::UpdateQueueResponse>>(PrepareAsyncUpdateQueueRaw(context, request, cq));
+    }
+    ::grpc::Status DeleteQueue(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::DeleteQueueRequest& request, ::sentiric::dialplan::v1::DeleteQueueResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::DeleteQueueResponse>> AsyncDeleteQueue(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::DeleteQueueRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::DeleteQueueResponse>>(AsyncDeleteQueueRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::DeleteQueueResponse>> PrepareAsyncDeleteQueue(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::DeleteQueueRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::DeleteQueueResponse>>(PrepareAsyncDeleteQueueRaw(context, request, cq));
+    }
+    ::grpc::Status ListQueues(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::ListQueuesRequest& request, ::sentiric::dialplan::v1::ListQueuesResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::ListQueuesResponse>> AsyncListQueues(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::ListQueuesRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::ListQueuesResponse>>(AsyncListQueuesRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::ListQueuesResponse>> PrepareAsyncListQueues(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::ListQueuesRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::ListQueuesResponse>>(PrepareAsyncListQueuesRaw(context, request, cq));
+    }
+    ::grpc::Status CreateSchedule(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateScheduleRequest& request, ::sentiric::dialplan::v1::CreateScheduleResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::CreateScheduleResponse>> AsyncCreateSchedule(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateScheduleRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::CreateScheduleResponse>>(AsyncCreateScheduleRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::CreateScheduleResponse>> PrepareAsyncCreateSchedule(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateScheduleRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::CreateScheduleResponse>>(PrepareAsyncCreateScheduleRaw(context, request, cq));
+    }
+    ::grpc::Status GetSchedule(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::GetScheduleRequest& request, ::sentiric::dialplan::v1::GetScheduleResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::GetScheduleResponse>> AsyncGetSchedule(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::GetScheduleRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::GetScheduleResponse>>(AsyncGetScheduleRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::GetScheduleResponse>> PrepareAsyncGetSchedule(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::GetScheduleRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::GetScheduleResponse>>(PrepareAsyncGetScheduleRaw(context, request, cq));
+    }
     class async final :
       public StubInterface::async_interface {
      public:
@@ -282,6 +410,20 @@ class DialplanService final {
       void DeleteDialplan(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::DeleteDialplanRequest* request, ::sentiric::dialplan::v1::DeleteDialplanResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void ListDialplans(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::ListDialplansRequest* request, ::sentiric::dialplan::v1::ListDialplansResponse* response, std::function<void(::grpc::Status)>) override;
       void ListDialplans(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::ListDialplansRequest* request, ::sentiric::dialplan::v1::ListDialplansResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void CreateQueue(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateQueueRequest* request, ::sentiric::dialplan::v1::CreateQueueResponse* response, std::function<void(::grpc::Status)>) override;
+      void CreateQueue(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateQueueRequest* request, ::sentiric::dialplan::v1::CreateQueueResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void GetQueue(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::GetQueueRequest* request, ::sentiric::dialplan::v1::GetQueueResponse* response, std::function<void(::grpc::Status)>) override;
+      void GetQueue(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::GetQueueRequest* request, ::sentiric::dialplan::v1::GetQueueResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void UpdateQueue(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::UpdateQueueRequest* request, ::sentiric::dialplan::v1::UpdateQueueResponse* response, std::function<void(::grpc::Status)>) override;
+      void UpdateQueue(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::UpdateQueueRequest* request, ::sentiric::dialplan::v1::UpdateQueueResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void DeleteQueue(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::DeleteQueueRequest* request, ::sentiric::dialplan::v1::DeleteQueueResponse* response, std::function<void(::grpc::Status)>) override;
+      void DeleteQueue(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::DeleteQueueRequest* request, ::sentiric::dialplan::v1::DeleteQueueResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void ListQueues(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::ListQueuesRequest* request, ::sentiric::dialplan::v1::ListQueuesResponse* response, std::function<void(::grpc::Status)>) override;
+      void ListQueues(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::ListQueuesRequest* request, ::sentiric::dialplan::v1::ListQueuesResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void CreateSchedule(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateScheduleRequest* request, ::sentiric::dialplan::v1::CreateScheduleResponse* response, std::function<void(::grpc::Status)>) override;
+      void CreateSchedule(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateScheduleRequest* request, ::sentiric::dialplan::v1::CreateScheduleResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void GetSchedule(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::GetScheduleRequest* request, ::sentiric::dialplan::v1::GetScheduleResponse* response, std::function<void(::grpc::Status)>) override;
+      void GetSchedule(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::GetScheduleRequest* request, ::sentiric::dialplan::v1::GetScheduleResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -315,6 +457,20 @@ class DialplanService final {
     ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::DeleteDialplanResponse>* PrepareAsyncDeleteDialplanRaw(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::DeleteDialplanRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::ListDialplansResponse>* AsyncListDialplansRaw(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::ListDialplansRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::ListDialplansResponse>* PrepareAsyncListDialplansRaw(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::ListDialplansRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::CreateQueueResponse>* AsyncCreateQueueRaw(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateQueueRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::CreateQueueResponse>* PrepareAsyncCreateQueueRaw(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateQueueRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::GetQueueResponse>* AsyncGetQueueRaw(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::GetQueueRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::GetQueueResponse>* PrepareAsyncGetQueueRaw(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::GetQueueRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::UpdateQueueResponse>* AsyncUpdateQueueRaw(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::UpdateQueueRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::UpdateQueueResponse>* PrepareAsyncUpdateQueueRaw(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::UpdateQueueRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::DeleteQueueResponse>* AsyncDeleteQueueRaw(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::DeleteQueueRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::DeleteQueueResponse>* PrepareAsyncDeleteQueueRaw(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::DeleteQueueRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::ListQueuesResponse>* AsyncListQueuesRaw(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::ListQueuesRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::ListQueuesResponse>* PrepareAsyncListQueuesRaw(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::ListQueuesRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::CreateScheduleResponse>* AsyncCreateScheduleRaw(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateScheduleRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::CreateScheduleResponse>* PrepareAsyncCreateScheduleRaw(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::CreateScheduleRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::GetScheduleResponse>* AsyncGetScheduleRaw(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::GetScheduleRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::sentiric::dialplan::v1::GetScheduleResponse>* PrepareAsyncGetScheduleRaw(::grpc::ClientContext* context, const ::sentiric::dialplan::v1::GetScheduleRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_ResolveDialplan_;
     const ::grpc::internal::RpcMethod rpcmethod_CreateInboundRoute_;
     const ::grpc::internal::RpcMethod rpcmethod_GetInboundRoute_;
@@ -326,6 +482,13 @@ class DialplanService final {
     const ::grpc::internal::RpcMethod rpcmethod_UpdateDialplan_;
     const ::grpc::internal::RpcMethod rpcmethod_DeleteDialplan_;
     const ::grpc::internal::RpcMethod rpcmethod_ListDialplans_;
+    const ::grpc::internal::RpcMethod rpcmethod_CreateQueue_;
+    const ::grpc::internal::RpcMethod rpcmethod_GetQueue_;
+    const ::grpc::internal::RpcMethod rpcmethod_UpdateQueue_;
+    const ::grpc::internal::RpcMethod rpcmethod_DeleteQueue_;
+    const ::grpc::internal::RpcMethod rpcmethod_ListQueues_;
+    const ::grpc::internal::RpcMethod rpcmethod_CreateSchedule_;
+    const ::grpc::internal::RpcMethod rpcmethod_GetSchedule_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -333,20 +496,28 @@ class DialplanService final {
    public:
     Service();
     virtual ~Service();
-    // Gelen çağrının nasıl yönlendirileceğine karar veren ana metot.
     virtual ::grpc::Status ResolveDialplan(::grpc::ServerContext* context, const ::sentiric::dialplan::v1::ResolveDialplanRequest* request, ::sentiric::dialplan::v1::ResolveDialplanResponse* response);
-    // Inbound Route Yönetimi
+    // Inbound Route
     virtual ::grpc::Status CreateInboundRoute(::grpc::ServerContext* context, const ::sentiric::dialplan::v1::CreateInboundRouteRequest* request, ::sentiric::dialplan::v1::CreateInboundRouteResponse* response);
     virtual ::grpc::Status GetInboundRoute(::grpc::ServerContext* context, const ::sentiric::dialplan::v1::GetInboundRouteRequest* request, ::sentiric::dialplan::v1::GetInboundRouteResponse* response);
     virtual ::grpc::Status UpdateInboundRoute(::grpc::ServerContext* context, const ::sentiric::dialplan::v1::UpdateInboundRouteRequest* request, ::sentiric::dialplan::v1::UpdateInboundRouteResponse* response);
     virtual ::grpc::Status DeleteInboundRoute(::grpc::ServerContext* context, const ::sentiric::dialplan::v1::DeleteInboundRouteRequest* request, ::sentiric::dialplan::v1::DeleteInboundRouteResponse* response);
     virtual ::grpc::Status ListInboundRoutes(::grpc::ServerContext* context, const ::sentiric::dialplan::v1::ListInboundRoutesRequest* request, ::sentiric::dialplan::v1::ListInboundRoutesResponse* response);
-    // Dialplan Yönetimi
+    // Dialplan
     virtual ::grpc::Status CreateDialplan(::grpc::ServerContext* context, const ::sentiric::dialplan::v1::CreateDialplanRequest* request, ::sentiric::dialplan::v1::CreateDialplanResponse* response);
     virtual ::grpc::Status GetDialplan(::grpc::ServerContext* context, const ::sentiric::dialplan::v1::GetDialplanRequest* request, ::sentiric::dialplan::v1::GetDialplanResponse* response);
     virtual ::grpc::Status UpdateDialplan(::grpc::ServerContext* context, const ::sentiric::dialplan::v1::UpdateDialplanRequest* request, ::sentiric::dialplan::v1::UpdateDialplanResponse* response);
     virtual ::grpc::Status DeleteDialplan(::grpc::ServerContext* context, const ::sentiric::dialplan::v1::DeleteDialplanRequest* request, ::sentiric::dialplan::v1::DeleteDialplanResponse* response);
     virtual ::grpc::Status ListDialplans(::grpc::ServerContext* context, const ::sentiric::dialplan::v1::ListDialplansRequest* request, ::sentiric::dialplan::v1::ListDialplansResponse* response);
+    // [YENİ] Queue (Kuyruk) Yönetimi
+    virtual ::grpc::Status CreateQueue(::grpc::ServerContext* context, const ::sentiric::dialplan::v1::CreateQueueRequest* request, ::sentiric::dialplan::v1::CreateQueueResponse* response);
+    virtual ::grpc::Status GetQueue(::grpc::ServerContext* context, const ::sentiric::dialplan::v1::GetQueueRequest* request, ::sentiric::dialplan::v1::GetQueueResponse* response);
+    virtual ::grpc::Status UpdateQueue(::grpc::ServerContext* context, const ::sentiric::dialplan::v1::UpdateQueueRequest* request, ::sentiric::dialplan::v1::UpdateQueueResponse* response);
+    virtual ::grpc::Status DeleteQueue(::grpc::ServerContext* context, const ::sentiric::dialplan::v1::DeleteQueueRequest* request, ::sentiric::dialplan::v1::DeleteQueueResponse* response);
+    virtual ::grpc::Status ListQueues(::grpc::ServerContext* context, const ::sentiric::dialplan::v1::ListQueuesRequest* request, ::sentiric::dialplan::v1::ListQueuesResponse* response);
+    // [YENİ] Schedule (Zamanlama) Yönetimi
+    virtual ::grpc::Status CreateSchedule(::grpc::ServerContext* context, const ::sentiric::dialplan::v1::CreateScheduleRequest* request, ::sentiric::dialplan::v1::CreateScheduleResponse* response);
+    virtual ::grpc::Status GetSchedule(::grpc::ServerContext* context, const ::sentiric::dialplan::v1::GetScheduleRequest* request, ::sentiric::dialplan::v1::GetScheduleResponse* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_ResolveDialplan : public BaseClass {
@@ -568,7 +739,147 @@ class DialplanService final {
       ::grpc::Service::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_ResolveDialplan<WithAsyncMethod_CreateInboundRoute<WithAsyncMethod_GetInboundRoute<WithAsyncMethod_UpdateInboundRoute<WithAsyncMethod_DeleteInboundRoute<WithAsyncMethod_ListInboundRoutes<WithAsyncMethod_CreateDialplan<WithAsyncMethod_GetDialplan<WithAsyncMethod_UpdateDialplan<WithAsyncMethod_DeleteDialplan<WithAsyncMethod_ListDialplans<Service > > > > > > > > > > > AsyncService;
+  template <class BaseClass>
+  class WithAsyncMethod_CreateQueue : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_CreateQueue() {
+      ::grpc::Service::MarkMethodAsync(11);
+    }
+    ~WithAsyncMethod_CreateQueue() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status CreateQueue(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::CreateQueueRequest* /*request*/, ::sentiric::dialplan::v1::CreateQueueResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestCreateQueue(::grpc::ServerContext* context, ::sentiric::dialplan::v1::CreateQueueRequest* request, ::grpc::ServerAsyncResponseWriter< ::sentiric::dialplan::v1::CreateQueueResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_GetQueue : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_GetQueue() {
+      ::grpc::Service::MarkMethodAsync(12);
+    }
+    ~WithAsyncMethod_GetQueue() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetQueue(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::GetQueueRequest* /*request*/, ::sentiric::dialplan::v1::GetQueueResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetQueue(::grpc::ServerContext* context, ::sentiric::dialplan::v1::GetQueueRequest* request, ::grpc::ServerAsyncResponseWriter< ::sentiric::dialplan::v1::GetQueueResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(12, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_UpdateQueue : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_UpdateQueue() {
+      ::grpc::Service::MarkMethodAsync(13);
+    }
+    ~WithAsyncMethod_UpdateQueue() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status UpdateQueue(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::UpdateQueueRequest* /*request*/, ::sentiric::dialplan::v1::UpdateQueueResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestUpdateQueue(::grpc::ServerContext* context, ::sentiric::dialplan::v1::UpdateQueueRequest* request, ::grpc::ServerAsyncResponseWriter< ::sentiric::dialplan::v1::UpdateQueueResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(13, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_DeleteQueue : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_DeleteQueue() {
+      ::grpc::Service::MarkMethodAsync(14);
+    }
+    ~WithAsyncMethod_DeleteQueue() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status DeleteQueue(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::DeleteQueueRequest* /*request*/, ::sentiric::dialplan::v1::DeleteQueueResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestDeleteQueue(::grpc::ServerContext* context, ::sentiric::dialplan::v1::DeleteQueueRequest* request, ::grpc::ServerAsyncResponseWriter< ::sentiric::dialplan::v1::DeleteQueueResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(14, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_ListQueues : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_ListQueues() {
+      ::grpc::Service::MarkMethodAsync(15);
+    }
+    ~WithAsyncMethod_ListQueues() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ListQueues(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::ListQueuesRequest* /*request*/, ::sentiric::dialplan::v1::ListQueuesResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestListQueues(::grpc::ServerContext* context, ::sentiric::dialplan::v1::ListQueuesRequest* request, ::grpc::ServerAsyncResponseWriter< ::sentiric::dialplan::v1::ListQueuesResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(15, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_CreateSchedule : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_CreateSchedule() {
+      ::grpc::Service::MarkMethodAsync(16);
+    }
+    ~WithAsyncMethod_CreateSchedule() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status CreateSchedule(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::CreateScheduleRequest* /*request*/, ::sentiric::dialplan::v1::CreateScheduleResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestCreateSchedule(::grpc::ServerContext* context, ::sentiric::dialplan::v1::CreateScheduleRequest* request, ::grpc::ServerAsyncResponseWriter< ::sentiric::dialplan::v1::CreateScheduleResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(16, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_GetSchedule : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_GetSchedule() {
+      ::grpc::Service::MarkMethodAsync(17);
+    }
+    ~WithAsyncMethod_GetSchedule() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetSchedule(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::GetScheduleRequest* /*request*/, ::sentiric::dialplan::v1::GetScheduleResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetSchedule(::grpc::ServerContext* context, ::sentiric::dialplan::v1::GetScheduleRequest* request, ::grpc::ServerAsyncResponseWriter< ::sentiric::dialplan::v1::GetScheduleResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(17, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_ResolveDialplan<WithAsyncMethod_CreateInboundRoute<WithAsyncMethod_GetInboundRoute<WithAsyncMethod_UpdateInboundRoute<WithAsyncMethod_DeleteInboundRoute<WithAsyncMethod_ListInboundRoutes<WithAsyncMethod_CreateDialplan<WithAsyncMethod_GetDialplan<WithAsyncMethod_UpdateDialplan<WithAsyncMethod_DeleteDialplan<WithAsyncMethod_ListDialplans<WithAsyncMethod_CreateQueue<WithAsyncMethod_GetQueue<WithAsyncMethod_UpdateQueue<WithAsyncMethod_DeleteQueue<WithAsyncMethod_ListQueues<WithAsyncMethod_CreateSchedule<WithAsyncMethod_GetSchedule<Service > > > > > > > > > > > > > > > > > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_ResolveDialplan : public BaseClass {
    private:
@@ -866,7 +1177,196 @@ class DialplanService final {
     virtual ::grpc::ServerUnaryReactor* ListDialplans(
       ::grpc::CallbackServerContext* /*context*/, const ::sentiric::dialplan::v1::ListDialplansRequest* /*request*/, ::sentiric::dialplan::v1::ListDialplansResponse* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_ResolveDialplan<WithCallbackMethod_CreateInboundRoute<WithCallbackMethod_GetInboundRoute<WithCallbackMethod_UpdateInboundRoute<WithCallbackMethod_DeleteInboundRoute<WithCallbackMethod_ListInboundRoutes<WithCallbackMethod_CreateDialplan<WithCallbackMethod_GetDialplan<WithCallbackMethod_UpdateDialplan<WithCallbackMethod_DeleteDialplan<WithCallbackMethod_ListDialplans<Service > > > > > > > > > > > CallbackService;
+  template <class BaseClass>
+  class WithCallbackMethod_CreateQueue : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_CreateQueue() {
+      ::grpc::Service::MarkMethodCallback(11,
+          new ::grpc::internal::CallbackUnaryHandler< ::sentiric::dialplan::v1::CreateQueueRequest, ::sentiric::dialplan::v1::CreateQueueResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::sentiric::dialplan::v1::CreateQueueRequest* request, ::sentiric::dialplan::v1::CreateQueueResponse* response) { return this->CreateQueue(context, request, response); }));}
+    void SetMessageAllocatorFor_CreateQueue(
+        ::grpc::MessageAllocator< ::sentiric::dialplan::v1::CreateQueueRequest, ::sentiric::dialplan::v1::CreateQueueResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(11);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::sentiric::dialplan::v1::CreateQueueRequest, ::sentiric::dialplan::v1::CreateQueueResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_CreateQueue() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status CreateQueue(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::CreateQueueRequest* /*request*/, ::sentiric::dialplan::v1::CreateQueueResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* CreateQueue(
+      ::grpc::CallbackServerContext* /*context*/, const ::sentiric::dialplan::v1::CreateQueueRequest* /*request*/, ::sentiric::dialplan::v1::CreateQueueResponse* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithCallbackMethod_GetQueue : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_GetQueue() {
+      ::grpc::Service::MarkMethodCallback(12,
+          new ::grpc::internal::CallbackUnaryHandler< ::sentiric::dialplan::v1::GetQueueRequest, ::sentiric::dialplan::v1::GetQueueResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::sentiric::dialplan::v1::GetQueueRequest* request, ::sentiric::dialplan::v1::GetQueueResponse* response) { return this->GetQueue(context, request, response); }));}
+    void SetMessageAllocatorFor_GetQueue(
+        ::grpc::MessageAllocator< ::sentiric::dialplan::v1::GetQueueRequest, ::sentiric::dialplan::v1::GetQueueResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(12);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::sentiric::dialplan::v1::GetQueueRequest, ::sentiric::dialplan::v1::GetQueueResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_GetQueue() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetQueue(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::GetQueueRequest* /*request*/, ::sentiric::dialplan::v1::GetQueueResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* GetQueue(
+      ::grpc::CallbackServerContext* /*context*/, const ::sentiric::dialplan::v1::GetQueueRequest* /*request*/, ::sentiric::dialplan::v1::GetQueueResponse* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithCallbackMethod_UpdateQueue : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_UpdateQueue() {
+      ::grpc::Service::MarkMethodCallback(13,
+          new ::grpc::internal::CallbackUnaryHandler< ::sentiric::dialplan::v1::UpdateQueueRequest, ::sentiric::dialplan::v1::UpdateQueueResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::sentiric::dialplan::v1::UpdateQueueRequest* request, ::sentiric::dialplan::v1::UpdateQueueResponse* response) { return this->UpdateQueue(context, request, response); }));}
+    void SetMessageAllocatorFor_UpdateQueue(
+        ::grpc::MessageAllocator< ::sentiric::dialplan::v1::UpdateQueueRequest, ::sentiric::dialplan::v1::UpdateQueueResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(13);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::sentiric::dialplan::v1::UpdateQueueRequest, ::sentiric::dialplan::v1::UpdateQueueResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_UpdateQueue() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status UpdateQueue(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::UpdateQueueRequest* /*request*/, ::sentiric::dialplan::v1::UpdateQueueResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* UpdateQueue(
+      ::grpc::CallbackServerContext* /*context*/, const ::sentiric::dialplan::v1::UpdateQueueRequest* /*request*/, ::sentiric::dialplan::v1::UpdateQueueResponse* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithCallbackMethod_DeleteQueue : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_DeleteQueue() {
+      ::grpc::Service::MarkMethodCallback(14,
+          new ::grpc::internal::CallbackUnaryHandler< ::sentiric::dialplan::v1::DeleteQueueRequest, ::sentiric::dialplan::v1::DeleteQueueResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::sentiric::dialplan::v1::DeleteQueueRequest* request, ::sentiric::dialplan::v1::DeleteQueueResponse* response) { return this->DeleteQueue(context, request, response); }));}
+    void SetMessageAllocatorFor_DeleteQueue(
+        ::grpc::MessageAllocator< ::sentiric::dialplan::v1::DeleteQueueRequest, ::sentiric::dialplan::v1::DeleteQueueResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(14);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::sentiric::dialplan::v1::DeleteQueueRequest, ::sentiric::dialplan::v1::DeleteQueueResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_DeleteQueue() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status DeleteQueue(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::DeleteQueueRequest* /*request*/, ::sentiric::dialplan::v1::DeleteQueueResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* DeleteQueue(
+      ::grpc::CallbackServerContext* /*context*/, const ::sentiric::dialplan::v1::DeleteQueueRequest* /*request*/, ::sentiric::dialplan::v1::DeleteQueueResponse* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithCallbackMethod_ListQueues : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_ListQueues() {
+      ::grpc::Service::MarkMethodCallback(15,
+          new ::grpc::internal::CallbackUnaryHandler< ::sentiric::dialplan::v1::ListQueuesRequest, ::sentiric::dialplan::v1::ListQueuesResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::sentiric::dialplan::v1::ListQueuesRequest* request, ::sentiric::dialplan::v1::ListQueuesResponse* response) { return this->ListQueues(context, request, response); }));}
+    void SetMessageAllocatorFor_ListQueues(
+        ::grpc::MessageAllocator< ::sentiric::dialplan::v1::ListQueuesRequest, ::sentiric::dialplan::v1::ListQueuesResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(15);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::sentiric::dialplan::v1::ListQueuesRequest, ::sentiric::dialplan::v1::ListQueuesResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_ListQueues() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ListQueues(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::ListQueuesRequest* /*request*/, ::sentiric::dialplan::v1::ListQueuesResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* ListQueues(
+      ::grpc::CallbackServerContext* /*context*/, const ::sentiric::dialplan::v1::ListQueuesRequest* /*request*/, ::sentiric::dialplan::v1::ListQueuesResponse* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithCallbackMethod_CreateSchedule : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_CreateSchedule() {
+      ::grpc::Service::MarkMethodCallback(16,
+          new ::grpc::internal::CallbackUnaryHandler< ::sentiric::dialplan::v1::CreateScheduleRequest, ::sentiric::dialplan::v1::CreateScheduleResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::sentiric::dialplan::v1::CreateScheduleRequest* request, ::sentiric::dialplan::v1::CreateScheduleResponse* response) { return this->CreateSchedule(context, request, response); }));}
+    void SetMessageAllocatorFor_CreateSchedule(
+        ::grpc::MessageAllocator< ::sentiric::dialplan::v1::CreateScheduleRequest, ::sentiric::dialplan::v1::CreateScheduleResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(16);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::sentiric::dialplan::v1::CreateScheduleRequest, ::sentiric::dialplan::v1::CreateScheduleResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_CreateSchedule() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status CreateSchedule(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::CreateScheduleRequest* /*request*/, ::sentiric::dialplan::v1::CreateScheduleResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* CreateSchedule(
+      ::grpc::CallbackServerContext* /*context*/, const ::sentiric::dialplan::v1::CreateScheduleRequest* /*request*/, ::sentiric::dialplan::v1::CreateScheduleResponse* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithCallbackMethod_GetSchedule : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_GetSchedule() {
+      ::grpc::Service::MarkMethodCallback(17,
+          new ::grpc::internal::CallbackUnaryHandler< ::sentiric::dialplan::v1::GetScheduleRequest, ::sentiric::dialplan::v1::GetScheduleResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::sentiric::dialplan::v1::GetScheduleRequest* request, ::sentiric::dialplan::v1::GetScheduleResponse* response) { return this->GetSchedule(context, request, response); }));}
+    void SetMessageAllocatorFor_GetSchedule(
+        ::grpc::MessageAllocator< ::sentiric::dialplan::v1::GetScheduleRequest, ::sentiric::dialplan::v1::GetScheduleResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(17);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::sentiric::dialplan::v1::GetScheduleRequest, ::sentiric::dialplan::v1::GetScheduleResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_GetSchedule() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetSchedule(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::GetScheduleRequest* /*request*/, ::sentiric::dialplan::v1::GetScheduleResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* GetSchedule(
+      ::grpc::CallbackServerContext* /*context*/, const ::sentiric::dialplan::v1::GetScheduleRequest* /*request*/, ::sentiric::dialplan::v1::GetScheduleResponse* /*response*/)  { return nullptr; }
+  };
+  typedef WithCallbackMethod_ResolveDialplan<WithCallbackMethod_CreateInboundRoute<WithCallbackMethod_GetInboundRoute<WithCallbackMethod_UpdateInboundRoute<WithCallbackMethod_DeleteInboundRoute<WithCallbackMethod_ListInboundRoutes<WithCallbackMethod_CreateDialplan<WithCallbackMethod_GetDialplan<WithCallbackMethod_UpdateDialplan<WithCallbackMethod_DeleteDialplan<WithCallbackMethod_ListDialplans<WithCallbackMethod_CreateQueue<WithCallbackMethod_GetQueue<WithCallbackMethod_UpdateQueue<WithCallbackMethod_DeleteQueue<WithCallbackMethod_ListQueues<WithCallbackMethod_CreateSchedule<WithCallbackMethod_GetSchedule<Service > > > > > > > > > > > > > > > > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_ResolveDialplan : public BaseClass {
@@ -1051,6 +1551,125 @@ class DialplanService final {
     }
     // disable synchronous version of this method
     ::grpc::Status ListDialplans(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::ListDialplansRequest* /*request*/, ::sentiric::dialplan::v1::ListDialplansResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_CreateQueue : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_CreateQueue() {
+      ::grpc::Service::MarkMethodGeneric(11);
+    }
+    ~WithGenericMethod_CreateQueue() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status CreateQueue(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::CreateQueueRequest* /*request*/, ::sentiric::dialplan::v1::CreateQueueResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_GetQueue : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_GetQueue() {
+      ::grpc::Service::MarkMethodGeneric(12);
+    }
+    ~WithGenericMethod_GetQueue() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetQueue(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::GetQueueRequest* /*request*/, ::sentiric::dialplan::v1::GetQueueResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_UpdateQueue : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_UpdateQueue() {
+      ::grpc::Service::MarkMethodGeneric(13);
+    }
+    ~WithGenericMethod_UpdateQueue() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status UpdateQueue(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::UpdateQueueRequest* /*request*/, ::sentiric::dialplan::v1::UpdateQueueResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_DeleteQueue : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_DeleteQueue() {
+      ::grpc::Service::MarkMethodGeneric(14);
+    }
+    ~WithGenericMethod_DeleteQueue() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status DeleteQueue(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::DeleteQueueRequest* /*request*/, ::sentiric::dialplan::v1::DeleteQueueResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_ListQueues : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_ListQueues() {
+      ::grpc::Service::MarkMethodGeneric(15);
+    }
+    ~WithGenericMethod_ListQueues() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ListQueues(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::ListQueuesRequest* /*request*/, ::sentiric::dialplan::v1::ListQueuesResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_CreateSchedule : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_CreateSchedule() {
+      ::grpc::Service::MarkMethodGeneric(16);
+    }
+    ~WithGenericMethod_CreateSchedule() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status CreateSchedule(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::CreateScheduleRequest* /*request*/, ::sentiric::dialplan::v1::CreateScheduleResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_GetSchedule : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_GetSchedule() {
+      ::grpc::Service::MarkMethodGeneric(17);
+    }
+    ~WithGenericMethod_GetSchedule() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetSchedule(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::GetScheduleRequest* /*request*/, ::sentiric::dialplan::v1::GetScheduleResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1273,6 +1892,146 @@ class DialplanService final {
     }
     void RequestListDialplans(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_CreateQueue : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_CreateQueue() {
+      ::grpc::Service::MarkMethodRaw(11);
+    }
+    ~WithRawMethod_CreateQueue() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status CreateQueue(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::CreateQueueRequest* /*request*/, ::sentiric::dialplan::v1::CreateQueueResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestCreateQueue(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_GetQueue : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_GetQueue() {
+      ::grpc::Service::MarkMethodRaw(12);
+    }
+    ~WithRawMethod_GetQueue() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetQueue(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::GetQueueRequest* /*request*/, ::sentiric::dialplan::v1::GetQueueResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetQueue(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(12, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_UpdateQueue : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_UpdateQueue() {
+      ::grpc::Service::MarkMethodRaw(13);
+    }
+    ~WithRawMethod_UpdateQueue() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status UpdateQueue(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::UpdateQueueRequest* /*request*/, ::sentiric::dialplan::v1::UpdateQueueResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestUpdateQueue(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(13, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_DeleteQueue : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_DeleteQueue() {
+      ::grpc::Service::MarkMethodRaw(14);
+    }
+    ~WithRawMethod_DeleteQueue() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status DeleteQueue(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::DeleteQueueRequest* /*request*/, ::sentiric::dialplan::v1::DeleteQueueResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestDeleteQueue(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(14, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_ListQueues : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_ListQueues() {
+      ::grpc::Service::MarkMethodRaw(15);
+    }
+    ~WithRawMethod_ListQueues() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ListQueues(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::ListQueuesRequest* /*request*/, ::sentiric::dialplan::v1::ListQueuesResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestListQueues(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(15, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_CreateSchedule : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_CreateSchedule() {
+      ::grpc::Service::MarkMethodRaw(16);
+    }
+    ~WithRawMethod_CreateSchedule() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status CreateSchedule(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::CreateScheduleRequest* /*request*/, ::sentiric::dialplan::v1::CreateScheduleResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestCreateSchedule(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(16, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_GetSchedule : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_GetSchedule() {
+      ::grpc::Service::MarkMethodRaw(17);
+    }
+    ~WithRawMethod_GetSchedule() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetSchedule(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::GetScheduleRequest* /*request*/, ::sentiric::dialplan::v1::GetScheduleResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetSchedule(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(17, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1515,6 +2274,160 @@ class DialplanService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerUnaryReactor* ListDialplans(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_CreateQueue : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_CreateQueue() {
+      ::grpc::Service::MarkMethodRawCallback(11,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->CreateQueue(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_CreateQueue() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status CreateQueue(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::CreateQueueRequest* /*request*/, ::sentiric::dialplan::v1::CreateQueueResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* CreateQueue(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_GetQueue : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_GetQueue() {
+      ::grpc::Service::MarkMethodRawCallback(12,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetQueue(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_GetQueue() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetQueue(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::GetQueueRequest* /*request*/, ::sentiric::dialplan::v1::GetQueueResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* GetQueue(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_UpdateQueue : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_UpdateQueue() {
+      ::grpc::Service::MarkMethodRawCallback(13,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->UpdateQueue(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_UpdateQueue() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status UpdateQueue(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::UpdateQueueRequest* /*request*/, ::sentiric::dialplan::v1::UpdateQueueResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* UpdateQueue(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_DeleteQueue : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_DeleteQueue() {
+      ::grpc::Service::MarkMethodRawCallback(14,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DeleteQueue(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_DeleteQueue() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status DeleteQueue(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::DeleteQueueRequest* /*request*/, ::sentiric::dialplan::v1::DeleteQueueResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* DeleteQueue(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_ListQueues : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_ListQueues() {
+      ::grpc::Service::MarkMethodRawCallback(15,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ListQueues(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_ListQueues() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ListQueues(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::ListQueuesRequest* /*request*/, ::sentiric::dialplan::v1::ListQueuesResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* ListQueues(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_CreateSchedule : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_CreateSchedule() {
+      ::grpc::Service::MarkMethodRawCallback(16,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->CreateSchedule(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_CreateSchedule() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status CreateSchedule(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::CreateScheduleRequest* /*request*/, ::sentiric::dialplan::v1::CreateScheduleResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* CreateSchedule(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_GetSchedule : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_GetSchedule() {
+      ::grpc::Service::MarkMethodRawCallback(17,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetSchedule(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_GetSchedule() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetSchedule(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::GetScheduleRequest* /*request*/, ::sentiric::dialplan::v1::GetScheduleResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* GetSchedule(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
@@ -1814,9 +2727,198 @@ class DialplanService final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedListDialplans(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::sentiric::dialplan::v1::ListDialplansRequest,::sentiric::dialplan::v1::ListDialplansResponse>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_ResolveDialplan<WithStreamedUnaryMethod_CreateInboundRoute<WithStreamedUnaryMethod_GetInboundRoute<WithStreamedUnaryMethod_UpdateInboundRoute<WithStreamedUnaryMethod_DeleteInboundRoute<WithStreamedUnaryMethod_ListInboundRoutes<WithStreamedUnaryMethod_CreateDialplan<WithStreamedUnaryMethod_GetDialplan<WithStreamedUnaryMethod_UpdateDialplan<WithStreamedUnaryMethod_DeleteDialplan<WithStreamedUnaryMethod_ListDialplans<Service > > > > > > > > > > > StreamedUnaryService;
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_CreateQueue : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_CreateQueue() {
+      ::grpc::Service::MarkMethodStreamed(11,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::sentiric::dialplan::v1::CreateQueueRequest, ::sentiric::dialplan::v1::CreateQueueResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::sentiric::dialplan::v1::CreateQueueRequest, ::sentiric::dialplan::v1::CreateQueueResponse>* streamer) {
+                       return this->StreamedCreateQueue(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_CreateQueue() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status CreateQueue(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::CreateQueueRequest* /*request*/, ::sentiric::dialplan::v1::CreateQueueResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedCreateQueue(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::sentiric::dialplan::v1::CreateQueueRequest,::sentiric::dialplan::v1::CreateQueueResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_GetQueue : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_GetQueue() {
+      ::grpc::Service::MarkMethodStreamed(12,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::sentiric::dialplan::v1::GetQueueRequest, ::sentiric::dialplan::v1::GetQueueResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::sentiric::dialplan::v1::GetQueueRequest, ::sentiric::dialplan::v1::GetQueueResponse>* streamer) {
+                       return this->StreamedGetQueue(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_GetQueue() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status GetQueue(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::GetQueueRequest* /*request*/, ::sentiric::dialplan::v1::GetQueueResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedGetQueue(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::sentiric::dialplan::v1::GetQueueRequest,::sentiric::dialplan::v1::GetQueueResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_UpdateQueue : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_UpdateQueue() {
+      ::grpc::Service::MarkMethodStreamed(13,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::sentiric::dialplan::v1::UpdateQueueRequest, ::sentiric::dialplan::v1::UpdateQueueResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::sentiric::dialplan::v1::UpdateQueueRequest, ::sentiric::dialplan::v1::UpdateQueueResponse>* streamer) {
+                       return this->StreamedUpdateQueue(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_UpdateQueue() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status UpdateQueue(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::UpdateQueueRequest* /*request*/, ::sentiric::dialplan::v1::UpdateQueueResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedUpdateQueue(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::sentiric::dialplan::v1::UpdateQueueRequest,::sentiric::dialplan::v1::UpdateQueueResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_DeleteQueue : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_DeleteQueue() {
+      ::grpc::Service::MarkMethodStreamed(14,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::sentiric::dialplan::v1::DeleteQueueRequest, ::sentiric::dialplan::v1::DeleteQueueResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::sentiric::dialplan::v1::DeleteQueueRequest, ::sentiric::dialplan::v1::DeleteQueueResponse>* streamer) {
+                       return this->StreamedDeleteQueue(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_DeleteQueue() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status DeleteQueue(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::DeleteQueueRequest* /*request*/, ::sentiric::dialplan::v1::DeleteQueueResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedDeleteQueue(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::sentiric::dialplan::v1::DeleteQueueRequest,::sentiric::dialplan::v1::DeleteQueueResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_ListQueues : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_ListQueues() {
+      ::grpc::Service::MarkMethodStreamed(15,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::sentiric::dialplan::v1::ListQueuesRequest, ::sentiric::dialplan::v1::ListQueuesResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::sentiric::dialplan::v1::ListQueuesRequest, ::sentiric::dialplan::v1::ListQueuesResponse>* streamer) {
+                       return this->StreamedListQueues(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_ListQueues() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status ListQueues(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::ListQueuesRequest* /*request*/, ::sentiric::dialplan::v1::ListQueuesResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedListQueues(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::sentiric::dialplan::v1::ListQueuesRequest,::sentiric::dialplan::v1::ListQueuesResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_CreateSchedule : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_CreateSchedule() {
+      ::grpc::Service::MarkMethodStreamed(16,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::sentiric::dialplan::v1::CreateScheduleRequest, ::sentiric::dialplan::v1::CreateScheduleResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::sentiric::dialplan::v1::CreateScheduleRequest, ::sentiric::dialplan::v1::CreateScheduleResponse>* streamer) {
+                       return this->StreamedCreateSchedule(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_CreateSchedule() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status CreateSchedule(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::CreateScheduleRequest* /*request*/, ::sentiric::dialplan::v1::CreateScheduleResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedCreateSchedule(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::sentiric::dialplan::v1::CreateScheduleRequest,::sentiric::dialplan::v1::CreateScheduleResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_GetSchedule : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_GetSchedule() {
+      ::grpc::Service::MarkMethodStreamed(17,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::sentiric::dialplan::v1::GetScheduleRequest, ::sentiric::dialplan::v1::GetScheduleResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::sentiric::dialplan::v1::GetScheduleRequest, ::sentiric::dialplan::v1::GetScheduleResponse>* streamer) {
+                       return this->StreamedGetSchedule(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_GetSchedule() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status GetSchedule(::grpc::ServerContext* /*context*/, const ::sentiric::dialplan::v1::GetScheduleRequest* /*request*/, ::sentiric::dialplan::v1::GetScheduleResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedGetSchedule(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::sentiric::dialplan::v1::GetScheduleRequest,::sentiric::dialplan::v1::GetScheduleResponse>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_ResolveDialplan<WithStreamedUnaryMethod_CreateInboundRoute<WithStreamedUnaryMethod_GetInboundRoute<WithStreamedUnaryMethod_UpdateInboundRoute<WithStreamedUnaryMethod_DeleteInboundRoute<WithStreamedUnaryMethod_ListInboundRoutes<WithStreamedUnaryMethod_CreateDialplan<WithStreamedUnaryMethod_GetDialplan<WithStreamedUnaryMethod_UpdateDialplan<WithStreamedUnaryMethod_DeleteDialplan<WithStreamedUnaryMethod_ListDialplans<WithStreamedUnaryMethod_CreateQueue<WithStreamedUnaryMethod_GetQueue<WithStreamedUnaryMethod_UpdateQueue<WithStreamedUnaryMethod_DeleteQueue<WithStreamedUnaryMethod_ListQueues<WithStreamedUnaryMethod_CreateSchedule<WithStreamedUnaryMethod_GetSchedule<Service > > > > > > > > > > > > > > > > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_ResolveDialplan<WithStreamedUnaryMethod_CreateInboundRoute<WithStreamedUnaryMethod_GetInboundRoute<WithStreamedUnaryMethod_UpdateInboundRoute<WithStreamedUnaryMethod_DeleteInboundRoute<WithStreamedUnaryMethod_ListInboundRoutes<WithStreamedUnaryMethod_CreateDialplan<WithStreamedUnaryMethod_GetDialplan<WithStreamedUnaryMethod_UpdateDialplan<WithStreamedUnaryMethod_DeleteDialplan<WithStreamedUnaryMethod_ListDialplans<Service > > > > > > > > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_ResolveDialplan<WithStreamedUnaryMethod_CreateInboundRoute<WithStreamedUnaryMethod_GetInboundRoute<WithStreamedUnaryMethod_UpdateInboundRoute<WithStreamedUnaryMethod_DeleteInboundRoute<WithStreamedUnaryMethod_ListInboundRoutes<WithStreamedUnaryMethod_CreateDialplan<WithStreamedUnaryMethod_GetDialplan<WithStreamedUnaryMethod_UpdateDialplan<WithStreamedUnaryMethod_DeleteDialplan<WithStreamedUnaryMethod_ListDialplans<WithStreamedUnaryMethod_CreateQueue<WithStreamedUnaryMethod_GetQueue<WithStreamedUnaryMethod_UpdateQueue<WithStreamedUnaryMethod_DeleteQueue<WithStreamedUnaryMethod_ListQueues<WithStreamedUnaryMethod_CreateSchedule<WithStreamedUnaryMethod_GetSchedule<Service > > > > > > > > > > > > > > > > > > StreamedService;
 };
 
 }  // namespace v1

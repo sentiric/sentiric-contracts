@@ -62,11 +62,29 @@ service UserService {
   rpc CreateSipCredential(CreateSipCredentialRequest) returns (CreateSipCredentialResponse);
   // Bir SIP kimliğini siler
   rpc DeleteSipCredential(DeleteSipCredentialRequest) returns (DeleteSipCredentialResponse);
+ 
+  rpc GetAgentProfile(GetAgentProfileRequest) returns (GetAgentProfileResponse);
 }
 
 // =================================================================
 //                         RPC MESSAGES
 // =================================================================
+
+// Mesajlar:
+message AgentProfile {
+    string user_id = 1;
+    string display_name = 2;
+    int32 max_concurrent_calls = 3;
+    string status = 4; // ONLINE, BUSY
+}
+
+message GetAgentProfileRequest {
+    string user_id = 1;
+}
+
+message GetAgentProfileResponse {
+    AgentProfile profile = 1;
+}
 
 // --- GetUser ---
 message GetUserRequest {

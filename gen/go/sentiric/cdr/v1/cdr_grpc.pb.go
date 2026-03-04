@@ -19,7 +19,9 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	CdrService_RecordCallEvent_FullMethodName = "/sentiric.cdr.v1.CdrService/RecordCallEvent"
+	CdrService_RecordCallEvent_FullMethodName  = "/sentiric.cdr.v1.CdrService/RecordCallEvent"
+	CdrService_CreateCallRecord_FullMethodName = "/sentiric.cdr.v1.CdrService/CreateCallRecord"
+	CdrService_UpdateCallRecord_FullMethodName = "/sentiric.cdr.v1.CdrService/UpdateCallRecord"
 )
 
 // CdrServiceClient is the client API for CdrService service.
@@ -27,6 +29,10 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type CdrServiceClient interface {
 	RecordCallEvent(ctx context.Context, in *RecordCallEventRequest, opts ...grpc.CallOption) (*RecordCallEventResponse, error)
+	// [YENİ] Çağrı Başlangıcını Kaydet (Create)
+	CreateCallRecord(ctx context.Context, in *CreateCallRecordRequest, opts ...grpc.CallOption) (*CreateCallRecordResponse, error)
+	// [YENİ] Çağrı Bitişini Güncelle (Update)
+	UpdateCallRecord(ctx context.Context, in *UpdateCallRecordRequest, opts ...grpc.CallOption) (*UpdateCallRecordResponse, error)
 }
 
 type cdrServiceClient struct {
@@ -47,11 +53,35 @@ func (c *cdrServiceClient) RecordCallEvent(ctx context.Context, in *RecordCallEv
 	return out, nil
 }
 
+func (c *cdrServiceClient) CreateCallRecord(ctx context.Context, in *CreateCallRecordRequest, opts ...grpc.CallOption) (*CreateCallRecordResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateCallRecordResponse)
+	err := c.cc.Invoke(ctx, CdrService_CreateCallRecord_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *cdrServiceClient) UpdateCallRecord(ctx context.Context, in *UpdateCallRecordRequest, opts ...grpc.CallOption) (*UpdateCallRecordResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateCallRecordResponse)
+	err := c.cc.Invoke(ctx, CdrService_UpdateCallRecord_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // CdrServiceServer is the server API for CdrService service.
 // All implementations should embed UnimplementedCdrServiceServer
 // for forward compatibility.
 type CdrServiceServer interface {
 	RecordCallEvent(context.Context, *RecordCallEventRequest) (*RecordCallEventResponse, error)
+	// [YENİ] Çağrı Başlangıcını Kaydet (Create)
+	CreateCallRecord(context.Context, *CreateCallRecordRequest) (*CreateCallRecordResponse, error)
+	// [YENİ] Çağrı Bitişini Güncelle (Update)
+	UpdateCallRecord(context.Context, *UpdateCallRecordRequest) (*UpdateCallRecordResponse, error)
 }
 
 // UnimplementedCdrServiceServer should be embedded to have
@@ -63,6 +93,12 @@ type UnimplementedCdrServiceServer struct{}
 
 func (UnimplementedCdrServiceServer) RecordCallEvent(context.Context, *RecordCallEventRequest) (*RecordCallEventResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method RecordCallEvent not implemented")
+}
+func (UnimplementedCdrServiceServer) CreateCallRecord(context.Context, *CreateCallRecordRequest) (*CreateCallRecordResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method CreateCallRecord not implemented")
+}
+func (UnimplementedCdrServiceServer) UpdateCallRecord(context.Context, *UpdateCallRecordRequest) (*UpdateCallRecordResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method UpdateCallRecord not implemented")
 }
 func (UnimplementedCdrServiceServer) testEmbeddedByValue() {}
 
@@ -102,6 +138,42 @@ func _CdrService_RecordCallEvent_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _CdrService_CreateCallRecord_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateCallRecordRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CdrServiceServer).CreateCallRecord(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CdrService_CreateCallRecord_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CdrServiceServer).CreateCallRecord(ctx, req.(*CreateCallRecordRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CdrService_UpdateCallRecord_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateCallRecordRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CdrServiceServer).UpdateCallRecord(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CdrService_UpdateCallRecord_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CdrServiceServer).UpdateCallRecord(ctx, req.(*UpdateCallRecordRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // CdrService_ServiceDesc is the grpc.ServiceDesc for CdrService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -112,6 +184,14 @@ var CdrService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RecordCallEvent",
 			Handler:    _CdrService_RecordCallEvent_Handler,
+		},
+		{
+			MethodName: "CreateCallRecord",
+			Handler:    _CdrService_CreateCallRecord_Handler,
+		},
+		{
+			MethodName: "UpdateCallRecord",
+			Handler:    _CdrService_UpdateCallRecord_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

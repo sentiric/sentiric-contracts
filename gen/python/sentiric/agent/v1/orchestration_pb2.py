@@ -23,9 +23,10 @@ _sym_db = _symbol_database.Default()
 
 
 from sentiric.data.v1 import context_pb2 as sentiric_dot_data_dot_v1_dot_context__pb2
+from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n%sentiric/agent/v1/orchestration.proto\x12\x11sentiric.agent.v1\x1a\x1esentiric/data/v1/context.proto\"\x7f\n\x18ProcessManualDialRequest\x12-\n\x12\x64\x65stination_number\x18\x01 \x01(\tR\x11\x64\x65stinationNumber\x12\x17\n\x07user_id\x18\x02 \x01(\tR\x06userId\x12\x1b\n\ttenant_id\x18\x03 \x01(\tR\x08tenantId\"u\n\x19ProcessManualDialResponse\x12\x1a\n\x08\x61\x63\x63\x65pted\x18\x01 \x01(\x08R\x08\x61\x63\x63\x65pted\x12\x17\n\x07\x63\x61ll_id\x18\x02 \x01(\tR\x06\x63\x61llId\x12#\n\rerror_message\x18\x03 \x01(\tR\x0c\x65rrorMessage\"x\n\x17ProcessCallStartRequest\x12\x17\n\x07\x63\x61ll_id\x18\x01 \x01(\tR\x06\x63\x61llId\x12\x1f\n\x0b\x64ialplan_id\x18\x02 \x01(\tR\ndialplanId\x12#\n\rcaller_number\x18\x03 \x01(\tR\x0c\x63\x61llerNumber\"8\n\x18ProcessCallStartResponse\x12\x1c\n\tinitiated\x18\x01 \x01(\x08R\tinitiated\"\x87\x01\n\x16ProcessSagaStepRequest\x12\x17\n\x07saga_id\x18\x01 \x01(\tR\x06sagaId\x12\x1b\n\tstep_name\x18\x02 \x01(\tR\x08stepName\x12\x37\n\x07\x63ontext\x18\x03 \x01(\x0b\x32\x1d.sentiric.data.v1.CallContextR\x07\x63ontext\"7\n\x17ProcessSagaStepResponse\x12\x1c\n\tcompleted\x18\x01 \x01(\x08R\tcompleted2\xe2\x02\n\x19\x41gentOrchestrationService\x12k\n\x10ProcessCallStart\x12*.sentiric.agent.v1.ProcessCallStartRequest\x1a+.sentiric.agent.v1.ProcessCallStartResponse\x12n\n\x11ProcessManualDial\x12+.sentiric.agent.v1.ProcessManualDialRequest\x1a,.sentiric.agent.v1.ProcessManualDialResponse\x12h\n\x0fProcessSagaStep\x12).sentiric.agent.v1.ProcessSagaStepRequest\x1a*.sentiric.agent.v1.ProcessSagaStepResponseBIZGgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/agent/v1;agentv1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n%sentiric/agent/v1/orchestration.proto\x12\x11sentiric.agent.v1\x1a\x1esentiric/data/v1/context.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xe7\x01\n\x0fTranscriptEntry\x12\x1f\n\x0bsender_type\x18\x01 \x01(\tR\nsenderType\x12!\n\x0cmessage_text\x18\x02 \x01(\tR\x0bmessageText\x12\'\n\x0fsentiment_score\x18\x03 \x01(\x02R\x0esentimentScore\x12\x39\n\ncreated_at\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\tcreatedAt\x12,\n\x12media_payload_json\x18\x05 \x01(\tR\x10mediaPayloadJson\";\n GetConversationTranscriptRequest\x12\x17\n\x07\x63\x61ll_id\x18\x01 \x01(\tR\x06\x63\x61llId\"\xa8\x01\n!GetConversationTranscriptResponse\x12<\n\x07\x65ntries\x18\x01 \x03(\x0b\x32\".sentiric.agent.v1.TranscriptEntryR\x07\x65ntries\x12\x18\n\x07summary\x18\x02 \x01(\tR\x07summary\x12+\n\x11overall_sentiment\x18\x03 \x01(\x02R\x10overallSentiment\"\x7f\n\x18ProcessManualDialRequest\x12-\n\x12\x64\x65stination_number\x18\x01 \x01(\tR\x11\x64\x65stinationNumber\x12\x17\n\x07user_id\x18\x02 \x01(\tR\x06userId\x12\x1b\n\ttenant_id\x18\x03 \x01(\tR\x08tenantId\"u\n\x19ProcessManualDialResponse\x12\x1a\n\x08\x61\x63\x63\x65pted\x18\x01 \x01(\x08R\x08\x61\x63\x63\x65pted\x12\x17\n\x07\x63\x61ll_id\x18\x02 \x01(\tR\x06\x63\x61llId\x12#\n\rerror_message\x18\x03 \x01(\tR\x0c\x65rrorMessage\"x\n\x17ProcessCallStartRequest\x12\x17\n\x07\x63\x61ll_id\x18\x01 \x01(\tR\x06\x63\x61llId\x12\x1f\n\x0b\x64ialplan_id\x18\x02 \x01(\tR\ndialplanId\x12#\n\rcaller_number\x18\x03 \x01(\tR\x0c\x63\x61llerNumber\"8\n\x18ProcessCallStartResponse\x12\x1c\n\tinitiated\x18\x01 \x01(\x08R\tinitiated\"\x87\x01\n\x16ProcessSagaStepRequest\x12\x17\n\x07saga_id\x18\x01 \x01(\tR\x06sagaId\x12\x1b\n\tstep_name\x18\x02 \x01(\tR\x08stepName\x12\x37\n\x07\x63ontext\x18\x03 \x01(\x0b\x32\x1d.sentiric.data.v1.CallContextR\x07\x63ontext\"7\n\x17ProcessSagaStepResponse\x12\x1c\n\tcompleted\x18\x01 \x01(\x08R\tcompleted2\xeb\x03\n\x19\x41gentOrchestrationService\x12k\n\x10ProcessCallStart\x12*.sentiric.agent.v1.ProcessCallStartRequest\x1a+.sentiric.agent.v1.ProcessCallStartResponse\x12n\n\x11ProcessManualDial\x12+.sentiric.agent.v1.ProcessManualDialRequest\x1a,.sentiric.agent.v1.ProcessManualDialResponse\x12h\n\x0fProcessSagaStep\x12).sentiric.agent.v1.ProcessSagaStepRequest\x1a*.sentiric.agent.v1.ProcessSagaStepResponse\x12\x86\x01\n\x19GetConversationTranscript\x12\x33.sentiric.agent.v1.GetConversationTranscriptRequest\x1a\x34.sentiric.agent.v1.GetConversationTranscriptResponseBIZGgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/agent/v1;agentv1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -33,18 +34,24 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'sentiric.agent.v1.orchestra
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
   _globals['DESCRIPTOR']._serialized_options = b'ZGgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/agent/v1;agentv1'
-  _globals['_PROCESSMANUALDIALREQUEST']._serialized_start=92
-  _globals['_PROCESSMANUALDIALREQUEST']._serialized_end=219
-  _globals['_PROCESSMANUALDIALRESPONSE']._serialized_start=221
-  _globals['_PROCESSMANUALDIALRESPONSE']._serialized_end=338
-  _globals['_PROCESSCALLSTARTREQUEST']._serialized_start=340
-  _globals['_PROCESSCALLSTARTREQUEST']._serialized_end=460
-  _globals['_PROCESSCALLSTARTRESPONSE']._serialized_start=462
-  _globals['_PROCESSCALLSTARTRESPONSE']._serialized_end=518
-  _globals['_PROCESSSAGASTEPREQUEST']._serialized_start=521
-  _globals['_PROCESSSAGASTEPREQUEST']._serialized_end=656
-  _globals['_PROCESSSAGASTEPRESPONSE']._serialized_start=658
-  _globals['_PROCESSSAGASTEPRESPONSE']._serialized_end=713
-  _globals['_AGENTORCHESTRATIONSERVICE']._serialized_start=716
-  _globals['_AGENTORCHESTRATIONSERVICE']._serialized_end=1070
+  _globals['_TRANSCRIPTENTRY']._serialized_start=126
+  _globals['_TRANSCRIPTENTRY']._serialized_end=357
+  _globals['_GETCONVERSATIONTRANSCRIPTREQUEST']._serialized_start=359
+  _globals['_GETCONVERSATIONTRANSCRIPTREQUEST']._serialized_end=418
+  _globals['_GETCONVERSATIONTRANSCRIPTRESPONSE']._serialized_start=421
+  _globals['_GETCONVERSATIONTRANSCRIPTRESPONSE']._serialized_end=589
+  _globals['_PROCESSMANUALDIALREQUEST']._serialized_start=591
+  _globals['_PROCESSMANUALDIALREQUEST']._serialized_end=718
+  _globals['_PROCESSMANUALDIALRESPONSE']._serialized_start=720
+  _globals['_PROCESSMANUALDIALRESPONSE']._serialized_end=837
+  _globals['_PROCESSCALLSTARTREQUEST']._serialized_start=839
+  _globals['_PROCESSCALLSTARTREQUEST']._serialized_end=959
+  _globals['_PROCESSCALLSTARTRESPONSE']._serialized_start=961
+  _globals['_PROCESSCALLSTARTRESPONSE']._serialized_end=1017
+  _globals['_PROCESSSAGASTEPREQUEST']._serialized_start=1020
+  _globals['_PROCESSSAGASTEPREQUEST']._serialized_end=1155
+  _globals['_PROCESSSAGASTEPRESPONSE']._serialized_start=1157
+  _globals['_PROCESSSAGASTEPRESPONSE']._serialized_end=1212
+  _globals['_AGENTORCHESTRATIONSERVICE']._serialized_start=1215
+  _globals['_AGENTORCHESTRATIONSERVICE']._serialized_end=1706
 # @@protoc_insertion_point(module_scope)

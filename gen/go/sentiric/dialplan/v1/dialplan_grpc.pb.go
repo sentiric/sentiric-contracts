@@ -30,26 +30,41 @@ const (
 	DialplanService_UpdateDialplan_FullMethodName     = "/sentiric.dialplan.v1.DialplanService/UpdateDialplan"
 	DialplanService_DeleteDialplan_FullMethodName     = "/sentiric.dialplan.v1.DialplanService/DeleteDialplan"
 	DialplanService_ListDialplans_FullMethodName      = "/sentiric.dialplan.v1.DialplanService/ListDialplans"
+	DialplanService_CreateQueue_FullMethodName        = "/sentiric.dialplan.v1.DialplanService/CreateQueue"
+	DialplanService_GetQueue_FullMethodName           = "/sentiric.dialplan.v1.DialplanService/GetQueue"
+	DialplanService_UpdateQueue_FullMethodName        = "/sentiric.dialplan.v1.DialplanService/UpdateQueue"
+	DialplanService_DeleteQueue_FullMethodName        = "/sentiric.dialplan.v1.DialplanService/DeleteQueue"
+	DialplanService_ListQueues_FullMethodName         = "/sentiric.dialplan.v1.DialplanService/ListQueues"
+	DialplanService_CreateSchedule_FullMethodName     = "/sentiric.dialplan.v1.DialplanService/CreateSchedule"
+	DialplanService_GetSchedule_FullMethodName        = "/sentiric.dialplan.v1.DialplanService/GetSchedule"
 )
 
 // DialplanServiceClient is the client API for DialplanService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type DialplanServiceClient interface {
-	// Gelen çağrının nasıl yönlendirileceğine karar veren ana metot.
 	ResolveDialplan(ctx context.Context, in *ResolveDialplanRequest, opts ...grpc.CallOption) (*ResolveDialplanResponse, error)
-	// Inbound Route Yönetimi
+	// Inbound Route
 	CreateInboundRoute(ctx context.Context, in *CreateInboundRouteRequest, opts ...grpc.CallOption) (*CreateInboundRouteResponse, error)
 	GetInboundRoute(ctx context.Context, in *GetInboundRouteRequest, opts ...grpc.CallOption) (*GetInboundRouteResponse, error)
 	UpdateInboundRoute(ctx context.Context, in *UpdateInboundRouteRequest, opts ...grpc.CallOption) (*UpdateInboundRouteResponse, error)
 	DeleteInboundRoute(ctx context.Context, in *DeleteInboundRouteRequest, opts ...grpc.CallOption) (*DeleteInboundRouteResponse, error)
 	ListInboundRoutes(ctx context.Context, in *ListInboundRoutesRequest, opts ...grpc.CallOption) (*ListInboundRoutesResponse, error)
-	// Dialplan Yönetimi
+	// Dialplan
 	CreateDialplan(ctx context.Context, in *CreateDialplanRequest, opts ...grpc.CallOption) (*CreateDialplanResponse, error)
 	GetDialplan(ctx context.Context, in *GetDialplanRequest, opts ...grpc.CallOption) (*GetDialplanResponse, error)
 	UpdateDialplan(ctx context.Context, in *UpdateDialplanRequest, opts ...grpc.CallOption) (*UpdateDialplanResponse, error)
 	DeleteDialplan(ctx context.Context, in *DeleteDialplanRequest, opts ...grpc.CallOption) (*DeleteDialplanResponse, error)
 	ListDialplans(ctx context.Context, in *ListDialplansRequest, opts ...grpc.CallOption) (*ListDialplansResponse, error)
+	// [YENİ] Queue (Kuyruk) Yönetimi
+	CreateQueue(ctx context.Context, in *CreateQueueRequest, opts ...grpc.CallOption) (*CreateQueueResponse, error)
+	GetQueue(ctx context.Context, in *GetQueueRequest, opts ...grpc.CallOption) (*GetQueueResponse, error)
+	UpdateQueue(ctx context.Context, in *UpdateQueueRequest, opts ...grpc.CallOption) (*UpdateQueueResponse, error)
+	DeleteQueue(ctx context.Context, in *DeleteQueueRequest, opts ...grpc.CallOption) (*DeleteQueueResponse, error)
+	ListQueues(ctx context.Context, in *ListQueuesRequest, opts ...grpc.CallOption) (*ListQueuesResponse, error)
+	// [YENİ] Schedule (Zamanlama) Yönetimi
+	CreateSchedule(ctx context.Context, in *CreateScheduleRequest, opts ...grpc.CallOption) (*CreateScheduleResponse, error)
+	GetSchedule(ctx context.Context, in *GetScheduleRequest, opts ...grpc.CallOption) (*GetScheduleResponse, error)
 }
 
 type dialplanServiceClient struct {
@@ -170,24 +185,102 @@ func (c *dialplanServiceClient) ListDialplans(ctx context.Context, in *ListDialp
 	return out, nil
 }
 
+func (c *dialplanServiceClient) CreateQueue(ctx context.Context, in *CreateQueueRequest, opts ...grpc.CallOption) (*CreateQueueResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateQueueResponse)
+	err := c.cc.Invoke(ctx, DialplanService_CreateQueue_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *dialplanServiceClient) GetQueue(ctx context.Context, in *GetQueueRequest, opts ...grpc.CallOption) (*GetQueueResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetQueueResponse)
+	err := c.cc.Invoke(ctx, DialplanService_GetQueue_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *dialplanServiceClient) UpdateQueue(ctx context.Context, in *UpdateQueueRequest, opts ...grpc.CallOption) (*UpdateQueueResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateQueueResponse)
+	err := c.cc.Invoke(ctx, DialplanService_UpdateQueue_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *dialplanServiceClient) DeleteQueue(ctx context.Context, in *DeleteQueueRequest, opts ...grpc.CallOption) (*DeleteQueueResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteQueueResponse)
+	err := c.cc.Invoke(ctx, DialplanService_DeleteQueue_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *dialplanServiceClient) ListQueues(ctx context.Context, in *ListQueuesRequest, opts ...grpc.CallOption) (*ListQueuesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListQueuesResponse)
+	err := c.cc.Invoke(ctx, DialplanService_ListQueues_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *dialplanServiceClient) CreateSchedule(ctx context.Context, in *CreateScheduleRequest, opts ...grpc.CallOption) (*CreateScheduleResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateScheduleResponse)
+	err := c.cc.Invoke(ctx, DialplanService_CreateSchedule_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *dialplanServiceClient) GetSchedule(ctx context.Context, in *GetScheduleRequest, opts ...grpc.CallOption) (*GetScheduleResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetScheduleResponse)
+	err := c.cc.Invoke(ctx, DialplanService_GetSchedule_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // DialplanServiceServer is the server API for DialplanService service.
 // All implementations should embed UnimplementedDialplanServiceServer
 // for forward compatibility.
 type DialplanServiceServer interface {
-	// Gelen çağrının nasıl yönlendirileceğine karar veren ana metot.
 	ResolveDialplan(context.Context, *ResolveDialplanRequest) (*ResolveDialplanResponse, error)
-	// Inbound Route Yönetimi
+	// Inbound Route
 	CreateInboundRoute(context.Context, *CreateInboundRouteRequest) (*CreateInboundRouteResponse, error)
 	GetInboundRoute(context.Context, *GetInboundRouteRequest) (*GetInboundRouteResponse, error)
 	UpdateInboundRoute(context.Context, *UpdateInboundRouteRequest) (*UpdateInboundRouteResponse, error)
 	DeleteInboundRoute(context.Context, *DeleteInboundRouteRequest) (*DeleteInboundRouteResponse, error)
 	ListInboundRoutes(context.Context, *ListInboundRoutesRequest) (*ListInboundRoutesResponse, error)
-	// Dialplan Yönetimi
+	// Dialplan
 	CreateDialplan(context.Context, *CreateDialplanRequest) (*CreateDialplanResponse, error)
 	GetDialplan(context.Context, *GetDialplanRequest) (*GetDialplanResponse, error)
 	UpdateDialplan(context.Context, *UpdateDialplanRequest) (*UpdateDialplanResponse, error)
 	DeleteDialplan(context.Context, *DeleteDialplanRequest) (*DeleteDialplanResponse, error)
 	ListDialplans(context.Context, *ListDialplansRequest) (*ListDialplansResponse, error)
+	// [YENİ] Queue (Kuyruk) Yönetimi
+	CreateQueue(context.Context, *CreateQueueRequest) (*CreateQueueResponse, error)
+	GetQueue(context.Context, *GetQueueRequest) (*GetQueueResponse, error)
+	UpdateQueue(context.Context, *UpdateQueueRequest) (*UpdateQueueResponse, error)
+	DeleteQueue(context.Context, *DeleteQueueRequest) (*DeleteQueueResponse, error)
+	ListQueues(context.Context, *ListQueuesRequest) (*ListQueuesResponse, error)
+	// [YENİ] Schedule (Zamanlama) Yönetimi
+	CreateSchedule(context.Context, *CreateScheduleRequest) (*CreateScheduleResponse, error)
+	GetSchedule(context.Context, *GetScheduleRequest) (*GetScheduleResponse, error)
 }
 
 // UnimplementedDialplanServiceServer should be embedded to have
@@ -229,6 +322,27 @@ func (UnimplementedDialplanServiceServer) DeleteDialplan(context.Context, *Delet
 }
 func (UnimplementedDialplanServiceServer) ListDialplans(context.Context, *ListDialplansRequest) (*ListDialplansResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ListDialplans not implemented")
+}
+func (UnimplementedDialplanServiceServer) CreateQueue(context.Context, *CreateQueueRequest) (*CreateQueueResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method CreateQueue not implemented")
+}
+func (UnimplementedDialplanServiceServer) GetQueue(context.Context, *GetQueueRequest) (*GetQueueResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetQueue not implemented")
+}
+func (UnimplementedDialplanServiceServer) UpdateQueue(context.Context, *UpdateQueueRequest) (*UpdateQueueResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method UpdateQueue not implemented")
+}
+func (UnimplementedDialplanServiceServer) DeleteQueue(context.Context, *DeleteQueueRequest) (*DeleteQueueResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method DeleteQueue not implemented")
+}
+func (UnimplementedDialplanServiceServer) ListQueues(context.Context, *ListQueuesRequest) (*ListQueuesResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method ListQueues not implemented")
+}
+func (UnimplementedDialplanServiceServer) CreateSchedule(context.Context, *CreateScheduleRequest) (*CreateScheduleResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method CreateSchedule not implemented")
+}
+func (UnimplementedDialplanServiceServer) GetSchedule(context.Context, *GetScheduleRequest) (*GetScheduleResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetSchedule not implemented")
 }
 func (UnimplementedDialplanServiceServer) testEmbeddedByValue() {}
 
@@ -448,6 +562,132 @@ func _DialplanService_ListDialplans_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _DialplanService_CreateQueue_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateQueueRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DialplanServiceServer).CreateQueue(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DialplanService_CreateQueue_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DialplanServiceServer).CreateQueue(ctx, req.(*CreateQueueRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DialplanService_GetQueue_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetQueueRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DialplanServiceServer).GetQueue(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DialplanService_GetQueue_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DialplanServiceServer).GetQueue(ctx, req.(*GetQueueRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DialplanService_UpdateQueue_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateQueueRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DialplanServiceServer).UpdateQueue(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DialplanService_UpdateQueue_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DialplanServiceServer).UpdateQueue(ctx, req.(*UpdateQueueRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DialplanService_DeleteQueue_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteQueueRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DialplanServiceServer).DeleteQueue(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DialplanService_DeleteQueue_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DialplanServiceServer).DeleteQueue(ctx, req.(*DeleteQueueRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DialplanService_ListQueues_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListQueuesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DialplanServiceServer).ListQueues(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DialplanService_ListQueues_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DialplanServiceServer).ListQueues(ctx, req.(*ListQueuesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DialplanService_CreateSchedule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateScheduleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DialplanServiceServer).CreateSchedule(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DialplanService_CreateSchedule_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DialplanServiceServer).CreateSchedule(ctx, req.(*CreateScheduleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DialplanService_GetSchedule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetScheduleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DialplanServiceServer).GetSchedule(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DialplanService_GetSchedule_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DialplanServiceServer).GetSchedule(ctx, req.(*GetScheduleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // DialplanService_ServiceDesc is the grpc.ServiceDesc for DialplanService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -498,6 +738,34 @@ var DialplanService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListDialplans",
 			Handler:    _DialplanService_ListDialplans_Handler,
+		},
+		{
+			MethodName: "CreateQueue",
+			Handler:    _DialplanService_CreateQueue_Handler,
+		},
+		{
+			MethodName: "GetQueue",
+			Handler:    _DialplanService_GetQueue_Handler,
+		},
+		{
+			MethodName: "UpdateQueue",
+			Handler:    _DialplanService_UpdateQueue_Handler,
+		},
+		{
+			MethodName: "DeleteQueue",
+			Handler:    _DialplanService_DeleteQueue_Handler,
+		},
+		{
+			MethodName: "ListQueues",
+			Handler:    _DialplanService_ListQueues_Handler,
+		},
+		{
+			MethodName: "CreateSchedule",
+			Handler:    _DialplanService_CreateSchedule_Handler,
+		},
+		{
+			MethodName: "GetSchedule",
+			Handler:    _DialplanService_GetSchedule_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

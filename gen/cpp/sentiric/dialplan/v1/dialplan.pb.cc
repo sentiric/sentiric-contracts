@@ -92,6 +92,8 @@ PROTOBUF_CONSTEXPR InboundRoute::InboundRoute(
   , /*decltype(_impl_.off_hours_dialplan_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.failsafe_dialplan_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.default_language_code_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.schedule_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.block_anonymous_)*/false
   , /*decltype(_impl_.is_maintenance_mode_)*/false} {}
 struct InboundRouteDefaultTypeInternal {
   PROTOBUF_CONSTEXPR InboundRouteDefaultTypeInternal()
@@ -118,6 +120,42 @@ struct DialplanDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DialplanDefaultTypeInternal _Dialplan_default_instance_;
+PROTOBUF_CONSTEXPR Queue::Queue(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.tenant_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.routing_strategy_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.fallback_action_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.max_wait_time_seconds_)*/0
+  , /*decltype(_impl_.is_active_)*/false
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct QueueDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR QueueDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~QueueDefaultTypeInternal() {}
+  union {
+    Queue _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 QueueDefaultTypeInternal _Queue_default_instance_;
+PROTOBUF_CONSTEXPR Schedule::Schedule(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.tenant_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.timezone_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.schedule_json_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct ScheduleDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ScheduleDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ScheduleDefaultTypeInternal() {}
+  union {
+    Schedule _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ScheduleDefaultTypeInternal _Schedule_default_instance_;
 PROTOBUF_CONSTEXPR CreateInboundRouteRequest::CreateInboundRouteRequest(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.route_)*/nullptr
@@ -384,10 +422,195 @@ struct ListDialplansResponseDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ListDialplansResponseDefaultTypeInternal _ListDialplansResponse_default_instance_;
+PROTOBUF_CONSTEXPR CreateQueueRequest::CreateQueueRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.queue_)*/nullptr
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct CreateQueueRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR CreateQueueRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~CreateQueueRequestDefaultTypeInternal() {}
+  union {
+    CreateQueueRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CreateQueueRequestDefaultTypeInternal _CreateQueueRequest_default_instance_;
+PROTOBUF_CONSTEXPR CreateQueueResponse::CreateQueueResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.queue_)*/nullptr
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct CreateQueueResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR CreateQueueResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~CreateQueueResponseDefaultTypeInternal() {}
+  union {
+    CreateQueueResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CreateQueueResponseDefaultTypeInternal _CreateQueueResponse_default_instance_;
+PROTOBUF_CONSTEXPR GetQueueRequest::GetQueueRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct GetQueueRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR GetQueueRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~GetQueueRequestDefaultTypeInternal() {}
+  union {
+    GetQueueRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetQueueRequestDefaultTypeInternal _GetQueueRequest_default_instance_;
+PROTOBUF_CONSTEXPR GetQueueResponse::GetQueueResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.queue_)*/nullptr
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct GetQueueResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR GetQueueResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~GetQueueResponseDefaultTypeInternal() {}
+  union {
+    GetQueueResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetQueueResponseDefaultTypeInternal _GetQueueResponse_default_instance_;
+PROTOBUF_CONSTEXPR UpdateQueueRequest::UpdateQueueRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.queue_)*/nullptr
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct UpdateQueueRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UpdateQueueRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UpdateQueueRequestDefaultTypeInternal() {}
+  union {
+    UpdateQueueRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UpdateQueueRequestDefaultTypeInternal _UpdateQueueRequest_default_instance_;
+PROTOBUF_CONSTEXPR UpdateQueueResponse::UpdateQueueResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.queue_)*/nullptr
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct UpdateQueueResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UpdateQueueResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UpdateQueueResponseDefaultTypeInternal() {}
+  union {
+    UpdateQueueResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UpdateQueueResponseDefaultTypeInternal _UpdateQueueResponse_default_instance_;
+PROTOBUF_CONSTEXPR DeleteQueueRequest::DeleteQueueRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct DeleteQueueRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DeleteQueueRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DeleteQueueRequestDefaultTypeInternal() {}
+  union {
+    DeleteQueueRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DeleteQueueRequestDefaultTypeInternal _DeleteQueueRequest_default_instance_;
+PROTOBUF_CONSTEXPR DeleteQueueResponse::DeleteQueueResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.success_)*/false
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct DeleteQueueResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR DeleteQueueResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~DeleteQueueResponseDefaultTypeInternal() {}
+  union {
+    DeleteQueueResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DeleteQueueResponseDefaultTypeInternal _DeleteQueueResponse_default_instance_;
+PROTOBUF_CONSTEXPR ListQueuesRequest::ListQueuesRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.tenant_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.page_size_)*/0
+  , /*decltype(_impl_.page_)*/0
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct ListQueuesRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ListQueuesRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ListQueuesRequestDefaultTypeInternal() {}
+  union {
+    ListQueuesRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ListQueuesRequestDefaultTypeInternal _ListQueuesRequest_default_instance_;
+PROTOBUF_CONSTEXPR ListQueuesResponse::ListQueuesResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.queues_)*/{}
+  , /*decltype(_impl_.total_count_)*/0
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct ListQueuesResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ListQueuesResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ListQueuesResponseDefaultTypeInternal() {}
+  union {
+    ListQueuesResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ListQueuesResponseDefaultTypeInternal _ListQueuesResponse_default_instance_;
+PROTOBUF_CONSTEXPR CreateScheduleRequest::CreateScheduleRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.schedule_)*/nullptr
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct CreateScheduleRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR CreateScheduleRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~CreateScheduleRequestDefaultTypeInternal() {}
+  union {
+    CreateScheduleRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CreateScheduleRequestDefaultTypeInternal _CreateScheduleRequest_default_instance_;
+PROTOBUF_CONSTEXPR CreateScheduleResponse::CreateScheduleResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.schedule_)*/nullptr
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct CreateScheduleResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR CreateScheduleResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~CreateScheduleResponseDefaultTypeInternal() {}
+  union {
+    CreateScheduleResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CreateScheduleResponseDefaultTypeInternal _CreateScheduleResponse_default_instance_;
+PROTOBUF_CONSTEXPR GetScheduleRequest::GetScheduleRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct GetScheduleRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR GetScheduleRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~GetScheduleRequestDefaultTypeInternal() {}
+  union {
+    GetScheduleRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetScheduleRequestDefaultTypeInternal _GetScheduleRequest_default_instance_;
+PROTOBUF_CONSTEXPR GetScheduleResponse::GetScheduleResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.schedule_)*/nullptr
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct GetScheduleResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR GetScheduleResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~GetScheduleResponseDefaultTypeInternal() {}
+  union {
+    GetScheduleResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetScheduleResponseDefaultTypeInternal _GetScheduleResponse_default_instance_;
 }  // namespace v1
 }  // namespace dialplan
 }  // namespace sentiric
-static ::_pb::Metadata file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[26];
+static ::_pb::Metadata file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[42];
 static const ::_pb::EnumDescriptor* file_level_enum_descriptors_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[1];
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_sentiric_2fdialplan_2fv1_2fdialplan_2eproto = nullptr;
 
@@ -446,14 +669,18 @@ const uint32_t TableStruct_sentiric_2fdialplan_2fv1_2fdialplan_2eproto::offsets[
   PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::InboundRoute, _impl_.phone_number_),
   PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::InboundRoute, _impl_.tenant_id_),
   PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::InboundRoute, _impl_.active_dialplan_id_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::InboundRoute, _impl_.schedule_id_),
   PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::InboundRoute, _impl_.off_hours_dialplan_id_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::InboundRoute, _impl_.block_anonymous_),
   PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::InboundRoute, _impl_.failsafe_dialplan_id_),
   PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::InboundRoute, _impl_.is_maintenance_mode_),
   PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::InboundRoute, _impl_.default_language_code_),
   ~0u,
   ~0u,
   0,
+  3,
   1,
+  ~0u,
   2,
   ~0u,
   ~0u,
@@ -467,6 +694,30 @@ const uint32_t TableStruct_sentiric_2fdialplan_2fv1_2fdialplan_2eproto::offsets[
   PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::Dialplan, _impl_.tenant_id_),
   PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::Dialplan, _impl_.description_),
   PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::Dialplan, _impl_.action_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::Queue, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::Queue, _impl_.id_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::Queue, _impl_.tenant_id_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::Queue, _impl_.name_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::Queue, _impl_.routing_strategy_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::Queue, _impl_.max_wait_time_seconds_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::Queue, _impl_.fallback_action_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::Queue, _impl_.is_active_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::Schedule, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::Schedule, _impl_.id_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::Schedule, _impl_.tenant_id_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::Schedule, _impl_.name_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::Schedule, _impl_.timezone_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::Schedule, _impl_.schedule_json_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::CreateInboundRouteRequest, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -613,34 +864,151 @@ const uint32_t TableStruct_sentiric_2fdialplan_2fv1_2fdialplan_2eproto::offsets[
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::ListDialplansResponse, _impl_.dialplans_),
   PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::ListDialplansResponse, _impl_.total_count_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::CreateQueueRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::CreateQueueRequest, _impl_.queue_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::CreateQueueResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::CreateQueueResponse, _impl_.queue_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::GetQueueRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::GetQueueRequest, _impl_.id_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::GetQueueResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::GetQueueResponse, _impl_.queue_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::UpdateQueueRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::UpdateQueueRequest, _impl_.queue_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::UpdateQueueResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::UpdateQueueResponse, _impl_.queue_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::DeleteQueueRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::DeleteQueueRequest, _impl_.id_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::DeleteQueueResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::DeleteQueueResponse, _impl_.success_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::ListQueuesRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::ListQueuesRequest, _impl_.tenant_id_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::ListQueuesRequest, _impl_.page_size_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::ListQueuesRequest, _impl_.page_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::ListQueuesResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::ListQueuesResponse, _impl_.queues_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::ListQueuesResponse, _impl_.total_count_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::CreateScheduleRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::CreateScheduleRequest, _impl_.schedule_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::CreateScheduleResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::CreateScheduleResponse, _impl_.schedule_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::GetScheduleRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::GetScheduleRequest, _impl_.id_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::GetScheduleResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialplan::v1::GetScheduleResponse, _impl_.schedule_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 8, -1, sizeof(::sentiric::dialplan::v1::DialplanAction_ActionDataEntry_DoNotUse)},
   { 10, -1, -1, sizeof(::sentiric::dialplan::v1::DialplanAction)},
   { 19, -1, -1, sizeof(::sentiric::dialplan::v1::ResolveDialplanRequest)},
   { 27, 39, -1, sizeof(::sentiric::dialplan::v1::ResolveDialplanResponse)},
-  { 45, 58, -1, sizeof(::sentiric::dialplan::v1::InboundRoute)},
-  { 65, -1, -1, sizeof(::sentiric::dialplan::v1::Dialplan)},
-  { 75, -1, -1, sizeof(::sentiric::dialplan::v1::CreateInboundRouteRequest)},
-  { 82, -1, -1, sizeof(::sentiric::dialplan::v1::CreateInboundRouteResponse)},
-  { 89, -1, -1, sizeof(::sentiric::dialplan::v1::GetInboundRouteRequest)},
-  { 96, -1, -1, sizeof(::sentiric::dialplan::v1::GetInboundRouteResponse)},
-  { 103, -1, -1, sizeof(::sentiric::dialplan::v1::UpdateInboundRouteRequest)},
-  { 110, -1, -1, sizeof(::sentiric::dialplan::v1::UpdateInboundRouteResponse)},
-  { 117, -1, -1, sizeof(::sentiric::dialplan::v1::DeleteInboundRouteRequest)},
-  { 124, -1, -1, sizeof(::sentiric::dialplan::v1::DeleteInboundRouteResponse)},
-  { 131, -1, -1, sizeof(::sentiric::dialplan::v1::ListInboundRoutesRequest)},
-  { 140, -1, -1, sizeof(::sentiric::dialplan::v1::ListInboundRoutesResponse)},
-  { 148, -1, -1, sizeof(::sentiric::dialplan::v1::CreateDialplanRequest)},
-  { 155, -1, -1, sizeof(::sentiric::dialplan::v1::CreateDialplanResponse)},
-  { 162, -1, -1, sizeof(::sentiric::dialplan::v1::GetDialplanRequest)},
-  { 169, -1, -1, sizeof(::sentiric::dialplan::v1::GetDialplanResponse)},
-  { 176, -1, -1, sizeof(::sentiric::dialplan::v1::UpdateDialplanRequest)},
-  { 183, -1, -1, sizeof(::sentiric::dialplan::v1::UpdateDialplanResponse)},
-  { 190, -1, -1, sizeof(::sentiric::dialplan::v1::DeleteDialplanRequest)},
-  { 197, -1, -1, sizeof(::sentiric::dialplan::v1::DeleteDialplanResponse)},
-  { 204, -1, -1, sizeof(::sentiric::dialplan::v1::ListDialplansRequest)},
-  { 213, -1, -1, sizeof(::sentiric::dialplan::v1::ListDialplansResponse)},
+  { 45, 60, -1, sizeof(::sentiric::dialplan::v1::InboundRoute)},
+  { 69, -1, -1, sizeof(::sentiric::dialplan::v1::Dialplan)},
+  { 79, -1, -1, sizeof(::sentiric::dialplan::v1::Queue)},
+  { 92, -1, -1, sizeof(::sentiric::dialplan::v1::Schedule)},
+  { 103, -1, -1, sizeof(::sentiric::dialplan::v1::CreateInboundRouteRequest)},
+  { 110, -1, -1, sizeof(::sentiric::dialplan::v1::CreateInboundRouteResponse)},
+  { 117, -1, -1, sizeof(::sentiric::dialplan::v1::GetInboundRouteRequest)},
+  { 124, -1, -1, sizeof(::sentiric::dialplan::v1::GetInboundRouteResponse)},
+  { 131, -1, -1, sizeof(::sentiric::dialplan::v1::UpdateInboundRouteRequest)},
+  { 138, -1, -1, sizeof(::sentiric::dialplan::v1::UpdateInboundRouteResponse)},
+  { 145, -1, -1, sizeof(::sentiric::dialplan::v1::DeleteInboundRouteRequest)},
+  { 152, -1, -1, sizeof(::sentiric::dialplan::v1::DeleteInboundRouteResponse)},
+  { 159, -1, -1, sizeof(::sentiric::dialplan::v1::ListInboundRoutesRequest)},
+  { 168, -1, -1, sizeof(::sentiric::dialplan::v1::ListInboundRoutesResponse)},
+  { 176, -1, -1, sizeof(::sentiric::dialplan::v1::CreateDialplanRequest)},
+  { 183, -1, -1, sizeof(::sentiric::dialplan::v1::CreateDialplanResponse)},
+  { 190, -1, -1, sizeof(::sentiric::dialplan::v1::GetDialplanRequest)},
+  { 197, -1, -1, sizeof(::sentiric::dialplan::v1::GetDialplanResponse)},
+  { 204, -1, -1, sizeof(::sentiric::dialplan::v1::UpdateDialplanRequest)},
+  { 211, -1, -1, sizeof(::sentiric::dialplan::v1::UpdateDialplanResponse)},
+  { 218, -1, -1, sizeof(::sentiric::dialplan::v1::DeleteDialplanRequest)},
+  { 225, -1, -1, sizeof(::sentiric::dialplan::v1::DeleteDialplanResponse)},
+  { 232, -1, -1, sizeof(::sentiric::dialplan::v1::ListDialplansRequest)},
+  { 241, -1, -1, sizeof(::sentiric::dialplan::v1::ListDialplansResponse)},
+  { 249, -1, -1, sizeof(::sentiric::dialplan::v1::CreateQueueRequest)},
+  { 256, -1, -1, sizeof(::sentiric::dialplan::v1::CreateQueueResponse)},
+  { 263, -1, -1, sizeof(::sentiric::dialplan::v1::GetQueueRequest)},
+  { 270, -1, -1, sizeof(::sentiric::dialplan::v1::GetQueueResponse)},
+  { 277, -1, -1, sizeof(::sentiric::dialplan::v1::UpdateQueueRequest)},
+  { 284, -1, -1, sizeof(::sentiric::dialplan::v1::UpdateQueueResponse)},
+  { 291, -1, -1, sizeof(::sentiric::dialplan::v1::DeleteQueueRequest)},
+  { 298, -1, -1, sizeof(::sentiric::dialplan::v1::DeleteQueueResponse)},
+  { 305, -1, -1, sizeof(::sentiric::dialplan::v1::ListQueuesRequest)},
+  { 314, -1, -1, sizeof(::sentiric::dialplan::v1::ListQueuesResponse)},
+  { 322, -1, -1, sizeof(::sentiric::dialplan::v1::CreateScheduleRequest)},
+  { 329, -1, -1, sizeof(::sentiric::dialplan::v1::CreateScheduleResponse)},
+  { 336, -1, -1, sizeof(::sentiric::dialplan::v1::GetScheduleRequest)},
+  { 343, -1, -1, sizeof(::sentiric::dialplan::v1::GetScheduleResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -650,6 +1018,8 @@ static const ::_pb::Message* const file_default_instances[] = {
   &::sentiric::dialplan::v1::_ResolveDialplanResponse_default_instance_._instance,
   &::sentiric::dialplan::v1::_InboundRoute_default_instance_._instance,
   &::sentiric::dialplan::v1::_Dialplan_default_instance_._instance,
+  &::sentiric::dialplan::v1::_Queue_default_instance_._instance,
+  &::sentiric::dialplan::v1::_Schedule_default_instance_._instance,
   &::sentiric::dialplan::v1::_CreateInboundRouteRequest_default_instance_._instance,
   &::sentiric::dialplan::v1::_CreateInboundRouteResponse_default_instance_._instance,
   &::sentiric::dialplan::v1::_GetInboundRouteRequest_default_instance_._instance,
@@ -670,6 +1040,20 @@ static const ::_pb::Message* const file_default_instances[] = {
   &::sentiric::dialplan::v1::_DeleteDialplanResponse_default_instance_._instance,
   &::sentiric::dialplan::v1::_ListDialplansRequest_default_instance_._instance,
   &::sentiric::dialplan::v1::_ListDialplansResponse_default_instance_._instance,
+  &::sentiric::dialplan::v1::_CreateQueueRequest_default_instance_._instance,
+  &::sentiric::dialplan::v1::_CreateQueueResponse_default_instance_._instance,
+  &::sentiric::dialplan::v1::_GetQueueRequest_default_instance_._instance,
+  &::sentiric::dialplan::v1::_GetQueueResponse_default_instance_._instance,
+  &::sentiric::dialplan::v1::_UpdateQueueRequest_default_instance_._instance,
+  &::sentiric::dialplan::v1::_UpdateQueueResponse_default_instance_._instance,
+  &::sentiric::dialplan::v1::_DeleteQueueRequest_default_instance_._instance,
+  &::sentiric::dialplan::v1::_DeleteQueueResponse_default_instance_._instance,
+  &::sentiric::dialplan::v1::_ListQueuesRequest_default_instance_._instance,
+  &::sentiric::dialplan::v1::_ListQueuesResponse_default_instance_._instance,
+  &::sentiric::dialplan::v1::_CreateScheduleRequest_default_instance_._instance,
+  &::sentiric::dialplan::v1::_CreateScheduleResponse_default_instance_._instance,
+  &::sentiric::dialplan::v1::_GetScheduleRequest_default_instance_._instance,
+  &::sentiric::dialplan::v1::_GetScheduleResponse_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -691,99 +1075,147 @@ const char descriptor_table_protodef_sentiric_2fdialplan_2fv1_2fdialplan_2eproto
   "ontactH\001\210\001\001\022>\n\rinbound_route\030\006 \001(\0132\".sen"
   "tiric.dialplan.v1.InboundRouteH\002\210\001\001B\017\n\r_"
   "matched_userB\022\n\020_matched_contactB\020\n\016_inb"
-  "ound_route\"\245\002\n\014InboundRoute\022\024\n\014phone_num"
+  "ound_route\"\350\002\n\014InboundRoute\022\024\n\014phone_num"
   "ber\030\001 \001(\t\022\021\n\ttenant_id\030\002 \001(\t\022\037\n\022active_d"
-  "ialplan_id\030\003 \001(\tH\000\210\001\001\022\"\n\025off_hours_dialp"
-  "lan_id\030\004 \001(\tH\001\210\001\001\022!\n\024failsafe_dialplan_i"
-  "d\030\005 \001(\tH\002\210\001\001\022\033\n\023is_maintenance_mode\030\006 \001("
-  "\010\022\035\n\025default_language_code\030\007 \001(\tB\025\n\023_act"
-  "ive_dialplan_idB\030\n\026_off_hours_dialplan_i"
-  "dB\027\n\025_failsafe_dialplan_id\"t\n\010Dialplan\022\n"
-  "\n\002id\030\001 \001(\t\022\021\n\ttenant_id\030\002 \001(\t\022\023\n\013descrip"
-  "tion\030\003 \001(\t\0224\n\006action\030\004 \001(\0132$.sentiric.di"
-  "alplan.v1.DialplanAction\"N\n\031CreateInboun"
-  "dRouteRequest\0221\n\005route\030\001 \001(\0132\".sentiric."
-  "dialplan.v1.InboundRoute\"O\n\032CreateInboun"
-  "dRouteResponse\0221\n\005route\030\001 \001(\0132\".sentiric"
-  ".dialplan.v1.InboundRoute\".\n\026GetInboundR"
-  "outeRequest\022\024\n\014phone_number\030\001 \001(\t\"L\n\027Get"
-  "InboundRouteResponse\0221\n\005route\030\001 \001(\0132\".se"
-  "ntiric.dialplan.v1.InboundRoute\"N\n\031Updat"
-  "eInboundRouteRequest\0221\n\005route\030\001 \001(\0132\".se"
-  "ntiric.dialplan.v1.InboundRoute\"O\n\032Updat"
-  "eInboundRouteResponse\0221\n\005route\030\001 \001(\0132\".s"
-  "entiric.dialplan.v1.InboundRoute\"1\n\031Dele"
-  "teInboundRouteRequest\022\024\n\014phone_number\030\001 "
-  "\001(\t\"-\n\032DeleteInboundRouteResponse\022\017\n\007suc"
-  "cess\030\001 \001(\010\"N\n\030ListInboundRoutesRequest\022\021"
-  "\n\ttenant_id\030\001 \001(\t\022\021\n\tpage_size\030\002 \001(\005\022\014\n\004"
-  "page\030\003 \001(\005\"d\n\031ListInboundRoutesResponse\022"
-  "2\n\006routes\030\001 \003(\0132\".sentiric.dialplan.v1.I"
-  "nboundRoute\022\023\n\013total_count\030\002 \001(\005\"I\n\025Crea"
-  "teDialplanRequest\0220\n\010dialplan\030\001 \001(\0132\036.se"
-  "ntiric.dialplan.v1.Dialplan\"J\n\026CreateDia"
-  "lplanResponse\0220\n\010dialplan\030\001 \001(\0132\036.sentir"
-  "ic.dialplan.v1.Dialplan\" \n\022GetDialplanRe"
-  "quest\022\n\n\002id\030\001 \001(\t\"G\n\023GetDialplanResponse"
-  "\0220\n\010dialplan\030\001 \001(\0132\036.sentiric.dialplan.v"
-  "1.Dialplan\"I\n\025UpdateDialplanRequest\0220\n\010d"
-  "ialplan\030\001 \001(\0132\036.sentiric.dialplan.v1.Dia"
-  "lplan\"J\n\026UpdateDialplanResponse\0220\n\010dialp"
-  "lan\030\001 \001(\0132\036.sentiric.dialplan.v1.Dialpla"
-  "n\"#\n\025DeleteDialplanRequest\022\n\n\002id\030\001 \001(\t\")"
-  "\n\026DeleteDialplanResponse\022\017\n\007success\030\001 \001("
-  "\010\"J\n\024ListDialplansRequest\022\021\n\ttenant_id\030\001"
-  " \001(\t\022\021\n\tpage_size\030\002 \001(\005\022\014\n\004page\030\003 \001(\005\"_\n"
-  "\025ListDialplansResponse\0221\n\tdialplans\030\001 \003("
-  "\0132\036.sentiric.dialplan.v1.Dialplan\022\023\n\013tot"
-  "al_count\030\002 \001(\005*\262\001\n\nActionType\022\033\n\027ACTION_"
-  "TYPE_UNSPECIFIED\020\000\022%\n!ACTION_TYPE_START_"
-  "AI_CONVERSATION\020\001\022\033\n\027ACTION_TYPE_BRIDGE_"
-  "CALL\020\002\022\031\n\025ACTION_TYPE_ECHO_TEST\020\003\022(\n$ACT"
-  "ION_TYPE_PLAY_STATIC_ANNOUNCEMENT\020\0042\347\t\n\017"
-  "DialplanService\022n\n\017ResolveDialplan\022,.sen"
-  "tiric.dialplan.v1.ResolveDialplanRequest"
-  "\032-.sentiric.dialplan.v1.ResolveDialplanR"
-  "esponse\022w\n\022CreateInboundRoute\022/.sentiric"
-  ".dialplan.v1.CreateInboundRouteRequest\0320"
-  ".sentiric.dialplan.v1.CreateInboundRoute"
-  "Response\022n\n\017GetInboundRoute\022,.sentiric.d"
-  "ialplan.v1.GetInboundRouteRequest\032-.sent"
-  "iric.dialplan.v1.GetInboundRouteResponse"
-  "\022w\n\022UpdateInboundRoute\022/.sentiric.dialpl"
-  "an.v1.UpdateInboundRouteRequest\0320.sentir"
-  "ic.dialplan.v1.UpdateInboundRouteRespons"
-  "e\022w\n\022DeleteInboundRoute\022/.sentiric.dialp"
-  "lan.v1.DeleteInboundRouteRequest\0320.senti"
-  "ric.dialplan.v1.DeleteInboundRouteRespon"
-  "se\022t\n\021ListInboundRoutes\022..sentiric.dialp"
-  "lan.v1.ListInboundRoutesRequest\032/.sentir"
-  "ic.dialplan.v1.ListInboundRoutesResponse"
-  "\022k\n\016CreateDialplan\022+.sentiric.dialplan.v"
-  "1.CreateDialplanRequest\032,.sentiric.dialp"
-  "lan.v1.CreateDialplanResponse\022b\n\013GetDial"
-  "plan\022(.sentiric.dialplan.v1.GetDialplanR"
-  "equest\032).sentiric.dialplan.v1.GetDialpla"
-  "nResponse\022k\n\016UpdateDialplan\022+.sentiric.d"
-  "ialplan.v1.UpdateDialplanRequest\032,.senti"
-  "ric.dialplan.v1.UpdateDialplanResponse\022k"
-  "\n\016DeleteDialplan\022+.sentiric.dialplan.v1."
-  "DeleteDialplanRequest\032,.sentiric.dialpla"
-  "n.v1.DeleteDialplanResponse\022h\n\rListDialp"
-  "lans\022*.sentiric.dialplan.v1.ListDialplan"
-  "sRequest\032+.sentiric.dialplan.v1.ListDial"
-  "plansResponseBOZMgithub.com/sentiric/sen"
-  "tiric-contracts/gen/go/sentiric/dialplan"
-  "/v1;dialplanv1b\006proto3"
+  "ialplan_id\030\003 \001(\tH\000\210\001\001\022\030\n\013schedule_id\030\010 \001"
+  "(\tH\001\210\001\001\022\"\n\025off_hours_dialplan_id\030\004 \001(\tH\002"
+  "\210\001\001\022\027\n\017block_anonymous\030\t \001(\010\022!\n\024failsafe"
+  "_dialplan_id\030\005 \001(\tH\003\210\001\001\022\033\n\023is_maintenanc"
+  "e_mode\030\006 \001(\010\022\035\n\025default_language_code\030\007 "
+  "\001(\tB\025\n\023_active_dialplan_idB\016\n\014_schedule_"
+  "idB\030\n\026_off_hours_dialplan_idB\027\n\025_failsaf"
+  "e_dialplan_id\"t\n\010Dialplan\022\n\n\002id\030\001 \001(\t\022\021\n"
+  "\ttenant_id\030\002 \001(\t\022\023\n\013description\030\003 \001(\t\0224\n"
+  "\006action\030\004 \001(\0132$.sentiric.dialplan.v1.Dia"
+  "lplanAction\"\231\001\n\005Queue\022\n\n\002id\030\001 \001(\t\022\021\n\tten"
+  "ant_id\030\002 \001(\t\022\014\n\004name\030\003 \001(\t\022\030\n\020routing_st"
+  "rategy\030\004 \001(\t\022\035\n\025max_wait_time_seconds\030\005 "
+  "\001(\005\022\027\n\017fallback_action\030\006 \001(\t\022\021\n\tis_activ"
+  "e\030\007 \001(\010\"`\n\010Schedule\022\n\n\002id\030\001 \001(\t\022\021\n\ttenan"
+  "t_id\030\002 \001(\t\022\014\n\004name\030\003 \001(\t\022\020\n\010timezone\030\004 \001"
+  "(\t\022\025\n\rschedule_json\030\005 \001(\t\"N\n\031CreateInbou"
+  "ndRouteRequest\0221\n\005route\030\001 \001(\0132\".sentiric"
+  ".dialplan.v1.InboundRoute\"O\n\032CreateInbou"
+  "ndRouteResponse\0221\n\005route\030\001 \001(\0132\".sentiri"
+  "c.dialplan.v1.InboundRoute\".\n\026GetInbound"
+  "RouteRequest\022\024\n\014phone_number\030\001 \001(\t\"L\n\027Ge"
+  "tInboundRouteResponse\0221\n\005route\030\001 \001(\0132\".s"
+  "entiric.dialplan.v1.InboundRoute\"N\n\031Upda"
+  "teInboundRouteRequest\0221\n\005route\030\001 \001(\0132\".s"
+  "entiric.dialplan.v1.InboundRoute\"O\n\032Upda"
+  "teInboundRouteResponse\0221\n\005route\030\001 \001(\0132\"."
+  "sentiric.dialplan.v1.InboundRoute\"1\n\031Del"
+  "eteInboundRouteRequest\022\024\n\014phone_number\030\001"
+  " \001(\t\"-\n\032DeleteInboundRouteResponse\022\017\n\007su"
+  "ccess\030\001 \001(\010\"N\n\030ListInboundRoutesRequest\022"
+  "\021\n\ttenant_id\030\001 \001(\t\022\021\n\tpage_size\030\002 \001(\005\022\014\n"
+  "\004page\030\003 \001(\005\"d\n\031ListInboundRoutesResponse"
+  "\0222\n\006routes\030\001 \003(\0132\".sentiric.dialplan.v1."
+  "InboundRoute\022\023\n\013total_count\030\002 \001(\005\"I\n\025Cre"
+  "ateDialplanRequest\0220\n\010dialplan\030\001 \001(\0132\036.s"
+  "entiric.dialplan.v1.Dialplan\"J\n\026CreateDi"
+  "alplanResponse\0220\n\010dialplan\030\001 \001(\0132\036.senti"
+  "ric.dialplan.v1.Dialplan\" \n\022GetDialplanR"
+  "equest\022\n\n\002id\030\001 \001(\t\"G\n\023GetDialplanRespons"
+  "e\0220\n\010dialplan\030\001 \001(\0132\036.sentiric.dialplan."
+  "v1.Dialplan\"I\n\025UpdateDialplanRequest\0220\n\010"
+  "dialplan\030\001 \001(\0132\036.sentiric.dialplan.v1.Di"
+  "alplan\"J\n\026UpdateDialplanResponse\0220\n\010dial"
+  "plan\030\001 \001(\0132\036.sentiric.dialplan.v1.Dialpl"
+  "an\"#\n\025DeleteDialplanRequest\022\n\n\002id\030\001 \001(\t\""
+  ")\n\026DeleteDialplanResponse\022\017\n\007success\030\001 \001"
+  "(\010\"J\n\024ListDialplansRequest\022\021\n\ttenant_id\030"
+  "\001 \001(\t\022\021\n\tpage_size\030\002 \001(\005\022\014\n\004page\030\003 \001(\005\"_"
+  "\n\025ListDialplansResponse\0221\n\tdialplans\030\001 \003"
+  "(\0132\036.sentiric.dialplan.v1.Dialplan\022\023\n\013to"
+  "tal_count\030\002 \001(\005\"@\n\022CreateQueueRequest\022*\n"
+  "\005queue\030\001 \001(\0132\033.sentiric.dialplan.v1.Queu"
+  "e\"A\n\023CreateQueueResponse\022*\n\005queue\030\001 \001(\0132"
+  "\033.sentiric.dialplan.v1.Queue\"\035\n\017GetQueue"
+  "Request\022\n\n\002id\030\001 \001(\t\">\n\020GetQueueResponse\022"
+  "*\n\005queue\030\001 \001(\0132\033.sentiric.dialplan.v1.Qu"
+  "eue\"@\n\022UpdateQueueRequest\022*\n\005queue\030\001 \001(\013"
+  "2\033.sentiric.dialplan.v1.Queue\"A\n\023UpdateQ"
+  "ueueResponse\022*\n\005queue\030\001 \001(\0132\033.sentiric.d"
+  "ialplan.v1.Queue\" \n\022DeleteQueueRequest\022\n"
+  "\n\002id\030\001 \001(\t\"&\n\023DeleteQueueResponse\022\017\n\007suc"
+  "cess\030\001 \001(\010\"G\n\021ListQueuesRequest\022\021\n\ttenan"
+  "t_id\030\001 \001(\t\022\021\n\tpage_size\030\002 \001(\005\022\014\n\004page\030\003 "
+  "\001(\005\"V\n\022ListQueuesResponse\022+\n\006queues\030\001 \003("
+  "\0132\033.sentiric.dialplan.v1.Queue\022\023\n\013total_"
+  "count\030\002 \001(\005\"I\n\025CreateScheduleRequest\0220\n\010"
+  "schedule\030\001 \001(\0132\036.sentiric.dialplan.v1.Sc"
+  "hedule\"J\n\026CreateScheduleResponse\0220\n\010sche"
+  "dule\030\001 \001(\0132\036.sentiric.dialplan.v1.Schedu"
+  "le\" \n\022GetScheduleRequest\022\n\n\002id\030\001 \001(\t\"G\n\023"
+  "GetScheduleResponse\0220\n\010schedule\030\001 \001(\0132\036."
+  "sentiric.dialplan.v1.Schedule*\320\001\n\nAction"
+  "Type\022\033\n\027ACTION_TYPE_UNSPECIFIED\020\000\022%\n!ACT"
+  "ION_TYPE_START_AI_CONVERSATION\020\001\022\033\n\027ACTI"
+  "ON_TYPE_BRIDGE_CALL\020\002\022\031\n\025ACTION_TYPE_ECH"
+  "O_TEST\020\003\022(\n$ACTION_TYPE_PLAY_STATIC_ANNO"
+  "UNCEMENT\020\004\022\034\n\030ACTION_TYPE_ENQUEUE_CALL\020\005"
+  "2\240\017\n\017DialplanService\022n\n\017ResolveDialplan\022"
+  ",.sentiric.dialplan.v1.ResolveDialplanRe"
+  "quest\032-.sentiric.dialplan.v1.ResolveDial"
+  "planResponse\022w\n\022CreateInboundRoute\022/.sen"
+  "tiric.dialplan.v1.CreateInboundRouteRequ"
+  "est\0320.sentiric.dialplan.v1.CreateInbound"
+  "RouteResponse\022n\n\017GetInboundRoute\022,.senti"
+  "ric.dialplan.v1.GetInboundRouteRequest\032-"
+  ".sentiric.dialplan.v1.GetInboundRouteRes"
+  "ponse\022w\n\022UpdateInboundRoute\022/.sentiric.d"
+  "ialplan.v1.UpdateInboundRouteRequest\0320.s"
+  "entiric.dialplan.v1.UpdateInboundRouteRe"
+  "sponse\022w\n\022DeleteInboundRoute\022/.sentiric."
+  "dialplan.v1.DeleteInboundRouteRequest\0320."
+  "sentiric.dialplan.v1.DeleteInboundRouteR"
+  "esponse\022t\n\021ListInboundRoutes\022..sentiric."
+  "dialplan.v1.ListInboundRoutesRequest\032/.s"
+  "entiric.dialplan.v1.ListInboundRoutesRes"
+  "ponse\022k\n\016CreateDialplan\022+.sentiric.dialp"
+  "lan.v1.CreateDialplanRequest\032,.sentiric."
+  "dialplan.v1.CreateDialplanResponse\022b\n\013Ge"
+  "tDialplan\022(.sentiric.dialplan.v1.GetDial"
+  "planRequest\032).sentiric.dialplan.v1.GetDi"
+  "alplanResponse\022k\n\016UpdateDialplan\022+.senti"
+  "ric.dialplan.v1.UpdateDialplanRequest\032,."
+  "sentiric.dialplan.v1.UpdateDialplanRespo"
+  "nse\022k\n\016DeleteDialplan\022+.sentiric.dialpla"
+  "n.v1.DeleteDialplanRequest\032,.sentiric.di"
+  "alplan.v1.DeleteDialplanResponse\022h\n\rList"
+  "Dialplans\022*.sentiric.dialplan.v1.ListDia"
+  "lplansRequest\032+.sentiric.dialplan.v1.Lis"
+  "tDialplansResponse\022b\n\013CreateQueue\022(.sent"
+  "iric.dialplan.v1.CreateQueueRequest\032).se"
+  "ntiric.dialplan.v1.CreateQueueResponse\022Y"
+  "\n\010GetQueue\022%.sentiric.dialplan.v1.GetQue"
+  "ueRequest\032&.sentiric.dialplan.v1.GetQueu"
+  "eResponse\022b\n\013UpdateQueue\022(.sentiric.dial"
+  "plan.v1.UpdateQueueRequest\032).sentiric.di"
+  "alplan.v1.UpdateQueueResponse\022b\n\013DeleteQ"
+  "ueue\022(.sentiric.dialplan.v1.DeleteQueueR"
+  "equest\032).sentiric.dialplan.v1.DeleteQueu"
+  "eResponse\022_\n\nListQueues\022\'.sentiric.dialp"
+  "lan.v1.ListQueuesRequest\032(.sentiric.dial"
+  "plan.v1.ListQueuesResponse\022k\n\016CreateSche"
+  "dule\022+.sentiric.dialplan.v1.CreateSchedu"
+  "leRequest\032,.sentiric.dialplan.v1.CreateS"
+  "cheduleResponse\022b\n\013GetSchedule\022(.sentiri"
+  "c.dialplan.v1.GetScheduleRequest\032).senti"
+  "ric.dialplan.v1.GetScheduleResponseBOZMg"
+  "ithub.com/sentiric/sentiric-contracts/ge"
+  "n/go/sentiric/dialplan/v1;dialplanv1b\006pr"
+  "oto3"
   ;
 static const ::_pbi::DescriptorTable* const descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_deps[1] = {
   &::descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto,
 };
 static ::_pbi::once_flag descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto = {
-    false, false, 4062, descriptor_table_protodef_sentiric_2fdialplan_2fv1_2fdialplan_2eproto,
+    false, false, 5964, descriptor_table_protodef_sentiric_2fdialplan_2fv1_2fdialplan_2eproto,
     "sentiric/dialplan/v1/dialplan.proto",
-    &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once, descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_deps, 1, 26,
+    &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once, descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_deps, 1, 42,
     schemas, file_default_instances, TableStruct_sentiric_2fdialplan_2fv1_2fdialplan_2eproto::offsets,
     file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto, file_level_enum_descriptors_sentiric_2fdialplan_2fv1_2fdialplan_2eproto,
     file_level_service_descriptors_sentiric_2fdialplan_2fv1_2fdialplan_2eproto,
@@ -808,6 +1240,7 @@ bool ActionType_IsValid(int value) {
     case 2:
     case 3:
     case 4:
+    case 5:
       return true;
     default:
       return false;
@@ -1847,6 +2280,9 @@ class InboundRoute::_Internal {
   static void set_has_active_dialplan_id(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
+  static void set_has_schedule_id(HasBits* has_bits) {
+    (*has_bits)[0] |= 8u;
+  }
   static void set_has_off_hours_dialplan_id(HasBits* has_bits) {
     (*has_bits)[0] |= 2u;
   }
@@ -1873,6 +2309,8 @@ InboundRoute::InboundRoute(const InboundRoute& from)
     , decltype(_impl_.off_hours_dialplan_id_){}
     , decltype(_impl_.failsafe_dialplan_id_){}
     , decltype(_impl_.default_language_code_){}
+    , decltype(_impl_.schedule_id_){}
+    , decltype(_impl_.block_anonymous_){}
     , decltype(_impl_.is_maintenance_mode_){}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
@@ -1924,7 +2362,17 @@ InboundRoute::InboundRoute(const InboundRoute& from)
     _this->_impl_.default_language_code_.Set(from._internal_default_language_code(), 
       _this->GetArenaForAllocation());
   }
-  _this->_impl_.is_maintenance_mode_ = from._impl_.is_maintenance_mode_;
+  _impl_.schedule_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.schedule_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_schedule_id()) {
+    _this->_impl_.schedule_id_.Set(from._internal_schedule_id(), 
+      _this->GetArenaForAllocation());
+  }
+  ::memcpy(&_impl_.block_anonymous_, &from._impl_.block_anonymous_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.is_maintenance_mode_) -
+    reinterpret_cast<char*>(&_impl_.block_anonymous_)) + sizeof(_impl_.is_maintenance_mode_));
   // @@protoc_insertion_point(copy_constructor:sentiric.dialplan.v1.InboundRoute)
 }
 
@@ -1941,6 +2389,8 @@ inline void InboundRoute::SharedCtor(
     , decltype(_impl_.off_hours_dialplan_id_){}
     , decltype(_impl_.failsafe_dialplan_id_){}
     , decltype(_impl_.default_language_code_){}
+    , decltype(_impl_.schedule_id_){}
+    , decltype(_impl_.block_anonymous_){false}
     , decltype(_impl_.is_maintenance_mode_){false}
   };
   _impl_.phone_number_.InitDefault();
@@ -1967,6 +2417,10 @@ inline void InboundRoute::SharedCtor(
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
     _impl_.default_language_code_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.schedule_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.schedule_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 InboundRoute::~InboundRoute() {
@@ -1986,6 +2440,7 @@ inline void InboundRoute::SharedDtor() {
   _impl_.off_hours_dialplan_id_.Destroy();
   _impl_.failsafe_dialplan_id_.Destroy();
   _impl_.default_language_code_.Destroy();
+  _impl_.schedule_id_.Destroy();
 }
 
 void InboundRoute::SetCachedSize(int size) const {
@@ -2013,7 +2468,12 @@ void InboundRoute::Clear() {
     }
   }
   _impl_.default_language_code_.ClearToEmpty();
-  _impl_.is_maintenance_mode_ = false;
+  if (cached_has_bits & 0x00000008u) {
+    _impl_.schedule_id_.ClearNonDefaultToEmpty();
+  }
+  ::memset(&_impl_.block_anonymous_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&_impl_.is_maintenance_mode_) -
+      reinterpret_cast<char*>(&_impl_.block_anonymous_)) + sizeof(_impl_.is_maintenance_mode_));
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
@@ -2090,6 +2550,24 @@ const char* InboundRoute::_InternalParse(const char* ptr, ::_pbi::ParseContext* 
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
           CHK_(::_pbi::VerifyUTF8(str, "sentiric.dialplan.v1.InboundRoute.default_language_code"));
+        } else
+          goto handle_unusual;
+        continue;
+      // optional string schedule_id = 8;
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 66)) {
+          auto str = _internal_mutable_schedule_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.dialplan.v1.InboundRoute.schedule_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // bool block_anonymous = 9;
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 72)) {
+          _impl_.block_anonymous_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
@@ -2189,6 +2667,22 @@ uint8_t* InboundRoute::_InternalSerialize(
         7, this->_internal_default_language_code(), target);
   }
 
+  // optional string schedule_id = 8;
+  if (_internal_has_schedule_id()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_schedule_id().data(), static_cast<int>(this->_internal_schedule_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.dialplan.v1.InboundRoute.schedule_id");
+    target = stream->WriteStringMaybeAliased(
+        8, this->_internal_schedule_id(), target);
+  }
+
+  // bool block_anonymous = 9;
+  if (this->_internal_block_anonymous() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(9, this->_internal_block_anonymous(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -2250,6 +2744,18 @@ size_t InboundRoute::ByteSizeLong() const {
         this->_internal_default_language_code());
   }
 
+  // optional string schedule_id = 8;
+  if (cached_has_bits & 0x00000008u) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_schedule_id());
+  }
+
+  // bool block_anonymous = 9;
+  if (this->_internal_block_anonymous() != 0) {
+    total_size += 1 + 1;
+  }
+
   // bool is_maintenance_mode = 6;
   if (this->_internal_is_maintenance_mode() != 0) {
     total_size += 1 + 1;
@@ -2293,6 +2799,12 @@ void InboundRoute::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::P
   }
   if (!from._internal_default_language_code().empty()) {
     _this->_internal_set_default_language_code(from._internal_default_language_code());
+  }
+  if (cached_has_bits & 0x00000008u) {
+    _this->_internal_set_schedule_id(from._internal_schedule_id());
+  }
+  if (from._internal_block_anonymous() != 0) {
+    _this->_internal_set_block_anonymous(from._internal_block_anonymous());
   }
   if (from._internal_is_maintenance_mode() != 0) {
     _this->_internal_set_is_maintenance_mode(from._internal_is_maintenance_mode());
@@ -2341,7 +2853,16 @@ void InboundRoute::InternalSwap(InboundRoute* other) {
       &_impl_.default_language_code_, lhs_arena,
       &other->_impl_.default_language_code_, rhs_arena
   );
-  swap(_impl_.is_maintenance_mode_, other->_impl_.is_maintenance_mode_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.schedule_id_, lhs_arena,
+      &other->_impl_.schedule_id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(InboundRoute, _impl_.is_maintenance_mode_)
+      + sizeof(InboundRoute::_impl_.is_maintenance_mode_)
+      - PROTOBUF_FIELD_OFFSET(InboundRoute, _impl_.block_anonymous_)>(
+          reinterpret_cast<char*>(&_impl_.block_anonymous_),
+          reinterpret_cast<char*>(&other->_impl_.block_anonymous_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata InboundRoute::GetMetadata() const {
@@ -2697,6 +3218,872 @@ void Dialplan::InternalSwap(Dialplan* other) {
 
 // ===================================================================
 
+class Queue::_Internal {
+ public:
+};
+
+Queue::Queue(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.dialplan.v1.Queue)
+}
+Queue::Queue(const Queue& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  Queue* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.id_){}
+    , decltype(_impl_.tenant_id_){}
+    , decltype(_impl_.name_){}
+    , decltype(_impl_.routing_strategy_){}
+    , decltype(_impl_.fallback_action_){}
+    , decltype(_impl_.max_wait_time_seconds_){}
+    , decltype(_impl_.is_active_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_id().empty()) {
+    _this->_impl_.id_.Set(from._internal_id(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.tenant_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.tenant_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_tenant_id().empty()) {
+    _this->_impl_.tenant_id_.Set(from._internal_tenant_id(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_name().empty()) {
+    _this->_impl_.name_.Set(from._internal_name(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.routing_strategy_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.routing_strategy_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_routing_strategy().empty()) {
+    _this->_impl_.routing_strategy_.Set(from._internal_routing_strategy(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.fallback_action_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.fallback_action_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_fallback_action().empty()) {
+    _this->_impl_.fallback_action_.Set(from._internal_fallback_action(), 
+      _this->GetArenaForAllocation());
+  }
+  ::memcpy(&_impl_.max_wait_time_seconds_, &from._impl_.max_wait_time_seconds_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.is_active_) -
+    reinterpret_cast<char*>(&_impl_.max_wait_time_seconds_)) + sizeof(_impl_.is_active_));
+  // @@protoc_insertion_point(copy_constructor:sentiric.dialplan.v1.Queue)
+}
+
+inline void Queue::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.id_){}
+    , decltype(_impl_.tenant_id_){}
+    , decltype(_impl_.name_){}
+    , decltype(_impl_.routing_strategy_){}
+    , decltype(_impl_.fallback_action_){}
+    , decltype(_impl_.max_wait_time_seconds_){0}
+    , decltype(_impl_.is_active_){false}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.tenant_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.tenant_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.routing_strategy_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.routing_strategy_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.fallback_action_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.fallback_action_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+Queue::~Queue() {
+  // @@protoc_insertion_point(destructor:sentiric.dialplan.v1.Queue)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void Queue::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.id_.Destroy();
+  _impl_.tenant_id_.Destroy();
+  _impl_.name_.Destroy();
+  _impl_.routing_strategy_.Destroy();
+  _impl_.fallback_action_.Destroy();
+}
+
+void Queue::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void Queue::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.dialplan.v1.Queue)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.id_.ClearToEmpty();
+  _impl_.tenant_id_.ClearToEmpty();
+  _impl_.name_.ClearToEmpty();
+  _impl_.routing_strategy_.ClearToEmpty();
+  _impl_.fallback_action_.ClearToEmpty();
+  ::memset(&_impl_.max_wait_time_seconds_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&_impl_.is_active_) -
+      reinterpret_cast<char*>(&_impl_.max_wait_time_seconds_)) + sizeof(_impl_.is_active_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* Queue::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.dialplan.v1.Queue.id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string tenant_id = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_tenant_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.dialplan.v1.Queue.tenant_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string name = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_name();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.dialplan.v1.Queue.name"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string routing_strategy = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          auto str = _internal_mutable_routing_strategy();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.dialplan.v1.Queue.routing_strategy"));
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 max_wait_time_seconds = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
+          _impl_.max_wait_time_seconds_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string fallback_action = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 50)) {
+          auto str = _internal_mutable_fallback_action();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.dialplan.v1.Queue.fallback_action"));
+        } else
+          goto handle_unusual;
+        continue;
+      // bool is_active = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 56)) {
+          _impl_.is_active_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* Queue::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.dialplan.v1.Queue)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string id = 1;
+  if (!this->_internal_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_id().data(), static_cast<int>(this->_internal_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.dialplan.v1.Queue.id");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_id(), target);
+  }
+
+  // string tenant_id = 2;
+  if (!this->_internal_tenant_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_tenant_id().data(), static_cast<int>(this->_internal_tenant_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.dialplan.v1.Queue.tenant_id");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_tenant_id(), target);
+  }
+
+  // string name = 3;
+  if (!this->_internal_name().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.dialplan.v1.Queue.name");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_name(), target);
+  }
+
+  // string routing_strategy = 4;
+  if (!this->_internal_routing_strategy().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_routing_strategy().data(), static_cast<int>(this->_internal_routing_strategy().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.dialplan.v1.Queue.routing_strategy");
+    target = stream->WriteStringMaybeAliased(
+        4, this->_internal_routing_strategy(), target);
+  }
+
+  // int32 max_wait_time_seconds = 5;
+  if (this->_internal_max_wait_time_seconds() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(5, this->_internal_max_wait_time_seconds(), target);
+  }
+
+  // string fallback_action = 6;
+  if (!this->_internal_fallback_action().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_fallback_action().data(), static_cast<int>(this->_internal_fallback_action().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.dialplan.v1.Queue.fallback_action");
+    target = stream->WriteStringMaybeAliased(
+        6, this->_internal_fallback_action(), target);
+  }
+
+  // bool is_active = 7;
+  if (this->_internal_is_active() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(7, this->_internal_is_active(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.dialplan.v1.Queue)
+  return target;
+}
+
+size_t Queue::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.dialplan.v1.Queue)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string id = 1;
+  if (!this->_internal_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_id());
+  }
+
+  // string tenant_id = 2;
+  if (!this->_internal_tenant_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_tenant_id());
+  }
+
+  // string name = 3;
+  if (!this->_internal_name().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_name());
+  }
+
+  // string routing_strategy = 4;
+  if (!this->_internal_routing_strategy().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_routing_strategy());
+  }
+
+  // string fallback_action = 6;
+  if (!this->_internal_fallback_action().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_fallback_action());
+  }
+
+  // int32 max_wait_time_seconds = 5;
+  if (this->_internal_max_wait_time_seconds() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_max_wait_time_seconds());
+  }
+
+  // bool is_active = 7;
+  if (this->_internal_is_active() != 0) {
+    total_size += 1 + 1;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Queue::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    Queue::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Queue::GetClassData() const { return &_class_data_; }
+
+
+void Queue::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<Queue*>(&to_msg);
+  auto& from = static_cast<const Queue&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.dialplan.v1.Queue)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_id().empty()) {
+    _this->_internal_set_id(from._internal_id());
+  }
+  if (!from._internal_tenant_id().empty()) {
+    _this->_internal_set_tenant_id(from._internal_tenant_id());
+  }
+  if (!from._internal_name().empty()) {
+    _this->_internal_set_name(from._internal_name());
+  }
+  if (!from._internal_routing_strategy().empty()) {
+    _this->_internal_set_routing_strategy(from._internal_routing_strategy());
+  }
+  if (!from._internal_fallback_action().empty()) {
+    _this->_internal_set_fallback_action(from._internal_fallback_action());
+  }
+  if (from._internal_max_wait_time_seconds() != 0) {
+    _this->_internal_set_max_wait_time_seconds(from._internal_max_wait_time_seconds());
+  }
+  if (from._internal_is_active() != 0) {
+    _this->_internal_set_is_active(from._internal_is_active());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void Queue::CopyFrom(const Queue& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.dialplan.v1.Queue)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Queue::IsInitialized() const {
+  return true;
+}
+
+void Queue::InternalSwap(Queue* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.id_, lhs_arena,
+      &other->_impl_.id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.tenant_id_, lhs_arena,
+      &other->_impl_.tenant_id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.name_, lhs_arena,
+      &other->_impl_.name_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.routing_strategy_, lhs_arena,
+      &other->_impl_.routing_strategy_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.fallback_action_, lhs_arena,
+      &other->_impl_.fallback_action_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(Queue, _impl_.is_active_)
+      + sizeof(Queue::_impl_.is_active_)
+      - PROTOBUF_FIELD_OFFSET(Queue, _impl_.max_wait_time_seconds_)>(
+          reinterpret_cast<char*>(&_impl_.max_wait_time_seconds_),
+          reinterpret_cast<char*>(&other->_impl_.max_wait_time_seconds_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata Queue::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[6]);
+}
+
+// ===================================================================
+
+class Schedule::_Internal {
+ public:
+};
+
+Schedule::Schedule(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.dialplan.v1.Schedule)
+}
+Schedule::Schedule(const Schedule& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  Schedule* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.id_){}
+    , decltype(_impl_.tenant_id_){}
+    , decltype(_impl_.name_){}
+    , decltype(_impl_.timezone_){}
+    , decltype(_impl_.schedule_json_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_id().empty()) {
+    _this->_impl_.id_.Set(from._internal_id(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.tenant_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.tenant_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_tenant_id().empty()) {
+    _this->_impl_.tenant_id_.Set(from._internal_tenant_id(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_name().empty()) {
+    _this->_impl_.name_.Set(from._internal_name(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.timezone_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.timezone_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_timezone().empty()) {
+    _this->_impl_.timezone_.Set(from._internal_timezone(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.schedule_json_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.schedule_json_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_schedule_json().empty()) {
+    _this->_impl_.schedule_json_.Set(from._internal_schedule_json(), 
+      _this->GetArenaForAllocation());
+  }
+  // @@protoc_insertion_point(copy_constructor:sentiric.dialplan.v1.Schedule)
+}
+
+inline void Schedule::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.id_){}
+    , decltype(_impl_.tenant_id_){}
+    , decltype(_impl_.name_){}
+    , decltype(_impl_.timezone_){}
+    , decltype(_impl_.schedule_json_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.tenant_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.tenant_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.timezone_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.timezone_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.schedule_json_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.schedule_json_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+Schedule::~Schedule() {
+  // @@protoc_insertion_point(destructor:sentiric.dialplan.v1.Schedule)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void Schedule::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.id_.Destroy();
+  _impl_.tenant_id_.Destroy();
+  _impl_.name_.Destroy();
+  _impl_.timezone_.Destroy();
+  _impl_.schedule_json_.Destroy();
+}
+
+void Schedule::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void Schedule::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.dialplan.v1.Schedule)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.id_.ClearToEmpty();
+  _impl_.tenant_id_.ClearToEmpty();
+  _impl_.name_.ClearToEmpty();
+  _impl_.timezone_.ClearToEmpty();
+  _impl_.schedule_json_.ClearToEmpty();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* Schedule::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.dialplan.v1.Schedule.id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string tenant_id = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_tenant_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.dialplan.v1.Schedule.tenant_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string name = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_name();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.dialplan.v1.Schedule.name"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string timezone = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          auto str = _internal_mutable_timezone();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.dialplan.v1.Schedule.timezone"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string schedule_json = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
+          auto str = _internal_mutable_schedule_json();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.dialplan.v1.Schedule.schedule_json"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* Schedule::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.dialplan.v1.Schedule)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string id = 1;
+  if (!this->_internal_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_id().data(), static_cast<int>(this->_internal_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.dialplan.v1.Schedule.id");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_id(), target);
+  }
+
+  // string tenant_id = 2;
+  if (!this->_internal_tenant_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_tenant_id().data(), static_cast<int>(this->_internal_tenant_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.dialplan.v1.Schedule.tenant_id");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_tenant_id(), target);
+  }
+
+  // string name = 3;
+  if (!this->_internal_name().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.dialplan.v1.Schedule.name");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_name(), target);
+  }
+
+  // string timezone = 4;
+  if (!this->_internal_timezone().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_timezone().data(), static_cast<int>(this->_internal_timezone().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.dialplan.v1.Schedule.timezone");
+    target = stream->WriteStringMaybeAliased(
+        4, this->_internal_timezone(), target);
+  }
+
+  // string schedule_json = 5;
+  if (!this->_internal_schedule_json().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_schedule_json().data(), static_cast<int>(this->_internal_schedule_json().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.dialplan.v1.Schedule.schedule_json");
+    target = stream->WriteStringMaybeAliased(
+        5, this->_internal_schedule_json(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.dialplan.v1.Schedule)
+  return target;
+}
+
+size_t Schedule::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.dialplan.v1.Schedule)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string id = 1;
+  if (!this->_internal_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_id());
+  }
+
+  // string tenant_id = 2;
+  if (!this->_internal_tenant_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_tenant_id());
+  }
+
+  // string name = 3;
+  if (!this->_internal_name().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_name());
+  }
+
+  // string timezone = 4;
+  if (!this->_internal_timezone().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_timezone());
+  }
+
+  // string schedule_json = 5;
+  if (!this->_internal_schedule_json().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_schedule_json());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Schedule::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    Schedule::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Schedule::GetClassData() const { return &_class_data_; }
+
+
+void Schedule::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<Schedule*>(&to_msg);
+  auto& from = static_cast<const Schedule&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.dialplan.v1.Schedule)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_id().empty()) {
+    _this->_internal_set_id(from._internal_id());
+  }
+  if (!from._internal_tenant_id().empty()) {
+    _this->_internal_set_tenant_id(from._internal_tenant_id());
+  }
+  if (!from._internal_name().empty()) {
+    _this->_internal_set_name(from._internal_name());
+  }
+  if (!from._internal_timezone().empty()) {
+    _this->_internal_set_timezone(from._internal_timezone());
+  }
+  if (!from._internal_schedule_json().empty()) {
+    _this->_internal_set_schedule_json(from._internal_schedule_json());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void Schedule::CopyFrom(const Schedule& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.dialplan.v1.Schedule)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Schedule::IsInitialized() const {
+  return true;
+}
+
+void Schedule::InternalSwap(Schedule* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.id_, lhs_arena,
+      &other->_impl_.id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.tenant_id_, lhs_arena,
+      &other->_impl_.tenant_id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.name_, lhs_arena,
+      &other->_impl_.name_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.timezone_, lhs_arena,
+      &other->_impl_.timezone_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.schedule_json_, lhs_arena,
+      &other->_impl_.schedule_json_, rhs_arena
+  );
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata Schedule::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[7]);
+}
+
+// ===================================================================
+
 class CreateInboundRouteRequest::_Internal {
  public:
   static const ::sentiric::dialplan::v1::InboundRoute& route(const CreateInboundRouteRequest* msg);
@@ -2885,7 +4272,7 @@ void CreateInboundRouteRequest::InternalSwap(CreateInboundRouteRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata CreateInboundRouteRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[6]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[8]);
 }
 
 // ===================================================================
@@ -3078,7 +4465,7 @@ void CreateInboundRouteResponse::InternalSwap(CreateInboundRouteResponse* other)
 ::PROTOBUF_NAMESPACE_ID::Metadata CreateInboundRouteResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[7]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[9]);
 }
 
 // ===================================================================
@@ -3281,7 +4668,7 @@ void GetInboundRouteRequest::InternalSwap(GetInboundRouteRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata GetInboundRouteRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[8]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[10]);
 }
 
 // ===================================================================
@@ -3474,7 +4861,7 @@ void GetInboundRouteResponse::InternalSwap(GetInboundRouteResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata GetInboundRouteResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[9]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[11]);
 }
 
 // ===================================================================
@@ -3667,7 +5054,7 @@ void UpdateInboundRouteRequest::InternalSwap(UpdateInboundRouteRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata UpdateInboundRouteRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[10]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[12]);
 }
 
 // ===================================================================
@@ -3860,7 +5247,7 @@ void UpdateInboundRouteResponse::InternalSwap(UpdateInboundRouteResponse* other)
 ::PROTOBUF_NAMESPACE_ID::Metadata UpdateInboundRouteResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[11]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[13]);
 }
 
 // ===================================================================
@@ -4063,7 +5450,7 @@ void DeleteInboundRouteRequest::InternalSwap(DeleteInboundRouteRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DeleteInboundRouteRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[12]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[14]);
 }
 
 // ===================================================================
@@ -4241,7 +5628,7 @@ void DeleteInboundRouteResponse::InternalSwap(DeleteInboundRouteResponse* other)
 ::PROTOBUF_NAMESPACE_ID::Metadata DeleteInboundRouteResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[13]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[15]);
 }
 
 // ===================================================================
@@ -4504,7 +5891,7 @@ void ListInboundRoutesRequest::InternalSwap(ListInboundRoutesRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ListInboundRoutesRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[14]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[16]);
 }
 
 // ===================================================================
@@ -4716,7 +6103,7 @@ void ListInboundRoutesResponse::InternalSwap(ListInboundRoutesResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ListInboundRoutesResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[15]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[17]);
 }
 
 // ===================================================================
@@ -4909,7 +6296,7 @@ void CreateDialplanRequest::InternalSwap(CreateDialplanRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata CreateDialplanRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[16]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[18]);
 }
 
 // ===================================================================
@@ -5102,7 +6489,7 @@ void CreateDialplanResponse::InternalSwap(CreateDialplanResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata CreateDialplanResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[17]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[19]);
 }
 
 // ===================================================================
@@ -5305,7 +6692,7 @@ void GetDialplanRequest::InternalSwap(GetDialplanRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata GetDialplanRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[18]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[20]);
 }
 
 // ===================================================================
@@ -5498,7 +6885,7 @@ void GetDialplanResponse::InternalSwap(GetDialplanResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata GetDialplanResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[19]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[21]);
 }
 
 // ===================================================================
@@ -5691,7 +7078,7 @@ void UpdateDialplanRequest::InternalSwap(UpdateDialplanRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata UpdateDialplanRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[20]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[22]);
 }
 
 // ===================================================================
@@ -5884,7 +7271,7 @@ void UpdateDialplanResponse::InternalSwap(UpdateDialplanResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata UpdateDialplanResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[21]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[23]);
 }
 
 // ===================================================================
@@ -6087,7 +7474,7 @@ void DeleteDialplanRequest::InternalSwap(DeleteDialplanRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DeleteDialplanRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[22]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[24]);
 }
 
 // ===================================================================
@@ -6265,7 +7652,7 @@ void DeleteDialplanResponse::InternalSwap(DeleteDialplanResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DeleteDialplanResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[23]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[25]);
 }
 
 // ===================================================================
@@ -6528,7 +7915,7 @@ void ListDialplansRequest::InternalSwap(ListDialplansRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ListDialplansRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[24]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[26]);
 }
 
 // ===================================================================
@@ -6740,7 +8127,2813 @@ void ListDialplansResponse::InternalSwap(ListDialplansResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ListDialplansResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
-      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[25]);
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[27]);
+}
+
+// ===================================================================
+
+class CreateQueueRequest::_Internal {
+ public:
+  static const ::sentiric::dialplan::v1::Queue& queue(const CreateQueueRequest* msg);
+};
+
+const ::sentiric::dialplan::v1::Queue&
+CreateQueueRequest::_Internal::queue(const CreateQueueRequest* msg) {
+  return *msg->_impl_.queue_;
+}
+CreateQueueRequest::CreateQueueRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.dialplan.v1.CreateQueueRequest)
+}
+CreateQueueRequest::CreateQueueRequest(const CreateQueueRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  CreateQueueRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.queue_){nullptr}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_queue()) {
+    _this->_impl_.queue_ = new ::sentiric::dialplan::v1::Queue(*from._impl_.queue_);
+  }
+  // @@protoc_insertion_point(copy_constructor:sentiric.dialplan.v1.CreateQueueRequest)
+}
+
+inline void CreateQueueRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.queue_){nullptr}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+CreateQueueRequest::~CreateQueueRequest() {
+  // @@protoc_insertion_point(destructor:sentiric.dialplan.v1.CreateQueueRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void CreateQueueRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.queue_;
+}
+
+void CreateQueueRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void CreateQueueRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.dialplan.v1.CreateQueueRequest)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  if (GetArenaForAllocation() == nullptr && _impl_.queue_ != nullptr) {
+    delete _impl_.queue_;
+  }
+  _impl_.queue_ = nullptr;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* CreateQueueRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .sentiric.dialplan.v1.Queue queue = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_queue(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* CreateQueueRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.dialplan.v1.CreateQueueRequest)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .sentiric.dialplan.v1.Queue queue = 1;
+  if (this->_internal_has_queue()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::queue(this),
+        _Internal::queue(this).GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.dialplan.v1.CreateQueueRequest)
+  return target;
+}
+
+size_t CreateQueueRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.dialplan.v1.CreateQueueRequest)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // .sentiric.dialplan.v1.Queue queue = 1;
+  if (this->_internal_has_queue()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.queue_);
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData CreateQueueRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    CreateQueueRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*CreateQueueRequest::GetClassData() const { return &_class_data_; }
+
+
+void CreateQueueRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<CreateQueueRequest*>(&to_msg);
+  auto& from = static_cast<const CreateQueueRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.dialplan.v1.CreateQueueRequest)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_has_queue()) {
+    _this->_internal_mutable_queue()->::sentiric::dialplan::v1::Queue::MergeFrom(
+        from._internal_queue());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void CreateQueueRequest::CopyFrom(const CreateQueueRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.dialplan.v1.CreateQueueRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool CreateQueueRequest::IsInitialized() const {
+  return true;
+}
+
+void CreateQueueRequest::InternalSwap(CreateQueueRequest* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_.queue_, other->_impl_.queue_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata CreateQueueRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[28]);
+}
+
+// ===================================================================
+
+class CreateQueueResponse::_Internal {
+ public:
+  static const ::sentiric::dialplan::v1::Queue& queue(const CreateQueueResponse* msg);
+};
+
+const ::sentiric::dialplan::v1::Queue&
+CreateQueueResponse::_Internal::queue(const CreateQueueResponse* msg) {
+  return *msg->_impl_.queue_;
+}
+CreateQueueResponse::CreateQueueResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.dialplan.v1.CreateQueueResponse)
+}
+CreateQueueResponse::CreateQueueResponse(const CreateQueueResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  CreateQueueResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.queue_){nullptr}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_queue()) {
+    _this->_impl_.queue_ = new ::sentiric::dialplan::v1::Queue(*from._impl_.queue_);
+  }
+  // @@protoc_insertion_point(copy_constructor:sentiric.dialplan.v1.CreateQueueResponse)
+}
+
+inline void CreateQueueResponse::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.queue_){nullptr}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+CreateQueueResponse::~CreateQueueResponse() {
+  // @@protoc_insertion_point(destructor:sentiric.dialplan.v1.CreateQueueResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void CreateQueueResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.queue_;
+}
+
+void CreateQueueResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void CreateQueueResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.dialplan.v1.CreateQueueResponse)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  if (GetArenaForAllocation() == nullptr && _impl_.queue_ != nullptr) {
+    delete _impl_.queue_;
+  }
+  _impl_.queue_ = nullptr;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* CreateQueueResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .sentiric.dialplan.v1.Queue queue = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_queue(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* CreateQueueResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.dialplan.v1.CreateQueueResponse)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .sentiric.dialplan.v1.Queue queue = 1;
+  if (this->_internal_has_queue()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::queue(this),
+        _Internal::queue(this).GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.dialplan.v1.CreateQueueResponse)
+  return target;
+}
+
+size_t CreateQueueResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.dialplan.v1.CreateQueueResponse)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // .sentiric.dialplan.v1.Queue queue = 1;
+  if (this->_internal_has_queue()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.queue_);
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData CreateQueueResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    CreateQueueResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*CreateQueueResponse::GetClassData() const { return &_class_data_; }
+
+
+void CreateQueueResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<CreateQueueResponse*>(&to_msg);
+  auto& from = static_cast<const CreateQueueResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.dialplan.v1.CreateQueueResponse)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_has_queue()) {
+    _this->_internal_mutable_queue()->::sentiric::dialplan::v1::Queue::MergeFrom(
+        from._internal_queue());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void CreateQueueResponse::CopyFrom(const CreateQueueResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.dialplan.v1.CreateQueueResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool CreateQueueResponse::IsInitialized() const {
+  return true;
+}
+
+void CreateQueueResponse::InternalSwap(CreateQueueResponse* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_.queue_, other->_impl_.queue_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata CreateQueueResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[29]);
+}
+
+// ===================================================================
+
+class GetQueueRequest::_Internal {
+ public:
+};
+
+GetQueueRequest::GetQueueRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.dialplan.v1.GetQueueRequest)
+}
+GetQueueRequest::GetQueueRequest(const GetQueueRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  GetQueueRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.id_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_id().empty()) {
+    _this->_impl_.id_.Set(from._internal_id(), 
+      _this->GetArenaForAllocation());
+  }
+  // @@protoc_insertion_point(copy_constructor:sentiric.dialplan.v1.GetQueueRequest)
+}
+
+inline void GetQueueRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.id_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+GetQueueRequest::~GetQueueRequest() {
+  // @@protoc_insertion_point(destructor:sentiric.dialplan.v1.GetQueueRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void GetQueueRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.id_.Destroy();
+}
+
+void GetQueueRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void GetQueueRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.dialplan.v1.GetQueueRequest)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.id_.ClearToEmpty();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* GetQueueRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.dialplan.v1.GetQueueRequest.id"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* GetQueueRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.dialplan.v1.GetQueueRequest)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string id = 1;
+  if (!this->_internal_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_id().data(), static_cast<int>(this->_internal_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.dialplan.v1.GetQueueRequest.id");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_id(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.dialplan.v1.GetQueueRequest)
+  return target;
+}
+
+size_t GetQueueRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.dialplan.v1.GetQueueRequest)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string id = 1;
+  if (!this->_internal_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_id());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData GetQueueRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    GetQueueRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetQueueRequest::GetClassData() const { return &_class_data_; }
+
+
+void GetQueueRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<GetQueueRequest*>(&to_msg);
+  auto& from = static_cast<const GetQueueRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.dialplan.v1.GetQueueRequest)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_id().empty()) {
+    _this->_internal_set_id(from._internal_id());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void GetQueueRequest::CopyFrom(const GetQueueRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.dialplan.v1.GetQueueRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool GetQueueRequest::IsInitialized() const {
+  return true;
+}
+
+void GetQueueRequest::InternalSwap(GetQueueRequest* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.id_, lhs_arena,
+      &other->_impl_.id_, rhs_arena
+  );
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata GetQueueRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[30]);
+}
+
+// ===================================================================
+
+class GetQueueResponse::_Internal {
+ public:
+  static const ::sentiric::dialplan::v1::Queue& queue(const GetQueueResponse* msg);
+};
+
+const ::sentiric::dialplan::v1::Queue&
+GetQueueResponse::_Internal::queue(const GetQueueResponse* msg) {
+  return *msg->_impl_.queue_;
+}
+GetQueueResponse::GetQueueResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.dialplan.v1.GetQueueResponse)
+}
+GetQueueResponse::GetQueueResponse(const GetQueueResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  GetQueueResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.queue_){nullptr}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_queue()) {
+    _this->_impl_.queue_ = new ::sentiric::dialplan::v1::Queue(*from._impl_.queue_);
+  }
+  // @@protoc_insertion_point(copy_constructor:sentiric.dialplan.v1.GetQueueResponse)
+}
+
+inline void GetQueueResponse::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.queue_){nullptr}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+GetQueueResponse::~GetQueueResponse() {
+  // @@protoc_insertion_point(destructor:sentiric.dialplan.v1.GetQueueResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void GetQueueResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.queue_;
+}
+
+void GetQueueResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void GetQueueResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.dialplan.v1.GetQueueResponse)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  if (GetArenaForAllocation() == nullptr && _impl_.queue_ != nullptr) {
+    delete _impl_.queue_;
+  }
+  _impl_.queue_ = nullptr;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* GetQueueResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .sentiric.dialplan.v1.Queue queue = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_queue(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* GetQueueResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.dialplan.v1.GetQueueResponse)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .sentiric.dialplan.v1.Queue queue = 1;
+  if (this->_internal_has_queue()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::queue(this),
+        _Internal::queue(this).GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.dialplan.v1.GetQueueResponse)
+  return target;
+}
+
+size_t GetQueueResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.dialplan.v1.GetQueueResponse)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // .sentiric.dialplan.v1.Queue queue = 1;
+  if (this->_internal_has_queue()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.queue_);
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData GetQueueResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    GetQueueResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetQueueResponse::GetClassData() const { return &_class_data_; }
+
+
+void GetQueueResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<GetQueueResponse*>(&to_msg);
+  auto& from = static_cast<const GetQueueResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.dialplan.v1.GetQueueResponse)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_has_queue()) {
+    _this->_internal_mutable_queue()->::sentiric::dialplan::v1::Queue::MergeFrom(
+        from._internal_queue());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void GetQueueResponse::CopyFrom(const GetQueueResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.dialplan.v1.GetQueueResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool GetQueueResponse::IsInitialized() const {
+  return true;
+}
+
+void GetQueueResponse::InternalSwap(GetQueueResponse* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_.queue_, other->_impl_.queue_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata GetQueueResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[31]);
+}
+
+// ===================================================================
+
+class UpdateQueueRequest::_Internal {
+ public:
+  static const ::sentiric::dialplan::v1::Queue& queue(const UpdateQueueRequest* msg);
+};
+
+const ::sentiric::dialplan::v1::Queue&
+UpdateQueueRequest::_Internal::queue(const UpdateQueueRequest* msg) {
+  return *msg->_impl_.queue_;
+}
+UpdateQueueRequest::UpdateQueueRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.dialplan.v1.UpdateQueueRequest)
+}
+UpdateQueueRequest::UpdateQueueRequest(const UpdateQueueRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  UpdateQueueRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.queue_){nullptr}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_queue()) {
+    _this->_impl_.queue_ = new ::sentiric::dialplan::v1::Queue(*from._impl_.queue_);
+  }
+  // @@protoc_insertion_point(copy_constructor:sentiric.dialplan.v1.UpdateQueueRequest)
+}
+
+inline void UpdateQueueRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.queue_){nullptr}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+UpdateQueueRequest::~UpdateQueueRequest() {
+  // @@protoc_insertion_point(destructor:sentiric.dialplan.v1.UpdateQueueRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void UpdateQueueRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.queue_;
+}
+
+void UpdateQueueRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void UpdateQueueRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.dialplan.v1.UpdateQueueRequest)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  if (GetArenaForAllocation() == nullptr && _impl_.queue_ != nullptr) {
+    delete _impl_.queue_;
+  }
+  _impl_.queue_ = nullptr;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* UpdateQueueRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .sentiric.dialplan.v1.Queue queue = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_queue(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* UpdateQueueRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.dialplan.v1.UpdateQueueRequest)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .sentiric.dialplan.v1.Queue queue = 1;
+  if (this->_internal_has_queue()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::queue(this),
+        _Internal::queue(this).GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.dialplan.v1.UpdateQueueRequest)
+  return target;
+}
+
+size_t UpdateQueueRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.dialplan.v1.UpdateQueueRequest)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // .sentiric.dialplan.v1.Queue queue = 1;
+  if (this->_internal_has_queue()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.queue_);
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UpdateQueueRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    UpdateQueueRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UpdateQueueRequest::GetClassData() const { return &_class_data_; }
+
+
+void UpdateQueueRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<UpdateQueueRequest*>(&to_msg);
+  auto& from = static_cast<const UpdateQueueRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.dialplan.v1.UpdateQueueRequest)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_has_queue()) {
+    _this->_internal_mutable_queue()->::sentiric::dialplan::v1::Queue::MergeFrom(
+        from._internal_queue());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void UpdateQueueRequest::CopyFrom(const UpdateQueueRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.dialplan.v1.UpdateQueueRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool UpdateQueueRequest::IsInitialized() const {
+  return true;
+}
+
+void UpdateQueueRequest::InternalSwap(UpdateQueueRequest* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_.queue_, other->_impl_.queue_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata UpdateQueueRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[32]);
+}
+
+// ===================================================================
+
+class UpdateQueueResponse::_Internal {
+ public:
+  static const ::sentiric::dialplan::v1::Queue& queue(const UpdateQueueResponse* msg);
+};
+
+const ::sentiric::dialplan::v1::Queue&
+UpdateQueueResponse::_Internal::queue(const UpdateQueueResponse* msg) {
+  return *msg->_impl_.queue_;
+}
+UpdateQueueResponse::UpdateQueueResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.dialplan.v1.UpdateQueueResponse)
+}
+UpdateQueueResponse::UpdateQueueResponse(const UpdateQueueResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  UpdateQueueResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.queue_){nullptr}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_queue()) {
+    _this->_impl_.queue_ = new ::sentiric::dialplan::v1::Queue(*from._impl_.queue_);
+  }
+  // @@protoc_insertion_point(copy_constructor:sentiric.dialplan.v1.UpdateQueueResponse)
+}
+
+inline void UpdateQueueResponse::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.queue_){nullptr}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+UpdateQueueResponse::~UpdateQueueResponse() {
+  // @@protoc_insertion_point(destructor:sentiric.dialplan.v1.UpdateQueueResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void UpdateQueueResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.queue_;
+}
+
+void UpdateQueueResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void UpdateQueueResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.dialplan.v1.UpdateQueueResponse)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  if (GetArenaForAllocation() == nullptr && _impl_.queue_ != nullptr) {
+    delete _impl_.queue_;
+  }
+  _impl_.queue_ = nullptr;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* UpdateQueueResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .sentiric.dialplan.v1.Queue queue = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_queue(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* UpdateQueueResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.dialplan.v1.UpdateQueueResponse)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .sentiric.dialplan.v1.Queue queue = 1;
+  if (this->_internal_has_queue()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::queue(this),
+        _Internal::queue(this).GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.dialplan.v1.UpdateQueueResponse)
+  return target;
+}
+
+size_t UpdateQueueResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.dialplan.v1.UpdateQueueResponse)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // .sentiric.dialplan.v1.Queue queue = 1;
+  if (this->_internal_has_queue()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.queue_);
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UpdateQueueResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    UpdateQueueResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UpdateQueueResponse::GetClassData() const { return &_class_data_; }
+
+
+void UpdateQueueResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<UpdateQueueResponse*>(&to_msg);
+  auto& from = static_cast<const UpdateQueueResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.dialplan.v1.UpdateQueueResponse)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_has_queue()) {
+    _this->_internal_mutable_queue()->::sentiric::dialplan::v1::Queue::MergeFrom(
+        from._internal_queue());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void UpdateQueueResponse::CopyFrom(const UpdateQueueResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.dialplan.v1.UpdateQueueResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool UpdateQueueResponse::IsInitialized() const {
+  return true;
+}
+
+void UpdateQueueResponse::InternalSwap(UpdateQueueResponse* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_.queue_, other->_impl_.queue_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata UpdateQueueResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[33]);
+}
+
+// ===================================================================
+
+class DeleteQueueRequest::_Internal {
+ public:
+};
+
+DeleteQueueRequest::DeleteQueueRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.dialplan.v1.DeleteQueueRequest)
+}
+DeleteQueueRequest::DeleteQueueRequest(const DeleteQueueRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  DeleteQueueRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.id_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_id().empty()) {
+    _this->_impl_.id_.Set(from._internal_id(), 
+      _this->GetArenaForAllocation());
+  }
+  // @@protoc_insertion_point(copy_constructor:sentiric.dialplan.v1.DeleteQueueRequest)
+}
+
+inline void DeleteQueueRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.id_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+DeleteQueueRequest::~DeleteQueueRequest() {
+  // @@protoc_insertion_point(destructor:sentiric.dialplan.v1.DeleteQueueRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void DeleteQueueRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.id_.Destroy();
+}
+
+void DeleteQueueRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void DeleteQueueRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.dialplan.v1.DeleteQueueRequest)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.id_.ClearToEmpty();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* DeleteQueueRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.dialplan.v1.DeleteQueueRequest.id"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* DeleteQueueRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.dialplan.v1.DeleteQueueRequest)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string id = 1;
+  if (!this->_internal_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_id().data(), static_cast<int>(this->_internal_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.dialplan.v1.DeleteQueueRequest.id");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_id(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.dialplan.v1.DeleteQueueRequest)
+  return target;
+}
+
+size_t DeleteQueueRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.dialplan.v1.DeleteQueueRequest)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string id = 1;
+  if (!this->_internal_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_id());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DeleteQueueRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    DeleteQueueRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DeleteQueueRequest::GetClassData() const { return &_class_data_; }
+
+
+void DeleteQueueRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<DeleteQueueRequest*>(&to_msg);
+  auto& from = static_cast<const DeleteQueueRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.dialplan.v1.DeleteQueueRequest)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_id().empty()) {
+    _this->_internal_set_id(from._internal_id());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void DeleteQueueRequest::CopyFrom(const DeleteQueueRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.dialplan.v1.DeleteQueueRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool DeleteQueueRequest::IsInitialized() const {
+  return true;
+}
+
+void DeleteQueueRequest::InternalSwap(DeleteQueueRequest* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.id_, lhs_arena,
+      &other->_impl_.id_, rhs_arena
+  );
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata DeleteQueueRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[34]);
+}
+
+// ===================================================================
+
+class DeleteQueueResponse::_Internal {
+ public:
+};
+
+DeleteQueueResponse::DeleteQueueResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.dialplan.v1.DeleteQueueResponse)
+}
+DeleteQueueResponse::DeleteQueueResponse(const DeleteQueueResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  DeleteQueueResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.success_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_impl_.success_ = from._impl_.success_;
+  // @@protoc_insertion_point(copy_constructor:sentiric.dialplan.v1.DeleteQueueResponse)
+}
+
+inline void DeleteQueueResponse::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.success_){false}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+DeleteQueueResponse::~DeleteQueueResponse() {
+  // @@protoc_insertion_point(destructor:sentiric.dialplan.v1.DeleteQueueResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void DeleteQueueResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void DeleteQueueResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void DeleteQueueResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.dialplan.v1.DeleteQueueResponse)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.success_ = false;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* DeleteQueueResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // bool success = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          _impl_.success_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* DeleteQueueResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.dialplan.v1.DeleteQueueResponse)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // bool success = 1;
+  if (this->_internal_success() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(1, this->_internal_success(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.dialplan.v1.DeleteQueueResponse)
+  return target;
+}
+
+size_t DeleteQueueResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.dialplan.v1.DeleteQueueResponse)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // bool success = 1;
+  if (this->_internal_success() != 0) {
+    total_size += 1 + 1;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DeleteQueueResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    DeleteQueueResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DeleteQueueResponse::GetClassData() const { return &_class_data_; }
+
+
+void DeleteQueueResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<DeleteQueueResponse*>(&to_msg);
+  auto& from = static_cast<const DeleteQueueResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.dialplan.v1.DeleteQueueResponse)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_success() != 0) {
+    _this->_internal_set_success(from._internal_success());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void DeleteQueueResponse::CopyFrom(const DeleteQueueResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.dialplan.v1.DeleteQueueResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool DeleteQueueResponse::IsInitialized() const {
+  return true;
+}
+
+void DeleteQueueResponse::InternalSwap(DeleteQueueResponse* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_.success_, other->_impl_.success_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata DeleteQueueResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[35]);
+}
+
+// ===================================================================
+
+class ListQueuesRequest::_Internal {
+ public:
+};
+
+ListQueuesRequest::ListQueuesRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.dialplan.v1.ListQueuesRequest)
+}
+ListQueuesRequest::ListQueuesRequest(const ListQueuesRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ListQueuesRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.tenant_id_){}
+    , decltype(_impl_.page_size_){}
+    , decltype(_impl_.page_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.tenant_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.tenant_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_tenant_id().empty()) {
+    _this->_impl_.tenant_id_.Set(from._internal_tenant_id(), 
+      _this->GetArenaForAllocation());
+  }
+  ::memcpy(&_impl_.page_size_, &from._impl_.page_size_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.page_) -
+    reinterpret_cast<char*>(&_impl_.page_size_)) + sizeof(_impl_.page_));
+  // @@protoc_insertion_point(copy_constructor:sentiric.dialplan.v1.ListQueuesRequest)
+}
+
+inline void ListQueuesRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.tenant_id_){}
+    , decltype(_impl_.page_size_){0}
+    , decltype(_impl_.page_){0}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.tenant_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.tenant_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+ListQueuesRequest::~ListQueuesRequest() {
+  // @@protoc_insertion_point(destructor:sentiric.dialplan.v1.ListQueuesRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void ListQueuesRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.tenant_id_.Destroy();
+}
+
+void ListQueuesRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void ListQueuesRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.dialplan.v1.ListQueuesRequest)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.tenant_id_.ClearToEmpty();
+  ::memset(&_impl_.page_size_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&_impl_.page_) -
+      reinterpret_cast<char*>(&_impl_.page_size_)) + sizeof(_impl_.page_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* ListQueuesRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string tenant_id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_tenant_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.dialplan.v1.ListQueuesRequest.tenant_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 page_size = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          _impl_.page_size_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 page = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+          _impl_.page_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* ListQueuesRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.dialplan.v1.ListQueuesRequest)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string tenant_id = 1;
+  if (!this->_internal_tenant_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_tenant_id().data(), static_cast<int>(this->_internal_tenant_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.dialplan.v1.ListQueuesRequest.tenant_id");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_tenant_id(), target);
+  }
+
+  // int32 page_size = 2;
+  if (this->_internal_page_size() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(2, this->_internal_page_size(), target);
+  }
+
+  // int32 page = 3;
+  if (this->_internal_page() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(3, this->_internal_page(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.dialplan.v1.ListQueuesRequest)
+  return target;
+}
+
+size_t ListQueuesRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.dialplan.v1.ListQueuesRequest)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string tenant_id = 1;
+  if (!this->_internal_tenant_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_tenant_id());
+  }
+
+  // int32 page_size = 2;
+  if (this->_internal_page_size() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_page_size());
+  }
+
+  // int32 page = 3;
+  if (this->_internal_page() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_page());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ListQueuesRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ListQueuesRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ListQueuesRequest::GetClassData() const { return &_class_data_; }
+
+
+void ListQueuesRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ListQueuesRequest*>(&to_msg);
+  auto& from = static_cast<const ListQueuesRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.dialplan.v1.ListQueuesRequest)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_tenant_id().empty()) {
+    _this->_internal_set_tenant_id(from._internal_tenant_id());
+  }
+  if (from._internal_page_size() != 0) {
+    _this->_internal_set_page_size(from._internal_page_size());
+  }
+  if (from._internal_page() != 0) {
+    _this->_internal_set_page(from._internal_page());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void ListQueuesRequest::CopyFrom(const ListQueuesRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.dialplan.v1.ListQueuesRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ListQueuesRequest::IsInitialized() const {
+  return true;
+}
+
+void ListQueuesRequest::InternalSwap(ListQueuesRequest* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.tenant_id_, lhs_arena,
+      &other->_impl_.tenant_id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(ListQueuesRequest, _impl_.page_)
+      + sizeof(ListQueuesRequest::_impl_.page_)
+      - PROTOBUF_FIELD_OFFSET(ListQueuesRequest, _impl_.page_size_)>(
+          reinterpret_cast<char*>(&_impl_.page_size_),
+          reinterpret_cast<char*>(&other->_impl_.page_size_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata ListQueuesRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[36]);
+}
+
+// ===================================================================
+
+class ListQueuesResponse::_Internal {
+ public:
+};
+
+ListQueuesResponse::ListQueuesResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.dialplan.v1.ListQueuesResponse)
+}
+ListQueuesResponse::ListQueuesResponse(const ListQueuesResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  ListQueuesResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.queues_){from._impl_.queues_}
+    , decltype(_impl_.total_count_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_impl_.total_count_ = from._impl_.total_count_;
+  // @@protoc_insertion_point(copy_constructor:sentiric.dialplan.v1.ListQueuesResponse)
+}
+
+inline void ListQueuesResponse::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.queues_){arena}
+    , decltype(_impl_.total_count_){0}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+ListQueuesResponse::~ListQueuesResponse() {
+  // @@protoc_insertion_point(destructor:sentiric.dialplan.v1.ListQueuesResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void ListQueuesResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.queues_.~RepeatedPtrField();
+}
+
+void ListQueuesResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void ListQueuesResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.dialplan.v1.ListQueuesResponse)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.queues_.Clear();
+  _impl_.total_count_ = 0;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* ListQueuesResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // repeated .sentiric.dialplan.v1.Queue queues = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_queues(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 total_count = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          _impl_.total_count_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* ListQueuesResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.dialplan.v1.ListQueuesResponse)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated .sentiric.dialplan.v1.Queue queues = 1;
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_queues_size()); i < n; i++) {
+    const auto& repfield = this->_internal_queues(i);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(1, repfield, repfield.GetCachedSize(), target, stream);
+  }
+
+  // int32 total_count = 2;
+  if (this->_internal_total_count() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(2, this->_internal_total_count(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.dialplan.v1.ListQueuesResponse)
+  return target;
+}
+
+size_t ListQueuesResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.dialplan.v1.ListQueuesResponse)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated .sentiric.dialplan.v1.Queue queues = 1;
+  total_size += 1UL * this->_internal_queues_size();
+  for (const auto& msg : this->_impl_.queues_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  // int32 total_count = 2;
+  if (this->_internal_total_count() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_total_count());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ListQueuesResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    ListQueuesResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ListQueuesResponse::GetClassData() const { return &_class_data_; }
+
+
+void ListQueuesResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<ListQueuesResponse*>(&to_msg);
+  auto& from = static_cast<const ListQueuesResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.dialplan.v1.ListQueuesResponse)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_impl_.queues_.MergeFrom(from._impl_.queues_);
+  if (from._internal_total_count() != 0) {
+    _this->_internal_set_total_count(from._internal_total_count());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void ListQueuesResponse::CopyFrom(const ListQueuesResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.dialplan.v1.ListQueuesResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool ListQueuesResponse::IsInitialized() const {
+  return true;
+}
+
+void ListQueuesResponse::InternalSwap(ListQueuesResponse* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.queues_.InternalSwap(&other->_impl_.queues_);
+  swap(_impl_.total_count_, other->_impl_.total_count_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata ListQueuesResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[37]);
+}
+
+// ===================================================================
+
+class CreateScheduleRequest::_Internal {
+ public:
+  static const ::sentiric::dialplan::v1::Schedule& schedule(const CreateScheduleRequest* msg);
+};
+
+const ::sentiric::dialplan::v1::Schedule&
+CreateScheduleRequest::_Internal::schedule(const CreateScheduleRequest* msg) {
+  return *msg->_impl_.schedule_;
+}
+CreateScheduleRequest::CreateScheduleRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.dialplan.v1.CreateScheduleRequest)
+}
+CreateScheduleRequest::CreateScheduleRequest(const CreateScheduleRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  CreateScheduleRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.schedule_){nullptr}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_schedule()) {
+    _this->_impl_.schedule_ = new ::sentiric::dialplan::v1::Schedule(*from._impl_.schedule_);
+  }
+  // @@protoc_insertion_point(copy_constructor:sentiric.dialplan.v1.CreateScheduleRequest)
+}
+
+inline void CreateScheduleRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.schedule_){nullptr}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+CreateScheduleRequest::~CreateScheduleRequest() {
+  // @@protoc_insertion_point(destructor:sentiric.dialplan.v1.CreateScheduleRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void CreateScheduleRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.schedule_;
+}
+
+void CreateScheduleRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void CreateScheduleRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.dialplan.v1.CreateScheduleRequest)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  if (GetArenaForAllocation() == nullptr && _impl_.schedule_ != nullptr) {
+    delete _impl_.schedule_;
+  }
+  _impl_.schedule_ = nullptr;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* CreateScheduleRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .sentiric.dialplan.v1.Schedule schedule = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_schedule(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* CreateScheduleRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.dialplan.v1.CreateScheduleRequest)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .sentiric.dialplan.v1.Schedule schedule = 1;
+  if (this->_internal_has_schedule()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::schedule(this),
+        _Internal::schedule(this).GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.dialplan.v1.CreateScheduleRequest)
+  return target;
+}
+
+size_t CreateScheduleRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.dialplan.v1.CreateScheduleRequest)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // .sentiric.dialplan.v1.Schedule schedule = 1;
+  if (this->_internal_has_schedule()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.schedule_);
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData CreateScheduleRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    CreateScheduleRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*CreateScheduleRequest::GetClassData() const { return &_class_data_; }
+
+
+void CreateScheduleRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<CreateScheduleRequest*>(&to_msg);
+  auto& from = static_cast<const CreateScheduleRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.dialplan.v1.CreateScheduleRequest)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_has_schedule()) {
+    _this->_internal_mutable_schedule()->::sentiric::dialplan::v1::Schedule::MergeFrom(
+        from._internal_schedule());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void CreateScheduleRequest::CopyFrom(const CreateScheduleRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.dialplan.v1.CreateScheduleRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool CreateScheduleRequest::IsInitialized() const {
+  return true;
+}
+
+void CreateScheduleRequest::InternalSwap(CreateScheduleRequest* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_.schedule_, other->_impl_.schedule_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata CreateScheduleRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[38]);
+}
+
+// ===================================================================
+
+class CreateScheduleResponse::_Internal {
+ public:
+  static const ::sentiric::dialplan::v1::Schedule& schedule(const CreateScheduleResponse* msg);
+};
+
+const ::sentiric::dialplan::v1::Schedule&
+CreateScheduleResponse::_Internal::schedule(const CreateScheduleResponse* msg) {
+  return *msg->_impl_.schedule_;
+}
+CreateScheduleResponse::CreateScheduleResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.dialplan.v1.CreateScheduleResponse)
+}
+CreateScheduleResponse::CreateScheduleResponse(const CreateScheduleResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  CreateScheduleResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.schedule_){nullptr}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_schedule()) {
+    _this->_impl_.schedule_ = new ::sentiric::dialplan::v1::Schedule(*from._impl_.schedule_);
+  }
+  // @@protoc_insertion_point(copy_constructor:sentiric.dialplan.v1.CreateScheduleResponse)
+}
+
+inline void CreateScheduleResponse::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.schedule_){nullptr}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+CreateScheduleResponse::~CreateScheduleResponse() {
+  // @@protoc_insertion_point(destructor:sentiric.dialplan.v1.CreateScheduleResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void CreateScheduleResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.schedule_;
+}
+
+void CreateScheduleResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void CreateScheduleResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.dialplan.v1.CreateScheduleResponse)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  if (GetArenaForAllocation() == nullptr && _impl_.schedule_ != nullptr) {
+    delete _impl_.schedule_;
+  }
+  _impl_.schedule_ = nullptr;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* CreateScheduleResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .sentiric.dialplan.v1.Schedule schedule = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_schedule(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* CreateScheduleResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.dialplan.v1.CreateScheduleResponse)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .sentiric.dialplan.v1.Schedule schedule = 1;
+  if (this->_internal_has_schedule()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::schedule(this),
+        _Internal::schedule(this).GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.dialplan.v1.CreateScheduleResponse)
+  return target;
+}
+
+size_t CreateScheduleResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.dialplan.v1.CreateScheduleResponse)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // .sentiric.dialplan.v1.Schedule schedule = 1;
+  if (this->_internal_has_schedule()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.schedule_);
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData CreateScheduleResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    CreateScheduleResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*CreateScheduleResponse::GetClassData() const { return &_class_data_; }
+
+
+void CreateScheduleResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<CreateScheduleResponse*>(&to_msg);
+  auto& from = static_cast<const CreateScheduleResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.dialplan.v1.CreateScheduleResponse)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_has_schedule()) {
+    _this->_internal_mutable_schedule()->::sentiric::dialplan::v1::Schedule::MergeFrom(
+        from._internal_schedule());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void CreateScheduleResponse::CopyFrom(const CreateScheduleResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.dialplan.v1.CreateScheduleResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool CreateScheduleResponse::IsInitialized() const {
+  return true;
+}
+
+void CreateScheduleResponse::InternalSwap(CreateScheduleResponse* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_.schedule_, other->_impl_.schedule_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata CreateScheduleResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[39]);
+}
+
+// ===================================================================
+
+class GetScheduleRequest::_Internal {
+ public:
+};
+
+GetScheduleRequest::GetScheduleRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.dialplan.v1.GetScheduleRequest)
+}
+GetScheduleRequest::GetScheduleRequest(const GetScheduleRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  GetScheduleRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.id_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_id().empty()) {
+    _this->_impl_.id_.Set(from._internal_id(), 
+      _this->GetArenaForAllocation());
+  }
+  // @@protoc_insertion_point(copy_constructor:sentiric.dialplan.v1.GetScheduleRequest)
+}
+
+inline void GetScheduleRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.id_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+GetScheduleRequest::~GetScheduleRequest() {
+  // @@protoc_insertion_point(destructor:sentiric.dialplan.v1.GetScheduleRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void GetScheduleRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.id_.Destroy();
+}
+
+void GetScheduleRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void GetScheduleRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.dialplan.v1.GetScheduleRequest)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.id_.ClearToEmpty();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* GetScheduleRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.dialplan.v1.GetScheduleRequest.id"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* GetScheduleRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.dialplan.v1.GetScheduleRequest)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string id = 1;
+  if (!this->_internal_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_id().data(), static_cast<int>(this->_internal_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.dialplan.v1.GetScheduleRequest.id");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_id(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.dialplan.v1.GetScheduleRequest)
+  return target;
+}
+
+size_t GetScheduleRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.dialplan.v1.GetScheduleRequest)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string id = 1;
+  if (!this->_internal_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_id());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData GetScheduleRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    GetScheduleRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetScheduleRequest::GetClassData() const { return &_class_data_; }
+
+
+void GetScheduleRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<GetScheduleRequest*>(&to_msg);
+  auto& from = static_cast<const GetScheduleRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.dialplan.v1.GetScheduleRequest)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_id().empty()) {
+    _this->_internal_set_id(from._internal_id());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void GetScheduleRequest::CopyFrom(const GetScheduleRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.dialplan.v1.GetScheduleRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool GetScheduleRequest::IsInitialized() const {
+  return true;
+}
+
+void GetScheduleRequest::InternalSwap(GetScheduleRequest* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.id_, lhs_arena,
+      &other->_impl_.id_, rhs_arena
+  );
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata GetScheduleRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[40]);
+}
+
+// ===================================================================
+
+class GetScheduleResponse::_Internal {
+ public:
+  static const ::sentiric::dialplan::v1::Schedule& schedule(const GetScheduleResponse* msg);
+};
+
+const ::sentiric::dialplan::v1::Schedule&
+GetScheduleResponse::_Internal::schedule(const GetScheduleResponse* msg) {
+  return *msg->_impl_.schedule_;
+}
+GetScheduleResponse::GetScheduleResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.dialplan.v1.GetScheduleResponse)
+}
+GetScheduleResponse::GetScheduleResponse(const GetScheduleResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  GetScheduleResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.schedule_){nullptr}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_schedule()) {
+    _this->_impl_.schedule_ = new ::sentiric::dialplan::v1::Schedule(*from._impl_.schedule_);
+  }
+  // @@protoc_insertion_point(copy_constructor:sentiric.dialplan.v1.GetScheduleResponse)
+}
+
+inline void GetScheduleResponse::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.schedule_){nullptr}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+GetScheduleResponse::~GetScheduleResponse() {
+  // @@protoc_insertion_point(destructor:sentiric.dialplan.v1.GetScheduleResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void GetScheduleResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.schedule_;
+}
+
+void GetScheduleResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void GetScheduleResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.dialplan.v1.GetScheduleResponse)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  if (GetArenaForAllocation() == nullptr && _impl_.schedule_ != nullptr) {
+    delete _impl_.schedule_;
+  }
+  _impl_.schedule_ = nullptr;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* GetScheduleResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .sentiric.dialplan.v1.Schedule schedule = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_schedule(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* GetScheduleResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.dialplan.v1.GetScheduleResponse)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .sentiric.dialplan.v1.Schedule schedule = 1;
+  if (this->_internal_has_schedule()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::schedule(this),
+        _Internal::schedule(this).GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.dialplan.v1.GetScheduleResponse)
+  return target;
+}
+
+size_t GetScheduleResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.dialplan.v1.GetScheduleResponse)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // .sentiric.dialplan.v1.Schedule schedule = 1;
+  if (this->_internal_has_schedule()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.schedule_);
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData GetScheduleResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    GetScheduleResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetScheduleResponse::GetClassData() const { return &_class_data_; }
+
+
+void GetScheduleResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<GetScheduleResponse*>(&to_msg);
+  auto& from = static_cast<const GetScheduleResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.dialplan.v1.GetScheduleResponse)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_has_schedule()) {
+    _this->_internal_mutable_schedule()->::sentiric::dialplan::v1::Schedule::MergeFrom(
+        from._internal_schedule());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void GetScheduleResponse::CopyFrom(const GetScheduleResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.dialplan.v1.GetScheduleResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool GetScheduleResponse::IsInitialized() const {
+  return true;
+}
+
+void GetScheduleResponse::InternalSwap(GetScheduleResponse* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_.schedule_, other->_impl_.schedule_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata GetScheduleResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_getter, &descriptor_table_sentiric_2fdialplan_2fv1_2fdialplan_2eproto_once,
+      file_level_metadata_sentiric_2fdialplan_2fv1_2fdialplan_2eproto[41]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -6771,6 +10964,14 @@ Arena::CreateMaybeMessage< ::sentiric::dialplan::v1::InboundRoute >(Arena* arena
 template<> PROTOBUF_NOINLINE ::sentiric::dialplan::v1::Dialplan*
 Arena::CreateMaybeMessage< ::sentiric::dialplan::v1::Dialplan >(Arena* arena) {
   return Arena::CreateMessageInternal< ::sentiric::dialplan::v1::Dialplan >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::dialplan::v1::Queue*
+Arena::CreateMaybeMessage< ::sentiric::dialplan::v1::Queue >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::dialplan::v1::Queue >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::dialplan::v1::Schedule*
+Arena::CreateMaybeMessage< ::sentiric::dialplan::v1::Schedule >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::dialplan::v1::Schedule >(arena);
 }
 template<> PROTOBUF_NOINLINE ::sentiric::dialplan::v1::CreateInboundRouteRequest*
 Arena::CreateMaybeMessage< ::sentiric::dialplan::v1::CreateInboundRouteRequest >(Arena* arena) {
@@ -6851,6 +11052,62 @@ Arena::CreateMaybeMessage< ::sentiric::dialplan::v1::ListDialplansRequest >(Aren
 template<> PROTOBUF_NOINLINE ::sentiric::dialplan::v1::ListDialplansResponse*
 Arena::CreateMaybeMessage< ::sentiric::dialplan::v1::ListDialplansResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::sentiric::dialplan::v1::ListDialplansResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::dialplan::v1::CreateQueueRequest*
+Arena::CreateMaybeMessage< ::sentiric::dialplan::v1::CreateQueueRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::dialplan::v1::CreateQueueRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::dialplan::v1::CreateQueueResponse*
+Arena::CreateMaybeMessage< ::sentiric::dialplan::v1::CreateQueueResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::dialplan::v1::CreateQueueResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::dialplan::v1::GetQueueRequest*
+Arena::CreateMaybeMessage< ::sentiric::dialplan::v1::GetQueueRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::dialplan::v1::GetQueueRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::dialplan::v1::GetQueueResponse*
+Arena::CreateMaybeMessage< ::sentiric::dialplan::v1::GetQueueResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::dialplan::v1::GetQueueResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::dialplan::v1::UpdateQueueRequest*
+Arena::CreateMaybeMessage< ::sentiric::dialplan::v1::UpdateQueueRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::dialplan::v1::UpdateQueueRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::dialplan::v1::UpdateQueueResponse*
+Arena::CreateMaybeMessage< ::sentiric::dialplan::v1::UpdateQueueResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::dialplan::v1::UpdateQueueResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::dialplan::v1::DeleteQueueRequest*
+Arena::CreateMaybeMessage< ::sentiric::dialplan::v1::DeleteQueueRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::dialplan::v1::DeleteQueueRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::dialplan::v1::DeleteQueueResponse*
+Arena::CreateMaybeMessage< ::sentiric::dialplan::v1::DeleteQueueResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::dialplan::v1::DeleteQueueResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::dialplan::v1::ListQueuesRequest*
+Arena::CreateMaybeMessage< ::sentiric::dialplan::v1::ListQueuesRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::dialplan::v1::ListQueuesRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::dialplan::v1::ListQueuesResponse*
+Arena::CreateMaybeMessage< ::sentiric::dialplan::v1::ListQueuesResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::dialplan::v1::ListQueuesResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::dialplan::v1::CreateScheduleRequest*
+Arena::CreateMaybeMessage< ::sentiric::dialplan::v1::CreateScheduleRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::dialplan::v1::CreateScheduleRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::dialplan::v1::CreateScheduleResponse*
+Arena::CreateMaybeMessage< ::sentiric::dialplan::v1::CreateScheduleResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::dialplan::v1::CreateScheduleResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::dialplan::v1::GetScheduleRequest*
+Arena::CreateMaybeMessage< ::sentiric::dialplan::v1::GetScheduleRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::dialplan::v1::GetScheduleRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::dialplan::v1::GetScheduleResponse*
+Arena::CreateMaybeMessage< ::sentiric::dialplan::v1::GetScheduleResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::dialplan::v1::GetScheduleResponse >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

@@ -162,6 +162,28 @@ function deserialize_sentiric_user_v1_FindUserByContactResponse(buffer_arg) {
   return sentiric_user_v1_user_pb.FindUserByContactResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sentiric_user_v1_GetAgentProfileRequest(arg) {
+  if (!(arg instanceof sentiric_user_v1_user_pb.GetAgentProfileRequest)) {
+    throw new Error('Expected argument of type sentiric.user.v1.GetAgentProfileRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sentiric_user_v1_GetAgentProfileRequest(buffer_arg) {
+  return sentiric_user_v1_user_pb.GetAgentProfileRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sentiric_user_v1_GetAgentProfileResponse(arg) {
+  if (!(arg instanceof sentiric_user_v1_user_pb.GetAgentProfileResponse)) {
+    throw new Error('Expected argument of type sentiric.user.v1.GetAgentProfileResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sentiric_user_v1_GetAgentProfileResponse(buffer_arg) {
+  return sentiric_user_v1_user_pb.GetAgentProfileResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sentiric_user_v1_GetSipCredentialsRequest(arg) {
   if (!(arg instanceof sentiric_user_v1_user_pb.GetSipCredentialsRequest)) {
     throw new Error('Expected argument of type sentiric.user.v1.GetSipCredentialsRequest');
@@ -383,6 +405,17 @@ deleteSipCredential: {
     requestDeserialize: deserialize_sentiric_user_v1_DeleteSipCredentialRequest,
     responseSerialize: serialize_sentiric_user_v1_DeleteSipCredentialResponse,
     responseDeserialize: deserialize_sentiric_user_v1_DeleteSipCredentialResponse,
+  },
+  getAgentProfile: {
+    path: '/sentiric.user.v1.UserService/GetAgentProfile',
+    requestStream: false,
+    responseStream: false,
+    requestType: sentiric_user_v1_user_pb.GetAgentProfileRequest,
+    responseType: sentiric_user_v1_user_pb.GetAgentProfileResponse,
+    requestSerialize: serialize_sentiric_user_v1_GetAgentProfileRequest,
+    requestDeserialize: deserialize_sentiric_user_v1_GetAgentProfileRequest,
+    responseSerialize: serialize_sentiric_user_v1_GetAgentProfileResponse,
+    responseDeserialize: deserialize_sentiric_user_v1_GetAgentProfileResponse,
   },
 };
 

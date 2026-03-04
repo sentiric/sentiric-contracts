@@ -4,6 +4,29 @@
 var grpc = require('@grpc/grpc-js');
 var sentiric_agent_v1_orchestration_pb = require('../../../sentiric/agent/v1/orchestration_pb.js');
 var sentiric_data_v1_context_pb = require('../../../sentiric/data/v1/context_pb.js');
+var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
+
+function serialize_sentiric_agent_v1_GetConversationTranscriptRequest(arg) {
+  if (!(arg instanceof sentiric_agent_v1_orchestration_pb.GetConversationTranscriptRequest)) {
+    throw new Error('Expected argument of type sentiric.agent.v1.GetConversationTranscriptRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sentiric_agent_v1_GetConversationTranscriptRequest(buffer_arg) {
+  return sentiric_agent_v1_orchestration_pb.GetConversationTranscriptRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sentiric_agent_v1_GetConversationTranscriptResponse(arg) {
+  if (!(arg instanceof sentiric_agent_v1_orchestration_pb.GetConversationTranscriptResponse)) {
+    throw new Error('Expected argument of type sentiric.agent.v1.GetConversationTranscriptResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sentiric_agent_v1_GetConversationTranscriptResponse(buffer_arg) {
+  return sentiric_agent_v1_orchestration_pb.GetConversationTranscriptResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
 
 function serialize_sentiric_agent_v1_ProcessCallStartRequest(arg) {
   if (!(arg instanceof sentiric_agent_v1_orchestration_pb.ProcessCallStartRequest)) {
@@ -73,8 +96,7 @@ function deserialize_sentiric_agent_v1_ProcessSagaStepResponse(buffer_arg) {
 
 
 var AgentOrchestrationServiceService = exports.AgentOrchestrationServiceService = {
-  // Gelen çağrıların başlatılması (Inbound)
-processCallStart: {
+  processCallStart: {
     path: '/sentiric.agent.v1.AgentOrchestrationService/ProcessCallStart',
     requestStream: false,
     responseStream: false,
@@ -85,8 +107,7 @@ processCallStart: {
     responseSerialize: serialize_sentiric_agent_v1_ProcessCallStartResponse,
     responseDeserialize: deserialize_sentiric_agent_v1_ProcessCallStartResponse,
   },
-  // Manuel dış arama başlatma (Outbound) - YENİ
-processManualDial: {
+  processManualDial: {
     path: '/sentiric.agent.v1.AgentOrchestrationService/ProcessManualDial',
     requestStream: false,
     responseStream: false,
@@ -107,6 +128,18 @@ processManualDial: {
     requestDeserialize: deserialize_sentiric_agent_v1_ProcessSagaStepRequest,
     responseSerialize: serialize_sentiric_agent_v1_ProcessSagaStepResponse,
     responseDeserialize: deserialize_sentiric_agent_v1_ProcessSagaStepResponse,
+  },
+  // [YENİ] Konuşma Geçmişi (Transcript)
+getConversationTranscript: {
+    path: '/sentiric.agent.v1.AgentOrchestrationService/GetConversationTranscript',
+    requestStream: false,
+    responseStream: false,
+    requestType: sentiric_agent_v1_orchestration_pb.GetConversationTranscriptRequest,
+    responseType: sentiric_agent_v1_orchestration_pb.GetConversationTranscriptResponse,
+    requestSerialize: serialize_sentiric_agent_v1_GetConversationTranscriptRequest,
+    requestDeserialize: deserialize_sentiric_agent_v1_GetConversationTranscriptRequest,
+    responseSerialize: serialize_sentiric_agent_v1_GetConversationTranscriptResponse,
+    responseDeserialize: deserialize_sentiric_agent_v1_GetConversationTranscriptResponse,
   },
 };
 

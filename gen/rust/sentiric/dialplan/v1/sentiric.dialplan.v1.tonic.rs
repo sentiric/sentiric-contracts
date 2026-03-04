@@ -409,6 +409,203 @@ pub mod dialplan_service_client {
                 );
             self.inner.unary(req, path, codec).await
         }
+        pub async fn create_queue(
+            &mut self,
+            request: impl tonic::IntoRequest<super::CreateQueueRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::CreateQueueResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::unknown(
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
+            let codec = tonic_prost::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/sentiric.dialplan.v1.DialplanService/CreateQueue",
+            );
+            let mut req = request.into_request();
+            req.extensions_mut()
+                .insert(
+                    GrpcMethod::new(
+                        "sentiric.dialplan.v1.DialplanService",
+                        "CreateQueue",
+                    ),
+                );
+            self.inner.unary(req, path, codec).await
+        }
+        pub async fn get_queue(
+            &mut self,
+            request: impl tonic::IntoRequest<super::GetQueueRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::GetQueueResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::unknown(
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
+            let codec = tonic_prost::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/sentiric.dialplan.v1.DialplanService/GetQueue",
+            );
+            let mut req = request.into_request();
+            req.extensions_mut()
+                .insert(
+                    GrpcMethod::new("sentiric.dialplan.v1.DialplanService", "GetQueue"),
+                );
+            self.inner.unary(req, path, codec).await
+        }
+        pub async fn update_queue(
+            &mut self,
+            request: impl tonic::IntoRequest<super::UpdateQueueRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::UpdateQueueResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::unknown(
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
+            let codec = tonic_prost::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/sentiric.dialplan.v1.DialplanService/UpdateQueue",
+            );
+            let mut req = request.into_request();
+            req.extensions_mut()
+                .insert(
+                    GrpcMethod::new(
+                        "sentiric.dialplan.v1.DialplanService",
+                        "UpdateQueue",
+                    ),
+                );
+            self.inner.unary(req, path, codec).await
+        }
+        pub async fn delete_queue(
+            &mut self,
+            request: impl tonic::IntoRequest<super::DeleteQueueRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::DeleteQueueResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::unknown(
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
+            let codec = tonic_prost::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/sentiric.dialplan.v1.DialplanService/DeleteQueue",
+            );
+            let mut req = request.into_request();
+            req.extensions_mut()
+                .insert(
+                    GrpcMethod::new(
+                        "sentiric.dialplan.v1.DialplanService",
+                        "DeleteQueue",
+                    ),
+                );
+            self.inner.unary(req, path, codec).await
+        }
+        pub async fn list_queues(
+            &mut self,
+            request: impl tonic::IntoRequest<super::ListQueuesRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::ListQueuesResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::unknown(
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
+            let codec = tonic_prost::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/sentiric.dialplan.v1.DialplanService/ListQueues",
+            );
+            let mut req = request.into_request();
+            req.extensions_mut()
+                .insert(
+                    GrpcMethod::new("sentiric.dialplan.v1.DialplanService", "ListQueues"),
+                );
+            self.inner.unary(req, path, codec).await
+        }
+        pub async fn create_schedule(
+            &mut self,
+            request: impl tonic::IntoRequest<super::CreateScheduleRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::CreateScheduleResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::unknown(
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
+            let codec = tonic_prost::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/sentiric.dialplan.v1.DialplanService/CreateSchedule",
+            );
+            let mut req = request.into_request();
+            req.extensions_mut()
+                .insert(
+                    GrpcMethod::new(
+                        "sentiric.dialplan.v1.DialplanService",
+                        "CreateSchedule",
+                    ),
+                );
+            self.inner.unary(req, path, codec).await
+        }
+        pub async fn get_schedule(
+            &mut self,
+            request: impl tonic::IntoRequest<super::GetScheduleRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::GetScheduleResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::unknown(
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
+            let codec = tonic_prost::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/sentiric.dialplan.v1.DialplanService/GetSchedule",
+            );
+            let mut req = request.into_request();
+            req.extensions_mut()
+                .insert(
+                    GrpcMethod::new(
+                        "sentiric.dialplan.v1.DialplanService",
+                        "GetSchedule",
+                    ),
+                );
+            self.inner.unary(req, path, codec).await
+        }
     }
 }
 /// Generated server implementations.
@@ -499,6 +696,55 @@ pub mod dialplan_service_server {
             request: tonic::Request<super::ListDialplansRequest>,
         ) -> std::result::Result<
             tonic::Response<super::ListDialplansResponse>,
+            tonic::Status,
+        >;
+        async fn create_queue(
+            &self,
+            request: tonic::Request<super::CreateQueueRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::CreateQueueResponse>,
+            tonic::Status,
+        >;
+        async fn get_queue(
+            &self,
+            request: tonic::Request<super::GetQueueRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::GetQueueResponse>,
+            tonic::Status,
+        >;
+        async fn update_queue(
+            &self,
+            request: tonic::Request<super::UpdateQueueRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::UpdateQueueResponse>,
+            tonic::Status,
+        >;
+        async fn delete_queue(
+            &self,
+            request: tonic::Request<super::DeleteQueueRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::DeleteQueueResponse>,
+            tonic::Status,
+        >;
+        async fn list_queues(
+            &self,
+            request: tonic::Request<super::ListQueuesRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::ListQueuesResponse>,
+            tonic::Status,
+        >;
+        async fn create_schedule(
+            &self,
+            request: tonic::Request<super::CreateScheduleRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::CreateScheduleResponse>,
+            tonic::Status,
+        >;
+        async fn get_schedule(
+            &self,
+            request: tonic::Request<super::GetScheduleRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::GetScheduleResponse>,
             tonic::Status,
         >;
     }
@@ -1077,6 +1323,322 @@ pub mod dialplan_service_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = ListDialplansSvc(inner);
+                        let codec = tonic_prost::ProstCodec::default();
+                        let mut grpc = tonic::server::Grpc::new(codec)
+                            .apply_compression_config(
+                                accept_compression_encodings,
+                                send_compression_encodings,
+                            )
+                            .apply_max_message_size_config(
+                                max_decoding_message_size,
+                                max_encoding_message_size,
+                            );
+                        let res = grpc.unary(method, req).await;
+                        Ok(res)
+                    };
+                    Box::pin(fut)
+                }
+                "/sentiric.dialplan.v1.DialplanService/CreateQueue" => {
+                    #[allow(non_camel_case_types)]
+                    struct CreateQueueSvc<T: DialplanService>(pub Arc<T>);
+                    impl<
+                        T: DialplanService,
+                    > tonic::server::UnaryService<super::CreateQueueRequest>
+                    for CreateQueueSvc<T> {
+                        type Response = super::CreateQueueResponse;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
+                        fn call(
+                            &mut self,
+                            request: tonic::Request<super::CreateQueueRequest>,
+                        ) -> Self::Future {
+                            let inner = Arc::clone(&self.0);
+                            let fut = async move {
+                                <T as DialplanService>::create_queue(&inner, request).await
+                            };
+                            Box::pin(fut)
+                        }
+                    }
+                    let accept_compression_encodings = self.accept_compression_encodings;
+                    let send_compression_encodings = self.send_compression_encodings;
+                    let max_decoding_message_size = self.max_decoding_message_size;
+                    let max_encoding_message_size = self.max_encoding_message_size;
+                    let inner = self.inner.clone();
+                    let fut = async move {
+                        let method = CreateQueueSvc(inner);
+                        let codec = tonic_prost::ProstCodec::default();
+                        let mut grpc = tonic::server::Grpc::new(codec)
+                            .apply_compression_config(
+                                accept_compression_encodings,
+                                send_compression_encodings,
+                            )
+                            .apply_max_message_size_config(
+                                max_decoding_message_size,
+                                max_encoding_message_size,
+                            );
+                        let res = grpc.unary(method, req).await;
+                        Ok(res)
+                    };
+                    Box::pin(fut)
+                }
+                "/sentiric.dialplan.v1.DialplanService/GetQueue" => {
+                    #[allow(non_camel_case_types)]
+                    struct GetQueueSvc<T: DialplanService>(pub Arc<T>);
+                    impl<
+                        T: DialplanService,
+                    > tonic::server::UnaryService<super::GetQueueRequest>
+                    for GetQueueSvc<T> {
+                        type Response = super::GetQueueResponse;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
+                        fn call(
+                            &mut self,
+                            request: tonic::Request<super::GetQueueRequest>,
+                        ) -> Self::Future {
+                            let inner = Arc::clone(&self.0);
+                            let fut = async move {
+                                <T as DialplanService>::get_queue(&inner, request).await
+                            };
+                            Box::pin(fut)
+                        }
+                    }
+                    let accept_compression_encodings = self.accept_compression_encodings;
+                    let send_compression_encodings = self.send_compression_encodings;
+                    let max_decoding_message_size = self.max_decoding_message_size;
+                    let max_encoding_message_size = self.max_encoding_message_size;
+                    let inner = self.inner.clone();
+                    let fut = async move {
+                        let method = GetQueueSvc(inner);
+                        let codec = tonic_prost::ProstCodec::default();
+                        let mut grpc = tonic::server::Grpc::new(codec)
+                            .apply_compression_config(
+                                accept_compression_encodings,
+                                send_compression_encodings,
+                            )
+                            .apply_max_message_size_config(
+                                max_decoding_message_size,
+                                max_encoding_message_size,
+                            );
+                        let res = grpc.unary(method, req).await;
+                        Ok(res)
+                    };
+                    Box::pin(fut)
+                }
+                "/sentiric.dialplan.v1.DialplanService/UpdateQueue" => {
+                    #[allow(non_camel_case_types)]
+                    struct UpdateQueueSvc<T: DialplanService>(pub Arc<T>);
+                    impl<
+                        T: DialplanService,
+                    > tonic::server::UnaryService<super::UpdateQueueRequest>
+                    for UpdateQueueSvc<T> {
+                        type Response = super::UpdateQueueResponse;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
+                        fn call(
+                            &mut self,
+                            request: tonic::Request<super::UpdateQueueRequest>,
+                        ) -> Self::Future {
+                            let inner = Arc::clone(&self.0);
+                            let fut = async move {
+                                <T as DialplanService>::update_queue(&inner, request).await
+                            };
+                            Box::pin(fut)
+                        }
+                    }
+                    let accept_compression_encodings = self.accept_compression_encodings;
+                    let send_compression_encodings = self.send_compression_encodings;
+                    let max_decoding_message_size = self.max_decoding_message_size;
+                    let max_encoding_message_size = self.max_encoding_message_size;
+                    let inner = self.inner.clone();
+                    let fut = async move {
+                        let method = UpdateQueueSvc(inner);
+                        let codec = tonic_prost::ProstCodec::default();
+                        let mut grpc = tonic::server::Grpc::new(codec)
+                            .apply_compression_config(
+                                accept_compression_encodings,
+                                send_compression_encodings,
+                            )
+                            .apply_max_message_size_config(
+                                max_decoding_message_size,
+                                max_encoding_message_size,
+                            );
+                        let res = grpc.unary(method, req).await;
+                        Ok(res)
+                    };
+                    Box::pin(fut)
+                }
+                "/sentiric.dialplan.v1.DialplanService/DeleteQueue" => {
+                    #[allow(non_camel_case_types)]
+                    struct DeleteQueueSvc<T: DialplanService>(pub Arc<T>);
+                    impl<
+                        T: DialplanService,
+                    > tonic::server::UnaryService<super::DeleteQueueRequest>
+                    for DeleteQueueSvc<T> {
+                        type Response = super::DeleteQueueResponse;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
+                        fn call(
+                            &mut self,
+                            request: tonic::Request<super::DeleteQueueRequest>,
+                        ) -> Self::Future {
+                            let inner = Arc::clone(&self.0);
+                            let fut = async move {
+                                <T as DialplanService>::delete_queue(&inner, request).await
+                            };
+                            Box::pin(fut)
+                        }
+                    }
+                    let accept_compression_encodings = self.accept_compression_encodings;
+                    let send_compression_encodings = self.send_compression_encodings;
+                    let max_decoding_message_size = self.max_decoding_message_size;
+                    let max_encoding_message_size = self.max_encoding_message_size;
+                    let inner = self.inner.clone();
+                    let fut = async move {
+                        let method = DeleteQueueSvc(inner);
+                        let codec = tonic_prost::ProstCodec::default();
+                        let mut grpc = tonic::server::Grpc::new(codec)
+                            .apply_compression_config(
+                                accept_compression_encodings,
+                                send_compression_encodings,
+                            )
+                            .apply_max_message_size_config(
+                                max_decoding_message_size,
+                                max_encoding_message_size,
+                            );
+                        let res = grpc.unary(method, req).await;
+                        Ok(res)
+                    };
+                    Box::pin(fut)
+                }
+                "/sentiric.dialplan.v1.DialplanService/ListQueues" => {
+                    #[allow(non_camel_case_types)]
+                    struct ListQueuesSvc<T: DialplanService>(pub Arc<T>);
+                    impl<
+                        T: DialplanService,
+                    > tonic::server::UnaryService<super::ListQueuesRequest>
+                    for ListQueuesSvc<T> {
+                        type Response = super::ListQueuesResponse;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
+                        fn call(
+                            &mut self,
+                            request: tonic::Request<super::ListQueuesRequest>,
+                        ) -> Self::Future {
+                            let inner = Arc::clone(&self.0);
+                            let fut = async move {
+                                <T as DialplanService>::list_queues(&inner, request).await
+                            };
+                            Box::pin(fut)
+                        }
+                    }
+                    let accept_compression_encodings = self.accept_compression_encodings;
+                    let send_compression_encodings = self.send_compression_encodings;
+                    let max_decoding_message_size = self.max_decoding_message_size;
+                    let max_encoding_message_size = self.max_encoding_message_size;
+                    let inner = self.inner.clone();
+                    let fut = async move {
+                        let method = ListQueuesSvc(inner);
+                        let codec = tonic_prost::ProstCodec::default();
+                        let mut grpc = tonic::server::Grpc::new(codec)
+                            .apply_compression_config(
+                                accept_compression_encodings,
+                                send_compression_encodings,
+                            )
+                            .apply_max_message_size_config(
+                                max_decoding_message_size,
+                                max_encoding_message_size,
+                            );
+                        let res = grpc.unary(method, req).await;
+                        Ok(res)
+                    };
+                    Box::pin(fut)
+                }
+                "/sentiric.dialplan.v1.DialplanService/CreateSchedule" => {
+                    #[allow(non_camel_case_types)]
+                    struct CreateScheduleSvc<T: DialplanService>(pub Arc<T>);
+                    impl<
+                        T: DialplanService,
+                    > tonic::server::UnaryService<super::CreateScheduleRequest>
+                    for CreateScheduleSvc<T> {
+                        type Response = super::CreateScheduleResponse;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
+                        fn call(
+                            &mut self,
+                            request: tonic::Request<super::CreateScheduleRequest>,
+                        ) -> Self::Future {
+                            let inner = Arc::clone(&self.0);
+                            let fut = async move {
+                                <T as DialplanService>::create_schedule(&inner, request)
+                                    .await
+                            };
+                            Box::pin(fut)
+                        }
+                    }
+                    let accept_compression_encodings = self.accept_compression_encodings;
+                    let send_compression_encodings = self.send_compression_encodings;
+                    let max_decoding_message_size = self.max_decoding_message_size;
+                    let max_encoding_message_size = self.max_encoding_message_size;
+                    let inner = self.inner.clone();
+                    let fut = async move {
+                        let method = CreateScheduleSvc(inner);
+                        let codec = tonic_prost::ProstCodec::default();
+                        let mut grpc = tonic::server::Grpc::new(codec)
+                            .apply_compression_config(
+                                accept_compression_encodings,
+                                send_compression_encodings,
+                            )
+                            .apply_max_message_size_config(
+                                max_decoding_message_size,
+                                max_encoding_message_size,
+                            );
+                        let res = grpc.unary(method, req).await;
+                        Ok(res)
+                    };
+                    Box::pin(fut)
+                }
+                "/sentiric.dialplan.v1.DialplanService/GetSchedule" => {
+                    #[allow(non_camel_case_types)]
+                    struct GetScheduleSvc<T: DialplanService>(pub Arc<T>);
+                    impl<
+                        T: DialplanService,
+                    > tonic::server::UnaryService<super::GetScheduleRequest>
+                    for GetScheduleSvc<T> {
+                        type Response = super::GetScheduleResponse;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
+                        fn call(
+                            &mut self,
+                            request: tonic::Request<super::GetScheduleRequest>,
+                        ) -> Self::Future {
+                            let inner = Arc::clone(&self.0);
+                            let fut = async move {
+                                <T as DialplanService>::get_schedule(&inner, request).await
+                            };
+                            Box::pin(fut)
+                        }
+                    }
+                    let accept_compression_encodings = self.accept_compression_encodings;
+                    let send_compression_encodings = self.send_compression_encodings;
+                    let max_decoding_message_size = self.max_decoding_message_size;
+                    let max_encoding_message_size = self.max_encoding_message_size;
+                    let inner = self.inner.clone();
+                    let fut = async move {
+                        let method = GetScheduleSvc(inner);
                         let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(

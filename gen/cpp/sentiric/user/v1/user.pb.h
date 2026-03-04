@@ -54,6 +54,9 @@ extern AddContactRequestDefaultTypeInternal _AddContactRequest_default_instance_
 class AddContactResponse;
 struct AddContactResponseDefaultTypeInternal;
 extern AddContactResponseDefaultTypeInternal _AddContactResponse_default_instance_;
+class AgentProfile;
+struct AgentProfileDefaultTypeInternal;
+extern AgentProfileDefaultTypeInternal _AgentProfile_default_instance_;
 class Contact;
 struct ContactDefaultTypeInternal;
 extern ContactDefaultTypeInternal _Contact_default_instance_;
@@ -96,6 +99,12 @@ extern FindUserByContactRequestDefaultTypeInternal _FindUserByContactRequest_def
 class FindUserByContactResponse;
 struct FindUserByContactResponseDefaultTypeInternal;
 extern FindUserByContactResponseDefaultTypeInternal _FindUserByContactResponse_default_instance_;
+class GetAgentProfileRequest;
+struct GetAgentProfileRequestDefaultTypeInternal;
+extern GetAgentProfileRequestDefaultTypeInternal _GetAgentProfileRequest_default_instance_;
+class GetAgentProfileResponse;
+struct GetAgentProfileResponseDefaultTypeInternal;
+extern GetAgentProfileResponseDefaultTypeInternal _GetAgentProfileResponse_default_instance_;
 class GetSipCredentialsRequest;
 struct GetSipCredentialsRequestDefaultTypeInternal;
 extern GetSipCredentialsRequestDefaultTypeInternal _GetSipCredentialsRequest_default_instance_;
@@ -132,6 +141,7 @@ extern UserDefaultTypeInternal _User_default_instance_;
 PROTOBUF_NAMESPACE_OPEN
 template<> ::sentiric::user::v1::AddContactRequest* Arena::CreateMaybeMessage<::sentiric::user::v1::AddContactRequest>(Arena*);
 template<> ::sentiric::user::v1::AddContactResponse* Arena::CreateMaybeMessage<::sentiric::user::v1::AddContactResponse>(Arena*);
+template<> ::sentiric::user::v1::AgentProfile* Arena::CreateMaybeMessage<::sentiric::user::v1::AgentProfile>(Arena*);
 template<> ::sentiric::user::v1::Contact* Arena::CreateMaybeMessage<::sentiric::user::v1::Contact>(Arena*);
 template<> ::sentiric::user::v1::CreateSipCredentialRequest* Arena::CreateMaybeMessage<::sentiric::user::v1::CreateSipCredentialRequest>(Arena*);
 template<> ::sentiric::user::v1::CreateSipCredentialResponse* Arena::CreateMaybeMessage<::sentiric::user::v1::CreateSipCredentialResponse>(Arena*);
@@ -146,6 +156,8 @@ template<> ::sentiric::user::v1::DeleteUserRequest* Arena::CreateMaybeMessage<::
 template<> ::sentiric::user::v1::DeleteUserResponse* Arena::CreateMaybeMessage<::sentiric::user::v1::DeleteUserResponse>(Arena*);
 template<> ::sentiric::user::v1::FindUserByContactRequest* Arena::CreateMaybeMessage<::sentiric::user::v1::FindUserByContactRequest>(Arena*);
 template<> ::sentiric::user::v1::FindUserByContactResponse* Arena::CreateMaybeMessage<::sentiric::user::v1::FindUserByContactResponse>(Arena*);
+template<> ::sentiric::user::v1::GetAgentProfileRequest* Arena::CreateMaybeMessage<::sentiric::user::v1::GetAgentProfileRequest>(Arena*);
+template<> ::sentiric::user::v1::GetAgentProfileResponse* Arena::CreateMaybeMessage<::sentiric::user::v1::GetAgentProfileResponse>(Arena*);
 template<> ::sentiric::user::v1::GetSipCredentialsRequest* Arena::CreateMaybeMessage<::sentiric::user::v1::GetSipCredentialsRequest>(Arena*);
 template<> ::sentiric::user::v1::GetSipCredentialsResponse* Arena::CreateMaybeMessage<::sentiric::user::v1::GetSipCredentialsResponse>(Arena*);
 template<> ::sentiric::user::v1::GetUserRequest* Arena::CreateMaybeMessage<::sentiric::user::v1::GetUserRequest>(Arena*);
@@ -817,6 +829,512 @@ class Tenant final :
 };
 // -------------------------------------------------------------------
 
+class AgentProfile final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.user.v1.AgentProfile) */ {
+ public:
+  inline AgentProfile() : AgentProfile(nullptr) {}
+  ~AgentProfile() override;
+  explicit PROTOBUF_CONSTEXPR AgentProfile(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  AgentProfile(const AgentProfile& from);
+  AgentProfile(AgentProfile&& from) noexcept
+    : AgentProfile() {
+    *this = ::std::move(from);
+  }
+
+  inline AgentProfile& operator=(const AgentProfile& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline AgentProfile& operator=(AgentProfile&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const AgentProfile& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const AgentProfile* internal_default_instance() {
+    return reinterpret_cast<const AgentProfile*>(
+               &_AgentProfile_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  friend void swap(AgentProfile& a, AgentProfile& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(AgentProfile* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(AgentProfile* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  AgentProfile* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<AgentProfile>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const AgentProfile& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const AgentProfile& from) {
+    AgentProfile::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(AgentProfile* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.user.v1.AgentProfile";
+  }
+  protected:
+  explicit AgentProfile(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kUserIdFieldNumber = 1,
+    kDisplayNameFieldNumber = 2,
+    kStatusFieldNumber = 4,
+    kMaxConcurrentCallsFieldNumber = 3,
+  };
+  // string user_id = 1;
+  void clear_user_id();
+  const std::string& user_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_user_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_user_id();
+  PROTOBUF_NODISCARD std::string* release_user_id();
+  void set_allocated_user_id(std::string* user_id);
+  private:
+  const std::string& _internal_user_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_user_id(const std::string& value);
+  std::string* _internal_mutable_user_id();
+  public:
+
+  // string display_name = 2;
+  void clear_display_name();
+  const std::string& display_name() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_display_name(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_display_name();
+  PROTOBUF_NODISCARD std::string* release_display_name();
+  void set_allocated_display_name(std::string* display_name);
+  private:
+  const std::string& _internal_display_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_display_name(const std::string& value);
+  std::string* _internal_mutable_display_name();
+  public:
+
+  // string status = 4;
+  void clear_status();
+  const std::string& status() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_status(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_status();
+  PROTOBUF_NODISCARD std::string* release_status();
+  void set_allocated_status(std::string* status);
+  private:
+  const std::string& _internal_status() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_status(const std::string& value);
+  std::string* _internal_mutable_status();
+  public:
+
+  // int32 max_concurrent_calls = 3;
+  void clear_max_concurrent_calls();
+  int32_t max_concurrent_calls() const;
+  void set_max_concurrent_calls(int32_t value);
+  private:
+  int32_t _internal_max_concurrent_calls() const;
+  void _internal_set_max_concurrent_calls(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.user.v1.AgentProfile)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr user_id_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr display_name_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr status_;
+    int32_t max_concurrent_calls_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2fuser_2fv1_2fuser_2eproto;
+};
+// -------------------------------------------------------------------
+
+class GetAgentProfileRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.user.v1.GetAgentProfileRequest) */ {
+ public:
+  inline GetAgentProfileRequest() : GetAgentProfileRequest(nullptr) {}
+  ~GetAgentProfileRequest() override;
+  explicit PROTOBUF_CONSTEXPR GetAgentProfileRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  GetAgentProfileRequest(const GetAgentProfileRequest& from);
+  GetAgentProfileRequest(GetAgentProfileRequest&& from) noexcept
+    : GetAgentProfileRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline GetAgentProfileRequest& operator=(const GetAgentProfileRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline GetAgentProfileRequest& operator=(GetAgentProfileRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const GetAgentProfileRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const GetAgentProfileRequest* internal_default_instance() {
+    return reinterpret_cast<const GetAgentProfileRequest*>(
+               &_GetAgentProfileRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    4;
+
+  friend void swap(GetAgentProfileRequest& a, GetAgentProfileRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(GetAgentProfileRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(GetAgentProfileRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  GetAgentProfileRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<GetAgentProfileRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const GetAgentProfileRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const GetAgentProfileRequest& from) {
+    GetAgentProfileRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(GetAgentProfileRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.user.v1.GetAgentProfileRequest";
+  }
+  protected:
+  explicit GetAgentProfileRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kUserIdFieldNumber = 1,
+  };
+  // string user_id = 1;
+  void clear_user_id();
+  const std::string& user_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_user_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_user_id();
+  PROTOBUF_NODISCARD std::string* release_user_id();
+  void set_allocated_user_id(std::string* user_id);
+  private:
+  const std::string& _internal_user_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_user_id(const std::string& value);
+  std::string* _internal_mutable_user_id();
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.user.v1.GetAgentProfileRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr user_id_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2fuser_2fv1_2fuser_2eproto;
+};
+// -------------------------------------------------------------------
+
+class GetAgentProfileResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.user.v1.GetAgentProfileResponse) */ {
+ public:
+  inline GetAgentProfileResponse() : GetAgentProfileResponse(nullptr) {}
+  ~GetAgentProfileResponse() override;
+  explicit PROTOBUF_CONSTEXPR GetAgentProfileResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  GetAgentProfileResponse(const GetAgentProfileResponse& from);
+  GetAgentProfileResponse(GetAgentProfileResponse&& from) noexcept
+    : GetAgentProfileResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline GetAgentProfileResponse& operator=(const GetAgentProfileResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline GetAgentProfileResponse& operator=(GetAgentProfileResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const GetAgentProfileResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const GetAgentProfileResponse* internal_default_instance() {
+    return reinterpret_cast<const GetAgentProfileResponse*>(
+               &_GetAgentProfileResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    5;
+
+  friend void swap(GetAgentProfileResponse& a, GetAgentProfileResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(GetAgentProfileResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(GetAgentProfileResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  GetAgentProfileResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<GetAgentProfileResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const GetAgentProfileResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const GetAgentProfileResponse& from) {
+    GetAgentProfileResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(GetAgentProfileResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.user.v1.GetAgentProfileResponse";
+  }
+  protected:
+  explicit GetAgentProfileResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kProfileFieldNumber = 1,
+  };
+  // .sentiric.user.v1.AgentProfile profile = 1;
+  bool has_profile() const;
+  private:
+  bool _internal_has_profile() const;
+  public:
+  void clear_profile();
+  const ::sentiric::user::v1::AgentProfile& profile() const;
+  PROTOBUF_NODISCARD ::sentiric::user::v1::AgentProfile* release_profile();
+  ::sentiric::user::v1::AgentProfile* mutable_profile();
+  void set_allocated_profile(::sentiric::user::v1::AgentProfile* profile);
+  private:
+  const ::sentiric::user::v1::AgentProfile& _internal_profile() const;
+  ::sentiric::user::v1::AgentProfile* _internal_mutable_profile();
+  public:
+  void unsafe_arena_set_allocated_profile(
+      ::sentiric::user::v1::AgentProfile* profile);
+  ::sentiric::user::v1::AgentProfile* unsafe_arena_release_profile();
+
+  // @@protoc_insertion_point(class_scope:sentiric.user.v1.GetAgentProfileResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::sentiric::user::v1::AgentProfile* profile_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2fuser_2fv1_2fuser_2eproto;
+};
+// -------------------------------------------------------------------
+
 class GetUserRequest final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.user.v1.GetUserRequest) */ {
  public:
@@ -865,7 +1383,7 @@ class GetUserRequest final :
                &_GetUserRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    6;
 
   friend void swap(GetUserRequest& a, GetUserRequest& b) {
     a.Swap(&b);
@@ -1018,7 +1536,7 @@ class GetUserResponse final :
                &_GetUserResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    7;
 
   friend void swap(GetUserResponse& a, GetUserResponse& b) {
     a.Swap(&b);
@@ -1175,7 +1693,7 @@ class FindUserByContactRequest final :
                &_FindUserByContactRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    8;
 
   friend void swap(FindUserByContactRequest& a, FindUserByContactRequest& b) {
     a.Swap(&b);
@@ -1344,7 +1862,7 @@ class FindUserByContactResponse final :
                &_FindUserByContactResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    9;
 
   friend void swap(FindUserByContactResponse& a, FindUserByContactResponse& b) {
     a.Swap(&b);
@@ -1501,7 +2019,7 @@ class CreateUserRequest_InitialContact final :
                &_CreateUserRequest_InitialContact_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    10;
 
   friend void swap(CreateUserRequest_InitialContact& a, CreateUserRequest_InitialContact& b) {
     a.Swap(&b);
@@ -1670,7 +2188,7 @@ class CreateUserRequest final :
                &_CreateUserRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    11;
 
   friend void swap(CreateUserRequest& a, CreateUserRequest& b) {
     a.Swap(&b);
@@ -1902,7 +2420,7 @@ class CreateUserResponse final :
                &_CreateUserResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    12;
 
   friend void swap(CreateUserResponse& a, CreateUserResponse& b) {
     a.Swap(&b);
@@ -2059,7 +2577,7 @@ class UpdateUserRequest final :
                &_UpdateUserRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    10;
+    13;
 
   friend void swap(UpdateUserRequest& a, UpdateUserRequest& b) {
     a.Swap(&b);
@@ -2236,7 +2754,7 @@ class UpdateUserResponse final :
                &_UpdateUserResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    11;
+    14;
 
   friend void swap(UpdateUserResponse& a, UpdateUserResponse& b) {
     a.Swap(&b);
@@ -2393,7 +2911,7 @@ class DeleteUserRequest final :
                &_DeleteUserRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    12;
+    15;
 
   friend void swap(DeleteUserRequest& a, DeleteUserRequest& b) {
     a.Swap(&b);
@@ -2546,7 +3064,7 @@ class DeleteUserResponse final :
                &_DeleteUserResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    13;
+    16;
 
   friend void swap(DeleteUserResponse& a, DeleteUserResponse& b) {
     a.Swap(&b);
@@ -2694,7 +3212,7 @@ class AddContactRequest final :
                &_AddContactRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    14;
+    17;
 
   friend void swap(AddContactRequest& a, AddContactRequest& b) {
     a.Swap(&b);
@@ -2867,7 +3385,7 @@ class AddContactResponse final :
                &_AddContactResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    15;
+    18;
 
   friend void swap(AddContactResponse& a, AddContactResponse& b) {
     a.Swap(&b);
@@ -3024,7 +3542,7 @@ class UpdateContactRequest final :
                &_UpdateContactRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    16;
+    19;
 
   friend void swap(UpdateContactRequest& a, UpdateContactRequest& b) {
     a.Swap(&b);
@@ -3201,7 +3719,7 @@ class UpdateContactResponse final :
                &_UpdateContactResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    17;
+    20;
 
   friend void swap(UpdateContactResponse& a, UpdateContactResponse& b) {
     a.Swap(&b);
@@ -3358,7 +3876,7 @@ class DeleteContactRequest final :
                &_DeleteContactRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    18;
+    21;
 
   friend void swap(DeleteContactRequest& a, DeleteContactRequest& b) {
     a.Swap(&b);
@@ -3506,7 +4024,7 @@ class DeleteContactResponse final :
                &_DeleteContactResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    19;
+    22;
 
   friend void swap(DeleteContactResponse& a, DeleteContactResponse& b) {
     a.Swap(&b);
@@ -3663,7 +4181,7 @@ class GetSipCredentialsRequest final :
                &_GetSipCredentialsRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    20;
+    23;
 
   friend void swap(GetSipCredentialsRequest& a, GetSipCredentialsRequest& b) {
     a.Swap(&b);
@@ -3832,7 +4350,7 @@ class GetSipCredentialsResponse final :
                &_GetSipCredentialsResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    21;
+    24;
 
   friend void swap(GetSipCredentialsResponse& a, GetSipCredentialsResponse& b) {
     a.Swap(&b);
@@ -4017,7 +4535,7 @@ class CreateSipCredentialRequest final :
                &_CreateSipCredentialRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    22;
+    25;
 
   friend void swap(CreateSipCredentialRequest& a, CreateSipCredentialRequest& b) {
     a.Swap(&b);
@@ -4202,7 +4720,7 @@ class CreateSipCredentialResponse final :
                &_CreateSipCredentialResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    23;
+    26;
 
   friend void swap(CreateSipCredentialResponse& a, CreateSipCredentialResponse& b) {
     a.Swap(&b);
@@ -4350,7 +4868,7 @@ class DeleteSipCredentialRequest final :
                &_DeleteSipCredentialRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    24;
+    27;
 
   friend void swap(DeleteSipCredentialRequest& a, DeleteSipCredentialRequest& b) {
     a.Swap(&b);
@@ -4503,7 +5021,7 @@ class DeleteSipCredentialResponse final :
                &_DeleteSipCredentialResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    25;
+    28;
 
   friend void swap(DeleteSipCredentialResponse& a, DeleteSipCredentialResponse& b) {
     a.Swap(&b);
@@ -5334,6 +5852,328 @@ inline void Tenant::set_allocated_primary_language_code(std::string* primary_lan
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:sentiric.user.v1.Tenant.primary_language_code)
+}
+
+// -------------------------------------------------------------------
+
+// AgentProfile
+
+// string user_id = 1;
+inline void AgentProfile::clear_user_id() {
+  _impl_.user_id_.ClearToEmpty();
+}
+inline const std::string& AgentProfile::user_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.user.v1.AgentProfile.user_id)
+  return _internal_user_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void AgentProfile::set_user_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.user_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.user.v1.AgentProfile.user_id)
+}
+inline std::string* AgentProfile::mutable_user_id() {
+  std::string* _s = _internal_mutable_user_id();
+  // @@protoc_insertion_point(field_mutable:sentiric.user.v1.AgentProfile.user_id)
+  return _s;
+}
+inline const std::string& AgentProfile::_internal_user_id() const {
+  return _impl_.user_id_.Get();
+}
+inline void AgentProfile::_internal_set_user_id(const std::string& value) {
+  
+  _impl_.user_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* AgentProfile::_internal_mutable_user_id() {
+  
+  return _impl_.user_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* AgentProfile::release_user_id() {
+  // @@protoc_insertion_point(field_release:sentiric.user.v1.AgentProfile.user_id)
+  return _impl_.user_id_.Release();
+}
+inline void AgentProfile::set_allocated_user_id(std::string* user_id) {
+  if (user_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.user_id_.SetAllocated(user_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.user_id_.IsDefault()) {
+    _impl_.user_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.user.v1.AgentProfile.user_id)
+}
+
+// string display_name = 2;
+inline void AgentProfile::clear_display_name() {
+  _impl_.display_name_.ClearToEmpty();
+}
+inline const std::string& AgentProfile::display_name() const {
+  // @@protoc_insertion_point(field_get:sentiric.user.v1.AgentProfile.display_name)
+  return _internal_display_name();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void AgentProfile::set_display_name(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.display_name_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.user.v1.AgentProfile.display_name)
+}
+inline std::string* AgentProfile::mutable_display_name() {
+  std::string* _s = _internal_mutable_display_name();
+  // @@protoc_insertion_point(field_mutable:sentiric.user.v1.AgentProfile.display_name)
+  return _s;
+}
+inline const std::string& AgentProfile::_internal_display_name() const {
+  return _impl_.display_name_.Get();
+}
+inline void AgentProfile::_internal_set_display_name(const std::string& value) {
+  
+  _impl_.display_name_.Set(value, GetArenaForAllocation());
+}
+inline std::string* AgentProfile::_internal_mutable_display_name() {
+  
+  return _impl_.display_name_.Mutable(GetArenaForAllocation());
+}
+inline std::string* AgentProfile::release_display_name() {
+  // @@protoc_insertion_point(field_release:sentiric.user.v1.AgentProfile.display_name)
+  return _impl_.display_name_.Release();
+}
+inline void AgentProfile::set_allocated_display_name(std::string* display_name) {
+  if (display_name != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.display_name_.SetAllocated(display_name, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.display_name_.IsDefault()) {
+    _impl_.display_name_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.user.v1.AgentProfile.display_name)
+}
+
+// int32 max_concurrent_calls = 3;
+inline void AgentProfile::clear_max_concurrent_calls() {
+  _impl_.max_concurrent_calls_ = 0;
+}
+inline int32_t AgentProfile::_internal_max_concurrent_calls() const {
+  return _impl_.max_concurrent_calls_;
+}
+inline int32_t AgentProfile::max_concurrent_calls() const {
+  // @@protoc_insertion_point(field_get:sentiric.user.v1.AgentProfile.max_concurrent_calls)
+  return _internal_max_concurrent_calls();
+}
+inline void AgentProfile::_internal_set_max_concurrent_calls(int32_t value) {
+  
+  _impl_.max_concurrent_calls_ = value;
+}
+inline void AgentProfile::set_max_concurrent_calls(int32_t value) {
+  _internal_set_max_concurrent_calls(value);
+  // @@protoc_insertion_point(field_set:sentiric.user.v1.AgentProfile.max_concurrent_calls)
+}
+
+// string status = 4;
+inline void AgentProfile::clear_status() {
+  _impl_.status_.ClearToEmpty();
+}
+inline const std::string& AgentProfile::status() const {
+  // @@protoc_insertion_point(field_get:sentiric.user.v1.AgentProfile.status)
+  return _internal_status();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void AgentProfile::set_status(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.status_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.user.v1.AgentProfile.status)
+}
+inline std::string* AgentProfile::mutable_status() {
+  std::string* _s = _internal_mutable_status();
+  // @@protoc_insertion_point(field_mutable:sentiric.user.v1.AgentProfile.status)
+  return _s;
+}
+inline const std::string& AgentProfile::_internal_status() const {
+  return _impl_.status_.Get();
+}
+inline void AgentProfile::_internal_set_status(const std::string& value) {
+  
+  _impl_.status_.Set(value, GetArenaForAllocation());
+}
+inline std::string* AgentProfile::_internal_mutable_status() {
+  
+  return _impl_.status_.Mutable(GetArenaForAllocation());
+}
+inline std::string* AgentProfile::release_status() {
+  // @@protoc_insertion_point(field_release:sentiric.user.v1.AgentProfile.status)
+  return _impl_.status_.Release();
+}
+inline void AgentProfile::set_allocated_status(std::string* status) {
+  if (status != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.status_.SetAllocated(status, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.status_.IsDefault()) {
+    _impl_.status_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.user.v1.AgentProfile.status)
+}
+
+// -------------------------------------------------------------------
+
+// GetAgentProfileRequest
+
+// string user_id = 1;
+inline void GetAgentProfileRequest::clear_user_id() {
+  _impl_.user_id_.ClearToEmpty();
+}
+inline const std::string& GetAgentProfileRequest::user_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.user.v1.GetAgentProfileRequest.user_id)
+  return _internal_user_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void GetAgentProfileRequest::set_user_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.user_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.user.v1.GetAgentProfileRequest.user_id)
+}
+inline std::string* GetAgentProfileRequest::mutable_user_id() {
+  std::string* _s = _internal_mutable_user_id();
+  // @@protoc_insertion_point(field_mutable:sentiric.user.v1.GetAgentProfileRequest.user_id)
+  return _s;
+}
+inline const std::string& GetAgentProfileRequest::_internal_user_id() const {
+  return _impl_.user_id_.Get();
+}
+inline void GetAgentProfileRequest::_internal_set_user_id(const std::string& value) {
+  
+  _impl_.user_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* GetAgentProfileRequest::_internal_mutable_user_id() {
+  
+  return _impl_.user_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* GetAgentProfileRequest::release_user_id() {
+  // @@protoc_insertion_point(field_release:sentiric.user.v1.GetAgentProfileRequest.user_id)
+  return _impl_.user_id_.Release();
+}
+inline void GetAgentProfileRequest::set_allocated_user_id(std::string* user_id) {
+  if (user_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.user_id_.SetAllocated(user_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.user_id_.IsDefault()) {
+    _impl_.user_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.user.v1.GetAgentProfileRequest.user_id)
+}
+
+// -------------------------------------------------------------------
+
+// GetAgentProfileResponse
+
+// .sentiric.user.v1.AgentProfile profile = 1;
+inline bool GetAgentProfileResponse::_internal_has_profile() const {
+  return this != internal_default_instance() && _impl_.profile_ != nullptr;
+}
+inline bool GetAgentProfileResponse::has_profile() const {
+  return _internal_has_profile();
+}
+inline void GetAgentProfileResponse::clear_profile() {
+  if (GetArenaForAllocation() == nullptr && _impl_.profile_ != nullptr) {
+    delete _impl_.profile_;
+  }
+  _impl_.profile_ = nullptr;
+}
+inline const ::sentiric::user::v1::AgentProfile& GetAgentProfileResponse::_internal_profile() const {
+  const ::sentiric::user::v1::AgentProfile* p = _impl_.profile_;
+  return p != nullptr ? *p : reinterpret_cast<const ::sentiric::user::v1::AgentProfile&>(
+      ::sentiric::user::v1::_AgentProfile_default_instance_);
+}
+inline const ::sentiric::user::v1::AgentProfile& GetAgentProfileResponse::profile() const {
+  // @@protoc_insertion_point(field_get:sentiric.user.v1.GetAgentProfileResponse.profile)
+  return _internal_profile();
+}
+inline void GetAgentProfileResponse::unsafe_arena_set_allocated_profile(
+    ::sentiric::user::v1::AgentProfile* profile) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.profile_);
+  }
+  _impl_.profile_ = profile;
+  if (profile) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:sentiric.user.v1.GetAgentProfileResponse.profile)
+}
+inline ::sentiric::user::v1::AgentProfile* GetAgentProfileResponse::release_profile() {
+  
+  ::sentiric::user::v1::AgentProfile* temp = _impl_.profile_;
+  _impl_.profile_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::sentiric::user::v1::AgentProfile* GetAgentProfileResponse::unsafe_arena_release_profile() {
+  // @@protoc_insertion_point(field_release:sentiric.user.v1.GetAgentProfileResponse.profile)
+  
+  ::sentiric::user::v1::AgentProfile* temp = _impl_.profile_;
+  _impl_.profile_ = nullptr;
+  return temp;
+}
+inline ::sentiric::user::v1::AgentProfile* GetAgentProfileResponse::_internal_mutable_profile() {
+  
+  if (_impl_.profile_ == nullptr) {
+    auto* p = CreateMaybeMessage<::sentiric::user::v1::AgentProfile>(GetArenaForAllocation());
+    _impl_.profile_ = p;
+  }
+  return _impl_.profile_;
+}
+inline ::sentiric::user::v1::AgentProfile* GetAgentProfileResponse::mutable_profile() {
+  ::sentiric::user::v1::AgentProfile* _msg = _internal_mutable_profile();
+  // @@protoc_insertion_point(field_mutable:sentiric.user.v1.GetAgentProfileResponse.profile)
+  return _msg;
+}
+inline void GetAgentProfileResponse::set_allocated_profile(::sentiric::user::v1::AgentProfile* profile) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete _impl_.profile_;
+  }
+  if (profile) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(profile);
+    if (message_arena != submessage_arena) {
+      profile = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, profile, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.profile_ = profile;
+  // @@protoc_insertion_point(field_set_allocated:sentiric.user.v1.GetAgentProfileResponse.profile)
 }
 
 // -------------------------------------------------------------------
@@ -7707,6 +8547,12 @@ inline void DeleteSipCredentialResponse::set_success(bool value) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

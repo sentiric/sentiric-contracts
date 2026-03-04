@@ -19,20 +19,21 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	AgentOrchestrationService_ProcessCallStart_FullMethodName  = "/sentiric.agent.v1.AgentOrchestrationService/ProcessCallStart"
-	AgentOrchestrationService_ProcessManualDial_FullMethodName = "/sentiric.agent.v1.AgentOrchestrationService/ProcessManualDial"
-	AgentOrchestrationService_ProcessSagaStep_FullMethodName   = "/sentiric.agent.v1.AgentOrchestrationService/ProcessSagaStep"
+	AgentOrchestrationService_ProcessCallStart_FullMethodName          = "/sentiric.agent.v1.AgentOrchestrationService/ProcessCallStart"
+	AgentOrchestrationService_ProcessManualDial_FullMethodName         = "/sentiric.agent.v1.AgentOrchestrationService/ProcessManualDial"
+	AgentOrchestrationService_ProcessSagaStep_FullMethodName           = "/sentiric.agent.v1.AgentOrchestrationService/ProcessSagaStep"
+	AgentOrchestrationService_GetConversationTranscript_FullMethodName = "/sentiric.agent.v1.AgentOrchestrationService/GetConversationTranscript"
 )
 
 // AgentOrchestrationServiceClient is the client API for AgentOrchestrationService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AgentOrchestrationServiceClient interface {
-	// Gelen çağrıların başlatılması (Inbound)
 	ProcessCallStart(ctx context.Context, in *ProcessCallStartRequest, opts ...grpc.CallOption) (*ProcessCallStartResponse, error)
-	// Manuel dış arama başlatma (Outbound) - YENİ
 	ProcessManualDial(ctx context.Context, in *ProcessManualDialRequest, opts ...grpc.CallOption) (*ProcessManualDialResponse, error)
 	ProcessSagaStep(ctx context.Context, in *ProcessSagaStepRequest, opts ...grpc.CallOption) (*ProcessSagaStepResponse, error)
+	// [YENİ] Konuşma Geçmişi (Transcript)
+	GetConversationTranscript(ctx context.Context, in *GetConversationTranscriptRequest, opts ...grpc.CallOption) (*GetConversationTranscriptResponse, error)
 }
 
 type agentOrchestrationServiceClient struct {
@@ -73,15 +74,25 @@ func (c *agentOrchestrationServiceClient) ProcessSagaStep(ctx context.Context, i
 	return out, nil
 }
 
+func (c *agentOrchestrationServiceClient) GetConversationTranscript(ctx context.Context, in *GetConversationTranscriptRequest, opts ...grpc.CallOption) (*GetConversationTranscriptResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetConversationTranscriptResponse)
+	err := c.cc.Invoke(ctx, AgentOrchestrationService_GetConversationTranscript_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AgentOrchestrationServiceServer is the server API for AgentOrchestrationService service.
 // All implementations should embed UnimplementedAgentOrchestrationServiceServer
 // for forward compatibility.
 type AgentOrchestrationServiceServer interface {
-	// Gelen çağrıların başlatılması (Inbound)
 	ProcessCallStart(context.Context, *ProcessCallStartRequest) (*ProcessCallStartResponse, error)
-	// Manuel dış arama başlatma (Outbound) - YENİ
 	ProcessManualDial(context.Context, *ProcessManualDialRequest) (*ProcessManualDialResponse, error)
 	ProcessSagaStep(context.Context, *ProcessSagaStepRequest) (*ProcessSagaStepResponse, error)
+	// [YENİ] Konuşma Geçmişi (Transcript)
+	GetConversationTranscript(context.Context, *GetConversationTranscriptRequest) (*GetConversationTranscriptResponse, error)
 }
 
 // UnimplementedAgentOrchestrationServiceServer should be embedded to have
@@ -99,6 +110,9 @@ func (UnimplementedAgentOrchestrationServiceServer) ProcessManualDial(context.Co
 }
 func (UnimplementedAgentOrchestrationServiceServer) ProcessSagaStep(context.Context, *ProcessSagaStepRequest) (*ProcessSagaStepResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ProcessSagaStep not implemented")
+}
+func (UnimplementedAgentOrchestrationServiceServer) GetConversationTranscript(context.Context, *GetConversationTranscriptRequest) (*GetConversationTranscriptResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetConversationTranscript not implemented")
 }
 func (UnimplementedAgentOrchestrationServiceServer) testEmbeddedByValue() {}
 
@@ -174,6 +188,24 @@ func _AgentOrchestrationService_ProcessSagaStep_Handler(srv interface{}, ctx con
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AgentOrchestrationService_GetConversationTranscript_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetConversationTranscriptRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AgentOrchestrationServiceServer).GetConversationTranscript(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AgentOrchestrationService_GetConversationTranscript_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AgentOrchestrationServiceServer).GetConversationTranscript(ctx, req.(*GetConversationTranscriptRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // AgentOrchestrationService_ServiceDesc is the grpc.ServiceDesc for AgentOrchestrationService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -192,6 +224,10 @@ var AgentOrchestrationService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ProcessSagaStep",
 			Handler:    _AgentOrchestrationService_ProcessSagaStep_Handler,
+		},
+		{
+			MethodName: "GetConversationTranscript",
+			Handler:    _AgentOrchestrationService_GetConversationTranscript_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

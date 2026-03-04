@@ -8,9 +8,62 @@ option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/cdr/
 
 service CdrService {
   rpc RecordCallEvent(RecordCallEventRequest) returns (RecordCallEventResponse);
+  
+  // [YENİ] Çağrı Başlangıcını Kaydet (Create)
+  rpc CreateCallRecord(CreateCallRecordRequest) returns (CreateCallRecordResponse);
+  
+  // [YENİ] Çağrı Bitişini Güncelle (Update)
+  rpc UpdateCallRecord(UpdateCallRecordRequest) returns (UpdateCallRecordResponse);
 }
 
-message RecordCallEventRequest { // ESKİ: CallEvent
+// [YENİ] Tam Çağrı Modeli (Database Şemasına Uygun)
+message CallRecord {
+    string call_id = 1;
+    string tenant_id = 2;
+    string direction = 3; // INBOUND, OUTBOUND
+    string caller_number = 4;
+    string callee_number = 5;
+    string user_id = 6;
+    int64 duration_seconds = 7;
+    string status = 8;
+    string disposition = 9;
+    string hangup_source = 10;
+    int32 sip_hangup_cause = 11;
+    string recording_url = 12;
+    double total_cost = 13;
+    google.protobuf.Timestamp start_time = 14;
+    google.protobuf.Timestamp end_time = 15;
+}
+
+message CreateCallRecordRequest {
+    string call_id = 1;
+    string tenant_id = 2;
+    string direction = 3;
+    string caller_number = 4;
+    string callee_number = 5;
+    string user_id = 6; // Opsiyonel
+}
+
+message CreateCallRecordResponse {
+    bool success = 1;
+}
+
+message UpdateCallRecordRequest {
+    string call_id = 1;
+    int64 duration_seconds = 2;
+    string status = 3;
+    string disposition = 4;
+    string hangup_source = 5;
+    int32 sip_hangup_cause = 6;
+    string recording_url = 7;
+    double total_cost = 8;
+}
+
+message UpdateCallRecordResponse {
+    bool success = 1;
+}
+
+message RecordCallEventRequest { 
   string event_id = 1;
   string call_id = 2;
   string tenant_id = 3;
@@ -19,6 +72,6 @@ message RecordCallEventRequest { // ESKİ: CallEvent
   map<string, string> metadata = 6;
 }
 
-message RecordCallEventResponse { // ESKİ: Empty (Artık özel bir yanıt kullanıyoruz)
+message RecordCallEventResponse { 
   bool success = 1;
 }

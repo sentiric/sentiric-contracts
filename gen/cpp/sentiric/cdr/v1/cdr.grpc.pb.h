@@ -44,11 +44,33 @@ class CdrService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::cdr::v1::RecordCallEventResponse>> PrepareAsyncRecordCallEvent(::grpc::ClientContext* context, const ::sentiric::cdr::v1::RecordCallEventRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::cdr::v1::RecordCallEventResponse>>(PrepareAsyncRecordCallEventRaw(context, request, cq));
     }
+    // [YENİ] Çağrı Başlangıcını Kaydet (Create)
+    virtual ::grpc::Status CreateCallRecord(::grpc::ClientContext* context, const ::sentiric::cdr::v1::CreateCallRecordRequest& request, ::sentiric::cdr::v1::CreateCallRecordResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::cdr::v1::CreateCallRecordResponse>> AsyncCreateCallRecord(::grpc::ClientContext* context, const ::sentiric::cdr::v1::CreateCallRecordRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::cdr::v1::CreateCallRecordResponse>>(AsyncCreateCallRecordRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::cdr::v1::CreateCallRecordResponse>> PrepareAsyncCreateCallRecord(::grpc::ClientContext* context, const ::sentiric::cdr::v1::CreateCallRecordRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::cdr::v1::CreateCallRecordResponse>>(PrepareAsyncCreateCallRecordRaw(context, request, cq));
+    }
+    // [YENİ] Çağrı Bitişini Güncelle (Update)
+    virtual ::grpc::Status UpdateCallRecord(::grpc::ClientContext* context, const ::sentiric::cdr::v1::UpdateCallRecordRequest& request, ::sentiric::cdr::v1::UpdateCallRecordResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::cdr::v1::UpdateCallRecordResponse>> AsyncUpdateCallRecord(::grpc::ClientContext* context, const ::sentiric::cdr::v1::UpdateCallRecordRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::cdr::v1::UpdateCallRecordResponse>>(AsyncUpdateCallRecordRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::cdr::v1::UpdateCallRecordResponse>> PrepareAsyncUpdateCallRecord(::grpc::ClientContext* context, const ::sentiric::cdr::v1::UpdateCallRecordRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::cdr::v1::UpdateCallRecordResponse>>(PrepareAsyncUpdateCallRecordRaw(context, request, cq));
+    }
     class async_interface {
      public:
       virtual ~async_interface() {}
       virtual void RecordCallEvent(::grpc::ClientContext* context, const ::sentiric::cdr::v1::RecordCallEventRequest* request, ::sentiric::cdr::v1::RecordCallEventResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void RecordCallEvent(::grpc::ClientContext* context, const ::sentiric::cdr::v1::RecordCallEventRequest* request, ::sentiric::cdr::v1::RecordCallEventResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      // [YENİ] Çağrı Başlangıcını Kaydet (Create)
+      virtual void CreateCallRecord(::grpc::ClientContext* context, const ::sentiric::cdr::v1::CreateCallRecordRequest* request, ::sentiric::cdr::v1::CreateCallRecordResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void CreateCallRecord(::grpc::ClientContext* context, const ::sentiric::cdr::v1::CreateCallRecordRequest* request, ::sentiric::cdr::v1::CreateCallRecordResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      // [YENİ] Çağrı Bitişini Güncelle (Update)
+      virtual void UpdateCallRecord(::grpc::ClientContext* context, const ::sentiric::cdr::v1::UpdateCallRecordRequest* request, ::sentiric::cdr::v1::UpdateCallRecordResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void UpdateCallRecord(::grpc::ClientContext* context, const ::sentiric::cdr::v1::UpdateCallRecordRequest* request, ::sentiric::cdr::v1::UpdateCallRecordResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
@@ -56,6 +78,10 @@ class CdrService final {
    private:
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::cdr::v1::RecordCallEventResponse>* AsyncRecordCallEventRaw(::grpc::ClientContext* context, const ::sentiric::cdr::v1::RecordCallEventRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::cdr::v1::RecordCallEventResponse>* PrepareAsyncRecordCallEventRaw(::grpc::ClientContext* context, const ::sentiric::cdr::v1::RecordCallEventRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::cdr::v1::CreateCallRecordResponse>* AsyncCreateCallRecordRaw(::grpc::ClientContext* context, const ::sentiric::cdr::v1::CreateCallRecordRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::cdr::v1::CreateCallRecordResponse>* PrepareAsyncCreateCallRecordRaw(::grpc::ClientContext* context, const ::sentiric::cdr::v1::CreateCallRecordRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::cdr::v1::UpdateCallRecordResponse>* AsyncUpdateCallRecordRaw(::grpc::ClientContext* context, const ::sentiric::cdr::v1::UpdateCallRecordRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::cdr::v1::UpdateCallRecordResponse>* PrepareAsyncUpdateCallRecordRaw(::grpc::ClientContext* context, const ::sentiric::cdr::v1::UpdateCallRecordRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -67,11 +93,29 @@ class CdrService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::cdr::v1::RecordCallEventResponse>> PrepareAsyncRecordCallEvent(::grpc::ClientContext* context, const ::sentiric::cdr::v1::RecordCallEventRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::cdr::v1::RecordCallEventResponse>>(PrepareAsyncRecordCallEventRaw(context, request, cq));
     }
+    ::grpc::Status CreateCallRecord(::grpc::ClientContext* context, const ::sentiric::cdr::v1::CreateCallRecordRequest& request, ::sentiric::cdr::v1::CreateCallRecordResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::cdr::v1::CreateCallRecordResponse>> AsyncCreateCallRecord(::grpc::ClientContext* context, const ::sentiric::cdr::v1::CreateCallRecordRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::cdr::v1::CreateCallRecordResponse>>(AsyncCreateCallRecordRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::cdr::v1::CreateCallRecordResponse>> PrepareAsyncCreateCallRecord(::grpc::ClientContext* context, const ::sentiric::cdr::v1::CreateCallRecordRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::cdr::v1::CreateCallRecordResponse>>(PrepareAsyncCreateCallRecordRaw(context, request, cq));
+    }
+    ::grpc::Status UpdateCallRecord(::grpc::ClientContext* context, const ::sentiric::cdr::v1::UpdateCallRecordRequest& request, ::sentiric::cdr::v1::UpdateCallRecordResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::cdr::v1::UpdateCallRecordResponse>> AsyncUpdateCallRecord(::grpc::ClientContext* context, const ::sentiric::cdr::v1::UpdateCallRecordRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::cdr::v1::UpdateCallRecordResponse>>(AsyncUpdateCallRecordRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::cdr::v1::UpdateCallRecordResponse>> PrepareAsyncUpdateCallRecord(::grpc::ClientContext* context, const ::sentiric::cdr::v1::UpdateCallRecordRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::cdr::v1::UpdateCallRecordResponse>>(PrepareAsyncUpdateCallRecordRaw(context, request, cq));
+    }
     class async final :
       public StubInterface::async_interface {
      public:
       void RecordCallEvent(::grpc::ClientContext* context, const ::sentiric::cdr::v1::RecordCallEventRequest* request, ::sentiric::cdr::v1::RecordCallEventResponse* response, std::function<void(::grpc::Status)>) override;
       void RecordCallEvent(::grpc::ClientContext* context, const ::sentiric::cdr::v1::RecordCallEventRequest* request, ::sentiric::cdr::v1::RecordCallEventResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void CreateCallRecord(::grpc::ClientContext* context, const ::sentiric::cdr::v1::CreateCallRecordRequest* request, ::sentiric::cdr::v1::CreateCallRecordResponse* response, std::function<void(::grpc::Status)>) override;
+      void CreateCallRecord(::grpc::ClientContext* context, const ::sentiric::cdr::v1::CreateCallRecordRequest* request, ::sentiric::cdr::v1::CreateCallRecordResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void UpdateCallRecord(::grpc::ClientContext* context, const ::sentiric::cdr::v1::UpdateCallRecordRequest* request, ::sentiric::cdr::v1::UpdateCallRecordResponse* response, std::function<void(::grpc::Status)>) override;
+      void UpdateCallRecord(::grpc::ClientContext* context, const ::sentiric::cdr::v1::UpdateCallRecordRequest* request, ::sentiric::cdr::v1::UpdateCallRecordResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -85,7 +129,13 @@ class CdrService final {
     class async async_stub_{this};
     ::grpc::ClientAsyncResponseReader< ::sentiric::cdr::v1::RecordCallEventResponse>* AsyncRecordCallEventRaw(::grpc::ClientContext* context, const ::sentiric::cdr::v1::RecordCallEventRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::sentiric::cdr::v1::RecordCallEventResponse>* PrepareAsyncRecordCallEventRaw(::grpc::ClientContext* context, const ::sentiric::cdr::v1::RecordCallEventRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::sentiric::cdr::v1::CreateCallRecordResponse>* AsyncCreateCallRecordRaw(::grpc::ClientContext* context, const ::sentiric::cdr::v1::CreateCallRecordRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::sentiric::cdr::v1::CreateCallRecordResponse>* PrepareAsyncCreateCallRecordRaw(::grpc::ClientContext* context, const ::sentiric::cdr::v1::CreateCallRecordRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::sentiric::cdr::v1::UpdateCallRecordResponse>* AsyncUpdateCallRecordRaw(::grpc::ClientContext* context, const ::sentiric::cdr::v1::UpdateCallRecordRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::sentiric::cdr::v1::UpdateCallRecordResponse>* PrepareAsyncUpdateCallRecordRaw(::grpc::ClientContext* context, const ::sentiric::cdr::v1::UpdateCallRecordRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_RecordCallEvent_;
+    const ::grpc::internal::RpcMethod rpcmethod_CreateCallRecord_;
+    const ::grpc::internal::RpcMethod rpcmethod_UpdateCallRecord_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -94,6 +144,10 @@ class CdrService final {
     Service();
     virtual ~Service();
     virtual ::grpc::Status RecordCallEvent(::grpc::ServerContext* context, const ::sentiric::cdr::v1::RecordCallEventRequest* request, ::sentiric::cdr::v1::RecordCallEventResponse* response);
+    // [YENİ] Çağrı Başlangıcını Kaydet (Create)
+    virtual ::grpc::Status CreateCallRecord(::grpc::ServerContext* context, const ::sentiric::cdr::v1::CreateCallRecordRequest* request, ::sentiric::cdr::v1::CreateCallRecordResponse* response);
+    // [YENİ] Çağrı Bitişini Güncelle (Update)
+    virtual ::grpc::Status UpdateCallRecord(::grpc::ServerContext* context, const ::sentiric::cdr::v1::UpdateCallRecordRequest* request, ::sentiric::cdr::v1::UpdateCallRecordResponse* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_RecordCallEvent : public BaseClass {
@@ -115,7 +169,47 @@ class CdrService final {
       ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_RecordCallEvent<Service > AsyncService;
+  template <class BaseClass>
+  class WithAsyncMethod_CreateCallRecord : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_CreateCallRecord() {
+      ::grpc::Service::MarkMethodAsync(1);
+    }
+    ~WithAsyncMethod_CreateCallRecord() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status CreateCallRecord(::grpc::ServerContext* /*context*/, const ::sentiric::cdr::v1::CreateCallRecordRequest* /*request*/, ::sentiric::cdr::v1::CreateCallRecordResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestCreateCallRecord(::grpc::ServerContext* context, ::sentiric::cdr::v1::CreateCallRecordRequest* request, ::grpc::ServerAsyncResponseWriter< ::sentiric::cdr::v1::CreateCallRecordResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_UpdateCallRecord : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_UpdateCallRecord() {
+      ::grpc::Service::MarkMethodAsync(2);
+    }
+    ~WithAsyncMethod_UpdateCallRecord() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status UpdateCallRecord(::grpc::ServerContext* /*context*/, const ::sentiric::cdr::v1::UpdateCallRecordRequest* /*request*/, ::sentiric::cdr::v1::UpdateCallRecordResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestUpdateCallRecord(::grpc::ServerContext* context, ::sentiric::cdr::v1::UpdateCallRecordRequest* request, ::grpc::ServerAsyncResponseWriter< ::sentiric::cdr::v1::UpdateCallRecordResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_RecordCallEvent<WithAsyncMethod_CreateCallRecord<WithAsyncMethod_UpdateCallRecord<Service > > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_RecordCallEvent : public BaseClass {
    private:
@@ -143,7 +237,61 @@ class CdrService final {
     virtual ::grpc::ServerUnaryReactor* RecordCallEvent(
       ::grpc::CallbackServerContext* /*context*/, const ::sentiric::cdr::v1::RecordCallEventRequest* /*request*/, ::sentiric::cdr::v1::RecordCallEventResponse* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_RecordCallEvent<Service > CallbackService;
+  template <class BaseClass>
+  class WithCallbackMethod_CreateCallRecord : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_CreateCallRecord() {
+      ::grpc::Service::MarkMethodCallback(1,
+          new ::grpc::internal::CallbackUnaryHandler< ::sentiric::cdr::v1::CreateCallRecordRequest, ::sentiric::cdr::v1::CreateCallRecordResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::sentiric::cdr::v1::CreateCallRecordRequest* request, ::sentiric::cdr::v1::CreateCallRecordResponse* response) { return this->CreateCallRecord(context, request, response); }));}
+    void SetMessageAllocatorFor_CreateCallRecord(
+        ::grpc::MessageAllocator< ::sentiric::cdr::v1::CreateCallRecordRequest, ::sentiric::cdr::v1::CreateCallRecordResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::sentiric::cdr::v1::CreateCallRecordRequest, ::sentiric::cdr::v1::CreateCallRecordResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_CreateCallRecord() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status CreateCallRecord(::grpc::ServerContext* /*context*/, const ::sentiric::cdr::v1::CreateCallRecordRequest* /*request*/, ::sentiric::cdr::v1::CreateCallRecordResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* CreateCallRecord(
+      ::grpc::CallbackServerContext* /*context*/, const ::sentiric::cdr::v1::CreateCallRecordRequest* /*request*/, ::sentiric::cdr::v1::CreateCallRecordResponse* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithCallbackMethod_UpdateCallRecord : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_UpdateCallRecord() {
+      ::grpc::Service::MarkMethodCallback(2,
+          new ::grpc::internal::CallbackUnaryHandler< ::sentiric::cdr::v1::UpdateCallRecordRequest, ::sentiric::cdr::v1::UpdateCallRecordResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::sentiric::cdr::v1::UpdateCallRecordRequest* request, ::sentiric::cdr::v1::UpdateCallRecordResponse* response) { return this->UpdateCallRecord(context, request, response); }));}
+    void SetMessageAllocatorFor_UpdateCallRecord(
+        ::grpc::MessageAllocator< ::sentiric::cdr::v1::UpdateCallRecordRequest, ::sentiric::cdr::v1::UpdateCallRecordResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(2);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::sentiric::cdr::v1::UpdateCallRecordRequest, ::sentiric::cdr::v1::UpdateCallRecordResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_UpdateCallRecord() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status UpdateCallRecord(::grpc::ServerContext* /*context*/, const ::sentiric::cdr::v1::UpdateCallRecordRequest* /*request*/, ::sentiric::cdr::v1::UpdateCallRecordResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* UpdateCallRecord(
+      ::grpc::CallbackServerContext* /*context*/, const ::sentiric::cdr::v1::UpdateCallRecordRequest* /*request*/, ::sentiric::cdr::v1::UpdateCallRecordResponse* /*response*/)  { return nullptr; }
+  };
+  typedef WithCallbackMethod_RecordCallEvent<WithCallbackMethod_CreateCallRecord<WithCallbackMethod_UpdateCallRecord<Service > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_RecordCallEvent : public BaseClass {
@@ -158,6 +306,40 @@ class CdrService final {
     }
     // disable synchronous version of this method
     ::grpc::Status RecordCallEvent(::grpc::ServerContext* /*context*/, const ::sentiric::cdr::v1::RecordCallEventRequest* /*request*/, ::sentiric::cdr::v1::RecordCallEventResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_CreateCallRecord : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_CreateCallRecord() {
+      ::grpc::Service::MarkMethodGeneric(1);
+    }
+    ~WithGenericMethod_CreateCallRecord() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status CreateCallRecord(::grpc::ServerContext* /*context*/, const ::sentiric::cdr::v1::CreateCallRecordRequest* /*request*/, ::sentiric::cdr::v1::CreateCallRecordResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_UpdateCallRecord : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_UpdateCallRecord() {
+      ::grpc::Service::MarkMethodGeneric(2);
+    }
+    ~WithGenericMethod_UpdateCallRecord() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status UpdateCallRecord(::grpc::ServerContext* /*context*/, const ::sentiric::cdr::v1::UpdateCallRecordRequest* /*request*/, ::sentiric::cdr::v1::UpdateCallRecordResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -183,6 +365,46 @@ class CdrService final {
     }
   };
   template <class BaseClass>
+  class WithRawMethod_CreateCallRecord : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_CreateCallRecord() {
+      ::grpc::Service::MarkMethodRaw(1);
+    }
+    ~WithRawMethod_CreateCallRecord() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status CreateCallRecord(::grpc::ServerContext* /*context*/, const ::sentiric::cdr::v1::CreateCallRecordRequest* /*request*/, ::sentiric::cdr::v1::CreateCallRecordResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestCreateCallRecord(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_UpdateCallRecord : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_UpdateCallRecord() {
+      ::grpc::Service::MarkMethodRaw(2);
+    }
+    ~WithRawMethod_UpdateCallRecord() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status UpdateCallRecord(::grpc::ServerContext* /*context*/, const ::sentiric::cdr::v1::UpdateCallRecordRequest* /*request*/, ::sentiric::cdr::v1::UpdateCallRecordResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestUpdateCallRecord(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithRawCallbackMethod_RecordCallEvent : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
@@ -202,6 +424,50 @@ class CdrService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerUnaryReactor* RecordCallEvent(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_CreateCallRecord : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_CreateCallRecord() {
+      ::grpc::Service::MarkMethodRawCallback(1,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->CreateCallRecord(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_CreateCallRecord() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status CreateCallRecord(::grpc::ServerContext* /*context*/, const ::sentiric::cdr::v1::CreateCallRecordRequest* /*request*/, ::sentiric::cdr::v1::CreateCallRecordResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* CreateCallRecord(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_UpdateCallRecord : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_UpdateCallRecord() {
+      ::grpc::Service::MarkMethodRawCallback(2,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->UpdateCallRecord(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_UpdateCallRecord() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status UpdateCallRecord(::grpc::ServerContext* /*context*/, const ::sentiric::cdr::v1::UpdateCallRecordRequest* /*request*/, ::sentiric::cdr::v1::UpdateCallRecordResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* UpdateCallRecord(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
@@ -231,9 +497,63 @@ class CdrService final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedRecordCallEvent(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::sentiric::cdr::v1::RecordCallEventRequest,::sentiric::cdr::v1::RecordCallEventResponse>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_RecordCallEvent<Service > StreamedUnaryService;
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_CreateCallRecord : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_CreateCallRecord() {
+      ::grpc::Service::MarkMethodStreamed(1,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::sentiric::cdr::v1::CreateCallRecordRequest, ::sentiric::cdr::v1::CreateCallRecordResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::sentiric::cdr::v1::CreateCallRecordRequest, ::sentiric::cdr::v1::CreateCallRecordResponse>* streamer) {
+                       return this->StreamedCreateCallRecord(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_CreateCallRecord() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status CreateCallRecord(::grpc::ServerContext* /*context*/, const ::sentiric::cdr::v1::CreateCallRecordRequest* /*request*/, ::sentiric::cdr::v1::CreateCallRecordResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedCreateCallRecord(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::sentiric::cdr::v1::CreateCallRecordRequest,::sentiric::cdr::v1::CreateCallRecordResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_UpdateCallRecord : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_UpdateCallRecord() {
+      ::grpc::Service::MarkMethodStreamed(2,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::sentiric::cdr::v1::UpdateCallRecordRequest, ::sentiric::cdr::v1::UpdateCallRecordResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::sentiric::cdr::v1::UpdateCallRecordRequest, ::sentiric::cdr::v1::UpdateCallRecordResponse>* streamer) {
+                       return this->StreamedUpdateCallRecord(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_UpdateCallRecord() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status UpdateCallRecord(::grpc::ServerContext* /*context*/, const ::sentiric::cdr::v1::UpdateCallRecordRequest* /*request*/, ::sentiric::cdr::v1::UpdateCallRecordResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedUpdateCallRecord(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::sentiric::cdr::v1::UpdateCallRecordRequest,::sentiric::cdr::v1::UpdateCallRecordResponse>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_RecordCallEvent<WithStreamedUnaryMethod_CreateCallRecord<WithStreamedUnaryMethod_UpdateCallRecord<Service > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_RecordCallEvent<Service > StreamedService;
+  typedef WithStreamedUnaryMethod_RecordCallEvent<WithStreamedUnaryMethod_CreateCallRecord<WithStreamedUnaryMethod_UpdateCallRecord<Service > > > StreamedService;
 };
 
 }  // namespace v1

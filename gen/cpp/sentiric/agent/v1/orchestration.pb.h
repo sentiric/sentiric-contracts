@@ -31,6 +31,7 @@
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
 #include <google/protobuf/unknown_field_set.h>
 #include "sentiric/data/v1/context.pb.h"
+#include <google/protobuf/timestamp.pb.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_sentiric_2fagent_2fv1_2forchestration_2eproto
@@ -48,6 +49,12 @@ extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table
 namespace sentiric {
 namespace agent {
 namespace v1 {
+class GetConversationTranscriptRequest;
+struct GetConversationTranscriptRequestDefaultTypeInternal;
+extern GetConversationTranscriptRequestDefaultTypeInternal _GetConversationTranscriptRequest_default_instance_;
+class GetConversationTranscriptResponse;
+struct GetConversationTranscriptResponseDefaultTypeInternal;
+extern GetConversationTranscriptResponseDefaultTypeInternal _GetConversationTranscriptResponse_default_instance_;
 class ProcessCallStartRequest;
 struct ProcessCallStartRequestDefaultTypeInternal;
 extern ProcessCallStartRequestDefaultTypeInternal _ProcessCallStartRequest_default_instance_;
@@ -66,22 +73,581 @@ extern ProcessSagaStepRequestDefaultTypeInternal _ProcessSagaStepRequest_default
 class ProcessSagaStepResponse;
 struct ProcessSagaStepResponseDefaultTypeInternal;
 extern ProcessSagaStepResponseDefaultTypeInternal _ProcessSagaStepResponse_default_instance_;
+class TranscriptEntry;
+struct TranscriptEntryDefaultTypeInternal;
+extern TranscriptEntryDefaultTypeInternal _TranscriptEntry_default_instance_;
 }  // namespace v1
 }  // namespace agent
 }  // namespace sentiric
 PROTOBUF_NAMESPACE_OPEN
+template<> ::sentiric::agent::v1::GetConversationTranscriptRequest* Arena::CreateMaybeMessage<::sentiric::agent::v1::GetConversationTranscriptRequest>(Arena*);
+template<> ::sentiric::agent::v1::GetConversationTranscriptResponse* Arena::CreateMaybeMessage<::sentiric::agent::v1::GetConversationTranscriptResponse>(Arena*);
 template<> ::sentiric::agent::v1::ProcessCallStartRequest* Arena::CreateMaybeMessage<::sentiric::agent::v1::ProcessCallStartRequest>(Arena*);
 template<> ::sentiric::agent::v1::ProcessCallStartResponse* Arena::CreateMaybeMessage<::sentiric::agent::v1::ProcessCallStartResponse>(Arena*);
 template<> ::sentiric::agent::v1::ProcessManualDialRequest* Arena::CreateMaybeMessage<::sentiric::agent::v1::ProcessManualDialRequest>(Arena*);
 template<> ::sentiric::agent::v1::ProcessManualDialResponse* Arena::CreateMaybeMessage<::sentiric::agent::v1::ProcessManualDialResponse>(Arena*);
 template<> ::sentiric::agent::v1::ProcessSagaStepRequest* Arena::CreateMaybeMessage<::sentiric::agent::v1::ProcessSagaStepRequest>(Arena*);
 template<> ::sentiric::agent::v1::ProcessSagaStepResponse* Arena::CreateMaybeMessage<::sentiric::agent::v1::ProcessSagaStepResponse>(Arena*);
+template<> ::sentiric::agent::v1::TranscriptEntry* Arena::CreateMaybeMessage<::sentiric::agent::v1::TranscriptEntry>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace sentiric {
 namespace agent {
 namespace v1 {
 
 // ===================================================================
+
+class TranscriptEntry final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.agent.v1.TranscriptEntry) */ {
+ public:
+  inline TranscriptEntry() : TranscriptEntry(nullptr) {}
+  ~TranscriptEntry() override;
+  explicit PROTOBUF_CONSTEXPR TranscriptEntry(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  TranscriptEntry(const TranscriptEntry& from);
+  TranscriptEntry(TranscriptEntry&& from) noexcept
+    : TranscriptEntry() {
+    *this = ::std::move(from);
+  }
+
+  inline TranscriptEntry& operator=(const TranscriptEntry& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline TranscriptEntry& operator=(TranscriptEntry&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const TranscriptEntry& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const TranscriptEntry* internal_default_instance() {
+    return reinterpret_cast<const TranscriptEntry*>(
+               &_TranscriptEntry_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    0;
+
+  friend void swap(TranscriptEntry& a, TranscriptEntry& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(TranscriptEntry* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(TranscriptEntry* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  TranscriptEntry* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<TranscriptEntry>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const TranscriptEntry& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const TranscriptEntry& from) {
+    TranscriptEntry::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(TranscriptEntry* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.agent.v1.TranscriptEntry";
+  }
+  protected:
+  explicit TranscriptEntry(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kSenderTypeFieldNumber = 1,
+    kMessageTextFieldNumber = 2,
+    kMediaPayloadJsonFieldNumber = 5,
+    kCreatedAtFieldNumber = 4,
+    kSentimentScoreFieldNumber = 3,
+  };
+  // string sender_type = 1;
+  void clear_sender_type();
+  const std::string& sender_type() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_sender_type(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_sender_type();
+  PROTOBUF_NODISCARD std::string* release_sender_type();
+  void set_allocated_sender_type(std::string* sender_type);
+  private:
+  const std::string& _internal_sender_type() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_sender_type(const std::string& value);
+  std::string* _internal_mutable_sender_type();
+  public:
+
+  // string message_text = 2;
+  void clear_message_text();
+  const std::string& message_text() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_message_text(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_message_text();
+  PROTOBUF_NODISCARD std::string* release_message_text();
+  void set_allocated_message_text(std::string* message_text);
+  private:
+  const std::string& _internal_message_text() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_message_text(const std::string& value);
+  std::string* _internal_mutable_message_text();
+  public:
+
+  // string media_payload_json = 5;
+  void clear_media_payload_json();
+  const std::string& media_payload_json() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_media_payload_json(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_media_payload_json();
+  PROTOBUF_NODISCARD std::string* release_media_payload_json();
+  void set_allocated_media_payload_json(std::string* media_payload_json);
+  private:
+  const std::string& _internal_media_payload_json() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_media_payload_json(const std::string& value);
+  std::string* _internal_mutable_media_payload_json();
+  public:
+
+  // .google.protobuf.Timestamp created_at = 4;
+  bool has_created_at() const;
+  private:
+  bool _internal_has_created_at() const;
+  public:
+  void clear_created_at();
+  const ::PROTOBUF_NAMESPACE_ID::Timestamp& created_at() const;
+  PROTOBUF_NODISCARD ::PROTOBUF_NAMESPACE_ID::Timestamp* release_created_at();
+  ::PROTOBUF_NAMESPACE_ID::Timestamp* mutable_created_at();
+  void set_allocated_created_at(::PROTOBUF_NAMESPACE_ID::Timestamp* created_at);
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Timestamp& _internal_created_at() const;
+  ::PROTOBUF_NAMESPACE_ID::Timestamp* _internal_mutable_created_at();
+  public:
+  void unsafe_arena_set_allocated_created_at(
+      ::PROTOBUF_NAMESPACE_ID::Timestamp* created_at);
+  ::PROTOBUF_NAMESPACE_ID::Timestamp* unsafe_arena_release_created_at();
+
+  // float sentiment_score = 3;
+  void clear_sentiment_score();
+  float sentiment_score() const;
+  void set_sentiment_score(float value);
+  private:
+  float _internal_sentiment_score() const;
+  void _internal_set_sentiment_score(float value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.agent.v1.TranscriptEntry)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr sender_type_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr message_text_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr media_payload_json_;
+    ::PROTOBUF_NAMESPACE_ID::Timestamp* created_at_;
+    float sentiment_score_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2fagent_2fv1_2forchestration_2eproto;
+};
+// -------------------------------------------------------------------
+
+class GetConversationTranscriptRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.agent.v1.GetConversationTranscriptRequest) */ {
+ public:
+  inline GetConversationTranscriptRequest() : GetConversationTranscriptRequest(nullptr) {}
+  ~GetConversationTranscriptRequest() override;
+  explicit PROTOBUF_CONSTEXPR GetConversationTranscriptRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  GetConversationTranscriptRequest(const GetConversationTranscriptRequest& from);
+  GetConversationTranscriptRequest(GetConversationTranscriptRequest&& from) noexcept
+    : GetConversationTranscriptRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline GetConversationTranscriptRequest& operator=(const GetConversationTranscriptRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline GetConversationTranscriptRequest& operator=(GetConversationTranscriptRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const GetConversationTranscriptRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const GetConversationTranscriptRequest* internal_default_instance() {
+    return reinterpret_cast<const GetConversationTranscriptRequest*>(
+               &_GetConversationTranscriptRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    1;
+
+  friend void swap(GetConversationTranscriptRequest& a, GetConversationTranscriptRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(GetConversationTranscriptRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(GetConversationTranscriptRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  GetConversationTranscriptRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<GetConversationTranscriptRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const GetConversationTranscriptRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const GetConversationTranscriptRequest& from) {
+    GetConversationTranscriptRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(GetConversationTranscriptRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.agent.v1.GetConversationTranscriptRequest";
+  }
+  protected:
+  explicit GetConversationTranscriptRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kCallIdFieldNumber = 1,
+  };
+  // string call_id = 1;
+  void clear_call_id();
+  const std::string& call_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_call_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_call_id();
+  PROTOBUF_NODISCARD std::string* release_call_id();
+  void set_allocated_call_id(std::string* call_id);
+  private:
+  const std::string& _internal_call_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_call_id(const std::string& value);
+  std::string* _internal_mutable_call_id();
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.agent.v1.GetConversationTranscriptRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr call_id_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2fagent_2fv1_2forchestration_2eproto;
+};
+// -------------------------------------------------------------------
+
+class GetConversationTranscriptResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.agent.v1.GetConversationTranscriptResponse) */ {
+ public:
+  inline GetConversationTranscriptResponse() : GetConversationTranscriptResponse(nullptr) {}
+  ~GetConversationTranscriptResponse() override;
+  explicit PROTOBUF_CONSTEXPR GetConversationTranscriptResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  GetConversationTranscriptResponse(const GetConversationTranscriptResponse& from);
+  GetConversationTranscriptResponse(GetConversationTranscriptResponse&& from) noexcept
+    : GetConversationTranscriptResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline GetConversationTranscriptResponse& operator=(const GetConversationTranscriptResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline GetConversationTranscriptResponse& operator=(GetConversationTranscriptResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const GetConversationTranscriptResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const GetConversationTranscriptResponse* internal_default_instance() {
+    return reinterpret_cast<const GetConversationTranscriptResponse*>(
+               &_GetConversationTranscriptResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    2;
+
+  friend void swap(GetConversationTranscriptResponse& a, GetConversationTranscriptResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(GetConversationTranscriptResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(GetConversationTranscriptResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  GetConversationTranscriptResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<GetConversationTranscriptResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const GetConversationTranscriptResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const GetConversationTranscriptResponse& from) {
+    GetConversationTranscriptResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(GetConversationTranscriptResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.agent.v1.GetConversationTranscriptResponse";
+  }
+  protected:
+  explicit GetConversationTranscriptResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kEntriesFieldNumber = 1,
+    kSummaryFieldNumber = 2,
+    kOverallSentimentFieldNumber = 3,
+  };
+  // repeated .sentiric.agent.v1.TranscriptEntry entries = 1;
+  int entries_size() const;
+  private:
+  int _internal_entries_size() const;
+  public:
+  void clear_entries();
+  ::sentiric::agent::v1::TranscriptEntry* mutable_entries(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::sentiric::agent::v1::TranscriptEntry >*
+      mutable_entries();
+  private:
+  const ::sentiric::agent::v1::TranscriptEntry& _internal_entries(int index) const;
+  ::sentiric::agent::v1::TranscriptEntry* _internal_add_entries();
+  public:
+  const ::sentiric::agent::v1::TranscriptEntry& entries(int index) const;
+  ::sentiric::agent::v1::TranscriptEntry* add_entries();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::sentiric::agent::v1::TranscriptEntry >&
+      entries() const;
+
+  // string summary = 2;
+  void clear_summary();
+  const std::string& summary() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_summary(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_summary();
+  PROTOBUF_NODISCARD std::string* release_summary();
+  void set_allocated_summary(std::string* summary);
+  private:
+  const std::string& _internal_summary() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_summary(const std::string& value);
+  std::string* _internal_mutable_summary();
+  public:
+
+  // float overall_sentiment = 3;
+  void clear_overall_sentiment();
+  float overall_sentiment() const;
+  void set_overall_sentiment(float value);
+  private:
+  float _internal_overall_sentiment() const;
+  void _internal_set_overall_sentiment(float value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.agent.v1.GetConversationTranscriptResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::sentiric::agent::v1::TranscriptEntry > entries_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr summary_;
+    float overall_sentiment_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2fagent_2fv1_2forchestration_2eproto;
+};
+// -------------------------------------------------------------------
 
 class ProcessManualDialRequest final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.agent.v1.ProcessManualDialRequest) */ {
@@ -131,7 +697,7 @@ class ProcessManualDialRequest final :
                &_ProcessManualDialRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    0;
+    3;
 
   friend void swap(ProcessManualDialRequest& a, ProcessManualDialRequest& b) {
     a.Swap(&b);
@@ -316,7 +882,7 @@ class ProcessManualDialResponse final :
                &_ProcessManualDialResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    4;
 
   friend void swap(ProcessManualDialResponse& a, ProcessManualDialResponse& b) {
     a.Swap(&b);
@@ -496,7 +1062,7 @@ class ProcessCallStartRequest final :
                &_ProcessCallStartRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    5;
 
   friend void swap(ProcessCallStartRequest& a, ProcessCallStartRequest& b) {
     a.Swap(&b);
@@ -681,7 +1247,7 @@ class ProcessCallStartResponse final :
                &_ProcessCallStartResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    6;
 
   friend void swap(ProcessCallStartResponse& a, ProcessCallStartResponse& b) {
     a.Swap(&b);
@@ -829,7 +1395,7 @@ class ProcessSagaStepRequest final :
                &_ProcessSagaStepRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    7;
 
   friend void swap(ProcessSagaStepRequest& a, ProcessSagaStepRequest& b) {
     a.Swap(&b);
@@ -1018,7 +1584,7 @@ class ProcessSagaStepResponse final :
                &_ProcessSagaStepResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    8;
 
   friend void swap(ProcessSagaStepResponse& a, ProcessSagaStepResponse& b) {
     a.Swap(&b);
@@ -1125,6 +1691,433 @@ class ProcessSagaStepResponse final :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
+// TranscriptEntry
+
+// string sender_type = 1;
+inline void TranscriptEntry::clear_sender_type() {
+  _impl_.sender_type_.ClearToEmpty();
+}
+inline const std::string& TranscriptEntry::sender_type() const {
+  // @@protoc_insertion_point(field_get:sentiric.agent.v1.TranscriptEntry.sender_type)
+  return _internal_sender_type();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void TranscriptEntry::set_sender_type(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.sender_type_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.agent.v1.TranscriptEntry.sender_type)
+}
+inline std::string* TranscriptEntry::mutable_sender_type() {
+  std::string* _s = _internal_mutable_sender_type();
+  // @@protoc_insertion_point(field_mutable:sentiric.agent.v1.TranscriptEntry.sender_type)
+  return _s;
+}
+inline const std::string& TranscriptEntry::_internal_sender_type() const {
+  return _impl_.sender_type_.Get();
+}
+inline void TranscriptEntry::_internal_set_sender_type(const std::string& value) {
+  
+  _impl_.sender_type_.Set(value, GetArenaForAllocation());
+}
+inline std::string* TranscriptEntry::_internal_mutable_sender_type() {
+  
+  return _impl_.sender_type_.Mutable(GetArenaForAllocation());
+}
+inline std::string* TranscriptEntry::release_sender_type() {
+  // @@protoc_insertion_point(field_release:sentiric.agent.v1.TranscriptEntry.sender_type)
+  return _impl_.sender_type_.Release();
+}
+inline void TranscriptEntry::set_allocated_sender_type(std::string* sender_type) {
+  if (sender_type != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.sender_type_.SetAllocated(sender_type, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.sender_type_.IsDefault()) {
+    _impl_.sender_type_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.agent.v1.TranscriptEntry.sender_type)
+}
+
+// string message_text = 2;
+inline void TranscriptEntry::clear_message_text() {
+  _impl_.message_text_.ClearToEmpty();
+}
+inline const std::string& TranscriptEntry::message_text() const {
+  // @@protoc_insertion_point(field_get:sentiric.agent.v1.TranscriptEntry.message_text)
+  return _internal_message_text();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void TranscriptEntry::set_message_text(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.message_text_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.agent.v1.TranscriptEntry.message_text)
+}
+inline std::string* TranscriptEntry::mutable_message_text() {
+  std::string* _s = _internal_mutable_message_text();
+  // @@protoc_insertion_point(field_mutable:sentiric.agent.v1.TranscriptEntry.message_text)
+  return _s;
+}
+inline const std::string& TranscriptEntry::_internal_message_text() const {
+  return _impl_.message_text_.Get();
+}
+inline void TranscriptEntry::_internal_set_message_text(const std::string& value) {
+  
+  _impl_.message_text_.Set(value, GetArenaForAllocation());
+}
+inline std::string* TranscriptEntry::_internal_mutable_message_text() {
+  
+  return _impl_.message_text_.Mutable(GetArenaForAllocation());
+}
+inline std::string* TranscriptEntry::release_message_text() {
+  // @@protoc_insertion_point(field_release:sentiric.agent.v1.TranscriptEntry.message_text)
+  return _impl_.message_text_.Release();
+}
+inline void TranscriptEntry::set_allocated_message_text(std::string* message_text) {
+  if (message_text != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.message_text_.SetAllocated(message_text, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.message_text_.IsDefault()) {
+    _impl_.message_text_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.agent.v1.TranscriptEntry.message_text)
+}
+
+// float sentiment_score = 3;
+inline void TranscriptEntry::clear_sentiment_score() {
+  _impl_.sentiment_score_ = 0;
+}
+inline float TranscriptEntry::_internal_sentiment_score() const {
+  return _impl_.sentiment_score_;
+}
+inline float TranscriptEntry::sentiment_score() const {
+  // @@protoc_insertion_point(field_get:sentiric.agent.v1.TranscriptEntry.sentiment_score)
+  return _internal_sentiment_score();
+}
+inline void TranscriptEntry::_internal_set_sentiment_score(float value) {
+  
+  _impl_.sentiment_score_ = value;
+}
+inline void TranscriptEntry::set_sentiment_score(float value) {
+  _internal_set_sentiment_score(value);
+  // @@protoc_insertion_point(field_set:sentiric.agent.v1.TranscriptEntry.sentiment_score)
+}
+
+// .google.protobuf.Timestamp created_at = 4;
+inline bool TranscriptEntry::_internal_has_created_at() const {
+  return this != internal_default_instance() && _impl_.created_at_ != nullptr;
+}
+inline bool TranscriptEntry::has_created_at() const {
+  return _internal_has_created_at();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Timestamp& TranscriptEntry::_internal_created_at() const {
+  const ::PROTOBUF_NAMESPACE_ID::Timestamp* p = _impl_.created_at_;
+  return p != nullptr ? *p : reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Timestamp&>(
+      ::PROTOBUF_NAMESPACE_ID::_Timestamp_default_instance_);
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Timestamp& TranscriptEntry::created_at() const {
+  // @@protoc_insertion_point(field_get:sentiric.agent.v1.TranscriptEntry.created_at)
+  return _internal_created_at();
+}
+inline void TranscriptEntry::unsafe_arena_set_allocated_created_at(
+    ::PROTOBUF_NAMESPACE_ID::Timestamp* created_at) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.created_at_);
+  }
+  _impl_.created_at_ = created_at;
+  if (created_at) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:sentiric.agent.v1.TranscriptEntry.created_at)
+}
+inline ::PROTOBUF_NAMESPACE_ID::Timestamp* TranscriptEntry::release_created_at() {
+  
+  ::PROTOBUF_NAMESPACE_ID::Timestamp* temp = _impl_.created_at_;
+  _impl_.created_at_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Timestamp* TranscriptEntry::unsafe_arena_release_created_at() {
+  // @@protoc_insertion_point(field_release:sentiric.agent.v1.TranscriptEntry.created_at)
+  
+  ::PROTOBUF_NAMESPACE_ID::Timestamp* temp = _impl_.created_at_;
+  _impl_.created_at_ = nullptr;
+  return temp;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Timestamp* TranscriptEntry::_internal_mutable_created_at() {
+  
+  if (_impl_.created_at_ == nullptr) {
+    auto* p = CreateMaybeMessage<::PROTOBUF_NAMESPACE_ID::Timestamp>(GetArenaForAllocation());
+    _impl_.created_at_ = p;
+  }
+  return _impl_.created_at_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Timestamp* TranscriptEntry::mutable_created_at() {
+  ::PROTOBUF_NAMESPACE_ID::Timestamp* _msg = _internal_mutable_created_at();
+  // @@protoc_insertion_point(field_mutable:sentiric.agent.v1.TranscriptEntry.created_at)
+  return _msg;
+}
+inline void TranscriptEntry::set_allocated_created_at(::PROTOBUF_NAMESPACE_ID::Timestamp* created_at) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.created_at_);
+  }
+  if (created_at) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(created_at));
+    if (message_arena != submessage_arena) {
+      created_at = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, created_at, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.created_at_ = created_at;
+  // @@protoc_insertion_point(field_set_allocated:sentiric.agent.v1.TranscriptEntry.created_at)
+}
+
+// string media_payload_json = 5;
+inline void TranscriptEntry::clear_media_payload_json() {
+  _impl_.media_payload_json_.ClearToEmpty();
+}
+inline const std::string& TranscriptEntry::media_payload_json() const {
+  // @@protoc_insertion_point(field_get:sentiric.agent.v1.TranscriptEntry.media_payload_json)
+  return _internal_media_payload_json();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void TranscriptEntry::set_media_payload_json(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.media_payload_json_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.agent.v1.TranscriptEntry.media_payload_json)
+}
+inline std::string* TranscriptEntry::mutable_media_payload_json() {
+  std::string* _s = _internal_mutable_media_payload_json();
+  // @@protoc_insertion_point(field_mutable:sentiric.agent.v1.TranscriptEntry.media_payload_json)
+  return _s;
+}
+inline const std::string& TranscriptEntry::_internal_media_payload_json() const {
+  return _impl_.media_payload_json_.Get();
+}
+inline void TranscriptEntry::_internal_set_media_payload_json(const std::string& value) {
+  
+  _impl_.media_payload_json_.Set(value, GetArenaForAllocation());
+}
+inline std::string* TranscriptEntry::_internal_mutable_media_payload_json() {
+  
+  return _impl_.media_payload_json_.Mutable(GetArenaForAllocation());
+}
+inline std::string* TranscriptEntry::release_media_payload_json() {
+  // @@protoc_insertion_point(field_release:sentiric.agent.v1.TranscriptEntry.media_payload_json)
+  return _impl_.media_payload_json_.Release();
+}
+inline void TranscriptEntry::set_allocated_media_payload_json(std::string* media_payload_json) {
+  if (media_payload_json != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.media_payload_json_.SetAllocated(media_payload_json, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.media_payload_json_.IsDefault()) {
+    _impl_.media_payload_json_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.agent.v1.TranscriptEntry.media_payload_json)
+}
+
+// -------------------------------------------------------------------
+
+// GetConversationTranscriptRequest
+
+// string call_id = 1;
+inline void GetConversationTranscriptRequest::clear_call_id() {
+  _impl_.call_id_.ClearToEmpty();
+}
+inline const std::string& GetConversationTranscriptRequest::call_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.agent.v1.GetConversationTranscriptRequest.call_id)
+  return _internal_call_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void GetConversationTranscriptRequest::set_call_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.call_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.agent.v1.GetConversationTranscriptRequest.call_id)
+}
+inline std::string* GetConversationTranscriptRequest::mutable_call_id() {
+  std::string* _s = _internal_mutable_call_id();
+  // @@protoc_insertion_point(field_mutable:sentiric.agent.v1.GetConversationTranscriptRequest.call_id)
+  return _s;
+}
+inline const std::string& GetConversationTranscriptRequest::_internal_call_id() const {
+  return _impl_.call_id_.Get();
+}
+inline void GetConversationTranscriptRequest::_internal_set_call_id(const std::string& value) {
+  
+  _impl_.call_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* GetConversationTranscriptRequest::_internal_mutable_call_id() {
+  
+  return _impl_.call_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* GetConversationTranscriptRequest::release_call_id() {
+  // @@protoc_insertion_point(field_release:sentiric.agent.v1.GetConversationTranscriptRequest.call_id)
+  return _impl_.call_id_.Release();
+}
+inline void GetConversationTranscriptRequest::set_allocated_call_id(std::string* call_id) {
+  if (call_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.call_id_.SetAllocated(call_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.call_id_.IsDefault()) {
+    _impl_.call_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.agent.v1.GetConversationTranscriptRequest.call_id)
+}
+
+// -------------------------------------------------------------------
+
+// GetConversationTranscriptResponse
+
+// repeated .sentiric.agent.v1.TranscriptEntry entries = 1;
+inline int GetConversationTranscriptResponse::_internal_entries_size() const {
+  return _impl_.entries_.size();
+}
+inline int GetConversationTranscriptResponse::entries_size() const {
+  return _internal_entries_size();
+}
+inline void GetConversationTranscriptResponse::clear_entries() {
+  _impl_.entries_.Clear();
+}
+inline ::sentiric::agent::v1::TranscriptEntry* GetConversationTranscriptResponse::mutable_entries(int index) {
+  // @@protoc_insertion_point(field_mutable:sentiric.agent.v1.GetConversationTranscriptResponse.entries)
+  return _impl_.entries_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::sentiric::agent::v1::TranscriptEntry >*
+GetConversationTranscriptResponse::mutable_entries() {
+  // @@protoc_insertion_point(field_mutable_list:sentiric.agent.v1.GetConversationTranscriptResponse.entries)
+  return &_impl_.entries_;
+}
+inline const ::sentiric::agent::v1::TranscriptEntry& GetConversationTranscriptResponse::_internal_entries(int index) const {
+  return _impl_.entries_.Get(index);
+}
+inline const ::sentiric::agent::v1::TranscriptEntry& GetConversationTranscriptResponse::entries(int index) const {
+  // @@protoc_insertion_point(field_get:sentiric.agent.v1.GetConversationTranscriptResponse.entries)
+  return _internal_entries(index);
+}
+inline ::sentiric::agent::v1::TranscriptEntry* GetConversationTranscriptResponse::_internal_add_entries() {
+  return _impl_.entries_.Add();
+}
+inline ::sentiric::agent::v1::TranscriptEntry* GetConversationTranscriptResponse::add_entries() {
+  ::sentiric::agent::v1::TranscriptEntry* _add = _internal_add_entries();
+  // @@protoc_insertion_point(field_add:sentiric.agent.v1.GetConversationTranscriptResponse.entries)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::sentiric::agent::v1::TranscriptEntry >&
+GetConversationTranscriptResponse::entries() const {
+  // @@protoc_insertion_point(field_list:sentiric.agent.v1.GetConversationTranscriptResponse.entries)
+  return _impl_.entries_;
+}
+
+// string summary = 2;
+inline void GetConversationTranscriptResponse::clear_summary() {
+  _impl_.summary_.ClearToEmpty();
+}
+inline const std::string& GetConversationTranscriptResponse::summary() const {
+  // @@protoc_insertion_point(field_get:sentiric.agent.v1.GetConversationTranscriptResponse.summary)
+  return _internal_summary();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void GetConversationTranscriptResponse::set_summary(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.summary_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.agent.v1.GetConversationTranscriptResponse.summary)
+}
+inline std::string* GetConversationTranscriptResponse::mutable_summary() {
+  std::string* _s = _internal_mutable_summary();
+  // @@protoc_insertion_point(field_mutable:sentiric.agent.v1.GetConversationTranscriptResponse.summary)
+  return _s;
+}
+inline const std::string& GetConversationTranscriptResponse::_internal_summary() const {
+  return _impl_.summary_.Get();
+}
+inline void GetConversationTranscriptResponse::_internal_set_summary(const std::string& value) {
+  
+  _impl_.summary_.Set(value, GetArenaForAllocation());
+}
+inline std::string* GetConversationTranscriptResponse::_internal_mutable_summary() {
+  
+  return _impl_.summary_.Mutable(GetArenaForAllocation());
+}
+inline std::string* GetConversationTranscriptResponse::release_summary() {
+  // @@protoc_insertion_point(field_release:sentiric.agent.v1.GetConversationTranscriptResponse.summary)
+  return _impl_.summary_.Release();
+}
+inline void GetConversationTranscriptResponse::set_allocated_summary(std::string* summary) {
+  if (summary != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.summary_.SetAllocated(summary, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.summary_.IsDefault()) {
+    _impl_.summary_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.agent.v1.GetConversationTranscriptResponse.summary)
+}
+
+// float overall_sentiment = 3;
+inline void GetConversationTranscriptResponse::clear_overall_sentiment() {
+  _impl_.overall_sentiment_ = 0;
+}
+inline float GetConversationTranscriptResponse::_internal_overall_sentiment() const {
+  return _impl_.overall_sentiment_;
+}
+inline float GetConversationTranscriptResponse::overall_sentiment() const {
+  // @@protoc_insertion_point(field_get:sentiric.agent.v1.GetConversationTranscriptResponse.overall_sentiment)
+  return _internal_overall_sentiment();
+}
+inline void GetConversationTranscriptResponse::_internal_set_overall_sentiment(float value) {
+  
+  _impl_.overall_sentiment_ = value;
+}
+inline void GetConversationTranscriptResponse::set_overall_sentiment(float value) {
+  _internal_set_overall_sentiment(value);
+  // @@protoc_insertion_point(field_set:sentiric.agent.v1.GetConversationTranscriptResponse.overall_sentiment)
+}
+
+// -------------------------------------------------------------------
+
 // ProcessManualDialRequest
 
 // string destination_number = 1;
@@ -1795,6 +2788,12 @@ inline void ProcessSagaStepResponse::set_completed(bool value) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

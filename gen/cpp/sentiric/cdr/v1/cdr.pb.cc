@@ -23,6 +23,97 @@ namespace _pbi = _pb::internal;
 namespace sentiric {
 namespace cdr {
 namespace v1 {
+PROTOBUF_CONSTEXPR CallRecord::CallRecord(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.call_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.tenant_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.direction_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.caller_number_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.callee_number_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.user_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.status_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.disposition_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.hangup_source_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.recording_url_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.start_time_)*/nullptr
+  , /*decltype(_impl_.end_time_)*/nullptr
+  , /*decltype(_impl_.duration_seconds_)*/int64_t{0}
+  , /*decltype(_impl_.total_cost_)*/0
+  , /*decltype(_impl_.sip_hangup_cause_)*/0
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct CallRecordDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR CallRecordDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~CallRecordDefaultTypeInternal() {}
+  union {
+    CallRecord _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CallRecordDefaultTypeInternal _CallRecord_default_instance_;
+PROTOBUF_CONSTEXPR CreateCallRecordRequest::CreateCallRecordRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.call_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.tenant_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.direction_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.caller_number_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.callee_number_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.user_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct CreateCallRecordRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR CreateCallRecordRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~CreateCallRecordRequestDefaultTypeInternal() {}
+  union {
+    CreateCallRecordRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CreateCallRecordRequestDefaultTypeInternal _CreateCallRecordRequest_default_instance_;
+PROTOBUF_CONSTEXPR CreateCallRecordResponse::CreateCallRecordResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.success_)*/false
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct CreateCallRecordResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR CreateCallRecordResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~CreateCallRecordResponseDefaultTypeInternal() {}
+  union {
+    CreateCallRecordResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CreateCallRecordResponseDefaultTypeInternal _CreateCallRecordResponse_default_instance_;
+PROTOBUF_CONSTEXPR UpdateCallRecordRequest::UpdateCallRecordRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.call_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.status_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.disposition_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.hangup_source_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.recording_url_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.duration_seconds_)*/int64_t{0}
+  , /*decltype(_impl_.total_cost_)*/0
+  , /*decltype(_impl_.sip_hangup_cause_)*/0
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct UpdateCallRecordRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UpdateCallRecordRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UpdateCallRecordRequestDefaultTypeInternal() {}
+  union {
+    UpdateCallRecordRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UpdateCallRecordRequestDefaultTypeInternal _UpdateCallRecordRequest_default_instance_;
+PROTOBUF_CONSTEXPR UpdateCallRecordResponse::UpdateCallRecordResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.success_)*/false
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct UpdateCallRecordResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UpdateCallRecordResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UpdateCallRecordResponseDefaultTypeInternal() {}
+  union {
+    UpdateCallRecordResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UpdateCallRecordResponseDefaultTypeInternal _UpdateCallRecordResponse_default_instance_;
 PROTOBUF_CONSTEXPR RecordCallEventRequest_MetadataEntry_DoNotUse::RecordCallEventRequest_MetadataEntry_DoNotUse(
     ::_pbi::ConstantInitialized) {}
 struct RecordCallEventRequest_MetadataEntry_DoNotUseDefaultTypeInternal {
@@ -68,11 +159,72 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORIT
 }  // namespace v1
 }  // namespace cdr
 }  // namespace sentiric
-static ::_pb::Metadata file_level_metadata_sentiric_2fcdr_2fv1_2fcdr_2eproto[3];
+static ::_pb::Metadata file_level_metadata_sentiric_2fcdr_2fv1_2fcdr_2eproto[8];
 static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_sentiric_2fcdr_2fv1_2fcdr_2eproto = nullptr;
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_sentiric_2fcdr_2fv1_2fcdr_2eproto = nullptr;
 
 const uint32_t TableStruct_sentiric_2fcdr_2fv1_2fcdr_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::cdr::v1::CallRecord, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::cdr::v1::CallRecord, _impl_.call_id_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::cdr::v1::CallRecord, _impl_.tenant_id_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::cdr::v1::CallRecord, _impl_.direction_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::cdr::v1::CallRecord, _impl_.caller_number_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::cdr::v1::CallRecord, _impl_.callee_number_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::cdr::v1::CallRecord, _impl_.user_id_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::cdr::v1::CallRecord, _impl_.duration_seconds_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::cdr::v1::CallRecord, _impl_.status_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::cdr::v1::CallRecord, _impl_.disposition_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::cdr::v1::CallRecord, _impl_.hangup_source_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::cdr::v1::CallRecord, _impl_.sip_hangup_cause_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::cdr::v1::CallRecord, _impl_.recording_url_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::cdr::v1::CallRecord, _impl_.total_cost_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::cdr::v1::CallRecord, _impl_.start_time_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::cdr::v1::CallRecord, _impl_.end_time_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::cdr::v1::CreateCallRecordRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::cdr::v1::CreateCallRecordRequest, _impl_.call_id_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::cdr::v1::CreateCallRecordRequest, _impl_.tenant_id_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::cdr::v1::CreateCallRecordRequest, _impl_.direction_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::cdr::v1::CreateCallRecordRequest, _impl_.caller_number_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::cdr::v1::CreateCallRecordRequest, _impl_.callee_number_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::cdr::v1::CreateCallRecordRequest, _impl_.user_id_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::cdr::v1::CreateCallRecordResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::cdr::v1::CreateCallRecordResponse, _impl_.success_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::cdr::v1::UpdateCallRecordRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::cdr::v1::UpdateCallRecordRequest, _impl_.call_id_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::cdr::v1::UpdateCallRecordRequest, _impl_.duration_seconds_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::cdr::v1::UpdateCallRecordRequest, _impl_.status_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::cdr::v1::UpdateCallRecordRequest, _impl_.disposition_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::cdr::v1::UpdateCallRecordRequest, _impl_.hangup_source_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::cdr::v1::UpdateCallRecordRequest, _impl_.sip_hangup_cause_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::cdr::v1::UpdateCallRecordRequest, _impl_.recording_url_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::cdr::v1::UpdateCallRecordRequest, _impl_.total_cost_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::cdr::v1::UpdateCallRecordResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::cdr::v1::UpdateCallRecordResponse, _impl_.success_),
   PROTOBUF_FIELD_OFFSET(::sentiric::cdr::v1::RecordCallEventRequest_MetadataEntry_DoNotUse, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::sentiric::cdr::v1::RecordCallEventRequest_MetadataEntry_DoNotUse, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -104,12 +256,22 @@ const uint32_t TableStruct_sentiric_2fcdr_2fv1_2fcdr_2eproto::offsets[] PROTOBUF
   PROTOBUF_FIELD_OFFSET(::sentiric::cdr::v1::RecordCallEventResponse, _impl_.success_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, 8, -1, sizeof(::sentiric::cdr::v1::RecordCallEventRequest_MetadataEntry_DoNotUse)},
-  { 10, -1, -1, sizeof(::sentiric::cdr::v1::RecordCallEventRequest)},
-  { 22, -1, -1, sizeof(::sentiric::cdr::v1::RecordCallEventResponse)},
+  { 0, -1, -1, sizeof(::sentiric::cdr::v1::CallRecord)},
+  { 21, -1, -1, sizeof(::sentiric::cdr::v1::CreateCallRecordRequest)},
+  { 33, -1, -1, sizeof(::sentiric::cdr::v1::CreateCallRecordResponse)},
+  { 40, -1, -1, sizeof(::sentiric::cdr::v1::UpdateCallRecordRequest)},
+  { 54, -1, -1, sizeof(::sentiric::cdr::v1::UpdateCallRecordResponse)},
+  { 61, 69, -1, sizeof(::sentiric::cdr::v1::RecordCallEventRequest_MetadataEntry_DoNotUse)},
+  { 71, -1, -1, sizeof(::sentiric::cdr::v1::RecordCallEventRequest)},
+  { 83, -1, -1, sizeof(::sentiric::cdr::v1::RecordCallEventResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
+  &::sentiric::cdr::v1::_CallRecord_default_instance_._instance,
+  &::sentiric::cdr::v1::_CreateCallRecordRequest_default_instance_._instance,
+  &::sentiric::cdr::v1::_CreateCallRecordResponse_default_instance_._instance,
+  &::sentiric::cdr::v1::_UpdateCallRecordRequest_default_instance_._instance,
+  &::sentiric::cdr::v1::_UpdateCallRecordResponse_default_instance_._instance,
   &::sentiric::cdr::v1::_RecordCallEventRequest_MetadataEntry_DoNotUse_default_instance_._instance,
   &::sentiric::cdr::v1::_RecordCallEventRequest_default_instance_._instance,
   &::sentiric::cdr::v1::_RecordCallEventResponse_default_instance_._instance,
@@ -117,29 +279,55 @@ static const ::_pb::Message* const file_default_instances[] = {
 
 const char descriptor_table_protodef_sentiric_2fcdr_2fv1_2fcdr_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\031sentiric/cdr/v1/cdr.proto\022\017sentiric.cd"
-  "r.v1\032\037google/protobuf/timestamp.proto\"\213\002"
-  "\n\026RecordCallEventRequest\022\020\n\010event_id\030\001 \001"
-  "(\t\022\017\n\007call_id\030\002 \001(\t\022\021\n\ttenant_id\030\003 \001(\t\022\022"
-  "\n\nevent_type\030\004 \001(\t\022-\n\ttimestamp\030\005 \001(\0132\032."
-  "google.protobuf.Timestamp\022G\n\010metadata\030\006 "
-  "\003(\01325.sentiric.cdr.v1.RecordCallEventReq"
-  "uest.MetadataEntry\032/\n\rMetadataEntry\022\013\n\003k"
-  "ey\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"*\n\027RecordCal"
-  "lEventResponse\022\017\n\007success\030\001 \001(\0102r\n\nCdrSe"
-  "rvice\022d\n\017RecordCallEvent\022\'.sentiric.cdr."
-  "v1.RecordCallEventRequest\032(.sentiric.cdr"
-  ".v1.RecordCallEventResponseBEZCgithub.co"
-  "m/sentiric/sentiric-contracts/gen/go/sen"
-  "tiric/cdr/v1;cdrv1b\006proto3"
+  "r.v1\032\037google/protobuf/timestamp.proto\"\373\002"
+  "\n\nCallRecord\022\017\n\007call_id\030\001 \001(\t\022\021\n\ttenant_"
+  "id\030\002 \001(\t\022\021\n\tdirection\030\003 \001(\t\022\025\n\rcaller_nu"
+  "mber\030\004 \001(\t\022\025\n\rcallee_number\030\005 \001(\t\022\017\n\007use"
+  "r_id\030\006 \001(\t\022\030\n\020duration_seconds\030\007 \001(\003\022\016\n\006"
+  "status\030\010 \001(\t\022\023\n\013disposition\030\t \001(\t\022\025\n\rhan"
+  "gup_source\030\n \001(\t\022\030\n\020sip_hangup_cause\030\013 \001"
+  "(\005\022\025\n\rrecording_url\030\014 \001(\t\022\022\n\ntotal_cost\030"
+  "\r \001(\001\022.\n\nstart_time\030\016 \001(\0132\032.google.proto"
+  "buf.Timestamp\022,\n\010end_time\030\017 \001(\0132\032.google"
+  ".protobuf.Timestamp\"\217\001\n\027CreateCallRecord"
+  "Request\022\017\n\007call_id\030\001 \001(\t\022\021\n\ttenant_id\030\002 "
+  "\001(\t\022\021\n\tdirection\030\003 \001(\t\022\025\n\rcaller_number\030"
+  "\004 \001(\t\022\025\n\rcallee_number\030\005 \001(\t\022\017\n\007user_id\030"
+  "\006 \001(\t\"+\n\030CreateCallRecordResponse\022\017\n\007suc"
+  "cess\030\001 \001(\010\"\305\001\n\027UpdateCallRecordRequest\022\017"
+  "\n\007call_id\030\001 \001(\t\022\030\n\020duration_seconds\030\002 \001("
+  "\003\022\016\n\006status\030\003 \001(\t\022\023\n\013disposition\030\004 \001(\t\022\025"
+  "\n\rhangup_source\030\005 \001(\t\022\030\n\020sip_hangup_caus"
+  "e\030\006 \001(\005\022\025\n\rrecording_url\030\007 \001(\t\022\022\n\ntotal_"
+  "cost\030\010 \001(\001\"+\n\030UpdateCallRecordResponse\022\017"
+  "\n\007success\030\001 \001(\010\"\213\002\n\026RecordCallEventReque"
+  "st\022\020\n\010event_id\030\001 \001(\t\022\017\n\007call_id\030\002 \001(\t\022\021\n"
+  "\ttenant_id\030\003 \001(\t\022\022\n\nevent_type\030\004 \001(\t\022-\n\t"
+  "timestamp\030\005 \001(\0132\032.google.protobuf.Timest"
+  "amp\022G\n\010metadata\030\006 \003(\01325.sentiric.cdr.v1."
+  "RecordCallEventRequest.MetadataEntry\032/\n\r"
+  "MetadataEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001("
+  "\t:\0028\001\"*\n\027RecordCallEventResponse\022\017\n\007succ"
+  "ess\030\001 \001(\0102\304\002\n\nCdrService\022d\n\017RecordCallEv"
+  "ent\022\'.sentiric.cdr.v1.RecordCallEventReq"
+  "uest\032(.sentiric.cdr.v1.RecordCallEventRe"
+  "sponse\022g\n\020CreateCallRecord\022(.sentiric.cd"
+  "r.v1.CreateCallRecordRequest\032).sentiric."
+  "cdr.v1.CreateCallRecordResponse\022g\n\020Updat"
+  "eCallRecord\022(.sentiric.cdr.v1.UpdateCall"
+  "RecordRequest\032).sentiric.cdr.v1.UpdateCa"
+  "llRecordResponseBEZCgithub.com/sentiric/"
+  "sentiric-contracts/gen/go/sentiric/cdr/v"
+  "1;cdrv1b\006proto3"
   ;
 static const ::_pbi::DescriptorTable* const descriptor_table_sentiric_2fcdr_2fv1_2fcdr_2eproto_deps[1] = {
   &::descriptor_table_google_2fprotobuf_2ftimestamp_2eproto,
 };
 static ::_pbi::once_flag descriptor_table_sentiric_2fcdr_2fv1_2fcdr_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_sentiric_2fcdr_2fv1_2fcdr_2eproto = {
-    false, false, 586, descriptor_table_protodef_sentiric_2fcdr_2fv1_2fcdr_2eproto,
+    false, false, 1615, descriptor_table_protodef_sentiric_2fcdr_2fv1_2fcdr_2eproto,
     "sentiric/cdr/v1/cdr.proto",
-    &descriptor_table_sentiric_2fcdr_2fv1_2fcdr_2eproto_once, descriptor_table_sentiric_2fcdr_2fv1_2fcdr_2eproto_deps, 1, 3,
+    &descriptor_table_sentiric_2fcdr_2fv1_2fcdr_2eproto_once, descriptor_table_sentiric_2fcdr_2fv1_2fcdr_2eproto_deps, 1, 8,
     schemas, file_default_instances, TableStruct_sentiric_2fcdr_2fv1_2fcdr_2eproto::offsets,
     file_level_metadata_sentiric_2fcdr_2fv1_2fcdr_2eproto, file_level_enum_descriptors_sentiric_2fcdr_2fv1_2fcdr_2eproto,
     file_level_service_descriptors_sentiric_2fcdr_2fv1_2fcdr_2eproto,
@@ -156,6 +344,2157 @@ namespace v1 {
 
 // ===================================================================
 
+class CallRecord::_Internal {
+ public:
+  static const ::PROTOBUF_NAMESPACE_ID::Timestamp& start_time(const CallRecord* msg);
+  static const ::PROTOBUF_NAMESPACE_ID::Timestamp& end_time(const CallRecord* msg);
+};
+
+const ::PROTOBUF_NAMESPACE_ID::Timestamp&
+CallRecord::_Internal::start_time(const CallRecord* msg) {
+  return *msg->_impl_.start_time_;
+}
+const ::PROTOBUF_NAMESPACE_ID::Timestamp&
+CallRecord::_Internal::end_time(const CallRecord* msg) {
+  return *msg->_impl_.end_time_;
+}
+void CallRecord::clear_start_time() {
+  if (GetArenaForAllocation() == nullptr && _impl_.start_time_ != nullptr) {
+    delete _impl_.start_time_;
+  }
+  _impl_.start_time_ = nullptr;
+}
+void CallRecord::clear_end_time() {
+  if (GetArenaForAllocation() == nullptr && _impl_.end_time_ != nullptr) {
+    delete _impl_.end_time_;
+  }
+  _impl_.end_time_ = nullptr;
+}
+CallRecord::CallRecord(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.cdr.v1.CallRecord)
+}
+CallRecord::CallRecord(const CallRecord& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  CallRecord* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.call_id_){}
+    , decltype(_impl_.tenant_id_){}
+    , decltype(_impl_.direction_){}
+    , decltype(_impl_.caller_number_){}
+    , decltype(_impl_.callee_number_){}
+    , decltype(_impl_.user_id_){}
+    , decltype(_impl_.status_){}
+    , decltype(_impl_.disposition_){}
+    , decltype(_impl_.hangup_source_){}
+    , decltype(_impl_.recording_url_){}
+    , decltype(_impl_.start_time_){nullptr}
+    , decltype(_impl_.end_time_){nullptr}
+    , decltype(_impl_.duration_seconds_){}
+    , decltype(_impl_.total_cost_){}
+    , decltype(_impl_.sip_hangup_cause_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.call_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.call_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_call_id().empty()) {
+    _this->_impl_.call_id_.Set(from._internal_call_id(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.tenant_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.tenant_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_tenant_id().empty()) {
+    _this->_impl_.tenant_id_.Set(from._internal_tenant_id(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.direction_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.direction_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_direction().empty()) {
+    _this->_impl_.direction_.Set(from._internal_direction(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.caller_number_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.caller_number_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_caller_number().empty()) {
+    _this->_impl_.caller_number_.Set(from._internal_caller_number(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.callee_number_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.callee_number_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_callee_number().empty()) {
+    _this->_impl_.callee_number_.Set(from._internal_callee_number(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.user_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.user_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_user_id().empty()) {
+    _this->_impl_.user_id_.Set(from._internal_user_id(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.status_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.status_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_status().empty()) {
+    _this->_impl_.status_.Set(from._internal_status(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.disposition_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.disposition_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_disposition().empty()) {
+    _this->_impl_.disposition_.Set(from._internal_disposition(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.hangup_source_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.hangup_source_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_hangup_source().empty()) {
+    _this->_impl_.hangup_source_.Set(from._internal_hangup_source(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.recording_url_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.recording_url_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_recording_url().empty()) {
+    _this->_impl_.recording_url_.Set(from._internal_recording_url(), 
+      _this->GetArenaForAllocation());
+  }
+  if (from._internal_has_start_time()) {
+    _this->_impl_.start_time_ = new ::PROTOBUF_NAMESPACE_ID::Timestamp(*from._impl_.start_time_);
+  }
+  if (from._internal_has_end_time()) {
+    _this->_impl_.end_time_ = new ::PROTOBUF_NAMESPACE_ID::Timestamp(*from._impl_.end_time_);
+  }
+  ::memcpy(&_impl_.duration_seconds_, &from._impl_.duration_seconds_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.sip_hangup_cause_) -
+    reinterpret_cast<char*>(&_impl_.duration_seconds_)) + sizeof(_impl_.sip_hangup_cause_));
+  // @@protoc_insertion_point(copy_constructor:sentiric.cdr.v1.CallRecord)
+}
+
+inline void CallRecord::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.call_id_){}
+    , decltype(_impl_.tenant_id_){}
+    , decltype(_impl_.direction_){}
+    , decltype(_impl_.caller_number_){}
+    , decltype(_impl_.callee_number_){}
+    , decltype(_impl_.user_id_){}
+    , decltype(_impl_.status_){}
+    , decltype(_impl_.disposition_){}
+    , decltype(_impl_.hangup_source_){}
+    , decltype(_impl_.recording_url_){}
+    , decltype(_impl_.start_time_){nullptr}
+    , decltype(_impl_.end_time_){nullptr}
+    , decltype(_impl_.duration_seconds_){int64_t{0}}
+    , decltype(_impl_.total_cost_){0}
+    , decltype(_impl_.sip_hangup_cause_){0}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.call_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.call_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.tenant_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.tenant_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.direction_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.direction_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.caller_number_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.caller_number_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.callee_number_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.callee_number_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.user_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.user_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.status_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.status_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.disposition_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.disposition_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.hangup_source_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.hangup_source_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.recording_url_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.recording_url_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+CallRecord::~CallRecord() {
+  // @@protoc_insertion_point(destructor:sentiric.cdr.v1.CallRecord)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void CallRecord::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.call_id_.Destroy();
+  _impl_.tenant_id_.Destroy();
+  _impl_.direction_.Destroy();
+  _impl_.caller_number_.Destroy();
+  _impl_.callee_number_.Destroy();
+  _impl_.user_id_.Destroy();
+  _impl_.status_.Destroy();
+  _impl_.disposition_.Destroy();
+  _impl_.hangup_source_.Destroy();
+  _impl_.recording_url_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.start_time_;
+  if (this != internal_default_instance()) delete _impl_.end_time_;
+}
+
+void CallRecord::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void CallRecord::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.cdr.v1.CallRecord)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.call_id_.ClearToEmpty();
+  _impl_.tenant_id_.ClearToEmpty();
+  _impl_.direction_.ClearToEmpty();
+  _impl_.caller_number_.ClearToEmpty();
+  _impl_.callee_number_.ClearToEmpty();
+  _impl_.user_id_.ClearToEmpty();
+  _impl_.status_.ClearToEmpty();
+  _impl_.disposition_.ClearToEmpty();
+  _impl_.hangup_source_.ClearToEmpty();
+  _impl_.recording_url_.ClearToEmpty();
+  if (GetArenaForAllocation() == nullptr && _impl_.start_time_ != nullptr) {
+    delete _impl_.start_time_;
+  }
+  _impl_.start_time_ = nullptr;
+  if (GetArenaForAllocation() == nullptr && _impl_.end_time_ != nullptr) {
+    delete _impl_.end_time_;
+  }
+  _impl_.end_time_ = nullptr;
+  ::memset(&_impl_.duration_seconds_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&_impl_.sip_hangup_cause_) -
+      reinterpret_cast<char*>(&_impl_.duration_seconds_)) + sizeof(_impl_.sip_hangup_cause_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* CallRecord::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string call_id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_call_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.cdr.v1.CallRecord.call_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string tenant_id = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_tenant_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.cdr.v1.CallRecord.tenant_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string direction = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_direction();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.cdr.v1.CallRecord.direction"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string caller_number = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          auto str = _internal_mutable_caller_number();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.cdr.v1.CallRecord.caller_number"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string callee_number = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
+          auto str = _internal_mutable_callee_number();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.cdr.v1.CallRecord.callee_number"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string user_id = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 50)) {
+          auto str = _internal_mutable_user_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.cdr.v1.CallRecord.user_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // int64 duration_seconds = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 56)) {
+          _impl_.duration_seconds_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string status = 8;
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 66)) {
+          auto str = _internal_mutable_status();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.cdr.v1.CallRecord.status"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string disposition = 9;
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 74)) {
+          auto str = _internal_mutable_disposition();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.cdr.v1.CallRecord.disposition"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string hangup_source = 10;
+      case 10:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 82)) {
+          auto str = _internal_mutable_hangup_source();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.cdr.v1.CallRecord.hangup_source"));
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 sip_hangup_cause = 11;
+      case 11:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 88)) {
+          _impl_.sip_hangup_cause_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string recording_url = 12;
+      case 12:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 98)) {
+          auto str = _internal_mutable_recording_url();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.cdr.v1.CallRecord.recording_url"));
+        } else
+          goto handle_unusual;
+        continue;
+      // double total_cost = 13;
+      case 13:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 105)) {
+          _impl_.total_cost_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else
+          goto handle_unusual;
+        continue;
+      // .google.protobuf.Timestamp start_time = 14;
+      case 14:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 114)) {
+          ptr = ctx->ParseMessage(_internal_mutable_start_time(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .google.protobuf.Timestamp end_time = 15;
+      case 15:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 122)) {
+          ptr = ctx->ParseMessage(_internal_mutable_end_time(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* CallRecord::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.cdr.v1.CallRecord)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string call_id = 1;
+  if (!this->_internal_call_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_call_id().data(), static_cast<int>(this->_internal_call_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.cdr.v1.CallRecord.call_id");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_call_id(), target);
+  }
+
+  // string tenant_id = 2;
+  if (!this->_internal_tenant_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_tenant_id().data(), static_cast<int>(this->_internal_tenant_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.cdr.v1.CallRecord.tenant_id");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_tenant_id(), target);
+  }
+
+  // string direction = 3;
+  if (!this->_internal_direction().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_direction().data(), static_cast<int>(this->_internal_direction().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.cdr.v1.CallRecord.direction");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_direction(), target);
+  }
+
+  // string caller_number = 4;
+  if (!this->_internal_caller_number().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_caller_number().data(), static_cast<int>(this->_internal_caller_number().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.cdr.v1.CallRecord.caller_number");
+    target = stream->WriteStringMaybeAliased(
+        4, this->_internal_caller_number(), target);
+  }
+
+  // string callee_number = 5;
+  if (!this->_internal_callee_number().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_callee_number().data(), static_cast<int>(this->_internal_callee_number().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.cdr.v1.CallRecord.callee_number");
+    target = stream->WriteStringMaybeAliased(
+        5, this->_internal_callee_number(), target);
+  }
+
+  // string user_id = 6;
+  if (!this->_internal_user_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_user_id().data(), static_cast<int>(this->_internal_user_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.cdr.v1.CallRecord.user_id");
+    target = stream->WriteStringMaybeAliased(
+        6, this->_internal_user_id(), target);
+  }
+
+  // int64 duration_seconds = 7;
+  if (this->_internal_duration_seconds() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt64ToArray(7, this->_internal_duration_seconds(), target);
+  }
+
+  // string status = 8;
+  if (!this->_internal_status().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_status().data(), static_cast<int>(this->_internal_status().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.cdr.v1.CallRecord.status");
+    target = stream->WriteStringMaybeAliased(
+        8, this->_internal_status(), target);
+  }
+
+  // string disposition = 9;
+  if (!this->_internal_disposition().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_disposition().data(), static_cast<int>(this->_internal_disposition().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.cdr.v1.CallRecord.disposition");
+    target = stream->WriteStringMaybeAliased(
+        9, this->_internal_disposition(), target);
+  }
+
+  // string hangup_source = 10;
+  if (!this->_internal_hangup_source().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_hangup_source().data(), static_cast<int>(this->_internal_hangup_source().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.cdr.v1.CallRecord.hangup_source");
+    target = stream->WriteStringMaybeAliased(
+        10, this->_internal_hangup_source(), target);
+  }
+
+  // int32 sip_hangup_cause = 11;
+  if (this->_internal_sip_hangup_cause() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(11, this->_internal_sip_hangup_cause(), target);
+  }
+
+  // string recording_url = 12;
+  if (!this->_internal_recording_url().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_recording_url().data(), static_cast<int>(this->_internal_recording_url().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.cdr.v1.CallRecord.recording_url");
+    target = stream->WriteStringMaybeAliased(
+        12, this->_internal_recording_url(), target);
+  }
+
+  // double total_cost = 13;
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_total_cost = this->_internal_total_cost();
+  uint64_t raw_total_cost;
+  memcpy(&raw_total_cost, &tmp_total_cost, sizeof(tmp_total_cost));
+  if (raw_total_cost != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteDoubleToArray(13, this->_internal_total_cost(), target);
+  }
+
+  // .google.protobuf.Timestamp start_time = 14;
+  if (this->_internal_has_start_time()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(14, _Internal::start_time(this),
+        _Internal::start_time(this).GetCachedSize(), target, stream);
+  }
+
+  // .google.protobuf.Timestamp end_time = 15;
+  if (this->_internal_has_end_time()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(15, _Internal::end_time(this),
+        _Internal::end_time(this).GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.cdr.v1.CallRecord)
+  return target;
+}
+
+size_t CallRecord::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.cdr.v1.CallRecord)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string call_id = 1;
+  if (!this->_internal_call_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_call_id());
+  }
+
+  // string tenant_id = 2;
+  if (!this->_internal_tenant_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_tenant_id());
+  }
+
+  // string direction = 3;
+  if (!this->_internal_direction().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_direction());
+  }
+
+  // string caller_number = 4;
+  if (!this->_internal_caller_number().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_caller_number());
+  }
+
+  // string callee_number = 5;
+  if (!this->_internal_callee_number().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_callee_number());
+  }
+
+  // string user_id = 6;
+  if (!this->_internal_user_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_user_id());
+  }
+
+  // string status = 8;
+  if (!this->_internal_status().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_status());
+  }
+
+  // string disposition = 9;
+  if (!this->_internal_disposition().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_disposition());
+  }
+
+  // string hangup_source = 10;
+  if (!this->_internal_hangup_source().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_hangup_source());
+  }
+
+  // string recording_url = 12;
+  if (!this->_internal_recording_url().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_recording_url());
+  }
+
+  // .google.protobuf.Timestamp start_time = 14;
+  if (this->_internal_has_start_time()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.start_time_);
+  }
+
+  // .google.protobuf.Timestamp end_time = 15;
+  if (this->_internal_has_end_time()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.end_time_);
+  }
+
+  // int64 duration_seconds = 7;
+  if (this->_internal_duration_seconds() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(this->_internal_duration_seconds());
+  }
+
+  // double total_cost = 13;
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_total_cost = this->_internal_total_cost();
+  uint64_t raw_total_cost;
+  memcpy(&raw_total_cost, &tmp_total_cost, sizeof(tmp_total_cost));
+  if (raw_total_cost != 0) {
+    total_size += 1 + 8;
+  }
+
+  // int32 sip_hangup_cause = 11;
+  if (this->_internal_sip_hangup_cause() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_sip_hangup_cause());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData CallRecord::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    CallRecord::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*CallRecord::GetClassData() const { return &_class_data_; }
+
+
+void CallRecord::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<CallRecord*>(&to_msg);
+  auto& from = static_cast<const CallRecord&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.cdr.v1.CallRecord)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_call_id().empty()) {
+    _this->_internal_set_call_id(from._internal_call_id());
+  }
+  if (!from._internal_tenant_id().empty()) {
+    _this->_internal_set_tenant_id(from._internal_tenant_id());
+  }
+  if (!from._internal_direction().empty()) {
+    _this->_internal_set_direction(from._internal_direction());
+  }
+  if (!from._internal_caller_number().empty()) {
+    _this->_internal_set_caller_number(from._internal_caller_number());
+  }
+  if (!from._internal_callee_number().empty()) {
+    _this->_internal_set_callee_number(from._internal_callee_number());
+  }
+  if (!from._internal_user_id().empty()) {
+    _this->_internal_set_user_id(from._internal_user_id());
+  }
+  if (!from._internal_status().empty()) {
+    _this->_internal_set_status(from._internal_status());
+  }
+  if (!from._internal_disposition().empty()) {
+    _this->_internal_set_disposition(from._internal_disposition());
+  }
+  if (!from._internal_hangup_source().empty()) {
+    _this->_internal_set_hangup_source(from._internal_hangup_source());
+  }
+  if (!from._internal_recording_url().empty()) {
+    _this->_internal_set_recording_url(from._internal_recording_url());
+  }
+  if (from._internal_has_start_time()) {
+    _this->_internal_mutable_start_time()->::PROTOBUF_NAMESPACE_ID::Timestamp::MergeFrom(
+        from._internal_start_time());
+  }
+  if (from._internal_has_end_time()) {
+    _this->_internal_mutable_end_time()->::PROTOBUF_NAMESPACE_ID::Timestamp::MergeFrom(
+        from._internal_end_time());
+  }
+  if (from._internal_duration_seconds() != 0) {
+    _this->_internal_set_duration_seconds(from._internal_duration_seconds());
+  }
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_total_cost = from._internal_total_cost();
+  uint64_t raw_total_cost;
+  memcpy(&raw_total_cost, &tmp_total_cost, sizeof(tmp_total_cost));
+  if (raw_total_cost != 0) {
+    _this->_internal_set_total_cost(from._internal_total_cost());
+  }
+  if (from._internal_sip_hangup_cause() != 0) {
+    _this->_internal_set_sip_hangup_cause(from._internal_sip_hangup_cause());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void CallRecord::CopyFrom(const CallRecord& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.cdr.v1.CallRecord)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool CallRecord::IsInitialized() const {
+  return true;
+}
+
+void CallRecord::InternalSwap(CallRecord* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.call_id_, lhs_arena,
+      &other->_impl_.call_id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.tenant_id_, lhs_arena,
+      &other->_impl_.tenant_id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.direction_, lhs_arena,
+      &other->_impl_.direction_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.caller_number_, lhs_arena,
+      &other->_impl_.caller_number_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.callee_number_, lhs_arena,
+      &other->_impl_.callee_number_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.user_id_, lhs_arena,
+      &other->_impl_.user_id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.status_, lhs_arena,
+      &other->_impl_.status_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.disposition_, lhs_arena,
+      &other->_impl_.disposition_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.hangup_source_, lhs_arena,
+      &other->_impl_.hangup_source_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.recording_url_, lhs_arena,
+      &other->_impl_.recording_url_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(CallRecord, _impl_.sip_hangup_cause_)
+      + sizeof(CallRecord::_impl_.sip_hangup_cause_)
+      - PROTOBUF_FIELD_OFFSET(CallRecord, _impl_.start_time_)>(
+          reinterpret_cast<char*>(&_impl_.start_time_),
+          reinterpret_cast<char*>(&other->_impl_.start_time_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata CallRecord::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fcdr_2fv1_2fcdr_2eproto_getter, &descriptor_table_sentiric_2fcdr_2fv1_2fcdr_2eproto_once,
+      file_level_metadata_sentiric_2fcdr_2fv1_2fcdr_2eproto[0]);
+}
+
+// ===================================================================
+
+class CreateCallRecordRequest::_Internal {
+ public:
+};
+
+CreateCallRecordRequest::CreateCallRecordRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.cdr.v1.CreateCallRecordRequest)
+}
+CreateCallRecordRequest::CreateCallRecordRequest(const CreateCallRecordRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  CreateCallRecordRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.call_id_){}
+    , decltype(_impl_.tenant_id_){}
+    , decltype(_impl_.direction_){}
+    , decltype(_impl_.caller_number_){}
+    , decltype(_impl_.callee_number_){}
+    , decltype(_impl_.user_id_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.call_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.call_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_call_id().empty()) {
+    _this->_impl_.call_id_.Set(from._internal_call_id(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.tenant_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.tenant_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_tenant_id().empty()) {
+    _this->_impl_.tenant_id_.Set(from._internal_tenant_id(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.direction_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.direction_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_direction().empty()) {
+    _this->_impl_.direction_.Set(from._internal_direction(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.caller_number_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.caller_number_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_caller_number().empty()) {
+    _this->_impl_.caller_number_.Set(from._internal_caller_number(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.callee_number_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.callee_number_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_callee_number().empty()) {
+    _this->_impl_.callee_number_.Set(from._internal_callee_number(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.user_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.user_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_user_id().empty()) {
+    _this->_impl_.user_id_.Set(from._internal_user_id(), 
+      _this->GetArenaForAllocation());
+  }
+  // @@protoc_insertion_point(copy_constructor:sentiric.cdr.v1.CreateCallRecordRequest)
+}
+
+inline void CreateCallRecordRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.call_id_){}
+    , decltype(_impl_.tenant_id_){}
+    , decltype(_impl_.direction_){}
+    , decltype(_impl_.caller_number_){}
+    , decltype(_impl_.callee_number_){}
+    , decltype(_impl_.user_id_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.call_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.call_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.tenant_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.tenant_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.direction_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.direction_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.caller_number_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.caller_number_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.callee_number_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.callee_number_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.user_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.user_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+CreateCallRecordRequest::~CreateCallRecordRequest() {
+  // @@protoc_insertion_point(destructor:sentiric.cdr.v1.CreateCallRecordRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void CreateCallRecordRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.call_id_.Destroy();
+  _impl_.tenant_id_.Destroy();
+  _impl_.direction_.Destroy();
+  _impl_.caller_number_.Destroy();
+  _impl_.callee_number_.Destroy();
+  _impl_.user_id_.Destroy();
+}
+
+void CreateCallRecordRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void CreateCallRecordRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.cdr.v1.CreateCallRecordRequest)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.call_id_.ClearToEmpty();
+  _impl_.tenant_id_.ClearToEmpty();
+  _impl_.direction_.ClearToEmpty();
+  _impl_.caller_number_.ClearToEmpty();
+  _impl_.callee_number_.ClearToEmpty();
+  _impl_.user_id_.ClearToEmpty();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* CreateCallRecordRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string call_id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_call_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.cdr.v1.CreateCallRecordRequest.call_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string tenant_id = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_tenant_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.cdr.v1.CreateCallRecordRequest.tenant_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string direction = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_direction();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.cdr.v1.CreateCallRecordRequest.direction"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string caller_number = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          auto str = _internal_mutable_caller_number();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.cdr.v1.CreateCallRecordRequest.caller_number"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string callee_number = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
+          auto str = _internal_mutable_callee_number();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.cdr.v1.CreateCallRecordRequest.callee_number"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string user_id = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 50)) {
+          auto str = _internal_mutable_user_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.cdr.v1.CreateCallRecordRequest.user_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* CreateCallRecordRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.cdr.v1.CreateCallRecordRequest)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string call_id = 1;
+  if (!this->_internal_call_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_call_id().data(), static_cast<int>(this->_internal_call_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.cdr.v1.CreateCallRecordRequest.call_id");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_call_id(), target);
+  }
+
+  // string tenant_id = 2;
+  if (!this->_internal_tenant_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_tenant_id().data(), static_cast<int>(this->_internal_tenant_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.cdr.v1.CreateCallRecordRequest.tenant_id");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_tenant_id(), target);
+  }
+
+  // string direction = 3;
+  if (!this->_internal_direction().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_direction().data(), static_cast<int>(this->_internal_direction().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.cdr.v1.CreateCallRecordRequest.direction");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_direction(), target);
+  }
+
+  // string caller_number = 4;
+  if (!this->_internal_caller_number().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_caller_number().data(), static_cast<int>(this->_internal_caller_number().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.cdr.v1.CreateCallRecordRequest.caller_number");
+    target = stream->WriteStringMaybeAliased(
+        4, this->_internal_caller_number(), target);
+  }
+
+  // string callee_number = 5;
+  if (!this->_internal_callee_number().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_callee_number().data(), static_cast<int>(this->_internal_callee_number().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.cdr.v1.CreateCallRecordRequest.callee_number");
+    target = stream->WriteStringMaybeAliased(
+        5, this->_internal_callee_number(), target);
+  }
+
+  // string user_id = 6;
+  if (!this->_internal_user_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_user_id().data(), static_cast<int>(this->_internal_user_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.cdr.v1.CreateCallRecordRequest.user_id");
+    target = stream->WriteStringMaybeAliased(
+        6, this->_internal_user_id(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.cdr.v1.CreateCallRecordRequest)
+  return target;
+}
+
+size_t CreateCallRecordRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.cdr.v1.CreateCallRecordRequest)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string call_id = 1;
+  if (!this->_internal_call_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_call_id());
+  }
+
+  // string tenant_id = 2;
+  if (!this->_internal_tenant_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_tenant_id());
+  }
+
+  // string direction = 3;
+  if (!this->_internal_direction().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_direction());
+  }
+
+  // string caller_number = 4;
+  if (!this->_internal_caller_number().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_caller_number());
+  }
+
+  // string callee_number = 5;
+  if (!this->_internal_callee_number().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_callee_number());
+  }
+
+  // string user_id = 6;
+  if (!this->_internal_user_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_user_id());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData CreateCallRecordRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    CreateCallRecordRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*CreateCallRecordRequest::GetClassData() const { return &_class_data_; }
+
+
+void CreateCallRecordRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<CreateCallRecordRequest*>(&to_msg);
+  auto& from = static_cast<const CreateCallRecordRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.cdr.v1.CreateCallRecordRequest)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_call_id().empty()) {
+    _this->_internal_set_call_id(from._internal_call_id());
+  }
+  if (!from._internal_tenant_id().empty()) {
+    _this->_internal_set_tenant_id(from._internal_tenant_id());
+  }
+  if (!from._internal_direction().empty()) {
+    _this->_internal_set_direction(from._internal_direction());
+  }
+  if (!from._internal_caller_number().empty()) {
+    _this->_internal_set_caller_number(from._internal_caller_number());
+  }
+  if (!from._internal_callee_number().empty()) {
+    _this->_internal_set_callee_number(from._internal_callee_number());
+  }
+  if (!from._internal_user_id().empty()) {
+    _this->_internal_set_user_id(from._internal_user_id());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void CreateCallRecordRequest::CopyFrom(const CreateCallRecordRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.cdr.v1.CreateCallRecordRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool CreateCallRecordRequest::IsInitialized() const {
+  return true;
+}
+
+void CreateCallRecordRequest::InternalSwap(CreateCallRecordRequest* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.call_id_, lhs_arena,
+      &other->_impl_.call_id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.tenant_id_, lhs_arena,
+      &other->_impl_.tenant_id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.direction_, lhs_arena,
+      &other->_impl_.direction_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.caller_number_, lhs_arena,
+      &other->_impl_.caller_number_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.callee_number_, lhs_arena,
+      &other->_impl_.callee_number_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.user_id_, lhs_arena,
+      &other->_impl_.user_id_, rhs_arena
+  );
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata CreateCallRecordRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fcdr_2fv1_2fcdr_2eproto_getter, &descriptor_table_sentiric_2fcdr_2fv1_2fcdr_2eproto_once,
+      file_level_metadata_sentiric_2fcdr_2fv1_2fcdr_2eproto[1]);
+}
+
+// ===================================================================
+
+class CreateCallRecordResponse::_Internal {
+ public:
+};
+
+CreateCallRecordResponse::CreateCallRecordResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.cdr.v1.CreateCallRecordResponse)
+}
+CreateCallRecordResponse::CreateCallRecordResponse(const CreateCallRecordResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  CreateCallRecordResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.success_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_impl_.success_ = from._impl_.success_;
+  // @@protoc_insertion_point(copy_constructor:sentiric.cdr.v1.CreateCallRecordResponse)
+}
+
+inline void CreateCallRecordResponse::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.success_){false}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+CreateCallRecordResponse::~CreateCallRecordResponse() {
+  // @@protoc_insertion_point(destructor:sentiric.cdr.v1.CreateCallRecordResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void CreateCallRecordResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void CreateCallRecordResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void CreateCallRecordResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.cdr.v1.CreateCallRecordResponse)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.success_ = false;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* CreateCallRecordResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // bool success = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          _impl_.success_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* CreateCallRecordResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.cdr.v1.CreateCallRecordResponse)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // bool success = 1;
+  if (this->_internal_success() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(1, this->_internal_success(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.cdr.v1.CreateCallRecordResponse)
+  return target;
+}
+
+size_t CreateCallRecordResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.cdr.v1.CreateCallRecordResponse)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // bool success = 1;
+  if (this->_internal_success() != 0) {
+    total_size += 1 + 1;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData CreateCallRecordResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    CreateCallRecordResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*CreateCallRecordResponse::GetClassData() const { return &_class_data_; }
+
+
+void CreateCallRecordResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<CreateCallRecordResponse*>(&to_msg);
+  auto& from = static_cast<const CreateCallRecordResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.cdr.v1.CreateCallRecordResponse)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_success() != 0) {
+    _this->_internal_set_success(from._internal_success());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void CreateCallRecordResponse::CopyFrom(const CreateCallRecordResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.cdr.v1.CreateCallRecordResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool CreateCallRecordResponse::IsInitialized() const {
+  return true;
+}
+
+void CreateCallRecordResponse::InternalSwap(CreateCallRecordResponse* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_.success_, other->_impl_.success_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata CreateCallRecordResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fcdr_2fv1_2fcdr_2eproto_getter, &descriptor_table_sentiric_2fcdr_2fv1_2fcdr_2eproto_once,
+      file_level_metadata_sentiric_2fcdr_2fv1_2fcdr_2eproto[2]);
+}
+
+// ===================================================================
+
+class UpdateCallRecordRequest::_Internal {
+ public:
+};
+
+UpdateCallRecordRequest::UpdateCallRecordRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.cdr.v1.UpdateCallRecordRequest)
+}
+UpdateCallRecordRequest::UpdateCallRecordRequest(const UpdateCallRecordRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  UpdateCallRecordRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.call_id_){}
+    , decltype(_impl_.status_){}
+    , decltype(_impl_.disposition_){}
+    , decltype(_impl_.hangup_source_){}
+    , decltype(_impl_.recording_url_){}
+    , decltype(_impl_.duration_seconds_){}
+    , decltype(_impl_.total_cost_){}
+    , decltype(_impl_.sip_hangup_cause_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.call_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.call_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_call_id().empty()) {
+    _this->_impl_.call_id_.Set(from._internal_call_id(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.status_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.status_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_status().empty()) {
+    _this->_impl_.status_.Set(from._internal_status(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.disposition_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.disposition_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_disposition().empty()) {
+    _this->_impl_.disposition_.Set(from._internal_disposition(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.hangup_source_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.hangup_source_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_hangup_source().empty()) {
+    _this->_impl_.hangup_source_.Set(from._internal_hangup_source(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.recording_url_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.recording_url_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_recording_url().empty()) {
+    _this->_impl_.recording_url_.Set(from._internal_recording_url(), 
+      _this->GetArenaForAllocation());
+  }
+  ::memcpy(&_impl_.duration_seconds_, &from._impl_.duration_seconds_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.sip_hangup_cause_) -
+    reinterpret_cast<char*>(&_impl_.duration_seconds_)) + sizeof(_impl_.sip_hangup_cause_));
+  // @@protoc_insertion_point(copy_constructor:sentiric.cdr.v1.UpdateCallRecordRequest)
+}
+
+inline void UpdateCallRecordRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.call_id_){}
+    , decltype(_impl_.status_){}
+    , decltype(_impl_.disposition_){}
+    , decltype(_impl_.hangup_source_){}
+    , decltype(_impl_.recording_url_){}
+    , decltype(_impl_.duration_seconds_){int64_t{0}}
+    , decltype(_impl_.total_cost_){0}
+    , decltype(_impl_.sip_hangup_cause_){0}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.call_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.call_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.status_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.status_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.disposition_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.disposition_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.hangup_source_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.hangup_source_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.recording_url_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.recording_url_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+UpdateCallRecordRequest::~UpdateCallRecordRequest() {
+  // @@protoc_insertion_point(destructor:sentiric.cdr.v1.UpdateCallRecordRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void UpdateCallRecordRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.call_id_.Destroy();
+  _impl_.status_.Destroy();
+  _impl_.disposition_.Destroy();
+  _impl_.hangup_source_.Destroy();
+  _impl_.recording_url_.Destroy();
+}
+
+void UpdateCallRecordRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void UpdateCallRecordRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.cdr.v1.UpdateCallRecordRequest)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.call_id_.ClearToEmpty();
+  _impl_.status_.ClearToEmpty();
+  _impl_.disposition_.ClearToEmpty();
+  _impl_.hangup_source_.ClearToEmpty();
+  _impl_.recording_url_.ClearToEmpty();
+  ::memset(&_impl_.duration_seconds_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&_impl_.sip_hangup_cause_) -
+      reinterpret_cast<char*>(&_impl_.duration_seconds_)) + sizeof(_impl_.sip_hangup_cause_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* UpdateCallRecordRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string call_id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_call_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.cdr.v1.UpdateCallRecordRequest.call_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // int64 duration_seconds = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          _impl_.duration_seconds_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string status = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_status();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.cdr.v1.UpdateCallRecordRequest.status"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string disposition = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          auto str = _internal_mutable_disposition();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.cdr.v1.UpdateCallRecordRequest.disposition"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string hangup_source = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
+          auto str = _internal_mutable_hangup_source();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.cdr.v1.UpdateCallRecordRequest.hangup_source"));
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 sip_hangup_cause = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 48)) {
+          _impl_.sip_hangup_cause_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string recording_url = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 58)) {
+          auto str = _internal_mutable_recording_url();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.cdr.v1.UpdateCallRecordRequest.recording_url"));
+        } else
+          goto handle_unusual;
+        continue;
+      // double total_cost = 8;
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 65)) {
+          _impl_.total_cost_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* UpdateCallRecordRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.cdr.v1.UpdateCallRecordRequest)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string call_id = 1;
+  if (!this->_internal_call_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_call_id().data(), static_cast<int>(this->_internal_call_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.cdr.v1.UpdateCallRecordRequest.call_id");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_call_id(), target);
+  }
+
+  // int64 duration_seconds = 2;
+  if (this->_internal_duration_seconds() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt64ToArray(2, this->_internal_duration_seconds(), target);
+  }
+
+  // string status = 3;
+  if (!this->_internal_status().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_status().data(), static_cast<int>(this->_internal_status().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.cdr.v1.UpdateCallRecordRequest.status");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_status(), target);
+  }
+
+  // string disposition = 4;
+  if (!this->_internal_disposition().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_disposition().data(), static_cast<int>(this->_internal_disposition().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.cdr.v1.UpdateCallRecordRequest.disposition");
+    target = stream->WriteStringMaybeAliased(
+        4, this->_internal_disposition(), target);
+  }
+
+  // string hangup_source = 5;
+  if (!this->_internal_hangup_source().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_hangup_source().data(), static_cast<int>(this->_internal_hangup_source().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.cdr.v1.UpdateCallRecordRequest.hangup_source");
+    target = stream->WriteStringMaybeAliased(
+        5, this->_internal_hangup_source(), target);
+  }
+
+  // int32 sip_hangup_cause = 6;
+  if (this->_internal_sip_hangup_cause() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(6, this->_internal_sip_hangup_cause(), target);
+  }
+
+  // string recording_url = 7;
+  if (!this->_internal_recording_url().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_recording_url().data(), static_cast<int>(this->_internal_recording_url().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.cdr.v1.UpdateCallRecordRequest.recording_url");
+    target = stream->WriteStringMaybeAliased(
+        7, this->_internal_recording_url(), target);
+  }
+
+  // double total_cost = 8;
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_total_cost = this->_internal_total_cost();
+  uint64_t raw_total_cost;
+  memcpy(&raw_total_cost, &tmp_total_cost, sizeof(tmp_total_cost));
+  if (raw_total_cost != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteDoubleToArray(8, this->_internal_total_cost(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.cdr.v1.UpdateCallRecordRequest)
+  return target;
+}
+
+size_t UpdateCallRecordRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.cdr.v1.UpdateCallRecordRequest)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string call_id = 1;
+  if (!this->_internal_call_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_call_id());
+  }
+
+  // string status = 3;
+  if (!this->_internal_status().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_status());
+  }
+
+  // string disposition = 4;
+  if (!this->_internal_disposition().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_disposition());
+  }
+
+  // string hangup_source = 5;
+  if (!this->_internal_hangup_source().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_hangup_source());
+  }
+
+  // string recording_url = 7;
+  if (!this->_internal_recording_url().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_recording_url());
+  }
+
+  // int64 duration_seconds = 2;
+  if (this->_internal_duration_seconds() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(this->_internal_duration_seconds());
+  }
+
+  // double total_cost = 8;
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_total_cost = this->_internal_total_cost();
+  uint64_t raw_total_cost;
+  memcpy(&raw_total_cost, &tmp_total_cost, sizeof(tmp_total_cost));
+  if (raw_total_cost != 0) {
+    total_size += 1 + 8;
+  }
+
+  // int32 sip_hangup_cause = 6;
+  if (this->_internal_sip_hangup_cause() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_sip_hangup_cause());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UpdateCallRecordRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    UpdateCallRecordRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UpdateCallRecordRequest::GetClassData() const { return &_class_data_; }
+
+
+void UpdateCallRecordRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<UpdateCallRecordRequest*>(&to_msg);
+  auto& from = static_cast<const UpdateCallRecordRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.cdr.v1.UpdateCallRecordRequest)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_call_id().empty()) {
+    _this->_internal_set_call_id(from._internal_call_id());
+  }
+  if (!from._internal_status().empty()) {
+    _this->_internal_set_status(from._internal_status());
+  }
+  if (!from._internal_disposition().empty()) {
+    _this->_internal_set_disposition(from._internal_disposition());
+  }
+  if (!from._internal_hangup_source().empty()) {
+    _this->_internal_set_hangup_source(from._internal_hangup_source());
+  }
+  if (!from._internal_recording_url().empty()) {
+    _this->_internal_set_recording_url(from._internal_recording_url());
+  }
+  if (from._internal_duration_seconds() != 0) {
+    _this->_internal_set_duration_seconds(from._internal_duration_seconds());
+  }
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_total_cost = from._internal_total_cost();
+  uint64_t raw_total_cost;
+  memcpy(&raw_total_cost, &tmp_total_cost, sizeof(tmp_total_cost));
+  if (raw_total_cost != 0) {
+    _this->_internal_set_total_cost(from._internal_total_cost());
+  }
+  if (from._internal_sip_hangup_cause() != 0) {
+    _this->_internal_set_sip_hangup_cause(from._internal_sip_hangup_cause());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void UpdateCallRecordRequest::CopyFrom(const UpdateCallRecordRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.cdr.v1.UpdateCallRecordRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool UpdateCallRecordRequest::IsInitialized() const {
+  return true;
+}
+
+void UpdateCallRecordRequest::InternalSwap(UpdateCallRecordRequest* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.call_id_, lhs_arena,
+      &other->_impl_.call_id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.status_, lhs_arena,
+      &other->_impl_.status_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.disposition_, lhs_arena,
+      &other->_impl_.disposition_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.hangup_source_, lhs_arena,
+      &other->_impl_.hangup_source_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.recording_url_, lhs_arena,
+      &other->_impl_.recording_url_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(UpdateCallRecordRequest, _impl_.sip_hangup_cause_)
+      + sizeof(UpdateCallRecordRequest::_impl_.sip_hangup_cause_)
+      - PROTOBUF_FIELD_OFFSET(UpdateCallRecordRequest, _impl_.duration_seconds_)>(
+          reinterpret_cast<char*>(&_impl_.duration_seconds_),
+          reinterpret_cast<char*>(&other->_impl_.duration_seconds_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata UpdateCallRecordRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fcdr_2fv1_2fcdr_2eproto_getter, &descriptor_table_sentiric_2fcdr_2fv1_2fcdr_2eproto_once,
+      file_level_metadata_sentiric_2fcdr_2fv1_2fcdr_2eproto[3]);
+}
+
+// ===================================================================
+
+class UpdateCallRecordResponse::_Internal {
+ public:
+};
+
+UpdateCallRecordResponse::UpdateCallRecordResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.cdr.v1.UpdateCallRecordResponse)
+}
+UpdateCallRecordResponse::UpdateCallRecordResponse(const UpdateCallRecordResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  UpdateCallRecordResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.success_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_impl_.success_ = from._impl_.success_;
+  // @@protoc_insertion_point(copy_constructor:sentiric.cdr.v1.UpdateCallRecordResponse)
+}
+
+inline void UpdateCallRecordResponse::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.success_){false}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+UpdateCallRecordResponse::~UpdateCallRecordResponse() {
+  // @@protoc_insertion_point(destructor:sentiric.cdr.v1.UpdateCallRecordResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void UpdateCallRecordResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void UpdateCallRecordResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void UpdateCallRecordResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.cdr.v1.UpdateCallRecordResponse)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.success_ = false;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* UpdateCallRecordResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // bool success = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          _impl_.success_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* UpdateCallRecordResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.cdr.v1.UpdateCallRecordResponse)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // bool success = 1;
+  if (this->_internal_success() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(1, this->_internal_success(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.cdr.v1.UpdateCallRecordResponse)
+  return target;
+}
+
+size_t UpdateCallRecordResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.cdr.v1.UpdateCallRecordResponse)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // bool success = 1;
+  if (this->_internal_success() != 0) {
+    total_size += 1 + 1;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UpdateCallRecordResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    UpdateCallRecordResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UpdateCallRecordResponse::GetClassData() const { return &_class_data_; }
+
+
+void UpdateCallRecordResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<UpdateCallRecordResponse*>(&to_msg);
+  auto& from = static_cast<const UpdateCallRecordResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.cdr.v1.UpdateCallRecordResponse)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_success() != 0) {
+    _this->_internal_set_success(from._internal_success());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void UpdateCallRecordResponse::CopyFrom(const UpdateCallRecordResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.cdr.v1.UpdateCallRecordResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool UpdateCallRecordResponse::IsInitialized() const {
+  return true;
+}
+
+void UpdateCallRecordResponse::InternalSwap(UpdateCallRecordResponse* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_.success_, other->_impl_.success_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata UpdateCallRecordResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fcdr_2fv1_2fcdr_2eproto_getter, &descriptor_table_sentiric_2fcdr_2fv1_2fcdr_2eproto_once,
+      file_level_metadata_sentiric_2fcdr_2fv1_2fcdr_2eproto[4]);
+}
+
+// ===================================================================
+
 RecordCallEventRequest_MetadataEntry_DoNotUse::RecordCallEventRequest_MetadataEntry_DoNotUse() {}
 RecordCallEventRequest_MetadataEntry_DoNotUse::RecordCallEventRequest_MetadataEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
     : SuperType(arena) {}
@@ -165,7 +2504,7 @@ void RecordCallEventRequest_MetadataEntry_DoNotUse::MergeFrom(const RecordCallEv
 ::PROTOBUF_NAMESPACE_ID::Metadata RecordCallEventRequest_MetadataEntry_DoNotUse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fcdr_2fv1_2fcdr_2eproto_getter, &descriptor_table_sentiric_2fcdr_2fv1_2fcdr_2eproto_once,
-      file_level_metadata_sentiric_2fcdr_2fv1_2fcdr_2eproto[0]);
+      file_level_metadata_sentiric_2fcdr_2fv1_2fcdr_2eproto[5]);
 }
 
 // ===================================================================
@@ -634,7 +2973,7 @@ void RecordCallEventRequest::InternalSwap(RecordCallEventRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata RecordCallEventRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fcdr_2fv1_2fcdr_2eproto_getter, &descriptor_table_sentiric_2fcdr_2fv1_2fcdr_2eproto_once,
-      file_level_metadata_sentiric_2fcdr_2fv1_2fcdr_2eproto[1]);
+      file_level_metadata_sentiric_2fcdr_2fv1_2fcdr_2eproto[6]);
 }
 
 // ===================================================================
@@ -812,7 +3151,7 @@ void RecordCallEventResponse::InternalSwap(RecordCallEventResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata RecordCallEventResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fcdr_2fv1_2fcdr_2eproto_getter, &descriptor_table_sentiric_2fcdr_2fv1_2fcdr_2eproto_once,
-      file_level_metadata_sentiric_2fcdr_2fv1_2fcdr_2eproto[2]);
+      file_level_metadata_sentiric_2fcdr_2fv1_2fcdr_2eproto[7]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -820,6 +3159,26 @@ void RecordCallEventResponse::InternalSwap(RecordCallEventResponse* other) {
 }  // namespace cdr
 }  // namespace sentiric
 PROTOBUF_NAMESPACE_OPEN
+template<> PROTOBUF_NOINLINE ::sentiric::cdr::v1::CallRecord*
+Arena::CreateMaybeMessage< ::sentiric::cdr::v1::CallRecord >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::cdr::v1::CallRecord >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::cdr::v1::CreateCallRecordRequest*
+Arena::CreateMaybeMessage< ::sentiric::cdr::v1::CreateCallRecordRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::cdr::v1::CreateCallRecordRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::cdr::v1::CreateCallRecordResponse*
+Arena::CreateMaybeMessage< ::sentiric::cdr::v1::CreateCallRecordResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::cdr::v1::CreateCallRecordResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::cdr::v1::UpdateCallRecordRequest*
+Arena::CreateMaybeMessage< ::sentiric::cdr::v1::UpdateCallRecordRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::cdr::v1::UpdateCallRecordRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::cdr::v1::UpdateCallRecordResponse*
+Arena::CreateMaybeMessage< ::sentiric::cdr::v1::UpdateCallRecordResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::cdr::v1::UpdateCallRecordResponse >(arena);
+}
 template<> PROTOBUF_NOINLINE ::sentiric::cdr::v1::RecordCallEventRequest_MetadataEntry_DoNotUse*
 Arena::CreateMaybeMessage< ::sentiric::cdr::v1::RecordCallEventRequest_MetadataEntry_DoNotUse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::sentiric::cdr::v1::RecordCallEventRequest_MetadataEntry_DoNotUse >(arena);

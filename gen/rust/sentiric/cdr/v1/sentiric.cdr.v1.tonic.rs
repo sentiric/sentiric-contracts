@@ -116,6 +116,58 @@ pub mod cdr_service_client {
                 );
             self.inner.unary(req, path, codec).await
         }
+        pub async fn create_call_record(
+            &mut self,
+            request: impl tonic::IntoRequest<super::CreateCallRecordRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::CreateCallRecordResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::unknown(
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
+            let codec = tonic_prost::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/sentiric.cdr.v1.CdrService/CreateCallRecord",
+            );
+            let mut req = request.into_request();
+            req.extensions_mut()
+                .insert(
+                    GrpcMethod::new("sentiric.cdr.v1.CdrService", "CreateCallRecord"),
+                );
+            self.inner.unary(req, path, codec).await
+        }
+        pub async fn update_call_record(
+            &mut self,
+            request: impl tonic::IntoRequest<super::UpdateCallRecordRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::UpdateCallRecordResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::unknown(
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
+            let codec = tonic_prost::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/sentiric.cdr.v1.CdrService/UpdateCallRecord",
+            );
+            let mut req = request.into_request();
+            req.extensions_mut()
+                .insert(
+                    GrpcMethod::new("sentiric.cdr.v1.CdrService", "UpdateCallRecord"),
+                );
+            self.inner.unary(req, path, codec).await
+        }
     }
 }
 /// Generated server implementations.
@@ -136,6 +188,20 @@ pub mod cdr_service_server {
             request: tonic::Request<super::RecordCallEventRequest>,
         ) -> std::result::Result<
             tonic::Response<super::RecordCallEventResponse>,
+            tonic::Status,
+        >;
+        async fn create_call_record(
+            &self,
+            request: tonic::Request<super::CreateCallRecordRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::CreateCallRecordResponse>,
+            tonic::Status,
+        >;
+        async fn update_call_record(
+            &self,
+            request: tonic::Request<super::UpdateCallRecordRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::UpdateCallRecordResponse>,
             tonic::Status,
         >;
     }
@@ -245,6 +311,96 @@ pub mod cdr_service_server {
                     let inner = self.inner.clone();
                     let fut = async move {
                         let method = RecordCallEventSvc(inner);
+                        let codec = tonic_prost::ProstCodec::default();
+                        let mut grpc = tonic::server::Grpc::new(codec)
+                            .apply_compression_config(
+                                accept_compression_encodings,
+                                send_compression_encodings,
+                            )
+                            .apply_max_message_size_config(
+                                max_decoding_message_size,
+                                max_encoding_message_size,
+                            );
+                        let res = grpc.unary(method, req).await;
+                        Ok(res)
+                    };
+                    Box::pin(fut)
+                }
+                "/sentiric.cdr.v1.CdrService/CreateCallRecord" => {
+                    #[allow(non_camel_case_types)]
+                    struct CreateCallRecordSvc<T: CdrService>(pub Arc<T>);
+                    impl<
+                        T: CdrService,
+                    > tonic::server::UnaryService<super::CreateCallRecordRequest>
+                    for CreateCallRecordSvc<T> {
+                        type Response = super::CreateCallRecordResponse;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
+                        fn call(
+                            &mut self,
+                            request: tonic::Request<super::CreateCallRecordRequest>,
+                        ) -> Self::Future {
+                            let inner = Arc::clone(&self.0);
+                            let fut = async move {
+                                <T as CdrService>::create_call_record(&inner, request).await
+                            };
+                            Box::pin(fut)
+                        }
+                    }
+                    let accept_compression_encodings = self.accept_compression_encodings;
+                    let send_compression_encodings = self.send_compression_encodings;
+                    let max_decoding_message_size = self.max_decoding_message_size;
+                    let max_encoding_message_size = self.max_encoding_message_size;
+                    let inner = self.inner.clone();
+                    let fut = async move {
+                        let method = CreateCallRecordSvc(inner);
+                        let codec = tonic_prost::ProstCodec::default();
+                        let mut grpc = tonic::server::Grpc::new(codec)
+                            .apply_compression_config(
+                                accept_compression_encodings,
+                                send_compression_encodings,
+                            )
+                            .apply_max_message_size_config(
+                                max_decoding_message_size,
+                                max_encoding_message_size,
+                            );
+                        let res = grpc.unary(method, req).await;
+                        Ok(res)
+                    };
+                    Box::pin(fut)
+                }
+                "/sentiric.cdr.v1.CdrService/UpdateCallRecord" => {
+                    #[allow(non_camel_case_types)]
+                    struct UpdateCallRecordSvc<T: CdrService>(pub Arc<T>);
+                    impl<
+                        T: CdrService,
+                    > tonic::server::UnaryService<super::UpdateCallRecordRequest>
+                    for UpdateCallRecordSvc<T> {
+                        type Response = super::UpdateCallRecordResponse;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
+                        fn call(
+                            &mut self,
+                            request: tonic::Request<super::UpdateCallRecordRequest>,
+                        ) -> Self::Future {
+                            let inner = Arc::clone(&self.0);
+                            let fut = async move {
+                                <T as CdrService>::update_call_record(&inner, request).await
+                            };
+                            Box::pin(fut)
+                        }
+                    }
+                    let accept_compression_encodings = self.accept_compression_encodings;
+                    let send_compression_encodings = self.send_compression_encodings;
+                    let max_decoding_message_size = self.max_decoding_message_size;
+                    let max_encoding_message_size = self.max_encoding_message_size;
+                    let inner = self.inner.clone();
+                    let fut = async move {
+                        let method = UpdateCallRecordSvc(inner);
                         let codec = tonic_prost::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(

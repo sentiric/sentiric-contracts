@@ -29,27 +29,37 @@ class AgentOrchestrationServiceStub(object):
                 request_serializer=sentiric_dot_agent_dot_v1_dot_orchestration__pb2.ProcessSagaStepRequest.SerializeToString,
                 response_deserializer=sentiric_dot_agent_dot_v1_dot_orchestration__pb2.ProcessSagaStepResponse.FromString,
                 _registered_method=True)
+        self.GetConversationTranscript = channel.unary_unary(
+                '/sentiric.agent.v1.AgentOrchestrationService/GetConversationTranscript',
+                request_serializer=sentiric_dot_agent_dot_v1_dot_orchestration__pb2.GetConversationTranscriptRequest.SerializeToString,
+                response_deserializer=sentiric_dot_agent_dot_v1_dot_orchestration__pb2.GetConversationTranscriptResponse.FromString,
+                _registered_method=True)
 
 
 class AgentOrchestrationServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def ProcessCallStart(self, request, context):
-        """Gelen çağrıların başlatılması (Inbound)
-        """
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def ProcessManualDial(self, request, context):
-        """Manuel dış arama başlatma (Outbound) - YENİ
-        """
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def ProcessSagaStep(self, request, context):
         """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetConversationTranscript(self, request, context):
+        """[YENİ] Konuşma Geçmişi (Transcript)
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -71,6 +81,11 @@ def add_AgentOrchestrationServiceServicer_to_server(servicer, server):
                     servicer.ProcessSagaStep,
                     request_deserializer=sentiric_dot_agent_dot_v1_dot_orchestration__pb2.ProcessSagaStepRequest.FromString,
                     response_serializer=sentiric_dot_agent_dot_v1_dot_orchestration__pb2.ProcessSagaStepResponse.SerializeToString,
+            ),
+            'GetConversationTranscript': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetConversationTranscript,
+                    request_deserializer=sentiric_dot_agent_dot_v1_dot_orchestration__pb2.GetConversationTranscriptRequest.FromString,
+                    response_serializer=sentiric_dot_agent_dot_v1_dot_orchestration__pb2.GetConversationTranscriptResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -154,6 +169,33 @@ class AgentOrchestrationService(object):
             '/sentiric.agent.v1.AgentOrchestrationService/ProcessSagaStep',
             sentiric_dot_agent_dot_v1_dot_orchestration__pb2.ProcessSagaStepRequest.SerializeToString,
             sentiric_dot_agent_dot_v1_dot_orchestration__pb2.ProcessSagaStepResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetConversationTranscript(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/sentiric.agent.v1.AgentOrchestrationService/GetConversationTranscript',
+            sentiric_dot_agent_dot_v1_dot_orchestration__pb2.GetConversationTranscriptRequest.SerializeToString,
+            sentiric_dot_agent_dot_v1_dot_orchestration__pb2.GetConversationTranscriptResponse.FromString,
             options,
             channel_credentials,
             insecure,

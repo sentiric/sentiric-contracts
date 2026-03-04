@@ -32,6 +32,7 @@ const (
 	UserService_GetSipCredentials_FullMethodName   = "/sentiric.user.v1.UserService/GetSipCredentials"
 	UserService_CreateSipCredential_FullMethodName = "/sentiric.user.v1.UserService/CreateSipCredential"
 	UserService_DeleteSipCredential_FullMethodName = "/sentiric.user.v1.UserService/DeleteSipCredential"
+	UserService_GetAgentProfile_FullMethodName     = "/sentiric.user.v1.UserService/GetAgentProfile"
 )
 
 // UserServiceClient is the client API for UserService service.
@@ -56,6 +57,7 @@ type UserServiceClient interface {
 	CreateSipCredential(ctx context.Context, in *CreateSipCredentialRequest, opts ...grpc.CallOption) (*CreateSipCredentialResponse, error)
 	// Bir SIP kimliğini siler
 	DeleteSipCredential(ctx context.Context, in *DeleteSipCredentialRequest, opts ...grpc.CallOption) (*DeleteSipCredentialResponse, error)
+	GetAgentProfile(ctx context.Context, in *GetAgentProfileRequest, opts ...grpc.CallOption) (*GetAgentProfileResponse, error)
 }
 
 type userServiceClient struct {
@@ -176,6 +178,16 @@ func (c *userServiceClient) DeleteSipCredential(ctx context.Context, in *DeleteS
 	return out, nil
 }
 
+func (c *userServiceClient) GetAgentProfile(ctx context.Context, in *GetAgentProfileRequest, opts ...grpc.CallOption) (*GetAgentProfileResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetAgentProfileResponse)
+	err := c.cc.Invoke(ctx, UserService_GetAgentProfile_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UserServiceServer is the server API for UserService service.
 // All implementations should embed UnimplementedUserServiceServer
 // for forward compatibility.
@@ -198,6 +210,7 @@ type UserServiceServer interface {
 	CreateSipCredential(context.Context, *CreateSipCredentialRequest) (*CreateSipCredentialResponse, error)
 	// Bir SIP kimliğini siler
 	DeleteSipCredential(context.Context, *DeleteSipCredentialRequest) (*DeleteSipCredentialResponse, error)
+	GetAgentProfile(context.Context, *GetAgentProfileRequest) (*GetAgentProfileResponse, error)
 }
 
 // UnimplementedUserServiceServer should be embedded to have
@@ -239,6 +252,9 @@ func (UnimplementedUserServiceServer) CreateSipCredential(context.Context, *Crea
 }
 func (UnimplementedUserServiceServer) DeleteSipCredential(context.Context, *DeleteSipCredentialRequest) (*DeleteSipCredentialResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method DeleteSipCredential not implemented")
+}
+func (UnimplementedUserServiceServer) GetAgentProfile(context.Context, *GetAgentProfileRequest) (*GetAgentProfileResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetAgentProfile not implemented")
 }
 func (UnimplementedUserServiceServer) testEmbeddedByValue() {}
 
@@ -458,6 +474,24 @@ func _UserService_DeleteSipCredential_Handler(srv interface{}, ctx context.Conte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UserService_GetAgentProfile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAgentProfileRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).GetAgentProfile(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_GetAgentProfile_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).GetAgentProfile(ctx, req.(*GetAgentProfileRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // UserService_ServiceDesc is the grpc.ServiceDesc for UserService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -508,6 +542,10 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeleteSipCredential",
 			Handler:    _UserService_DeleteSipCredential_Handler,
+		},
+		{
+			MethodName: "GetAgentProfile",
+			Handler:    _UserService_GetAgentProfile_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

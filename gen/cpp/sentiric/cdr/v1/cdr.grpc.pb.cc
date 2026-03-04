@@ -25,6 +25,8 @@ namespace v1 {
 
 static const char* CdrService_method_names[] = {
   "/sentiric.cdr.v1.CdrService/RecordCallEvent",
+  "/sentiric.cdr.v1.CdrService/CreateCallRecord",
+  "/sentiric.cdr.v1.CdrService/UpdateCallRecord",
 };
 
 std::unique_ptr< CdrService::Stub> CdrService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -35,6 +37,8 @@ std::unique_ptr< CdrService::Stub> CdrService::NewStub(const std::shared_ptr< ::
 
 CdrService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
   : channel_(channel), rpcmethod_RecordCallEvent_(CdrService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_CreateCallRecord_(CdrService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_UpdateCallRecord_(CdrService_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status CdrService::Stub::RecordCallEvent(::grpc::ClientContext* context, const ::sentiric::cdr::v1::RecordCallEventRequest& request, ::sentiric::cdr::v1::RecordCallEventResponse* response) {
@@ -60,6 +64,52 @@ void CdrService::Stub::async::RecordCallEvent(::grpc::ClientContext* context, co
   return result;
 }
 
+::grpc::Status CdrService::Stub::CreateCallRecord(::grpc::ClientContext* context, const ::sentiric::cdr::v1::CreateCallRecordRequest& request, ::sentiric::cdr::v1::CreateCallRecordResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::sentiric::cdr::v1::CreateCallRecordRequest, ::sentiric::cdr::v1::CreateCallRecordResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_CreateCallRecord_, context, request, response);
+}
+
+void CdrService::Stub::async::CreateCallRecord(::grpc::ClientContext* context, const ::sentiric::cdr::v1::CreateCallRecordRequest* request, ::sentiric::cdr::v1::CreateCallRecordResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::sentiric::cdr::v1::CreateCallRecordRequest, ::sentiric::cdr::v1::CreateCallRecordResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_CreateCallRecord_, context, request, response, std::move(f));
+}
+
+void CdrService::Stub::async::CreateCallRecord(::grpc::ClientContext* context, const ::sentiric::cdr::v1::CreateCallRecordRequest* request, ::sentiric::cdr::v1::CreateCallRecordResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_CreateCallRecord_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::sentiric::cdr::v1::CreateCallRecordResponse>* CdrService::Stub::PrepareAsyncCreateCallRecordRaw(::grpc::ClientContext* context, const ::sentiric::cdr::v1::CreateCallRecordRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::sentiric::cdr::v1::CreateCallRecordResponse, ::sentiric::cdr::v1::CreateCallRecordRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_CreateCallRecord_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::sentiric::cdr::v1::CreateCallRecordResponse>* CdrService::Stub::AsyncCreateCallRecordRaw(::grpc::ClientContext* context, const ::sentiric::cdr::v1::CreateCallRecordRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncCreateCallRecordRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status CdrService::Stub::UpdateCallRecord(::grpc::ClientContext* context, const ::sentiric::cdr::v1::UpdateCallRecordRequest& request, ::sentiric::cdr::v1::UpdateCallRecordResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::sentiric::cdr::v1::UpdateCallRecordRequest, ::sentiric::cdr::v1::UpdateCallRecordResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_UpdateCallRecord_, context, request, response);
+}
+
+void CdrService::Stub::async::UpdateCallRecord(::grpc::ClientContext* context, const ::sentiric::cdr::v1::UpdateCallRecordRequest* request, ::sentiric::cdr::v1::UpdateCallRecordResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::sentiric::cdr::v1::UpdateCallRecordRequest, ::sentiric::cdr::v1::UpdateCallRecordResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_UpdateCallRecord_, context, request, response, std::move(f));
+}
+
+void CdrService::Stub::async::UpdateCallRecord(::grpc::ClientContext* context, const ::sentiric::cdr::v1::UpdateCallRecordRequest* request, ::sentiric::cdr::v1::UpdateCallRecordResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_UpdateCallRecord_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::sentiric::cdr::v1::UpdateCallRecordResponse>* CdrService::Stub::PrepareAsyncUpdateCallRecordRaw(::grpc::ClientContext* context, const ::sentiric::cdr::v1::UpdateCallRecordRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::sentiric::cdr::v1::UpdateCallRecordResponse, ::sentiric::cdr::v1::UpdateCallRecordRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_UpdateCallRecord_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::sentiric::cdr::v1::UpdateCallRecordResponse>* CdrService::Stub::AsyncUpdateCallRecordRaw(::grpc::ClientContext* context, const ::sentiric::cdr::v1::UpdateCallRecordRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncUpdateCallRecordRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
 CdrService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       CdrService_method_names[0],
@@ -71,12 +121,46 @@ CdrService::Service::Service() {
              ::sentiric::cdr::v1::RecordCallEventResponse* resp) {
                return service->RecordCallEvent(ctx, req, resp);
              }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      CdrService_method_names[1],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< CdrService::Service, ::sentiric::cdr::v1::CreateCallRecordRequest, ::sentiric::cdr::v1::CreateCallRecordResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](CdrService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::sentiric::cdr::v1::CreateCallRecordRequest* req,
+             ::sentiric::cdr::v1::CreateCallRecordResponse* resp) {
+               return service->CreateCallRecord(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      CdrService_method_names[2],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< CdrService::Service, ::sentiric::cdr::v1::UpdateCallRecordRequest, ::sentiric::cdr::v1::UpdateCallRecordResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](CdrService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::sentiric::cdr::v1::UpdateCallRecordRequest* req,
+             ::sentiric::cdr::v1::UpdateCallRecordResponse* resp) {
+               return service->UpdateCallRecord(ctx, req, resp);
+             }, this)));
 }
 
 CdrService::Service::~Service() {
 }
 
 ::grpc::Status CdrService::Service::RecordCallEvent(::grpc::ServerContext* context, const ::sentiric::cdr::v1::RecordCallEventRequest* request, ::sentiric::cdr::v1::RecordCallEventResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status CdrService::Service::CreateCallRecord(::grpc::ServerContext* context, const ::sentiric::cdr::v1::CreateCallRecordRequest* request, ::sentiric::cdr::v1::CreateCallRecordResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status CdrService::Service::UpdateCallRecord(::grpc::ServerContext* context, const ::sentiric::cdr::v1::UpdateCallRecordRequest* request, ::sentiric::cdr::v1::UpdateCallRecordResponse* response) {
   (void) context;
   (void) request;
   (void) response;

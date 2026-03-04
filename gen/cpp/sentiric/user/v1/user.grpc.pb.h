@@ -128,6 +128,13 @@ class UserService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::user::v1::DeleteSipCredentialResponse>> PrepareAsyncDeleteSipCredential(::grpc::ClientContext* context, const ::sentiric::user::v1::DeleteSipCredentialRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::user::v1::DeleteSipCredentialResponse>>(PrepareAsyncDeleteSipCredentialRaw(context, request, cq));
     }
+    virtual ::grpc::Status GetAgentProfile(::grpc::ClientContext* context, const ::sentiric::user::v1::GetAgentProfileRequest& request, ::sentiric::user::v1::GetAgentProfileResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::user::v1::GetAgentProfileResponse>> AsyncGetAgentProfile(::grpc::ClientContext* context, const ::sentiric::user::v1::GetAgentProfileRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::user::v1::GetAgentProfileResponse>>(AsyncGetAgentProfileRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::user::v1::GetAgentProfileResponse>> PrepareAsyncGetAgentProfile(::grpc::ClientContext* context, const ::sentiric::user::v1::GetAgentProfileRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::user::v1::GetAgentProfileResponse>>(PrepareAsyncGetAgentProfileRaw(context, request, cq));
+    }
     class async_interface {
      public:
       virtual ~async_interface() {}
@@ -160,6 +167,8 @@ class UserService final {
       // Bir SIP kimliğini siler
       virtual void DeleteSipCredential(::grpc::ClientContext* context, const ::sentiric::user::v1::DeleteSipCredentialRequest* request, ::sentiric::user::v1::DeleteSipCredentialResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void DeleteSipCredential(::grpc::ClientContext* context, const ::sentiric::user::v1::DeleteSipCredentialRequest* request, ::sentiric::user::v1::DeleteSipCredentialResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void GetAgentProfile(::grpc::ClientContext* context, const ::sentiric::user::v1::GetAgentProfileRequest* request, ::sentiric::user::v1::GetAgentProfileResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void GetAgentProfile(::grpc::ClientContext* context, const ::sentiric::user::v1::GetAgentProfileRequest* request, ::sentiric::user::v1::GetAgentProfileResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
@@ -187,6 +196,8 @@ class UserService final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::user::v1::CreateSipCredentialResponse>* PrepareAsyncCreateSipCredentialRaw(::grpc::ClientContext* context, const ::sentiric::user::v1::CreateSipCredentialRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::user::v1::DeleteSipCredentialResponse>* AsyncDeleteSipCredentialRaw(::grpc::ClientContext* context, const ::sentiric::user::v1::DeleteSipCredentialRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::user::v1::DeleteSipCredentialResponse>* PrepareAsyncDeleteSipCredentialRaw(::grpc::ClientContext* context, const ::sentiric::user::v1::DeleteSipCredentialRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::user::v1::GetAgentProfileResponse>* AsyncGetAgentProfileRaw(::grpc::ClientContext* context, const ::sentiric::user::v1::GetAgentProfileRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::user::v1::GetAgentProfileResponse>* PrepareAsyncGetAgentProfileRaw(::grpc::ClientContext* context, const ::sentiric::user::v1::GetAgentProfileRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -268,6 +279,13 @@ class UserService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::user::v1::DeleteSipCredentialResponse>> PrepareAsyncDeleteSipCredential(::grpc::ClientContext* context, const ::sentiric::user::v1::DeleteSipCredentialRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::user::v1::DeleteSipCredentialResponse>>(PrepareAsyncDeleteSipCredentialRaw(context, request, cq));
     }
+    ::grpc::Status GetAgentProfile(::grpc::ClientContext* context, const ::sentiric::user::v1::GetAgentProfileRequest& request, ::sentiric::user::v1::GetAgentProfileResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::user::v1::GetAgentProfileResponse>> AsyncGetAgentProfile(::grpc::ClientContext* context, const ::sentiric::user::v1::GetAgentProfileRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::user::v1::GetAgentProfileResponse>>(AsyncGetAgentProfileRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::user::v1::GetAgentProfileResponse>> PrepareAsyncGetAgentProfile(::grpc::ClientContext* context, const ::sentiric::user::v1::GetAgentProfileRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::user::v1::GetAgentProfileResponse>>(PrepareAsyncGetAgentProfileRaw(context, request, cq));
+    }
     class async final :
       public StubInterface::async_interface {
      public:
@@ -293,6 +311,8 @@ class UserService final {
       void CreateSipCredential(::grpc::ClientContext* context, const ::sentiric::user::v1::CreateSipCredentialRequest* request, ::sentiric::user::v1::CreateSipCredentialResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void DeleteSipCredential(::grpc::ClientContext* context, const ::sentiric::user::v1::DeleteSipCredentialRequest* request, ::sentiric::user::v1::DeleteSipCredentialResponse* response, std::function<void(::grpc::Status)>) override;
       void DeleteSipCredential(::grpc::ClientContext* context, const ::sentiric::user::v1::DeleteSipCredentialRequest* request, ::sentiric::user::v1::DeleteSipCredentialResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void GetAgentProfile(::grpc::ClientContext* context, const ::sentiric::user::v1::GetAgentProfileRequest* request, ::sentiric::user::v1::GetAgentProfileResponse* response, std::function<void(::grpc::Status)>) override;
+      void GetAgentProfile(::grpc::ClientContext* context, const ::sentiric::user::v1::GetAgentProfileRequest* request, ::sentiric::user::v1::GetAgentProfileResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -326,6 +346,8 @@ class UserService final {
     ::grpc::ClientAsyncResponseReader< ::sentiric::user::v1::CreateSipCredentialResponse>* PrepareAsyncCreateSipCredentialRaw(::grpc::ClientContext* context, const ::sentiric::user::v1::CreateSipCredentialRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::sentiric::user::v1::DeleteSipCredentialResponse>* AsyncDeleteSipCredentialRaw(::grpc::ClientContext* context, const ::sentiric::user::v1::DeleteSipCredentialRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::sentiric::user::v1::DeleteSipCredentialResponse>* PrepareAsyncDeleteSipCredentialRaw(::grpc::ClientContext* context, const ::sentiric::user::v1::DeleteSipCredentialRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::sentiric::user::v1::GetAgentProfileResponse>* AsyncGetAgentProfileRaw(::grpc::ClientContext* context, const ::sentiric::user::v1::GetAgentProfileRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::sentiric::user::v1::GetAgentProfileResponse>* PrepareAsyncGetAgentProfileRaw(::grpc::ClientContext* context, const ::sentiric::user::v1::GetAgentProfileRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_GetUser_;
     const ::grpc::internal::RpcMethod rpcmethod_FindUserByContact_;
     const ::grpc::internal::RpcMethod rpcmethod_CreateUser_;
@@ -337,6 +359,7 @@ class UserService final {
     const ::grpc::internal::RpcMethod rpcmethod_GetSipCredentials_;
     const ::grpc::internal::RpcMethod rpcmethod_CreateSipCredential_;
     const ::grpc::internal::RpcMethod rpcmethod_DeleteSipCredential_;
+    const ::grpc::internal::RpcMethod rpcmethod_GetAgentProfile_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -362,6 +385,7 @@ class UserService final {
     virtual ::grpc::Status CreateSipCredential(::grpc::ServerContext* context, const ::sentiric::user::v1::CreateSipCredentialRequest* request, ::sentiric::user::v1::CreateSipCredentialResponse* response);
     // Bir SIP kimliğini siler
     virtual ::grpc::Status DeleteSipCredential(::grpc::ServerContext* context, const ::sentiric::user::v1::DeleteSipCredentialRequest* request, ::sentiric::user::v1::DeleteSipCredentialResponse* response);
+    virtual ::grpc::Status GetAgentProfile(::grpc::ServerContext* context, const ::sentiric::user::v1::GetAgentProfileRequest* request, ::sentiric::user::v1::GetAgentProfileResponse* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_GetUser : public BaseClass {
@@ -583,7 +607,27 @@ class UserService final {
       ::grpc::Service::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_GetUser<WithAsyncMethod_FindUserByContact<WithAsyncMethod_CreateUser<WithAsyncMethod_UpdateUser<WithAsyncMethod_DeleteUser<WithAsyncMethod_AddContact<WithAsyncMethod_UpdateContact<WithAsyncMethod_DeleteContact<WithAsyncMethod_GetSipCredentials<WithAsyncMethod_CreateSipCredential<WithAsyncMethod_DeleteSipCredential<Service > > > > > > > > > > > AsyncService;
+  template <class BaseClass>
+  class WithAsyncMethod_GetAgentProfile : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_GetAgentProfile() {
+      ::grpc::Service::MarkMethodAsync(11);
+    }
+    ~WithAsyncMethod_GetAgentProfile() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetAgentProfile(::grpc::ServerContext* /*context*/, const ::sentiric::user::v1::GetAgentProfileRequest* /*request*/, ::sentiric::user::v1::GetAgentProfileResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetAgentProfile(::grpc::ServerContext* context, ::sentiric::user::v1::GetAgentProfileRequest* request, ::grpc::ServerAsyncResponseWriter< ::sentiric::user::v1::GetAgentProfileResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_GetUser<WithAsyncMethod_FindUserByContact<WithAsyncMethod_CreateUser<WithAsyncMethod_UpdateUser<WithAsyncMethod_DeleteUser<WithAsyncMethod_AddContact<WithAsyncMethod_UpdateContact<WithAsyncMethod_DeleteContact<WithAsyncMethod_GetSipCredentials<WithAsyncMethod_CreateSipCredential<WithAsyncMethod_DeleteSipCredential<WithAsyncMethod_GetAgentProfile<Service > > > > > > > > > > > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_GetUser : public BaseClass {
    private:
@@ -881,7 +925,34 @@ class UserService final {
     virtual ::grpc::ServerUnaryReactor* DeleteSipCredential(
       ::grpc::CallbackServerContext* /*context*/, const ::sentiric::user::v1::DeleteSipCredentialRequest* /*request*/, ::sentiric::user::v1::DeleteSipCredentialResponse* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_GetUser<WithCallbackMethod_FindUserByContact<WithCallbackMethod_CreateUser<WithCallbackMethod_UpdateUser<WithCallbackMethod_DeleteUser<WithCallbackMethod_AddContact<WithCallbackMethod_UpdateContact<WithCallbackMethod_DeleteContact<WithCallbackMethod_GetSipCredentials<WithCallbackMethod_CreateSipCredential<WithCallbackMethod_DeleteSipCredential<Service > > > > > > > > > > > CallbackService;
+  template <class BaseClass>
+  class WithCallbackMethod_GetAgentProfile : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_GetAgentProfile() {
+      ::grpc::Service::MarkMethodCallback(11,
+          new ::grpc::internal::CallbackUnaryHandler< ::sentiric::user::v1::GetAgentProfileRequest, ::sentiric::user::v1::GetAgentProfileResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::sentiric::user::v1::GetAgentProfileRequest* request, ::sentiric::user::v1::GetAgentProfileResponse* response) { return this->GetAgentProfile(context, request, response); }));}
+    void SetMessageAllocatorFor_GetAgentProfile(
+        ::grpc::MessageAllocator< ::sentiric::user::v1::GetAgentProfileRequest, ::sentiric::user::v1::GetAgentProfileResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(11);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::sentiric::user::v1::GetAgentProfileRequest, ::sentiric::user::v1::GetAgentProfileResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_GetAgentProfile() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetAgentProfile(::grpc::ServerContext* /*context*/, const ::sentiric::user::v1::GetAgentProfileRequest* /*request*/, ::sentiric::user::v1::GetAgentProfileResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* GetAgentProfile(
+      ::grpc::CallbackServerContext* /*context*/, const ::sentiric::user::v1::GetAgentProfileRequest* /*request*/, ::sentiric::user::v1::GetAgentProfileResponse* /*response*/)  { return nullptr; }
+  };
+  typedef WithCallbackMethod_GetUser<WithCallbackMethod_FindUserByContact<WithCallbackMethod_CreateUser<WithCallbackMethod_UpdateUser<WithCallbackMethod_DeleteUser<WithCallbackMethod_AddContact<WithCallbackMethod_UpdateContact<WithCallbackMethod_DeleteContact<WithCallbackMethod_GetSipCredentials<WithCallbackMethod_CreateSipCredential<WithCallbackMethod_DeleteSipCredential<WithCallbackMethod_GetAgentProfile<Service > > > > > > > > > > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_GetUser : public BaseClass {
@@ -1066,6 +1137,23 @@ class UserService final {
     }
     // disable synchronous version of this method
     ::grpc::Status DeleteSipCredential(::grpc::ServerContext* /*context*/, const ::sentiric::user::v1::DeleteSipCredentialRequest* /*request*/, ::sentiric::user::v1::DeleteSipCredentialResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_GetAgentProfile : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_GetAgentProfile() {
+      ::grpc::Service::MarkMethodGeneric(11);
+    }
+    ~WithGenericMethod_GetAgentProfile() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetAgentProfile(::grpc::ServerContext* /*context*/, const ::sentiric::user::v1::GetAgentProfileRequest* /*request*/, ::sentiric::user::v1::GetAgentProfileResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1288,6 +1376,26 @@ class UserService final {
     }
     void RequestDeleteSipCredential(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(10, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_GetAgentProfile : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_GetAgentProfile() {
+      ::grpc::Service::MarkMethodRaw(11);
+    }
+    ~WithRawMethod_GetAgentProfile() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetAgentProfile(::grpc::ServerContext* /*context*/, const ::sentiric::user::v1::GetAgentProfileRequest* /*request*/, ::sentiric::user::v1::GetAgentProfileResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetAgentProfile(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(11, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -1530,6 +1638,28 @@ class UserService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerUnaryReactor* DeleteSipCredential(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_GetAgentProfile : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_GetAgentProfile() {
+      ::grpc::Service::MarkMethodRawCallback(11,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetAgentProfile(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_GetAgentProfile() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetAgentProfile(::grpc::ServerContext* /*context*/, const ::sentiric::user::v1::GetAgentProfileRequest* /*request*/, ::sentiric::user::v1::GetAgentProfileResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* GetAgentProfile(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
@@ -1829,9 +1959,36 @@ class UserService final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedDeleteSipCredential(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::sentiric::user::v1::DeleteSipCredentialRequest,::sentiric::user::v1::DeleteSipCredentialResponse>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_GetUser<WithStreamedUnaryMethod_FindUserByContact<WithStreamedUnaryMethod_CreateUser<WithStreamedUnaryMethod_UpdateUser<WithStreamedUnaryMethod_DeleteUser<WithStreamedUnaryMethod_AddContact<WithStreamedUnaryMethod_UpdateContact<WithStreamedUnaryMethod_DeleteContact<WithStreamedUnaryMethod_GetSipCredentials<WithStreamedUnaryMethod_CreateSipCredential<WithStreamedUnaryMethod_DeleteSipCredential<Service > > > > > > > > > > > StreamedUnaryService;
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_GetAgentProfile : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_GetAgentProfile() {
+      ::grpc::Service::MarkMethodStreamed(11,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::sentiric::user::v1::GetAgentProfileRequest, ::sentiric::user::v1::GetAgentProfileResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::sentiric::user::v1::GetAgentProfileRequest, ::sentiric::user::v1::GetAgentProfileResponse>* streamer) {
+                       return this->StreamedGetAgentProfile(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_GetAgentProfile() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status GetAgentProfile(::grpc::ServerContext* /*context*/, const ::sentiric::user::v1::GetAgentProfileRequest* /*request*/, ::sentiric::user::v1::GetAgentProfileResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedGetAgentProfile(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::sentiric::user::v1::GetAgentProfileRequest,::sentiric::user::v1::GetAgentProfileResponse>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_GetUser<WithStreamedUnaryMethod_FindUserByContact<WithStreamedUnaryMethod_CreateUser<WithStreamedUnaryMethod_UpdateUser<WithStreamedUnaryMethod_DeleteUser<WithStreamedUnaryMethod_AddContact<WithStreamedUnaryMethod_UpdateContact<WithStreamedUnaryMethod_DeleteContact<WithStreamedUnaryMethod_GetSipCredentials<WithStreamedUnaryMethod_CreateSipCredential<WithStreamedUnaryMethod_DeleteSipCredential<WithStreamedUnaryMethod_GetAgentProfile<Service > > > > > > > > > > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_GetUser<WithStreamedUnaryMethod_FindUserByContact<WithStreamedUnaryMethod_CreateUser<WithStreamedUnaryMethod_UpdateUser<WithStreamedUnaryMethod_DeleteUser<WithStreamedUnaryMethod_AddContact<WithStreamedUnaryMethod_UpdateContact<WithStreamedUnaryMethod_DeleteContact<WithStreamedUnaryMethod_GetSipCredentials<WithStreamedUnaryMethod_CreateSipCredential<WithStreamedUnaryMethod_DeleteSipCredential<Service > > > > > > > > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_GetUser<WithStreamedUnaryMethod_FindUserByContact<WithStreamedUnaryMethod_CreateUser<WithStreamedUnaryMethod_UpdateUser<WithStreamedUnaryMethod_DeleteUser<WithStreamedUnaryMethod_AddContact<WithStreamedUnaryMethod_UpdateContact<WithStreamedUnaryMethod_DeleteContact<WithStreamedUnaryMethod_GetSipCredentials<WithStreamedUnaryMethod_CreateSipCredential<WithStreamedUnaryMethod_DeleteSipCredential<WithStreamedUnaryMethod_GetAgentProfile<Service > > > > > > > > > > > > StreamedService;
 };
 
 }  // namespace v1

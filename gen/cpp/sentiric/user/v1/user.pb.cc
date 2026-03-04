@@ -75,6 +75,48 @@ struct TenantDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TenantDefaultTypeInternal _Tenant_default_instance_;
+PROTOBUF_CONSTEXPR AgentProfile::AgentProfile(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.user_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.display_name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.status_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.max_concurrent_calls_)*/0
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct AgentProfileDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR AgentProfileDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~AgentProfileDefaultTypeInternal() {}
+  union {
+    AgentProfile _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 AgentProfileDefaultTypeInternal _AgentProfile_default_instance_;
+PROTOBUF_CONSTEXPR GetAgentProfileRequest::GetAgentProfileRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.user_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct GetAgentProfileRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR GetAgentProfileRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~GetAgentProfileRequestDefaultTypeInternal() {}
+  union {
+    GetAgentProfileRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetAgentProfileRequestDefaultTypeInternal _GetAgentProfileRequest_default_instance_;
+PROTOBUF_CONSTEXPR GetAgentProfileResponse::GetAgentProfileResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.profile_)*/nullptr
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct GetAgentProfileResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR GetAgentProfileResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~GetAgentProfileResponseDefaultTypeInternal() {}
+  union {
+    GetAgentProfileResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetAgentProfileResponseDefaultTypeInternal _GetAgentProfileResponse_default_instance_;
 PROTOBUF_CONSTEXPR GetUserRequest::GetUserRequest(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.user_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
@@ -392,7 +434,7 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORIT
 }  // namespace v1
 }  // namespace user
 }  // namespace sentiric
-static ::_pb::Metadata file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[26];
+static ::_pb::Metadata file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[29];
 static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_sentiric_2fuser_2fv1_2fuser_2eproto = nullptr;
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_sentiric_2fuser_2fv1_2fuser_2eproto = nullptr;
 
@@ -436,6 +478,30 @@ const uint32_t TableStruct_sentiric_2fuser_2fv1_2fuser_2eproto::offsets[] PROTOB
   PROTOBUF_FIELD_OFFSET(::sentiric::user::v1::Tenant, _impl_.name_),
   PROTOBUF_FIELD_OFFSET(::sentiric::user::v1::Tenant, _impl_.domain_),
   PROTOBUF_FIELD_OFFSET(::sentiric::user::v1::Tenant, _impl_.primary_language_code_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::user::v1::AgentProfile, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::user::v1::AgentProfile, _impl_.user_id_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::user::v1::AgentProfile, _impl_.display_name_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::user::v1::AgentProfile, _impl_.max_concurrent_calls_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::user::v1::AgentProfile, _impl_.status_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::user::v1::GetAgentProfileRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::user::v1::GetAgentProfileRequest, _impl_.user_id_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::user::v1::GetAgentProfileResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::user::v1::GetAgentProfileResponse, _impl_.profile_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::sentiric::user::v1::GetUserRequest, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -621,35 +687,41 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 0, -1, -1, sizeof(::sentiric::user::v1::Contact)},
   { 11, 23, -1, sizeof(::sentiric::user::v1::User)},
   { 29, -1, -1, sizeof(::sentiric::user::v1::Tenant)},
-  { 39, -1, -1, sizeof(::sentiric::user::v1::GetUserRequest)},
-  { 46, -1, -1, sizeof(::sentiric::user::v1::GetUserResponse)},
-  { 53, -1, -1, sizeof(::sentiric::user::v1::FindUserByContactRequest)},
-  { 61, -1, -1, sizeof(::sentiric::user::v1::FindUserByContactResponse)},
-  { 68, -1, -1, sizeof(::sentiric::user::v1::CreateUserRequest_InitialContact)},
-  { 76, 87, -1, sizeof(::sentiric::user::v1::CreateUserRequest)},
-  { 92, -1, -1, sizeof(::sentiric::user::v1::CreateUserResponse)},
-  { 99, -1, -1, sizeof(::sentiric::user::v1::UpdateUserRequest)},
-  { 107, -1, -1, sizeof(::sentiric::user::v1::UpdateUserResponse)},
-  { 114, -1, -1, sizeof(::sentiric::user::v1::DeleteUserRequest)},
-  { 121, -1, -1, sizeof(::sentiric::user::v1::DeleteUserResponse)},
-  { 128, -1, -1, sizeof(::sentiric::user::v1::AddContactRequest)},
-  { 136, -1, -1, sizeof(::sentiric::user::v1::AddContactResponse)},
-  { 143, -1, -1, sizeof(::sentiric::user::v1::UpdateContactRequest)},
-  { 151, -1, -1, sizeof(::sentiric::user::v1::UpdateContactResponse)},
-  { 158, -1, -1, sizeof(::sentiric::user::v1::DeleteContactRequest)},
-  { 165, -1, -1, sizeof(::sentiric::user::v1::DeleteContactResponse)},
-  { 172, -1, -1, sizeof(::sentiric::user::v1::GetSipCredentialsRequest)},
-  { 180, -1, -1, sizeof(::sentiric::user::v1::GetSipCredentialsResponse)},
-  { 189, -1, -1, sizeof(::sentiric::user::v1::CreateSipCredentialRequest)},
-  { 198, -1, -1, sizeof(::sentiric::user::v1::CreateSipCredentialResponse)},
-  { 205, -1, -1, sizeof(::sentiric::user::v1::DeleteSipCredentialRequest)},
-  { 212, -1, -1, sizeof(::sentiric::user::v1::DeleteSipCredentialResponse)},
+  { 39, -1, -1, sizeof(::sentiric::user::v1::AgentProfile)},
+  { 49, -1, -1, sizeof(::sentiric::user::v1::GetAgentProfileRequest)},
+  { 56, -1, -1, sizeof(::sentiric::user::v1::GetAgentProfileResponse)},
+  { 63, -1, -1, sizeof(::sentiric::user::v1::GetUserRequest)},
+  { 70, -1, -1, sizeof(::sentiric::user::v1::GetUserResponse)},
+  { 77, -1, -1, sizeof(::sentiric::user::v1::FindUserByContactRequest)},
+  { 85, -1, -1, sizeof(::sentiric::user::v1::FindUserByContactResponse)},
+  { 92, -1, -1, sizeof(::sentiric::user::v1::CreateUserRequest_InitialContact)},
+  { 100, 111, -1, sizeof(::sentiric::user::v1::CreateUserRequest)},
+  { 116, -1, -1, sizeof(::sentiric::user::v1::CreateUserResponse)},
+  { 123, -1, -1, sizeof(::sentiric::user::v1::UpdateUserRequest)},
+  { 131, -1, -1, sizeof(::sentiric::user::v1::UpdateUserResponse)},
+  { 138, -1, -1, sizeof(::sentiric::user::v1::DeleteUserRequest)},
+  { 145, -1, -1, sizeof(::sentiric::user::v1::DeleteUserResponse)},
+  { 152, -1, -1, sizeof(::sentiric::user::v1::AddContactRequest)},
+  { 160, -1, -1, sizeof(::sentiric::user::v1::AddContactResponse)},
+  { 167, -1, -1, sizeof(::sentiric::user::v1::UpdateContactRequest)},
+  { 175, -1, -1, sizeof(::sentiric::user::v1::UpdateContactResponse)},
+  { 182, -1, -1, sizeof(::sentiric::user::v1::DeleteContactRequest)},
+  { 189, -1, -1, sizeof(::sentiric::user::v1::DeleteContactResponse)},
+  { 196, -1, -1, sizeof(::sentiric::user::v1::GetSipCredentialsRequest)},
+  { 204, -1, -1, sizeof(::sentiric::user::v1::GetSipCredentialsResponse)},
+  { 213, -1, -1, sizeof(::sentiric::user::v1::CreateSipCredentialRequest)},
+  { 222, -1, -1, sizeof(::sentiric::user::v1::CreateSipCredentialResponse)},
+  { 229, -1, -1, sizeof(::sentiric::user::v1::DeleteSipCredentialRequest)},
+  { 236, -1, -1, sizeof(::sentiric::user::v1::DeleteSipCredentialResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
   &::sentiric::user::v1::_Contact_default_instance_._instance,
   &::sentiric::user::v1::_User_default_instance_._instance,
   &::sentiric::user::v1::_Tenant_default_instance_._instance,
+  &::sentiric::user::v1::_AgentProfile_default_instance_._instance,
+  &::sentiric::user::v1::_GetAgentProfileRequest_default_instance_._instance,
+  &::sentiric::user::v1::_GetAgentProfileResponse_default_instance_._instance,
   &::sentiric::user::v1::_GetUserRequest_default_instance_._instance,
   &::sentiric::user::v1::_GetUserResponse_default_instance_._instance,
   &::sentiric::user::v1::_FindUserByContactRequest_default_instance_._instance,
@@ -687,87 +759,95 @@ const char descriptor_table_protodef_sentiric_2fuser_2fv1_2fuser_2eproto[] PROTO
   "ed_language_code\030\006 \001(\tH\001\210\001\001B\007\n\005_nameB\032\n\030"
   "_preferred_language_code\"Q\n\006Tenant\022\n\n\002id"
   "\030\001 \001(\t\022\014\n\004name\030\002 \001(\t\022\016\n\006domain\030\003 \001(\t\022\035\n\025"
-  "primary_language_code\030\004 \001(\t\"!\n\016GetUserRe"
-  "quest\022\017\n\007user_id\030\001 \001(\t\"7\n\017GetUserRespons"
+  "primary_language_code\030\004 \001(\t\"c\n\014AgentProf"
+  "ile\022\017\n\007user_id\030\001 \001(\t\022\024\n\014display_name\030\002 \001"
+  "(\t\022\034\n\024max_concurrent_calls\030\003 \001(\005\022\016\n\006stat"
+  "us\030\004 \001(\t\")\n\026GetAgentProfileRequest\022\017\n\007us"
+  "er_id\030\001 \001(\t\"J\n\027GetAgentProfileResponse\022/"
+  "\n\007profile\030\001 \001(\0132\036.sentiric.user.v1.Agent"
+  "Profile\"!\n\016GetUserRequest\022\017\n\007user_id\030\001 \001"
+  "(\t\"7\n\017GetUserResponse\022$\n\004user\030\001 \001(\0132\026.se"
+  "ntiric.user.v1.User\"G\n\030FindUserByContact"
+  "Request\022\024\n\014contact_type\030\001 \001(\t\022\025\n\rcontact"
+  "_value\030\002 \001(\t\"A\n\031FindUserByContactRespons"
   "e\022$\n\004user\030\001 \001(\0132\026.sentiric.user.v1.User\""
-  "G\n\030FindUserByContactRequest\022\024\n\014contact_t"
-  "ype\030\001 \001(\t\022\025\n\rcontact_value\030\002 \001(\t\"A\n\031Find"
-  "UserByContactResponse\022$\n\004user\030\001 \001(\0132\026.se"
-  "ntiric.user.v1.User\"\243\002\n\021CreateUserReques"
-  "t\022\021\n\ttenant_id\030\001 \001(\t\022\021\n\tuser_type\030\002 \001(\t\022"
-  "\021\n\004name\030\003 \001(\tH\000\210\001\001\022K\n\017initial_contact\030\004 "
-  "\001(\01322.sentiric.user.v1.CreateUserRequest"
-  ".InitialContact\022$\n\027preferred_language_co"
-  "de\030\005 \001(\tH\001\210\001\001\032=\n\016InitialContact\022\024\n\014conta"
-  "ct_type\030\001 \001(\t\022\025\n\rcontact_value\030\002 \001(\tB\007\n\005"
-  "_nameB\032\n\030_preferred_language_code\":\n\022Cre"
-  "ateUserResponse\022$\n\004user\030\001 \001(\0132\026.sentiric"
-  ".user.v1.User\"j\n\021UpdateUserRequest\022$\n\004us"
-  "er\030\001 \001(\0132\026.sentiric.user.v1.User\022/\n\013upda"
-  "te_mask\030\002 \001(\0132\032.google.protobuf.FieldMas"
-  "k\":\n\022UpdateUserResponse\022$\n\004user\030\001 \001(\0132\026."
-  "sentiric.user.v1.User\"$\n\021DeleteUserReque"
-  "st\022\017\n\007user_id\030\001 \001(\t\"%\n\022DeleteUserRespons"
-  "e\022\017\n\007success\030\001 \001(\010\"P\n\021AddContactRequest\022"
-  "\017\n\007user_id\030\001 \001(\t\022*\n\007contact\030\002 \001(\0132\031.sent"
-  "iric.user.v1.Contact\":\n\022AddContactRespon"
+  "\243\002\n\021CreateUserRequest\022\021\n\ttenant_id\030\001 \001(\t"
+  "\022\021\n\tuser_type\030\002 \001(\t\022\021\n\004name\030\003 \001(\tH\000\210\001\001\022K"
+  "\n\017initial_contact\030\004 \001(\01322.sentiric.user."
+  "v1.CreateUserRequest.InitialContact\022$\n\027p"
+  "referred_language_code\030\005 \001(\tH\001\210\001\001\032=\n\016Ini"
+  "tialContact\022\024\n\014contact_type\030\001 \001(\t\022\025\n\rcon"
+  "tact_value\030\002 \001(\tB\007\n\005_nameB\032\n\030_preferred_"
+  "language_code\":\n\022CreateUserResponse\022$\n\004u"
+  "ser\030\001 \001(\0132\026.sentiric.user.v1.User\"j\n\021Upd"
+  "ateUserRequest\022$\n\004user\030\001 \001(\0132\026.sentiric."
+  "user.v1.User\022/\n\013update_mask\030\002 \001(\0132\032.goog"
+  "le.protobuf.FieldMask\":\n\022UpdateUserRespo"
+  "nse\022$\n\004user\030\001 \001(\0132\026.sentiric.user.v1.Use"
+  "r\"$\n\021DeleteUserRequest\022\017\n\007user_id\030\001 \001(\t\""
+  "%\n\022DeleteUserResponse\022\017\n\007success\030\001 \001(\010\"P"
+  "\n\021AddContactRequest\022\017\n\007user_id\030\001 \001(\t\022*\n\007"
+  "contact\030\002 \001(\0132\031.sentiric.user.v1.Contact"
+  "\":\n\022AddContactResponse\022$\n\004user\030\001 \001(\0132\026.s"
+  "entiric.user.v1.User\"s\n\024UpdateContactReq"
+  "uest\022*\n\007contact\030\001 \001(\0132\031.sentiric.user.v1"
+  ".Contact\022/\n\013update_mask\030\002 \001(\0132\032.google.p"
+  "rotobuf.FieldMask\"=\n\025UpdateContactRespon"
   "se\022$\n\004user\030\001 \001(\0132\026.sentiric.user.v1.User"
-  "\"s\n\024UpdateContactRequest\022*\n\007contact\030\001 \001("
-  "\0132\031.sentiric.user.v1.Contact\022/\n\013update_m"
-  "ask\030\002 \001(\0132\032.google.protobuf.FieldMask\"=\n"
-  "\025UpdateContactResponse\022$\n\004user\030\001 \001(\0132\026.s"
-  "entiric.user.v1.User\"*\n\024DeleteContactReq"
-  "uest\022\022\n\ncontact_id\030\001 \001(\005\"=\n\025DeleteContac"
-  "tResponse\022$\n\004user\030\001 \001(\0132\026.sentiric.user."
-  "v1.User\"\?\n\030GetSipCredentialsRequest\022\024\n\014s"
-  "ip_username\030\001 \001(\t\022\r\n\005realm\030\002 \001(\t\"Q\n\031GetS"
-  "ipCredentialsResponse\022\017\n\007user_id\030\001 \001(\t\022\021"
-  "\n\ttenant_id\030\002 \001(\t\022\020\n\010ha1_hash\030\003 \001(\t\"U\n\032C"
-  "reateSipCredentialRequest\022\017\n\007user_id\030\001 \001"
-  "(\t\022\024\n\014sip_username\030\002 \001(\t\022\020\n\010password\030\003 \001"
-  "(\t\".\n\033CreateSipCredentialResponse\022\017\n\007suc"
-  "cess\030\001 \001(\010\"2\n\032DeleteSipCredentialRequest"
-  "\022\024\n\014sip_username\030\001 \001(\t\".\n\033DeleteSipCrede"
-  "ntialResponse\022\017\n\007success\030\001 \001(\0102\311\010\n\013UserS"
-  "ervice\022N\n\007GetUser\022 .sentiric.user.v1.Get"
-  "UserRequest\032!.sentiric.user.v1.GetUserRe"
-  "sponse\022l\n\021FindUserByContact\022*.sentiric.u"
-  "ser.v1.FindUserByContactRequest\032+.sentir"
-  "ic.user.v1.FindUserByContactResponse\022W\n\n"
-  "CreateUser\022#.sentiric.user.v1.CreateUser"
-  "Request\032$.sentiric.user.v1.CreateUserRes"
-  "ponse\022W\n\nUpdateUser\022#.sentiric.user.v1.U"
-  "pdateUserRequest\032$.sentiric.user.v1.Upda"
-  "teUserResponse\022W\n\nDeleteUser\022#.sentiric."
-  "user.v1.DeleteUserRequest\032$.sentiric.use"
-  "r.v1.DeleteUserResponse\022W\n\nAddContact\022#."
-  "sentiric.user.v1.AddContactRequest\032$.sen"
-  "tiric.user.v1.AddContactResponse\022`\n\rUpda"
-  "teContact\022&.sentiric.user.v1.UpdateConta"
-  "ctRequest\032\'.sentiric.user.v1.UpdateConta"
-  "ctResponse\022`\n\rDeleteContact\022&.sentiric.u"
-  "ser.v1.DeleteContactRequest\032\'.sentiric.u"
-  "ser.v1.DeleteContactResponse\022l\n\021GetSipCr"
-  "edentials\022*.sentiric.user.v1.GetSipCrede"
-  "ntialsRequest\032+.sentiric.user.v1.GetSipC"
-  "redentialsResponse\022r\n\023CreateSipCredentia"
-  "l\022,.sentiric.user.v1.CreateSipCredential"
-  "Request\032-.sentiric.user.v1.CreateSipCred"
-  "entialResponse\022r\n\023DeleteSipCredential\022,."
-  "sentiric.user.v1.DeleteSipCredentialRequ"
-  "est\032-.sentiric.user.v1.DeleteSipCredenti"
-  "alResponseBGZEgithub.com/sentiric/sentir"
-  "ic-contracts/gen/go/sentiric/user/v1;use"
-  "rv1b\006proto3"
+  "\"*\n\024DeleteContactRequest\022\022\n\ncontact_id\030\001"
+  " \001(\005\"=\n\025DeleteContactResponse\022$\n\004user\030\001 "
+  "\001(\0132\026.sentiric.user.v1.User\"\?\n\030GetSipCre"
+  "dentialsRequest\022\024\n\014sip_username\030\001 \001(\t\022\r\n"
+  "\005realm\030\002 \001(\t\"Q\n\031GetSipCredentialsRespons"
+  "e\022\017\n\007user_id\030\001 \001(\t\022\021\n\ttenant_id\030\002 \001(\t\022\020\n"
+  "\010ha1_hash\030\003 \001(\t\"U\n\032CreateSipCredentialRe"
+  "quest\022\017\n\007user_id\030\001 \001(\t\022\024\n\014sip_username\030\002"
+  " \001(\t\022\020\n\010password\030\003 \001(\t\".\n\033CreateSipCrede"
+  "ntialResponse\022\017\n\007success\030\001 \001(\010\"2\n\032Delete"
+  "SipCredentialRequest\022\024\n\014sip_username\030\001 \001"
+  "(\t\".\n\033DeleteSipCredentialResponse\022\017\n\007suc"
+  "cess\030\001 \001(\0102\261\t\n\013UserService\022N\n\007GetUser\022 ."
+  "sentiric.user.v1.GetUserRequest\032!.sentir"
+  "ic.user.v1.GetUserResponse\022l\n\021FindUserBy"
+  "Contact\022*.sentiric.user.v1.FindUserByCon"
+  "tactRequest\032+.sentiric.user.v1.FindUserB"
+  "yContactResponse\022W\n\nCreateUser\022#.sentiri"
+  "c.user.v1.CreateUserRequest\032$.sentiric.u"
+  "ser.v1.CreateUserResponse\022W\n\nUpdateUser\022"
+  "#.sentiric.user.v1.UpdateUserRequest\032$.s"
+  "entiric.user.v1.UpdateUserResponse\022W\n\nDe"
+  "leteUser\022#.sentiric.user.v1.DeleteUserRe"
+  "quest\032$.sentiric.user.v1.DeleteUserRespo"
+  "nse\022W\n\nAddContact\022#.sentiric.user.v1.Add"
+  "ContactRequest\032$.sentiric.user.v1.AddCon"
+  "tactResponse\022`\n\rUpdateContact\022&.sentiric"
+  ".user.v1.UpdateContactRequest\032\'.sentiric"
+  ".user.v1.UpdateContactResponse\022`\n\rDelete"
+  "Contact\022&.sentiric.user.v1.DeleteContact"
+  "Request\032\'.sentiric.user.v1.DeleteContact"
+  "Response\022l\n\021GetSipCredentials\022*.sentiric"
+  ".user.v1.GetSipCredentialsRequest\032+.sent"
+  "iric.user.v1.GetSipCredentialsResponse\022r"
+  "\n\023CreateSipCredential\022,.sentiric.user.v1"
+  ".CreateSipCredentialRequest\032-.sentiric.u"
+  "ser.v1.CreateSipCredentialResponse\022r\n\023De"
+  "leteSipCredential\022,.sentiric.user.v1.Del"
+  "eteSipCredentialRequest\032-.sentiric.user."
+  "v1.DeleteSipCredentialResponse\022f\n\017GetAge"
+  "ntProfile\022(.sentiric.user.v1.GetAgentPro"
+  "fileRequest\032).sentiric.user.v1.GetAgentP"
+  "rofileResponseBGZEgithub.com/sentiric/se"
+  "ntiric-contracts/gen/go/sentiric/user/v1"
+  ";userv1b\006proto3"
   ;
 static const ::_pbi::DescriptorTable* const descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_deps[1] = {
   &::descriptor_table_google_2fprotobuf_2ffield_5fmask_2eproto,
 };
 static ::_pbi::once_flag descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto = {
-    false, false, 3291, descriptor_table_protodef_sentiric_2fuser_2fv1_2fuser_2eproto,
+    false, false, 3615, descriptor_table_protodef_sentiric_2fuser_2fv1_2fuser_2eproto,
     "sentiric/user/v1/user.proto",
-    &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_once, descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_deps, 1, 26,
+    &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_once, descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_deps, 1, 29,
     schemas, file_default_instances, TableStruct_sentiric_2fuser_2fv1_2fuser_2eproto::offsets,
     file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto, file_level_enum_descriptors_sentiric_2fuser_2fv1_2fuser_2eproto,
     file_level_service_descriptors_sentiric_2fuser_2fv1_2fuser_2eproto,
@@ -1956,6 +2036,732 @@ void Tenant::InternalSwap(Tenant* other) {
 
 // ===================================================================
 
+class AgentProfile::_Internal {
+ public:
+};
+
+AgentProfile::AgentProfile(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.user.v1.AgentProfile)
+}
+AgentProfile::AgentProfile(const AgentProfile& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  AgentProfile* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.user_id_){}
+    , decltype(_impl_.display_name_){}
+    , decltype(_impl_.status_){}
+    , decltype(_impl_.max_concurrent_calls_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.user_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.user_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_user_id().empty()) {
+    _this->_impl_.user_id_.Set(from._internal_user_id(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.display_name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.display_name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_display_name().empty()) {
+    _this->_impl_.display_name_.Set(from._internal_display_name(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.status_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.status_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_status().empty()) {
+    _this->_impl_.status_.Set(from._internal_status(), 
+      _this->GetArenaForAllocation());
+  }
+  _this->_impl_.max_concurrent_calls_ = from._impl_.max_concurrent_calls_;
+  // @@protoc_insertion_point(copy_constructor:sentiric.user.v1.AgentProfile)
+}
+
+inline void AgentProfile::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.user_id_){}
+    , decltype(_impl_.display_name_){}
+    , decltype(_impl_.status_){}
+    , decltype(_impl_.max_concurrent_calls_){0}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.user_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.user_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.display_name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.display_name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.status_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.status_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+AgentProfile::~AgentProfile() {
+  // @@protoc_insertion_point(destructor:sentiric.user.v1.AgentProfile)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void AgentProfile::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.user_id_.Destroy();
+  _impl_.display_name_.Destroy();
+  _impl_.status_.Destroy();
+}
+
+void AgentProfile::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void AgentProfile::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.user.v1.AgentProfile)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.user_id_.ClearToEmpty();
+  _impl_.display_name_.ClearToEmpty();
+  _impl_.status_.ClearToEmpty();
+  _impl_.max_concurrent_calls_ = 0;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* AgentProfile::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string user_id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_user_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.user.v1.AgentProfile.user_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string display_name = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_display_name();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.user.v1.AgentProfile.display_name"));
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 max_concurrent_calls = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
+          _impl_.max_concurrent_calls_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string status = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          auto str = _internal_mutable_status();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.user.v1.AgentProfile.status"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* AgentProfile::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.user.v1.AgentProfile)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string user_id = 1;
+  if (!this->_internal_user_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_user_id().data(), static_cast<int>(this->_internal_user_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.user.v1.AgentProfile.user_id");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_user_id(), target);
+  }
+
+  // string display_name = 2;
+  if (!this->_internal_display_name().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_display_name().data(), static_cast<int>(this->_internal_display_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.user.v1.AgentProfile.display_name");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_display_name(), target);
+  }
+
+  // int32 max_concurrent_calls = 3;
+  if (this->_internal_max_concurrent_calls() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(3, this->_internal_max_concurrent_calls(), target);
+  }
+
+  // string status = 4;
+  if (!this->_internal_status().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_status().data(), static_cast<int>(this->_internal_status().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.user.v1.AgentProfile.status");
+    target = stream->WriteStringMaybeAliased(
+        4, this->_internal_status(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.user.v1.AgentProfile)
+  return target;
+}
+
+size_t AgentProfile::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.user.v1.AgentProfile)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string user_id = 1;
+  if (!this->_internal_user_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_user_id());
+  }
+
+  // string display_name = 2;
+  if (!this->_internal_display_name().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_display_name());
+  }
+
+  // string status = 4;
+  if (!this->_internal_status().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_status());
+  }
+
+  // int32 max_concurrent_calls = 3;
+  if (this->_internal_max_concurrent_calls() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_max_concurrent_calls());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData AgentProfile::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    AgentProfile::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*AgentProfile::GetClassData() const { return &_class_data_; }
+
+
+void AgentProfile::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<AgentProfile*>(&to_msg);
+  auto& from = static_cast<const AgentProfile&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.user.v1.AgentProfile)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_user_id().empty()) {
+    _this->_internal_set_user_id(from._internal_user_id());
+  }
+  if (!from._internal_display_name().empty()) {
+    _this->_internal_set_display_name(from._internal_display_name());
+  }
+  if (!from._internal_status().empty()) {
+    _this->_internal_set_status(from._internal_status());
+  }
+  if (from._internal_max_concurrent_calls() != 0) {
+    _this->_internal_set_max_concurrent_calls(from._internal_max_concurrent_calls());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void AgentProfile::CopyFrom(const AgentProfile& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.user.v1.AgentProfile)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool AgentProfile::IsInitialized() const {
+  return true;
+}
+
+void AgentProfile::InternalSwap(AgentProfile* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.user_id_, lhs_arena,
+      &other->_impl_.user_id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.display_name_, lhs_arena,
+      &other->_impl_.display_name_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.status_, lhs_arena,
+      &other->_impl_.status_, rhs_arena
+  );
+  swap(_impl_.max_concurrent_calls_, other->_impl_.max_concurrent_calls_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata AgentProfile::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_getter, &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_once,
+      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[3]);
+}
+
+// ===================================================================
+
+class GetAgentProfileRequest::_Internal {
+ public:
+};
+
+GetAgentProfileRequest::GetAgentProfileRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.user.v1.GetAgentProfileRequest)
+}
+GetAgentProfileRequest::GetAgentProfileRequest(const GetAgentProfileRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  GetAgentProfileRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.user_id_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.user_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.user_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_user_id().empty()) {
+    _this->_impl_.user_id_.Set(from._internal_user_id(), 
+      _this->GetArenaForAllocation());
+  }
+  // @@protoc_insertion_point(copy_constructor:sentiric.user.v1.GetAgentProfileRequest)
+}
+
+inline void GetAgentProfileRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.user_id_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.user_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.user_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+GetAgentProfileRequest::~GetAgentProfileRequest() {
+  // @@protoc_insertion_point(destructor:sentiric.user.v1.GetAgentProfileRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void GetAgentProfileRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.user_id_.Destroy();
+}
+
+void GetAgentProfileRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void GetAgentProfileRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.user.v1.GetAgentProfileRequest)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.user_id_.ClearToEmpty();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* GetAgentProfileRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string user_id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_user_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.user.v1.GetAgentProfileRequest.user_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* GetAgentProfileRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.user.v1.GetAgentProfileRequest)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string user_id = 1;
+  if (!this->_internal_user_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_user_id().data(), static_cast<int>(this->_internal_user_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.user.v1.GetAgentProfileRequest.user_id");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_user_id(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.user.v1.GetAgentProfileRequest)
+  return target;
+}
+
+size_t GetAgentProfileRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.user.v1.GetAgentProfileRequest)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string user_id = 1;
+  if (!this->_internal_user_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_user_id());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData GetAgentProfileRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    GetAgentProfileRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetAgentProfileRequest::GetClassData() const { return &_class_data_; }
+
+
+void GetAgentProfileRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<GetAgentProfileRequest*>(&to_msg);
+  auto& from = static_cast<const GetAgentProfileRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.user.v1.GetAgentProfileRequest)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_user_id().empty()) {
+    _this->_internal_set_user_id(from._internal_user_id());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void GetAgentProfileRequest::CopyFrom(const GetAgentProfileRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.user.v1.GetAgentProfileRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool GetAgentProfileRequest::IsInitialized() const {
+  return true;
+}
+
+void GetAgentProfileRequest::InternalSwap(GetAgentProfileRequest* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.user_id_, lhs_arena,
+      &other->_impl_.user_id_, rhs_arena
+  );
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata GetAgentProfileRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_getter, &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_once,
+      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[4]);
+}
+
+// ===================================================================
+
+class GetAgentProfileResponse::_Internal {
+ public:
+  static const ::sentiric::user::v1::AgentProfile& profile(const GetAgentProfileResponse* msg);
+};
+
+const ::sentiric::user::v1::AgentProfile&
+GetAgentProfileResponse::_Internal::profile(const GetAgentProfileResponse* msg) {
+  return *msg->_impl_.profile_;
+}
+GetAgentProfileResponse::GetAgentProfileResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.user.v1.GetAgentProfileResponse)
+}
+GetAgentProfileResponse::GetAgentProfileResponse(const GetAgentProfileResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  GetAgentProfileResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.profile_){nullptr}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_profile()) {
+    _this->_impl_.profile_ = new ::sentiric::user::v1::AgentProfile(*from._impl_.profile_);
+  }
+  // @@protoc_insertion_point(copy_constructor:sentiric.user.v1.GetAgentProfileResponse)
+}
+
+inline void GetAgentProfileResponse::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.profile_){nullptr}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+GetAgentProfileResponse::~GetAgentProfileResponse() {
+  // @@protoc_insertion_point(destructor:sentiric.user.v1.GetAgentProfileResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void GetAgentProfileResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.profile_;
+}
+
+void GetAgentProfileResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void GetAgentProfileResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.user.v1.GetAgentProfileResponse)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  if (GetArenaForAllocation() == nullptr && _impl_.profile_ != nullptr) {
+    delete _impl_.profile_;
+  }
+  _impl_.profile_ = nullptr;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* GetAgentProfileResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .sentiric.user.v1.AgentProfile profile = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_profile(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* GetAgentProfileResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.user.v1.GetAgentProfileResponse)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .sentiric.user.v1.AgentProfile profile = 1;
+  if (this->_internal_has_profile()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::profile(this),
+        _Internal::profile(this).GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.user.v1.GetAgentProfileResponse)
+  return target;
+}
+
+size_t GetAgentProfileResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.user.v1.GetAgentProfileResponse)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // .sentiric.user.v1.AgentProfile profile = 1;
+  if (this->_internal_has_profile()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.profile_);
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData GetAgentProfileResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    GetAgentProfileResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetAgentProfileResponse::GetClassData() const { return &_class_data_; }
+
+
+void GetAgentProfileResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<GetAgentProfileResponse*>(&to_msg);
+  auto& from = static_cast<const GetAgentProfileResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.user.v1.GetAgentProfileResponse)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_has_profile()) {
+    _this->_internal_mutable_profile()->::sentiric::user::v1::AgentProfile::MergeFrom(
+        from._internal_profile());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void GetAgentProfileResponse::CopyFrom(const GetAgentProfileResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.user.v1.GetAgentProfileResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool GetAgentProfileResponse::IsInitialized() const {
+  return true;
+}
+
+void GetAgentProfileResponse::InternalSwap(GetAgentProfileResponse* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_.profile_, other->_impl_.profile_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata GetAgentProfileResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_getter, &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_once,
+      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[5]);
+}
+
+// ===================================================================
+
 class GetUserRequest::_Internal {
  public:
 };
@@ -2154,7 +2960,7 @@ void GetUserRequest::InternalSwap(GetUserRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata GetUserRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_getter, &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_once,
-      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[3]);
+      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[6]);
 }
 
 // ===================================================================
@@ -2347,7 +3153,7 @@ void GetUserResponse::InternalSwap(GetUserResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata GetUserResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_getter, &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_once,
-      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[4]);
+      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[7]);
 }
 
 // ===================================================================
@@ -2600,7 +3406,7 @@ void FindUserByContactRequest::InternalSwap(FindUserByContactRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata FindUserByContactRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_getter, &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_once,
-      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[5]);
+      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[8]);
 }
 
 // ===================================================================
@@ -2793,7 +3599,7 @@ void FindUserByContactResponse::InternalSwap(FindUserByContactResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata FindUserByContactResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_getter, &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_once,
-      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[6]);
+      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[9]);
 }
 
 // ===================================================================
@@ -3046,7 +3852,7 @@ void CreateUserRequest_InitialContact::InternalSwap(CreateUserRequest_InitialCon
 ::PROTOBUF_NAMESPACE_ID::Metadata CreateUserRequest_InitialContact::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_getter, &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_once,
-      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[7]);
+      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[10]);
 }
 
 // ===================================================================
@@ -3467,7 +4273,7 @@ void CreateUserRequest::InternalSwap(CreateUserRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata CreateUserRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_getter, &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_once,
-      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[8]);
+      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[11]);
 }
 
 // ===================================================================
@@ -3660,7 +4466,7 @@ void CreateUserResponse::InternalSwap(CreateUserResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata CreateUserResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_getter, &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_once,
-      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[9]);
+      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[12]);
 }
 
 // ===================================================================
@@ -3905,7 +4711,7 @@ void UpdateUserRequest::InternalSwap(UpdateUserRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata UpdateUserRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_getter, &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_once,
-      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[10]);
+      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[13]);
 }
 
 // ===================================================================
@@ -4098,7 +4904,7 @@ void UpdateUserResponse::InternalSwap(UpdateUserResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata UpdateUserResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_getter, &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_once,
-      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[11]);
+      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[14]);
 }
 
 // ===================================================================
@@ -4301,7 +5107,7 @@ void DeleteUserRequest::InternalSwap(DeleteUserRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DeleteUserRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_getter, &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_once,
-      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[12]);
+      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[15]);
 }
 
 // ===================================================================
@@ -4479,7 +5285,7 @@ void DeleteUserResponse::InternalSwap(DeleteUserResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DeleteUserResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_getter, &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_once,
-      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[13]);
+      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[16]);
 }
 
 // ===================================================================
@@ -4724,7 +5530,7 @@ void AddContactRequest::InternalSwap(AddContactRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata AddContactRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_getter, &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_once,
-      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[14]);
+      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[17]);
 }
 
 // ===================================================================
@@ -4917,7 +5723,7 @@ void AddContactResponse::InternalSwap(AddContactResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata AddContactResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_getter, &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_once,
-      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[15]);
+      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[18]);
 }
 
 // ===================================================================
@@ -5162,7 +5968,7 @@ void UpdateContactRequest::InternalSwap(UpdateContactRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata UpdateContactRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_getter, &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_once,
-      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[16]);
+      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[19]);
 }
 
 // ===================================================================
@@ -5355,7 +6161,7 @@ void UpdateContactResponse::InternalSwap(UpdateContactResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata UpdateContactResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_getter, &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_once,
-      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[17]);
+      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[20]);
 }
 
 // ===================================================================
@@ -5533,7 +6339,7 @@ void DeleteContactRequest::InternalSwap(DeleteContactRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DeleteContactRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_getter, &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_once,
-      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[18]);
+      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[21]);
 }
 
 // ===================================================================
@@ -5726,7 +6532,7 @@ void DeleteContactResponse::InternalSwap(DeleteContactResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata DeleteContactResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_getter, &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_once,
-      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[19]);
+      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[22]);
 }
 
 // ===================================================================
@@ -5979,7 +6785,7 @@ void GetSipCredentialsRequest::InternalSwap(GetSipCredentialsRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata GetSipCredentialsRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_getter, &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_once,
-      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[20]);
+      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[23]);
 }
 
 // ===================================================================
@@ -6282,7 +7088,7 @@ void GetSipCredentialsResponse::InternalSwap(GetSipCredentialsResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata GetSipCredentialsResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_getter, &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_once,
-      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[21]);
+      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[24]);
 }
 
 // ===================================================================
@@ -6585,7 +7391,7 @@ void CreateSipCredentialRequest::InternalSwap(CreateSipCredentialRequest* other)
 ::PROTOBUF_NAMESPACE_ID::Metadata CreateSipCredentialRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_getter, &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_once,
-      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[22]);
+      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[25]);
 }
 
 // ===================================================================
@@ -6763,7 +7569,7 @@ void CreateSipCredentialResponse::InternalSwap(CreateSipCredentialResponse* othe
 ::PROTOBUF_NAMESPACE_ID::Metadata CreateSipCredentialResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_getter, &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_once,
-      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[23]);
+      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[26]);
 }
 
 // ===================================================================
@@ -6966,7 +7772,7 @@ void DeleteSipCredentialRequest::InternalSwap(DeleteSipCredentialRequest* other)
 ::PROTOBUF_NAMESPACE_ID::Metadata DeleteSipCredentialRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_getter, &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_once,
-      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[24]);
+      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[27]);
 }
 
 // ===================================================================
@@ -7144,7 +7950,7 @@ void DeleteSipCredentialResponse::InternalSwap(DeleteSipCredentialResponse* othe
 ::PROTOBUF_NAMESPACE_ID::Metadata DeleteSipCredentialResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_getter, &descriptor_table_sentiric_2fuser_2fv1_2fuser_2eproto_once,
-      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[25]);
+      file_level_metadata_sentiric_2fuser_2fv1_2fuser_2eproto[28]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -7163,6 +7969,18 @@ Arena::CreateMaybeMessage< ::sentiric::user::v1::User >(Arena* arena) {
 template<> PROTOBUF_NOINLINE ::sentiric::user::v1::Tenant*
 Arena::CreateMaybeMessage< ::sentiric::user::v1::Tenant >(Arena* arena) {
   return Arena::CreateMessageInternal< ::sentiric::user::v1::Tenant >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::user::v1::AgentProfile*
+Arena::CreateMaybeMessage< ::sentiric::user::v1::AgentProfile >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::user::v1::AgentProfile >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::user::v1::GetAgentProfileRequest*
+Arena::CreateMaybeMessage< ::sentiric::user::v1::GetAgentProfileRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::user::v1::GetAgentProfileRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::user::v1::GetAgentProfileResponse*
+Arena::CreateMaybeMessage< ::sentiric::user::v1::GetAgentProfileResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::user::v1::GetAgentProfileResponse >(arena);
 }
 template<> PROTOBUF_NOINLINE ::sentiric::user::v1::GetUserRequest*
 Arena::CreateMaybeMessage< ::sentiric::user::v1::GetUserRequest >(Arena* arena) {

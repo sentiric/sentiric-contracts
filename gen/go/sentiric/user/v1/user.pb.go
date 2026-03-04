@@ -252,6 +252,163 @@ func (x *Tenant) GetPrimaryLanguageCode() string {
 	return ""
 }
 
+// Mesajlar:
+type AgentProfile struct {
+	state              protoimpl.MessageState `protogen:"open.v1"`
+	UserId             string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	DisplayName        string                 `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
+	MaxConcurrentCalls int32                  `protobuf:"varint,3,opt,name=max_concurrent_calls,json=maxConcurrentCalls,proto3" json:"max_concurrent_calls,omitempty"`
+	Status             string                 `protobuf:"bytes,4,opt,name=status,proto3" json:"status,omitempty"` // ONLINE, BUSY
+	unknownFields      protoimpl.UnknownFields
+	sizeCache          protoimpl.SizeCache
+}
+
+func (x *AgentProfile) Reset() {
+	*x = AgentProfile{}
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AgentProfile) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AgentProfile) ProtoMessage() {}
+
+func (x *AgentProfile) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AgentProfile.ProtoReflect.Descriptor instead.
+func (*AgentProfile) Descriptor() ([]byte, []int) {
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *AgentProfile) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+func (x *AgentProfile) GetDisplayName() string {
+	if x != nil {
+		return x.DisplayName
+	}
+	return ""
+}
+
+func (x *AgentProfile) GetMaxConcurrentCalls() int32 {
+	if x != nil {
+		return x.MaxConcurrentCalls
+	}
+	return 0
+}
+
+func (x *AgentProfile) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+type GetAgentProfileRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAgentProfileRequest) Reset() {
+	*x = GetAgentProfileRequest{}
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAgentProfileRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAgentProfileRequest) ProtoMessage() {}
+
+func (x *GetAgentProfileRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAgentProfileRequest.ProtoReflect.Descriptor instead.
+func (*GetAgentProfileRequest) Descriptor() ([]byte, []int) {
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *GetAgentProfileRequest) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+type GetAgentProfileResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Profile       *AgentProfile          `protobuf:"bytes,1,opt,name=profile,proto3" json:"profile,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAgentProfileResponse) Reset() {
+	*x = GetAgentProfileResponse{}
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAgentProfileResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAgentProfileResponse) ProtoMessage() {}
+
+func (x *GetAgentProfileResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAgentProfileResponse.ProtoReflect.Descriptor instead.
+func (*GetAgentProfileResponse) Descriptor() ([]byte, []int) {
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *GetAgentProfileResponse) GetProfile() *AgentProfile {
+	if x != nil {
+		return x.Profile
+	}
+	return nil
+}
+
 // --- GetUser ---
 type GetUserRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -262,7 +419,7 @@ type GetUserRequest struct {
 
 func (x *GetUserRequest) Reset() {
 	*x = GetUserRequest{}
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[3]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -274,7 +431,7 @@ func (x *GetUserRequest) String() string {
 func (*GetUserRequest) ProtoMessage() {}
 
 func (x *GetUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[3]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -287,7 +444,7 @@ func (x *GetUserRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserRequest.ProtoReflect.Descriptor instead.
 func (*GetUserRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{3}
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *GetUserRequest) GetUserId() string {
@@ -306,7 +463,7 @@ type GetUserResponse struct {
 
 func (x *GetUserResponse) Reset() {
 	*x = GetUserResponse{}
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[4]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -318,7 +475,7 @@ func (x *GetUserResponse) String() string {
 func (*GetUserResponse) ProtoMessage() {}
 
 func (x *GetUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[4]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -331,7 +488,7 @@ func (x *GetUserResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserResponse.ProtoReflect.Descriptor instead.
 func (*GetUserResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{4}
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *GetUserResponse) GetUser() *User {
@@ -352,7 +509,7 @@ type FindUserByContactRequest struct {
 
 func (x *FindUserByContactRequest) Reset() {
 	*x = FindUserByContactRequest{}
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[5]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -364,7 +521,7 @@ func (x *FindUserByContactRequest) String() string {
 func (*FindUserByContactRequest) ProtoMessage() {}
 
 func (x *FindUserByContactRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[5]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -377,7 +534,7 @@ func (x *FindUserByContactRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FindUserByContactRequest.ProtoReflect.Descriptor instead.
 func (*FindUserByContactRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{5}
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *FindUserByContactRequest) GetContactType() string {
@@ -403,7 +560,7 @@ type FindUserByContactResponse struct {
 
 func (x *FindUserByContactResponse) Reset() {
 	*x = FindUserByContactResponse{}
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[6]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -415,7 +572,7 @@ func (x *FindUserByContactResponse) String() string {
 func (*FindUserByContactResponse) ProtoMessage() {}
 
 func (x *FindUserByContactResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[6]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -428,7 +585,7 @@ func (x *FindUserByContactResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FindUserByContactResponse.ProtoReflect.Descriptor instead.
 func (*FindUserByContactResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{6}
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *FindUserByContactResponse) GetUser() *User {
@@ -452,7 +609,7 @@ type CreateUserRequest struct {
 
 func (x *CreateUserRequest) Reset() {
 	*x = CreateUserRequest{}
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[7]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -464,7 +621,7 @@ func (x *CreateUserRequest) String() string {
 func (*CreateUserRequest) ProtoMessage() {}
 
 func (x *CreateUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[7]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -477,7 +634,7 @@ func (x *CreateUserRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateUserRequest.ProtoReflect.Descriptor instead.
 func (*CreateUserRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{7}
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *CreateUserRequest) GetTenantId() string {
@@ -524,7 +681,7 @@ type CreateUserResponse struct {
 
 func (x *CreateUserResponse) Reset() {
 	*x = CreateUserResponse{}
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[8]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -536,7 +693,7 @@ func (x *CreateUserResponse) String() string {
 func (*CreateUserResponse) ProtoMessage() {}
 
 func (x *CreateUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[8]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -549,7 +706,7 @@ func (x *CreateUserResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateUserResponse.ProtoReflect.Descriptor instead.
 func (*CreateUserResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{8}
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *CreateUserResponse) GetUser() *User {
@@ -570,7 +727,7 @@ type UpdateUserRequest struct {
 
 func (x *UpdateUserRequest) Reset() {
 	*x = UpdateUserRequest{}
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[9]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -582,7 +739,7 @@ func (x *UpdateUserRequest) String() string {
 func (*UpdateUserRequest) ProtoMessage() {}
 
 func (x *UpdateUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[9]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -595,7 +752,7 @@ func (x *UpdateUserRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateUserRequest.ProtoReflect.Descriptor instead.
 func (*UpdateUserRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{9}
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *UpdateUserRequest) GetUser() *User {
@@ -621,7 +778,7 @@ type UpdateUserResponse struct {
 
 func (x *UpdateUserResponse) Reset() {
 	*x = UpdateUserResponse{}
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[10]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -633,7 +790,7 @@ func (x *UpdateUserResponse) String() string {
 func (*UpdateUserResponse) ProtoMessage() {}
 
 func (x *UpdateUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[10]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -646,7 +803,7 @@ func (x *UpdateUserResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateUserResponse.ProtoReflect.Descriptor instead.
 func (*UpdateUserResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{10}
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *UpdateUserResponse) GetUser() *User {
@@ -666,7 +823,7 @@ type DeleteUserRequest struct {
 
 func (x *DeleteUserRequest) Reset() {
 	*x = DeleteUserRequest{}
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[11]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -678,7 +835,7 @@ func (x *DeleteUserRequest) String() string {
 func (*DeleteUserRequest) ProtoMessage() {}
 
 func (x *DeleteUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[11]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -691,7 +848,7 @@ func (x *DeleteUserRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteUserRequest.ProtoReflect.Descriptor instead.
 func (*DeleteUserRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{11}
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *DeleteUserRequest) GetUserId() string {
@@ -710,7 +867,7 @@ type DeleteUserResponse struct {
 
 func (x *DeleteUserResponse) Reset() {
 	*x = DeleteUserResponse{}
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[12]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -722,7 +879,7 @@ func (x *DeleteUserResponse) String() string {
 func (*DeleteUserResponse) ProtoMessage() {}
 
 func (x *DeleteUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[12]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -735,7 +892,7 @@ func (x *DeleteUserResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteUserResponse.ProtoReflect.Descriptor instead.
 func (*DeleteUserResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{12}
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *DeleteUserResponse) GetSuccess() bool {
@@ -756,7 +913,7 @@ type AddContactRequest struct {
 
 func (x *AddContactRequest) Reset() {
 	*x = AddContactRequest{}
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[13]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -768,7 +925,7 @@ func (x *AddContactRequest) String() string {
 func (*AddContactRequest) ProtoMessage() {}
 
 func (x *AddContactRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[13]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -781,7 +938,7 @@ func (x *AddContactRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddContactRequest.ProtoReflect.Descriptor instead.
 func (*AddContactRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{13}
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *AddContactRequest) GetUserId() string {
@@ -807,7 +964,7 @@ type AddContactResponse struct {
 
 func (x *AddContactResponse) Reset() {
 	*x = AddContactResponse{}
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[14]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -819,7 +976,7 @@ func (x *AddContactResponse) String() string {
 func (*AddContactResponse) ProtoMessage() {}
 
 func (x *AddContactResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[14]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -832,7 +989,7 @@ func (x *AddContactResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddContactResponse.ProtoReflect.Descriptor instead.
 func (*AddContactResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{14}
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *AddContactResponse) GetUser() *User {
@@ -853,7 +1010,7 @@ type UpdateContactRequest struct {
 
 func (x *UpdateContactRequest) Reset() {
 	*x = UpdateContactRequest{}
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[15]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -865,7 +1022,7 @@ func (x *UpdateContactRequest) String() string {
 func (*UpdateContactRequest) ProtoMessage() {}
 
 func (x *UpdateContactRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[15]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -878,7 +1035,7 @@ func (x *UpdateContactRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateContactRequest.ProtoReflect.Descriptor instead.
 func (*UpdateContactRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{15}
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *UpdateContactRequest) GetContact() *Contact {
@@ -904,7 +1061,7 @@ type UpdateContactResponse struct {
 
 func (x *UpdateContactResponse) Reset() {
 	*x = UpdateContactResponse{}
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[16]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -916,7 +1073,7 @@ func (x *UpdateContactResponse) String() string {
 func (*UpdateContactResponse) ProtoMessage() {}
 
 func (x *UpdateContactResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[16]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -929,7 +1086,7 @@ func (x *UpdateContactResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateContactResponse.ProtoReflect.Descriptor instead.
 func (*UpdateContactResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{16}
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *UpdateContactResponse) GetUser() *User {
@@ -949,7 +1106,7 @@ type DeleteContactRequest struct {
 
 func (x *DeleteContactRequest) Reset() {
 	*x = DeleteContactRequest{}
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[17]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -961,7 +1118,7 @@ func (x *DeleteContactRequest) String() string {
 func (*DeleteContactRequest) ProtoMessage() {}
 
 func (x *DeleteContactRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[17]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -974,7 +1131,7 @@ func (x *DeleteContactRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteContactRequest.ProtoReflect.Descriptor instead.
 func (*DeleteContactRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{17}
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *DeleteContactRequest) GetContactId() int32 {
@@ -993,7 +1150,7 @@ type DeleteContactResponse struct {
 
 func (x *DeleteContactResponse) Reset() {
 	*x = DeleteContactResponse{}
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[18]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1005,7 +1162,7 @@ func (x *DeleteContactResponse) String() string {
 func (*DeleteContactResponse) ProtoMessage() {}
 
 func (x *DeleteContactResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[18]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1018,7 +1175,7 @@ func (x *DeleteContactResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteContactResponse.ProtoReflect.Descriptor instead.
 func (*DeleteContactResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{18}
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *DeleteContactResponse) GetUser() *User {
@@ -1039,7 +1196,7 @@ type GetSipCredentialsRequest struct {
 
 func (x *GetSipCredentialsRequest) Reset() {
 	*x = GetSipCredentialsRequest{}
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[19]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1051,7 +1208,7 @@ func (x *GetSipCredentialsRequest) String() string {
 func (*GetSipCredentialsRequest) ProtoMessage() {}
 
 func (x *GetSipCredentialsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[19]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1064,7 +1221,7 @@ func (x *GetSipCredentialsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetSipCredentialsRequest.ProtoReflect.Descriptor instead.
 func (*GetSipCredentialsRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{19}
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *GetSipCredentialsRequest) GetSipUsername() string {
@@ -1092,7 +1249,7 @@ type GetSipCredentialsResponse struct {
 
 func (x *GetSipCredentialsResponse) Reset() {
 	*x = GetSipCredentialsResponse{}
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[20]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1104,7 +1261,7 @@ func (x *GetSipCredentialsResponse) String() string {
 func (*GetSipCredentialsResponse) ProtoMessage() {}
 
 func (x *GetSipCredentialsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[20]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1117,7 +1274,7 @@ func (x *GetSipCredentialsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetSipCredentialsResponse.ProtoReflect.Descriptor instead.
 func (*GetSipCredentialsResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{20}
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *GetSipCredentialsResponse) GetUserId() string {
@@ -1154,7 +1311,7 @@ type CreateSipCredentialRequest struct {
 
 func (x *CreateSipCredentialRequest) Reset() {
 	*x = CreateSipCredentialRequest{}
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[21]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1166,7 +1323,7 @@ func (x *CreateSipCredentialRequest) String() string {
 func (*CreateSipCredentialRequest) ProtoMessage() {}
 
 func (x *CreateSipCredentialRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[21]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1179,7 +1336,7 @@ func (x *CreateSipCredentialRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateSipCredentialRequest.ProtoReflect.Descriptor instead.
 func (*CreateSipCredentialRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{21}
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *CreateSipCredentialRequest) GetUserId() string {
@@ -1212,7 +1369,7 @@ type CreateSipCredentialResponse struct {
 
 func (x *CreateSipCredentialResponse) Reset() {
 	*x = CreateSipCredentialResponse{}
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[22]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1224,7 +1381,7 @@ func (x *CreateSipCredentialResponse) String() string {
 func (*CreateSipCredentialResponse) ProtoMessage() {}
 
 func (x *CreateSipCredentialResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[22]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1237,7 +1394,7 @@ func (x *CreateSipCredentialResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateSipCredentialResponse.ProtoReflect.Descriptor instead.
 func (*CreateSipCredentialResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{22}
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *CreateSipCredentialResponse) GetSuccess() bool {
@@ -1257,7 +1414,7 @@ type DeleteSipCredentialRequest struct {
 
 func (x *DeleteSipCredentialRequest) Reset() {
 	*x = DeleteSipCredentialRequest{}
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[23]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1269,7 +1426,7 @@ func (x *DeleteSipCredentialRequest) String() string {
 func (*DeleteSipCredentialRequest) ProtoMessage() {}
 
 func (x *DeleteSipCredentialRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[23]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1282,7 +1439,7 @@ func (x *DeleteSipCredentialRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteSipCredentialRequest.ProtoReflect.Descriptor instead.
 func (*DeleteSipCredentialRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{23}
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *DeleteSipCredentialRequest) GetSipUsername() string {
@@ -1301,7 +1458,7 @@ type DeleteSipCredentialResponse struct {
 
 func (x *DeleteSipCredentialResponse) Reset() {
 	*x = DeleteSipCredentialResponse{}
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[24]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1313,7 +1470,7 @@ func (x *DeleteSipCredentialResponse) String() string {
 func (*DeleteSipCredentialResponse) ProtoMessage() {}
 
 func (x *DeleteSipCredentialResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[24]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1326,7 +1483,7 @@ func (x *DeleteSipCredentialResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteSipCredentialResponse.ProtoReflect.Descriptor instead.
 func (*DeleteSipCredentialResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{24}
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *DeleteSipCredentialResponse) GetSuccess() bool {
@@ -1346,7 +1503,7 @@ type CreateUserRequest_InitialContact struct {
 
 func (x *CreateUserRequest_InitialContact) Reset() {
 	*x = CreateUserRequest_InitialContact{}
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[25]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1358,7 +1515,7 @@ func (x *CreateUserRequest_InitialContact) String() string {
 func (*CreateUserRequest_InitialContact) ProtoMessage() {}
 
 func (x *CreateUserRequest_InitialContact) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_user_v1_user_proto_msgTypes[25]
+	mi := &file_sentiric_user_v1_user_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1371,7 +1528,7 @@ func (x *CreateUserRequest_InitialContact) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateUserRequest_InitialContact.ProtoReflect.Descriptor instead.
 func (*CreateUserRequest_InitialContact) Descriptor() ([]byte, []int) {
-	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{7, 0}
+	return file_sentiric_user_v1_user_proto_rawDescGZIP(), []int{10, 0}
 }
 
 func (x *CreateUserRequest_InitialContact) GetContactType() string {
@@ -1413,7 +1570,16 @@ const file_sentiric_user_v1_user_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x16\n" +
 	"\x06domain\x18\x03 \x01(\tR\x06domain\x122\n" +
-	"\x15primary_language_code\x18\x04 \x01(\tR\x13primaryLanguageCode\")\n" +
+	"\x15primary_language_code\x18\x04 \x01(\tR\x13primaryLanguageCode\"\x94\x01\n" +
+	"\fAgentProfile\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId\x12!\n" +
+	"\fdisplay_name\x18\x02 \x01(\tR\vdisplayName\x120\n" +
+	"\x14max_concurrent_calls\x18\x03 \x01(\x05R\x12maxConcurrentCalls\x12\x16\n" +
+	"\x06status\x18\x04 \x01(\tR\x06status\"1\n" +
+	"\x16GetAgentProfileRequest\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId\"S\n" +
+	"\x17GetAgentProfileResponse\x128\n" +
+	"\aprofile\x18\x01 \x01(\v2\x1e.sentiric.user.v1.AgentProfileR\aprofile\")\n" +
 	"\x0eGetUserRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\"=\n" +
 	"\x0fGetUserResponse\x12*\n" +
@@ -1478,7 +1644,7 @@ const file_sentiric_user_v1_user_proto_rawDesc = "" +
 	"\x1aDeleteSipCredentialRequest\x12!\n" +
 	"\fsip_username\x18\x01 \x01(\tR\vsipUsername\"7\n" +
 	"\x1bDeleteSipCredentialResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess2\xc9\b\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess2\xb1\t\n" +
 	"\vUserService\x12N\n" +
 	"\aGetUser\x12 .sentiric.user.v1.GetUserRequest\x1a!.sentiric.user.v1.GetUserResponse\x12l\n" +
 	"\x11FindUserByContact\x12*.sentiric.user.v1.FindUserByContactRequest\x1a+.sentiric.user.v1.FindUserByContactResponse\x12W\n" +
@@ -1494,7 +1660,8 @@ const file_sentiric_user_v1_user_proto_rawDesc = "" +
 	"\rDeleteContact\x12&.sentiric.user.v1.DeleteContactRequest\x1a'.sentiric.user.v1.DeleteContactResponse\x12l\n" +
 	"\x11GetSipCredentials\x12*.sentiric.user.v1.GetSipCredentialsRequest\x1a+.sentiric.user.v1.GetSipCredentialsResponse\x12r\n" +
 	"\x13CreateSipCredential\x12,.sentiric.user.v1.CreateSipCredentialRequest\x1a-.sentiric.user.v1.CreateSipCredentialResponse\x12r\n" +
-	"\x13DeleteSipCredential\x12,.sentiric.user.v1.DeleteSipCredentialRequest\x1a-.sentiric.user.v1.DeleteSipCredentialResponseBGZEgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/user/v1;userv1b\x06proto3"
+	"\x13DeleteSipCredential\x12,.sentiric.user.v1.DeleteSipCredentialRequest\x1a-.sentiric.user.v1.DeleteSipCredentialResponse\x12f\n" +
+	"\x0fGetAgentProfile\x12(.sentiric.user.v1.GetAgentProfileRequest\x1a).sentiric.user.v1.GetAgentProfileResponseBGZEgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/user/v1;userv1b\x06proto3"
 
 var (
 	file_sentiric_user_v1_user_proto_rawDescOnce sync.Once
@@ -1508,78 +1675,84 @@ func file_sentiric_user_v1_user_proto_rawDescGZIP() []byte {
 	return file_sentiric_user_v1_user_proto_rawDescData
 }
 
-var file_sentiric_user_v1_user_proto_msgTypes = make([]protoimpl.MessageInfo, 26)
+var file_sentiric_user_v1_user_proto_msgTypes = make([]protoimpl.MessageInfo, 29)
 var file_sentiric_user_v1_user_proto_goTypes = []any{
 	(*Contact)(nil),                          // 0: sentiric.user.v1.Contact
 	(*User)(nil),                             // 1: sentiric.user.v1.User
 	(*Tenant)(nil),                           // 2: sentiric.user.v1.Tenant
-	(*GetUserRequest)(nil),                   // 3: sentiric.user.v1.GetUserRequest
-	(*GetUserResponse)(nil),                  // 4: sentiric.user.v1.GetUserResponse
-	(*FindUserByContactRequest)(nil),         // 5: sentiric.user.v1.FindUserByContactRequest
-	(*FindUserByContactResponse)(nil),        // 6: sentiric.user.v1.FindUserByContactResponse
-	(*CreateUserRequest)(nil),                // 7: sentiric.user.v1.CreateUserRequest
-	(*CreateUserResponse)(nil),               // 8: sentiric.user.v1.CreateUserResponse
-	(*UpdateUserRequest)(nil),                // 9: sentiric.user.v1.UpdateUserRequest
-	(*UpdateUserResponse)(nil),               // 10: sentiric.user.v1.UpdateUserResponse
-	(*DeleteUserRequest)(nil),                // 11: sentiric.user.v1.DeleteUserRequest
-	(*DeleteUserResponse)(nil),               // 12: sentiric.user.v1.DeleteUserResponse
-	(*AddContactRequest)(nil),                // 13: sentiric.user.v1.AddContactRequest
-	(*AddContactResponse)(nil),               // 14: sentiric.user.v1.AddContactResponse
-	(*UpdateContactRequest)(nil),             // 15: sentiric.user.v1.UpdateContactRequest
-	(*UpdateContactResponse)(nil),            // 16: sentiric.user.v1.UpdateContactResponse
-	(*DeleteContactRequest)(nil),             // 17: sentiric.user.v1.DeleteContactRequest
-	(*DeleteContactResponse)(nil),            // 18: sentiric.user.v1.DeleteContactResponse
-	(*GetSipCredentialsRequest)(nil),         // 19: sentiric.user.v1.GetSipCredentialsRequest
-	(*GetSipCredentialsResponse)(nil),        // 20: sentiric.user.v1.GetSipCredentialsResponse
-	(*CreateSipCredentialRequest)(nil),       // 21: sentiric.user.v1.CreateSipCredentialRequest
-	(*CreateSipCredentialResponse)(nil),      // 22: sentiric.user.v1.CreateSipCredentialResponse
-	(*DeleteSipCredentialRequest)(nil),       // 23: sentiric.user.v1.DeleteSipCredentialRequest
-	(*DeleteSipCredentialResponse)(nil),      // 24: sentiric.user.v1.DeleteSipCredentialResponse
-	(*CreateUserRequest_InitialContact)(nil), // 25: sentiric.user.v1.CreateUserRequest.InitialContact
-	(*fieldmaskpb.FieldMask)(nil),            // 26: google.protobuf.FieldMask
+	(*AgentProfile)(nil),                     // 3: sentiric.user.v1.AgentProfile
+	(*GetAgentProfileRequest)(nil),           // 4: sentiric.user.v1.GetAgentProfileRequest
+	(*GetAgentProfileResponse)(nil),          // 5: sentiric.user.v1.GetAgentProfileResponse
+	(*GetUserRequest)(nil),                   // 6: sentiric.user.v1.GetUserRequest
+	(*GetUserResponse)(nil),                  // 7: sentiric.user.v1.GetUserResponse
+	(*FindUserByContactRequest)(nil),         // 8: sentiric.user.v1.FindUserByContactRequest
+	(*FindUserByContactResponse)(nil),        // 9: sentiric.user.v1.FindUserByContactResponse
+	(*CreateUserRequest)(nil),                // 10: sentiric.user.v1.CreateUserRequest
+	(*CreateUserResponse)(nil),               // 11: sentiric.user.v1.CreateUserResponse
+	(*UpdateUserRequest)(nil),                // 12: sentiric.user.v1.UpdateUserRequest
+	(*UpdateUserResponse)(nil),               // 13: sentiric.user.v1.UpdateUserResponse
+	(*DeleteUserRequest)(nil),                // 14: sentiric.user.v1.DeleteUserRequest
+	(*DeleteUserResponse)(nil),               // 15: sentiric.user.v1.DeleteUserResponse
+	(*AddContactRequest)(nil),                // 16: sentiric.user.v1.AddContactRequest
+	(*AddContactResponse)(nil),               // 17: sentiric.user.v1.AddContactResponse
+	(*UpdateContactRequest)(nil),             // 18: sentiric.user.v1.UpdateContactRequest
+	(*UpdateContactResponse)(nil),            // 19: sentiric.user.v1.UpdateContactResponse
+	(*DeleteContactRequest)(nil),             // 20: sentiric.user.v1.DeleteContactRequest
+	(*DeleteContactResponse)(nil),            // 21: sentiric.user.v1.DeleteContactResponse
+	(*GetSipCredentialsRequest)(nil),         // 22: sentiric.user.v1.GetSipCredentialsRequest
+	(*GetSipCredentialsResponse)(nil),        // 23: sentiric.user.v1.GetSipCredentialsResponse
+	(*CreateSipCredentialRequest)(nil),       // 24: sentiric.user.v1.CreateSipCredentialRequest
+	(*CreateSipCredentialResponse)(nil),      // 25: sentiric.user.v1.CreateSipCredentialResponse
+	(*DeleteSipCredentialRequest)(nil),       // 26: sentiric.user.v1.DeleteSipCredentialRequest
+	(*DeleteSipCredentialResponse)(nil),      // 27: sentiric.user.v1.DeleteSipCredentialResponse
+	(*CreateUserRequest_InitialContact)(nil), // 28: sentiric.user.v1.CreateUserRequest.InitialContact
+	(*fieldmaskpb.FieldMask)(nil),            // 29: google.protobuf.FieldMask
 }
 var file_sentiric_user_v1_user_proto_depIdxs = []int32{
 	0,  // 0: sentiric.user.v1.User.contacts:type_name -> sentiric.user.v1.Contact
-	1,  // 1: sentiric.user.v1.GetUserResponse.user:type_name -> sentiric.user.v1.User
-	1,  // 2: sentiric.user.v1.FindUserByContactResponse.user:type_name -> sentiric.user.v1.User
-	25, // 3: sentiric.user.v1.CreateUserRequest.initial_contact:type_name -> sentiric.user.v1.CreateUserRequest.InitialContact
-	1,  // 4: sentiric.user.v1.CreateUserResponse.user:type_name -> sentiric.user.v1.User
-	1,  // 5: sentiric.user.v1.UpdateUserRequest.user:type_name -> sentiric.user.v1.User
-	26, // 6: sentiric.user.v1.UpdateUserRequest.update_mask:type_name -> google.protobuf.FieldMask
-	1,  // 7: sentiric.user.v1.UpdateUserResponse.user:type_name -> sentiric.user.v1.User
-	0,  // 8: sentiric.user.v1.AddContactRequest.contact:type_name -> sentiric.user.v1.Contact
-	1,  // 9: sentiric.user.v1.AddContactResponse.user:type_name -> sentiric.user.v1.User
-	0,  // 10: sentiric.user.v1.UpdateContactRequest.contact:type_name -> sentiric.user.v1.Contact
-	26, // 11: sentiric.user.v1.UpdateContactRequest.update_mask:type_name -> google.protobuf.FieldMask
-	1,  // 12: sentiric.user.v1.UpdateContactResponse.user:type_name -> sentiric.user.v1.User
-	1,  // 13: sentiric.user.v1.DeleteContactResponse.user:type_name -> sentiric.user.v1.User
-	3,  // 14: sentiric.user.v1.UserService.GetUser:input_type -> sentiric.user.v1.GetUserRequest
-	5,  // 15: sentiric.user.v1.UserService.FindUserByContact:input_type -> sentiric.user.v1.FindUserByContactRequest
-	7,  // 16: sentiric.user.v1.UserService.CreateUser:input_type -> sentiric.user.v1.CreateUserRequest
-	9,  // 17: sentiric.user.v1.UserService.UpdateUser:input_type -> sentiric.user.v1.UpdateUserRequest
-	11, // 18: sentiric.user.v1.UserService.DeleteUser:input_type -> sentiric.user.v1.DeleteUserRequest
-	13, // 19: sentiric.user.v1.UserService.AddContact:input_type -> sentiric.user.v1.AddContactRequest
-	15, // 20: sentiric.user.v1.UserService.UpdateContact:input_type -> sentiric.user.v1.UpdateContactRequest
-	17, // 21: sentiric.user.v1.UserService.DeleteContact:input_type -> sentiric.user.v1.DeleteContactRequest
-	19, // 22: sentiric.user.v1.UserService.GetSipCredentials:input_type -> sentiric.user.v1.GetSipCredentialsRequest
-	21, // 23: sentiric.user.v1.UserService.CreateSipCredential:input_type -> sentiric.user.v1.CreateSipCredentialRequest
-	23, // 24: sentiric.user.v1.UserService.DeleteSipCredential:input_type -> sentiric.user.v1.DeleteSipCredentialRequest
-	4,  // 25: sentiric.user.v1.UserService.GetUser:output_type -> sentiric.user.v1.GetUserResponse
-	6,  // 26: sentiric.user.v1.UserService.FindUserByContact:output_type -> sentiric.user.v1.FindUserByContactResponse
-	8,  // 27: sentiric.user.v1.UserService.CreateUser:output_type -> sentiric.user.v1.CreateUserResponse
-	10, // 28: sentiric.user.v1.UserService.UpdateUser:output_type -> sentiric.user.v1.UpdateUserResponse
-	12, // 29: sentiric.user.v1.UserService.DeleteUser:output_type -> sentiric.user.v1.DeleteUserResponse
-	14, // 30: sentiric.user.v1.UserService.AddContact:output_type -> sentiric.user.v1.AddContactResponse
-	16, // 31: sentiric.user.v1.UserService.UpdateContact:output_type -> sentiric.user.v1.UpdateContactResponse
-	18, // 32: sentiric.user.v1.UserService.DeleteContact:output_type -> sentiric.user.v1.DeleteContactResponse
-	20, // 33: sentiric.user.v1.UserService.GetSipCredentials:output_type -> sentiric.user.v1.GetSipCredentialsResponse
-	22, // 34: sentiric.user.v1.UserService.CreateSipCredential:output_type -> sentiric.user.v1.CreateSipCredentialResponse
-	24, // 35: sentiric.user.v1.UserService.DeleteSipCredential:output_type -> sentiric.user.v1.DeleteSipCredentialResponse
-	25, // [25:36] is the sub-list for method output_type
-	14, // [14:25] is the sub-list for method input_type
-	14, // [14:14] is the sub-list for extension type_name
-	14, // [14:14] is the sub-list for extension extendee
-	0,  // [0:14] is the sub-list for field type_name
+	3,  // 1: sentiric.user.v1.GetAgentProfileResponse.profile:type_name -> sentiric.user.v1.AgentProfile
+	1,  // 2: sentiric.user.v1.GetUserResponse.user:type_name -> sentiric.user.v1.User
+	1,  // 3: sentiric.user.v1.FindUserByContactResponse.user:type_name -> sentiric.user.v1.User
+	28, // 4: sentiric.user.v1.CreateUserRequest.initial_contact:type_name -> sentiric.user.v1.CreateUserRequest.InitialContact
+	1,  // 5: sentiric.user.v1.CreateUserResponse.user:type_name -> sentiric.user.v1.User
+	1,  // 6: sentiric.user.v1.UpdateUserRequest.user:type_name -> sentiric.user.v1.User
+	29, // 7: sentiric.user.v1.UpdateUserRequest.update_mask:type_name -> google.protobuf.FieldMask
+	1,  // 8: sentiric.user.v1.UpdateUserResponse.user:type_name -> sentiric.user.v1.User
+	0,  // 9: sentiric.user.v1.AddContactRequest.contact:type_name -> sentiric.user.v1.Contact
+	1,  // 10: sentiric.user.v1.AddContactResponse.user:type_name -> sentiric.user.v1.User
+	0,  // 11: sentiric.user.v1.UpdateContactRequest.contact:type_name -> sentiric.user.v1.Contact
+	29, // 12: sentiric.user.v1.UpdateContactRequest.update_mask:type_name -> google.protobuf.FieldMask
+	1,  // 13: sentiric.user.v1.UpdateContactResponse.user:type_name -> sentiric.user.v1.User
+	1,  // 14: sentiric.user.v1.DeleteContactResponse.user:type_name -> sentiric.user.v1.User
+	6,  // 15: sentiric.user.v1.UserService.GetUser:input_type -> sentiric.user.v1.GetUserRequest
+	8,  // 16: sentiric.user.v1.UserService.FindUserByContact:input_type -> sentiric.user.v1.FindUserByContactRequest
+	10, // 17: sentiric.user.v1.UserService.CreateUser:input_type -> sentiric.user.v1.CreateUserRequest
+	12, // 18: sentiric.user.v1.UserService.UpdateUser:input_type -> sentiric.user.v1.UpdateUserRequest
+	14, // 19: sentiric.user.v1.UserService.DeleteUser:input_type -> sentiric.user.v1.DeleteUserRequest
+	16, // 20: sentiric.user.v1.UserService.AddContact:input_type -> sentiric.user.v1.AddContactRequest
+	18, // 21: sentiric.user.v1.UserService.UpdateContact:input_type -> sentiric.user.v1.UpdateContactRequest
+	20, // 22: sentiric.user.v1.UserService.DeleteContact:input_type -> sentiric.user.v1.DeleteContactRequest
+	22, // 23: sentiric.user.v1.UserService.GetSipCredentials:input_type -> sentiric.user.v1.GetSipCredentialsRequest
+	24, // 24: sentiric.user.v1.UserService.CreateSipCredential:input_type -> sentiric.user.v1.CreateSipCredentialRequest
+	26, // 25: sentiric.user.v1.UserService.DeleteSipCredential:input_type -> sentiric.user.v1.DeleteSipCredentialRequest
+	4,  // 26: sentiric.user.v1.UserService.GetAgentProfile:input_type -> sentiric.user.v1.GetAgentProfileRequest
+	7,  // 27: sentiric.user.v1.UserService.GetUser:output_type -> sentiric.user.v1.GetUserResponse
+	9,  // 28: sentiric.user.v1.UserService.FindUserByContact:output_type -> sentiric.user.v1.FindUserByContactResponse
+	11, // 29: sentiric.user.v1.UserService.CreateUser:output_type -> sentiric.user.v1.CreateUserResponse
+	13, // 30: sentiric.user.v1.UserService.UpdateUser:output_type -> sentiric.user.v1.UpdateUserResponse
+	15, // 31: sentiric.user.v1.UserService.DeleteUser:output_type -> sentiric.user.v1.DeleteUserResponse
+	17, // 32: sentiric.user.v1.UserService.AddContact:output_type -> sentiric.user.v1.AddContactResponse
+	19, // 33: sentiric.user.v1.UserService.UpdateContact:output_type -> sentiric.user.v1.UpdateContactResponse
+	21, // 34: sentiric.user.v1.UserService.DeleteContact:output_type -> sentiric.user.v1.DeleteContactResponse
+	23, // 35: sentiric.user.v1.UserService.GetSipCredentials:output_type -> sentiric.user.v1.GetSipCredentialsResponse
+	25, // 36: sentiric.user.v1.UserService.CreateSipCredential:output_type -> sentiric.user.v1.CreateSipCredentialResponse
+	27, // 37: sentiric.user.v1.UserService.DeleteSipCredential:output_type -> sentiric.user.v1.DeleteSipCredentialResponse
+	5,  // 38: sentiric.user.v1.UserService.GetAgentProfile:output_type -> sentiric.user.v1.GetAgentProfileResponse
+	27, // [27:39] is the sub-list for method output_type
+	15, // [15:27] is the sub-list for method input_type
+	15, // [15:15] is the sub-list for extension type_name
+	15, // [15:15] is the sub-list for extension extendee
+	0,  // [0:15] is the sub-list for field type_name
 }
 
 func init() { file_sentiric_user_v1_user_proto_init() }
@@ -1588,14 +1761,14 @@ func file_sentiric_user_v1_user_proto_init() {
 		return
 	}
 	file_sentiric_user_v1_user_proto_msgTypes[1].OneofWrappers = []any{}
-	file_sentiric_user_v1_user_proto_msgTypes[7].OneofWrappers = []any{}
+	file_sentiric_user_v1_user_proto_msgTypes[10].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sentiric_user_v1_user_proto_rawDesc), len(file_sentiric_user_v1_user_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   26,
+			NumMessages:   29,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

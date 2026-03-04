@@ -35,6 +35,7 @@ static const char* UserService_method_names[] = {
   "/sentiric.user.v1.UserService/GetSipCredentials",
   "/sentiric.user.v1.UserService/CreateSipCredential",
   "/sentiric.user.v1.UserService/DeleteSipCredential",
+  "/sentiric.user.v1.UserService/GetAgentProfile",
 };
 
 std::unique_ptr< UserService::Stub> UserService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -55,6 +56,7 @@ UserService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channe
   , rpcmethod_GetSipCredentials_(UserService_method_names[8], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_CreateSipCredential_(UserService_method_names[9], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_DeleteSipCredential_(UserService_method_names[10], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetAgentProfile_(UserService_method_names[11], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status UserService::Stub::GetUser(::grpc::ClientContext* context, const ::sentiric::user::v1::GetUserRequest& request, ::sentiric::user::v1::GetUserResponse* response) {
@@ -310,6 +312,29 @@ void UserService::Stub::async::DeleteSipCredential(::grpc::ClientContext* contex
   return result;
 }
 
+::grpc::Status UserService::Stub::GetAgentProfile(::grpc::ClientContext* context, const ::sentiric::user::v1::GetAgentProfileRequest& request, ::sentiric::user::v1::GetAgentProfileResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::sentiric::user::v1::GetAgentProfileRequest, ::sentiric::user::v1::GetAgentProfileResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetAgentProfile_, context, request, response);
+}
+
+void UserService::Stub::async::GetAgentProfile(::grpc::ClientContext* context, const ::sentiric::user::v1::GetAgentProfileRequest* request, ::sentiric::user::v1::GetAgentProfileResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::sentiric::user::v1::GetAgentProfileRequest, ::sentiric::user::v1::GetAgentProfileResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetAgentProfile_, context, request, response, std::move(f));
+}
+
+void UserService::Stub::async::GetAgentProfile(::grpc::ClientContext* context, const ::sentiric::user::v1::GetAgentProfileRequest* request, ::sentiric::user::v1::GetAgentProfileResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetAgentProfile_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::sentiric::user::v1::GetAgentProfileResponse>* UserService::Stub::PrepareAsyncGetAgentProfileRaw(::grpc::ClientContext* context, const ::sentiric::user::v1::GetAgentProfileRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::sentiric::user::v1::GetAgentProfileResponse, ::sentiric::user::v1::GetAgentProfileRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetAgentProfile_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::sentiric::user::v1::GetAgentProfileResponse>* UserService::Stub::AsyncGetAgentProfileRaw(::grpc::ClientContext* context, const ::sentiric::user::v1::GetAgentProfileRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncGetAgentProfileRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
 UserService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       UserService_method_names[0],
@@ -421,6 +446,16 @@ UserService::Service::Service() {
              ::sentiric::user::v1::DeleteSipCredentialResponse* resp) {
                return service->DeleteSipCredential(ctx, req, resp);
              }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      UserService_method_names[11],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< UserService::Service, ::sentiric::user::v1::GetAgentProfileRequest, ::sentiric::user::v1::GetAgentProfileResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](UserService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::sentiric::user::v1::GetAgentProfileRequest* req,
+             ::sentiric::user::v1::GetAgentProfileResponse* resp) {
+               return service->GetAgentProfile(ctx, req, resp);
+             }, this)));
 }
 
 UserService::Service::~Service() {
@@ -497,6 +532,13 @@ UserService::Service::~Service() {
 }
 
 ::grpc::Status UserService::Service::DeleteSipCredential(::grpc::ServerContext* context, const ::sentiric::user::v1::DeleteSipCredentialRequest* request, ::sentiric::user::v1::DeleteSipCredentialResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status UserService::Service::GetAgentProfile(::grpc::ServerContext* context, const ::sentiric::user::v1::GetAgentProfileRequest* request, ::sentiric::user::v1::GetAgentProfileResponse* response) {
   (void) context;
   (void) request;
   (void) response;
