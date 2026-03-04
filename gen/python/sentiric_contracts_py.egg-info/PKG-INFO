@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: sentiric-contracts-py
-Version: 1.17.0
+Version: 1.17.1
 Summary: Auto-generated Python gRPC stubs for the Sentiric platform.
 Home-page: https://github.com/sentiric/sentiric-contracts
 Author: Sentiric Team
@@ -14,6 +14,7 @@ Description-Content-Type: text/markdown
 License-File: LICENSE
 Requires-Dist: grpcio>=1.62.0
 Requires-Dist: google-api-python-client
+Requires-Dist: protobuf<8,>=7.34.0
 Dynamic: author
 Dynamic: author-email
 Dynamic: classifier

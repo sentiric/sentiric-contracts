@@ -1,4 +1,41 @@
 # 🚀 SENTIRIC PROTOBUF DEPENDENCY STANDARD
+
+## 📅 2026-03-04 – Protobuf 7 Migration
+
+### 🔥 Neden?
+
+`buf generate` Python plugin'i Protobuf 7.34.0 ile stub üretmeye başladı.
+
+Protobuf kuralı:
+
+> Runtime version < Gencode version olamaz.
+
+Microservislerde kullanılan:
+
+```txt
+protobuf>=5.26.1,<7.0.0
+```
+
+runtime mismatch hatasına yol açtı.
+
+### ✅ Karar
+
+Platform standardı güncellendi:
+
+```txt
+protobuf>=7.34.0,<8.0.0
+```
+
+Contracts artık protobuf bağımsız değildir;
+gencode versiyonuyla uyumlu runtime açıkça belirtilmelidir.
+
+### 🎯 Etki
+
+* Tüm microservisler protobuf 7.x kullanmalıdır.
+* 5.x veya 6.x range artık desteklenmez.
+* Bu değişiklik toolchain drift kaynaklı hataları önlemek için yapılmıştır.
+
+
 # 📅 Lessons Learned - 2025-01-20
 
 ## 🎯 PROBLEM ÖZETİ & LESSONS LEARNED

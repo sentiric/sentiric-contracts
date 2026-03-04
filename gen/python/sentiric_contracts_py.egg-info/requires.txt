@@ -1,2 +1,3 @@
 grpcio>=1.62.0
 google-api-python-client
+protobuf<8,>=7.34.0
