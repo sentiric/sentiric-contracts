@@ -51,6 +51,11 @@ pub struct ConversationConfig {
     pub session_id: ::prost::alloc::string::String,
     #[prost(string, tag="2")]
     pub user_id: ::prost::alloc::string::String,
+    /// \[MİMARİ DÜZELTME\]: Dialog Service'in DB'den doğru promptu çekmesi için
+    #[prost(string, tag="3")]
+    pub language_code: ::prost::alloc::string::String,
+    #[prost(string, tag="4")]
+    pub system_prompt_id: ::prost::alloc::string::String,
 }
 /// --- Legacy Messages ---
 #[derive(Clone, PartialEq, ::prost::Message)]

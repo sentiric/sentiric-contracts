@@ -800,7 +800,9 @@ proto.sentiric.dialog.v1.ConversationConfig.prototype.toObject = function(opt_in
 proto.sentiric.dialog.v1.ConversationConfig.toObject = function(includeInstance, msg) {
   var f, obj = {
 sessionId: jspb.Message.getFieldWithDefault(msg, 1, ""),
-userId: jspb.Message.getFieldWithDefault(msg, 2, "")
+userId: jspb.Message.getFieldWithDefault(msg, 2, ""),
+languageCode: jspb.Message.getFieldWithDefault(msg, 3, ""),
+systemPromptId: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
   if (includeInstance) {
@@ -845,6 +847,14 @@ proto.sentiric.dialog.v1.ConversationConfig.deserializeBinaryFromReader = functi
       var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setUserId(value);
       break;
+    case 3:
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
+      msg.setLanguageCode(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
+      msg.setSystemPromptId(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -888,6 +898,20 @@ proto.sentiric.dialog.v1.ConversationConfig.serializeBinaryToWriter = function(m
       f
     );
   }
+  f = message.getLanguageCode();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
+  f = message.getSystemPromptId();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
+      f
+    );
+  }
 };
 
 
@@ -924,6 +948,42 @@ proto.sentiric.dialog.v1.ConversationConfig.prototype.getUserId = function() {
  */
 proto.sentiric.dialog.v1.ConversationConfig.prototype.setUserId = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional string language_code = 3;
+ * @return {string}
+ */
+proto.sentiric.dialog.v1.ConversationConfig.prototype.getLanguageCode = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sentiric.dialog.v1.ConversationConfig} returns this
+ */
+proto.sentiric.dialog.v1.ConversationConfig.prototype.setLanguageCode = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional string system_prompt_id = 4;
+ * @return {string}
+ */
+proto.sentiric.dialog.v1.ConversationConfig.prototype.getSystemPromptId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sentiric.dialog.v1.ConversationConfig} returns this
+ */
+proto.sentiric.dialog.v1.ConversationConfig.prototype.setSystemPromptId = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 

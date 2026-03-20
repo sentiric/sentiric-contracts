@@ -626,6 +626,8 @@ class RunPipelineRequest final :
     kSessionIdFieldNumber = 2,
     kSttModelIdFieldNumber = 3,
     kTtsModelIdFieldNumber = 4,
+    kLanguageCodeFieldNumber = 7,
+    kSystemPromptIdFieldNumber = 8,
     kMediaInfoFieldNumber = 6,
     kRecordSessionFieldNumber = 5,
   };
@@ -685,6 +687,34 @@ class RunPipelineRequest final :
   std::string* _internal_mutable_tts_model_id();
   public:
 
+  // string language_code = 7;
+  void clear_language_code();
+  const std::string& language_code() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_language_code(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_language_code();
+  PROTOBUF_NODISCARD std::string* release_language_code();
+  void set_allocated_language_code(std::string* language_code);
+  private:
+  const std::string& _internal_language_code() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_language_code(const std::string& value);
+  std::string* _internal_mutable_language_code();
+  public:
+
+  // string system_prompt_id = 8;
+  void clear_system_prompt_id();
+  const std::string& system_prompt_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_system_prompt_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_system_prompt_id();
+  PROTOBUF_NODISCARD std::string* release_system_prompt_id();
+  void set_allocated_system_prompt_id(std::string* system_prompt_id);
+  private:
+  const std::string& _internal_system_prompt_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_system_prompt_id(const std::string& value);
+  std::string* _internal_mutable_system_prompt_id();
+  public:
+
   // .sentiric.event.v1.MediaInfo media_info = 6;
   bool has_media_info() const;
   private:
@@ -724,6 +754,8 @@ class RunPipelineRequest final :
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr session_id_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr stt_model_id_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr tts_model_id_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr language_code_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr system_prompt_id_;
     ::sentiric::event::v1::MediaInfo* media_info_;
     bool record_session_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
@@ -3411,6 +3443,106 @@ inline void RunPipelineRequest::set_allocated_media_info(::sentiric::event::v1::
   }
   _impl_.media_info_ = media_info;
   // @@protoc_insertion_point(field_set_allocated:sentiric.telephony.v1.RunPipelineRequest.media_info)
+}
+
+// string language_code = 7;
+inline void RunPipelineRequest::clear_language_code() {
+  _impl_.language_code_.ClearToEmpty();
+}
+inline const std::string& RunPipelineRequest::language_code() const {
+  // @@protoc_insertion_point(field_get:sentiric.telephony.v1.RunPipelineRequest.language_code)
+  return _internal_language_code();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void RunPipelineRequest::set_language_code(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.language_code_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.telephony.v1.RunPipelineRequest.language_code)
+}
+inline std::string* RunPipelineRequest::mutable_language_code() {
+  std::string* _s = _internal_mutable_language_code();
+  // @@protoc_insertion_point(field_mutable:sentiric.telephony.v1.RunPipelineRequest.language_code)
+  return _s;
+}
+inline const std::string& RunPipelineRequest::_internal_language_code() const {
+  return _impl_.language_code_.Get();
+}
+inline void RunPipelineRequest::_internal_set_language_code(const std::string& value) {
+  
+  _impl_.language_code_.Set(value, GetArenaForAllocation());
+}
+inline std::string* RunPipelineRequest::_internal_mutable_language_code() {
+  
+  return _impl_.language_code_.Mutable(GetArenaForAllocation());
+}
+inline std::string* RunPipelineRequest::release_language_code() {
+  // @@protoc_insertion_point(field_release:sentiric.telephony.v1.RunPipelineRequest.language_code)
+  return _impl_.language_code_.Release();
+}
+inline void RunPipelineRequest::set_allocated_language_code(std::string* language_code) {
+  if (language_code != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.language_code_.SetAllocated(language_code, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.language_code_.IsDefault()) {
+    _impl_.language_code_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.telephony.v1.RunPipelineRequest.language_code)
+}
+
+// string system_prompt_id = 8;
+inline void RunPipelineRequest::clear_system_prompt_id() {
+  _impl_.system_prompt_id_.ClearToEmpty();
+}
+inline const std::string& RunPipelineRequest::system_prompt_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.telephony.v1.RunPipelineRequest.system_prompt_id)
+  return _internal_system_prompt_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void RunPipelineRequest::set_system_prompt_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.system_prompt_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.telephony.v1.RunPipelineRequest.system_prompt_id)
+}
+inline std::string* RunPipelineRequest::mutable_system_prompt_id() {
+  std::string* _s = _internal_mutable_system_prompt_id();
+  // @@protoc_insertion_point(field_mutable:sentiric.telephony.v1.RunPipelineRequest.system_prompt_id)
+  return _s;
+}
+inline const std::string& RunPipelineRequest::_internal_system_prompt_id() const {
+  return _impl_.system_prompt_id_.Get();
+}
+inline void RunPipelineRequest::_internal_set_system_prompt_id(const std::string& value) {
+  
+  _impl_.system_prompt_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* RunPipelineRequest::_internal_mutable_system_prompt_id() {
+  
+  return _impl_.system_prompt_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* RunPipelineRequest::release_system_prompt_id() {
+  // @@protoc_insertion_point(field_release:sentiric.telephony.v1.RunPipelineRequest.system_prompt_id)
+  return _impl_.system_prompt_id_.Release();
+}
+inline void RunPipelineRequest::set_allocated_system_prompt_id(std::string* system_prompt_id) {
+  if (system_prompt_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.system_prompt_id_.SetAllocated(system_prompt_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.system_prompt_id_.IsDefault()) {
+    _impl_.system_prompt_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.telephony.v1.RunPipelineRequest.system_prompt_id)
 }
 
 // -------------------------------------------------------------------

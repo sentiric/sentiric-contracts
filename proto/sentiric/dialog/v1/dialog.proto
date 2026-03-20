@@ -45,10 +45,30 @@ message StreamConversationResponse {
 message ConversationConfig {
   string session_id = 1;
   string user_id = 2;
+
+  // [MİMARİ DÜZELTME]: Dialog Service'in DB'den doğru promptu çekmesi için
+  string language_code = 3;
+  string system_prompt_id = 4;
 }
 
 // --- Legacy Messages ---
-message StartDialogRequest { sentiric.data.v1.CallContext context = 1; }
-message StartDialogResponse { string response_text = 1; optional string audio_uri = 2; string next_action = 3; sentiric.data.v1.CallContext updated_context = 4; }
-message ProcessUserInputRequest { string call_id = 1; string text = 2; optional bytes audio_data = 3; }
-message ProcessUserInputResponse { string response_text = 1; optional string audio_uri = 2; string next_action = 3; sentiric.data.v1.CallContext updated_context = 4; }
+message StartDialogRequest {
+  sentiric.data.v1.CallContext context = 1;
+}
+message StartDialogResponse {
+  string response_text = 1;
+  optional string audio_uri = 2;
+  string next_action = 3;
+  sentiric.data.v1.CallContext updated_context = 4;
+}
+message ProcessUserInputRequest {
+  string call_id = 1;
+  string text = 2;
+  optional bytes audio_data = 3;
+}
+message ProcessUserInputResponse {
+  string response_text = 1;
+  optional string audio_uri = 2;
+  string next_action = 3;
+  sentiric.data.v1.CallContext updated_context = 4;
+}

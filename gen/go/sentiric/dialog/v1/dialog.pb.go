@@ -242,11 +242,14 @@ func (*StreamConversationResponse_IsFinalResponse) isStreamConversationResponse_
 func (*StreamConversationResponse_ActionCommand) isStreamConversationResponse_Payload() {}
 
 type ConversationConfig struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	SessionId     string                 `protobuf:"bytes,1,opt,name=session_id,json=sessionId,proto3" json:"session_id,omitempty"`
-	UserId        string                 `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state     protoimpl.MessageState `protogen:"open.v1"`
+	SessionId string                 `protobuf:"bytes,1,opt,name=session_id,json=sessionId,proto3" json:"session_id,omitempty"`
+	UserId    string                 `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	// [MİMARİ DÜZELTME]: Dialog Service'in DB'den doğru promptu çekmesi için
+	LanguageCode   string `protobuf:"bytes,3,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
+	SystemPromptId string `protobuf:"bytes,4,opt,name=system_prompt_id,json=systemPromptId,proto3" json:"system_prompt_id,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *ConversationConfig) Reset() {
@@ -289,6 +292,20 @@ func (x *ConversationConfig) GetSessionId() string {
 func (x *ConversationConfig) GetUserId() string {
 	if x != nil {
 		return x.UserId
+	}
+	return ""
+}
+
+func (x *ConversationConfig) GetLanguageCode() string {
+	if x != nil {
+		return x.LanguageCode
+	}
+	return ""
+}
+
+func (x *ConversationConfig) GetSystemPromptId() string {
+	if x != nil {
+		return x.SystemPromptId
 	}
 	return ""
 }
@@ -550,11 +567,13 @@ const file_sentiric_dialog_v1_dialog_proto_rawDesc = "" +
 	"\taudio_url\x18\x02 \x01(\tH\x00R\baudioUrl\x12,\n" +
 	"\x11is_final_response\x18\x03 \x01(\bH\x00R\x0fisFinalResponse\x12'\n" +
 	"\x0eaction_command\x18\x04 \x01(\tH\x00R\ractionCommandB\t\n" +
-	"\apayload\"L\n" +
+	"\apayload\"\x9b\x01\n" +
 	"\x12ConversationConfig\x12\x1d\n" +
 	"\n" +
 	"session_id\x18\x01 \x01(\tR\tsessionId\x12\x17\n" +
-	"\auser_id\x18\x02 \x01(\tR\x06userId\"M\n" +
+	"\auser_id\x18\x02 \x01(\tR\x06userId\x12#\n" +
+	"\rlanguage_code\x18\x03 \x01(\tR\flanguageCode\x12(\n" +
+	"\x10system_prompt_id\x18\x04 \x01(\tR\x0esystemPromptId\"M\n" +
 	"\x12StartDialogRequest\x127\n" +
 	"\acontext\x18\x01 \x01(\v2\x1d.sentiric.data.v1.CallContextR\acontext\"\xd3\x01\n" +
 	"\x13StartDialogResponse\x12#\n" +

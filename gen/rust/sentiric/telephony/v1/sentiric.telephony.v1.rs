@@ -37,6 +37,11 @@ pub struct RunPipelineRequest {
     /// Medya bağlantı bilgileri
     #[prost(message, optional, tag="6")]
     pub media_info: ::core::option::Option<super::super::event::v1::MediaInfo>,
+    /// \[MİMARİ DÜZELTME\]: Dil ve Persona aktarımı
+    #[prost(string, tag="7")]
+    pub language_code: ::prost::alloc::string::String,
+    #[prost(string, tag="8")]
+    pub system_prompt_id: ::prost::alloc::string::String,
 }
 #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct RunPipelineResponse {

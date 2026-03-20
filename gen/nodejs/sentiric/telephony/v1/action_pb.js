@@ -757,7 +757,9 @@ sessionId: jspb.Message.getFieldWithDefault(msg, 2, ""),
 sttModelId: jspb.Message.getFieldWithDefault(msg, 3, ""),
 ttsModelId: jspb.Message.getFieldWithDefault(msg, 4, ""),
 recordSession: jspb.Message.getBooleanFieldWithDefault(msg, 5, false),
-mediaInfo: (f = msg.getMediaInfo()) && sentiric_event_v1_event_pb.MediaInfo.toObject(includeInstance, f)
+mediaInfo: (f = msg.getMediaInfo()) && sentiric_event_v1_event_pb.MediaInfo.toObject(includeInstance, f),
+languageCode: jspb.Message.getFieldWithDefault(msg, 7, ""),
+systemPromptId: jspb.Message.getFieldWithDefault(msg, 8, "")
   };
 
   if (includeInstance) {
@@ -818,6 +820,14 @@ proto.sentiric.telephony.v1.RunPipelineRequest.deserializeBinaryFromReader = fun
       var value = new sentiric_event_v1_event_pb.MediaInfo;
       reader.readMessage(value,sentiric_event_v1_event_pb.MediaInfo.deserializeBinaryFromReader);
       msg.setMediaInfo(value);
+      break;
+    case 7:
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
+      msg.setLanguageCode(value);
+      break;
+    case 8:
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
+      msg.setSystemPromptId(value);
       break;
     default:
       reader.skipField();
@@ -889,6 +899,20 @@ proto.sentiric.telephony.v1.RunPipelineRequest.serializeBinaryToWriter = functio
       6,
       f,
       sentiric_event_v1_event_pb.MediaInfo.serializeBinaryToWriter
+    );
+  }
+  f = message.getLanguageCode();
+  if (f.length > 0) {
+    writer.writeString(
+      7,
+      f
+    );
+  }
+  f = message.getSystemPromptId();
+  if (f.length > 0) {
+    writer.writeString(
+      8,
+      f
     );
   }
 };
@@ -1018,6 +1042,42 @@ proto.sentiric.telephony.v1.RunPipelineRequest.prototype.clearMediaInfo = functi
  */
 proto.sentiric.telephony.v1.RunPipelineRequest.prototype.hasMediaInfo = function() {
   return jspb.Message.getField(this, 6) != null;
+};
+
+
+/**
+ * optional string language_code = 7;
+ * @return {string}
+ */
+proto.sentiric.telephony.v1.RunPipelineRequest.prototype.getLanguageCode = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sentiric.telephony.v1.RunPipelineRequest} returns this
+ */
+proto.sentiric.telephony.v1.RunPipelineRequest.prototype.setLanguageCode = function(value) {
+  return jspb.Message.setProto3StringField(this, 7, value);
+};
+
+
+/**
+ * optional string system_prompt_id = 8;
+ * @return {string}
+ */
+proto.sentiric.telephony.v1.RunPipelineRequest.prototype.getSystemPromptId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sentiric.telephony.v1.RunPipelineRequest} returns this
+ */
+proto.sentiric.telephony.v1.RunPipelineRequest.prototype.setSystemPromptId = function(value) {
+  return jspb.Message.setProto3StringField(this, 8, value);
 };
 
 

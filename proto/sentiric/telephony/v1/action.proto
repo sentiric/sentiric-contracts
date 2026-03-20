@@ -28,7 +28,7 @@ message BridgeCallRequest {
   string call_id_a = 1; // Bağlanacak birinci taraf (Genellikle müşteri)
   string target_uri = 2; // Bağlanılacak hedef (Örn: sip:agent@10.0.0.1)
   // Veya mevcut iki call_id'yi bağlamak için opsiyonel alan:
-  string call_id_b = 3; 
+  string call_id_b = 3;
 }
 
 message BridgeCallResponse {
@@ -41,12 +41,16 @@ message RunPipelineRequest {
   string call_id = 1;
   string session_id = 2;
   // Hangi AI modellerinin kullanılacağı
-  string stt_model_id = 3; 
+  string stt_model_id = 3;
   string tts_model_id = 4;
   bool record_session = 5;
-  
+
   // Medya bağlantı bilgileri
   sentiric.event.v1.MediaInfo media_info = 6;
+
+  // [MİMARİ DÜZELTME]: Dil ve Persona aktarımı
+  string language_code = 7;
+  string system_prompt_id = 8;
 }
 
 message RunPipelineResponse {
@@ -67,7 +71,7 @@ message SpeakTextRequest {
   string text = 2;
   string voice_id = 3; // örn: "coqui:default"
   // Sesin nereye basılacağı bilgisi
-  sentiric.event.v1.MediaInfo media_info = 4; 
+  sentiric.event.v1.MediaInfo media_info = 4;
 }
 
 message SpeakTextResponse {
@@ -76,46 +80,46 @@ message SpeakTextResponse {
 }
 
 // --- Diğer Mesajlar ---
-message PlayAudioRequest { 
-  string call_id = 1; 
-  string audio_uri = 2; 
+message PlayAudioRequest {
+  string call_id = 1;
+  string audio_uri = 2;
 }
 
-message PlayAudioResponse { 
-  bool success = 1; 
+message PlayAudioResponse {
+  bool success = 1;
 }
 
-message TerminateCallRequest { 
-  string call_id = 1; 
-  string reason = 2; 
+message TerminateCallRequest {
+  string call_id = 1;
+  string reason = 2;
 }
 
-message TerminateCallResponse { 
-  bool success = 1; 
+message TerminateCallResponse {
+  bool success = 1;
 }
 
-message SendTextMessageRequest { 
-  string to = 1; 
-  string body = 2; 
+message SendTextMessageRequest {
+  string to = 1;
+  string body = 2;
 }
 
-message SendTextMessageResponse { 
-  bool success = 1; 
+message SendTextMessageResponse {
+  bool success = 1;
 }
 
-message StartRecordingRequest { 
-  string call_id = 1; 
-  string output_uri = 2; 
+message StartRecordingRequest {
+  string call_id = 1;
+  string output_uri = 2;
 }
 
-message StartRecordingResponse { 
-  bool success = 1; 
+message StartRecordingResponse {
+  bool success = 1;
 }
 
-message StopRecordingRequest { 
-  string call_id = 1; 
+message StopRecordingRequest {
+  string call_id = 1;
 }
 
-message StopRecordingResponse { 
-  bool success = 1; 
+message StopRecordingResponse {
+  bool success = 1;
 }

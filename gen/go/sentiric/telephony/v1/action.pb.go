@@ -201,9 +201,12 @@ type RunPipelineRequest struct {
 	TtsModelId    string `protobuf:"bytes,4,opt,name=tts_model_id,json=ttsModelId,proto3" json:"tts_model_id,omitempty"`
 	RecordSession bool   `protobuf:"varint,5,opt,name=record_session,json=recordSession,proto3" json:"record_session,omitempty"`
 	// Medya bağlantı bilgileri
-	MediaInfo     *v1.MediaInfo `protobuf:"bytes,6,opt,name=media_info,json=mediaInfo,proto3" json:"media_info,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	MediaInfo *v1.MediaInfo `protobuf:"bytes,6,opt,name=media_info,json=mediaInfo,proto3" json:"media_info,omitempty"`
+	// [MİMARİ DÜZELTME]: Dil ve Persona aktarımı
+	LanguageCode   string `protobuf:"bytes,7,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
+	SystemPromptId string `protobuf:"bytes,8,opt,name=system_prompt_id,json=systemPromptId,proto3" json:"system_prompt_id,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *RunPipelineRequest) Reset() {
@@ -276,6 +279,20 @@ func (x *RunPipelineRequest) GetMediaInfo() *v1.MediaInfo {
 		return x.MediaInfo
 	}
 	return nil
+}
+
+func (x *RunPipelineRequest) GetLanguageCode() string {
+	if x != nil {
+		return x.LanguageCode
+	}
+	return ""
+}
+
+func (x *RunPipelineRequest) GetSystemPromptId() string {
+	if x != nil {
+		return x.SystemPromptId
+	}
+	return ""
 }
 
 type RunPipelineResponse struct {
@@ -937,7 +954,7 @@ const file_sentiric_telephony_v1_action_proto_rawDesc = "" +
 	"\tcall_id_b\x18\x03 \x01(\tR\acallIdB\"H\n" +
 	"\x12BridgeCallResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x18\n" +
-	"\amessage\x18\x02 \x01(\tR\amessage\"\xf4\x01\n" +
+	"\amessage\x18\x02 \x01(\tR\amessage\"\xc3\x02\n" +
 	"\x12RunPipelineRequest\x12\x17\n" +
 	"\acall_id\x18\x01 \x01(\tR\x06callId\x12\x1d\n" +
 	"\n" +
@@ -948,7 +965,9 @@ const file_sentiric_telephony_v1_action_proto_rawDesc = "" +
 	"ttsModelId\x12%\n" +
 	"\x0erecord_session\x18\x05 \x01(\bR\rrecordSession\x12;\n" +
 	"\n" +
-	"media_info\x18\x06 \x01(\v2\x1c.sentiric.event.v1.MediaInfoR\tmediaInfo\"\xe2\x01\n" +
+	"media_info\x18\x06 \x01(\v2\x1c.sentiric.event.v1.MediaInfoR\tmediaInfo\x12#\n" +
+	"\rlanguage_code\x18\a \x01(\tR\flanguageCode\x12(\n" +
+	"\x10system_prompt_id\x18\b \x01(\tR\x0esystemPromptId\"\xe2\x01\n" +
 	"\x13RunPipelineResponse\x12F\n" +
 	"\x05state\x18\x01 \x01(\x0e20.sentiric.telephony.v1.RunPipelineResponse.StateR\x05state\x12\x18\n" +
 	"\amessage\x18\x02 \x01(\tR\amessage\"i\n" +

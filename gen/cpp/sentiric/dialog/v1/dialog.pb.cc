@@ -55,6 +55,8 @@ PROTOBUF_CONSTEXPR ConversationConfig::ConversationConfig(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.session_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.user_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.language_code_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.system_prompt_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct ConversationConfigDefaultTypeInternal {
   PROTOBUF_CONSTEXPR ConversationConfigDefaultTypeInternal()
@@ -165,6 +167,8 @@ const uint32_t TableStruct_sentiric_2fdialog_2fv1_2fdialog_2eproto::offsets[] PR
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::sentiric::dialog::v1::ConversationConfig, _impl_.session_id_),
   PROTOBUF_FIELD_OFFSET(::sentiric::dialog::v1::ConversationConfig, _impl_.user_id_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialog::v1::ConversationConfig, _impl_.language_code_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::dialog::v1::ConversationConfig, _impl_.system_prompt_id_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::sentiric::dialog::v1::StartDialogRequest, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -217,10 +221,10 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 0, -1, -1, sizeof(::sentiric::dialog::v1::StreamConversationRequest)},
   { 10, -1, -1, sizeof(::sentiric::dialog::v1::StreamConversationResponse)},
   { 21, -1, -1, sizeof(::sentiric::dialog::v1::ConversationConfig)},
-  { 29, -1, -1, sizeof(::sentiric::dialog::v1::StartDialogRequest)},
-  { 36, 46, -1, sizeof(::sentiric::dialog::v1::StartDialogResponse)},
-  { 50, 59, -1, sizeof(::sentiric::dialog::v1::ProcessUserInputRequest)},
-  { 62, 72, -1, sizeof(::sentiric::dialog::v1::ProcessUserInputResponse)},
+  { 31, -1, -1, sizeof(::sentiric::dialog::v1::StartDialogRequest)},
+  { 38, 48, -1, sizeof(::sentiric::dialog::v1::StartDialogResponse)},
+  { 52, 61, -1, sizeof(::sentiric::dialog::v1::ProcessUserInputRequest)},
+  { 64, 74, -1, sizeof(::sentiric::dialog::v1::ProcessUserInputResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -243,39 +247,40 @@ const char descriptor_table_protodef_sentiric_2fdialog_2fv1_2fdialog_2eproto[] P
   "eamConversationResponse\022\027\n\rtext_response"
   "\030\001 \001(\tH\000\022\023\n\taudio_url\030\002 \001(\tH\000\022\033\n\021is_fina"
   "l_response\030\003 \001(\010H\000\022\030\n\016action_command\030\004 \001"
-  "(\tH\000B\t\n\007payload\"9\n\022ConversationConfig\022\022\n"
-  "\nsession_id\030\001 \001(\t\022\017\n\007user_id\030\002 \001(\t\"D\n\022St"
-  "artDialogRequest\022.\n\007context\030\001 \001(\0132\035.sent"
-  "iric.data.v1.CallContext\"\237\001\n\023StartDialog"
-  "Response\022\025\n\rresponse_text\030\001 \001(\t\022\026\n\taudio"
-  "_uri\030\002 \001(\tH\000\210\001\001\022\023\n\013next_action\030\003 \001(\t\0226\n\017"
-  "updated_context\030\004 \001(\0132\035.sentiric.data.v1"
-  ".CallContextB\014\n\n_audio_uri\"`\n\027ProcessUse"
-  "rInputRequest\022\017\n\007call_id\030\001 \001(\t\022\014\n\004text\030\002"
-  " \001(\t\022\027\n\naudio_data\030\003 \001(\014H\000\210\001\001B\r\n\013_audio_"
-  "data\"\244\001\n\030ProcessUserInputResponse\022\025\n\rres"
-  "ponse_text\030\001 \001(\t\022\026\n\taudio_uri\030\002 \001(\tH\000\210\001\001"
-  "\022\023\n\013next_action\030\003 \001(\t\0226\n\017updated_context"
-  "\030\004 \001(\0132\035.sentiric.data.v1.CallContextB\014\n"
-  "\n_audio_uri2\327\002\n\rDialogService\022^\n\013StartDi"
-  "alog\022&.sentiric.dialog.v1.StartDialogReq"
-  "uest\032\'.sentiric.dialog.v1.StartDialogRes"
-  "ponse\022m\n\020ProcessUserInput\022+.sentiric.dia"
-  "log.v1.ProcessUserInputRequest\032,.sentiri"
-  "c.dialog.v1.ProcessUserInputResponse\022w\n\022"
-  "StreamConversation\022-.sentiric.dialog.v1."
-  "StreamConversationRequest\032..sentiric.dia"
-  "log.v1.StreamConversationResponse(\0010\001BKZ"
-  "Igithub.com/sentiric/sentiric-contracts/"
-  "gen/go/sentiric/dialog/v1;dialogv1b\006prot"
-  "o3"
+  "(\tH\000B\t\n\007payload\"j\n\022ConversationConfig\022\022\n"
+  "\nsession_id\030\001 \001(\t\022\017\n\007user_id\030\002 \001(\t\022\025\n\rla"
+  "nguage_code\030\003 \001(\t\022\030\n\020system_prompt_id\030\004 "
+  "\001(\t\"D\n\022StartDialogRequest\022.\n\007context\030\001 \001"
+  "(\0132\035.sentiric.data.v1.CallContext\"\237\001\n\023St"
+  "artDialogResponse\022\025\n\rresponse_text\030\001 \001(\t"
+  "\022\026\n\taudio_uri\030\002 \001(\tH\000\210\001\001\022\023\n\013next_action\030"
+  "\003 \001(\t\0226\n\017updated_context\030\004 \001(\0132\035.sentiri"
+  "c.data.v1.CallContextB\014\n\n_audio_uri\"`\n\027P"
+  "rocessUserInputRequest\022\017\n\007call_id\030\001 \001(\t\022"
+  "\014\n\004text\030\002 \001(\t\022\027\n\naudio_data\030\003 \001(\014H\000\210\001\001B\r"
+  "\n\013_audio_data\"\244\001\n\030ProcessUserInputRespon"
+  "se\022\025\n\rresponse_text\030\001 \001(\t\022\026\n\taudio_uri\030\002"
+  " \001(\tH\000\210\001\001\022\023\n\013next_action\030\003 \001(\t\0226\n\017update"
+  "d_context\030\004 \001(\0132\035.sentiric.data.v1.CallC"
+  "ontextB\014\n\n_audio_uri2\327\002\n\rDialogService\022^"
+  "\n\013StartDialog\022&.sentiric.dialog.v1.Start"
+  "DialogRequest\032\'.sentiric.dialog.v1.Start"
+  "DialogResponse\022m\n\020ProcessUserInput\022+.sen"
+  "tiric.dialog.v1.ProcessUserInputRequest\032"
+  ",.sentiric.dialog.v1.ProcessUserInputRes"
+  "ponse\022w\n\022StreamConversation\022-.sentiric.d"
+  "ialog.v1.StreamConversationRequest\032..sen"
+  "tiric.dialog.v1.StreamConversationRespon"
+  "se(\0010\001BKZIgithub.com/sentiric/sentiric-c"
+  "ontracts/gen/go/sentiric/dialog/v1;dialo"
+  "gv1b\006proto3"
   ;
 static const ::_pbi::DescriptorTable* const descriptor_table_sentiric_2fdialog_2fv1_2fdialog_2eproto_deps[1] = {
   &::descriptor_table_sentiric_2fdata_2fv1_2fcontext_2eproto,
 };
 static ::_pbi::once_flag descriptor_table_sentiric_2fdialog_2fv1_2fdialog_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_sentiric_2fdialog_2fv1_2fdialog_2eproto = {
-    false, false, 1362, descriptor_table_protodef_sentiric_2fdialog_2fv1_2fdialog_2eproto,
+    false, false, 1411, descriptor_table_protodef_sentiric_2fdialog_2fv1_2fdialog_2eproto,
     "sentiric/dialog/v1/dialog.proto",
     &descriptor_table_sentiric_2fdialog_2fv1_2fdialog_2eproto_once, descriptor_table_sentiric_2fdialog_2fv1_2fdialog_2eproto_deps, 1, 7,
     schemas, file_default_instances, TableStruct_sentiric_2fdialog_2fv1_2fdialog_2eproto::offsets,
@@ -964,6 +969,8 @@ ConversationConfig::ConversationConfig(const ConversationConfig& from)
   new (&_impl_) Impl_{
       decltype(_impl_.session_id_){}
     , decltype(_impl_.user_id_){}
+    , decltype(_impl_.language_code_){}
+    , decltype(_impl_.system_prompt_id_){}
     , /*decltype(_impl_._cached_size_)*/{}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
@@ -983,6 +990,22 @@ ConversationConfig::ConversationConfig(const ConversationConfig& from)
     _this->_impl_.user_id_.Set(from._internal_user_id(), 
       _this->GetArenaForAllocation());
   }
+  _impl_.language_code_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.language_code_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_language_code().empty()) {
+    _this->_impl_.language_code_.Set(from._internal_language_code(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.system_prompt_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.system_prompt_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_system_prompt_id().empty()) {
+    _this->_impl_.system_prompt_id_.Set(from._internal_system_prompt_id(), 
+      _this->GetArenaForAllocation());
+  }
   // @@protoc_insertion_point(copy_constructor:sentiric.dialog.v1.ConversationConfig)
 }
 
@@ -993,6 +1016,8 @@ inline void ConversationConfig::SharedCtor(
   new (&_impl_) Impl_{
       decltype(_impl_.session_id_){}
     , decltype(_impl_.user_id_){}
+    , decltype(_impl_.language_code_){}
+    , decltype(_impl_.system_prompt_id_){}
     , /*decltype(_impl_._cached_size_)*/{}
   };
   _impl_.session_id_.InitDefault();
@@ -1002,6 +1027,14 @@ inline void ConversationConfig::SharedCtor(
   _impl_.user_id_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
     _impl_.user_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.language_code_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.language_code_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.system_prompt_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.system_prompt_id_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
@@ -1018,6 +1051,8 @@ inline void ConversationConfig::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.session_id_.Destroy();
   _impl_.user_id_.Destroy();
+  _impl_.language_code_.Destroy();
+  _impl_.system_prompt_id_.Destroy();
 }
 
 void ConversationConfig::SetCachedSize(int size) const {
@@ -1032,6 +1067,8 @@ void ConversationConfig::Clear() {
 
   _impl_.session_id_.ClearToEmpty();
   _impl_.user_id_.ClearToEmpty();
+  _impl_.language_code_.ClearToEmpty();
+  _impl_.system_prompt_id_.ClearToEmpty();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -1058,6 +1095,26 @@ const char* ConversationConfig::_InternalParse(const char* ptr, ::_pbi::ParseCon
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
           CHK_(::_pbi::VerifyUTF8(str, "sentiric.dialog.v1.ConversationConfig.user_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string language_code = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_language_code();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.dialog.v1.ConversationConfig.language_code"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string system_prompt_id = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          auto str = _internal_mutable_system_prompt_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.dialog.v1.ConversationConfig.system_prompt_id"));
         } else
           goto handle_unusual;
         continue;
@@ -1110,6 +1167,26 @@ uint8_t* ConversationConfig::_InternalSerialize(
         2, this->_internal_user_id(), target);
   }
 
+  // string language_code = 3;
+  if (!this->_internal_language_code().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_language_code().data(), static_cast<int>(this->_internal_language_code().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.dialog.v1.ConversationConfig.language_code");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_language_code(), target);
+  }
+
+  // string system_prompt_id = 4;
+  if (!this->_internal_system_prompt_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_system_prompt_id().data(), static_cast<int>(this->_internal_system_prompt_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.dialog.v1.ConversationConfig.system_prompt_id");
+    target = stream->WriteStringMaybeAliased(
+        4, this->_internal_system_prompt_id(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -1140,6 +1217,20 @@ size_t ConversationConfig::ByteSizeLong() const {
         this->_internal_user_id());
   }
 
+  // string language_code = 3;
+  if (!this->_internal_language_code().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_language_code());
+  }
+
+  // string system_prompt_id = 4;
+  if (!this->_internal_system_prompt_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_system_prompt_id());
+  }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
@@ -1163,6 +1254,12 @@ void ConversationConfig::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, con
   }
   if (!from._internal_user_id().empty()) {
     _this->_internal_set_user_id(from._internal_user_id());
+  }
+  if (!from._internal_language_code().empty()) {
+    _this->_internal_set_language_code(from._internal_language_code());
+  }
+  if (!from._internal_system_prompt_id().empty()) {
+    _this->_internal_set_system_prompt_id(from._internal_system_prompt_id());
   }
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -1190,6 +1287,14 @@ void ConversationConfig::InternalSwap(ConversationConfig* other) {
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &_impl_.user_id_, lhs_arena,
       &other->_impl_.user_id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.language_code_, lhs_arena,
+      &other->_impl_.language_code_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.system_prompt_id_, lhs_arena,
+      &other->_impl_.system_prompt_id_, rhs_arena
   );
 }
 
