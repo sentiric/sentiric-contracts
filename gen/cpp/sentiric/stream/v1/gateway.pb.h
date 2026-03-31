@@ -684,6 +684,7 @@ class SessionConfig final :
     kTokenFieldNumber = 1,
     kLanguageFieldNumber = 2,
     kSampleRateFieldNumber = 3,
+    kEdgeModeFieldNumber = 4,
   };
   // string token = 1;
   void clear_token();
@@ -722,6 +723,15 @@ class SessionConfig final :
   void _internal_set_sample_rate(uint32_t value);
   public:
 
+  // bool edge_mode = 4;
+  void clear_edge_mode();
+  bool edge_mode() const;
+  void set_edge_mode(bool value);
+  private:
+  bool _internal_edge_mode() const;
+  void _internal_set_edge_mode(bool value);
+  public:
+
   // @@protoc_insertion_point(class_scope:sentiric.stream.v1.SessionConfig)
  private:
   class _Internal;
@@ -733,6 +743,7 @@ class SessionConfig final :
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr token_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr language_;
     uint32_t sample_rate_;
+    bool edge_mode_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -1608,6 +1619,26 @@ inline void SessionConfig::_internal_set_sample_rate(uint32_t value) {
 inline void SessionConfig::set_sample_rate(uint32_t value) {
   _internal_set_sample_rate(value);
   // @@protoc_insertion_point(field_set:sentiric.stream.v1.SessionConfig.sample_rate)
+}
+
+// bool edge_mode = 4;
+inline void SessionConfig::clear_edge_mode() {
+  _impl_.edge_mode_ = false;
+}
+inline bool SessionConfig::_internal_edge_mode() const {
+  return _impl_.edge_mode_;
+}
+inline bool SessionConfig::edge_mode() const {
+  // @@protoc_insertion_point(field_get:sentiric.stream.v1.SessionConfig.edge_mode)
+  return _internal_edge_mode();
+}
+inline void SessionConfig::_internal_set_edge_mode(bool value) {
+  
+  _impl_.edge_mode_ = value;
+}
+inline void SessionConfig::set_edge_mode(bool value) {
+  _internal_set_edge_mode(value);
+  // @@protoc_insertion_point(field_set:sentiric.stream.v1.SessionConfig.edge_mode)
 }
 
 // -------------------------------------------------------------------

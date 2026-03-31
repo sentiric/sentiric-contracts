@@ -56,6 +56,7 @@ PROTOBUF_CONSTEXPR SessionConfig::SessionConfig(
     /*decltype(_impl_.token_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.language_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.sample_rate_)*/0u
+  , /*decltype(_impl_.edge_mode_)*/false
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct SessionConfigDefaultTypeInternal {
   PROTOBUF_CONSTEXPR SessionConfigDefaultTypeInternal()
@@ -117,6 +118,7 @@ const uint32_t TableStruct_sentiric_2fstream_2fv1_2fgateway_2eproto::offsets[] P
   PROTOBUF_FIELD_OFFSET(::sentiric::stream::v1::SessionConfig, _impl_.token_),
   PROTOBUF_FIELD_OFFSET(::sentiric::stream::v1::SessionConfig, _impl_.language_),
   PROTOBUF_FIELD_OFFSET(::sentiric::stream::v1::SessionConfig, _impl_.sample_rate_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::stream::v1::SessionConfig, _impl_.edge_mode_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::sentiric::stream::v1::SessionControl, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -129,7 +131,7 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 0, -1, -1, sizeof(::sentiric::stream::v1::StreamSessionRequest)},
   { 11, -1, -1, sizeof(::sentiric::stream::v1::StreamSessionResponse)},
   { 21, -1, -1, sizeof(::sentiric::stream::v1::SessionConfig)},
-  { 30, -1, -1, sizeof(::sentiric::stream::v1::SessionControl)},
+  { 31, -1, -1, sizeof(::sentiric::stream::v1::SessionControl)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -148,23 +150,24 @@ const char descriptor_table_protodef_sentiric_2fstream_2fv1_2fgateway_2eproto[] 
   "entiric.stream.v1.SessionControlH\000B\006\n\004da"
   "ta\"k\n\025StreamSessionResponse\022\030\n\016audio_res"
   "ponse\030\001 \001(\014H\000\022\027\n\rtext_response\030\002 \001(\tH\000\022\027"
-  "\n\rstatus_update\030\003 \001(\tH\000B\006\n\004data\"E\n\rSessi"
+  "\n\rstatus_update\030\003 \001(\tH\000B\006\n\004data\"X\n\rSessi"
   "onConfig\022\r\n\005token\030\001 \001(\t\022\020\n\010language\030\002 \001("
-  "\t\022\023\n\013sample_rate\030\003 \001(\r\"\273\001\n\016SessionContro"
-  "l\022;\n\005event\030\001 \001(\0162,.sentiric.stream.v1.Se"
-  "ssionControl.EventType\"l\n\tEventType\022\032\n\026E"
-  "VENT_TYPE_UNSPECIFIED\020\000\022\030\n\024EVENT_TYPE_IN"
-  "TERRUPT\020\001\022\022\n\016EVENT_TYPE_EOS\020\002\022\025\n\021EVENT_T"
-  "YPE_HANGUP\020\0032\200\001\n\024StreamGatewayService\022h\n"
-  "\rStreamSession\022(.sentiric.stream.v1.Stre"
-  "amSessionRequest\032).sentiric.stream.v1.St"
-  "reamSessionResponse(\0010\001BKZIgithub.com/se"
-  "ntiric/sentiric-contracts/gen/go/sentiri"
-  "c/stream/v1;streamv1b\006proto3"
+  "\t\022\023\n\013sample_rate\030\003 \001(\r\022\021\n\tedge_mode\030\004 \001("
+  "\010\"\273\001\n\016SessionControl\022;\n\005event\030\001 \001(\0162,.se"
+  "ntiric.stream.v1.SessionControl.EventTyp"
+  "e\"l\n\tEventType\022\032\n\026EVENT_TYPE_UNSPECIFIED"
+  "\020\000\022\030\n\024EVENT_TYPE_INTERRUPT\020\001\022\022\n\016EVENT_TY"
+  "PE_EOS\020\002\022\025\n\021EVENT_TYPE_HANGUP\020\0032\200\001\n\024Stre"
+  "amGatewayService\022h\n\rStreamSession\022(.sent"
+  "iric.stream.v1.StreamSessionRequest\032).se"
+  "ntiric.stream.v1.StreamSessionResponse(\001"
+  "0\001BKZIgithub.com/sentiric/sentiric-contr"
+  "acts/gen/go/sentiric/stream/v1;streamv1b"
+  "\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_sentiric_2fstream_2fv1_2fgateway_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_sentiric_2fstream_2fv1_2fgateway_2eproto = {
-    false, false, 828, descriptor_table_protodef_sentiric_2fstream_2fv1_2fgateway_2eproto,
+    false, false, 847, descriptor_table_protodef_sentiric_2fstream_2fv1_2fgateway_2eproto,
     "sentiric/stream/v1/gateway.proto",
     &descriptor_table_sentiric_2fstream_2fv1_2fgateway_2eproto_once, nullptr, 0, 4,
     schemas, file_default_instances, TableStruct_sentiric_2fstream_2fv1_2fgateway_2eproto::offsets,
@@ -904,6 +907,7 @@ SessionConfig::SessionConfig(const SessionConfig& from)
       decltype(_impl_.token_){}
     , decltype(_impl_.language_){}
     , decltype(_impl_.sample_rate_){}
+    , decltype(_impl_.edge_mode_){}
     , /*decltype(_impl_._cached_size_)*/{}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
@@ -923,7 +927,9 @@ SessionConfig::SessionConfig(const SessionConfig& from)
     _this->_impl_.language_.Set(from._internal_language(), 
       _this->GetArenaForAllocation());
   }
-  _this->_impl_.sample_rate_ = from._impl_.sample_rate_;
+  ::memcpy(&_impl_.sample_rate_, &from._impl_.sample_rate_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.edge_mode_) -
+    reinterpret_cast<char*>(&_impl_.sample_rate_)) + sizeof(_impl_.edge_mode_));
   // @@protoc_insertion_point(copy_constructor:sentiric.stream.v1.SessionConfig)
 }
 
@@ -935,6 +941,7 @@ inline void SessionConfig::SharedCtor(
       decltype(_impl_.token_){}
     , decltype(_impl_.language_){}
     , decltype(_impl_.sample_rate_){0u}
+    , decltype(_impl_.edge_mode_){false}
     , /*decltype(_impl_._cached_size_)*/{}
   };
   _impl_.token_.InitDefault();
@@ -974,7 +981,9 @@ void SessionConfig::Clear() {
 
   _impl_.token_.ClearToEmpty();
   _impl_.language_.ClearToEmpty();
-  _impl_.sample_rate_ = 0u;
+  ::memset(&_impl_.sample_rate_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&_impl_.edge_mode_) -
+      reinterpret_cast<char*>(&_impl_.sample_rate_)) + sizeof(_impl_.edge_mode_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -1008,6 +1017,14 @@ const char* SessionConfig::_InternalParse(const char* ptr, ::_pbi::ParseContext*
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
           _impl_.sample_rate_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // bool edge_mode = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
+          _impl_.edge_mode_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -1067,6 +1084,12 @@ uint8_t* SessionConfig::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteUInt32ToArray(3, this->_internal_sample_rate(), target);
   }
 
+  // bool edge_mode = 4;
+  if (this->_internal_edge_mode() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(4, this->_internal_edge_mode(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -1102,6 +1125,11 @@ size_t SessionConfig::ByteSizeLong() const {
     total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_sample_rate());
   }
 
+  // bool edge_mode = 4;
+  if (this->_internal_edge_mode() != 0) {
+    total_size += 1 + 1;
+  }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
@@ -1128,6 +1156,9 @@ void SessionConfig::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::
   }
   if (from._internal_sample_rate() != 0) {
     _this->_internal_set_sample_rate(from._internal_sample_rate());
+  }
+  if (from._internal_edge_mode() != 0) {
+    _this->_internal_set_edge_mode(from._internal_edge_mode());
   }
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -1156,7 +1187,12 @@ void SessionConfig::InternalSwap(SessionConfig* other) {
       &_impl_.language_, lhs_arena,
       &other->_impl_.language_, rhs_arena
   );
-  swap(_impl_.sample_rate_, other->_impl_.sample_rate_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(SessionConfig, _impl_.edge_mode_)
+      + sizeof(SessionConfig::_impl_.edge_mode_)
+      - PROTOBUF_FIELD_OFFSET(SessionConfig, _impl_.sample_rate_)>(
+          reinterpret_cast<char*>(&_impl_.sample_rate_),
+          reinterpret_cast<char*>(&other->_impl_.sample_rate_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata SessionConfig::GetMetadata() const {

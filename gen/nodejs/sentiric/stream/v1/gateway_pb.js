@@ -785,7 +785,8 @@ proto.sentiric.stream.v1.SessionConfig.toObject = function(includeInstance, msg)
   var f, obj = {
 token: jspb.Message.getFieldWithDefault(msg, 1, ""),
 language: jspb.Message.getFieldWithDefault(msg, 2, ""),
-sampleRate: jspb.Message.getFieldWithDefault(msg, 3, 0)
+sampleRate: jspb.Message.getFieldWithDefault(msg, 3, 0),
+edgeMode: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
   };
 
   if (includeInstance) {
@@ -834,6 +835,10 @@ proto.sentiric.stream.v1.SessionConfig.deserializeBinaryFromReader = function(ms
       var value = /** @type {number} */ (reader.readUint32());
       msg.setSampleRate(value);
       break;
+    case 4:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setEdgeMode(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -881,6 +886,13 @@ proto.sentiric.stream.v1.SessionConfig.serializeBinaryToWriter = function(messag
   if (f !== 0) {
     writer.writeUint32(
       3,
+      f
+    );
+  }
+  f = message.getEdgeMode();
+  if (f) {
+    writer.writeBool(
+      4,
       f
     );
   }
@@ -938,6 +950,24 @@ proto.sentiric.stream.v1.SessionConfig.prototype.getSampleRate = function() {
  */
 proto.sentiric.stream.v1.SessionConfig.prototype.setSampleRate = function(value) {
   return jspb.Message.setProto3IntField(this, 3, value);
+};
+
+
+/**
+ * optional bool edge_mode = 4;
+ * @return {boolean}
+ */
+proto.sentiric.stream.v1.SessionConfig.prototype.getEdgeMode = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 4, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.sentiric.stream.v1.SessionConfig} returns this
+ */
+proto.sentiric.stream.v1.SessionConfig.prototype.setEdgeMode = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 4, value);
 };
 
 

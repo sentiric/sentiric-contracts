@@ -291,10 +291,12 @@ func (*StreamSessionResponse_TextResponse) isStreamSessionResponse_Data() {}
 func (*StreamSessionResponse_StatusUpdate) isStreamSessionResponse_Data() {}
 
 type SessionConfig struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Token         string                 `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
-	Language      string                 `protobuf:"bytes,2,opt,name=language,proto3" json:"language,omitempty"`
-	SampleRate    uint32                 `protobuf:"varint,3,opt,name=sample_rate,json=sampleRate,proto3" json:"sample_rate,omitempty"`
+	state      protoimpl.MessageState `protogen:"open.v1"`
+	Token      string                 `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
+	Language   string                 `protobuf:"bytes,2,opt,name=language,proto3" json:"language,omitempty"`
+	SampleRate uint32                 `protobuf:"varint,3,opt,name=sample_rate,json=sampleRate,proto3" json:"sample_rate,omitempty"`
+	// [YENİ] Edge cihazlar için Ghost Mode bayrağı.
+	EdgeMode      bool `protobuf:"varint,4,opt,name=edge_mode,json=edgeMode,proto3" json:"edge_mode,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -348,6 +350,13 @@ func (x *SessionConfig) GetSampleRate() uint32 {
 		return x.SampleRate
 	}
 	return 0
+}
+
+func (x *SessionConfig) GetEdgeMode() bool {
+	if x != nil {
+		return x.EdgeMode
+	}
+	return false
 }
 
 type SessionControl struct {
@@ -410,12 +419,13 @@ const file_sentiric_stream_v1_gateway_proto_rawDesc = "" +
 	"\x0eaudio_response\x18\x01 \x01(\fH\x00R\raudioResponse\x12%\n" +
 	"\rtext_response\x18\x02 \x01(\tH\x00R\ftextResponse\x12%\n" +
 	"\rstatus_update\x18\x03 \x01(\tH\x00R\fstatusUpdateB\x06\n" +
-	"\x04data\"b\n" +
+	"\x04data\"\x7f\n" +
 	"\rSessionConfig\x12\x14\n" +
 	"\x05token\x18\x01 \x01(\tR\x05token\x12\x1a\n" +
 	"\blanguage\x18\x02 \x01(\tR\blanguage\x12\x1f\n" +
 	"\vsample_rate\x18\x03 \x01(\rR\n" +
-	"sampleRate\"\xc2\x01\n" +
+	"sampleRate\x12\x1b\n" +
+	"\tedge_mode\x18\x04 \x01(\bR\bedgeMode\"\xc2\x01\n" +
 	"\x0eSessionControl\x12B\n" +
 	"\x05event\x18\x01 \x01(\x0e2,.sentiric.stream.v1.SessionControl.EventTypeR\x05event\"l\n" +
 	"\tEventType\x12\x1a\n" +

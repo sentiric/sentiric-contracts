@@ -45,6 +45,9 @@ pub struct SessionConfig {
     pub language: ::prost::alloc::string::String,
     #[prost(uint32, tag="3")]
     pub sample_rate: u32,
+    /// \[YENİ\] Edge cihazlar için Ghost Mode bayrağı.
+    #[prost(bool, tag="4")]
+    pub edge_mode: bool,
 }
 #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct SessionControl {

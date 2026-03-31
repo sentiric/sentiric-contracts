@@ -32,6 +32,9 @@ message SessionConfig {
   string token = 1;
   string language = 2;
   uint32 sample_rate = 3;
+
+  // [YENİ] Edge cihazlar için Ghost Mode bayrağı.
+  bool edge_mode = 4;
 }
 
 message SessionControl {
