@@ -51,6 +51,10 @@ message RunPipelineRequest {
   // [MİMARİ DÜZELTME]: Dil ve Persona aktarımı
   string language_code = 7;
   string system_prompt_id = 8;
+
+  // [YENİ v1.20.0] Nano-Edge (IoT) ortamında çalıştığını belirtir.
+  // True ise, servis RabbitMQ veya veritabanı bağlantı hatalarını yoksayar (Ghost Mode).
+  bool edge_mode = 9;
 }
 
 message RunPipelineResponse {

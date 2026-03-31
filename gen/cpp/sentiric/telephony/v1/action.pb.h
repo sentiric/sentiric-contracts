@@ -630,6 +630,7 @@ class RunPipelineRequest final :
     kSystemPromptIdFieldNumber = 8,
     kMediaInfoFieldNumber = 6,
     kRecordSessionFieldNumber = 5,
+    kEdgeModeFieldNumber = 9,
   };
   // string call_id = 1;
   void clear_call_id();
@@ -742,6 +743,15 @@ class RunPipelineRequest final :
   void _internal_set_record_session(bool value);
   public:
 
+  // bool edge_mode = 9;
+  void clear_edge_mode();
+  bool edge_mode() const;
+  void set_edge_mode(bool value);
+  private:
+  bool _internal_edge_mode() const;
+  void _internal_set_edge_mode(bool value);
+  public:
+
   // @@protoc_insertion_point(class_scope:sentiric.telephony.v1.RunPipelineRequest)
  private:
   class _Internal;
@@ -758,6 +768,7 @@ class RunPipelineRequest final :
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr system_prompt_id_;
     ::sentiric::event::v1::MediaInfo* media_info_;
     bool record_session_;
+    bool edge_mode_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -3543,6 +3554,26 @@ inline void RunPipelineRequest::set_allocated_system_prompt_id(std::string* syst
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:sentiric.telephony.v1.RunPipelineRequest.system_prompt_id)
+}
+
+// bool edge_mode = 9;
+inline void RunPipelineRequest::clear_edge_mode() {
+  _impl_.edge_mode_ = false;
+}
+inline bool RunPipelineRequest::_internal_edge_mode() const {
+  return _impl_.edge_mode_;
+}
+inline bool RunPipelineRequest::edge_mode() const {
+  // @@protoc_insertion_point(field_get:sentiric.telephony.v1.RunPipelineRequest.edge_mode)
+  return _internal_edge_mode();
+}
+inline void RunPipelineRequest::_internal_set_edge_mode(bool value) {
+  
+  _impl_.edge_mode_ = value;
+}
+inline void RunPipelineRequest::set_edge_mode(bool value) {
+  _internal_set_edge_mode(value);
+  // @@protoc_insertion_point(field_set:sentiric.telephony.v1.RunPipelineRequest.edge_mode)
 }
 
 // -------------------------------------------------------------------

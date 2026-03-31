@@ -42,6 +42,10 @@ pub struct RunPipelineRequest {
     pub language_code: ::prost::alloc::string::String,
     #[prost(string, tag="8")]
     pub system_prompt_id: ::prost::alloc::string::String,
+    /// \[YENİ v1.20.0\] Nano-Edge (IoT) ortamında çalıştığını belirtir.
+    /// True ise, servis RabbitMQ veya veritabanı bağlantı hatalarını yoksayar (Ghost Mode).
+    #[prost(bool, tag="9")]
+    pub edge_mode: bool,
 }
 #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct RunPipelineResponse {

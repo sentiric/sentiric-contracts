@@ -759,7 +759,8 @@ ttsModelId: jspb.Message.getFieldWithDefault(msg, 4, ""),
 recordSession: jspb.Message.getBooleanFieldWithDefault(msg, 5, false),
 mediaInfo: (f = msg.getMediaInfo()) && sentiric_event_v1_event_pb.MediaInfo.toObject(includeInstance, f),
 languageCode: jspb.Message.getFieldWithDefault(msg, 7, ""),
-systemPromptId: jspb.Message.getFieldWithDefault(msg, 8, "")
+systemPromptId: jspb.Message.getFieldWithDefault(msg, 8, ""),
+edgeMode: jspb.Message.getBooleanFieldWithDefault(msg, 9, false)
   };
 
   if (includeInstance) {
@@ -828,6 +829,10 @@ proto.sentiric.telephony.v1.RunPipelineRequest.deserializeBinaryFromReader = fun
     case 8:
       var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setSystemPromptId(value);
+      break;
+    case 9:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setEdgeMode(value);
       break;
     default:
       reader.skipField();
@@ -912,6 +917,13 @@ proto.sentiric.telephony.v1.RunPipelineRequest.serializeBinaryToWriter = functio
   if (f.length > 0) {
     writer.writeString(
       8,
+      f
+    );
+  }
+  f = message.getEdgeMode();
+  if (f) {
+    writer.writeBool(
+      9,
       f
     );
   }
@@ -1078,6 +1090,24 @@ proto.sentiric.telephony.v1.RunPipelineRequest.prototype.getSystemPromptId = fun
  */
 proto.sentiric.telephony.v1.RunPipelineRequest.prototype.setSystemPromptId = function(value) {
   return jspb.Message.setProto3StringField(this, 8, value);
+};
+
+
+/**
+ * optional bool edge_mode = 9;
+ * @return {boolean}
+ */
+proto.sentiric.telephony.v1.RunPipelineRequest.prototype.getEdgeMode = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 9, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.sentiric.telephony.v1.RunPipelineRequest} returns this
+ */
+proto.sentiric.telephony.v1.RunPipelineRequest.prototype.setEdgeMode = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 9, value);
 };
 
 
