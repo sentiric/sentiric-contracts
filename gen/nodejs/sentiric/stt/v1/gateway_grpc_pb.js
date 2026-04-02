@@ -1,5 +1,7 @@
 // GENERATED CODE -- DO NOT EDIT!
 
+// Original file comments:
+// File: proto/sentiric/stt/v1/gateway.proto
 'use strict';
 var grpc = require('@grpc/grpc-js');
 var sentiric_stt_v1_gateway_pb = require('../../../sentiric/stt/v1/gateway_pb.js');

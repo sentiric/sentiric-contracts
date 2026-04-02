@@ -19,12 +19,21 @@ pub struct TranscribeStreamRequest {
     #[prost(bytes="vec", tag="1")]
     pub audio_chunk: ::prost::alloc::vec::Vec<u8>,
 }
-#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TranscribeStreamResponse {
     #[prost(string, tag="1")]
     pub partial_transcription: ::prost::alloc::string::String,
     #[prost(bool, tag="2")]
     pub is_final: bool,
+    /// \[YENİ - CRYSTALLINE VIZYONU\] Duyuşsal Zeka Metrikleri
+    #[prost(string, tag="3")]
+    pub gender_proxy: ::prost::alloc::string::String,
+    #[prost(string, tag="4")]
+    pub emotion_proxy: ::prost::alloc::string::String,
+    #[prost(float, tag="5")]
+    pub arousal: f32,
+    #[prost(float, tag="6")]
+    pub valence: f32,
 }
 /// Dosya tabanlı transkripsiyon için mesajlar
 #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]

@@ -66,7 +66,11 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORIT
 PROTOBUF_CONSTEXPR TranscribeStreamResponse::TranscribeStreamResponse(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.partial_transcription_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.gender_proxy_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.emotion_proxy_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.is_final_)*/false
+  , /*decltype(_impl_.arousal_)*/0
+  , /*decltype(_impl_.valence_)*/0
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct TranscribeStreamResponseDefaultTypeInternal {
   PROTOBUF_CONSTEXPR TranscribeStreamResponseDefaultTypeInternal()
@@ -115,6 +119,10 @@ const uint32_t TableStruct_sentiric_2fstt_2fv1_2fgateway_2eproto::offsets[] PROT
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::TranscribeStreamResponse, _impl_.partial_transcription_),
   PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::TranscribeStreamResponse, _impl_.is_final_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::TranscribeStreamResponse, _impl_.gender_proxy_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::TranscribeStreamResponse, _impl_.emotion_proxy_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::TranscribeStreamResponse, _impl_.arousal_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::TranscribeStreamResponse, _impl_.valence_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::sentiric::stt::v1::TranscribeRequest)},
@@ -136,9 +144,11 @@ const char descriptor_table_protodef_sentiric_2fstt_2fv1_2fgateway_2eproto[] PRO
   "ontent\030\001 \001(\014\022\025\n\rlanguage_code\030\002 \001(\t\"+\n\022T"
   "ranscribeResponse\022\025\n\rtranscription\030\001 \001(\t"
   "\".\n\027TranscribeStreamRequest\022\023\n\013audio_chu"
-  "nk\030\001 \001(\014\"K\n\030TranscribeStreamResponse\022\035\n\025"
-  "partial_transcription\030\001 \001(\t\022\020\n\010is_final\030"
-  "\002 \001(\0102\327\001\n\021SttGatewayService\022U\n\nTranscrib"
+  "nk\030\001 \001(\014\"\232\001\n\030TranscribeStreamResponse\022\035\n"
+  "\025partial_transcription\030\001 \001(\t\022\020\n\010is_final"
+  "\030\002 \001(\010\022\024\n\014gender_proxy\030\003 \001(\t\022\025\n\remotion_"
+  "proxy\030\004 \001(\t\022\017\n\007arousal\030\005 \001(\002\022\017\n\007valence\030"
+  "\006 \001(\0022\327\001\n\021SttGatewayService\022U\n\nTranscrib"
   "e\022\".sentiric.stt.v1.TranscribeRequest\032#."
   "sentiric.stt.v1.TranscribeResponse\022k\n\020Tr"
   "anscribeStream\022(.sentiric.stt.v1.Transcr"
@@ -149,7 +159,7 @@ const char descriptor_table_protodef_sentiric_2fstt_2fv1_2fgateway_2eproto[] PRO
   ;
 static ::_pbi::once_flag descriptor_table_sentiric_2fstt_2fv1_2fgateway_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_sentiric_2fstt_2fv1_2fgateway_2eproto = {
-    false, false, 582, descriptor_table_protodef_sentiric_2fstt_2fv1_2fgateway_2eproto,
+    false, false, 662, descriptor_table_protodef_sentiric_2fstt_2fv1_2fgateway_2eproto,
     "sentiric/stt/v1/gateway.proto",
     &descriptor_table_sentiric_2fstt_2fv1_2fgateway_2eproto_once, nullptr, 0, 4,
     schemas, file_default_instances, TableStruct_sentiric_2fstt_2fv1_2fgateway_2eproto::offsets,
@@ -832,7 +842,11 @@ TranscribeStreamResponse::TranscribeStreamResponse(const TranscribeStreamRespons
   TranscribeStreamResponse* const _this = this; (void)_this;
   new (&_impl_) Impl_{
       decltype(_impl_.partial_transcription_){}
+    , decltype(_impl_.gender_proxy_){}
+    , decltype(_impl_.emotion_proxy_){}
     , decltype(_impl_.is_final_){}
+    , decltype(_impl_.arousal_){}
+    , decltype(_impl_.valence_){}
     , /*decltype(_impl_._cached_size_)*/{}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
@@ -844,7 +858,25 @@ TranscribeStreamResponse::TranscribeStreamResponse(const TranscribeStreamRespons
     _this->_impl_.partial_transcription_.Set(from._internal_partial_transcription(), 
       _this->GetArenaForAllocation());
   }
-  _this->_impl_.is_final_ = from._impl_.is_final_;
+  _impl_.gender_proxy_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.gender_proxy_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_gender_proxy().empty()) {
+    _this->_impl_.gender_proxy_.Set(from._internal_gender_proxy(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.emotion_proxy_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.emotion_proxy_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_emotion_proxy().empty()) {
+    _this->_impl_.emotion_proxy_.Set(from._internal_emotion_proxy(), 
+      _this->GetArenaForAllocation());
+  }
+  ::memcpy(&_impl_.is_final_, &from._impl_.is_final_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.valence_) -
+    reinterpret_cast<char*>(&_impl_.is_final_)) + sizeof(_impl_.valence_));
   // @@protoc_insertion_point(copy_constructor:sentiric.stt.v1.TranscribeStreamResponse)
 }
 
@@ -854,12 +886,24 @@ inline void TranscribeStreamResponse::SharedCtor(
   (void)is_message_owned;
   new (&_impl_) Impl_{
       decltype(_impl_.partial_transcription_){}
+    , decltype(_impl_.gender_proxy_){}
+    , decltype(_impl_.emotion_proxy_){}
     , decltype(_impl_.is_final_){false}
+    , decltype(_impl_.arousal_){0}
+    , decltype(_impl_.valence_){0}
     , /*decltype(_impl_._cached_size_)*/{}
   };
   _impl_.partial_transcription_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
     _impl_.partial_transcription_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.gender_proxy_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.gender_proxy_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.emotion_proxy_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.emotion_proxy_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
@@ -875,6 +919,8 @@ TranscribeStreamResponse::~TranscribeStreamResponse() {
 inline void TranscribeStreamResponse::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.partial_transcription_.Destroy();
+  _impl_.gender_proxy_.Destroy();
+  _impl_.emotion_proxy_.Destroy();
 }
 
 void TranscribeStreamResponse::SetCachedSize(int size) const {
@@ -888,7 +934,11 @@ void TranscribeStreamResponse::Clear() {
   (void) cached_has_bits;
 
   _impl_.partial_transcription_.ClearToEmpty();
-  _impl_.is_final_ = false;
+  _impl_.gender_proxy_.ClearToEmpty();
+  _impl_.emotion_proxy_.ClearToEmpty();
+  ::memset(&_impl_.is_final_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&_impl_.valence_) -
+      reinterpret_cast<char*>(&_impl_.is_final_)) + sizeof(_impl_.valence_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -913,6 +963,42 @@ const char* TranscribeStreamResponse::_InternalParse(const char* ptr, ::_pbi::Pa
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
           _impl_.is_final_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string gender_proxy = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_gender_proxy();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.stt.v1.TranscribeStreamResponse.gender_proxy"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string emotion_proxy = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          auto str = _internal_mutable_emotion_proxy();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.stt.v1.TranscribeStreamResponse.emotion_proxy"));
+        } else
+          goto handle_unusual;
+        continue;
+      // float arousal = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 45)) {
+          _impl_.arousal_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float valence = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 53)) {
+          _impl_.valence_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
         } else
           goto handle_unusual;
         continue;
@@ -961,6 +1047,46 @@ uint8_t* TranscribeStreamResponse::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteBoolToArray(2, this->_internal_is_final(), target);
   }
 
+  // string gender_proxy = 3;
+  if (!this->_internal_gender_proxy().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_gender_proxy().data(), static_cast<int>(this->_internal_gender_proxy().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.stt.v1.TranscribeStreamResponse.gender_proxy");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_gender_proxy(), target);
+  }
+
+  // string emotion_proxy = 4;
+  if (!this->_internal_emotion_proxy().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_emotion_proxy().data(), static_cast<int>(this->_internal_emotion_proxy().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.stt.v1.TranscribeStreamResponse.emotion_proxy");
+    target = stream->WriteStringMaybeAliased(
+        4, this->_internal_emotion_proxy(), target);
+  }
+
+  // float arousal = 5;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_arousal = this->_internal_arousal();
+  uint32_t raw_arousal;
+  memcpy(&raw_arousal, &tmp_arousal, sizeof(tmp_arousal));
+  if (raw_arousal != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(5, this->_internal_arousal(), target);
+  }
+
+  // float valence = 6;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_valence = this->_internal_valence();
+  uint32_t raw_valence;
+  memcpy(&raw_valence, &tmp_valence, sizeof(tmp_valence));
+  if (raw_valence != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(6, this->_internal_valence(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -984,9 +1110,41 @@ size_t TranscribeStreamResponse::ByteSizeLong() const {
         this->_internal_partial_transcription());
   }
 
+  // string gender_proxy = 3;
+  if (!this->_internal_gender_proxy().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_gender_proxy());
+  }
+
+  // string emotion_proxy = 4;
+  if (!this->_internal_emotion_proxy().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_emotion_proxy());
+  }
+
   // bool is_final = 2;
   if (this->_internal_is_final() != 0) {
     total_size += 1 + 1;
+  }
+
+  // float arousal = 5;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_arousal = this->_internal_arousal();
+  uint32_t raw_arousal;
+  memcpy(&raw_arousal, &tmp_arousal, sizeof(tmp_arousal));
+  if (raw_arousal != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float valence = 6;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_valence = this->_internal_valence();
+  uint32_t raw_valence;
+  memcpy(&raw_valence, &tmp_valence, sizeof(tmp_valence));
+  if (raw_valence != 0) {
+    total_size += 1 + 4;
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
@@ -1010,8 +1168,28 @@ void TranscribeStreamResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_ms
   if (!from._internal_partial_transcription().empty()) {
     _this->_internal_set_partial_transcription(from._internal_partial_transcription());
   }
+  if (!from._internal_gender_proxy().empty()) {
+    _this->_internal_set_gender_proxy(from._internal_gender_proxy());
+  }
+  if (!from._internal_emotion_proxy().empty()) {
+    _this->_internal_set_emotion_proxy(from._internal_emotion_proxy());
+  }
   if (from._internal_is_final() != 0) {
     _this->_internal_set_is_final(from._internal_is_final());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_arousal = from._internal_arousal();
+  uint32_t raw_arousal;
+  memcpy(&raw_arousal, &tmp_arousal, sizeof(tmp_arousal));
+  if (raw_arousal != 0) {
+    _this->_internal_set_arousal(from._internal_arousal());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_valence = from._internal_valence();
+  uint32_t raw_valence;
+  memcpy(&raw_valence, &tmp_valence, sizeof(tmp_valence));
+  if (raw_valence != 0) {
+    _this->_internal_set_valence(from._internal_valence());
   }
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -1036,7 +1214,20 @@ void TranscribeStreamResponse::InternalSwap(TranscribeStreamResponse* other) {
       &_impl_.partial_transcription_, lhs_arena,
       &other->_impl_.partial_transcription_, rhs_arena
   );
-  swap(_impl_.is_final_, other->_impl_.is_final_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.gender_proxy_, lhs_arena,
+      &other->_impl_.gender_proxy_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.emotion_proxy_, lhs_arena,
+      &other->_impl_.emotion_proxy_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(TranscribeStreamResponse, _impl_.valence_)
+      + sizeof(TranscribeStreamResponse::_impl_.valence_)
+      - PROTOBUF_FIELD_OFFSET(TranscribeStreamResponse, _impl_.is_final_)>(
+          reinterpret_cast<char*>(&_impl_.is_final_),
+          reinterpret_cast<char*>(&other->_impl_.is_final_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata TranscribeStreamResponse::GetMetadata() const {

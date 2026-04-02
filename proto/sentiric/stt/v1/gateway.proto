@@ -1,3 +1,4 @@
+// File: proto/sentiric/stt/v1/gateway.proto
 syntax = "proto3";
 
 package sentiric.stt.v1;
@@ -25,4 +26,10 @@ message TranscribeStreamRequest {
 message TranscribeStreamResponse {
   string partial_transcription = 1;
   bool is_final = 2;
+
+  // [YENİ - CRYSTALLINE VIZYONU] Duyuşsal Zeka Metrikleri
+  string gender_proxy = 3;
+  string emotion_proxy = 4;
+  float arousal = 5;
+  float valence = 6;
 }
