@@ -20,9 +20,10 @@ pub mod stream_session_request {
         Control(super::SessionControl),
     }
 }
+/// \[ARCH-COMPLIANCE\] StreamSessionResponse'a zengin veri yolları eklendi
 #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct StreamSessionResponse {
-    #[prost(oneof="stream_session_response::Data", tags="1, 2, 3")]
+    #[prost(oneof="stream_session_response::Data", tags="1, 2, 3, 4, 5")]
     pub data: ::core::option::Option<stream_session_response::Data>,
 }
 /// Nested message and enum types in `StreamSessionResponse`.
@@ -35,7 +36,27 @@ pub mod stream_session_response {
         TextResponse(::prost::alloc::string::String),
         #[prost(string, tag="3")]
         StatusUpdate(::prost::alloc::string::String),
+        /// <--- YENİ: UI için zengin metin
+        #[prost(message, tag="4")]
+        Transcript(super::TranscriptEvent),
+        /// <--- YENİ: Barge-in kontrolü
+        #[prost(bool, tag="5")]
+        ClearAudioBuffer(bool),
     }
+}
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+pub struct TranscriptEvent {
+    #[prost(string, tag="1")]
+    pub text: ::prost::alloc::string::String,
+    #[prost(bool, tag="2")]
+    pub is_final: bool,
+    /// "USER" veya "AI"
+    #[prost(string, tag="3")]
+    pub sender: ::prost::alloc::string::String,
+    #[prost(string, tag="4")]
+    pub emotion: ::prost::alloc::string::String,
+    #[prost(string, tag="5")]
+    pub gender: ::prost::alloc::string::String,
 }
 #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct SessionConfig {

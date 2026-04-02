@@ -60,6 +60,9 @@ extern StreamSessionRequestDefaultTypeInternal _StreamSessionRequest_default_ins
 class StreamSessionResponse;
 struct StreamSessionResponseDefaultTypeInternal;
 extern StreamSessionResponseDefaultTypeInternal _StreamSessionResponse_default_instance_;
+class TranscriptEvent;
+struct TranscriptEventDefaultTypeInternal;
+extern TranscriptEventDefaultTypeInternal _TranscriptEvent_default_instance_;
 }  // namespace v1
 }  // namespace stream
 }  // namespace sentiric
@@ -68,6 +71,7 @@ template<> ::sentiric::stream::v1::SessionConfig* Arena::CreateMaybeMessage<::se
 template<> ::sentiric::stream::v1::SessionControl* Arena::CreateMaybeMessage<::sentiric::stream::v1::SessionControl>(Arena*);
 template<> ::sentiric::stream::v1::StreamSessionRequest* Arena::CreateMaybeMessage<::sentiric::stream::v1::StreamSessionRequest>(Arena*);
 template<> ::sentiric::stream::v1::StreamSessionResponse* Arena::CreateMaybeMessage<::sentiric::stream::v1::StreamSessionResponse>(Arena*);
+template<> ::sentiric::stream::v1::TranscriptEvent* Arena::CreateMaybeMessage<::sentiric::stream::v1::TranscriptEvent>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace sentiric {
 namespace stream {
@@ -389,6 +393,8 @@ class StreamSessionResponse final :
     kAudioResponse = 1,
     kTextResponse = 2,
     kStatusUpdate = 3,
+    kTranscript = 4,
+    kClearAudioBuffer = 5,
     DATA_NOT_SET = 0,
   };
 
@@ -473,6 +479,8 @@ class StreamSessionResponse final :
     kAudioResponseFieldNumber = 1,
     kTextResponseFieldNumber = 2,
     kStatusUpdateFieldNumber = 3,
+    kTranscriptFieldNumber = 4,
+    kClearAudioBufferFieldNumber = 5,
   };
   // bytes audio_response = 1;
   bool has_audio_response() const;
@@ -528,6 +536,37 @@ class StreamSessionResponse final :
   std::string* _internal_mutable_status_update();
   public:
 
+  // .sentiric.stream.v1.TranscriptEvent transcript = 4;
+  bool has_transcript() const;
+  private:
+  bool _internal_has_transcript() const;
+  public:
+  void clear_transcript();
+  const ::sentiric::stream::v1::TranscriptEvent& transcript() const;
+  PROTOBUF_NODISCARD ::sentiric::stream::v1::TranscriptEvent* release_transcript();
+  ::sentiric::stream::v1::TranscriptEvent* mutable_transcript();
+  void set_allocated_transcript(::sentiric::stream::v1::TranscriptEvent* transcript);
+  private:
+  const ::sentiric::stream::v1::TranscriptEvent& _internal_transcript() const;
+  ::sentiric::stream::v1::TranscriptEvent* _internal_mutable_transcript();
+  public:
+  void unsafe_arena_set_allocated_transcript(
+      ::sentiric::stream::v1::TranscriptEvent* transcript);
+  ::sentiric::stream::v1::TranscriptEvent* unsafe_arena_release_transcript();
+
+  // bool clear_audio_buffer = 5;
+  bool has_clear_audio_buffer() const;
+  private:
+  bool _internal_has_clear_audio_buffer() const;
+  public:
+  void clear_clear_audio_buffer();
+  bool clear_audio_buffer() const;
+  void set_clear_audio_buffer(bool value);
+  private:
+  bool _internal_clear_audio_buffer() const;
+  void _internal_set_clear_audio_buffer(bool value);
+  public:
+
   void clear_data();
   DataCase data_case() const;
   // @@protoc_insertion_point(class_scope:sentiric.stream.v1.StreamSessionResponse)
@@ -536,6 +575,8 @@ class StreamSessionResponse final :
   void set_has_audio_response();
   void set_has_text_response();
   void set_has_status_update();
+  void set_has_transcript();
+  void set_has_clear_audio_buffer();
 
   inline bool has_data() const;
   inline void clear_has_data();
@@ -550,10 +591,224 @@ class StreamSessionResponse final :
       ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr audio_response_;
       ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr text_response_;
       ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr status_update_;
+      ::sentiric::stream::v1::TranscriptEvent* transcript_;
+      bool clear_audio_buffer_;
     } data_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
     uint32_t _oneof_case_[1];
 
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2fstream_2fv1_2fgateway_2eproto;
+};
+// -------------------------------------------------------------------
+
+class TranscriptEvent final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.stream.v1.TranscriptEvent) */ {
+ public:
+  inline TranscriptEvent() : TranscriptEvent(nullptr) {}
+  ~TranscriptEvent() override;
+  explicit PROTOBUF_CONSTEXPR TranscriptEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  TranscriptEvent(const TranscriptEvent& from);
+  TranscriptEvent(TranscriptEvent&& from) noexcept
+    : TranscriptEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline TranscriptEvent& operator=(const TranscriptEvent& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline TranscriptEvent& operator=(TranscriptEvent&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const TranscriptEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const TranscriptEvent* internal_default_instance() {
+    return reinterpret_cast<const TranscriptEvent*>(
+               &_TranscriptEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    2;
+
+  friend void swap(TranscriptEvent& a, TranscriptEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(TranscriptEvent* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(TranscriptEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  TranscriptEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<TranscriptEvent>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const TranscriptEvent& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const TranscriptEvent& from) {
+    TranscriptEvent::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(TranscriptEvent* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.stream.v1.TranscriptEvent";
+  }
+  protected:
+  explicit TranscriptEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kTextFieldNumber = 1,
+    kSenderFieldNumber = 3,
+    kEmotionFieldNumber = 4,
+    kGenderFieldNumber = 5,
+    kIsFinalFieldNumber = 2,
+  };
+  // string text = 1;
+  void clear_text();
+  const std::string& text() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_text(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_text();
+  PROTOBUF_NODISCARD std::string* release_text();
+  void set_allocated_text(std::string* text);
+  private:
+  const std::string& _internal_text() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_text(const std::string& value);
+  std::string* _internal_mutable_text();
+  public:
+
+  // string sender = 3;
+  void clear_sender();
+  const std::string& sender() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_sender(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_sender();
+  PROTOBUF_NODISCARD std::string* release_sender();
+  void set_allocated_sender(std::string* sender);
+  private:
+  const std::string& _internal_sender() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_sender(const std::string& value);
+  std::string* _internal_mutable_sender();
+  public:
+
+  // string emotion = 4;
+  void clear_emotion();
+  const std::string& emotion() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_emotion(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_emotion();
+  PROTOBUF_NODISCARD std::string* release_emotion();
+  void set_allocated_emotion(std::string* emotion);
+  private:
+  const std::string& _internal_emotion() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_emotion(const std::string& value);
+  std::string* _internal_mutable_emotion();
+  public:
+
+  // string gender = 5;
+  void clear_gender();
+  const std::string& gender() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_gender(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_gender();
+  PROTOBUF_NODISCARD std::string* release_gender();
+  void set_allocated_gender(std::string* gender);
+  private:
+  const std::string& _internal_gender() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_gender(const std::string& value);
+  std::string* _internal_mutable_gender();
+  public:
+
+  // bool is_final = 2;
+  void clear_is_final();
+  bool is_final() const;
+  void set_is_final(bool value);
+  private:
+  bool _internal_is_final() const;
+  void _internal_set_is_final(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.stream.v1.TranscriptEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr text_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr sender_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr emotion_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr gender_;
+    bool is_final_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_sentiric_2fstream_2fv1_2fgateway_2eproto;
@@ -608,7 +863,7 @@ class SessionConfig final :
                &_SessionConfig_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    3;
 
   friend void swap(SessionConfig& a, SessionConfig& b) {
     a.Swap(&b);
@@ -799,7 +1054,7 @@ class SessionControl final :
                &_SessionControl_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    4;
 
   friend void swap(SessionControl& a, SessionControl& b) {
     a.Swap(&b);
@@ -1488,6 +1743,118 @@ inline void StreamSessionResponse::set_allocated_status_update(std::string* stat
   // @@protoc_insertion_point(field_set_allocated:sentiric.stream.v1.StreamSessionResponse.status_update)
 }
 
+// .sentiric.stream.v1.TranscriptEvent transcript = 4;
+inline bool StreamSessionResponse::_internal_has_transcript() const {
+  return data_case() == kTranscript;
+}
+inline bool StreamSessionResponse::has_transcript() const {
+  return _internal_has_transcript();
+}
+inline void StreamSessionResponse::set_has_transcript() {
+  _impl_._oneof_case_[0] = kTranscript;
+}
+inline void StreamSessionResponse::clear_transcript() {
+  if (_internal_has_transcript()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete _impl_.data_.transcript_;
+    }
+    clear_has_data();
+  }
+}
+inline ::sentiric::stream::v1::TranscriptEvent* StreamSessionResponse::release_transcript() {
+  // @@protoc_insertion_point(field_release:sentiric.stream.v1.StreamSessionResponse.transcript)
+  if (_internal_has_transcript()) {
+    clear_has_data();
+    ::sentiric::stream::v1::TranscriptEvent* temp = _impl_.data_.transcript_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.data_.transcript_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::sentiric::stream::v1::TranscriptEvent& StreamSessionResponse::_internal_transcript() const {
+  return _internal_has_transcript()
+      ? *_impl_.data_.transcript_
+      : reinterpret_cast< ::sentiric::stream::v1::TranscriptEvent&>(::sentiric::stream::v1::_TranscriptEvent_default_instance_);
+}
+inline const ::sentiric::stream::v1::TranscriptEvent& StreamSessionResponse::transcript() const {
+  // @@protoc_insertion_point(field_get:sentiric.stream.v1.StreamSessionResponse.transcript)
+  return _internal_transcript();
+}
+inline ::sentiric::stream::v1::TranscriptEvent* StreamSessionResponse::unsafe_arena_release_transcript() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:sentiric.stream.v1.StreamSessionResponse.transcript)
+  if (_internal_has_transcript()) {
+    clear_has_data();
+    ::sentiric::stream::v1::TranscriptEvent* temp = _impl_.data_.transcript_;
+    _impl_.data_.transcript_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void StreamSessionResponse::unsafe_arena_set_allocated_transcript(::sentiric::stream::v1::TranscriptEvent* transcript) {
+  clear_data();
+  if (transcript) {
+    set_has_transcript();
+    _impl_.data_.transcript_ = transcript;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:sentiric.stream.v1.StreamSessionResponse.transcript)
+}
+inline ::sentiric::stream::v1::TranscriptEvent* StreamSessionResponse::_internal_mutable_transcript() {
+  if (!_internal_has_transcript()) {
+    clear_data();
+    set_has_transcript();
+    _impl_.data_.transcript_ = CreateMaybeMessage< ::sentiric::stream::v1::TranscriptEvent >(GetArenaForAllocation());
+  }
+  return _impl_.data_.transcript_;
+}
+inline ::sentiric::stream::v1::TranscriptEvent* StreamSessionResponse::mutable_transcript() {
+  ::sentiric::stream::v1::TranscriptEvent* _msg = _internal_mutable_transcript();
+  // @@protoc_insertion_point(field_mutable:sentiric.stream.v1.StreamSessionResponse.transcript)
+  return _msg;
+}
+
+// bool clear_audio_buffer = 5;
+inline bool StreamSessionResponse::_internal_has_clear_audio_buffer() const {
+  return data_case() == kClearAudioBuffer;
+}
+inline bool StreamSessionResponse::has_clear_audio_buffer() const {
+  return _internal_has_clear_audio_buffer();
+}
+inline void StreamSessionResponse::set_has_clear_audio_buffer() {
+  _impl_._oneof_case_[0] = kClearAudioBuffer;
+}
+inline void StreamSessionResponse::clear_clear_audio_buffer() {
+  if (_internal_has_clear_audio_buffer()) {
+    _impl_.data_.clear_audio_buffer_ = false;
+    clear_has_data();
+  }
+}
+inline bool StreamSessionResponse::_internal_clear_audio_buffer() const {
+  if (_internal_has_clear_audio_buffer()) {
+    return _impl_.data_.clear_audio_buffer_;
+  }
+  return false;
+}
+inline void StreamSessionResponse::_internal_set_clear_audio_buffer(bool value) {
+  if (!_internal_has_clear_audio_buffer()) {
+    clear_data();
+    set_has_clear_audio_buffer();
+  }
+  _impl_.data_.clear_audio_buffer_ = value;
+}
+inline bool StreamSessionResponse::clear_audio_buffer() const {
+  // @@protoc_insertion_point(field_get:sentiric.stream.v1.StreamSessionResponse.clear_audio_buffer)
+  return _internal_clear_audio_buffer();
+}
+inline void StreamSessionResponse::set_clear_audio_buffer(bool value) {
+  _internal_set_clear_audio_buffer(value);
+  // @@protoc_insertion_point(field_set:sentiric.stream.v1.StreamSessionResponse.clear_audio_buffer)
+}
+
 inline bool StreamSessionResponse::has_data() const {
   return data_case() != DATA_NOT_SET;
 }
@@ -1497,6 +1864,230 @@ inline void StreamSessionResponse::clear_has_data() {
 inline StreamSessionResponse::DataCase StreamSessionResponse::data_case() const {
   return StreamSessionResponse::DataCase(_impl_._oneof_case_[0]);
 }
+// -------------------------------------------------------------------
+
+// TranscriptEvent
+
+// string text = 1;
+inline void TranscriptEvent::clear_text() {
+  _impl_.text_.ClearToEmpty();
+}
+inline const std::string& TranscriptEvent::text() const {
+  // @@protoc_insertion_point(field_get:sentiric.stream.v1.TranscriptEvent.text)
+  return _internal_text();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void TranscriptEvent::set_text(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.text_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.stream.v1.TranscriptEvent.text)
+}
+inline std::string* TranscriptEvent::mutable_text() {
+  std::string* _s = _internal_mutable_text();
+  // @@protoc_insertion_point(field_mutable:sentiric.stream.v1.TranscriptEvent.text)
+  return _s;
+}
+inline const std::string& TranscriptEvent::_internal_text() const {
+  return _impl_.text_.Get();
+}
+inline void TranscriptEvent::_internal_set_text(const std::string& value) {
+  
+  _impl_.text_.Set(value, GetArenaForAllocation());
+}
+inline std::string* TranscriptEvent::_internal_mutable_text() {
+  
+  return _impl_.text_.Mutable(GetArenaForAllocation());
+}
+inline std::string* TranscriptEvent::release_text() {
+  // @@protoc_insertion_point(field_release:sentiric.stream.v1.TranscriptEvent.text)
+  return _impl_.text_.Release();
+}
+inline void TranscriptEvent::set_allocated_text(std::string* text) {
+  if (text != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.text_.SetAllocated(text, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.text_.IsDefault()) {
+    _impl_.text_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.stream.v1.TranscriptEvent.text)
+}
+
+// bool is_final = 2;
+inline void TranscriptEvent::clear_is_final() {
+  _impl_.is_final_ = false;
+}
+inline bool TranscriptEvent::_internal_is_final() const {
+  return _impl_.is_final_;
+}
+inline bool TranscriptEvent::is_final() const {
+  // @@protoc_insertion_point(field_get:sentiric.stream.v1.TranscriptEvent.is_final)
+  return _internal_is_final();
+}
+inline void TranscriptEvent::_internal_set_is_final(bool value) {
+  
+  _impl_.is_final_ = value;
+}
+inline void TranscriptEvent::set_is_final(bool value) {
+  _internal_set_is_final(value);
+  // @@protoc_insertion_point(field_set:sentiric.stream.v1.TranscriptEvent.is_final)
+}
+
+// string sender = 3;
+inline void TranscriptEvent::clear_sender() {
+  _impl_.sender_.ClearToEmpty();
+}
+inline const std::string& TranscriptEvent::sender() const {
+  // @@protoc_insertion_point(field_get:sentiric.stream.v1.TranscriptEvent.sender)
+  return _internal_sender();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void TranscriptEvent::set_sender(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.sender_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.stream.v1.TranscriptEvent.sender)
+}
+inline std::string* TranscriptEvent::mutable_sender() {
+  std::string* _s = _internal_mutable_sender();
+  // @@protoc_insertion_point(field_mutable:sentiric.stream.v1.TranscriptEvent.sender)
+  return _s;
+}
+inline const std::string& TranscriptEvent::_internal_sender() const {
+  return _impl_.sender_.Get();
+}
+inline void TranscriptEvent::_internal_set_sender(const std::string& value) {
+  
+  _impl_.sender_.Set(value, GetArenaForAllocation());
+}
+inline std::string* TranscriptEvent::_internal_mutable_sender() {
+  
+  return _impl_.sender_.Mutable(GetArenaForAllocation());
+}
+inline std::string* TranscriptEvent::release_sender() {
+  // @@protoc_insertion_point(field_release:sentiric.stream.v1.TranscriptEvent.sender)
+  return _impl_.sender_.Release();
+}
+inline void TranscriptEvent::set_allocated_sender(std::string* sender) {
+  if (sender != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.sender_.SetAllocated(sender, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.sender_.IsDefault()) {
+    _impl_.sender_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.stream.v1.TranscriptEvent.sender)
+}
+
+// string emotion = 4;
+inline void TranscriptEvent::clear_emotion() {
+  _impl_.emotion_.ClearToEmpty();
+}
+inline const std::string& TranscriptEvent::emotion() const {
+  // @@protoc_insertion_point(field_get:sentiric.stream.v1.TranscriptEvent.emotion)
+  return _internal_emotion();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void TranscriptEvent::set_emotion(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.emotion_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.stream.v1.TranscriptEvent.emotion)
+}
+inline std::string* TranscriptEvent::mutable_emotion() {
+  std::string* _s = _internal_mutable_emotion();
+  // @@protoc_insertion_point(field_mutable:sentiric.stream.v1.TranscriptEvent.emotion)
+  return _s;
+}
+inline const std::string& TranscriptEvent::_internal_emotion() const {
+  return _impl_.emotion_.Get();
+}
+inline void TranscriptEvent::_internal_set_emotion(const std::string& value) {
+  
+  _impl_.emotion_.Set(value, GetArenaForAllocation());
+}
+inline std::string* TranscriptEvent::_internal_mutable_emotion() {
+  
+  return _impl_.emotion_.Mutable(GetArenaForAllocation());
+}
+inline std::string* TranscriptEvent::release_emotion() {
+  // @@protoc_insertion_point(field_release:sentiric.stream.v1.TranscriptEvent.emotion)
+  return _impl_.emotion_.Release();
+}
+inline void TranscriptEvent::set_allocated_emotion(std::string* emotion) {
+  if (emotion != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.emotion_.SetAllocated(emotion, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.emotion_.IsDefault()) {
+    _impl_.emotion_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.stream.v1.TranscriptEvent.emotion)
+}
+
+// string gender = 5;
+inline void TranscriptEvent::clear_gender() {
+  _impl_.gender_.ClearToEmpty();
+}
+inline const std::string& TranscriptEvent::gender() const {
+  // @@protoc_insertion_point(field_get:sentiric.stream.v1.TranscriptEvent.gender)
+  return _internal_gender();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void TranscriptEvent::set_gender(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.gender_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.stream.v1.TranscriptEvent.gender)
+}
+inline std::string* TranscriptEvent::mutable_gender() {
+  std::string* _s = _internal_mutable_gender();
+  // @@protoc_insertion_point(field_mutable:sentiric.stream.v1.TranscriptEvent.gender)
+  return _s;
+}
+inline const std::string& TranscriptEvent::_internal_gender() const {
+  return _impl_.gender_.Get();
+}
+inline void TranscriptEvent::_internal_set_gender(const std::string& value) {
+  
+  _impl_.gender_.Set(value, GetArenaForAllocation());
+}
+inline std::string* TranscriptEvent::_internal_mutable_gender() {
+  
+  return _impl_.gender_.Mutable(GetArenaForAllocation());
+}
+inline std::string* TranscriptEvent::release_gender() {
+  // @@protoc_insertion_point(field_release:sentiric.stream.v1.TranscriptEvent.gender)
+  return _impl_.gender_.Release();
+}
+inline void TranscriptEvent::set_allocated_gender(std::string* gender) {
+  if (gender != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.gender_.SetAllocated(gender, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.gender_.IsDefault()) {
+    _impl_.gender_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.stream.v1.TranscriptEvent.gender)
+}
+
 // -------------------------------------------------------------------
 
 // SessionConfig
@@ -1668,6 +2259,8 @@ inline void SessionControl::set_event(::sentiric::stream::v1::SessionControl_Eve
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

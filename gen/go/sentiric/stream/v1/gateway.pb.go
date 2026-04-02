@@ -74,7 +74,7 @@ func (x SessionControl_EventType) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use SessionControl_EventType.Descriptor instead.
 func (SessionControl_EventType) EnumDescriptor() ([]byte, []int) {
-	return file_sentiric_stream_v1_gateway_proto_rawDescGZIP(), []int{3, 0}
+	return file_sentiric_stream_v1_gateway_proto_rawDescGZIP(), []int{4, 0}
 }
 
 // ... Mesaj isimleri aynı kalabilir veya StreamSessionRequest olarak genelleyebilirsin ...
@@ -192,6 +192,7 @@ func (*StreamSessionRequest_TextMessage) isStreamSessionRequest_Data() {}
 
 func (*StreamSessionRequest_Control) isStreamSessionRequest_Data() {}
 
+// [ARCH-COMPLIANCE] StreamSessionResponse'a zengin veri yolları eklendi
 type StreamSessionResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Types that are valid to be assigned to Data:
@@ -199,6 +200,8 @@ type StreamSessionResponse struct {
 	//	*StreamSessionResponse_AudioResponse
 	//	*StreamSessionResponse_TextResponse
 	//	*StreamSessionResponse_StatusUpdate
+	//	*StreamSessionResponse_Transcript
+	//	*StreamSessionResponse_ClearAudioBuffer
 	Data          isStreamSessionResponse_Data `protobuf_oneof:"data"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -268,6 +271,24 @@ func (x *StreamSessionResponse) GetStatusUpdate() string {
 	return ""
 }
 
+func (x *StreamSessionResponse) GetTranscript() *TranscriptEvent {
+	if x != nil {
+		if x, ok := x.Data.(*StreamSessionResponse_Transcript); ok {
+			return x.Transcript
+		}
+	}
+	return nil
+}
+
+func (x *StreamSessionResponse) GetClearAudioBuffer() bool {
+	if x != nil {
+		if x, ok := x.Data.(*StreamSessionResponse_ClearAudioBuffer); ok {
+			return x.ClearAudioBuffer
+		}
+	}
+	return false
+}
+
 type isStreamSessionResponse_Data interface {
 	isStreamSessionResponse_Data()
 }
@@ -284,11 +305,99 @@ type StreamSessionResponse_StatusUpdate struct {
 	StatusUpdate string `protobuf:"bytes,3,opt,name=status_update,json=statusUpdate,proto3,oneof"`
 }
 
+type StreamSessionResponse_Transcript struct {
+	Transcript *TranscriptEvent `protobuf:"bytes,4,opt,name=transcript,proto3,oneof"` // <--- YENİ: UI için zengin metin
+}
+
+type StreamSessionResponse_ClearAudioBuffer struct {
+	ClearAudioBuffer bool `protobuf:"varint,5,opt,name=clear_audio_buffer,json=clearAudioBuffer,proto3,oneof"` // <--- YENİ: Barge-in kontrolü
+}
+
 func (*StreamSessionResponse_AudioResponse) isStreamSessionResponse_Data() {}
 
 func (*StreamSessionResponse_TextResponse) isStreamSessionResponse_Data() {}
 
 func (*StreamSessionResponse_StatusUpdate) isStreamSessionResponse_Data() {}
+
+func (*StreamSessionResponse_Transcript) isStreamSessionResponse_Data() {}
+
+func (*StreamSessionResponse_ClearAudioBuffer) isStreamSessionResponse_Data() {}
+
+type TranscriptEvent struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Text          string                 `protobuf:"bytes,1,opt,name=text,proto3" json:"text,omitempty"`
+	IsFinal       bool                   `protobuf:"varint,2,opt,name=is_final,json=isFinal,proto3" json:"is_final,omitempty"`
+	Sender        string                 `protobuf:"bytes,3,opt,name=sender,proto3" json:"sender,omitempty"` // "USER" veya "AI"
+	Emotion       string                 `protobuf:"bytes,4,opt,name=emotion,proto3" json:"emotion,omitempty"`
+	Gender        string                 `protobuf:"bytes,5,opt,name=gender,proto3" json:"gender,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *TranscriptEvent) Reset() {
+	*x = TranscriptEvent{}
+	mi := &file_sentiric_stream_v1_gateway_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TranscriptEvent) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TranscriptEvent) ProtoMessage() {}
+
+func (x *TranscriptEvent) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_stream_v1_gateway_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TranscriptEvent.ProtoReflect.Descriptor instead.
+func (*TranscriptEvent) Descriptor() ([]byte, []int) {
+	return file_sentiric_stream_v1_gateway_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *TranscriptEvent) GetText() string {
+	if x != nil {
+		return x.Text
+	}
+	return ""
+}
+
+func (x *TranscriptEvent) GetIsFinal() bool {
+	if x != nil {
+		return x.IsFinal
+	}
+	return false
+}
+
+func (x *TranscriptEvent) GetSender() string {
+	if x != nil {
+		return x.Sender
+	}
+	return ""
+}
+
+func (x *TranscriptEvent) GetEmotion() string {
+	if x != nil {
+		return x.Emotion
+	}
+	return ""
+}
+
+func (x *TranscriptEvent) GetGender() string {
+	if x != nil {
+		return x.Gender
+	}
+	return ""
+}
 
 type SessionConfig struct {
 	state      protoimpl.MessageState `protogen:"open.v1"`
@@ -303,7 +412,7 @@ type SessionConfig struct {
 
 func (x *SessionConfig) Reset() {
 	*x = SessionConfig{}
-	mi := &file_sentiric_stream_v1_gateway_proto_msgTypes[2]
+	mi := &file_sentiric_stream_v1_gateway_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -315,7 +424,7 @@ func (x *SessionConfig) String() string {
 func (*SessionConfig) ProtoMessage() {}
 
 func (x *SessionConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_stream_v1_gateway_proto_msgTypes[2]
+	mi := &file_sentiric_stream_v1_gateway_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -328,7 +437,7 @@ func (x *SessionConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SessionConfig.ProtoReflect.Descriptor instead.
 func (*SessionConfig) Descriptor() ([]byte, []int) {
-	return file_sentiric_stream_v1_gateway_proto_rawDescGZIP(), []int{2}
+	return file_sentiric_stream_v1_gateway_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *SessionConfig) GetToken() string {
@@ -368,7 +477,7 @@ type SessionControl struct {
 
 func (x *SessionControl) Reset() {
 	*x = SessionControl{}
-	mi := &file_sentiric_stream_v1_gateway_proto_msgTypes[3]
+	mi := &file_sentiric_stream_v1_gateway_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -380,7 +489,7 @@ func (x *SessionControl) String() string {
 func (*SessionControl) ProtoMessage() {}
 
 func (x *SessionControl) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_stream_v1_gateway_proto_msgTypes[3]
+	mi := &file_sentiric_stream_v1_gateway_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -393,7 +502,7 @@ func (x *SessionControl) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SessionControl.ProtoReflect.Descriptor instead.
 func (*SessionControl) Descriptor() ([]byte, []int) {
-	return file_sentiric_stream_v1_gateway_proto_rawDescGZIP(), []int{3}
+	return file_sentiric_stream_v1_gateway_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *SessionControl) GetEvent() SessionControl_EventType {
@@ -414,12 +523,22 @@ const file_sentiric_stream_v1_gateway_proto_rawDesc = "" +
 	"audioChunk\x12#\n" +
 	"\ftext_message\x18\x03 \x01(\tH\x00R\vtextMessage\x12>\n" +
 	"\acontrol\x18\x04 \x01(\v2\".sentiric.stream.v1.SessionControlH\x00R\acontrolB\x06\n" +
-	"\x04data\"\x96\x01\n" +
+	"\x04data\"\x8d\x02\n" +
 	"\x15StreamSessionResponse\x12'\n" +
 	"\x0eaudio_response\x18\x01 \x01(\fH\x00R\raudioResponse\x12%\n" +
 	"\rtext_response\x18\x02 \x01(\tH\x00R\ftextResponse\x12%\n" +
-	"\rstatus_update\x18\x03 \x01(\tH\x00R\fstatusUpdateB\x06\n" +
-	"\x04data\"\x7f\n" +
+	"\rstatus_update\x18\x03 \x01(\tH\x00R\fstatusUpdate\x12E\n" +
+	"\n" +
+	"transcript\x18\x04 \x01(\v2#.sentiric.stream.v1.TranscriptEventH\x00R\n" +
+	"transcript\x12.\n" +
+	"\x12clear_audio_buffer\x18\x05 \x01(\bH\x00R\x10clearAudioBufferB\x06\n" +
+	"\x04data\"\x8a\x01\n" +
+	"\x0fTranscriptEvent\x12\x12\n" +
+	"\x04text\x18\x01 \x01(\tR\x04text\x12\x19\n" +
+	"\bis_final\x18\x02 \x01(\bR\aisFinal\x12\x16\n" +
+	"\x06sender\x18\x03 \x01(\tR\x06sender\x12\x18\n" +
+	"\aemotion\x18\x04 \x01(\tR\aemotion\x12\x16\n" +
+	"\x06gender\x18\x05 \x01(\tR\x06gender\"\x7f\n" +
 	"\rSessionConfig\x12\x14\n" +
 	"\x05token\x18\x01 \x01(\tR\x05token\x12\x1a\n" +
 	"\blanguage\x18\x02 \x01(\tR\blanguage\x12\x1f\n" +
@@ -449,25 +568,27 @@ func file_sentiric_stream_v1_gateway_proto_rawDescGZIP() []byte {
 }
 
 var file_sentiric_stream_v1_gateway_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_sentiric_stream_v1_gateway_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_sentiric_stream_v1_gateway_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_sentiric_stream_v1_gateway_proto_goTypes = []any{
 	(SessionControl_EventType)(0), // 0: sentiric.stream.v1.SessionControl.EventType
 	(*StreamSessionRequest)(nil),  // 1: sentiric.stream.v1.StreamSessionRequest
 	(*StreamSessionResponse)(nil), // 2: sentiric.stream.v1.StreamSessionResponse
-	(*SessionConfig)(nil),         // 3: sentiric.stream.v1.SessionConfig
-	(*SessionControl)(nil),        // 4: sentiric.stream.v1.SessionControl
+	(*TranscriptEvent)(nil),       // 3: sentiric.stream.v1.TranscriptEvent
+	(*SessionConfig)(nil),         // 4: sentiric.stream.v1.SessionConfig
+	(*SessionControl)(nil),        // 5: sentiric.stream.v1.SessionControl
 }
 var file_sentiric_stream_v1_gateway_proto_depIdxs = []int32{
-	3, // 0: sentiric.stream.v1.StreamSessionRequest.config:type_name -> sentiric.stream.v1.SessionConfig
-	4, // 1: sentiric.stream.v1.StreamSessionRequest.control:type_name -> sentiric.stream.v1.SessionControl
-	0, // 2: sentiric.stream.v1.SessionControl.event:type_name -> sentiric.stream.v1.SessionControl.EventType
-	1, // 3: sentiric.stream.v1.StreamGatewayService.StreamSession:input_type -> sentiric.stream.v1.StreamSessionRequest
-	2, // 4: sentiric.stream.v1.StreamGatewayService.StreamSession:output_type -> sentiric.stream.v1.StreamSessionResponse
-	4, // [4:5] is the sub-list for method output_type
-	3, // [3:4] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	4, // 0: sentiric.stream.v1.StreamSessionRequest.config:type_name -> sentiric.stream.v1.SessionConfig
+	5, // 1: sentiric.stream.v1.StreamSessionRequest.control:type_name -> sentiric.stream.v1.SessionControl
+	3, // 2: sentiric.stream.v1.StreamSessionResponse.transcript:type_name -> sentiric.stream.v1.TranscriptEvent
+	0, // 3: sentiric.stream.v1.SessionControl.event:type_name -> sentiric.stream.v1.SessionControl.EventType
+	1, // 4: sentiric.stream.v1.StreamGatewayService.StreamSession:input_type -> sentiric.stream.v1.StreamSessionRequest
+	2, // 5: sentiric.stream.v1.StreamGatewayService.StreamSession:output_type -> sentiric.stream.v1.StreamSessionResponse
+	5, // [5:6] is the sub-list for method output_type
+	4, // [4:5] is the sub-list for method input_type
+	4, // [4:4] is the sub-list for extension type_name
+	4, // [4:4] is the sub-list for extension extendee
+	0, // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_sentiric_stream_v1_gateway_proto_init() }
@@ -485,6 +606,8 @@ func file_sentiric_stream_v1_gateway_proto_init() {
 		(*StreamSessionResponse_AudioResponse)(nil),
 		(*StreamSessionResponse_TextResponse)(nil),
 		(*StreamSessionResponse_StatusUpdate)(nil),
+		(*StreamSessionResponse_Transcript)(nil),
+		(*StreamSessionResponse_ClearAudioBuffer)(nil),
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -492,7 +615,7 @@ func file_sentiric_stream_v1_gateway_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sentiric_stream_v1_gateway_proto_rawDesc), len(file_sentiric_stream_v1_gateway_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   4,
+			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

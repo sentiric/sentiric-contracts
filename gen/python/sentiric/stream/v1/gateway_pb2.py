@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n sentiric/stream/v1/gateway.proto\x12\x12sentiric.stream.v1\"\xe3\x01\n\x14StreamSessionRequest\x12;\n\x06\x63onfig\x18\x01 \x01(\x0b\x32!.sentiric.stream.v1.SessionConfigH\x00R\x06\x63onfig\x12!\n\x0b\x61udio_chunk\x18\x02 \x01(\x0cH\x00R\naudioChunk\x12#\n\x0ctext_message\x18\x03 \x01(\tH\x00R\x0btextMessage\x12>\n\x07\x63ontrol\x18\x04 \x01(\x0b\x32\".sentiric.stream.v1.SessionControlH\x00R\x07\x63ontrolB\x06\n\x04\x64\x61ta\"\x96\x01\n\x15StreamSessionResponse\x12\'\n\x0e\x61udio_response\x18\x01 \x01(\x0cH\x00R\raudioResponse\x12%\n\rtext_response\x18\x02 \x01(\tH\x00R\x0ctextResponse\x12%\n\rstatus_update\x18\x03 \x01(\tH\x00R\x0cstatusUpdateB\x06\n\x04\x64\x61ta\"\x7f\n\rSessionConfig\x12\x14\n\x05token\x18\x01 \x01(\tR\x05token\x12\x1a\n\x08language\x18\x02 \x01(\tR\x08language\x12\x1f\n\x0bsample_rate\x18\x03 \x01(\rR\nsampleRate\x12\x1b\n\tedge_mode\x18\x04 \x01(\x08R\x08\x65\x64geMode\"\xc2\x01\n\x0eSessionControl\x12\x42\n\x05\x65vent\x18\x01 \x01(\x0e\x32,.sentiric.stream.v1.SessionControl.EventTypeR\x05\x65vent\"l\n\tEventType\x12\x1a\n\x16\x45VENT_TYPE_UNSPECIFIED\x10\x00\x12\x18\n\x14\x45VENT_TYPE_INTERRUPT\x10\x01\x12\x12\n\x0e\x45VENT_TYPE_EOS\x10\x02\x12\x15\n\x11\x45VENT_TYPE_HANGUP\x10\x03\x32\x80\x01\n\x14StreamGatewayService\x12h\n\rStreamSession\x12(.sentiric.stream.v1.StreamSessionRequest\x1a).sentiric.stream.v1.StreamSessionResponse(\x01\x30\x01\x42KZIgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/stream/v1;streamv1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n sentiric/stream/v1/gateway.proto\x12\x12sentiric.stream.v1\"\xe3\x01\n\x14StreamSessionRequest\x12;\n\x06\x63onfig\x18\x01 \x01(\x0b\x32!.sentiric.stream.v1.SessionConfigH\x00R\x06\x63onfig\x12!\n\x0b\x61udio_chunk\x18\x02 \x01(\x0cH\x00R\naudioChunk\x12#\n\x0ctext_message\x18\x03 \x01(\tH\x00R\x0btextMessage\x12>\n\x07\x63ontrol\x18\x04 \x01(\x0b\x32\".sentiric.stream.v1.SessionControlH\x00R\x07\x63ontrolB\x06\n\x04\x64\x61ta\"\x8d\x02\n\x15StreamSessionResponse\x12\'\n\x0e\x61udio_response\x18\x01 \x01(\x0cH\x00R\raudioResponse\x12%\n\rtext_response\x18\x02 \x01(\tH\x00R\x0ctextResponse\x12%\n\rstatus_update\x18\x03 \x01(\tH\x00R\x0cstatusUpdate\x12\x45\n\ntranscript\x18\x04 \x01(\x0b\x32#.sentiric.stream.v1.TranscriptEventH\x00R\ntranscript\x12.\n\x12\x63lear_audio_buffer\x18\x05 \x01(\x08H\x00R\x10\x63learAudioBufferB\x06\n\x04\x64\x61ta\"\x8a\x01\n\x0fTranscriptEvent\x12\x12\n\x04text\x18\x01 \x01(\tR\x04text\x12\x19\n\x08is_final\x18\x02 \x01(\x08R\x07isFinal\x12\x16\n\x06sender\x18\x03 \x01(\tR\x06sender\x12\x18\n\x07\x65motion\x18\x04 \x01(\tR\x07\x65motion\x12\x16\n\x06gender\x18\x05 \x01(\tR\x06gender\"\x7f\n\rSessionConfig\x12\x14\n\x05token\x18\x01 \x01(\tR\x05token\x12\x1a\n\x08language\x18\x02 \x01(\tR\x08language\x12\x1f\n\x0bsample_rate\x18\x03 \x01(\rR\nsampleRate\x12\x1b\n\tedge_mode\x18\x04 \x01(\x08R\x08\x65\x64geMode\"\xc2\x01\n\x0eSessionControl\x12\x42\n\x05\x65vent\x18\x01 \x01(\x0e\x32,.sentiric.stream.v1.SessionControl.EventTypeR\x05\x65vent\"l\n\tEventType\x12\x1a\n\x16\x45VENT_TYPE_UNSPECIFIED\x10\x00\x12\x18\n\x14\x45VENT_TYPE_INTERRUPT\x10\x01\x12\x12\n\x0e\x45VENT_TYPE_EOS\x10\x02\x12\x15\n\x11\x45VENT_TYPE_HANGUP\x10\x03\x32\x80\x01\n\x14StreamGatewayService\x12h\n\rStreamSession\x12(.sentiric.stream.v1.StreamSessionRequest\x1a).sentiric.stream.v1.StreamSessionResponse(\x01\x30\x01\x42KZIgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/stream/v1;streamv1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -35,13 +35,15 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_STREAMSESSIONREQUEST']._serialized_start=57
   _globals['_STREAMSESSIONREQUEST']._serialized_end=284
   _globals['_STREAMSESSIONRESPONSE']._serialized_start=287
-  _globals['_STREAMSESSIONRESPONSE']._serialized_end=437
-  _globals['_SESSIONCONFIG']._serialized_start=439
-  _globals['_SESSIONCONFIG']._serialized_end=566
-  _globals['_SESSIONCONTROL']._serialized_start=569
-  _globals['_SESSIONCONTROL']._serialized_end=763
-  _globals['_SESSIONCONTROL_EVENTTYPE']._serialized_start=655
-  _globals['_SESSIONCONTROL_EVENTTYPE']._serialized_end=763
-  _globals['_STREAMGATEWAYSERVICE']._serialized_start=766
-  _globals['_STREAMGATEWAYSERVICE']._serialized_end=894
+  _globals['_STREAMSESSIONRESPONSE']._serialized_end=556
+  _globals['_TRANSCRIPTEVENT']._serialized_start=559
+  _globals['_TRANSCRIPTEVENT']._serialized_end=697
+  _globals['_SESSIONCONFIG']._serialized_start=699
+  _globals['_SESSIONCONFIG']._serialized_end=826
+  _globals['_SESSIONCONTROL']._serialized_start=829
+  _globals['_SESSIONCONTROL']._serialized_end=1023
+  _globals['_SESSIONCONTROL_EVENTTYPE']._serialized_start=915
+  _globals['_SESSIONCONTROL_EVENTTYPE']._serialized_end=1023
+  _globals['_STREAMGATEWAYSERVICE']._serialized_start=1026
+  _globals['_STREAMGATEWAYSERVICE']._serialized_end=1154
 # @@protoc_insertion_point(module_scope)
