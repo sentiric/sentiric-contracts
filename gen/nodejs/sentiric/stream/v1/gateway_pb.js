@@ -1159,7 +1159,9 @@ proto.sentiric.stream.v1.SessionConfig.toObject = function(includeInstance, msg)
 token: jspb.Message.getFieldWithDefault(msg, 1, ""),
 language: jspb.Message.getFieldWithDefault(msg, 2, ""),
 sampleRate: jspb.Message.getFieldWithDefault(msg, 3, 0),
-edgeMode: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
+edgeMode: jspb.Message.getBooleanFieldWithDefault(msg, 4, false),
+traceId: jspb.Message.getFieldWithDefault(msg, 5, ""),
+sessionId: jspb.Message.getFieldWithDefault(msg, 6, "")
   };
 
   if (includeInstance) {
@@ -1211,6 +1213,14 @@ proto.sentiric.stream.v1.SessionConfig.deserializeBinaryFromReader = function(ms
     case 4:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setEdgeMode(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
+      msg.setTraceId(value);
+      break;
+    case 6:
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
+      msg.setSessionId(value);
       break;
     default:
       reader.skipField();
@@ -1266,6 +1276,20 @@ proto.sentiric.stream.v1.SessionConfig.serializeBinaryToWriter = function(messag
   if (f) {
     writer.writeBool(
       4,
+      f
+    );
+  }
+  f = message.getTraceId();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
+      f
+    );
+  }
+  f = message.getSessionId();
+  if (f.length > 0) {
+    writer.writeString(
+      6,
       f
     );
   }
@@ -1341,6 +1365,42 @@ proto.sentiric.stream.v1.SessionConfig.prototype.getEdgeMode = function() {
  */
 proto.sentiric.stream.v1.SessionConfig.prototype.setEdgeMode = function(value) {
   return jspb.Message.setProto3BooleanField(this, 4, value);
+};
+
+
+/**
+ * optional string trace_id = 5;
+ * @return {string}
+ */
+proto.sentiric.stream.v1.SessionConfig.prototype.getTraceId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sentiric.stream.v1.SessionConfig} returns this
+ */
+proto.sentiric.stream.v1.SessionConfig.prototype.setTraceId = function(value) {
+  return jspb.Message.setProto3StringField(this, 5, value);
+};
+
+
+/**
+ * optional string session_id = 6;
+ * @return {string}
+ */
+proto.sentiric.stream.v1.SessionConfig.prototype.getSessionId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sentiric.stream.v1.SessionConfig} returns this
+ */
+proto.sentiric.stream.v1.SessionConfig.prototype.setSessionId = function(value) {
+  return jspb.Message.setProto3StringField(this, 6, value);
 };
 
 

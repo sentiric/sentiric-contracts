@@ -405,7 +405,10 @@ type SessionConfig struct {
 	Language   string                 `protobuf:"bytes,2,opt,name=language,proto3" json:"language,omitempty"`
 	SampleRate uint32                 `protobuf:"varint,3,opt,name=sample_rate,json=sampleRate,proto3" json:"sample_rate,omitempty"`
 	// [YENİ] Edge cihazlar için Ghost Mode bayrağı.
-	EdgeMode      bool `protobuf:"varint,4,opt,name=edge_mode,json=edgeMode,proto3" json:"edge_mode,omitempty"`
+	EdgeMode bool `protobuf:"varint,4,opt,name=edge_mode,json=edgeMode,proto3" json:"edge_mode,omitempty"`
+	// [ARCH-COMPLIANCE FIX] Session Authority
+	TraceId       string `protobuf:"bytes,5,opt,name=trace_id,json=traceId,proto3" json:"trace_id,omitempty"`
+	SessionId     string `protobuf:"bytes,6,opt,name=session_id,json=sessionId,proto3" json:"session_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -466,6 +469,20 @@ func (x *SessionConfig) GetEdgeMode() bool {
 		return x.EdgeMode
 	}
 	return false
+}
+
+func (x *SessionConfig) GetTraceId() string {
+	if x != nil {
+		return x.TraceId
+	}
+	return ""
+}
+
+func (x *SessionConfig) GetSessionId() string {
+	if x != nil {
+		return x.SessionId
+	}
+	return ""
 }
 
 type SessionControl struct {
@@ -538,13 +555,16 @@ const file_sentiric_stream_v1_gateway_proto_rawDesc = "" +
 	"\bis_final\x18\x02 \x01(\bR\aisFinal\x12\x16\n" +
 	"\x06sender\x18\x03 \x01(\tR\x06sender\x12\x18\n" +
 	"\aemotion\x18\x04 \x01(\tR\aemotion\x12\x16\n" +
-	"\x06gender\x18\x05 \x01(\tR\x06gender\"\x7f\n" +
+	"\x06gender\x18\x05 \x01(\tR\x06gender\"\xb9\x01\n" +
 	"\rSessionConfig\x12\x14\n" +
 	"\x05token\x18\x01 \x01(\tR\x05token\x12\x1a\n" +
 	"\blanguage\x18\x02 \x01(\tR\blanguage\x12\x1f\n" +
 	"\vsample_rate\x18\x03 \x01(\rR\n" +
 	"sampleRate\x12\x1b\n" +
-	"\tedge_mode\x18\x04 \x01(\bR\bedgeMode\"\xc2\x01\n" +
+	"\tedge_mode\x18\x04 \x01(\bR\bedgeMode\x12\x19\n" +
+	"\btrace_id\x18\x05 \x01(\tR\atraceId\x12\x1d\n" +
+	"\n" +
+	"session_id\x18\x06 \x01(\tR\tsessionId\"\xc2\x01\n" +
 	"\x0eSessionControl\x12B\n" +
 	"\x05event\x18\x01 \x01(\x0e2,.sentiric.stream.v1.SessionControl.EventTypeR\x05event\"l\n" +
 	"\tEventType\x12\x1a\n" +

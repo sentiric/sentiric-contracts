@@ -938,6 +938,8 @@ class SessionConfig final :
   enum : int {
     kTokenFieldNumber = 1,
     kLanguageFieldNumber = 2,
+    kTraceIdFieldNumber = 5,
+    kSessionIdFieldNumber = 6,
     kSampleRateFieldNumber = 3,
     kEdgeModeFieldNumber = 4,
   };
@@ -969,6 +971,34 @@ class SessionConfig final :
   std::string* _internal_mutable_language();
   public:
 
+  // string trace_id = 5;
+  void clear_trace_id();
+  const std::string& trace_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_trace_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_trace_id();
+  PROTOBUF_NODISCARD std::string* release_trace_id();
+  void set_allocated_trace_id(std::string* trace_id);
+  private:
+  const std::string& _internal_trace_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_trace_id(const std::string& value);
+  std::string* _internal_mutable_trace_id();
+  public:
+
+  // string session_id = 6;
+  void clear_session_id();
+  const std::string& session_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_session_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_session_id();
+  PROTOBUF_NODISCARD std::string* release_session_id();
+  void set_allocated_session_id(std::string* session_id);
+  private:
+  const std::string& _internal_session_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_session_id(const std::string& value);
+  std::string* _internal_mutable_session_id();
+  public:
+
   // uint32 sample_rate = 3;
   void clear_sample_rate();
   uint32_t sample_rate() const;
@@ -997,6 +1027,8 @@ class SessionConfig final :
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr token_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr language_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr trace_id_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr session_id_;
     uint32_t sample_rate_;
     bool edge_mode_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
@@ -2230,6 +2262,106 @@ inline void SessionConfig::_internal_set_edge_mode(bool value) {
 inline void SessionConfig::set_edge_mode(bool value) {
   _internal_set_edge_mode(value);
   // @@protoc_insertion_point(field_set:sentiric.stream.v1.SessionConfig.edge_mode)
+}
+
+// string trace_id = 5;
+inline void SessionConfig::clear_trace_id() {
+  _impl_.trace_id_.ClearToEmpty();
+}
+inline const std::string& SessionConfig::trace_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.stream.v1.SessionConfig.trace_id)
+  return _internal_trace_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SessionConfig::set_trace_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.trace_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.stream.v1.SessionConfig.trace_id)
+}
+inline std::string* SessionConfig::mutable_trace_id() {
+  std::string* _s = _internal_mutable_trace_id();
+  // @@protoc_insertion_point(field_mutable:sentiric.stream.v1.SessionConfig.trace_id)
+  return _s;
+}
+inline const std::string& SessionConfig::_internal_trace_id() const {
+  return _impl_.trace_id_.Get();
+}
+inline void SessionConfig::_internal_set_trace_id(const std::string& value) {
+  
+  _impl_.trace_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SessionConfig::_internal_mutable_trace_id() {
+  
+  return _impl_.trace_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SessionConfig::release_trace_id() {
+  // @@protoc_insertion_point(field_release:sentiric.stream.v1.SessionConfig.trace_id)
+  return _impl_.trace_id_.Release();
+}
+inline void SessionConfig::set_allocated_trace_id(std::string* trace_id) {
+  if (trace_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.trace_id_.SetAllocated(trace_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.trace_id_.IsDefault()) {
+    _impl_.trace_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.stream.v1.SessionConfig.trace_id)
+}
+
+// string session_id = 6;
+inline void SessionConfig::clear_session_id() {
+  _impl_.session_id_.ClearToEmpty();
+}
+inline const std::string& SessionConfig::session_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.stream.v1.SessionConfig.session_id)
+  return _internal_session_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SessionConfig::set_session_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.session_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.stream.v1.SessionConfig.session_id)
+}
+inline std::string* SessionConfig::mutable_session_id() {
+  std::string* _s = _internal_mutable_session_id();
+  // @@protoc_insertion_point(field_mutable:sentiric.stream.v1.SessionConfig.session_id)
+  return _s;
+}
+inline const std::string& SessionConfig::_internal_session_id() const {
+  return _impl_.session_id_.Get();
+}
+inline void SessionConfig::_internal_set_session_id(const std::string& value) {
+  
+  _impl_.session_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SessionConfig::_internal_mutable_session_id() {
+  
+  return _impl_.session_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SessionConfig::release_session_id() {
+  // @@protoc_insertion_point(field_release:sentiric.stream.v1.SessionConfig.session_id)
+  return _impl_.session_id_.Release();
+}
+inline void SessionConfig::set_allocated_session_id(std::string* session_id) {
+  if (session_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.session_id_.SetAllocated(session_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.session_id_.IsDefault()) {
+    _impl_.session_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.stream.v1.SessionConfig.session_id)
 }
 
 // -------------------------------------------------------------------

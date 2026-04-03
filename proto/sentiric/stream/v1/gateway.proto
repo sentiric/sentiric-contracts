@@ -46,6 +46,10 @@ message SessionConfig {
 
   // [YENİ] Edge cihazlar için Ghost Mode bayrağı.
   bool edge_mode = 4;
+
+  // [ARCH-COMPLIANCE FIX] Session Authority
+  string trace_id = 5;
+  string session_id = 6;
 }
 
 message SessionControl {

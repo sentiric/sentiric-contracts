@@ -69,6 +69,11 @@ pub struct SessionConfig {
     /// \[YENİ\] Edge cihazlar için Ghost Mode bayrağı.
     #[prost(bool, tag="4")]
     pub edge_mode: bool,
+    /// \[ARCH-COMPLIANCE FIX\] Session Authority
+    #[prost(string, tag="5")]
+    pub trace_id: ::prost::alloc::string::String,
+    #[prost(string, tag="6")]
+    pub session_id: ::prost::alloc::string::String,
 }
 #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct SessionControl {
