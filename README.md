@@ -1,106 +1,25 @@
-# 🏛️ Sentiric Contracts
+# 🏛️ Sentiric Contracts (The DNA)
 
-[![CI Status](https://github.com/sentiric/sentiric-contracts/actions/workflows/ci.yml/badge.svg)](https://github.com/sentiric/sentiric-contracts/actions/workflows/ci.yml)
-[![Release Status](https://github.com/sentiric/sentiric-contracts/actions/workflows/release.yml/badge.svg)](https://github.com/sentiric/sentiric-contracts/actions/workflows/release.yml)
+**Sentiric Contracts**, platformun tüm gRPC ve Protobuf tanımlarının **Tek Doğruluk Kaynağıdır (SSoT)**. 
 
-Bu depo, Sentiric mikroservis ekosistemindeki tüm API sözleşmelerinin ve **Protobuf** tanımlarının **Tek Doğruluk Kaynağıdır (Single Source of Truth)**. Go, Rust, Python, TypeScript ve C++ için tip-güvenli istemci/sunucu kodlarını yönetir ve otomatik olarak üretir.
+## 📦 Kullanım (Bağımlılık Olarak Ekleme)
 
-## 🎯 Temel Sorumluluklar
-
-*   **Tutarlılık:** Tüm servislerin aynı dili konuşmasını sağlar.
-*   **Tip Güvenliği:** Çalışma zamanı hatalarının büyük bir bölümünü ortadan kaldırır.
-*   **Otomasyon:** CI/CD, her dil için sürüm kontrollü paketleri otomatik olarak üretir ve yayınlar.
-*   **Standartlar:** Tüm RPC ve Veri Modeli adlandırma standartlarını zorunlu kılar.
-
-## 📂 Dizin Yapısı
-
-*   `/proto`: Tüm `.proto` dosyalarının bulunduğu ana dizin.
-*   `/gen`: Otomatik olarak üretilen, dile özgü kodların bulunduğu dizin (Git'e commit edilir).
-*   `buf.yaml`: Proje bağımlılıklarını ve lint kurallarını tanımlar.
-*   `buf.gen.yaml`: Hangi diller için kod üretileceğini tanımlar (C++ hariç).
-*   `Makefile`: Tüm diller için kod üretimi ve doğrulama süreçlerini otomatize eder.
-
-## 🚀 Kullanım
-
-Yeni bir sürüm etiketlendiğinde (örn: `v1.12.3`), release pipeline'ı paketleri otomatik olarak yayınlar. Diğer servisler bu paketleri bağımlılık olarak kullanmalıdır.
-
-### Go
-`go.mod` dosyanıza ekleyin:
-```go
-require (
-    github.com/sentiric/sentiric-contracts v1.12.3
-)
-```
-
-### Rust
-`Cargo.toml` dosyanıza ekleyin:
+### Rust (Cargo.toml)
 ```toml
-[dependencies]
-sentiric-contracts = { git = "https://github.com/sentiric/sentiric-contracts.git", tag = "v1.12.3" }
+sentiric-contracts = { git = "https://github.com/sentiric/sentiric-contracts.git", tag = "v1.20.5" }
 ```
 
-### Python
-`requirements.txt` dosyanıza ekleyin ve PyPI'dan (Planlanıyor) kurun:
-```text
-pip install sentiric-contracts-py==1.12.3
-```
-
-### TypeScript/Node.js
-`package.json` dosyanıza ekleyin ve NPM'den (GitHub Packages) kurun:
+### TypeScript (package.json)
 ```json
-{
-  "dependencies": {
-    "@sentiric/contracts": "1.12.3"
-  }
-}
-```
-> **Not:** GitHub Packages'ı kullanabilmek için projenizde `.npmrc` dosyası yapılandırılmış olmalıdır.
-
-### C++
-C++ projeleri, `CMake` ve `FetchContent` modülü kullanarak kontratları kolayca entegre edebilir.
-
-`CMakeLists.txt` dosyanıza ekleyin:
-```cmake
-include(FetchContent)
-
-# Gerekli Protobuf ve gRPC paketlerini bulun (vcpkg, conan veya sistemden)
-find_package(PkgConfig REQUIRED)
-pkg_search_module(PROTOBUF REQUIRED protobuf)
-pkg_search_module(GRPC REQUIRED grpc++)
-
-# Sentiric Contracts reposunu belirli bir tag ile çekin
-FetchContent_Declare(
-  sentiric_contracts
-  GIT_REPOSITORY https://github.com/sentiric/sentiric-contracts.git
-  GIT_TAG v1.12.3
-)
-FetchContent_MakeAvailable(sentiric_contracts)
-
-# Üretilmiş C++ kaynak dosyalarını projenize ekleyin
-file(GLOB_RECURSE CONTRACT_SOURCES
-    "${sentiric_contracts_SOURCE_DIR}/gen/cpp/*.cc"
-)
-
-add_executable(my_service main.cpp ${CONTRACT_SOURCES})
-
-# Gerekli kütüphaneleri ve include dizinlerini hedefinize bağlayın
-target_include_directories(my_service PRIVATE
-    "${sentiric_contracts_SOURCE_DIR}/gen/cpp"
-    ${PROTOBUF_INCLUDE_DIRS}
-    ${GRPC_INCLUDE_DIRS}
-)
-
-target_link_libraries(my_service PRIVATE
-    ${PROTOBUF_LIBRARIES}
-    ${GRPC_LIBRARIES}
-)
-```
----
-
-## 📘 STANDARTLAR VE MİMARİ REHBERLER
-
-*   Tüm adlandırma ve sürümleme kuralları için **[Protobuf Standartları Kılavuzuna](docs/protobuf-standards.md)** bakın.
-*   Bu servise katkıda bulunmak için lütfen **[Katkı Rehberi'ni](CONTRIBUTING.md)** okuyun.
+"@sentiric/contracts": "git+https://github.com/sentiric/sentiric-contracts.git#v1.20.5"
 ```
 
----
+### Go (go.mod)
+```go
+require github.com/sentiric/sentiric-contracts v1.20.5
+```
+
+## 🛠️ Geliştirme Kılavuzu
+* **Sözleşme Yazım Kuralları (AI/İnsan):** Yeni bir .proto dosyası eklemeden önce GİZLİ [.context.md](.context.md) dosyasını okuyun.
+* **Sürümleme ve Yönetişim:** Sözleşme yaşam döngüsü kuralları için [LOGIC.md](LOGIC.md) dosyasını inceleyin.
+EOF
