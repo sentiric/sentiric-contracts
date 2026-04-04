@@ -23,7 +23,15 @@ plugins:
     out: gen/nodejs
     opt:
       - grpc_js
-
+  # [YENİ] ts-proto: Modern, bağımsız ve tip-güvenli TS üretir
+  - plugin: buf.build/community/stephenh-ts-proto
+    out: gen/ts
+    opt:
+      - env=browser
+      - outputServices=none # Sadece mesaj tipleri lazım
+      - esModuleInterop=true
+      - forceLong=string
+      - useOptionals=messages
   # # C++ için en basit, modern buf eklentilerini kullanıyoruz.
   # - plugin: buf.build/protocolbuffers/cpp
   #   out: gen/cpp

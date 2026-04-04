@@ -1,7 +1,7 @@
 {
   "name": "@sentiric/contracts",
-  "version": "1.20.4",
-  "description": "API contracts for Sentiric microservices, published via GitHub Packages.",
+  "version": "1.20.5",
+  "description": "API contracts for Sentiric microservices.",
   "repository": {
     "type": "git",
     "url": "https://github.com/sentiric/sentiric-contracts.git"
@@ -11,6 +11,11 @@
   },
   "files": [
     "gen/nodejs/sentiric/**/*.js",
-    "gen/nodejs/sentiric/**/*.d.ts"
-  ]
+    "gen/nodejs/sentiric/**/*.d.ts",
+    "gen/ts/**/*.ts",
+    "gen/ts/**/*.js"
+  ],
+  "exports": {
+    "./stream": "./gen/ts/sentiric/stream/v1/gateway.ts"
+  }
 }
