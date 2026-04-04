@@ -1,25 +1,13 @@
-# 🏛️ Sentiric Contracts (The DNA)
+# 📜 Sentiric Contracts
 
-**Sentiric Contracts**, platformun tüm gRPC ve Protobuf tanımlarının **Tek Doğruluk Kaynağıdır (SSoT)**. 
+Tüm platformun Tek Doğruluk Kaynağıdır (SSoT). gRPC/Protobuf sözleşmelerini tanımlar.
 
-## 📦 Kullanım (Bağımlılık Olarak Ekleme)
-
-### Rust (Cargo.toml)
-```toml
-sentiric-contracts = { git = "https://github.com/sentiric/sentiric-contracts.git", tag = "v1.20.5" }
+## 🚀 Hızlı Başlangıç
+```bash
+make generate-all
 ```
 
-### TypeScript (package.json)
-```json
-"@sentiric/contracts": "git+https://github.com/sentiric/sentiric-contracts.git#v1.20.5"
-```
-
-### Go (go.mod)
-```go
-require github.com/sentiric/sentiric-contracts v1.20.5
-```
-
-## 🛠️ Geliştirme Kılavuzu
-* **Sözleşme Yazım Kuralları (AI/İnsan):** Yeni bir .proto dosyası eklemeden önce GİZLİ [.context.md](.context.md) dosyasını okuyun.
-* **Sürümleme ve Yönetişim:** Sözleşme yaşam döngüsü kuralları için [LOGIC.md](LOGIC.md) dosyasını inceleyin.
-EOF
+## 🏛️ Mimari ve Mantık
+* **Geliştirici Kuralları:** Gizli [.context.md](.context.md) dosyasını okuyun (AI Ajanları için zorunludur).
+* **İş Mantığı ve Algoritmalar:** [LOGIC.md](LOGIC.md) dosyasını inceleyin.
+* **Anayasal Konum:** [sentiric-spec/spec/libraries/contracts.yaml](https://github.com/sentiric/sentiric-spec)
