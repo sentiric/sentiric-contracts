@@ -63,6 +63,9 @@ extern StreamSessionResponseDefaultTypeInternal _StreamSessionResponse_default_i
 class TranscriptEvent;
 struct TranscriptEventDefaultTypeInternal;
 extern TranscriptEventDefaultTypeInternal _TranscriptEvent_default_instance_;
+class WordData;
+struct WordDataDefaultTypeInternal;
+extern WordDataDefaultTypeInternal _WordData_default_instance_;
 }  // namespace v1
 }  // namespace stream
 }  // namespace sentiric
@@ -72,6 +75,7 @@ template<> ::sentiric::stream::v1::SessionControl* Arena::CreateMaybeMessage<::s
 template<> ::sentiric::stream::v1::StreamSessionRequest* Arena::CreateMaybeMessage<::sentiric::stream::v1::StreamSessionRequest>(Arena*);
 template<> ::sentiric::stream::v1::StreamSessionResponse* Arena::CreateMaybeMessage<::sentiric::stream::v1::StreamSessionResponse>(Arena*);
 template<> ::sentiric::stream::v1::TranscriptEvent* Arena::CreateMaybeMessage<::sentiric::stream::v1::TranscriptEvent>(Arena*);
+template<> ::sentiric::stream::v1::WordData* Arena::CreateMaybeMessage<::sentiric::stream::v1::WordData>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace sentiric {
 namespace stream {
@@ -603,6 +607,192 @@ class StreamSessionResponse final :
 };
 // -------------------------------------------------------------------
 
+class WordData final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.stream.v1.WordData) */ {
+ public:
+  inline WordData() : WordData(nullptr) {}
+  ~WordData() override;
+  explicit PROTOBUF_CONSTEXPR WordData(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  WordData(const WordData& from);
+  WordData(WordData&& from) noexcept
+    : WordData() {
+    *this = ::std::move(from);
+  }
+
+  inline WordData& operator=(const WordData& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline WordData& operator=(WordData&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const WordData& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const WordData* internal_default_instance() {
+    return reinterpret_cast<const WordData*>(
+               &_WordData_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    2;
+
+  friend void swap(WordData& a, WordData& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(WordData* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(WordData* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  WordData* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<WordData>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const WordData& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const WordData& from) {
+    WordData::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(WordData* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.stream.v1.WordData";
+  }
+  protected:
+  explicit WordData(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kWordFieldNumber = 1,
+    kStartFieldNumber = 2,
+    kEndFieldNumber = 3,
+    kProbabilityFieldNumber = 4,
+  };
+  // string word = 1;
+  void clear_word();
+  const std::string& word() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_word(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_word();
+  PROTOBUF_NODISCARD std::string* release_word();
+  void set_allocated_word(std::string* word);
+  private:
+  const std::string& _internal_word() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_word(const std::string& value);
+  std::string* _internal_mutable_word();
+  public:
+
+  // float start = 2;
+  void clear_start();
+  float start() const;
+  void set_start(float value);
+  private:
+  float _internal_start() const;
+  void _internal_set_start(float value);
+  public:
+
+  // float end = 3;
+  void clear_end();
+  float end() const;
+  void set_end(float value);
+  private:
+  float _internal_end() const;
+  void _internal_set_end(float value);
+  public:
+
+  // float probability = 4;
+  void clear_probability();
+  float probability() const;
+  void set_probability(float value);
+  private:
+  float _internal_probability() const;
+  void _internal_set_probability(float value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.stream.v1.WordData)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr word_;
+    float start_;
+    float end_;
+    float probability_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2fstream_2fv1_2fgateway_2eproto;
+};
+// -------------------------------------------------------------------
+
 class TranscriptEvent final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.stream.v1.TranscriptEvent) */ {
  public:
@@ -651,7 +841,7 @@ class TranscriptEvent final :
                &_TranscriptEvent_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    3;
 
   friend void swap(TranscriptEvent& a, TranscriptEvent& b) {
     a.Swap(&b);
@@ -724,12 +914,57 @@ class TranscriptEvent final :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kSpeakerVecFieldNumber = 9,
+    kWordsFieldNumber = 10,
     kTextFieldNumber = 1,
     kSenderFieldNumber = 3,
     kEmotionFieldNumber = 4,
     kGenderFieldNumber = 5,
+    kSpeakerIdFieldNumber = 8,
     kIsFinalFieldNumber = 2,
+    kArousalFieldNumber = 6,
+    kValenceFieldNumber = 7,
   };
+  // repeated float speaker_vec = 9;
+  int speaker_vec_size() const;
+  private:
+  int _internal_speaker_vec_size() const;
+  public:
+  void clear_speaker_vec();
+  private:
+  float _internal_speaker_vec(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+      _internal_speaker_vec() const;
+  void _internal_add_speaker_vec(float value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+      _internal_mutable_speaker_vec();
+  public:
+  float speaker_vec(int index) const;
+  void set_speaker_vec(int index, float value);
+  void add_speaker_vec(float value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+      speaker_vec() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+      mutable_speaker_vec();
+
+  // repeated .sentiric.stream.v1.WordData words = 10;
+  int words_size() const;
+  private:
+  int _internal_words_size() const;
+  public:
+  void clear_words();
+  ::sentiric::stream::v1::WordData* mutable_words(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::sentiric::stream::v1::WordData >*
+      mutable_words();
+  private:
+  const ::sentiric::stream::v1::WordData& _internal_words(int index) const;
+  ::sentiric::stream::v1::WordData* _internal_add_words();
+  public:
+  const ::sentiric::stream::v1::WordData& words(int index) const;
+  ::sentiric::stream::v1::WordData* add_words();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::sentiric::stream::v1::WordData >&
+      words() const;
+
   // string text = 1;
   void clear_text();
   const std::string& text() const;
@@ -786,6 +1021,20 @@ class TranscriptEvent final :
   std::string* _internal_mutable_gender();
   public:
 
+  // string speaker_id = 8;
+  void clear_speaker_id();
+  const std::string& speaker_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_speaker_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_speaker_id();
+  PROTOBUF_NODISCARD std::string* release_speaker_id();
+  void set_allocated_speaker_id(std::string* speaker_id);
+  private:
+  const std::string& _internal_speaker_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_speaker_id(const std::string& value);
+  std::string* _internal_mutable_speaker_id();
+  public:
+
   // bool is_final = 2;
   void clear_is_final();
   bool is_final() const;
@@ -793,6 +1042,24 @@ class TranscriptEvent final :
   private:
   bool _internal_is_final() const;
   void _internal_set_is_final(bool value);
+  public:
+
+  // float arousal = 6;
+  void clear_arousal();
+  float arousal() const;
+  void set_arousal(float value);
+  private:
+  float _internal_arousal() const;
+  void _internal_set_arousal(float value);
+  public:
+
+  // float valence = 7;
+  void clear_valence();
+  float valence() const;
+  void set_valence(float value);
+  private:
+  float _internal_valence() const;
+  void _internal_set_valence(float value);
   public:
 
   // @@protoc_insertion_point(class_scope:sentiric.stream.v1.TranscriptEvent)
@@ -803,11 +1070,16 @@ class TranscriptEvent final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::RepeatedField< float > speaker_vec_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::sentiric::stream::v1::WordData > words_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr text_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr sender_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr emotion_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr gender_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr speaker_id_;
     bool is_final_;
+    float arousal_;
+    float valence_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -863,7 +1135,7 @@ class SessionConfig final :
                &_SessionConfig_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    4;
 
   friend void swap(SessionConfig& a, SessionConfig& b) {
     a.Swap(&b);
@@ -942,6 +1214,7 @@ class SessionConfig final :
     kSessionIdFieldNumber = 6,
     kSampleRateFieldNumber = 3,
     kEdgeModeFieldNumber = 4,
+    kListenOnlyModeFieldNumber = 7,
   };
   // string token = 1;
   void clear_token();
@@ -1017,6 +1290,15 @@ class SessionConfig final :
   void _internal_set_edge_mode(bool value);
   public:
 
+  // bool listen_only_mode = 7;
+  void clear_listen_only_mode();
+  bool listen_only_mode() const;
+  void set_listen_only_mode(bool value);
+  private:
+  bool _internal_listen_only_mode() const;
+  void _internal_set_listen_only_mode(bool value);
+  public:
+
   // @@protoc_insertion_point(class_scope:sentiric.stream.v1.SessionConfig)
  private:
   class _Internal;
@@ -1031,6 +1313,7 @@ class SessionConfig final :
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr session_id_;
     uint32_t sample_rate_;
     bool edge_mode_;
+    bool listen_only_mode_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -1086,7 +1369,7 @@ class SessionControl final :
                &_SessionControl_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    5;
 
   friend void swap(SessionControl& a, SessionControl& b) {
     a.Swap(&b);
@@ -1898,6 +2181,120 @@ inline StreamSessionResponse::DataCase StreamSessionResponse::data_case() const 
 }
 // -------------------------------------------------------------------
 
+// WordData
+
+// string word = 1;
+inline void WordData::clear_word() {
+  _impl_.word_.ClearToEmpty();
+}
+inline const std::string& WordData::word() const {
+  // @@protoc_insertion_point(field_get:sentiric.stream.v1.WordData.word)
+  return _internal_word();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void WordData::set_word(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.word_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.stream.v1.WordData.word)
+}
+inline std::string* WordData::mutable_word() {
+  std::string* _s = _internal_mutable_word();
+  // @@protoc_insertion_point(field_mutable:sentiric.stream.v1.WordData.word)
+  return _s;
+}
+inline const std::string& WordData::_internal_word() const {
+  return _impl_.word_.Get();
+}
+inline void WordData::_internal_set_word(const std::string& value) {
+  
+  _impl_.word_.Set(value, GetArenaForAllocation());
+}
+inline std::string* WordData::_internal_mutable_word() {
+  
+  return _impl_.word_.Mutable(GetArenaForAllocation());
+}
+inline std::string* WordData::release_word() {
+  // @@protoc_insertion_point(field_release:sentiric.stream.v1.WordData.word)
+  return _impl_.word_.Release();
+}
+inline void WordData::set_allocated_word(std::string* word) {
+  if (word != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.word_.SetAllocated(word, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.word_.IsDefault()) {
+    _impl_.word_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.stream.v1.WordData.word)
+}
+
+// float start = 2;
+inline void WordData::clear_start() {
+  _impl_.start_ = 0;
+}
+inline float WordData::_internal_start() const {
+  return _impl_.start_;
+}
+inline float WordData::start() const {
+  // @@protoc_insertion_point(field_get:sentiric.stream.v1.WordData.start)
+  return _internal_start();
+}
+inline void WordData::_internal_set_start(float value) {
+  
+  _impl_.start_ = value;
+}
+inline void WordData::set_start(float value) {
+  _internal_set_start(value);
+  // @@protoc_insertion_point(field_set:sentiric.stream.v1.WordData.start)
+}
+
+// float end = 3;
+inline void WordData::clear_end() {
+  _impl_.end_ = 0;
+}
+inline float WordData::_internal_end() const {
+  return _impl_.end_;
+}
+inline float WordData::end() const {
+  // @@protoc_insertion_point(field_get:sentiric.stream.v1.WordData.end)
+  return _internal_end();
+}
+inline void WordData::_internal_set_end(float value) {
+  
+  _impl_.end_ = value;
+}
+inline void WordData::set_end(float value) {
+  _internal_set_end(value);
+  // @@protoc_insertion_point(field_set:sentiric.stream.v1.WordData.end)
+}
+
+// float probability = 4;
+inline void WordData::clear_probability() {
+  _impl_.probability_ = 0;
+}
+inline float WordData::_internal_probability() const {
+  return _impl_.probability_;
+}
+inline float WordData::probability() const {
+  // @@protoc_insertion_point(field_get:sentiric.stream.v1.WordData.probability)
+  return _internal_probability();
+}
+inline void WordData::_internal_set_probability(float value) {
+  
+  _impl_.probability_ = value;
+}
+inline void WordData::set_probability(float value) {
+  _internal_set_probability(value);
+  // @@protoc_insertion_point(field_set:sentiric.stream.v1.WordData.probability)
+}
+
+// -------------------------------------------------------------------
+
 // TranscriptEvent
 
 // string text = 1;
@@ -2118,6 +2515,183 @@ inline void TranscriptEvent::set_allocated_gender(std::string* gender) {
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:sentiric.stream.v1.TranscriptEvent.gender)
+}
+
+// float arousal = 6;
+inline void TranscriptEvent::clear_arousal() {
+  _impl_.arousal_ = 0;
+}
+inline float TranscriptEvent::_internal_arousal() const {
+  return _impl_.arousal_;
+}
+inline float TranscriptEvent::arousal() const {
+  // @@protoc_insertion_point(field_get:sentiric.stream.v1.TranscriptEvent.arousal)
+  return _internal_arousal();
+}
+inline void TranscriptEvent::_internal_set_arousal(float value) {
+  
+  _impl_.arousal_ = value;
+}
+inline void TranscriptEvent::set_arousal(float value) {
+  _internal_set_arousal(value);
+  // @@protoc_insertion_point(field_set:sentiric.stream.v1.TranscriptEvent.arousal)
+}
+
+// float valence = 7;
+inline void TranscriptEvent::clear_valence() {
+  _impl_.valence_ = 0;
+}
+inline float TranscriptEvent::_internal_valence() const {
+  return _impl_.valence_;
+}
+inline float TranscriptEvent::valence() const {
+  // @@protoc_insertion_point(field_get:sentiric.stream.v1.TranscriptEvent.valence)
+  return _internal_valence();
+}
+inline void TranscriptEvent::_internal_set_valence(float value) {
+  
+  _impl_.valence_ = value;
+}
+inline void TranscriptEvent::set_valence(float value) {
+  _internal_set_valence(value);
+  // @@protoc_insertion_point(field_set:sentiric.stream.v1.TranscriptEvent.valence)
+}
+
+// string speaker_id = 8;
+inline void TranscriptEvent::clear_speaker_id() {
+  _impl_.speaker_id_.ClearToEmpty();
+}
+inline const std::string& TranscriptEvent::speaker_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.stream.v1.TranscriptEvent.speaker_id)
+  return _internal_speaker_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void TranscriptEvent::set_speaker_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.speaker_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.stream.v1.TranscriptEvent.speaker_id)
+}
+inline std::string* TranscriptEvent::mutable_speaker_id() {
+  std::string* _s = _internal_mutable_speaker_id();
+  // @@protoc_insertion_point(field_mutable:sentiric.stream.v1.TranscriptEvent.speaker_id)
+  return _s;
+}
+inline const std::string& TranscriptEvent::_internal_speaker_id() const {
+  return _impl_.speaker_id_.Get();
+}
+inline void TranscriptEvent::_internal_set_speaker_id(const std::string& value) {
+  
+  _impl_.speaker_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* TranscriptEvent::_internal_mutable_speaker_id() {
+  
+  return _impl_.speaker_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* TranscriptEvent::release_speaker_id() {
+  // @@protoc_insertion_point(field_release:sentiric.stream.v1.TranscriptEvent.speaker_id)
+  return _impl_.speaker_id_.Release();
+}
+inline void TranscriptEvent::set_allocated_speaker_id(std::string* speaker_id) {
+  if (speaker_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.speaker_id_.SetAllocated(speaker_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.speaker_id_.IsDefault()) {
+    _impl_.speaker_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.stream.v1.TranscriptEvent.speaker_id)
+}
+
+// repeated float speaker_vec = 9;
+inline int TranscriptEvent::_internal_speaker_vec_size() const {
+  return _impl_.speaker_vec_.size();
+}
+inline int TranscriptEvent::speaker_vec_size() const {
+  return _internal_speaker_vec_size();
+}
+inline void TranscriptEvent::clear_speaker_vec() {
+  _impl_.speaker_vec_.Clear();
+}
+inline float TranscriptEvent::_internal_speaker_vec(int index) const {
+  return _impl_.speaker_vec_.Get(index);
+}
+inline float TranscriptEvent::speaker_vec(int index) const {
+  // @@protoc_insertion_point(field_get:sentiric.stream.v1.TranscriptEvent.speaker_vec)
+  return _internal_speaker_vec(index);
+}
+inline void TranscriptEvent::set_speaker_vec(int index, float value) {
+  _impl_.speaker_vec_.Set(index, value);
+  // @@protoc_insertion_point(field_set:sentiric.stream.v1.TranscriptEvent.speaker_vec)
+}
+inline void TranscriptEvent::_internal_add_speaker_vec(float value) {
+  _impl_.speaker_vec_.Add(value);
+}
+inline void TranscriptEvent::add_speaker_vec(float value) {
+  _internal_add_speaker_vec(value);
+  // @@protoc_insertion_point(field_add:sentiric.stream.v1.TranscriptEvent.speaker_vec)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+TranscriptEvent::_internal_speaker_vec() const {
+  return _impl_.speaker_vec_;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+TranscriptEvent::speaker_vec() const {
+  // @@protoc_insertion_point(field_list:sentiric.stream.v1.TranscriptEvent.speaker_vec)
+  return _internal_speaker_vec();
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+TranscriptEvent::_internal_mutable_speaker_vec() {
+  return &_impl_.speaker_vec_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+TranscriptEvent::mutable_speaker_vec() {
+  // @@protoc_insertion_point(field_mutable_list:sentiric.stream.v1.TranscriptEvent.speaker_vec)
+  return _internal_mutable_speaker_vec();
+}
+
+// repeated .sentiric.stream.v1.WordData words = 10;
+inline int TranscriptEvent::_internal_words_size() const {
+  return _impl_.words_.size();
+}
+inline int TranscriptEvent::words_size() const {
+  return _internal_words_size();
+}
+inline void TranscriptEvent::clear_words() {
+  _impl_.words_.Clear();
+}
+inline ::sentiric::stream::v1::WordData* TranscriptEvent::mutable_words(int index) {
+  // @@protoc_insertion_point(field_mutable:sentiric.stream.v1.TranscriptEvent.words)
+  return _impl_.words_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::sentiric::stream::v1::WordData >*
+TranscriptEvent::mutable_words() {
+  // @@protoc_insertion_point(field_mutable_list:sentiric.stream.v1.TranscriptEvent.words)
+  return &_impl_.words_;
+}
+inline const ::sentiric::stream::v1::WordData& TranscriptEvent::_internal_words(int index) const {
+  return _impl_.words_.Get(index);
+}
+inline const ::sentiric::stream::v1::WordData& TranscriptEvent::words(int index) const {
+  // @@protoc_insertion_point(field_get:sentiric.stream.v1.TranscriptEvent.words)
+  return _internal_words(index);
+}
+inline ::sentiric::stream::v1::WordData* TranscriptEvent::_internal_add_words() {
+  return _impl_.words_.Add();
+}
+inline ::sentiric::stream::v1::WordData* TranscriptEvent::add_words() {
+  ::sentiric::stream::v1::WordData* _add = _internal_add_words();
+  // @@protoc_insertion_point(field_add:sentiric.stream.v1.TranscriptEvent.words)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::sentiric::stream::v1::WordData >&
+TranscriptEvent::words() const {
+  // @@protoc_insertion_point(field_list:sentiric.stream.v1.TranscriptEvent.words)
+  return _impl_.words_;
 }
 
 // -------------------------------------------------------------------
@@ -2364,6 +2938,26 @@ inline void SessionConfig::set_allocated_session_id(std::string* session_id) {
   // @@protoc_insertion_point(field_set_allocated:sentiric.stream.v1.SessionConfig.session_id)
 }
 
+// bool listen_only_mode = 7;
+inline void SessionConfig::clear_listen_only_mode() {
+  _impl_.listen_only_mode_ = false;
+}
+inline bool SessionConfig::_internal_listen_only_mode() const {
+  return _impl_.listen_only_mode_;
+}
+inline bool SessionConfig::listen_only_mode() const {
+  // @@protoc_insertion_point(field_get:sentiric.stream.v1.SessionConfig.listen_only_mode)
+  return _internal_listen_only_mode();
+}
+inline void SessionConfig::_internal_set_listen_only_mode(bool value) {
+  
+  _impl_.listen_only_mode_ = value;
+}
+inline void SessionConfig::set_listen_only_mode(bool value) {
+  _internal_set_listen_only_mode(value);
+  // @@protoc_insertion_point(field_set:sentiric.stream.v1.SessionConfig.listen_only_mode)
+}
+
 // -------------------------------------------------------------------
 
 // SessionControl
@@ -2391,6 +2985,8 @@ inline void SessionControl::set_event(::sentiric::stream::v1::SessionControl_Eve
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

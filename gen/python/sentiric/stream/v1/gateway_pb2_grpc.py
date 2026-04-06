@@ -6,8 +6,7 @@ from sentiric.stream.v1 import gateway_pb2 as sentiric_dot_stream_dot_v1_dot_gat
 
 
 class StreamGatewayServiceStub(object):
-    """DEĞİŞİKLİK: MobileGatewayService -> StreamGatewayService
-    """
+    """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):
         """Constructor.
@@ -23,8 +22,7 @@ class StreamGatewayServiceStub(object):
 
 
 class StreamGatewayServiceServicer(object):
-    """DEĞİŞİKLİK: MobileGatewayService -> StreamGatewayService
-    """
+    """Missing associated documentation comment in .proto file."""
 
     def StreamSession(self, request_iterator, context):
         """Missing associated documentation comment in .proto file."""
@@ -49,8 +47,7 @@ def add_StreamGatewayServiceServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class StreamGatewayService(object):
-    """DEĞİŞİKLİK: MobileGatewayService -> StreamGatewayService
-    """
+    """Missing associated documentation comment in .proto file."""
 
     @staticmethod
     def StreamSession(request_iterator,

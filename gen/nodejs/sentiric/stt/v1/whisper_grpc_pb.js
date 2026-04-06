@@ -51,10 +51,8 @@ function deserialize_sentiric_stt_v1_WhisperTranscribeStreamResponse(buffer_arg)
 }
 
 
-// SttWhisperService, Whisper motoruna özgü düşük seviyeli kontrat.
 var SttWhisperServiceService = exports.SttWhisperServiceService = {
-  // Bir ses dosyasının tamamını tek seferde metne çevirir.
-whisperTranscribe: {
+  whisperTranscribe: {
     path: '/sentiric.stt.v1.SttWhisperService/WhisperTranscribe',
     requestStream: false,
     responseStream: false,
@@ -65,8 +63,7 @@ whisperTranscribe: {
     responseSerialize: serialize_sentiric_stt_v1_WhisperTranscribeResponse,
     responseDeserialize: deserialize_sentiric_stt_v1_WhisperTranscribeResponse,
   },
-  // Gerçek zamanlı bir ses akışını metne çevirir.
-whisperTranscribeStream: {
+  whisperTranscribeStream: {
     path: '/sentiric.stt.v1.SttWhisperService/WhisperTranscribeStream',
     requestStream: true,
     responseStream: true,

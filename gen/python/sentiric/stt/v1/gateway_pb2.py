@@ -22,9 +22,10 @@ _runtime_version.ValidateProtobufRuntimeVersion(
 _sym_db = _symbol_database.Default()
 
 
+from sentiric.stt.v1 import whisper_pb2 as sentiric_dot_stt_dot_v1_dot_whisper__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1dsentiric/stt/v1/gateway.proto\x12\x0fsentiric.stt.v1\"]\n\x11TranscribeRequest\x12#\n\raudio_content\x18\x01 \x01(\x0cR\x0c\x61udioContent\x12#\n\rlanguage_code\x18\x02 \x01(\tR\x0clanguageCode\":\n\x12TranscribeResponse\x12$\n\rtranscription\x18\x01 \x01(\tR\rtranscription\":\n\x17TranscribeStreamRequest\x12\x1f\n\x0b\x61udio_chunk\x18\x01 \x01(\x0cR\naudioChunk\"\xe6\x01\n\x18TranscribeStreamResponse\x12\x33\n\x15partial_transcription\x18\x01 \x01(\tR\x14partialTranscription\x12\x19\n\x08is_final\x18\x02 \x01(\x08R\x07isFinal\x12!\n\x0cgender_proxy\x18\x03 \x01(\tR\x0bgenderProxy\x12#\n\remotion_proxy\x18\x04 \x01(\tR\x0c\x65motionProxy\x12\x18\n\x07\x61rousal\x18\x05 \x01(\x02R\x07\x61rousal\x12\x18\n\x07valence\x18\x06 \x01(\x02R\x07valence2\xd7\x01\n\x11SttGatewayService\x12U\n\nTranscribe\x12\".sentiric.stt.v1.TranscribeRequest\x1a#.sentiric.stt.v1.TranscribeResponse\x12k\n\x10TranscribeStream\x12(.sentiric.stt.v1.TranscribeStreamRequest\x1a).sentiric.stt.v1.TranscribeStreamResponse(\x01\x30\x01\x42\x45ZCgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/stt/v1;sttv1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1dsentiric/stt/v1/gateway.proto\x12\x0fsentiric.stt.v1\x1a\x1dsentiric/stt/v1/whisper.proto\"]\n\x11TranscribeRequest\x12#\n\raudio_content\x18\x01 \x01(\x0cR\x0c\x61udioContent\x12#\n\rlanguage_code\x18\x02 \x01(\tR\x0clanguageCode\":\n\x12TranscribeResponse\x12$\n\rtranscription\x18\x01 \x01(\tR\rtranscription\":\n\x17TranscribeStreamRequest\x12\x1f\n\x0b\x61udio_chunk\x18\x01 \x01(\x0cR\naudioChunk\"\xd8\x02\n\x18TranscribeStreamResponse\x12\x33\n\x15partial_transcription\x18\x01 \x01(\tR\x14partialTranscription\x12\x19\n\x08is_final\x18\x02 \x01(\x08R\x07isFinal\x12!\n\x0cgender_proxy\x18\x03 \x01(\tR\x0bgenderProxy\x12#\n\remotion_proxy\x18\x04 \x01(\tR\x0c\x65motionProxy\x12\x18\n\x07\x61rousal\x18\x05 \x01(\x02R\x07\x61rousal\x12\x18\n\x07valence\x18\x06 \x01(\x02R\x07valence\x12\x1d\n\nspeaker_id\x18\x07 \x01(\tR\tspeakerId\x12\x1f\n\x0bspeaker_vec\x18\x08 \x03(\x02R\nspeakerVec\x12\x30\n\x05words\x18\t \x03(\x0b\x32\x1a.sentiric.stt.v1.TokenDataR\x05words2\xd7\x01\n\x11SttGatewayService\x12U\n\nTranscribe\x12\".sentiric.stt.v1.TranscribeRequest\x1a#.sentiric.stt.v1.TranscribeResponse\x12k\n\x10TranscribeStream\x12(.sentiric.stt.v1.TranscribeStreamRequest\x1a).sentiric.stt.v1.TranscribeStreamResponse(\x01\x30\x01\x42\x45ZCgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/stt/v1;sttv1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -32,14 +33,14 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'sentiric.stt.v1.gateway_pb2
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
   _globals['DESCRIPTOR']._serialized_options = b'ZCgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/stt/v1;sttv1'
-  _globals['_TRANSCRIBEREQUEST']._serialized_start=50
-  _globals['_TRANSCRIBEREQUEST']._serialized_end=143
-  _globals['_TRANSCRIBERESPONSE']._serialized_start=145
-  _globals['_TRANSCRIBERESPONSE']._serialized_end=203
-  _globals['_TRANSCRIBESTREAMREQUEST']._serialized_start=205
-  _globals['_TRANSCRIBESTREAMREQUEST']._serialized_end=263
-  _globals['_TRANSCRIBESTREAMRESPONSE']._serialized_start=266
-  _globals['_TRANSCRIBESTREAMRESPONSE']._serialized_end=496
-  _globals['_STTGATEWAYSERVICE']._serialized_start=499
-  _globals['_STTGATEWAYSERVICE']._serialized_end=714
+  _globals['_TRANSCRIBEREQUEST']._serialized_start=81
+  _globals['_TRANSCRIBEREQUEST']._serialized_end=174
+  _globals['_TRANSCRIBERESPONSE']._serialized_start=176
+  _globals['_TRANSCRIBERESPONSE']._serialized_end=234
+  _globals['_TRANSCRIBESTREAMREQUEST']._serialized_start=236
+  _globals['_TRANSCRIBESTREAMREQUEST']._serialized_end=294
+  _globals['_TRANSCRIBESTREAMRESPONSE']._serialized_start=297
+  _globals['_TRANSCRIBESTREAMRESPONSE']._serialized_end=641
+  _globals['_STTGATEWAYSERVICE']._serialized_start=644
+  _globals['_STTGATEWAYSERVICE']._serialized_end=859
 # @@protoc_insertion_point(module_scope)

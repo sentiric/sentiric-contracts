@@ -28,12 +28,8 @@ const (
 // SttWhisperServiceClient is the client API for SttWhisperService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-//
-// SttWhisperService, Whisper motoruna özgü düşük seviyeli kontrat.
 type SttWhisperServiceClient interface {
-	// Bir ses dosyasının tamamını tek seferde metne çevirir.
 	WhisperTranscribe(ctx context.Context, in *WhisperTranscribeRequest, opts ...grpc.CallOption) (*WhisperTranscribeResponse, error)
-	// Gerçek zamanlı bir ses akışını metne çevirir.
 	WhisperTranscribeStream(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[WhisperTranscribeStreamRequest, WhisperTranscribeStreamResponse], error)
 }
 
@@ -71,12 +67,8 @@ type SttWhisperService_WhisperTranscribeStreamClient = grpc.BidiStreamingClient[
 // SttWhisperServiceServer is the server API for SttWhisperService service.
 // All implementations should embed UnimplementedSttWhisperServiceServer
 // for forward compatibility.
-//
-// SttWhisperService, Whisper motoruna özgü düşük seviyeli kontrat.
 type SttWhisperServiceServer interface {
-	// Bir ses dosyasının tamamını tek seferde metne çevirir.
 	WhisperTranscribe(context.Context, *WhisperTranscribeRequest) (*WhisperTranscribeResponse, error)
-	// Gerçek zamanlı bir ses akışını metne çevirir.
 	WhisperTranscribeStream(grpc.BidiStreamingServer[WhisperTranscribeStreamRequest, WhisperTranscribeStreamResponse]) error
 }
 

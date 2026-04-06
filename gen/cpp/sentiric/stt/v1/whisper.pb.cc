@@ -23,6 +23,22 @@ namespace _pbi = _pb::internal;
 namespace sentiric {
 namespace stt {
 namespace v1 {
+PROTOBUF_CONSTEXPR TokenData::TokenData(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.word_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.start_)*/0
+  , /*decltype(_impl_.end_)*/0
+  , /*decltype(_impl_.probability_)*/0
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct TokenDataDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR TokenDataDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~TokenDataDefaultTypeInternal() {}
+  union {
+    TokenData _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TokenDataDefaultTypeInternal _TokenData_default_instance_;
 PROTOBUF_CONSTEXPR WhisperTranscribeRequest::WhisperTranscribeRequest(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_._has_bits_)*/{}
@@ -41,10 +57,12 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORIT
 PROTOBUF_CONSTEXPR WhisperTranscribeResponse::WhisperTranscribeResponse(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.speaker_vec_)*/{}
+  , /*decltype(_impl_.words_)*/{}
   , /*decltype(_impl_.transcription_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.language_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.gender_proxy_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.emotion_proxy_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.speaker_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.duration_)*/0
   , /*decltype(_impl_.language_probability_)*/0
   , /*decltype(_impl_.arousal_)*/0
@@ -81,9 +99,11 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORIT
 PROTOBUF_CONSTEXPR WhisperTranscribeStreamResponse::WhisperTranscribeStreamResponse(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.speaker_vec_)*/{}
+  , /*decltype(_impl_.words_)*/{}
   , /*decltype(_impl_.transcription_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.gender_proxy_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.emotion_proxy_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.speaker_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.is_final_)*/false
   , /*decltype(_impl_.arousal_)*/0
   , /*decltype(_impl_.valence_)*/0
@@ -106,11 +126,21 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORIT
 }  // namespace v1
 }  // namespace stt
 }  // namespace sentiric
-static ::_pb::Metadata file_level_metadata_sentiric_2fstt_2fv1_2fwhisper_2eproto[4];
+static ::_pb::Metadata file_level_metadata_sentiric_2fstt_2fv1_2fwhisper_2eproto[5];
 static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_sentiric_2fstt_2fv1_2fwhisper_2eproto = nullptr;
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_sentiric_2fstt_2fv1_2fwhisper_2eproto = nullptr;
 
 const uint32_t TableStruct_sentiric_2fstt_2fv1_2fwhisper_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::TokenData, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::TokenData, _impl_.word_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::TokenData, _impl_.start_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::TokenData, _impl_.end_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::TokenData, _impl_.probability_),
   PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::WhisperTranscribeRequest, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::WhisperTranscribeRequest, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -142,6 +172,8 @@ const uint32_t TableStruct_sentiric_2fstt_2fv1_2fwhisper_2eproto::offsets[] PROT
   PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::WhisperTranscribeResponse, _impl_.spectral_centroid_),
   PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::WhisperTranscribeResponse, _impl_.zero_crossing_rate_),
   PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::WhisperTranscribeResponse, _impl_.speaker_vec_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::WhisperTranscribeResponse, _impl_.speaker_id_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::WhisperTranscribeResponse, _impl_.words_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::WhisperTranscribeStreamRequest, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -168,15 +200,19 @@ const uint32_t TableStruct_sentiric_2fstt_2fv1_2fwhisper_2eproto::offsets[] PROT
   PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::WhisperTranscribeStreamResponse, _impl_.spectral_centroid_),
   PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::WhisperTranscribeStreamResponse, _impl_.zero_crossing_rate_),
   PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::WhisperTranscribeStreamResponse, _impl_.speaker_vec_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::WhisperTranscribeStreamResponse, _impl_.speaker_id_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::WhisperTranscribeStreamResponse, _impl_.words_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, 8, -1, sizeof(::sentiric::stt::v1::WhisperTranscribeRequest)},
-  { 10, -1, -1, sizeof(::sentiric::stt::v1::WhisperTranscribeResponse)},
-  { 31, -1, -1, sizeof(::sentiric::stt::v1::WhisperTranscribeStreamRequest)},
-  { 38, -1, -1, sizeof(::sentiric::stt::v1::WhisperTranscribeStreamResponse)},
+  { 0, -1, -1, sizeof(::sentiric::stt::v1::TokenData)},
+  { 10, 18, -1, sizeof(::sentiric::stt::v1::WhisperTranscribeRequest)},
+  { 20, -1, -1, sizeof(::sentiric::stt::v1::WhisperTranscribeResponse)},
+  { 43, -1, -1, sizeof(::sentiric::stt::v1::WhisperTranscribeStreamRequest)},
+  { 50, -1, -1, sizeof(::sentiric::stt::v1::WhisperTranscribeStreamResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
+  &::sentiric::stt::v1::_TokenData_default_instance_._instance,
   &::sentiric::stt::v1::_WhisperTranscribeRequest_default_instance_._instance,
   &::sentiric::stt::v1::_WhisperTranscribeResponse_default_instance_._instance,
   &::sentiric::stt::v1::_WhisperTranscribeStreamRequest_default_instance_._instance,
@@ -185,41 +221,46 @@ static const ::_pb::Message* const file_default_instances[] = {
 
 const char descriptor_table_protodef_sentiric_2fstt_2fv1_2fwhisper_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\035sentiric/stt/v1/whisper.proto\022\017sentiri"
-  "c.stt.v1\"R\n\030WhisperTranscribeRequest\022\022\n\n"
-  "audio_data\030\001 \001(\014\022\025\n\010language\030\002 \001(\tH\000\210\001\001B"
-  "\013\n\t_language\"\337\002\n\031WhisperTranscribeRespon"
-  "se\022\025\n\rtranscription\030\001 \001(\t\022\020\n\010language\030\002 "
-  "\001(\t\022\034\n\024language_probability\030\003 \001(\002\022\020\n\010dur"
-  "ation\030\004 \001(\001\022\024\n\014gender_proxy\030\005 \001(\t\022\025\n\remo"
-  "tion_proxy\030\006 \001(\t\022\017\n\007arousal\030\007 \001(\002\022\017\n\007val"
-  "ence\030\010 \001(\002\022\022\n\npitch_mean\030\t \001(\002\022\021\n\tpitch_"
-  "std\030\n \001(\002\022\023\n\013energy_mean\030\013 \001(\002\022\022\n\nenergy"
-  "_std\030\014 \001(\002\022\031\n\021spectral_centroid\030\r \001(\002\022\032\n"
-  "\022zero_crossing_rate\030\016 \001(\002\022\023\n\013speaker_vec"
-  "\030\017 \003(\002\"5\n\036WhisperTranscribeStreamRequest"
-  "\022\023\n\013audio_chunk\030\001 \001(\014\"\265\002\n\037WhisperTranscr"
-  "ibeStreamResponse\022\025\n\rtranscription\030\001 \001(\t"
-  "\022\020\n\010is_final\030\002 \001(\010\022\024\n\014gender_proxy\030\003 \001(\t"
-  "\022\025\n\remotion_proxy\030\004 \001(\t\022\017\n\007arousal\030\005 \001(\002"
-  "\022\017\n\007valence\030\006 \001(\002\022\022\n\npitch_mean\030\007 \001(\002\022\021\n"
-  "\tpitch_std\030\010 \001(\002\022\023\n\013energy_mean\030\t \001(\002\022\022\n"
-  "\nenergy_std\030\n \001(\002\022\031\n\021spectral_centroid\030\013"
-  " \001(\002\022\032\n\022zero_crossing_rate\030\014 \001(\002\022\023\n\013spea"
-  "ker_vec\030\r \003(\0022\202\002\n\021SttWhisperService\022j\n\021W"
-  "hisperTranscribe\022).sentiric.stt.v1.Whisp"
-  "erTranscribeRequest\032*.sentiric.stt.v1.Wh"
-  "isperTranscribeResponse\022\200\001\n\027WhisperTrans"
-  "cribeStream\022/.sentiric.stt.v1.WhisperTra"
-  "nscribeStreamRequest\0320.sentiric.stt.v1.W"
-  "hisperTranscribeStreamResponse(\0010\001BEZCgi"
-  "thub.com/sentiric/sentiric-contracts/gen"
-  "/go/sentiric/stt/v1;sttv1b\006proto3"
+  "c.stt.v1\"J\n\tTokenData\022\014\n\004word\030\001 \001(\t\022\r\n\005s"
+  "tart\030\002 \001(\002\022\013\n\003end\030\003 \001(\002\022\023\n\013probability\030\004"
+  " \001(\002\"R\n\030WhisperTranscribeRequest\022\022\n\naudi"
+  "o_data\030\001 \001(\014\022\025\n\010language\030\002 \001(\tH\000\210\001\001B\013\n\t_"
+  "language\"\236\003\n\031WhisperTranscribeResponse\022\025"
+  "\n\rtranscription\030\001 \001(\t\022\020\n\010language\030\002 \001(\t\022"
+  "\034\n\024language_probability\030\003 \001(\002\022\020\n\010duratio"
+  "n\030\004 \001(\001\022\024\n\014gender_proxy\030\005 \001(\t\022\025\n\remotion"
+  "_proxy\030\006 \001(\t\022\017\n\007arousal\030\007 \001(\002\022\017\n\007valence"
+  "\030\010 \001(\002\022\022\n\npitch_mean\030\t \001(\002\022\021\n\tpitch_std\030"
+  "\n \001(\002\022\023\n\013energy_mean\030\013 \001(\002\022\022\n\nenergy_std"
+  "\030\014 \001(\002\022\031\n\021spectral_centroid\030\r \001(\002\022\032\n\022zer"
+  "o_crossing_rate\030\016 \001(\002\022\023\n\013speaker_vec\030\017 \003"
+  "(\002\022\022\n\nspeaker_id\030\020 \001(\t\022)\n\005words\030\021 \003(\0132\032."
+  "sentiric.stt.v1.TokenData\"5\n\036WhisperTran"
+  "scribeStreamRequest\022\023\n\013audio_chunk\030\001 \001(\014"
+  "\"\364\002\n\037WhisperTranscribeStreamResponse\022\025\n\r"
+  "transcription\030\001 \001(\t\022\020\n\010is_final\030\002 \001(\010\022\024\n"
+  "\014gender_proxy\030\003 \001(\t\022\025\n\remotion_proxy\030\004 \001"
+  "(\t\022\017\n\007arousal\030\005 \001(\002\022\017\n\007valence\030\006 \001(\002\022\022\n\n"
+  "pitch_mean\030\007 \001(\002\022\021\n\tpitch_std\030\010 \001(\002\022\023\n\013e"
+  "nergy_mean\030\t \001(\002\022\022\n\nenergy_std\030\n \001(\002\022\031\n\021"
+  "spectral_centroid\030\013 \001(\002\022\032\n\022zero_crossing"
+  "_rate\030\014 \001(\002\022\023\n\013speaker_vec\030\r \003(\002\022\022\n\nspea"
+  "ker_id\030\016 \001(\t\022)\n\005words\030\017 \003(\0132\032.sentiric.s"
+  "tt.v1.TokenData2\202\002\n\021SttWhisperService\022j\n"
+  "\021WhisperTranscribe\022).sentiric.stt.v1.Whi"
+  "sperTranscribeRequest\032*.sentiric.stt.v1."
+  "WhisperTranscribeResponse\022\200\001\n\027WhisperTra"
+  "nscribeStream\022/.sentiric.stt.v1.WhisperT"
+  "ranscribeStreamRequest\0320.sentiric.stt.v1"
+  ".WhisperTranscribeStreamResponse(\0010\001BEZC"
+  "github.com/sentiric/sentiric-contracts/g"
+  "en/go/sentiric/stt/v1;sttv1b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_sentiric_2fstt_2fv1_2fwhisper_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_sentiric_2fstt_2fv1_2fwhisper_2eproto = {
-    false, false, 1193, descriptor_table_protodef_sentiric_2fstt_2fv1_2fwhisper_2eproto,
+    false, false, 1395, descriptor_table_protodef_sentiric_2fstt_2fv1_2fwhisper_2eproto,
     "sentiric/stt/v1/whisper.proto",
-    &descriptor_table_sentiric_2fstt_2fv1_2fwhisper_2eproto_once, nullptr, 0, 4,
+    &descriptor_table_sentiric_2fstt_2fv1_2fwhisper_2eproto_once, nullptr, 0, 5,
     schemas, file_default_instances, TableStruct_sentiric_2fstt_2fv1_2fwhisper_2eproto::offsets,
     file_level_metadata_sentiric_2fstt_2fv1_2fwhisper_2eproto, file_level_enum_descriptors_sentiric_2fstt_2fv1_2fwhisper_2eproto,
     file_level_service_descriptors_sentiric_2fstt_2fv1_2fwhisper_2eproto,
@@ -233,6 +274,329 @@ PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_in
 namespace sentiric {
 namespace stt {
 namespace v1 {
+
+// ===================================================================
+
+class TokenData::_Internal {
+ public:
+};
+
+TokenData::TokenData(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.stt.v1.TokenData)
+}
+TokenData::TokenData(const TokenData& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  TokenData* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.word_){}
+    , decltype(_impl_.start_){}
+    , decltype(_impl_.end_){}
+    , decltype(_impl_.probability_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.word_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.word_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_word().empty()) {
+    _this->_impl_.word_.Set(from._internal_word(), 
+      _this->GetArenaForAllocation());
+  }
+  ::memcpy(&_impl_.start_, &from._impl_.start_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.probability_) -
+    reinterpret_cast<char*>(&_impl_.start_)) + sizeof(_impl_.probability_));
+  // @@protoc_insertion_point(copy_constructor:sentiric.stt.v1.TokenData)
+}
+
+inline void TokenData::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.word_){}
+    , decltype(_impl_.start_){0}
+    , decltype(_impl_.end_){0}
+    , decltype(_impl_.probability_){0}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.word_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.word_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+TokenData::~TokenData() {
+  // @@protoc_insertion_point(destructor:sentiric.stt.v1.TokenData)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void TokenData::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.word_.Destroy();
+}
+
+void TokenData::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void TokenData::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.stt.v1.TokenData)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.word_.ClearToEmpty();
+  ::memset(&_impl_.start_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&_impl_.probability_) -
+      reinterpret_cast<char*>(&_impl_.start_)) + sizeof(_impl_.probability_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* TokenData::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string word = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_word();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.stt.v1.TokenData.word"));
+        } else
+          goto handle_unusual;
+        continue;
+      // float start = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 21)) {
+          _impl_.start_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float end = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 29)) {
+          _impl_.end_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float probability = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 37)) {
+          _impl_.probability_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* TokenData::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.stt.v1.TokenData)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string word = 1;
+  if (!this->_internal_word().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_word().data(), static_cast<int>(this->_internal_word().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.stt.v1.TokenData.word");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_word(), target);
+  }
+
+  // float start = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start = this->_internal_start();
+  uint32_t raw_start;
+  memcpy(&raw_start, &tmp_start, sizeof(tmp_start));
+  if (raw_start != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(2, this->_internal_start(), target);
+  }
+
+  // float end = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end = this->_internal_end();
+  uint32_t raw_end;
+  memcpy(&raw_end, &tmp_end, sizeof(tmp_end));
+  if (raw_end != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(3, this->_internal_end(), target);
+  }
+
+  // float probability = 4;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_probability = this->_internal_probability();
+  uint32_t raw_probability;
+  memcpy(&raw_probability, &tmp_probability, sizeof(tmp_probability));
+  if (raw_probability != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(4, this->_internal_probability(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.stt.v1.TokenData)
+  return target;
+}
+
+size_t TokenData::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.stt.v1.TokenData)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string word = 1;
+  if (!this->_internal_word().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_word());
+  }
+
+  // float start = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start = this->_internal_start();
+  uint32_t raw_start;
+  memcpy(&raw_start, &tmp_start, sizeof(tmp_start));
+  if (raw_start != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float end = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end = this->_internal_end();
+  uint32_t raw_end;
+  memcpy(&raw_end, &tmp_end, sizeof(tmp_end));
+  if (raw_end != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float probability = 4;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_probability = this->_internal_probability();
+  uint32_t raw_probability;
+  memcpy(&raw_probability, &tmp_probability, sizeof(tmp_probability));
+  if (raw_probability != 0) {
+    total_size += 1 + 4;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData TokenData::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    TokenData::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*TokenData::GetClassData() const { return &_class_data_; }
+
+
+void TokenData::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<TokenData*>(&to_msg);
+  auto& from = static_cast<const TokenData&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.stt.v1.TokenData)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_word().empty()) {
+    _this->_internal_set_word(from._internal_word());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start = from._internal_start();
+  uint32_t raw_start;
+  memcpy(&raw_start, &tmp_start, sizeof(tmp_start));
+  if (raw_start != 0) {
+    _this->_internal_set_start(from._internal_start());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end = from._internal_end();
+  uint32_t raw_end;
+  memcpy(&raw_end, &tmp_end, sizeof(tmp_end));
+  if (raw_end != 0) {
+    _this->_internal_set_end(from._internal_end());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_probability = from._internal_probability();
+  uint32_t raw_probability;
+  memcpy(&raw_probability, &tmp_probability, sizeof(tmp_probability));
+  if (raw_probability != 0) {
+    _this->_internal_set_probability(from._internal_probability());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void TokenData::CopyFrom(const TokenData& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.stt.v1.TokenData)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool TokenData::IsInitialized() const {
+  return true;
+}
+
+void TokenData::InternalSwap(TokenData* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.word_, lhs_arena,
+      &other->_impl_.word_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(TokenData, _impl_.probability_)
+      + sizeof(TokenData::_impl_.probability_)
+      - PROTOBUF_FIELD_OFFSET(TokenData, _impl_.start_)>(
+          reinterpret_cast<char*>(&_impl_.start_),
+          reinterpret_cast<char*>(&other->_impl_.start_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata TokenData::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fstt_2fv1_2fwhisper_2eproto_getter, &descriptor_table_sentiric_2fstt_2fv1_2fwhisper_2eproto_once,
+      file_level_metadata_sentiric_2fstt_2fv1_2fwhisper_2eproto[0]);
+}
 
 // ===================================================================
 
@@ -493,7 +857,7 @@ void WhisperTranscribeRequest::InternalSwap(WhisperTranscribeRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata WhisperTranscribeRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fstt_2fv1_2fwhisper_2eproto_getter, &descriptor_table_sentiric_2fstt_2fv1_2fwhisper_2eproto_once,
-      file_level_metadata_sentiric_2fstt_2fv1_2fwhisper_2eproto[0]);
+      file_level_metadata_sentiric_2fstt_2fv1_2fwhisper_2eproto[1]);
 }
 
 // ===================================================================
@@ -513,10 +877,12 @@ WhisperTranscribeResponse::WhisperTranscribeResponse(const WhisperTranscribeResp
   WhisperTranscribeResponse* const _this = this; (void)_this;
   new (&_impl_) Impl_{
       decltype(_impl_.speaker_vec_){from._impl_.speaker_vec_}
+    , decltype(_impl_.words_){from._impl_.words_}
     , decltype(_impl_.transcription_){}
     , decltype(_impl_.language_){}
     , decltype(_impl_.gender_proxy_){}
     , decltype(_impl_.emotion_proxy_){}
+    , decltype(_impl_.speaker_id_){}
     , decltype(_impl_.duration_){}
     , decltype(_impl_.language_probability_){}
     , decltype(_impl_.arousal_){}
@@ -562,6 +928,14 @@ WhisperTranscribeResponse::WhisperTranscribeResponse(const WhisperTranscribeResp
     _this->_impl_.emotion_proxy_.Set(from._internal_emotion_proxy(), 
       _this->GetArenaForAllocation());
   }
+  _impl_.speaker_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.speaker_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_speaker_id().empty()) {
+    _this->_impl_.speaker_id_.Set(from._internal_speaker_id(), 
+      _this->GetArenaForAllocation());
+  }
   ::memcpy(&_impl_.duration_, &from._impl_.duration_,
     static_cast<size_t>(reinterpret_cast<char*>(&_impl_.zero_crossing_rate_) -
     reinterpret_cast<char*>(&_impl_.duration_)) + sizeof(_impl_.zero_crossing_rate_));
@@ -574,10 +948,12 @@ inline void WhisperTranscribeResponse::SharedCtor(
   (void)is_message_owned;
   new (&_impl_) Impl_{
       decltype(_impl_.speaker_vec_){arena}
+    , decltype(_impl_.words_){arena}
     , decltype(_impl_.transcription_){}
     , decltype(_impl_.language_){}
     , decltype(_impl_.gender_proxy_){}
     , decltype(_impl_.emotion_proxy_){}
+    , decltype(_impl_.speaker_id_){}
     , decltype(_impl_.duration_){0}
     , decltype(_impl_.language_probability_){0}
     , decltype(_impl_.arousal_){0}
@@ -606,6 +982,10 @@ inline void WhisperTranscribeResponse::SharedCtor(
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
     _impl_.emotion_proxy_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.speaker_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.speaker_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 WhisperTranscribeResponse::~WhisperTranscribeResponse() {
@@ -620,10 +1000,12 @@ WhisperTranscribeResponse::~WhisperTranscribeResponse() {
 inline void WhisperTranscribeResponse::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.speaker_vec_.~RepeatedField();
+  _impl_.words_.~RepeatedPtrField();
   _impl_.transcription_.Destroy();
   _impl_.language_.Destroy();
   _impl_.gender_proxy_.Destroy();
   _impl_.emotion_proxy_.Destroy();
+  _impl_.speaker_id_.Destroy();
 }
 
 void WhisperTranscribeResponse::SetCachedSize(int size) const {
@@ -637,10 +1019,12 @@ void WhisperTranscribeResponse::Clear() {
   (void) cached_has_bits;
 
   _impl_.speaker_vec_.Clear();
+  _impl_.words_.Clear();
   _impl_.transcription_.ClearToEmpty();
   _impl_.language_.ClearToEmpty();
   _impl_.gender_proxy_.ClearToEmpty();
   _impl_.emotion_proxy_.ClearToEmpty();
+  _impl_.speaker_id_.ClearToEmpty();
   ::memset(&_impl_.duration_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&_impl_.zero_crossing_rate_) -
       reinterpret_cast<char*>(&_impl_.duration_)) + sizeof(_impl_.zero_crossing_rate_));
@@ -781,6 +1165,29 @@ const char* WhisperTranscribeResponse::_InternalParse(const char* ptr, ::_pbi::P
         } else if (static_cast<uint8_t>(tag) == 125) {
           _internal_add_speaker_vec(::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr));
           ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // string speaker_id = 16;
+      case 16:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 130)) {
+          auto str = _internal_mutable_speaker_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.stt.v1.WhisperTranscribeResponse.speaker_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated .sentiric.stt.v1.TokenData words = 17;
+      case 17:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 138)) {
+          ptr -= 2;
+          do {
+            ptr += 2;
+            ptr = ctx->ParseMessage(_internal_add_words(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<138>(ptr));
         } else
           goto handle_unusual;
         continue;
@@ -958,6 +1365,24 @@ uint8_t* WhisperTranscribeResponse::_InternalSerialize(
     target = stream->WriteFixedPacked(15, _internal_speaker_vec(), target);
   }
 
+  // string speaker_id = 16;
+  if (!this->_internal_speaker_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_speaker_id().data(), static_cast<int>(this->_internal_speaker_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.stt.v1.WhisperTranscribeResponse.speaker_id");
+    target = stream->WriteStringMaybeAliased(
+        16, this->_internal_speaker_id(), target);
+  }
+
+  // repeated .sentiric.stt.v1.TokenData words = 17;
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_words_size()); i < n; i++) {
+    const auto& repfield = this->_internal_words(i);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(17, repfield, repfield.GetCachedSize(), target, stream);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -983,6 +1408,13 @@ size_t WhisperTranscribeResponse::ByteSizeLong() const {
         ::_pbi::WireFormatLite::Int32Size(static_cast<int32_t>(data_size));
     }
     total_size += data_size;
+  }
+
+  // repeated .sentiric.stt.v1.TokenData words = 17;
+  total_size += 2UL * this->_internal_words_size();
+  for (const auto& msg : this->_impl_.words_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
   }
 
   // string transcription = 1;
@@ -1011,6 +1443,13 @@ size_t WhisperTranscribeResponse::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_emotion_proxy());
+  }
+
+  // string speaker_id = 16;
+  if (!this->_internal_speaker_id().empty()) {
+    total_size += 2 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_speaker_id());
   }
 
   // double duration = 4;
@@ -1122,6 +1561,7 @@ void WhisperTranscribeResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_m
   (void) cached_has_bits;
 
   _this->_impl_.speaker_vec_.MergeFrom(from._impl_.speaker_vec_);
+  _this->_impl_.words_.MergeFrom(from._impl_.words_);
   if (!from._internal_transcription().empty()) {
     _this->_internal_set_transcription(from._internal_transcription());
   }
@@ -1133,6 +1573,9 @@ void WhisperTranscribeResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_m
   }
   if (!from._internal_emotion_proxy().empty()) {
     _this->_internal_set_emotion_proxy(from._internal_emotion_proxy());
+  }
+  if (!from._internal_speaker_id().empty()) {
+    _this->_internal_set_speaker_id(from._internal_speaker_id());
   }
   static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
   double tmp_duration = from._internal_duration();
@@ -1224,6 +1667,7 @@ void WhisperTranscribeResponse::InternalSwap(WhisperTranscribeResponse* other) {
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   _impl_.speaker_vec_.InternalSwap(&other->_impl_.speaker_vec_);
+  _impl_.words_.InternalSwap(&other->_impl_.words_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &_impl_.transcription_, lhs_arena,
       &other->_impl_.transcription_, rhs_arena
@@ -1240,6 +1684,10 @@ void WhisperTranscribeResponse::InternalSwap(WhisperTranscribeResponse* other) {
       &_impl_.emotion_proxy_, lhs_arena,
       &other->_impl_.emotion_proxy_, rhs_arena
   );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.speaker_id_, lhs_arena,
+      &other->_impl_.speaker_id_, rhs_arena
+  );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(WhisperTranscribeResponse, _impl_.zero_crossing_rate_)
       + sizeof(WhisperTranscribeResponse::_impl_.zero_crossing_rate_)
@@ -1251,7 +1699,7 @@ void WhisperTranscribeResponse::InternalSwap(WhisperTranscribeResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata WhisperTranscribeResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fstt_2fv1_2fwhisper_2eproto_getter, &descriptor_table_sentiric_2fstt_2fv1_2fwhisper_2eproto_once,
-      file_level_metadata_sentiric_2fstt_2fv1_2fwhisper_2eproto[1]);
+      file_level_metadata_sentiric_2fstt_2fv1_2fwhisper_2eproto[2]);
 }
 
 // ===================================================================
@@ -1449,7 +1897,7 @@ void WhisperTranscribeStreamRequest::InternalSwap(WhisperTranscribeStreamRequest
 ::PROTOBUF_NAMESPACE_ID::Metadata WhisperTranscribeStreamRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fstt_2fv1_2fwhisper_2eproto_getter, &descriptor_table_sentiric_2fstt_2fv1_2fwhisper_2eproto_once,
-      file_level_metadata_sentiric_2fstt_2fv1_2fwhisper_2eproto[2]);
+      file_level_metadata_sentiric_2fstt_2fv1_2fwhisper_2eproto[3]);
 }
 
 // ===================================================================
@@ -1469,9 +1917,11 @@ WhisperTranscribeStreamResponse::WhisperTranscribeStreamResponse(const WhisperTr
   WhisperTranscribeStreamResponse* const _this = this; (void)_this;
   new (&_impl_) Impl_{
       decltype(_impl_.speaker_vec_){from._impl_.speaker_vec_}
+    , decltype(_impl_.words_){from._impl_.words_}
     , decltype(_impl_.transcription_){}
     , decltype(_impl_.gender_proxy_){}
     , decltype(_impl_.emotion_proxy_){}
+    , decltype(_impl_.speaker_id_){}
     , decltype(_impl_.is_final_){}
     , decltype(_impl_.arousal_){}
     , decltype(_impl_.valence_){}
@@ -1508,6 +1958,14 @@ WhisperTranscribeStreamResponse::WhisperTranscribeStreamResponse(const WhisperTr
     _this->_impl_.emotion_proxy_.Set(from._internal_emotion_proxy(), 
       _this->GetArenaForAllocation());
   }
+  _impl_.speaker_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.speaker_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_speaker_id().empty()) {
+    _this->_impl_.speaker_id_.Set(from._internal_speaker_id(), 
+      _this->GetArenaForAllocation());
+  }
   ::memcpy(&_impl_.is_final_, &from._impl_.is_final_,
     static_cast<size_t>(reinterpret_cast<char*>(&_impl_.zero_crossing_rate_) -
     reinterpret_cast<char*>(&_impl_.is_final_)) + sizeof(_impl_.zero_crossing_rate_));
@@ -1520,9 +1978,11 @@ inline void WhisperTranscribeStreamResponse::SharedCtor(
   (void)is_message_owned;
   new (&_impl_) Impl_{
       decltype(_impl_.speaker_vec_){arena}
+    , decltype(_impl_.words_){arena}
     , decltype(_impl_.transcription_){}
     , decltype(_impl_.gender_proxy_){}
     , decltype(_impl_.emotion_proxy_){}
+    , decltype(_impl_.speaker_id_){}
     , decltype(_impl_.is_final_){false}
     , decltype(_impl_.arousal_){0}
     , decltype(_impl_.valence_){0}
@@ -1546,6 +2006,10 @@ inline void WhisperTranscribeStreamResponse::SharedCtor(
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
     _impl_.emotion_proxy_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.speaker_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.speaker_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 WhisperTranscribeStreamResponse::~WhisperTranscribeStreamResponse() {
@@ -1560,9 +2024,11 @@ WhisperTranscribeStreamResponse::~WhisperTranscribeStreamResponse() {
 inline void WhisperTranscribeStreamResponse::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.speaker_vec_.~RepeatedField();
+  _impl_.words_.~RepeatedPtrField();
   _impl_.transcription_.Destroy();
   _impl_.gender_proxy_.Destroy();
   _impl_.emotion_proxy_.Destroy();
+  _impl_.speaker_id_.Destroy();
 }
 
 void WhisperTranscribeStreamResponse::SetCachedSize(int size) const {
@@ -1576,9 +2042,11 @@ void WhisperTranscribeStreamResponse::Clear() {
   (void) cached_has_bits;
 
   _impl_.speaker_vec_.Clear();
+  _impl_.words_.Clear();
   _impl_.transcription_.ClearToEmpty();
   _impl_.gender_proxy_.ClearToEmpty();
   _impl_.emotion_proxy_.ClearToEmpty();
+  _impl_.speaker_id_.ClearToEmpty();
   ::memset(&_impl_.is_final_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&_impl_.zero_crossing_rate_) -
       reinterpret_cast<char*>(&_impl_.is_final_)) + sizeof(_impl_.zero_crossing_rate_));
@@ -1701,6 +2169,29 @@ const char* WhisperTranscribeStreamResponse::_InternalParse(const char* ptr, ::_
         } else if (static_cast<uint8_t>(tag) == 109) {
           _internal_add_speaker_vec(::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr));
           ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // string speaker_id = 14;
+      case 14:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 114)) {
+          auto str = _internal_mutable_speaker_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.stt.v1.WhisperTranscribeStreamResponse.speaker_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated .sentiric.stt.v1.TokenData words = 15;
+      case 15:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 122)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_words(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<122>(ptr));
         } else
           goto handle_unusual;
         continue;
@@ -1854,6 +2345,24 @@ uint8_t* WhisperTranscribeStreamResponse::_InternalSerialize(
     target = stream->WriteFixedPacked(13, _internal_speaker_vec(), target);
   }
 
+  // string speaker_id = 14;
+  if (!this->_internal_speaker_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_speaker_id().data(), static_cast<int>(this->_internal_speaker_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.stt.v1.WhisperTranscribeStreamResponse.speaker_id");
+    target = stream->WriteStringMaybeAliased(
+        14, this->_internal_speaker_id(), target);
+  }
+
+  // repeated .sentiric.stt.v1.TokenData words = 15;
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_words_size()); i < n; i++) {
+    const auto& repfield = this->_internal_words(i);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(15, repfield, repfield.GetCachedSize(), target, stream);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -1881,6 +2390,13 @@ size_t WhisperTranscribeStreamResponse::ByteSizeLong() const {
     total_size += data_size;
   }
 
+  // repeated .sentiric.stt.v1.TokenData words = 15;
+  total_size += 1UL * this->_internal_words_size();
+  for (const auto& msg : this->_impl_.words_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
   // string transcription = 1;
   if (!this->_internal_transcription().empty()) {
     total_size += 1 +
@@ -1900,6 +2416,13 @@ size_t WhisperTranscribeStreamResponse::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_emotion_proxy());
+  }
+
+  // string speaker_id = 14;
+  if (!this->_internal_speaker_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_speaker_id());
   }
 
   // bool is_final = 2;
@@ -1998,6 +2521,7 @@ void WhisperTranscribeStreamResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message
   (void) cached_has_bits;
 
   _this->_impl_.speaker_vec_.MergeFrom(from._impl_.speaker_vec_);
+  _this->_impl_.words_.MergeFrom(from._impl_.words_);
   if (!from._internal_transcription().empty()) {
     _this->_internal_set_transcription(from._internal_transcription());
   }
@@ -2006,6 +2530,9 @@ void WhisperTranscribeStreamResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message
   }
   if (!from._internal_emotion_proxy().empty()) {
     _this->_internal_set_emotion_proxy(from._internal_emotion_proxy());
+  }
+  if (!from._internal_speaker_id().empty()) {
+    _this->_internal_set_speaker_id(from._internal_speaker_id());
   }
   if (from._internal_is_final() != 0) {
     _this->_internal_set_is_final(from._internal_is_final());
@@ -2086,6 +2613,7 @@ void WhisperTranscribeStreamResponse::InternalSwap(WhisperTranscribeStreamRespon
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   _impl_.speaker_vec_.InternalSwap(&other->_impl_.speaker_vec_);
+  _impl_.words_.InternalSwap(&other->_impl_.words_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &_impl_.transcription_, lhs_arena,
       &other->_impl_.transcription_, rhs_arena
@@ -2098,6 +2626,10 @@ void WhisperTranscribeStreamResponse::InternalSwap(WhisperTranscribeStreamRespon
       &_impl_.emotion_proxy_, lhs_arena,
       &other->_impl_.emotion_proxy_, rhs_arena
   );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.speaker_id_, lhs_arena,
+      &other->_impl_.speaker_id_, rhs_arena
+  );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(WhisperTranscribeStreamResponse, _impl_.zero_crossing_rate_)
       + sizeof(WhisperTranscribeStreamResponse::_impl_.zero_crossing_rate_)
@@ -2109,7 +2641,7 @@ void WhisperTranscribeStreamResponse::InternalSwap(WhisperTranscribeStreamRespon
 ::PROTOBUF_NAMESPACE_ID::Metadata WhisperTranscribeStreamResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fstt_2fv1_2fwhisper_2eproto_getter, &descriptor_table_sentiric_2fstt_2fv1_2fwhisper_2eproto_once,
-      file_level_metadata_sentiric_2fstt_2fv1_2fwhisper_2eproto[3]);
+      file_level_metadata_sentiric_2fstt_2fv1_2fwhisper_2eproto[4]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -2117,6 +2649,10 @@ void WhisperTranscribeStreamResponse::InternalSwap(WhisperTranscribeStreamRespon
 }  // namespace stt
 }  // namespace sentiric
 PROTOBUF_NAMESPACE_OPEN
+template<> PROTOBUF_NOINLINE ::sentiric::stt::v1::TokenData*
+Arena::CreateMaybeMessage< ::sentiric::stt::v1::TokenData >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::stt::v1::TokenData >(arena);
+}
 template<> PROTOBUF_NOINLINE ::sentiric::stt::v1::WhisperTranscribeRequest*
 Arena::CreateMaybeMessage< ::sentiric::stt::v1::WhisperTranscribeRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::sentiric::stt::v1::WhisperTranscribeRequest >(arena);

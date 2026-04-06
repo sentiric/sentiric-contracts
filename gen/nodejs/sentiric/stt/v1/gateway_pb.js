@@ -15,6 +15,8 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = globalThis;
 
+var sentiric_stt_v1_whisper_pb = require('../../../sentiric/stt/v1/whisper_pb.js');
+goog.object.extend(proto, sentiric_stt_v1_whisper_pb);
 goog.exportSymbol('proto.sentiric.stt.v1.TranscribeRequest', null, global);
 goog.exportSymbol('proto.sentiric.stt.v1.TranscribeResponse', null, global);
 goog.exportSymbol('proto.sentiric.stt.v1.TranscribeStreamRequest', null, global);
@@ -93,7 +95,7 @@ if (goog.DEBUG && !COMPILED) {
  * @constructor
  */
 proto.sentiric.stt.v1.TranscribeStreamResponse = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.sentiric.stt.v1.TranscribeStreamResponse.repeatedFields_, null);
 };
 goog.inherits(proto.sentiric.stt.v1.TranscribeStreamResponse, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -572,6 +574,13 @@ proto.sentiric.stt.v1.TranscribeStreamRequest.prototype.setAudioChunk = function
 
 
 
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.sentiric.stt.v1.TranscribeStreamResponse.repeatedFields_ = [8,9];
+
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -608,7 +617,11 @@ isFinal: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
 genderProxy: jspb.Message.getFieldWithDefault(msg, 3, ""),
 emotionProxy: jspb.Message.getFieldWithDefault(msg, 4, ""),
 arousal: jspb.Message.getFloatingPointFieldWithDefault(msg, 5, 0.0),
-valence: jspb.Message.getFloatingPointFieldWithDefault(msg, 6, 0.0)
+valence: jspb.Message.getFloatingPointFieldWithDefault(msg, 6, 0.0),
+speakerId: jspb.Message.getFieldWithDefault(msg, 7, ""),
+speakerVecList: (f = jspb.Message.getRepeatedFloatingPointField(msg, 8)) == null ? undefined : f,
+wordsList: jspb.Message.toObjectList(msg.getWordsList(),
+    sentiric_stt_v1_whisper_pb.TokenData.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -668,6 +681,18 @@ proto.sentiric.stt.v1.TranscribeStreamResponse.deserializeBinaryFromReader = fun
     case 6:
       var value = /** @type {number} */ (reader.readFloat());
       msg.setValence(value);
+      break;
+    case 7:
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
+      msg.setSpeakerId(value);
+      break;
+    case 8:
+      reader.readPackableFloatInto(msg.getSpeakerVecList());
+      break;
+    case 9:
+      var value = new sentiric_stt_v1_whisper_pb.TokenData;
+      reader.readMessage(value,sentiric_stt_v1_whisper_pb.TokenData.deserializeBinaryFromReader);
+      msg.addWords(value);
       break;
     default:
       reader.skipField();
@@ -738,6 +763,28 @@ proto.sentiric.stt.v1.TranscribeStreamResponse.serializeBinaryToWriter = functio
     writer.writeFloat(
       6,
       f
+    );
+  }
+  f = message.getSpeakerId();
+  if (f.length > 0) {
+    writer.writeString(
+      7,
+      f
+    );
+  }
+  f = message.getSpeakerVecList();
+  if (f.length > 0) {
+    writer.writePackedFloat(
+      8,
+      f
+    );
+  }
+  f = message.getWordsList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      9,
+      f,
+      sentiric_stt_v1_whisper_pb.TokenData.serializeBinaryToWriter
     );
   }
 };
@@ -848,6 +895,99 @@ proto.sentiric.stt.v1.TranscribeStreamResponse.prototype.getValence = function()
  */
 proto.sentiric.stt.v1.TranscribeStreamResponse.prototype.setValence = function(value) {
   return jspb.Message.setProto3FloatField(this, 6, value);
+};
+
+
+/**
+ * optional string speaker_id = 7;
+ * @return {string}
+ */
+proto.sentiric.stt.v1.TranscribeStreamResponse.prototype.getSpeakerId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sentiric.stt.v1.TranscribeStreamResponse} returns this
+ */
+proto.sentiric.stt.v1.TranscribeStreamResponse.prototype.setSpeakerId = function(value) {
+  return jspb.Message.setProto3StringField(this, 7, value);
+};
+
+
+/**
+ * repeated float speaker_vec = 8;
+ * @return {!Array<number>}
+ */
+proto.sentiric.stt.v1.TranscribeStreamResponse.prototype.getSpeakerVecList = function() {
+  return /** @type {!Array<number>} */ (jspb.Message.getRepeatedFloatingPointField(this, 8));
+};
+
+
+/**
+ * @param {!Array<number>} value
+ * @return {!proto.sentiric.stt.v1.TranscribeStreamResponse} returns this
+ */
+proto.sentiric.stt.v1.TranscribeStreamResponse.prototype.setSpeakerVecList = function(value) {
+  return jspb.Message.setField(this, 8, value || []);
+};
+
+
+/**
+ * @param {number} value
+ * @param {number=} opt_index
+ * @return {!proto.sentiric.stt.v1.TranscribeStreamResponse} returns this
+ */
+proto.sentiric.stt.v1.TranscribeStreamResponse.prototype.addSpeakerVec = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 8, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.sentiric.stt.v1.TranscribeStreamResponse} returns this
+ */
+proto.sentiric.stt.v1.TranscribeStreamResponse.prototype.clearSpeakerVecList = function() {
+  return this.setSpeakerVecList([]);
+};
+
+
+/**
+ * repeated TokenData words = 9;
+ * @return {!Array<!proto.sentiric.stt.v1.TokenData>}
+ */
+proto.sentiric.stt.v1.TranscribeStreamResponse.prototype.getWordsList = function() {
+  return /** @type{!Array<!proto.sentiric.stt.v1.TokenData>} */ (
+    jspb.Message.getRepeatedWrapperField(this, sentiric_stt_v1_whisper_pb.TokenData, 9));
+};
+
+
+/**
+ * @param {!Array<!proto.sentiric.stt.v1.TokenData>} value
+ * @return {!proto.sentiric.stt.v1.TranscribeStreamResponse} returns this
+*/
+proto.sentiric.stt.v1.TranscribeStreamResponse.prototype.setWordsList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 9, value);
+};
+
+
+/**
+ * @param {!proto.sentiric.stt.v1.TokenData=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.sentiric.stt.v1.TokenData}
+ */
+proto.sentiric.stt.v1.TranscribeStreamResponse.prototype.addWords = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 9, opt_value, proto.sentiric.stt.v1.TokenData, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.sentiric.stt.v1.TranscribeStreamResponse} returns this
+ */
+proto.sentiric.stt.v1.TranscribeStreamResponse.prototype.clearWordsList = function() {
+  return this.setWordsList([]);
 };
 
 

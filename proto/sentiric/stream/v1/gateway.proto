@@ -1,16 +1,14 @@
+// File: proto/sentiric/stream/v1/gateway.proto
 syntax = "proto3";
 
-// DEĞİŞİKLİK: mobile -> stream
 package sentiric.stream.v1;
 
 option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/stream/v1;streamv1";
 
-// DEĞİŞİKLİK: MobileGatewayService -> StreamGatewayService
 service StreamGatewayService {
   rpc StreamSession(stream StreamSessionRequest) returns (stream StreamSessionResponse);
 }
 
-// ... Mesaj isimleri aynı kalabilir veya StreamSessionRequest olarak genelleyebilirsin ...
 message StreamSessionRequest {
   oneof data {
     SessionConfig config = 1;
@@ -20,43 +18,54 @@ message StreamSessionRequest {
   }
 }
 
-// [ARCH-COMPLIANCE] StreamSessionResponse'a zengin veri yolları eklendi
 message StreamSessionResponse {
   oneof data {
     bytes audio_response = 1;
     string text_response = 2;
     string status_update = 3;
-    TranscriptEvent transcript = 4; // <--- YENİ: UI için zengin metin
-    bool clear_audio_buffer = 5; // <--- YENİ: Barge-in kontrolü
+    TranscriptEvent transcript = 4;
+    bool clear_audio_buffer = 5;
   }
+}
+
+// [YENİ]: UI için kelime bazlı animasyon (Karaoke) ve Güven Haritası
+message WordData {
+  string word = 1;
+  float start = 2;
+  float end = 3;
+  float probability = 4;
 }
 
 message TranscriptEvent {
   string text = 1;
   bool is_final = 2;
-  string sender = 3; // "USER" veya "AI"
+  string sender = 3;
   string emotion = 4;
   string gender = 5;
+
+  // [ARCH-COMPLIANCE FIX]: Zengin Analiz Verileri (Frontend İçin)
+  float arousal = 6;
+  float valence = 7;
+  string speaker_id = 8;
+  repeated float speaker_vec = 9;
+  repeated WordData words = 10;
 }
 
 message SessionConfig {
   string token = 1;
   string language = 2;
   uint32 sample_rate = 3;
-
-  // [YENİ] Edge cihazlar için Ghost Mode bayrağı.
   bool edge_mode = 4;
-
-  // [ARCH-COMPLIANCE FIX] Session Authority
   string trace_id = 5;
   string session_id = 6;
+
+  // [YENİ]: Sadece Dinleyen AI Modu (Gözlemci/Analist Modu)
+  bool listen_only_mode = 7;
 }
 
 message SessionControl {
   enum EventType {
-    // Linter Kuralı: 0 değeri _UNSPECIFIED ile bitmeli.
     EVENT_TYPE_UNSPECIFIED = 0;
-    // Linter Kuralı: Değerler ENUM_NAME_ ile başlamalı.
     EVENT_TYPE_INTERRUPT = 1;
     EVENT_TYPE_EOS = 2;
     EVENT_TYPE_HANGUP = 3;

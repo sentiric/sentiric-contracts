@@ -31,7 +31,6 @@ namespace sentiric {
 namespace stt {
 namespace v1 {
 
-// SttWhisperService, Whisper motoruna özgü düşük seviyeli kontrat.
 class SttWhisperService final {
  public:
   static constexpr char const* service_full_name() {
@@ -40,7 +39,6 @@ class SttWhisperService final {
   class StubInterface {
    public:
     virtual ~StubInterface() {}
-    // Bir ses dosyasının tamamını tek seferde metne çevirir.
     virtual ::grpc::Status WhisperTranscribe(::grpc::ClientContext* context, const ::sentiric::stt::v1::WhisperTranscribeRequest& request, ::sentiric::stt::v1::WhisperTranscribeResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::stt::v1::WhisperTranscribeResponse>> AsyncWhisperTranscribe(::grpc::ClientContext* context, const ::sentiric::stt::v1::WhisperTranscribeRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::stt::v1::WhisperTranscribeResponse>>(AsyncWhisperTranscribeRaw(context, request, cq));
@@ -48,7 +46,6 @@ class SttWhisperService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::stt::v1::WhisperTranscribeResponse>> PrepareAsyncWhisperTranscribe(::grpc::ClientContext* context, const ::sentiric::stt::v1::WhisperTranscribeRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::stt::v1::WhisperTranscribeResponse>>(PrepareAsyncWhisperTranscribeRaw(context, request, cq));
     }
-    // Gerçek zamanlı bir ses akışını metne çevirir.
     std::unique_ptr< ::grpc::ClientReaderWriterInterface< ::sentiric::stt::v1::WhisperTranscribeStreamRequest, ::sentiric::stt::v1::WhisperTranscribeStreamResponse>> WhisperTranscribeStream(::grpc::ClientContext* context) {
       return std::unique_ptr< ::grpc::ClientReaderWriterInterface< ::sentiric::stt::v1::WhisperTranscribeStreamRequest, ::sentiric::stt::v1::WhisperTranscribeStreamResponse>>(WhisperTranscribeStreamRaw(context));
     }
@@ -61,10 +58,8 @@ class SttWhisperService final {
     class async_interface {
      public:
       virtual ~async_interface() {}
-      // Bir ses dosyasının tamamını tek seferde metne çevirir.
       virtual void WhisperTranscribe(::grpc::ClientContext* context, const ::sentiric::stt::v1::WhisperTranscribeRequest* request, ::sentiric::stt::v1::WhisperTranscribeResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void WhisperTranscribe(::grpc::ClientContext* context, const ::sentiric::stt::v1::WhisperTranscribeRequest* request, ::sentiric::stt::v1::WhisperTranscribeResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      // Gerçek zamanlı bir ses akışını metne çevirir.
       virtual void WhisperTranscribeStream(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::sentiric::stt::v1::WhisperTranscribeStreamRequest,::sentiric::stt::v1::WhisperTranscribeStreamResponse>* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
@@ -127,9 +122,7 @@ class SttWhisperService final {
    public:
     Service();
     virtual ~Service();
-    // Bir ses dosyasının tamamını tek seferde metne çevirir.
     virtual ::grpc::Status WhisperTranscribe(::grpc::ServerContext* context, const ::sentiric::stt::v1::WhisperTranscribeRequest* request, ::sentiric::stt::v1::WhisperTranscribeResponse* response);
-    // Gerçek zamanlı bir ses akışını metne çevirir.
     virtual ::grpc::Status WhisperTranscribeStream(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::sentiric::stt::v1::WhisperTranscribeStreamResponse, ::sentiric::stt::v1::WhisperTranscribeStreamRequest>* stream);
   };
   template <class BaseClass>

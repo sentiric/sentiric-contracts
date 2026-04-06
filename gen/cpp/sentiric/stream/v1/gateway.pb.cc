@@ -51,13 +51,34 @@ struct StreamSessionResponseDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 StreamSessionResponseDefaultTypeInternal _StreamSessionResponse_default_instance_;
+PROTOBUF_CONSTEXPR WordData::WordData(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.word_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.start_)*/0
+  , /*decltype(_impl_.end_)*/0
+  , /*decltype(_impl_.probability_)*/0
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct WordDataDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR WordDataDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~WordDataDefaultTypeInternal() {}
+  union {
+    WordData _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 WordDataDefaultTypeInternal _WordData_default_instance_;
 PROTOBUF_CONSTEXPR TranscriptEvent::TranscriptEvent(
     ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.text_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+    /*decltype(_impl_.speaker_vec_)*/{}
+  , /*decltype(_impl_.words_)*/{}
+  , /*decltype(_impl_.text_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.sender_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.emotion_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.gender_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.speaker_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.is_final_)*/false
+  , /*decltype(_impl_.arousal_)*/0
+  , /*decltype(_impl_.valence_)*/0
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct TranscriptEventDefaultTypeInternal {
   PROTOBUF_CONSTEXPR TranscriptEventDefaultTypeInternal()
@@ -76,6 +97,7 @@ PROTOBUF_CONSTEXPR SessionConfig::SessionConfig(
   , /*decltype(_impl_.session_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.sample_rate_)*/0u
   , /*decltype(_impl_.edge_mode_)*/false
+  , /*decltype(_impl_.listen_only_mode_)*/false
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct SessionConfigDefaultTypeInternal {
   PROTOBUF_CONSTEXPR SessionConfigDefaultTypeInternal()
@@ -102,7 +124,7 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORIT
 }  // namespace v1
 }  // namespace stream
 }  // namespace sentiric
-static ::_pb::Metadata file_level_metadata_sentiric_2fstream_2fv1_2fgateway_2eproto[5];
+static ::_pb::Metadata file_level_metadata_sentiric_2fstream_2fv1_2fgateway_2eproto[6];
 static const ::_pb::EnumDescriptor* file_level_enum_descriptors_sentiric_2fstream_2fv1_2fgateway_2eproto[1];
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_sentiric_2fstream_2fv1_2fgateway_2eproto = nullptr;
 
@@ -131,6 +153,16 @@ const uint32_t TableStruct_sentiric_2fstream_2fv1_2fgateway_2eproto::offsets[] P
   ::_pbi::kInvalidFieldOffsetTag,
   PROTOBUF_FIELD_OFFSET(::sentiric::stream::v1::StreamSessionResponse, _impl_.data_),
   ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::stream::v1::WordData, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::stream::v1::WordData, _impl_.word_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::stream::v1::WordData, _impl_.start_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::stream::v1::WordData, _impl_.end_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::stream::v1::WordData, _impl_.probability_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::sentiric::stream::v1::TranscriptEvent, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -141,6 +173,11 @@ const uint32_t TableStruct_sentiric_2fstream_2fv1_2fgateway_2eproto::offsets[] P
   PROTOBUF_FIELD_OFFSET(::sentiric::stream::v1::TranscriptEvent, _impl_.sender_),
   PROTOBUF_FIELD_OFFSET(::sentiric::stream::v1::TranscriptEvent, _impl_.emotion_),
   PROTOBUF_FIELD_OFFSET(::sentiric::stream::v1::TranscriptEvent, _impl_.gender_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::stream::v1::TranscriptEvent, _impl_.arousal_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::stream::v1::TranscriptEvent, _impl_.valence_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::stream::v1::TranscriptEvent, _impl_.speaker_id_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::stream::v1::TranscriptEvent, _impl_.speaker_vec_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::stream::v1::TranscriptEvent, _impl_.words_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::sentiric::stream::v1::SessionConfig, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -153,6 +190,7 @@ const uint32_t TableStruct_sentiric_2fstream_2fv1_2fgateway_2eproto::offsets[] P
   PROTOBUF_FIELD_OFFSET(::sentiric::stream::v1::SessionConfig, _impl_.edge_mode_),
   PROTOBUF_FIELD_OFFSET(::sentiric::stream::v1::SessionConfig, _impl_.trace_id_),
   PROTOBUF_FIELD_OFFSET(::sentiric::stream::v1::SessionConfig, _impl_.session_id_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::stream::v1::SessionConfig, _impl_.listen_only_mode_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::sentiric::stream::v1::SessionControl, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -164,14 +202,16 @@ const uint32_t TableStruct_sentiric_2fstream_2fv1_2fgateway_2eproto::offsets[] P
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::sentiric::stream::v1::StreamSessionRequest)},
   { 11, -1, -1, sizeof(::sentiric::stream::v1::StreamSessionResponse)},
-  { 23, -1, -1, sizeof(::sentiric::stream::v1::TranscriptEvent)},
-  { 34, -1, -1, sizeof(::sentiric::stream::v1::SessionConfig)},
-  { 46, -1, -1, sizeof(::sentiric::stream::v1::SessionControl)},
+  { 23, -1, -1, sizeof(::sentiric::stream::v1::WordData)},
+  { 33, -1, -1, sizeof(::sentiric::stream::v1::TranscriptEvent)},
+  { 49, -1, -1, sizeof(::sentiric::stream::v1::SessionConfig)},
+  { 62, -1, -1, sizeof(::sentiric::stream::v1::SessionControl)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
   &::sentiric::stream::v1::_StreamSessionRequest_default_instance_._instance,
   &::sentiric::stream::v1::_StreamSessionResponse_default_instance_._instance,
+  &::sentiric::stream::v1::_WordData_default_instance_._instance,
   &::sentiric::stream::v1::_TranscriptEvent_default_instance_._instance,
   &::sentiric::stream::v1::_SessionConfig_default_instance_._instance,
   &::sentiric::stream::v1::_SessionControl_default_instance_._instance,
@@ -189,28 +229,34 @@ const char descriptor_table_protodef_sentiric_2fstream_2fv1_2fgateway_2eproto[] 
   "\027\n\rstatus_update\030\003 \001(\tH\000\0229\n\ntranscript\030\004"
   " \001(\0132#.sentiric.stream.v1.TranscriptEven"
   "tH\000\022\034\n\022clear_audio_buffer\030\005 \001(\010H\000B\006\n\004dat"
-  "a\"b\n\017TranscriptEvent\022\014\n\004text\030\001 \001(\t\022\020\n\010is"
-  "_final\030\002 \001(\010\022\016\n\006sender\030\003 \001(\t\022\017\n\007emotion\030"
-  "\004 \001(\t\022\016\n\006gender\030\005 \001(\t\"~\n\rSessionConfig\022\r"
-  "\n\005token\030\001 \001(\t\022\020\n\010language\030\002 \001(\t\022\023\n\013sampl"
-  "e_rate\030\003 \001(\r\022\021\n\tedge_mode\030\004 \001(\010\022\020\n\010trace"
-  "_id\030\005 \001(\t\022\022\n\nsession_id\030\006 \001(\t\"\273\001\n\016Sessio"
-  "nControl\022;\n\005event\030\001 \001(\0162,.sentiric.strea"
-  "m.v1.SessionControl.EventType\"l\n\tEventTy"
-  "pe\022\032\n\026EVENT_TYPE_UNSPECIFIED\020\000\022\030\n\024EVENT_"
-  "TYPE_INTERRUPT\020\001\022\022\n\016EVENT_TYPE_EOS\020\002\022\025\n\021"
-  "EVENT_TYPE_HANGUP\020\0032\200\001\n\024StreamGatewaySer"
-  "vice\022h\n\rStreamSession\022(.sentiric.stream."
-  "v1.StreamSessionRequest\032).sentiric.strea"
-  "m.v1.StreamSessionResponse(\0010\001BKZIgithub"
-  ".com/sentiric/sentiric-contracts/gen/go/"
-  "sentiric/stream/v1;streamv1b\006proto3"
+  "a\"I\n\010WordData\022\014\n\004word\030\001 \001(\t\022\r\n\005start\030\002 \001"
+  "(\002\022\013\n\003end\030\003 \001(\002\022\023\n\013probability\030\004 \001(\002\"\332\001\n"
+  "\017TranscriptEvent\022\014\n\004text\030\001 \001(\t\022\020\n\010is_fin"
+  "al\030\002 \001(\010\022\016\n\006sender\030\003 \001(\t\022\017\n\007emotion\030\004 \001("
+  "\t\022\016\n\006gender\030\005 \001(\t\022\017\n\007arousal\030\006 \001(\002\022\017\n\007va"
+  "lence\030\007 \001(\002\022\022\n\nspeaker_id\030\010 \001(\t\022\023\n\013speak"
+  "er_vec\030\t \003(\002\022+\n\005words\030\n \003(\0132\034.sentiric.s"
+  "tream.v1.WordData\"\230\001\n\rSessionConfig\022\r\n\005t"
+  "oken\030\001 \001(\t\022\020\n\010language\030\002 \001(\t\022\023\n\013sample_r"
+  "ate\030\003 \001(\r\022\021\n\tedge_mode\030\004 \001(\010\022\020\n\010trace_id"
+  "\030\005 \001(\t\022\022\n\nsession_id\030\006 \001(\t\022\030\n\020listen_onl"
+  "y_mode\030\007 \001(\010\"\273\001\n\016SessionControl\022;\n\005event"
+  "\030\001 \001(\0162,.sentiric.stream.v1.SessionContr"
+  "ol.EventType\"l\n\tEventType\022\032\n\026EVENT_TYPE_"
+  "UNSPECIFIED\020\000\022\030\n\024EVENT_TYPE_INTERRUPT\020\001\022"
+  "\022\n\016EVENT_TYPE_EOS\020\002\022\025\n\021EVENT_TYPE_HANGUP"
+  "\020\0032\200\001\n\024StreamGatewayService\022h\n\rStreamSes"
+  "sion\022(.sentiric.stream.v1.StreamSessionR"
+  "equest\032).sentiric.stream.v1.StreamSessio"
+  "nResponse(\0010\001BKZIgithub.com/sentiric/sen"
+  "tiric-contracts/gen/go/sentiric/stream/v"
+  "1;streamv1b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_sentiric_2fstream_2fv1_2fgateway_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_sentiric_2fstream_2fv1_2fgateway_2eproto = {
-    false, false, 1075, descriptor_table_protodef_sentiric_2fstream_2fv1_2fgateway_2eproto,
+    false, false, 1298, descriptor_table_protodef_sentiric_2fstream_2fv1_2fgateway_2eproto,
     "sentiric/stream/v1/gateway.proto",
-    &descriptor_table_sentiric_2fstream_2fv1_2fgateway_2eproto_once, nullptr, 0, 5,
+    &descriptor_table_sentiric_2fstream_2fv1_2fgateway_2eproto_once, nullptr, 0, 6,
     schemas, file_default_instances, TableStruct_sentiric_2fstream_2fv1_2fgateway_2eproto::offsets,
     file_level_metadata_sentiric_2fstream_2fv1_2fgateway_2eproto, file_level_enum_descriptors_sentiric_2fstream_2fv1_2fgateway_2eproto,
     file_level_service_descriptors_sentiric_2fstream_2fv1_2fgateway_2eproto,
@@ -1020,6 +1066,329 @@ void StreamSessionResponse::InternalSwap(StreamSessionResponse* other) {
 
 // ===================================================================
 
+class WordData::_Internal {
+ public:
+};
+
+WordData::WordData(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.stream.v1.WordData)
+}
+WordData::WordData(const WordData& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  WordData* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.word_){}
+    , decltype(_impl_.start_){}
+    , decltype(_impl_.end_){}
+    , decltype(_impl_.probability_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.word_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.word_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_word().empty()) {
+    _this->_impl_.word_.Set(from._internal_word(), 
+      _this->GetArenaForAllocation());
+  }
+  ::memcpy(&_impl_.start_, &from._impl_.start_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.probability_) -
+    reinterpret_cast<char*>(&_impl_.start_)) + sizeof(_impl_.probability_));
+  // @@protoc_insertion_point(copy_constructor:sentiric.stream.v1.WordData)
+}
+
+inline void WordData::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.word_){}
+    , decltype(_impl_.start_){0}
+    , decltype(_impl_.end_){0}
+    , decltype(_impl_.probability_){0}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.word_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.word_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+WordData::~WordData() {
+  // @@protoc_insertion_point(destructor:sentiric.stream.v1.WordData)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void WordData::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.word_.Destroy();
+}
+
+void WordData::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void WordData::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.stream.v1.WordData)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.word_.ClearToEmpty();
+  ::memset(&_impl_.start_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&_impl_.probability_) -
+      reinterpret_cast<char*>(&_impl_.start_)) + sizeof(_impl_.probability_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* WordData::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string word = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_word();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.stream.v1.WordData.word"));
+        } else
+          goto handle_unusual;
+        continue;
+      // float start = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 21)) {
+          _impl_.start_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float end = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 29)) {
+          _impl_.end_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float probability = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 37)) {
+          _impl_.probability_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* WordData::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.stream.v1.WordData)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string word = 1;
+  if (!this->_internal_word().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_word().data(), static_cast<int>(this->_internal_word().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.stream.v1.WordData.word");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_word(), target);
+  }
+
+  // float start = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start = this->_internal_start();
+  uint32_t raw_start;
+  memcpy(&raw_start, &tmp_start, sizeof(tmp_start));
+  if (raw_start != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(2, this->_internal_start(), target);
+  }
+
+  // float end = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end = this->_internal_end();
+  uint32_t raw_end;
+  memcpy(&raw_end, &tmp_end, sizeof(tmp_end));
+  if (raw_end != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(3, this->_internal_end(), target);
+  }
+
+  // float probability = 4;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_probability = this->_internal_probability();
+  uint32_t raw_probability;
+  memcpy(&raw_probability, &tmp_probability, sizeof(tmp_probability));
+  if (raw_probability != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(4, this->_internal_probability(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.stream.v1.WordData)
+  return target;
+}
+
+size_t WordData::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.stream.v1.WordData)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string word = 1;
+  if (!this->_internal_word().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_word());
+  }
+
+  // float start = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start = this->_internal_start();
+  uint32_t raw_start;
+  memcpy(&raw_start, &tmp_start, sizeof(tmp_start));
+  if (raw_start != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float end = 3;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end = this->_internal_end();
+  uint32_t raw_end;
+  memcpy(&raw_end, &tmp_end, sizeof(tmp_end));
+  if (raw_end != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float probability = 4;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_probability = this->_internal_probability();
+  uint32_t raw_probability;
+  memcpy(&raw_probability, &tmp_probability, sizeof(tmp_probability));
+  if (raw_probability != 0) {
+    total_size += 1 + 4;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData WordData::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    WordData::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*WordData::GetClassData() const { return &_class_data_; }
+
+
+void WordData::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<WordData*>(&to_msg);
+  auto& from = static_cast<const WordData&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.stream.v1.WordData)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_word().empty()) {
+    _this->_internal_set_word(from._internal_word());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_start = from._internal_start();
+  uint32_t raw_start;
+  memcpy(&raw_start, &tmp_start, sizeof(tmp_start));
+  if (raw_start != 0) {
+    _this->_internal_set_start(from._internal_start());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_end = from._internal_end();
+  uint32_t raw_end;
+  memcpy(&raw_end, &tmp_end, sizeof(tmp_end));
+  if (raw_end != 0) {
+    _this->_internal_set_end(from._internal_end());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_probability = from._internal_probability();
+  uint32_t raw_probability;
+  memcpy(&raw_probability, &tmp_probability, sizeof(tmp_probability));
+  if (raw_probability != 0) {
+    _this->_internal_set_probability(from._internal_probability());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void WordData::CopyFrom(const WordData& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.stream.v1.WordData)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool WordData::IsInitialized() const {
+  return true;
+}
+
+void WordData::InternalSwap(WordData* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.word_, lhs_arena,
+      &other->_impl_.word_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(WordData, _impl_.probability_)
+      + sizeof(WordData::_impl_.probability_)
+      - PROTOBUF_FIELD_OFFSET(WordData, _impl_.start_)>(
+          reinterpret_cast<char*>(&_impl_.start_),
+          reinterpret_cast<char*>(&other->_impl_.start_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata WordData::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fstream_2fv1_2fgateway_2eproto_getter, &descriptor_table_sentiric_2fstream_2fv1_2fgateway_2eproto_once,
+      file_level_metadata_sentiric_2fstream_2fv1_2fgateway_2eproto[2]);
+}
+
+// ===================================================================
+
 class TranscriptEvent::_Internal {
  public:
 };
@@ -1034,11 +1403,16 @@ TranscriptEvent::TranscriptEvent(const TranscriptEvent& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   TranscriptEvent* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.text_){}
+      decltype(_impl_.speaker_vec_){from._impl_.speaker_vec_}
+    , decltype(_impl_.words_){from._impl_.words_}
+    , decltype(_impl_.text_){}
     , decltype(_impl_.sender_){}
     , decltype(_impl_.emotion_){}
     , decltype(_impl_.gender_){}
+    , decltype(_impl_.speaker_id_){}
     , decltype(_impl_.is_final_){}
+    , decltype(_impl_.arousal_){}
+    , decltype(_impl_.valence_){}
     , /*decltype(_impl_._cached_size_)*/{}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
@@ -1074,7 +1448,17 @@ TranscriptEvent::TranscriptEvent(const TranscriptEvent& from)
     _this->_impl_.gender_.Set(from._internal_gender(), 
       _this->GetArenaForAllocation());
   }
-  _this->_impl_.is_final_ = from._impl_.is_final_;
+  _impl_.speaker_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.speaker_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_speaker_id().empty()) {
+    _this->_impl_.speaker_id_.Set(from._internal_speaker_id(), 
+      _this->GetArenaForAllocation());
+  }
+  ::memcpy(&_impl_.is_final_, &from._impl_.is_final_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.valence_) -
+    reinterpret_cast<char*>(&_impl_.is_final_)) + sizeof(_impl_.valence_));
   // @@protoc_insertion_point(copy_constructor:sentiric.stream.v1.TranscriptEvent)
 }
 
@@ -1083,11 +1467,16 @@ inline void TranscriptEvent::SharedCtor(
   (void)arena;
   (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.text_){}
+      decltype(_impl_.speaker_vec_){arena}
+    , decltype(_impl_.words_){arena}
+    , decltype(_impl_.text_){}
     , decltype(_impl_.sender_){}
     , decltype(_impl_.emotion_){}
     , decltype(_impl_.gender_){}
+    , decltype(_impl_.speaker_id_){}
     , decltype(_impl_.is_final_){false}
+    , decltype(_impl_.arousal_){0}
+    , decltype(_impl_.valence_){0}
     , /*decltype(_impl_._cached_size_)*/{}
   };
   _impl_.text_.InitDefault();
@@ -1106,6 +1495,10 @@ inline void TranscriptEvent::SharedCtor(
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
     _impl_.gender_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.speaker_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.speaker_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 TranscriptEvent::~TranscriptEvent() {
@@ -1119,10 +1512,13 @@ TranscriptEvent::~TranscriptEvent() {
 
 inline void TranscriptEvent::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.speaker_vec_.~RepeatedField();
+  _impl_.words_.~RepeatedPtrField();
   _impl_.text_.Destroy();
   _impl_.sender_.Destroy();
   _impl_.emotion_.Destroy();
   _impl_.gender_.Destroy();
+  _impl_.speaker_id_.Destroy();
 }
 
 void TranscriptEvent::SetCachedSize(int size) const {
@@ -1135,11 +1531,16 @@ void TranscriptEvent::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  _impl_.speaker_vec_.Clear();
+  _impl_.words_.Clear();
   _impl_.text_.ClearToEmpty();
   _impl_.sender_.ClearToEmpty();
   _impl_.emotion_.ClearToEmpty();
   _impl_.gender_.ClearToEmpty();
-  _impl_.is_final_ = false;
+  _impl_.speaker_id_.ClearToEmpty();
+  ::memset(&_impl_.is_final_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&_impl_.valence_) -
+      reinterpret_cast<char*>(&_impl_.is_final_)) + sizeof(_impl_.valence_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -1194,6 +1595,56 @@ const char* TranscriptEvent::_InternalParse(const char* ptr, ::_pbi::ParseContex
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
           CHK_(::_pbi::VerifyUTF8(str, "sentiric.stream.v1.TranscriptEvent.gender"));
+        } else
+          goto handle_unusual;
+        continue;
+      // float arousal = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 53)) {
+          _impl_.arousal_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float valence = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 61)) {
+          _impl_.valence_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // string speaker_id = 8;
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 66)) {
+          auto str = _internal_mutable_speaker_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.stream.v1.TranscriptEvent.speaker_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated float speaker_vec = 9;
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 74)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedFloatParser(_internal_mutable_speaker_vec(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<uint8_t>(tag) == 77) {
+          _internal_add_speaker_vec(::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr));
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated .sentiric.stream.v1.WordData words = 10;
+      case 10:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 82)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_words(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<82>(ptr));
         } else
           goto handle_unusual;
         continue;
@@ -1272,6 +1723,49 @@ uint8_t* TranscriptEvent::_InternalSerialize(
         5, this->_internal_gender(), target);
   }
 
+  // float arousal = 6;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_arousal = this->_internal_arousal();
+  uint32_t raw_arousal;
+  memcpy(&raw_arousal, &tmp_arousal, sizeof(tmp_arousal));
+  if (raw_arousal != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(6, this->_internal_arousal(), target);
+  }
+
+  // float valence = 7;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_valence = this->_internal_valence();
+  uint32_t raw_valence;
+  memcpy(&raw_valence, &tmp_valence, sizeof(tmp_valence));
+  if (raw_valence != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(7, this->_internal_valence(), target);
+  }
+
+  // string speaker_id = 8;
+  if (!this->_internal_speaker_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_speaker_id().data(), static_cast<int>(this->_internal_speaker_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.stream.v1.TranscriptEvent.speaker_id");
+    target = stream->WriteStringMaybeAliased(
+        8, this->_internal_speaker_id(), target);
+  }
+
+  // repeated float speaker_vec = 9;
+  if (this->_internal_speaker_vec_size() > 0) {
+    target = stream->WriteFixedPacked(9, _internal_speaker_vec(), target);
+  }
+
+  // repeated .sentiric.stream.v1.WordData words = 10;
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_words_size()); i < n; i++) {
+    const auto& repfield = this->_internal_words(i);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(10, repfield, repfield.GetCachedSize(), target, stream);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -1287,6 +1781,24 @@ size_t TranscriptEvent::ByteSizeLong() const {
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
+
+  // repeated float speaker_vec = 9;
+  {
+    unsigned int count = static_cast<unsigned int>(this->_internal_speaker_vec_size());
+    size_t data_size = 4UL * count;
+    if (data_size > 0) {
+      total_size += 1 +
+        ::_pbi::WireFormatLite::Int32Size(static_cast<int32_t>(data_size));
+    }
+    total_size += data_size;
+  }
+
+  // repeated .sentiric.stream.v1.WordData words = 10;
+  total_size += 1UL * this->_internal_words_size();
+  for (const auto& msg : this->_impl_.words_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
 
   // string text = 1;
   if (!this->_internal_text().empty()) {
@@ -1316,9 +1828,34 @@ size_t TranscriptEvent::ByteSizeLong() const {
         this->_internal_gender());
   }
 
+  // string speaker_id = 8;
+  if (!this->_internal_speaker_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_speaker_id());
+  }
+
   // bool is_final = 2;
   if (this->_internal_is_final() != 0) {
     total_size += 1 + 1;
+  }
+
+  // float arousal = 6;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_arousal = this->_internal_arousal();
+  uint32_t raw_arousal;
+  memcpy(&raw_arousal, &tmp_arousal, sizeof(tmp_arousal));
+  if (raw_arousal != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float valence = 7;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_valence = this->_internal_valence();
+  uint32_t raw_valence;
+  memcpy(&raw_valence, &tmp_valence, sizeof(tmp_valence));
+  if (raw_valence != 0) {
+    total_size += 1 + 4;
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
@@ -1339,6 +1876,8 @@ void TranscriptEvent::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const 
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  _this->_impl_.speaker_vec_.MergeFrom(from._impl_.speaker_vec_);
+  _this->_impl_.words_.MergeFrom(from._impl_.words_);
   if (!from._internal_text().empty()) {
     _this->_internal_set_text(from._internal_text());
   }
@@ -1351,8 +1890,25 @@ void TranscriptEvent::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const 
   if (!from._internal_gender().empty()) {
     _this->_internal_set_gender(from._internal_gender());
   }
+  if (!from._internal_speaker_id().empty()) {
+    _this->_internal_set_speaker_id(from._internal_speaker_id());
+  }
   if (from._internal_is_final() != 0) {
     _this->_internal_set_is_final(from._internal_is_final());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_arousal = from._internal_arousal();
+  uint32_t raw_arousal;
+  memcpy(&raw_arousal, &tmp_arousal, sizeof(tmp_arousal));
+  if (raw_arousal != 0) {
+    _this->_internal_set_arousal(from._internal_arousal());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_valence = from._internal_valence();
+  uint32_t raw_valence;
+  memcpy(&raw_valence, &tmp_valence, sizeof(tmp_valence));
+  if (raw_valence != 0) {
+    _this->_internal_set_valence(from._internal_valence());
   }
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -1373,6 +1929,8 @@ void TranscriptEvent::InternalSwap(TranscriptEvent* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.speaker_vec_.InternalSwap(&other->_impl_.speaker_vec_);
+  _impl_.words_.InternalSwap(&other->_impl_.words_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &_impl_.text_, lhs_arena,
       &other->_impl_.text_, rhs_arena
@@ -1389,13 +1947,22 @@ void TranscriptEvent::InternalSwap(TranscriptEvent* other) {
       &_impl_.gender_, lhs_arena,
       &other->_impl_.gender_, rhs_arena
   );
-  swap(_impl_.is_final_, other->_impl_.is_final_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.speaker_id_, lhs_arena,
+      &other->_impl_.speaker_id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(TranscriptEvent, _impl_.valence_)
+      + sizeof(TranscriptEvent::_impl_.valence_)
+      - PROTOBUF_FIELD_OFFSET(TranscriptEvent, _impl_.is_final_)>(
+          reinterpret_cast<char*>(&_impl_.is_final_),
+          reinterpret_cast<char*>(&other->_impl_.is_final_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata TranscriptEvent::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fstream_2fv1_2fgateway_2eproto_getter, &descriptor_table_sentiric_2fstream_2fv1_2fgateway_2eproto_once,
-      file_level_metadata_sentiric_2fstream_2fv1_2fgateway_2eproto[2]);
+      file_level_metadata_sentiric_2fstream_2fv1_2fgateway_2eproto[3]);
 }
 
 // ===================================================================
@@ -1420,6 +1987,7 @@ SessionConfig::SessionConfig(const SessionConfig& from)
     , decltype(_impl_.session_id_){}
     , decltype(_impl_.sample_rate_){}
     , decltype(_impl_.edge_mode_){}
+    , decltype(_impl_.listen_only_mode_){}
     , /*decltype(_impl_._cached_size_)*/{}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
@@ -1456,8 +2024,8 @@ SessionConfig::SessionConfig(const SessionConfig& from)
       _this->GetArenaForAllocation());
   }
   ::memcpy(&_impl_.sample_rate_, &from._impl_.sample_rate_,
-    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.edge_mode_) -
-    reinterpret_cast<char*>(&_impl_.sample_rate_)) + sizeof(_impl_.edge_mode_));
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.listen_only_mode_) -
+    reinterpret_cast<char*>(&_impl_.sample_rate_)) + sizeof(_impl_.listen_only_mode_));
   // @@protoc_insertion_point(copy_constructor:sentiric.stream.v1.SessionConfig)
 }
 
@@ -1472,6 +2040,7 @@ inline void SessionConfig::SharedCtor(
     , decltype(_impl_.session_id_){}
     , decltype(_impl_.sample_rate_){0u}
     , decltype(_impl_.edge_mode_){false}
+    , decltype(_impl_.listen_only_mode_){false}
     , /*decltype(_impl_._cached_size_)*/{}
   };
   _impl_.token_.InitDefault();
@@ -1524,8 +2093,8 @@ void SessionConfig::Clear() {
   _impl_.trace_id_.ClearToEmpty();
   _impl_.session_id_.ClearToEmpty();
   ::memset(&_impl_.sample_rate_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&_impl_.edge_mode_) -
-      reinterpret_cast<char*>(&_impl_.sample_rate_)) + sizeof(_impl_.edge_mode_));
+      reinterpret_cast<char*>(&_impl_.listen_only_mode_) -
+      reinterpret_cast<char*>(&_impl_.sample_rate_)) + sizeof(_impl_.listen_only_mode_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -1588,6 +2157,14 @@ const char* SessionConfig::_InternalParse(const char* ptr, ::_pbi::ParseContext*
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
           CHK_(::_pbi::VerifyUTF8(str, "sentiric.stream.v1.SessionConfig.session_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // bool listen_only_mode = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 56)) {
+          _impl_.listen_only_mode_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
@@ -1672,6 +2249,12 @@ uint8_t* SessionConfig::_InternalSerialize(
         6, this->_internal_session_id(), target);
   }
 
+  // bool listen_only_mode = 7;
+  if (this->_internal_listen_only_mode() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(7, this->_internal_listen_only_mode(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -1726,6 +2309,11 @@ size_t SessionConfig::ByteSizeLong() const {
     total_size += 1 + 1;
   }
 
+  // bool listen_only_mode = 7;
+  if (this->_internal_listen_only_mode() != 0) {
+    total_size += 1 + 1;
+  }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
@@ -1761,6 +2349,9 @@ void SessionConfig::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::
   }
   if (from._internal_edge_mode() != 0) {
     _this->_internal_set_edge_mode(from._internal_edge_mode());
+  }
+  if (from._internal_listen_only_mode() != 0) {
+    _this->_internal_set_listen_only_mode(from._internal_listen_only_mode());
   }
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -1798,8 +2389,8 @@ void SessionConfig::InternalSwap(SessionConfig* other) {
       &other->_impl_.session_id_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(SessionConfig, _impl_.edge_mode_)
-      + sizeof(SessionConfig::_impl_.edge_mode_)
+      PROTOBUF_FIELD_OFFSET(SessionConfig, _impl_.listen_only_mode_)
+      + sizeof(SessionConfig::_impl_.listen_only_mode_)
       - PROTOBUF_FIELD_OFFSET(SessionConfig, _impl_.sample_rate_)>(
           reinterpret_cast<char*>(&_impl_.sample_rate_),
           reinterpret_cast<char*>(&other->_impl_.sample_rate_));
@@ -1808,7 +2399,7 @@ void SessionConfig::InternalSwap(SessionConfig* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SessionConfig::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fstream_2fv1_2fgateway_2eproto_getter, &descriptor_table_sentiric_2fstream_2fv1_2fgateway_2eproto_once,
-      file_level_metadata_sentiric_2fstream_2fv1_2fgateway_2eproto[3]);
+      file_level_metadata_sentiric_2fstream_2fv1_2fgateway_2eproto[4]);
 }
 
 // ===================================================================
@@ -1989,7 +2580,7 @@ void SessionControl::InternalSwap(SessionControl* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SessionControl::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fstream_2fv1_2fgateway_2eproto_getter, &descriptor_table_sentiric_2fstream_2fv1_2fgateway_2eproto_once,
-      file_level_metadata_sentiric_2fstream_2fv1_2fgateway_2eproto[4]);
+      file_level_metadata_sentiric_2fstream_2fv1_2fgateway_2eproto[5]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -2004,6 +2595,10 @@ Arena::CreateMaybeMessage< ::sentiric::stream::v1::StreamSessionRequest >(Arena*
 template<> PROTOBUF_NOINLINE ::sentiric::stream::v1::StreamSessionResponse*
 Arena::CreateMaybeMessage< ::sentiric::stream::v1::StreamSessionResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::sentiric::stream::v1::StreamSessionResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::stream::v1::WordData*
+Arena::CreateMaybeMessage< ::sentiric::stream::v1::WordData >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::stream::v1::WordData >(arena);
 }
 template<> PROTOBUF_NOINLINE ::sentiric::stream::v1::TranscriptEvent*
 Arena::CreateMaybeMessage< ::sentiric::stream::v1::TranscriptEvent >(Arena* arena) {

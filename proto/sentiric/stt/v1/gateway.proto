@@ -3,6 +3,9 @@ syntax = "proto3";
 
 package sentiric.stt.v1;
 
+// TokenData'yı kullanabilmek için aynı dizindeki dosyayı içe aktarıyoruz
+import "sentiric/stt/v1/whisper.proto";
+
 option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/stt/v1;sttv1";
 
 service SttGatewayService {
@@ -10,12 +13,12 @@ service SttGatewayService {
   rpc TranscribeStream(stream TranscribeStreamRequest) returns (stream TranscribeStreamResponse);
 }
 
-message TranscribeRequest { // Gateway request
+message TranscribeRequest {
   bytes audio_content = 1;
   string language_code = 2;
 }
 
-message TranscribeResponse { // Gateway response
+message TranscribeResponse {
   string transcription = 1;
 }
 
@@ -26,10 +29,13 @@ message TranscribeStreamRequest {
 message TranscribeStreamResponse {
   string partial_transcription = 1;
   bool is_final = 2;
-
-  // [YENİ - CRYSTALLINE VIZYONU] Duyuşsal Zeka Metrikleri
   string gender_proxy = 3;
   string emotion_proxy = 4;
   float arousal = 5;
   float valence = 6;
+
+  // [ARCH-COMPLIANCE FIX]: AI Pipeline için Diarization ve Token verileri
+  string speaker_id = 7;
+  repeated float speaker_vec = 8; // 8D Vektör
+  repeated TokenData words = 9; // whisper.proto'dan geliyor
 }

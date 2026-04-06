@@ -1,6 +1,6 @@
 {
   "name": "@sentiric/contracts",
-  "version": "1.20.5",
+  "version": "1.20.6",
   "description": "API contracts for Sentiric microservices.",
   "repository": {
     "type": "git",

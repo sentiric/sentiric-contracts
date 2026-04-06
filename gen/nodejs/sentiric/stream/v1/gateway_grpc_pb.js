@@ -1,5 +1,7 @@
 // GENERATED CODE -- DO NOT EDIT!
 
+// Original file comments:
+// File: proto/sentiric/stream/v1/gateway.proto
 'use strict';
 var grpc = require('@grpc/grpc-js');
 var sentiric_stream_v1_gateway_pb = require('../../../sentiric/stream/v1/gateway_pb.js');
@@ -27,7 +29,6 @@ function deserialize_sentiric_stream_v1_StreamSessionResponse(buffer_arg) {
 }
 
 
-// DEĞİŞİKLİK: MobileGatewayService -> StreamGatewayService
 var StreamGatewayServiceService = exports.StreamGatewayServiceService = {
   streamSession: {
     path: '/sentiric.stream.v1.StreamGatewayService/StreamSession',

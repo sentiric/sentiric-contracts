@@ -84,8 +84,6 @@ message CallEndedEvent {
   string reason = 5;
 }
 
-// ... CallEndedEvent mesajından sonra ekleyin
-
 // GenericEvent, platform genelinde diğer (çağrı dışı) asenkron olayları kapsar.
 // Örn: UserCreated, DialplanUpdated, RecipeInstalled.
 message GenericEvent {
@@ -96,4 +94,22 @@ message GenericEvent {
 
   // Olayla ilgili seri hale getirilmiş (Protobuf Any veya JSON dize) payload.
   string payload_json = 5;
+}
+
+// AcousticMoodShiftedEvent, Whisper motorunun (STT) akustik analiz (Diarization/Prosody)
+// sırasında aynı kullanıcıya ait seste ciddi bir ton/tempo değişimi yakaladığında fırlatılır.
+// Kullanıcının "Analitik" bir ruh halinden "Meditatif/Derin" (Deep Waters) bir
+// ruh haline geçtiğini sistemin geri kalanına bildirir. (Crystalline Service tarafından tüketilir)
+message AcousticMoodShiftedEvent {
+  string event_type = 1; // "acoustic.mood.shifted"
+  string trace_id = 2;
+  string call_id = 3;
+  google.protobuf.Timestamp timestamp = 4;
+
+  string previous_mood = 5; // örn: "analytical"
+  string current_mood = 6; // örn: "meditative"
+
+  float arousal_shift = 7; // Heyecan/Tempo değişimi
+  float valence_shift = 8; // Pozitiflik/Negatiflik değişimi
+  string speaker_id = 9; // Hangi seste bu değişim oldu
 }

@@ -11,7 +11,14 @@ export const protobufPackage = "sentiric.stt.v1";
 
 /** File: proto/sentiric/stt/v1/whisper.proto */
 
-/** Dosya tabanlı transkripsiyon için mesajlar */
+/** [YENİ]: Kelime bazlı olasılık ve zaman damgası (Sadece burada tanımlanır) */
+export interface TokenData {
+  word: string;
+  start: number;
+  end: number;
+  probability: number;
+}
+
 export interface WhisperTranscribeRequest {
   audioData: Uint8Array;
   language?: string | undefined;
@@ -22,7 +29,6 @@ export interface WhisperTranscribeResponse {
   language: string;
   languageProbability: number;
   duration: number;
-  /** ---- affective & speaker identity ---- */
   genderProxy: string;
   emotionProxy: string;
   arousal: number;
@@ -33,21 +39,19 @@ export interface WhisperTranscribeResponse {
   energyStd: number;
   spectralCentroid: number;
   zeroCrossingRate: number;
-  /** 8-D vector */
   speakerVec: number[];
+  /** [ARCH-COMPLIANCE FIX]: Eksik Diarization ve Token verileri */
+  speakerId: string;
+  words: TokenData[];
 }
 
-/** Akış tabanlı transkripsiyon için mesajlar */
 export interface WhisperTranscribeStreamRequest {
-  /** Ses verisi 16kHz, 16-bit, mono, ham PCM formatında olmalıdır. */
   audioChunk: Uint8Array;
 }
 
 export interface WhisperTranscribeStreamResponse {
   transcription: string;
-  /** Bu segmentin nihai sonuç olup olmadığını belirtir. */
   isFinal: boolean;
-  /** ---- affective & speaker identity ---- */
   genderProxy: string;
   emotionProxy: string;
   arousal: number;
@@ -59,7 +63,118 @@ export interface WhisperTranscribeStreamResponse {
   spectralCentroid: number;
   zeroCrossingRate: number;
   speakerVec: number[];
+  /** [ARCH-COMPLIANCE FIX]: Eksik Diarization ve Token verileri */
+  speakerId: string;
+  words: TokenData[];
 }
+
+function createBaseTokenData(): TokenData {
+  return { word: "", start: 0, end: 0, probability: 0 };
+}
+
+export const TokenData: MessageFns<TokenData> = {
+  encode(message: TokenData, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.word !== "") {
+      writer.uint32(10).string(message.word);
+    }
+    if (message.start !== 0) {
+      writer.uint32(21).float(message.start);
+    }
+    if (message.end !== 0) {
+      writer.uint32(29).float(message.end);
+    }
+    if (message.probability !== 0) {
+      writer.uint32(37).float(message.probability);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): TokenData {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseTokenData();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 10) {
+            break;
+          }
+
+          message.word = reader.string();
+          continue;
+        }
+        case 2: {
+          if (tag !== 21) {
+            break;
+          }
+
+          message.start = reader.float();
+          continue;
+        }
+        case 3: {
+          if (tag !== 29) {
+            break;
+          }
+
+          message.end = reader.float();
+          continue;
+        }
+        case 4: {
+          if (tag !== 37) {
+            break;
+          }
+
+          message.probability = reader.float();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): TokenData {
+    return {
+      word: isSet(object.word) ? globalThis.String(object.word) : "",
+      start: isSet(object.start) ? globalThis.Number(object.start) : 0,
+      end: isSet(object.end) ? globalThis.Number(object.end) : 0,
+      probability: isSet(object.probability) ? globalThis.Number(object.probability) : 0,
+    };
+  },
+
+  toJSON(message: TokenData): unknown {
+    const obj: any = {};
+    if (message.word !== "") {
+      obj.word = message.word;
+    }
+    if (message.start !== 0) {
+      obj.start = message.start;
+    }
+    if (message.end !== 0) {
+      obj.end = message.end;
+    }
+    if (message.probability !== 0) {
+      obj.probability = message.probability;
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<TokenData>, I>>(base?: I): TokenData {
+    return TokenData.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<TokenData>, I>>(object: I): TokenData {
+    const message = createBaseTokenData();
+    message.word = object.word ?? "";
+    message.start = object.start ?? 0;
+    message.end = object.end ?? 0;
+    message.probability = object.probability ?? 0;
+    return message;
+  },
+};
 
 function createBaseWhisperTranscribeRequest(): WhisperTranscribeRequest {
   return { audioData: new Uint8Array(0), language: undefined };
@@ -158,6 +273,8 @@ function createBaseWhisperTranscribeResponse(): WhisperTranscribeResponse {
     spectralCentroid: 0,
     zeroCrossingRate: 0,
     speakerVec: [],
+    speakerId: "",
+    words: [],
   };
 }
 
@@ -210,6 +327,12 @@ export const WhisperTranscribeResponse: MessageFns<WhisperTranscribeResponse> = 
       writer.float(v);
     }
     writer.join();
+    if (message.speakerId !== "") {
+      writer.uint32(130).string(message.speakerId);
+    }
+    for (const v of message.words) {
+      TokenData.encode(v!, writer.uint32(138).fork()).join();
+    }
     return writer;
   },
 
@@ -350,6 +473,22 @@ export const WhisperTranscribeResponse: MessageFns<WhisperTranscribeResponse> = 
 
           break;
         }
+        case 16: {
+          if (tag !== 130) {
+            break;
+          }
+
+          message.speakerId = reader.string();
+          continue;
+        }
+        case 17: {
+          if (tag !== 138) {
+            break;
+          }
+
+          message.words.push(TokenData.decode(reader, reader.uint32()));
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -416,6 +555,14 @@ export const WhisperTranscribeResponse: MessageFns<WhisperTranscribeResponse> = 
         : globalThis.Array.isArray(object?.speaker_vec)
         ? object.speaker_vec.map((e: any) => globalThis.Number(e))
         : [],
+      speakerId: isSet(object.speakerId)
+        ? globalThis.String(object.speakerId)
+        : isSet(object.speaker_id)
+        ? globalThis.String(object.speaker_id)
+        : "",
+      words: globalThis.Array.isArray(object?.words)
+        ? object.words.map((e: any) => TokenData.fromJSON(e))
+        : [],
     };
   },
 
@@ -466,6 +613,12 @@ export const WhisperTranscribeResponse: MessageFns<WhisperTranscribeResponse> = 
     if (message.speakerVec?.length) {
       obj.speakerVec = message.speakerVec;
     }
+    if (message.speakerId !== "") {
+      obj.speakerId = message.speakerId;
+    }
+    if (message.words?.length) {
+      obj.words = message.words.map((e) => TokenData.toJSON(e));
+    }
     return obj;
   },
 
@@ -489,6 +642,8 @@ export const WhisperTranscribeResponse: MessageFns<WhisperTranscribeResponse> = 
     message.spectralCentroid = object.spectralCentroid ?? 0;
     message.zeroCrossingRate = object.zeroCrossingRate ?? 0;
     message.speakerVec = object.speakerVec?.map((e) => e) || [];
+    message.speakerId = object.speakerId ?? "";
+    message.words = object.words?.map((e) => TokenData.fromPartial(e)) || [];
     return message;
   },
 };
@@ -574,6 +729,8 @@ function createBaseWhisperTranscribeStreamResponse(): WhisperTranscribeStreamRes
     spectralCentroid: 0,
     zeroCrossingRate: 0,
     speakerVec: [],
+    speakerId: "",
+    words: [],
   };
 }
 
@@ -620,6 +777,12 @@ export const WhisperTranscribeStreamResponse: MessageFns<WhisperTranscribeStream
       writer.float(v);
     }
     writer.join();
+    if (message.speakerId !== "") {
+      writer.uint32(114).string(message.speakerId);
+    }
+    for (const v of message.words) {
+      TokenData.encode(v!, writer.uint32(122).fork()).join();
+    }
     return writer;
   },
 
@@ -744,6 +907,22 @@ export const WhisperTranscribeStreamResponse: MessageFns<WhisperTranscribeStream
 
           break;
         }
+        case 14: {
+          if (tag !== 114) {
+            break;
+          }
+
+          message.speakerId = reader.string();
+          continue;
+        }
+        case 15: {
+          if (tag !== 122) {
+            break;
+          }
+
+          message.words.push(TokenData.decode(reader, reader.uint32()));
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -808,6 +987,14 @@ export const WhisperTranscribeStreamResponse: MessageFns<WhisperTranscribeStream
         : globalThis.Array.isArray(object?.speaker_vec)
         ? object.speaker_vec.map((e: any) => globalThis.Number(e))
         : [],
+      speakerId: isSet(object.speakerId)
+        ? globalThis.String(object.speakerId)
+        : isSet(object.speaker_id)
+        ? globalThis.String(object.speaker_id)
+        : "",
+      words: globalThis.Array.isArray(object?.words)
+        ? object.words.map((e: any) => TokenData.fromJSON(e))
+        : [],
     };
   },
 
@@ -852,6 +1039,12 @@ export const WhisperTranscribeStreamResponse: MessageFns<WhisperTranscribeStream
     if (message.speakerVec?.length) {
       obj.speakerVec = message.speakerVec;
     }
+    if (message.speakerId !== "") {
+      obj.speakerId = message.speakerId;
+    }
+    if (message.words?.length) {
+      obj.words = message.words.map((e) => TokenData.toJSON(e));
+    }
     return obj;
   },
 
@@ -875,6 +1068,8 @@ export const WhisperTranscribeStreamResponse: MessageFns<WhisperTranscribeStream
     message.spectralCentroid = object.spectralCentroid ?? 0;
     message.zeroCrossingRate = object.zeroCrossingRate ?? 0;
     message.speakerVec = object.speakerVec?.map((e) => e) || [];
+    message.speakerId = object.speakerId ?? "";
+    message.words = object.words?.map((e) => TokenData.fromPartial(e)) || [];
     return message;
   },
 };

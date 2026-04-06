@@ -5,6 +5,7 @@
 'use strict';
 var grpc = require('@grpc/grpc-js');
 var sentiric_stt_v1_gateway_pb = require('../../../sentiric/stt/v1/gateway_pb.js');
+var sentiric_stt_v1_whisper_pb = require('../../../sentiric/stt/v1/whisper_pb.js');
 
 function serialize_sentiric_stt_v1_TranscribeRequest(arg) {
   if (!(arg instanceof sentiric_stt_v1_gateway_pb.TranscribeRequest)) {

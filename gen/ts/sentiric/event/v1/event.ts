@@ -116,6 +116,32 @@ export interface GenericEvent {
   payloadJson: string;
 }
 
+/**
+ * AcousticMoodShiftedEvent, Whisper motorunun (STT) akustik analiz (Diarization/Prosody)
+ * sırasında aynı kullanıcıya ait seste ciddi bir ton/tempo değişimi yakaladığında fırlatılır.
+ * Kullanıcının "Analitik" bir ruh halinden "Meditatif/Derin" (Deep Waters) bir
+ * ruh haline geçtiğini sistemin geri kalanına bildirir. (Crystalline Service tarafından tüketilir)
+ */
+export interface AcousticMoodShiftedEvent {
+  /** "acoustic.mood.shifted" */
+  eventType: string;
+  traceId: string;
+  callId: string;
+  timestamp?:
+    | Date
+    | undefined;
+  /** örn: "analytical" */
+  previousMood: string;
+  /** örn: "meditative" */
+  currentMood: string;
+  /** Heyecan/Tempo değişimi */
+  arousalShift: number;
+  /** Pozitiflik/Negatiflik değişimi */
+  valenceShift: number;
+  /** Hangi seste bu değişim oldu */
+  speakerId: string;
+}
+
 function createBaseMediaInfo(): MediaInfo {
   return { callerRtpAddr: "", serverRtpPort: 0 };
 }
@@ -999,6 +1025,236 @@ export const GenericEvent: MessageFns<GenericEvent> = {
     message.timestamp = object.timestamp ?? undefined;
     message.tenantId = object.tenantId ?? "";
     message.payloadJson = object.payloadJson ?? "";
+    return message;
+  },
+};
+
+function createBaseAcousticMoodShiftedEvent(): AcousticMoodShiftedEvent {
+  return {
+    eventType: "",
+    traceId: "",
+    callId: "",
+    timestamp: undefined,
+    previousMood: "",
+    currentMood: "",
+    arousalShift: 0,
+    valenceShift: 0,
+    speakerId: "",
+  };
+}
+
+export const AcousticMoodShiftedEvent: MessageFns<AcousticMoodShiftedEvent> = {
+  encode(message: AcousticMoodShiftedEvent, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.eventType !== "") {
+      writer.uint32(10).string(message.eventType);
+    }
+    if (message.traceId !== "") {
+      writer.uint32(18).string(message.traceId);
+    }
+    if (message.callId !== "") {
+      writer.uint32(26).string(message.callId);
+    }
+    if (message.timestamp !== undefined) {
+      Timestamp.encode(toTimestamp(message.timestamp), writer.uint32(34).fork()).join();
+    }
+    if (message.previousMood !== "") {
+      writer.uint32(42).string(message.previousMood);
+    }
+    if (message.currentMood !== "") {
+      writer.uint32(50).string(message.currentMood);
+    }
+    if (message.arousalShift !== 0) {
+      writer.uint32(61).float(message.arousalShift);
+    }
+    if (message.valenceShift !== 0) {
+      writer.uint32(69).float(message.valenceShift);
+    }
+    if (message.speakerId !== "") {
+      writer.uint32(74).string(message.speakerId);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): AcousticMoodShiftedEvent {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseAcousticMoodShiftedEvent();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 10) {
+            break;
+          }
+
+          message.eventType = reader.string();
+          continue;
+        }
+        case 2: {
+          if (tag !== 18) {
+            break;
+          }
+
+          message.traceId = reader.string();
+          continue;
+        }
+        case 3: {
+          if (tag !== 26) {
+            break;
+          }
+
+          message.callId = reader.string();
+          continue;
+        }
+        case 4: {
+          if (tag !== 34) {
+            break;
+          }
+
+          message.timestamp = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          continue;
+        }
+        case 5: {
+          if (tag !== 42) {
+            break;
+          }
+
+          message.previousMood = reader.string();
+          continue;
+        }
+        case 6: {
+          if (tag !== 50) {
+            break;
+          }
+
+          message.currentMood = reader.string();
+          continue;
+        }
+        case 7: {
+          if (tag !== 61) {
+            break;
+          }
+
+          message.arousalShift = reader.float();
+          continue;
+        }
+        case 8: {
+          if (tag !== 69) {
+            break;
+          }
+
+          message.valenceShift = reader.float();
+          continue;
+        }
+        case 9: {
+          if (tag !== 74) {
+            break;
+          }
+
+          message.speakerId = reader.string();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): AcousticMoodShiftedEvent {
+    return {
+      eventType: isSet(object.eventType)
+        ? globalThis.String(object.eventType)
+        : isSet(object.event_type)
+        ? globalThis.String(object.event_type)
+        : "",
+      traceId: isSet(object.traceId)
+        ? globalThis.String(object.traceId)
+        : isSet(object.trace_id)
+        ? globalThis.String(object.trace_id)
+        : "",
+      callId: isSet(object.callId)
+        ? globalThis.String(object.callId)
+        : isSet(object.call_id)
+        ? globalThis.String(object.call_id)
+        : "",
+      timestamp: isSet(object.timestamp) ? fromJsonTimestamp(object.timestamp) : undefined,
+      previousMood: isSet(object.previousMood)
+        ? globalThis.String(object.previousMood)
+        : isSet(object.previous_mood)
+        ? globalThis.String(object.previous_mood)
+        : "",
+      currentMood: isSet(object.currentMood)
+        ? globalThis.String(object.currentMood)
+        : isSet(object.current_mood)
+        ? globalThis.String(object.current_mood)
+        : "",
+      arousalShift: isSet(object.arousalShift)
+        ? globalThis.Number(object.arousalShift)
+        : isSet(object.arousal_shift)
+        ? globalThis.Number(object.arousal_shift)
+        : 0,
+      valenceShift: isSet(object.valenceShift)
+        ? globalThis.Number(object.valenceShift)
+        : isSet(object.valence_shift)
+        ? globalThis.Number(object.valence_shift)
+        : 0,
+      speakerId: isSet(object.speakerId)
+        ? globalThis.String(object.speakerId)
+        : isSet(object.speaker_id)
+        ? globalThis.String(object.speaker_id)
+        : "",
+    };
+  },
+
+  toJSON(message: AcousticMoodShiftedEvent): unknown {
+    const obj: any = {};
+    if (message.eventType !== "") {
+      obj.eventType = message.eventType;
+    }
+    if (message.traceId !== "") {
+      obj.traceId = message.traceId;
+    }
+    if (message.callId !== "") {
+      obj.callId = message.callId;
+    }
+    if (message.timestamp !== undefined) {
+      obj.timestamp = message.timestamp.toISOString();
+    }
+    if (message.previousMood !== "") {
+      obj.previousMood = message.previousMood;
+    }
+    if (message.currentMood !== "") {
+      obj.currentMood = message.currentMood;
+    }
+    if (message.arousalShift !== 0) {
+      obj.arousalShift = message.arousalShift;
+    }
+    if (message.valenceShift !== 0) {
+      obj.valenceShift = message.valenceShift;
+    }
+    if (message.speakerId !== "") {
+      obj.speakerId = message.speakerId;
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<AcousticMoodShiftedEvent>, I>>(base?: I): AcousticMoodShiftedEvent {
+    return AcousticMoodShiftedEvent.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<AcousticMoodShiftedEvent>, I>>(object: I): AcousticMoodShiftedEvent {
+    const message = createBaseAcousticMoodShiftedEvent();
+    message.eventType = object.eventType ?? "";
+    message.traceId = object.traceId ?? "";
+    message.callId = object.callId ?? "";
+    message.timestamp = object.timestamp ?? undefined;
+    message.previousMood = object.previousMood ?? "";
+    message.currentMood = object.currentMood ?? "";
+    message.arousalShift = object.arousalShift ?? 0;
+    message.valenceShift = object.valenceShift ?? 0;
+    message.speakerId = object.speakerId ?? "";
     return message;
   },
 };

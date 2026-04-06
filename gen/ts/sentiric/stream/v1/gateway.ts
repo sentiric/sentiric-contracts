@@ -9,7 +9,8 @@ import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 
 export const protobufPackage = "sentiric.stream.v1";
 
-/** ... Mesaj isimleri aynı kalabilir veya StreamSessionRequest olarak genelleyebilirsin ... */
+/** File: proto/sentiric/stream/v1/gateway.proto */
+
 export interface StreamSessionRequest {
   config?: SessionConfig | undefined;
   audioChunk?: Uint8Array | undefined;
@@ -17,39 +18,45 @@ export interface StreamSessionRequest {
   control?: SessionControl | undefined;
 }
 
-/** [ARCH-COMPLIANCE] StreamSessionResponse'a zengin veri yolları eklendi */
 export interface StreamSessionResponse {
   audioResponse?: Uint8Array | undefined;
   textResponse?: string | undefined;
-  statusUpdate?:
-    | string
-    | undefined;
-  /** <--- YENİ: UI için zengin metin */
-  transcript?:
-    | TranscriptEvent
-    | undefined;
-  /** <--- YENİ: Barge-in kontrolü */
+  statusUpdate?: string | undefined;
+  transcript?: TranscriptEvent | undefined;
   clearAudioBuffer?: boolean | undefined;
+}
+
+/** [YENİ]: UI için kelime bazlı animasyon (Karaoke) ve Güven Haritası */
+export interface WordData {
+  word: string;
+  start: number;
+  end: number;
+  probability: number;
 }
 
 export interface TranscriptEvent {
   text: string;
   isFinal: boolean;
-  /** "USER" veya "AI" */
   sender: string;
   emotion: string;
   gender: string;
+  /** [ARCH-COMPLIANCE FIX]: Zengin Analiz Verileri (Frontend İçin) */
+  arousal: number;
+  valence: number;
+  speakerId: string;
+  speakerVec: number[];
+  words: WordData[];
 }
 
 export interface SessionConfig {
   token: string;
   language: string;
   sampleRate: number;
-  /** [YENİ] Edge cihazlar için Ghost Mode bayrağı. */
   edgeMode: boolean;
-  /** [ARCH-COMPLIANCE FIX] Session Authority */
   traceId: string;
   sessionId: string;
+  /** [YENİ]: Sadece Dinleyen AI Modu (Gözlemci/Analist Modu) */
+  listenOnlyMode: boolean;
 }
 
 export interface SessionControl {
@@ -57,9 +64,7 @@ export interface SessionControl {
 }
 
 export enum SessionControl_EventType {
-  /** EVENT_TYPE_UNSPECIFIED - Linter Kuralı: 0 değeri _UNSPECIFIED ile bitmeli. */
   EVENT_TYPE_UNSPECIFIED = 0,
-  /** EVENT_TYPE_INTERRUPT - Linter Kuralı: Değerler ENUM_NAME_ ile başlamalı. */
   EVENT_TYPE_INTERRUPT = 1,
   EVENT_TYPE_EOS = 2,
   EVENT_TYPE_HANGUP = 3,
@@ -371,8 +376,127 @@ export const StreamSessionResponse: MessageFns<StreamSessionResponse> = {
   },
 };
 
+function createBaseWordData(): WordData {
+  return { word: "", start: 0, end: 0, probability: 0 };
+}
+
+export const WordData: MessageFns<WordData> = {
+  encode(message: WordData, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.word !== "") {
+      writer.uint32(10).string(message.word);
+    }
+    if (message.start !== 0) {
+      writer.uint32(21).float(message.start);
+    }
+    if (message.end !== 0) {
+      writer.uint32(29).float(message.end);
+    }
+    if (message.probability !== 0) {
+      writer.uint32(37).float(message.probability);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): WordData {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseWordData();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 10) {
+            break;
+          }
+
+          message.word = reader.string();
+          continue;
+        }
+        case 2: {
+          if (tag !== 21) {
+            break;
+          }
+
+          message.start = reader.float();
+          continue;
+        }
+        case 3: {
+          if (tag !== 29) {
+            break;
+          }
+
+          message.end = reader.float();
+          continue;
+        }
+        case 4: {
+          if (tag !== 37) {
+            break;
+          }
+
+          message.probability = reader.float();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): WordData {
+    return {
+      word: isSet(object.word) ? globalThis.String(object.word) : "",
+      start: isSet(object.start) ? globalThis.Number(object.start) : 0,
+      end: isSet(object.end) ? globalThis.Number(object.end) : 0,
+      probability: isSet(object.probability) ? globalThis.Number(object.probability) : 0,
+    };
+  },
+
+  toJSON(message: WordData): unknown {
+    const obj: any = {};
+    if (message.word !== "") {
+      obj.word = message.word;
+    }
+    if (message.start !== 0) {
+      obj.start = message.start;
+    }
+    if (message.end !== 0) {
+      obj.end = message.end;
+    }
+    if (message.probability !== 0) {
+      obj.probability = message.probability;
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<WordData>, I>>(base?: I): WordData {
+    return WordData.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<WordData>, I>>(object: I): WordData {
+    const message = createBaseWordData();
+    message.word = object.word ?? "";
+    message.start = object.start ?? 0;
+    message.end = object.end ?? 0;
+    message.probability = object.probability ?? 0;
+    return message;
+  },
+};
+
 function createBaseTranscriptEvent(): TranscriptEvent {
-  return { text: "", isFinal: false, sender: "", emotion: "", gender: "" };
+  return {
+    text: "",
+    isFinal: false,
+    sender: "",
+    emotion: "",
+    gender: "",
+    arousal: 0,
+    valence: 0,
+    speakerId: "",
+    speakerVec: [],
+    words: [],
+  };
 }
 
 export const TranscriptEvent: MessageFns<TranscriptEvent> = {
@@ -391,6 +515,23 @@ export const TranscriptEvent: MessageFns<TranscriptEvent> = {
     }
     if (message.gender !== "") {
       writer.uint32(42).string(message.gender);
+    }
+    if (message.arousal !== 0) {
+      writer.uint32(53).float(message.arousal);
+    }
+    if (message.valence !== 0) {
+      writer.uint32(61).float(message.valence);
+    }
+    if (message.speakerId !== "") {
+      writer.uint32(66).string(message.speakerId);
+    }
+    writer.uint32(74).fork();
+    for (const v of message.speakerVec) {
+      writer.float(v);
+    }
+    writer.join();
+    for (const v of message.words) {
+      WordData.encode(v!, writer.uint32(82).fork()).join();
     }
     return writer;
   },
@@ -442,6 +583,56 @@ export const TranscriptEvent: MessageFns<TranscriptEvent> = {
           message.gender = reader.string();
           continue;
         }
+        case 6: {
+          if (tag !== 53) {
+            break;
+          }
+
+          message.arousal = reader.float();
+          continue;
+        }
+        case 7: {
+          if (tag !== 61) {
+            break;
+          }
+
+          message.valence = reader.float();
+          continue;
+        }
+        case 8: {
+          if (tag !== 66) {
+            break;
+          }
+
+          message.speakerId = reader.string();
+          continue;
+        }
+        case 9: {
+          if (tag === 77) {
+            message.speakerVec.push(reader.float());
+
+            continue;
+          }
+
+          if (tag === 74) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.speakerVec.push(reader.float());
+            }
+
+            continue;
+          }
+
+          break;
+        }
+        case 10: {
+          if (tag !== 82) {
+            break;
+          }
+
+          message.words.push(WordData.decode(reader, reader.uint32()));
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -462,6 +653,19 @@ export const TranscriptEvent: MessageFns<TranscriptEvent> = {
       sender: isSet(object.sender) ? globalThis.String(object.sender) : "",
       emotion: isSet(object.emotion) ? globalThis.String(object.emotion) : "",
       gender: isSet(object.gender) ? globalThis.String(object.gender) : "",
+      arousal: isSet(object.arousal) ? globalThis.Number(object.arousal) : 0,
+      valence: isSet(object.valence) ? globalThis.Number(object.valence) : 0,
+      speakerId: isSet(object.speakerId)
+        ? globalThis.String(object.speakerId)
+        : isSet(object.speaker_id)
+        ? globalThis.String(object.speaker_id)
+        : "",
+      speakerVec: globalThis.Array.isArray(object?.speakerVec)
+        ? object.speakerVec.map((e: any) => globalThis.Number(e))
+        : globalThis.Array.isArray(object?.speaker_vec)
+        ? object.speaker_vec.map((e: any) => globalThis.Number(e))
+        : [],
+      words: globalThis.Array.isArray(object?.words) ? object.words.map((e: any) => WordData.fromJSON(e)) : [],
     };
   },
 
@@ -482,6 +686,21 @@ export const TranscriptEvent: MessageFns<TranscriptEvent> = {
     if (message.gender !== "") {
       obj.gender = message.gender;
     }
+    if (message.arousal !== 0) {
+      obj.arousal = message.arousal;
+    }
+    if (message.valence !== 0) {
+      obj.valence = message.valence;
+    }
+    if (message.speakerId !== "") {
+      obj.speakerId = message.speakerId;
+    }
+    if (message.speakerVec?.length) {
+      obj.speakerVec = message.speakerVec;
+    }
+    if (message.words?.length) {
+      obj.words = message.words.map((e) => WordData.toJSON(e));
+    }
     return obj;
   },
 
@@ -495,12 +714,17 @@ export const TranscriptEvent: MessageFns<TranscriptEvent> = {
     message.sender = object.sender ?? "";
     message.emotion = object.emotion ?? "";
     message.gender = object.gender ?? "";
+    message.arousal = object.arousal ?? 0;
+    message.valence = object.valence ?? 0;
+    message.speakerId = object.speakerId ?? "";
+    message.speakerVec = object.speakerVec?.map((e) => e) || [];
+    message.words = object.words?.map((e) => WordData.fromPartial(e)) || [];
     return message;
   },
 };
 
 function createBaseSessionConfig(): SessionConfig {
-  return { token: "", language: "", sampleRate: 0, edgeMode: false, traceId: "", sessionId: "" };
+  return { token: "", language: "", sampleRate: 0, edgeMode: false, traceId: "", sessionId: "", listenOnlyMode: false };
 }
 
 export const SessionConfig: MessageFns<SessionConfig> = {
@@ -522,6 +746,9 @@ export const SessionConfig: MessageFns<SessionConfig> = {
     }
     if (message.sessionId !== "") {
       writer.uint32(50).string(message.sessionId);
+    }
+    if (message.listenOnlyMode !== false) {
+      writer.uint32(56).bool(message.listenOnlyMode);
     }
     return writer;
   },
@@ -581,6 +808,14 @@ export const SessionConfig: MessageFns<SessionConfig> = {
           message.sessionId = reader.string();
           continue;
         }
+        case 7: {
+          if (tag !== 56) {
+            break;
+          }
+
+          message.listenOnlyMode = reader.bool();
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -614,6 +849,11 @@ export const SessionConfig: MessageFns<SessionConfig> = {
         : isSet(object.session_id)
         ? globalThis.String(object.session_id)
         : "",
+      listenOnlyMode: isSet(object.listenOnlyMode)
+        ? globalThis.Boolean(object.listenOnlyMode)
+        : isSet(object.listen_only_mode)
+        ? globalThis.Boolean(object.listen_only_mode)
+        : false,
     };
   },
 
@@ -637,6 +877,9 @@ export const SessionConfig: MessageFns<SessionConfig> = {
     if (message.sessionId !== "") {
       obj.sessionId = message.sessionId;
     }
+    if (message.listenOnlyMode !== false) {
+      obj.listenOnlyMode = message.listenOnlyMode;
+    }
     return obj;
   },
 
@@ -651,6 +894,7 @@ export const SessionConfig: MessageFns<SessionConfig> = {
     message.edgeMode = object.edgeMode ?? false;
     message.traceId = object.traceId ?? "";
     message.sessionId = object.sessionId ?? "";
+    message.listenOnlyMode = object.listenOnlyMode ?? false;
     return message;
   },
 };

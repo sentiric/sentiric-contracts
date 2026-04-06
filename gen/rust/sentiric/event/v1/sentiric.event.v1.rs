@@ -106,8 +106,6 @@ pub struct CallEndedEvent {
     #[prost(string, tag="5")]
     pub reason: ::prost::alloc::string::String,
 }
-// ... CallEndedEvent mesajından sonra ekleyin
-
 /// GenericEvent, platform genelinde diğer (çağrı dışı) asenkron olayları kapsar.
 /// Örn: UserCreated, DialplanUpdated, RecipeInstalled.
 #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
@@ -124,5 +122,36 @@ pub struct GenericEvent {
     /// Olayla ilgili seri hale getirilmiş (Protobuf Any veya JSON dize) payload.
     #[prost(string, tag="5")]
     pub payload_json: ::prost::alloc::string::String,
+}
+/// AcousticMoodShiftedEvent, Whisper motorunun (STT) akustik analiz (Diarization/Prosody)
+/// sırasında aynı kullanıcıya ait seste ciddi bir ton/tempo değişimi yakaladığında fırlatılır.
+/// Kullanıcının "Analitik" bir ruh halinden "Meditatif/Derin" (Deep Waters) bir
+/// ruh haline geçtiğini sistemin geri kalanına bildirir. (Crystalline Service tarafından tüketilir)
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct AcousticMoodShiftedEvent {
+    /// "acoustic.mood.shifted"
+    #[prost(string, tag="1")]
+    pub event_type: ::prost::alloc::string::String,
+    #[prost(string, tag="2")]
+    pub trace_id: ::prost::alloc::string::String,
+    #[prost(string, tag="3")]
+    pub call_id: ::prost::alloc::string::String,
+    #[prost(message, optional, tag="4")]
+    pub timestamp: ::core::option::Option<::prost_types::Timestamp>,
+    /// örn: "analytical"
+    #[prost(string, tag="5")]
+    pub previous_mood: ::prost::alloc::string::String,
+    /// örn: "meditative"
+    #[prost(string, tag="6")]
+    pub current_mood: ::prost::alloc::string::String,
+    /// Heyecan/Tempo değişimi
+    #[prost(float, tag="7")]
+    pub arousal_shift: f32,
+    /// Pozitiflik/Negatiflik değişimi
+    #[prost(float, tag="8")]
+    pub valence_shift: f32,
+    /// Hangi seste bu değişim oldu
+    #[prost(string, tag="9")]
+    pub speaker_id: ::prost::alloc::string::String,
 }
 // @@protoc_insertion_point(module)

@@ -5,16 +5,19 @@ package sentiric.stt.v1;
 
 option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/stt/v1;sttv1";
 
-// SttWhisperService, Whisper motoruna özgü düşük seviyeli kontrat.
 service SttWhisperService {
-  // Bir ses dosyasının tamamını tek seferde metne çevirir.
   rpc WhisperTranscribe(WhisperTranscribeRequest) returns (WhisperTranscribeResponse);
-  
-  // Gerçek zamanlı bir ses akışını metne çevirir.
   rpc WhisperTranscribeStream(stream WhisperTranscribeStreamRequest) returns (stream WhisperTranscribeStreamResponse);
 }
 
-// Dosya tabanlı transkripsiyon için mesajlar
+// [YENİ]: Kelime bazlı olasılık ve zaman damgası (Sadece burada tanımlanır)
+message TokenData {
+  string word = 1;
+  float start = 2;
+  float end = 3;
+  float probability = 4;
+}
+
 message WhisperTranscribeRequest {
   bytes audio_data = 1;
   optional string language = 2;
@@ -25,7 +28,6 @@ message WhisperTranscribeResponse {
   string language = 2;
   float language_probability = 3;
   double duration = 4;
-  // ---- affective & speaker identity ----
   string gender_proxy = 5;
   string emotion_proxy = 6;
   float arousal = 7;
@@ -36,19 +38,20 @@ message WhisperTranscribeResponse {
   float energy_std = 12;
   float spectral_centroid = 13;
   float zero_crossing_rate = 14;
-  repeated float speaker_vec = 15; // 8-D vector
+  repeated float speaker_vec = 15;
+
+  // [ARCH-COMPLIANCE FIX]: Eksik Diarization ve Token verileri
+  string speaker_id = 16;
+  repeated TokenData words = 17;
 }
 
-// Akış tabanlı transkripsiyon için mesajlar
 message WhisperTranscribeStreamRequest {
-  // Ses verisi 16kHz, 16-bit, mono, ham PCM formatında olmalıdır.
   bytes audio_chunk = 1;
 }
 
 message WhisperTranscribeStreamResponse {
   string transcription = 1;
-  bool is_final = 2; // Bu segmentin nihai sonuç olup olmadığını belirtir.
-  // ---- affective & speaker identity ----
+  bool is_final = 2;
   string gender_proxy = 3;
   string emotion_proxy = 4;
   float arousal = 5;
@@ -60,4 +63,8 @@ message WhisperTranscribeStreamResponse {
   float spectral_centroid = 11;
   float zero_crossing_rate = 12;
   repeated float speaker_vec = 13;
+
+  // [ARCH-COMPLIANCE FIX]: Eksik Diarization ve Token verileri
+  string speaker_id = 14;
+  repeated TokenData words = 15;
 }

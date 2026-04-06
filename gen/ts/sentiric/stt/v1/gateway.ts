@@ -6,18 +6,17 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
+import { TokenData } from "./whisper";
 
 export const protobufPackage = "sentiric.stt.v1";
 
 /** File: proto/sentiric/stt/v1/gateway.proto */
 
-/** Gateway request */
 export interface TranscribeRequest {
   audioContent: Uint8Array;
   languageCode: string;
 }
 
-/** Gateway response */
 export interface TranscribeResponse {
   transcription: string;
 }
@@ -29,11 +28,16 @@ export interface TranscribeStreamRequest {
 export interface TranscribeStreamResponse {
   partialTranscription: string;
   isFinal: boolean;
-  /** [YENİ - CRYSTALLINE VIZYONU] Duyuşsal Zeka Metrikleri */
   genderProxy: string;
   emotionProxy: string;
   arousal: number;
   valence: number;
+  /** [ARCH-COMPLIANCE FIX]: AI Pipeline için Diarization ve Token verileri */
+  speakerId: string;
+  /** 8D Vektör */
+  speakerVec: number[];
+  /** whisper.proto'dan geliyor */
+  words: TokenData[];
 }
 
 function createBaseTranscribeRequest(): TranscribeRequest {
@@ -243,7 +247,17 @@ export const TranscribeStreamRequest: MessageFns<TranscribeStreamRequest> = {
 };
 
 function createBaseTranscribeStreamResponse(): TranscribeStreamResponse {
-  return { partialTranscription: "", isFinal: false, genderProxy: "", emotionProxy: "", arousal: 0, valence: 0 };
+  return {
+    partialTranscription: "",
+    isFinal: false,
+    genderProxy: "",
+    emotionProxy: "",
+    arousal: 0,
+    valence: 0,
+    speakerId: "",
+    speakerVec: [],
+    words: [],
+  };
 }
 
 export const TranscribeStreamResponse: MessageFns<TranscribeStreamResponse> = {
@@ -265,6 +279,17 @@ export const TranscribeStreamResponse: MessageFns<TranscribeStreamResponse> = {
     }
     if (message.valence !== 0) {
       writer.uint32(53).float(message.valence);
+    }
+    if (message.speakerId !== "") {
+      writer.uint32(58).string(message.speakerId);
+    }
+    writer.uint32(66).fork();
+    for (const v of message.speakerVec) {
+      writer.float(v);
+    }
+    writer.join();
+    for (const v of message.words) {
+      TokenData.encode(v!, writer.uint32(74).fork()).join();
     }
     return writer;
   },
@@ -324,6 +349,40 @@ export const TranscribeStreamResponse: MessageFns<TranscribeStreamResponse> = {
           message.valence = reader.float();
           continue;
         }
+        case 7: {
+          if (tag !== 58) {
+            break;
+          }
+
+          message.speakerId = reader.string();
+          continue;
+        }
+        case 8: {
+          if (tag === 69) {
+            message.speakerVec.push(reader.float());
+
+            continue;
+          }
+
+          if (tag === 66) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.speakerVec.push(reader.float());
+            }
+
+            continue;
+          }
+
+          break;
+        }
+        case 9: {
+          if (tag !== 74) {
+            break;
+          }
+
+          message.words.push(TokenData.decode(reader, reader.uint32()));
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -357,6 +416,17 @@ export const TranscribeStreamResponse: MessageFns<TranscribeStreamResponse> = {
         : "",
       arousal: isSet(object.arousal) ? globalThis.Number(object.arousal) : 0,
       valence: isSet(object.valence) ? globalThis.Number(object.valence) : 0,
+      speakerId: isSet(object.speakerId)
+        ? globalThis.String(object.speakerId)
+        : isSet(object.speaker_id)
+        ? globalThis.String(object.speaker_id)
+        : "",
+      speakerVec: globalThis.Array.isArray(object?.speakerVec)
+        ? object.speakerVec.map((e: any) => globalThis.Number(e))
+        : globalThis.Array.isArray(object?.speaker_vec)
+        ? object.speaker_vec.map((e: any) => globalThis.Number(e))
+        : [],
+      words: globalThis.Array.isArray(object?.words) ? object.words.map((e: any) => TokenData.fromJSON(e)) : [],
     };
   },
 
@@ -380,6 +450,15 @@ export const TranscribeStreamResponse: MessageFns<TranscribeStreamResponse> = {
     if (message.valence !== 0) {
       obj.valence = message.valence;
     }
+    if (message.speakerId !== "") {
+      obj.speakerId = message.speakerId;
+    }
+    if (message.speakerVec?.length) {
+      obj.speakerVec = message.speakerVec;
+    }
+    if (message.words?.length) {
+      obj.words = message.words.map((e) => TokenData.toJSON(e));
+    }
     return obj;
   },
 
@@ -394,6 +473,9 @@ export const TranscribeStreamResponse: MessageFns<TranscribeStreamResponse> = {
     message.emotionProxy = object.emotionProxy ?? "";
     message.arousal = object.arousal ?? 0;
     message.valence = object.valence ?? 0;
+    message.speakerId = object.speakerId ?? "";
+    message.speakerVec = object.speakerVec?.map((e) => e) || [];
+    message.words = object.words?.map((e) => TokenData.fromPartial(e)) || [];
     return message;
   },
 };

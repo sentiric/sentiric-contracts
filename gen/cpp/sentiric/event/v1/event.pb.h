@@ -50,6 +50,9 @@ extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table
 namespace sentiric {
 namespace event {
 namespace v1 {
+class AcousticMoodShiftedEvent;
+struct AcousticMoodShiftedEventDefaultTypeInternal;
+extern AcousticMoodShiftedEventDefaultTypeInternal _AcousticMoodShiftedEvent_default_instance_;
 class CallEndedEvent;
 struct CallEndedEventDefaultTypeInternal;
 extern CallEndedEventDefaultTypeInternal _CallEndedEvent_default_instance_;
@@ -72,6 +75,7 @@ extern UserIdentifiedForCallEventDefaultTypeInternal _UserIdentifiedForCallEvent
 }  // namespace event
 }  // namespace sentiric
 PROTOBUF_NAMESPACE_OPEN
+template<> ::sentiric::event::v1::AcousticMoodShiftedEvent* Arena::CreateMaybeMessage<::sentiric::event::v1::AcousticMoodShiftedEvent>(Arena*);
 template<> ::sentiric::event::v1::CallEndedEvent* Arena::CreateMaybeMessage<::sentiric::event::v1::CallEndedEvent>(Arena*);
 template<> ::sentiric::event::v1::CallRecordingAvailableEvent* Arena::CreateMaybeMessage<::sentiric::event::v1::CallRecordingAvailableEvent>(Arena*);
 template<> ::sentiric::event::v1::CallStartedEvent* Arena::CreateMaybeMessage<::sentiric::event::v1::CallStartedEvent>(Arena*);
@@ -1443,6 +1447,281 @@ class GenericEvent final :
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr tenant_id_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr payload_json_;
     ::PROTOBUF_NAMESPACE_ID::Timestamp* timestamp_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2fevent_2fv1_2fevent_2eproto;
+};
+// -------------------------------------------------------------------
+
+class AcousticMoodShiftedEvent final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.event.v1.AcousticMoodShiftedEvent) */ {
+ public:
+  inline AcousticMoodShiftedEvent() : AcousticMoodShiftedEvent(nullptr) {}
+  ~AcousticMoodShiftedEvent() override;
+  explicit PROTOBUF_CONSTEXPR AcousticMoodShiftedEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  AcousticMoodShiftedEvent(const AcousticMoodShiftedEvent& from);
+  AcousticMoodShiftedEvent(AcousticMoodShiftedEvent&& from) noexcept
+    : AcousticMoodShiftedEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline AcousticMoodShiftedEvent& operator=(const AcousticMoodShiftedEvent& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline AcousticMoodShiftedEvent& operator=(AcousticMoodShiftedEvent&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const AcousticMoodShiftedEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const AcousticMoodShiftedEvent* internal_default_instance() {
+    return reinterpret_cast<const AcousticMoodShiftedEvent*>(
+               &_AcousticMoodShiftedEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    6;
+
+  friend void swap(AcousticMoodShiftedEvent& a, AcousticMoodShiftedEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(AcousticMoodShiftedEvent* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(AcousticMoodShiftedEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  AcousticMoodShiftedEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<AcousticMoodShiftedEvent>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const AcousticMoodShiftedEvent& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const AcousticMoodShiftedEvent& from) {
+    AcousticMoodShiftedEvent::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(AcousticMoodShiftedEvent* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.event.v1.AcousticMoodShiftedEvent";
+  }
+  protected:
+  explicit AcousticMoodShiftedEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kEventTypeFieldNumber = 1,
+    kTraceIdFieldNumber = 2,
+    kCallIdFieldNumber = 3,
+    kPreviousMoodFieldNumber = 5,
+    kCurrentMoodFieldNumber = 6,
+    kSpeakerIdFieldNumber = 9,
+    kTimestampFieldNumber = 4,
+    kArousalShiftFieldNumber = 7,
+    kValenceShiftFieldNumber = 8,
+  };
+  // string event_type = 1;
+  void clear_event_type();
+  const std::string& event_type() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_event_type(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_event_type();
+  PROTOBUF_NODISCARD std::string* release_event_type();
+  void set_allocated_event_type(std::string* event_type);
+  private:
+  const std::string& _internal_event_type() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_event_type(const std::string& value);
+  std::string* _internal_mutable_event_type();
+  public:
+
+  // string trace_id = 2;
+  void clear_trace_id();
+  const std::string& trace_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_trace_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_trace_id();
+  PROTOBUF_NODISCARD std::string* release_trace_id();
+  void set_allocated_trace_id(std::string* trace_id);
+  private:
+  const std::string& _internal_trace_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_trace_id(const std::string& value);
+  std::string* _internal_mutable_trace_id();
+  public:
+
+  // string call_id = 3;
+  void clear_call_id();
+  const std::string& call_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_call_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_call_id();
+  PROTOBUF_NODISCARD std::string* release_call_id();
+  void set_allocated_call_id(std::string* call_id);
+  private:
+  const std::string& _internal_call_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_call_id(const std::string& value);
+  std::string* _internal_mutable_call_id();
+  public:
+
+  // string previous_mood = 5;
+  void clear_previous_mood();
+  const std::string& previous_mood() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_previous_mood(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_previous_mood();
+  PROTOBUF_NODISCARD std::string* release_previous_mood();
+  void set_allocated_previous_mood(std::string* previous_mood);
+  private:
+  const std::string& _internal_previous_mood() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_previous_mood(const std::string& value);
+  std::string* _internal_mutable_previous_mood();
+  public:
+
+  // string current_mood = 6;
+  void clear_current_mood();
+  const std::string& current_mood() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_current_mood(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_current_mood();
+  PROTOBUF_NODISCARD std::string* release_current_mood();
+  void set_allocated_current_mood(std::string* current_mood);
+  private:
+  const std::string& _internal_current_mood() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_current_mood(const std::string& value);
+  std::string* _internal_mutable_current_mood();
+  public:
+
+  // string speaker_id = 9;
+  void clear_speaker_id();
+  const std::string& speaker_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_speaker_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_speaker_id();
+  PROTOBUF_NODISCARD std::string* release_speaker_id();
+  void set_allocated_speaker_id(std::string* speaker_id);
+  private:
+  const std::string& _internal_speaker_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_speaker_id(const std::string& value);
+  std::string* _internal_mutable_speaker_id();
+  public:
+
+  // .google.protobuf.Timestamp timestamp = 4;
+  bool has_timestamp() const;
+  private:
+  bool _internal_has_timestamp() const;
+  public:
+  void clear_timestamp();
+  const ::PROTOBUF_NAMESPACE_ID::Timestamp& timestamp() const;
+  PROTOBUF_NODISCARD ::PROTOBUF_NAMESPACE_ID::Timestamp* release_timestamp();
+  ::PROTOBUF_NAMESPACE_ID::Timestamp* mutable_timestamp();
+  void set_allocated_timestamp(::PROTOBUF_NAMESPACE_ID::Timestamp* timestamp);
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Timestamp& _internal_timestamp() const;
+  ::PROTOBUF_NAMESPACE_ID::Timestamp* _internal_mutable_timestamp();
+  public:
+  void unsafe_arena_set_allocated_timestamp(
+      ::PROTOBUF_NAMESPACE_ID::Timestamp* timestamp);
+  ::PROTOBUF_NAMESPACE_ID::Timestamp* unsafe_arena_release_timestamp();
+
+  // float arousal_shift = 7;
+  void clear_arousal_shift();
+  float arousal_shift() const;
+  void set_arousal_shift(float value);
+  private:
+  float _internal_arousal_shift() const;
+  void _internal_set_arousal_shift(float value);
+  public:
+
+  // float valence_shift = 8;
+  void clear_valence_shift();
+  float valence_shift() const;
+  void set_valence_shift(float value);
+  private:
+  float _internal_valence_shift() const;
+  void _internal_set_valence_shift(float value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.event.v1.AcousticMoodShiftedEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr event_type_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr trace_id_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr call_id_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr previous_mood_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr current_mood_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr speaker_id_;
+    ::PROTOBUF_NAMESPACE_ID::Timestamp* timestamp_;
+    float arousal_shift_;
+    float valence_shift_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -3369,9 +3648,440 @@ inline void GenericEvent::set_allocated_payload_json(std::string* payload_json) 
   // @@protoc_insertion_point(field_set_allocated:sentiric.event.v1.GenericEvent.payload_json)
 }
 
+// -------------------------------------------------------------------
+
+// AcousticMoodShiftedEvent
+
+// string event_type = 1;
+inline void AcousticMoodShiftedEvent::clear_event_type() {
+  _impl_.event_type_.ClearToEmpty();
+}
+inline const std::string& AcousticMoodShiftedEvent::event_type() const {
+  // @@protoc_insertion_point(field_get:sentiric.event.v1.AcousticMoodShiftedEvent.event_type)
+  return _internal_event_type();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void AcousticMoodShiftedEvent::set_event_type(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.event_type_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.event.v1.AcousticMoodShiftedEvent.event_type)
+}
+inline std::string* AcousticMoodShiftedEvent::mutable_event_type() {
+  std::string* _s = _internal_mutable_event_type();
+  // @@protoc_insertion_point(field_mutable:sentiric.event.v1.AcousticMoodShiftedEvent.event_type)
+  return _s;
+}
+inline const std::string& AcousticMoodShiftedEvent::_internal_event_type() const {
+  return _impl_.event_type_.Get();
+}
+inline void AcousticMoodShiftedEvent::_internal_set_event_type(const std::string& value) {
+  
+  _impl_.event_type_.Set(value, GetArenaForAllocation());
+}
+inline std::string* AcousticMoodShiftedEvent::_internal_mutable_event_type() {
+  
+  return _impl_.event_type_.Mutable(GetArenaForAllocation());
+}
+inline std::string* AcousticMoodShiftedEvent::release_event_type() {
+  // @@protoc_insertion_point(field_release:sentiric.event.v1.AcousticMoodShiftedEvent.event_type)
+  return _impl_.event_type_.Release();
+}
+inline void AcousticMoodShiftedEvent::set_allocated_event_type(std::string* event_type) {
+  if (event_type != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.event_type_.SetAllocated(event_type, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.event_type_.IsDefault()) {
+    _impl_.event_type_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.event.v1.AcousticMoodShiftedEvent.event_type)
+}
+
+// string trace_id = 2;
+inline void AcousticMoodShiftedEvent::clear_trace_id() {
+  _impl_.trace_id_.ClearToEmpty();
+}
+inline const std::string& AcousticMoodShiftedEvent::trace_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.event.v1.AcousticMoodShiftedEvent.trace_id)
+  return _internal_trace_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void AcousticMoodShiftedEvent::set_trace_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.trace_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.event.v1.AcousticMoodShiftedEvent.trace_id)
+}
+inline std::string* AcousticMoodShiftedEvent::mutable_trace_id() {
+  std::string* _s = _internal_mutable_trace_id();
+  // @@protoc_insertion_point(field_mutable:sentiric.event.v1.AcousticMoodShiftedEvent.trace_id)
+  return _s;
+}
+inline const std::string& AcousticMoodShiftedEvent::_internal_trace_id() const {
+  return _impl_.trace_id_.Get();
+}
+inline void AcousticMoodShiftedEvent::_internal_set_trace_id(const std::string& value) {
+  
+  _impl_.trace_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* AcousticMoodShiftedEvent::_internal_mutable_trace_id() {
+  
+  return _impl_.trace_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* AcousticMoodShiftedEvent::release_trace_id() {
+  // @@protoc_insertion_point(field_release:sentiric.event.v1.AcousticMoodShiftedEvent.trace_id)
+  return _impl_.trace_id_.Release();
+}
+inline void AcousticMoodShiftedEvent::set_allocated_trace_id(std::string* trace_id) {
+  if (trace_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.trace_id_.SetAllocated(trace_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.trace_id_.IsDefault()) {
+    _impl_.trace_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.event.v1.AcousticMoodShiftedEvent.trace_id)
+}
+
+// string call_id = 3;
+inline void AcousticMoodShiftedEvent::clear_call_id() {
+  _impl_.call_id_.ClearToEmpty();
+}
+inline const std::string& AcousticMoodShiftedEvent::call_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.event.v1.AcousticMoodShiftedEvent.call_id)
+  return _internal_call_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void AcousticMoodShiftedEvent::set_call_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.call_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.event.v1.AcousticMoodShiftedEvent.call_id)
+}
+inline std::string* AcousticMoodShiftedEvent::mutable_call_id() {
+  std::string* _s = _internal_mutable_call_id();
+  // @@protoc_insertion_point(field_mutable:sentiric.event.v1.AcousticMoodShiftedEvent.call_id)
+  return _s;
+}
+inline const std::string& AcousticMoodShiftedEvent::_internal_call_id() const {
+  return _impl_.call_id_.Get();
+}
+inline void AcousticMoodShiftedEvent::_internal_set_call_id(const std::string& value) {
+  
+  _impl_.call_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* AcousticMoodShiftedEvent::_internal_mutable_call_id() {
+  
+  return _impl_.call_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* AcousticMoodShiftedEvent::release_call_id() {
+  // @@protoc_insertion_point(field_release:sentiric.event.v1.AcousticMoodShiftedEvent.call_id)
+  return _impl_.call_id_.Release();
+}
+inline void AcousticMoodShiftedEvent::set_allocated_call_id(std::string* call_id) {
+  if (call_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.call_id_.SetAllocated(call_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.call_id_.IsDefault()) {
+    _impl_.call_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.event.v1.AcousticMoodShiftedEvent.call_id)
+}
+
+// .google.protobuf.Timestamp timestamp = 4;
+inline bool AcousticMoodShiftedEvent::_internal_has_timestamp() const {
+  return this != internal_default_instance() && _impl_.timestamp_ != nullptr;
+}
+inline bool AcousticMoodShiftedEvent::has_timestamp() const {
+  return _internal_has_timestamp();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Timestamp& AcousticMoodShiftedEvent::_internal_timestamp() const {
+  const ::PROTOBUF_NAMESPACE_ID::Timestamp* p = _impl_.timestamp_;
+  return p != nullptr ? *p : reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Timestamp&>(
+      ::PROTOBUF_NAMESPACE_ID::_Timestamp_default_instance_);
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Timestamp& AcousticMoodShiftedEvent::timestamp() const {
+  // @@protoc_insertion_point(field_get:sentiric.event.v1.AcousticMoodShiftedEvent.timestamp)
+  return _internal_timestamp();
+}
+inline void AcousticMoodShiftedEvent::unsafe_arena_set_allocated_timestamp(
+    ::PROTOBUF_NAMESPACE_ID::Timestamp* timestamp) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.timestamp_);
+  }
+  _impl_.timestamp_ = timestamp;
+  if (timestamp) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:sentiric.event.v1.AcousticMoodShiftedEvent.timestamp)
+}
+inline ::PROTOBUF_NAMESPACE_ID::Timestamp* AcousticMoodShiftedEvent::release_timestamp() {
+  
+  ::PROTOBUF_NAMESPACE_ID::Timestamp* temp = _impl_.timestamp_;
+  _impl_.timestamp_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Timestamp* AcousticMoodShiftedEvent::unsafe_arena_release_timestamp() {
+  // @@protoc_insertion_point(field_release:sentiric.event.v1.AcousticMoodShiftedEvent.timestamp)
+  
+  ::PROTOBUF_NAMESPACE_ID::Timestamp* temp = _impl_.timestamp_;
+  _impl_.timestamp_ = nullptr;
+  return temp;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Timestamp* AcousticMoodShiftedEvent::_internal_mutable_timestamp() {
+  
+  if (_impl_.timestamp_ == nullptr) {
+    auto* p = CreateMaybeMessage<::PROTOBUF_NAMESPACE_ID::Timestamp>(GetArenaForAllocation());
+    _impl_.timestamp_ = p;
+  }
+  return _impl_.timestamp_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Timestamp* AcousticMoodShiftedEvent::mutable_timestamp() {
+  ::PROTOBUF_NAMESPACE_ID::Timestamp* _msg = _internal_mutable_timestamp();
+  // @@protoc_insertion_point(field_mutable:sentiric.event.v1.AcousticMoodShiftedEvent.timestamp)
+  return _msg;
+}
+inline void AcousticMoodShiftedEvent::set_allocated_timestamp(::PROTOBUF_NAMESPACE_ID::Timestamp* timestamp) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.timestamp_);
+  }
+  if (timestamp) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(timestamp));
+    if (message_arena != submessage_arena) {
+      timestamp = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, timestamp, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.timestamp_ = timestamp;
+  // @@protoc_insertion_point(field_set_allocated:sentiric.event.v1.AcousticMoodShiftedEvent.timestamp)
+}
+
+// string previous_mood = 5;
+inline void AcousticMoodShiftedEvent::clear_previous_mood() {
+  _impl_.previous_mood_.ClearToEmpty();
+}
+inline const std::string& AcousticMoodShiftedEvent::previous_mood() const {
+  // @@protoc_insertion_point(field_get:sentiric.event.v1.AcousticMoodShiftedEvent.previous_mood)
+  return _internal_previous_mood();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void AcousticMoodShiftedEvent::set_previous_mood(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.previous_mood_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.event.v1.AcousticMoodShiftedEvent.previous_mood)
+}
+inline std::string* AcousticMoodShiftedEvent::mutable_previous_mood() {
+  std::string* _s = _internal_mutable_previous_mood();
+  // @@protoc_insertion_point(field_mutable:sentiric.event.v1.AcousticMoodShiftedEvent.previous_mood)
+  return _s;
+}
+inline const std::string& AcousticMoodShiftedEvent::_internal_previous_mood() const {
+  return _impl_.previous_mood_.Get();
+}
+inline void AcousticMoodShiftedEvent::_internal_set_previous_mood(const std::string& value) {
+  
+  _impl_.previous_mood_.Set(value, GetArenaForAllocation());
+}
+inline std::string* AcousticMoodShiftedEvent::_internal_mutable_previous_mood() {
+  
+  return _impl_.previous_mood_.Mutable(GetArenaForAllocation());
+}
+inline std::string* AcousticMoodShiftedEvent::release_previous_mood() {
+  // @@protoc_insertion_point(field_release:sentiric.event.v1.AcousticMoodShiftedEvent.previous_mood)
+  return _impl_.previous_mood_.Release();
+}
+inline void AcousticMoodShiftedEvent::set_allocated_previous_mood(std::string* previous_mood) {
+  if (previous_mood != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.previous_mood_.SetAllocated(previous_mood, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.previous_mood_.IsDefault()) {
+    _impl_.previous_mood_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.event.v1.AcousticMoodShiftedEvent.previous_mood)
+}
+
+// string current_mood = 6;
+inline void AcousticMoodShiftedEvent::clear_current_mood() {
+  _impl_.current_mood_.ClearToEmpty();
+}
+inline const std::string& AcousticMoodShiftedEvent::current_mood() const {
+  // @@protoc_insertion_point(field_get:sentiric.event.v1.AcousticMoodShiftedEvent.current_mood)
+  return _internal_current_mood();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void AcousticMoodShiftedEvent::set_current_mood(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.current_mood_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.event.v1.AcousticMoodShiftedEvent.current_mood)
+}
+inline std::string* AcousticMoodShiftedEvent::mutable_current_mood() {
+  std::string* _s = _internal_mutable_current_mood();
+  // @@protoc_insertion_point(field_mutable:sentiric.event.v1.AcousticMoodShiftedEvent.current_mood)
+  return _s;
+}
+inline const std::string& AcousticMoodShiftedEvent::_internal_current_mood() const {
+  return _impl_.current_mood_.Get();
+}
+inline void AcousticMoodShiftedEvent::_internal_set_current_mood(const std::string& value) {
+  
+  _impl_.current_mood_.Set(value, GetArenaForAllocation());
+}
+inline std::string* AcousticMoodShiftedEvent::_internal_mutable_current_mood() {
+  
+  return _impl_.current_mood_.Mutable(GetArenaForAllocation());
+}
+inline std::string* AcousticMoodShiftedEvent::release_current_mood() {
+  // @@protoc_insertion_point(field_release:sentiric.event.v1.AcousticMoodShiftedEvent.current_mood)
+  return _impl_.current_mood_.Release();
+}
+inline void AcousticMoodShiftedEvent::set_allocated_current_mood(std::string* current_mood) {
+  if (current_mood != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.current_mood_.SetAllocated(current_mood, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.current_mood_.IsDefault()) {
+    _impl_.current_mood_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.event.v1.AcousticMoodShiftedEvent.current_mood)
+}
+
+// float arousal_shift = 7;
+inline void AcousticMoodShiftedEvent::clear_arousal_shift() {
+  _impl_.arousal_shift_ = 0;
+}
+inline float AcousticMoodShiftedEvent::_internal_arousal_shift() const {
+  return _impl_.arousal_shift_;
+}
+inline float AcousticMoodShiftedEvent::arousal_shift() const {
+  // @@protoc_insertion_point(field_get:sentiric.event.v1.AcousticMoodShiftedEvent.arousal_shift)
+  return _internal_arousal_shift();
+}
+inline void AcousticMoodShiftedEvent::_internal_set_arousal_shift(float value) {
+  
+  _impl_.arousal_shift_ = value;
+}
+inline void AcousticMoodShiftedEvent::set_arousal_shift(float value) {
+  _internal_set_arousal_shift(value);
+  // @@protoc_insertion_point(field_set:sentiric.event.v1.AcousticMoodShiftedEvent.arousal_shift)
+}
+
+// float valence_shift = 8;
+inline void AcousticMoodShiftedEvent::clear_valence_shift() {
+  _impl_.valence_shift_ = 0;
+}
+inline float AcousticMoodShiftedEvent::_internal_valence_shift() const {
+  return _impl_.valence_shift_;
+}
+inline float AcousticMoodShiftedEvent::valence_shift() const {
+  // @@protoc_insertion_point(field_get:sentiric.event.v1.AcousticMoodShiftedEvent.valence_shift)
+  return _internal_valence_shift();
+}
+inline void AcousticMoodShiftedEvent::_internal_set_valence_shift(float value) {
+  
+  _impl_.valence_shift_ = value;
+}
+inline void AcousticMoodShiftedEvent::set_valence_shift(float value) {
+  _internal_set_valence_shift(value);
+  // @@protoc_insertion_point(field_set:sentiric.event.v1.AcousticMoodShiftedEvent.valence_shift)
+}
+
+// string speaker_id = 9;
+inline void AcousticMoodShiftedEvent::clear_speaker_id() {
+  _impl_.speaker_id_.ClearToEmpty();
+}
+inline const std::string& AcousticMoodShiftedEvent::speaker_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.event.v1.AcousticMoodShiftedEvent.speaker_id)
+  return _internal_speaker_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void AcousticMoodShiftedEvent::set_speaker_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.speaker_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.event.v1.AcousticMoodShiftedEvent.speaker_id)
+}
+inline std::string* AcousticMoodShiftedEvent::mutable_speaker_id() {
+  std::string* _s = _internal_mutable_speaker_id();
+  // @@protoc_insertion_point(field_mutable:sentiric.event.v1.AcousticMoodShiftedEvent.speaker_id)
+  return _s;
+}
+inline const std::string& AcousticMoodShiftedEvent::_internal_speaker_id() const {
+  return _impl_.speaker_id_.Get();
+}
+inline void AcousticMoodShiftedEvent::_internal_set_speaker_id(const std::string& value) {
+  
+  _impl_.speaker_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* AcousticMoodShiftedEvent::_internal_mutable_speaker_id() {
+  
+  return _impl_.speaker_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* AcousticMoodShiftedEvent::release_speaker_id() {
+  // @@protoc_insertion_point(field_release:sentiric.event.v1.AcousticMoodShiftedEvent.speaker_id)
+  return _impl_.speaker_id_.Release();
+}
+inline void AcousticMoodShiftedEvent::set_allocated_speaker_id(std::string* speaker_id) {
+  if (speaker_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.speaker_id_.SetAllocated(speaker_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.speaker_id_.IsDefault()) {
+    _impl_.speaker_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.event.v1.AcousticMoodShiftedEvent.speaker_id)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

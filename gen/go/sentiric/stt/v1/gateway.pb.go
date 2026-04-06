@@ -167,11 +167,14 @@ type TranscribeStreamResponse struct {
 	state                protoimpl.MessageState `protogen:"open.v1"`
 	PartialTranscription string                 `protobuf:"bytes,1,opt,name=partial_transcription,json=partialTranscription,proto3" json:"partial_transcription,omitempty"`
 	IsFinal              bool                   `protobuf:"varint,2,opt,name=is_final,json=isFinal,proto3" json:"is_final,omitempty"`
-	// [YENİ - CRYSTALLINE VIZYONU] Duyuşsal Zeka Metrikleri
-	GenderProxy   string  `protobuf:"bytes,3,opt,name=gender_proxy,json=genderProxy,proto3" json:"gender_proxy,omitempty"`
-	EmotionProxy  string  `protobuf:"bytes,4,opt,name=emotion_proxy,json=emotionProxy,proto3" json:"emotion_proxy,omitempty"`
-	Arousal       float32 `protobuf:"fixed32,5,opt,name=arousal,proto3" json:"arousal,omitempty"`
-	Valence       float32 `protobuf:"fixed32,6,opt,name=valence,proto3" json:"valence,omitempty"`
+	GenderProxy          string                 `protobuf:"bytes,3,opt,name=gender_proxy,json=genderProxy,proto3" json:"gender_proxy,omitempty"`
+	EmotionProxy         string                 `protobuf:"bytes,4,opt,name=emotion_proxy,json=emotionProxy,proto3" json:"emotion_proxy,omitempty"`
+	Arousal              float32                `protobuf:"fixed32,5,opt,name=arousal,proto3" json:"arousal,omitempty"`
+	Valence              float32                `protobuf:"fixed32,6,opt,name=valence,proto3" json:"valence,omitempty"`
+	// [ARCH-COMPLIANCE FIX]: AI Pipeline için Diarization ve Token verileri
+	SpeakerId     string       `protobuf:"bytes,7,opt,name=speaker_id,json=speakerId,proto3" json:"speaker_id,omitempty"`
+	SpeakerVec    []float32    `protobuf:"fixed32,8,rep,packed,name=speaker_vec,json=speakerVec,proto3" json:"speaker_vec,omitempty"` // 8D Vektör
+	Words         []*TokenData `protobuf:"bytes,9,rep,name=words,proto3" json:"words,omitempty"`                                      // whisper.proto'dan geliyor
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -248,11 +251,32 @@ func (x *TranscribeStreamResponse) GetValence() float32 {
 	return 0
 }
 
+func (x *TranscribeStreamResponse) GetSpeakerId() string {
+	if x != nil {
+		return x.SpeakerId
+	}
+	return ""
+}
+
+func (x *TranscribeStreamResponse) GetSpeakerVec() []float32 {
+	if x != nil {
+		return x.SpeakerVec
+	}
+	return nil
+}
+
+func (x *TranscribeStreamResponse) GetWords() []*TokenData {
+	if x != nil {
+		return x.Words
+	}
+	return nil
+}
+
 var File_sentiric_stt_v1_gateway_proto protoreflect.FileDescriptor
 
 const file_sentiric_stt_v1_gateway_proto_rawDesc = "" +
 	"\n" +
-	"\x1dsentiric/stt/v1/gateway.proto\x12\x0fsentiric.stt.v1\"]\n" +
+	"\x1dsentiric/stt/v1/gateway.proto\x12\x0fsentiric.stt.v1\x1a\x1dsentiric/stt/v1/whisper.proto\"]\n" +
 	"\x11TranscribeRequest\x12#\n" +
 	"\raudio_content\x18\x01 \x01(\fR\faudioContent\x12#\n" +
 	"\rlanguage_code\x18\x02 \x01(\tR\flanguageCode\":\n" +
@@ -260,14 +284,19 @@ const file_sentiric_stt_v1_gateway_proto_rawDesc = "" +
 	"\rtranscription\x18\x01 \x01(\tR\rtranscription\":\n" +
 	"\x17TranscribeStreamRequest\x12\x1f\n" +
 	"\vaudio_chunk\x18\x01 \x01(\fR\n" +
-	"audioChunk\"\xe6\x01\n" +
+	"audioChunk\"\xd8\x02\n" +
 	"\x18TranscribeStreamResponse\x123\n" +
 	"\x15partial_transcription\x18\x01 \x01(\tR\x14partialTranscription\x12\x19\n" +
 	"\bis_final\x18\x02 \x01(\bR\aisFinal\x12!\n" +
 	"\fgender_proxy\x18\x03 \x01(\tR\vgenderProxy\x12#\n" +
 	"\remotion_proxy\x18\x04 \x01(\tR\femotionProxy\x12\x18\n" +
 	"\aarousal\x18\x05 \x01(\x02R\aarousal\x12\x18\n" +
-	"\avalence\x18\x06 \x01(\x02R\avalence2\xd7\x01\n" +
+	"\avalence\x18\x06 \x01(\x02R\avalence\x12\x1d\n" +
+	"\n" +
+	"speaker_id\x18\a \x01(\tR\tspeakerId\x12\x1f\n" +
+	"\vspeaker_vec\x18\b \x03(\x02R\n" +
+	"speakerVec\x120\n" +
+	"\x05words\x18\t \x03(\v2\x1a.sentiric.stt.v1.TokenDataR\x05words2\xd7\x01\n" +
 	"\x11SttGatewayService\x12U\n" +
 	"\n" +
 	"Transcribe\x12\".sentiric.stt.v1.TranscribeRequest\x1a#.sentiric.stt.v1.TranscribeResponse\x12k\n" +
@@ -291,17 +320,19 @@ var file_sentiric_stt_v1_gateway_proto_goTypes = []any{
 	(*TranscribeResponse)(nil),       // 1: sentiric.stt.v1.TranscribeResponse
 	(*TranscribeStreamRequest)(nil),  // 2: sentiric.stt.v1.TranscribeStreamRequest
 	(*TranscribeStreamResponse)(nil), // 3: sentiric.stt.v1.TranscribeStreamResponse
+	(*TokenData)(nil),                // 4: sentiric.stt.v1.TokenData
 }
 var file_sentiric_stt_v1_gateway_proto_depIdxs = []int32{
-	0, // 0: sentiric.stt.v1.SttGatewayService.Transcribe:input_type -> sentiric.stt.v1.TranscribeRequest
-	2, // 1: sentiric.stt.v1.SttGatewayService.TranscribeStream:input_type -> sentiric.stt.v1.TranscribeStreamRequest
-	1, // 2: sentiric.stt.v1.SttGatewayService.Transcribe:output_type -> sentiric.stt.v1.TranscribeResponse
-	3, // 3: sentiric.stt.v1.SttGatewayService.TranscribeStream:output_type -> sentiric.stt.v1.TranscribeStreamResponse
-	2, // [2:4] is the sub-list for method output_type
-	0, // [0:2] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	4, // 0: sentiric.stt.v1.TranscribeStreamResponse.words:type_name -> sentiric.stt.v1.TokenData
+	0, // 1: sentiric.stt.v1.SttGatewayService.Transcribe:input_type -> sentiric.stt.v1.TranscribeRequest
+	2, // 2: sentiric.stt.v1.SttGatewayService.TranscribeStream:input_type -> sentiric.stt.v1.TranscribeStreamRequest
+	1, // 3: sentiric.stt.v1.SttGatewayService.Transcribe:output_type -> sentiric.stt.v1.TranscribeResponse
+	3, // 4: sentiric.stt.v1.SttGatewayService.TranscribeStream:output_type -> sentiric.stt.v1.TranscribeStreamResponse
+	3, // [3:5] is the sub-list for method output_type
+	1, // [1:3] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_sentiric_stt_v1_gateway_proto_init() }
@@ -309,6 +340,7 @@ func file_sentiric_stt_v1_gateway_proto_init() {
 	if File_sentiric_stt_v1_gateway_proto != nil {
 		return
 	}
+	file_sentiric_stt_v1_whisper_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

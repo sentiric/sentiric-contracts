@@ -526,6 +526,118 @@ func (x *GenericEvent) GetPayloadJson() string {
 	return ""
 }
 
+// AcousticMoodShiftedEvent, Whisper motorunun (STT) akustik analiz (Diarization/Prosody)
+// sırasında aynı kullanıcıya ait seste ciddi bir ton/tempo değişimi yakaladığında fırlatılır.
+// Kullanıcının "Analitik" bir ruh halinden "Meditatif/Derin" (Deep Waters) bir
+// ruh haline geçtiğini sistemin geri kalanına bildirir. (Crystalline Service tarafından tüketilir)
+type AcousticMoodShiftedEvent struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	EventType     string                 `protobuf:"bytes,1,opt,name=event_type,json=eventType,proto3" json:"event_type,omitempty"` // "acoustic.mood.shifted"
+	TraceId       string                 `protobuf:"bytes,2,opt,name=trace_id,json=traceId,proto3" json:"trace_id,omitempty"`
+	CallId        string                 `protobuf:"bytes,3,opt,name=call_id,json=callId,proto3" json:"call_id,omitempty"`
+	Timestamp     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
+	PreviousMood  string                 `protobuf:"bytes,5,opt,name=previous_mood,json=previousMood,proto3" json:"previous_mood,omitempty"`   // örn: "analytical"
+	CurrentMood   string                 `protobuf:"bytes,6,opt,name=current_mood,json=currentMood,proto3" json:"current_mood,omitempty"`      // örn: "meditative"
+	ArousalShift  float32                `protobuf:"fixed32,7,opt,name=arousal_shift,json=arousalShift,proto3" json:"arousal_shift,omitempty"` // Heyecan/Tempo değişimi
+	ValenceShift  float32                `protobuf:"fixed32,8,opt,name=valence_shift,json=valenceShift,proto3" json:"valence_shift,omitempty"` // Pozitiflik/Negatiflik değişimi
+	SpeakerId     string                 `protobuf:"bytes,9,opt,name=speaker_id,json=speakerId,proto3" json:"speaker_id,omitempty"`            // Hangi seste bu değişim oldu
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AcousticMoodShiftedEvent) Reset() {
+	*x = AcousticMoodShiftedEvent{}
+	mi := &file_sentiric_event_v1_event_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AcousticMoodShiftedEvent) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AcousticMoodShiftedEvent) ProtoMessage() {}
+
+func (x *AcousticMoodShiftedEvent) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_event_v1_event_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AcousticMoodShiftedEvent.ProtoReflect.Descriptor instead.
+func (*AcousticMoodShiftedEvent) Descriptor() ([]byte, []int) {
+	return file_sentiric_event_v1_event_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *AcousticMoodShiftedEvent) GetEventType() string {
+	if x != nil {
+		return x.EventType
+	}
+	return ""
+}
+
+func (x *AcousticMoodShiftedEvent) GetTraceId() string {
+	if x != nil {
+		return x.TraceId
+	}
+	return ""
+}
+
+func (x *AcousticMoodShiftedEvent) GetCallId() string {
+	if x != nil {
+		return x.CallId
+	}
+	return ""
+}
+
+func (x *AcousticMoodShiftedEvent) GetTimestamp() *timestamppb.Timestamp {
+	if x != nil {
+		return x.Timestamp
+	}
+	return nil
+}
+
+func (x *AcousticMoodShiftedEvent) GetPreviousMood() string {
+	if x != nil {
+		return x.PreviousMood
+	}
+	return ""
+}
+
+func (x *AcousticMoodShiftedEvent) GetCurrentMood() string {
+	if x != nil {
+		return x.CurrentMood
+	}
+	return ""
+}
+
+func (x *AcousticMoodShiftedEvent) GetArousalShift() float32 {
+	if x != nil {
+		return x.ArousalShift
+	}
+	return 0
+}
+
+func (x *AcousticMoodShiftedEvent) GetValenceShift() float32 {
+	if x != nil {
+		return x.ValenceShift
+	}
+	return 0
+}
+
+func (x *AcousticMoodShiftedEvent) GetSpeakerId() string {
+	if x != nil {
+		return x.SpeakerId
+	}
+	return ""
+}
+
 var File_sentiric_event_v1_event_proto protoreflect.FileDescriptor
 
 const file_sentiric_event_v1_event_proto_rawDesc = "" +
@@ -575,7 +687,19 @@ const file_sentiric_event_v1_event_proto_rawDesc = "" +
 	"\btrace_id\x18\x02 \x01(\tR\atraceId\x128\n" +
 	"\ttimestamp\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\ttimestamp\x12\x1b\n" +
 	"\ttenant_id\x18\x04 \x01(\tR\btenantId\x12!\n" +
-	"\fpayload_json\x18\x05 \x01(\tR\vpayloadJsonBIZGgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/event/v1;eventv1b\x06proto3"
+	"\fpayload_json\x18\x05 \x01(\tR\vpayloadJson\"\xd8\x02\n" +
+	"\x18AcousticMoodShiftedEvent\x12\x1d\n" +
+	"\n" +
+	"event_type\x18\x01 \x01(\tR\teventType\x12\x19\n" +
+	"\btrace_id\x18\x02 \x01(\tR\atraceId\x12\x17\n" +
+	"\acall_id\x18\x03 \x01(\tR\x06callId\x128\n" +
+	"\ttimestamp\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\ttimestamp\x12#\n" +
+	"\rprevious_mood\x18\x05 \x01(\tR\fpreviousMood\x12!\n" +
+	"\fcurrent_mood\x18\x06 \x01(\tR\vcurrentMood\x12#\n" +
+	"\rarousal_shift\x18\a \x01(\x02R\farousalShift\x12#\n" +
+	"\rvalence_shift\x18\b \x01(\x02R\fvalenceShift\x12\x1d\n" +
+	"\n" +
+	"speaker_id\x18\t \x01(\tR\tspeakerIdBIZGgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/event/v1;eventv1b\x06proto3"
 
 var (
 	file_sentiric_event_v1_event_proto_rawDescOnce sync.Once
@@ -589,7 +713,7 @@ func file_sentiric_event_v1_event_proto_rawDescGZIP() []byte {
 	return file_sentiric_event_v1_event_proto_rawDescData
 }
 
-var file_sentiric_event_v1_event_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_sentiric_event_v1_event_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_sentiric_event_v1_event_proto_goTypes = []any{
 	(*MediaInfo)(nil),                   // 0: sentiric.event.v1.MediaInfo
 	(*CallStartedEvent)(nil),            // 1: sentiric.event.v1.CallStartedEvent
@@ -597,26 +721,28 @@ var file_sentiric_event_v1_event_proto_goTypes = []any{
 	(*CallRecordingAvailableEvent)(nil), // 3: sentiric.event.v1.CallRecordingAvailableEvent
 	(*CallEndedEvent)(nil),              // 4: sentiric.event.v1.CallEndedEvent
 	(*GenericEvent)(nil),                // 5: sentiric.event.v1.GenericEvent
-	(*timestamppb.Timestamp)(nil),       // 6: google.protobuf.Timestamp
-	(*v1.ResolveDialplanResponse)(nil),  // 7: sentiric.dialplan.v1.ResolveDialplanResponse
-	(*v11.User)(nil),                    // 8: sentiric.user.v1.User
-	(*v11.Contact)(nil),                 // 9: sentiric.user.v1.Contact
+	(*AcousticMoodShiftedEvent)(nil),    // 6: sentiric.event.v1.AcousticMoodShiftedEvent
+	(*timestamppb.Timestamp)(nil),       // 7: google.protobuf.Timestamp
+	(*v1.ResolveDialplanResponse)(nil),  // 8: sentiric.dialplan.v1.ResolveDialplanResponse
+	(*v11.User)(nil),                    // 9: sentiric.user.v1.User
+	(*v11.Contact)(nil),                 // 10: sentiric.user.v1.Contact
 }
 var file_sentiric_event_v1_event_proto_depIdxs = []int32{
-	6, // 0: sentiric.event.v1.CallStartedEvent.timestamp:type_name -> google.protobuf.Timestamp
-	7, // 1: sentiric.event.v1.CallStartedEvent.dialplan_resolution:type_name -> sentiric.dialplan.v1.ResolveDialplanResponse
-	0, // 2: sentiric.event.v1.CallStartedEvent.media_info:type_name -> sentiric.event.v1.MediaInfo
-	6, // 3: sentiric.event.v1.UserIdentifiedForCallEvent.timestamp:type_name -> google.protobuf.Timestamp
-	8, // 4: sentiric.event.v1.UserIdentifiedForCallEvent.user:type_name -> sentiric.user.v1.User
-	9, // 5: sentiric.event.v1.UserIdentifiedForCallEvent.contact:type_name -> sentiric.user.v1.Contact
-	6, // 6: sentiric.event.v1.CallRecordingAvailableEvent.timestamp:type_name -> google.protobuf.Timestamp
-	6, // 7: sentiric.event.v1.CallEndedEvent.timestamp:type_name -> google.protobuf.Timestamp
-	6, // 8: sentiric.event.v1.GenericEvent.timestamp:type_name -> google.protobuf.Timestamp
-	9, // [9:9] is the sub-list for method output_type
-	9, // [9:9] is the sub-list for method input_type
-	9, // [9:9] is the sub-list for extension type_name
-	9, // [9:9] is the sub-list for extension extendee
-	0, // [0:9] is the sub-list for field type_name
+	7,  // 0: sentiric.event.v1.CallStartedEvent.timestamp:type_name -> google.protobuf.Timestamp
+	8,  // 1: sentiric.event.v1.CallStartedEvent.dialplan_resolution:type_name -> sentiric.dialplan.v1.ResolveDialplanResponse
+	0,  // 2: sentiric.event.v1.CallStartedEvent.media_info:type_name -> sentiric.event.v1.MediaInfo
+	7,  // 3: sentiric.event.v1.UserIdentifiedForCallEvent.timestamp:type_name -> google.protobuf.Timestamp
+	9,  // 4: sentiric.event.v1.UserIdentifiedForCallEvent.user:type_name -> sentiric.user.v1.User
+	10, // 5: sentiric.event.v1.UserIdentifiedForCallEvent.contact:type_name -> sentiric.user.v1.Contact
+	7,  // 6: sentiric.event.v1.CallRecordingAvailableEvent.timestamp:type_name -> google.protobuf.Timestamp
+	7,  // 7: sentiric.event.v1.CallEndedEvent.timestamp:type_name -> google.protobuf.Timestamp
+	7,  // 8: sentiric.event.v1.GenericEvent.timestamp:type_name -> google.protobuf.Timestamp
+	7,  // 9: sentiric.event.v1.AcousticMoodShiftedEvent.timestamp:type_name -> google.protobuf.Timestamp
+	10, // [10:10] is the sub-list for method output_type
+	10, // [10:10] is the sub-list for method input_type
+	10, // [10:10] is the sub-list for extension type_name
+	10, // [10:10] is the sub-list for extension extendee
+	0,  // [0:10] is the sub-list for field type_name
 }
 
 func init() { file_sentiric_event_v1_event_proto_init() }
@@ -630,7 +756,7 @@ func file_sentiric_event_v1_event_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sentiric_event_v1_event_proto_rawDesc), len(file_sentiric_event_v1_event_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

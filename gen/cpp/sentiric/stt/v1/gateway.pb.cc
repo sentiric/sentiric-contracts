@@ -65,9 +65,12 @@ struct TranscribeStreamRequestDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TranscribeStreamRequestDefaultTypeInternal _TranscribeStreamRequest_default_instance_;
 PROTOBUF_CONSTEXPR TranscribeStreamResponse::TranscribeStreamResponse(
     ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.partial_transcription_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+    /*decltype(_impl_.speaker_vec_)*/{}
+  , /*decltype(_impl_.words_)*/{}
+  , /*decltype(_impl_.partial_transcription_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.gender_proxy_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.emotion_proxy_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.speaker_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.is_final_)*/false
   , /*decltype(_impl_.arousal_)*/0
   , /*decltype(_impl_.valence_)*/0
@@ -123,6 +126,9 @@ const uint32_t TableStruct_sentiric_2fstt_2fv1_2fgateway_2eproto::offsets[] PROT
   PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::TranscribeStreamResponse, _impl_.emotion_proxy_),
   PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::TranscribeStreamResponse, _impl_.arousal_),
   PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::TranscribeStreamResponse, _impl_.valence_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::TranscribeStreamResponse, _impl_.speaker_id_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::TranscribeStreamResponse, _impl_.speaker_vec_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::stt::v1::TranscribeStreamResponse, _impl_.words_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::sentiric::stt::v1::TranscribeRequest)},
@@ -140,28 +146,34 @@ static const ::_pb::Message* const file_default_instances[] = {
 
 const char descriptor_table_protodef_sentiric_2fstt_2fv1_2fgateway_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\035sentiric/stt/v1/gateway.proto\022\017sentiri"
-  "c.stt.v1\"A\n\021TranscribeRequest\022\025\n\raudio_c"
-  "ontent\030\001 \001(\014\022\025\n\rlanguage_code\030\002 \001(\t\"+\n\022T"
-  "ranscribeResponse\022\025\n\rtranscription\030\001 \001(\t"
-  "\".\n\027TranscribeStreamRequest\022\023\n\013audio_chu"
-  "nk\030\001 \001(\014\"\232\001\n\030TranscribeStreamResponse\022\035\n"
-  "\025partial_transcription\030\001 \001(\t\022\020\n\010is_final"
-  "\030\002 \001(\010\022\024\n\014gender_proxy\030\003 \001(\t\022\025\n\remotion_"
-  "proxy\030\004 \001(\t\022\017\n\007arousal\030\005 \001(\002\022\017\n\007valence\030"
-  "\006 \001(\0022\327\001\n\021SttGatewayService\022U\n\nTranscrib"
-  "e\022\".sentiric.stt.v1.TranscribeRequest\032#."
-  "sentiric.stt.v1.TranscribeResponse\022k\n\020Tr"
-  "anscribeStream\022(.sentiric.stt.v1.Transcr"
-  "ibeStreamRequest\032).sentiric.stt.v1.Trans"
-  "cribeStreamResponse(\0010\001BEZCgithub.com/se"
-  "ntiric/sentiric-contracts/gen/go/sentiri"
-  "c/stt/v1;sttv1b\006proto3"
+  "c.stt.v1\032\035sentiric/stt/v1/whisper.proto\""
+  "A\n\021TranscribeRequest\022\025\n\raudio_content\030\001 "
+  "\001(\014\022\025\n\rlanguage_code\030\002 \001(\t\"+\n\022Transcribe"
+  "Response\022\025\n\rtranscription\030\001 \001(\t\".\n\027Trans"
+  "cribeStreamRequest\022\023\n\013audio_chunk\030\001 \001(\014\""
+  "\356\001\n\030TranscribeStreamResponse\022\035\n\025partial_"
+  "transcription\030\001 \001(\t\022\020\n\010is_final\030\002 \001(\010\022\024\n"
+  "\014gender_proxy\030\003 \001(\t\022\025\n\remotion_proxy\030\004 \001"
+  "(\t\022\017\n\007arousal\030\005 \001(\002\022\017\n\007valence\030\006 \001(\002\022\022\n\n"
+  "speaker_id\030\007 \001(\t\022\023\n\013speaker_vec\030\010 \003(\002\022)\n"
+  "\005words\030\t \003(\0132\032.sentiric.stt.v1.TokenData"
+  "2\327\001\n\021SttGatewayService\022U\n\nTranscribe\022\".s"
+  "entiric.stt.v1.TranscribeRequest\032#.senti"
+  "ric.stt.v1.TranscribeResponse\022k\n\020Transcr"
+  "ibeStream\022(.sentiric.stt.v1.TranscribeSt"
+  "reamRequest\032).sentiric.stt.v1.Transcribe"
+  "StreamResponse(\0010\001BEZCgithub.com/sentiri"
+  "c/sentiric-contracts/gen/go/sentiric/stt"
+  "/v1;sttv1b\006proto3"
   ;
+static const ::_pbi::DescriptorTable* const descriptor_table_sentiric_2fstt_2fv1_2fgateway_2eproto_deps[1] = {
+  &::descriptor_table_sentiric_2fstt_2fv1_2fwhisper_2eproto,
+};
 static ::_pbi::once_flag descriptor_table_sentiric_2fstt_2fv1_2fgateway_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_sentiric_2fstt_2fv1_2fgateway_2eproto = {
-    false, false, 662, descriptor_table_protodef_sentiric_2fstt_2fv1_2fgateway_2eproto,
+    false, false, 777, descriptor_table_protodef_sentiric_2fstt_2fv1_2fgateway_2eproto,
     "sentiric/stt/v1/gateway.proto",
-    &descriptor_table_sentiric_2fstt_2fv1_2fgateway_2eproto_once, nullptr, 0, 4,
+    &descriptor_table_sentiric_2fstt_2fv1_2fgateway_2eproto_once, descriptor_table_sentiric_2fstt_2fv1_2fgateway_2eproto_deps, 1, 4,
     schemas, file_default_instances, TableStruct_sentiric_2fstt_2fv1_2fgateway_2eproto::offsets,
     file_level_metadata_sentiric_2fstt_2fv1_2fgateway_2eproto, file_level_enum_descriptors_sentiric_2fstt_2fv1_2fgateway_2eproto,
     file_level_service_descriptors_sentiric_2fstt_2fv1_2fgateway_2eproto,
@@ -831,6 +843,9 @@ class TranscribeStreamResponse::_Internal {
  public:
 };
 
+void TranscribeStreamResponse::clear_words() {
+  _impl_.words_.Clear();
+}
 TranscribeStreamResponse::TranscribeStreamResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
@@ -841,9 +856,12 @@ TranscribeStreamResponse::TranscribeStreamResponse(const TranscribeStreamRespons
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   TranscribeStreamResponse* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.partial_transcription_){}
+      decltype(_impl_.speaker_vec_){from._impl_.speaker_vec_}
+    , decltype(_impl_.words_){from._impl_.words_}
+    , decltype(_impl_.partial_transcription_){}
     , decltype(_impl_.gender_proxy_){}
     , decltype(_impl_.emotion_proxy_){}
+    , decltype(_impl_.speaker_id_){}
     , decltype(_impl_.is_final_){}
     , decltype(_impl_.arousal_){}
     , decltype(_impl_.valence_){}
@@ -874,6 +892,14 @@ TranscribeStreamResponse::TranscribeStreamResponse(const TranscribeStreamRespons
     _this->_impl_.emotion_proxy_.Set(from._internal_emotion_proxy(), 
       _this->GetArenaForAllocation());
   }
+  _impl_.speaker_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.speaker_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_speaker_id().empty()) {
+    _this->_impl_.speaker_id_.Set(from._internal_speaker_id(), 
+      _this->GetArenaForAllocation());
+  }
   ::memcpy(&_impl_.is_final_, &from._impl_.is_final_,
     static_cast<size_t>(reinterpret_cast<char*>(&_impl_.valence_) -
     reinterpret_cast<char*>(&_impl_.is_final_)) + sizeof(_impl_.valence_));
@@ -885,9 +911,12 @@ inline void TranscribeStreamResponse::SharedCtor(
   (void)arena;
   (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.partial_transcription_){}
+      decltype(_impl_.speaker_vec_){arena}
+    , decltype(_impl_.words_){arena}
+    , decltype(_impl_.partial_transcription_){}
     , decltype(_impl_.gender_proxy_){}
     , decltype(_impl_.emotion_proxy_){}
+    , decltype(_impl_.speaker_id_){}
     , decltype(_impl_.is_final_){false}
     , decltype(_impl_.arousal_){0}
     , decltype(_impl_.valence_){0}
@@ -905,6 +934,10 @@ inline void TranscribeStreamResponse::SharedCtor(
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
     _impl_.emotion_proxy_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.speaker_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.speaker_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 TranscribeStreamResponse::~TranscribeStreamResponse() {
@@ -918,9 +951,12 @@ TranscribeStreamResponse::~TranscribeStreamResponse() {
 
 inline void TranscribeStreamResponse::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.speaker_vec_.~RepeatedField();
+  _impl_.words_.~RepeatedPtrField();
   _impl_.partial_transcription_.Destroy();
   _impl_.gender_proxy_.Destroy();
   _impl_.emotion_proxy_.Destroy();
+  _impl_.speaker_id_.Destroy();
 }
 
 void TranscribeStreamResponse::SetCachedSize(int size) const {
@@ -933,9 +969,12 @@ void TranscribeStreamResponse::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  _impl_.speaker_vec_.Clear();
+  _impl_.words_.Clear();
   _impl_.partial_transcription_.ClearToEmpty();
   _impl_.gender_proxy_.ClearToEmpty();
   _impl_.emotion_proxy_.ClearToEmpty();
+  _impl_.speaker_id_.ClearToEmpty();
   ::memset(&_impl_.is_final_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&_impl_.valence_) -
       reinterpret_cast<char*>(&_impl_.is_final_)) + sizeof(_impl_.valence_));
@@ -999,6 +1038,40 @@ const char* TranscribeStreamResponse::_InternalParse(const char* ptr, ::_pbi::Pa
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 53)) {
           _impl_.valence_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // string speaker_id = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 58)) {
+          auto str = _internal_mutable_speaker_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.stt.v1.TranscribeStreamResponse.speaker_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated float speaker_vec = 8;
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 66)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedFloatParser(_internal_mutable_speaker_vec(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<uint8_t>(tag) == 69) {
+          _internal_add_speaker_vec(::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr));
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated .sentiric.stt.v1.TokenData words = 9;
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 74)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_words(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<74>(ptr));
         } else
           goto handle_unusual;
         continue;
@@ -1087,6 +1160,29 @@ uint8_t* TranscribeStreamResponse::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteFloatToArray(6, this->_internal_valence(), target);
   }
 
+  // string speaker_id = 7;
+  if (!this->_internal_speaker_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_speaker_id().data(), static_cast<int>(this->_internal_speaker_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.stt.v1.TranscribeStreamResponse.speaker_id");
+    target = stream->WriteStringMaybeAliased(
+        7, this->_internal_speaker_id(), target);
+  }
+
+  // repeated float speaker_vec = 8;
+  if (this->_internal_speaker_vec_size() > 0) {
+    target = stream->WriteFixedPacked(8, _internal_speaker_vec(), target);
+  }
+
+  // repeated .sentiric.stt.v1.TokenData words = 9;
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_words_size()); i < n; i++) {
+    const auto& repfield = this->_internal_words(i);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(9, repfield, repfield.GetCachedSize(), target, stream);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -1102,6 +1198,24 @@ size_t TranscribeStreamResponse::ByteSizeLong() const {
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
+
+  // repeated float speaker_vec = 8;
+  {
+    unsigned int count = static_cast<unsigned int>(this->_internal_speaker_vec_size());
+    size_t data_size = 4UL * count;
+    if (data_size > 0) {
+      total_size += 1 +
+        ::_pbi::WireFormatLite::Int32Size(static_cast<int32_t>(data_size));
+    }
+    total_size += data_size;
+  }
+
+  // repeated .sentiric.stt.v1.TokenData words = 9;
+  total_size += 1UL * this->_internal_words_size();
+  for (const auto& msg : this->_impl_.words_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
 
   // string partial_transcription = 1;
   if (!this->_internal_partial_transcription().empty()) {
@@ -1122,6 +1236,13 @@ size_t TranscribeStreamResponse::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_emotion_proxy());
+  }
+
+  // string speaker_id = 7;
+  if (!this->_internal_speaker_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_speaker_id());
   }
 
   // bool is_final = 2;
@@ -1165,6 +1286,8 @@ void TranscribeStreamResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_ms
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  _this->_impl_.speaker_vec_.MergeFrom(from._impl_.speaker_vec_);
+  _this->_impl_.words_.MergeFrom(from._impl_.words_);
   if (!from._internal_partial_transcription().empty()) {
     _this->_internal_set_partial_transcription(from._internal_partial_transcription());
   }
@@ -1173,6 +1296,9 @@ void TranscribeStreamResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_ms
   }
   if (!from._internal_emotion_proxy().empty()) {
     _this->_internal_set_emotion_proxy(from._internal_emotion_proxy());
+  }
+  if (!from._internal_speaker_id().empty()) {
+    _this->_internal_set_speaker_id(from._internal_speaker_id());
   }
   if (from._internal_is_final() != 0) {
     _this->_internal_set_is_final(from._internal_is_final());
@@ -1210,6 +1336,8 @@ void TranscribeStreamResponse::InternalSwap(TranscribeStreamResponse* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.speaker_vec_.InternalSwap(&other->_impl_.speaker_vec_);
+  _impl_.words_.InternalSwap(&other->_impl_.words_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &_impl_.partial_transcription_, lhs_arena,
       &other->_impl_.partial_transcription_, rhs_arena
@@ -1221,6 +1349,10 @@ void TranscribeStreamResponse::InternalSwap(TranscribeStreamResponse* other) {
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &_impl_.emotion_proxy_, lhs_arena,
       &other->_impl_.emotion_proxy_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.speaker_id_, lhs_arena,
+      &other->_impl_.speaker_id_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(TranscribeStreamResponse, _impl_.valence_)

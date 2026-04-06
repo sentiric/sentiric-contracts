@@ -6,8 +6,7 @@ from sentiric.stt.v1 import whisper_pb2 as sentiric_dot_stt_dot_v1_dot_whisper__
 
 
 class SttWhisperServiceStub(object):
-    """SttWhisperService, Whisper motoruna özgü düşük seviyeli kontrat.
-    """
+    """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):
         """Constructor.
@@ -28,19 +27,16 @@ class SttWhisperServiceStub(object):
 
 
 class SttWhisperServiceServicer(object):
-    """SttWhisperService, Whisper motoruna özgü düşük seviyeli kontrat.
-    """
+    """Missing associated documentation comment in .proto file."""
 
     def WhisperTranscribe(self, request, context):
-        """Bir ses dosyasının tamamını tek seferde metne çevirir.
-        """
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def WhisperTranscribeStream(self, request_iterator, context):
-        """Gerçek zamanlı bir ses akışını metne çevirir.
-        """
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -67,8 +63,7 @@ def add_SttWhisperServiceServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class SttWhisperService(object):
-    """SttWhisperService, Whisper motoruna özgü düşük seviyeli kontrat.
-    """
+    """Missing associated documentation comment in .proto file."""
 
     @staticmethod
     def WhisperTranscribe(request,

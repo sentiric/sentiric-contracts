@@ -23,7 +23,75 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// Dosya tabanlı transkripsiyon için mesajlar
+// [YENİ]: Kelime bazlı olasılık ve zaman damgası (Sadece burada tanımlanır)
+type TokenData struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Word          string                 `protobuf:"bytes,1,opt,name=word,proto3" json:"word,omitempty"`
+	Start         float32                `protobuf:"fixed32,2,opt,name=start,proto3" json:"start,omitempty"`
+	End           float32                `protobuf:"fixed32,3,opt,name=end,proto3" json:"end,omitempty"`
+	Probability   float32                `protobuf:"fixed32,4,opt,name=probability,proto3" json:"probability,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *TokenData) Reset() {
+	*x = TokenData{}
+	mi := &file_sentiric_stt_v1_whisper_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TokenData) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TokenData) ProtoMessage() {}
+
+func (x *TokenData) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_stt_v1_whisper_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TokenData.ProtoReflect.Descriptor instead.
+func (*TokenData) Descriptor() ([]byte, []int) {
+	return file_sentiric_stt_v1_whisper_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *TokenData) GetWord() string {
+	if x != nil {
+		return x.Word
+	}
+	return ""
+}
+
+func (x *TokenData) GetStart() float32 {
+	if x != nil {
+		return x.Start
+	}
+	return 0
+}
+
+func (x *TokenData) GetEnd() float32 {
+	if x != nil {
+		return x.End
+	}
+	return 0
+}
+
+func (x *TokenData) GetProbability() float32 {
+	if x != nil {
+		return x.Probability
+	}
+	return 0
+}
+
 type WhisperTranscribeRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	AudioData     []byte                 `protobuf:"bytes,1,opt,name=audio_data,json=audioData,proto3" json:"audio_data,omitempty"`
@@ -34,7 +102,7 @@ type WhisperTranscribeRequest struct {
 
 func (x *WhisperTranscribeRequest) Reset() {
 	*x = WhisperTranscribeRequest{}
-	mi := &file_sentiric_stt_v1_whisper_proto_msgTypes[0]
+	mi := &file_sentiric_stt_v1_whisper_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -46,7 +114,7 @@ func (x *WhisperTranscribeRequest) String() string {
 func (*WhisperTranscribeRequest) ProtoMessage() {}
 
 func (x *WhisperTranscribeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_stt_v1_whisper_proto_msgTypes[0]
+	mi := &file_sentiric_stt_v1_whisper_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -59,7 +127,7 @@ func (x *WhisperTranscribeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WhisperTranscribeRequest.ProtoReflect.Descriptor instead.
 func (*WhisperTranscribeRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_stt_v1_whisper_proto_rawDescGZIP(), []int{0}
+	return file_sentiric_stt_v1_whisper_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *WhisperTranscribeRequest) GetAudioData() []byte {
@@ -82,25 +150,27 @@ type WhisperTranscribeResponse struct {
 	Language            string                 `protobuf:"bytes,2,opt,name=language,proto3" json:"language,omitempty"`
 	LanguageProbability float32                `protobuf:"fixed32,3,opt,name=language_probability,json=languageProbability,proto3" json:"language_probability,omitempty"`
 	Duration            float64                `protobuf:"fixed64,4,opt,name=duration,proto3" json:"duration,omitempty"`
-	// ---- affective & speaker identity ----
-	GenderProxy      string    `protobuf:"bytes,5,opt,name=gender_proxy,json=genderProxy,proto3" json:"gender_proxy,omitempty"`
-	EmotionProxy     string    `protobuf:"bytes,6,opt,name=emotion_proxy,json=emotionProxy,proto3" json:"emotion_proxy,omitempty"`
-	Arousal          float32   `protobuf:"fixed32,7,opt,name=arousal,proto3" json:"arousal,omitempty"`
-	Valence          float32   `protobuf:"fixed32,8,opt,name=valence,proto3" json:"valence,omitempty"`
-	PitchMean        float32   `protobuf:"fixed32,9,opt,name=pitch_mean,json=pitchMean,proto3" json:"pitch_mean,omitempty"`
-	PitchStd         float32   `protobuf:"fixed32,10,opt,name=pitch_std,json=pitchStd,proto3" json:"pitch_std,omitempty"`
-	EnergyMean       float32   `protobuf:"fixed32,11,opt,name=energy_mean,json=energyMean,proto3" json:"energy_mean,omitempty"`
-	EnergyStd        float32   `protobuf:"fixed32,12,opt,name=energy_std,json=energyStd,proto3" json:"energy_std,omitempty"`
-	SpectralCentroid float32   `protobuf:"fixed32,13,opt,name=spectral_centroid,json=spectralCentroid,proto3" json:"spectral_centroid,omitempty"`
-	ZeroCrossingRate float32   `protobuf:"fixed32,14,opt,name=zero_crossing_rate,json=zeroCrossingRate,proto3" json:"zero_crossing_rate,omitempty"`
-	SpeakerVec       []float32 `protobuf:"fixed32,15,rep,packed,name=speaker_vec,json=speakerVec,proto3" json:"speaker_vec,omitempty"` // 8-D vector
-	unknownFields    protoimpl.UnknownFields
-	sizeCache        protoimpl.SizeCache
+	GenderProxy         string                 `protobuf:"bytes,5,opt,name=gender_proxy,json=genderProxy,proto3" json:"gender_proxy,omitempty"`
+	EmotionProxy        string                 `protobuf:"bytes,6,opt,name=emotion_proxy,json=emotionProxy,proto3" json:"emotion_proxy,omitempty"`
+	Arousal             float32                `protobuf:"fixed32,7,opt,name=arousal,proto3" json:"arousal,omitempty"`
+	Valence             float32                `protobuf:"fixed32,8,opt,name=valence,proto3" json:"valence,omitempty"`
+	PitchMean           float32                `protobuf:"fixed32,9,opt,name=pitch_mean,json=pitchMean,proto3" json:"pitch_mean,omitempty"`
+	PitchStd            float32                `protobuf:"fixed32,10,opt,name=pitch_std,json=pitchStd,proto3" json:"pitch_std,omitempty"`
+	EnergyMean          float32                `protobuf:"fixed32,11,opt,name=energy_mean,json=energyMean,proto3" json:"energy_mean,omitempty"`
+	EnergyStd           float32                `protobuf:"fixed32,12,opt,name=energy_std,json=energyStd,proto3" json:"energy_std,omitempty"`
+	SpectralCentroid    float32                `protobuf:"fixed32,13,opt,name=spectral_centroid,json=spectralCentroid,proto3" json:"spectral_centroid,omitempty"`
+	ZeroCrossingRate    float32                `protobuf:"fixed32,14,opt,name=zero_crossing_rate,json=zeroCrossingRate,proto3" json:"zero_crossing_rate,omitempty"`
+	SpeakerVec          []float32              `protobuf:"fixed32,15,rep,packed,name=speaker_vec,json=speakerVec,proto3" json:"speaker_vec,omitempty"`
+	// [ARCH-COMPLIANCE FIX]: Eksik Diarization ve Token verileri
+	SpeakerId     string       `protobuf:"bytes,16,opt,name=speaker_id,json=speakerId,proto3" json:"speaker_id,omitempty"`
+	Words         []*TokenData `protobuf:"bytes,17,rep,name=words,proto3" json:"words,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *WhisperTranscribeResponse) Reset() {
 	*x = WhisperTranscribeResponse{}
-	mi := &file_sentiric_stt_v1_whisper_proto_msgTypes[1]
+	mi := &file_sentiric_stt_v1_whisper_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -112,7 +182,7 @@ func (x *WhisperTranscribeResponse) String() string {
 func (*WhisperTranscribeResponse) ProtoMessage() {}
 
 func (x *WhisperTranscribeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_stt_v1_whisper_proto_msgTypes[1]
+	mi := &file_sentiric_stt_v1_whisper_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -125,7 +195,7 @@ func (x *WhisperTranscribeResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WhisperTranscribeResponse.ProtoReflect.Descriptor instead.
 func (*WhisperTranscribeResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_stt_v1_whisper_proto_rawDescGZIP(), []int{1}
+	return file_sentiric_stt_v1_whisper_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *WhisperTranscribeResponse) GetTranscription() string {
@@ -233,18 +303,30 @@ func (x *WhisperTranscribeResponse) GetSpeakerVec() []float32 {
 	return nil
 }
 
-// Akış tabanlı transkripsiyon için mesajlar
+func (x *WhisperTranscribeResponse) GetSpeakerId() string {
+	if x != nil {
+		return x.SpeakerId
+	}
+	return ""
+}
+
+func (x *WhisperTranscribeResponse) GetWords() []*TokenData {
+	if x != nil {
+		return x.Words
+	}
+	return nil
+}
+
 type WhisperTranscribeStreamRequest struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Ses verisi 16kHz, 16-bit, mono, ham PCM formatında olmalıdır.
-	AudioChunk    []byte `protobuf:"bytes,1,opt,name=audio_chunk,json=audioChunk,proto3" json:"audio_chunk,omitempty"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	AudioChunk    []byte                 `protobuf:"bytes,1,opt,name=audio_chunk,json=audioChunk,proto3" json:"audio_chunk,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *WhisperTranscribeStreamRequest) Reset() {
 	*x = WhisperTranscribeStreamRequest{}
-	mi := &file_sentiric_stt_v1_whisper_proto_msgTypes[2]
+	mi := &file_sentiric_stt_v1_whisper_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -256,7 +338,7 @@ func (x *WhisperTranscribeStreamRequest) String() string {
 func (*WhisperTranscribeStreamRequest) ProtoMessage() {}
 
 func (x *WhisperTranscribeStreamRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_stt_v1_whisper_proto_msgTypes[2]
+	mi := &file_sentiric_stt_v1_whisper_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -269,7 +351,7 @@ func (x *WhisperTranscribeStreamRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WhisperTranscribeStreamRequest.ProtoReflect.Descriptor instead.
 func (*WhisperTranscribeStreamRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_stt_v1_whisper_proto_rawDescGZIP(), []int{2}
+	return file_sentiric_stt_v1_whisper_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *WhisperTranscribeStreamRequest) GetAudioChunk() []byte {
@@ -280,28 +362,30 @@ func (x *WhisperTranscribeStreamRequest) GetAudioChunk() []byte {
 }
 
 type WhisperTranscribeStreamResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Transcription string                 `protobuf:"bytes,1,opt,name=transcription,proto3" json:"transcription,omitempty"`
-	IsFinal       bool                   `protobuf:"varint,2,opt,name=is_final,json=isFinal,proto3" json:"is_final,omitempty"` // Bu segmentin nihai sonuç olup olmadığını belirtir.
-	// ---- affective & speaker identity ----
-	GenderProxy      string    `protobuf:"bytes,3,opt,name=gender_proxy,json=genderProxy,proto3" json:"gender_proxy,omitempty"`
-	EmotionProxy     string    `protobuf:"bytes,4,opt,name=emotion_proxy,json=emotionProxy,proto3" json:"emotion_proxy,omitempty"`
-	Arousal          float32   `protobuf:"fixed32,5,opt,name=arousal,proto3" json:"arousal,omitempty"`
-	Valence          float32   `protobuf:"fixed32,6,opt,name=valence,proto3" json:"valence,omitempty"`
-	PitchMean        float32   `protobuf:"fixed32,7,opt,name=pitch_mean,json=pitchMean,proto3" json:"pitch_mean,omitempty"`
-	PitchStd         float32   `protobuf:"fixed32,8,opt,name=pitch_std,json=pitchStd,proto3" json:"pitch_std,omitempty"`
-	EnergyMean       float32   `protobuf:"fixed32,9,opt,name=energy_mean,json=energyMean,proto3" json:"energy_mean,omitempty"`
-	EnergyStd        float32   `protobuf:"fixed32,10,opt,name=energy_std,json=energyStd,proto3" json:"energy_std,omitempty"`
-	SpectralCentroid float32   `protobuf:"fixed32,11,opt,name=spectral_centroid,json=spectralCentroid,proto3" json:"spectral_centroid,omitempty"`
-	ZeroCrossingRate float32   `protobuf:"fixed32,12,opt,name=zero_crossing_rate,json=zeroCrossingRate,proto3" json:"zero_crossing_rate,omitempty"`
-	SpeakerVec       []float32 `protobuf:"fixed32,13,rep,packed,name=speaker_vec,json=speakerVec,proto3" json:"speaker_vec,omitempty"`
-	unknownFields    protoimpl.UnknownFields
-	sizeCache        protoimpl.SizeCache
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	Transcription    string                 `protobuf:"bytes,1,opt,name=transcription,proto3" json:"transcription,omitempty"`
+	IsFinal          bool                   `protobuf:"varint,2,opt,name=is_final,json=isFinal,proto3" json:"is_final,omitempty"`
+	GenderProxy      string                 `protobuf:"bytes,3,opt,name=gender_proxy,json=genderProxy,proto3" json:"gender_proxy,omitempty"`
+	EmotionProxy     string                 `protobuf:"bytes,4,opt,name=emotion_proxy,json=emotionProxy,proto3" json:"emotion_proxy,omitempty"`
+	Arousal          float32                `protobuf:"fixed32,5,opt,name=arousal,proto3" json:"arousal,omitempty"`
+	Valence          float32                `protobuf:"fixed32,6,opt,name=valence,proto3" json:"valence,omitempty"`
+	PitchMean        float32                `protobuf:"fixed32,7,opt,name=pitch_mean,json=pitchMean,proto3" json:"pitch_mean,omitempty"`
+	PitchStd         float32                `protobuf:"fixed32,8,opt,name=pitch_std,json=pitchStd,proto3" json:"pitch_std,omitempty"`
+	EnergyMean       float32                `protobuf:"fixed32,9,opt,name=energy_mean,json=energyMean,proto3" json:"energy_mean,omitempty"`
+	EnergyStd        float32                `protobuf:"fixed32,10,opt,name=energy_std,json=energyStd,proto3" json:"energy_std,omitempty"`
+	SpectralCentroid float32                `protobuf:"fixed32,11,opt,name=spectral_centroid,json=spectralCentroid,proto3" json:"spectral_centroid,omitempty"`
+	ZeroCrossingRate float32                `protobuf:"fixed32,12,opt,name=zero_crossing_rate,json=zeroCrossingRate,proto3" json:"zero_crossing_rate,omitempty"`
+	SpeakerVec       []float32              `protobuf:"fixed32,13,rep,packed,name=speaker_vec,json=speakerVec,proto3" json:"speaker_vec,omitempty"`
+	// [ARCH-COMPLIANCE FIX]: Eksik Diarization ve Token verileri
+	SpeakerId     string       `protobuf:"bytes,14,opt,name=speaker_id,json=speakerId,proto3" json:"speaker_id,omitempty"`
+	Words         []*TokenData `protobuf:"bytes,15,rep,name=words,proto3" json:"words,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *WhisperTranscribeStreamResponse) Reset() {
 	*x = WhisperTranscribeStreamResponse{}
-	mi := &file_sentiric_stt_v1_whisper_proto_msgTypes[3]
+	mi := &file_sentiric_stt_v1_whisper_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -313,7 +397,7 @@ func (x *WhisperTranscribeStreamResponse) String() string {
 func (*WhisperTranscribeStreamResponse) ProtoMessage() {}
 
 func (x *WhisperTranscribeStreamResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_stt_v1_whisper_proto_msgTypes[3]
+	mi := &file_sentiric_stt_v1_whisper_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -326,7 +410,7 @@ func (x *WhisperTranscribeStreamResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use WhisperTranscribeStreamResponse.ProtoReflect.Descriptor instead.
 func (*WhisperTranscribeStreamResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_stt_v1_whisper_proto_rawDescGZIP(), []int{3}
+	return file_sentiric_stt_v1_whisper_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *WhisperTranscribeStreamResponse) GetTranscription() string {
@@ -420,16 +504,35 @@ func (x *WhisperTranscribeStreamResponse) GetSpeakerVec() []float32 {
 	return nil
 }
 
+func (x *WhisperTranscribeStreamResponse) GetSpeakerId() string {
+	if x != nil {
+		return x.SpeakerId
+	}
+	return ""
+}
+
+func (x *WhisperTranscribeStreamResponse) GetWords() []*TokenData {
+	if x != nil {
+		return x.Words
+	}
+	return nil
+}
+
 var File_sentiric_stt_v1_whisper_proto protoreflect.FileDescriptor
 
 const file_sentiric_stt_v1_whisper_proto_rawDesc = "" +
 	"\n" +
-	"\x1dsentiric/stt/v1/whisper.proto\x12\x0fsentiric.stt.v1\"g\n" +
+	"\x1dsentiric/stt/v1/whisper.proto\x12\x0fsentiric.stt.v1\"i\n" +
+	"\tTokenData\x12\x12\n" +
+	"\x04word\x18\x01 \x01(\tR\x04word\x12\x14\n" +
+	"\x05start\x18\x02 \x01(\x02R\x05start\x12\x10\n" +
+	"\x03end\x18\x03 \x01(\x02R\x03end\x12 \n" +
+	"\vprobability\x18\x04 \x01(\x02R\vprobability\"g\n" +
 	"\x18WhisperTranscribeRequest\x12\x1d\n" +
 	"\n" +
 	"audio_data\x18\x01 \x01(\fR\taudioData\x12\x1f\n" +
 	"\blanguage\x18\x02 \x01(\tH\x00R\blanguage\x88\x01\x01B\v\n" +
-	"\t_language\"\xa0\x04\n" +
+	"\t_language\"\xf1\x04\n" +
 	"\x19WhisperTranscribeResponse\x12$\n" +
 	"\rtranscription\x18\x01 \x01(\tR\rtranscription\x12\x1a\n" +
 	"\blanguage\x18\x02 \x01(\tR\blanguage\x121\n" +
@@ -450,10 +553,13 @@ const file_sentiric_stt_v1_whisper_proto_rawDesc = "" +
 	"\x11spectral_centroid\x18\r \x01(\x02R\x10spectralCentroid\x12,\n" +
 	"\x12zero_crossing_rate\x18\x0e \x01(\x02R\x10zeroCrossingRate\x12\x1f\n" +
 	"\vspeaker_vec\x18\x0f \x03(\x02R\n" +
-	"speakerVec\"A\n" +
+	"speakerVec\x12\x1d\n" +
+	"\n" +
+	"speaker_id\x18\x10 \x01(\tR\tspeakerId\x120\n" +
+	"\x05words\x18\x11 \x03(\v2\x1a.sentiric.stt.v1.TokenDataR\x05words\"A\n" +
 	"\x1eWhisperTranscribeStreamRequest\x12\x1f\n" +
 	"\vaudio_chunk\x18\x01 \x01(\fR\n" +
-	"audioChunk\"\xd6\x03\n" +
+	"audioChunk\"\xa7\x04\n" +
 	"\x1fWhisperTranscribeStreamResponse\x12$\n" +
 	"\rtranscription\x18\x01 \x01(\tR\rtranscription\x12\x19\n" +
 	"\bis_final\x18\x02 \x01(\bR\aisFinal\x12!\n" +
@@ -472,7 +578,10 @@ const file_sentiric_stt_v1_whisper_proto_rawDesc = "" +
 	"\x11spectral_centroid\x18\v \x01(\x02R\x10spectralCentroid\x12,\n" +
 	"\x12zero_crossing_rate\x18\f \x01(\x02R\x10zeroCrossingRate\x12\x1f\n" +
 	"\vspeaker_vec\x18\r \x03(\x02R\n" +
-	"speakerVec2\x82\x02\n" +
+	"speakerVec\x12\x1d\n" +
+	"\n" +
+	"speaker_id\x18\x0e \x01(\tR\tspeakerId\x120\n" +
+	"\x05words\x18\x0f \x03(\v2\x1a.sentiric.stt.v1.TokenDataR\x05words2\x82\x02\n" +
 	"\x11SttWhisperService\x12j\n" +
 	"\x11WhisperTranscribe\x12).sentiric.stt.v1.WhisperTranscribeRequest\x1a*.sentiric.stt.v1.WhisperTranscribeResponse\x12\x80\x01\n" +
 	"\x17WhisperTranscribeStream\x12/.sentiric.stt.v1.WhisperTranscribeStreamRequest\x1a0.sentiric.stt.v1.WhisperTranscribeStreamResponse(\x010\x01BEZCgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/stt/v1;sttv1b\x06proto3"
@@ -489,23 +598,26 @@ func file_sentiric_stt_v1_whisper_proto_rawDescGZIP() []byte {
 	return file_sentiric_stt_v1_whisper_proto_rawDescData
 }
 
-var file_sentiric_stt_v1_whisper_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_sentiric_stt_v1_whisper_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_sentiric_stt_v1_whisper_proto_goTypes = []any{
-	(*WhisperTranscribeRequest)(nil),        // 0: sentiric.stt.v1.WhisperTranscribeRequest
-	(*WhisperTranscribeResponse)(nil),       // 1: sentiric.stt.v1.WhisperTranscribeResponse
-	(*WhisperTranscribeStreamRequest)(nil),  // 2: sentiric.stt.v1.WhisperTranscribeStreamRequest
-	(*WhisperTranscribeStreamResponse)(nil), // 3: sentiric.stt.v1.WhisperTranscribeStreamResponse
+	(*TokenData)(nil),                       // 0: sentiric.stt.v1.TokenData
+	(*WhisperTranscribeRequest)(nil),        // 1: sentiric.stt.v1.WhisperTranscribeRequest
+	(*WhisperTranscribeResponse)(nil),       // 2: sentiric.stt.v1.WhisperTranscribeResponse
+	(*WhisperTranscribeStreamRequest)(nil),  // 3: sentiric.stt.v1.WhisperTranscribeStreamRequest
+	(*WhisperTranscribeStreamResponse)(nil), // 4: sentiric.stt.v1.WhisperTranscribeStreamResponse
 }
 var file_sentiric_stt_v1_whisper_proto_depIdxs = []int32{
-	0, // 0: sentiric.stt.v1.SttWhisperService.WhisperTranscribe:input_type -> sentiric.stt.v1.WhisperTranscribeRequest
-	2, // 1: sentiric.stt.v1.SttWhisperService.WhisperTranscribeStream:input_type -> sentiric.stt.v1.WhisperTranscribeStreamRequest
-	1, // 2: sentiric.stt.v1.SttWhisperService.WhisperTranscribe:output_type -> sentiric.stt.v1.WhisperTranscribeResponse
-	3, // 3: sentiric.stt.v1.SttWhisperService.WhisperTranscribeStream:output_type -> sentiric.stt.v1.WhisperTranscribeStreamResponse
-	2, // [2:4] is the sub-list for method output_type
-	0, // [0:2] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	0, // 0: sentiric.stt.v1.WhisperTranscribeResponse.words:type_name -> sentiric.stt.v1.TokenData
+	0, // 1: sentiric.stt.v1.WhisperTranscribeStreamResponse.words:type_name -> sentiric.stt.v1.TokenData
+	1, // 2: sentiric.stt.v1.SttWhisperService.WhisperTranscribe:input_type -> sentiric.stt.v1.WhisperTranscribeRequest
+	3, // 3: sentiric.stt.v1.SttWhisperService.WhisperTranscribeStream:input_type -> sentiric.stt.v1.WhisperTranscribeStreamRequest
+	2, // 4: sentiric.stt.v1.SttWhisperService.WhisperTranscribe:output_type -> sentiric.stt.v1.WhisperTranscribeResponse
+	4, // 5: sentiric.stt.v1.SttWhisperService.WhisperTranscribeStream:output_type -> sentiric.stt.v1.WhisperTranscribeStreamResponse
+	4, // [4:6] is the sub-list for method output_type
+	2, // [2:4] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_sentiric_stt_v1_whisper_proto_init() }
@@ -513,14 +625,14 @@ func file_sentiric_stt_v1_whisper_proto_init() {
 	if File_sentiric_stt_v1_whisper_proto != nil {
 		return
 	}
-	file_sentiric_stt_v1_whisper_proto_msgTypes[0].OneofWrappers = []any{}
+	file_sentiric_stt_v1_whisper_proto_msgTypes[1].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sentiric_stt_v1_whisper_proto_rawDesc), len(file_sentiric_stt_v1_whisper_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
