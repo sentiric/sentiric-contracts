@@ -55,8 +55,10 @@ export interface SessionConfig {
   edgeMode: boolean;
   traceId: string;
   sessionId: string;
-  /** [YENİ]: Sadece Dinleyen AI Modu (Gözlemci/Analist Modu) */
+  /** Sadece Dinleyen AI Modu (Gözlemci/Analist Modu) */
   listenOnlyMode: boolean;
+  /** [YENİ]: Sadece Konuşan Mod (Megafon/Broadcast Modu) - Dialog/STT Bypass edilir. */
+  speakOnlyMode: boolean;
 }
 
 export interface SessionControl {
@@ -724,7 +726,16 @@ export const TranscriptEvent: MessageFns<TranscriptEvent> = {
 };
 
 function createBaseSessionConfig(): SessionConfig {
-  return { token: "", language: "", sampleRate: 0, edgeMode: false, traceId: "", sessionId: "", listenOnlyMode: false };
+  return {
+    token: "",
+    language: "",
+    sampleRate: 0,
+    edgeMode: false,
+    traceId: "",
+    sessionId: "",
+    listenOnlyMode: false,
+    speakOnlyMode: false,
+  };
 }
 
 export const SessionConfig: MessageFns<SessionConfig> = {
@@ -749,6 +760,9 @@ export const SessionConfig: MessageFns<SessionConfig> = {
     }
     if (message.listenOnlyMode !== false) {
       writer.uint32(56).bool(message.listenOnlyMode);
+    }
+    if (message.speakOnlyMode !== false) {
+      writer.uint32(64).bool(message.speakOnlyMode);
     }
     return writer;
   },
@@ -816,6 +830,14 @@ export const SessionConfig: MessageFns<SessionConfig> = {
           message.listenOnlyMode = reader.bool();
           continue;
         }
+        case 8: {
+          if (tag !== 64) {
+            break;
+          }
+
+          message.speakOnlyMode = reader.bool();
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -854,6 +876,11 @@ export const SessionConfig: MessageFns<SessionConfig> = {
         : isSet(object.listen_only_mode)
         ? globalThis.Boolean(object.listen_only_mode)
         : false,
+      speakOnlyMode: isSet(object.speakOnlyMode)
+        ? globalThis.Boolean(object.speakOnlyMode)
+        : isSet(object.speak_only_mode)
+        ? globalThis.Boolean(object.speak_only_mode)
+        : false,
     };
   },
 
@@ -880,6 +907,9 @@ export const SessionConfig: MessageFns<SessionConfig> = {
     if (message.listenOnlyMode !== false) {
       obj.listenOnlyMode = message.listenOnlyMode;
     }
+    if (message.speakOnlyMode !== false) {
+      obj.speakOnlyMode = message.speakOnlyMode;
+    }
     return obj;
   },
 
@@ -895,6 +925,7 @@ export const SessionConfig: MessageFns<SessionConfig> = {
     message.traceId = object.traceId ?? "";
     message.sessionId = object.sessionId ?? "";
     message.listenOnlyMode = object.listenOnlyMode ?? false;
+    message.speakOnlyMode = object.speakOnlyMode ?? false;
     return message;
   },
 };

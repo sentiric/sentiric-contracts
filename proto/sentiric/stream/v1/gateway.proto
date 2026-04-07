@@ -59,8 +59,11 @@ message SessionConfig {
   string trace_id = 5;
   string session_id = 6;
 
-  // [YENİ]: Sadece Dinleyen AI Modu (Gözlemci/Analist Modu)
+  // Sadece Dinleyen AI Modu (Gözlemci/Analist Modu)
   bool listen_only_mode = 7;
+
+  // [YENİ]: Sadece Konuşan Mod (Megafon/Broadcast Modu) - Dialog/STT Bypass edilir.
+  bool speak_only_mode = 8;
 }
 
 message SessionControl {

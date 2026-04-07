@@ -1,5 +1,61 @@
 # 🚀 SENTIRIC PROTOBUF DEPENDENCY STANDARD
 
+## ⚠️ 2026-04 – TTS & ML Stack Compatibility Update
+
+### 🔥 Problem
+
+Protobuf 7 migration sonrası bazı ML paketleri (özellikle TTS stack) dolaylı olarak eski protobuf versiyonlarını talep edebilir.
+
+Bu durum aşağıdaki hataya yol açar:
+
+
+requirements are unsatisfiable
+grpcio-tools / protobuf conflict
+
+### 💣 Root Cause
+
+- `sentiric-contracts-py>=1.17.x` → `protobuf>=7.34.0`
+- Bazı ML paketleri → eski protobuf constraint’leri (transitive dependency)
+
+### ✅ Çözüm (KANONİK)
+
+```txt
+protobuf>=7.34.0,<8.0.0
+grpcio>=1.62.0
+
+# ⚠️ grpcio-tools sadece gerekiyorsa kullanılmalı
+# grpcio-tools>=1.62.0  ❌ (default olarak ekleme)
+```
+
+### 🚫 KRİTİK KURAL
+
+> Eğer servis runtime'da proto compile ETMİYORSA:
+>
+> 👉 `grpcio-tools` EKLENMEMELİ
+
+Bu paket dependency resolver conflict’lerinin %80’inin sebebidir.
+
+### 🧠 Ek Not
+
+* `TTS==0.22.0` protobuf 7 ile çalışır (test edildi ✅)
+* ML stack ile protobuf conflict olursa:
+
+  * önce `grpcio-tools` kaldır
+  * sonra protobuf’u explicit ekle
+
+### ✅ Referans Working Config (TTS Service)
+
+```txt
+TTS==0.22.0
+transformers==4.36.2
+
+protobuf>=7.34.0,<8.0.0
+grpcio>=1.62.0
+
+sentiric-contracts-py @ git+https://github.com/sentiric/sentiric-contracts.git@v1.20.6
+```
+
+
 ## 📅 2026-03-04 – Protobuf 7 Migration
 
 ### 🔥 Neden?
@@ -97,8 +153,8 @@ pydub==0.25.1           # ✅ AUDIO PROCESSING İÇİN
 
 ## 🛠 TAMİM EDİLECEK SERVİSLER
 
-- [x] sentiric-stt-whisper-service ✅ **(TAMAMLANDI - STABLE)**
-- [ ] sentiric-tts-service
+- [x] sentiric-stt-whisper-service-py ✅ **(TAMAMLANDI - STABLE)**
+- [x] sentiric-tts-service ( python)
 - [ ] sentiric-agent-service  
 - [ ] sentiric-dialog-service
 - [ ] sentiric-user-service

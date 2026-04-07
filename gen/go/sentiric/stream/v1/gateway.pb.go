@@ -513,10 +513,12 @@ type SessionConfig struct {
 	EdgeMode   bool                   `protobuf:"varint,4,opt,name=edge_mode,json=edgeMode,proto3" json:"edge_mode,omitempty"`
 	TraceId    string                 `protobuf:"bytes,5,opt,name=trace_id,json=traceId,proto3" json:"trace_id,omitempty"`
 	SessionId  string                 `protobuf:"bytes,6,opt,name=session_id,json=sessionId,proto3" json:"session_id,omitempty"`
-	// [YENİ]: Sadece Dinleyen AI Modu (Gözlemci/Analist Modu)
+	// Sadece Dinleyen AI Modu (Gözlemci/Analist Modu)
 	ListenOnlyMode bool `protobuf:"varint,7,opt,name=listen_only_mode,json=listenOnlyMode,proto3" json:"listen_only_mode,omitempty"`
-	unknownFields  protoimpl.UnknownFields
-	sizeCache      protoimpl.SizeCache
+	// [YENİ]: Sadece Konuşan Mod (Megafon/Broadcast Modu) - Dialog/STT Bypass edilir.
+	SpeakOnlyMode bool `protobuf:"varint,8,opt,name=speak_only_mode,json=speakOnlyMode,proto3" json:"speak_only_mode,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *SessionConfig) Reset() {
@@ -594,6 +596,13 @@ func (x *SessionConfig) GetSessionId() string {
 func (x *SessionConfig) GetListenOnlyMode() bool {
 	if x != nil {
 		return x.ListenOnlyMode
+	}
+	return false
+}
+
+func (x *SessionConfig) GetSpeakOnlyMode() bool {
+	if x != nil {
+		return x.SpeakOnlyMode
 	}
 	return false
 }
@@ -681,7 +690,7 @@ const file_sentiric_stream_v1_gateway_proto_rawDesc = "" +
 	"\vspeaker_vec\x18\t \x03(\x02R\n" +
 	"speakerVec\x122\n" +
 	"\x05words\x18\n" +
-	" \x03(\v2\x1c.sentiric.stream.v1.WordDataR\x05words\"\xe3\x01\n" +
+	" \x03(\v2\x1c.sentiric.stream.v1.WordDataR\x05words\"\x8b\x02\n" +
 	"\rSessionConfig\x12\x14\n" +
 	"\x05token\x18\x01 \x01(\tR\x05token\x12\x1a\n" +
 	"\blanguage\x18\x02 \x01(\tR\blanguage\x12\x1f\n" +
@@ -691,7 +700,8 @@ const file_sentiric_stream_v1_gateway_proto_rawDesc = "" +
 	"\btrace_id\x18\x05 \x01(\tR\atraceId\x12\x1d\n" +
 	"\n" +
 	"session_id\x18\x06 \x01(\tR\tsessionId\x12(\n" +
-	"\x10listen_only_mode\x18\a \x01(\bR\x0elistenOnlyMode\"\xc2\x01\n" +
+	"\x10listen_only_mode\x18\a \x01(\bR\x0elistenOnlyMode\x12&\n" +
+	"\x0fspeak_only_mode\x18\b \x01(\bR\rspeakOnlyMode\"\xc2\x01\n" +
 	"\x0eSessionControl\x12B\n" +
 	"\x05event\x18\x01 \x01(\x0e2,.sentiric.stream.v1.SessionControl.EventTypeR\x05event\"l\n" +
 	"\tEventType\x12\x1a\n" +

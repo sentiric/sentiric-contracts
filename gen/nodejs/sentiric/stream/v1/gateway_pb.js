@@ -1602,7 +1602,8 @@ sampleRate: jspb.Message.getFieldWithDefault(msg, 3, 0),
 edgeMode: jspb.Message.getBooleanFieldWithDefault(msg, 4, false),
 traceId: jspb.Message.getFieldWithDefault(msg, 5, ""),
 sessionId: jspb.Message.getFieldWithDefault(msg, 6, ""),
-listenOnlyMode: jspb.Message.getBooleanFieldWithDefault(msg, 7, false)
+listenOnlyMode: jspb.Message.getBooleanFieldWithDefault(msg, 7, false),
+speakOnlyMode: jspb.Message.getBooleanFieldWithDefault(msg, 8, false)
   };
 
   if (includeInstance) {
@@ -1666,6 +1667,10 @@ proto.sentiric.stream.v1.SessionConfig.deserializeBinaryFromReader = function(ms
     case 7:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setListenOnlyMode(value);
+      break;
+    case 8:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setSpeakOnlyMode(value);
       break;
     default:
       reader.skipField();
@@ -1742,6 +1747,13 @@ proto.sentiric.stream.v1.SessionConfig.serializeBinaryToWriter = function(messag
   if (f) {
     writer.writeBool(
       7,
+      f
+    );
+  }
+  f = message.getSpeakOnlyMode();
+  if (f) {
+    writer.writeBool(
+      8,
       f
     );
   }
@@ -1871,6 +1883,24 @@ proto.sentiric.stream.v1.SessionConfig.prototype.getListenOnlyMode = function() 
  */
 proto.sentiric.stream.v1.SessionConfig.prototype.setListenOnlyMode = function(value) {
   return jspb.Message.setProto3BooleanField(this, 7, value);
+};
+
+
+/**
+ * optional bool speak_only_mode = 8;
+ * @return {boolean}
+ */
+proto.sentiric.stream.v1.SessionConfig.prototype.getSpeakOnlyMode = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 8, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.sentiric.stream.v1.SessionConfig} returns this
+ */
+proto.sentiric.stream.v1.SessionConfig.prototype.setSpeakOnlyMode = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 8, value);
 };
 
 

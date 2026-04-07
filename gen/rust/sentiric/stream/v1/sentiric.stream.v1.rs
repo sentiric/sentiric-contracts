@@ -90,9 +90,12 @@ pub struct SessionConfig {
     pub trace_id: ::prost::alloc::string::String,
     #[prost(string, tag="6")]
     pub session_id: ::prost::alloc::string::String,
-    /// \[YENİ\]: Sadece Dinleyen AI Modu (Gözlemci/Analist Modu)
+    /// Sadece Dinleyen AI Modu (Gözlemci/Analist Modu)
     #[prost(bool, tag="7")]
     pub listen_only_mode: bool,
+    /// \[YENİ\]: Sadece Konuşan Mod (Megafon/Broadcast Modu) - Dialog/STT Bypass edilir.
+    #[prost(bool, tag="8")]
+    pub speak_only_mode: bool,
 }
 #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct SessionControl {

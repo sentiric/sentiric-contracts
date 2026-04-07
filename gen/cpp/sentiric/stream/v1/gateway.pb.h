@@ -1215,6 +1215,7 @@ class SessionConfig final :
     kSampleRateFieldNumber = 3,
     kEdgeModeFieldNumber = 4,
     kListenOnlyModeFieldNumber = 7,
+    kSpeakOnlyModeFieldNumber = 8,
   };
   // string token = 1;
   void clear_token();
@@ -1299,6 +1300,15 @@ class SessionConfig final :
   void _internal_set_listen_only_mode(bool value);
   public:
 
+  // bool speak_only_mode = 8;
+  void clear_speak_only_mode();
+  bool speak_only_mode() const;
+  void set_speak_only_mode(bool value);
+  private:
+  bool _internal_speak_only_mode() const;
+  void _internal_set_speak_only_mode(bool value);
+  public:
+
   // @@protoc_insertion_point(class_scope:sentiric.stream.v1.SessionConfig)
  private:
   class _Internal;
@@ -1314,6 +1324,7 @@ class SessionConfig final :
     uint32_t sample_rate_;
     bool edge_mode_;
     bool listen_only_mode_;
+    bool speak_only_mode_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -2956,6 +2967,26 @@ inline void SessionConfig::_internal_set_listen_only_mode(bool value) {
 inline void SessionConfig::set_listen_only_mode(bool value) {
   _internal_set_listen_only_mode(value);
   // @@protoc_insertion_point(field_set:sentiric.stream.v1.SessionConfig.listen_only_mode)
+}
+
+// bool speak_only_mode = 8;
+inline void SessionConfig::clear_speak_only_mode() {
+  _impl_.speak_only_mode_ = false;
+}
+inline bool SessionConfig::_internal_speak_only_mode() const {
+  return _impl_.speak_only_mode_;
+}
+inline bool SessionConfig::speak_only_mode() const {
+  // @@protoc_insertion_point(field_get:sentiric.stream.v1.SessionConfig.speak_only_mode)
+  return _internal_speak_only_mode();
+}
+inline void SessionConfig::_internal_set_speak_only_mode(bool value) {
+  
+  _impl_.speak_only_mode_ = value;
+}
+inline void SessionConfig::set_speak_only_mode(bool value) {
+  _internal_set_speak_only_mode(value);
+  // @@protoc_insertion_point(field_set:sentiric.stream.v1.SessionConfig.speak_only_mode)
 }
 
 // -------------------------------------------------------------------
