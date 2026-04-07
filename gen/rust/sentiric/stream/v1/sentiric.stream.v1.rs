@@ -93,9 +93,12 @@ pub struct SessionConfig {
     /// Sadece Dinleyen AI Modu (Gözlemci/Analist Modu)
     #[prost(bool, tag="7")]
     pub listen_only_mode: bool,
-    /// \[YENİ\]: Sadece Konuşan Mod (Megafon/Broadcast Modu) - Dialog/STT Bypass edilir.
+    /// Sadece Konuşan Mod (Megafon/Broadcast Modu) - Dialog/STT Bypass edilir.
     #[prost(bool, tag="8")]
     pub speak_only_mode: bool,
+    /// Sadece Yazışma Modu (Omni-Chat) - STT ve TTS Bypass edilir.
+    #[prost(bool, tag="9")]
+    pub chat_only_mode: bool,
 }
 #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct SessionControl {

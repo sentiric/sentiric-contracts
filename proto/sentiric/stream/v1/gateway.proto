@@ -62,8 +62,11 @@ message SessionConfig {
   // Sadece Dinleyen AI Modu (Gözlemci/Analist Modu)
   bool listen_only_mode = 7;
 
-  // [YENİ]: Sadece Konuşan Mod (Megafon/Broadcast Modu) - Dialog/STT Bypass edilir.
+  // Sadece Konuşan Mod (Megafon/Broadcast Modu) - Dialog/STT Bypass edilir.
   bool speak_only_mode = 8;
+
+  // Sadece Yazışma Modu (Omni-Chat) - STT ve TTS Bypass edilir.
+  bool chat_only_mode = 9;
 }
 
 message SessionControl {

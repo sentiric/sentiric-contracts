@@ -57,8 +57,10 @@ export interface SessionConfig {
   sessionId: string;
   /** Sadece Dinleyen AI Modu (Gözlemci/Analist Modu) */
   listenOnlyMode: boolean;
-  /** [YENİ]: Sadece Konuşan Mod (Megafon/Broadcast Modu) - Dialog/STT Bypass edilir. */
+  /** Sadece Konuşan Mod (Megafon/Broadcast Modu) - Dialog/STT Bypass edilir. */
   speakOnlyMode: boolean;
+  /** Sadece Yazışma Modu (Omni-Chat) - STT ve TTS Bypass edilir. */
+  chatOnlyMode: boolean;
 }
 
 export interface SessionControl {
@@ -735,6 +737,7 @@ function createBaseSessionConfig(): SessionConfig {
     sessionId: "",
     listenOnlyMode: false,
     speakOnlyMode: false,
+    chatOnlyMode: false,
   };
 }
 
@@ -763,6 +766,9 @@ export const SessionConfig: MessageFns<SessionConfig> = {
     }
     if (message.speakOnlyMode !== false) {
       writer.uint32(64).bool(message.speakOnlyMode);
+    }
+    if (message.chatOnlyMode !== false) {
+      writer.uint32(72).bool(message.chatOnlyMode);
     }
     return writer;
   },
@@ -838,6 +844,14 @@ export const SessionConfig: MessageFns<SessionConfig> = {
           message.speakOnlyMode = reader.bool();
           continue;
         }
+        case 9: {
+          if (tag !== 72) {
+            break;
+          }
+
+          message.chatOnlyMode = reader.bool();
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -881,6 +895,11 @@ export const SessionConfig: MessageFns<SessionConfig> = {
         : isSet(object.speak_only_mode)
         ? globalThis.Boolean(object.speak_only_mode)
         : false,
+      chatOnlyMode: isSet(object.chatOnlyMode)
+        ? globalThis.Boolean(object.chatOnlyMode)
+        : isSet(object.chat_only_mode)
+        ? globalThis.Boolean(object.chat_only_mode)
+        : false,
     };
   },
 
@@ -910,6 +929,9 @@ export const SessionConfig: MessageFns<SessionConfig> = {
     if (message.speakOnlyMode !== false) {
       obj.speakOnlyMode = message.speakOnlyMode;
     }
+    if (message.chatOnlyMode !== false) {
+      obj.chatOnlyMode = message.chatOnlyMode;
+    }
     return obj;
   },
 
@@ -926,6 +948,7 @@ export const SessionConfig: MessageFns<SessionConfig> = {
     message.sessionId = object.sessionId ?? "";
     message.listenOnlyMode = object.listenOnlyMode ?? false;
     message.speakOnlyMode = object.speakOnlyMode ?? false;
+    message.chatOnlyMode = object.chatOnlyMode ?? false;
     return message;
   },
 };

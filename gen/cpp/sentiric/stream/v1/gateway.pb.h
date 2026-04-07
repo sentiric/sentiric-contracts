@@ -1216,6 +1216,7 @@ class SessionConfig final :
     kEdgeModeFieldNumber = 4,
     kListenOnlyModeFieldNumber = 7,
     kSpeakOnlyModeFieldNumber = 8,
+    kChatOnlyModeFieldNumber = 9,
   };
   // string token = 1;
   void clear_token();
@@ -1309,6 +1310,15 @@ class SessionConfig final :
   void _internal_set_speak_only_mode(bool value);
   public:
 
+  // bool chat_only_mode = 9;
+  void clear_chat_only_mode();
+  bool chat_only_mode() const;
+  void set_chat_only_mode(bool value);
+  private:
+  bool _internal_chat_only_mode() const;
+  void _internal_set_chat_only_mode(bool value);
+  public:
+
   // @@protoc_insertion_point(class_scope:sentiric.stream.v1.SessionConfig)
  private:
   class _Internal;
@@ -1325,6 +1335,7 @@ class SessionConfig final :
     bool edge_mode_;
     bool listen_only_mode_;
     bool speak_only_mode_;
+    bool chat_only_mode_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -2987,6 +2998,26 @@ inline void SessionConfig::_internal_set_speak_only_mode(bool value) {
 inline void SessionConfig::set_speak_only_mode(bool value) {
   _internal_set_speak_only_mode(value);
   // @@protoc_insertion_point(field_set:sentiric.stream.v1.SessionConfig.speak_only_mode)
+}
+
+// bool chat_only_mode = 9;
+inline void SessionConfig::clear_chat_only_mode() {
+  _impl_.chat_only_mode_ = false;
+}
+inline bool SessionConfig::_internal_chat_only_mode() const {
+  return _impl_.chat_only_mode_;
+}
+inline bool SessionConfig::chat_only_mode() const {
+  // @@protoc_insertion_point(field_get:sentiric.stream.v1.SessionConfig.chat_only_mode)
+  return _internal_chat_only_mode();
+}
+inline void SessionConfig::_internal_set_chat_only_mode(bool value) {
+  
+  _impl_.chat_only_mode_ = value;
+}
+inline void SessionConfig::set_chat_only_mode(bool value) {
+  _internal_set_chat_only_mode(value);
+  // @@protoc_insertion_point(field_set:sentiric.stream.v1.SessionConfig.chat_only_mode)
 }
 
 // -------------------------------------------------------------------
