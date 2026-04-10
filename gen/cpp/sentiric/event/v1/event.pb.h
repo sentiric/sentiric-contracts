@@ -1575,6 +1575,7 @@ class AcousticMoodShiftedEvent final :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kSpeakerVecFieldNumber = 10,
     kEventTypeFieldNumber = 1,
     kTraceIdFieldNumber = 2,
     kCallIdFieldNumber = 3,
@@ -1585,6 +1586,28 @@ class AcousticMoodShiftedEvent final :
     kArousalShiftFieldNumber = 7,
     kValenceShiftFieldNumber = 8,
   };
+  // repeated float speaker_vec = 10;
+  int speaker_vec_size() const;
+  private:
+  int _internal_speaker_vec_size() const;
+  public:
+  void clear_speaker_vec();
+  private:
+  float _internal_speaker_vec(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+      _internal_speaker_vec() const;
+  void _internal_add_speaker_vec(float value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+      _internal_mutable_speaker_vec();
+  public:
+  float speaker_vec(int index) const;
+  void set_speaker_vec(int index, float value);
+  void add_speaker_vec(float value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+      speaker_vec() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+      mutable_speaker_vec();
+
   // string event_type = 1;
   void clear_event_type();
   const std::string& event_type() const;
@@ -1713,6 +1736,7 @@ class AcousticMoodShiftedEvent final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::RepeatedField< float > speaker_vec_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr event_type_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr trace_id_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr call_id_;
@@ -4075,6 +4099,53 @@ inline void AcousticMoodShiftedEvent::set_allocated_speaker_id(std::string* spea
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:sentiric.event.v1.AcousticMoodShiftedEvent.speaker_id)
+}
+
+// repeated float speaker_vec = 10;
+inline int AcousticMoodShiftedEvent::_internal_speaker_vec_size() const {
+  return _impl_.speaker_vec_.size();
+}
+inline int AcousticMoodShiftedEvent::speaker_vec_size() const {
+  return _internal_speaker_vec_size();
+}
+inline void AcousticMoodShiftedEvent::clear_speaker_vec() {
+  _impl_.speaker_vec_.Clear();
+}
+inline float AcousticMoodShiftedEvent::_internal_speaker_vec(int index) const {
+  return _impl_.speaker_vec_.Get(index);
+}
+inline float AcousticMoodShiftedEvent::speaker_vec(int index) const {
+  // @@protoc_insertion_point(field_get:sentiric.event.v1.AcousticMoodShiftedEvent.speaker_vec)
+  return _internal_speaker_vec(index);
+}
+inline void AcousticMoodShiftedEvent::set_speaker_vec(int index, float value) {
+  _impl_.speaker_vec_.Set(index, value);
+  // @@protoc_insertion_point(field_set:sentiric.event.v1.AcousticMoodShiftedEvent.speaker_vec)
+}
+inline void AcousticMoodShiftedEvent::_internal_add_speaker_vec(float value) {
+  _impl_.speaker_vec_.Add(value);
+}
+inline void AcousticMoodShiftedEvent::add_speaker_vec(float value) {
+  _internal_add_speaker_vec(value);
+  // @@protoc_insertion_point(field_add:sentiric.event.v1.AcousticMoodShiftedEvent.speaker_vec)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+AcousticMoodShiftedEvent::_internal_speaker_vec() const {
+  return _impl_.speaker_vec_;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >&
+AcousticMoodShiftedEvent::speaker_vec() const {
+  // @@protoc_insertion_point(field_list:sentiric.event.v1.AcousticMoodShiftedEvent.speaker_vec)
+  return _internal_speaker_vec();
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+AcousticMoodShiftedEvent::_internal_mutable_speaker_vec() {
+  return &_impl_.speaker_vec_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< float >*
+AcousticMoodShiftedEvent::mutable_speaker_vec() {
+  // @@protoc_insertion_point(field_mutable_list:sentiric.event.v1.AcousticMoodShiftedEvent.speaker_vec)
+  return _internal_mutable_speaker_vec();
 }
 
 #ifdef __GNUC__

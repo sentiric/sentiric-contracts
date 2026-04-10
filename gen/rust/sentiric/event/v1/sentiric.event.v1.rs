@@ -153,5 +153,8 @@ pub struct AcousticMoodShiftedEvent {
     /// Hangi seste bu değişim oldu
     #[prost(string, tag="9")]
     pub speaker_id: ::prost::alloc::string::String,
+    /// \[YENİ\]: Crystalline biyometrisi için
+    #[prost(float, repeated, tag="10")]
+    pub speaker_vec: ::prost::alloc::vec::Vec<f32>,
 }
 // @@protoc_insertion_point(module)

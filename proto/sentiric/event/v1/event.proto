@@ -112,4 +112,6 @@ message AcousticMoodShiftedEvent {
   float arousal_shift = 7; // Heyecan/Tempo değişimi
   float valence_shift = 8; // Pozitiflik/Negatiflik değişimi
   string speaker_id = 9; // Hangi seste bu değişim oldu
+
+  repeated float speaker_vec = 10; // [YENİ]: Crystalline biyometrisi için
 }

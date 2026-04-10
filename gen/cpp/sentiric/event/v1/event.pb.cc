@@ -129,7 +129,8 @@ struct GenericEventDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GenericEventDefaultTypeInternal _GenericEvent_default_instance_;
 PROTOBUF_CONSTEXPR AcousticMoodShiftedEvent::AcousticMoodShiftedEvent(
     ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.event_type_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+    /*decltype(_impl_.speaker_vec_)*/{}
+  , /*decltype(_impl_.event_type_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.trace_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.call_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.previous_mood_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
@@ -239,6 +240,7 @@ const uint32_t TableStruct_sentiric_2fevent_2fv1_2fevent_2eproto::offsets[] PROT
   PROTOBUF_FIELD_OFFSET(::sentiric::event::v1::AcousticMoodShiftedEvent, _impl_.arousal_shift_),
   PROTOBUF_FIELD_OFFSET(::sentiric::event::v1::AcousticMoodShiftedEvent, _impl_.valence_shift_),
   PROTOBUF_FIELD_OFFSET(::sentiric::event::v1::AcousticMoodShiftedEvent, _impl_.speaker_id_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::event::v1::AcousticMoodShiftedEvent, _impl_.speaker_vec_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::sentiric::event::v1::MediaInfo)},
@@ -290,15 +292,15 @@ const char descriptor_table_protodef_sentiric_2fevent_2fv1_2fevent_2eproto[] PRO
   "t\022\022\n\nevent_type\030\001 \001(\t\022\020\n\010trace_id\030\002 \001(\t\022"
   "-\n\ttimestamp\030\003 \001(\0132\032.google.protobuf.Tim"
   "estamp\022\021\n\ttenant_id\030\004 \001(\t\022\024\n\014payload_jso"
-  "n\030\005 \001(\t\"\357\001\n\030AcousticMoodShiftedEvent\022\022\n\n"
+  "n\030\005 \001(\t\"\204\002\n\030AcousticMoodShiftedEvent\022\022\n\n"
   "event_type\030\001 \001(\t\022\020\n\010trace_id\030\002 \001(\t\022\017\n\007ca"
   "ll_id\030\003 \001(\t\022-\n\ttimestamp\030\004 \001(\0132\032.google."
   "protobuf.Timestamp\022\025\n\rprevious_mood\030\005 \001("
   "\t\022\024\n\014current_mood\030\006 \001(\t\022\025\n\rarousal_shift"
   "\030\007 \001(\002\022\025\n\rvalence_shift\030\010 \001(\002\022\022\n\nspeaker"
-  "_id\030\t \001(\tBIZGgithub.com/sentiric/sentiri"
-  "c-contracts/gen/go/sentiric/event/v1;eve"
-  "ntv1b\006proto3"
+  "_id\030\t \001(\t\022\023\n\013speaker_vec\030\n \003(\002BIZGgithub"
+  ".com/sentiric/sentiric-contracts/gen/go/"
+  "sentiric/event/v1;eventv1b\006proto3"
   ;
 static const ::_pbi::DescriptorTable* const descriptor_table_sentiric_2fevent_2fv1_2fevent_2eproto_deps[3] = {
   &::descriptor_table_google_2fprotobuf_2ftimestamp_2eproto,
@@ -307,7 +309,7 @@ static const ::_pbi::DescriptorTable* const descriptor_table_sentiric_2fevent_2f
 };
 static ::_pbi::once_flag descriptor_table_sentiric_2fevent_2fv1_2fevent_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_sentiric_2fevent_2fv1_2fevent_2eproto = {
-    false, false, 1492, descriptor_table_protodef_sentiric_2fevent_2fv1_2fevent_2eproto,
+    false, false, 1513, descriptor_table_protodef_sentiric_2fevent_2fv1_2fevent_2eproto,
     "sentiric/event/v1/event.proto",
     &descriptor_table_sentiric_2fevent_2fv1_2fevent_2eproto_once, descriptor_table_sentiric_2fevent_2fv1_2fevent_2eproto_deps, 3, 7,
     schemas, file_default_instances, TableStruct_sentiric_2fevent_2fv1_2fevent_2eproto::offsets,
@@ -2828,7 +2830,8 @@ AcousticMoodShiftedEvent::AcousticMoodShiftedEvent(const AcousticMoodShiftedEven
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   AcousticMoodShiftedEvent* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.event_type_){}
+      decltype(_impl_.speaker_vec_){from._impl_.speaker_vec_}
+    , decltype(_impl_.event_type_){}
     , decltype(_impl_.trace_id_){}
     , decltype(_impl_.call_id_){}
     , decltype(_impl_.previous_mood_){}
@@ -2902,7 +2905,8 @@ inline void AcousticMoodShiftedEvent::SharedCtor(
   (void)arena;
   (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.event_type_){}
+      decltype(_impl_.speaker_vec_){arena}
+    , decltype(_impl_.event_type_){}
     , decltype(_impl_.trace_id_){}
     , decltype(_impl_.call_id_){}
     , decltype(_impl_.previous_mood_){}
@@ -2950,6 +2954,7 @@ AcousticMoodShiftedEvent::~AcousticMoodShiftedEvent() {
 
 inline void AcousticMoodShiftedEvent::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.speaker_vec_.~RepeatedField();
   _impl_.event_type_.Destroy();
   _impl_.trace_id_.Destroy();
   _impl_.call_id_.Destroy();
@@ -2969,6 +2974,7 @@ void AcousticMoodShiftedEvent::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  _impl_.speaker_vec_.Clear();
   _impl_.event_type_.ClearToEmpty();
   _impl_.trace_id_.ClearToEmpty();
   _impl_.call_id_.ClearToEmpty();
@@ -3072,6 +3078,17 @@ const char* AcousticMoodShiftedEvent::_InternalParse(const char* ptr, ::_pbi::Pa
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
           CHK_(::_pbi::VerifyUTF8(str, "sentiric.event.v1.AcousticMoodShiftedEvent.speaker_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated float speaker_vec = 10;
+      case 10:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 82)) {
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedFloatParser(_internal_mutable_speaker_vec(), ptr, ctx);
+          CHK_(ptr);
+        } else if (static_cast<uint8_t>(tag) == 85) {
+          _internal_add_speaker_vec(::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr));
+          ptr += sizeof(float);
         } else
           goto handle_unusual;
         continue;
@@ -3191,6 +3208,11 @@ uint8_t* AcousticMoodShiftedEvent::_InternalSerialize(
         9, this->_internal_speaker_id(), target);
   }
 
+  // repeated float speaker_vec = 10;
+  if (this->_internal_speaker_vec_size() > 0) {
+    target = stream->WriteFixedPacked(10, _internal_speaker_vec(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -3206,6 +3228,17 @@ size_t AcousticMoodShiftedEvent::ByteSizeLong() const {
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
+
+  // repeated float speaker_vec = 10;
+  {
+    unsigned int count = static_cast<unsigned int>(this->_internal_speaker_vec_size());
+    size_t data_size = 4UL * count;
+    if (data_size > 0) {
+      total_size += 1 +
+        ::_pbi::WireFormatLite::Int32Size(static_cast<int32_t>(data_size));
+    }
+    total_size += data_size;
+  }
 
   // string event_type = 1;
   if (!this->_internal_event_type().empty()) {
@@ -3292,6 +3325,7 @@ void AcousticMoodShiftedEvent::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_ms
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  _this->_impl_.speaker_vec_.MergeFrom(from._impl_.speaker_vec_);
   if (!from._internal_event_type().empty()) {
     _this->_internal_set_event_type(from._internal_event_type());
   }
@@ -3347,6 +3381,7 @@ void AcousticMoodShiftedEvent::InternalSwap(AcousticMoodShiftedEvent* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.speaker_vec_.InternalSwap(&other->_impl_.speaker_vec_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &_impl_.event_type_, lhs_arena,
       &other->_impl_.event_type_, rhs_arena

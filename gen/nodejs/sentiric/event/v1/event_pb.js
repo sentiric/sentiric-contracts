@@ -165,7 +165,7 @@ if (goog.DEBUG && !COMPILED) {
  * @constructor
  */
 proto.sentiric.event.v1.AcousticMoodShiftedEvent = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.sentiric.event.v1.AcousticMoodShiftedEvent.repeatedFields_, null);
 };
 goog.inherits(proto.sentiric.event.v1.AcousticMoodShiftedEvent, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -1925,6 +1925,13 @@ proto.sentiric.event.v1.GenericEvent.prototype.setPayloadJson = function(value) 
 
 
 
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.sentiric.event.v1.AcousticMoodShiftedEvent.repeatedFields_ = [10];
+
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -1964,7 +1971,8 @@ previousMood: jspb.Message.getFieldWithDefault(msg, 5, ""),
 currentMood: jspb.Message.getFieldWithDefault(msg, 6, ""),
 arousalShift: jspb.Message.getFloatingPointFieldWithDefault(msg, 7, 0.0),
 valenceShift: jspb.Message.getFloatingPointFieldWithDefault(msg, 8, 0.0),
-speakerId: jspb.Message.getFieldWithDefault(msg, 9, "")
+speakerId: jspb.Message.getFieldWithDefault(msg, 9, ""),
+speakerVecList: (f = jspb.Message.getRepeatedFloatingPointField(msg, 10)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -2037,6 +2045,9 @@ proto.sentiric.event.v1.AcousticMoodShiftedEvent.deserializeBinaryFromReader = f
     case 9:
       var value = /** @type {string} */ (reader.readStringRequireUtf8());
       msg.setSpeakerId(value);
+      break;
+    case 10:
+      reader.readPackableFloatInto(msg.getSpeakerVecList());
       break;
     default:
       reader.skipField();
@@ -2128,6 +2139,13 @@ proto.sentiric.event.v1.AcousticMoodShiftedEvent.serializeBinaryToWriter = funct
   if (f.length > 0) {
     writer.writeString(
       9,
+      f
+    );
+  }
+  f = message.getSpeakerVecList();
+  if (f.length > 0) {
+    writer.writePackedFloat(
+      10,
       f
     );
   }
@@ -2312,6 +2330,43 @@ proto.sentiric.event.v1.AcousticMoodShiftedEvent.prototype.getSpeakerId = functi
  */
 proto.sentiric.event.v1.AcousticMoodShiftedEvent.prototype.setSpeakerId = function(value) {
   return jspb.Message.setProto3StringField(this, 9, value);
+};
+
+
+/**
+ * repeated float speaker_vec = 10;
+ * @return {!Array<number>}
+ */
+proto.sentiric.event.v1.AcousticMoodShiftedEvent.prototype.getSpeakerVecList = function() {
+  return /** @type {!Array<number>} */ (jspb.Message.getRepeatedFloatingPointField(this, 10));
+};
+
+
+/**
+ * @param {!Array<number>} value
+ * @return {!proto.sentiric.event.v1.AcousticMoodShiftedEvent} returns this
+ */
+proto.sentiric.event.v1.AcousticMoodShiftedEvent.prototype.setSpeakerVecList = function(value) {
+  return jspb.Message.setField(this, 10, value || []);
+};
+
+
+/**
+ * @param {number} value
+ * @param {number=} opt_index
+ * @return {!proto.sentiric.event.v1.AcousticMoodShiftedEvent} returns this
+ */
+proto.sentiric.event.v1.AcousticMoodShiftedEvent.prototype.addSpeakerVec = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 10, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.sentiric.event.v1.AcousticMoodShiftedEvent} returns this
+ */
+proto.sentiric.event.v1.AcousticMoodShiftedEvent.prototype.clearSpeakerVecList = function() {
+  return this.setSpeakerVecList([]);
 };
 
 

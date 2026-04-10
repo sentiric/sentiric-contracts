@@ -536,11 +536,12 @@ type AcousticMoodShiftedEvent struct {
 	TraceId       string                 `protobuf:"bytes,2,opt,name=trace_id,json=traceId,proto3" json:"trace_id,omitempty"`
 	CallId        string                 `protobuf:"bytes,3,opt,name=call_id,json=callId,proto3" json:"call_id,omitempty"`
 	Timestamp     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
-	PreviousMood  string                 `protobuf:"bytes,5,opt,name=previous_mood,json=previousMood,proto3" json:"previous_mood,omitempty"`   // örn: "analytical"
-	CurrentMood   string                 `protobuf:"bytes,6,opt,name=current_mood,json=currentMood,proto3" json:"current_mood,omitempty"`      // örn: "meditative"
-	ArousalShift  float32                `protobuf:"fixed32,7,opt,name=arousal_shift,json=arousalShift,proto3" json:"arousal_shift,omitempty"` // Heyecan/Tempo değişimi
-	ValenceShift  float32                `protobuf:"fixed32,8,opt,name=valence_shift,json=valenceShift,proto3" json:"valence_shift,omitempty"` // Pozitiflik/Negatiflik değişimi
-	SpeakerId     string                 `protobuf:"bytes,9,opt,name=speaker_id,json=speakerId,proto3" json:"speaker_id,omitempty"`            // Hangi seste bu değişim oldu
+	PreviousMood  string                 `protobuf:"bytes,5,opt,name=previous_mood,json=previousMood,proto3" json:"previous_mood,omitempty"`     // örn: "analytical"
+	CurrentMood   string                 `protobuf:"bytes,6,opt,name=current_mood,json=currentMood,proto3" json:"current_mood,omitempty"`        // örn: "meditative"
+	ArousalShift  float32                `protobuf:"fixed32,7,opt,name=arousal_shift,json=arousalShift,proto3" json:"arousal_shift,omitempty"`   // Heyecan/Tempo değişimi
+	ValenceShift  float32                `protobuf:"fixed32,8,opt,name=valence_shift,json=valenceShift,proto3" json:"valence_shift,omitempty"`   // Pozitiflik/Negatiflik değişimi
+	SpeakerId     string                 `protobuf:"bytes,9,opt,name=speaker_id,json=speakerId,proto3" json:"speaker_id,omitempty"`              // Hangi seste bu değişim oldu
+	SpeakerVec    []float32              `protobuf:"fixed32,10,rep,packed,name=speaker_vec,json=speakerVec,proto3" json:"speaker_vec,omitempty"` // [YENİ]: Crystalline biyometrisi için
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -638,6 +639,13 @@ func (x *AcousticMoodShiftedEvent) GetSpeakerId() string {
 	return ""
 }
 
+func (x *AcousticMoodShiftedEvent) GetSpeakerVec() []float32 {
+	if x != nil {
+		return x.SpeakerVec
+	}
+	return nil
+}
+
 var File_sentiric_event_v1_event_proto protoreflect.FileDescriptor
 
 const file_sentiric_event_v1_event_proto_rawDesc = "" +
@@ -687,7 +695,7 @@ const file_sentiric_event_v1_event_proto_rawDesc = "" +
 	"\btrace_id\x18\x02 \x01(\tR\atraceId\x128\n" +
 	"\ttimestamp\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\ttimestamp\x12\x1b\n" +
 	"\ttenant_id\x18\x04 \x01(\tR\btenantId\x12!\n" +
-	"\fpayload_json\x18\x05 \x01(\tR\vpayloadJson\"\xd8\x02\n" +
+	"\fpayload_json\x18\x05 \x01(\tR\vpayloadJson\"\xf9\x02\n" +
 	"\x18AcousticMoodShiftedEvent\x12\x1d\n" +
 	"\n" +
 	"event_type\x18\x01 \x01(\tR\teventType\x12\x19\n" +
@@ -699,7 +707,10 @@ const file_sentiric_event_v1_event_proto_rawDesc = "" +
 	"\rarousal_shift\x18\a \x01(\x02R\farousalShift\x12#\n" +
 	"\rvalence_shift\x18\b \x01(\x02R\fvalenceShift\x12\x1d\n" +
 	"\n" +
-	"speaker_id\x18\t \x01(\tR\tspeakerIdBIZGgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/event/v1;eventv1b\x06proto3"
+	"speaker_id\x18\t \x01(\tR\tspeakerId\x12\x1f\n" +
+	"\vspeaker_vec\x18\n" +
+	" \x03(\x02R\n" +
+	"speakerVecBIZGgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/event/v1;eventv1b\x06proto3"
 
 var (
 	file_sentiric_event_v1_event_proto_rawDescOnce sync.Once

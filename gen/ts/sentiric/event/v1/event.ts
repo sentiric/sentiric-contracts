@@ -140,6 +140,8 @@ export interface AcousticMoodShiftedEvent {
   valenceShift: number;
   /** Hangi seste bu değişim oldu */
   speakerId: string;
+  /** [YENİ]: Crystalline biyometrisi için */
+  speakerVec: number[];
 }
 
 function createBaseMediaInfo(): MediaInfo {
@@ -1040,6 +1042,7 @@ function createBaseAcousticMoodShiftedEvent(): AcousticMoodShiftedEvent {
     arousalShift: 0,
     valenceShift: 0,
     speakerId: "",
+    speakerVec: [],
   };
 }
 
@@ -1072,6 +1075,11 @@ export const AcousticMoodShiftedEvent: MessageFns<AcousticMoodShiftedEvent> = {
     if (message.speakerId !== "") {
       writer.uint32(74).string(message.speakerId);
     }
+    writer.uint32(82).fork();
+    for (const v of message.speakerVec) {
+      writer.float(v);
+    }
+    writer.join();
     return writer;
   },
 
@@ -1154,6 +1162,24 @@ export const AcousticMoodShiftedEvent: MessageFns<AcousticMoodShiftedEvent> = {
           message.speakerId = reader.string();
           continue;
         }
+        case 10: {
+          if (tag === 85) {
+            message.speakerVec.push(reader.float());
+
+            continue;
+          }
+
+          if (tag === 82) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.speakerVec.push(reader.float());
+            }
+
+            continue;
+          }
+
+          break;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -1206,6 +1232,11 @@ export const AcousticMoodShiftedEvent: MessageFns<AcousticMoodShiftedEvent> = {
         : isSet(object.speaker_id)
         ? globalThis.String(object.speaker_id)
         : "",
+      speakerVec: globalThis.Array.isArray(object?.speakerVec)
+        ? object.speakerVec.map((e: any) => globalThis.Number(e))
+        : globalThis.Array.isArray(object?.speaker_vec)
+        ? object.speaker_vec.map((e: any) => globalThis.Number(e))
+        : [],
     };
   },
 
@@ -1238,6 +1269,9 @@ export const AcousticMoodShiftedEvent: MessageFns<AcousticMoodShiftedEvent> = {
     if (message.speakerId !== "") {
       obj.speakerId = message.speakerId;
     }
+    if (message.speakerVec?.length) {
+      obj.speakerVec = message.speakerVec;
+    }
     return obj;
   },
 
@@ -1255,6 +1289,7 @@ export const AcousticMoodShiftedEvent: MessageFns<AcousticMoodShiftedEvent> = {
     message.arousalShift = object.arousalShift ?? 0;
     message.valenceShift = object.valenceShift ?? 0;
     message.speakerId = object.speakerId ?? "";
+    message.speakerVec = object.speakerVec?.map((e) => e) || [];
     return message;
   },
 };
