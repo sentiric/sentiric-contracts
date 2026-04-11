@@ -321,5 +321,60 @@ pub struct MmsSynthesizeStreamResponse {
     #[prost(bool, tag="2")]
     pub is_final: bool,
 }
+/// --- Unary Messages ---
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct OmnivoiceSynthesizeRequest {
+    #[prost(string, tag="1")]
+    pub text: ::prost::alloc::string::String,
+    #[prost(string, tag="2")]
+    pub language_code: ::prost::alloc::string::String,
+    /// Modelin üretimi için referans ses (Klonlama)
+    #[prost(bytes="vec", optional, tag="3")]
+    pub reference_audio: ::core::option::Option<::prost::alloc::vec::Vec<u8>>,
+    /// \[OMNIVOICE ÖZEL YETENEK\]: Metin ile ses tasarımı!
+    /// Örn: "female, low pitch, warm, british accent"
+    #[prost(string, optional, tag="4")]
+    pub voice_guidance_prompt: ::core::option::Option<::prost::alloc::string::String>,
+    #[prost(float, tag="5")]
+    pub temperature: f32,
+    #[prost(float, tag="6")]
+    pub speed: f32,
+    #[prost(string, tag="7")]
+    pub output_format: ::prost::alloc::string::String,
+    #[prost(int32, tag="8")]
+    pub sample_rate: i32,
+}
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+pub struct OmnivoiceSynthesizeResponse {
+    #[prost(bytes="vec", tag="1")]
+    pub audio_content: ::prost::alloc::vec::Vec<u8>,
+}
+/// --- Stream Messages ---
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct OmnivoiceSynthesizeStreamRequest {
+    #[prost(string, tag="1")]
+    pub text: ::prost::alloc::string::String,
+    #[prost(string, tag="2")]
+    pub language_code: ::prost::alloc::string::String,
+    #[prost(bytes="vec", optional, tag="3")]
+    pub reference_audio: ::core::option::Option<::prost::alloc::vec::Vec<u8>>,
+    #[prost(string, optional, tag="4")]
+    pub voice_guidance_prompt: ::core::option::Option<::prost::alloc::string::String>,
+    #[prost(float, tag="5")]
+    pub temperature: f32,
+    #[prost(float, tag="6")]
+    pub speed: f32,
+    #[prost(string, tag="7")]
+    pub output_format: ::prost::alloc::string::String,
+    #[prost(int32, tag="8")]
+    pub sample_rate: i32,
+}
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+pub struct OmnivoiceSynthesizeStreamResponse {
+    #[prost(bytes="vec", tag="1")]
+    pub audio_chunk: ::prost::alloc::vec::Vec<u8>,
+    #[prost(bool, tag="2")]
+    pub is_final: bool,
+}
 include!("sentiric.tts.v1.tonic.rs");
 // @@protoc_insertion_point(module)

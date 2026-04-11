@@ -1,0 +1,52 @@
+// Dosya: proto/sentiric/tts/v1/omnivoice.proto
+syntax = "proto3";
+
+package sentiric.tts.v1;
+
+option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/tts/v1;ttsv1";
+
+service TtsOmnivoiceService {
+  rpc OmnivoiceSynthesize(OmnivoiceSynthesizeRequest) returns (OmnivoiceSynthesizeResponse);
+  rpc OmnivoiceSynthesizeStream(OmnivoiceSynthesizeStreamRequest) returns (stream OmnivoiceSynthesizeStreamResponse);
+}
+
+// --- Unary Messages ---
+message OmnivoiceSynthesizeRequest {
+  string text = 1;
+  string language_code = 2;
+  
+  // Modelin üretimi için referans ses (Klonlama)
+  optional bytes reference_audio = 3;
+  
+  //[OMNIVOICE ÖZEL YETENEK]: Metin ile ses tasarımı!
+  // Örn: "female, low pitch, warm, british accent"
+  optional string voice_guidance_prompt = 4;
+  
+  float temperature = 5;
+  float speed = 6;
+  string output_format = 7;
+  int32 sample_rate = 8;
+}
+
+message OmnivoiceSynthesizeResponse {
+  bytes audio_content = 1;
+}
+
+// --- Stream Messages ---
+message OmnivoiceSynthesizeStreamRequest {
+  string text = 1;
+  string language_code = 2;
+  
+  optional bytes reference_audio = 3;
+  optional string voice_guidance_prompt = 4;
+  
+  float temperature = 5;
+  float speed = 6;
+  string output_format = 7;
+  int32 sample_rate = 8;
+}
+
+message OmnivoiceSynthesizeStreamResponse {
+  bytes audio_chunk = 1;
+  bool is_final = 2;
+}
