@@ -40,7 +40,6 @@ pub mod stream_session_response {
         ClearAudioBuffer(bool),
     }
 }
-/// \[YENİ\]: UI için kelime bazlı animasyon (Karaoke) ve Güven Haritası
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct WordData {
     #[prost(string, tag="1")]
@@ -64,7 +63,6 @@ pub struct TranscriptEvent {
     pub emotion: ::prost::alloc::string::String,
     #[prost(string, tag="5")]
     pub gender: ::prost::alloc::string::String,
-    /// \[ARCH-COMPLIANCE FIX\]: Zengin Analiz Verileri (Frontend İçin)
     #[prost(float, tag="6")]
     pub arousal: f32,
     #[prost(float, tag="7")]
@@ -99,6 +97,11 @@ pub struct SessionConfig {
     /// Sadece Yazışma Modu (Omni-Chat) - STT ve TTS Bypass edilir.
     #[prost(bool, tag="9")]
     pub chat_only_mode: bool,
+    /// \[ARCH-COMPLIANCE FIX\]: SDK'nın özelleştirme yeteneği eklendi
+    #[prost(string, tag="10")]
+    pub system_prompt_id: ::prost::alloc::string::String,
+    #[prost(string, tag="11")]
+    pub tts_voice_id: ::prost::alloc::string::String,
 }
 #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct SessionControl {

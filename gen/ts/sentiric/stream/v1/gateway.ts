@@ -26,7 +26,6 @@ export interface StreamSessionResponse {
   clearAudioBuffer?: boolean | undefined;
 }
 
-/** [YENİ]: UI için kelime bazlı animasyon (Karaoke) ve Güven Haritası */
 export interface WordData {
   word: string;
   start: number;
@@ -40,7 +39,6 @@ export interface TranscriptEvent {
   sender: string;
   emotion: string;
   gender: string;
-  /** [ARCH-COMPLIANCE FIX]: Zengin Analiz Verileri (Frontend İçin) */
   arousal: number;
   valence: number;
   speakerId: string;
@@ -61,6 +59,9 @@ export interface SessionConfig {
   speakOnlyMode: boolean;
   /** Sadece Yazışma Modu (Omni-Chat) - STT ve TTS Bypass edilir. */
   chatOnlyMode: boolean;
+  /** [ARCH-COMPLIANCE FIX]: SDK'nın özelleştirme yeteneği eklendi */
+  systemPromptId: string;
+  ttsVoiceId: string;
 }
 
 export interface SessionControl {
@@ -738,6 +739,8 @@ function createBaseSessionConfig(): SessionConfig {
     listenOnlyMode: false,
     speakOnlyMode: false,
     chatOnlyMode: false,
+    systemPromptId: "",
+    ttsVoiceId: "",
   };
 }
 
@@ -769,6 +772,12 @@ export const SessionConfig: MessageFns<SessionConfig> = {
     }
     if (message.chatOnlyMode !== false) {
       writer.uint32(72).bool(message.chatOnlyMode);
+    }
+    if (message.systemPromptId !== "") {
+      writer.uint32(82).string(message.systemPromptId);
+    }
+    if (message.ttsVoiceId !== "") {
+      writer.uint32(90).string(message.ttsVoiceId);
     }
     return writer;
   },
@@ -852,6 +861,22 @@ export const SessionConfig: MessageFns<SessionConfig> = {
           message.chatOnlyMode = reader.bool();
           continue;
         }
+        case 10: {
+          if (tag !== 82) {
+            break;
+          }
+
+          message.systemPromptId = reader.string();
+          continue;
+        }
+        case 11: {
+          if (tag !== 90) {
+            break;
+          }
+
+          message.ttsVoiceId = reader.string();
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -900,6 +925,16 @@ export const SessionConfig: MessageFns<SessionConfig> = {
         : isSet(object.chat_only_mode)
         ? globalThis.Boolean(object.chat_only_mode)
         : false,
+      systemPromptId: isSet(object.systemPromptId)
+        ? globalThis.String(object.systemPromptId)
+        : isSet(object.system_prompt_id)
+        ? globalThis.String(object.system_prompt_id)
+        : "",
+      ttsVoiceId: isSet(object.ttsVoiceId)
+        ? globalThis.String(object.ttsVoiceId)
+        : isSet(object.tts_voice_id)
+        ? globalThis.String(object.tts_voice_id)
+        : "",
     };
   },
 
@@ -932,6 +967,12 @@ export const SessionConfig: MessageFns<SessionConfig> = {
     if (message.chatOnlyMode !== false) {
       obj.chatOnlyMode = message.chatOnlyMode;
     }
+    if (message.systemPromptId !== "") {
+      obj.systemPromptId = message.systemPromptId;
+    }
+    if (message.ttsVoiceId !== "") {
+      obj.ttsVoiceId = message.ttsVoiceId;
+    }
     return obj;
   },
 
@@ -949,6 +990,8 @@ export const SessionConfig: MessageFns<SessionConfig> = {
     message.listenOnlyMode = object.listenOnlyMode ?? false;
     message.speakOnlyMode = object.speakOnlyMode ?? false;
     message.chatOnlyMode = object.chatOnlyMode ?? false;
+    message.systemPromptId = object.systemPromptId ?? "";
+    message.ttsVoiceId = object.ttsVoiceId ?? "";
     return message;
   },
 };

@@ -1212,6 +1212,8 @@ class SessionConfig final :
     kLanguageFieldNumber = 2,
     kTraceIdFieldNumber = 5,
     kSessionIdFieldNumber = 6,
+    kSystemPromptIdFieldNumber = 10,
+    kTtsVoiceIdFieldNumber = 11,
     kSampleRateFieldNumber = 3,
     kEdgeModeFieldNumber = 4,
     kListenOnlyModeFieldNumber = 7,
@@ -1274,6 +1276,34 @@ class SessionConfig final :
   std::string* _internal_mutable_session_id();
   public:
 
+  // string system_prompt_id = 10;
+  void clear_system_prompt_id();
+  const std::string& system_prompt_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_system_prompt_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_system_prompt_id();
+  PROTOBUF_NODISCARD std::string* release_system_prompt_id();
+  void set_allocated_system_prompt_id(std::string* system_prompt_id);
+  private:
+  const std::string& _internal_system_prompt_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_system_prompt_id(const std::string& value);
+  std::string* _internal_mutable_system_prompt_id();
+  public:
+
+  // string tts_voice_id = 11;
+  void clear_tts_voice_id();
+  const std::string& tts_voice_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_tts_voice_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_tts_voice_id();
+  PROTOBUF_NODISCARD std::string* release_tts_voice_id();
+  void set_allocated_tts_voice_id(std::string* tts_voice_id);
+  private:
+  const std::string& _internal_tts_voice_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_tts_voice_id(const std::string& value);
+  std::string* _internal_mutable_tts_voice_id();
+  public:
+
   // uint32 sample_rate = 3;
   void clear_sample_rate();
   uint32_t sample_rate() const;
@@ -1331,6 +1361,8 @@ class SessionConfig final :
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr language_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr trace_id_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr session_id_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr system_prompt_id_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr tts_voice_id_;
     uint32_t sample_rate_;
     bool edge_mode_;
     bool listen_only_mode_;
@@ -3018,6 +3050,106 @@ inline void SessionConfig::_internal_set_chat_only_mode(bool value) {
 inline void SessionConfig::set_chat_only_mode(bool value) {
   _internal_set_chat_only_mode(value);
   // @@protoc_insertion_point(field_set:sentiric.stream.v1.SessionConfig.chat_only_mode)
+}
+
+// string system_prompt_id = 10;
+inline void SessionConfig::clear_system_prompt_id() {
+  _impl_.system_prompt_id_.ClearToEmpty();
+}
+inline const std::string& SessionConfig::system_prompt_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.stream.v1.SessionConfig.system_prompt_id)
+  return _internal_system_prompt_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SessionConfig::set_system_prompt_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.system_prompt_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.stream.v1.SessionConfig.system_prompt_id)
+}
+inline std::string* SessionConfig::mutable_system_prompt_id() {
+  std::string* _s = _internal_mutable_system_prompt_id();
+  // @@protoc_insertion_point(field_mutable:sentiric.stream.v1.SessionConfig.system_prompt_id)
+  return _s;
+}
+inline const std::string& SessionConfig::_internal_system_prompt_id() const {
+  return _impl_.system_prompt_id_.Get();
+}
+inline void SessionConfig::_internal_set_system_prompt_id(const std::string& value) {
+  
+  _impl_.system_prompt_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SessionConfig::_internal_mutable_system_prompt_id() {
+  
+  return _impl_.system_prompt_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SessionConfig::release_system_prompt_id() {
+  // @@protoc_insertion_point(field_release:sentiric.stream.v1.SessionConfig.system_prompt_id)
+  return _impl_.system_prompt_id_.Release();
+}
+inline void SessionConfig::set_allocated_system_prompt_id(std::string* system_prompt_id) {
+  if (system_prompt_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.system_prompt_id_.SetAllocated(system_prompt_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.system_prompt_id_.IsDefault()) {
+    _impl_.system_prompt_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.stream.v1.SessionConfig.system_prompt_id)
+}
+
+// string tts_voice_id = 11;
+inline void SessionConfig::clear_tts_voice_id() {
+  _impl_.tts_voice_id_.ClearToEmpty();
+}
+inline const std::string& SessionConfig::tts_voice_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.stream.v1.SessionConfig.tts_voice_id)
+  return _internal_tts_voice_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SessionConfig::set_tts_voice_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.tts_voice_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.stream.v1.SessionConfig.tts_voice_id)
+}
+inline std::string* SessionConfig::mutable_tts_voice_id() {
+  std::string* _s = _internal_mutable_tts_voice_id();
+  // @@protoc_insertion_point(field_mutable:sentiric.stream.v1.SessionConfig.tts_voice_id)
+  return _s;
+}
+inline const std::string& SessionConfig::_internal_tts_voice_id() const {
+  return _impl_.tts_voice_id_.Get();
+}
+inline void SessionConfig::_internal_set_tts_voice_id(const std::string& value) {
+  
+  _impl_.tts_voice_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SessionConfig::_internal_mutable_tts_voice_id() {
+  
+  return _impl_.tts_voice_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SessionConfig::release_tts_voice_id() {
+  // @@protoc_insertion_point(field_release:sentiric.stream.v1.SessionConfig.tts_voice_id)
+  return _impl_.tts_voice_id_.Release();
+}
+inline void SessionConfig::set_allocated_tts_voice_id(std::string* tts_voice_id) {
+  if (tts_voice_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.tts_voice_id_.SetAllocated(tts_voice_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.tts_voice_id_.IsDefault()) {
+    _impl_.tts_voice_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.stream.v1.SessionConfig.tts_voice_id)
 }
 
 // -------------------------------------------------------------------

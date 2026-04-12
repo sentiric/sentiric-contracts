@@ -1604,7 +1604,9 @@ traceId: jspb.Message.getFieldWithDefault(msg, 5, ""),
 sessionId: jspb.Message.getFieldWithDefault(msg, 6, ""),
 listenOnlyMode: jspb.Message.getBooleanFieldWithDefault(msg, 7, false),
 speakOnlyMode: jspb.Message.getBooleanFieldWithDefault(msg, 8, false),
-chatOnlyMode: jspb.Message.getBooleanFieldWithDefault(msg, 9, false)
+chatOnlyMode: jspb.Message.getBooleanFieldWithDefault(msg, 9, false),
+systemPromptId: jspb.Message.getFieldWithDefault(msg, 10, ""),
+ttsVoiceId: jspb.Message.getFieldWithDefault(msg, 11, "")
   };
 
   if (includeInstance) {
@@ -1676,6 +1678,14 @@ proto.sentiric.stream.v1.SessionConfig.deserializeBinaryFromReader = function(ms
     case 9:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setChatOnlyMode(value);
+      break;
+    case 10:
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
+      msg.setSystemPromptId(value);
+      break;
+    case 11:
+      var value = /** @type {string} */ (reader.readStringRequireUtf8());
+      msg.setTtsVoiceId(value);
       break;
     default:
       reader.skipField();
@@ -1766,6 +1776,20 @@ proto.sentiric.stream.v1.SessionConfig.serializeBinaryToWriter = function(messag
   if (f) {
     writer.writeBool(
       9,
+      f
+    );
+  }
+  f = message.getSystemPromptId();
+  if (f.length > 0) {
+    writer.writeString(
+      10,
+      f
+    );
+  }
+  f = message.getTtsVoiceId();
+  if (f.length > 0) {
+    writer.writeString(
+      11,
       f
     );
   }
@@ -1931,6 +1955,42 @@ proto.sentiric.stream.v1.SessionConfig.prototype.getChatOnlyMode = function() {
  */
 proto.sentiric.stream.v1.SessionConfig.prototype.setChatOnlyMode = function(value) {
   return jspb.Message.setProto3BooleanField(this, 9, value);
+};
+
+
+/**
+ * optional string system_prompt_id = 10;
+ * @return {string}
+ */
+proto.sentiric.stream.v1.SessionConfig.prototype.getSystemPromptId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 10, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sentiric.stream.v1.SessionConfig} returns this
+ */
+proto.sentiric.stream.v1.SessionConfig.prototype.setSystemPromptId = function(value) {
+  return jspb.Message.setProto3StringField(this, 10, value);
+};
+
+
+/**
+ * optional string tts_voice_id = 11;
+ * @return {string}
+ */
+proto.sentiric.stream.v1.SessionConfig.prototype.getTtsVoiceId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 11, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sentiric.stream.v1.SessionConfig} returns this
+ */
+proto.sentiric.stream.v1.SessionConfig.prototype.setTtsVoiceId = function(value) {
+  return jspb.Message.setProto3StringField(this, 11, value);
 };
 
 

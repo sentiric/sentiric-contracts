@@ -28,7 +28,6 @@ message StreamSessionResponse {
   }
 }
 
-// [YENİ]: UI için kelime bazlı animasyon (Karaoke) ve Güven Haritası
 message WordData {
   string word = 1;
   float start = 2;
@@ -42,8 +41,6 @@ message TranscriptEvent {
   string sender = 3;
   string emotion = 4;
   string gender = 5;
-
-  // [ARCH-COMPLIANCE FIX]: Zengin Analiz Verileri (Frontend İçin)
   float arousal = 6;
   float valence = 7;
   string speaker_id = 8;
@@ -58,7 +55,6 @@ message SessionConfig {
   bool edge_mode = 4;
   string trace_id = 5;
   string session_id = 6;
-
   // Sadece Dinleyen AI Modu (Gözlemci/Analist Modu)
   bool listen_only_mode = 7;
 
@@ -67,6 +63,10 @@ message SessionConfig {
 
   // Sadece Yazışma Modu (Omni-Chat) - STT ve TTS Bypass edilir.
   bool chat_only_mode = 9;
+
+  // [ARCH-COMPLIANCE FIX]: SDK'nın özelleştirme yeteneği eklendi
+  string system_prompt_id = 10;
+  string tts_voice_id = 11;
 }
 
 message SessionControl {

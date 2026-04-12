@@ -95,6 +95,8 @@ PROTOBUF_CONSTEXPR SessionConfig::SessionConfig(
   , /*decltype(_impl_.language_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.trace_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.session_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.system_prompt_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.tts_voice_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.sample_rate_)*/0u
   , /*decltype(_impl_.edge_mode_)*/false
   , /*decltype(_impl_.listen_only_mode_)*/false
@@ -195,6 +197,8 @@ const uint32_t TableStruct_sentiric_2fstream_2fv1_2fgateway_2eproto::offsets[] P
   PROTOBUF_FIELD_OFFSET(::sentiric::stream::v1::SessionConfig, _impl_.listen_only_mode_),
   PROTOBUF_FIELD_OFFSET(::sentiric::stream::v1::SessionConfig, _impl_.speak_only_mode_),
   PROTOBUF_FIELD_OFFSET(::sentiric::stream::v1::SessionConfig, _impl_.chat_only_mode_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::stream::v1::SessionConfig, _impl_.system_prompt_id_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::stream::v1::SessionConfig, _impl_.tts_voice_id_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::sentiric::stream::v1::SessionControl, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -209,7 +213,7 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 23, -1, -1, sizeof(::sentiric::stream::v1::WordData)},
   { 33, -1, -1, sizeof(::sentiric::stream::v1::TranscriptEvent)},
   { 49, -1, -1, sizeof(::sentiric::stream::v1::SessionConfig)},
-  { 64, -1, -1, sizeof(::sentiric::stream::v1::SessionControl)},
+  { 66, -1, -1, sizeof(::sentiric::stream::v1::SessionControl)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -240,26 +244,27 @@ const char descriptor_table_protodef_sentiric_2fstream_2fv1_2fgateway_2eproto[] 
   "\t\022\016\n\006gender\030\005 \001(\t\022\017\n\007arousal\030\006 \001(\002\022\017\n\007va"
   "lence\030\007 \001(\002\022\022\n\nspeaker_id\030\010 \001(\t\022\023\n\013speak"
   "er_vec\030\t \003(\002\022+\n\005words\030\n \003(\0132\034.sentiric.s"
-  "tream.v1.WordData\"\311\001\n\rSessionConfig\022\r\n\005t"
+  "tream.v1.WordData\"\371\001\n\rSessionConfig\022\r\n\005t"
   "oken\030\001 \001(\t\022\020\n\010language\030\002 \001(\t\022\023\n\013sample_r"
   "ate\030\003 \001(\r\022\021\n\tedge_mode\030\004 \001(\010\022\020\n\010trace_id"
   "\030\005 \001(\t\022\022\n\nsession_id\030\006 \001(\t\022\030\n\020listen_onl"
   "y_mode\030\007 \001(\010\022\027\n\017speak_only_mode\030\010 \001(\010\022\026\n"
-  "\016chat_only_mode\030\t \001(\010\"\273\001\n\016SessionControl"
-  "\022;\n\005event\030\001 \001(\0162,.sentiric.stream.v1.Ses"
-  "sionControl.EventType\"l\n\tEventType\022\032\n\026EV"
-  "ENT_TYPE_UNSPECIFIED\020\000\022\030\n\024EVENT_TYPE_INT"
-  "ERRUPT\020\001\022\022\n\016EVENT_TYPE_EOS\020\002\022\025\n\021EVENT_TY"
-  "PE_HANGUP\020\0032\200\001\n\024StreamGatewayService\022h\n\r"
-  "StreamSession\022(.sentiric.stream.v1.Strea"
-  "mSessionRequest\032).sentiric.stream.v1.Str"
-  "eamSessionResponse(\0010\001BKZIgithub.com/sen"
-  "tiric/sentiric-contracts/gen/go/sentiric"
-  "/stream/v1;streamv1b\006proto3"
+  "\016chat_only_mode\030\t \001(\010\022\030\n\020system_prompt_i"
+  "d\030\n \001(\t\022\024\n\014tts_voice_id\030\013 \001(\t\"\273\001\n\016Sessio"
+  "nControl\022;\n\005event\030\001 \001(\0162,.sentiric.strea"
+  "m.v1.SessionControl.EventType\"l\n\tEventTy"
+  "pe\022\032\n\026EVENT_TYPE_UNSPECIFIED\020\000\022\030\n\024EVENT_"
+  "TYPE_INTERRUPT\020\001\022\022\n\016EVENT_TYPE_EOS\020\002\022\025\n\021"
+  "EVENT_TYPE_HANGUP\020\0032\200\001\n\024StreamGatewaySer"
+  "vice\022h\n\rStreamSession\022(.sentiric.stream."
+  "v1.StreamSessionRequest\032).sentiric.strea"
+  "m.v1.StreamSessionResponse(\0010\001BKZIgithub"
+  ".com/sentiric/sentiric-contracts/gen/go/"
+  "sentiric/stream/v1;streamv1b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_sentiric_2fstream_2fv1_2fgateway_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_sentiric_2fstream_2fv1_2fgateway_2eproto = {
-    false, false, 1347, descriptor_table_protodef_sentiric_2fstream_2fv1_2fgateway_2eproto,
+    false, false, 1395, descriptor_table_protodef_sentiric_2fstream_2fv1_2fgateway_2eproto,
     "sentiric/stream/v1/gateway.proto",
     &descriptor_table_sentiric_2fstream_2fv1_2fgateway_2eproto_once, nullptr, 0, 6,
     schemas, file_default_instances, TableStruct_sentiric_2fstream_2fv1_2fgateway_2eproto::offsets,
@@ -1990,6 +1995,8 @@ SessionConfig::SessionConfig(const SessionConfig& from)
     , decltype(_impl_.language_){}
     , decltype(_impl_.trace_id_){}
     , decltype(_impl_.session_id_){}
+    , decltype(_impl_.system_prompt_id_){}
+    , decltype(_impl_.tts_voice_id_){}
     , decltype(_impl_.sample_rate_){}
     , decltype(_impl_.edge_mode_){}
     , decltype(_impl_.listen_only_mode_){}
@@ -2030,6 +2037,22 @@ SessionConfig::SessionConfig(const SessionConfig& from)
     _this->_impl_.session_id_.Set(from._internal_session_id(), 
       _this->GetArenaForAllocation());
   }
+  _impl_.system_prompt_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.system_prompt_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_system_prompt_id().empty()) {
+    _this->_impl_.system_prompt_id_.Set(from._internal_system_prompt_id(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.tts_voice_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.tts_voice_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_tts_voice_id().empty()) {
+    _this->_impl_.tts_voice_id_.Set(from._internal_tts_voice_id(), 
+      _this->GetArenaForAllocation());
+  }
   ::memcpy(&_impl_.sample_rate_, &from._impl_.sample_rate_,
     static_cast<size_t>(reinterpret_cast<char*>(&_impl_.chat_only_mode_) -
     reinterpret_cast<char*>(&_impl_.sample_rate_)) + sizeof(_impl_.chat_only_mode_));
@@ -2045,6 +2068,8 @@ inline void SessionConfig::SharedCtor(
     , decltype(_impl_.language_){}
     , decltype(_impl_.trace_id_){}
     , decltype(_impl_.session_id_){}
+    , decltype(_impl_.system_prompt_id_){}
+    , decltype(_impl_.tts_voice_id_){}
     , decltype(_impl_.sample_rate_){0u}
     , decltype(_impl_.edge_mode_){false}
     , decltype(_impl_.listen_only_mode_){false}
@@ -2068,6 +2093,14 @@ inline void SessionConfig::SharedCtor(
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
     _impl_.session_id_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.system_prompt_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.system_prompt_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.tts_voice_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.tts_voice_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 SessionConfig::~SessionConfig() {
@@ -2085,6 +2118,8 @@ inline void SessionConfig::SharedDtor() {
   _impl_.language_.Destroy();
   _impl_.trace_id_.Destroy();
   _impl_.session_id_.Destroy();
+  _impl_.system_prompt_id_.Destroy();
+  _impl_.tts_voice_id_.Destroy();
 }
 
 void SessionConfig::SetCachedSize(int size) const {
@@ -2101,6 +2136,8 @@ void SessionConfig::Clear() {
   _impl_.language_.ClearToEmpty();
   _impl_.trace_id_.ClearToEmpty();
   _impl_.session_id_.ClearToEmpty();
+  _impl_.system_prompt_id_.ClearToEmpty();
+  _impl_.tts_voice_id_.ClearToEmpty();
   ::memset(&_impl_.sample_rate_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&_impl_.chat_only_mode_) -
       reinterpret_cast<char*>(&_impl_.sample_rate_)) + sizeof(_impl_.chat_only_mode_));
@@ -2190,6 +2227,26 @@ const char* SessionConfig::_InternalParse(const char* ptr, ::_pbi::ParseContext*
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 72)) {
           _impl_.chat_only_mode_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string system_prompt_id = 10;
+      case 10:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 82)) {
+          auto str = _internal_mutable_system_prompt_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.stream.v1.SessionConfig.system_prompt_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string tts_voice_id = 11;
+      case 11:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 90)) {
+          auto str = _internal_mutable_tts_voice_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.stream.v1.SessionConfig.tts_voice_id"));
         } else
           goto handle_unusual;
         continue;
@@ -2292,6 +2349,26 @@ uint8_t* SessionConfig::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteBoolToArray(9, this->_internal_chat_only_mode(), target);
   }
 
+  // string system_prompt_id = 10;
+  if (!this->_internal_system_prompt_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_system_prompt_id().data(), static_cast<int>(this->_internal_system_prompt_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.stream.v1.SessionConfig.system_prompt_id");
+    target = stream->WriteStringMaybeAliased(
+        10, this->_internal_system_prompt_id(), target);
+  }
+
+  // string tts_voice_id = 11;
+  if (!this->_internal_tts_voice_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_tts_voice_id().data(), static_cast<int>(this->_internal_tts_voice_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.stream.v1.SessionConfig.tts_voice_id");
+    target = stream->WriteStringMaybeAliased(
+        11, this->_internal_tts_voice_id(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -2334,6 +2411,20 @@ size_t SessionConfig::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_session_id());
+  }
+
+  // string system_prompt_id = 10;
+  if (!this->_internal_system_prompt_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_system_prompt_id());
+  }
+
+  // string tts_voice_id = 11;
+  if (!this->_internal_tts_voice_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_tts_voice_id());
   }
 
   // uint32 sample_rate = 3;
@@ -2391,6 +2482,12 @@ void SessionConfig::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::
   if (!from._internal_session_id().empty()) {
     _this->_internal_set_session_id(from._internal_session_id());
   }
+  if (!from._internal_system_prompt_id().empty()) {
+    _this->_internal_set_system_prompt_id(from._internal_system_prompt_id());
+  }
+  if (!from._internal_tts_voice_id().empty()) {
+    _this->_internal_set_tts_voice_id(from._internal_tts_voice_id());
+  }
   if (from._internal_sample_rate() != 0) {
     _this->_internal_set_sample_rate(from._internal_sample_rate());
   }
@@ -2440,6 +2537,14 @@ void SessionConfig::InternalSwap(SessionConfig* other) {
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &_impl_.session_id_, lhs_arena,
       &other->_impl_.session_id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.system_prompt_id_, lhs_arena,
+      &other->_impl_.system_prompt_id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.tts_voice_id_, lhs_arena,
+      &other->_impl_.tts_voice_id_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(SessionConfig, _impl_.chat_only_mode_)

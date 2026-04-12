@@ -319,7 +319,6 @@ func (*StreamSessionResponse_Transcript) isStreamSessionResponse_Data() {}
 
 func (*StreamSessionResponse_ClearAudioBuffer) isStreamSessionResponse_Data() {}
 
-// [YENİ]: UI için kelime bazlı animasyon (Karaoke) ve Güven Haritası
 type WordData struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Word          string                 `protobuf:"bytes,1,opt,name=word,proto3" json:"word,omitempty"`
@@ -389,18 +388,17 @@ func (x *WordData) GetProbability() float32 {
 }
 
 type TranscriptEvent struct {
-	state   protoimpl.MessageState `protogen:"open.v1"`
-	Text    string                 `protobuf:"bytes,1,opt,name=text,proto3" json:"text,omitempty"`
-	IsFinal bool                   `protobuf:"varint,2,opt,name=is_final,json=isFinal,proto3" json:"is_final,omitempty"`
-	Sender  string                 `protobuf:"bytes,3,opt,name=sender,proto3" json:"sender,omitempty"`
-	Emotion string                 `protobuf:"bytes,4,opt,name=emotion,proto3" json:"emotion,omitempty"`
-	Gender  string                 `protobuf:"bytes,5,opt,name=gender,proto3" json:"gender,omitempty"`
-	// [ARCH-COMPLIANCE FIX]: Zengin Analiz Verileri (Frontend İçin)
-	Arousal       float32     `protobuf:"fixed32,6,opt,name=arousal,proto3" json:"arousal,omitempty"`
-	Valence       float32     `protobuf:"fixed32,7,opt,name=valence,proto3" json:"valence,omitempty"`
-	SpeakerId     string      `protobuf:"bytes,8,opt,name=speaker_id,json=speakerId,proto3" json:"speaker_id,omitempty"`
-	SpeakerVec    []float32   `protobuf:"fixed32,9,rep,packed,name=speaker_vec,json=speakerVec,proto3" json:"speaker_vec,omitempty"`
-	Words         []*WordData `protobuf:"bytes,10,rep,name=words,proto3" json:"words,omitempty"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Text          string                 `protobuf:"bytes,1,opt,name=text,proto3" json:"text,omitempty"`
+	IsFinal       bool                   `protobuf:"varint,2,opt,name=is_final,json=isFinal,proto3" json:"is_final,omitempty"`
+	Sender        string                 `protobuf:"bytes,3,opt,name=sender,proto3" json:"sender,omitempty"`
+	Emotion       string                 `protobuf:"bytes,4,opt,name=emotion,proto3" json:"emotion,omitempty"`
+	Gender        string                 `protobuf:"bytes,5,opt,name=gender,proto3" json:"gender,omitempty"`
+	Arousal       float32                `protobuf:"fixed32,6,opt,name=arousal,proto3" json:"arousal,omitempty"`
+	Valence       float32                `protobuf:"fixed32,7,opt,name=valence,proto3" json:"valence,omitempty"`
+	SpeakerId     string                 `protobuf:"bytes,8,opt,name=speaker_id,json=speakerId,proto3" json:"speaker_id,omitempty"`
+	SpeakerVec    []float32              `protobuf:"fixed32,9,rep,packed,name=speaker_vec,json=speakerVec,proto3" json:"speaker_vec,omitempty"`
+	Words         []*WordData            `protobuf:"bytes,10,rep,name=words,proto3" json:"words,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -518,9 +516,12 @@ type SessionConfig struct {
 	// Sadece Konuşan Mod (Megafon/Broadcast Modu) - Dialog/STT Bypass edilir.
 	SpeakOnlyMode bool `protobuf:"varint,8,opt,name=speak_only_mode,json=speakOnlyMode,proto3" json:"speak_only_mode,omitempty"`
 	// Sadece Yazışma Modu (Omni-Chat) - STT ve TTS Bypass edilir.
-	ChatOnlyMode  bool `protobuf:"varint,9,opt,name=chat_only_mode,json=chatOnlyMode,proto3" json:"chat_only_mode,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	ChatOnlyMode bool `protobuf:"varint,9,opt,name=chat_only_mode,json=chatOnlyMode,proto3" json:"chat_only_mode,omitempty"`
+	// [ARCH-COMPLIANCE FIX]: SDK'nın özelleştirme yeteneği eklendi
+	SystemPromptId string `protobuf:"bytes,10,opt,name=system_prompt_id,json=systemPromptId,proto3" json:"system_prompt_id,omitempty"`
+	TtsVoiceId     string `protobuf:"bytes,11,opt,name=tts_voice_id,json=ttsVoiceId,proto3" json:"tts_voice_id,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *SessionConfig) Reset() {
@@ -616,6 +617,20 @@ func (x *SessionConfig) GetChatOnlyMode() bool {
 	return false
 }
 
+func (x *SessionConfig) GetSystemPromptId() string {
+	if x != nil {
+		return x.SystemPromptId
+	}
+	return ""
+}
+
+func (x *SessionConfig) GetTtsVoiceId() string {
+	if x != nil {
+		return x.TtsVoiceId
+	}
+	return ""
+}
+
 type SessionControl struct {
 	state         protoimpl.MessageState   `protogen:"open.v1"`
 	Event         SessionControl_EventType `protobuf:"varint,1,opt,name=event,proto3,enum=sentiric.stream.v1.SessionControl_EventType" json:"event,omitempty"`
@@ -699,7 +714,7 @@ const file_sentiric_stream_v1_gateway_proto_rawDesc = "" +
 	"\vspeaker_vec\x18\t \x03(\x02R\n" +
 	"speakerVec\x122\n" +
 	"\x05words\x18\n" +
-	" \x03(\v2\x1c.sentiric.stream.v1.WordDataR\x05words\"\xb1\x02\n" +
+	" \x03(\v2\x1c.sentiric.stream.v1.WordDataR\x05words\"\xfd\x02\n" +
 	"\rSessionConfig\x12\x14\n" +
 	"\x05token\x18\x01 \x01(\tR\x05token\x12\x1a\n" +
 	"\blanguage\x18\x02 \x01(\tR\blanguage\x12\x1f\n" +
@@ -711,7 +726,11 @@ const file_sentiric_stream_v1_gateway_proto_rawDesc = "" +
 	"session_id\x18\x06 \x01(\tR\tsessionId\x12(\n" +
 	"\x10listen_only_mode\x18\a \x01(\bR\x0elistenOnlyMode\x12&\n" +
 	"\x0fspeak_only_mode\x18\b \x01(\bR\rspeakOnlyMode\x12$\n" +
-	"\x0echat_only_mode\x18\t \x01(\bR\fchatOnlyMode\"\xc2\x01\n" +
+	"\x0echat_only_mode\x18\t \x01(\bR\fchatOnlyMode\x12(\n" +
+	"\x10system_prompt_id\x18\n" +
+	" \x01(\tR\x0esystemPromptId\x12 \n" +
+	"\ftts_voice_id\x18\v \x01(\tR\n" +
+	"ttsVoiceId\"\xc2\x01\n" +
 	"\x0eSessionControl\x12B\n" +
 	"\x05event\x18\x01 \x01(\x0e2,.sentiric.stream.v1.SessionControl.EventTypeR\x05event\"l\n" +
 	"\tEventType\x12\x1a\n" +
