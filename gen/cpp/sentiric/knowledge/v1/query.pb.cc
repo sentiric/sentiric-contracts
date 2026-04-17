@@ -78,10 +78,117 @@ struct QueryResultDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 QueryResultDefaultTypeInternal _QueryResult_default_instance_;
+PROTOBUF_CONSTEXPR UserMemoryPayload_BioAnchor::UserMemoryPayload_BioAnchor(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.bio_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.confidence_)*/0
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct UserMemoryPayload_BioAnchorDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UserMemoryPayload_BioAnchorDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UserMemoryPayload_BioAnchorDefaultTypeInternal() {}
+  union {
+    UserMemoryPayload_BioAnchor _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserMemoryPayload_BioAnchorDefaultTypeInternal _UserMemoryPayload_BioAnchor_default_instance_;
+PROTOBUF_CONSTEXPR UserMemoryPayload_Resonance::UserMemoryPayload_Resonance(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.mode_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.confidence_)*/0
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct UserMemoryPayload_ResonanceDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UserMemoryPayload_ResonanceDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UserMemoryPayload_ResonanceDefaultTypeInternal() {}
+  union {
+    UserMemoryPayload_Resonance _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserMemoryPayload_ResonanceDefaultTypeInternal _UserMemoryPayload_Resonance_default_instance_;
+PROTOBUF_CONSTEXPR UserMemoryPayload_Fact::UserMemoryPayload_Fact(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.metadata_)*/{}
+  , /*decltype(_impl_.category_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.summary_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.importance_)*/0
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct UserMemoryPayload_FactDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UserMemoryPayload_FactDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UserMemoryPayload_FactDefaultTypeInternal() {}
+  union {
+    UserMemoryPayload_Fact _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserMemoryPayload_FactDefaultTypeInternal _UserMemoryPayload_Fact_default_instance_;
+PROTOBUF_CONSTEXPR UserMemoryPayload_Lifecycle::UserMemoryPayload_Lifecycle(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.trace_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.created_at_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.last_accessed_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.decay_score_)*/0
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct UserMemoryPayload_LifecycleDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UserMemoryPayload_LifecycleDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UserMemoryPayload_LifecycleDefaultTypeInternal() {}
+  union {
+    UserMemoryPayload_Lifecycle _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserMemoryPayload_LifecycleDefaultTypeInternal _UserMemoryPayload_Lifecycle_default_instance_;
+PROTOBUF_CONSTEXPR UserMemoryPayload::UserMemoryPayload(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.embedding_version_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.bio_anchor_)*/nullptr
+  , /*decltype(_impl_.resonance_)*/nullptr
+  , /*decltype(_impl_.fact_)*/nullptr
+  , /*decltype(_impl_.lifecycle_)*/nullptr
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct UserMemoryPayloadDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UserMemoryPayloadDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UserMemoryPayloadDefaultTypeInternal() {}
+  union {
+    UserMemoryPayload _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserMemoryPayloadDefaultTypeInternal _UserMemoryPayload_default_instance_;
+PROTOBUF_CONSTEXPR QueryCognitiveMemoryRequest::QueryCognitiveMemoryRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.tenant_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.bio_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.query_text_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.current_resonance_mode_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.top_k_)*/0
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct QueryCognitiveMemoryRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR QueryCognitiveMemoryRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~QueryCognitiveMemoryRequestDefaultTypeInternal() {}
+  union {
+    QueryCognitiveMemoryRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 QueryCognitiveMemoryRequestDefaultTypeInternal _QueryCognitiveMemoryRequest_default_instance_;
+PROTOBUF_CONSTEXPR QueryCognitiveMemoryResponse::QueryCognitiveMemoryResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.memories_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct QueryCognitiveMemoryResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR QueryCognitiveMemoryResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~QueryCognitiveMemoryResponseDefaultTypeInternal() {}
+  union {
+    QueryCognitiveMemoryResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 QueryCognitiveMemoryResponseDefaultTypeInternal _QueryCognitiveMemoryResponse_default_instance_;
 }  // namespace v1
 }  // namespace knowledge
 }  // namespace sentiric
-static ::_pb::Metadata file_level_metadata_sentiric_2fknowledge_2fv1_2fquery_2eproto[4];
+static ::_pb::Metadata file_level_metadata_sentiric_2fknowledge_2fv1_2fquery_2eproto[11];
 static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_sentiric_2fknowledge_2fv1_2fquery_2eproto = nullptr;
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_sentiric_2fknowledge_2fv1_2fquery_2eproto = nullptr;
 
@@ -122,12 +229,84 @@ const uint32_t TableStruct_sentiric_2fknowledge_2fv1_2fquery_2eproto::offsets[] 
   PROTOBUF_FIELD_OFFSET(::sentiric::knowledge::v1::QueryResult, _impl_.score_),
   PROTOBUF_FIELD_OFFSET(::sentiric::knowledge::v1::QueryResult, _impl_.source_),
   PROTOBUF_FIELD_OFFSET(::sentiric::knowledge::v1::QueryResult, _impl_.metadata_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::knowledge::v1::UserMemoryPayload_BioAnchor, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::knowledge::v1::UserMemoryPayload_BioAnchor, _impl_.bio_id_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::knowledge::v1::UserMemoryPayload_BioAnchor, _impl_.confidence_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::knowledge::v1::UserMemoryPayload_Resonance, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::knowledge::v1::UserMemoryPayload_Resonance, _impl_.mode_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::knowledge::v1::UserMemoryPayload_Resonance, _impl_.confidence_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::knowledge::v1::UserMemoryPayload_Fact, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::knowledge::v1::UserMemoryPayload_Fact, _impl_.category_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::knowledge::v1::UserMemoryPayload_Fact, _impl_.importance_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::knowledge::v1::UserMemoryPayload_Fact, _impl_.summary_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::knowledge::v1::UserMemoryPayload_Fact, _impl_.metadata_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle, _impl_.trace_id_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle, _impl_.created_at_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle, _impl_.last_accessed_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle, _impl_.decay_score_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::knowledge::v1::UserMemoryPayload, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::knowledge::v1::UserMemoryPayload, _impl_.bio_anchor_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::knowledge::v1::UserMemoryPayload, _impl_.resonance_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::knowledge::v1::UserMemoryPayload, _impl_.fact_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::knowledge::v1::UserMemoryPayload, _impl_.lifecycle_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::knowledge::v1::UserMemoryPayload, _impl_.embedding_version_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::knowledge::v1::QueryCognitiveMemoryRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::knowledge::v1::QueryCognitiveMemoryRequest, _impl_.tenant_id_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::knowledge::v1::QueryCognitiveMemoryRequest, _impl_.bio_id_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::knowledge::v1::QueryCognitiveMemoryRequest, _impl_.query_text_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::knowledge::v1::QueryCognitiveMemoryRequest, _impl_.current_resonance_mode_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::knowledge::v1::QueryCognitiveMemoryRequest, _impl_.top_k_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::knowledge::v1::QueryCognitiveMemoryResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::knowledge::v1::QueryCognitiveMemoryResponse, _impl_.memories_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::sentiric::knowledge::v1::QueryRequest)},
   { 9, -1, -1, sizeof(::sentiric::knowledge::v1::QueryResponse)},
   { 16, 24, -1, sizeof(::sentiric::knowledge::v1::QueryResult_MetadataEntry_DoNotUse)},
   { 26, -1, -1, sizeof(::sentiric::knowledge::v1::QueryResult)},
+  { 36, -1, -1, sizeof(::sentiric::knowledge::v1::UserMemoryPayload_BioAnchor)},
+  { 44, -1, -1, sizeof(::sentiric::knowledge::v1::UserMemoryPayload_Resonance)},
+  { 52, -1, -1, sizeof(::sentiric::knowledge::v1::UserMemoryPayload_Fact)},
+  { 62, -1, -1, sizeof(::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle)},
+  { 72, -1, -1, sizeof(::sentiric::knowledge::v1::UserMemoryPayload)},
+  { 83, -1, -1, sizeof(::sentiric::knowledge::v1::QueryCognitiveMemoryRequest)},
+  { 94, -1, -1, sizeof(::sentiric::knowledge::v1::QueryCognitiveMemoryResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -135,6 +314,13 @@ static const ::_pb::Message* const file_default_instances[] = {
   &::sentiric::knowledge::v1::_QueryResponse_default_instance_._instance,
   &::sentiric::knowledge::v1::_QueryResult_MetadataEntry_DoNotUse_default_instance_._instance,
   &::sentiric::knowledge::v1::_QueryResult_default_instance_._instance,
+  &::sentiric::knowledge::v1::_UserMemoryPayload_BioAnchor_default_instance_._instance,
+  &::sentiric::knowledge::v1::_UserMemoryPayload_Resonance_default_instance_._instance,
+  &::sentiric::knowledge::v1::_UserMemoryPayload_Fact_default_instance_._instance,
+  &::sentiric::knowledge::v1::_UserMemoryPayload_Lifecycle_default_instance_._instance,
+  &::sentiric::knowledge::v1::_UserMemoryPayload_default_instance_._instance,
+  &::sentiric::knowledge::v1::_QueryCognitiveMemoryRequest_default_instance_._instance,
+  &::sentiric::knowledge::v1::_QueryCognitiveMemoryResponse_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_sentiric_2fknowledge_2fv1_2fquery_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -147,18 +333,38 @@ const char descriptor_table_protodef_sentiric_2fknowledge_2fv1_2fquery_2eproto[]
   "\002\022\016\n\006source\030\003 \001(\t\022B\n\010metadata\030\004 \003(\01320.se"
   "ntiric.knowledge.v1.QueryResult.Metadata"
   "Entry\032/\n\rMetadataEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005v"
-  "alue\030\002 \001(\t:\0028\0012k\n\025KnowledgeQueryService\022"
-  "R\n\005Query\022#.sentiric.knowledge.v1.QueryRe"
-  "quest\032$.sentiric.knowledge.v1.QueryRespo"
-  "nseBQZOgithub.com/sentiric/sentiric-cont"
-  "racts/gen/go/sentiric/knowledge/v1;knowl"
-  "edgev1b\006proto3"
+  "alue\030\002 \001(\t:\0028\001\"\321\004\n\021UserMemoryPayload\022F\n\n"
+  "bio_anchor\030\001 \001(\01322.sentiric.knowledge.v1"
+  ".UserMemoryPayload.BioAnchor\022E\n\tresonanc"
+  "e\030\002 \001(\01322.sentiric.knowledge.v1.UserMemo"
+  "ryPayload.Resonance\022;\n\004fact\030\003 \001(\0132-.sent"
+  "iric.knowledge.v1.UserMemoryPayload.Fact"
+  "\022E\n\tlifecycle\030\004 \001(\01322.sentiric.knowledge"
+  ".v1.UserMemoryPayload.Lifecycle\022\031\n\021embed"
+  "ding_version\030\005 \001(\t\032/\n\tBioAnchor\022\016\n\006bio_i"
+  "d\030\001 \001(\t\022\022\n\nconfidence\030\002 \001(\002\032-\n\tResonance"
+  "\022\014\n\004mode\030\001 \001(\t\022\022\n\nconfidence\030\002 \001(\002\032O\n\004Fa"
+  "ct\022\020\n\010category\030\001 \001(\t\022\022\n\nimportance\030\002 \001(\005"
+  "\022\017\n\007summary\030\003 \001(\t\022\020\n\010metadata\030\004 \003(\t\032]\n\tL"
+  "ifecycle\022\020\n\010trace_id\030\001 \001(\t\022\022\n\ncreated_at"
+  "\030\002 \001(\t\022\025\n\rlast_accessed\030\003 \001(\t\022\023\n\013decay_s"
+  "core\030\004 \001(\002\"\203\001\n\033QueryCognitiveMemoryReque"
+  "st\022\021\n\ttenant_id\030\001 \001(\t\022\016\n\006bio_id\030\002 \001(\t\022\022\n"
+  "\nquery_text\030\003 \001(\t\022\036\n\026current_resonance_m"
+  "ode\030\004 \001(\t\022\r\n\005top_k\030\005 \001(\005\"Z\n\034QueryCogniti"
+  "veMemoryResponse\022:\n\010memories\030\001 \003(\0132(.sen"
+  "tiric.knowledge.v1.UserMemoryPayload2k\n\025"
+  "KnowledgeQueryService\022R\n\005Query\022#.sentiri"
+  "c.knowledge.v1.QueryRequest\032$.sentiric.k"
+  "nowledge.v1.QueryResponseBQZOgithub.com/"
+  "sentiric/sentiric-contracts/gen/go/senti"
+  "ric/knowledge/v1;knowledgev1b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_sentiric_2fknowledge_2fv1_2fquery_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_sentiric_2fknowledge_2fv1_2fquery_2eproto = {
-    false, false, 574, descriptor_table_protodef_sentiric_2fknowledge_2fv1_2fquery_2eproto,
+    false, false, 1396, descriptor_table_protodef_sentiric_2fknowledge_2fv1_2fquery_2eproto,
     "sentiric/knowledge/v1/query.proto",
-    &descriptor_table_sentiric_2fknowledge_2fv1_2fquery_2eproto_once, nullptr, 0, 4,
+    &descriptor_table_sentiric_2fknowledge_2fv1_2fquery_2eproto_once, nullptr, 0, 11,
     schemas, file_default_instances, TableStruct_sentiric_2fknowledge_2fv1_2fquery_2eproto::offsets,
     file_level_metadata_sentiric_2fknowledge_2fv1_2fquery_2eproto, file_level_enum_descriptors_sentiric_2fknowledge_2fv1_2fquery_2eproto,
     file_level_service_descriptors_sentiric_2fknowledge_2fv1_2fquery_2eproto,
@@ -1012,6 +1218,2089 @@ void QueryResult::InternalSwap(QueryResult* other) {
       file_level_metadata_sentiric_2fknowledge_2fv1_2fquery_2eproto[3]);
 }
 
+// ===================================================================
+
+class UserMemoryPayload_BioAnchor::_Internal {
+ public:
+};
+
+UserMemoryPayload_BioAnchor::UserMemoryPayload_BioAnchor(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.knowledge.v1.UserMemoryPayload.BioAnchor)
+}
+UserMemoryPayload_BioAnchor::UserMemoryPayload_BioAnchor(const UserMemoryPayload_BioAnchor& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  UserMemoryPayload_BioAnchor* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.bio_id_){}
+    , decltype(_impl_.confidence_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.bio_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.bio_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_bio_id().empty()) {
+    _this->_impl_.bio_id_.Set(from._internal_bio_id(), 
+      _this->GetArenaForAllocation());
+  }
+  _this->_impl_.confidence_ = from._impl_.confidence_;
+  // @@protoc_insertion_point(copy_constructor:sentiric.knowledge.v1.UserMemoryPayload.BioAnchor)
+}
+
+inline void UserMemoryPayload_BioAnchor::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.bio_id_){}
+    , decltype(_impl_.confidence_){0}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.bio_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.bio_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+UserMemoryPayload_BioAnchor::~UserMemoryPayload_BioAnchor() {
+  // @@protoc_insertion_point(destructor:sentiric.knowledge.v1.UserMemoryPayload.BioAnchor)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void UserMemoryPayload_BioAnchor::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.bio_id_.Destroy();
+}
+
+void UserMemoryPayload_BioAnchor::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void UserMemoryPayload_BioAnchor::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.knowledge.v1.UserMemoryPayload.BioAnchor)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.bio_id_.ClearToEmpty();
+  _impl_.confidence_ = 0;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* UserMemoryPayload_BioAnchor::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string bio_id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_bio_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.knowledge.v1.UserMemoryPayload.BioAnchor.bio_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // float confidence = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 21)) {
+          _impl_.confidence_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* UserMemoryPayload_BioAnchor::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.knowledge.v1.UserMemoryPayload.BioAnchor)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string bio_id = 1;
+  if (!this->_internal_bio_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_bio_id().data(), static_cast<int>(this->_internal_bio_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.knowledge.v1.UserMemoryPayload.BioAnchor.bio_id");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_bio_id(), target);
+  }
+
+  // float confidence = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_confidence = this->_internal_confidence();
+  uint32_t raw_confidence;
+  memcpy(&raw_confidence, &tmp_confidence, sizeof(tmp_confidence));
+  if (raw_confidence != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(2, this->_internal_confidence(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.knowledge.v1.UserMemoryPayload.BioAnchor)
+  return target;
+}
+
+size_t UserMemoryPayload_BioAnchor::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.knowledge.v1.UserMemoryPayload.BioAnchor)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string bio_id = 1;
+  if (!this->_internal_bio_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_bio_id());
+  }
+
+  // float confidence = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_confidence = this->_internal_confidence();
+  uint32_t raw_confidence;
+  memcpy(&raw_confidence, &tmp_confidence, sizeof(tmp_confidence));
+  if (raw_confidence != 0) {
+    total_size += 1 + 4;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UserMemoryPayload_BioAnchor::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    UserMemoryPayload_BioAnchor::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UserMemoryPayload_BioAnchor::GetClassData() const { return &_class_data_; }
+
+
+void UserMemoryPayload_BioAnchor::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<UserMemoryPayload_BioAnchor*>(&to_msg);
+  auto& from = static_cast<const UserMemoryPayload_BioAnchor&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.knowledge.v1.UserMemoryPayload.BioAnchor)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_bio_id().empty()) {
+    _this->_internal_set_bio_id(from._internal_bio_id());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_confidence = from._internal_confidence();
+  uint32_t raw_confidence;
+  memcpy(&raw_confidence, &tmp_confidence, sizeof(tmp_confidence));
+  if (raw_confidence != 0) {
+    _this->_internal_set_confidence(from._internal_confidence());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void UserMemoryPayload_BioAnchor::CopyFrom(const UserMemoryPayload_BioAnchor& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.knowledge.v1.UserMemoryPayload.BioAnchor)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool UserMemoryPayload_BioAnchor::IsInitialized() const {
+  return true;
+}
+
+void UserMemoryPayload_BioAnchor::InternalSwap(UserMemoryPayload_BioAnchor* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.bio_id_, lhs_arena,
+      &other->_impl_.bio_id_, rhs_arena
+  );
+  swap(_impl_.confidence_, other->_impl_.confidence_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata UserMemoryPayload_BioAnchor::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fknowledge_2fv1_2fquery_2eproto_getter, &descriptor_table_sentiric_2fknowledge_2fv1_2fquery_2eproto_once,
+      file_level_metadata_sentiric_2fknowledge_2fv1_2fquery_2eproto[4]);
+}
+
+// ===================================================================
+
+class UserMemoryPayload_Resonance::_Internal {
+ public:
+};
+
+UserMemoryPayload_Resonance::UserMemoryPayload_Resonance(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.knowledge.v1.UserMemoryPayload.Resonance)
+}
+UserMemoryPayload_Resonance::UserMemoryPayload_Resonance(const UserMemoryPayload_Resonance& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  UserMemoryPayload_Resonance* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.mode_){}
+    , decltype(_impl_.confidence_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.mode_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.mode_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_mode().empty()) {
+    _this->_impl_.mode_.Set(from._internal_mode(), 
+      _this->GetArenaForAllocation());
+  }
+  _this->_impl_.confidence_ = from._impl_.confidence_;
+  // @@protoc_insertion_point(copy_constructor:sentiric.knowledge.v1.UserMemoryPayload.Resonance)
+}
+
+inline void UserMemoryPayload_Resonance::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.mode_){}
+    , decltype(_impl_.confidence_){0}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.mode_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.mode_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+UserMemoryPayload_Resonance::~UserMemoryPayload_Resonance() {
+  // @@protoc_insertion_point(destructor:sentiric.knowledge.v1.UserMemoryPayload.Resonance)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void UserMemoryPayload_Resonance::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.mode_.Destroy();
+}
+
+void UserMemoryPayload_Resonance::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void UserMemoryPayload_Resonance::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.knowledge.v1.UserMemoryPayload.Resonance)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.mode_.ClearToEmpty();
+  _impl_.confidence_ = 0;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* UserMemoryPayload_Resonance::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string mode = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_mode();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.knowledge.v1.UserMemoryPayload.Resonance.mode"));
+        } else
+          goto handle_unusual;
+        continue;
+      // float confidence = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 21)) {
+          _impl_.confidence_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* UserMemoryPayload_Resonance::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.knowledge.v1.UserMemoryPayload.Resonance)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string mode = 1;
+  if (!this->_internal_mode().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_mode().data(), static_cast<int>(this->_internal_mode().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.knowledge.v1.UserMemoryPayload.Resonance.mode");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_mode(), target);
+  }
+
+  // float confidence = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_confidence = this->_internal_confidence();
+  uint32_t raw_confidence;
+  memcpy(&raw_confidence, &tmp_confidence, sizeof(tmp_confidence));
+  if (raw_confidence != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(2, this->_internal_confidence(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.knowledge.v1.UserMemoryPayload.Resonance)
+  return target;
+}
+
+size_t UserMemoryPayload_Resonance::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.knowledge.v1.UserMemoryPayload.Resonance)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string mode = 1;
+  if (!this->_internal_mode().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_mode());
+  }
+
+  // float confidence = 2;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_confidence = this->_internal_confidence();
+  uint32_t raw_confidence;
+  memcpy(&raw_confidence, &tmp_confidence, sizeof(tmp_confidence));
+  if (raw_confidence != 0) {
+    total_size += 1 + 4;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UserMemoryPayload_Resonance::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    UserMemoryPayload_Resonance::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UserMemoryPayload_Resonance::GetClassData() const { return &_class_data_; }
+
+
+void UserMemoryPayload_Resonance::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<UserMemoryPayload_Resonance*>(&to_msg);
+  auto& from = static_cast<const UserMemoryPayload_Resonance&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.knowledge.v1.UserMemoryPayload.Resonance)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_mode().empty()) {
+    _this->_internal_set_mode(from._internal_mode());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_confidence = from._internal_confidence();
+  uint32_t raw_confidence;
+  memcpy(&raw_confidence, &tmp_confidence, sizeof(tmp_confidence));
+  if (raw_confidence != 0) {
+    _this->_internal_set_confidence(from._internal_confidence());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void UserMemoryPayload_Resonance::CopyFrom(const UserMemoryPayload_Resonance& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.knowledge.v1.UserMemoryPayload.Resonance)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool UserMemoryPayload_Resonance::IsInitialized() const {
+  return true;
+}
+
+void UserMemoryPayload_Resonance::InternalSwap(UserMemoryPayload_Resonance* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.mode_, lhs_arena,
+      &other->_impl_.mode_, rhs_arena
+  );
+  swap(_impl_.confidence_, other->_impl_.confidence_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata UserMemoryPayload_Resonance::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fknowledge_2fv1_2fquery_2eproto_getter, &descriptor_table_sentiric_2fknowledge_2fv1_2fquery_2eproto_once,
+      file_level_metadata_sentiric_2fknowledge_2fv1_2fquery_2eproto[5]);
+}
+
+// ===================================================================
+
+class UserMemoryPayload_Fact::_Internal {
+ public:
+};
+
+UserMemoryPayload_Fact::UserMemoryPayload_Fact(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.knowledge.v1.UserMemoryPayload.Fact)
+}
+UserMemoryPayload_Fact::UserMemoryPayload_Fact(const UserMemoryPayload_Fact& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  UserMemoryPayload_Fact* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.metadata_){from._impl_.metadata_}
+    , decltype(_impl_.category_){}
+    , decltype(_impl_.summary_){}
+    , decltype(_impl_.importance_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.category_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.category_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_category().empty()) {
+    _this->_impl_.category_.Set(from._internal_category(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.summary_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.summary_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_summary().empty()) {
+    _this->_impl_.summary_.Set(from._internal_summary(), 
+      _this->GetArenaForAllocation());
+  }
+  _this->_impl_.importance_ = from._impl_.importance_;
+  // @@protoc_insertion_point(copy_constructor:sentiric.knowledge.v1.UserMemoryPayload.Fact)
+}
+
+inline void UserMemoryPayload_Fact::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.metadata_){arena}
+    , decltype(_impl_.category_){}
+    , decltype(_impl_.summary_){}
+    , decltype(_impl_.importance_){0}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.category_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.category_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.summary_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.summary_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+UserMemoryPayload_Fact::~UserMemoryPayload_Fact() {
+  // @@protoc_insertion_point(destructor:sentiric.knowledge.v1.UserMemoryPayload.Fact)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void UserMemoryPayload_Fact::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.metadata_.~RepeatedPtrField();
+  _impl_.category_.Destroy();
+  _impl_.summary_.Destroy();
+}
+
+void UserMemoryPayload_Fact::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void UserMemoryPayload_Fact::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.knowledge.v1.UserMemoryPayload.Fact)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.metadata_.Clear();
+  _impl_.category_.ClearToEmpty();
+  _impl_.summary_.ClearToEmpty();
+  _impl_.importance_ = 0;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* UserMemoryPayload_Fact::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string category = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_category();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.knowledge.v1.UserMemoryPayload.Fact.category"));
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 importance = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          _impl_.importance_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string summary = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_summary();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.knowledge.v1.UserMemoryPayload.Fact.summary"));
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated string metadata = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            auto str = _internal_add_metadata();
+            ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+            CHK_(ptr);
+            CHK_(::_pbi::VerifyUTF8(str, "sentiric.knowledge.v1.UserMemoryPayload.Fact.metadata"));
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<34>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* UserMemoryPayload_Fact::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.knowledge.v1.UserMemoryPayload.Fact)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string category = 1;
+  if (!this->_internal_category().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_category().data(), static_cast<int>(this->_internal_category().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.knowledge.v1.UserMemoryPayload.Fact.category");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_category(), target);
+  }
+
+  // int32 importance = 2;
+  if (this->_internal_importance() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(2, this->_internal_importance(), target);
+  }
+
+  // string summary = 3;
+  if (!this->_internal_summary().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_summary().data(), static_cast<int>(this->_internal_summary().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.knowledge.v1.UserMemoryPayload.Fact.summary");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_summary(), target);
+  }
+
+  // repeated string metadata = 4;
+  for (int i = 0, n = this->_internal_metadata_size(); i < n; i++) {
+    const auto& s = this->_internal_metadata(i);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      s.data(), static_cast<int>(s.length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.knowledge.v1.UserMemoryPayload.Fact.metadata");
+    target = stream->WriteString(4, s, target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.knowledge.v1.UserMemoryPayload.Fact)
+  return target;
+}
+
+size_t UserMemoryPayload_Fact::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.knowledge.v1.UserMemoryPayload.Fact)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated string metadata = 4;
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(_impl_.metadata_.size());
+  for (int i = 0, n = _impl_.metadata_.size(); i < n; i++) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      _impl_.metadata_.Get(i));
+  }
+
+  // string category = 1;
+  if (!this->_internal_category().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_category());
+  }
+
+  // string summary = 3;
+  if (!this->_internal_summary().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_summary());
+  }
+
+  // int32 importance = 2;
+  if (this->_internal_importance() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_importance());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UserMemoryPayload_Fact::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    UserMemoryPayload_Fact::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UserMemoryPayload_Fact::GetClassData() const { return &_class_data_; }
+
+
+void UserMemoryPayload_Fact::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<UserMemoryPayload_Fact*>(&to_msg);
+  auto& from = static_cast<const UserMemoryPayload_Fact&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.knowledge.v1.UserMemoryPayload.Fact)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_impl_.metadata_.MergeFrom(from._impl_.metadata_);
+  if (!from._internal_category().empty()) {
+    _this->_internal_set_category(from._internal_category());
+  }
+  if (!from._internal_summary().empty()) {
+    _this->_internal_set_summary(from._internal_summary());
+  }
+  if (from._internal_importance() != 0) {
+    _this->_internal_set_importance(from._internal_importance());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void UserMemoryPayload_Fact::CopyFrom(const UserMemoryPayload_Fact& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.knowledge.v1.UserMemoryPayload.Fact)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool UserMemoryPayload_Fact::IsInitialized() const {
+  return true;
+}
+
+void UserMemoryPayload_Fact::InternalSwap(UserMemoryPayload_Fact* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.metadata_.InternalSwap(&other->_impl_.metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.category_, lhs_arena,
+      &other->_impl_.category_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.summary_, lhs_arena,
+      &other->_impl_.summary_, rhs_arena
+  );
+  swap(_impl_.importance_, other->_impl_.importance_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata UserMemoryPayload_Fact::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fknowledge_2fv1_2fquery_2eproto_getter, &descriptor_table_sentiric_2fknowledge_2fv1_2fquery_2eproto_once,
+      file_level_metadata_sentiric_2fknowledge_2fv1_2fquery_2eproto[6]);
+}
+
+// ===================================================================
+
+class UserMemoryPayload_Lifecycle::_Internal {
+ public:
+};
+
+UserMemoryPayload_Lifecycle::UserMemoryPayload_Lifecycle(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.knowledge.v1.UserMemoryPayload.Lifecycle)
+}
+UserMemoryPayload_Lifecycle::UserMemoryPayload_Lifecycle(const UserMemoryPayload_Lifecycle& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  UserMemoryPayload_Lifecycle* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.trace_id_){}
+    , decltype(_impl_.created_at_){}
+    , decltype(_impl_.last_accessed_){}
+    , decltype(_impl_.decay_score_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.trace_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.trace_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_trace_id().empty()) {
+    _this->_impl_.trace_id_.Set(from._internal_trace_id(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.created_at_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.created_at_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_created_at().empty()) {
+    _this->_impl_.created_at_.Set(from._internal_created_at(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.last_accessed_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.last_accessed_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_last_accessed().empty()) {
+    _this->_impl_.last_accessed_.Set(from._internal_last_accessed(), 
+      _this->GetArenaForAllocation());
+  }
+  _this->_impl_.decay_score_ = from._impl_.decay_score_;
+  // @@protoc_insertion_point(copy_constructor:sentiric.knowledge.v1.UserMemoryPayload.Lifecycle)
+}
+
+inline void UserMemoryPayload_Lifecycle::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.trace_id_){}
+    , decltype(_impl_.created_at_){}
+    , decltype(_impl_.last_accessed_){}
+    , decltype(_impl_.decay_score_){0}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.trace_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.trace_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.created_at_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.created_at_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.last_accessed_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.last_accessed_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+UserMemoryPayload_Lifecycle::~UserMemoryPayload_Lifecycle() {
+  // @@protoc_insertion_point(destructor:sentiric.knowledge.v1.UserMemoryPayload.Lifecycle)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void UserMemoryPayload_Lifecycle::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.trace_id_.Destroy();
+  _impl_.created_at_.Destroy();
+  _impl_.last_accessed_.Destroy();
+}
+
+void UserMemoryPayload_Lifecycle::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void UserMemoryPayload_Lifecycle::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.knowledge.v1.UserMemoryPayload.Lifecycle)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.trace_id_.ClearToEmpty();
+  _impl_.created_at_.ClearToEmpty();
+  _impl_.last_accessed_.ClearToEmpty();
+  _impl_.decay_score_ = 0;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* UserMemoryPayload_Lifecycle::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string trace_id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_trace_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.knowledge.v1.UserMemoryPayload.Lifecycle.trace_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string created_at = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_created_at();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.knowledge.v1.UserMemoryPayload.Lifecycle.created_at"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string last_accessed = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_last_accessed();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.knowledge.v1.UserMemoryPayload.Lifecycle.last_accessed"));
+        } else
+          goto handle_unusual;
+        continue;
+      // float decay_score = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 37)) {
+          _impl_.decay_score_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* UserMemoryPayload_Lifecycle::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.knowledge.v1.UserMemoryPayload.Lifecycle)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string trace_id = 1;
+  if (!this->_internal_trace_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_trace_id().data(), static_cast<int>(this->_internal_trace_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.knowledge.v1.UserMemoryPayload.Lifecycle.trace_id");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_trace_id(), target);
+  }
+
+  // string created_at = 2;
+  if (!this->_internal_created_at().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_created_at().data(), static_cast<int>(this->_internal_created_at().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.knowledge.v1.UserMemoryPayload.Lifecycle.created_at");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_created_at(), target);
+  }
+
+  // string last_accessed = 3;
+  if (!this->_internal_last_accessed().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_last_accessed().data(), static_cast<int>(this->_internal_last_accessed().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.knowledge.v1.UserMemoryPayload.Lifecycle.last_accessed");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_last_accessed(), target);
+  }
+
+  // float decay_score = 4;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_decay_score = this->_internal_decay_score();
+  uint32_t raw_decay_score;
+  memcpy(&raw_decay_score, &tmp_decay_score, sizeof(tmp_decay_score));
+  if (raw_decay_score != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(4, this->_internal_decay_score(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.knowledge.v1.UserMemoryPayload.Lifecycle)
+  return target;
+}
+
+size_t UserMemoryPayload_Lifecycle::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.knowledge.v1.UserMemoryPayload.Lifecycle)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string trace_id = 1;
+  if (!this->_internal_trace_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_trace_id());
+  }
+
+  // string created_at = 2;
+  if (!this->_internal_created_at().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_created_at());
+  }
+
+  // string last_accessed = 3;
+  if (!this->_internal_last_accessed().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_last_accessed());
+  }
+
+  // float decay_score = 4;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_decay_score = this->_internal_decay_score();
+  uint32_t raw_decay_score;
+  memcpy(&raw_decay_score, &tmp_decay_score, sizeof(tmp_decay_score));
+  if (raw_decay_score != 0) {
+    total_size += 1 + 4;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UserMemoryPayload_Lifecycle::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    UserMemoryPayload_Lifecycle::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UserMemoryPayload_Lifecycle::GetClassData() const { return &_class_data_; }
+
+
+void UserMemoryPayload_Lifecycle::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<UserMemoryPayload_Lifecycle*>(&to_msg);
+  auto& from = static_cast<const UserMemoryPayload_Lifecycle&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.knowledge.v1.UserMemoryPayload.Lifecycle)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_trace_id().empty()) {
+    _this->_internal_set_trace_id(from._internal_trace_id());
+  }
+  if (!from._internal_created_at().empty()) {
+    _this->_internal_set_created_at(from._internal_created_at());
+  }
+  if (!from._internal_last_accessed().empty()) {
+    _this->_internal_set_last_accessed(from._internal_last_accessed());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_decay_score = from._internal_decay_score();
+  uint32_t raw_decay_score;
+  memcpy(&raw_decay_score, &tmp_decay_score, sizeof(tmp_decay_score));
+  if (raw_decay_score != 0) {
+    _this->_internal_set_decay_score(from._internal_decay_score());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void UserMemoryPayload_Lifecycle::CopyFrom(const UserMemoryPayload_Lifecycle& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.knowledge.v1.UserMemoryPayload.Lifecycle)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool UserMemoryPayload_Lifecycle::IsInitialized() const {
+  return true;
+}
+
+void UserMemoryPayload_Lifecycle::InternalSwap(UserMemoryPayload_Lifecycle* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.trace_id_, lhs_arena,
+      &other->_impl_.trace_id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.created_at_, lhs_arena,
+      &other->_impl_.created_at_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.last_accessed_, lhs_arena,
+      &other->_impl_.last_accessed_, rhs_arena
+  );
+  swap(_impl_.decay_score_, other->_impl_.decay_score_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata UserMemoryPayload_Lifecycle::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fknowledge_2fv1_2fquery_2eproto_getter, &descriptor_table_sentiric_2fknowledge_2fv1_2fquery_2eproto_once,
+      file_level_metadata_sentiric_2fknowledge_2fv1_2fquery_2eproto[7]);
+}
+
+// ===================================================================
+
+class UserMemoryPayload::_Internal {
+ public:
+  static const ::sentiric::knowledge::v1::UserMemoryPayload_BioAnchor& bio_anchor(const UserMemoryPayload* msg);
+  static const ::sentiric::knowledge::v1::UserMemoryPayload_Resonance& resonance(const UserMemoryPayload* msg);
+  static const ::sentiric::knowledge::v1::UserMemoryPayload_Fact& fact(const UserMemoryPayload* msg);
+  static const ::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle& lifecycle(const UserMemoryPayload* msg);
+};
+
+const ::sentiric::knowledge::v1::UserMemoryPayload_BioAnchor&
+UserMemoryPayload::_Internal::bio_anchor(const UserMemoryPayload* msg) {
+  return *msg->_impl_.bio_anchor_;
+}
+const ::sentiric::knowledge::v1::UserMemoryPayload_Resonance&
+UserMemoryPayload::_Internal::resonance(const UserMemoryPayload* msg) {
+  return *msg->_impl_.resonance_;
+}
+const ::sentiric::knowledge::v1::UserMemoryPayload_Fact&
+UserMemoryPayload::_Internal::fact(const UserMemoryPayload* msg) {
+  return *msg->_impl_.fact_;
+}
+const ::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle&
+UserMemoryPayload::_Internal::lifecycle(const UserMemoryPayload* msg) {
+  return *msg->_impl_.lifecycle_;
+}
+UserMemoryPayload::UserMemoryPayload(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.knowledge.v1.UserMemoryPayload)
+}
+UserMemoryPayload::UserMemoryPayload(const UserMemoryPayload& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  UserMemoryPayload* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.embedding_version_){}
+    , decltype(_impl_.bio_anchor_){nullptr}
+    , decltype(_impl_.resonance_){nullptr}
+    , decltype(_impl_.fact_){nullptr}
+    , decltype(_impl_.lifecycle_){nullptr}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.embedding_version_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.embedding_version_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_embedding_version().empty()) {
+    _this->_impl_.embedding_version_.Set(from._internal_embedding_version(), 
+      _this->GetArenaForAllocation());
+  }
+  if (from._internal_has_bio_anchor()) {
+    _this->_impl_.bio_anchor_ = new ::sentiric::knowledge::v1::UserMemoryPayload_BioAnchor(*from._impl_.bio_anchor_);
+  }
+  if (from._internal_has_resonance()) {
+    _this->_impl_.resonance_ = new ::sentiric::knowledge::v1::UserMemoryPayload_Resonance(*from._impl_.resonance_);
+  }
+  if (from._internal_has_fact()) {
+    _this->_impl_.fact_ = new ::sentiric::knowledge::v1::UserMemoryPayload_Fact(*from._impl_.fact_);
+  }
+  if (from._internal_has_lifecycle()) {
+    _this->_impl_.lifecycle_ = new ::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle(*from._impl_.lifecycle_);
+  }
+  // @@protoc_insertion_point(copy_constructor:sentiric.knowledge.v1.UserMemoryPayload)
+}
+
+inline void UserMemoryPayload::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.embedding_version_){}
+    , decltype(_impl_.bio_anchor_){nullptr}
+    , decltype(_impl_.resonance_){nullptr}
+    , decltype(_impl_.fact_){nullptr}
+    , decltype(_impl_.lifecycle_){nullptr}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.embedding_version_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.embedding_version_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+UserMemoryPayload::~UserMemoryPayload() {
+  // @@protoc_insertion_point(destructor:sentiric.knowledge.v1.UserMemoryPayload)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void UserMemoryPayload::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.embedding_version_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.bio_anchor_;
+  if (this != internal_default_instance()) delete _impl_.resonance_;
+  if (this != internal_default_instance()) delete _impl_.fact_;
+  if (this != internal_default_instance()) delete _impl_.lifecycle_;
+}
+
+void UserMemoryPayload::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void UserMemoryPayload::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.knowledge.v1.UserMemoryPayload)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.embedding_version_.ClearToEmpty();
+  if (GetArenaForAllocation() == nullptr && _impl_.bio_anchor_ != nullptr) {
+    delete _impl_.bio_anchor_;
+  }
+  _impl_.bio_anchor_ = nullptr;
+  if (GetArenaForAllocation() == nullptr && _impl_.resonance_ != nullptr) {
+    delete _impl_.resonance_;
+  }
+  _impl_.resonance_ = nullptr;
+  if (GetArenaForAllocation() == nullptr && _impl_.fact_ != nullptr) {
+    delete _impl_.fact_;
+  }
+  _impl_.fact_ = nullptr;
+  if (GetArenaForAllocation() == nullptr && _impl_.lifecycle_ != nullptr) {
+    delete _impl_.lifecycle_;
+  }
+  _impl_.lifecycle_ = nullptr;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* UserMemoryPayload::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .sentiric.knowledge.v1.UserMemoryPayload.BioAnchor bio_anchor = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_bio_anchor(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .sentiric.knowledge.v1.UserMemoryPayload.Resonance resonance = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          ptr = ctx->ParseMessage(_internal_mutable_resonance(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .sentiric.knowledge.v1.UserMemoryPayload.Fact fact = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          ptr = ctx->ParseMessage(_internal_mutable_fact(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .sentiric.knowledge.v1.UserMemoryPayload.Lifecycle lifecycle = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          ptr = ctx->ParseMessage(_internal_mutable_lifecycle(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string embedding_version = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
+          auto str = _internal_mutable_embedding_version();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.knowledge.v1.UserMemoryPayload.embedding_version"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* UserMemoryPayload::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.knowledge.v1.UserMemoryPayload)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .sentiric.knowledge.v1.UserMemoryPayload.BioAnchor bio_anchor = 1;
+  if (this->_internal_has_bio_anchor()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::bio_anchor(this),
+        _Internal::bio_anchor(this).GetCachedSize(), target, stream);
+  }
+
+  // .sentiric.knowledge.v1.UserMemoryPayload.Resonance resonance = 2;
+  if (this->_internal_has_resonance()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(2, _Internal::resonance(this),
+        _Internal::resonance(this).GetCachedSize(), target, stream);
+  }
+
+  // .sentiric.knowledge.v1.UserMemoryPayload.Fact fact = 3;
+  if (this->_internal_has_fact()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(3, _Internal::fact(this),
+        _Internal::fact(this).GetCachedSize(), target, stream);
+  }
+
+  // .sentiric.knowledge.v1.UserMemoryPayload.Lifecycle lifecycle = 4;
+  if (this->_internal_has_lifecycle()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(4, _Internal::lifecycle(this),
+        _Internal::lifecycle(this).GetCachedSize(), target, stream);
+  }
+
+  // string embedding_version = 5;
+  if (!this->_internal_embedding_version().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_embedding_version().data(), static_cast<int>(this->_internal_embedding_version().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.knowledge.v1.UserMemoryPayload.embedding_version");
+    target = stream->WriteStringMaybeAliased(
+        5, this->_internal_embedding_version(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.knowledge.v1.UserMemoryPayload)
+  return target;
+}
+
+size_t UserMemoryPayload::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.knowledge.v1.UserMemoryPayload)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string embedding_version = 5;
+  if (!this->_internal_embedding_version().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_embedding_version());
+  }
+
+  // .sentiric.knowledge.v1.UserMemoryPayload.BioAnchor bio_anchor = 1;
+  if (this->_internal_has_bio_anchor()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.bio_anchor_);
+  }
+
+  // .sentiric.knowledge.v1.UserMemoryPayload.Resonance resonance = 2;
+  if (this->_internal_has_resonance()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.resonance_);
+  }
+
+  // .sentiric.knowledge.v1.UserMemoryPayload.Fact fact = 3;
+  if (this->_internal_has_fact()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.fact_);
+  }
+
+  // .sentiric.knowledge.v1.UserMemoryPayload.Lifecycle lifecycle = 4;
+  if (this->_internal_has_lifecycle()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.lifecycle_);
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UserMemoryPayload::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    UserMemoryPayload::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UserMemoryPayload::GetClassData() const { return &_class_data_; }
+
+
+void UserMemoryPayload::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<UserMemoryPayload*>(&to_msg);
+  auto& from = static_cast<const UserMemoryPayload&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.knowledge.v1.UserMemoryPayload)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_embedding_version().empty()) {
+    _this->_internal_set_embedding_version(from._internal_embedding_version());
+  }
+  if (from._internal_has_bio_anchor()) {
+    _this->_internal_mutable_bio_anchor()->::sentiric::knowledge::v1::UserMemoryPayload_BioAnchor::MergeFrom(
+        from._internal_bio_anchor());
+  }
+  if (from._internal_has_resonance()) {
+    _this->_internal_mutable_resonance()->::sentiric::knowledge::v1::UserMemoryPayload_Resonance::MergeFrom(
+        from._internal_resonance());
+  }
+  if (from._internal_has_fact()) {
+    _this->_internal_mutable_fact()->::sentiric::knowledge::v1::UserMemoryPayload_Fact::MergeFrom(
+        from._internal_fact());
+  }
+  if (from._internal_has_lifecycle()) {
+    _this->_internal_mutable_lifecycle()->::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle::MergeFrom(
+        from._internal_lifecycle());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void UserMemoryPayload::CopyFrom(const UserMemoryPayload& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.knowledge.v1.UserMemoryPayload)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool UserMemoryPayload::IsInitialized() const {
+  return true;
+}
+
+void UserMemoryPayload::InternalSwap(UserMemoryPayload* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.embedding_version_, lhs_arena,
+      &other->_impl_.embedding_version_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(UserMemoryPayload, _impl_.lifecycle_)
+      + sizeof(UserMemoryPayload::_impl_.lifecycle_)
+      - PROTOBUF_FIELD_OFFSET(UserMemoryPayload, _impl_.bio_anchor_)>(
+          reinterpret_cast<char*>(&_impl_.bio_anchor_),
+          reinterpret_cast<char*>(&other->_impl_.bio_anchor_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata UserMemoryPayload::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fknowledge_2fv1_2fquery_2eproto_getter, &descriptor_table_sentiric_2fknowledge_2fv1_2fquery_2eproto_once,
+      file_level_metadata_sentiric_2fknowledge_2fv1_2fquery_2eproto[8]);
+}
+
+// ===================================================================
+
+class QueryCognitiveMemoryRequest::_Internal {
+ public:
+};
+
+QueryCognitiveMemoryRequest::QueryCognitiveMemoryRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.knowledge.v1.QueryCognitiveMemoryRequest)
+}
+QueryCognitiveMemoryRequest::QueryCognitiveMemoryRequest(const QueryCognitiveMemoryRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  QueryCognitiveMemoryRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.tenant_id_){}
+    , decltype(_impl_.bio_id_){}
+    , decltype(_impl_.query_text_){}
+    , decltype(_impl_.current_resonance_mode_){}
+    , decltype(_impl_.top_k_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.tenant_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.tenant_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_tenant_id().empty()) {
+    _this->_impl_.tenant_id_.Set(from._internal_tenant_id(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.bio_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.bio_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_bio_id().empty()) {
+    _this->_impl_.bio_id_.Set(from._internal_bio_id(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.query_text_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.query_text_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_query_text().empty()) {
+    _this->_impl_.query_text_.Set(from._internal_query_text(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.current_resonance_mode_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.current_resonance_mode_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_current_resonance_mode().empty()) {
+    _this->_impl_.current_resonance_mode_.Set(from._internal_current_resonance_mode(), 
+      _this->GetArenaForAllocation());
+  }
+  _this->_impl_.top_k_ = from._impl_.top_k_;
+  // @@protoc_insertion_point(copy_constructor:sentiric.knowledge.v1.QueryCognitiveMemoryRequest)
+}
+
+inline void QueryCognitiveMemoryRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.tenant_id_){}
+    , decltype(_impl_.bio_id_){}
+    , decltype(_impl_.query_text_){}
+    , decltype(_impl_.current_resonance_mode_){}
+    , decltype(_impl_.top_k_){0}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.tenant_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.tenant_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.bio_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.bio_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.query_text_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.query_text_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.current_resonance_mode_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.current_resonance_mode_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+QueryCognitiveMemoryRequest::~QueryCognitiveMemoryRequest() {
+  // @@protoc_insertion_point(destructor:sentiric.knowledge.v1.QueryCognitiveMemoryRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void QueryCognitiveMemoryRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.tenant_id_.Destroy();
+  _impl_.bio_id_.Destroy();
+  _impl_.query_text_.Destroy();
+  _impl_.current_resonance_mode_.Destroy();
+}
+
+void QueryCognitiveMemoryRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void QueryCognitiveMemoryRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.knowledge.v1.QueryCognitiveMemoryRequest)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.tenant_id_.ClearToEmpty();
+  _impl_.bio_id_.ClearToEmpty();
+  _impl_.query_text_.ClearToEmpty();
+  _impl_.current_resonance_mode_.ClearToEmpty();
+  _impl_.top_k_ = 0;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* QueryCognitiveMemoryRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string tenant_id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_tenant_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.knowledge.v1.QueryCognitiveMemoryRequest.tenant_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string bio_id = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_bio_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.knowledge.v1.QueryCognitiveMemoryRequest.bio_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string query_text = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_query_text();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.knowledge.v1.QueryCognitiveMemoryRequest.query_text"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string current_resonance_mode = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          auto str = _internal_mutable_current_resonance_mode();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.knowledge.v1.QueryCognitiveMemoryRequest.current_resonance_mode"));
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 top_k = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
+          _impl_.top_k_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* QueryCognitiveMemoryRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.knowledge.v1.QueryCognitiveMemoryRequest)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string tenant_id = 1;
+  if (!this->_internal_tenant_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_tenant_id().data(), static_cast<int>(this->_internal_tenant_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.knowledge.v1.QueryCognitiveMemoryRequest.tenant_id");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_tenant_id(), target);
+  }
+
+  // string bio_id = 2;
+  if (!this->_internal_bio_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_bio_id().data(), static_cast<int>(this->_internal_bio_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.knowledge.v1.QueryCognitiveMemoryRequest.bio_id");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_bio_id(), target);
+  }
+
+  // string query_text = 3;
+  if (!this->_internal_query_text().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_query_text().data(), static_cast<int>(this->_internal_query_text().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.knowledge.v1.QueryCognitiveMemoryRequest.query_text");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_query_text(), target);
+  }
+
+  // string current_resonance_mode = 4;
+  if (!this->_internal_current_resonance_mode().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_current_resonance_mode().data(), static_cast<int>(this->_internal_current_resonance_mode().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.knowledge.v1.QueryCognitiveMemoryRequest.current_resonance_mode");
+    target = stream->WriteStringMaybeAliased(
+        4, this->_internal_current_resonance_mode(), target);
+  }
+
+  // int32 top_k = 5;
+  if (this->_internal_top_k() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(5, this->_internal_top_k(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.knowledge.v1.QueryCognitiveMemoryRequest)
+  return target;
+}
+
+size_t QueryCognitiveMemoryRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.knowledge.v1.QueryCognitiveMemoryRequest)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string tenant_id = 1;
+  if (!this->_internal_tenant_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_tenant_id());
+  }
+
+  // string bio_id = 2;
+  if (!this->_internal_bio_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_bio_id());
+  }
+
+  // string query_text = 3;
+  if (!this->_internal_query_text().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_query_text());
+  }
+
+  // string current_resonance_mode = 4;
+  if (!this->_internal_current_resonance_mode().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_current_resonance_mode());
+  }
+
+  // int32 top_k = 5;
+  if (this->_internal_top_k() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_top_k());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData QueryCognitiveMemoryRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    QueryCognitiveMemoryRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*QueryCognitiveMemoryRequest::GetClassData() const { return &_class_data_; }
+
+
+void QueryCognitiveMemoryRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<QueryCognitiveMemoryRequest*>(&to_msg);
+  auto& from = static_cast<const QueryCognitiveMemoryRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.knowledge.v1.QueryCognitiveMemoryRequest)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_tenant_id().empty()) {
+    _this->_internal_set_tenant_id(from._internal_tenant_id());
+  }
+  if (!from._internal_bio_id().empty()) {
+    _this->_internal_set_bio_id(from._internal_bio_id());
+  }
+  if (!from._internal_query_text().empty()) {
+    _this->_internal_set_query_text(from._internal_query_text());
+  }
+  if (!from._internal_current_resonance_mode().empty()) {
+    _this->_internal_set_current_resonance_mode(from._internal_current_resonance_mode());
+  }
+  if (from._internal_top_k() != 0) {
+    _this->_internal_set_top_k(from._internal_top_k());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void QueryCognitiveMemoryRequest::CopyFrom(const QueryCognitiveMemoryRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.knowledge.v1.QueryCognitiveMemoryRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool QueryCognitiveMemoryRequest::IsInitialized() const {
+  return true;
+}
+
+void QueryCognitiveMemoryRequest::InternalSwap(QueryCognitiveMemoryRequest* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.tenant_id_, lhs_arena,
+      &other->_impl_.tenant_id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.bio_id_, lhs_arena,
+      &other->_impl_.bio_id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.query_text_, lhs_arena,
+      &other->_impl_.query_text_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.current_resonance_mode_, lhs_arena,
+      &other->_impl_.current_resonance_mode_, rhs_arena
+  );
+  swap(_impl_.top_k_, other->_impl_.top_k_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata QueryCognitiveMemoryRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fknowledge_2fv1_2fquery_2eproto_getter, &descriptor_table_sentiric_2fknowledge_2fv1_2fquery_2eproto_once,
+      file_level_metadata_sentiric_2fknowledge_2fv1_2fquery_2eproto[9]);
+}
+
+// ===================================================================
+
+class QueryCognitiveMemoryResponse::_Internal {
+ public:
+};
+
+QueryCognitiveMemoryResponse::QueryCognitiveMemoryResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.knowledge.v1.QueryCognitiveMemoryResponse)
+}
+QueryCognitiveMemoryResponse::QueryCognitiveMemoryResponse(const QueryCognitiveMemoryResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  QueryCognitiveMemoryResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.memories_){from._impl_.memories_}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:sentiric.knowledge.v1.QueryCognitiveMemoryResponse)
+}
+
+inline void QueryCognitiveMemoryResponse::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.memories_){arena}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+QueryCognitiveMemoryResponse::~QueryCognitiveMemoryResponse() {
+  // @@protoc_insertion_point(destructor:sentiric.knowledge.v1.QueryCognitiveMemoryResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void QueryCognitiveMemoryResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.memories_.~RepeatedPtrField();
+}
+
+void QueryCognitiveMemoryResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void QueryCognitiveMemoryResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.knowledge.v1.QueryCognitiveMemoryResponse)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.memories_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* QueryCognitiveMemoryResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // repeated .sentiric.knowledge.v1.UserMemoryPayload memories = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_memories(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* QueryCognitiveMemoryResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.knowledge.v1.QueryCognitiveMemoryResponse)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated .sentiric.knowledge.v1.UserMemoryPayload memories = 1;
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_memories_size()); i < n; i++) {
+    const auto& repfield = this->_internal_memories(i);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(1, repfield, repfield.GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.knowledge.v1.QueryCognitiveMemoryResponse)
+  return target;
+}
+
+size_t QueryCognitiveMemoryResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.knowledge.v1.QueryCognitiveMemoryResponse)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated .sentiric.knowledge.v1.UserMemoryPayload memories = 1;
+  total_size += 1UL * this->_internal_memories_size();
+  for (const auto& msg : this->_impl_.memories_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData QueryCognitiveMemoryResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    QueryCognitiveMemoryResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*QueryCognitiveMemoryResponse::GetClassData() const { return &_class_data_; }
+
+
+void QueryCognitiveMemoryResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<QueryCognitiveMemoryResponse*>(&to_msg);
+  auto& from = static_cast<const QueryCognitiveMemoryResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.knowledge.v1.QueryCognitiveMemoryResponse)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_impl_.memories_.MergeFrom(from._impl_.memories_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void QueryCognitiveMemoryResponse::CopyFrom(const QueryCognitiveMemoryResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.knowledge.v1.QueryCognitiveMemoryResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool QueryCognitiveMemoryResponse::IsInitialized() const {
+  return true;
+}
+
+void QueryCognitiveMemoryResponse::InternalSwap(QueryCognitiveMemoryResponse* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.memories_.InternalSwap(&other->_impl_.memories_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata QueryCognitiveMemoryResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fknowledge_2fv1_2fquery_2eproto_getter, &descriptor_table_sentiric_2fknowledge_2fv1_2fquery_2eproto_once,
+      file_level_metadata_sentiric_2fknowledge_2fv1_2fquery_2eproto[10]);
+}
+
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace v1
 }  // namespace knowledge
@@ -1032,6 +3321,34 @@ Arena::CreateMaybeMessage< ::sentiric::knowledge::v1::QueryResult_MetadataEntry_
 template<> PROTOBUF_NOINLINE ::sentiric::knowledge::v1::QueryResult*
 Arena::CreateMaybeMessage< ::sentiric::knowledge::v1::QueryResult >(Arena* arena) {
   return Arena::CreateMessageInternal< ::sentiric::knowledge::v1::QueryResult >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::knowledge::v1::UserMemoryPayload_BioAnchor*
+Arena::CreateMaybeMessage< ::sentiric::knowledge::v1::UserMemoryPayload_BioAnchor >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::knowledge::v1::UserMemoryPayload_BioAnchor >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::knowledge::v1::UserMemoryPayload_Resonance*
+Arena::CreateMaybeMessage< ::sentiric::knowledge::v1::UserMemoryPayload_Resonance >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::knowledge::v1::UserMemoryPayload_Resonance >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::knowledge::v1::UserMemoryPayload_Fact*
+Arena::CreateMaybeMessage< ::sentiric::knowledge::v1::UserMemoryPayload_Fact >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::knowledge::v1::UserMemoryPayload_Fact >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle*
+Arena::CreateMaybeMessage< ::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::knowledge::v1::UserMemoryPayload*
+Arena::CreateMaybeMessage< ::sentiric::knowledge::v1::UserMemoryPayload >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::knowledge::v1::UserMemoryPayload >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::knowledge::v1::QueryCognitiveMemoryRequest*
+Arena::CreateMaybeMessage< ::sentiric::knowledge::v1::QueryCognitiveMemoryRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::knowledge::v1::QueryCognitiveMemoryRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::knowledge::v1::QueryCognitiveMemoryResponse*
+Arena::CreateMaybeMessage< ::sentiric::knowledge::v1::QueryCognitiveMemoryResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::knowledge::v1::QueryCognitiveMemoryResponse >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

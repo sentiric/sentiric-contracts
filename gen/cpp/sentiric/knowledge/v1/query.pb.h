@@ -50,6 +50,12 @@ extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table
 namespace sentiric {
 namespace knowledge {
 namespace v1 {
+class QueryCognitiveMemoryRequest;
+struct QueryCognitiveMemoryRequestDefaultTypeInternal;
+extern QueryCognitiveMemoryRequestDefaultTypeInternal _QueryCognitiveMemoryRequest_default_instance_;
+class QueryCognitiveMemoryResponse;
+struct QueryCognitiveMemoryResponseDefaultTypeInternal;
+extern QueryCognitiveMemoryResponseDefaultTypeInternal _QueryCognitiveMemoryResponse_default_instance_;
 class QueryRequest;
 struct QueryRequestDefaultTypeInternal;
 extern QueryRequestDefaultTypeInternal _QueryRequest_default_instance_;
@@ -62,14 +68,36 @@ extern QueryResultDefaultTypeInternal _QueryResult_default_instance_;
 class QueryResult_MetadataEntry_DoNotUse;
 struct QueryResult_MetadataEntry_DoNotUseDefaultTypeInternal;
 extern QueryResult_MetadataEntry_DoNotUseDefaultTypeInternal _QueryResult_MetadataEntry_DoNotUse_default_instance_;
+class UserMemoryPayload;
+struct UserMemoryPayloadDefaultTypeInternal;
+extern UserMemoryPayloadDefaultTypeInternal _UserMemoryPayload_default_instance_;
+class UserMemoryPayload_BioAnchor;
+struct UserMemoryPayload_BioAnchorDefaultTypeInternal;
+extern UserMemoryPayload_BioAnchorDefaultTypeInternal _UserMemoryPayload_BioAnchor_default_instance_;
+class UserMemoryPayload_Fact;
+struct UserMemoryPayload_FactDefaultTypeInternal;
+extern UserMemoryPayload_FactDefaultTypeInternal _UserMemoryPayload_Fact_default_instance_;
+class UserMemoryPayload_Lifecycle;
+struct UserMemoryPayload_LifecycleDefaultTypeInternal;
+extern UserMemoryPayload_LifecycleDefaultTypeInternal _UserMemoryPayload_Lifecycle_default_instance_;
+class UserMemoryPayload_Resonance;
+struct UserMemoryPayload_ResonanceDefaultTypeInternal;
+extern UserMemoryPayload_ResonanceDefaultTypeInternal _UserMemoryPayload_Resonance_default_instance_;
 }  // namespace v1
 }  // namespace knowledge
 }  // namespace sentiric
 PROTOBUF_NAMESPACE_OPEN
+template<> ::sentiric::knowledge::v1::QueryCognitiveMemoryRequest* Arena::CreateMaybeMessage<::sentiric::knowledge::v1::QueryCognitiveMemoryRequest>(Arena*);
+template<> ::sentiric::knowledge::v1::QueryCognitiveMemoryResponse* Arena::CreateMaybeMessage<::sentiric::knowledge::v1::QueryCognitiveMemoryResponse>(Arena*);
 template<> ::sentiric::knowledge::v1::QueryRequest* Arena::CreateMaybeMessage<::sentiric::knowledge::v1::QueryRequest>(Arena*);
 template<> ::sentiric::knowledge::v1::QueryResponse* Arena::CreateMaybeMessage<::sentiric::knowledge::v1::QueryResponse>(Arena*);
 template<> ::sentiric::knowledge::v1::QueryResult* Arena::CreateMaybeMessage<::sentiric::knowledge::v1::QueryResult>(Arena*);
 template<> ::sentiric::knowledge::v1::QueryResult_MetadataEntry_DoNotUse* Arena::CreateMaybeMessage<::sentiric::knowledge::v1::QueryResult_MetadataEntry_DoNotUse>(Arena*);
+template<> ::sentiric::knowledge::v1::UserMemoryPayload* Arena::CreateMaybeMessage<::sentiric::knowledge::v1::UserMemoryPayload>(Arena*);
+template<> ::sentiric::knowledge::v1::UserMemoryPayload_BioAnchor* Arena::CreateMaybeMessage<::sentiric::knowledge::v1::UserMemoryPayload_BioAnchor>(Arena*);
+template<> ::sentiric::knowledge::v1::UserMemoryPayload_Fact* Arena::CreateMaybeMessage<::sentiric::knowledge::v1::UserMemoryPayload_Fact>(Arena*);
+template<> ::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle* Arena::CreateMaybeMessage<::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle>(Arena*);
+template<> ::sentiric::knowledge::v1::UserMemoryPayload_Resonance* Arena::CreateMaybeMessage<::sentiric::knowledge::v1::UserMemoryPayload_Resonance>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace sentiric {
 namespace knowledge {
@@ -646,6 +674,1343 @@ class QueryResult final :
   union { Impl_ _impl_; };
   friend struct ::TableStruct_sentiric_2fknowledge_2fv1_2fquery_2eproto;
 };
+// -------------------------------------------------------------------
+
+class UserMemoryPayload_BioAnchor final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.knowledge.v1.UserMemoryPayload.BioAnchor) */ {
+ public:
+  inline UserMemoryPayload_BioAnchor() : UserMemoryPayload_BioAnchor(nullptr) {}
+  ~UserMemoryPayload_BioAnchor() override;
+  explicit PROTOBUF_CONSTEXPR UserMemoryPayload_BioAnchor(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  UserMemoryPayload_BioAnchor(const UserMemoryPayload_BioAnchor& from);
+  UserMemoryPayload_BioAnchor(UserMemoryPayload_BioAnchor&& from) noexcept
+    : UserMemoryPayload_BioAnchor() {
+    *this = ::std::move(from);
+  }
+
+  inline UserMemoryPayload_BioAnchor& operator=(const UserMemoryPayload_BioAnchor& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline UserMemoryPayload_BioAnchor& operator=(UserMemoryPayload_BioAnchor&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const UserMemoryPayload_BioAnchor& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const UserMemoryPayload_BioAnchor* internal_default_instance() {
+    return reinterpret_cast<const UserMemoryPayload_BioAnchor*>(
+               &_UserMemoryPayload_BioAnchor_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    4;
+
+  friend void swap(UserMemoryPayload_BioAnchor& a, UserMemoryPayload_BioAnchor& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(UserMemoryPayload_BioAnchor* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(UserMemoryPayload_BioAnchor* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  UserMemoryPayload_BioAnchor* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<UserMemoryPayload_BioAnchor>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const UserMemoryPayload_BioAnchor& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const UserMemoryPayload_BioAnchor& from) {
+    UserMemoryPayload_BioAnchor::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(UserMemoryPayload_BioAnchor* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.knowledge.v1.UserMemoryPayload.BioAnchor";
+  }
+  protected:
+  explicit UserMemoryPayload_BioAnchor(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kBioIdFieldNumber = 1,
+    kConfidenceFieldNumber = 2,
+  };
+  // string bio_id = 1;
+  void clear_bio_id();
+  const std::string& bio_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_bio_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_bio_id();
+  PROTOBUF_NODISCARD std::string* release_bio_id();
+  void set_allocated_bio_id(std::string* bio_id);
+  private:
+  const std::string& _internal_bio_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_bio_id(const std::string& value);
+  std::string* _internal_mutable_bio_id();
+  public:
+
+  // float confidence = 2;
+  void clear_confidence();
+  float confidence() const;
+  void set_confidence(float value);
+  private:
+  float _internal_confidence() const;
+  void _internal_set_confidence(float value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.knowledge.v1.UserMemoryPayload.BioAnchor)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr bio_id_;
+    float confidence_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2fknowledge_2fv1_2fquery_2eproto;
+};
+// -------------------------------------------------------------------
+
+class UserMemoryPayload_Resonance final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.knowledge.v1.UserMemoryPayload.Resonance) */ {
+ public:
+  inline UserMemoryPayload_Resonance() : UserMemoryPayload_Resonance(nullptr) {}
+  ~UserMemoryPayload_Resonance() override;
+  explicit PROTOBUF_CONSTEXPR UserMemoryPayload_Resonance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  UserMemoryPayload_Resonance(const UserMemoryPayload_Resonance& from);
+  UserMemoryPayload_Resonance(UserMemoryPayload_Resonance&& from) noexcept
+    : UserMemoryPayload_Resonance() {
+    *this = ::std::move(from);
+  }
+
+  inline UserMemoryPayload_Resonance& operator=(const UserMemoryPayload_Resonance& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline UserMemoryPayload_Resonance& operator=(UserMemoryPayload_Resonance&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const UserMemoryPayload_Resonance& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const UserMemoryPayload_Resonance* internal_default_instance() {
+    return reinterpret_cast<const UserMemoryPayload_Resonance*>(
+               &_UserMemoryPayload_Resonance_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    5;
+
+  friend void swap(UserMemoryPayload_Resonance& a, UserMemoryPayload_Resonance& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(UserMemoryPayload_Resonance* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(UserMemoryPayload_Resonance* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  UserMemoryPayload_Resonance* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<UserMemoryPayload_Resonance>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const UserMemoryPayload_Resonance& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const UserMemoryPayload_Resonance& from) {
+    UserMemoryPayload_Resonance::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(UserMemoryPayload_Resonance* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.knowledge.v1.UserMemoryPayload.Resonance";
+  }
+  protected:
+  explicit UserMemoryPayload_Resonance(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kModeFieldNumber = 1,
+    kConfidenceFieldNumber = 2,
+  };
+  // string mode = 1;
+  void clear_mode();
+  const std::string& mode() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_mode(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_mode();
+  PROTOBUF_NODISCARD std::string* release_mode();
+  void set_allocated_mode(std::string* mode);
+  private:
+  const std::string& _internal_mode() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_mode(const std::string& value);
+  std::string* _internal_mutable_mode();
+  public:
+
+  // float confidence = 2;
+  void clear_confidence();
+  float confidence() const;
+  void set_confidence(float value);
+  private:
+  float _internal_confidence() const;
+  void _internal_set_confidence(float value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.knowledge.v1.UserMemoryPayload.Resonance)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr mode_;
+    float confidence_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2fknowledge_2fv1_2fquery_2eproto;
+};
+// -------------------------------------------------------------------
+
+class UserMemoryPayload_Fact final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.knowledge.v1.UserMemoryPayload.Fact) */ {
+ public:
+  inline UserMemoryPayload_Fact() : UserMemoryPayload_Fact(nullptr) {}
+  ~UserMemoryPayload_Fact() override;
+  explicit PROTOBUF_CONSTEXPR UserMemoryPayload_Fact(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  UserMemoryPayload_Fact(const UserMemoryPayload_Fact& from);
+  UserMemoryPayload_Fact(UserMemoryPayload_Fact&& from) noexcept
+    : UserMemoryPayload_Fact() {
+    *this = ::std::move(from);
+  }
+
+  inline UserMemoryPayload_Fact& operator=(const UserMemoryPayload_Fact& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline UserMemoryPayload_Fact& operator=(UserMemoryPayload_Fact&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const UserMemoryPayload_Fact& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const UserMemoryPayload_Fact* internal_default_instance() {
+    return reinterpret_cast<const UserMemoryPayload_Fact*>(
+               &_UserMemoryPayload_Fact_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    6;
+
+  friend void swap(UserMemoryPayload_Fact& a, UserMemoryPayload_Fact& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(UserMemoryPayload_Fact* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(UserMemoryPayload_Fact* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  UserMemoryPayload_Fact* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<UserMemoryPayload_Fact>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const UserMemoryPayload_Fact& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const UserMemoryPayload_Fact& from) {
+    UserMemoryPayload_Fact::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(UserMemoryPayload_Fact* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.knowledge.v1.UserMemoryPayload.Fact";
+  }
+  protected:
+  explicit UserMemoryPayload_Fact(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kMetadataFieldNumber = 4,
+    kCategoryFieldNumber = 1,
+    kSummaryFieldNumber = 3,
+    kImportanceFieldNumber = 2,
+  };
+  // repeated string metadata = 4;
+  int metadata_size() const;
+  private:
+  int _internal_metadata_size() const;
+  public:
+  void clear_metadata();
+  const std::string& metadata(int index) const;
+  std::string* mutable_metadata(int index);
+  void set_metadata(int index, const std::string& value);
+  void set_metadata(int index, std::string&& value);
+  void set_metadata(int index, const char* value);
+  void set_metadata(int index, const char* value, size_t size);
+  std::string* add_metadata();
+  void add_metadata(const std::string& value);
+  void add_metadata(std::string&& value);
+  void add_metadata(const char* value);
+  void add_metadata(const char* value, size_t size);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& metadata() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_metadata();
+  private:
+  const std::string& _internal_metadata(int index) const;
+  std::string* _internal_add_metadata();
+  public:
+
+  // string category = 1;
+  void clear_category();
+  const std::string& category() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_category(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_category();
+  PROTOBUF_NODISCARD std::string* release_category();
+  void set_allocated_category(std::string* category);
+  private:
+  const std::string& _internal_category() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_category(const std::string& value);
+  std::string* _internal_mutable_category();
+  public:
+
+  // string summary = 3;
+  void clear_summary();
+  const std::string& summary() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_summary(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_summary();
+  PROTOBUF_NODISCARD std::string* release_summary();
+  void set_allocated_summary(std::string* summary);
+  private:
+  const std::string& _internal_summary() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_summary(const std::string& value);
+  std::string* _internal_mutable_summary();
+  public:
+
+  // int32 importance = 2;
+  void clear_importance();
+  int32_t importance() const;
+  void set_importance(int32_t value);
+  private:
+  int32_t _internal_importance() const;
+  void _internal_set_importance(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.knowledge.v1.UserMemoryPayload.Fact)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> metadata_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr category_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr summary_;
+    int32_t importance_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2fknowledge_2fv1_2fquery_2eproto;
+};
+// -------------------------------------------------------------------
+
+class UserMemoryPayload_Lifecycle final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.knowledge.v1.UserMemoryPayload.Lifecycle) */ {
+ public:
+  inline UserMemoryPayload_Lifecycle() : UserMemoryPayload_Lifecycle(nullptr) {}
+  ~UserMemoryPayload_Lifecycle() override;
+  explicit PROTOBUF_CONSTEXPR UserMemoryPayload_Lifecycle(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  UserMemoryPayload_Lifecycle(const UserMemoryPayload_Lifecycle& from);
+  UserMemoryPayload_Lifecycle(UserMemoryPayload_Lifecycle&& from) noexcept
+    : UserMemoryPayload_Lifecycle() {
+    *this = ::std::move(from);
+  }
+
+  inline UserMemoryPayload_Lifecycle& operator=(const UserMemoryPayload_Lifecycle& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline UserMemoryPayload_Lifecycle& operator=(UserMemoryPayload_Lifecycle&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const UserMemoryPayload_Lifecycle& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const UserMemoryPayload_Lifecycle* internal_default_instance() {
+    return reinterpret_cast<const UserMemoryPayload_Lifecycle*>(
+               &_UserMemoryPayload_Lifecycle_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    7;
+
+  friend void swap(UserMemoryPayload_Lifecycle& a, UserMemoryPayload_Lifecycle& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(UserMemoryPayload_Lifecycle* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(UserMemoryPayload_Lifecycle* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  UserMemoryPayload_Lifecycle* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<UserMemoryPayload_Lifecycle>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const UserMemoryPayload_Lifecycle& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const UserMemoryPayload_Lifecycle& from) {
+    UserMemoryPayload_Lifecycle::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(UserMemoryPayload_Lifecycle* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.knowledge.v1.UserMemoryPayload.Lifecycle";
+  }
+  protected:
+  explicit UserMemoryPayload_Lifecycle(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kTraceIdFieldNumber = 1,
+    kCreatedAtFieldNumber = 2,
+    kLastAccessedFieldNumber = 3,
+    kDecayScoreFieldNumber = 4,
+  };
+  // string trace_id = 1;
+  void clear_trace_id();
+  const std::string& trace_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_trace_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_trace_id();
+  PROTOBUF_NODISCARD std::string* release_trace_id();
+  void set_allocated_trace_id(std::string* trace_id);
+  private:
+  const std::string& _internal_trace_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_trace_id(const std::string& value);
+  std::string* _internal_mutable_trace_id();
+  public:
+
+  // string created_at = 2;
+  void clear_created_at();
+  const std::string& created_at() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_created_at(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_created_at();
+  PROTOBUF_NODISCARD std::string* release_created_at();
+  void set_allocated_created_at(std::string* created_at);
+  private:
+  const std::string& _internal_created_at() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_created_at(const std::string& value);
+  std::string* _internal_mutable_created_at();
+  public:
+
+  // string last_accessed = 3;
+  void clear_last_accessed();
+  const std::string& last_accessed() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_last_accessed(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_last_accessed();
+  PROTOBUF_NODISCARD std::string* release_last_accessed();
+  void set_allocated_last_accessed(std::string* last_accessed);
+  private:
+  const std::string& _internal_last_accessed() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_last_accessed(const std::string& value);
+  std::string* _internal_mutable_last_accessed();
+  public:
+
+  // float decay_score = 4;
+  void clear_decay_score();
+  float decay_score() const;
+  void set_decay_score(float value);
+  private:
+  float _internal_decay_score() const;
+  void _internal_set_decay_score(float value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.knowledge.v1.UserMemoryPayload.Lifecycle)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr trace_id_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr created_at_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr last_accessed_;
+    float decay_score_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2fknowledge_2fv1_2fquery_2eproto;
+};
+// -------------------------------------------------------------------
+
+class UserMemoryPayload final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.knowledge.v1.UserMemoryPayload) */ {
+ public:
+  inline UserMemoryPayload() : UserMemoryPayload(nullptr) {}
+  ~UserMemoryPayload() override;
+  explicit PROTOBUF_CONSTEXPR UserMemoryPayload(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  UserMemoryPayload(const UserMemoryPayload& from);
+  UserMemoryPayload(UserMemoryPayload&& from) noexcept
+    : UserMemoryPayload() {
+    *this = ::std::move(from);
+  }
+
+  inline UserMemoryPayload& operator=(const UserMemoryPayload& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline UserMemoryPayload& operator=(UserMemoryPayload&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const UserMemoryPayload& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const UserMemoryPayload* internal_default_instance() {
+    return reinterpret_cast<const UserMemoryPayload*>(
+               &_UserMemoryPayload_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    8;
+
+  friend void swap(UserMemoryPayload& a, UserMemoryPayload& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(UserMemoryPayload* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(UserMemoryPayload* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  UserMemoryPayload* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<UserMemoryPayload>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const UserMemoryPayload& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const UserMemoryPayload& from) {
+    UserMemoryPayload::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(UserMemoryPayload* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.knowledge.v1.UserMemoryPayload";
+  }
+  protected:
+  explicit UserMemoryPayload(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  typedef UserMemoryPayload_BioAnchor BioAnchor;
+  typedef UserMemoryPayload_Resonance Resonance;
+  typedef UserMemoryPayload_Fact Fact;
+  typedef UserMemoryPayload_Lifecycle Lifecycle;
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kEmbeddingVersionFieldNumber = 5,
+    kBioAnchorFieldNumber = 1,
+    kResonanceFieldNumber = 2,
+    kFactFieldNumber = 3,
+    kLifecycleFieldNumber = 4,
+  };
+  // string embedding_version = 5;
+  void clear_embedding_version();
+  const std::string& embedding_version() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_embedding_version(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_embedding_version();
+  PROTOBUF_NODISCARD std::string* release_embedding_version();
+  void set_allocated_embedding_version(std::string* embedding_version);
+  private:
+  const std::string& _internal_embedding_version() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_embedding_version(const std::string& value);
+  std::string* _internal_mutable_embedding_version();
+  public:
+
+  // .sentiric.knowledge.v1.UserMemoryPayload.BioAnchor bio_anchor = 1;
+  bool has_bio_anchor() const;
+  private:
+  bool _internal_has_bio_anchor() const;
+  public:
+  void clear_bio_anchor();
+  const ::sentiric::knowledge::v1::UserMemoryPayload_BioAnchor& bio_anchor() const;
+  PROTOBUF_NODISCARD ::sentiric::knowledge::v1::UserMemoryPayload_BioAnchor* release_bio_anchor();
+  ::sentiric::knowledge::v1::UserMemoryPayload_BioAnchor* mutable_bio_anchor();
+  void set_allocated_bio_anchor(::sentiric::knowledge::v1::UserMemoryPayload_BioAnchor* bio_anchor);
+  private:
+  const ::sentiric::knowledge::v1::UserMemoryPayload_BioAnchor& _internal_bio_anchor() const;
+  ::sentiric::knowledge::v1::UserMemoryPayload_BioAnchor* _internal_mutable_bio_anchor();
+  public:
+  void unsafe_arena_set_allocated_bio_anchor(
+      ::sentiric::knowledge::v1::UserMemoryPayload_BioAnchor* bio_anchor);
+  ::sentiric::knowledge::v1::UserMemoryPayload_BioAnchor* unsafe_arena_release_bio_anchor();
+
+  // .sentiric.knowledge.v1.UserMemoryPayload.Resonance resonance = 2;
+  bool has_resonance() const;
+  private:
+  bool _internal_has_resonance() const;
+  public:
+  void clear_resonance();
+  const ::sentiric::knowledge::v1::UserMemoryPayload_Resonance& resonance() const;
+  PROTOBUF_NODISCARD ::sentiric::knowledge::v1::UserMemoryPayload_Resonance* release_resonance();
+  ::sentiric::knowledge::v1::UserMemoryPayload_Resonance* mutable_resonance();
+  void set_allocated_resonance(::sentiric::knowledge::v1::UserMemoryPayload_Resonance* resonance);
+  private:
+  const ::sentiric::knowledge::v1::UserMemoryPayload_Resonance& _internal_resonance() const;
+  ::sentiric::knowledge::v1::UserMemoryPayload_Resonance* _internal_mutable_resonance();
+  public:
+  void unsafe_arena_set_allocated_resonance(
+      ::sentiric::knowledge::v1::UserMemoryPayload_Resonance* resonance);
+  ::sentiric::knowledge::v1::UserMemoryPayload_Resonance* unsafe_arena_release_resonance();
+
+  // .sentiric.knowledge.v1.UserMemoryPayload.Fact fact = 3;
+  bool has_fact() const;
+  private:
+  bool _internal_has_fact() const;
+  public:
+  void clear_fact();
+  const ::sentiric::knowledge::v1::UserMemoryPayload_Fact& fact() const;
+  PROTOBUF_NODISCARD ::sentiric::knowledge::v1::UserMemoryPayload_Fact* release_fact();
+  ::sentiric::knowledge::v1::UserMemoryPayload_Fact* mutable_fact();
+  void set_allocated_fact(::sentiric::knowledge::v1::UserMemoryPayload_Fact* fact);
+  private:
+  const ::sentiric::knowledge::v1::UserMemoryPayload_Fact& _internal_fact() const;
+  ::sentiric::knowledge::v1::UserMemoryPayload_Fact* _internal_mutable_fact();
+  public:
+  void unsafe_arena_set_allocated_fact(
+      ::sentiric::knowledge::v1::UserMemoryPayload_Fact* fact);
+  ::sentiric::knowledge::v1::UserMemoryPayload_Fact* unsafe_arena_release_fact();
+
+  // .sentiric.knowledge.v1.UserMemoryPayload.Lifecycle lifecycle = 4;
+  bool has_lifecycle() const;
+  private:
+  bool _internal_has_lifecycle() const;
+  public:
+  void clear_lifecycle();
+  const ::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle& lifecycle() const;
+  PROTOBUF_NODISCARD ::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle* release_lifecycle();
+  ::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle* mutable_lifecycle();
+  void set_allocated_lifecycle(::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle* lifecycle);
+  private:
+  const ::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle& _internal_lifecycle() const;
+  ::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle* _internal_mutable_lifecycle();
+  public:
+  void unsafe_arena_set_allocated_lifecycle(
+      ::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle* lifecycle);
+  ::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle* unsafe_arena_release_lifecycle();
+
+  // @@protoc_insertion_point(class_scope:sentiric.knowledge.v1.UserMemoryPayload)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr embedding_version_;
+    ::sentiric::knowledge::v1::UserMemoryPayload_BioAnchor* bio_anchor_;
+    ::sentiric::knowledge::v1::UserMemoryPayload_Resonance* resonance_;
+    ::sentiric::knowledge::v1::UserMemoryPayload_Fact* fact_;
+    ::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle* lifecycle_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2fknowledge_2fv1_2fquery_2eproto;
+};
+// -------------------------------------------------------------------
+
+class QueryCognitiveMemoryRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.knowledge.v1.QueryCognitiveMemoryRequest) */ {
+ public:
+  inline QueryCognitiveMemoryRequest() : QueryCognitiveMemoryRequest(nullptr) {}
+  ~QueryCognitiveMemoryRequest() override;
+  explicit PROTOBUF_CONSTEXPR QueryCognitiveMemoryRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  QueryCognitiveMemoryRequest(const QueryCognitiveMemoryRequest& from);
+  QueryCognitiveMemoryRequest(QueryCognitiveMemoryRequest&& from) noexcept
+    : QueryCognitiveMemoryRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline QueryCognitiveMemoryRequest& operator=(const QueryCognitiveMemoryRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline QueryCognitiveMemoryRequest& operator=(QueryCognitiveMemoryRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const QueryCognitiveMemoryRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const QueryCognitiveMemoryRequest* internal_default_instance() {
+    return reinterpret_cast<const QueryCognitiveMemoryRequest*>(
+               &_QueryCognitiveMemoryRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    9;
+
+  friend void swap(QueryCognitiveMemoryRequest& a, QueryCognitiveMemoryRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(QueryCognitiveMemoryRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(QueryCognitiveMemoryRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  QueryCognitiveMemoryRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<QueryCognitiveMemoryRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const QueryCognitiveMemoryRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const QueryCognitiveMemoryRequest& from) {
+    QueryCognitiveMemoryRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(QueryCognitiveMemoryRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.knowledge.v1.QueryCognitiveMemoryRequest";
+  }
+  protected:
+  explicit QueryCognitiveMemoryRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kTenantIdFieldNumber = 1,
+    kBioIdFieldNumber = 2,
+    kQueryTextFieldNumber = 3,
+    kCurrentResonanceModeFieldNumber = 4,
+    kTopKFieldNumber = 5,
+  };
+  // string tenant_id = 1;
+  void clear_tenant_id();
+  const std::string& tenant_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_tenant_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_tenant_id();
+  PROTOBUF_NODISCARD std::string* release_tenant_id();
+  void set_allocated_tenant_id(std::string* tenant_id);
+  private:
+  const std::string& _internal_tenant_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_tenant_id(const std::string& value);
+  std::string* _internal_mutable_tenant_id();
+  public:
+
+  // string bio_id = 2;
+  void clear_bio_id();
+  const std::string& bio_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_bio_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_bio_id();
+  PROTOBUF_NODISCARD std::string* release_bio_id();
+  void set_allocated_bio_id(std::string* bio_id);
+  private:
+  const std::string& _internal_bio_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_bio_id(const std::string& value);
+  std::string* _internal_mutable_bio_id();
+  public:
+
+  // string query_text = 3;
+  void clear_query_text();
+  const std::string& query_text() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_query_text(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_query_text();
+  PROTOBUF_NODISCARD std::string* release_query_text();
+  void set_allocated_query_text(std::string* query_text);
+  private:
+  const std::string& _internal_query_text() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_query_text(const std::string& value);
+  std::string* _internal_mutable_query_text();
+  public:
+
+  // string current_resonance_mode = 4;
+  void clear_current_resonance_mode();
+  const std::string& current_resonance_mode() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_current_resonance_mode(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_current_resonance_mode();
+  PROTOBUF_NODISCARD std::string* release_current_resonance_mode();
+  void set_allocated_current_resonance_mode(std::string* current_resonance_mode);
+  private:
+  const std::string& _internal_current_resonance_mode() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_current_resonance_mode(const std::string& value);
+  std::string* _internal_mutable_current_resonance_mode();
+  public:
+
+  // int32 top_k = 5;
+  void clear_top_k();
+  int32_t top_k() const;
+  void set_top_k(int32_t value);
+  private:
+  int32_t _internal_top_k() const;
+  void _internal_set_top_k(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.knowledge.v1.QueryCognitiveMemoryRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr tenant_id_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr bio_id_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr query_text_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr current_resonance_mode_;
+    int32_t top_k_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2fknowledge_2fv1_2fquery_2eproto;
+};
+// -------------------------------------------------------------------
+
+class QueryCognitiveMemoryResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.knowledge.v1.QueryCognitiveMemoryResponse) */ {
+ public:
+  inline QueryCognitiveMemoryResponse() : QueryCognitiveMemoryResponse(nullptr) {}
+  ~QueryCognitiveMemoryResponse() override;
+  explicit PROTOBUF_CONSTEXPR QueryCognitiveMemoryResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  QueryCognitiveMemoryResponse(const QueryCognitiveMemoryResponse& from);
+  QueryCognitiveMemoryResponse(QueryCognitiveMemoryResponse&& from) noexcept
+    : QueryCognitiveMemoryResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline QueryCognitiveMemoryResponse& operator=(const QueryCognitiveMemoryResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline QueryCognitiveMemoryResponse& operator=(QueryCognitiveMemoryResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const QueryCognitiveMemoryResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const QueryCognitiveMemoryResponse* internal_default_instance() {
+    return reinterpret_cast<const QueryCognitiveMemoryResponse*>(
+               &_QueryCognitiveMemoryResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    10;
+
+  friend void swap(QueryCognitiveMemoryResponse& a, QueryCognitiveMemoryResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(QueryCognitiveMemoryResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(QueryCognitiveMemoryResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  QueryCognitiveMemoryResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<QueryCognitiveMemoryResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const QueryCognitiveMemoryResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const QueryCognitiveMemoryResponse& from) {
+    QueryCognitiveMemoryResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(QueryCognitiveMemoryResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.knowledge.v1.QueryCognitiveMemoryResponse";
+  }
+  protected:
+  explicit QueryCognitiveMemoryResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kMemoriesFieldNumber = 1,
+  };
+  // repeated .sentiric.knowledge.v1.UserMemoryPayload memories = 1;
+  int memories_size() const;
+  private:
+  int _internal_memories_size() const;
+  public:
+  void clear_memories();
+  ::sentiric::knowledge::v1::UserMemoryPayload* mutable_memories(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::sentiric::knowledge::v1::UserMemoryPayload >*
+      mutable_memories();
+  private:
+  const ::sentiric::knowledge::v1::UserMemoryPayload& _internal_memories(int index) const;
+  ::sentiric::knowledge::v1::UserMemoryPayload* _internal_add_memories();
+  public:
+  const ::sentiric::knowledge::v1::UserMemoryPayload& memories(int index) const;
+  ::sentiric::knowledge::v1::UserMemoryPayload* add_memories();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::sentiric::knowledge::v1::UserMemoryPayload >&
+      memories() const;
+
+  // @@protoc_insertion_point(class_scope:sentiric.knowledge.v1.QueryCognitiveMemoryResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::sentiric::knowledge::v1::UserMemoryPayload > memories_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2fknowledge_2fv1_2fquery_2eproto;
+};
 // ===================================================================
 
 
@@ -976,9 +2341,1226 @@ QueryResult::mutable_metadata() {
   return _internal_mutable_metadata();
 }
 
+// -------------------------------------------------------------------
+
+// UserMemoryPayload_BioAnchor
+
+// string bio_id = 1;
+inline void UserMemoryPayload_BioAnchor::clear_bio_id() {
+  _impl_.bio_id_.ClearToEmpty();
+}
+inline const std::string& UserMemoryPayload_BioAnchor::bio_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.knowledge.v1.UserMemoryPayload.BioAnchor.bio_id)
+  return _internal_bio_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void UserMemoryPayload_BioAnchor::set_bio_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.bio_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.knowledge.v1.UserMemoryPayload.BioAnchor.bio_id)
+}
+inline std::string* UserMemoryPayload_BioAnchor::mutable_bio_id() {
+  std::string* _s = _internal_mutable_bio_id();
+  // @@protoc_insertion_point(field_mutable:sentiric.knowledge.v1.UserMemoryPayload.BioAnchor.bio_id)
+  return _s;
+}
+inline const std::string& UserMemoryPayload_BioAnchor::_internal_bio_id() const {
+  return _impl_.bio_id_.Get();
+}
+inline void UserMemoryPayload_BioAnchor::_internal_set_bio_id(const std::string& value) {
+  
+  _impl_.bio_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* UserMemoryPayload_BioAnchor::_internal_mutable_bio_id() {
+  
+  return _impl_.bio_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* UserMemoryPayload_BioAnchor::release_bio_id() {
+  // @@protoc_insertion_point(field_release:sentiric.knowledge.v1.UserMemoryPayload.BioAnchor.bio_id)
+  return _impl_.bio_id_.Release();
+}
+inline void UserMemoryPayload_BioAnchor::set_allocated_bio_id(std::string* bio_id) {
+  if (bio_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.bio_id_.SetAllocated(bio_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.bio_id_.IsDefault()) {
+    _impl_.bio_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.knowledge.v1.UserMemoryPayload.BioAnchor.bio_id)
+}
+
+// float confidence = 2;
+inline void UserMemoryPayload_BioAnchor::clear_confidence() {
+  _impl_.confidence_ = 0;
+}
+inline float UserMemoryPayload_BioAnchor::_internal_confidence() const {
+  return _impl_.confidence_;
+}
+inline float UserMemoryPayload_BioAnchor::confidence() const {
+  // @@protoc_insertion_point(field_get:sentiric.knowledge.v1.UserMemoryPayload.BioAnchor.confidence)
+  return _internal_confidence();
+}
+inline void UserMemoryPayload_BioAnchor::_internal_set_confidence(float value) {
+  
+  _impl_.confidence_ = value;
+}
+inline void UserMemoryPayload_BioAnchor::set_confidence(float value) {
+  _internal_set_confidence(value);
+  // @@protoc_insertion_point(field_set:sentiric.knowledge.v1.UserMemoryPayload.BioAnchor.confidence)
+}
+
+// -------------------------------------------------------------------
+
+// UserMemoryPayload_Resonance
+
+// string mode = 1;
+inline void UserMemoryPayload_Resonance::clear_mode() {
+  _impl_.mode_.ClearToEmpty();
+}
+inline const std::string& UserMemoryPayload_Resonance::mode() const {
+  // @@protoc_insertion_point(field_get:sentiric.knowledge.v1.UserMemoryPayload.Resonance.mode)
+  return _internal_mode();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void UserMemoryPayload_Resonance::set_mode(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.mode_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.knowledge.v1.UserMemoryPayload.Resonance.mode)
+}
+inline std::string* UserMemoryPayload_Resonance::mutable_mode() {
+  std::string* _s = _internal_mutable_mode();
+  // @@protoc_insertion_point(field_mutable:sentiric.knowledge.v1.UserMemoryPayload.Resonance.mode)
+  return _s;
+}
+inline const std::string& UserMemoryPayload_Resonance::_internal_mode() const {
+  return _impl_.mode_.Get();
+}
+inline void UserMemoryPayload_Resonance::_internal_set_mode(const std::string& value) {
+  
+  _impl_.mode_.Set(value, GetArenaForAllocation());
+}
+inline std::string* UserMemoryPayload_Resonance::_internal_mutable_mode() {
+  
+  return _impl_.mode_.Mutable(GetArenaForAllocation());
+}
+inline std::string* UserMemoryPayload_Resonance::release_mode() {
+  // @@protoc_insertion_point(field_release:sentiric.knowledge.v1.UserMemoryPayload.Resonance.mode)
+  return _impl_.mode_.Release();
+}
+inline void UserMemoryPayload_Resonance::set_allocated_mode(std::string* mode) {
+  if (mode != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.mode_.SetAllocated(mode, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.mode_.IsDefault()) {
+    _impl_.mode_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.knowledge.v1.UserMemoryPayload.Resonance.mode)
+}
+
+// float confidence = 2;
+inline void UserMemoryPayload_Resonance::clear_confidence() {
+  _impl_.confidence_ = 0;
+}
+inline float UserMemoryPayload_Resonance::_internal_confidence() const {
+  return _impl_.confidence_;
+}
+inline float UserMemoryPayload_Resonance::confidence() const {
+  // @@protoc_insertion_point(field_get:sentiric.knowledge.v1.UserMemoryPayload.Resonance.confidence)
+  return _internal_confidence();
+}
+inline void UserMemoryPayload_Resonance::_internal_set_confidence(float value) {
+  
+  _impl_.confidence_ = value;
+}
+inline void UserMemoryPayload_Resonance::set_confidence(float value) {
+  _internal_set_confidence(value);
+  // @@protoc_insertion_point(field_set:sentiric.knowledge.v1.UserMemoryPayload.Resonance.confidence)
+}
+
+// -------------------------------------------------------------------
+
+// UserMemoryPayload_Fact
+
+// string category = 1;
+inline void UserMemoryPayload_Fact::clear_category() {
+  _impl_.category_.ClearToEmpty();
+}
+inline const std::string& UserMemoryPayload_Fact::category() const {
+  // @@protoc_insertion_point(field_get:sentiric.knowledge.v1.UserMemoryPayload.Fact.category)
+  return _internal_category();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void UserMemoryPayload_Fact::set_category(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.category_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.knowledge.v1.UserMemoryPayload.Fact.category)
+}
+inline std::string* UserMemoryPayload_Fact::mutable_category() {
+  std::string* _s = _internal_mutable_category();
+  // @@protoc_insertion_point(field_mutable:sentiric.knowledge.v1.UserMemoryPayload.Fact.category)
+  return _s;
+}
+inline const std::string& UserMemoryPayload_Fact::_internal_category() const {
+  return _impl_.category_.Get();
+}
+inline void UserMemoryPayload_Fact::_internal_set_category(const std::string& value) {
+  
+  _impl_.category_.Set(value, GetArenaForAllocation());
+}
+inline std::string* UserMemoryPayload_Fact::_internal_mutable_category() {
+  
+  return _impl_.category_.Mutable(GetArenaForAllocation());
+}
+inline std::string* UserMemoryPayload_Fact::release_category() {
+  // @@protoc_insertion_point(field_release:sentiric.knowledge.v1.UserMemoryPayload.Fact.category)
+  return _impl_.category_.Release();
+}
+inline void UserMemoryPayload_Fact::set_allocated_category(std::string* category) {
+  if (category != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.category_.SetAllocated(category, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.category_.IsDefault()) {
+    _impl_.category_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.knowledge.v1.UserMemoryPayload.Fact.category)
+}
+
+// int32 importance = 2;
+inline void UserMemoryPayload_Fact::clear_importance() {
+  _impl_.importance_ = 0;
+}
+inline int32_t UserMemoryPayload_Fact::_internal_importance() const {
+  return _impl_.importance_;
+}
+inline int32_t UserMemoryPayload_Fact::importance() const {
+  // @@protoc_insertion_point(field_get:sentiric.knowledge.v1.UserMemoryPayload.Fact.importance)
+  return _internal_importance();
+}
+inline void UserMemoryPayload_Fact::_internal_set_importance(int32_t value) {
+  
+  _impl_.importance_ = value;
+}
+inline void UserMemoryPayload_Fact::set_importance(int32_t value) {
+  _internal_set_importance(value);
+  // @@protoc_insertion_point(field_set:sentiric.knowledge.v1.UserMemoryPayload.Fact.importance)
+}
+
+// string summary = 3;
+inline void UserMemoryPayload_Fact::clear_summary() {
+  _impl_.summary_.ClearToEmpty();
+}
+inline const std::string& UserMemoryPayload_Fact::summary() const {
+  // @@protoc_insertion_point(field_get:sentiric.knowledge.v1.UserMemoryPayload.Fact.summary)
+  return _internal_summary();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void UserMemoryPayload_Fact::set_summary(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.summary_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.knowledge.v1.UserMemoryPayload.Fact.summary)
+}
+inline std::string* UserMemoryPayload_Fact::mutable_summary() {
+  std::string* _s = _internal_mutable_summary();
+  // @@protoc_insertion_point(field_mutable:sentiric.knowledge.v1.UserMemoryPayload.Fact.summary)
+  return _s;
+}
+inline const std::string& UserMemoryPayload_Fact::_internal_summary() const {
+  return _impl_.summary_.Get();
+}
+inline void UserMemoryPayload_Fact::_internal_set_summary(const std::string& value) {
+  
+  _impl_.summary_.Set(value, GetArenaForAllocation());
+}
+inline std::string* UserMemoryPayload_Fact::_internal_mutable_summary() {
+  
+  return _impl_.summary_.Mutable(GetArenaForAllocation());
+}
+inline std::string* UserMemoryPayload_Fact::release_summary() {
+  // @@protoc_insertion_point(field_release:sentiric.knowledge.v1.UserMemoryPayload.Fact.summary)
+  return _impl_.summary_.Release();
+}
+inline void UserMemoryPayload_Fact::set_allocated_summary(std::string* summary) {
+  if (summary != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.summary_.SetAllocated(summary, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.summary_.IsDefault()) {
+    _impl_.summary_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.knowledge.v1.UserMemoryPayload.Fact.summary)
+}
+
+// repeated string metadata = 4;
+inline int UserMemoryPayload_Fact::_internal_metadata_size() const {
+  return _impl_.metadata_.size();
+}
+inline int UserMemoryPayload_Fact::metadata_size() const {
+  return _internal_metadata_size();
+}
+inline void UserMemoryPayload_Fact::clear_metadata() {
+  _impl_.metadata_.Clear();
+}
+inline std::string* UserMemoryPayload_Fact::add_metadata() {
+  std::string* _s = _internal_add_metadata();
+  // @@protoc_insertion_point(field_add_mutable:sentiric.knowledge.v1.UserMemoryPayload.Fact.metadata)
+  return _s;
+}
+inline const std::string& UserMemoryPayload_Fact::_internal_metadata(int index) const {
+  return _impl_.metadata_.Get(index);
+}
+inline const std::string& UserMemoryPayload_Fact::metadata(int index) const {
+  // @@protoc_insertion_point(field_get:sentiric.knowledge.v1.UserMemoryPayload.Fact.metadata)
+  return _internal_metadata(index);
+}
+inline std::string* UserMemoryPayload_Fact::mutable_metadata(int index) {
+  // @@protoc_insertion_point(field_mutable:sentiric.knowledge.v1.UserMemoryPayload.Fact.metadata)
+  return _impl_.metadata_.Mutable(index);
+}
+inline void UserMemoryPayload_Fact::set_metadata(int index, const std::string& value) {
+  _impl_.metadata_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set:sentiric.knowledge.v1.UserMemoryPayload.Fact.metadata)
+}
+inline void UserMemoryPayload_Fact::set_metadata(int index, std::string&& value) {
+  _impl_.metadata_.Mutable(index)->assign(std::move(value));
+  // @@protoc_insertion_point(field_set:sentiric.knowledge.v1.UserMemoryPayload.Fact.metadata)
+}
+inline void UserMemoryPayload_Fact::set_metadata(int index, const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _impl_.metadata_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:sentiric.knowledge.v1.UserMemoryPayload.Fact.metadata)
+}
+inline void UserMemoryPayload_Fact::set_metadata(int index, const char* value, size_t size) {
+  _impl_.metadata_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:sentiric.knowledge.v1.UserMemoryPayload.Fact.metadata)
+}
+inline std::string* UserMemoryPayload_Fact::_internal_add_metadata() {
+  return _impl_.metadata_.Add();
+}
+inline void UserMemoryPayload_Fact::add_metadata(const std::string& value) {
+  _impl_.metadata_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:sentiric.knowledge.v1.UserMemoryPayload.Fact.metadata)
+}
+inline void UserMemoryPayload_Fact::add_metadata(std::string&& value) {
+  _impl_.metadata_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:sentiric.knowledge.v1.UserMemoryPayload.Fact.metadata)
+}
+inline void UserMemoryPayload_Fact::add_metadata(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _impl_.metadata_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:sentiric.knowledge.v1.UserMemoryPayload.Fact.metadata)
+}
+inline void UserMemoryPayload_Fact::add_metadata(const char* value, size_t size) {
+  _impl_.metadata_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:sentiric.knowledge.v1.UserMemoryPayload.Fact.metadata)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
+UserMemoryPayload_Fact::metadata() const {
+  // @@protoc_insertion_point(field_list:sentiric.knowledge.v1.UserMemoryPayload.Fact.metadata)
+  return _impl_.metadata_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
+UserMemoryPayload_Fact::mutable_metadata() {
+  // @@protoc_insertion_point(field_mutable_list:sentiric.knowledge.v1.UserMemoryPayload.Fact.metadata)
+  return &_impl_.metadata_;
+}
+
+// -------------------------------------------------------------------
+
+// UserMemoryPayload_Lifecycle
+
+// string trace_id = 1;
+inline void UserMemoryPayload_Lifecycle::clear_trace_id() {
+  _impl_.trace_id_.ClearToEmpty();
+}
+inline const std::string& UserMemoryPayload_Lifecycle::trace_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.knowledge.v1.UserMemoryPayload.Lifecycle.trace_id)
+  return _internal_trace_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void UserMemoryPayload_Lifecycle::set_trace_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.trace_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.knowledge.v1.UserMemoryPayload.Lifecycle.trace_id)
+}
+inline std::string* UserMemoryPayload_Lifecycle::mutable_trace_id() {
+  std::string* _s = _internal_mutable_trace_id();
+  // @@protoc_insertion_point(field_mutable:sentiric.knowledge.v1.UserMemoryPayload.Lifecycle.trace_id)
+  return _s;
+}
+inline const std::string& UserMemoryPayload_Lifecycle::_internal_trace_id() const {
+  return _impl_.trace_id_.Get();
+}
+inline void UserMemoryPayload_Lifecycle::_internal_set_trace_id(const std::string& value) {
+  
+  _impl_.trace_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* UserMemoryPayload_Lifecycle::_internal_mutable_trace_id() {
+  
+  return _impl_.trace_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* UserMemoryPayload_Lifecycle::release_trace_id() {
+  // @@protoc_insertion_point(field_release:sentiric.knowledge.v1.UserMemoryPayload.Lifecycle.trace_id)
+  return _impl_.trace_id_.Release();
+}
+inline void UserMemoryPayload_Lifecycle::set_allocated_trace_id(std::string* trace_id) {
+  if (trace_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.trace_id_.SetAllocated(trace_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.trace_id_.IsDefault()) {
+    _impl_.trace_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.knowledge.v1.UserMemoryPayload.Lifecycle.trace_id)
+}
+
+// string created_at = 2;
+inline void UserMemoryPayload_Lifecycle::clear_created_at() {
+  _impl_.created_at_.ClearToEmpty();
+}
+inline const std::string& UserMemoryPayload_Lifecycle::created_at() const {
+  // @@protoc_insertion_point(field_get:sentiric.knowledge.v1.UserMemoryPayload.Lifecycle.created_at)
+  return _internal_created_at();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void UserMemoryPayload_Lifecycle::set_created_at(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.created_at_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.knowledge.v1.UserMemoryPayload.Lifecycle.created_at)
+}
+inline std::string* UserMemoryPayload_Lifecycle::mutable_created_at() {
+  std::string* _s = _internal_mutable_created_at();
+  // @@protoc_insertion_point(field_mutable:sentiric.knowledge.v1.UserMemoryPayload.Lifecycle.created_at)
+  return _s;
+}
+inline const std::string& UserMemoryPayload_Lifecycle::_internal_created_at() const {
+  return _impl_.created_at_.Get();
+}
+inline void UserMemoryPayload_Lifecycle::_internal_set_created_at(const std::string& value) {
+  
+  _impl_.created_at_.Set(value, GetArenaForAllocation());
+}
+inline std::string* UserMemoryPayload_Lifecycle::_internal_mutable_created_at() {
+  
+  return _impl_.created_at_.Mutable(GetArenaForAllocation());
+}
+inline std::string* UserMemoryPayload_Lifecycle::release_created_at() {
+  // @@protoc_insertion_point(field_release:sentiric.knowledge.v1.UserMemoryPayload.Lifecycle.created_at)
+  return _impl_.created_at_.Release();
+}
+inline void UserMemoryPayload_Lifecycle::set_allocated_created_at(std::string* created_at) {
+  if (created_at != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.created_at_.SetAllocated(created_at, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.created_at_.IsDefault()) {
+    _impl_.created_at_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.knowledge.v1.UserMemoryPayload.Lifecycle.created_at)
+}
+
+// string last_accessed = 3;
+inline void UserMemoryPayload_Lifecycle::clear_last_accessed() {
+  _impl_.last_accessed_.ClearToEmpty();
+}
+inline const std::string& UserMemoryPayload_Lifecycle::last_accessed() const {
+  // @@protoc_insertion_point(field_get:sentiric.knowledge.v1.UserMemoryPayload.Lifecycle.last_accessed)
+  return _internal_last_accessed();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void UserMemoryPayload_Lifecycle::set_last_accessed(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.last_accessed_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.knowledge.v1.UserMemoryPayload.Lifecycle.last_accessed)
+}
+inline std::string* UserMemoryPayload_Lifecycle::mutable_last_accessed() {
+  std::string* _s = _internal_mutable_last_accessed();
+  // @@protoc_insertion_point(field_mutable:sentiric.knowledge.v1.UserMemoryPayload.Lifecycle.last_accessed)
+  return _s;
+}
+inline const std::string& UserMemoryPayload_Lifecycle::_internal_last_accessed() const {
+  return _impl_.last_accessed_.Get();
+}
+inline void UserMemoryPayload_Lifecycle::_internal_set_last_accessed(const std::string& value) {
+  
+  _impl_.last_accessed_.Set(value, GetArenaForAllocation());
+}
+inline std::string* UserMemoryPayload_Lifecycle::_internal_mutable_last_accessed() {
+  
+  return _impl_.last_accessed_.Mutable(GetArenaForAllocation());
+}
+inline std::string* UserMemoryPayload_Lifecycle::release_last_accessed() {
+  // @@protoc_insertion_point(field_release:sentiric.knowledge.v1.UserMemoryPayload.Lifecycle.last_accessed)
+  return _impl_.last_accessed_.Release();
+}
+inline void UserMemoryPayload_Lifecycle::set_allocated_last_accessed(std::string* last_accessed) {
+  if (last_accessed != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.last_accessed_.SetAllocated(last_accessed, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.last_accessed_.IsDefault()) {
+    _impl_.last_accessed_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.knowledge.v1.UserMemoryPayload.Lifecycle.last_accessed)
+}
+
+// float decay_score = 4;
+inline void UserMemoryPayload_Lifecycle::clear_decay_score() {
+  _impl_.decay_score_ = 0;
+}
+inline float UserMemoryPayload_Lifecycle::_internal_decay_score() const {
+  return _impl_.decay_score_;
+}
+inline float UserMemoryPayload_Lifecycle::decay_score() const {
+  // @@protoc_insertion_point(field_get:sentiric.knowledge.v1.UserMemoryPayload.Lifecycle.decay_score)
+  return _internal_decay_score();
+}
+inline void UserMemoryPayload_Lifecycle::_internal_set_decay_score(float value) {
+  
+  _impl_.decay_score_ = value;
+}
+inline void UserMemoryPayload_Lifecycle::set_decay_score(float value) {
+  _internal_set_decay_score(value);
+  // @@protoc_insertion_point(field_set:sentiric.knowledge.v1.UserMemoryPayload.Lifecycle.decay_score)
+}
+
+// -------------------------------------------------------------------
+
+// UserMemoryPayload
+
+// .sentiric.knowledge.v1.UserMemoryPayload.BioAnchor bio_anchor = 1;
+inline bool UserMemoryPayload::_internal_has_bio_anchor() const {
+  return this != internal_default_instance() && _impl_.bio_anchor_ != nullptr;
+}
+inline bool UserMemoryPayload::has_bio_anchor() const {
+  return _internal_has_bio_anchor();
+}
+inline void UserMemoryPayload::clear_bio_anchor() {
+  if (GetArenaForAllocation() == nullptr && _impl_.bio_anchor_ != nullptr) {
+    delete _impl_.bio_anchor_;
+  }
+  _impl_.bio_anchor_ = nullptr;
+}
+inline const ::sentiric::knowledge::v1::UserMemoryPayload_BioAnchor& UserMemoryPayload::_internal_bio_anchor() const {
+  const ::sentiric::knowledge::v1::UserMemoryPayload_BioAnchor* p = _impl_.bio_anchor_;
+  return p != nullptr ? *p : reinterpret_cast<const ::sentiric::knowledge::v1::UserMemoryPayload_BioAnchor&>(
+      ::sentiric::knowledge::v1::_UserMemoryPayload_BioAnchor_default_instance_);
+}
+inline const ::sentiric::knowledge::v1::UserMemoryPayload_BioAnchor& UserMemoryPayload::bio_anchor() const {
+  // @@protoc_insertion_point(field_get:sentiric.knowledge.v1.UserMemoryPayload.bio_anchor)
+  return _internal_bio_anchor();
+}
+inline void UserMemoryPayload::unsafe_arena_set_allocated_bio_anchor(
+    ::sentiric::knowledge::v1::UserMemoryPayload_BioAnchor* bio_anchor) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.bio_anchor_);
+  }
+  _impl_.bio_anchor_ = bio_anchor;
+  if (bio_anchor) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:sentiric.knowledge.v1.UserMemoryPayload.bio_anchor)
+}
+inline ::sentiric::knowledge::v1::UserMemoryPayload_BioAnchor* UserMemoryPayload::release_bio_anchor() {
+  
+  ::sentiric::knowledge::v1::UserMemoryPayload_BioAnchor* temp = _impl_.bio_anchor_;
+  _impl_.bio_anchor_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::sentiric::knowledge::v1::UserMemoryPayload_BioAnchor* UserMemoryPayload::unsafe_arena_release_bio_anchor() {
+  // @@protoc_insertion_point(field_release:sentiric.knowledge.v1.UserMemoryPayload.bio_anchor)
+  
+  ::sentiric::knowledge::v1::UserMemoryPayload_BioAnchor* temp = _impl_.bio_anchor_;
+  _impl_.bio_anchor_ = nullptr;
+  return temp;
+}
+inline ::sentiric::knowledge::v1::UserMemoryPayload_BioAnchor* UserMemoryPayload::_internal_mutable_bio_anchor() {
+  
+  if (_impl_.bio_anchor_ == nullptr) {
+    auto* p = CreateMaybeMessage<::sentiric::knowledge::v1::UserMemoryPayload_BioAnchor>(GetArenaForAllocation());
+    _impl_.bio_anchor_ = p;
+  }
+  return _impl_.bio_anchor_;
+}
+inline ::sentiric::knowledge::v1::UserMemoryPayload_BioAnchor* UserMemoryPayload::mutable_bio_anchor() {
+  ::sentiric::knowledge::v1::UserMemoryPayload_BioAnchor* _msg = _internal_mutable_bio_anchor();
+  // @@protoc_insertion_point(field_mutable:sentiric.knowledge.v1.UserMemoryPayload.bio_anchor)
+  return _msg;
+}
+inline void UserMemoryPayload::set_allocated_bio_anchor(::sentiric::knowledge::v1::UserMemoryPayload_BioAnchor* bio_anchor) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete _impl_.bio_anchor_;
+  }
+  if (bio_anchor) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(bio_anchor);
+    if (message_arena != submessage_arena) {
+      bio_anchor = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, bio_anchor, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.bio_anchor_ = bio_anchor;
+  // @@protoc_insertion_point(field_set_allocated:sentiric.knowledge.v1.UserMemoryPayload.bio_anchor)
+}
+
+// .sentiric.knowledge.v1.UserMemoryPayload.Resonance resonance = 2;
+inline bool UserMemoryPayload::_internal_has_resonance() const {
+  return this != internal_default_instance() && _impl_.resonance_ != nullptr;
+}
+inline bool UserMemoryPayload::has_resonance() const {
+  return _internal_has_resonance();
+}
+inline void UserMemoryPayload::clear_resonance() {
+  if (GetArenaForAllocation() == nullptr && _impl_.resonance_ != nullptr) {
+    delete _impl_.resonance_;
+  }
+  _impl_.resonance_ = nullptr;
+}
+inline const ::sentiric::knowledge::v1::UserMemoryPayload_Resonance& UserMemoryPayload::_internal_resonance() const {
+  const ::sentiric::knowledge::v1::UserMemoryPayload_Resonance* p = _impl_.resonance_;
+  return p != nullptr ? *p : reinterpret_cast<const ::sentiric::knowledge::v1::UserMemoryPayload_Resonance&>(
+      ::sentiric::knowledge::v1::_UserMemoryPayload_Resonance_default_instance_);
+}
+inline const ::sentiric::knowledge::v1::UserMemoryPayload_Resonance& UserMemoryPayload::resonance() const {
+  // @@protoc_insertion_point(field_get:sentiric.knowledge.v1.UserMemoryPayload.resonance)
+  return _internal_resonance();
+}
+inline void UserMemoryPayload::unsafe_arena_set_allocated_resonance(
+    ::sentiric::knowledge::v1::UserMemoryPayload_Resonance* resonance) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.resonance_);
+  }
+  _impl_.resonance_ = resonance;
+  if (resonance) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:sentiric.knowledge.v1.UserMemoryPayload.resonance)
+}
+inline ::sentiric::knowledge::v1::UserMemoryPayload_Resonance* UserMemoryPayload::release_resonance() {
+  
+  ::sentiric::knowledge::v1::UserMemoryPayload_Resonance* temp = _impl_.resonance_;
+  _impl_.resonance_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::sentiric::knowledge::v1::UserMemoryPayload_Resonance* UserMemoryPayload::unsafe_arena_release_resonance() {
+  // @@protoc_insertion_point(field_release:sentiric.knowledge.v1.UserMemoryPayload.resonance)
+  
+  ::sentiric::knowledge::v1::UserMemoryPayload_Resonance* temp = _impl_.resonance_;
+  _impl_.resonance_ = nullptr;
+  return temp;
+}
+inline ::sentiric::knowledge::v1::UserMemoryPayload_Resonance* UserMemoryPayload::_internal_mutable_resonance() {
+  
+  if (_impl_.resonance_ == nullptr) {
+    auto* p = CreateMaybeMessage<::sentiric::knowledge::v1::UserMemoryPayload_Resonance>(GetArenaForAllocation());
+    _impl_.resonance_ = p;
+  }
+  return _impl_.resonance_;
+}
+inline ::sentiric::knowledge::v1::UserMemoryPayload_Resonance* UserMemoryPayload::mutable_resonance() {
+  ::sentiric::knowledge::v1::UserMemoryPayload_Resonance* _msg = _internal_mutable_resonance();
+  // @@protoc_insertion_point(field_mutable:sentiric.knowledge.v1.UserMemoryPayload.resonance)
+  return _msg;
+}
+inline void UserMemoryPayload::set_allocated_resonance(::sentiric::knowledge::v1::UserMemoryPayload_Resonance* resonance) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete _impl_.resonance_;
+  }
+  if (resonance) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(resonance);
+    if (message_arena != submessage_arena) {
+      resonance = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, resonance, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.resonance_ = resonance;
+  // @@protoc_insertion_point(field_set_allocated:sentiric.knowledge.v1.UserMemoryPayload.resonance)
+}
+
+// .sentiric.knowledge.v1.UserMemoryPayload.Fact fact = 3;
+inline bool UserMemoryPayload::_internal_has_fact() const {
+  return this != internal_default_instance() && _impl_.fact_ != nullptr;
+}
+inline bool UserMemoryPayload::has_fact() const {
+  return _internal_has_fact();
+}
+inline void UserMemoryPayload::clear_fact() {
+  if (GetArenaForAllocation() == nullptr && _impl_.fact_ != nullptr) {
+    delete _impl_.fact_;
+  }
+  _impl_.fact_ = nullptr;
+}
+inline const ::sentiric::knowledge::v1::UserMemoryPayload_Fact& UserMemoryPayload::_internal_fact() const {
+  const ::sentiric::knowledge::v1::UserMemoryPayload_Fact* p = _impl_.fact_;
+  return p != nullptr ? *p : reinterpret_cast<const ::sentiric::knowledge::v1::UserMemoryPayload_Fact&>(
+      ::sentiric::knowledge::v1::_UserMemoryPayload_Fact_default_instance_);
+}
+inline const ::sentiric::knowledge::v1::UserMemoryPayload_Fact& UserMemoryPayload::fact() const {
+  // @@protoc_insertion_point(field_get:sentiric.knowledge.v1.UserMemoryPayload.fact)
+  return _internal_fact();
+}
+inline void UserMemoryPayload::unsafe_arena_set_allocated_fact(
+    ::sentiric::knowledge::v1::UserMemoryPayload_Fact* fact) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.fact_);
+  }
+  _impl_.fact_ = fact;
+  if (fact) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:sentiric.knowledge.v1.UserMemoryPayload.fact)
+}
+inline ::sentiric::knowledge::v1::UserMemoryPayload_Fact* UserMemoryPayload::release_fact() {
+  
+  ::sentiric::knowledge::v1::UserMemoryPayload_Fact* temp = _impl_.fact_;
+  _impl_.fact_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::sentiric::knowledge::v1::UserMemoryPayload_Fact* UserMemoryPayload::unsafe_arena_release_fact() {
+  // @@protoc_insertion_point(field_release:sentiric.knowledge.v1.UserMemoryPayload.fact)
+  
+  ::sentiric::knowledge::v1::UserMemoryPayload_Fact* temp = _impl_.fact_;
+  _impl_.fact_ = nullptr;
+  return temp;
+}
+inline ::sentiric::knowledge::v1::UserMemoryPayload_Fact* UserMemoryPayload::_internal_mutable_fact() {
+  
+  if (_impl_.fact_ == nullptr) {
+    auto* p = CreateMaybeMessage<::sentiric::knowledge::v1::UserMemoryPayload_Fact>(GetArenaForAllocation());
+    _impl_.fact_ = p;
+  }
+  return _impl_.fact_;
+}
+inline ::sentiric::knowledge::v1::UserMemoryPayload_Fact* UserMemoryPayload::mutable_fact() {
+  ::sentiric::knowledge::v1::UserMemoryPayload_Fact* _msg = _internal_mutable_fact();
+  // @@protoc_insertion_point(field_mutable:sentiric.knowledge.v1.UserMemoryPayload.fact)
+  return _msg;
+}
+inline void UserMemoryPayload::set_allocated_fact(::sentiric::knowledge::v1::UserMemoryPayload_Fact* fact) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete _impl_.fact_;
+  }
+  if (fact) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(fact);
+    if (message_arena != submessage_arena) {
+      fact = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, fact, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.fact_ = fact;
+  // @@protoc_insertion_point(field_set_allocated:sentiric.knowledge.v1.UserMemoryPayload.fact)
+}
+
+// .sentiric.knowledge.v1.UserMemoryPayload.Lifecycle lifecycle = 4;
+inline bool UserMemoryPayload::_internal_has_lifecycle() const {
+  return this != internal_default_instance() && _impl_.lifecycle_ != nullptr;
+}
+inline bool UserMemoryPayload::has_lifecycle() const {
+  return _internal_has_lifecycle();
+}
+inline void UserMemoryPayload::clear_lifecycle() {
+  if (GetArenaForAllocation() == nullptr && _impl_.lifecycle_ != nullptr) {
+    delete _impl_.lifecycle_;
+  }
+  _impl_.lifecycle_ = nullptr;
+}
+inline const ::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle& UserMemoryPayload::_internal_lifecycle() const {
+  const ::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle* p = _impl_.lifecycle_;
+  return p != nullptr ? *p : reinterpret_cast<const ::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle&>(
+      ::sentiric::knowledge::v1::_UserMemoryPayload_Lifecycle_default_instance_);
+}
+inline const ::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle& UserMemoryPayload::lifecycle() const {
+  // @@protoc_insertion_point(field_get:sentiric.knowledge.v1.UserMemoryPayload.lifecycle)
+  return _internal_lifecycle();
+}
+inline void UserMemoryPayload::unsafe_arena_set_allocated_lifecycle(
+    ::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle* lifecycle) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.lifecycle_);
+  }
+  _impl_.lifecycle_ = lifecycle;
+  if (lifecycle) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:sentiric.knowledge.v1.UserMemoryPayload.lifecycle)
+}
+inline ::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle* UserMemoryPayload::release_lifecycle() {
+  
+  ::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle* temp = _impl_.lifecycle_;
+  _impl_.lifecycle_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle* UserMemoryPayload::unsafe_arena_release_lifecycle() {
+  // @@protoc_insertion_point(field_release:sentiric.knowledge.v1.UserMemoryPayload.lifecycle)
+  
+  ::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle* temp = _impl_.lifecycle_;
+  _impl_.lifecycle_ = nullptr;
+  return temp;
+}
+inline ::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle* UserMemoryPayload::_internal_mutable_lifecycle() {
+  
+  if (_impl_.lifecycle_ == nullptr) {
+    auto* p = CreateMaybeMessage<::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle>(GetArenaForAllocation());
+    _impl_.lifecycle_ = p;
+  }
+  return _impl_.lifecycle_;
+}
+inline ::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle* UserMemoryPayload::mutable_lifecycle() {
+  ::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle* _msg = _internal_mutable_lifecycle();
+  // @@protoc_insertion_point(field_mutable:sentiric.knowledge.v1.UserMemoryPayload.lifecycle)
+  return _msg;
+}
+inline void UserMemoryPayload::set_allocated_lifecycle(::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle* lifecycle) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete _impl_.lifecycle_;
+  }
+  if (lifecycle) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(lifecycle);
+    if (message_arena != submessage_arena) {
+      lifecycle = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, lifecycle, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.lifecycle_ = lifecycle;
+  // @@protoc_insertion_point(field_set_allocated:sentiric.knowledge.v1.UserMemoryPayload.lifecycle)
+}
+
+// string embedding_version = 5;
+inline void UserMemoryPayload::clear_embedding_version() {
+  _impl_.embedding_version_.ClearToEmpty();
+}
+inline const std::string& UserMemoryPayload::embedding_version() const {
+  // @@protoc_insertion_point(field_get:sentiric.knowledge.v1.UserMemoryPayload.embedding_version)
+  return _internal_embedding_version();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void UserMemoryPayload::set_embedding_version(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.embedding_version_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.knowledge.v1.UserMemoryPayload.embedding_version)
+}
+inline std::string* UserMemoryPayload::mutable_embedding_version() {
+  std::string* _s = _internal_mutable_embedding_version();
+  // @@protoc_insertion_point(field_mutable:sentiric.knowledge.v1.UserMemoryPayload.embedding_version)
+  return _s;
+}
+inline const std::string& UserMemoryPayload::_internal_embedding_version() const {
+  return _impl_.embedding_version_.Get();
+}
+inline void UserMemoryPayload::_internal_set_embedding_version(const std::string& value) {
+  
+  _impl_.embedding_version_.Set(value, GetArenaForAllocation());
+}
+inline std::string* UserMemoryPayload::_internal_mutable_embedding_version() {
+  
+  return _impl_.embedding_version_.Mutable(GetArenaForAllocation());
+}
+inline std::string* UserMemoryPayload::release_embedding_version() {
+  // @@protoc_insertion_point(field_release:sentiric.knowledge.v1.UserMemoryPayload.embedding_version)
+  return _impl_.embedding_version_.Release();
+}
+inline void UserMemoryPayload::set_allocated_embedding_version(std::string* embedding_version) {
+  if (embedding_version != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.embedding_version_.SetAllocated(embedding_version, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.embedding_version_.IsDefault()) {
+    _impl_.embedding_version_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.knowledge.v1.UserMemoryPayload.embedding_version)
+}
+
+// -------------------------------------------------------------------
+
+// QueryCognitiveMemoryRequest
+
+// string tenant_id = 1;
+inline void QueryCognitiveMemoryRequest::clear_tenant_id() {
+  _impl_.tenant_id_.ClearToEmpty();
+}
+inline const std::string& QueryCognitiveMemoryRequest::tenant_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.knowledge.v1.QueryCognitiveMemoryRequest.tenant_id)
+  return _internal_tenant_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void QueryCognitiveMemoryRequest::set_tenant_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.tenant_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.knowledge.v1.QueryCognitiveMemoryRequest.tenant_id)
+}
+inline std::string* QueryCognitiveMemoryRequest::mutable_tenant_id() {
+  std::string* _s = _internal_mutable_tenant_id();
+  // @@protoc_insertion_point(field_mutable:sentiric.knowledge.v1.QueryCognitiveMemoryRequest.tenant_id)
+  return _s;
+}
+inline const std::string& QueryCognitiveMemoryRequest::_internal_tenant_id() const {
+  return _impl_.tenant_id_.Get();
+}
+inline void QueryCognitiveMemoryRequest::_internal_set_tenant_id(const std::string& value) {
+  
+  _impl_.tenant_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* QueryCognitiveMemoryRequest::_internal_mutable_tenant_id() {
+  
+  return _impl_.tenant_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* QueryCognitiveMemoryRequest::release_tenant_id() {
+  // @@protoc_insertion_point(field_release:sentiric.knowledge.v1.QueryCognitiveMemoryRequest.tenant_id)
+  return _impl_.tenant_id_.Release();
+}
+inline void QueryCognitiveMemoryRequest::set_allocated_tenant_id(std::string* tenant_id) {
+  if (tenant_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.tenant_id_.SetAllocated(tenant_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.tenant_id_.IsDefault()) {
+    _impl_.tenant_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.knowledge.v1.QueryCognitiveMemoryRequest.tenant_id)
+}
+
+// string bio_id = 2;
+inline void QueryCognitiveMemoryRequest::clear_bio_id() {
+  _impl_.bio_id_.ClearToEmpty();
+}
+inline const std::string& QueryCognitiveMemoryRequest::bio_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.knowledge.v1.QueryCognitiveMemoryRequest.bio_id)
+  return _internal_bio_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void QueryCognitiveMemoryRequest::set_bio_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.bio_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.knowledge.v1.QueryCognitiveMemoryRequest.bio_id)
+}
+inline std::string* QueryCognitiveMemoryRequest::mutable_bio_id() {
+  std::string* _s = _internal_mutable_bio_id();
+  // @@protoc_insertion_point(field_mutable:sentiric.knowledge.v1.QueryCognitiveMemoryRequest.bio_id)
+  return _s;
+}
+inline const std::string& QueryCognitiveMemoryRequest::_internal_bio_id() const {
+  return _impl_.bio_id_.Get();
+}
+inline void QueryCognitiveMemoryRequest::_internal_set_bio_id(const std::string& value) {
+  
+  _impl_.bio_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* QueryCognitiveMemoryRequest::_internal_mutable_bio_id() {
+  
+  return _impl_.bio_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* QueryCognitiveMemoryRequest::release_bio_id() {
+  // @@protoc_insertion_point(field_release:sentiric.knowledge.v1.QueryCognitiveMemoryRequest.bio_id)
+  return _impl_.bio_id_.Release();
+}
+inline void QueryCognitiveMemoryRequest::set_allocated_bio_id(std::string* bio_id) {
+  if (bio_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.bio_id_.SetAllocated(bio_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.bio_id_.IsDefault()) {
+    _impl_.bio_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.knowledge.v1.QueryCognitiveMemoryRequest.bio_id)
+}
+
+// string query_text = 3;
+inline void QueryCognitiveMemoryRequest::clear_query_text() {
+  _impl_.query_text_.ClearToEmpty();
+}
+inline const std::string& QueryCognitiveMemoryRequest::query_text() const {
+  // @@protoc_insertion_point(field_get:sentiric.knowledge.v1.QueryCognitiveMemoryRequest.query_text)
+  return _internal_query_text();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void QueryCognitiveMemoryRequest::set_query_text(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.query_text_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.knowledge.v1.QueryCognitiveMemoryRequest.query_text)
+}
+inline std::string* QueryCognitiveMemoryRequest::mutable_query_text() {
+  std::string* _s = _internal_mutable_query_text();
+  // @@protoc_insertion_point(field_mutable:sentiric.knowledge.v1.QueryCognitiveMemoryRequest.query_text)
+  return _s;
+}
+inline const std::string& QueryCognitiveMemoryRequest::_internal_query_text() const {
+  return _impl_.query_text_.Get();
+}
+inline void QueryCognitiveMemoryRequest::_internal_set_query_text(const std::string& value) {
+  
+  _impl_.query_text_.Set(value, GetArenaForAllocation());
+}
+inline std::string* QueryCognitiveMemoryRequest::_internal_mutable_query_text() {
+  
+  return _impl_.query_text_.Mutable(GetArenaForAllocation());
+}
+inline std::string* QueryCognitiveMemoryRequest::release_query_text() {
+  // @@protoc_insertion_point(field_release:sentiric.knowledge.v1.QueryCognitiveMemoryRequest.query_text)
+  return _impl_.query_text_.Release();
+}
+inline void QueryCognitiveMemoryRequest::set_allocated_query_text(std::string* query_text) {
+  if (query_text != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.query_text_.SetAllocated(query_text, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.query_text_.IsDefault()) {
+    _impl_.query_text_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.knowledge.v1.QueryCognitiveMemoryRequest.query_text)
+}
+
+// string current_resonance_mode = 4;
+inline void QueryCognitiveMemoryRequest::clear_current_resonance_mode() {
+  _impl_.current_resonance_mode_.ClearToEmpty();
+}
+inline const std::string& QueryCognitiveMemoryRequest::current_resonance_mode() const {
+  // @@protoc_insertion_point(field_get:sentiric.knowledge.v1.QueryCognitiveMemoryRequest.current_resonance_mode)
+  return _internal_current_resonance_mode();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void QueryCognitiveMemoryRequest::set_current_resonance_mode(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.current_resonance_mode_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.knowledge.v1.QueryCognitiveMemoryRequest.current_resonance_mode)
+}
+inline std::string* QueryCognitiveMemoryRequest::mutable_current_resonance_mode() {
+  std::string* _s = _internal_mutable_current_resonance_mode();
+  // @@protoc_insertion_point(field_mutable:sentiric.knowledge.v1.QueryCognitiveMemoryRequest.current_resonance_mode)
+  return _s;
+}
+inline const std::string& QueryCognitiveMemoryRequest::_internal_current_resonance_mode() const {
+  return _impl_.current_resonance_mode_.Get();
+}
+inline void QueryCognitiveMemoryRequest::_internal_set_current_resonance_mode(const std::string& value) {
+  
+  _impl_.current_resonance_mode_.Set(value, GetArenaForAllocation());
+}
+inline std::string* QueryCognitiveMemoryRequest::_internal_mutable_current_resonance_mode() {
+  
+  return _impl_.current_resonance_mode_.Mutable(GetArenaForAllocation());
+}
+inline std::string* QueryCognitiveMemoryRequest::release_current_resonance_mode() {
+  // @@protoc_insertion_point(field_release:sentiric.knowledge.v1.QueryCognitiveMemoryRequest.current_resonance_mode)
+  return _impl_.current_resonance_mode_.Release();
+}
+inline void QueryCognitiveMemoryRequest::set_allocated_current_resonance_mode(std::string* current_resonance_mode) {
+  if (current_resonance_mode != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.current_resonance_mode_.SetAllocated(current_resonance_mode, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.current_resonance_mode_.IsDefault()) {
+    _impl_.current_resonance_mode_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.knowledge.v1.QueryCognitiveMemoryRequest.current_resonance_mode)
+}
+
+// int32 top_k = 5;
+inline void QueryCognitiveMemoryRequest::clear_top_k() {
+  _impl_.top_k_ = 0;
+}
+inline int32_t QueryCognitiveMemoryRequest::_internal_top_k() const {
+  return _impl_.top_k_;
+}
+inline int32_t QueryCognitiveMemoryRequest::top_k() const {
+  // @@protoc_insertion_point(field_get:sentiric.knowledge.v1.QueryCognitiveMemoryRequest.top_k)
+  return _internal_top_k();
+}
+inline void QueryCognitiveMemoryRequest::_internal_set_top_k(int32_t value) {
+  
+  _impl_.top_k_ = value;
+}
+inline void QueryCognitiveMemoryRequest::set_top_k(int32_t value) {
+  _internal_set_top_k(value);
+  // @@protoc_insertion_point(field_set:sentiric.knowledge.v1.QueryCognitiveMemoryRequest.top_k)
+}
+
+// -------------------------------------------------------------------
+
+// QueryCognitiveMemoryResponse
+
+// repeated .sentiric.knowledge.v1.UserMemoryPayload memories = 1;
+inline int QueryCognitiveMemoryResponse::_internal_memories_size() const {
+  return _impl_.memories_.size();
+}
+inline int QueryCognitiveMemoryResponse::memories_size() const {
+  return _internal_memories_size();
+}
+inline void QueryCognitiveMemoryResponse::clear_memories() {
+  _impl_.memories_.Clear();
+}
+inline ::sentiric::knowledge::v1::UserMemoryPayload* QueryCognitiveMemoryResponse::mutable_memories(int index) {
+  // @@protoc_insertion_point(field_mutable:sentiric.knowledge.v1.QueryCognitiveMemoryResponse.memories)
+  return _impl_.memories_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::sentiric::knowledge::v1::UserMemoryPayload >*
+QueryCognitiveMemoryResponse::mutable_memories() {
+  // @@protoc_insertion_point(field_mutable_list:sentiric.knowledge.v1.QueryCognitiveMemoryResponse.memories)
+  return &_impl_.memories_;
+}
+inline const ::sentiric::knowledge::v1::UserMemoryPayload& QueryCognitiveMemoryResponse::_internal_memories(int index) const {
+  return _impl_.memories_.Get(index);
+}
+inline const ::sentiric::knowledge::v1::UserMemoryPayload& QueryCognitiveMemoryResponse::memories(int index) const {
+  // @@protoc_insertion_point(field_get:sentiric.knowledge.v1.QueryCognitiveMemoryResponse.memories)
+  return _internal_memories(index);
+}
+inline ::sentiric::knowledge::v1::UserMemoryPayload* QueryCognitiveMemoryResponse::_internal_add_memories() {
+  return _impl_.memories_.Add();
+}
+inline ::sentiric::knowledge::v1::UserMemoryPayload* QueryCognitiveMemoryResponse::add_memories() {
+  ::sentiric::knowledge::v1::UserMemoryPayload* _add = _internal_add_memories();
+  // @@protoc_insertion_point(field_add:sentiric.knowledge.v1.QueryCognitiveMemoryResponse.memories)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::sentiric::knowledge::v1::UserMemoryPayload >&
+QueryCognitiveMemoryResponse::memories() const {
+  // @@protoc_insertion_point(field_list:sentiric.knowledge.v1.QueryCognitiveMemoryResponse.memories)
+  return _impl_.memories_;
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

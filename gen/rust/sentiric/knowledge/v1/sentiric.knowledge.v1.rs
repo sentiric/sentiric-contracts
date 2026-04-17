@@ -40,5 +40,81 @@ pub struct QueryResult {
     #[prost(map="string, string", tag="4")]
     pub metadata: ::std::collections::HashMap<::prost::alloc::string::String, ::prost::alloc::string::String>,
 }
+// --- \[ARCH-COMPLIANCE: v4.0 Cognitive Memory Types\] ---
+
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct UserMemoryPayload {
+    #[prost(message, optional, tag="1")]
+    pub bio_anchor: ::core::option::Option<user_memory_payload::BioAnchor>,
+    #[prost(message, optional, tag="2")]
+    pub resonance: ::core::option::Option<user_memory_payload::Resonance>,
+    #[prost(message, optional, tag="3")]
+    pub fact: ::core::option::Option<user_memory_payload::Fact>,
+    #[prost(message, optional, tag="4")]
+    pub lifecycle: ::core::option::Option<user_memory_payload::Lifecycle>,
+    #[prost(string, tag="5")]
+    pub embedding_version: ::prost::alloc::string::String,
+}
+/// Nested message and enum types in `UserMemoryPayload`.
+pub mod user_memory_payload {
+    #[derive(Clone, PartialEq, ::prost::Message)]
+    pub struct BioAnchor {
+        #[prost(string, tag="1")]
+        pub bio_id: ::prost::alloc::string::String,
+        #[prost(float, tag="2")]
+        pub confidence: f32,
+    }
+    #[derive(Clone, PartialEq, ::prost::Message)]
+    pub struct Resonance {
+        /// "deep_waters", "analytical", "executive", "vulnerable"
+        #[prost(string, tag="1")]
+        pub mode: ::prost::alloc::string::String,
+        #[prost(float, tag="2")]
+        pub confidence: f32,
+    }
+    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+    pub struct Fact {
+        #[prost(string, tag="1")]
+        pub category: ::prost::alloc::string::String,
+        /// 1 to 5
+        #[prost(int32, tag="2")]
+        pub importance: i32,
+        #[prost(string, tag="3")]
+        pub summary: ::prost::alloc::string::String,
+        #[prost(string, repeated, tag="4")]
+        pub metadata: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
+    }
+    #[derive(Clone, PartialEq, ::prost::Message)]
+    pub struct Lifecycle {
+        #[prost(string, tag="1")]
+        pub trace_id: ::prost::alloc::string::String,
+        #[prost(string, tag="2")]
+        pub created_at: ::prost::alloc::string::String,
+        #[prost(string, tag="3")]
+        pub last_accessed: ::prost::alloc::string::String,
+        #[prost(float, tag="4")]
+        pub decay_score: f32,
+    }
+}
+/// Dialog-Service'in Crystalline/Knowledge üzerinden RAG çekerken kullanacağı istek
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+pub struct QueryCognitiveMemoryRequest {
+    #[prost(string, tag="1")]
+    pub tenant_id: ::prost::alloc::string::String,
+    #[prost(string, tag="2")]
+    pub bio_id: ::prost::alloc::string::String,
+    #[prost(string, tag="3")]
+    pub query_text: ::prost::alloc::string::String,
+    /// Hibrit skorlama için
+    #[prost(string, tag="4")]
+    pub current_resonance_mode: ::prost::alloc::string::String,
+    #[prost(int32, tag="5")]
+    pub top_k: i32,
+}
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryCognitiveMemoryResponse {
+    #[prost(message, repeated, tag="1")]
+    pub memories: ::prost::alloc::vec::Vec<UserMemoryPayload>,
+}
 include!("sentiric.knowledge.v1.tonic.rs");
 // @@protoc_insertion_point(module)

@@ -34,6 +34,54 @@ export interface QueryResult_MetadataEntry {
   value: string;
 }
 
+export interface UserMemoryPayload {
+  bioAnchor?: UserMemoryPayload_BioAnchor | undefined;
+  resonance?: UserMemoryPayload_Resonance | undefined;
+  fact?: UserMemoryPayload_Fact | undefined;
+  lifecycle?: UserMemoryPayload_Lifecycle | undefined;
+  embeddingVersion: string;
+}
+
+export interface UserMemoryPayload_BioAnchor {
+  bioId: string;
+  confidence: number;
+}
+
+export interface UserMemoryPayload_Resonance {
+  /** "deep_waters", "analytical", "executive", "vulnerable" */
+  mode: string;
+  confidence: number;
+}
+
+export interface UserMemoryPayload_Fact {
+  category: string;
+  /** 1 to 5 */
+  importance: number;
+  summary: string;
+  metadata: string[];
+}
+
+export interface UserMemoryPayload_Lifecycle {
+  traceId: string;
+  createdAt: string;
+  lastAccessed: string;
+  decayScore: number;
+}
+
+/** Dialog-Service'in Crystalline/Knowledge üzerinden RAG çekerken kullanacağı istek */
+export interface QueryCognitiveMemoryRequest {
+  tenantId: string;
+  bioId: string;
+  queryText: string;
+  /** Hibrit skorlama için */
+  currentResonanceMode: string;
+  topK: number;
+}
+
+export interface QueryCognitiveMemoryResponse {
+  memories: UserMemoryPayload[];
+}
+
 function createBaseQueryRequest(): QueryRequest {
   return { tenantId: "", query: "", topK: 0 };
 }
@@ -399,6 +447,740 @@ export const QueryResult_MetadataEntry: MessageFns<QueryResult_MetadataEntry> = 
     const message = createBaseQueryResult_MetadataEntry();
     message.key = object.key ?? "";
     message.value = object.value ?? "";
+    return message;
+  },
+};
+
+function createBaseUserMemoryPayload(): UserMemoryPayload {
+  return { bioAnchor: undefined, resonance: undefined, fact: undefined, lifecycle: undefined, embeddingVersion: "" };
+}
+
+export const UserMemoryPayload: MessageFns<UserMemoryPayload> = {
+  encode(message: UserMemoryPayload, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.bioAnchor !== undefined) {
+      UserMemoryPayload_BioAnchor.encode(message.bioAnchor, writer.uint32(10).fork()).join();
+    }
+    if (message.resonance !== undefined) {
+      UserMemoryPayload_Resonance.encode(message.resonance, writer.uint32(18).fork()).join();
+    }
+    if (message.fact !== undefined) {
+      UserMemoryPayload_Fact.encode(message.fact, writer.uint32(26).fork()).join();
+    }
+    if (message.lifecycle !== undefined) {
+      UserMemoryPayload_Lifecycle.encode(message.lifecycle, writer.uint32(34).fork()).join();
+    }
+    if (message.embeddingVersion !== "") {
+      writer.uint32(42).string(message.embeddingVersion);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): UserMemoryPayload {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseUserMemoryPayload();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 10) {
+            break;
+          }
+
+          message.bioAnchor = UserMemoryPayload_BioAnchor.decode(reader, reader.uint32());
+          continue;
+        }
+        case 2: {
+          if (tag !== 18) {
+            break;
+          }
+
+          message.resonance = UserMemoryPayload_Resonance.decode(reader, reader.uint32());
+          continue;
+        }
+        case 3: {
+          if (tag !== 26) {
+            break;
+          }
+
+          message.fact = UserMemoryPayload_Fact.decode(reader, reader.uint32());
+          continue;
+        }
+        case 4: {
+          if (tag !== 34) {
+            break;
+          }
+
+          message.lifecycle = UserMemoryPayload_Lifecycle.decode(reader, reader.uint32());
+          continue;
+        }
+        case 5: {
+          if (tag !== 42) {
+            break;
+          }
+
+          message.embeddingVersion = reader.string();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): UserMemoryPayload {
+    return {
+      bioAnchor: isSet(object.bioAnchor)
+        ? UserMemoryPayload_BioAnchor.fromJSON(object.bioAnchor)
+        : isSet(object.bio_anchor)
+        ? UserMemoryPayload_BioAnchor.fromJSON(object.bio_anchor)
+        : undefined,
+      resonance: isSet(object.resonance) ? UserMemoryPayload_Resonance.fromJSON(object.resonance) : undefined,
+      fact: isSet(object.fact) ? UserMemoryPayload_Fact.fromJSON(object.fact) : undefined,
+      lifecycle: isSet(object.lifecycle) ? UserMemoryPayload_Lifecycle.fromJSON(object.lifecycle) : undefined,
+      embeddingVersion: isSet(object.embeddingVersion)
+        ? globalThis.String(object.embeddingVersion)
+        : isSet(object.embedding_version)
+        ? globalThis.String(object.embedding_version)
+        : "",
+    };
+  },
+
+  toJSON(message: UserMemoryPayload): unknown {
+    const obj: any = {};
+    if (message.bioAnchor !== undefined) {
+      obj.bioAnchor = UserMemoryPayload_BioAnchor.toJSON(message.bioAnchor);
+    }
+    if (message.resonance !== undefined) {
+      obj.resonance = UserMemoryPayload_Resonance.toJSON(message.resonance);
+    }
+    if (message.fact !== undefined) {
+      obj.fact = UserMemoryPayload_Fact.toJSON(message.fact);
+    }
+    if (message.lifecycle !== undefined) {
+      obj.lifecycle = UserMemoryPayload_Lifecycle.toJSON(message.lifecycle);
+    }
+    if (message.embeddingVersion !== "") {
+      obj.embeddingVersion = message.embeddingVersion;
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<UserMemoryPayload>, I>>(base?: I): UserMemoryPayload {
+    return UserMemoryPayload.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<UserMemoryPayload>, I>>(object: I): UserMemoryPayload {
+    const message = createBaseUserMemoryPayload();
+    message.bioAnchor = (object.bioAnchor !== undefined && object.bioAnchor !== null)
+      ? UserMemoryPayload_BioAnchor.fromPartial(object.bioAnchor)
+      : undefined;
+    message.resonance = (object.resonance !== undefined && object.resonance !== null)
+      ? UserMemoryPayload_Resonance.fromPartial(object.resonance)
+      : undefined;
+    message.fact = (object.fact !== undefined && object.fact !== null)
+      ? UserMemoryPayload_Fact.fromPartial(object.fact)
+      : undefined;
+    message.lifecycle = (object.lifecycle !== undefined && object.lifecycle !== null)
+      ? UserMemoryPayload_Lifecycle.fromPartial(object.lifecycle)
+      : undefined;
+    message.embeddingVersion = object.embeddingVersion ?? "";
+    return message;
+  },
+};
+
+function createBaseUserMemoryPayload_BioAnchor(): UserMemoryPayload_BioAnchor {
+  return { bioId: "", confidence: 0 };
+}
+
+export const UserMemoryPayload_BioAnchor: MessageFns<UserMemoryPayload_BioAnchor> = {
+  encode(message: UserMemoryPayload_BioAnchor, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.bioId !== "") {
+      writer.uint32(10).string(message.bioId);
+    }
+    if (message.confidence !== 0) {
+      writer.uint32(21).float(message.confidence);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): UserMemoryPayload_BioAnchor {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseUserMemoryPayload_BioAnchor();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 10) {
+            break;
+          }
+
+          message.bioId = reader.string();
+          continue;
+        }
+        case 2: {
+          if (tag !== 21) {
+            break;
+          }
+
+          message.confidence = reader.float();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): UserMemoryPayload_BioAnchor {
+    return {
+      bioId: isSet(object.bioId)
+        ? globalThis.String(object.bioId)
+        : isSet(object.bio_id)
+        ? globalThis.String(object.bio_id)
+        : "",
+      confidence: isSet(object.confidence) ? globalThis.Number(object.confidence) : 0,
+    };
+  },
+
+  toJSON(message: UserMemoryPayload_BioAnchor): unknown {
+    const obj: any = {};
+    if (message.bioId !== "") {
+      obj.bioId = message.bioId;
+    }
+    if (message.confidence !== 0) {
+      obj.confidence = message.confidence;
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<UserMemoryPayload_BioAnchor>, I>>(base?: I): UserMemoryPayload_BioAnchor {
+    return UserMemoryPayload_BioAnchor.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<UserMemoryPayload_BioAnchor>, I>>(object: I): UserMemoryPayload_BioAnchor {
+    const message = createBaseUserMemoryPayload_BioAnchor();
+    message.bioId = object.bioId ?? "";
+    message.confidence = object.confidence ?? 0;
+    return message;
+  },
+};
+
+function createBaseUserMemoryPayload_Resonance(): UserMemoryPayload_Resonance {
+  return { mode: "", confidence: 0 };
+}
+
+export const UserMemoryPayload_Resonance: MessageFns<UserMemoryPayload_Resonance> = {
+  encode(message: UserMemoryPayload_Resonance, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.mode !== "") {
+      writer.uint32(10).string(message.mode);
+    }
+    if (message.confidence !== 0) {
+      writer.uint32(21).float(message.confidence);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): UserMemoryPayload_Resonance {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseUserMemoryPayload_Resonance();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 10) {
+            break;
+          }
+
+          message.mode = reader.string();
+          continue;
+        }
+        case 2: {
+          if (tag !== 21) {
+            break;
+          }
+
+          message.confidence = reader.float();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): UserMemoryPayload_Resonance {
+    return {
+      mode: isSet(object.mode) ? globalThis.String(object.mode) : "",
+      confidence: isSet(object.confidence) ? globalThis.Number(object.confidence) : 0,
+    };
+  },
+
+  toJSON(message: UserMemoryPayload_Resonance): unknown {
+    const obj: any = {};
+    if (message.mode !== "") {
+      obj.mode = message.mode;
+    }
+    if (message.confidence !== 0) {
+      obj.confidence = message.confidence;
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<UserMemoryPayload_Resonance>, I>>(base?: I): UserMemoryPayload_Resonance {
+    return UserMemoryPayload_Resonance.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<UserMemoryPayload_Resonance>, I>>(object: I): UserMemoryPayload_Resonance {
+    const message = createBaseUserMemoryPayload_Resonance();
+    message.mode = object.mode ?? "";
+    message.confidence = object.confidence ?? 0;
+    return message;
+  },
+};
+
+function createBaseUserMemoryPayload_Fact(): UserMemoryPayload_Fact {
+  return { category: "", importance: 0, summary: "", metadata: [] };
+}
+
+export const UserMemoryPayload_Fact: MessageFns<UserMemoryPayload_Fact> = {
+  encode(message: UserMemoryPayload_Fact, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.category !== "") {
+      writer.uint32(10).string(message.category);
+    }
+    if (message.importance !== 0) {
+      writer.uint32(16).int32(message.importance);
+    }
+    if (message.summary !== "") {
+      writer.uint32(26).string(message.summary);
+    }
+    for (const v of message.metadata) {
+      writer.uint32(34).string(v!);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): UserMemoryPayload_Fact {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseUserMemoryPayload_Fact();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 10) {
+            break;
+          }
+
+          message.category = reader.string();
+          continue;
+        }
+        case 2: {
+          if (tag !== 16) {
+            break;
+          }
+
+          message.importance = reader.int32();
+          continue;
+        }
+        case 3: {
+          if (tag !== 26) {
+            break;
+          }
+
+          message.summary = reader.string();
+          continue;
+        }
+        case 4: {
+          if (tag !== 34) {
+            break;
+          }
+
+          message.metadata.push(reader.string());
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): UserMemoryPayload_Fact {
+    return {
+      category: isSet(object.category) ? globalThis.String(object.category) : "",
+      importance: isSet(object.importance) ? globalThis.Number(object.importance) : 0,
+      summary: isSet(object.summary) ? globalThis.String(object.summary) : "",
+      metadata: globalThis.Array.isArray(object?.metadata) ? object.metadata.map((e: any) => globalThis.String(e)) : [],
+    };
+  },
+
+  toJSON(message: UserMemoryPayload_Fact): unknown {
+    const obj: any = {};
+    if (message.category !== "") {
+      obj.category = message.category;
+    }
+    if (message.importance !== 0) {
+      obj.importance = Math.round(message.importance);
+    }
+    if (message.summary !== "") {
+      obj.summary = message.summary;
+    }
+    if (message.metadata?.length) {
+      obj.metadata = message.metadata;
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<UserMemoryPayload_Fact>, I>>(base?: I): UserMemoryPayload_Fact {
+    return UserMemoryPayload_Fact.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<UserMemoryPayload_Fact>, I>>(object: I): UserMemoryPayload_Fact {
+    const message = createBaseUserMemoryPayload_Fact();
+    message.category = object.category ?? "";
+    message.importance = object.importance ?? 0;
+    message.summary = object.summary ?? "";
+    message.metadata = object.metadata?.map((e) => e) || [];
+    return message;
+  },
+};
+
+function createBaseUserMemoryPayload_Lifecycle(): UserMemoryPayload_Lifecycle {
+  return { traceId: "", createdAt: "", lastAccessed: "", decayScore: 0 };
+}
+
+export const UserMemoryPayload_Lifecycle: MessageFns<UserMemoryPayload_Lifecycle> = {
+  encode(message: UserMemoryPayload_Lifecycle, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.traceId !== "") {
+      writer.uint32(10).string(message.traceId);
+    }
+    if (message.createdAt !== "") {
+      writer.uint32(18).string(message.createdAt);
+    }
+    if (message.lastAccessed !== "") {
+      writer.uint32(26).string(message.lastAccessed);
+    }
+    if (message.decayScore !== 0) {
+      writer.uint32(37).float(message.decayScore);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): UserMemoryPayload_Lifecycle {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseUserMemoryPayload_Lifecycle();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 10) {
+            break;
+          }
+
+          message.traceId = reader.string();
+          continue;
+        }
+        case 2: {
+          if (tag !== 18) {
+            break;
+          }
+
+          message.createdAt = reader.string();
+          continue;
+        }
+        case 3: {
+          if (tag !== 26) {
+            break;
+          }
+
+          message.lastAccessed = reader.string();
+          continue;
+        }
+        case 4: {
+          if (tag !== 37) {
+            break;
+          }
+
+          message.decayScore = reader.float();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): UserMemoryPayload_Lifecycle {
+    return {
+      traceId: isSet(object.traceId)
+        ? globalThis.String(object.traceId)
+        : isSet(object.trace_id)
+        ? globalThis.String(object.trace_id)
+        : "",
+      createdAt: isSet(object.createdAt)
+        ? globalThis.String(object.createdAt)
+        : isSet(object.created_at)
+        ? globalThis.String(object.created_at)
+        : "",
+      lastAccessed: isSet(object.lastAccessed)
+        ? globalThis.String(object.lastAccessed)
+        : isSet(object.last_accessed)
+        ? globalThis.String(object.last_accessed)
+        : "",
+      decayScore: isSet(object.decayScore)
+        ? globalThis.Number(object.decayScore)
+        : isSet(object.decay_score)
+        ? globalThis.Number(object.decay_score)
+        : 0,
+    };
+  },
+
+  toJSON(message: UserMemoryPayload_Lifecycle): unknown {
+    const obj: any = {};
+    if (message.traceId !== "") {
+      obj.traceId = message.traceId;
+    }
+    if (message.createdAt !== "") {
+      obj.createdAt = message.createdAt;
+    }
+    if (message.lastAccessed !== "") {
+      obj.lastAccessed = message.lastAccessed;
+    }
+    if (message.decayScore !== 0) {
+      obj.decayScore = message.decayScore;
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<UserMemoryPayload_Lifecycle>, I>>(base?: I): UserMemoryPayload_Lifecycle {
+    return UserMemoryPayload_Lifecycle.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<UserMemoryPayload_Lifecycle>, I>>(object: I): UserMemoryPayload_Lifecycle {
+    const message = createBaseUserMemoryPayload_Lifecycle();
+    message.traceId = object.traceId ?? "";
+    message.createdAt = object.createdAt ?? "";
+    message.lastAccessed = object.lastAccessed ?? "";
+    message.decayScore = object.decayScore ?? 0;
+    return message;
+  },
+};
+
+function createBaseQueryCognitiveMemoryRequest(): QueryCognitiveMemoryRequest {
+  return { tenantId: "", bioId: "", queryText: "", currentResonanceMode: "", topK: 0 };
+}
+
+export const QueryCognitiveMemoryRequest: MessageFns<QueryCognitiveMemoryRequest> = {
+  encode(message: QueryCognitiveMemoryRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.tenantId !== "") {
+      writer.uint32(10).string(message.tenantId);
+    }
+    if (message.bioId !== "") {
+      writer.uint32(18).string(message.bioId);
+    }
+    if (message.queryText !== "") {
+      writer.uint32(26).string(message.queryText);
+    }
+    if (message.currentResonanceMode !== "") {
+      writer.uint32(34).string(message.currentResonanceMode);
+    }
+    if (message.topK !== 0) {
+      writer.uint32(40).int32(message.topK);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryCognitiveMemoryRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryCognitiveMemoryRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 10) {
+            break;
+          }
+
+          message.tenantId = reader.string();
+          continue;
+        }
+        case 2: {
+          if (tag !== 18) {
+            break;
+          }
+
+          message.bioId = reader.string();
+          continue;
+        }
+        case 3: {
+          if (tag !== 26) {
+            break;
+          }
+
+          message.queryText = reader.string();
+          continue;
+        }
+        case 4: {
+          if (tag !== 34) {
+            break;
+          }
+
+          message.currentResonanceMode = reader.string();
+          continue;
+        }
+        case 5: {
+          if (tag !== 40) {
+            break;
+          }
+
+          message.topK = reader.int32();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): QueryCognitiveMemoryRequest {
+    return {
+      tenantId: isSet(object.tenantId)
+        ? globalThis.String(object.tenantId)
+        : isSet(object.tenant_id)
+        ? globalThis.String(object.tenant_id)
+        : "",
+      bioId: isSet(object.bioId)
+        ? globalThis.String(object.bioId)
+        : isSet(object.bio_id)
+        ? globalThis.String(object.bio_id)
+        : "",
+      queryText: isSet(object.queryText)
+        ? globalThis.String(object.queryText)
+        : isSet(object.query_text)
+        ? globalThis.String(object.query_text)
+        : "",
+      currentResonanceMode: isSet(object.currentResonanceMode)
+        ? globalThis.String(object.currentResonanceMode)
+        : isSet(object.current_resonance_mode)
+        ? globalThis.String(object.current_resonance_mode)
+        : "",
+      topK: isSet(object.topK)
+        ? globalThis.Number(object.topK)
+        : isSet(object.top_k)
+        ? globalThis.Number(object.top_k)
+        : 0,
+    };
+  },
+
+  toJSON(message: QueryCognitiveMemoryRequest): unknown {
+    const obj: any = {};
+    if (message.tenantId !== "") {
+      obj.tenantId = message.tenantId;
+    }
+    if (message.bioId !== "") {
+      obj.bioId = message.bioId;
+    }
+    if (message.queryText !== "") {
+      obj.queryText = message.queryText;
+    }
+    if (message.currentResonanceMode !== "") {
+      obj.currentResonanceMode = message.currentResonanceMode;
+    }
+    if (message.topK !== 0) {
+      obj.topK = Math.round(message.topK);
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<QueryCognitiveMemoryRequest>, I>>(base?: I): QueryCognitiveMemoryRequest {
+    return QueryCognitiveMemoryRequest.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<QueryCognitiveMemoryRequest>, I>>(object: I): QueryCognitiveMemoryRequest {
+    const message = createBaseQueryCognitiveMemoryRequest();
+    message.tenantId = object.tenantId ?? "";
+    message.bioId = object.bioId ?? "";
+    message.queryText = object.queryText ?? "";
+    message.currentResonanceMode = object.currentResonanceMode ?? "";
+    message.topK = object.topK ?? 0;
+    return message;
+  },
+};
+
+function createBaseQueryCognitiveMemoryResponse(): QueryCognitiveMemoryResponse {
+  return { memories: [] };
+}
+
+export const QueryCognitiveMemoryResponse: MessageFns<QueryCognitiveMemoryResponse> = {
+  encode(message: QueryCognitiveMemoryResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    for (const v of message.memories) {
+      UserMemoryPayload.encode(v!, writer.uint32(10).fork()).join();
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryCognitiveMemoryResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryCognitiveMemoryResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 10) {
+            break;
+          }
+
+          message.memories.push(UserMemoryPayload.decode(reader, reader.uint32()));
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): QueryCognitiveMemoryResponse {
+    return {
+      memories: globalThis.Array.isArray(object?.memories)
+        ? object.memories.map((e: any) => UserMemoryPayload.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: QueryCognitiveMemoryResponse): unknown {
+    const obj: any = {};
+    if (message.memories?.length) {
+      obj.memories = message.memories.map((e) => UserMemoryPayload.toJSON(e));
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<QueryCognitiveMemoryResponse>, I>>(base?: I): QueryCognitiveMemoryResponse {
+    return QueryCognitiveMemoryResponse.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<QueryCognitiveMemoryResponse>, I>>(object: I): QueryCognitiveMemoryResponse {
+    const message = createBaseQueryCognitiveMemoryResponse();
+    message.memories = object.memories?.map((e) => UserMemoryPayload.fromPartial(e)) || [];
     return message;
   },
 };

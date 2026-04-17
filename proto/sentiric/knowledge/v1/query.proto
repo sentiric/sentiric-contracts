@@ -25,5 +25,51 @@ message QueryResult {
   string source = 3;
   map<string, string> metadata = 4;
 }
-// Diğer Knowledge dosyası iskeleti:
-// proto/sentiric/knowledge/v1/indexing.proto (İçine TriggerReindex RPC'sini ekleyin)
+
+
+// --- [ARCH-COMPLIANCE: v4.0 Cognitive Memory Types] ---
+
+message UserMemoryPayload {
+  message BioAnchor {
+    string bio_id = 1;
+    float confidence = 2;
+  }
+  
+  message Resonance {
+    string mode = 1; // "deep_waters", "analytical", "executive", "vulnerable"
+    float confidence = 2;
+  }
+  
+  message Fact {
+    string category = 1;
+    int32 importance = 2; // 1 to 5
+    string summary = 3;
+    repeated string metadata = 4;
+  }
+  
+  message Lifecycle {
+    string trace_id = 1;
+    string created_at = 2;
+    string last_accessed = 3;
+    float decay_score = 4;
+  }
+
+  BioAnchor bio_anchor = 1;
+  Resonance resonance = 2;
+  Fact fact = 3;
+  Lifecycle lifecycle = 4;
+  string embedding_version = 5;
+}
+
+// Dialog-Service'in Crystalline/Knowledge üzerinden RAG çekerken kullanacağı istek
+message QueryCognitiveMemoryRequest {
+  string tenant_id = 1;
+  string bio_id = 2;
+  string query_text = 3;
+  string current_resonance_mode = 4; // Hibrit skorlama için
+  int32 top_k = 5;
+}
+
+message QueryCognitiveMemoryResponse {
+  repeated UserMemoryPayload memories = 1;
+}

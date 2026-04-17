@@ -196,6 +196,443 @@ func (x *QueryResult) GetMetadata() map[string]string {
 	return nil
 }
 
+type UserMemoryPayload struct {
+	state            protoimpl.MessageState       `protogen:"open.v1"`
+	BioAnchor        *UserMemoryPayload_BioAnchor `protobuf:"bytes,1,opt,name=bio_anchor,json=bioAnchor,proto3" json:"bio_anchor,omitempty"`
+	Resonance        *UserMemoryPayload_Resonance `protobuf:"bytes,2,opt,name=resonance,proto3" json:"resonance,omitempty"`
+	Fact             *UserMemoryPayload_Fact      `protobuf:"bytes,3,opt,name=fact,proto3" json:"fact,omitempty"`
+	Lifecycle        *UserMemoryPayload_Lifecycle `protobuf:"bytes,4,opt,name=lifecycle,proto3" json:"lifecycle,omitempty"`
+	EmbeddingVersion string                       `protobuf:"bytes,5,opt,name=embedding_version,json=embeddingVersion,proto3" json:"embedding_version,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *UserMemoryPayload) Reset() {
+	*x = UserMemoryPayload{}
+	mi := &file_sentiric_knowledge_v1_query_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UserMemoryPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UserMemoryPayload) ProtoMessage() {}
+
+func (x *UserMemoryPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_knowledge_v1_query_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UserMemoryPayload.ProtoReflect.Descriptor instead.
+func (*UserMemoryPayload) Descriptor() ([]byte, []int) {
+	return file_sentiric_knowledge_v1_query_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *UserMemoryPayload) GetBioAnchor() *UserMemoryPayload_BioAnchor {
+	if x != nil {
+		return x.BioAnchor
+	}
+	return nil
+}
+
+func (x *UserMemoryPayload) GetResonance() *UserMemoryPayload_Resonance {
+	if x != nil {
+		return x.Resonance
+	}
+	return nil
+}
+
+func (x *UserMemoryPayload) GetFact() *UserMemoryPayload_Fact {
+	if x != nil {
+		return x.Fact
+	}
+	return nil
+}
+
+func (x *UserMemoryPayload) GetLifecycle() *UserMemoryPayload_Lifecycle {
+	if x != nil {
+		return x.Lifecycle
+	}
+	return nil
+}
+
+func (x *UserMemoryPayload) GetEmbeddingVersion() string {
+	if x != nil {
+		return x.EmbeddingVersion
+	}
+	return ""
+}
+
+// Dialog-Service'in Crystalline/Knowledge üzerinden RAG çekerken kullanacağı istek
+type QueryCognitiveMemoryRequest struct {
+	state                protoimpl.MessageState `protogen:"open.v1"`
+	TenantId             string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	BioId                string                 `protobuf:"bytes,2,opt,name=bio_id,json=bioId,proto3" json:"bio_id,omitempty"`
+	QueryText            string                 `protobuf:"bytes,3,opt,name=query_text,json=queryText,proto3" json:"query_text,omitempty"`
+	CurrentResonanceMode string                 `protobuf:"bytes,4,opt,name=current_resonance_mode,json=currentResonanceMode,proto3" json:"current_resonance_mode,omitempty"` // Hibrit skorlama için
+	TopK                 int32                  `protobuf:"varint,5,opt,name=top_k,json=topK,proto3" json:"top_k,omitempty"`
+	unknownFields        protoimpl.UnknownFields
+	sizeCache            protoimpl.SizeCache
+}
+
+func (x *QueryCognitiveMemoryRequest) Reset() {
+	*x = QueryCognitiveMemoryRequest{}
+	mi := &file_sentiric_knowledge_v1_query_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *QueryCognitiveMemoryRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*QueryCognitiveMemoryRequest) ProtoMessage() {}
+
+func (x *QueryCognitiveMemoryRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_knowledge_v1_query_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use QueryCognitiveMemoryRequest.ProtoReflect.Descriptor instead.
+func (*QueryCognitiveMemoryRequest) Descriptor() ([]byte, []int) {
+	return file_sentiric_knowledge_v1_query_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *QueryCognitiveMemoryRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *QueryCognitiveMemoryRequest) GetBioId() string {
+	if x != nil {
+		return x.BioId
+	}
+	return ""
+}
+
+func (x *QueryCognitiveMemoryRequest) GetQueryText() string {
+	if x != nil {
+		return x.QueryText
+	}
+	return ""
+}
+
+func (x *QueryCognitiveMemoryRequest) GetCurrentResonanceMode() string {
+	if x != nil {
+		return x.CurrentResonanceMode
+	}
+	return ""
+}
+
+func (x *QueryCognitiveMemoryRequest) GetTopK() int32 {
+	if x != nil {
+		return x.TopK
+	}
+	return 0
+}
+
+type QueryCognitiveMemoryResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Memories      []*UserMemoryPayload   `protobuf:"bytes,1,rep,name=memories,proto3" json:"memories,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *QueryCognitiveMemoryResponse) Reset() {
+	*x = QueryCognitiveMemoryResponse{}
+	mi := &file_sentiric_knowledge_v1_query_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *QueryCognitiveMemoryResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*QueryCognitiveMemoryResponse) ProtoMessage() {}
+
+func (x *QueryCognitiveMemoryResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_knowledge_v1_query_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use QueryCognitiveMemoryResponse.ProtoReflect.Descriptor instead.
+func (*QueryCognitiveMemoryResponse) Descriptor() ([]byte, []int) {
+	return file_sentiric_knowledge_v1_query_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *QueryCognitiveMemoryResponse) GetMemories() []*UserMemoryPayload {
+	if x != nil {
+		return x.Memories
+	}
+	return nil
+}
+
+type UserMemoryPayload_BioAnchor struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	BioId         string                 `protobuf:"bytes,1,opt,name=bio_id,json=bioId,proto3" json:"bio_id,omitempty"`
+	Confidence    float32                `protobuf:"fixed32,2,opt,name=confidence,proto3" json:"confidence,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UserMemoryPayload_BioAnchor) Reset() {
+	*x = UserMemoryPayload_BioAnchor{}
+	mi := &file_sentiric_knowledge_v1_query_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UserMemoryPayload_BioAnchor) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UserMemoryPayload_BioAnchor) ProtoMessage() {}
+
+func (x *UserMemoryPayload_BioAnchor) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_knowledge_v1_query_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UserMemoryPayload_BioAnchor.ProtoReflect.Descriptor instead.
+func (*UserMemoryPayload_BioAnchor) Descriptor() ([]byte, []int) {
+	return file_sentiric_knowledge_v1_query_proto_rawDescGZIP(), []int{3, 0}
+}
+
+func (x *UserMemoryPayload_BioAnchor) GetBioId() string {
+	if x != nil {
+		return x.BioId
+	}
+	return ""
+}
+
+func (x *UserMemoryPayload_BioAnchor) GetConfidence() float32 {
+	if x != nil {
+		return x.Confidence
+	}
+	return 0
+}
+
+type UserMemoryPayload_Resonance struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Mode          string                 `protobuf:"bytes,1,opt,name=mode,proto3" json:"mode,omitempty"` // "deep_waters", "analytical", "executive", "vulnerable"
+	Confidence    float32                `protobuf:"fixed32,2,opt,name=confidence,proto3" json:"confidence,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UserMemoryPayload_Resonance) Reset() {
+	*x = UserMemoryPayload_Resonance{}
+	mi := &file_sentiric_knowledge_v1_query_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UserMemoryPayload_Resonance) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UserMemoryPayload_Resonance) ProtoMessage() {}
+
+func (x *UserMemoryPayload_Resonance) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_knowledge_v1_query_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UserMemoryPayload_Resonance.ProtoReflect.Descriptor instead.
+func (*UserMemoryPayload_Resonance) Descriptor() ([]byte, []int) {
+	return file_sentiric_knowledge_v1_query_proto_rawDescGZIP(), []int{3, 1}
+}
+
+func (x *UserMemoryPayload_Resonance) GetMode() string {
+	if x != nil {
+		return x.Mode
+	}
+	return ""
+}
+
+func (x *UserMemoryPayload_Resonance) GetConfidence() float32 {
+	if x != nil {
+		return x.Confidence
+	}
+	return 0
+}
+
+type UserMemoryPayload_Fact struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Category      string                 `protobuf:"bytes,1,opt,name=category,proto3" json:"category,omitempty"`
+	Importance    int32                  `protobuf:"varint,2,opt,name=importance,proto3" json:"importance,omitempty"` // 1 to 5
+	Summary       string                 `protobuf:"bytes,3,opt,name=summary,proto3" json:"summary,omitempty"`
+	Metadata      []string               `protobuf:"bytes,4,rep,name=metadata,proto3" json:"metadata,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UserMemoryPayload_Fact) Reset() {
+	*x = UserMemoryPayload_Fact{}
+	mi := &file_sentiric_knowledge_v1_query_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UserMemoryPayload_Fact) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UserMemoryPayload_Fact) ProtoMessage() {}
+
+func (x *UserMemoryPayload_Fact) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_knowledge_v1_query_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UserMemoryPayload_Fact.ProtoReflect.Descriptor instead.
+func (*UserMemoryPayload_Fact) Descriptor() ([]byte, []int) {
+	return file_sentiric_knowledge_v1_query_proto_rawDescGZIP(), []int{3, 2}
+}
+
+func (x *UserMemoryPayload_Fact) GetCategory() string {
+	if x != nil {
+		return x.Category
+	}
+	return ""
+}
+
+func (x *UserMemoryPayload_Fact) GetImportance() int32 {
+	if x != nil {
+		return x.Importance
+	}
+	return 0
+}
+
+func (x *UserMemoryPayload_Fact) GetSummary() string {
+	if x != nil {
+		return x.Summary
+	}
+	return ""
+}
+
+func (x *UserMemoryPayload_Fact) GetMetadata() []string {
+	if x != nil {
+		return x.Metadata
+	}
+	return nil
+}
+
+type UserMemoryPayload_Lifecycle struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TraceId       string                 `protobuf:"bytes,1,opt,name=trace_id,json=traceId,proto3" json:"trace_id,omitempty"`
+	CreatedAt     string                 `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	LastAccessed  string                 `protobuf:"bytes,3,opt,name=last_accessed,json=lastAccessed,proto3" json:"last_accessed,omitempty"`
+	DecayScore    float32                `protobuf:"fixed32,4,opt,name=decay_score,json=decayScore,proto3" json:"decay_score,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UserMemoryPayload_Lifecycle) Reset() {
+	*x = UserMemoryPayload_Lifecycle{}
+	mi := &file_sentiric_knowledge_v1_query_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UserMemoryPayload_Lifecycle) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UserMemoryPayload_Lifecycle) ProtoMessage() {}
+
+func (x *UserMemoryPayload_Lifecycle) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_knowledge_v1_query_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UserMemoryPayload_Lifecycle.ProtoReflect.Descriptor instead.
+func (*UserMemoryPayload_Lifecycle) Descriptor() ([]byte, []int) {
+	return file_sentiric_knowledge_v1_query_proto_rawDescGZIP(), []int{3, 3}
+}
+
+func (x *UserMemoryPayload_Lifecycle) GetTraceId() string {
+	if x != nil {
+		return x.TraceId
+	}
+	return ""
+}
+
+func (x *UserMemoryPayload_Lifecycle) GetCreatedAt() string {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return ""
+}
+
+func (x *UserMemoryPayload_Lifecycle) GetLastAccessed() string {
+	if x != nil {
+		return x.LastAccessed
+	}
+	return ""
+}
+
+func (x *UserMemoryPayload_Lifecycle) GetDecayScore() float32 {
+	if x != nil {
+		return x.DecayScore
+	}
+	return 0
+}
+
 var File_sentiric_knowledge_v1_query_proto protoreflect.FileDescriptor
 
 const file_sentiric_knowledge_v1_query_proto_rawDesc = "" +
@@ -214,7 +651,47 @@ const file_sentiric_knowledge_v1_query_proto_rawDesc = "" +
 	"\bmetadata\x18\x04 \x03(\v20.sentiric.knowledge.v1.QueryResult.MetadataEntryR\bmetadata\x1a;\n" +
 	"\rMetadataEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x012k\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x87\x06\n" +
+	"\x11UserMemoryPayload\x12Q\n" +
+	"\n" +
+	"bio_anchor\x18\x01 \x01(\v22.sentiric.knowledge.v1.UserMemoryPayload.BioAnchorR\tbioAnchor\x12P\n" +
+	"\tresonance\x18\x02 \x01(\v22.sentiric.knowledge.v1.UserMemoryPayload.ResonanceR\tresonance\x12A\n" +
+	"\x04fact\x18\x03 \x01(\v2-.sentiric.knowledge.v1.UserMemoryPayload.FactR\x04fact\x12P\n" +
+	"\tlifecycle\x18\x04 \x01(\v22.sentiric.knowledge.v1.UserMemoryPayload.LifecycleR\tlifecycle\x12+\n" +
+	"\x11embedding_version\x18\x05 \x01(\tR\x10embeddingVersion\x1aB\n" +
+	"\tBioAnchor\x12\x15\n" +
+	"\x06bio_id\x18\x01 \x01(\tR\x05bioId\x12\x1e\n" +
+	"\n" +
+	"confidence\x18\x02 \x01(\x02R\n" +
+	"confidence\x1a?\n" +
+	"\tResonance\x12\x12\n" +
+	"\x04mode\x18\x01 \x01(\tR\x04mode\x12\x1e\n" +
+	"\n" +
+	"confidence\x18\x02 \x01(\x02R\n" +
+	"confidence\x1ax\n" +
+	"\x04Fact\x12\x1a\n" +
+	"\bcategory\x18\x01 \x01(\tR\bcategory\x12\x1e\n" +
+	"\n" +
+	"importance\x18\x02 \x01(\x05R\n" +
+	"importance\x12\x18\n" +
+	"\asummary\x18\x03 \x01(\tR\asummary\x12\x1a\n" +
+	"\bmetadata\x18\x04 \x03(\tR\bmetadata\x1a\x8b\x01\n" +
+	"\tLifecycle\x12\x19\n" +
+	"\btrace_id\x18\x01 \x01(\tR\atraceId\x12\x1d\n" +
+	"\n" +
+	"created_at\x18\x02 \x01(\tR\tcreatedAt\x12#\n" +
+	"\rlast_accessed\x18\x03 \x01(\tR\flastAccessed\x12\x1f\n" +
+	"\vdecay_score\x18\x04 \x01(\x02R\n" +
+	"decayScore\"\xbb\x01\n" +
+	"\x1bQueryCognitiveMemoryRequest\x12\x1b\n" +
+	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x15\n" +
+	"\x06bio_id\x18\x02 \x01(\tR\x05bioId\x12\x1d\n" +
+	"\n" +
+	"query_text\x18\x03 \x01(\tR\tqueryText\x124\n" +
+	"\x16current_resonance_mode\x18\x04 \x01(\tR\x14currentResonanceMode\x12\x13\n" +
+	"\x05top_k\x18\x05 \x01(\x05R\x04topK\"d\n" +
+	"\x1cQueryCognitiveMemoryResponse\x12D\n" +
+	"\bmemories\x18\x01 \x03(\v2(.sentiric.knowledge.v1.UserMemoryPayloadR\bmemories2k\n" +
 	"\x15KnowledgeQueryService\x12R\n" +
 	"\x05Query\x12#.sentiric.knowledge.v1.QueryRequest\x1a$.sentiric.knowledge.v1.QueryResponseBQZOgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/knowledge/v1;knowledgev1b\x06proto3"
 
@@ -230,23 +707,35 @@ func file_sentiric_knowledge_v1_query_proto_rawDescGZIP() []byte {
 	return file_sentiric_knowledge_v1_query_proto_rawDescData
 }
 
-var file_sentiric_knowledge_v1_query_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_sentiric_knowledge_v1_query_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_sentiric_knowledge_v1_query_proto_goTypes = []any{
-	(*QueryRequest)(nil),  // 0: sentiric.knowledge.v1.QueryRequest
-	(*QueryResponse)(nil), // 1: sentiric.knowledge.v1.QueryResponse
-	(*QueryResult)(nil),   // 2: sentiric.knowledge.v1.QueryResult
-	nil,                   // 3: sentiric.knowledge.v1.QueryResult.MetadataEntry
+	(*QueryRequest)(nil),                 // 0: sentiric.knowledge.v1.QueryRequest
+	(*QueryResponse)(nil),                // 1: sentiric.knowledge.v1.QueryResponse
+	(*QueryResult)(nil),                  // 2: sentiric.knowledge.v1.QueryResult
+	(*UserMemoryPayload)(nil),            // 3: sentiric.knowledge.v1.UserMemoryPayload
+	(*QueryCognitiveMemoryRequest)(nil),  // 4: sentiric.knowledge.v1.QueryCognitiveMemoryRequest
+	(*QueryCognitiveMemoryResponse)(nil), // 5: sentiric.knowledge.v1.QueryCognitiveMemoryResponse
+	nil,                                  // 6: sentiric.knowledge.v1.QueryResult.MetadataEntry
+	(*UserMemoryPayload_BioAnchor)(nil),  // 7: sentiric.knowledge.v1.UserMemoryPayload.BioAnchor
+	(*UserMemoryPayload_Resonance)(nil),  // 8: sentiric.knowledge.v1.UserMemoryPayload.Resonance
+	(*UserMemoryPayload_Fact)(nil),       // 9: sentiric.knowledge.v1.UserMemoryPayload.Fact
+	(*UserMemoryPayload_Lifecycle)(nil),  // 10: sentiric.knowledge.v1.UserMemoryPayload.Lifecycle
 }
 var file_sentiric_knowledge_v1_query_proto_depIdxs = []int32{
-	2, // 0: sentiric.knowledge.v1.QueryResponse.results:type_name -> sentiric.knowledge.v1.QueryResult
-	3, // 1: sentiric.knowledge.v1.QueryResult.metadata:type_name -> sentiric.knowledge.v1.QueryResult.MetadataEntry
-	0, // 2: sentiric.knowledge.v1.KnowledgeQueryService.Query:input_type -> sentiric.knowledge.v1.QueryRequest
-	1, // 3: sentiric.knowledge.v1.KnowledgeQueryService.Query:output_type -> sentiric.knowledge.v1.QueryResponse
-	3, // [3:4] is the sub-list for method output_type
-	2, // [2:3] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	2,  // 0: sentiric.knowledge.v1.QueryResponse.results:type_name -> sentiric.knowledge.v1.QueryResult
+	6,  // 1: sentiric.knowledge.v1.QueryResult.metadata:type_name -> sentiric.knowledge.v1.QueryResult.MetadataEntry
+	7,  // 2: sentiric.knowledge.v1.UserMemoryPayload.bio_anchor:type_name -> sentiric.knowledge.v1.UserMemoryPayload.BioAnchor
+	8,  // 3: sentiric.knowledge.v1.UserMemoryPayload.resonance:type_name -> sentiric.knowledge.v1.UserMemoryPayload.Resonance
+	9,  // 4: sentiric.knowledge.v1.UserMemoryPayload.fact:type_name -> sentiric.knowledge.v1.UserMemoryPayload.Fact
+	10, // 5: sentiric.knowledge.v1.UserMemoryPayload.lifecycle:type_name -> sentiric.knowledge.v1.UserMemoryPayload.Lifecycle
+	3,  // 6: sentiric.knowledge.v1.QueryCognitiveMemoryResponse.memories:type_name -> sentiric.knowledge.v1.UserMemoryPayload
+	0,  // 7: sentiric.knowledge.v1.KnowledgeQueryService.Query:input_type -> sentiric.knowledge.v1.QueryRequest
+	1,  // 8: sentiric.knowledge.v1.KnowledgeQueryService.Query:output_type -> sentiric.knowledge.v1.QueryResponse
+	8,  // [8:9] is the sub-list for method output_type
+	7,  // [7:8] is the sub-list for method input_type
+	7,  // [7:7] is the sub-list for extension type_name
+	7,  // [7:7] is the sub-list for extension extendee
+	0,  // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_sentiric_knowledge_v1_query_proto_init() }
@@ -260,7 +749,7 @@ func file_sentiric_knowledge_v1_query_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sentiric_knowledge_v1_query_proto_rawDesc), len(file_sentiric_knowledge_v1_query_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
