@@ -94,6 +94,10 @@ pub mod user_memory_payload {
         pub last_accessed: ::prost::alloc::string::String,
         #[prost(float, tag="4")]
         pub decay_score: f32,
+        /// \[ARCH-COMPLIANCE: Subconscious Archiving\]
+        /// Anılar tamamen silinmez, bilinçaltına (is_archived=true) itilir.
+        #[prost(bool, tag="5")]
+        pub is_archived: bool,
     }
 }
 /// Dialog-Service'in Crystalline/Knowledge üzerinden RAG çekerken kullanacağı istek

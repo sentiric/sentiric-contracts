@@ -9,6 +9,7 @@
 package streamv1
 
 import (
+	v1 "github.com/sentiric/sentiric-contracts/gen/go/sentiric/event/v1"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -198,6 +199,7 @@ type StreamSessionResponse struct {
 	//	*StreamSessionResponse_StatusUpdate
 	//	*StreamSessionResponse_Transcript
 	//	*StreamSessionResponse_ClearAudioBuffer
+	//	*StreamSessionResponse_CognitiveMap
 	Data          isStreamSessionResponse_Data `protobuf_oneof:"data"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -285,6 +287,15 @@ func (x *StreamSessionResponse) GetClearAudioBuffer() bool {
 	return false
 }
 
+func (x *StreamSessionResponse) GetCognitiveMap() *v1.CognitiveMapUpdatedEvent {
+	if x != nil {
+		if x, ok := x.Data.(*StreamSessionResponse_CognitiveMap); ok {
+			return x.CognitiveMap
+		}
+	}
+	return nil
+}
+
 type isStreamSessionResponse_Data interface {
 	isStreamSessionResponse_Data()
 }
@@ -309,6 +320,11 @@ type StreamSessionResponse_ClearAudioBuffer struct {
 	ClearAudioBuffer bool `protobuf:"varint,5,opt,name=clear_audio_buffer,json=clearAudioBuffer,proto3,oneof"`
 }
 
+type StreamSessionResponse_CognitiveMap struct {
+	// [ARCH-COMPLIANCE: Cognitive Mirror] SDK'ya giden canlı zihin haritası verisi
+	CognitiveMap *v1.CognitiveMapUpdatedEvent `protobuf:"bytes,6,opt,name=cognitive_map,json=cognitiveMap,proto3,oneof"`
+}
+
 func (*StreamSessionResponse_AudioResponse) isStreamSessionResponse_Data() {}
 
 func (*StreamSessionResponse_TextResponse) isStreamSessionResponse_Data() {}
@@ -318,6 +334,8 @@ func (*StreamSessionResponse_StatusUpdate) isStreamSessionResponse_Data() {}
 func (*StreamSessionResponse_Transcript) isStreamSessionResponse_Data() {}
 
 func (*StreamSessionResponse_ClearAudioBuffer) isStreamSessionResponse_Data() {}
+
+func (*StreamSessionResponse_CognitiveMap) isStreamSessionResponse_Data() {}
 
 type WordData struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -679,14 +697,14 @@ var File_sentiric_stream_v1_gateway_proto protoreflect.FileDescriptor
 
 const file_sentiric_stream_v1_gateway_proto_rawDesc = "" +
 	"\n" +
-	" sentiric/stream/v1/gateway.proto\x12\x12sentiric.stream.v1\"\xe3\x01\n" +
+	" sentiric/stream/v1/gateway.proto\x12\x12sentiric.stream.v1\x1a\x1dsentiric/event/v1/event.proto\"\xe3\x01\n" +
 	"\x14StreamSessionRequest\x12;\n" +
 	"\x06config\x18\x01 \x01(\v2!.sentiric.stream.v1.SessionConfigH\x00R\x06config\x12!\n" +
 	"\vaudio_chunk\x18\x02 \x01(\fH\x00R\n" +
 	"audioChunk\x12#\n" +
 	"\ftext_message\x18\x03 \x01(\tH\x00R\vtextMessage\x12>\n" +
 	"\acontrol\x18\x04 \x01(\v2\".sentiric.stream.v1.SessionControlH\x00R\acontrolB\x06\n" +
-	"\x04data\"\x8d\x02\n" +
+	"\x04data\"\xe1\x02\n" +
 	"\x15StreamSessionResponse\x12'\n" +
 	"\x0eaudio_response\x18\x01 \x01(\fH\x00R\raudioResponse\x12%\n" +
 	"\rtext_response\x18\x02 \x01(\tH\x00R\ftextResponse\x12%\n" +
@@ -694,7 +712,8 @@ const file_sentiric_stream_v1_gateway_proto_rawDesc = "" +
 	"\n" +
 	"transcript\x18\x04 \x01(\v2#.sentiric.stream.v1.TranscriptEventH\x00R\n" +
 	"transcript\x12.\n" +
-	"\x12clear_audio_buffer\x18\x05 \x01(\bH\x00R\x10clearAudioBufferB\x06\n" +
+	"\x12clear_audio_buffer\x18\x05 \x01(\bH\x00R\x10clearAudioBuffer\x12R\n" +
+	"\rcognitive_map\x18\x06 \x01(\v2+.sentiric.event.v1.CognitiveMapUpdatedEventH\x00R\fcognitiveMapB\x06\n" +
 	"\x04data\"h\n" +
 	"\bWordData\x12\x12\n" +
 	"\x04word\x18\x01 \x01(\tR\x04word\x12\x14\n" +
@@ -756,27 +775,29 @@ func file_sentiric_stream_v1_gateway_proto_rawDescGZIP() []byte {
 var file_sentiric_stream_v1_gateway_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_sentiric_stream_v1_gateway_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_sentiric_stream_v1_gateway_proto_goTypes = []any{
-	(SessionControl_EventType)(0), // 0: sentiric.stream.v1.SessionControl.EventType
-	(*StreamSessionRequest)(nil),  // 1: sentiric.stream.v1.StreamSessionRequest
-	(*StreamSessionResponse)(nil), // 2: sentiric.stream.v1.StreamSessionResponse
-	(*WordData)(nil),              // 3: sentiric.stream.v1.WordData
-	(*TranscriptEvent)(nil),       // 4: sentiric.stream.v1.TranscriptEvent
-	(*SessionConfig)(nil),         // 5: sentiric.stream.v1.SessionConfig
-	(*SessionControl)(nil),        // 6: sentiric.stream.v1.SessionControl
+	(SessionControl_EventType)(0),       // 0: sentiric.stream.v1.SessionControl.EventType
+	(*StreamSessionRequest)(nil),        // 1: sentiric.stream.v1.StreamSessionRequest
+	(*StreamSessionResponse)(nil),       // 2: sentiric.stream.v1.StreamSessionResponse
+	(*WordData)(nil),                    // 3: sentiric.stream.v1.WordData
+	(*TranscriptEvent)(nil),             // 4: sentiric.stream.v1.TranscriptEvent
+	(*SessionConfig)(nil),               // 5: sentiric.stream.v1.SessionConfig
+	(*SessionControl)(nil),              // 6: sentiric.stream.v1.SessionControl
+	(*v1.CognitiveMapUpdatedEvent)(nil), // 7: sentiric.event.v1.CognitiveMapUpdatedEvent
 }
 var file_sentiric_stream_v1_gateway_proto_depIdxs = []int32{
 	5, // 0: sentiric.stream.v1.StreamSessionRequest.config:type_name -> sentiric.stream.v1.SessionConfig
 	6, // 1: sentiric.stream.v1.StreamSessionRequest.control:type_name -> sentiric.stream.v1.SessionControl
 	4, // 2: sentiric.stream.v1.StreamSessionResponse.transcript:type_name -> sentiric.stream.v1.TranscriptEvent
-	3, // 3: sentiric.stream.v1.TranscriptEvent.words:type_name -> sentiric.stream.v1.WordData
-	0, // 4: sentiric.stream.v1.SessionControl.event:type_name -> sentiric.stream.v1.SessionControl.EventType
-	1, // 5: sentiric.stream.v1.StreamGatewayService.StreamSession:input_type -> sentiric.stream.v1.StreamSessionRequest
-	2, // 6: sentiric.stream.v1.StreamGatewayService.StreamSession:output_type -> sentiric.stream.v1.StreamSessionResponse
-	6, // [6:7] is the sub-list for method output_type
-	5, // [5:6] is the sub-list for method input_type
-	5, // [5:5] is the sub-list for extension type_name
-	5, // [5:5] is the sub-list for extension extendee
-	0, // [0:5] is the sub-list for field type_name
+	7, // 3: sentiric.stream.v1.StreamSessionResponse.cognitive_map:type_name -> sentiric.event.v1.CognitiveMapUpdatedEvent
+	3, // 4: sentiric.stream.v1.TranscriptEvent.words:type_name -> sentiric.stream.v1.WordData
+	0, // 5: sentiric.stream.v1.SessionControl.event:type_name -> sentiric.stream.v1.SessionControl.EventType
+	1, // 6: sentiric.stream.v1.StreamGatewayService.StreamSession:input_type -> sentiric.stream.v1.StreamSessionRequest
+	2, // 7: sentiric.stream.v1.StreamGatewayService.StreamSession:output_type -> sentiric.stream.v1.StreamSessionResponse
+	7, // [7:8] is the sub-list for method output_type
+	6, // [6:7] is the sub-list for method input_type
+	6, // [6:6] is the sub-list for extension type_name
+	6, // [6:6] is the sub-list for extension extendee
+	0, // [0:6] is the sub-list for field type_name
 }
 
 func init() { file_sentiric_stream_v1_gateway_proto_init() }
@@ -796,6 +817,7 @@ func file_sentiric_stream_v1_gateway_proto_init() {
 		(*StreamSessionResponse_StatusUpdate)(nil),
 		(*StreamSessionResponse_Transcript)(nil),
 		(*StreamSessionResponse_ClearAudioBuffer)(nil),
+		(*StreamSessionResponse_CognitiveMap)(nil),
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{

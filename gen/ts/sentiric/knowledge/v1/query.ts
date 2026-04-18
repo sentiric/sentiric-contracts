@@ -66,6 +66,11 @@ export interface UserMemoryPayload_Lifecycle {
   createdAt: string;
   lastAccessed: string;
   decayScore: number;
+  /**
+   * [ARCH-COMPLIANCE: Subconscious Archiving]
+   * Anılar tamamen silinmez, bilinçaltına (is_archived=true) itilir.
+   */
+  isArchived: boolean;
 }
 
 /** Dialog-Service'in Crystalline/Knowledge üzerinden RAG çekerken kullanacağı istek */
@@ -856,7 +861,7 @@ export const UserMemoryPayload_Fact: MessageFns<UserMemoryPayload_Fact> = {
 };
 
 function createBaseUserMemoryPayload_Lifecycle(): UserMemoryPayload_Lifecycle {
-  return { traceId: "", createdAt: "", lastAccessed: "", decayScore: 0 };
+  return { traceId: "", createdAt: "", lastAccessed: "", decayScore: 0, isArchived: false };
 }
 
 export const UserMemoryPayload_Lifecycle: MessageFns<UserMemoryPayload_Lifecycle> = {
@@ -872,6 +877,9 @@ export const UserMemoryPayload_Lifecycle: MessageFns<UserMemoryPayload_Lifecycle
     }
     if (message.decayScore !== 0) {
       writer.uint32(37).float(message.decayScore);
+    }
+    if (message.isArchived !== false) {
+      writer.uint32(40).bool(message.isArchived);
     }
     return writer;
   },
@@ -915,6 +923,14 @@ export const UserMemoryPayload_Lifecycle: MessageFns<UserMemoryPayload_Lifecycle
           message.decayScore = reader.float();
           continue;
         }
+        case 5: {
+          if (tag !== 40) {
+            break;
+          }
+
+          message.isArchived = reader.bool();
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -946,6 +962,11 @@ export const UserMemoryPayload_Lifecycle: MessageFns<UserMemoryPayload_Lifecycle
         : isSet(object.decay_score)
         ? globalThis.Number(object.decay_score)
         : 0,
+      isArchived: isSet(object.isArchived)
+        ? globalThis.Boolean(object.isArchived)
+        : isSet(object.is_archived)
+        ? globalThis.Boolean(object.is_archived)
+        : false,
     };
   },
 
@@ -963,6 +984,9 @@ export const UserMemoryPayload_Lifecycle: MessageFns<UserMemoryPayload_Lifecycle
     if (message.decayScore !== 0) {
       obj.decayScore = message.decayScore;
     }
+    if (message.isArchived !== false) {
+      obj.isArchived = message.isArchived;
+    }
     return obj;
   },
 
@@ -975,6 +999,7 @@ export const UserMemoryPayload_Lifecycle: MessageFns<UserMemoryPayload_Lifecycle
     message.createdAt = object.createdAt ?? "";
     message.lastAccessed = object.lastAccessed ?? "";
     message.decayScore = object.decayScore ?? 0;
+    message.isArchived = object.isArchived ?? false;
     return message;
   },
 };

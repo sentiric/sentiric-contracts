@@ -1583,7 +1583,8 @@ proto.sentiric.knowledge.v1.UserMemoryPayload.Lifecycle.toObject = function(incl
 traceId: jspb.Message.getFieldWithDefault(msg, 1, ""),
 createdAt: jspb.Message.getFieldWithDefault(msg, 2, ""),
 lastAccessed: jspb.Message.getFieldWithDefault(msg, 3, ""),
-decayScore: jspb.Message.getFloatingPointFieldWithDefault(msg, 4, 0.0)
+decayScore: jspb.Message.getFloatingPointFieldWithDefault(msg, 4, 0.0),
+isArchived: jspb.Message.getBooleanFieldWithDefault(msg, 5, false)
   };
 
   if (includeInstance) {
@@ -1635,6 +1636,10 @@ proto.sentiric.knowledge.v1.UserMemoryPayload.Lifecycle.deserializeBinaryFromRea
     case 4:
       var value = /** @type {number} */ (reader.readFloat());
       msg.setDecayScore(value);
+      break;
+    case 5:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setIsArchived(value);
       break;
     default:
       reader.skipField();
@@ -1690,6 +1695,13 @@ proto.sentiric.knowledge.v1.UserMemoryPayload.Lifecycle.serializeBinaryToWriter 
   if (f !== 0.0) {
     writer.writeFloat(
       4,
+      f
+    );
+  }
+  f = message.getIsArchived();
+  if (f) {
+    writer.writeBool(
+      5,
       f
     );
   }
@@ -1765,6 +1777,24 @@ proto.sentiric.knowledge.v1.UserMemoryPayload.Lifecycle.prototype.getDecayScore 
  */
 proto.sentiric.knowledge.v1.UserMemoryPayload.Lifecycle.prototype.setDecayScore = function(value) {
   return jspb.Message.setProto3FloatField(this, 4, value);
+};
+
+
+/**
+ * optional bool is_archived = 5;
+ * @return {boolean}
+ */
+proto.sentiric.knowledge.v1.UserMemoryPayload.Lifecycle.prototype.getIsArchived = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 5, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.sentiric.knowledge.v1.UserMemoryPayload.Lifecycle} returns this
+ */
+proto.sentiric.knowledge.v1.UserMemoryPayload.Lifecycle.prototype.setIsArchived = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 5, value);
 };
 
 

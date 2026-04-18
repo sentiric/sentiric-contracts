@@ -1335,6 +1335,7 @@ class UserMemoryPayload_Lifecycle final :
     kCreatedAtFieldNumber = 2,
     kLastAccessedFieldNumber = 3,
     kDecayScoreFieldNumber = 4,
+    kIsArchivedFieldNumber = 5,
   };
   // string trace_id = 1;
   void clear_trace_id();
@@ -1387,6 +1388,15 @@ class UserMemoryPayload_Lifecycle final :
   void _internal_set_decay_score(float value);
   public:
 
+  // bool is_archived = 5;
+  void clear_is_archived();
+  bool is_archived() const;
+  void set_is_archived(bool value);
+  private:
+  bool _internal_is_archived() const;
+  void _internal_set_is_archived(bool value);
+  public:
+
   // @@protoc_insertion_point(class_scope:sentiric.knowledge.v1.UserMemoryPayload.Lifecycle)
  private:
   class _Internal;
@@ -1399,6 +1409,7 @@ class UserMemoryPayload_Lifecycle final :
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr created_at_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr last_accessed_;
     float decay_score_;
+    bool is_archived_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -2860,6 +2871,26 @@ inline void UserMemoryPayload_Lifecycle::_internal_set_decay_score(float value) 
 inline void UserMemoryPayload_Lifecycle::set_decay_score(float value) {
   _internal_set_decay_score(value);
   // @@protoc_insertion_point(field_set:sentiric.knowledge.v1.UserMemoryPayload.Lifecycle.decay_score)
+}
+
+// bool is_archived = 5;
+inline void UserMemoryPayload_Lifecycle::clear_is_archived() {
+  _impl_.is_archived_ = false;
+}
+inline bool UserMemoryPayload_Lifecycle::_internal_is_archived() const {
+  return _impl_.is_archived_;
+}
+inline bool UserMemoryPayload_Lifecycle::is_archived() const {
+  // @@protoc_insertion_point(field_get:sentiric.knowledge.v1.UserMemoryPayload.Lifecycle.is_archived)
+  return _internal_is_archived();
+}
+inline void UserMemoryPayload_Lifecycle::_internal_set_is_archived(bool value) {
+  
+  _impl_.is_archived_ = value;
+}
+inline void UserMemoryPayload_Lifecycle::set_is_archived(bool value) {
+  _internal_set_is_archived(value);
+  // @@protoc_insertion_point(field_set:sentiric.knowledge.v1.UserMemoryPayload.Lifecycle.is_archived)
 }
 
 // -------------------------------------------------------------------

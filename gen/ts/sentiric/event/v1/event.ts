@@ -144,6 +144,32 @@ export interface AcousticMoodShiftedEvent {
   speakerVec: number[];
 }
 
+/**
+ * [ARCH-COMPLIANCE: v4.0 Cognitive Mirror Vision]
+ * Kullanıcının zihin haritası (Cognitive Map) güncellendiğinde fırlatılır.
+ * Stream SDK bunu alıp UI üzerinde gerçek zamanlı olarak radar/harita çizer.
+ */
+export interface CognitiveMapUpdatedEvent {
+  /** "cognitive.map.updated" */
+  eventType: string;
+  traceId: string;
+  /** Anonim de olsa cihaz/oturum bazlı UUID */
+  userId: string;
+  timestamp?:
+    | Date
+    | undefined;
+  /** Zihin haritası özetleri ve aktif karakter özellikleri */
+  recentFactSummary: string;
+  /** Örn: ["vizyoner", "detaycı", "analitik"] */
+  activeTraits: string[];
+  /** Örn: "deep_waters", "executive" */
+  dominantResonance: string;
+  /** Psikolojik Radar Skalası (0.0 - 1.0) */
+  arousalScore: number;
+  valenceScore: number;
+  logicScore: number;
+}
+
 function createBaseMediaInfo(): MediaInfo {
   return { callerRtpAddr: "", serverRtpPort: 0 };
 }
@@ -1290,6 +1316,257 @@ export const AcousticMoodShiftedEvent: MessageFns<AcousticMoodShiftedEvent> = {
     message.valenceShift = object.valenceShift ?? 0;
     message.speakerId = object.speakerId ?? "";
     message.speakerVec = object.speakerVec?.map((e) => e) || [];
+    return message;
+  },
+};
+
+function createBaseCognitiveMapUpdatedEvent(): CognitiveMapUpdatedEvent {
+  return {
+    eventType: "",
+    traceId: "",
+    userId: "",
+    timestamp: undefined,
+    recentFactSummary: "",
+    activeTraits: [],
+    dominantResonance: "",
+    arousalScore: 0,
+    valenceScore: 0,
+    logicScore: 0,
+  };
+}
+
+export const CognitiveMapUpdatedEvent: MessageFns<CognitiveMapUpdatedEvent> = {
+  encode(message: CognitiveMapUpdatedEvent, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.eventType !== "") {
+      writer.uint32(10).string(message.eventType);
+    }
+    if (message.traceId !== "") {
+      writer.uint32(18).string(message.traceId);
+    }
+    if (message.userId !== "") {
+      writer.uint32(26).string(message.userId);
+    }
+    if (message.timestamp !== undefined) {
+      Timestamp.encode(toTimestamp(message.timestamp), writer.uint32(34).fork()).join();
+    }
+    if (message.recentFactSummary !== "") {
+      writer.uint32(42).string(message.recentFactSummary);
+    }
+    for (const v of message.activeTraits) {
+      writer.uint32(50).string(v!);
+    }
+    if (message.dominantResonance !== "") {
+      writer.uint32(58).string(message.dominantResonance);
+    }
+    if (message.arousalScore !== 0) {
+      writer.uint32(69).float(message.arousalScore);
+    }
+    if (message.valenceScore !== 0) {
+      writer.uint32(77).float(message.valenceScore);
+    }
+    if (message.logicScore !== 0) {
+      writer.uint32(85).float(message.logicScore);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CognitiveMapUpdatedEvent {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCognitiveMapUpdatedEvent();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 10) {
+            break;
+          }
+
+          message.eventType = reader.string();
+          continue;
+        }
+        case 2: {
+          if (tag !== 18) {
+            break;
+          }
+
+          message.traceId = reader.string();
+          continue;
+        }
+        case 3: {
+          if (tag !== 26) {
+            break;
+          }
+
+          message.userId = reader.string();
+          continue;
+        }
+        case 4: {
+          if (tag !== 34) {
+            break;
+          }
+
+          message.timestamp = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          continue;
+        }
+        case 5: {
+          if (tag !== 42) {
+            break;
+          }
+
+          message.recentFactSummary = reader.string();
+          continue;
+        }
+        case 6: {
+          if (tag !== 50) {
+            break;
+          }
+
+          message.activeTraits.push(reader.string());
+          continue;
+        }
+        case 7: {
+          if (tag !== 58) {
+            break;
+          }
+
+          message.dominantResonance = reader.string();
+          continue;
+        }
+        case 8: {
+          if (tag !== 69) {
+            break;
+          }
+
+          message.arousalScore = reader.float();
+          continue;
+        }
+        case 9: {
+          if (tag !== 77) {
+            break;
+          }
+
+          message.valenceScore = reader.float();
+          continue;
+        }
+        case 10: {
+          if (tag !== 85) {
+            break;
+          }
+
+          message.logicScore = reader.float();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CognitiveMapUpdatedEvent {
+    return {
+      eventType: isSet(object.eventType)
+        ? globalThis.String(object.eventType)
+        : isSet(object.event_type)
+        ? globalThis.String(object.event_type)
+        : "",
+      traceId: isSet(object.traceId)
+        ? globalThis.String(object.traceId)
+        : isSet(object.trace_id)
+        ? globalThis.String(object.trace_id)
+        : "",
+      userId: isSet(object.userId)
+        ? globalThis.String(object.userId)
+        : isSet(object.user_id)
+        ? globalThis.String(object.user_id)
+        : "",
+      timestamp: isSet(object.timestamp) ? fromJsonTimestamp(object.timestamp) : undefined,
+      recentFactSummary: isSet(object.recentFactSummary)
+        ? globalThis.String(object.recentFactSummary)
+        : isSet(object.recent_fact_summary)
+        ? globalThis.String(object.recent_fact_summary)
+        : "",
+      activeTraits: globalThis.Array.isArray(object?.activeTraits)
+        ? object.activeTraits.map((e: any) => globalThis.String(e))
+        : globalThis.Array.isArray(object?.active_traits)
+        ? object.active_traits.map((e: any) => globalThis.String(e))
+        : [],
+      dominantResonance: isSet(object.dominantResonance)
+        ? globalThis.String(object.dominantResonance)
+        : isSet(object.dominant_resonance)
+        ? globalThis.String(object.dominant_resonance)
+        : "",
+      arousalScore: isSet(object.arousalScore)
+        ? globalThis.Number(object.arousalScore)
+        : isSet(object.arousal_score)
+        ? globalThis.Number(object.arousal_score)
+        : 0,
+      valenceScore: isSet(object.valenceScore)
+        ? globalThis.Number(object.valenceScore)
+        : isSet(object.valence_score)
+        ? globalThis.Number(object.valence_score)
+        : 0,
+      logicScore: isSet(object.logicScore)
+        ? globalThis.Number(object.logicScore)
+        : isSet(object.logic_score)
+        ? globalThis.Number(object.logic_score)
+        : 0,
+    };
+  },
+
+  toJSON(message: CognitiveMapUpdatedEvent): unknown {
+    const obj: any = {};
+    if (message.eventType !== "") {
+      obj.eventType = message.eventType;
+    }
+    if (message.traceId !== "") {
+      obj.traceId = message.traceId;
+    }
+    if (message.userId !== "") {
+      obj.userId = message.userId;
+    }
+    if (message.timestamp !== undefined) {
+      obj.timestamp = message.timestamp.toISOString();
+    }
+    if (message.recentFactSummary !== "") {
+      obj.recentFactSummary = message.recentFactSummary;
+    }
+    if (message.activeTraits?.length) {
+      obj.activeTraits = message.activeTraits;
+    }
+    if (message.dominantResonance !== "") {
+      obj.dominantResonance = message.dominantResonance;
+    }
+    if (message.arousalScore !== 0) {
+      obj.arousalScore = message.arousalScore;
+    }
+    if (message.valenceScore !== 0) {
+      obj.valenceScore = message.valenceScore;
+    }
+    if (message.logicScore !== 0) {
+      obj.logicScore = message.logicScore;
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<CognitiveMapUpdatedEvent>, I>>(base?: I): CognitiveMapUpdatedEvent {
+    return CognitiveMapUpdatedEvent.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<CognitiveMapUpdatedEvent>, I>>(object: I): CognitiveMapUpdatedEvent {
+    const message = createBaseCognitiveMapUpdatedEvent();
+    message.eventType = object.eventType ?? "";
+    message.traceId = object.traceId ?? "";
+    message.userId = object.userId ?? "";
+    message.timestamp = object.timestamp ?? undefined;
+    message.recentFactSummary = object.recentFactSummary ?? "";
+    message.activeTraits = object.activeTraits?.map((e) => e) || [];
+    message.dominantResonance = object.dominantResonance ?? "";
+    message.arousalScore = object.arousalScore ?? 0;
+    message.valenceScore = object.valenceScore ?? 0;
+    message.logicScore = object.logicScore ?? 0;
     return message;
   },
 };

@@ -155,6 +155,7 @@ const uint32_t TableStruct_sentiric_2fstream_2fv1_2fgateway_2eproto::offsets[] P
   ::_pbi::kInvalidFieldOffsetTag,
   ::_pbi::kInvalidFieldOffsetTag,
   ::_pbi::kInvalidFieldOffsetTag,
+  ::_pbi::kInvalidFieldOffsetTag,
   PROTOBUF_FIELD_OFFSET(::sentiric::stream::v1::StreamSessionResponse, _impl_.data_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::sentiric::stream::v1::WordData, _internal_metadata_),
@@ -210,10 +211,10 @@ const uint32_t TableStruct_sentiric_2fstream_2fv1_2fgateway_2eproto::offsets[] P
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::sentiric::stream::v1::StreamSessionRequest)},
   { 11, -1, -1, sizeof(::sentiric::stream::v1::StreamSessionResponse)},
-  { 23, -1, -1, sizeof(::sentiric::stream::v1::WordData)},
-  { 33, -1, -1, sizeof(::sentiric::stream::v1::TranscriptEvent)},
-  { 49, -1, -1, sizeof(::sentiric::stream::v1::SessionConfig)},
-  { 66, -1, -1, sizeof(::sentiric::stream::v1::SessionControl)},
+  { 24, -1, -1, sizeof(::sentiric::stream::v1::WordData)},
+  { 34, -1, -1, sizeof(::sentiric::stream::v1::TranscriptEvent)},
+  { 50, -1, -1, sizeof(::sentiric::stream::v1::SessionConfig)},
+  { 67, -1, -1, sizeof(::sentiric::stream::v1::SessionControl)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -227,46 +228,52 @@ static const ::_pb::Message* const file_default_instances[] = {
 
 const char descriptor_table_protodef_sentiric_2fstream_2fv1_2fgateway_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n sentiric/stream/v1/gateway.proto\022\022sent"
-  "iric.stream.v1\"\271\001\n\024StreamSessionRequest\022"
-  "3\n\006config\030\001 \001(\0132!.sentiric.stream.v1.Ses"
-  "sionConfigH\000\022\025\n\013audio_chunk\030\002 \001(\014H\000\022\026\n\014t"
-  "ext_message\030\003 \001(\tH\000\0225\n\007control\030\004 \001(\0132\".s"
-  "entiric.stream.v1.SessionControlH\000B\006\n\004da"
-  "ta\"\304\001\n\025StreamSessionResponse\022\030\n\016audio_re"
-  "sponse\030\001 \001(\014H\000\022\027\n\rtext_response\030\002 \001(\tH\000\022"
-  "\027\n\rstatus_update\030\003 \001(\tH\000\0229\n\ntranscript\030\004"
-  " \001(\0132#.sentiric.stream.v1.TranscriptEven"
-  "tH\000\022\034\n\022clear_audio_buffer\030\005 \001(\010H\000B\006\n\004dat"
-  "a\"I\n\010WordData\022\014\n\004word\030\001 \001(\t\022\r\n\005start\030\002 \001"
-  "(\002\022\013\n\003end\030\003 \001(\002\022\023\n\013probability\030\004 \001(\002\"\332\001\n"
-  "\017TranscriptEvent\022\014\n\004text\030\001 \001(\t\022\020\n\010is_fin"
-  "al\030\002 \001(\010\022\016\n\006sender\030\003 \001(\t\022\017\n\007emotion\030\004 \001("
-  "\t\022\016\n\006gender\030\005 \001(\t\022\017\n\007arousal\030\006 \001(\002\022\017\n\007va"
-  "lence\030\007 \001(\002\022\022\n\nspeaker_id\030\010 \001(\t\022\023\n\013speak"
-  "er_vec\030\t \003(\002\022+\n\005words\030\n \003(\0132\034.sentiric.s"
-  "tream.v1.WordData\"\371\001\n\rSessionConfig\022\r\n\005t"
-  "oken\030\001 \001(\t\022\020\n\010language\030\002 \001(\t\022\023\n\013sample_r"
-  "ate\030\003 \001(\r\022\021\n\tedge_mode\030\004 \001(\010\022\020\n\010trace_id"
-  "\030\005 \001(\t\022\022\n\nsession_id\030\006 \001(\t\022\030\n\020listen_onl"
-  "y_mode\030\007 \001(\010\022\027\n\017speak_only_mode\030\010 \001(\010\022\026\n"
-  "\016chat_only_mode\030\t \001(\010\022\030\n\020system_prompt_i"
-  "d\030\n \001(\t\022\024\n\014tts_voice_id\030\013 \001(\t\"\273\001\n\016Sessio"
-  "nControl\022;\n\005event\030\001 \001(\0162,.sentiric.strea"
-  "m.v1.SessionControl.EventType\"l\n\tEventTy"
-  "pe\022\032\n\026EVENT_TYPE_UNSPECIFIED\020\000\022\030\n\024EVENT_"
-  "TYPE_INTERRUPT\020\001\022\022\n\016EVENT_TYPE_EOS\020\002\022\025\n\021"
-  "EVENT_TYPE_HANGUP\020\0032\200\001\n\024StreamGatewaySer"
-  "vice\022h\n\rStreamSession\022(.sentiric.stream."
-  "v1.StreamSessionRequest\032).sentiric.strea"
-  "m.v1.StreamSessionResponse(\0010\001BKZIgithub"
-  ".com/sentiric/sentiric-contracts/gen/go/"
-  "sentiric/stream/v1;streamv1b\006proto3"
+  "iric.stream.v1\032\035sentiric/event/v1/event."
+  "proto\"\271\001\n\024StreamSessionRequest\0223\n\006config"
+  "\030\001 \001(\0132!.sentiric.stream.v1.SessionConfi"
+  "gH\000\022\025\n\013audio_chunk\030\002 \001(\014H\000\022\026\n\014text_messa"
+  "ge\030\003 \001(\tH\000\0225\n\007control\030\004 \001(\0132\".sentiric.s"
+  "tream.v1.SessionControlH\000B\006\n\004data\"\212\002\n\025St"
+  "reamSessionResponse\022\030\n\016audio_response\030\001 "
+  "\001(\014H\000\022\027\n\rtext_response\030\002 \001(\tH\000\022\027\n\rstatus"
+  "_update\030\003 \001(\tH\000\0229\n\ntranscript\030\004 \001(\0132#.se"
+  "ntiric.stream.v1.TranscriptEventH\000\022\034\n\022cl"
+  "ear_audio_buffer\030\005 \001(\010H\000\022D\n\rcognitive_ma"
+  "p\030\006 \001(\0132+.sentiric.event.v1.CognitiveMap"
+  "UpdatedEventH\000B\006\n\004data\"I\n\010WordData\022\014\n\004wo"
+  "rd\030\001 \001(\t\022\r\n\005start\030\002 \001(\002\022\013\n\003end\030\003 \001(\002\022\023\n\013"
+  "probability\030\004 \001(\002\"\332\001\n\017TranscriptEvent\022\014\n"
+  "\004text\030\001 \001(\t\022\020\n\010is_final\030\002 \001(\010\022\016\n\006sender\030"
+  "\003 \001(\t\022\017\n\007emotion\030\004 \001(\t\022\016\n\006gender\030\005 \001(\t\022\017"
+  "\n\007arousal\030\006 \001(\002\022\017\n\007valence\030\007 \001(\002\022\022\n\nspea"
+  "ker_id\030\010 \001(\t\022\023\n\013speaker_vec\030\t \003(\002\022+\n\005wor"
+  "ds\030\n \003(\0132\034.sentiric.stream.v1.WordData\"\371"
+  "\001\n\rSessionConfig\022\r\n\005token\030\001 \001(\t\022\020\n\010langu"
+  "age\030\002 \001(\t\022\023\n\013sample_rate\030\003 \001(\r\022\021\n\tedge_m"
+  "ode\030\004 \001(\010\022\020\n\010trace_id\030\005 \001(\t\022\022\n\nsession_i"
+  "d\030\006 \001(\t\022\030\n\020listen_only_mode\030\007 \001(\010\022\027\n\017spe"
+  "ak_only_mode\030\010 \001(\010\022\026\n\016chat_only_mode\030\t \001"
+  "(\010\022\030\n\020system_prompt_id\030\n \001(\t\022\024\n\014tts_voic"
+  "e_id\030\013 \001(\t\"\273\001\n\016SessionControl\022;\n\005event\030\001"
+  " \001(\0162,.sentiric.stream.v1.SessionControl"
+  ".EventType\"l\n\tEventType\022\032\n\026EVENT_TYPE_UN"
+  "SPECIFIED\020\000\022\030\n\024EVENT_TYPE_INTERRUPT\020\001\022\022\n"
+  "\016EVENT_TYPE_EOS\020\002\022\025\n\021EVENT_TYPE_HANGUP\020\003"
+  "2\200\001\n\024StreamGatewayService\022h\n\rStreamSessi"
+  "on\022(.sentiric.stream.v1.StreamSessionReq"
+  "uest\032).sentiric.stream.v1.StreamSessionR"
+  "esponse(\0010\001BKZIgithub.com/sentiric/senti"
+  "ric-contracts/gen/go/sentiric/stream/v1;"
+  "streamv1b\006proto3"
   ;
+static const ::_pbi::DescriptorTable* const descriptor_table_sentiric_2fstream_2fv1_2fgateway_2eproto_deps[1] = {
+  &::descriptor_table_sentiric_2fevent_2fv1_2fevent_2eproto,
+};
 static ::_pbi::once_flag descriptor_table_sentiric_2fstream_2fv1_2fgateway_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_sentiric_2fstream_2fv1_2fgateway_2eproto = {
-    false, false, 1395, descriptor_table_protodef_sentiric_2fstream_2fv1_2fgateway_2eproto,
+    false, false, 1496, descriptor_table_protodef_sentiric_2fstream_2fv1_2fgateway_2eproto,
     "sentiric/stream/v1/gateway.proto",
-    &descriptor_table_sentiric_2fstream_2fv1_2fgateway_2eproto_once, nullptr, 0, 6,
+    &descriptor_table_sentiric_2fstream_2fv1_2fgateway_2eproto_once, descriptor_table_sentiric_2fstream_2fv1_2fgateway_2eproto_deps, 1, 6,
     schemas, file_default_instances, TableStruct_sentiric_2fstream_2fv1_2fgateway_2eproto::offsets,
     file_level_metadata_sentiric_2fstream_2fv1_2fgateway_2eproto, file_level_enum_descriptors_sentiric_2fstream_2fv1_2fgateway_2eproto,
     file_level_service_descriptors_sentiric_2fstream_2fv1_2fgateway_2eproto,
@@ -689,11 +696,16 @@ void StreamSessionRequest::InternalSwap(StreamSessionRequest* other) {
 class StreamSessionResponse::_Internal {
  public:
   static const ::sentiric::stream::v1::TranscriptEvent& transcript(const StreamSessionResponse* msg);
+  static const ::sentiric::event::v1::CognitiveMapUpdatedEvent& cognitive_map(const StreamSessionResponse* msg);
 };
 
 const ::sentiric::stream::v1::TranscriptEvent&
 StreamSessionResponse::_Internal::transcript(const StreamSessionResponse* msg) {
   return *msg->_impl_.data_.transcript_;
+}
+const ::sentiric::event::v1::CognitiveMapUpdatedEvent&
+StreamSessionResponse::_Internal::cognitive_map(const StreamSessionResponse* msg) {
+  return *msg->_impl_.data_.cognitive_map_;
 }
 void StreamSessionResponse::set_allocated_transcript(::sentiric::stream::v1::TranscriptEvent* transcript) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
@@ -709,6 +721,30 @@ void StreamSessionResponse::set_allocated_transcript(::sentiric::stream::v1::Tra
     _impl_.data_.transcript_ = transcript;
   }
   // @@protoc_insertion_point(field_set_allocated:sentiric.stream.v1.StreamSessionResponse.transcript)
+}
+void StreamSessionResponse::set_allocated_cognitive_map(::sentiric::event::v1::CognitiveMapUpdatedEvent* cognitive_map) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  clear_data();
+  if (cognitive_map) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(cognitive_map));
+    if (message_arena != submessage_arena) {
+      cognitive_map = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, cognitive_map, submessage_arena);
+    }
+    set_has_cognitive_map();
+    _impl_.data_.cognitive_map_ = cognitive_map;
+  }
+  // @@protoc_insertion_point(field_set_allocated:sentiric.stream.v1.StreamSessionResponse.cognitive_map)
+}
+void StreamSessionResponse::clear_cognitive_map() {
+  if (_internal_has_cognitive_map()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete _impl_.data_.cognitive_map_;
+    }
+    clear_has_data();
+  }
 }
 StreamSessionResponse::StreamSessionResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
@@ -746,6 +782,11 @@ StreamSessionResponse::StreamSessionResponse(const StreamSessionResponse& from)
     }
     case kClearAudioBuffer: {
       _this->_internal_set_clear_audio_buffer(from._internal_clear_audio_buffer());
+      break;
+    }
+    case kCognitiveMap: {
+      _this->_internal_mutable_cognitive_map()->::sentiric::event::v1::CognitiveMapUpdatedEvent::MergeFrom(
+          from._internal_cognitive_map());
       break;
     }
     case DATA_NOT_SET: {
@@ -810,6 +851,12 @@ void StreamSessionResponse::clear_data() {
     }
     case kClearAudioBuffer: {
       // No need to clear
+      break;
+    }
+    case kCognitiveMap: {
+      if (GetArenaForAllocation() == nullptr) {
+        delete _impl_.data_.cognitive_map_;
+      }
       break;
     }
     case DATA_NOT_SET: {
@@ -877,6 +924,14 @@ const char* StreamSessionResponse::_InternalParse(const char* ptr, ::_pbi::Parse
       case 5:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
           _internal_set_clear_audio_buffer(::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr));
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .sentiric.event.v1.CognitiveMapUpdatedEvent cognitive_map = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 50)) {
+          ptr = ctx->ParseMessage(_internal_mutable_cognitive_map(), ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -949,6 +1004,13 @@ uint8_t* StreamSessionResponse::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteBoolToArray(5, this->_internal_clear_audio_buffer(), target);
   }
 
+  // .sentiric.event.v1.CognitiveMapUpdatedEvent cognitive_map = 6;
+  if (_internal_has_cognitive_map()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(6, _Internal::cognitive_map(this),
+        _Internal::cognitive_map(this).GetCachedSize(), target, stream);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -999,6 +1061,13 @@ size_t StreamSessionResponse::ByteSizeLong() const {
       total_size += 1 + 1;
       break;
     }
+    // .sentiric.event.v1.CognitiveMapUpdatedEvent cognitive_map = 6;
+    case kCognitiveMap: {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          *_impl_.data_.cognitive_map_);
+      break;
+    }
     case DATA_NOT_SET: {
       break;
     }
@@ -1041,6 +1110,11 @@ void StreamSessionResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, 
     }
     case kClearAudioBuffer: {
       _this->_internal_set_clear_audio_buffer(from._internal_clear_audio_buffer());
+      break;
+    }
+    case kCognitiveMap: {
+      _this->_internal_mutable_cognitive_map()->::sentiric::event::v1::CognitiveMapUpdatedEvent::MergeFrom(
+          from._internal_cognitive_map());
       break;
     }
     case DATA_NOT_SET: {

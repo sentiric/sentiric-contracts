@@ -4,7 +4,7 @@ syntax = "proto3";
 package sentiric.stream.v1;
 
 option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/stream/v1;streamv1";
-
+import "sentiric/event/v1/event.proto";
 service StreamGatewayService {
   rpc StreamSession(stream StreamSessionRequest) returns (stream StreamSessionResponse);
 }
@@ -25,6 +25,8 @@ message StreamSessionResponse {
     string status_update = 3;
     TranscriptEvent transcript = 4;
     bool clear_audio_buffer = 5;
+    // [ARCH-COMPLIANCE: Cognitive Mirror] SDK'ya giden canlı zihin haritası verisi
+    sentiric.event.v1.CognitiveMapUpdatedEvent cognitive_map = 6; 
   }
 }
 

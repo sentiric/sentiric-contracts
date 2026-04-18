@@ -149,10 +149,32 @@ struct AcousticMoodShiftedEventDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 AcousticMoodShiftedEventDefaultTypeInternal _AcousticMoodShiftedEvent_default_instance_;
+PROTOBUF_CONSTEXPR CognitiveMapUpdatedEvent::CognitiveMapUpdatedEvent(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.active_traits_)*/{}
+  , /*decltype(_impl_.event_type_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.trace_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.user_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.recent_fact_summary_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.dominant_resonance_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.timestamp_)*/nullptr
+  , /*decltype(_impl_.arousal_score_)*/0
+  , /*decltype(_impl_.valence_score_)*/0
+  , /*decltype(_impl_.logic_score_)*/0
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct CognitiveMapUpdatedEventDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR CognitiveMapUpdatedEventDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~CognitiveMapUpdatedEventDefaultTypeInternal() {}
+  union {
+    CognitiveMapUpdatedEvent _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CognitiveMapUpdatedEventDefaultTypeInternal _CognitiveMapUpdatedEvent_default_instance_;
 }  // namespace v1
 }  // namespace event
 }  // namespace sentiric
-static ::_pb::Metadata file_level_metadata_sentiric_2fevent_2fv1_2fevent_2eproto[7];
+static ::_pb::Metadata file_level_metadata_sentiric_2fevent_2fv1_2fevent_2eproto[8];
 static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_sentiric_2fevent_2fv1_2fevent_2eproto = nullptr;
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_sentiric_2fevent_2fv1_2fevent_2eproto = nullptr;
 
@@ -241,6 +263,22 @@ const uint32_t TableStruct_sentiric_2fevent_2fv1_2fevent_2eproto::offsets[] PROT
   PROTOBUF_FIELD_OFFSET(::sentiric::event::v1::AcousticMoodShiftedEvent, _impl_.valence_shift_),
   PROTOBUF_FIELD_OFFSET(::sentiric::event::v1::AcousticMoodShiftedEvent, _impl_.speaker_id_),
   PROTOBUF_FIELD_OFFSET(::sentiric::event::v1::AcousticMoodShiftedEvent, _impl_.speaker_vec_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::event::v1::CognitiveMapUpdatedEvent, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::event::v1::CognitiveMapUpdatedEvent, _impl_.event_type_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::event::v1::CognitiveMapUpdatedEvent, _impl_.trace_id_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::event::v1::CognitiveMapUpdatedEvent, _impl_.user_id_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::event::v1::CognitiveMapUpdatedEvent, _impl_.timestamp_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::event::v1::CognitiveMapUpdatedEvent, _impl_.recent_fact_summary_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::event::v1::CognitiveMapUpdatedEvent, _impl_.active_traits_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::event::v1::CognitiveMapUpdatedEvent, _impl_.dominant_resonance_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::event::v1::CognitiveMapUpdatedEvent, _impl_.arousal_score_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::event::v1::CognitiveMapUpdatedEvent, _impl_.valence_score_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::event::v1::CognitiveMapUpdatedEvent, _impl_.logic_score_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::sentiric::event::v1::MediaInfo)},
@@ -250,6 +288,7 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 46, -1, -1, sizeof(::sentiric::event::v1::CallEndedEvent)},
   { 57, -1, -1, sizeof(::sentiric::event::v1::GenericEvent)},
   { 68, -1, -1, sizeof(::sentiric::event::v1::AcousticMoodShiftedEvent)},
+  { 84, -1, -1, sizeof(::sentiric::event::v1::CognitiveMapUpdatedEvent)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -260,6 +299,7 @@ static const ::_pb::Message* const file_default_instances[] = {
   &::sentiric::event::v1::_CallEndedEvent_default_instance_._instance,
   &::sentiric::event::v1::_GenericEvent_default_instance_._instance,
   &::sentiric::event::v1::_AcousticMoodShiftedEvent_default_instance_._instance,
+  &::sentiric::event::v1::_CognitiveMapUpdatedEvent_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_sentiric_2fevent_2fv1_2fevent_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -298,9 +338,16 @@ const char descriptor_table_protodef_sentiric_2fevent_2fv1_2fevent_2eproto[] PRO
   "protobuf.Timestamp\022\025\n\rprevious_mood\030\005 \001("
   "\t\022\024\n\014current_mood\030\006 \001(\t\022\025\n\rarousal_shift"
   "\030\007 \001(\002\022\025\n\rvalence_shift\030\010 \001(\002\022\022\n\nspeaker"
-  "_id\030\t \001(\t\022\023\n\013speaker_vec\030\n \003(\002BIZGgithub"
-  ".com/sentiric/sentiric-contracts/gen/go/"
-  "sentiric/event/v1;eventv1b\006proto3"
+  "_id\030\t \001(\t\022\023\n\013speaker_vec\030\n \003(\002\"\223\002\n\030Cogni"
+  "tiveMapUpdatedEvent\022\022\n\nevent_type\030\001 \001(\t\022"
+  "\020\n\010trace_id\030\002 \001(\t\022\017\n\007user_id\030\003 \001(\t\022-\n\tti"
+  "mestamp\030\004 \001(\0132\032.google.protobuf.Timestam"
+  "p\022\033\n\023recent_fact_summary\030\005 \001(\t\022\025\n\ractive"
+  "_traits\030\006 \003(\t\022\032\n\022dominant_resonance\030\007 \001("
+  "\t\022\025\n\rarousal_score\030\010 \001(\002\022\025\n\rvalence_scor"
+  "e\030\t \001(\002\022\023\n\013logic_score\030\n \001(\002BIZGgithub.c"
+  "om/sentiric/sentiric-contracts/gen/go/se"
+  "ntiric/event/v1;eventv1b\006proto3"
   ;
 static const ::_pbi::DescriptorTable* const descriptor_table_sentiric_2fevent_2fv1_2fevent_2eproto_deps[3] = {
   &::descriptor_table_google_2fprotobuf_2ftimestamp_2eproto,
@@ -309,9 +356,9 @@ static const ::_pbi::DescriptorTable* const descriptor_table_sentiric_2fevent_2f
 };
 static ::_pbi::once_flag descriptor_table_sentiric_2fevent_2fv1_2fevent_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_sentiric_2fevent_2fv1_2fevent_2eproto = {
-    false, false, 1513, descriptor_table_protodef_sentiric_2fevent_2fv1_2fevent_2eproto,
+    false, false, 1791, descriptor_table_protodef_sentiric_2fevent_2fv1_2fevent_2eproto,
     "sentiric/event/v1/event.proto",
-    &descriptor_table_sentiric_2fevent_2fv1_2fevent_2eproto_once, descriptor_table_sentiric_2fevent_2fv1_2fevent_2eproto_deps, 3, 7,
+    &descriptor_table_sentiric_2fevent_2fv1_2fevent_2eproto_once, descriptor_table_sentiric_2fevent_2fv1_2fevent_2eproto_deps, 3, 8,
     schemas, file_default_instances, TableStruct_sentiric_2fevent_2fv1_2fevent_2eproto::offsets,
     file_level_metadata_sentiric_2fevent_2fv1_2fevent_2eproto, file_level_enum_descriptors_sentiric_2fevent_2fv1_2fevent_2eproto,
     file_level_service_descriptors_sentiric_2fevent_2fv1_2fevent_2eproto,
@@ -3420,6 +3467,615 @@ void AcousticMoodShiftedEvent::InternalSwap(AcousticMoodShiftedEvent* other) {
       file_level_metadata_sentiric_2fevent_2fv1_2fevent_2eproto[6]);
 }
 
+// ===================================================================
+
+class CognitiveMapUpdatedEvent::_Internal {
+ public:
+  static const ::PROTOBUF_NAMESPACE_ID::Timestamp& timestamp(const CognitiveMapUpdatedEvent* msg);
+};
+
+const ::PROTOBUF_NAMESPACE_ID::Timestamp&
+CognitiveMapUpdatedEvent::_Internal::timestamp(const CognitiveMapUpdatedEvent* msg) {
+  return *msg->_impl_.timestamp_;
+}
+void CognitiveMapUpdatedEvent::clear_timestamp() {
+  if (GetArenaForAllocation() == nullptr && _impl_.timestamp_ != nullptr) {
+    delete _impl_.timestamp_;
+  }
+  _impl_.timestamp_ = nullptr;
+}
+CognitiveMapUpdatedEvent::CognitiveMapUpdatedEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.event.v1.CognitiveMapUpdatedEvent)
+}
+CognitiveMapUpdatedEvent::CognitiveMapUpdatedEvent(const CognitiveMapUpdatedEvent& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  CognitiveMapUpdatedEvent* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.active_traits_){from._impl_.active_traits_}
+    , decltype(_impl_.event_type_){}
+    , decltype(_impl_.trace_id_){}
+    , decltype(_impl_.user_id_){}
+    , decltype(_impl_.recent_fact_summary_){}
+    , decltype(_impl_.dominant_resonance_){}
+    , decltype(_impl_.timestamp_){nullptr}
+    , decltype(_impl_.arousal_score_){}
+    , decltype(_impl_.valence_score_){}
+    , decltype(_impl_.logic_score_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.event_type_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.event_type_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_event_type().empty()) {
+    _this->_impl_.event_type_.Set(from._internal_event_type(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.trace_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.trace_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_trace_id().empty()) {
+    _this->_impl_.trace_id_.Set(from._internal_trace_id(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.user_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.user_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_user_id().empty()) {
+    _this->_impl_.user_id_.Set(from._internal_user_id(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.recent_fact_summary_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.recent_fact_summary_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_recent_fact_summary().empty()) {
+    _this->_impl_.recent_fact_summary_.Set(from._internal_recent_fact_summary(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.dominant_resonance_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.dominant_resonance_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_dominant_resonance().empty()) {
+    _this->_impl_.dominant_resonance_.Set(from._internal_dominant_resonance(), 
+      _this->GetArenaForAllocation());
+  }
+  if (from._internal_has_timestamp()) {
+    _this->_impl_.timestamp_ = new ::PROTOBUF_NAMESPACE_ID::Timestamp(*from._impl_.timestamp_);
+  }
+  ::memcpy(&_impl_.arousal_score_, &from._impl_.arousal_score_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.logic_score_) -
+    reinterpret_cast<char*>(&_impl_.arousal_score_)) + sizeof(_impl_.logic_score_));
+  // @@protoc_insertion_point(copy_constructor:sentiric.event.v1.CognitiveMapUpdatedEvent)
+}
+
+inline void CognitiveMapUpdatedEvent::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.active_traits_){arena}
+    , decltype(_impl_.event_type_){}
+    , decltype(_impl_.trace_id_){}
+    , decltype(_impl_.user_id_){}
+    , decltype(_impl_.recent_fact_summary_){}
+    , decltype(_impl_.dominant_resonance_){}
+    , decltype(_impl_.timestamp_){nullptr}
+    , decltype(_impl_.arousal_score_){0}
+    , decltype(_impl_.valence_score_){0}
+    , decltype(_impl_.logic_score_){0}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.event_type_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.event_type_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.trace_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.trace_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.user_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.user_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.recent_fact_summary_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.recent_fact_summary_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.dominant_resonance_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.dominant_resonance_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+CognitiveMapUpdatedEvent::~CognitiveMapUpdatedEvent() {
+  // @@protoc_insertion_point(destructor:sentiric.event.v1.CognitiveMapUpdatedEvent)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void CognitiveMapUpdatedEvent::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.active_traits_.~RepeatedPtrField();
+  _impl_.event_type_.Destroy();
+  _impl_.trace_id_.Destroy();
+  _impl_.user_id_.Destroy();
+  _impl_.recent_fact_summary_.Destroy();
+  _impl_.dominant_resonance_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.timestamp_;
+}
+
+void CognitiveMapUpdatedEvent::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void CognitiveMapUpdatedEvent::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.event.v1.CognitiveMapUpdatedEvent)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.active_traits_.Clear();
+  _impl_.event_type_.ClearToEmpty();
+  _impl_.trace_id_.ClearToEmpty();
+  _impl_.user_id_.ClearToEmpty();
+  _impl_.recent_fact_summary_.ClearToEmpty();
+  _impl_.dominant_resonance_.ClearToEmpty();
+  if (GetArenaForAllocation() == nullptr && _impl_.timestamp_ != nullptr) {
+    delete _impl_.timestamp_;
+  }
+  _impl_.timestamp_ = nullptr;
+  ::memset(&_impl_.arousal_score_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&_impl_.logic_score_) -
+      reinterpret_cast<char*>(&_impl_.arousal_score_)) + sizeof(_impl_.logic_score_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* CognitiveMapUpdatedEvent::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string event_type = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_event_type();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.event.v1.CognitiveMapUpdatedEvent.event_type"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string trace_id = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_trace_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.event.v1.CognitiveMapUpdatedEvent.trace_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string user_id = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_user_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.event.v1.CognitiveMapUpdatedEvent.user_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // .google.protobuf.Timestamp timestamp = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          ptr = ctx->ParseMessage(_internal_mutable_timestamp(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string recent_fact_summary = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
+          auto str = _internal_mutable_recent_fact_summary();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.event.v1.CognitiveMapUpdatedEvent.recent_fact_summary"));
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated string active_traits = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 50)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            auto str = _internal_add_active_traits();
+            ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+            CHK_(ptr);
+            CHK_(::_pbi::VerifyUTF8(str, "sentiric.event.v1.CognitiveMapUpdatedEvent.active_traits"));
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<50>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      // string dominant_resonance = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 58)) {
+          auto str = _internal_mutable_dominant_resonance();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.event.v1.CognitiveMapUpdatedEvent.dominant_resonance"));
+        } else
+          goto handle_unusual;
+        continue;
+      // float arousal_score = 8;
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 69)) {
+          _impl_.arousal_score_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float valence_score = 9;
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 77)) {
+          _impl_.valence_score_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // float logic_score = 10;
+      case 10:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 85)) {
+          _impl_.logic_score_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* CognitiveMapUpdatedEvent::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.event.v1.CognitiveMapUpdatedEvent)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string event_type = 1;
+  if (!this->_internal_event_type().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_event_type().data(), static_cast<int>(this->_internal_event_type().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.event.v1.CognitiveMapUpdatedEvent.event_type");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_event_type(), target);
+  }
+
+  // string trace_id = 2;
+  if (!this->_internal_trace_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_trace_id().data(), static_cast<int>(this->_internal_trace_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.event.v1.CognitiveMapUpdatedEvent.trace_id");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_trace_id(), target);
+  }
+
+  // string user_id = 3;
+  if (!this->_internal_user_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_user_id().data(), static_cast<int>(this->_internal_user_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.event.v1.CognitiveMapUpdatedEvent.user_id");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_user_id(), target);
+  }
+
+  // .google.protobuf.Timestamp timestamp = 4;
+  if (this->_internal_has_timestamp()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(4, _Internal::timestamp(this),
+        _Internal::timestamp(this).GetCachedSize(), target, stream);
+  }
+
+  // string recent_fact_summary = 5;
+  if (!this->_internal_recent_fact_summary().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_recent_fact_summary().data(), static_cast<int>(this->_internal_recent_fact_summary().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.event.v1.CognitiveMapUpdatedEvent.recent_fact_summary");
+    target = stream->WriteStringMaybeAliased(
+        5, this->_internal_recent_fact_summary(), target);
+  }
+
+  // repeated string active_traits = 6;
+  for (int i = 0, n = this->_internal_active_traits_size(); i < n; i++) {
+    const auto& s = this->_internal_active_traits(i);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      s.data(), static_cast<int>(s.length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.event.v1.CognitiveMapUpdatedEvent.active_traits");
+    target = stream->WriteString(6, s, target);
+  }
+
+  // string dominant_resonance = 7;
+  if (!this->_internal_dominant_resonance().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_dominant_resonance().data(), static_cast<int>(this->_internal_dominant_resonance().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.event.v1.CognitiveMapUpdatedEvent.dominant_resonance");
+    target = stream->WriteStringMaybeAliased(
+        7, this->_internal_dominant_resonance(), target);
+  }
+
+  // float arousal_score = 8;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_arousal_score = this->_internal_arousal_score();
+  uint32_t raw_arousal_score;
+  memcpy(&raw_arousal_score, &tmp_arousal_score, sizeof(tmp_arousal_score));
+  if (raw_arousal_score != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(8, this->_internal_arousal_score(), target);
+  }
+
+  // float valence_score = 9;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_valence_score = this->_internal_valence_score();
+  uint32_t raw_valence_score;
+  memcpy(&raw_valence_score, &tmp_valence_score, sizeof(tmp_valence_score));
+  if (raw_valence_score != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(9, this->_internal_valence_score(), target);
+  }
+
+  // float logic_score = 10;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_logic_score = this->_internal_logic_score();
+  uint32_t raw_logic_score;
+  memcpy(&raw_logic_score, &tmp_logic_score, sizeof(tmp_logic_score));
+  if (raw_logic_score != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(10, this->_internal_logic_score(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.event.v1.CognitiveMapUpdatedEvent)
+  return target;
+}
+
+size_t CognitiveMapUpdatedEvent::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.event.v1.CognitiveMapUpdatedEvent)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated string active_traits = 6;
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(_impl_.active_traits_.size());
+  for (int i = 0, n = _impl_.active_traits_.size(); i < n; i++) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      _impl_.active_traits_.Get(i));
+  }
+
+  // string event_type = 1;
+  if (!this->_internal_event_type().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_event_type());
+  }
+
+  // string trace_id = 2;
+  if (!this->_internal_trace_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_trace_id());
+  }
+
+  // string user_id = 3;
+  if (!this->_internal_user_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_user_id());
+  }
+
+  // string recent_fact_summary = 5;
+  if (!this->_internal_recent_fact_summary().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_recent_fact_summary());
+  }
+
+  // string dominant_resonance = 7;
+  if (!this->_internal_dominant_resonance().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_dominant_resonance());
+  }
+
+  // .google.protobuf.Timestamp timestamp = 4;
+  if (this->_internal_has_timestamp()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.timestamp_);
+  }
+
+  // float arousal_score = 8;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_arousal_score = this->_internal_arousal_score();
+  uint32_t raw_arousal_score;
+  memcpy(&raw_arousal_score, &tmp_arousal_score, sizeof(tmp_arousal_score));
+  if (raw_arousal_score != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float valence_score = 9;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_valence_score = this->_internal_valence_score();
+  uint32_t raw_valence_score;
+  memcpy(&raw_valence_score, &tmp_valence_score, sizeof(tmp_valence_score));
+  if (raw_valence_score != 0) {
+    total_size += 1 + 4;
+  }
+
+  // float logic_score = 10;
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_logic_score = this->_internal_logic_score();
+  uint32_t raw_logic_score;
+  memcpy(&raw_logic_score, &tmp_logic_score, sizeof(tmp_logic_score));
+  if (raw_logic_score != 0) {
+    total_size += 1 + 4;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData CognitiveMapUpdatedEvent::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    CognitiveMapUpdatedEvent::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*CognitiveMapUpdatedEvent::GetClassData() const { return &_class_data_; }
+
+
+void CognitiveMapUpdatedEvent::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<CognitiveMapUpdatedEvent*>(&to_msg);
+  auto& from = static_cast<const CognitiveMapUpdatedEvent&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.event.v1.CognitiveMapUpdatedEvent)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_impl_.active_traits_.MergeFrom(from._impl_.active_traits_);
+  if (!from._internal_event_type().empty()) {
+    _this->_internal_set_event_type(from._internal_event_type());
+  }
+  if (!from._internal_trace_id().empty()) {
+    _this->_internal_set_trace_id(from._internal_trace_id());
+  }
+  if (!from._internal_user_id().empty()) {
+    _this->_internal_set_user_id(from._internal_user_id());
+  }
+  if (!from._internal_recent_fact_summary().empty()) {
+    _this->_internal_set_recent_fact_summary(from._internal_recent_fact_summary());
+  }
+  if (!from._internal_dominant_resonance().empty()) {
+    _this->_internal_set_dominant_resonance(from._internal_dominant_resonance());
+  }
+  if (from._internal_has_timestamp()) {
+    _this->_internal_mutable_timestamp()->::PROTOBUF_NAMESPACE_ID::Timestamp::MergeFrom(
+        from._internal_timestamp());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_arousal_score = from._internal_arousal_score();
+  uint32_t raw_arousal_score;
+  memcpy(&raw_arousal_score, &tmp_arousal_score, sizeof(tmp_arousal_score));
+  if (raw_arousal_score != 0) {
+    _this->_internal_set_arousal_score(from._internal_arousal_score());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_valence_score = from._internal_valence_score();
+  uint32_t raw_valence_score;
+  memcpy(&raw_valence_score, &tmp_valence_score, sizeof(tmp_valence_score));
+  if (raw_valence_score != 0) {
+    _this->_internal_set_valence_score(from._internal_valence_score());
+  }
+  static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
+  float tmp_logic_score = from._internal_logic_score();
+  uint32_t raw_logic_score;
+  memcpy(&raw_logic_score, &tmp_logic_score, sizeof(tmp_logic_score));
+  if (raw_logic_score != 0) {
+    _this->_internal_set_logic_score(from._internal_logic_score());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void CognitiveMapUpdatedEvent::CopyFrom(const CognitiveMapUpdatedEvent& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.event.v1.CognitiveMapUpdatedEvent)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool CognitiveMapUpdatedEvent::IsInitialized() const {
+  return true;
+}
+
+void CognitiveMapUpdatedEvent::InternalSwap(CognitiveMapUpdatedEvent* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.active_traits_.InternalSwap(&other->_impl_.active_traits_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.event_type_, lhs_arena,
+      &other->_impl_.event_type_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.trace_id_, lhs_arena,
+      &other->_impl_.trace_id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.user_id_, lhs_arena,
+      &other->_impl_.user_id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.recent_fact_summary_, lhs_arena,
+      &other->_impl_.recent_fact_summary_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.dominant_resonance_, lhs_arena,
+      &other->_impl_.dominant_resonance_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(CognitiveMapUpdatedEvent, _impl_.logic_score_)
+      + sizeof(CognitiveMapUpdatedEvent::_impl_.logic_score_)
+      - PROTOBUF_FIELD_OFFSET(CognitiveMapUpdatedEvent, _impl_.timestamp_)>(
+          reinterpret_cast<char*>(&_impl_.timestamp_),
+          reinterpret_cast<char*>(&other->_impl_.timestamp_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata CognitiveMapUpdatedEvent::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fevent_2fv1_2fevent_2eproto_getter, &descriptor_table_sentiric_2fevent_2fv1_2fevent_2eproto_once,
+      file_level_metadata_sentiric_2fevent_2fv1_2fevent_2eproto[7]);
+}
+
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace v1
 }  // namespace event
@@ -3452,6 +4108,10 @@ Arena::CreateMaybeMessage< ::sentiric::event::v1::GenericEvent >(Arena* arena) {
 template<> PROTOBUF_NOINLINE ::sentiric::event::v1::AcousticMoodShiftedEvent*
 Arena::CreateMaybeMessage< ::sentiric::event::v1::AcousticMoodShiftedEvent >(Arena* arena) {
   return Arena::CreateMessageInternal< ::sentiric::event::v1::AcousticMoodShiftedEvent >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::event::v1::CognitiveMapUpdatedEvent*
+Arena::CreateMaybeMessage< ::sentiric::event::v1::CognitiveMapUpdatedEvent >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::event::v1::CognitiveMapUpdatedEvent >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

@@ -15,6 +15,8 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = globalThis;
 
+var sentiric_event_v1_event_pb = require('../../../sentiric/event/v1/event_pb.js');
+goog.object.extend(proto, sentiric_event_v1_event_pb);
 goog.exportSymbol('proto.sentiric.stream.v1.SessionConfig', null, global);
 goog.exportSymbol('proto.sentiric.stream.v1.SessionControl', null, global);
 goog.exportSymbol('proto.sentiric.stream.v1.SessionControl.EventType', null, global);
@@ -509,7 +511,7 @@ proto.sentiric.stream.v1.StreamSessionRequest.prototype.hasControl = function() 
  * @private {!Array<!Array<number>>}
  * @const
  */
-proto.sentiric.stream.v1.StreamSessionResponse.oneofGroups_ = [[1,2,3,4,5]];
+proto.sentiric.stream.v1.StreamSessionResponse.oneofGroups_ = [[1,2,3,4,5,6]];
 
 /**
  * @enum {number}
@@ -520,7 +522,8 @@ proto.sentiric.stream.v1.StreamSessionResponse.DataCase = {
   TEXT_RESPONSE: 2,
   STATUS_UPDATE: 3,
   TRANSCRIPT: 4,
-  CLEAR_AUDIO_BUFFER: 5
+  CLEAR_AUDIO_BUFFER: 5,
+  COGNITIVE_MAP: 6
 };
 
 /**
@@ -565,7 +568,8 @@ audioResponse: msg.getAudioResponse_asB64(),
 textResponse: (f = jspb.Message.getField(msg, 2)) == null ? undefined : f,
 statusUpdate: (f = jspb.Message.getField(msg, 3)) == null ? undefined : f,
 transcript: (f = msg.getTranscript()) && proto.sentiric.stream.v1.TranscriptEvent.toObject(includeInstance, f),
-clearAudioBuffer: (f = jspb.Message.getBooleanField(msg, 5)) == null ? undefined : f
+clearAudioBuffer: (f = jspb.Message.getBooleanField(msg, 5)) == null ? undefined : f,
+cognitiveMap: (f = msg.getCognitiveMap()) && sentiric_event_v1_event_pb.CognitiveMapUpdatedEvent.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -622,6 +626,11 @@ proto.sentiric.stream.v1.StreamSessionResponse.deserializeBinaryFromReader = fun
     case 5:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setClearAudioBuffer(value);
+      break;
+    case 6:
+      var value = new sentiric_event_v1_event_pb.CognitiveMapUpdatedEvent;
+      reader.readMessage(value,sentiric_event_v1_event_pb.CognitiveMapUpdatedEvent.deserializeBinaryFromReader);
+      msg.setCognitiveMap(value);
       break;
     default:
       reader.skipField();
@@ -686,6 +695,14 @@ proto.sentiric.stream.v1.StreamSessionResponse.serializeBinaryToWriter = functio
     writer.writeBool(
       5,
       f
+    );
+  }
+  f = message.getCognitiveMap();
+  if (f != null) {
+    writer.writeMessage(
+      6,
+      f,
+      sentiric_event_v1_event_pb.CognitiveMapUpdatedEvent.serializeBinaryToWriter
     );
   }
 };
@@ -893,6 +910,43 @@ proto.sentiric.stream.v1.StreamSessionResponse.prototype.clearClearAudioBuffer =
  */
 proto.sentiric.stream.v1.StreamSessionResponse.prototype.hasClearAudioBuffer = function() {
   return jspb.Message.getField(this, 5) != null;
+};
+
+
+/**
+ * optional sentiric.event.v1.CognitiveMapUpdatedEvent cognitive_map = 6;
+ * @return {?proto.sentiric.event.v1.CognitiveMapUpdatedEvent}
+ */
+proto.sentiric.stream.v1.StreamSessionResponse.prototype.getCognitiveMap = function() {
+  return /** @type{?proto.sentiric.event.v1.CognitiveMapUpdatedEvent} */ (
+    jspb.Message.getWrapperField(this, sentiric_event_v1_event_pb.CognitiveMapUpdatedEvent, 6));
+};
+
+
+/**
+ * @param {?proto.sentiric.event.v1.CognitiveMapUpdatedEvent|undefined} value
+ * @return {!proto.sentiric.stream.v1.StreamSessionResponse} returns this
+*/
+proto.sentiric.stream.v1.StreamSessionResponse.prototype.setCognitiveMap = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 6, proto.sentiric.stream.v1.StreamSessionResponse.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.sentiric.stream.v1.StreamSessionResponse} returns this
+ */
+proto.sentiric.stream.v1.StreamSessionResponse.prototype.clearCognitiveMap = function() {
+  return this.setCognitiveMap(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.sentiric.stream.v1.StreamSessionResponse.prototype.hasCognitiveMap = function() {
+  return jspb.Message.getField(this, 6) != null;
 };
 
 

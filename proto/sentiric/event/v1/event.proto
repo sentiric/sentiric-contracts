@@ -115,3 +115,23 @@ message AcousticMoodShiftedEvent {
 
   repeated float speaker_vec = 10; // [YENİ]: Crystalline biyometrisi için
 }
+
+// [ARCH-COMPLIANCE: v4.0 Cognitive Mirror Vision]
+// Kullanıcının zihin haritası (Cognitive Map) güncellendiğinde fırlatılır.
+// Stream SDK bunu alıp UI üzerinde gerçek zamanlı olarak radar/harita çizer.
+message CognitiveMapUpdatedEvent {
+  string event_type = 1; // "cognitive.map.updated"
+  string trace_id = 2;
+  string user_id = 3; // Anonim de olsa cihaz/oturum bazlı UUID
+  google.protobuf.Timestamp timestamp = 4;
+
+  // Zihin haritası özetleri ve aktif karakter özellikleri
+  string recent_fact_summary = 5;
+  repeated string active_traits = 6; // Örn: ["vizyoner", "detaycı", "analitik"]
+  string dominant_resonance = 7; // Örn: "deep_waters", "executive"
+
+  // Psikolojik Radar Skalası (0.0 - 1.0)
+  float arousal_score = 8;
+  float valence_score = 9;
+  float logic_score = 10;
+}

@@ -128,6 +128,7 @@ PROTOBUF_CONSTEXPR UserMemoryPayload_Lifecycle::UserMemoryPayload_Lifecycle(
   , /*decltype(_impl_.created_at_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.last_accessed_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.decay_score_)*/0
+  , /*decltype(_impl_.is_archived_)*/false
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct UserMemoryPayload_LifecycleDefaultTypeInternal {
   PROTOBUF_CONSTEXPR UserMemoryPayload_LifecycleDefaultTypeInternal()
@@ -265,6 +266,7 @@ const uint32_t TableStruct_sentiric_2fknowledge_2fv1_2fquery_2eproto::offsets[] 
   PROTOBUF_FIELD_OFFSET(::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle, _impl_.created_at_),
   PROTOBUF_FIELD_OFFSET(::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle, _impl_.last_accessed_),
   PROTOBUF_FIELD_OFFSET(::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle, _impl_.decay_score_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle, _impl_.is_archived_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::sentiric::knowledge::v1::UserMemoryPayload, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -304,9 +306,9 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 44, -1, -1, sizeof(::sentiric::knowledge::v1::UserMemoryPayload_Resonance)},
   { 52, -1, -1, sizeof(::sentiric::knowledge::v1::UserMemoryPayload_Fact)},
   { 62, -1, -1, sizeof(::sentiric::knowledge::v1::UserMemoryPayload_Lifecycle)},
-  { 72, -1, -1, sizeof(::sentiric::knowledge::v1::UserMemoryPayload)},
-  { 83, -1, -1, sizeof(::sentiric::knowledge::v1::QueryCognitiveMemoryRequest)},
-  { 94, -1, -1, sizeof(::sentiric::knowledge::v1::QueryCognitiveMemoryResponse)},
+  { 73, -1, -1, sizeof(::sentiric::knowledge::v1::UserMemoryPayload)},
+  { 84, -1, -1, sizeof(::sentiric::knowledge::v1::QueryCognitiveMemoryRequest)},
+  { 95, -1, -1, sizeof(::sentiric::knowledge::v1::QueryCognitiveMemoryResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -333,7 +335,7 @@ const char descriptor_table_protodef_sentiric_2fknowledge_2fv1_2fquery_2eproto[]
   "\002\022\016\n\006source\030\003 \001(\t\022B\n\010metadata\030\004 \003(\01320.se"
   "ntiric.knowledge.v1.QueryResult.Metadata"
   "Entry\032/\n\rMetadataEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005v"
-  "alue\030\002 \001(\t:\0028\001\"\321\004\n\021UserMemoryPayload\022F\n\n"
+  "alue\030\002 \001(\t:\0028\001\"\346\004\n\021UserMemoryPayload\022F\n\n"
   "bio_anchor\030\001 \001(\01322.sentiric.knowledge.v1"
   ".UserMemoryPayload.BioAnchor\022E\n\tresonanc"
   "e\030\002 \001(\01322.sentiric.knowledge.v1.UserMemo"
@@ -345,24 +347,25 @@ const char descriptor_table_protodef_sentiric_2fknowledge_2fv1_2fquery_2eproto[]
   "d\030\001 \001(\t\022\022\n\nconfidence\030\002 \001(\002\032-\n\tResonance"
   "\022\014\n\004mode\030\001 \001(\t\022\022\n\nconfidence\030\002 \001(\002\032O\n\004Fa"
   "ct\022\020\n\010category\030\001 \001(\t\022\022\n\nimportance\030\002 \001(\005"
-  "\022\017\n\007summary\030\003 \001(\t\022\020\n\010metadata\030\004 \003(\t\032]\n\tL"
+  "\022\017\n\007summary\030\003 \001(\t\022\020\n\010metadata\030\004 \003(\t\032r\n\tL"
   "ifecycle\022\020\n\010trace_id\030\001 \001(\t\022\022\n\ncreated_at"
   "\030\002 \001(\t\022\025\n\rlast_accessed\030\003 \001(\t\022\023\n\013decay_s"
-  "core\030\004 \001(\002\"\203\001\n\033QueryCognitiveMemoryReque"
-  "st\022\021\n\ttenant_id\030\001 \001(\t\022\016\n\006bio_id\030\002 \001(\t\022\022\n"
-  "\nquery_text\030\003 \001(\t\022\036\n\026current_resonance_m"
-  "ode\030\004 \001(\t\022\r\n\005top_k\030\005 \001(\005\"Z\n\034QueryCogniti"
-  "veMemoryResponse\022:\n\010memories\030\001 \003(\0132(.sen"
-  "tiric.knowledge.v1.UserMemoryPayload2k\n\025"
-  "KnowledgeQueryService\022R\n\005Query\022#.sentiri"
-  "c.knowledge.v1.QueryRequest\032$.sentiric.k"
-  "nowledge.v1.QueryResponseBQZOgithub.com/"
-  "sentiric/sentiric-contracts/gen/go/senti"
-  "ric/knowledge/v1;knowledgev1b\006proto3"
+  "core\030\004 \001(\002\022\023\n\013is_archived\030\005 \001(\010\"\203\001\n\033Quer"
+  "yCognitiveMemoryRequest\022\021\n\ttenant_id\030\001 \001"
+  "(\t\022\016\n\006bio_id\030\002 \001(\t\022\022\n\nquery_text\030\003 \001(\t\022\036"
+  "\n\026current_resonance_mode\030\004 \001(\t\022\r\n\005top_k\030"
+  "\005 \001(\005\"Z\n\034QueryCognitiveMemoryResponse\022:\n"
+  "\010memories\030\001 \003(\0132(.sentiric.knowledge.v1."
+  "UserMemoryPayload2k\n\025KnowledgeQueryServi"
+  "ce\022R\n\005Query\022#.sentiric.knowledge.v1.Quer"
+  "yRequest\032$.sentiric.knowledge.v1.QueryRe"
+  "sponseBQZOgithub.com/sentiric/sentiric-c"
+  "ontracts/gen/go/sentiric/knowledge/v1;kn"
+  "owledgev1b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_sentiric_2fknowledge_2fv1_2fquery_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_sentiric_2fknowledge_2fv1_2fquery_2eproto = {
-    false, false, 1396, descriptor_table_protodef_sentiric_2fknowledge_2fv1_2fquery_2eproto,
+    false, false, 1417, descriptor_table_protodef_sentiric_2fknowledge_2fv1_2fquery_2eproto,
     "sentiric/knowledge/v1/query.proto",
     &descriptor_table_sentiric_2fknowledge_2fv1_2fquery_2eproto_once, nullptr, 0, 11,
     schemas, file_default_instances, TableStruct_sentiric_2fknowledge_2fv1_2fquery_2eproto::offsets,
@@ -2041,6 +2044,7 @@ UserMemoryPayload_Lifecycle::UserMemoryPayload_Lifecycle(const UserMemoryPayload
     , decltype(_impl_.created_at_){}
     , decltype(_impl_.last_accessed_){}
     , decltype(_impl_.decay_score_){}
+    , decltype(_impl_.is_archived_){}
     , /*decltype(_impl_._cached_size_)*/{}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
@@ -2068,7 +2072,9 @@ UserMemoryPayload_Lifecycle::UserMemoryPayload_Lifecycle(const UserMemoryPayload
     _this->_impl_.last_accessed_.Set(from._internal_last_accessed(), 
       _this->GetArenaForAllocation());
   }
-  _this->_impl_.decay_score_ = from._impl_.decay_score_;
+  ::memcpy(&_impl_.decay_score_, &from._impl_.decay_score_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.is_archived_) -
+    reinterpret_cast<char*>(&_impl_.decay_score_)) + sizeof(_impl_.is_archived_));
   // @@protoc_insertion_point(copy_constructor:sentiric.knowledge.v1.UserMemoryPayload.Lifecycle)
 }
 
@@ -2081,6 +2087,7 @@ inline void UserMemoryPayload_Lifecycle::SharedCtor(
     , decltype(_impl_.created_at_){}
     , decltype(_impl_.last_accessed_){}
     , decltype(_impl_.decay_score_){0}
+    , decltype(_impl_.is_archived_){false}
     , /*decltype(_impl_._cached_size_)*/{}
   };
   _impl_.trace_id_.InitDefault();
@@ -2126,7 +2133,9 @@ void UserMemoryPayload_Lifecycle::Clear() {
   _impl_.trace_id_.ClearToEmpty();
   _impl_.created_at_.ClearToEmpty();
   _impl_.last_accessed_.ClearToEmpty();
-  _impl_.decay_score_ = 0;
+  ::memset(&_impl_.decay_score_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&_impl_.is_archived_) -
+      reinterpret_cast<char*>(&_impl_.decay_score_)) + sizeof(_impl_.is_archived_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -2171,6 +2180,14 @@ const char* UserMemoryPayload_Lifecycle::_InternalParse(const char* ptr, ::_pbi:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 37)) {
           _impl_.decay_score_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
           ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // bool is_archived = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 40)) {
+          _impl_.is_archived_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
@@ -2243,6 +2260,12 @@ uint8_t* UserMemoryPayload_Lifecycle::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteFloatToArray(4, this->_internal_decay_score(), target);
   }
 
+  // bool is_archived = 5;
+  if (this->_internal_is_archived() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(5, this->_internal_is_archived(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -2289,6 +2312,11 @@ size_t UserMemoryPayload_Lifecycle::ByteSizeLong() const {
     total_size += 1 + 4;
   }
 
+  // bool is_archived = 5;
+  if (this->_internal_is_archived() != 0) {
+    total_size += 1 + 1;
+  }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
@@ -2323,6 +2351,9 @@ void UserMemoryPayload_Lifecycle::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to
   if (raw_decay_score != 0) {
     _this->_internal_set_decay_score(from._internal_decay_score());
   }
+  if (from._internal_is_archived() != 0) {
+    _this->_internal_set_is_archived(from._internal_is_archived());
+  }
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -2354,7 +2385,12 @@ void UserMemoryPayload_Lifecycle::InternalSwap(UserMemoryPayload_Lifecycle* othe
       &_impl_.last_accessed_, lhs_arena,
       &other->_impl_.last_accessed_, rhs_arena
   );
-  swap(_impl_.decay_score_, other->_impl_.decay_score_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(UserMemoryPayload_Lifecycle, _impl_.is_archived_)
+      + sizeof(UserMemoryPayload_Lifecycle::_impl_.is_archived_)
+      - PROTOBUF_FIELD_OFFSET(UserMemoryPayload_Lifecycle, _impl_.decay_score_)>(
+          reinterpret_cast<char*>(&_impl_.decay_score_),
+          reinterpret_cast<char*>(&other->_impl_.decay_score_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata UserMemoryPayload_Lifecycle::GetMetadata() const {

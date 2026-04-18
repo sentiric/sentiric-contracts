@@ -646,6 +646,127 @@ func (x *AcousticMoodShiftedEvent) GetSpeakerVec() []float32 {
 	return nil
 }
 
+// [ARCH-COMPLIANCE: v4.0 Cognitive Mirror Vision]
+// Kullanıcının zihin haritası (Cognitive Map) güncellendiğinde fırlatılır.
+// Stream SDK bunu alıp UI üzerinde gerçek zamanlı olarak radar/harita çizer.
+type CognitiveMapUpdatedEvent struct {
+	state     protoimpl.MessageState `protogen:"open.v1"`
+	EventType string                 `protobuf:"bytes,1,opt,name=event_type,json=eventType,proto3" json:"event_type,omitempty"` // "cognitive.map.updated"
+	TraceId   string                 `protobuf:"bytes,2,opt,name=trace_id,json=traceId,proto3" json:"trace_id,omitempty"`
+	UserId    string                 `protobuf:"bytes,3,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"` // Anonim de olsa cihaz/oturum bazlı UUID
+	Timestamp *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
+	// Zihin haritası özetleri ve aktif karakter özellikleri
+	RecentFactSummary string   `protobuf:"bytes,5,opt,name=recent_fact_summary,json=recentFactSummary,proto3" json:"recent_fact_summary,omitempty"`
+	ActiveTraits      []string `protobuf:"bytes,6,rep,name=active_traits,json=activeTraits,proto3" json:"active_traits,omitempty"`                // Örn: ["vizyoner", "detaycı", "analitik"]
+	DominantResonance string   `protobuf:"bytes,7,opt,name=dominant_resonance,json=dominantResonance,proto3" json:"dominant_resonance,omitempty"` // Örn: "deep_waters", "executive"
+	// Psikolojik Radar Skalası (0.0 - 1.0)
+	ArousalScore  float32 `protobuf:"fixed32,8,opt,name=arousal_score,json=arousalScore,proto3" json:"arousal_score,omitempty"`
+	ValenceScore  float32 `protobuf:"fixed32,9,opt,name=valence_score,json=valenceScore,proto3" json:"valence_score,omitempty"`
+	LogicScore    float32 `protobuf:"fixed32,10,opt,name=logic_score,json=logicScore,proto3" json:"logic_score,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CognitiveMapUpdatedEvent) Reset() {
+	*x = CognitiveMapUpdatedEvent{}
+	mi := &file_sentiric_event_v1_event_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CognitiveMapUpdatedEvent) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CognitiveMapUpdatedEvent) ProtoMessage() {}
+
+func (x *CognitiveMapUpdatedEvent) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_event_v1_event_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CognitiveMapUpdatedEvent.ProtoReflect.Descriptor instead.
+func (*CognitiveMapUpdatedEvent) Descriptor() ([]byte, []int) {
+	return file_sentiric_event_v1_event_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *CognitiveMapUpdatedEvent) GetEventType() string {
+	if x != nil {
+		return x.EventType
+	}
+	return ""
+}
+
+func (x *CognitiveMapUpdatedEvent) GetTraceId() string {
+	if x != nil {
+		return x.TraceId
+	}
+	return ""
+}
+
+func (x *CognitiveMapUpdatedEvent) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+func (x *CognitiveMapUpdatedEvent) GetTimestamp() *timestamppb.Timestamp {
+	if x != nil {
+		return x.Timestamp
+	}
+	return nil
+}
+
+func (x *CognitiveMapUpdatedEvent) GetRecentFactSummary() string {
+	if x != nil {
+		return x.RecentFactSummary
+	}
+	return ""
+}
+
+func (x *CognitiveMapUpdatedEvent) GetActiveTraits() []string {
+	if x != nil {
+		return x.ActiveTraits
+	}
+	return nil
+}
+
+func (x *CognitiveMapUpdatedEvent) GetDominantResonance() string {
+	if x != nil {
+		return x.DominantResonance
+	}
+	return ""
+}
+
+func (x *CognitiveMapUpdatedEvent) GetArousalScore() float32 {
+	if x != nil {
+		return x.ArousalScore
+	}
+	return 0
+}
+
+func (x *CognitiveMapUpdatedEvent) GetValenceScore() float32 {
+	if x != nil {
+		return x.ValenceScore
+	}
+	return 0
+}
+
+func (x *CognitiveMapUpdatedEvent) GetLogicScore() float32 {
+	if x != nil {
+		return x.LogicScore
+	}
+	return 0
+}
+
 var File_sentiric_event_v1_event_proto protoreflect.FileDescriptor
 
 const file_sentiric_event_v1_event_proto_rawDesc = "" +
@@ -710,7 +831,21 @@ const file_sentiric_event_v1_event_proto_rawDesc = "" +
 	"speaker_id\x18\t \x01(\tR\tspeakerId\x12\x1f\n" +
 	"\vspeaker_vec\x18\n" +
 	" \x03(\x02R\n" +
-	"speakerVecBIZGgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/event/v1;eventv1b\x06proto3"
+	"speakerVec\"\x96\x03\n" +
+	"\x18CognitiveMapUpdatedEvent\x12\x1d\n" +
+	"\n" +
+	"event_type\x18\x01 \x01(\tR\teventType\x12\x19\n" +
+	"\btrace_id\x18\x02 \x01(\tR\atraceId\x12\x17\n" +
+	"\auser_id\x18\x03 \x01(\tR\x06userId\x128\n" +
+	"\ttimestamp\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\ttimestamp\x12.\n" +
+	"\x13recent_fact_summary\x18\x05 \x01(\tR\x11recentFactSummary\x12#\n" +
+	"\ractive_traits\x18\x06 \x03(\tR\factiveTraits\x12-\n" +
+	"\x12dominant_resonance\x18\a \x01(\tR\x11dominantResonance\x12#\n" +
+	"\rarousal_score\x18\b \x01(\x02R\farousalScore\x12#\n" +
+	"\rvalence_score\x18\t \x01(\x02R\fvalenceScore\x12\x1f\n" +
+	"\vlogic_score\x18\n" +
+	" \x01(\x02R\n" +
+	"logicScoreBIZGgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/event/v1;eventv1b\x06proto3"
 
 var (
 	file_sentiric_event_v1_event_proto_rawDescOnce sync.Once
@@ -724,7 +859,7 @@ func file_sentiric_event_v1_event_proto_rawDescGZIP() []byte {
 	return file_sentiric_event_v1_event_proto_rawDescData
 }
 
-var file_sentiric_event_v1_event_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_sentiric_event_v1_event_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_sentiric_event_v1_event_proto_goTypes = []any{
 	(*MediaInfo)(nil),                   // 0: sentiric.event.v1.MediaInfo
 	(*CallStartedEvent)(nil),            // 1: sentiric.event.v1.CallStartedEvent
@@ -733,27 +868,29 @@ var file_sentiric_event_v1_event_proto_goTypes = []any{
 	(*CallEndedEvent)(nil),              // 4: sentiric.event.v1.CallEndedEvent
 	(*GenericEvent)(nil),                // 5: sentiric.event.v1.GenericEvent
 	(*AcousticMoodShiftedEvent)(nil),    // 6: sentiric.event.v1.AcousticMoodShiftedEvent
-	(*timestamppb.Timestamp)(nil),       // 7: google.protobuf.Timestamp
-	(*v1.ResolveDialplanResponse)(nil),  // 8: sentiric.dialplan.v1.ResolveDialplanResponse
-	(*v11.User)(nil),                    // 9: sentiric.user.v1.User
-	(*v11.Contact)(nil),                 // 10: sentiric.user.v1.Contact
+	(*CognitiveMapUpdatedEvent)(nil),    // 7: sentiric.event.v1.CognitiveMapUpdatedEvent
+	(*timestamppb.Timestamp)(nil),       // 8: google.protobuf.Timestamp
+	(*v1.ResolveDialplanResponse)(nil),  // 9: sentiric.dialplan.v1.ResolveDialplanResponse
+	(*v11.User)(nil),                    // 10: sentiric.user.v1.User
+	(*v11.Contact)(nil),                 // 11: sentiric.user.v1.Contact
 }
 var file_sentiric_event_v1_event_proto_depIdxs = []int32{
-	7,  // 0: sentiric.event.v1.CallStartedEvent.timestamp:type_name -> google.protobuf.Timestamp
-	8,  // 1: sentiric.event.v1.CallStartedEvent.dialplan_resolution:type_name -> sentiric.dialplan.v1.ResolveDialplanResponse
+	8,  // 0: sentiric.event.v1.CallStartedEvent.timestamp:type_name -> google.protobuf.Timestamp
+	9,  // 1: sentiric.event.v1.CallStartedEvent.dialplan_resolution:type_name -> sentiric.dialplan.v1.ResolveDialplanResponse
 	0,  // 2: sentiric.event.v1.CallStartedEvent.media_info:type_name -> sentiric.event.v1.MediaInfo
-	7,  // 3: sentiric.event.v1.UserIdentifiedForCallEvent.timestamp:type_name -> google.protobuf.Timestamp
-	9,  // 4: sentiric.event.v1.UserIdentifiedForCallEvent.user:type_name -> sentiric.user.v1.User
-	10, // 5: sentiric.event.v1.UserIdentifiedForCallEvent.contact:type_name -> sentiric.user.v1.Contact
-	7,  // 6: sentiric.event.v1.CallRecordingAvailableEvent.timestamp:type_name -> google.protobuf.Timestamp
-	7,  // 7: sentiric.event.v1.CallEndedEvent.timestamp:type_name -> google.protobuf.Timestamp
-	7,  // 8: sentiric.event.v1.GenericEvent.timestamp:type_name -> google.protobuf.Timestamp
-	7,  // 9: sentiric.event.v1.AcousticMoodShiftedEvent.timestamp:type_name -> google.protobuf.Timestamp
-	10, // [10:10] is the sub-list for method output_type
-	10, // [10:10] is the sub-list for method input_type
-	10, // [10:10] is the sub-list for extension type_name
-	10, // [10:10] is the sub-list for extension extendee
-	0,  // [0:10] is the sub-list for field type_name
+	8,  // 3: sentiric.event.v1.UserIdentifiedForCallEvent.timestamp:type_name -> google.protobuf.Timestamp
+	10, // 4: sentiric.event.v1.UserIdentifiedForCallEvent.user:type_name -> sentiric.user.v1.User
+	11, // 5: sentiric.event.v1.UserIdentifiedForCallEvent.contact:type_name -> sentiric.user.v1.Contact
+	8,  // 6: sentiric.event.v1.CallRecordingAvailableEvent.timestamp:type_name -> google.protobuf.Timestamp
+	8,  // 7: sentiric.event.v1.CallEndedEvent.timestamp:type_name -> google.protobuf.Timestamp
+	8,  // 8: sentiric.event.v1.GenericEvent.timestamp:type_name -> google.protobuf.Timestamp
+	8,  // 9: sentiric.event.v1.AcousticMoodShiftedEvent.timestamp:type_name -> google.protobuf.Timestamp
+	8,  // 10: sentiric.event.v1.CognitiveMapUpdatedEvent.timestamp:type_name -> google.protobuf.Timestamp
+	11, // [11:11] is the sub-list for method output_type
+	11, // [11:11] is the sub-list for method input_type
+	11, // [11:11] is the sub-list for extension type_name
+	11, // [11:11] is the sub-list for extension extendee
+	0,  // [0:11] is the sub-list for field type_name
 }
 
 func init() { file_sentiric_event_v1_event_proto_init() }
@@ -767,7 +904,7 @@ func file_sentiric_event_v1_event_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sentiric_event_v1_event_proto_rawDesc), len(file_sentiric_event_v1_event_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   7,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

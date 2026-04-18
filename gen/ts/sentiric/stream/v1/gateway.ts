@@ -6,6 +6,7 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
+import { CognitiveMapUpdatedEvent } from "../../event/v1/event";
 
 export const protobufPackage = "sentiric.stream.v1";
 
@@ -23,7 +24,11 @@ export interface StreamSessionResponse {
   textResponse?: string | undefined;
   statusUpdate?: string | undefined;
   transcript?: TranscriptEvent | undefined;
-  clearAudioBuffer?: boolean | undefined;
+  clearAudioBuffer?:
+    | boolean
+    | undefined;
+  /** [ARCH-COMPLIANCE: Cognitive Mirror] SDK'ya giden canlı zihin haritası verisi */
+  cognitiveMap?: CognitiveMapUpdatedEvent | undefined;
 }
 
 export interface WordData {
@@ -240,6 +245,7 @@ function createBaseStreamSessionResponse(): StreamSessionResponse {
     statusUpdate: undefined,
     transcript: undefined,
     clearAudioBuffer: undefined,
+    cognitiveMap: undefined,
   };
 }
 
@@ -259,6 +265,9 @@ export const StreamSessionResponse: MessageFns<StreamSessionResponse> = {
     }
     if (message.clearAudioBuffer !== undefined) {
       writer.uint32(40).bool(message.clearAudioBuffer);
+    }
+    if (message.cognitiveMap !== undefined) {
+      CognitiveMapUpdatedEvent.encode(message.cognitiveMap, writer.uint32(50).fork()).join();
     }
     return writer;
   },
@@ -310,6 +319,14 @@ export const StreamSessionResponse: MessageFns<StreamSessionResponse> = {
           message.clearAudioBuffer = reader.bool();
           continue;
         }
+        case 6: {
+          if (tag !== 50) {
+            break;
+          }
+
+          message.cognitiveMap = CognitiveMapUpdatedEvent.decode(reader, reader.uint32());
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -342,6 +359,11 @@ export const StreamSessionResponse: MessageFns<StreamSessionResponse> = {
         : isSet(object.clear_audio_buffer)
         ? globalThis.Boolean(object.clear_audio_buffer)
         : undefined,
+      cognitiveMap: isSet(object.cognitiveMap)
+        ? CognitiveMapUpdatedEvent.fromJSON(object.cognitiveMap)
+        : isSet(object.cognitive_map)
+        ? CognitiveMapUpdatedEvent.fromJSON(object.cognitive_map)
+        : undefined,
     };
   },
 
@@ -362,6 +384,9 @@ export const StreamSessionResponse: MessageFns<StreamSessionResponse> = {
     if (message.clearAudioBuffer !== undefined) {
       obj.clearAudioBuffer = message.clearAudioBuffer;
     }
+    if (message.cognitiveMap !== undefined) {
+      obj.cognitiveMap = CognitiveMapUpdatedEvent.toJSON(message.cognitiveMap);
+    }
     return obj;
   },
 
@@ -377,6 +402,9 @@ export const StreamSessionResponse: MessageFns<StreamSessionResponse> = {
       ? TranscriptEvent.fromPartial(object.transcript)
       : undefined;
     message.clearAudioBuffer = object.clearAudioBuffer ?? undefined;
+    message.cognitiveMap = (object.cognitiveMap !== undefined && object.cognitiveMap !== null)
+      ? CognitiveMapUpdatedEvent.fromPartial(object.cognitiveMap)
+      : undefined;
     return message;
   },
 };

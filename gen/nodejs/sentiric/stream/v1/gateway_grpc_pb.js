@@ -5,6 +5,7 @@
 'use strict';
 var grpc = require('@grpc/grpc-js');
 var sentiric_stream_v1_gateway_pb = require('../../../sentiric/stream/v1/gateway_pb.js');
+var sentiric_event_v1_event_pb = require('../../../sentiric/event/v1/event_pb.js');
 
 function serialize_sentiric_stream_v1_StreamSessionRequest(arg) {
   if (!(arg instanceof sentiric_stream_v1_gateway_pb.StreamSessionRequest)) {

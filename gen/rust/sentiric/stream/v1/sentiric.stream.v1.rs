@@ -21,7 +21,7 @@ pub mod stream_session_request {
 }
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct StreamSessionResponse {
-    #[prost(oneof="stream_session_response::Data", tags="1, 2, 3, 4, 5")]
+    #[prost(oneof="stream_session_response::Data", tags="1, 2, 3, 4, 5, 6")]
     pub data: ::core::option::Option<stream_session_response::Data>,
 }
 /// Nested message and enum types in `StreamSessionResponse`.
@@ -38,6 +38,9 @@ pub mod stream_session_response {
         Transcript(super::TranscriptEvent),
         #[prost(bool, tag="5")]
         ClearAudioBuffer(bool),
+        /// \[ARCH-COMPLIANCE: Cognitive Mirror\] SDK'ya giden canlı zihin haritası verisi
+        #[prost(message, tag="6")]
+        CognitiveMap(super::super::super::event::v1::CognitiveMapUpdatedEvent),
     }
 }
 #[derive(Clone, PartialEq, ::prost::Message)]

@@ -62,6 +62,9 @@ extern CallRecordingAvailableEventDefaultTypeInternal _CallRecordingAvailableEve
 class CallStartedEvent;
 struct CallStartedEventDefaultTypeInternal;
 extern CallStartedEventDefaultTypeInternal _CallStartedEvent_default_instance_;
+class CognitiveMapUpdatedEvent;
+struct CognitiveMapUpdatedEventDefaultTypeInternal;
+extern CognitiveMapUpdatedEventDefaultTypeInternal _CognitiveMapUpdatedEvent_default_instance_;
 class GenericEvent;
 struct GenericEventDefaultTypeInternal;
 extern GenericEventDefaultTypeInternal _GenericEvent_default_instance_;
@@ -79,6 +82,7 @@ template<> ::sentiric::event::v1::AcousticMoodShiftedEvent* Arena::CreateMaybeMe
 template<> ::sentiric::event::v1::CallEndedEvent* Arena::CreateMaybeMessage<::sentiric::event::v1::CallEndedEvent>(Arena*);
 template<> ::sentiric::event::v1::CallRecordingAvailableEvent* Arena::CreateMaybeMessage<::sentiric::event::v1::CallRecordingAvailableEvent>(Arena*);
 template<> ::sentiric::event::v1::CallStartedEvent* Arena::CreateMaybeMessage<::sentiric::event::v1::CallStartedEvent>(Arena*);
+template<> ::sentiric::event::v1::CognitiveMapUpdatedEvent* Arena::CreateMaybeMessage<::sentiric::event::v1::CognitiveMapUpdatedEvent>(Arena*);
 template<> ::sentiric::event::v1::GenericEvent* Arena::CreateMaybeMessage<::sentiric::event::v1::GenericEvent>(Arena*);
 template<> ::sentiric::event::v1::MediaInfo* Arena::CreateMaybeMessage<::sentiric::event::v1::MediaInfo>(Arena*);
 template<> ::sentiric::event::v1::UserIdentifiedForCallEvent* Arena::CreateMaybeMessage<::sentiric::event::v1::UserIdentifiedForCallEvent>(Arena*);
@@ -1746,6 +1750,302 @@ class AcousticMoodShiftedEvent final :
     ::PROTOBUF_NAMESPACE_ID::Timestamp* timestamp_;
     float arousal_shift_;
     float valence_shift_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2fevent_2fv1_2fevent_2eproto;
+};
+// -------------------------------------------------------------------
+
+class CognitiveMapUpdatedEvent final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.event.v1.CognitiveMapUpdatedEvent) */ {
+ public:
+  inline CognitiveMapUpdatedEvent() : CognitiveMapUpdatedEvent(nullptr) {}
+  ~CognitiveMapUpdatedEvent() override;
+  explicit PROTOBUF_CONSTEXPR CognitiveMapUpdatedEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  CognitiveMapUpdatedEvent(const CognitiveMapUpdatedEvent& from);
+  CognitiveMapUpdatedEvent(CognitiveMapUpdatedEvent&& from) noexcept
+    : CognitiveMapUpdatedEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline CognitiveMapUpdatedEvent& operator=(const CognitiveMapUpdatedEvent& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline CognitiveMapUpdatedEvent& operator=(CognitiveMapUpdatedEvent&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const CognitiveMapUpdatedEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const CognitiveMapUpdatedEvent* internal_default_instance() {
+    return reinterpret_cast<const CognitiveMapUpdatedEvent*>(
+               &_CognitiveMapUpdatedEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    7;
+
+  friend void swap(CognitiveMapUpdatedEvent& a, CognitiveMapUpdatedEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(CognitiveMapUpdatedEvent* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(CognitiveMapUpdatedEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  CognitiveMapUpdatedEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<CognitiveMapUpdatedEvent>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const CognitiveMapUpdatedEvent& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const CognitiveMapUpdatedEvent& from) {
+    CognitiveMapUpdatedEvent::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(CognitiveMapUpdatedEvent* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.event.v1.CognitiveMapUpdatedEvent";
+  }
+  protected:
+  explicit CognitiveMapUpdatedEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kActiveTraitsFieldNumber = 6,
+    kEventTypeFieldNumber = 1,
+    kTraceIdFieldNumber = 2,
+    kUserIdFieldNumber = 3,
+    kRecentFactSummaryFieldNumber = 5,
+    kDominantResonanceFieldNumber = 7,
+    kTimestampFieldNumber = 4,
+    kArousalScoreFieldNumber = 8,
+    kValenceScoreFieldNumber = 9,
+    kLogicScoreFieldNumber = 10,
+  };
+  // repeated string active_traits = 6;
+  int active_traits_size() const;
+  private:
+  int _internal_active_traits_size() const;
+  public:
+  void clear_active_traits();
+  const std::string& active_traits(int index) const;
+  std::string* mutable_active_traits(int index);
+  void set_active_traits(int index, const std::string& value);
+  void set_active_traits(int index, std::string&& value);
+  void set_active_traits(int index, const char* value);
+  void set_active_traits(int index, const char* value, size_t size);
+  std::string* add_active_traits();
+  void add_active_traits(const std::string& value);
+  void add_active_traits(std::string&& value);
+  void add_active_traits(const char* value);
+  void add_active_traits(const char* value, size_t size);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& active_traits() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_active_traits();
+  private:
+  const std::string& _internal_active_traits(int index) const;
+  std::string* _internal_add_active_traits();
+  public:
+
+  // string event_type = 1;
+  void clear_event_type();
+  const std::string& event_type() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_event_type(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_event_type();
+  PROTOBUF_NODISCARD std::string* release_event_type();
+  void set_allocated_event_type(std::string* event_type);
+  private:
+  const std::string& _internal_event_type() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_event_type(const std::string& value);
+  std::string* _internal_mutable_event_type();
+  public:
+
+  // string trace_id = 2;
+  void clear_trace_id();
+  const std::string& trace_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_trace_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_trace_id();
+  PROTOBUF_NODISCARD std::string* release_trace_id();
+  void set_allocated_trace_id(std::string* trace_id);
+  private:
+  const std::string& _internal_trace_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_trace_id(const std::string& value);
+  std::string* _internal_mutable_trace_id();
+  public:
+
+  // string user_id = 3;
+  void clear_user_id();
+  const std::string& user_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_user_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_user_id();
+  PROTOBUF_NODISCARD std::string* release_user_id();
+  void set_allocated_user_id(std::string* user_id);
+  private:
+  const std::string& _internal_user_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_user_id(const std::string& value);
+  std::string* _internal_mutable_user_id();
+  public:
+
+  // string recent_fact_summary = 5;
+  void clear_recent_fact_summary();
+  const std::string& recent_fact_summary() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_recent_fact_summary(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_recent_fact_summary();
+  PROTOBUF_NODISCARD std::string* release_recent_fact_summary();
+  void set_allocated_recent_fact_summary(std::string* recent_fact_summary);
+  private:
+  const std::string& _internal_recent_fact_summary() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_recent_fact_summary(const std::string& value);
+  std::string* _internal_mutable_recent_fact_summary();
+  public:
+
+  // string dominant_resonance = 7;
+  void clear_dominant_resonance();
+  const std::string& dominant_resonance() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_dominant_resonance(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_dominant_resonance();
+  PROTOBUF_NODISCARD std::string* release_dominant_resonance();
+  void set_allocated_dominant_resonance(std::string* dominant_resonance);
+  private:
+  const std::string& _internal_dominant_resonance() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_dominant_resonance(const std::string& value);
+  std::string* _internal_mutable_dominant_resonance();
+  public:
+
+  // .google.protobuf.Timestamp timestamp = 4;
+  bool has_timestamp() const;
+  private:
+  bool _internal_has_timestamp() const;
+  public:
+  void clear_timestamp();
+  const ::PROTOBUF_NAMESPACE_ID::Timestamp& timestamp() const;
+  PROTOBUF_NODISCARD ::PROTOBUF_NAMESPACE_ID::Timestamp* release_timestamp();
+  ::PROTOBUF_NAMESPACE_ID::Timestamp* mutable_timestamp();
+  void set_allocated_timestamp(::PROTOBUF_NAMESPACE_ID::Timestamp* timestamp);
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Timestamp& _internal_timestamp() const;
+  ::PROTOBUF_NAMESPACE_ID::Timestamp* _internal_mutable_timestamp();
+  public:
+  void unsafe_arena_set_allocated_timestamp(
+      ::PROTOBUF_NAMESPACE_ID::Timestamp* timestamp);
+  ::PROTOBUF_NAMESPACE_ID::Timestamp* unsafe_arena_release_timestamp();
+
+  // float arousal_score = 8;
+  void clear_arousal_score();
+  float arousal_score() const;
+  void set_arousal_score(float value);
+  private:
+  float _internal_arousal_score() const;
+  void _internal_set_arousal_score(float value);
+  public:
+
+  // float valence_score = 9;
+  void clear_valence_score();
+  float valence_score() const;
+  void set_valence_score(float value);
+  private:
+  float _internal_valence_score() const;
+  void _internal_set_valence_score(float value);
+  public:
+
+  // float logic_score = 10;
+  void clear_logic_score();
+  float logic_score() const;
+  void set_logic_score(float value);
+  private:
+  float _internal_logic_score() const;
+  void _internal_set_logic_score(float value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.event.v1.CognitiveMapUpdatedEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> active_traits_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr event_type_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr trace_id_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr user_id_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr recent_fact_summary_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr dominant_resonance_;
+    ::PROTOBUF_NAMESPACE_ID::Timestamp* timestamp_;
+    float arousal_score_;
+    float valence_score_;
+    float logic_score_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -4148,9 +4448,485 @@ AcousticMoodShiftedEvent::mutable_speaker_vec() {
   return _internal_mutable_speaker_vec();
 }
 
+// -------------------------------------------------------------------
+
+// CognitiveMapUpdatedEvent
+
+// string event_type = 1;
+inline void CognitiveMapUpdatedEvent::clear_event_type() {
+  _impl_.event_type_.ClearToEmpty();
+}
+inline const std::string& CognitiveMapUpdatedEvent::event_type() const {
+  // @@protoc_insertion_point(field_get:sentiric.event.v1.CognitiveMapUpdatedEvent.event_type)
+  return _internal_event_type();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void CognitiveMapUpdatedEvent::set_event_type(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.event_type_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.event.v1.CognitiveMapUpdatedEvent.event_type)
+}
+inline std::string* CognitiveMapUpdatedEvent::mutable_event_type() {
+  std::string* _s = _internal_mutable_event_type();
+  // @@protoc_insertion_point(field_mutable:sentiric.event.v1.CognitiveMapUpdatedEvent.event_type)
+  return _s;
+}
+inline const std::string& CognitiveMapUpdatedEvent::_internal_event_type() const {
+  return _impl_.event_type_.Get();
+}
+inline void CognitiveMapUpdatedEvent::_internal_set_event_type(const std::string& value) {
+  
+  _impl_.event_type_.Set(value, GetArenaForAllocation());
+}
+inline std::string* CognitiveMapUpdatedEvent::_internal_mutable_event_type() {
+  
+  return _impl_.event_type_.Mutable(GetArenaForAllocation());
+}
+inline std::string* CognitiveMapUpdatedEvent::release_event_type() {
+  // @@protoc_insertion_point(field_release:sentiric.event.v1.CognitiveMapUpdatedEvent.event_type)
+  return _impl_.event_type_.Release();
+}
+inline void CognitiveMapUpdatedEvent::set_allocated_event_type(std::string* event_type) {
+  if (event_type != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.event_type_.SetAllocated(event_type, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.event_type_.IsDefault()) {
+    _impl_.event_type_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.event.v1.CognitiveMapUpdatedEvent.event_type)
+}
+
+// string trace_id = 2;
+inline void CognitiveMapUpdatedEvent::clear_trace_id() {
+  _impl_.trace_id_.ClearToEmpty();
+}
+inline const std::string& CognitiveMapUpdatedEvent::trace_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.event.v1.CognitiveMapUpdatedEvent.trace_id)
+  return _internal_trace_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void CognitiveMapUpdatedEvent::set_trace_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.trace_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.event.v1.CognitiveMapUpdatedEvent.trace_id)
+}
+inline std::string* CognitiveMapUpdatedEvent::mutable_trace_id() {
+  std::string* _s = _internal_mutable_trace_id();
+  // @@protoc_insertion_point(field_mutable:sentiric.event.v1.CognitiveMapUpdatedEvent.trace_id)
+  return _s;
+}
+inline const std::string& CognitiveMapUpdatedEvent::_internal_trace_id() const {
+  return _impl_.trace_id_.Get();
+}
+inline void CognitiveMapUpdatedEvent::_internal_set_trace_id(const std::string& value) {
+  
+  _impl_.trace_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* CognitiveMapUpdatedEvent::_internal_mutable_trace_id() {
+  
+  return _impl_.trace_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* CognitiveMapUpdatedEvent::release_trace_id() {
+  // @@protoc_insertion_point(field_release:sentiric.event.v1.CognitiveMapUpdatedEvent.trace_id)
+  return _impl_.trace_id_.Release();
+}
+inline void CognitiveMapUpdatedEvent::set_allocated_trace_id(std::string* trace_id) {
+  if (trace_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.trace_id_.SetAllocated(trace_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.trace_id_.IsDefault()) {
+    _impl_.trace_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.event.v1.CognitiveMapUpdatedEvent.trace_id)
+}
+
+// string user_id = 3;
+inline void CognitiveMapUpdatedEvent::clear_user_id() {
+  _impl_.user_id_.ClearToEmpty();
+}
+inline const std::string& CognitiveMapUpdatedEvent::user_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.event.v1.CognitiveMapUpdatedEvent.user_id)
+  return _internal_user_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void CognitiveMapUpdatedEvent::set_user_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.user_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.event.v1.CognitiveMapUpdatedEvent.user_id)
+}
+inline std::string* CognitiveMapUpdatedEvent::mutable_user_id() {
+  std::string* _s = _internal_mutable_user_id();
+  // @@protoc_insertion_point(field_mutable:sentiric.event.v1.CognitiveMapUpdatedEvent.user_id)
+  return _s;
+}
+inline const std::string& CognitiveMapUpdatedEvent::_internal_user_id() const {
+  return _impl_.user_id_.Get();
+}
+inline void CognitiveMapUpdatedEvent::_internal_set_user_id(const std::string& value) {
+  
+  _impl_.user_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* CognitiveMapUpdatedEvent::_internal_mutable_user_id() {
+  
+  return _impl_.user_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* CognitiveMapUpdatedEvent::release_user_id() {
+  // @@protoc_insertion_point(field_release:sentiric.event.v1.CognitiveMapUpdatedEvent.user_id)
+  return _impl_.user_id_.Release();
+}
+inline void CognitiveMapUpdatedEvent::set_allocated_user_id(std::string* user_id) {
+  if (user_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.user_id_.SetAllocated(user_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.user_id_.IsDefault()) {
+    _impl_.user_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.event.v1.CognitiveMapUpdatedEvent.user_id)
+}
+
+// .google.protobuf.Timestamp timestamp = 4;
+inline bool CognitiveMapUpdatedEvent::_internal_has_timestamp() const {
+  return this != internal_default_instance() && _impl_.timestamp_ != nullptr;
+}
+inline bool CognitiveMapUpdatedEvent::has_timestamp() const {
+  return _internal_has_timestamp();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Timestamp& CognitiveMapUpdatedEvent::_internal_timestamp() const {
+  const ::PROTOBUF_NAMESPACE_ID::Timestamp* p = _impl_.timestamp_;
+  return p != nullptr ? *p : reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Timestamp&>(
+      ::PROTOBUF_NAMESPACE_ID::_Timestamp_default_instance_);
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Timestamp& CognitiveMapUpdatedEvent::timestamp() const {
+  // @@protoc_insertion_point(field_get:sentiric.event.v1.CognitiveMapUpdatedEvent.timestamp)
+  return _internal_timestamp();
+}
+inline void CognitiveMapUpdatedEvent::unsafe_arena_set_allocated_timestamp(
+    ::PROTOBUF_NAMESPACE_ID::Timestamp* timestamp) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.timestamp_);
+  }
+  _impl_.timestamp_ = timestamp;
+  if (timestamp) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:sentiric.event.v1.CognitiveMapUpdatedEvent.timestamp)
+}
+inline ::PROTOBUF_NAMESPACE_ID::Timestamp* CognitiveMapUpdatedEvent::release_timestamp() {
+  
+  ::PROTOBUF_NAMESPACE_ID::Timestamp* temp = _impl_.timestamp_;
+  _impl_.timestamp_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Timestamp* CognitiveMapUpdatedEvent::unsafe_arena_release_timestamp() {
+  // @@protoc_insertion_point(field_release:sentiric.event.v1.CognitiveMapUpdatedEvent.timestamp)
+  
+  ::PROTOBUF_NAMESPACE_ID::Timestamp* temp = _impl_.timestamp_;
+  _impl_.timestamp_ = nullptr;
+  return temp;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Timestamp* CognitiveMapUpdatedEvent::_internal_mutable_timestamp() {
+  
+  if (_impl_.timestamp_ == nullptr) {
+    auto* p = CreateMaybeMessage<::PROTOBUF_NAMESPACE_ID::Timestamp>(GetArenaForAllocation());
+    _impl_.timestamp_ = p;
+  }
+  return _impl_.timestamp_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Timestamp* CognitiveMapUpdatedEvent::mutable_timestamp() {
+  ::PROTOBUF_NAMESPACE_ID::Timestamp* _msg = _internal_mutable_timestamp();
+  // @@protoc_insertion_point(field_mutable:sentiric.event.v1.CognitiveMapUpdatedEvent.timestamp)
+  return _msg;
+}
+inline void CognitiveMapUpdatedEvent::set_allocated_timestamp(::PROTOBUF_NAMESPACE_ID::Timestamp* timestamp) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.timestamp_);
+  }
+  if (timestamp) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(timestamp));
+    if (message_arena != submessage_arena) {
+      timestamp = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, timestamp, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.timestamp_ = timestamp;
+  // @@protoc_insertion_point(field_set_allocated:sentiric.event.v1.CognitiveMapUpdatedEvent.timestamp)
+}
+
+// string recent_fact_summary = 5;
+inline void CognitiveMapUpdatedEvent::clear_recent_fact_summary() {
+  _impl_.recent_fact_summary_.ClearToEmpty();
+}
+inline const std::string& CognitiveMapUpdatedEvent::recent_fact_summary() const {
+  // @@protoc_insertion_point(field_get:sentiric.event.v1.CognitiveMapUpdatedEvent.recent_fact_summary)
+  return _internal_recent_fact_summary();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void CognitiveMapUpdatedEvent::set_recent_fact_summary(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.recent_fact_summary_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.event.v1.CognitiveMapUpdatedEvent.recent_fact_summary)
+}
+inline std::string* CognitiveMapUpdatedEvent::mutable_recent_fact_summary() {
+  std::string* _s = _internal_mutable_recent_fact_summary();
+  // @@protoc_insertion_point(field_mutable:sentiric.event.v1.CognitiveMapUpdatedEvent.recent_fact_summary)
+  return _s;
+}
+inline const std::string& CognitiveMapUpdatedEvent::_internal_recent_fact_summary() const {
+  return _impl_.recent_fact_summary_.Get();
+}
+inline void CognitiveMapUpdatedEvent::_internal_set_recent_fact_summary(const std::string& value) {
+  
+  _impl_.recent_fact_summary_.Set(value, GetArenaForAllocation());
+}
+inline std::string* CognitiveMapUpdatedEvent::_internal_mutable_recent_fact_summary() {
+  
+  return _impl_.recent_fact_summary_.Mutable(GetArenaForAllocation());
+}
+inline std::string* CognitiveMapUpdatedEvent::release_recent_fact_summary() {
+  // @@protoc_insertion_point(field_release:sentiric.event.v1.CognitiveMapUpdatedEvent.recent_fact_summary)
+  return _impl_.recent_fact_summary_.Release();
+}
+inline void CognitiveMapUpdatedEvent::set_allocated_recent_fact_summary(std::string* recent_fact_summary) {
+  if (recent_fact_summary != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.recent_fact_summary_.SetAllocated(recent_fact_summary, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.recent_fact_summary_.IsDefault()) {
+    _impl_.recent_fact_summary_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.event.v1.CognitiveMapUpdatedEvent.recent_fact_summary)
+}
+
+// repeated string active_traits = 6;
+inline int CognitiveMapUpdatedEvent::_internal_active_traits_size() const {
+  return _impl_.active_traits_.size();
+}
+inline int CognitiveMapUpdatedEvent::active_traits_size() const {
+  return _internal_active_traits_size();
+}
+inline void CognitiveMapUpdatedEvent::clear_active_traits() {
+  _impl_.active_traits_.Clear();
+}
+inline std::string* CognitiveMapUpdatedEvent::add_active_traits() {
+  std::string* _s = _internal_add_active_traits();
+  // @@protoc_insertion_point(field_add_mutable:sentiric.event.v1.CognitiveMapUpdatedEvent.active_traits)
+  return _s;
+}
+inline const std::string& CognitiveMapUpdatedEvent::_internal_active_traits(int index) const {
+  return _impl_.active_traits_.Get(index);
+}
+inline const std::string& CognitiveMapUpdatedEvent::active_traits(int index) const {
+  // @@protoc_insertion_point(field_get:sentiric.event.v1.CognitiveMapUpdatedEvent.active_traits)
+  return _internal_active_traits(index);
+}
+inline std::string* CognitiveMapUpdatedEvent::mutable_active_traits(int index) {
+  // @@protoc_insertion_point(field_mutable:sentiric.event.v1.CognitiveMapUpdatedEvent.active_traits)
+  return _impl_.active_traits_.Mutable(index);
+}
+inline void CognitiveMapUpdatedEvent::set_active_traits(int index, const std::string& value) {
+  _impl_.active_traits_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set:sentiric.event.v1.CognitiveMapUpdatedEvent.active_traits)
+}
+inline void CognitiveMapUpdatedEvent::set_active_traits(int index, std::string&& value) {
+  _impl_.active_traits_.Mutable(index)->assign(std::move(value));
+  // @@protoc_insertion_point(field_set:sentiric.event.v1.CognitiveMapUpdatedEvent.active_traits)
+}
+inline void CognitiveMapUpdatedEvent::set_active_traits(int index, const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _impl_.active_traits_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:sentiric.event.v1.CognitiveMapUpdatedEvent.active_traits)
+}
+inline void CognitiveMapUpdatedEvent::set_active_traits(int index, const char* value, size_t size) {
+  _impl_.active_traits_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:sentiric.event.v1.CognitiveMapUpdatedEvent.active_traits)
+}
+inline std::string* CognitiveMapUpdatedEvent::_internal_add_active_traits() {
+  return _impl_.active_traits_.Add();
+}
+inline void CognitiveMapUpdatedEvent::add_active_traits(const std::string& value) {
+  _impl_.active_traits_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:sentiric.event.v1.CognitiveMapUpdatedEvent.active_traits)
+}
+inline void CognitiveMapUpdatedEvent::add_active_traits(std::string&& value) {
+  _impl_.active_traits_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:sentiric.event.v1.CognitiveMapUpdatedEvent.active_traits)
+}
+inline void CognitiveMapUpdatedEvent::add_active_traits(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _impl_.active_traits_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:sentiric.event.v1.CognitiveMapUpdatedEvent.active_traits)
+}
+inline void CognitiveMapUpdatedEvent::add_active_traits(const char* value, size_t size) {
+  _impl_.active_traits_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:sentiric.event.v1.CognitiveMapUpdatedEvent.active_traits)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
+CognitiveMapUpdatedEvent::active_traits() const {
+  // @@protoc_insertion_point(field_list:sentiric.event.v1.CognitiveMapUpdatedEvent.active_traits)
+  return _impl_.active_traits_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
+CognitiveMapUpdatedEvent::mutable_active_traits() {
+  // @@protoc_insertion_point(field_mutable_list:sentiric.event.v1.CognitiveMapUpdatedEvent.active_traits)
+  return &_impl_.active_traits_;
+}
+
+// string dominant_resonance = 7;
+inline void CognitiveMapUpdatedEvent::clear_dominant_resonance() {
+  _impl_.dominant_resonance_.ClearToEmpty();
+}
+inline const std::string& CognitiveMapUpdatedEvent::dominant_resonance() const {
+  // @@protoc_insertion_point(field_get:sentiric.event.v1.CognitiveMapUpdatedEvent.dominant_resonance)
+  return _internal_dominant_resonance();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void CognitiveMapUpdatedEvent::set_dominant_resonance(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.dominant_resonance_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.event.v1.CognitiveMapUpdatedEvent.dominant_resonance)
+}
+inline std::string* CognitiveMapUpdatedEvent::mutable_dominant_resonance() {
+  std::string* _s = _internal_mutable_dominant_resonance();
+  // @@protoc_insertion_point(field_mutable:sentiric.event.v1.CognitiveMapUpdatedEvent.dominant_resonance)
+  return _s;
+}
+inline const std::string& CognitiveMapUpdatedEvent::_internal_dominant_resonance() const {
+  return _impl_.dominant_resonance_.Get();
+}
+inline void CognitiveMapUpdatedEvent::_internal_set_dominant_resonance(const std::string& value) {
+  
+  _impl_.dominant_resonance_.Set(value, GetArenaForAllocation());
+}
+inline std::string* CognitiveMapUpdatedEvent::_internal_mutable_dominant_resonance() {
+  
+  return _impl_.dominant_resonance_.Mutable(GetArenaForAllocation());
+}
+inline std::string* CognitiveMapUpdatedEvent::release_dominant_resonance() {
+  // @@protoc_insertion_point(field_release:sentiric.event.v1.CognitiveMapUpdatedEvent.dominant_resonance)
+  return _impl_.dominant_resonance_.Release();
+}
+inline void CognitiveMapUpdatedEvent::set_allocated_dominant_resonance(std::string* dominant_resonance) {
+  if (dominant_resonance != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.dominant_resonance_.SetAllocated(dominant_resonance, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.dominant_resonance_.IsDefault()) {
+    _impl_.dominant_resonance_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.event.v1.CognitiveMapUpdatedEvent.dominant_resonance)
+}
+
+// float arousal_score = 8;
+inline void CognitiveMapUpdatedEvent::clear_arousal_score() {
+  _impl_.arousal_score_ = 0;
+}
+inline float CognitiveMapUpdatedEvent::_internal_arousal_score() const {
+  return _impl_.arousal_score_;
+}
+inline float CognitiveMapUpdatedEvent::arousal_score() const {
+  // @@protoc_insertion_point(field_get:sentiric.event.v1.CognitiveMapUpdatedEvent.arousal_score)
+  return _internal_arousal_score();
+}
+inline void CognitiveMapUpdatedEvent::_internal_set_arousal_score(float value) {
+  
+  _impl_.arousal_score_ = value;
+}
+inline void CognitiveMapUpdatedEvent::set_arousal_score(float value) {
+  _internal_set_arousal_score(value);
+  // @@protoc_insertion_point(field_set:sentiric.event.v1.CognitiveMapUpdatedEvent.arousal_score)
+}
+
+// float valence_score = 9;
+inline void CognitiveMapUpdatedEvent::clear_valence_score() {
+  _impl_.valence_score_ = 0;
+}
+inline float CognitiveMapUpdatedEvent::_internal_valence_score() const {
+  return _impl_.valence_score_;
+}
+inline float CognitiveMapUpdatedEvent::valence_score() const {
+  // @@protoc_insertion_point(field_get:sentiric.event.v1.CognitiveMapUpdatedEvent.valence_score)
+  return _internal_valence_score();
+}
+inline void CognitiveMapUpdatedEvent::_internal_set_valence_score(float value) {
+  
+  _impl_.valence_score_ = value;
+}
+inline void CognitiveMapUpdatedEvent::set_valence_score(float value) {
+  _internal_set_valence_score(value);
+  // @@protoc_insertion_point(field_set:sentiric.event.v1.CognitiveMapUpdatedEvent.valence_score)
+}
+
+// float logic_score = 10;
+inline void CognitiveMapUpdatedEvent::clear_logic_score() {
+  _impl_.logic_score_ = 0;
+}
+inline float CognitiveMapUpdatedEvent::_internal_logic_score() const {
+  return _impl_.logic_score_;
+}
+inline float CognitiveMapUpdatedEvent::logic_score() const {
+  // @@protoc_insertion_point(field_get:sentiric.event.v1.CognitiveMapUpdatedEvent.logic_score)
+  return _internal_logic_score();
+}
+inline void CognitiveMapUpdatedEvent::_internal_set_logic_score(float value) {
+  
+  _impl_.logic_score_ = value;
+}
+inline void CognitiveMapUpdatedEvent::set_logic_score(float value) {
+  _internal_set_logic_score(value);
+  // @@protoc_insertion_point(field_set:sentiric.event.v1.CognitiveMapUpdatedEvent.logic_score)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

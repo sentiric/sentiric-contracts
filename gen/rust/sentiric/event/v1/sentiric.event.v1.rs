@@ -157,4 +157,36 @@ pub struct AcousticMoodShiftedEvent {
     #[prost(float, repeated, tag="10")]
     pub speaker_vec: ::prost::alloc::vec::Vec<f32>,
 }
+/// \[ARCH-COMPLIANCE: v4.0 Cognitive Mirror Vision\]
+/// Kullanıcının zihin haritası (Cognitive Map) güncellendiğinde fırlatılır.
+/// Stream SDK bunu alıp UI üzerinde gerçek zamanlı olarak radar/harita çizer.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct CognitiveMapUpdatedEvent {
+    /// "cognitive.map.updated"
+    #[prost(string, tag="1")]
+    pub event_type: ::prost::alloc::string::String,
+    #[prost(string, tag="2")]
+    pub trace_id: ::prost::alloc::string::String,
+    /// Anonim de olsa cihaz/oturum bazlı UUID
+    #[prost(string, tag="3")]
+    pub user_id: ::prost::alloc::string::String,
+    #[prost(message, optional, tag="4")]
+    pub timestamp: ::core::option::Option<::prost_types::Timestamp>,
+    /// Zihin haritası özetleri ve aktif karakter özellikleri
+    #[prost(string, tag="5")]
+    pub recent_fact_summary: ::prost::alloc::string::String,
+    /// Örn: \["vizyoner", "detaycı", "analitik"\]
+    #[prost(string, repeated, tag="6")]
+    pub active_traits: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
+    /// Örn: "deep_waters", "executive"
+    #[prost(string, tag="7")]
+    pub dominant_resonance: ::prost::alloc::string::String,
+    /// Psikolojik Radar Skalası (0.0 - 1.0)
+    #[prost(float, tag="8")]
+    pub arousal_score: f32,
+    #[prost(float, tag="9")]
+    pub valence_score: f32,
+    #[prost(float, tag="10")]
+    pub logic_score: f32,
+}
 // @@protoc_insertion_point(module)

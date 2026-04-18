@@ -31,6 +31,7 @@
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
 #include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
+#include "sentiric/event/v1/event.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_sentiric_2fstream_2fv1_2fgateway_2eproto
@@ -399,6 +400,7 @@ class StreamSessionResponse final :
     kStatusUpdate = 3,
     kTranscript = 4,
     kClearAudioBuffer = 5,
+    kCognitiveMap = 6,
     DATA_NOT_SET = 0,
   };
 
@@ -485,6 +487,7 @@ class StreamSessionResponse final :
     kStatusUpdateFieldNumber = 3,
     kTranscriptFieldNumber = 4,
     kClearAudioBufferFieldNumber = 5,
+    kCognitiveMapFieldNumber = 6,
   };
   // bytes audio_response = 1;
   bool has_audio_response() const;
@@ -571,6 +574,24 @@ class StreamSessionResponse final :
   void _internal_set_clear_audio_buffer(bool value);
   public:
 
+  // .sentiric.event.v1.CognitiveMapUpdatedEvent cognitive_map = 6;
+  bool has_cognitive_map() const;
+  private:
+  bool _internal_has_cognitive_map() const;
+  public:
+  void clear_cognitive_map();
+  const ::sentiric::event::v1::CognitiveMapUpdatedEvent& cognitive_map() const;
+  PROTOBUF_NODISCARD ::sentiric::event::v1::CognitiveMapUpdatedEvent* release_cognitive_map();
+  ::sentiric::event::v1::CognitiveMapUpdatedEvent* mutable_cognitive_map();
+  void set_allocated_cognitive_map(::sentiric::event::v1::CognitiveMapUpdatedEvent* cognitive_map);
+  private:
+  const ::sentiric::event::v1::CognitiveMapUpdatedEvent& _internal_cognitive_map() const;
+  ::sentiric::event::v1::CognitiveMapUpdatedEvent* _internal_mutable_cognitive_map();
+  public:
+  void unsafe_arena_set_allocated_cognitive_map(
+      ::sentiric::event::v1::CognitiveMapUpdatedEvent* cognitive_map);
+  ::sentiric::event::v1::CognitiveMapUpdatedEvent* unsafe_arena_release_cognitive_map();
+
   void clear_data();
   DataCase data_case() const;
   // @@protoc_insertion_point(class_scope:sentiric.stream.v1.StreamSessionResponse)
@@ -581,6 +602,7 @@ class StreamSessionResponse final :
   void set_has_status_update();
   void set_has_transcript();
   void set_has_clear_audio_buffer();
+  void set_has_cognitive_map();
 
   inline bool has_data() const;
   inline void clear_has_data();
@@ -597,6 +619,7 @@ class StreamSessionResponse final :
       ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr status_update_;
       ::sentiric::stream::v1::TranscriptEvent* transcript_;
       bool clear_audio_buffer_;
+      ::sentiric::event::v1::CognitiveMapUpdatedEvent* cognitive_map_;
     } data_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
     uint32_t _oneof_case_[1];
@@ -2222,6 +2245,72 @@ inline bool StreamSessionResponse::clear_audio_buffer() const {
 inline void StreamSessionResponse::set_clear_audio_buffer(bool value) {
   _internal_set_clear_audio_buffer(value);
   // @@protoc_insertion_point(field_set:sentiric.stream.v1.StreamSessionResponse.clear_audio_buffer)
+}
+
+// .sentiric.event.v1.CognitiveMapUpdatedEvent cognitive_map = 6;
+inline bool StreamSessionResponse::_internal_has_cognitive_map() const {
+  return data_case() == kCognitiveMap;
+}
+inline bool StreamSessionResponse::has_cognitive_map() const {
+  return _internal_has_cognitive_map();
+}
+inline void StreamSessionResponse::set_has_cognitive_map() {
+  _impl_._oneof_case_[0] = kCognitiveMap;
+}
+inline ::sentiric::event::v1::CognitiveMapUpdatedEvent* StreamSessionResponse::release_cognitive_map() {
+  // @@protoc_insertion_point(field_release:sentiric.stream.v1.StreamSessionResponse.cognitive_map)
+  if (_internal_has_cognitive_map()) {
+    clear_has_data();
+    ::sentiric::event::v1::CognitiveMapUpdatedEvent* temp = _impl_.data_.cognitive_map_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.data_.cognitive_map_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::sentiric::event::v1::CognitiveMapUpdatedEvent& StreamSessionResponse::_internal_cognitive_map() const {
+  return _internal_has_cognitive_map()
+      ? *_impl_.data_.cognitive_map_
+      : reinterpret_cast< ::sentiric::event::v1::CognitiveMapUpdatedEvent&>(::sentiric::event::v1::_CognitiveMapUpdatedEvent_default_instance_);
+}
+inline const ::sentiric::event::v1::CognitiveMapUpdatedEvent& StreamSessionResponse::cognitive_map() const {
+  // @@protoc_insertion_point(field_get:sentiric.stream.v1.StreamSessionResponse.cognitive_map)
+  return _internal_cognitive_map();
+}
+inline ::sentiric::event::v1::CognitiveMapUpdatedEvent* StreamSessionResponse::unsafe_arena_release_cognitive_map() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:sentiric.stream.v1.StreamSessionResponse.cognitive_map)
+  if (_internal_has_cognitive_map()) {
+    clear_has_data();
+    ::sentiric::event::v1::CognitiveMapUpdatedEvent* temp = _impl_.data_.cognitive_map_;
+    _impl_.data_.cognitive_map_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void StreamSessionResponse::unsafe_arena_set_allocated_cognitive_map(::sentiric::event::v1::CognitiveMapUpdatedEvent* cognitive_map) {
+  clear_data();
+  if (cognitive_map) {
+    set_has_cognitive_map();
+    _impl_.data_.cognitive_map_ = cognitive_map;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:sentiric.stream.v1.StreamSessionResponse.cognitive_map)
+}
+inline ::sentiric::event::v1::CognitiveMapUpdatedEvent* StreamSessionResponse::_internal_mutable_cognitive_map() {
+  if (!_internal_has_cognitive_map()) {
+    clear_data();
+    set_has_cognitive_map();
+    _impl_.data_.cognitive_map_ = CreateMaybeMessage< ::sentiric::event::v1::CognitiveMapUpdatedEvent >(GetArenaForAllocation());
+  }
+  return _impl_.data_.cognitive_map_;
+}
+inline ::sentiric::event::v1::CognitiveMapUpdatedEvent* StreamSessionResponse::mutable_cognitive_map() {
+  ::sentiric::event::v1::CognitiveMapUpdatedEvent* _msg = _internal_mutable_cognitive_map();
+  // @@protoc_insertion_point(field_mutable:sentiric.stream.v1.StreamSessionResponse.cognitive_map)
+  return _msg;
 }
 
 inline bool StreamSessionResponse::has_data() const {

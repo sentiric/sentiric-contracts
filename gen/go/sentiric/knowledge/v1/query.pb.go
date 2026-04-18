@@ -566,11 +566,14 @@ func (x *UserMemoryPayload_Fact) GetMetadata() []string {
 }
 
 type UserMemoryPayload_Lifecycle struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	TraceId       string                 `protobuf:"bytes,1,opt,name=trace_id,json=traceId,proto3" json:"trace_id,omitempty"`
-	CreatedAt     string                 `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	LastAccessed  string                 `protobuf:"bytes,3,opt,name=last_accessed,json=lastAccessed,proto3" json:"last_accessed,omitempty"`
-	DecayScore    float32                `protobuf:"fixed32,4,opt,name=decay_score,json=decayScore,proto3" json:"decay_score,omitempty"`
+	state        protoimpl.MessageState `protogen:"open.v1"`
+	TraceId      string                 `protobuf:"bytes,1,opt,name=trace_id,json=traceId,proto3" json:"trace_id,omitempty"`
+	CreatedAt    string                 `protobuf:"bytes,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	LastAccessed string                 `protobuf:"bytes,3,opt,name=last_accessed,json=lastAccessed,proto3" json:"last_accessed,omitempty"`
+	DecayScore   float32                `protobuf:"fixed32,4,opt,name=decay_score,json=decayScore,proto3" json:"decay_score,omitempty"`
+	// [ARCH-COMPLIANCE: Subconscious Archiving]
+	// Anılar tamamen silinmez, bilinçaltına (is_archived=true) itilir.
+	IsArchived    bool `protobuf:"varint,5,opt,name=is_archived,json=isArchived,proto3" json:"is_archived,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -633,6 +636,13 @@ func (x *UserMemoryPayload_Lifecycle) GetDecayScore() float32 {
 	return 0
 }
 
+func (x *UserMemoryPayload_Lifecycle) GetIsArchived() bool {
+	if x != nil {
+		return x.IsArchived
+	}
+	return false
+}
+
 var File_sentiric_knowledge_v1_query_proto protoreflect.FileDescriptor
 
 const file_sentiric_knowledge_v1_query_proto_rawDesc = "" +
@@ -651,7 +661,7 @@ const file_sentiric_knowledge_v1_query_proto_rawDesc = "" +
 	"\bmetadata\x18\x04 \x03(\v20.sentiric.knowledge.v1.QueryResult.MetadataEntryR\bmetadata\x1a;\n" +
 	"\rMetadataEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x87\x06\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xa8\x06\n" +
 	"\x11UserMemoryPayload\x12Q\n" +
 	"\n" +
 	"bio_anchor\x18\x01 \x01(\v22.sentiric.knowledge.v1.UserMemoryPayload.BioAnchorR\tbioAnchor\x12P\n" +
@@ -675,14 +685,16 @@ const file_sentiric_knowledge_v1_query_proto_rawDesc = "" +
 	"importance\x18\x02 \x01(\x05R\n" +
 	"importance\x12\x18\n" +
 	"\asummary\x18\x03 \x01(\tR\asummary\x12\x1a\n" +
-	"\bmetadata\x18\x04 \x03(\tR\bmetadata\x1a\x8b\x01\n" +
+	"\bmetadata\x18\x04 \x03(\tR\bmetadata\x1a\xac\x01\n" +
 	"\tLifecycle\x12\x19\n" +
 	"\btrace_id\x18\x01 \x01(\tR\atraceId\x12\x1d\n" +
 	"\n" +
 	"created_at\x18\x02 \x01(\tR\tcreatedAt\x12#\n" +
 	"\rlast_accessed\x18\x03 \x01(\tR\flastAccessed\x12\x1f\n" +
 	"\vdecay_score\x18\x04 \x01(\x02R\n" +
-	"decayScore\"\xbb\x01\n" +
+	"decayScore\x12\x1f\n" +
+	"\vis_archived\x18\x05 \x01(\bR\n" +
+	"isArchived\"\xbb\x01\n" +
 	"\x1bQueryCognitiveMemoryRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x15\n" +
 	"\x06bio_id\x18\x02 \x01(\tR\x05bioId\x12\x1d\n" +
