@@ -171,10 +171,31 @@ struct CognitiveMapUpdatedEventDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CognitiveMapUpdatedEventDefaultTypeInternal _CognitiveMapUpdatedEvent_default_instance_;
+PROTOBUF_CONSTEXPR MediaGenerationCompletedEvent::MediaGenerationCompletedEvent(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.event_type_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.trace_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.job_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.tenant_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.media_type_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.result_uri_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.error_message_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.timestamp_)*/nullptr
+  , /*decltype(_impl_.success_)*/false
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct MediaGenerationCompletedEventDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR MediaGenerationCompletedEventDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~MediaGenerationCompletedEventDefaultTypeInternal() {}
+  union {
+    MediaGenerationCompletedEvent _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MediaGenerationCompletedEventDefaultTypeInternal _MediaGenerationCompletedEvent_default_instance_;
 }  // namespace v1
 }  // namespace event
 }  // namespace sentiric
-static ::_pb::Metadata file_level_metadata_sentiric_2fevent_2fv1_2fevent_2eproto[8];
+static ::_pb::Metadata file_level_metadata_sentiric_2fevent_2fv1_2fevent_2eproto[9];
 static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_sentiric_2fevent_2fv1_2fevent_2eproto = nullptr;
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_sentiric_2fevent_2fv1_2fevent_2eproto = nullptr;
 
@@ -279,6 +300,21 @@ const uint32_t TableStruct_sentiric_2fevent_2fv1_2fevent_2eproto::offsets[] PROT
   PROTOBUF_FIELD_OFFSET(::sentiric::event::v1::CognitiveMapUpdatedEvent, _impl_.arousal_score_),
   PROTOBUF_FIELD_OFFSET(::sentiric::event::v1::CognitiveMapUpdatedEvent, _impl_.valence_score_),
   PROTOBUF_FIELD_OFFSET(::sentiric::event::v1::CognitiveMapUpdatedEvent, _impl_.logic_score_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::event::v1::MediaGenerationCompletedEvent, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::event::v1::MediaGenerationCompletedEvent, _impl_.event_type_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::event::v1::MediaGenerationCompletedEvent, _impl_.trace_id_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::event::v1::MediaGenerationCompletedEvent, _impl_.job_id_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::event::v1::MediaGenerationCompletedEvent, _impl_.tenant_id_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::event::v1::MediaGenerationCompletedEvent, _impl_.media_type_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::event::v1::MediaGenerationCompletedEvent, _impl_.success_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::event::v1::MediaGenerationCompletedEvent, _impl_.result_uri_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::event::v1::MediaGenerationCompletedEvent, _impl_.error_message_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::event::v1::MediaGenerationCompletedEvent, _impl_.timestamp_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::sentiric::event::v1::MediaInfo)},
@@ -289,6 +325,7 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 57, -1, -1, sizeof(::sentiric::event::v1::GenericEvent)},
   { 68, -1, -1, sizeof(::sentiric::event::v1::AcousticMoodShiftedEvent)},
   { 84, -1, -1, sizeof(::sentiric::event::v1::CognitiveMapUpdatedEvent)},
+  { 100, -1, -1, sizeof(::sentiric::event::v1::MediaGenerationCompletedEvent)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -300,6 +337,7 @@ static const ::_pb::Message* const file_default_instances[] = {
   &::sentiric::event::v1::_GenericEvent_default_instance_._instance,
   &::sentiric::event::v1::_AcousticMoodShiftedEvent_default_instance_._instance,
   &::sentiric::event::v1::_CognitiveMapUpdatedEvent_default_instance_._instance,
+  &::sentiric::event::v1::_MediaGenerationCompletedEvent_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_sentiric_2fevent_2fv1_2fevent_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -345,9 +383,15 @@ const char descriptor_table_protodef_sentiric_2fevent_2fv1_2fevent_2eproto[] PRO
   "p\022\033\n\023recent_fact_summary\030\005 \001(\t\022\025\n\ractive"
   "_traits\030\006 \003(\t\022\032\n\022dominant_resonance\030\007 \001("
   "\t\022\025\n\rarousal_score\030\010 \001(\002\022\025\n\rvalence_scor"
-  "e\030\t \001(\002\022\023\n\013logic_score\030\n \001(\002BIZGgithub.c"
-  "om/sentiric/sentiric-contracts/gen/go/se"
-  "ntiric/event/v1;eventv1b\006proto3"
+  "e\030\t \001(\002\022\023\n\013logic_score\030\n \001(\002\"\347\001\n\035MediaGe"
+  "nerationCompletedEvent\022\022\n\nevent_type\030\001 \001"
+  "(\t\022\020\n\010trace_id\030\002 \001(\t\022\016\n\006job_id\030\003 \001(\t\022\021\n\t"
+  "tenant_id\030\004 \001(\t\022\022\n\nmedia_type\030\005 \001(\t\022\017\n\007s"
+  "uccess\030\006 \001(\010\022\022\n\nresult_uri\030\007 \001(\t\022\025\n\rerro"
+  "r_message\030\010 \001(\t\022-\n\ttimestamp\030\t \001(\0132\032.goo"
+  "gle.protobuf.TimestampBIZGgithub.com/sen"
+  "tiric/sentiric-contracts/gen/go/sentiric"
+  "/event/v1;eventv1b\006proto3"
   ;
 static const ::_pbi::DescriptorTable* const descriptor_table_sentiric_2fevent_2fv1_2fevent_2eproto_deps[3] = {
   &::descriptor_table_google_2fprotobuf_2ftimestamp_2eproto,
@@ -356,9 +400,9 @@ static const ::_pbi::DescriptorTable* const descriptor_table_sentiric_2fevent_2f
 };
 static ::_pbi::once_flag descriptor_table_sentiric_2fevent_2fv1_2fevent_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_sentiric_2fevent_2fv1_2fevent_2eproto = {
-    false, false, 1791, descriptor_table_protodef_sentiric_2fevent_2fv1_2fevent_2eproto,
+    false, false, 2025, descriptor_table_protodef_sentiric_2fevent_2fv1_2fevent_2eproto,
     "sentiric/event/v1/event.proto",
-    &descriptor_table_sentiric_2fevent_2fv1_2fevent_2eproto_once, descriptor_table_sentiric_2fevent_2fv1_2fevent_2eproto_deps, 3, 8,
+    &descriptor_table_sentiric_2fevent_2fv1_2fevent_2eproto_once, descriptor_table_sentiric_2fevent_2fv1_2fevent_2eproto_deps, 3, 9,
     schemas, file_default_instances, TableStruct_sentiric_2fevent_2fv1_2fevent_2eproto::offsets,
     file_level_metadata_sentiric_2fevent_2fv1_2fevent_2eproto, file_level_enum_descriptors_sentiric_2fevent_2fv1_2fevent_2eproto,
     file_level_service_descriptors_sentiric_2fevent_2fv1_2fevent_2eproto,
@@ -4076,6 +4120,588 @@ void CognitiveMapUpdatedEvent::InternalSwap(CognitiveMapUpdatedEvent* other) {
       file_level_metadata_sentiric_2fevent_2fv1_2fevent_2eproto[7]);
 }
 
+// ===================================================================
+
+class MediaGenerationCompletedEvent::_Internal {
+ public:
+  static const ::PROTOBUF_NAMESPACE_ID::Timestamp& timestamp(const MediaGenerationCompletedEvent* msg);
+};
+
+const ::PROTOBUF_NAMESPACE_ID::Timestamp&
+MediaGenerationCompletedEvent::_Internal::timestamp(const MediaGenerationCompletedEvent* msg) {
+  return *msg->_impl_.timestamp_;
+}
+void MediaGenerationCompletedEvent::clear_timestamp() {
+  if (GetArenaForAllocation() == nullptr && _impl_.timestamp_ != nullptr) {
+    delete _impl_.timestamp_;
+  }
+  _impl_.timestamp_ = nullptr;
+}
+MediaGenerationCompletedEvent::MediaGenerationCompletedEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.event.v1.MediaGenerationCompletedEvent)
+}
+MediaGenerationCompletedEvent::MediaGenerationCompletedEvent(const MediaGenerationCompletedEvent& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  MediaGenerationCompletedEvent* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.event_type_){}
+    , decltype(_impl_.trace_id_){}
+    , decltype(_impl_.job_id_){}
+    , decltype(_impl_.tenant_id_){}
+    , decltype(_impl_.media_type_){}
+    , decltype(_impl_.result_uri_){}
+    , decltype(_impl_.error_message_){}
+    , decltype(_impl_.timestamp_){nullptr}
+    , decltype(_impl_.success_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.event_type_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.event_type_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_event_type().empty()) {
+    _this->_impl_.event_type_.Set(from._internal_event_type(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.trace_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.trace_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_trace_id().empty()) {
+    _this->_impl_.trace_id_.Set(from._internal_trace_id(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.job_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.job_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_job_id().empty()) {
+    _this->_impl_.job_id_.Set(from._internal_job_id(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.tenant_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.tenant_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_tenant_id().empty()) {
+    _this->_impl_.tenant_id_.Set(from._internal_tenant_id(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.media_type_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.media_type_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_media_type().empty()) {
+    _this->_impl_.media_type_.Set(from._internal_media_type(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.result_uri_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.result_uri_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_result_uri().empty()) {
+    _this->_impl_.result_uri_.Set(from._internal_result_uri(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.error_message_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.error_message_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_error_message().empty()) {
+    _this->_impl_.error_message_.Set(from._internal_error_message(), 
+      _this->GetArenaForAllocation());
+  }
+  if (from._internal_has_timestamp()) {
+    _this->_impl_.timestamp_ = new ::PROTOBUF_NAMESPACE_ID::Timestamp(*from._impl_.timestamp_);
+  }
+  _this->_impl_.success_ = from._impl_.success_;
+  // @@protoc_insertion_point(copy_constructor:sentiric.event.v1.MediaGenerationCompletedEvent)
+}
+
+inline void MediaGenerationCompletedEvent::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.event_type_){}
+    , decltype(_impl_.trace_id_){}
+    , decltype(_impl_.job_id_){}
+    , decltype(_impl_.tenant_id_){}
+    , decltype(_impl_.media_type_){}
+    , decltype(_impl_.result_uri_){}
+    , decltype(_impl_.error_message_){}
+    , decltype(_impl_.timestamp_){nullptr}
+    , decltype(_impl_.success_){false}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.event_type_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.event_type_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.trace_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.trace_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.job_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.job_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.tenant_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.tenant_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.media_type_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.media_type_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.result_uri_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.result_uri_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.error_message_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.error_message_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+MediaGenerationCompletedEvent::~MediaGenerationCompletedEvent() {
+  // @@protoc_insertion_point(destructor:sentiric.event.v1.MediaGenerationCompletedEvent)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void MediaGenerationCompletedEvent::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.event_type_.Destroy();
+  _impl_.trace_id_.Destroy();
+  _impl_.job_id_.Destroy();
+  _impl_.tenant_id_.Destroy();
+  _impl_.media_type_.Destroy();
+  _impl_.result_uri_.Destroy();
+  _impl_.error_message_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.timestamp_;
+}
+
+void MediaGenerationCompletedEvent::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void MediaGenerationCompletedEvent::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.event.v1.MediaGenerationCompletedEvent)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.event_type_.ClearToEmpty();
+  _impl_.trace_id_.ClearToEmpty();
+  _impl_.job_id_.ClearToEmpty();
+  _impl_.tenant_id_.ClearToEmpty();
+  _impl_.media_type_.ClearToEmpty();
+  _impl_.result_uri_.ClearToEmpty();
+  _impl_.error_message_.ClearToEmpty();
+  if (GetArenaForAllocation() == nullptr && _impl_.timestamp_ != nullptr) {
+    delete _impl_.timestamp_;
+  }
+  _impl_.timestamp_ = nullptr;
+  _impl_.success_ = false;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* MediaGenerationCompletedEvent::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string event_type = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_event_type();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.event.v1.MediaGenerationCompletedEvent.event_type"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string trace_id = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_trace_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.event.v1.MediaGenerationCompletedEvent.trace_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string job_id = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_job_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.event.v1.MediaGenerationCompletedEvent.job_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string tenant_id = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          auto str = _internal_mutable_tenant_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.event.v1.MediaGenerationCompletedEvent.tenant_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string media_type = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
+          auto str = _internal_mutable_media_type();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.event.v1.MediaGenerationCompletedEvent.media_type"));
+        } else
+          goto handle_unusual;
+        continue;
+      // bool success = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 48)) {
+          _impl_.success_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string result_uri = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 58)) {
+          auto str = _internal_mutable_result_uri();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.event.v1.MediaGenerationCompletedEvent.result_uri"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string error_message = 8;
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 66)) {
+          auto str = _internal_mutable_error_message();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.event.v1.MediaGenerationCompletedEvent.error_message"));
+        } else
+          goto handle_unusual;
+        continue;
+      // .google.protobuf.Timestamp timestamp = 9;
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 74)) {
+          ptr = ctx->ParseMessage(_internal_mutable_timestamp(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* MediaGenerationCompletedEvent::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.event.v1.MediaGenerationCompletedEvent)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string event_type = 1;
+  if (!this->_internal_event_type().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_event_type().data(), static_cast<int>(this->_internal_event_type().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.event.v1.MediaGenerationCompletedEvent.event_type");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_event_type(), target);
+  }
+
+  // string trace_id = 2;
+  if (!this->_internal_trace_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_trace_id().data(), static_cast<int>(this->_internal_trace_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.event.v1.MediaGenerationCompletedEvent.trace_id");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_trace_id(), target);
+  }
+
+  // string job_id = 3;
+  if (!this->_internal_job_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_job_id().data(), static_cast<int>(this->_internal_job_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.event.v1.MediaGenerationCompletedEvent.job_id");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_job_id(), target);
+  }
+
+  // string tenant_id = 4;
+  if (!this->_internal_tenant_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_tenant_id().data(), static_cast<int>(this->_internal_tenant_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.event.v1.MediaGenerationCompletedEvent.tenant_id");
+    target = stream->WriteStringMaybeAliased(
+        4, this->_internal_tenant_id(), target);
+  }
+
+  // string media_type = 5;
+  if (!this->_internal_media_type().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_media_type().data(), static_cast<int>(this->_internal_media_type().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.event.v1.MediaGenerationCompletedEvent.media_type");
+    target = stream->WriteStringMaybeAliased(
+        5, this->_internal_media_type(), target);
+  }
+
+  // bool success = 6;
+  if (this->_internal_success() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(6, this->_internal_success(), target);
+  }
+
+  // string result_uri = 7;
+  if (!this->_internal_result_uri().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_result_uri().data(), static_cast<int>(this->_internal_result_uri().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.event.v1.MediaGenerationCompletedEvent.result_uri");
+    target = stream->WriteStringMaybeAliased(
+        7, this->_internal_result_uri(), target);
+  }
+
+  // string error_message = 8;
+  if (!this->_internal_error_message().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_error_message().data(), static_cast<int>(this->_internal_error_message().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.event.v1.MediaGenerationCompletedEvent.error_message");
+    target = stream->WriteStringMaybeAliased(
+        8, this->_internal_error_message(), target);
+  }
+
+  // .google.protobuf.Timestamp timestamp = 9;
+  if (this->_internal_has_timestamp()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(9, _Internal::timestamp(this),
+        _Internal::timestamp(this).GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.event.v1.MediaGenerationCompletedEvent)
+  return target;
+}
+
+size_t MediaGenerationCompletedEvent::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.event.v1.MediaGenerationCompletedEvent)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string event_type = 1;
+  if (!this->_internal_event_type().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_event_type());
+  }
+
+  // string trace_id = 2;
+  if (!this->_internal_trace_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_trace_id());
+  }
+
+  // string job_id = 3;
+  if (!this->_internal_job_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_job_id());
+  }
+
+  // string tenant_id = 4;
+  if (!this->_internal_tenant_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_tenant_id());
+  }
+
+  // string media_type = 5;
+  if (!this->_internal_media_type().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_media_type());
+  }
+
+  // string result_uri = 7;
+  if (!this->_internal_result_uri().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_result_uri());
+  }
+
+  // string error_message = 8;
+  if (!this->_internal_error_message().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_error_message());
+  }
+
+  // .google.protobuf.Timestamp timestamp = 9;
+  if (this->_internal_has_timestamp()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.timestamp_);
+  }
+
+  // bool success = 6;
+  if (this->_internal_success() != 0) {
+    total_size += 1 + 1;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData MediaGenerationCompletedEvent::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    MediaGenerationCompletedEvent::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*MediaGenerationCompletedEvent::GetClassData() const { return &_class_data_; }
+
+
+void MediaGenerationCompletedEvent::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<MediaGenerationCompletedEvent*>(&to_msg);
+  auto& from = static_cast<const MediaGenerationCompletedEvent&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.event.v1.MediaGenerationCompletedEvent)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_event_type().empty()) {
+    _this->_internal_set_event_type(from._internal_event_type());
+  }
+  if (!from._internal_trace_id().empty()) {
+    _this->_internal_set_trace_id(from._internal_trace_id());
+  }
+  if (!from._internal_job_id().empty()) {
+    _this->_internal_set_job_id(from._internal_job_id());
+  }
+  if (!from._internal_tenant_id().empty()) {
+    _this->_internal_set_tenant_id(from._internal_tenant_id());
+  }
+  if (!from._internal_media_type().empty()) {
+    _this->_internal_set_media_type(from._internal_media_type());
+  }
+  if (!from._internal_result_uri().empty()) {
+    _this->_internal_set_result_uri(from._internal_result_uri());
+  }
+  if (!from._internal_error_message().empty()) {
+    _this->_internal_set_error_message(from._internal_error_message());
+  }
+  if (from._internal_has_timestamp()) {
+    _this->_internal_mutable_timestamp()->::PROTOBUF_NAMESPACE_ID::Timestamp::MergeFrom(
+        from._internal_timestamp());
+  }
+  if (from._internal_success() != 0) {
+    _this->_internal_set_success(from._internal_success());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void MediaGenerationCompletedEvent::CopyFrom(const MediaGenerationCompletedEvent& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.event.v1.MediaGenerationCompletedEvent)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MediaGenerationCompletedEvent::IsInitialized() const {
+  return true;
+}
+
+void MediaGenerationCompletedEvent::InternalSwap(MediaGenerationCompletedEvent* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.event_type_, lhs_arena,
+      &other->_impl_.event_type_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.trace_id_, lhs_arena,
+      &other->_impl_.trace_id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.job_id_, lhs_arena,
+      &other->_impl_.job_id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.tenant_id_, lhs_arena,
+      &other->_impl_.tenant_id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.media_type_, lhs_arena,
+      &other->_impl_.media_type_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.result_uri_, lhs_arena,
+      &other->_impl_.result_uri_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.error_message_, lhs_arena,
+      &other->_impl_.error_message_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(MediaGenerationCompletedEvent, _impl_.success_)
+      + sizeof(MediaGenerationCompletedEvent::_impl_.success_)
+      - PROTOBUF_FIELD_OFFSET(MediaGenerationCompletedEvent, _impl_.timestamp_)>(
+          reinterpret_cast<char*>(&_impl_.timestamp_),
+          reinterpret_cast<char*>(&other->_impl_.timestamp_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata MediaGenerationCompletedEvent::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fevent_2fv1_2fevent_2eproto_getter, &descriptor_table_sentiric_2fevent_2fv1_2fevent_2eproto_once,
+      file_level_metadata_sentiric_2fevent_2fv1_2fevent_2eproto[8]);
+}
+
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace v1
 }  // namespace event
@@ -4112,6 +4738,10 @@ Arena::CreateMaybeMessage< ::sentiric::event::v1::AcousticMoodShiftedEvent >(Are
 template<> PROTOBUF_NOINLINE ::sentiric::event::v1::CognitiveMapUpdatedEvent*
 Arena::CreateMaybeMessage< ::sentiric::event::v1::CognitiveMapUpdatedEvent >(Arena* arena) {
   return Arena::CreateMessageInternal< ::sentiric::event::v1::CognitiveMapUpdatedEvent >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::event::v1::MediaGenerationCompletedEvent*
+Arena::CreateMaybeMessage< ::sentiric::event::v1::MediaGenerationCompletedEvent >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::event::v1::MediaGenerationCompletedEvent >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

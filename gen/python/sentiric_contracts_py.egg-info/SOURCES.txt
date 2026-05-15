@@ -3,6 +3,8 @@ README.md
 setup.py
 gen/python/sentiric/agent/v1/orchestration_pb2.py
 gen/python/sentiric/agent/v1/orchestration_pb2_grpc.py
+gen/python/sentiric/audio_gen/v1/gateway_pb2.py
+gen/python/sentiric/audio_gen/v1/gateway_pb2_grpc.py
 gen/python/sentiric/billing/v1/billing_pb2.py
 gen/python/sentiric/billing/v1/billing_pb2_grpc.py
 gen/python/sentiric/cdr/v1/cdr_pb2.py
@@ -37,6 +39,8 @@ gen/python/sentiric/external/v1/payment_pb2.py
 gen/python/sentiric/external/v1/payment_pb2_grpc.py
 gen/python/sentiric/external/v1/scheduling_pb2.py
 gen/python/sentiric/external/v1/scheduling_pb2_grpc.py
+gen/python/sentiric/image/v1/gateway_pb2.py
+gen/python/sentiric/image/v1/gateway_pb2_grpc.py
 gen/python/sentiric/knowledge/v1/indexing_pb2.py
 gen/python/sentiric/knowledge/v1/indexing_pb2_grpc.py
 gen/python/sentiric/knowledge/v1/query_pb2.py
@@ -93,6 +97,8 @@ gen/python/sentiric/vertical/v1/legal_pb2.py
 gen/python/sentiric/vertical/v1/legal_pb2_grpc.py
 gen/python/sentiric/vertical/v1/public_pb2.py
 gen/python/sentiric/vertical/v1/public_pb2_grpc.py
+gen/python/sentiric/video/v1/gateway_pb2.py
+gen/python/sentiric/video/v1/gateway_pb2_grpc.py
 gen/python/sentiric_contracts_py.egg-info/PKG-INFO
 gen/python/sentiric_contracts_py.egg-info/SOURCES.txt
 gen/python/sentiric_contracts_py.egg-info/dependency_links.txt

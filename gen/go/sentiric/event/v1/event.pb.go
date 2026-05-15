@@ -767,6 +767,115 @@ func (x *CognitiveMapUpdatedEvent) GetLogicScore() float32 {
 	return 0
 }
 
+// Bir video, görsel veya müzik üretimi tamamlandığında (veya hata aldığında) fırlatılır.
+type MediaGenerationCompletedEvent struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	EventType     string                 `protobuf:"bytes,1,opt,name=event_type,json=eventType,proto3" json:"event_type,omitempty"` // "media.generation.completed" veya "media.generation.failed"
+	TraceId       string                 `protobuf:"bytes,2,opt,name=trace_id,json=traceId,proto3" json:"trace_id,omitempty"`
+	JobId         string                 `protobuf:"bytes,3,opt,name=job_id,json=jobId,proto3" json:"job_id,omitempty"`
+	TenantId      string                 `protobuf:"bytes,4,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	MediaType     string                 `protobuf:"bytes,5,opt,name=media_type,json=mediaType,proto3" json:"media_type,omitempty"` // "video", "image", "music", "sfx"
+	Success       bool                   `protobuf:"varint,6,opt,name=success,proto3" json:"success,omitempty"`
+	ResultUri     string                 `protobuf:"bytes,7,opt,name=result_uri,json=resultUri,proto3" json:"result_uri,omitempty"`          // Başarılıysa s3://sentiric/videos/... adresi
+	ErrorMessage  string                 `protobuf:"bytes,8,opt,name=error_message,json=errorMessage,proto3" json:"error_message,omitempty"` // Başarısızsa hata detayı
+	Timestamp     *timestamppb.Timestamp `protobuf:"bytes,9,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *MediaGenerationCompletedEvent) Reset() {
+	*x = MediaGenerationCompletedEvent{}
+	mi := &file_sentiric_event_v1_event_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MediaGenerationCompletedEvent) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MediaGenerationCompletedEvent) ProtoMessage() {}
+
+func (x *MediaGenerationCompletedEvent) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_event_v1_event_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MediaGenerationCompletedEvent.ProtoReflect.Descriptor instead.
+func (*MediaGenerationCompletedEvent) Descriptor() ([]byte, []int) {
+	return file_sentiric_event_v1_event_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *MediaGenerationCompletedEvent) GetEventType() string {
+	if x != nil {
+		return x.EventType
+	}
+	return ""
+}
+
+func (x *MediaGenerationCompletedEvent) GetTraceId() string {
+	if x != nil {
+		return x.TraceId
+	}
+	return ""
+}
+
+func (x *MediaGenerationCompletedEvent) GetJobId() string {
+	if x != nil {
+		return x.JobId
+	}
+	return ""
+}
+
+func (x *MediaGenerationCompletedEvent) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *MediaGenerationCompletedEvent) GetMediaType() string {
+	if x != nil {
+		return x.MediaType
+	}
+	return ""
+}
+
+func (x *MediaGenerationCompletedEvent) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
+func (x *MediaGenerationCompletedEvent) GetResultUri() string {
+	if x != nil {
+		return x.ResultUri
+	}
+	return ""
+}
+
+func (x *MediaGenerationCompletedEvent) GetErrorMessage() string {
+	if x != nil {
+		return x.ErrorMessage
+	}
+	return ""
+}
+
+func (x *MediaGenerationCompletedEvent) GetTimestamp() *timestamppb.Timestamp {
+	if x != nil {
+		return x.Timestamp
+	}
+	return nil
+}
+
 var File_sentiric_event_v1_event_proto protoreflect.FileDescriptor
 
 const file_sentiric_event_v1_event_proto_rawDesc = "" +
@@ -845,7 +954,20 @@ const file_sentiric_event_v1_event_proto_rawDesc = "" +
 	"\rvalence_score\x18\t \x01(\x02R\fvalenceScore\x12\x1f\n" +
 	"\vlogic_score\x18\n" +
 	" \x01(\x02R\n" +
-	"logicScoreBIZGgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/event/v1;eventv1b\x06proto3"
+	"logicScore\"\xc4\x02\n" +
+	"\x1dMediaGenerationCompletedEvent\x12\x1d\n" +
+	"\n" +
+	"event_type\x18\x01 \x01(\tR\teventType\x12\x19\n" +
+	"\btrace_id\x18\x02 \x01(\tR\atraceId\x12\x15\n" +
+	"\x06job_id\x18\x03 \x01(\tR\x05jobId\x12\x1b\n" +
+	"\ttenant_id\x18\x04 \x01(\tR\btenantId\x12\x1d\n" +
+	"\n" +
+	"media_type\x18\x05 \x01(\tR\tmediaType\x12\x18\n" +
+	"\asuccess\x18\x06 \x01(\bR\asuccess\x12\x1d\n" +
+	"\n" +
+	"result_uri\x18\a \x01(\tR\tresultUri\x12#\n" +
+	"\rerror_message\x18\b \x01(\tR\ferrorMessage\x128\n" +
+	"\ttimestamp\x18\t \x01(\v2\x1a.google.protobuf.TimestampR\ttimestampBIZGgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/event/v1;eventv1b\x06proto3"
 
 var (
 	file_sentiric_event_v1_event_proto_rawDescOnce sync.Once
@@ -859,38 +981,40 @@ func file_sentiric_event_v1_event_proto_rawDescGZIP() []byte {
 	return file_sentiric_event_v1_event_proto_rawDescData
 }
 
-var file_sentiric_event_v1_event_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_sentiric_event_v1_event_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_sentiric_event_v1_event_proto_goTypes = []any{
-	(*MediaInfo)(nil),                   // 0: sentiric.event.v1.MediaInfo
-	(*CallStartedEvent)(nil),            // 1: sentiric.event.v1.CallStartedEvent
-	(*UserIdentifiedForCallEvent)(nil),  // 2: sentiric.event.v1.UserIdentifiedForCallEvent
-	(*CallRecordingAvailableEvent)(nil), // 3: sentiric.event.v1.CallRecordingAvailableEvent
-	(*CallEndedEvent)(nil),              // 4: sentiric.event.v1.CallEndedEvent
-	(*GenericEvent)(nil),                // 5: sentiric.event.v1.GenericEvent
-	(*AcousticMoodShiftedEvent)(nil),    // 6: sentiric.event.v1.AcousticMoodShiftedEvent
-	(*CognitiveMapUpdatedEvent)(nil),    // 7: sentiric.event.v1.CognitiveMapUpdatedEvent
-	(*timestamppb.Timestamp)(nil),       // 8: google.protobuf.Timestamp
-	(*v1.ResolveDialplanResponse)(nil),  // 9: sentiric.dialplan.v1.ResolveDialplanResponse
-	(*v11.User)(nil),                    // 10: sentiric.user.v1.User
-	(*v11.Contact)(nil),                 // 11: sentiric.user.v1.Contact
+	(*MediaInfo)(nil),                     // 0: sentiric.event.v1.MediaInfo
+	(*CallStartedEvent)(nil),              // 1: sentiric.event.v1.CallStartedEvent
+	(*UserIdentifiedForCallEvent)(nil),    // 2: sentiric.event.v1.UserIdentifiedForCallEvent
+	(*CallRecordingAvailableEvent)(nil),   // 3: sentiric.event.v1.CallRecordingAvailableEvent
+	(*CallEndedEvent)(nil),                // 4: sentiric.event.v1.CallEndedEvent
+	(*GenericEvent)(nil),                  // 5: sentiric.event.v1.GenericEvent
+	(*AcousticMoodShiftedEvent)(nil),      // 6: sentiric.event.v1.AcousticMoodShiftedEvent
+	(*CognitiveMapUpdatedEvent)(nil),      // 7: sentiric.event.v1.CognitiveMapUpdatedEvent
+	(*MediaGenerationCompletedEvent)(nil), // 8: sentiric.event.v1.MediaGenerationCompletedEvent
+	(*timestamppb.Timestamp)(nil),         // 9: google.protobuf.Timestamp
+	(*v1.ResolveDialplanResponse)(nil),    // 10: sentiric.dialplan.v1.ResolveDialplanResponse
+	(*v11.User)(nil),                      // 11: sentiric.user.v1.User
+	(*v11.Contact)(nil),                   // 12: sentiric.user.v1.Contact
 }
 var file_sentiric_event_v1_event_proto_depIdxs = []int32{
-	8,  // 0: sentiric.event.v1.CallStartedEvent.timestamp:type_name -> google.protobuf.Timestamp
-	9,  // 1: sentiric.event.v1.CallStartedEvent.dialplan_resolution:type_name -> sentiric.dialplan.v1.ResolveDialplanResponse
+	9,  // 0: sentiric.event.v1.CallStartedEvent.timestamp:type_name -> google.protobuf.Timestamp
+	10, // 1: sentiric.event.v1.CallStartedEvent.dialplan_resolution:type_name -> sentiric.dialplan.v1.ResolveDialplanResponse
 	0,  // 2: sentiric.event.v1.CallStartedEvent.media_info:type_name -> sentiric.event.v1.MediaInfo
-	8,  // 3: sentiric.event.v1.UserIdentifiedForCallEvent.timestamp:type_name -> google.protobuf.Timestamp
-	10, // 4: sentiric.event.v1.UserIdentifiedForCallEvent.user:type_name -> sentiric.user.v1.User
-	11, // 5: sentiric.event.v1.UserIdentifiedForCallEvent.contact:type_name -> sentiric.user.v1.Contact
-	8,  // 6: sentiric.event.v1.CallRecordingAvailableEvent.timestamp:type_name -> google.protobuf.Timestamp
-	8,  // 7: sentiric.event.v1.CallEndedEvent.timestamp:type_name -> google.protobuf.Timestamp
-	8,  // 8: sentiric.event.v1.GenericEvent.timestamp:type_name -> google.protobuf.Timestamp
-	8,  // 9: sentiric.event.v1.AcousticMoodShiftedEvent.timestamp:type_name -> google.protobuf.Timestamp
-	8,  // 10: sentiric.event.v1.CognitiveMapUpdatedEvent.timestamp:type_name -> google.protobuf.Timestamp
-	11, // [11:11] is the sub-list for method output_type
-	11, // [11:11] is the sub-list for method input_type
-	11, // [11:11] is the sub-list for extension type_name
-	11, // [11:11] is the sub-list for extension extendee
-	0,  // [0:11] is the sub-list for field type_name
+	9,  // 3: sentiric.event.v1.UserIdentifiedForCallEvent.timestamp:type_name -> google.protobuf.Timestamp
+	11, // 4: sentiric.event.v1.UserIdentifiedForCallEvent.user:type_name -> sentiric.user.v1.User
+	12, // 5: sentiric.event.v1.UserIdentifiedForCallEvent.contact:type_name -> sentiric.user.v1.Contact
+	9,  // 6: sentiric.event.v1.CallRecordingAvailableEvent.timestamp:type_name -> google.protobuf.Timestamp
+	9,  // 7: sentiric.event.v1.CallEndedEvent.timestamp:type_name -> google.protobuf.Timestamp
+	9,  // 8: sentiric.event.v1.GenericEvent.timestamp:type_name -> google.protobuf.Timestamp
+	9,  // 9: sentiric.event.v1.AcousticMoodShiftedEvent.timestamp:type_name -> google.protobuf.Timestamp
+	9,  // 10: sentiric.event.v1.CognitiveMapUpdatedEvent.timestamp:type_name -> google.protobuf.Timestamp
+	9,  // 11: sentiric.event.v1.MediaGenerationCompletedEvent.timestamp:type_name -> google.protobuf.Timestamp
+	12, // [12:12] is the sub-list for method output_type
+	12, // [12:12] is the sub-list for method input_type
+	12, // [12:12] is the sub-list for extension type_name
+	12, // [12:12] is the sub-list for extension extendee
+	0,  // [0:12] is the sub-list for field type_name
 }
 
 func init() { file_sentiric_event_v1_event_proto_init() }
@@ -904,7 +1028,7 @@ func file_sentiric_event_v1_event_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sentiric_event_v1_event_proto_rawDesc), len(file_sentiric_event_v1_event_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   8,
+			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

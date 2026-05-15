@@ -189,4 +189,30 @@ pub struct CognitiveMapUpdatedEvent {
     #[prost(float, tag="10")]
     pub logic_score: f32,
 }
+/// Bir video, görsel veya müzik üretimi tamamlandığında (veya hata aldığında) fırlatılır.
+#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+pub struct MediaGenerationCompletedEvent {
+    /// "media.generation.completed" veya "media.generation.failed"
+    #[prost(string, tag="1")]
+    pub event_type: ::prost::alloc::string::String,
+    #[prost(string, tag="2")]
+    pub trace_id: ::prost::alloc::string::String,
+    #[prost(string, tag="3")]
+    pub job_id: ::prost::alloc::string::String,
+    #[prost(string, tag="4")]
+    pub tenant_id: ::prost::alloc::string::String,
+    /// "video", "image", "music", "sfx"
+    #[prost(string, tag="5")]
+    pub media_type: ::prost::alloc::string::String,
+    #[prost(bool, tag="6")]
+    pub success: bool,
+    /// Başarılıysa s3://sentiric/videos/... adresi
+    #[prost(string, tag="7")]
+    pub result_uri: ::prost::alloc::string::String,
+    /// Başarısızsa hata detayı
+    #[prost(string, tag="8")]
+    pub error_message: ::prost::alloc::string::String,
+    #[prost(message, optional, tag="9")]
+    pub timestamp: ::core::option::Option<::prost_types::Timestamp>,
+}
 // @@protoc_insertion_point(module)

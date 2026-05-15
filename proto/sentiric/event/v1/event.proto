@@ -135,3 +135,18 @@ message CognitiveMapUpdatedEvent {
   float valence_score = 9;
   float logic_score = 10;
 }
+
+// Bir video, görsel veya müzik üretimi tamamlandığında (veya hata aldığında) fırlatılır.
+message MediaGenerationCompletedEvent {
+  string event_type = 1; // "media.generation.completed" veya "media.generation.failed"
+  string trace_id = 2;
+  string job_id = 3;
+  string tenant_id = 4;
+  
+  string media_type = 5; // "video", "image", "music", "sfx"
+  bool success = 6;
+  string result_uri = 7; // Başarılıysa s3://sentiric/videos/... adresi
+  string error_message = 8; // Başarısızsa hata detayı
+  
+  google.protobuf.Timestamp timestamp = 9;
+}

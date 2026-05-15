@@ -68,6 +68,9 @@ extern CognitiveMapUpdatedEventDefaultTypeInternal _CognitiveMapUpdatedEvent_def
 class GenericEvent;
 struct GenericEventDefaultTypeInternal;
 extern GenericEventDefaultTypeInternal _GenericEvent_default_instance_;
+class MediaGenerationCompletedEvent;
+struct MediaGenerationCompletedEventDefaultTypeInternal;
+extern MediaGenerationCompletedEventDefaultTypeInternal _MediaGenerationCompletedEvent_default_instance_;
 class MediaInfo;
 struct MediaInfoDefaultTypeInternal;
 extern MediaInfoDefaultTypeInternal _MediaInfo_default_instance_;
@@ -84,6 +87,7 @@ template<> ::sentiric::event::v1::CallRecordingAvailableEvent* Arena::CreateMayb
 template<> ::sentiric::event::v1::CallStartedEvent* Arena::CreateMaybeMessage<::sentiric::event::v1::CallStartedEvent>(Arena*);
 template<> ::sentiric::event::v1::CognitiveMapUpdatedEvent* Arena::CreateMaybeMessage<::sentiric::event::v1::CognitiveMapUpdatedEvent>(Arena*);
 template<> ::sentiric::event::v1::GenericEvent* Arena::CreateMaybeMessage<::sentiric::event::v1::GenericEvent>(Arena*);
+template<> ::sentiric::event::v1::MediaGenerationCompletedEvent* Arena::CreateMaybeMessage<::sentiric::event::v1::MediaGenerationCompletedEvent>(Arena*);
 template<> ::sentiric::event::v1::MediaInfo* Arena::CreateMaybeMessage<::sentiric::event::v1::MediaInfo>(Arena*);
 template<> ::sentiric::event::v1::UserIdentifiedForCallEvent* Arena::CreateMaybeMessage<::sentiric::event::v1::UserIdentifiedForCallEvent>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
@@ -2046,6 +2050,286 @@ class CognitiveMapUpdatedEvent final :
     float arousal_score_;
     float valence_score_;
     float logic_score_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2fevent_2fv1_2fevent_2eproto;
+};
+// -------------------------------------------------------------------
+
+class MediaGenerationCompletedEvent final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.event.v1.MediaGenerationCompletedEvent) */ {
+ public:
+  inline MediaGenerationCompletedEvent() : MediaGenerationCompletedEvent(nullptr) {}
+  ~MediaGenerationCompletedEvent() override;
+  explicit PROTOBUF_CONSTEXPR MediaGenerationCompletedEvent(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  MediaGenerationCompletedEvent(const MediaGenerationCompletedEvent& from);
+  MediaGenerationCompletedEvent(MediaGenerationCompletedEvent&& from) noexcept
+    : MediaGenerationCompletedEvent() {
+    *this = ::std::move(from);
+  }
+
+  inline MediaGenerationCompletedEvent& operator=(const MediaGenerationCompletedEvent& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline MediaGenerationCompletedEvent& operator=(MediaGenerationCompletedEvent&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const MediaGenerationCompletedEvent& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const MediaGenerationCompletedEvent* internal_default_instance() {
+    return reinterpret_cast<const MediaGenerationCompletedEvent*>(
+               &_MediaGenerationCompletedEvent_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    8;
+
+  friend void swap(MediaGenerationCompletedEvent& a, MediaGenerationCompletedEvent& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MediaGenerationCompletedEvent* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MediaGenerationCompletedEvent* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  MediaGenerationCompletedEvent* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<MediaGenerationCompletedEvent>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const MediaGenerationCompletedEvent& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const MediaGenerationCompletedEvent& from) {
+    MediaGenerationCompletedEvent::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(MediaGenerationCompletedEvent* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.event.v1.MediaGenerationCompletedEvent";
+  }
+  protected:
+  explicit MediaGenerationCompletedEvent(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kEventTypeFieldNumber = 1,
+    kTraceIdFieldNumber = 2,
+    kJobIdFieldNumber = 3,
+    kTenantIdFieldNumber = 4,
+    kMediaTypeFieldNumber = 5,
+    kResultUriFieldNumber = 7,
+    kErrorMessageFieldNumber = 8,
+    kTimestampFieldNumber = 9,
+    kSuccessFieldNumber = 6,
+  };
+  // string event_type = 1;
+  void clear_event_type();
+  const std::string& event_type() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_event_type(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_event_type();
+  PROTOBUF_NODISCARD std::string* release_event_type();
+  void set_allocated_event_type(std::string* event_type);
+  private:
+  const std::string& _internal_event_type() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_event_type(const std::string& value);
+  std::string* _internal_mutable_event_type();
+  public:
+
+  // string trace_id = 2;
+  void clear_trace_id();
+  const std::string& trace_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_trace_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_trace_id();
+  PROTOBUF_NODISCARD std::string* release_trace_id();
+  void set_allocated_trace_id(std::string* trace_id);
+  private:
+  const std::string& _internal_trace_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_trace_id(const std::string& value);
+  std::string* _internal_mutable_trace_id();
+  public:
+
+  // string job_id = 3;
+  void clear_job_id();
+  const std::string& job_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_job_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_job_id();
+  PROTOBUF_NODISCARD std::string* release_job_id();
+  void set_allocated_job_id(std::string* job_id);
+  private:
+  const std::string& _internal_job_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_job_id(const std::string& value);
+  std::string* _internal_mutable_job_id();
+  public:
+
+  // string tenant_id = 4;
+  void clear_tenant_id();
+  const std::string& tenant_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_tenant_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_tenant_id();
+  PROTOBUF_NODISCARD std::string* release_tenant_id();
+  void set_allocated_tenant_id(std::string* tenant_id);
+  private:
+  const std::string& _internal_tenant_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_tenant_id(const std::string& value);
+  std::string* _internal_mutable_tenant_id();
+  public:
+
+  // string media_type = 5;
+  void clear_media_type();
+  const std::string& media_type() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_media_type(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_media_type();
+  PROTOBUF_NODISCARD std::string* release_media_type();
+  void set_allocated_media_type(std::string* media_type);
+  private:
+  const std::string& _internal_media_type() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_media_type(const std::string& value);
+  std::string* _internal_mutable_media_type();
+  public:
+
+  // string result_uri = 7;
+  void clear_result_uri();
+  const std::string& result_uri() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_result_uri(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_result_uri();
+  PROTOBUF_NODISCARD std::string* release_result_uri();
+  void set_allocated_result_uri(std::string* result_uri);
+  private:
+  const std::string& _internal_result_uri() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_result_uri(const std::string& value);
+  std::string* _internal_mutable_result_uri();
+  public:
+
+  // string error_message = 8;
+  void clear_error_message();
+  const std::string& error_message() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_error_message(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_error_message();
+  PROTOBUF_NODISCARD std::string* release_error_message();
+  void set_allocated_error_message(std::string* error_message);
+  private:
+  const std::string& _internal_error_message() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_error_message(const std::string& value);
+  std::string* _internal_mutable_error_message();
+  public:
+
+  // .google.protobuf.Timestamp timestamp = 9;
+  bool has_timestamp() const;
+  private:
+  bool _internal_has_timestamp() const;
+  public:
+  void clear_timestamp();
+  const ::PROTOBUF_NAMESPACE_ID::Timestamp& timestamp() const;
+  PROTOBUF_NODISCARD ::PROTOBUF_NAMESPACE_ID::Timestamp* release_timestamp();
+  ::PROTOBUF_NAMESPACE_ID::Timestamp* mutable_timestamp();
+  void set_allocated_timestamp(::PROTOBUF_NAMESPACE_ID::Timestamp* timestamp);
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Timestamp& _internal_timestamp() const;
+  ::PROTOBUF_NAMESPACE_ID::Timestamp* _internal_mutable_timestamp();
+  public:
+  void unsafe_arena_set_allocated_timestamp(
+      ::PROTOBUF_NAMESPACE_ID::Timestamp* timestamp);
+  ::PROTOBUF_NAMESPACE_ID::Timestamp* unsafe_arena_release_timestamp();
+
+  // bool success = 6;
+  void clear_success();
+  bool success() const;
+  void set_success(bool value);
+  private:
+  bool _internal_success() const;
+  void _internal_set_success(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.event.v1.MediaGenerationCompletedEvent)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr event_type_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr trace_id_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr job_id_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr tenant_id_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr media_type_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr result_uri_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr error_message_;
+    ::PROTOBUF_NAMESPACE_ID::Timestamp* timestamp_;
+    bool success_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -4922,9 +5206,470 @@ inline void CognitiveMapUpdatedEvent::set_logic_score(float value) {
   // @@protoc_insertion_point(field_set:sentiric.event.v1.CognitiveMapUpdatedEvent.logic_score)
 }
 
+// -------------------------------------------------------------------
+
+// MediaGenerationCompletedEvent
+
+// string event_type = 1;
+inline void MediaGenerationCompletedEvent::clear_event_type() {
+  _impl_.event_type_.ClearToEmpty();
+}
+inline const std::string& MediaGenerationCompletedEvent::event_type() const {
+  // @@protoc_insertion_point(field_get:sentiric.event.v1.MediaGenerationCompletedEvent.event_type)
+  return _internal_event_type();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void MediaGenerationCompletedEvent::set_event_type(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.event_type_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.event.v1.MediaGenerationCompletedEvent.event_type)
+}
+inline std::string* MediaGenerationCompletedEvent::mutable_event_type() {
+  std::string* _s = _internal_mutable_event_type();
+  // @@protoc_insertion_point(field_mutable:sentiric.event.v1.MediaGenerationCompletedEvent.event_type)
+  return _s;
+}
+inline const std::string& MediaGenerationCompletedEvent::_internal_event_type() const {
+  return _impl_.event_type_.Get();
+}
+inline void MediaGenerationCompletedEvent::_internal_set_event_type(const std::string& value) {
+  
+  _impl_.event_type_.Set(value, GetArenaForAllocation());
+}
+inline std::string* MediaGenerationCompletedEvent::_internal_mutable_event_type() {
+  
+  return _impl_.event_type_.Mutable(GetArenaForAllocation());
+}
+inline std::string* MediaGenerationCompletedEvent::release_event_type() {
+  // @@protoc_insertion_point(field_release:sentiric.event.v1.MediaGenerationCompletedEvent.event_type)
+  return _impl_.event_type_.Release();
+}
+inline void MediaGenerationCompletedEvent::set_allocated_event_type(std::string* event_type) {
+  if (event_type != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.event_type_.SetAllocated(event_type, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.event_type_.IsDefault()) {
+    _impl_.event_type_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.event.v1.MediaGenerationCompletedEvent.event_type)
+}
+
+// string trace_id = 2;
+inline void MediaGenerationCompletedEvent::clear_trace_id() {
+  _impl_.trace_id_.ClearToEmpty();
+}
+inline const std::string& MediaGenerationCompletedEvent::trace_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.event.v1.MediaGenerationCompletedEvent.trace_id)
+  return _internal_trace_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void MediaGenerationCompletedEvent::set_trace_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.trace_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.event.v1.MediaGenerationCompletedEvent.trace_id)
+}
+inline std::string* MediaGenerationCompletedEvent::mutable_trace_id() {
+  std::string* _s = _internal_mutable_trace_id();
+  // @@protoc_insertion_point(field_mutable:sentiric.event.v1.MediaGenerationCompletedEvent.trace_id)
+  return _s;
+}
+inline const std::string& MediaGenerationCompletedEvent::_internal_trace_id() const {
+  return _impl_.trace_id_.Get();
+}
+inline void MediaGenerationCompletedEvent::_internal_set_trace_id(const std::string& value) {
+  
+  _impl_.trace_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* MediaGenerationCompletedEvent::_internal_mutable_trace_id() {
+  
+  return _impl_.trace_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* MediaGenerationCompletedEvent::release_trace_id() {
+  // @@protoc_insertion_point(field_release:sentiric.event.v1.MediaGenerationCompletedEvent.trace_id)
+  return _impl_.trace_id_.Release();
+}
+inline void MediaGenerationCompletedEvent::set_allocated_trace_id(std::string* trace_id) {
+  if (trace_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.trace_id_.SetAllocated(trace_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.trace_id_.IsDefault()) {
+    _impl_.trace_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.event.v1.MediaGenerationCompletedEvent.trace_id)
+}
+
+// string job_id = 3;
+inline void MediaGenerationCompletedEvent::clear_job_id() {
+  _impl_.job_id_.ClearToEmpty();
+}
+inline const std::string& MediaGenerationCompletedEvent::job_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.event.v1.MediaGenerationCompletedEvent.job_id)
+  return _internal_job_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void MediaGenerationCompletedEvent::set_job_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.job_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.event.v1.MediaGenerationCompletedEvent.job_id)
+}
+inline std::string* MediaGenerationCompletedEvent::mutable_job_id() {
+  std::string* _s = _internal_mutable_job_id();
+  // @@protoc_insertion_point(field_mutable:sentiric.event.v1.MediaGenerationCompletedEvent.job_id)
+  return _s;
+}
+inline const std::string& MediaGenerationCompletedEvent::_internal_job_id() const {
+  return _impl_.job_id_.Get();
+}
+inline void MediaGenerationCompletedEvent::_internal_set_job_id(const std::string& value) {
+  
+  _impl_.job_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* MediaGenerationCompletedEvent::_internal_mutable_job_id() {
+  
+  return _impl_.job_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* MediaGenerationCompletedEvent::release_job_id() {
+  // @@protoc_insertion_point(field_release:sentiric.event.v1.MediaGenerationCompletedEvent.job_id)
+  return _impl_.job_id_.Release();
+}
+inline void MediaGenerationCompletedEvent::set_allocated_job_id(std::string* job_id) {
+  if (job_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.job_id_.SetAllocated(job_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.job_id_.IsDefault()) {
+    _impl_.job_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.event.v1.MediaGenerationCompletedEvent.job_id)
+}
+
+// string tenant_id = 4;
+inline void MediaGenerationCompletedEvent::clear_tenant_id() {
+  _impl_.tenant_id_.ClearToEmpty();
+}
+inline const std::string& MediaGenerationCompletedEvent::tenant_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.event.v1.MediaGenerationCompletedEvent.tenant_id)
+  return _internal_tenant_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void MediaGenerationCompletedEvent::set_tenant_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.tenant_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.event.v1.MediaGenerationCompletedEvent.tenant_id)
+}
+inline std::string* MediaGenerationCompletedEvent::mutable_tenant_id() {
+  std::string* _s = _internal_mutable_tenant_id();
+  // @@protoc_insertion_point(field_mutable:sentiric.event.v1.MediaGenerationCompletedEvent.tenant_id)
+  return _s;
+}
+inline const std::string& MediaGenerationCompletedEvent::_internal_tenant_id() const {
+  return _impl_.tenant_id_.Get();
+}
+inline void MediaGenerationCompletedEvent::_internal_set_tenant_id(const std::string& value) {
+  
+  _impl_.tenant_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* MediaGenerationCompletedEvent::_internal_mutable_tenant_id() {
+  
+  return _impl_.tenant_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* MediaGenerationCompletedEvent::release_tenant_id() {
+  // @@protoc_insertion_point(field_release:sentiric.event.v1.MediaGenerationCompletedEvent.tenant_id)
+  return _impl_.tenant_id_.Release();
+}
+inline void MediaGenerationCompletedEvent::set_allocated_tenant_id(std::string* tenant_id) {
+  if (tenant_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.tenant_id_.SetAllocated(tenant_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.tenant_id_.IsDefault()) {
+    _impl_.tenant_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.event.v1.MediaGenerationCompletedEvent.tenant_id)
+}
+
+// string media_type = 5;
+inline void MediaGenerationCompletedEvent::clear_media_type() {
+  _impl_.media_type_.ClearToEmpty();
+}
+inline const std::string& MediaGenerationCompletedEvent::media_type() const {
+  // @@protoc_insertion_point(field_get:sentiric.event.v1.MediaGenerationCompletedEvent.media_type)
+  return _internal_media_type();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void MediaGenerationCompletedEvent::set_media_type(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.media_type_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.event.v1.MediaGenerationCompletedEvent.media_type)
+}
+inline std::string* MediaGenerationCompletedEvent::mutable_media_type() {
+  std::string* _s = _internal_mutable_media_type();
+  // @@protoc_insertion_point(field_mutable:sentiric.event.v1.MediaGenerationCompletedEvent.media_type)
+  return _s;
+}
+inline const std::string& MediaGenerationCompletedEvent::_internal_media_type() const {
+  return _impl_.media_type_.Get();
+}
+inline void MediaGenerationCompletedEvent::_internal_set_media_type(const std::string& value) {
+  
+  _impl_.media_type_.Set(value, GetArenaForAllocation());
+}
+inline std::string* MediaGenerationCompletedEvent::_internal_mutable_media_type() {
+  
+  return _impl_.media_type_.Mutable(GetArenaForAllocation());
+}
+inline std::string* MediaGenerationCompletedEvent::release_media_type() {
+  // @@protoc_insertion_point(field_release:sentiric.event.v1.MediaGenerationCompletedEvent.media_type)
+  return _impl_.media_type_.Release();
+}
+inline void MediaGenerationCompletedEvent::set_allocated_media_type(std::string* media_type) {
+  if (media_type != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.media_type_.SetAllocated(media_type, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.media_type_.IsDefault()) {
+    _impl_.media_type_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.event.v1.MediaGenerationCompletedEvent.media_type)
+}
+
+// bool success = 6;
+inline void MediaGenerationCompletedEvent::clear_success() {
+  _impl_.success_ = false;
+}
+inline bool MediaGenerationCompletedEvent::_internal_success() const {
+  return _impl_.success_;
+}
+inline bool MediaGenerationCompletedEvent::success() const {
+  // @@protoc_insertion_point(field_get:sentiric.event.v1.MediaGenerationCompletedEvent.success)
+  return _internal_success();
+}
+inline void MediaGenerationCompletedEvent::_internal_set_success(bool value) {
+  
+  _impl_.success_ = value;
+}
+inline void MediaGenerationCompletedEvent::set_success(bool value) {
+  _internal_set_success(value);
+  // @@protoc_insertion_point(field_set:sentiric.event.v1.MediaGenerationCompletedEvent.success)
+}
+
+// string result_uri = 7;
+inline void MediaGenerationCompletedEvent::clear_result_uri() {
+  _impl_.result_uri_.ClearToEmpty();
+}
+inline const std::string& MediaGenerationCompletedEvent::result_uri() const {
+  // @@protoc_insertion_point(field_get:sentiric.event.v1.MediaGenerationCompletedEvent.result_uri)
+  return _internal_result_uri();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void MediaGenerationCompletedEvent::set_result_uri(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.result_uri_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.event.v1.MediaGenerationCompletedEvent.result_uri)
+}
+inline std::string* MediaGenerationCompletedEvent::mutable_result_uri() {
+  std::string* _s = _internal_mutable_result_uri();
+  // @@protoc_insertion_point(field_mutable:sentiric.event.v1.MediaGenerationCompletedEvent.result_uri)
+  return _s;
+}
+inline const std::string& MediaGenerationCompletedEvent::_internal_result_uri() const {
+  return _impl_.result_uri_.Get();
+}
+inline void MediaGenerationCompletedEvent::_internal_set_result_uri(const std::string& value) {
+  
+  _impl_.result_uri_.Set(value, GetArenaForAllocation());
+}
+inline std::string* MediaGenerationCompletedEvent::_internal_mutable_result_uri() {
+  
+  return _impl_.result_uri_.Mutable(GetArenaForAllocation());
+}
+inline std::string* MediaGenerationCompletedEvent::release_result_uri() {
+  // @@protoc_insertion_point(field_release:sentiric.event.v1.MediaGenerationCompletedEvent.result_uri)
+  return _impl_.result_uri_.Release();
+}
+inline void MediaGenerationCompletedEvent::set_allocated_result_uri(std::string* result_uri) {
+  if (result_uri != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.result_uri_.SetAllocated(result_uri, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.result_uri_.IsDefault()) {
+    _impl_.result_uri_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.event.v1.MediaGenerationCompletedEvent.result_uri)
+}
+
+// string error_message = 8;
+inline void MediaGenerationCompletedEvent::clear_error_message() {
+  _impl_.error_message_.ClearToEmpty();
+}
+inline const std::string& MediaGenerationCompletedEvent::error_message() const {
+  // @@protoc_insertion_point(field_get:sentiric.event.v1.MediaGenerationCompletedEvent.error_message)
+  return _internal_error_message();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void MediaGenerationCompletedEvent::set_error_message(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.error_message_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.event.v1.MediaGenerationCompletedEvent.error_message)
+}
+inline std::string* MediaGenerationCompletedEvent::mutable_error_message() {
+  std::string* _s = _internal_mutable_error_message();
+  // @@protoc_insertion_point(field_mutable:sentiric.event.v1.MediaGenerationCompletedEvent.error_message)
+  return _s;
+}
+inline const std::string& MediaGenerationCompletedEvent::_internal_error_message() const {
+  return _impl_.error_message_.Get();
+}
+inline void MediaGenerationCompletedEvent::_internal_set_error_message(const std::string& value) {
+  
+  _impl_.error_message_.Set(value, GetArenaForAllocation());
+}
+inline std::string* MediaGenerationCompletedEvent::_internal_mutable_error_message() {
+  
+  return _impl_.error_message_.Mutable(GetArenaForAllocation());
+}
+inline std::string* MediaGenerationCompletedEvent::release_error_message() {
+  // @@protoc_insertion_point(field_release:sentiric.event.v1.MediaGenerationCompletedEvent.error_message)
+  return _impl_.error_message_.Release();
+}
+inline void MediaGenerationCompletedEvent::set_allocated_error_message(std::string* error_message) {
+  if (error_message != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.error_message_.SetAllocated(error_message, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.error_message_.IsDefault()) {
+    _impl_.error_message_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.event.v1.MediaGenerationCompletedEvent.error_message)
+}
+
+// .google.protobuf.Timestamp timestamp = 9;
+inline bool MediaGenerationCompletedEvent::_internal_has_timestamp() const {
+  return this != internal_default_instance() && _impl_.timestamp_ != nullptr;
+}
+inline bool MediaGenerationCompletedEvent::has_timestamp() const {
+  return _internal_has_timestamp();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Timestamp& MediaGenerationCompletedEvent::_internal_timestamp() const {
+  const ::PROTOBUF_NAMESPACE_ID::Timestamp* p = _impl_.timestamp_;
+  return p != nullptr ? *p : reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Timestamp&>(
+      ::PROTOBUF_NAMESPACE_ID::_Timestamp_default_instance_);
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Timestamp& MediaGenerationCompletedEvent::timestamp() const {
+  // @@protoc_insertion_point(field_get:sentiric.event.v1.MediaGenerationCompletedEvent.timestamp)
+  return _internal_timestamp();
+}
+inline void MediaGenerationCompletedEvent::unsafe_arena_set_allocated_timestamp(
+    ::PROTOBUF_NAMESPACE_ID::Timestamp* timestamp) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.timestamp_);
+  }
+  _impl_.timestamp_ = timestamp;
+  if (timestamp) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:sentiric.event.v1.MediaGenerationCompletedEvent.timestamp)
+}
+inline ::PROTOBUF_NAMESPACE_ID::Timestamp* MediaGenerationCompletedEvent::release_timestamp() {
+  
+  ::PROTOBUF_NAMESPACE_ID::Timestamp* temp = _impl_.timestamp_;
+  _impl_.timestamp_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Timestamp* MediaGenerationCompletedEvent::unsafe_arena_release_timestamp() {
+  // @@protoc_insertion_point(field_release:sentiric.event.v1.MediaGenerationCompletedEvent.timestamp)
+  
+  ::PROTOBUF_NAMESPACE_ID::Timestamp* temp = _impl_.timestamp_;
+  _impl_.timestamp_ = nullptr;
+  return temp;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Timestamp* MediaGenerationCompletedEvent::_internal_mutable_timestamp() {
+  
+  if (_impl_.timestamp_ == nullptr) {
+    auto* p = CreateMaybeMessage<::PROTOBUF_NAMESPACE_ID::Timestamp>(GetArenaForAllocation());
+    _impl_.timestamp_ = p;
+  }
+  return _impl_.timestamp_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Timestamp* MediaGenerationCompletedEvent::mutable_timestamp() {
+  ::PROTOBUF_NAMESPACE_ID::Timestamp* _msg = _internal_mutable_timestamp();
+  // @@protoc_insertion_point(field_mutable:sentiric.event.v1.MediaGenerationCompletedEvent.timestamp)
+  return _msg;
+}
+inline void MediaGenerationCompletedEvent::set_allocated_timestamp(::PROTOBUF_NAMESPACE_ID::Timestamp* timestamp) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.timestamp_);
+  }
+  if (timestamp) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(timestamp));
+    if (message_arena != submessage_arena) {
+      timestamp = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, timestamp, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.timestamp_ = timestamp;
+  // @@protoc_insertion_point(field_set_allocated:sentiric.event.v1.MediaGenerationCompletedEvent.timestamp)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

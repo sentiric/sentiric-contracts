@@ -84,6 +84,11 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
                  // --- STREAM ---
                  "sentiric/stream/v1/gateway.proto",
+
+                 // --- AUDIO & IMAGE & VIDEO ---
+                 "sentiric/audio_gen/v1/gateway.proto",       
+                 "sentiric/image/v1/gateway.proto",
+                 "sentiric/video/v1/gateway.proto"    
             ],
             &["proto"],
         )?;
