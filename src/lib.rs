@@ -38,5 +38,10 @@ pub mod sentiric {
     pub mod vertical { pub mod v1 { tonic::include_proto!("sentiric.vertical.v1"); } }
 
     // stream
-    pub mod stream { pub mod v1 { tonic::include_proto!("sentiric.stream.v1"); } }    
+    pub mod stream { pub mod v1 { tonic::include_proto!("sentiric.stream.v1"); } }   
+     
+    // --- GENERATIVE MEDIA STACK ---
+    pub mod video { pub mod v1 { tonic::include_proto!("sentiric.video.v1"); } }
+    pub mod image { pub mod v1 { tonic::include_proto!("sentiric.image.v1"); } }
+    pub mod audio_gen { pub mod v1 { tonic::include_proto!("sentiric.audio_gen.v1"); } }
 }
