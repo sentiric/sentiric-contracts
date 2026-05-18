@@ -23,6 +23,37 @@ namespace _pbi = _pb::internal;
 namespace sentiric {
 namespace video {
 namespace v1 {
+PROTOBUF_CONSTEXPR SubmitPortraitJobRequest::SubmitPortraitJobRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.tenant_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.trace_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.image_uri_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.audio_uri_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.expression_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct SubmitPortraitJobRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SubmitPortraitJobRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SubmitPortraitJobRequestDefaultTypeInternal() {}
+  union {
+    SubmitPortraitJobRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SubmitPortraitJobRequestDefaultTypeInternal _SubmitPortraitJobRequest_default_instance_;
+PROTOBUF_CONSTEXPR SubmitPortraitJobResponse::SubmitPortraitJobResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.job_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.accepted_)*/false
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct SubmitPortraitJobResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR SubmitPortraitJobResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~SubmitPortraitJobResponseDefaultTypeInternal() {}
+  union {
+    SubmitPortraitJobResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 SubmitPortraitJobResponseDefaultTypeInternal _SubmitPortraitJobResponse_default_instance_;
 PROTOBUF_CONSTEXPR SubmitVideoJobRequest::SubmitVideoJobRequest(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_._has_bits_)*/{}
@@ -62,11 +93,30 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORIT
 }  // namespace v1
 }  // namespace video
 }  // namespace sentiric
-static ::_pb::Metadata file_level_metadata_sentiric_2fvideo_2fv1_2fgateway_2eproto[2];
+static ::_pb::Metadata file_level_metadata_sentiric_2fvideo_2fv1_2fgateway_2eproto[4];
 static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_sentiric_2fvideo_2fv1_2fgateway_2eproto = nullptr;
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_sentiric_2fvideo_2fv1_2fgateway_2eproto = nullptr;
 
 const uint32_t TableStruct_sentiric_2fvideo_2fv1_2fgateway_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::video::v1::SubmitPortraitJobRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::video::v1::SubmitPortraitJobRequest, _impl_.tenant_id_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::video::v1::SubmitPortraitJobRequest, _impl_.trace_id_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::video::v1::SubmitPortraitJobRequest, _impl_.image_uri_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::video::v1::SubmitPortraitJobRequest, _impl_.audio_uri_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::video::v1::SubmitPortraitJobRequest, _impl_.expression_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::sentiric::video::v1::SubmitPortraitJobResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::sentiric::video::v1::SubmitPortraitJobResponse, _impl_.accepted_),
+  PROTOBUF_FIELD_OFFSET(::sentiric::video::v1::SubmitPortraitJobResponse, _impl_.job_id_),
   PROTOBUF_FIELD_OFFSET(::sentiric::video::v1::SubmitVideoJobRequest, _impl_._has_bits_),
   PROTOBUF_FIELD_OFFSET(::sentiric::video::v1::SubmitVideoJobRequest, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -100,37 +150,48 @@ const uint32_t TableStruct_sentiric_2fvideo_2fv1_2fgateway_2eproto::offsets[] PR
   PROTOBUF_FIELD_OFFSET(::sentiric::video::v1::SubmitVideoJobResponse, _impl_.status_message_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, 14, -1, sizeof(::sentiric::video::v1::SubmitVideoJobRequest)},
-  { 22, -1, -1, sizeof(::sentiric::video::v1::SubmitVideoJobResponse)},
+  { 0, -1, -1, sizeof(::sentiric::video::v1::SubmitPortraitJobRequest)},
+  { 11, -1, -1, sizeof(::sentiric::video::v1::SubmitPortraitJobResponse)},
+  { 19, 33, -1, sizeof(::sentiric::video::v1::SubmitVideoJobRequest)},
+  { 41, -1, -1, sizeof(::sentiric::video::v1::SubmitVideoJobResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
+  &::sentiric::video::v1::_SubmitPortraitJobRequest_default_instance_._instance,
+  &::sentiric::video::v1::_SubmitPortraitJobResponse_default_instance_._instance,
   &::sentiric::video::v1::_SubmitVideoJobRequest_default_instance_._instance,
   &::sentiric::video::v1::_SubmitVideoJobResponse_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_sentiric_2fvideo_2fv1_2fgateway_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\037sentiric/video/v1/gateway.proto\022\021senti"
-  "ric.video.v1\"\334\001\n\025SubmitVideoJobRequest\022\021"
-  "\n\ttenant_id\030\001 \001(\t\022\020\n\010trace_id\030\002 \001(\t\022\016\n\006p"
-  "rompt\030\003 \001(\t\022 \n\023reference_image_uri\030\004 \001(\t"
-  "H\000\210\001\001\022\027\n\017preferred_model\030\005 \001(\t\022\030\n\020durati"
-  "on_seconds\030\006 \001(\005\022\024\n\014aspect_ratio\030\007 \001(\t\022\013"
-  "\n\003fps\030\010 \001(\005B\026\n\024_reference_image_uri\"R\n\026S"
-  "ubmitVideoJobResponse\022\020\n\010accepted\030\001 \001(\010\022"
-  "\016\n\006job_id\030\002 \001(\t\022\026\n\016status_message\030\003 \001(\t2"
-  "|\n\023VideoGatewayService\022e\n\016SubmitVideoJob"
-  "\022(.sentiric.video.v1.SubmitVideoJobReque"
-  "st\032).sentiric.video.v1.SubmitVideoJobRes"
-  "ponseBIZGgithub.com/sentiric/sentiric-co"
-  "ntracts/gen/go/sentiric/video/v1;videov1"
-  "b\006proto3"
+  "ric.video.v1\"y\n\030SubmitPortraitJobRequest"
+  "\022\021\n\ttenant_id\030\001 \001(\t\022\020\n\010trace_id\030\002 \001(\t\022\021\n"
+  "\timage_uri\030\003 \001(\t\022\021\n\taudio_uri\030\004 \001(\t\022\022\n\ne"
+  "xpression\030\005 \001(\t\"=\n\031SubmitPortraitJobResp"
+  "onse\022\020\n\010accepted\030\001 \001(\010\022\016\n\006job_id\030\002 \001(\t\"\334"
+  "\001\n\025SubmitVideoJobRequest\022\021\n\ttenant_id\030\001 "
+  "\001(\t\022\020\n\010trace_id\030\002 \001(\t\022\016\n\006prompt\030\003 \001(\t\022 \n"
+  "\023reference_image_uri\030\004 \001(\tH\000\210\001\001\022\027\n\017prefe"
+  "rred_model\030\005 \001(\t\022\030\n\020duration_seconds\030\006 \001"
+  "(\005\022\024\n\014aspect_ratio\030\007 \001(\t\022\013\n\003fps\030\010 \001(\005B\026\n"
+  "\024_reference_image_uri\"R\n\026SubmitVideoJobR"
+  "esponse\022\020\n\010accepted\030\001 \001(\010\022\016\n\006job_id\030\002 \001("
+  "\t\022\026\n\016status_message\030\003 \001(\t2\354\001\n\023VideoGatew"
+  "ayService\022e\n\016SubmitVideoJob\022(.sentiric.v"
+  "ideo.v1.SubmitVideoJobRequest\032).sentiric"
+  ".video.v1.SubmitVideoJobResponse\022n\n\021Subm"
+  "itPortraitJob\022+.sentiric.video.v1.Submit"
+  "PortraitJobRequest\032,.sentiric.video.v1.S"
+  "ubmitPortraitJobResponseBIZGgithub.com/s"
+  "entiric/sentiric-contracts/gen/go/sentir"
+  "ic/video/v1;videov1b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_sentiric_2fvideo_2fv1_2fgateway_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_sentiric_2fvideo_2fv1_2fgateway_2eproto = {
-    false, false, 568, descriptor_table_protodef_sentiric_2fvideo_2fv1_2fgateway_2eproto,
+    false, false, 867, descriptor_table_protodef_sentiric_2fvideo_2fv1_2fgateway_2eproto,
     "sentiric/video/v1/gateway.proto",
-    &descriptor_table_sentiric_2fvideo_2fv1_2fgateway_2eproto_once, nullptr, 0, 2,
+    &descriptor_table_sentiric_2fvideo_2fv1_2fgateway_2eproto_once, nullptr, 0, 4,
     schemas, file_default_instances, TableStruct_sentiric_2fvideo_2fv1_2fgateway_2eproto::offsets,
     file_level_metadata_sentiric_2fvideo_2fv1_2fgateway_2eproto, file_level_enum_descriptors_sentiric_2fvideo_2fv1_2fgateway_2eproto,
     file_level_service_descriptors_sentiric_2fvideo_2fv1_2fgateway_2eproto,
@@ -144,6 +205,639 @@ PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_in
 namespace sentiric {
 namespace video {
 namespace v1 {
+
+// ===================================================================
+
+class SubmitPortraitJobRequest::_Internal {
+ public:
+};
+
+SubmitPortraitJobRequest::SubmitPortraitJobRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.video.v1.SubmitPortraitJobRequest)
+}
+SubmitPortraitJobRequest::SubmitPortraitJobRequest(const SubmitPortraitJobRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  SubmitPortraitJobRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.tenant_id_){}
+    , decltype(_impl_.trace_id_){}
+    , decltype(_impl_.image_uri_){}
+    , decltype(_impl_.audio_uri_){}
+    , decltype(_impl_.expression_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.tenant_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.tenant_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_tenant_id().empty()) {
+    _this->_impl_.tenant_id_.Set(from._internal_tenant_id(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.trace_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.trace_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_trace_id().empty()) {
+    _this->_impl_.trace_id_.Set(from._internal_trace_id(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.image_uri_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.image_uri_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_image_uri().empty()) {
+    _this->_impl_.image_uri_.Set(from._internal_image_uri(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.audio_uri_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.audio_uri_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_audio_uri().empty()) {
+    _this->_impl_.audio_uri_.Set(from._internal_audio_uri(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.expression_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.expression_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_expression().empty()) {
+    _this->_impl_.expression_.Set(from._internal_expression(), 
+      _this->GetArenaForAllocation());
+  }
+  // @@protoc_insertion_point(copy_constructor:sentiric.video.v1.SubmitPortraitJobRequest)
+}
+
+inline void SubmitPortraitJobRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.tenant_id_){}
+    , decltype(_impl_.trace_id_){}
+    , decltype(_impl_.image_uri_){}
+    , decltype(_impl_.audio_uri_){}
+    , decltype(_impl_.expression_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.tenant_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.tenant_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.trace_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.trace_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.image_uri_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.image_uri_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.audio_uri_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.audio_uri_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.expression_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.expression_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+SubmitPortraitJobRequest::~SubmitPortraitJobRequest() {
+  // @@protoc_insertion_point(destructor:sentiric.video.v1.SubmitPortraitJobRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void SubmitPortraitJobRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.tenant_id_.Destroy();
+  _impl_.trace_id_.Destroy();
+  _impl_.image_uri_.Destroy();
+  _impl_.audio_uri_.Destroy();
+  _impl_.expression_.Destroy();
+}
+
+void SubmitPortraitJobRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void SubmitPortraitJobRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.video.v1.SubmitPortraitJobRequest)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.tenant_id_.ClearToEmpty();
+  _impl_.trace_id_.ClearToEmpty();
+  _impl_.image_uri_.ClearToEmpty();
+  _impl_.audio_uri_.ClearToEmpty();
+  _impl_.expression_.ClearToEmpty();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* SubmitPortraitJobRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string tenant_id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_tenant_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.video.v1.SubmitPortraitJobRequest.tenant_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string trace_id = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_trace_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.video.v1.SubmitPortraitJobRequest.trace_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string image_uri = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_image_uri();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.video.v1.SubmitPortraitJobRequest.image_uri"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string audio_uri = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          auto str = _internal_mutable_audio_uri();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.video.v1.SubmitPortraitJobRequest.audio_uri"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string expression = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
+          auto str = _internal_mutable_expression();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.video.v1.SubmitPortraitJobRequest.expression"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* SubmitPortraitJobRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.video.v1.SubmitPortraitJobRequest)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string tenant_id = 1;
+  if (!this->_internal_tenant_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_tenant_id().data(), static_cast<int>(this->_internal_tenant_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.video.v1.SubmitPortraitJobRequest.tenant_id");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_tenant_id(), target);
+  }
+
+  // string trace_id = 2;
+  if (!this->_internal_trace_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_trace_id().data(), static_cast<int>(this->_internal_trace_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.video.v1.SubmitPortraitJobRequest.trace_id");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_trace_id(), target);
+  }
+
+  // string image_uri = 3;
+  if (!this->_internal_image_uri().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_image_uri().data(), static_cast<int>(this->_internal_image_uri().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.video.v1.SubmitPortraitJobRequest.image_uri");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_image_uri(), target);
+  }
+
+  // string audio_uri = 4;
+  if (!this->_internal_audio_uri().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_audio_uri().data(), static_cast<int>(this->_internal_audio_uri().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.video.v1.SubmitPortraitJobRequest.audio_uri");
+    target = stream->WriteStringMaybeAliased(
+        4, this->_internal_audio_uri(), target);
+  }
+
+  // string expression = 5;
+  if (!this->_internal_expression().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_expression().data(), static_cast<int>(this->_internal_expression().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.video.v1.SubmitPortraitJobRequest.expression");
+    target = stream->WriteStringMaybeAliased(
+        5, this->_internal_expression(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.video.v1.SubmitPortraitJobRequest)
+  return target;
+}
+
+size_t SubmitPortraitJobRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.video.v1.SubmitPortraitJobRequest)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string tenant_id = 1;
+  if (!this->_internal_tenant_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_tenant_id());
+  }
+
+  // string trace_id = 2;
+  if (!this->_internal_trace_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_trace_id());
+  }
+
+  // string image_uri = 3;
+  if (!this->_internal_image_uri().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_image_uri());
+  }
+
+  // string audio_uri = 4;
+  if (!this->_internal_audio_uri().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_audio_uri());
+  }
+
+  // string expression = 5;
+  if (!this->_internal_expression().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_expression());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData SubmitPortraitJobRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    SubmitPortraitJobRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SubmitPortraitJobRequest::GetClassData() const { return &_class_data_; }
+
+
+void SubmitPortraitJobRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<SubmitPortraitJobRequest*>(&to_msg);
+  auto& from = static_cast<const SubmitPortraitJobRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.video.v1.SubmitPortraitJobRequest)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_tenant_id().empty()) {
+    _this->_internal_set_tenant_id(from._internal_tenant_id());
+  }
+  if (!from._internal_trace_id().empty()) {
+    _this->_internal_set_trace_id(from._internal_trace_id());
+  }
+  if (!from._internal_image_uri().empty()) {
+    _this->_internal_set_image_uri(from._internal_image_uri());
+  }
+  if (!from._internal_audio_uri().empty()) {
+    _this->_internal_set_audio_uri(from._internal_audio_uri());
+  }
+  if (!from._internal_expression().empty()) {
+    _this->_internal_set_expression(from._internal_expression());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void SubmitPortraitJobRequest::CopyFrom(const SubmitPortraitJobRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.video.v1.SubmitPortraitJobRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool SubmitPortraitJobRequest::IsInitialized() const {
+  return true;
+}
+
+void SubmitPortraitJobRequest::InternalSwap(SubmitPortraitJobRequest* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.tenant_id_, lhs_arena,
+      &other->_impl_.tenant_id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.trace_id_, lhs_arena,
+      &other->_impl_.trace_id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.image_uri_, lhs_arena,
+      &other->_impl_.image_uri_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.audio_uri_, lhs_arena,
+      &other->_impl_.audio_uri_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.expression_, lhs_arena,
+      &other->_impl_.expression_, rhs_arena
+  );
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata SubmitPortraitJobRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fvideo_2fv1_2fgateway_2eproto_getter, &descriptor_table_sentiric_2fvideo_2fv1_2fgateway_2eproto_once,
+      file_level_metadata_sentiric_2fvideo_2fv1_2fgateway_2eproto[0]);
+}
+
+// ===================================================================
+
+class SubmitPortraitJobResponse::_Internal {
+ public:
+};
+
+SubmitPortraitJobResponse::SubmitPortraitJobResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:sentiric.video.v1.SubmitPortraitJobResponse)
+}
+SubmitPortraitJobResponse::SubmitPortraitJobResponse(const SubmitPortraitJobResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  SubmitPortraitJobResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.job_id_){}
+    , decltype(_impl_.accepted_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.job_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.job_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_job_id().empty()) {
+    _this->_impl_.job_id_.Set(from._internal_job_id(), 
+      _this->GetArenaForAllocation());
+  }
+  _this->_impl_.accepted_ = from._impl_.accepted_;
+  // @@protoc_insertion_point(copy_constructor:sentiric.video.v1.SubmitPortraitJobResponse)
+}
+
+inline void SubmitPortraitJobResponse::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.job_id_){}
+    , decltype(_impl_.accepted_){false}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.job_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.job_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+SubmitPortraitJobResponse::~SubmitPortraitJobResponse() {
+  // @@protoc_insertion_point(destructor:sentiric.video.v1.SubmitPortraitJobResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void SubmitPortraitJobResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.job_id_.Destroy();
+}
+
+void SubmitPortraitJobResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void SubmitPortraitJobResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:sentiric.video.v1.SubmitPortraitJobResponse)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.job_id_.ClearToEmpty();
+  _impl_.accepted_ = false;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* SubmitPortraitJobResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // bool accepted = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          _impl_.accepted_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // string job_id = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_job_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "sentiric.video.v1.SubmitPortraitJobResponse.job_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* SubmitPortraitJobResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sentiric.video.v1.SubmitPortraitJobResponse)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // bool accepted = 1;
+  if (this->_internal_accepted() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(1, this->_internal_accepted(), target);
+  }
+
+  // string job_id = 2;
+  if (!this->_internal_job_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_job_id().data(), static_cast<int>(this->_internal_job_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "sentiric.video.v1.SubmitPortraitJobResponse.job_id");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_job_id(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sentiric.video.v1.SubmitPortraitJobResponse)
+  return target;
+}
+
+size_t SubmitPortraitJobResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:sentiric.video.v1.SubmitPortraitJobResponse)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string job_id = 2;
+  if (!this->_internal_job_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_job_id());
+  }
+
+  // bool accepted = 1;
+  if (this->_internal_accepted() != 0) {
+    total_size += 1 + 1;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData SubmitPortraitJobResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    SubmitPortraitJobResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*SubmitPortraitJobResponse::GetClassData() const { return &_class_data_; }
+
+
+void SubmitPortraitJobResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<SubmitPortraitJobResponse*>(&to_msg);
+  auto& from = static_cast<const SubmitPortraitJobResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:sentiric.video.v1.SubmitPortraitJobResponse)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_job_id().empty()) {
+    _this->_internal_set_job_id(from._internal_job_id());
+  }
+  if (from._internal_accepted() != 0) {
+    _this->_internal_set_accepted(from._internal_accepted());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void SubmitPortraitJobResponse::CopyFrom(const SubmitPortraitJobResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sentiric.video.v1.SubmitPortraitJobResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool SubmitPortraitJobResponse::IsInitialized() const {
+  return true;
+}
+
+void SubmitPortraitJobResponse::InternalSwap(SubmitPortraitJobResponse* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.job_id_, lhs_arena,
+      &other->_impl_.job_id_, rhs_arena
+  );
+  swap(_impl_.accepted_, other->_impl_.accepted_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata SubmitPortraitJobResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_sentiric_2fvideo_2fv1_2fgateway_2eproto_getter, &descriptor_table_sentiric_2fvideo_2fv1_2fgateway_2eproto_once,
+      file_level_metadata_sentiric_2fvideo_2fv1_2fgateway_2eproto[1]);
+}
 
 // ===================================================================
 
@@ -669,7 +1363,7 @@ void SubmitVideoJobRequest::InternalSwap(SubmitVideoJobRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SubmitVideoJobRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fvideo_2fv1_2fgateway_2eproto_getter, &descriptor_table_sentiric_2fvideo_2fv1_2fgateway_2eproto_once,
-      file_level_metadata_sentiric_2fvideo_2fv1_2fgateway_2eproto[0]);
+      file_level_metadata_sentiric_2fvideo_2fv1_2fgateway_2eproto[2]);
 }
 
 // ===================================================================
@@ -949,7 +1643,7 @@ void SubmitVideoJobResponse::InternalSwap(SubmitVideoJobResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata SubmitVideoJobResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_sentiric_2fvideo_2fv1_2fgateway_2eproto_getter, &descriptor_table_sentiric_2fvideo_2fv1_2fgateway_2eproto_once,
-      file_level_metadata_sentiric_2fvideo_2fv1_2fgateway_2eproto[1]);
+      file_level_metadata_sentiric_2fvideo_2fv1_2fgateway_2eproto[3]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -957,6 +1651,14 @@ void SubmitVideoJobResponse::InternalSwap(SubmitVideoJobResponse* other) {
 }  // namespace video
 }  // namespace sentiric
 PROTOBUF_NAMESPACE_OPEN
+template<> PROTOBUF_NOINLINE ::sentiric::video::v1::SubmitPortraitJobRequest*
+Arena::CreateMaybeMessage< ::sentiric::video::v1::SubmitPortraitJobRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::video::v1::SubmitPortraitJobRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::sentiric::video::v1::SubmitPortraitJobResponse*
+Arena::CreateMaybeMessage< ::sentiric::video::v1::SubmitPortraitJobResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::sentiric::video::v1::SubmitPortraitJobResponse >(arena);
+}
 template<> PROTOBUF_NOINLINE ::sentiric::video::v1::SubmitVideoJobRequest*
 Arena::CreateMaybeMessage< ::sentiric::video::v1::SubmitVideoJobRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::sentiric::video::v1::SubmitVideoJobRequest >(arena);

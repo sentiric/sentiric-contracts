@@ -9,30 +9,258 @@ import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 
 export const protobufPackage = "sentiric.video.v1";
 
+export interface SubmitPortraitJobRequest {
+  tenantId: string;
+  traceId: string;
+  /** S3'teki karakter resmi (SD-Turbo çıktısı) */
+  imageUri: string;
+  /** S3'teki ses dosyası (OmniVoice çıktısı) */
+  audioUri: string;
+  /** "neutral", "happy", "serious" */
+  expression: string;
+}
+
+export interface SubmitPortraitJobResponse {
+  accepted: boolean;
+  jobId: string;
+}
+
 export interface SubmitVideoJobRequest {
   tenantId: string;
   traceId: string;
-  /** T2V (Metinden Video) veya I2V (Görselden Video) */
   prompt: string;
-  /** S3 URL'si */
-  referenceImageUri?:
-    | string
-    | undefined;
-  /** Hangi modelin kullanılacağı (örn: ltx-video, wan2gp, svd) */
+  referenceImageUri?: string | undefined;
   preferredModel: string;
-  /** Video Parametreleri */
   durationSeconds: number;
-  /** "16:9", "9:16", "1:1" */
   aspectRatio: string;
   fps: number;
 }
 
 export interface SubmitVideoJobResponse {
   accepted: boolean;
-  /** İş takibi için (Asenkron) */
   jobId: string;
   statusMessage: string;
 }
+
+function createBaseSubmitPortraitJobRequest(): SubmitPortraitJobRequest {
+  return { tenantId: "", traceId: "", imageUri: "", audioUri: "", expression: "" };
+}
+
+export const SubmitPortraitJobRequest: MessageFns<SubmitPortraitJobRequest> = {
+  encode(message: SubmitPortraitJobRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.tenantId !== "") {
+      writer.uint32(10).string(message.tenantId);
+    }
+    if (message.traceId !== "") {
+      writer.uint32(18).string(message.traceId);
+    }
+    if (message.imageUri !== "") {
+      writer.uint32(26).string(message.imageUri);
+    }
+    if (message.audioUri !== "") {
+      writer.uint32(34).string(message.audioUri);
+    }
+    if (message.expression !== "") {
+      writer.uint32(42).string(message.expression);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): SubmitPortraitJobRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseSubmitPortraitJobRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 10) {
+            break;
+          }
+
+          message.tenantId = reader.string();
+          continue;
+        }
+        case 2: {
+          if (tag !== 18) {
+            break;
+          }
+
+          message.traceId = reader.string();
+          continue;
+        }
+        case 3: {
+          if (tag !== 26) {
+            break;
+          }
+
+          message.imageUri = reader.string();
+          continue;
+        }
+        case 4: {
+          if (tag !== 34) {
+            break;
+          }
+
+          message.audioUri = reader.string();
+          continue;
+        }
+        case 5: {
+          if (tag !== 42) {
+            break;
+          }
+
+          message.expression = reader.string();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): SubmitPortraitJobRequest {
+    return {
+      tenantId: isSet(object.tenantId)
+        ? globalThis.String(object.tenantId)
+        : isSet(object.tenant_id)
+        ? globalThis.String(object.tenant_id)
+        : "",
+      traceId: isSet(object.traceId)
+        ? globalThis.String(object.traceId)
+        : isSet(object.trace_id)
+        ? globalThis.String(object.trace_id)
+        : "",
+      imageUri: isSet(object.imageUri)
+        ? globalThis.String(object.imageUri)
+        : isSet(object.image_uri)
+        ? globalThis.String(object.image_uri)
+        : "",
+      audioUri: isSet(object.audioUri)
+        ? globalThis.String(object.audioUri)
+        : isSet(object.audio_uri)
+        ? globalThis.String(object.audio_uri)
+        : "",
+      expression: isSet(object.expression) ? globalThis.String(object.expression) : "",
+    };
+  },
+
+  toJSON(message: SubmitPortraitJobRequest): unknown {
+    const obj: any = {};
+    if (message.tenantId !== "") {
+      obj.tenantId = message.tenantId;
+    }
+    if (message.traceId !== "") {
+      obj.traceId = message.traceId;
+    }
+    if (message.imageUri !== "") {
+      obj.imageUri = message.imageUri;
+    }
+    if (message.audioUri !== "") {
+      obj.audioUri = message.audioUri;
+    }
+    if (message.expression !== "") {
+      obj.expression = message.expression;
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<SubmitPortraitJobRequest>, I>>(base?: I): SubmitPortraitJobRequest {
+    return SubmitPortraitJobRequest.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<SubmitPortraitJobRequest>, I>>(object: I): SubmitPortraitJobRequest {
+    const message = createBaseSubmitPortraitJobRequest();
+    message.tenantId = object.tenantId ?? "";
+    message.traceId = object.traceId ?? "";
+    message.imageUri = object.imageUri ?? "";
+    message.audioUri = object.audioUri ?? "";
+    message.expression = object.expression ?? "";
+    return message;
+  },
+};
+
+function createBaseSubmitPortraitJobResponse(): SubmitPortraitJobResponse {
+  return { accepted: false, jobId: "" };
+}
+
+export const SubmitPortraitJobResponse: MessageFns<SubmitPortraitJobResponse> = {
+  encode(message: SubmitPortraitJobResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.accepted !== false) {
+      writer.uint32(8).bool(message.accepted);
+    }
+    if (message.jobId !== "") {
+      writer.uint32(18).string(message.jobId);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): SubmitPortraitJobResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    const end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseSubmitPortraitJobResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
+          }
+
+          message.accepted = reader.bool();
+          continue;
+        }
+        case 2: {
+          if (tag !== 18) {
+            break;
+          }
+
+          message.jobId = reader.string();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): SubmitPortraitJobResponse {
+    return {
+      accepted: isSet(object.accepted) ? globalThis.Boolean(object.accepted) : false,
+      jobId: isSet(object.jobId)
+        ? globalThis.String(object.jobId)
+        : isSet(object.job_id)
+        ? globalThis.String(object.job_id)
+        : "",
+    };
+  },
+
+  toJSON(message: SubmitPortraitJobResponse): unknown {
+    const obj: any = {};
+    if (message.accepted !== false) {
+      obj.accepted = message.accepted;
+    }
+    if (message.jobId !== "") {
+      obj.jobId = message.jobId;
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<SubmitPortraitJobResponse>, I>>(base?: I): SubmitPortraitJobResponse {
+    return SubmitPortraitJobResponse.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<SubmitPortraitJobResponse>, I>>(object: I): SubmitPortraitJobResponse {
+    const message = createBaseSubmitPortraitJobResponse();
+    message.accepted = object.accepted ?? false;
+    message.jobId = object.jobId ?? "";
+    return message;
+  },
+};
 
 function createBaseSubmitVideoJobRequest(): SubmitVideoJobRequest {
   return {

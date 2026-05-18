@@ -37,7 +37,7 @@ class VideoGatewayService final {
   class StubInterface {
    public:
     virtual ~StubInterface() {}
-    // Video üretimi uzun sürdüğü için asenkron çalışır
+    // Standart T2V/I2V İşleri (Wan2.1 / LTX)
     virtual ::grpc::Status SubmitVideoJob(::grpc::ClientContext* context, const ::sentiric::video::v1::SubmitVideoJobRequest& request, ::sentiric::video::v1::SubmitVideoJobResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::video::v1::SubmitVideoJobResponse>> AsyncSubmitVideoJob(::grpc::ClientContext* context, const ::sentiric::video::v1::SubmitVideoJobRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::video::v1::SubmitVideoJobResponse>>(AsyncSubmitVideoJobRaw(context, request, cq));
@@ -45,12 +45,23 @@ class VideoGatewayService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::video::v1::SubmitVideoJobResponse>> PrepareAsyncSubmitVideoJob(::grpc::ClientContext* context, const ::sentiric::video::v1::SubmitVideoJobRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::video::v1::SubmitVideoJobResponse>>(PrepareAsyncSubmitVideoJobRaw(context, request, cq));
     }
+    // YENİ: Dudak Senkronu ve Portrait Animasyonu (LivePortrait / SadTalker)
+    virtual ::grpc::Status SubmitPortraitJob(::grpc::ClientContext* context, const ::sentiric::video::v1::SubmitPortraitJobRequest& request, ::sentiric::video::v1::SubmitPortraitJobResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::video::v1::SubmitPortraitJobResponse>> AsyncSubmitPortraitJob(::grpc::ClientContext* context, const ::sentiric::video::v1::SubmitPortraitJobRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::video::v1::SubmitPortraitJobResponse>>(AsyncSubmitPortraitJobRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::video::v1::SubmitPortraitJobResponse>> PrepareAsyncSubmitPortraitJob(::grpc::ClientContext* context, const ::sentiric::video::v1::SubmitPortraitJobRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::video::v1::SubmitPortraitJobResponse>>(PrepareAsyncSubmitPortraitJobRaw(context, request, cq));
+    }
     class async_interface {
      public:
       virtual ~async_interface() {}
-      // Video üretimi uzun sürdüğü için asenkron çalışır
+      // Standart T2V/I2V İşleri (Wan2.1 / LTX)
       virtual void SubmitVideoJob(::grpc::ClientContext* context, const ::sentiric::video::v1::SubmitVideoJobRequest* request, ::sentiric::video::v1::SubmitVideoJobResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void SubmitVideoJob(::grpc::ClientContext* context, const ::sentiric::video::v1::SubmitVideoJobRequest* request, ::sentiric::video::v1::SubmitVideoJobResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      // YENİ: Dudak Senkronu ve Portrait Animasyonu (LivePortrait / SadTalker)
+      virtual void SubmitPortraitJob(::grpc::ClientContext* context, const ::sentiric::video::v1::SubmitPortraitJobRequest* request, ::sentiric::video::v1::SubmitPortraitJobResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void SubmitPortraitJob(::grpc::ClientContext* context, const ::sentiric::video::v1::SubmitPortraitJobRequest* request, ::sentiric::video::v1::SubmitPortraitJobResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
@@ -58,6 +69,8 @@ class VideoGatewayService final {
    private:
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::video::v1::SubmitVideoJobResponse>* AsyncSubmitVideoJobRaw(::grpc::ClientContext* context, const ::sentiric::video::v1::SubmitVideoJobRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::video::v1::SubmitVideoJobResponse>* PrepareAsyncSubmitVideoJobRaw(::grpc::ClientContext* context, const ::sentiric::video::v1::SubmitVideoJobRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::video::v1::SubmitPortraitJobResponse>* AsyncSubmitPortraitJobRaw(::grpc::ClientContext* context, const ::sentiric::video::v1::SubmitPortraitJobRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::sentiric::video::v1::SubmitPortraitJobResponse>* PrepareAsyncSubmitPortraitJobRaw(::grpc::ClientContext* context, const ::sentiric::video::v1::SubmitPortraitJobRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -69,11 +82,20 @@ class VideoGatewayService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::video::v1::SubmitVideoJobResponse>> PrepareAsyncSubmitVideoJob(::grpc::ClientContext* context, const ::sentiric::video::v1::SubmitVideoJobRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::video::v1::SubmitVideoJobResponse>>(PrepareAsyncSubmitVideoJobRaw(context, request, cq));
     }
+    ::grpc::Status SubmitPortraitJob(::grpc::ClientContext* context, const ::sentiric::video::v1::SubmitPortraitJobRequest& request, ::sentiric::video::v1::SubmitPortraitJobResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::video::v1::SubmitPortraitJobResponse>> AsyncSubmitPortraitJob(::grpc::ClientContext* context, const ::sentiric::video::v1::SubmitPortraitJobRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::video::v1::SubmitPortraitJobResponse>>(AsyncSubmitPortraitJobRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::video::v1::SubmitPortraitJobResponse>> PrepareAsyncSubmitPortraitJob(::grpc::ClientContext* context, const ::sentiric::video::v1::SubmitPortraitJobRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::sentiric::video::v1::SubmitPortraitJobResponse>>(PrepareAsyncSubmitPortraitJobRaw(context, request, cq));
+    }
     class async final :
       public StubInterface::async_interface {
      public:
       void SubmitVideoJob(::grpc::ClientContext* context, const ::sentiric::video::v1::SubmitVideoJobRequest* request, ::sentiric::video::v1::SubmitVideoJobResponse* response, std::function<void(::grpc::Status)>) override;
       void SubmitVideoJob(::grpc::ClientContext* context, const ::sentiric::video::v1::SubmitVideoJobRequest* request, ::sentiric::video::v1::SubmitVideoJobResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void SubmitPortraitJob(::grpc::ClientContext* context, const ::sentiric::video::v1::SubmitPortraitJobRequest* request, ::sentiric::video::v1::SubmitPortraitJobResponse* response, std::function<void(::grpc::Status)>) override;
+      void SubmitPortraitJob(::grpc::ClientContext* context, const ::sentiric::video::v1::SubmitPortraitJobRequest* request, ::sentiric::video::v1::SubmitPortraitJobResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -87,7 +109,10 @@ class VideoGatewayService final {
     class async async_stub_{this};
     ::grpc::ClientAsyncResponseReader< ::sentiric::video::v1::SubmitVideoJobResponse>* AsyncSubmitVideoJobRaw(::grpc::ClientContext* context, const ::sentiric::video::v1::SubmitVideoJobRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::sentiric::video::v1::SubmitVideoJobResponse>* PrepareAsyncSubmitVideoJobRaw(::grpc::ClientContext* context, const ::sentiric::video::v1::SubmitVideoJobRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::sentiric::video::v1::SubmitPortraitJobResponse>* AsyncSubmitPortraitJobRaw(::grpc::ClientContext* context, const ::sentiric::video::v1::SubmitPortraitJobRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::sentiric::video::v1::SubmitPortraitJobResponse>* PrepareAsyncSubmitPortraitJobRaw(::grpc::ClientContext* context, const ::sentiric::video::v1::SubmitPortraitJobRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_SubmitVideoJob_;
+    const ::grpc::internal::RpcMethod rpcmethod_SubmitPortraitJob_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -95,8 +120,10 @@ class VideoGatewayService final {
    public:
     Service();
     virtual ~Service();
-    // Video üretimi uzun sürdüğü için asenkron çalışır
+    // Standart T2V/I2V İşleri (Wan2.1 / LTX)
     virtual ::grpc::Status SubmitVideoJob(::grpc::ServerContext* context, const ::sentiric::video::v1::SubmitVideoJobRequest* request, ::sentiric::video::v1::SubmitVideoJobResponse* response);
+    // YENİ: Dudak Senkronu ve Portrait Animasyonu (LivePortrait / SadTalker)
+    virtual ::grpc::Status SubmitPortraitJob(::grpc::ServerContext* context, const ::sentiric::video::v1::SubmitPortraitJobRequest* request, ::sentiric::video::v1::SubmitPortraitJobResponse* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_SubmitVideoJob : public BaseClass {
@@ -118,7 +145,27 @@ class VideoGatewayService final {
       ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_SubmitVideoJob<Service > AsyncService;
+  template <class BaseClass>
+  class WithAsyncMethod_SubmitPortraitJob : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_SubmitPortraitJob() {
+      ::grpc::Service::MarkMethodAsync(1);
+    }
+    ~WithAsyncMethod_SubmitPortraitJob() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubmitPortraitJob(::grpc::ServerContext* /*context*/, const ::sentiric::video::v1::SubmitPortraitJobRequest* /*request*/, ::sentiric::video::v1::SubmitPortraitJobResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSubmitPortraitJob(::grpc::ServerContext* context, ::sentiric::video::v1::SubmitPortraitJobRequest* request, ::grpc::ServerAsyncResponseWriter< ::sentiric::video::v1::SubmitPortraitJobResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_SubmitVideoJob<WithAsyncMethod_SubmitPortraitJob<Service > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_SubmitVideoJob : public BaseClass {
    private:
@@ -146,7 +193,34 @@ class VideoGatewayService final {
     virtual ::grpc::ServerUnaryReactor* SubmitVideoJob(
       ::grpc::CallbackServerContext* /*context*/, const ::sentiric::video::v1::SubmitVideoJobRequest* /*request*/, ::sentiric::video::v1::SubmitVideoJobResponse* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_SubmitVideoJob<Service > CallbackService;
+  template <class BaseClass>
+  class WithCallbackMethod_SubmitPortraitJob : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_SubmitPortraitJob() {
+      ::grpc::Service::MarkMethodCallback(1,
+          new ::grpc::internal::CallbackUnaryHandler< ::sentiric::video::v1::SubmitPortraitJobRequest, ::sentiric::video::v1::SubmitPortraitJobResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::sentiric::video::v1::SubmitPortraitJobRequest* request, ::sentiric::video::v1::SubmitPortraitJobResponse* response) { return this->SubmitPortraitJob(context, request, response); }));}
+    void SetMessageAllocatorFor_SubmitPortraitJob(
+        ::grpc::MessageAllocator< ::sentiric::video::v1::SubmitPortraitJobRequest, ::sentiric::video::v1::SubmitPortraitJobResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::sentiric::video::v1::SubmitPortraitJobRequest, ::sentiric::video::v1::SubmitPortraitJobResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_SubmitPortraitJob() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubmitPortraitJob(::grpc::ServerContext* /*context*/, const ::sentiric::video::v1::SubmitPortraitJobRequest* /*request*/, ::sentiric::video::v1::SubmitPortraitJobResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* SubmitPortraitJob(
+      ::grpc::CallbackServerContext* /*context*/, const ::sentiric::video::v1::SubmitPortraitJobRequest* /*request*/, ::sentiric::video::v1::SubmitPortraitJobResponse* /*response*/)  { return nullptr; }
+  };
+  typedef WithCallbackMethod_SubmitVideoJob<WithCallbackMethod_SubmitPortraitJob<Service > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_SubmitVideoJob : public BaseClass {
@@ -161,6 +235,23 @@ class VideoGatewayService final {
     }
     // disable synchronous version of this method
     ::grpc::Status SubmitVideoJob(::grpc::ServerContext* /*context*/, const ::sentiric::video::v1::SubmitVideoJobRequest* /*request*/, ::sentiric::video::v1::SubmitVideoJobResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_SubmitPortraitJob : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_SubmitPortraitJob() {
+      ::grpc::Service::MarkMethodGeneric(1);
+    }
+    ~WithGenericMethod_SubmitPortraitJob() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubmitPortraitJob(::grpc::ServerContext* /*context*/, const ::sentiric::video::v1::SubmitPortraitJobRequest* /*request*/, ::sentiric::video::v1::SubmitPortraitJobResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -186,6 +277,26 @@ class VideoGatewayService final {
     }
   };
   template <class BaseClass>
+  class WithRawMethod_SubmitPortraitJob : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_SubmitPortraitJob() {
+      ::grpc::Service::MarkMethodRaw(1);
+    }
+    ~WithRawMethod_SubmitPortraitJob() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubmitPortraitJob(::grpc::ServerContext* /*context*/, const ::sentiric::video::v1::SubmitPortraitJobRequest* /*request*/, ::sentiric::video::v1::SubmitPortraitJobResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSubmitPortraitJob(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithRawCallbackMethod_SubmitVideoJob : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
@@ -205,6 +316,28 @@ class VideoGatewayService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerUnaryReactor* SubmitVideoJob(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_SubmitPortraitJob : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_SubmitPortraitJob() {
+      ::grpc::Service::MarkMethodRawCallback(1,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SubmitPortraitJob(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_SubmitPortraitJob() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SubmitPortraitJob(::grpc::ServerContext* /*context*/, const ::sentiric::video::v1::SubmitPortraitJobRequest* /*request*/, ::sentiric::video::v1::SubmitPortraitJobResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* SubmitPortraitJob(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
@@ -234,9 +367,36 @@ class VideoGatewayService final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedSubmitVideoJob(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::sentiric::video::v1::SubmitVideoJobRequest,::sentiric::video::v1::SubmitVideoJobResponse>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_SubmitVideoJob<Service > StreamedUnaryService;
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_SubmitPortraitJob : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_SubmitPortraitJob() {
+      ::grpc::Service::MarkMethodStreamed(1,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::sentiric::video::v1::SubmitPortraitJobRequest, ::sentiric::video::v1::SubmitPortraitJobResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::sentiric::video::v1::SubmitPortraitJobRequest, ::sentiric::video::v1::SubmitPortraitJobResponse>* streamer) {
+                       return this->StreamedSubmitPortraitJob(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_SubmitPortraitJob() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status SubmitPortraitJob(::grpc::ServerContext* /*context*/, const ::sentiric::video::v1::SubmitPortraitJobRequest* /*request*/, ::sentiric::video::v1::SubmitPortraitJobResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedSubmitPortraitJob(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::sentiric::video::v1::SubmitPortraitJobRequest,::sentiric::video::v1::SubmitPortraitJobResponse>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_SubmitVideoJob<WithStreamedUnaryMethod_SubmitPortraitJob<Service > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_SubmitVideoJob<Service > StreamedService;
+  typedef WithStreamedUnaryMethod_SubmitVideoJob<WithStreamedUnaryMethod_SubmitPortraitJob<Service > > StreamedService;
 };
 
 }  // namespace v1

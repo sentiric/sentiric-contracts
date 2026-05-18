@@ -19,13 +19,25 @@ class VideoGatewayServiceStub(object):
                 request_serializer=sentiric_dot_video_dot_v1_dot_gateway__pb2.SubmitVideoJobRequest.SerializeToString,
                 response_deserializer=sentiric_dot_video_dot_v1_dot_gateway__pb2.SubmitVideoJobResponse.FromString,
                 _registered_method=True)
+        self.SubmitPortraitJob = channel.unary_unary(
+                '/sentiric.video.v1.VideoGatewayService/SubmitPortraitJob',
+                request_serializer=sentiric_dot_video_dot_v1_dot_gateway__pb2.SubmitPortraitJobRequest.SerializeToString,
+                response_deserializer=sentiric_dot_video_dot_v1_dot_gateway__pb2.SubmitPortraitJobResponse.FromString,
+                _registered_method=True)
 
 
 class VideoGatewayServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def SubmitVideoJob(self, request, context):
-        """Video üretimi uzun sürdüğü için asenkron çalışır
+        """Standart T2V/I2V İşleri (Wan2.1 / LTX)
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def SubmitPortraitJob(self, request, context):
+        """YENİ: Dudak Senkronu ve Portrait Animasyonu (LivePortrait / SadTalker)
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -38,6 +50,11 @@ def add_VideoGatewayServiceServicer_to_server(servicer, server):
                     servicer.SubmitVideoJob,
                     request_deserializer=sentiric_dot_video_dot_v1_dot_gateway__pb2.SubmitVideoJobRequest.FromString,
                     response_serializer=sentiric_dot_video_dot_v1_dot_gateway__pb2.SubmitVideoJobResponse.SerializeToString,
+            ),
+            'SubmitPortraitJob': grpc.unary_unary_rpc_method_handler(
+                    servicer.SubmitPortraitJob,
+                    request_deserializer=sentiric_dot_video_dot_v1_dot_gateway__pb2.SubmitPortraitJobRequest.FromString,
+                    response_serializer=sentiric_dot_video_dot_v1_dot_gateway__pb2.SubmitPortraitJobResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -67,6 +84,33 @@ class VideoGatewayService(object):
             '/sentiric.video.v1.VideoGatewayService/SubmitVideoJob',
             sentiric_dot_video_dot_v1_dot_gateway__pb2.SubmitVideoJobRequest.SerializeToString,
             sentiric_dot_video_dot_v1_dot_gateway__pb2.SubmitVideoJobResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def SubmitPortraitJob(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/sentiric.video.v1.VideoGatewayService/SubmitPortraitJob',
+            sentiric_dot_video_dot_v1_dot_gateway__pb2.SubmitPortraitJobRequest.SerializeToString,
+            sentiric_dot_video_dot_v1_dot_gateway__pb2.SubmitPortraitJobResponse.FromString,
             options,
             channel_credentials,
             insecure,

@@ -47,6 +47,12 @@ extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table
 namespace sentiric {
 namespace video {
 namespace v1 {
+class SubmitPortraitJobRequest;
+struct SubmitPortraitJobRequestDefaultTypeInternal;
+extern SubmitPortraitJobRequestDefaultTypeInternal _SubmitPortraitJobRequest_default_instance_;
+class SubmitPortraitJobResponse;
+struct SubmitPortraitJobResponseDefaultTypeInternal;
+extern SubmitPortraitJobResponseDefaultTypeInternal _SubmitPortraitJobResponse_default_instance_;
 class SubmitVideoJobRequest;
 struct SubmitVideoJobRequestDefaultTypeInternal;
 extern SubmitVideoJobRequestDefaultTypeInternal _SubmitVideoJobRequest_default_instance_;
@@ -57,6 +63,8 @@ extern SubmitVideoJobResponseDefaultTypeInternal _SubmitVideoJobResponse_default
 }  // namespace video
 }  // namespace sentiric
 PROTOBUF_NAMESPACE_OPEN
+template<> ::sentiric::video::v1::SubmitPortraitJobRequest* Arena::CreateMaybeMessage<::sentiric::video::v1::SubmitPortraitJobRequest>(Arena*);
+template<> ::sentiric::video::v1::SubmitPortraitJobResponse* Arena::CreateMaybeMessage<::sentiric::video::v1::SubmitPortraitJobResponse>(Arena*);
 template<> ::sentiric::video::v1::SubmitVideoJobRequest* Arena::CreateMaybeMessage<::sentiric::video::v1::SubmitVideoJobRequest>(Arena*);
 template<> ::sentiric::video::v1::SubmitVideoJobResponse* Arena::CreateMaybeMessage<::sentiric::video::v1::SubmitVideoJobResponse>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
@@ -65,6 +73,387 @@ namespace video {
 namespace v1 {
 
 // ===================================================================
+
+class SubmitPortraitJobRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.video.v1.SubmitPortraitJobRequest) */ {
+ public:
+  inline SubmitPortraitJobRequest() : SubmitPortraitJobRequest(nullptr) {}
+  ~SubmitPortraitJobRequest() override;
+  explicit PROTOBUF_CONSTEXPR SubmitPortraitJobRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  SubmitPortraitJobRequest(const SubmitPortraitJobRequest& from);
+  SubmitPortraitJobRequest(SubmitPortraitJobRequest&& from) noexcept
+    : SubmitPortraitJobRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline SubmitPortraitJobRequest& operator=(const SubmitPortraitJobRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SubmitPortraitJobRequest& operator=(SubmitPortraitJobRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SubmitPortraitJobRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SubmitPortraitJobRequest* internal_default_instance() {
+    return reinterpret_cast<const SubmitPortraitJobRequest*>(
+               &_SubmitPortraitJobRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    0;
+
+  friend void swap(SubmitPortraitJobRequest& a, SubmitPortraitJobRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(SubmitPortraitJobRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SubmitPortraitJobRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SubmitPortraitJobRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<SubmitPortraitJobRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const SubmitPortraitJobRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const SubmitPortraitJobRequest& from) {
+    SubmitPortraitJobRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(SubmitPortraitJobRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.video.v1.SubmitPortraitJobRequest";
+  }
+  protected:
+  explicit SubmitPortraitJobRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kTenantIdFieldNumber = 1,
+    kTraceIdFieldNumber = 2,
+    kImageUriFieldNumber = 3,
+    kAudioUriFieldNumber = 4,
+    kExpressionFieldNumber = 5,
+  };
+  // string tenant_id = 1;
+  void clear_tenant_id();
+  const std::string& tenant_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_tenant_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_tenant_id();
+  PROTOBUF_NODISCARD std::string* release_tenant_id();
+  void set_allocated_tenant_id(std::string* tenant_id);
+  private:
+  const std::string& _internal_tenant_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_tenant_id(const std::string& value);
+  std::string* _internal_mutable_tenant_id();
+  public:
+
+  // string trace_id = 2;
+  void clear_trace_id();
+  const std::string& trace_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_trace_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_trace_id();
+  PROTOBUF_NODISCARD std::string* release_trace_id();
+  void set_allocated_trace_id(std::string* trace_id);
+  private:
+  const std::string& _internal_trace_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_trace_id(const std::string& value);
+  std::string* _internal_mutable_trace_id();
+  public:
+
+  // string image_uri = 3;
+  void clear_image_uri();
+  const std::string& image_uri() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_image_uri(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_image_uri();
+  PROTOBUF_NODISCARD std::string* release_image_uri();
+  void set_allocated_image_uri(std::string* image_uri);
+  private:
+  const std::string& _internal_image_uri() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_image_uri(const std::string& value);
+  std::string* _internal_mutable_image_uri();
+  public:
+
+  // string audio_uri = 4;
+  void clear_audio_uri();
+  const std::string& audio_uri() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_audio_uri(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_audio_uri();
+  PROTOBUF_NODISCARD std::string* release_audio_uri();
+  void set_allocated_audio_uri(std::string* audio_uri);
+  private:
+  const std::string& _internal_audio_uri() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_audio_uri(const std::string& value);
+  std::string* _internal_mutable_audio_uri();
+  public:
+
+  // string expression = 5;
+  void clear_expression();
+  const std::string& expression() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_expression(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_expression();
+  PROTOBUF_NODISCARD std::string* release_expression();
+  void set_allocated_expression(std::string* expression);
+  private:
+  const std::string& _internal_expression() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_expression(const std::string& value);
+  std::string* _internal_mutable_expression();
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.video.v1.SubmitPortraitJobRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr tenant_id_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr trace_id_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr image_uri_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr audio_uri_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr expression_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2fvideo_2fv1_2fgateway_2eproto;
+};
+// -------------------------------------------------------------------
+
+class SubmitPortraitJobResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.video.v1.SubmitPortraitJobResponse) */ {
+ public:
+  inline SubmitPortraitJobResponse() : SubmitPortraitJobResponse(nullptr) {}
+  ~SubmitPortraitJobResponse() override;
+  explicit PROTOBUF_CONSTEXPR SubmitPortraitJobResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  SubmitPortraitJobResponse(const SubmitPortraitJobResponse& from);
+  SubmitPortraitJobResponse(SubmitPortraitJobResponse&& from) noexcept
+    : SubmitPortraitJobResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline SubmitPortraitJobResponse& operator=(const SubmitPortraitJobResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SubmitPortraitJobResponse& operator=(SubmitPortraitJobResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SubmitPortraitJobResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SubmitPortraitJobResponse* internal_default_instance() {
+    return reinterpret_cast<const SubmitPortraitJobResponse*>(
+               &_SubmitPortraitJobResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    1;
+
+  friend void swap(SubmitPortraitJobResponse& a, SubmitPortraitJobResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(SubmitPortraitJobResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SubmitPortraitJobResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  SubmitPortraitJobResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<SubmitPortraitJobResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const SubmitPortraitJobResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const SubmitPortraitJobResponse& from) {
+    SubmitPortraitJobResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(SubmitPortraitJobResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "sentiric.video.v1.SubmitPortraitJobResponse";
+  }
+  protected:
+  explicit SubmitPortraitJobResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kJobIdFieldNumber = 2,
+    kAcceptedFieldNumber = 1,
+  };
+  // string job_id = 2;
+  void clear_job_id();
+  const std::string& job_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_job_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_job_id();
+  PROTOBUF_NODISCARD std::string* release_job_id();
+  void set_allocated_job_id(std::string* job_id);
+  private:
+  const std::string& _internal_job_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_job_id(const std::string& value);
+  std::string* _internal_mutable_job_id();
+  public:
+
+  // bool accepted = 1;
+  void clear_accepted();
+  bool accepted() const;
+  void set_accepted(bool value);
+  private:
+  bool _internal_accepted() const;
+  void _internal_set_accepted(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:sentiric.video.v1.SubmitPortraitJobResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr job_id_;
+    bool accepted_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_sentiric_2fvideo_2fv1_2fgateway_2eproto;
+};
+// -------------------------------------------------------------------
 
 class SubmitVideoJobRequest final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:sentiric.video.v1.SubmitVideoJobRequest) */ {
@@ -114,7 +503,7 @@ class SubmitVideoJobRequest final :
                &_SubmitVideoJobRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    0;
+    2;
 
   friend void swap(SubmitVideoJobRequest& a, SubmitVideoJobRequest& b) {
     a.Swap(&b);
@@ -374,7 +763,7 @@ class SubmitVideoJobResponse final :
                &_SubmitVideoJobResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    3;
 
   friend void swap(SubmitVideoJobResponse& a, SubmitVideoJobResponse& b) {
     a.Swap(&b);
@@ -513,6 +902,334 @@ class SubmitVideoJobResponse final :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
+// SubmitPortraitJobRequest
+
+// string tenant_id = 1;
+inline void SubmitPortraitJobRequest::clear_tenant_id() {
+  _impl_.tenant_id_.ClearToEmpty();
+}
+inline const std::string& SubmitPortraitJobRequest::tenant_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.video.v1.SubmitPortraitJobRequest.tenant_id)
+  return _internal_tenant_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SubmitPortraitJobRequest::set_tenant_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.tenant_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.video.v1.SubmitPortraitJobRequest.tenant_id)
+}
+inline std::string* SubmitPortraitJobRequest::mutable_tenant_id() {
+  std::string* _s = _internal_mutable_tenant_id();
+  // @@protoc_insertion_point(field_mutable:sentiric.video.v1.SubmitPortraitJobRequest.tenant_id)
+  return _s;
+}
+inline const std::string& SubmitPortraitJobRequest::_internal_tenant_id() const {
+  return _impl_.tenant_id_.Get();
+}
+inline void SubmitPortraitJobRequest::_internal_set_tenant_id(const std::string& value) {
+  
+  _impl_.tenant_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SubmitPortraitJobRequest::_internal_mutable_tenant_id() {
+  
+  return _impl_.tenant_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SubmitPortraitJobRequest::release_tenant_id() {
+  // @@protoc_insertion_point(field_release:sentiric.video.v1.SubmitPortraitJobRequest.tenant_id)
+  return _impl_.tenant_id_.Release();
+}
+inline void SubmitPortraitJobRequest::set_allocated_tenant_id(std::string* tenant_id) {
+  if (tenant_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.tenant_id_.SetAllocated(tenant_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.tenant_id_.IsDefault()) {
+    _impl_.tenant_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.video.v1.SubmitPortraitJobRequest.tenant_id)
+}
+
+// string trace_id = 2;
+inline void SubmitPortraitJobRequest::clear_trace_id() {
+  _impl_.trace_id_.ClearToEmpty();
+}
+inline const std::string& SubmitPortraitJobRequest::trace_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.video.v1.SubmitPortraitJobRequest.trace_id)
+  return _internal_trace_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SubmitPortraitJobRequest::set_trace_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.trace_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.video.v1.SubmitPortraitJobRequest.trace_id)
+}
+inline std::string* SubmitPortraitJobRequest::mutable_trace_id() {
+  std::string* _s = _internal_mutable_trace_id();
+  // @@protoc_insertion_point(field_mutable:sentiric.video.v1.SubmitPortraitJobRequest.trace_id)
+  return _s;
+}
+inline const std::string& SubmitPortraitJobRequest::_internal_trace_id() const {
+  return _impl_.trace_id_.Get();
+}
+inline void SubmitPortraitJobRequest::_internal_set_trace_id(const std::string& value) {
+  
+  _impl_.trace_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SubmitPortraitJobRequest::_internal_mutable_trace_id() {
+  
+  return _impl_.trace_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SubmitPortraitJobRequest::release_trace_id() {
+  // @@protoc_insertion_point(field_release:sentiric.video.v1.SubmitPortraitJobRequest.trace_id)
+  return _impl_.trace_id_.Release();
+}
+inline void SubmitPortraitJobRequest::set_allocated_trace_id(std::string* trace_id) {
+  if (trace_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.trace_id_.SetAllocated(trace_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.trace_id_.IsDefault()) {
+    _impl_.trace_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.video.v1.SubmitPortraitJobRequest.trace_id)
+}
+
+// string image_uri = 3;
+inline void SubmitPortraitJobRequest::clear_image_uri() {
+  _impl_.image_uri_.ClearToEmpty();
+}
+inline const std::string& SubmitPortraitJobRequest::image_uri() const {
+  // @@protoc_insertion_point(field_get:sentiric.video.v1.SubmitPortraitJobRequest.image_uri)
+  return _internal_image_uri();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SubmitPortraitJobRequest::set_image_uri(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.image_uri_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.video.v1.SubmitPortraitJobRequest.image_uri)
+}
+inline std::string* SubmitPortraitJobRequest::mutable_image_uri() {
+  std::string* _s = _internal_mutable_image_uri();
+  // @@protoc_insertion_point(field_mutable:sentiric.video.v1.SubmitPortraitJobRequest.image_uri)
+  return _s;
+}
+inline const std::string& SubmitPortraitJobRequest::_internal_image_uri() const {
+  return _impl_.image_uri_.Get();
+}
+inline void SubmitPortraitJobRequest::_internal_set_image_uri(const std::string& value) {
+  
+  _impl_.image_uri_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SubmitPortraitJobRequest::_internal_mutable_image_uri() {
+  
+  return _impl_.image_uri_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SubmitPortraitJobRequest::release_image_uri() {
+  // @@protoc_insertion_point(field_release:sentiric.video.v1.SubmitPortraitJobRequest.image_uri)
+  return _impl_.image_uri_.Release();
+}
+inline void SubmitPortraitJobRequest::set_allocated_image_uri(std::string* image_uri) {
+  if (image_uri != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.image_uri_.SetAllocated(image_uri, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.image_uri_.IsDefault()) {
+    _impl_.image_uri_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.video.v1.SubmitPortraitJobRequest.image_uri)
+}
+
+// string audio_uri = 4;
+inline void SubmitPortraitJobRequest::clear_audio_uri() {
+  _impl_.audio_uri_.ClearToEmpty();
+}
+inline const std::string& SubmitPortraitJobRequest::audio_uri() const {
+  // @@protoc_insertion_point(field_get:sentiric.video.v1.SubmitPortraitJobRequest.audio_uri)
+  return _internal_audio_uri();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SubmitPortraitJobRequest::set_audio_uri(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.audio_uri_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.video.v1.SubmitPortraitJobRequest.audio_uri)
+}
+inline std::string* SubmitPortraitJobRequest::mutable_audio_uri() {
+  std::string* _s = _internal_mutable_audio_uri();
+  // @@protoc_insertion_point(field_mutable:sentiric.video.v1.SubmitPortraitJobRequest.audio_uri)
+  return _s;
+}
+inline const std::string& SubmitPortraitJobRequest::_internal_audio_uri() const {
+  return _impl_.audio_uri_.Get();
+}
+inline void SubmitPortraitJobRequest::_internal_set_audio_uri(const std::string& value) {
+  
+  _impl_.audio_uri_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SubmitPortraitJobRequest::_internal_mutable_audio_uri() {
+  
+  return _impl_.audio_uri_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SubmitPortraitJobRequest::release_audio_uri() {
+  // @@protoc_insertion_point(field_release:sentiric.video.v1.SubmitPortraitJobRequest.audio_uri)
+  return _impl_.audio_uri_.Release();
+}
+inline void SubmitPortraitJobRequest::set_allocated_audio_uri(std::string* audio_uri) {
+  if (audio_uri != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.audio_uri_.SetAllocated(audio_uri, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.audio_uri_.IsDefault()) {
+    _impl_.audio_uri_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.video.v1.SubmitPortraitJobRequest.audio_uri)
+}
+
+// string expression = 5;
+inline void SubmitPortraitJobRequest::clear_expression() {
+  _impl_.expression_.ClearToEmpty();
+}
+inline const std::string& SubmitPortraitJobRequest::expression() const {
+  // @@protoc_insertion_point(field_get:sentiric.video.v1.SubmitPortraitJobRequest.expression)
+  return _internal_expression();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SubmitPortraitJobRequest::set_expression(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.expression_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.video.v1.SubmitPortraitJobRequest.expression)
+}
+inline std::string* SubmitPortraitJobRequest::mutable_expression() {
+  std::string* _s = _internal_mutable_expression();
+  // @@protoc_insertion_point(field_mutable:sentiric.video.v1.SubmitPortraitJobRequest.expression)
+  return _s;
+}
+inline const std::string& SubmitPortraitJobRequest::_internal_expression() const {
+  return _impl_.expression_.Get();
+}
+inline void SubmitPortraitJobRequest::_internal_set_expression(const std::string& value) {
+  
+  _impl_.expression_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SubmitPortraitJobRequest::_internal_mutable_expression() {
+  
+  return _impl_.expression_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SubmitPortraitJobRequest::release_expression() {
+  // @@protoc_insertion_point(field_release:sentiric.video.v1.SubmitPortraitJobRequest.expression)
+  return _impl_.expression_.Release();
+}
+inline void SubmitPortraitJobRequest::set_allocated_expression(std::string* expression) {
+  if (expression != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.expression_.SetAllocated(expression, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.expression_.IsDefault()) {
+    _impl_.expression_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.video.v1.SubmitPortraitJobRequest.expression)
+}
+
+// -------------------------------------------------------------------
+
+// SubmitPortraitJobResponse
+
+// bool accepted = 1;
+inline void SubmitPortraitJobResponse::clear_accepted() {
+  _impl_.accepted_ = false;
+}
+inline bool SubmitPortraitJobResponse::_internal_accepted() const {
+  return _impl_.accepted_;
+}
+inline bool SubmitPortraitJobResponse::accepted() const {
+  // @@protoc_insertion_point(field_get:sentiric.video.v1.SubmitPortraitJobResponse.accepted)
+  return _internal_accepted();
+}
+inline void SubmitPortraitJobResponse::_internal_set_accepted(bool value) {
+  
+  _impl_.accepted_ = value;
+}
+inline void SubmitPortraitJobResponse::set_accepted(bool value) {
+  _internal_set_accepted(value);
+  // @@protoc_insertion_point(field_set:sentiric.video.v1.SubmitPortraitJobResponse.accepted)
+}
+
+// string job_id = 2;
+inline void SubmitPortraitJobResponse::clear_job_id() {
+  _impl_.job_id_.ClearToEmpty();
+}
+inline const std::string& SubmitPortraitJobResponse::job_id() const {
+  // @@protoc_insertion_point(field_get:sentiric.video.v1.SubmitPortraitJobResponse.job_id)
+  return _internal_job_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SubmitPortraitJobResponse::set_job_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.job_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:sentiric.video.v1.SubmitPortraitJobResponse.job_id)
+}
+inline std::string* SubmitPortraitJobResponse::mutable_job_id() {
+  std::string* _s = _internal_mutable_job_id();
+  // @@protoc_insertion_point(field_mutable:sentiric.video.v1.SubmitPortraitJobResponse.job_id)
+  return _s;
+}
+inline const std::string& SubmitPortraitJobResponse::_internal_job_id() const {
+  return _impl_.job_id_.Get();
+}
+inline void SubmitPortraitJobResponse::_internal_set_job_id(const std::string& value) {
+  
+  _impl_.job_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* SubmitPortraitJobResponse::_internal_mutable_job_id() {
+  
+  return _impl_.job_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* SubmitPortraitJobResponse::release_job_id() {
+  // @@protoc_insertion_point(field_release:sentiric.video.v1.SubmitPortraitJobResponse.job_id)
+  return _impl_.job_id_.Release();
+}
+inline void SubmitPortraitJobResponse::set_allocated_job_id(std::string* job_id) {
+  if (job_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.job_id_.SetAllocated(job_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.job_id_.IsDefault()) {
+    _impl_.job_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:sentiric.video.v1.SubmitPortraitJobResponse.job_id)
+}
+
+// -------------------------------------------------------------------
+
 // SubmitVideoJobRequest
 
 // string tenant_id = 1;
@@ -1000,6 +1717,10 @@ inline void SubmitVideoJobResponse::set_allocated_status_message(std::string* st
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 

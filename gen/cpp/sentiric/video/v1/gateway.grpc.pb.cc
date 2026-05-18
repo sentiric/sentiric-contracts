@@ -25,6 +25,7 @@ namespace v1 {
 
 static const char* VideoGatewayService_method_names[] = {
   "/sentiric.video.v1.VideoGatewayService/SubmitVideoJob",
+  "/sentiric.video.v1.VideoGatewayService/SubmitPortraitJob",
 };
 
 std::unique_ptr< VideoGatewayService::Stub> VideoGatewayService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -35,6 +36,7 @@ std::unique_ptr< VideoGatewayService::Stub> VideoGatewayService::NewStub(const s
 
 VideoGatewayService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
   : channel_(channel), rpcmethod_SubmitVideoJob_(VideoGatewayService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SubmitPortraitJob_(VideoGatewayService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status VideoGatewayService::Stub::SubmitVideoJob(::grpc::ClientContext* context, const ::sentiric::video::v1::SubmitVideoJobRequest& request, ::sentiric::video::v1::SubmitVideoJobResponse* response) {
@@ -60,6 +62,29 @@ void VideoGatewayService::Stub::async::SubmitVideoJob(::grpc::ClientContext* con
   return result;
 }
 
+::grpc::Status VideoGatewayService::Stub::SubmitPortraitJob(::grpc::ClientContext* context, const ::sentiric::video::v1::SubmitPortraitJobRequest& request, ::sentiric::video::v1::SubmitPortraitJobResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::sentiric::video::v1::SubmitPortraitJobRequest, ::sentiric::video::v1::SubmitPortraitJobResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_SubmitPortraitJob_, context, request, response);
+}
+
+void VideoGatewayService::Stub::async::SubmitPortraitJob(::grpc::ClientContext* context, const ::sentiric::video::v1::SubmitPortraitJobRequest* request, ::sentiric::video::v1::SubmitPortraitJobResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::sentiric::video::v1::SubmitPortraitJobRequest, ::sentiric::video::v1::SubmitPortraitJobResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SubmitPortraitJob_, context, request, response, std::move(f));
+}
+
+void VideoGatewayService::Stub::async::SubmitPortraitJob(::grpc::ClientContext* context, const ::sentiric::video::v1::SubmitPortraitJobRequest* request, ::sentiric::video::v1::SubmitPortraitJobResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_SubmitPortraitJob_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::sentiric::video::v1::SubmitPortraitJobResponse>* VideoGatewayService::Stub::PrepareAsyncSubmitPortraitJobRaw(::grpc::ClientContext* context, const ::sentiric::video::v1::SubmitPortraitJobRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::sentiric::video::v1::SubmitPortraitJobResponse, ::sentiric::video::v1::SubmitPortraitJobRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_SubmitPortraitJob_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::sentiric::video::v1::SubmitPortraitJobResponse>* VideoGatewayService::Stub::AsyncSubmitPortraitJobRaw(::grpc::ClientContext* context, const ::sentiric::video::v1::SubmitPortraitJobRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncSubmitPortraitJobRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
 VideoGatewayService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       VideoGatewayService_method_names[0],
@@ -71,12 +96,29 @@ VideoGatewayService::Service::Service() {
              ::sentiric::video::v1::SubmitVideoJobResponse* resp) {
                return service->SubmitVideoJob(ctx, req, resp);
              }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      VideoGatewayService_method_names[1],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< VideoGatewayService::Service, ::sentiric::video::v1::SubmitPortraitJobRequest, ::sentiric::video::v1::SubmitPortraitJobResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](VideoGatewayService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::sentiric::video::v1::SubmitPortraitJobRequest* req,
+             ::sentiric::video::v1::SubmitPortraitJobResponse* resp) {
+               return service->SubmitPortraitJob(ctx, req, resp);
+             }, this)));
 }
 
 VideoGatewayService::Service::~Service() {
 }
 
 ::grpc::Status VideoGatewayService::Service::SubmitVideoJob(::grpc::ServerContext* context, const ::sentiric::video::v1::SubmitVideoJobRequest* request, ::sentiric::video::v1::SubmitVideoJobResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status VideoGatewayService::Service::SubmitPortraitJob(::grpc::ServerContext* context, const ::sentiric::video::v1::SubmitPortraitJobRequest* request, ::sentiric::video::v1::SubmitPortraitJobResponse* response) {
   (void) context;
   (void) request;
   (void) response;

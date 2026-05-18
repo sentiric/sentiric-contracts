@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1fsentiric/video/v1/gateway.proto\x12\x11sentiric.video.v1\"\xbd\x02\n\x15SubmitVideoJobRequest\x12\x1b\n\ttenant_id\x18\x01 \x01(\tR\x08tenantId\x12\x19\n\x08trace_id\x18\x02 \x01(\tR\x07traceId\x12\x16\n\x06prompt\x18\x03 \x01(\tR\x06prompt\x12\x33\n\x13reference_image_uri\x18\x04 \x01(\tH\x00R\x11referenceImageUri\x88\x01\x01\x12\'\n\x0fpreferred_model\x18\x05 \x01(\tR\x0epreferredModel\x12)\n\x10\x64uration_seconds\x18\x06 \x01(\x05R\x0f\x64urationSeconds\x12!\n\x0c\x61spect_ratio\x18\x07 \x01(\tR\x0b\x61spectRatio\x12\x10\n\x03\x66ps\x18\x08 \x01(\x05R\x03\x66psB\x16\n\x14_reference_image_uri\"r\n\x16SubmitVideoJobResponse\x12\x1a\n\x08\x61\x63\x63\x65pted\x18\x01 \x01(\x08R\x08\x61\x63\x63\x65pted\x12\x15\n\x06job_id\x18\x02 \x01(\tR\x05jobId\x12%\n\x0estatus_message\x18\x03 \x01(\tR\rstatusMessage2|\n\x13VideoGatewayService\x12\x65\n\x0eSubmitVideoJob\x12(.sentiric.video.v1.SubmitVideoJobRequest\x1a).sentiric.video.v1.SubmitVideoJobResponseBIZGgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/video/v1;videov1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1fsentiric/video/v1/gateway.proto\x12\x11sentiric.video.v1\"\xac\x01\n\x18SubmitPortraitJobRequest\x12\x1b\n\ttenant_id\x18\x01 \x01(\tR\x08tenantId\x12\x19\n\x08trace_id\x18\x02 \x01(\tR\x07traceId\x12\x1b\n\timage_uri\x18\x03 \x01(\tR\x08imageUri\x12\x1b\n\taudio_uri\x18\x04 \x01(\tR\x08\x61udioUri\x12\x1e\n\nexpression\x18\x05 \x01(\tR\nexpression\"N\n\x19SubmitPortraitJobResponse\x12\x1a\n\x08\x61\x63\x63\x65pted\x18\x01 \x01(\x08R\x08\x61\x63\x63\x65pted\x12\x15\n\x06job_id\x18\x02 \x01(\tR\x05jobId\"\xbd\x02\n\x15SubmitVideoJobRequest\x12\x1b\n\ttenant_id\x18\x01 \x01(\tR\x08tenantId\x12\x19\n\x08trace_id\x18\x02 \x01(\tR\x07traceId\x12\x16\n\x06prompt\x18\x03 \x01(\tR\x06prompt\x12\x33\n\x13reference_image_uri\x18\x04 \x01(\tH\x00R\x11referenceImageUri\x88\x01\x01\x12\'\n\x0fpreferred_model\x18\x05 \x01(\tR\x0epreferredModel\x12)\n\x10\x64uration_seconds\x18\x06 \x01(\x05R\x0f\x64urationSeconds\x12!\n\x0c\x61spect_ratio\x18\x07 \x01(\tR\x0b\x61spectRatio\x12\x10\n\x03\x66ps\x18\x08 \x01(\x05R\x03\x66psB\x16\n\x14_reference_image_uri\"r\n\x16SubmitVideoJobResponse\x12\x1a\n\x08\x61\x63\x63\x65pted\x18\x01 \x01(\x08R\x08\x61\x63\x63\x65pted\x12\x15\n\x06job_id\x18\x02 \x01(\tR\x05jobId\x12%\n\x0estatus_message\x18\x03 \x01(\tR\rstatusMessage2\xec\x01\n\x13VideoGatewayService\x12\x65\n\x0eSubmitVideoJob\x12(.sentiric.video.v1.SubmitVideoJobRequest\x1a).sentiric.video.v1.SubmitVideoJobResponse\x12n\n\x11SubmitPortraitJob\x12+.sentiric.video.v1.SubmitPortraitJobRequest\x1a,.sentiric.video.v1.SubmitPortraitJobResponseBIZGgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/video/v1;videov1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -32,10 +32,14 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'sentiric.video.v1.gateway_p
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
   _globals['DESCRIPTOR']._serialized_options = b'ZGgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/video/v1;videov1'
-  _globals['_SUBMITVIDEOJOBREQUEST']._serialized_start=55
-  _globals['_SUBMITVIDEOJOBREQUEST']._serialized_end=372
-  _globals['_SUBMITVIDEOJOBRESPONSE']._serialized_start=374
-  _globals['_SUBMITVIDEOJOBRESPONSE']._serialized_end=488
-  _globals['_VIDEOGATEWAYSERVICE']._serialized_start=490
-  _globals['_VIDEOGATEWAYSERVICE']._serialized_end=614
+  _globals['_SUBMITPORTRAITJOBREQUEST']._serialized_start=55
+  _globals['_SUBMITPORTRAITJOBREQUEST']._serialized_end=227
+  _globals['_SUBMITPORTRAITJOBRESPONSE']._serialized_start=229
+  _globals['_SUBMITPORTRAITJOBRESPONSE']._serialized_end=307
+  _globals['_SUBMITVIDEOJOBREQUEST']._serialized_start=310
+  _globals['_SUBMITVIDEOJOBREQUEST']._serialized_end=627
+  _globals['_SUBMITVIDEOJOBRESPONSE']._serialized_start=629
+  _globals['_SUBMITVIDEOJOBRESPONSE']._serialized_end=743
+  _globals['_VIDEOGATEWAYSERVICE']._serialized_start=746
+  _globals['_VIDEOGATEWAYSERVICE']._serialized_end=982
 # @@protoc_insertion_point(module_scope)

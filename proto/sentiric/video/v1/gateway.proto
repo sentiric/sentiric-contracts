@@ -1,31 +1,42 @@
 syntax = "proto3";
 package sentiric.video.v1;
+
 option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/video/v1;videov1";
 
 service VideoGatewayService {
-  // Video üretimi uzun sürdüğü için asenkron çalışır
+  // Standart T2V/I2V İşleri (Wan2.1 / LTX)
   rpc SubmitVideoJob(SubmitVideoJobRequest) returns (SubmitVideoJobResponse);
+
+  // YENİ: Dudak Senkronu ve Portrait Animasyonu (LivePortrait / SadTalker)
+  rpc SubmitPortraitJob(SubmitPortraitJobRequest) returns (SubmitPortraitJobResponse);
+}
+
+message SubmitPortraitJobRequest {
+  string tenant_id = 1;
+  string trace_id = 2;
+  string image_uri = 3; // S3'teki karakter resmi (SD-Turbo çıktısı)
+  string audio_uri = 4; // S3'teki ses dosyası (OmniVoice çıktısı)
+  string expression = 5; // "neutral", "happy", "serious"
+}
+
+message SubmitPortraitJobResponse {
+  bool accepted = 1;
+  string job_id = 2;
 }
 
 message SubmitVideoJobRequest {
   string tenant_id = 1;
   string trace_id = 2;
-  
-  // T2V (Metinden Video) veya I2V (Görselden Video)
   string prompt = 3;
-  optional string reference_image_uri = 4; // S3 URL'si
-  
-  // Hangi modelin kullanılacağı (örn: ltx-video, wan2gp, svd)
-  string preferred_model = 5; 
-  
-  // Video Parametreleri
+  optional string reference_image_uri = 4;
+  string preferred_model = 5;
   int32 duration_seconds = 6;
-  string aspect_ratio = 7; // "16:9", "9:16", "1:1"
+  string aspect_ratio = 7;
   int32 fps = 8;
 }
 
 message SubmitVideoJobResponse {
   bool accepted = 1;
-  string job_id = 2; // İş takibi için (Asenkron)
+  string job_id = 2;
   string status_message = 3;
 }

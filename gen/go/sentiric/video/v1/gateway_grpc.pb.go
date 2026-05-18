@@ -19,15 +19,18 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	VideoGatewayService_SubmitVideoJob_FullMethodName = "/sentiric.video.v1.VideoGatewayService/SubmitVideoJob"
+	VideoGatewayService_SubmitVideoJob_FullMethodName    = "/sentiric.video.v1.VideoGatewayService/SubmitVideoJob"
+	VideoGatewayService_SubmitPortraitJob_FullMethodName = "/sentiric.video.v1.VideoGatewayService/SubmitPortraitJob"
 )
 
 // VideoGatewayServiceClient is the client API for VideoGatewayService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type VideoGatewayServiceClient interface {
-	// Video üretimi uzun sürdüğü için asenkron çalışır
+	// Standart T2V/I2V İşleri (Wan2.1 / LTX)
 	SubmitVideoJob(ctx context.Context, in *SubmitVideoJobRequest, opts ...grpc.CallOption) (*SubmitVideoJobResponse, error)
+	// YENİ: Dudak Senkronu ve Portrait Animasyonu (LivePortrait / SadTalker)
+	SubmitPortraitJob(ctx context.Context, in *SubmitPortraitJobRequest, opts ...grpc.CallOption) (*SubmitPortraitJobResponse, error)
 }
 
 type videoGatewayServiceClient struct {
@@ -48,12 +51,24 @@ func (c *videoGatewayServiceClient) SubmitVideoJob(ctx context.Context, in *Subm
 	return out, nil
 }
 
+func (c *videoGatewayServiceClient) SubmitPortraitJob(ctx context.Context, in *SubmitPortraitJobRequest, opts ...grpc.CallOption) (*SubmitPortraitJobResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SubmitPortraitJobResponse)
+	err := c.cc.Invoke(ctx, VideoGatewayService_SubmitPortraitJob_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // VideoGatewayServiceServer is the server API for VideoGatewayService service.
 // All implementations should embed UnimplementedVideoGatewayServiceServer
 // for forward compatibility.
 type VideoGatewayServiceServer interface {
-	// Video üretimi uzun sürdüğü için asenkron çalışır
+	// Standart T2V/I2V İşleri (Wan2.1 / LTX)
 	SubmitVideoJob(context.Context, *SubmitVideoJobRequest) (*SubmitVideoJobResponse, error)
+	// YENİ: Dudak Senkronu ve Portrait Animasyonu (LivePortrait / SadTalker)
+	SubmitPortraitJob(context.Context, *SubmitPortraitJobRequest) (*SubmitPortraitJobResponse, error)
 }
 
 // UnimplementedVideoGatewayServiceServer should be embedded to have
@@ -65,6 +80,9 @@ type UnimplementedVideoGatewayServiceServer struct{}
 
 func (UnimplementedVideoGatewayServiceServer) SubmitVideoJob(context.Context, *SubmitVideoJobRequest) (*SubmitVideoJobResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method SubmitVideoJob not implemented")
+}
+func (UnimplementedVideoGatewayServiceServer) SubmitPortraitJob(context.Context, *SubmitPortraitJobRequest) (*SubmitPortraitJobResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method SubmitPortraitJob not implemented")
 }
 func (UnimplementedVideoGatewayServiceServer) testEmbeddedByValue() {}
 
@@ -104,6 +122,24 @@ func _VideoGatewayService_SubmitVideoJob_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _VideoGatewayService_SubmitPortraitJob_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SubmitPortraitJobRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(VideoGatewayServiceServer).SubmitPortraitJob(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: VideoGatewayService_SubmitPortraitJob_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(VideoGatewayServiceServer).SubmitPortraitJob(ctx, req.(*SubmitPortraitJobRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // VideoGatewayService_ServiceDesc is the grpc.ServiceDesc for VideoGatewayService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -114,6 +150,10 @@ var VideoGatewayService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SubmitVideoJob",
 			Handler:    _VideoGatewayService_SubmitVideoJob_Handler,
+		},
+		{
+			MethodName: "SubmitPortraitJob",
+			Handler:    _VideoGatewayService_SubmitPortraitJob_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -21,26 +21,151 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type SubmitPortraitJobRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	TraceId       string                 `protobuf:"bytes,2,opt,name=trace_id,json=traceId,proto3" json:"trace_id,omitempty"`
+	ImageUri      string                 `protobuf:"bytes,3,opt,name=image_uri,json=imageUri,proto3" json:"image_uri,omitempty"` // S3'teki karakter resmi (SD-Turbo çıktısı)
+	AudioUri      string                 `protobuf:"bytes,4,opt,name=audio_uri,json=audioUri,proto3" json:"audio_uri,omitempty"` // S3'teki ses dosyası (OmniVoice çıktısı)
+	Expression    string                 `protobuf:"bytes,5,opt,name=expression,proto3" json:"expression,omitempty"`             // "neutral", "happy", "serious"
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SubmitPortraitJobRequest) Reset() {
+	*x = SubmitPortraitJobRequest{}
+	mi := &file_sentiric_video_v1_gateway_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SubmitPortraitJobRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SubmitPortraitJobRequest) ProtoMessage() {}
+
+func (x *SubmitPortraitJobRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_video_v1_gateway_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SubmitPortraitJobRequest.ProtoReflect.Descriptor instead.
+func (*SubmitPortraitJobRequest) Descriptor() ([]byte, []int) {
+	return file_sentiric_video_v1_gateway_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *SubmitPortraitJobRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *SubmitPortraitJobRequest) GetTraceId() string {
+	if x != nil {
+		return x.TraceId
+	}
+	return ""
+}
+
+func (x *SubmitPortraitJobRequest) GetImageUri() string {
+	if x != nil {
+		return x.ImageUri
+	}
+	return ""
+}
+
+func (x *SubmitPortraitJobRequest) GetAudioUri() string {
+	if x != nil {
+		return x.AudioUri
+	}
+	return ""
+}
+
+func (x *SubmitPortraitJobRequest) GetExpression() string {
+	if x != nil {
+		return x.Expression
+	}
+	return ""
+}
+
+type SubmitPortraitJobResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Accepted      bool                   `protobuf:"varint,1,opt,name=accepted,proto3" json:"accepted,omitempty"`
+	JobId         string                 `protobuf:"bytes,2,opt,name=job_id,json=jobId,proto3" json:"job_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SubmitPortraitJobResponse) Reset() {
+	*x = SubmitPortraitJobResponse{}
+	mi := &file_sentiric_video_v1_gateway_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SubmitPortraitJobResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SubmitPortraitJobResponse) ProtoMessage() {}
+
+func (x *SubmitPortraitJobResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_sentiric_video_v1_gateway_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SubmitPortraitJobResponse.ProtoReflect.Descriptor instead.
+func (*SubmitPortraitJobResponse) Descriptor() ([]byte, []int) {
+	return file_sentiric_video_v1_gateway_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *SubmitPortraitJobResponse) GetAccepted() bool {
+	if x != nil {
+		return x.Accepted
+	}
+	return false
+}
+
+func (x *SubmitPortraitJobResponse) GetJobId() string {
+	if x != nil {
+		return x.JobId
+	}
+	return ""
+}
+
 type SubmitVideoJobRequest struct {
-	state    protoimpl.MessageState `protogen:"open.v1"`
-	TenantId string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
-	TraceId  string                 `protobuf:"bytes,2,opt,name=trace_id,json=traceId,proto3" json:"trace_id,omitempty"`
-	// T2V (Metinden Video) veya I2V (Görselden Video)
-	Prompt            string  `protobuf:"bytes,3,opt,name=prompt,proto3" json:"prompt,omitempty"`
-	ReferenceImageUri *string `protobuf:"bytes,4,opt,name=reference_image_uri,json=referenceImageUri,proto3,oneof" json:"reference_image_uri,omitempty"` // S3 URL'si
-	// Hangi modelin kullanılacağı (örn: ltx-video, wan2gp, svd)
-	PreferredModel string `protobuf:"bytes,5,opt,name=preferred_model,json=preferredModel,proto3" json:"preferred_model,omitempty"`
-	// Video Parametreleri
-	DurationSeconds int32  `protobuf:"varint,6,opt,name=duration_seconds,json=durationSeconds,proto3" json:"duration_seconds,omitempty"`
-	AspectRatio     string `protobuf:"bytes,7,opt,name=aspect_ratio,json=aspectRatio,proto3" json:"aspect_ratio,omitempty"` // "16:9", "9:16", "1:1"
-	Fps             int32  `protobuf:"varint,8,opt,name=fps,proto3" json:"fps,omitempty"`
-	unknownFields   protoimpl.UnknownFields
-	sizeCache       protoimpl.SizeCache
+	state             protoimpl.MessageState `protogen:"open.v1"`
+	TenantId          string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	TraceId           string                 `protobuf:"bytes,2,opt,name=trace_id,json=traceId,proto3" json:"trace_id,omitempty"`
+	Prompt            string                 `protobuf:"bytes,3,opt,name=prompt,proto3" json:"prompt,omitempty"`
+	ReferenceImageUri *string                `protobuf:"bytes,4,opt,name=reference_image_uri,json=referenceImageUri,proto3,oneof" json:"reference_image_uri,omitempty"`
+	PreferredModel    string                 `protobuf:"bytes,5,opt,name=preferred_model,json=preferredModel,proto3" json:"preferred_model,omitempty"`
+	DurationSeconds   int32                  `protobuf:"varint,6,opt,name=duration_seconds,json=durationSeconds,proto3" json:"duration_seconds,omitempty"`
+	AspectRatio       string                 `protobuf:"bytes,7,opt,name=aspect_ratio,json=aspectRatio,proto3" json:"aspect_ratio,omitempty"`
+	Fps               int32                  `protobuf:"varint,8,opt,name=fps,proto3" json:"fps,omitempty"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
 }
 
 func (x *SubmitVideoJobRequest) Reset() {
 	*x = SubmitVideoJobRequest{}
-	mi := &file_sentiric_video_v1_gateway_proto_msgTypes[0]
+	mi := &file_sentiric_video_v1_gateway_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -52,7 +177,7 @@ func (x *SubmitVideoJobRequest) String() string {
 func (*SubmitVideoJobRequest) ProtoMessage() {}
 
 func (x *SubmitVideoJobRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_video_v1_gateway_proto_msgTypes[0]
+	mi := &file_sentiric_video_v1_gateway_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -65,7 +190,7 @@ func (x *SubmitVideoJobRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SubmitVideoJobRequest.ProtoReflect.Descriptor instead.
 func (*SubmitVideoJobRequest) Descriptor() ([]byte, []int) {
-	return file_sentiric_video_v1_gateway_proto_rawDescGZIP(), []int{0}
+	return file_sentiric_video_v1_gateway_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *SubmitVideoJobRequest) GetTenantId() string {
@@ -127,7 +252,7 @@ func (x *SubmitVideoJobRequest) GetFps() int32 {
 type SubmitVideoJobResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Accepted      bool                   `protobuf:"varint,1,opt,name=accepted,proto3" json:"accepted,omitempty"`
-	JobId         string                 `protobuf:"bytes,2,opt,name=job_id,json=jobId,proto3" json:"job_id,omitempty"` // İş takibi için (Asenkron)
+	JobId         string                 `protobuf:"bytes,2,opt,name=job_id,json=jobId,proto3" json:"job_id,omitempty"`
 	StatusMessage string                 `protobuf:"bytes,3,opt,name=status_message,json=statusMessage,proto3" json:"status_message,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -135,7 +260,7 @@ type SubmitVideoJobResponse struct {
 
 func (x *SubmitVideoJobResponse) Reset() {
 	*x = SubmitVideoJobResponse{}
-	mi := &file_sentiric_video_v1_gateway_proto_msgTypes[1]
+	mi := &file_sentiric_video_v1_gateway_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -147,7 +272,7 @@ func (x *SubmitVideoJobResponse) String() string {
 func (*SubmitVideoJobResponse) ProtoMessage() {}
 
 func (x *SubmitVideoJobResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sentiric_video_v1_gateway_proto_msgTypes[1]
+	mi := &file_sentiric_video_v1_gateway_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -160,7 +285,7 @@ func (x *SubmitVideoJobResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SubmitVideoJobResponse.ProtoReflect.Descriptor instead.
 func (*SubmitVideoJobResponse) Descriptor() ([]byte, []int) {
-	return file_sentiric_video_v1_gateway_proto_rawDescGZIP(), []int{1}
+	return file_sentiric_video_v1_gateway_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *SubmitVideoJobResponse) GetAccepted() bool {
@@ -188,7 +313,18 @@ var File_sentiric_video_v1_gateway_proto protoreflect.FileDescriptor
 
 const file_sentiric_video_v1_gateway_proto_rawDesc = "" +
 	"\n" +
-	"\x1fsentiric/video/v1/gateway.proto\x12\x11sentiric.video.v1\"\xbd\x02\n" +
+	"\x1fsentiric/video/v1/gateway.proto\x12\x11sentiric.video.v1\"\xac\x01\n" +
+	"\x18SubmitPortraitJobRequest\x12\x1b\n" +
+	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x19\n" +
+	"\btrace_id\x18\x02 \x01(\tR\atraceId\x12\x1b\n" +
+	"\timage_uri\x18\x03 \x01(\tR\bimageUri\x12\x1b\n" +
+	"\taudio_uri\x18\x04 \x01(\tR\baudioUri\x12\x1e\n" +
+	"\n" +
+	"expression\x18\x05 \x01(\tR\n" +
+	"expression\"N\n" +
+	"\x19SubmitPortraitJobResponse\x12\x1a\n" +
+	"\baccepted\x18\x01 \x01(\bR\baccepted\x12\x15\n" +
+	"\x06job_id\x18\x02 \x01(\tR\x05jobId\"\xbd\x02\n" +
 	"\x15SubmitVideoJobRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x19\n" +
 	"\btrace_id\x18\x02 \x01(\tR\atraceId\x12\x16\n" +
@@ -202,9 +338,10 @@ const file_sentiric_video_v1_gateway_proto_rawDesc = "" +
 	"\x16SubmitVideoJobResponse\x12\x1a\n" +
 	"\baccepted\x18\x01 \x01(\bR\baccepted\x12\x15\n" +
 	"\x06job_id\x18\x02 \x01(\tR\x05jobId\x12%\n" +
-	"\x0estatus_message\x18\x03 \x01(\tR\rstatusMessage2|\n" +
+	"\x0estatus_message\x18\x03 \x01(\tR\rstatusMessage2\xec\x01\n" +
 	"\x13VideoGatewayService\x12e\n" +
-	"\x0eSubmitVideoJob\x12(.sentiric.video.v1.SubmitVideoJobRequest\x1a).sentiric.video.v1.SubmitVideoJobResponseBIZGgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/video/v1;videov1b\x06proto3"
+	"\x0eSubmitVideoJob\x12(.sentiric.video.v1.SubmitVideoJobRequest\x1a).sentiric.video.v1.SubmitVideoJobResponse\x12n\n" +
+	"\x11SubmitPortraitJob\x12+.sentiric.video.v1.SubmitPortraitJobRequest\x1a,.sentiric.video.v1.SubmitPortraitJobResponseBIZGgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/video/v1;videov1b\x06proto3"
 
 var (
 	file_sentiric_video_v1_gateway_proto_rawDescOnce sync.Once
@@ -218,16 +355,20 @@ func file_sentiric_video_v1_gateway_proto_rawDescGZIP() []byte {
 	return file_sentiric_video_v1_gateway_proto_rawDescData
 }
 
-var file_sentiric_video_v1_gateway_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_sentiric_video_v1_gateway_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_sentiric_video_v1_gateway_proto_goTypes = []any{
-	(*SubmitVideoJobRequest)(nil),  // 0: sentiric.video.v1.SubmitVideoJobRequest
-	(*SubmitVideoJobResponse)(nil), // 1: sentiric.video.v1.SubmitVideoJobResponse
+	(*SubmitPortraitJobRequest)(nil),  // 0: sentiric.video.v1.SubmitPortraitJobRequest
+	(*SubmitPortraitJobResponse)(nil), // 1: sentiric.video.v1.SubmitPortraitJobResponse
+	(*SubmitVideoJobRequest)(nil),     // 2: sentiric.video.v1.SubmitVideoJobRequest
+	(*SubmitVideoJobResponse)(nil),    // 3: sentiric.video.v1.SubmitVideoJobResponse
 }
 var file_sentiric_video_v1_gateway_proto_depIdxs = []int32{
-	0, // 0: sentiric.video.v1.VideoGatewayService.SubmitVideoJob:input_type -> sentiric.video.v1.SubmitVideoJobRequest
-	1, // 1: sentiric.video.v1.VideoGatewayService.SubmitVideoJob:output_type -> sentiric.video.v1.SubmitVideoJobResponse
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
+	2, // 0: sentiric.video.v1.VideoGatewayService.SubmitVideoJob:input_type -> sentiric.video.v1.SubmitVideoJobRequest
+	0, // 1: sentiric.video.v1.VideoGatewayService.SubmitPortraitJob:input_type -> sentiric.video.v1.SubmitPortraitJobRequest
+	3, // 2: sentiric.video.v1.VideoGatewayService.SubmitVideoJob:output_type -> sentiric.video.v1.SubmitVideoJobResponse
+	1, // 3: sentiric.video.v1.VideoGatewayService.SubmitPortraitJob:output_type -> sentiric.video.v1.SubmitPortraitJobResponse
+	2, // [2:4] is the sub-list for method output_type
+	0, // [0:2] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -238,14 +379,14 @@ func file_sentiric_video_v1_gateway_proto_init() {
 	if File_sentiric_video_v1_gateway_proto != nil {
 		return
 	}
-	file_sentiric_video_v1_gateway_proto_msgTypes[0].OneofWrappers = []any{}
+	file_sentiric_video_v1_gateway_proto_msgTypes[2].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sentiric_video_v1_gateway_proto_rawDesc), len(file_sentiric_video_v1_gateway_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
