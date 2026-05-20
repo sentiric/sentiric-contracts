@@ -1,20 +1,34 @@
 version: v1
 plugins:
-  # Diğer diller aynı kalıyor...
+ 
   - plugin: buf.build/protocolbuffers/go
     out: gen/go 
     opt: paths=source_relative
+    
   - plugin: buf.build/grpc/go
     out: gen/go
     opt: paths=source_relative,require_unimplemented_servers=false
+
+  # --- EKLENEN REST API (GRPC-GATEWAY) EKLENTİSİ ---
+  - plugin: buf.build/grpc-ecosystem/gateway
+    out: gen/go
+    opt: 
+      - paths=source_relative
+      - generate_unbound_methods=true
+  # -------------------------------------------------    
+
   - plugin: buf.build/protocolbuffers/python
     out: gen/python
+
   - plugin: buf.build/grpc/python
     out: gen/python
+
   - plugin: buf.build/community/neoeinstein-prost
     out: gen/rust
+
   - plugin: buf.build/community/neoeinstein-tonic
     out: gen/rust
+
   - plugin: buf.build/protocolbuffers/js
     out: gen/nodejs
     opt:
@@ -23,6 +37,7 @@ plugins:
     out: gen/nodejs
     opt:
       - grpc_js
+
   # [YENİ] ts-proto: Modern, bağımsız ve tip-güvenli TS üretir
   - plugin: buf.build/community/stephenh-ts-proto
     out: gen/ts
@@ -32,6 +47,8 @@ plugins:
       - esModuleInterop=true
       - forceLong=string
       - useOptionals=messages
+
+
   # # C++ için en basit, modern buf eklentilerini kullanıyoruz.
   # - plugin: buf.build/protocolbuffers/cpp
   #   out: gen/cpp
