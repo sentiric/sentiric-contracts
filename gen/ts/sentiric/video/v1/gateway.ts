@@ -9,14 +9,13 @@ import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 
 export const protobufPackage = "sentiric.video.v1";
 
+/** [ARCH-COMPLIANCE] REST API Yönlendirmeleri eklendi */
+
 export interface SubmitPortraitJobRequest {
   tenantId: string;
   traceId: string;
-  /** S3'teki karakter resmi (SD-Turbo çıktısı) */
   imageUri: string;
-  /** S3'teki ses dosyası (OmniVoice çıktısı) */
   audioUri: string;
-  /** "neutral", "happy", "serious" */
   expression: string;
 }
 

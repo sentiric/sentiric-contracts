@@ -13,7 +13,6 @@ export interface SubmitAudioJobRequest {
   tenantId: string;
   traceId: string;
   prompt: string;
-  /** "music" (ACE-Step) veya "sfx" (AudioGen) */
   audioType: string;
   durationSeconds: number;
 }

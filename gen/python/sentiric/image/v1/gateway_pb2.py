@@ -22,9 +22,10 @@ _runtime_version.ValidateProtobufRuntimeVersion(
 _sym_db = _symbol_database.Default()
 
 
+from google.api import annotations_pb2 as google_dot_api_dot_annotations__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1fsentiric/image/v1/gateway.proto\x12\x11sentiric.image.v1\"\xb2\x01\n\x14GenerateImageRequest\x12\x1b\n\ttenant_id\x18\x01 \x01(\tR\x08tenantId\x12\x19\n\x08trace_id\x18\x02 \x01(\tR\x07traceId\x12\x16\n\x06prompt\x18\x03 \x01(\tR\x06prompt\x12\'\n\x0fpreferred_model\x18\x04 \x01(\tR\x0epreferredModel\x12!\n\x0c\x61spect_ratio\x18\x05 \x01(\tR\x0b\x61spectRatio\"s\n\x15GenerateImageResponse\x12\x18\n\x07success\x18\x01 \x01(\x08R\x07success\x12\x1b\n\timage_uri\x18\x02 \x01(\tR\x08imageUri\x12#\n\rerror_message\x18\x03 \x01(\tR\x0c\x65rrorMessage2y\n\x13ImageGatewayService\x12\x62\n\rGenerateImage\x12\'.sentiric.image.v1.GenerateImageRequest\x1a(.sentiric.image.v1.GenerateImageResponseBIZGgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/image/v1;imagev1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1fsentiric/image/v1/gateway.proto\x12\x11sentiric.image.v1\x1a\x1cgoogle/api/annotations.proto\"\xb2\x01\n\x14GenerateImageRequest\x12\x1b\n\ttenant_id\x18\x01 \x01(\tR\x08tenantId\x12\x19\n\x08trace_id\x18\x02 \x01(\tR\x07traceId\x12\x16\n\x06prompt\x18\x03 \x01(\tR\x06prompt\x12\'\n\x0fpreferred_model\x18\x04 \x01(\tR\x0epreferredModel\x12!\n\x0c\x61spect_ratio\x18\x05 \x01(\tR\x0b\x61spectRatio\"s\n\x15GenerateImageResponse\x12\x18\n\x07success\x18\x01 \x01(\x08R\x07success\x12\x1b\n\timage_uri\x18\x02 \x01(\tR\x08imageUri\x12#\n\rerror_message\x18\x03 \x01(\tR\x0c\x65rrorMessage2\x9f\x01\n\x13ImageGatewayService\x12\x87\x01\n\rGenerateImage\x12\'.sentiric.image.v1.GenerateImageRequest\x1a(.sentiric.image.v1.GenerateImageResponse\"#\x82\xd3\xe4\x93\x02\x1d\"\x18/v1/media/image/generate:\x01*BIZGgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/image/v1;imagev1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -32,10 +33,12 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'sentiric.image.v1.gateway_p
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
   _globals['DESCRIPTOR']._serialized_options = b'ZGgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/image/v1;imagev1'
-  _globals['_GENERATEIMAGEREQUEST']._serialized_start=55
-  _globals['_GENERATEIMAGEREQUEST']._serialized_end=233
-  _globals['_GENERATEIMAGERESPONSE']._serialized_start=235
-  _globals['_GENERATEIMAGERESPONSE']._serialized_end=350
-  _globals['_IMAGEGATEWAYSERVICE']._serialized_start=352
-  _globals['_IMAGEGATEWAYSERVICE']._serialized_end=473
+  _globals['_IMAGEGATEWAYSERVICE'].methods_by_name['GenerateImage']._loaded_options = None
+  _globals['_IMAGEGATEWAYSERVICE'].methods_by_name['GenerateImage']._serialized_options = b'\202\323\344\223\002\035\"\030/v1/media/image/generate:\001*'
+  _globals['_GENERATEIMAGEREQUEST']._serialized_start=85
+  _globals['_GENERATEIMAGEREQUEST']._serialized_end=263
+  _globals['_GENERATEIMAGERESPONSE']._serialized_start=265
+  _globals['_GENERATEIMAGERESPONSE']._serialized_end=380
+  _globals['_IMAGEGATEWAYSERVICE']._serialized_start=383
+  _globals['_IMAGEGATEWAYSERVICE']._serialized_end=542
 # @@protoc_insertion_point(module_scope)

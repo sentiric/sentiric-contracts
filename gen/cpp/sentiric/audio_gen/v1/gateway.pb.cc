@@ -94,23 +94,28 @@ static const ::_pb::Message* const file_default_instances[] = {
 
 const char descriptor_table_protodef_sentiric_2faudio_5fgen_2fv1_2fgateway_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n#sentiric/audio_gen/v1/gateway.proto\022\025s"
-  "entiric.audio_gen.v1\"z\n\025SubmitAudioJobRe"
-  "quest\022\021\n\ttenant_id\030\001 \001(\t\022\020\n\010trace_id\030\002 \001"
-  "(\t\022\016\n\006prompt\030\003 \001(\t\022\022\n\naudio_type\030\004 \001(\t\022\030"
-  "\n\020duration_seconds\030\005 \001(\005\":\n\026SubmitAudioJ"
-  "obResponse\022\020\n\010accepted\030\001 \001(\010\022\016\n\006job_id\030\002"
-  " \001(\t2\204\001\n\023AudioGatewayService\022m\n\016SubmitAu"
-  "dioJob\022,.sentiric.audio_gen.v1.SubmitAud"
-  "ioJobRequest\032-.sentiric.audio_gen.v1.Sub"
-  "mitAudioJobResponseBPZNgithub.com/sentir"
-  "ic/sentiric-contracts/gen/go/sentiric/au"
-  "dio_gen/v1;audiogenv1b\006proto3"
+  "entiric.audio_gen.v1\032\034google/api/annotat"
+  "ions.proto\"z\n\025SubmitAudioJobRequest\022\021\n\tt"
+  "enant_id\030\001 \001(\t\022\020\n\010trace_id\030\002 \001(\t\022\016\n\006prom"
+  "pt\030\003 \001(\t\022\022\n\naudio_type\030\004 \001(\t\022\030\n\020duration"
+  "_seconds\030\005 \001(\005\":\n\026SubmitAudioJobResponse"
+  "\022\020\n\010accepted\030\001 \001(\010\022\016\n\006job_id\030\002 \001(\t2\252\001\n\023A"
+  "udioGatewayService\022\222\001\n\016SubmitAudioJob\022,."
+  "sentiric.audio_gen.v1.SubmitAudioJobRequ"
+  "est\032-.sentiric.audio_gen.v1.SubmitAudioJ"
+  "obResponse\"#\202\323\344\223\002\035\"\030/v1/media/audio/gene"
+  "rate:\001*BPZNgithub.com/sentiric/sentiric-"
+  "contracts/gen/go/sentiric/audio_gen/v1;a"
+  "udiogenv1b\006proto3"
   ;
+static const ::_pbi::DescriptorTable* const descriptor_table_sentiric_2faudio_5fgen_2fv1_2fgateway_2eproto_deps[1] = {
+  &::descriptor_table_google_2fapi_2fannotations_2eproto,
+};
 static ::_pbi::once_flag descriptor_table_sentiric_2faudio_5fgen_2fv1_2fgateway_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_sentiric_2faudio_5fgen_2fv1_2fgateway_2eproto = {
-    false, false, 469, descriptor_table_protodef_sentiric_2faudio_5fgen_2fv1_2fgateway_2eproto,
+    false, false, 537, descriptor_table_protodef_sentiric_2faudio_5fgen_2fv1_2fgateway_2eproto,
     "sentiric/audio_gen/v1/gateway.proto",
-    &descriptor_table_sentiric_2faudio_5fgen_2fv1_2fgateway_2eproto_once, nullptr, 0, 2,
+    &descriptor_table_sentiric_2faudio_5fgen_2fv1_2fgateway_2eproto_once, descriptor_table_sentiric_2faudio_5fgen_2fv1_2fgateway_2eproto_deps, 1, 2,
     schemas, file_default_instances, TableStruct_sentiric_2faudio_5fgen_2fv1_2fgateway_2eproto::offsets,
     file_level_metadata_sentiric_2faudio_5fgen_2fv1_2fgateway_2eproto, file_level_enum_descriptors_sentiric_2faudio_5fgen_2fv1_2fgateway_2eproto,
     file_level_service_descriptors_sentiric_2faudio_5fgen_2fv1_2fgateway_2eproto,

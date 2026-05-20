@@ -18,4 +18,5 @@
 # Diğer sistem dosyaları
 .DS_Store
 .venv/
+vendor_proto/
 validation/cpp/build/

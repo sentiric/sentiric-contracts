@@ -30,15 +30,13 @@ class VideoGatewayServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def SubmitVideoJob(self, request, context):
-        """Standart T2V/I2V İşleri (Wan2.1 / LTX)
-        """
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def SubmitPortraitJob(self, request, context):
-        """YENİ: Dudak Senkronu ve Portrait Animasyonu (LivePortrait / SadTalker)
-        """
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')

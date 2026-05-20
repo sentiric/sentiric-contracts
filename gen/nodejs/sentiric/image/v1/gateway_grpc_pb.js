@@ -3,6 +3,7 @@
 'use strict';
 var grpc = require('@grpc/grpc-js');
 var sentiric_image_v1_gateway_pb = require('../../../sentiric/image/v1/gateway_pb.js');
+var google_api_annotations_pb = require('../../../google/api/annotations_pb.js');
 
 function serialize_sentiric_image_v1_GenerateImageRequest(arg) {
   if (!(arg instanceof sentiric_image_v1_gateway_pb.GenerateImageRequest)) {

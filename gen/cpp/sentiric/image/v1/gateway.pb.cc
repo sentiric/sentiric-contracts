@@ -96,23 +96,28 @@ static const ::_pb::Message* const file_default_instances[] = {
 
 const char descriptor_table_protodef_sentiric_2fimage_2fv1_2fgateway_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\037sentiric/image/v1/gateway.proto\022\021senti"
-  "ric.image.v1\"z\n\024GenerateImageRequest\022\021\n\t"
-  "tenant_id\030\001 \001(\t\022\020\n\010trace_id\030\002 \001(\t\022\016\n\006pro"
-  "mpt\030\003 \001(\t\022\027\n\017preferred_model\030\004 \001(\t\022\024\n\014as"
-  "pect_ratio\030\005 \001(\t\"R\n\025GenerateImageRespons"
-  "e\022\017\n\007success\030\001 \001(\010\022\021\n\timage_uri\030\002 \001(\t\022\025\n"
-  "\rerror_message\030\003 \001(\t2y\n\023ImageGatewayServ"
-  "ice\022b\n\rGenerateImage\022\'.sentiric.image.v1"
-  ".GenerateImageRequest\032(.sentiric.image.v"
-  "1.GenerateImageResponseBIZGgithub.com/se"
-  "ntiric/sentiric-contracts/gen/go/sentiri"
-  "c/image/v1;imagev1b\006proto3"
+  "ric.image.v1\032\034google/api/annotations.pro"
+  "to\"z\n\024GenerateImageRequest\022\021\n\ttenant_id\030"
+  "\001 \001(\t\022\020\n\010trace_id\030\002 \001(\t\022\016\n\006prompt\030\003 \001(\t\022"
+  "\027\n\017preferred_model\030\004 \001(\t\022\024\n\014aspect_ratio"
+  "\030\005 \001(\t\"R\n\025GenerateImageResponse\022\017\n\007succe"
+  "ss\030\001 \001(\010\022\021\n\timage_uri\030\002 \001(\t\022\025\n\rerror_mes"
+  "sage\030\003 \001(\t2\237\001\n\023ImageGatewayService\022\207\001\n\rG"
+  "enerateImage\022\'.sentiric.image.v1.Generat"
+  "eImageRequest\032(.sentiric.image.v1.Genera"
+  "teImageResponse\"#\202\323\344\223\002\035\"\030/v1/media/image"
+  "/generate:\001*BIZGgithub.com/sentiric/sent"
+  "iric-contracts/gen/go/sentiric/image/v1;"
+  "imagev1b\006proto3"
   ;
+static const ::_pbi::DescriptorTable* const descriptor_table_sentiric_2fimage_2fv1_2fgateway_2eproto_deps[1] = {
+  &::descriptor_table_google_2fapi_2fannotations_2eproto,
+};
 static ::_pbi::once_flag descriptor_table_sentiric_2fimage_2fv1_2fgateway_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_sentiric_2fimage_2fv1_2fgateway_2eproto = {
-    false, false, 466, descriptor_table_protodef_sentiric_2fimage_2fv1_2fgateway_2eproto,
+    false, false, 535, descriptor_table_protodef_sentiric_2fimage_2fv1_2fgateway_2eproto,
     "sentiric/image/v1/gateway.proto",
-    &descriptor_table_sentiric_2fimage_2fv1_2fgateway_2eproto_once, nullptr, 0, 2,
+    &descriptor_table_sentiric_2fimage_2fv1_2fgateway_2eproto_once, descriptor_table_sentiric_2fimage_2fv1_2fgateway_2eproto_deps, 1, 2,
     schemas, file_default_instances, TableStruct_sentiric_2fimage_2fv1_2fgateway_2eproto::offsets,
     file_level_metadata_sentiric_2fimage_2fv1_2fgateway_2eproto, file_level_enum_descriptors_sentiric_2fimage_2fv1_2fgateway_2eproto,
     file_level_service_descriptors_sentiric_2fimage_2fv1_2fgateway_2eproto,

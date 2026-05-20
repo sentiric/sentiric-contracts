@@ -8,7 +8,6 @@ pub struct GenerateImageRequest {
     pub trace_id: ::prost::alloc::string::String,
     #[prost(string, tag="3")]
     pub prompt: ::prost::alloc::string::String,
-    /// örn: sdxl-turbo
     #[prost(string, tag="4")]
     pub preferred_model: ::prost::alloc::string::String,
     #[prost(string, tag="5")]
@@ -18,7 +17,6 @@ pub struct GenerateImageRequest {
 pub struct GenerateImageResponse {
     #[prost(bool, tag="1")]
     pub success: bool,
-    /// MinIO (S3) adresini döner
     #[prost(string, tag="2")]
     pub image_uri: ::prost::alloc::string::String,
     #[prost(string, tag="3")]

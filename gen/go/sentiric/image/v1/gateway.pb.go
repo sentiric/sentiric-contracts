@@ -7,6 +7,7 @@
 package imagev1
 
 import (
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -26,7 +27,7 @@ type GenerateImageRequest struct {
 	TenantId       string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	TraceId        string                 `protobuf:"bytes,2,opt,name=trace_id,json=traceId,proto3" json:"trace_id,omitempty"`
 	Prompt         string                 `protobuf:"bytes,3,opt,name=prompt,proto3" json:"prompt,omitempty"`
-	PreferredModel string                 `protobuf:"bytes,4,opt,name=preferred_model,json=preferredModel,proto3" json:"preferred_model,omitempty"` // örn: sdxl-turbo
+	PreferredModel string                 `protobuf:"bytes,4,opt,name=preferred_model,json=preferredModel,proto3" json:"preferred_model,omitempty"`
 	AspectRatio    string                 `protobuf:"bytes,5,opt,name=aspect_ratio,json=aspectRatio,proto3" json:"aspect_ratio,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
@@ -100,7 +101,7 @@ func (x *GenerateImageRequest) GetAspectRatio() string {
 type GenerateImageResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
-	ImageUri      string                 `protobuf:"bytes,2,opt,name=image_uri,json=imageUri,proto3" json:"image_uri,omitempty"` // MinIO (S3) adresini döner
+	ImageUri      string                 `protobuf:"bytes,2,opt,name=image_uri,json=imageUri,proto3" json:"image_uri,omitempty"`
 	ErrorMessage  string                 `protobuf:"bytes,3,opt,name=error_message,json=errorMessage,proto3" json:"error_message,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -161,7 +162,7 @@ var File_sentiric_image_v1_gateway_proto protoreflect.FileDescriptor
 
 const file_sentiric_image_v1_gateway_proto_rawDesc = "" +
 	"\n" +
-	"\x1fsentiric/image/v1/gateway.proto\x12\x11sentiric.image.v1\"\xb2\x01\n" +
+	"\x1fsentiric/image/v1/gateway.proto\x12\x11sentiric.image.v1\x1a\x1cgoogle/api/annotations.proto\"\xb2\x01\n" +
 	"\x14GenerateImageRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x19\n" +
 	"\btrace_id\x18\x02 \x01(\tR\atraceId\x12\x16\n" +
@@ -171,9 +172,9 @@ const file_sentiric_image_v1_gateway_proto_rawDesc = "" +
 	"\x15GenerateImageResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x1b\n" +
 	"\timage_uri\x18\x02 \x01(\tR\bimageUri\x12#\n" +
-	"\rerror_message\x18\x03 \x01(\tR\ferrorMessage2y\n" +
-	"\x13ImageGatewayService\x12b\n" +
-	"\rGenerateImage\x12'.sentiric.image.v1.GenerateImageRequest\x1a(.sentiric.image.v1.GenerateImageResponseBIZGgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/image/v1;imagev1b\x06proto3"
+	"\rerror_message\x18\x03 \x01(\tR\ferrorMessage2\x9f\x01\n" +
+	"\x13ImageGatewayService\x12\x87\x01\n" +
+	"\rGenerateImage\x12'.sentiric.image.v1.GenerateImageRequest\x1a(.sentiric.image.v1.GenerateImageResponse\"#\x82\xd3\xe4\x93\x02\x1d:\x01*\"\x18/v1/media/image/generateBIZGgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/image/v1;imagev1b\x06proto3"
 
 var (
 	file_sentiric_image_v1_gateway_proto_rawDescOnce sync.Once

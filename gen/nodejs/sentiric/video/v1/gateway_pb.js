@@ -15,6 +15,8 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = globalThis;
 
+var google_api_annotations_pb = require('../../../google/api/annotations_pb.js');
+goog.object.extend(proto, google_api_annotations_pb);
 goog.exportSymbol('proto.sentiric.video.v1.SubmitPortraitJobRequest', null, global);
 goog.exportSymbol('proto.sentiric.video.v1.SubmitPortraitJobResponse', null, global);
 goog.exportSymbol('proto.sentiric.video.v1.SubmitVideoJobRequest', null, global);

@@ -6,13 +6,10 @@ pub struct SubmitPortraitJobRequest {
     pub tenant_id: ::prost::alloc::string::String,
     #[prost(string, tag="2")]
     pub trace_id: ::prost::alloc::string::String,
-    /// S3'teki karakter resmi (SD-Turbo çıktısı)
     #[prost(string, tag="3")]
     pub image_uri: ::prost::alloc::string::String,
-    /// S3'teki ses dosyası (OmniVoice çıktısı)
     #[prost(string, tag="4")]
     pub audio_uri: ::prost::alloc::string::String,
-    /// "neutral", "happy", "serious"
     #[prost(string, tag="5")]
     pub expression: ::prost::alloc::string::String,
 }

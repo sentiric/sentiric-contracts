@@ -1,16 +1,24 @@
 syntax = "proto3";
 package sentiric.audio_gen.v1;
+
+import "google/api/annotations.proto"; // EKLENDİ
+
 option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/audio_gen/v1;audiogenv1";
 
 service AudioGatewayService {
-  rpc SubmitAudioJob(SubmitAudioJobRequest) returns (SubmitAudioJobResponse);
+  rpc SubmitAudioJob(SubmitAudioJobRequest) returns (SubmitAudioJobResponse) {
+    option (google.api.http) = {
+      post: "/v1/media/audio/generate"
+      body: "*"
+    };
+  }
 }
 
 message SubmitAudioJobRequest {
   string tenant_id = 1;
   string trace_id = 2;
   string prompt = 3;
-  string audio_type = 4; // "music" (ACE-Step) veya "sfx" (AudioGen)
+  string audio_type = 4;
   int32 duration_seconds = 5;
 }
 

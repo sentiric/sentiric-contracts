@@ -22,9 +22,10 @@ _runtime_version.ValidateProtobufRuntimeVersion(
 _sym_db = _symbol_database.Default()
 
 
+from google.api import annotations_pb2 as google_dot_api_dot_annotations__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n#sentiric/audio_gen/v1/gateway.proto\x12\x15sentiric.audio_gen.v1\"\xb1\x01\n\x15SubmitAudioJobRequest\x12\x1b\n\ttenant_id\x18\x01 \x01(\tR\x08tenantId\x12\x19\n\x08trace_id\x18\x02 \x01(\tR\x07traceId\x12\x16\n\x06prompt\x18\x03 \x01(\tR\x06prompt\x12\x1d\n\naudio_type\x18\x04 \x01(\tR\taudioType\x12)\n\x10\x64uration_seconds\x18\x05 \x01(\x05R\x0f\x64urationSeconds\"K\n\x16SubmitAudioJobResponse\x12\x1a\n\x08\x61\x63\x63\x65pted\x18\x01 \x01(\x08R\x08\x61\x63\x63\x65pted\x12\x15\n\x06job_id\x18\x02 \x01(\tR\x05jobId2\x84\x01\n\x13\x41udioGatewayService\x12m\n\x0eSubmitAudioJob\x12,.sentiric.audio_gen.v1.SubmitAudioJobRequest\x1a-.sentiric.audio_gen.v1.SubmitAudioJobResponseBPZNgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/audio_gen/v1;audiogenv1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n#sentiric/audio_gen/v1/gateway.proto\x12\x15sentiric.audio_gen.v1\x1a\x1cgoogle/api/annotations.proto\"\xb1\x01\n\x15SubmitAudioJobRequest\x12\x1b\n\ttenant_id\x18\x01 \x01(\tR\x08tenantId\x12\x19\n\x08trace_id\x18\x02 \x01(\tR\x07traceId\x12\x16\n\x06prompt\x18\x03 \x01(\tR\x06prompt\x12\x1d\n\naudio_type\x18\x04 \x01(\tR\taudioType\x12)\n\x10\x64uration_seconds\x18\x05 \x01(\x05R\x0f\x64urationSeconds\"K\n\x16SubmitAudioJobResponse\x12\x1a\n\x08\x61\x63\x63\x65pted\x18\x01 \x01(\x08R\x08\x61\x63\x63\x65pted\x12\x15\n\x06job_id\x18\x02 \x01(\tR\x05jobId2\xaa\x01\n\x13\x41udioGatewayService\x12\x92\x01\n\x0eSubmitAudioJob\x12,.sentiric.audio_gen.v1.SubmitAudioJobRequest\x1a-.sentiric.audio_gen.v1.SubmitAudioJobResponse\"#\x82\xd3\xe4\x93\x02\x1d\"\x18/v1/media/audio/generate:\x01*BPZNgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/audio_gen/v1;audiogenv1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -32,10 +33,12 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'sentiric.audio_gen.v1.gatew
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
   _globals['DESCRIPTOR']._serialized_options = b'ZNgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/audio_gen/v1;audiogenv1'
-  _globals['_SUBMITAUDIOJOBREQUEST']._serialized_start=63
-  _globals['_SUBMITAUDIOJOBREQUEST']._serialized_end=240
-  _globals['_SUBMITAUDIOJOBRESPONSE']._serialized_start=242
-  _globals['_SUBMITAUDIOJOBRESPONSE']._serialized_end=317
-  _globals['_AUDIOGATEWAYSERVICE']._serialized_start=320
-  _globals['_AUDIOGATEWAYSERVICE']._serialized_end=452
+  _globals['_AUDIOGATEWAYSERVICE'].methods_by_name['SubmitAudioJob']._loaded_options = None
+  _globals['_AUDIOGATEWAYSERVICE'].methods_by_name['SubmitAudioJob']._serialized_options = b'\202\323\344\223\002\035\"\030/v1/media/audio/generate:\001*'
+  _globals['_SUBMITAUDIOJOBREQUEST']._serialized_start=93
+  _globals['_SUBMITAUDIOJOBREQUEST']._serialized_end=270
+  _globals['_SUBMITAUDIOJOBRESPONSE']._serialized_start=272
+  _globals['_SUBMITAUDIOJOBRESPONSE']._serialized_end=347
+  _globals['_AUDIOGATEWAYSERVICE']._serialized_start=350
+  _globals['_AUDIOGATEWAYSERVICE']._serialized_end=520
 # @@protoc_insertion_point(module_scope)

@@ -1,22 +1,33 @@
+// [ARCH-COMPLIANCE] REST API Yönlendirmeleri eklendi
 syntax = "proto3";
 package sentiric.video.v1;
+
+import "google/api/annotations.proto"; // EKLENDİ
 
 option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/video/v1;videov1";
 
 service VideoGatewayService {
-  // Standart T2V/I2V İşleri (Wan2.1 / LTX)
-  rpc SubmitVideoJob(SubmitVideoJobRequest) returns (SubmitVideoJobResponse);
+  rpc SubmitVideoJob(SubmitVideoJobRequest) returns (SubmitVideoJobResponse) {
+    option (google.api.http) = {
+      post: "/v1/media/video/generate"
+      body: "*"
+    };
+  }
 
-  // YENİ: Dudak Senkronu ve Portrait Animasyonu (LivePortrait / SadTalker)
-  rpc SubmitPortraitJob(SubmitPortraitJobRequest) returns (SubmitPortraitJobResponse);
+  rpc SubmitPortraitJob(SubmitPortraitJobRequest) returns (SubmitPortraitJobResponse) {
+    option (google.api.http) = {
+      post: "/v1/media/portrait/generate"
+      body: "*"
+    };
+  }
 }
 
 message SubmitPortraitJobRequest {
   string tenant_id = 1;
   string trace_id = 2;
-  string image_uri = 3; // S3'teki karakter resmi (SD-Turbo çıktısı)
-  string audio_uri = 4; // S3'teki ses dosyası (OmniVoice çıktısı)
-  string expression = 5; // "neutral", "happy", "serious"
+  string image_uri = 3;
+  string audio_uri = 4;
+  string expression = 5;
 }
 
 message SubmitPortraitJobResponse {

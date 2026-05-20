@@ -7,6 +7,7 @@
 package audiogenv1
 
 import (
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -26,7 +27,7 @@ type SubmitAudioJobRequest struct {
 	TenantId        string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
 	TraceId         string                 `protobuf:"bytes,2,opt,name=trace_id,json=traceId,proto3" json:"trace_id,omitempty"`
 	Prompt          string                 `protobuf:"bytes,3,opt,name=prompt,proto3" json:"prompt,omitempty"`
-	AudioType       string                 `protobuf:"bytes,4,opt,name=audio_type,json=audioType,proto3" json:"audio_type,omitempty"` // "music" (ACE-Step) veya "sfx" (AudioGen)
+	AudioType       string                 `protobuf:"bytes,4,opt,name=audio_type,json=audioType,proto3" json:"audio_type,omitempty"`
 	DurationSeconds int32                  `protobuf:"varint,5,opt,name=duration_seconds,json=durationSeconds,proto3" json:"duration_seconds,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
@@ -153,7 +154,7 @@ var File_sentiric_audio_gen_v1_gateway_proto protoreflect.FileDescriptor
 
 const file_sentiric_audio_gen_v1_gateway_proto_rawDesc = "" +
 	"\n" +
-	"#sentiric/audio_gen/v1/gateway.proto\x12\x15sentiric.audio_gen.v1\"\xb1\x01\n" +
+	"#sentiric/audio_gen/v1/gateway.proto\x12\x15sentiric.audio_gen.v1\x1a\x1cgoogle/api/annotations.proto\"\xb1\x01\n" +
 	"\x15SubmitAudioJobRequest\x12\x1b\n" +
 	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x19\n" +
 	"\btrace_id\x18\x02 \x01(\tR\atraceId\x12\x16\n" +
@@ -163,9 +164,9 @@ const file_sentiric_audio_gen_v1_gateway_proto_rawDesc = "" +
 	"\x10duration_seconds\x18\x05 \x01(\x05R\x0fdurationSeconds\"K\n" +
 	"\x16SubmitAudioJobResponse\x12\x1a\n" +
 	"\baccepted\x18\x01 \x01(\bR\baccepted\x12\x15\n" +
-	"\x06job_id\x18\x02 \x01(\tR\x05jobId2\x84\x01\n" +
-	"\x13AudioGatewayService\x12m\n" +
-	"\x0eSubmitAudioJob\x12,.sentiric.audio_gen.v1.SubmitAudioJobRequest\x1a-.sentiric.audio_gen.v1.SubmitAudioJobResponseBPZNgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/audio_gen/v1;audiogenv1b\x06proto3"
+	"\x06job_id\x18\x02 \x01(\tR\x05jobId2\xaa\x01\n" +
+	"\x13AudioGatewayService\x12\x92\x01\n" +
+	"\x0eSubmitAudioJob\x12,.sentiric.audio_gen.v1.SubmitAudioJobRequest\x1a-.sentiric.audio_gen.v1.SubmitAudioJobResponse\"#\x82\xd3\xe4\x93\x02\x1d:\x01*\"\x18/v1/media/audio/generateBPZNgithub.com/sentiric/sentiric-contracts/gen/go/sentiric/audio_gen/v1;audiogenv1b\x06proto3"
 
 var (
 	file_sentiric_audio_gen_v1_gateway_proto_rawDescOnce sync.Once

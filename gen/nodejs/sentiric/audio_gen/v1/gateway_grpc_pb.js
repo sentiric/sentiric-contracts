@@ -3,6 +3,7 @@
 'use strict';
 var grpc = require('@grpc/grpc-js');
 var sentiric_audio_gen_v1_gateway_pb = require('../../../sentiric/audio_gen/v1/gateway_pb.js');
+var google_api_annotations_pb = require('../../../google/api/annotations_pb.js');
 
 function serialize_sentiric_audio_gen_v1_SubmitAudioJobRequest(arg) {
   if (!(arg instanceof sentiric_audio_gen_v1_gateway_pb.SubmitAudioJobRequest)) {

@@ -1,8 +1,12 @@
 version: v1
 name: buf.build/sentiric/sentiric-contracts
+
+deps:
+  - buf.build/googleapis/googleapis
+
 lint:
   use:
-    - STANDARD # << ESKİ HALİNE DÖNDÜRÜLDÜ
+    - STANDARD 
 breaking:
   use:
     - FILE

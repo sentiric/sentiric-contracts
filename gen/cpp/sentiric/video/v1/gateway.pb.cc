@@ -165,33 +165,39 @@ static const ::_pb::Message* const file_default_instances[] = {
 
 const char descriptor_table_protodef_sentiric_2fvideo_2fv1_2fgateway_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\037sentiric/video/v1/gateway.proto\022\021senti"
-  "ric.video.v1\"y\n\030SubmitPortraitJobRequest"
-  "\022\021\n\ttenant_id\030\001 \001(\t\022\020\n\010trace_id\030\002 \001(\t\022\021\n"
-  "\timage_uri\030\003 \001(\t\022\021\n\taudio_uri\030\004 \001(\t\022\022\n\ne"
-  "xpression\030\005 \001(\t\"=\n\031SubmitPortraitJobResp"
-  "onse\022\020\n\010accepted\030\001 \001(\010\022\016\n\006job_id\030\002 \001(\t\"\334"
-  "\001\n\025SubmitVideoJobRequest\022\021\n\ttenant_id\030\001 "
-  "\001(\t\022\020\n\010trace_id\030\002 \001(\t\022\016\n\006prompt\030\003 \001(\t\022 \n"
-  "\023reference_image_uri\030\004 \001(\tH\000\210\001\001\022\027\n\017prefe"
-  "rred_model\030\005 \001(\t\022\030\n\020duration_seconds\030\006 \001"
-  "(\005\022\024\n\014aspect_ratio\030\007 \001(\t\022\013\n\003fps\030\010 \001(\005B\026\n"
-  "\024_reference_image_uri\"R\n\026SubmitVideoJobR"
-  "esponse\022\020\n\010accepted\030\001 \001(\010\022\016\n\006job_id\030\002 \001("
-  "\t\022\026\n\016status_message\030\003 \001(\t2\354\001\n\023VideoGatew"
-  "ayService\022e\n\016SubmitVideoJob\022(.sentiric.v"
-  "ideo.v1.SubmitVideoJobRequest\032).sentiric"
-  ".video.v1.SubmitVideoJobResponse\022n\n\021Subm"
-  "itPortraitJob\022+.sentiric.video.v1.Submit"
-  "PortraitJobRequest\032,.sentiric.video.v1.S"
-  "ubmitPortraitJobResponseBIZGgithub.com/s"
-  "entiric/sentiric-contracts/gen/go/sentir"
-  "ic/video/v1;videov1b\006proto3"
+  "ric.video.v1\032\034google/api/annotations.pro"
+  "to\"y\n\030SubmitPortraitJobRequest\022\021\n\ttenant"
+  "_id\030\001 \001(\t\022\020\n\010trace_id\030\002 \001(\t\022\021\n\timage_uri"
+  "\030\003 \001(\t\022\021\n\taudio_uri\030\004 \001(\t\022\022\n\nexpression\030"
+  "\005 \001(\t\"=\n\031SubmitPortraitJobResponse\022\020\n\010ac"
+  "cepted\030\001 \001(\010\022\016\n\006job_id\030\002 \001(\t\"\334\001\n\025SubmitV"
+  "ideoJobRequest\022\021\n\ttenant_id\030\001 \001(\t\022\020\n\010tra"
+  "ce_id\030\002 \001(\t\022\016\n\006prompt\030\003 \001(\t\022 \n\023reference"
+  "_image_uri\030\004 \001(\tH\000\210\001\001\022\027\n\017preferred_model"
+  "\030\005 \001(\t\022\030\n\020duration_seconds\030\006 \001(\005\022\024\n\014aspe"
+  "ct_ratio\030\007 \001(\t\022\013\n\003fps\030\010 \001(\005B\026\n\024_referenc"
+  "e_image_uri\"R\n\026SubmitVideoJobResponse\022\020\n"
+  "\010accepted\030\001 \001(\010\022\016\n\006job_id\030\002 \001(\t\022\026\n\016statu"
+  "s_message\030\003 \001(\t2\273\002\n\023VideoGatewayService\022"
+  "\212\001\n\016SubmitVideoJob\022(.sentiric.video.v1.S"
+  "ubmitVideoJobRequest\032).sentiric.video.v1"
+  ".SubmitVideoJobResponse\"#\202\323\344\223\002\035\"\030/v1/med"
+  "ia/video/generate:\001*\022\226\001\n\021SubmitPortraitJ"
+  "ob\022+.sentiric.video.v1.SubmitPortraitJob"
+  "Request\032,.sentiric.video.v1.SubmitPortra"
+  "itJobResponse\"&\202\323\344\223\002 \"\033/v1/media/portrai"
+  "t/generate:\001*BIZGgithub.com/sentiric/sen"
+  "tiric-contracts/gen/go/sentiric/video/v1"
+  ";videov1b\006proto3"
   ;
+static const ::_pbi::DescriptorTable* const descriptor_table_sentiric_2fvideo_2fv1_2fgateway_2eproto_deps[1] = {
+  &::descriptor_table_google_2fapi_2fannotations_2eproto,
+};
 static ::_pbi::once_flag descriptor_table_sentiric_2fvideo_2fv1_2fgateway_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_sentiric_2fvideo_2fv1_2fgateway_2eproto = {
-    false, false, 867, descriptor_table_protodef_sentiric_2fvideo_2fv1_2fgateway_2eproto,
+    false, false, 976, descriptor_table_protodef_sentiric_2fvideo_2fv1_2fgateway_2eproto,
     "sentiric/video/v1/gateway.proto",
-    &descriptor_table_sentiric_2fvideo_2fv1_2fgateway_2eproto_once, nullptr, 0, 4,
+    &descriptor_table_sentiric_2fvideo_2fv1_2fgateway_2eproto_once, descriptor_table_sentiric_2fvideo_2fv1_2fgateway_2eproto_deps, 1, 4,
     schemas, file_default_instances, TableStruct_sentiric_2fvideo_2fv1_2fgateway_2eproto::offsets,
     file_level_metadata_sentiric_2fvideo_2fv1_2fgateway_2eproto, file_level_enum_descriptors_sentiric_2fvideo_2fv1_2fgateway_2eproto,
     file_level_service_descriptors_sentiric_2fvideo_2fv1_2fgateway_2eproto,

@@ -8,7 +8,6 @@ pub struct SubmitAudioJobRequest {
     pub trace_id: ::prost::alloc::string::String,
     #[prost(string, tag="3")]
     pub prompt: ::prost::alloc::string::String,
-    /// "music" (ACE-Step) veya "sfx" (AudioGen)
     #[prost(string, tag="4")]
     pub audio_type: ::prost::alloc::string::String,
     #[prost(int32, tag="5")]

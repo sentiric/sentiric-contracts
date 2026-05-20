@@ -1,8 +1,11 @@
 // GENERATED CODE -- DO NOT EDIT!
 
+// Original file comments:
+// [ARCH-COMPLIANCE] REST API Yönlendirmeleri eklendi
 'use strict';
 var grpc = require('@grpc/grpc-js');
 var sentiric_video_v1_gateway_pb = require('../../../sentiric/video/v1/gateway_pb.js');
+var google_api_annotations_pb = require('../../../google/api/annotations_pb.js');
 
 function serialize_sentiric_video_v1_SubmitPortraitJobRequest(arg) {
   if (!(arg instanceof sentiric_video_v1_gateway_pb.SubmitPortraitJobRequest)) {
@@ -50,8 +53,7 @@ function deserialize_sentiric_video_v1_SubmitVideoJobResponse(buffer_arg) {
 
 
 var VideoGatewayServiceService = exports.VideoGatewayServiceService = {
-  // Standart T2V/I2V İşleri (Wan2.1 / LTX)
-submitVideoJob: {
+  submitVideoJob: {
     path: '/sentiric.video.v1.VideoGatewayService/SubmitVideoJob',
     requestStream: false,
     responseStream: false,
@@ -62,8 +64,7 @@ submitVideoJob: {
     responseSerialize: serialize_sentiric_video_v1_SubmitVideoJobResponse,
     responseDeserialize: deserialize_sentiric_video_v1_SubmitVideoJobResponse,
   },
-  // YENİ: Dudak Senkronu ve Portrait Animasyonu (LivePortrait / SadTalker)
-submitPortraitJob: {
+  submitPortraitJob: {
     path: '/sentiric.video.v1.VideoGatewayService/SubmitPortraitJob',
     requestStream: false,
     responseStream: false,

@@ -90,7 +90,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                  "sentiric/image/v1/gateway.proto",
                  "sentiric/video/v1/gateway.proto"    
             ],
-            &["proto"],
+            &["proto", "vendor_proto"], // <--- İŞTE BURAYA "vendor_proto" EKLENDİ
         )?;
     Ok(())
 }

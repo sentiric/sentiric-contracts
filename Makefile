@@ -13,8 +13,18 @@ generate-all:
 generate-cpp:
 	@rm -rf gen/cpp
 	@mkdir -p gen/cpp
+	@mkdir -p vendor_proto/google/api
+	@curl -sSL https://raw.githubusercontent.com/googleapis/googleapis/master/google/api/annotations.proto -o vendor_proto/google/api/annotations.proto
+	@curl -sSL https://raw.githubusercontent.com/googleapis/googleapis/master/google/api/http.proto -o vendor_proto/google/api/http.proto
+	@echo "--- Generating Google API C++ stubs ---"
+	protoc --proto_path=vendor_proto \
+		--cpp_out=gen/cpp \
+		vendor_proto/google/api/annotations.proto \
+		vendor_proto/google/api/http.proto
+	@echo "--- Generating Sentiric C++ stubs ---"
 	find proto -name "*.proto" -exec protoc \
 		--proto_path=proto \
+		--proto_path=vendor_proto \
 		--cpp_out=gen/cpp \
 		--grpc_out=gen/cpp \
 		--plugin=protoc-gen-grpc=`which grpc_cpp_plugin` \

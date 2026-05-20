@@ -1,21 +1,29 @@
 syntax = "proto3";
 package sentiric.image.v1;
+
+import "google/api/annotations.proto"; // EKLENDİ
+
 option go_package = "github.com/sentiric/sentiric-contracts/gen/go/sentiric/image/v1;imagev1";
 
 service ImageGatewayService {
-  rpc GenerateImage(GenerateImageRequest) returns (GenerateImageResponse);
+  rpc GenerateImage(GenerateImageRequest) returns (GenerateImageResponse) {
+    option (google.api.http) = {
+      post: "/v1/media/image/generate"
+      body: "*"
+    };
+  }
 }
 
 message GenerateImageRequest {
   string tenant_id = 1;
   string trace_id = 2;
   string prompt = 3;
-  string preferred_model = 4; // örn: sdxl-turbo
+  string preferred_model = 4;
   string aspect_ratio = 5;
 }
 
 message GenerateImageResponse {
   bool success = 1;
-  string image_uri = 2; // MinIO (S3) adresini döner
+  string image_uri = 2;
   string error_message = 3;
 }

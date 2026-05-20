@@ -13,14 +13,12 @@ export interface GenerateImageRequest {
   tenantId: string;
   traceId: string;
   prompt: string;
-  /** örn: sdxl-turbo */
   preferredModel: string;
   aspectRatio: string;
 }
 
 export interface GenerateImageResponse {
   success: boolean;
-  /** MinIO (S3) adresini döner */
   imageUri: string;
   errorMessage: string;
 }
